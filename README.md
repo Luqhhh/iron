@@ -1,37 +1,110 @@
 # bf-tap-predict
 
-高炉铁次预测的防泄漏 baseline 实现。`md/` 是原始方案归档；活动配置、契约和状态分别位于 `configs/`、`docs/` 与 `EVIDENCE_STATUS.json`。
+[![locked-tests](https://github.com/Luqhhh/iron/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/Luqhhh/iron/actions/workflows/tests.yml)
 
-模型路线固定为两个 CatBoost MAE 回归器。`competition-timestamp-contract-v1` 是基于赛事公开时间字段的 `ASSUMED` 操作约定，不等同于官方验证过的完整发布时间语义。11 月标签由独立的 `holdout-protection-v1` 硬门禁隔离。
+高炉铁次双目标预测的防时间泄漏 baseline。项目提供从原始文件审计、时间切分、特征构造、训练、离线推理到提交打包的完整工程链路。
 
-`baseline-v0.1` 的 baseline、feature、semantic 三份配置由 canonical SHA-256 完整冻结。bundle v3 另带 `inference_source_contract`：推理使用的公共 operation/burden 文件必须与训练时 SHA-256 和字节数一致；公共表更新必须产生新 source contract 和新 bundle，不能静默替换。
+工程基线已冻结为 [`baseline-v0.1-reproducible`](https://github.com/Luqhhh/iron/tree/baseline-v0.1-reproducible)。后续模型质量工作必须进入独立的 optimization-v0.2 阶段，不回写 baseline 配置、结果或证据。
 
-## 本地开发
+## 当前状态
+
+| 项目 | 状态 |
+| --- | --- |
+| G0 工程正确性与可复现性 | `PASS_LOCAL_LOCKED_ENVIRONMENT` |
+| G1 冻结模型质量 | `FAIL_DEV_LONG` |
+| baseline 发布状态 | `BASELINE_REPRODUCIBLE_QUALITY_FAILED` |
+| 时间可用性证据 | `competition-timestamp-contract-v1 / ASSUMED` |
+| 保护集 | `holdout_consumed=false`；H1–H4 未运行 |
+| 冻结测试 | 50 passed，0 failed，0 skipped |
+
+真实 DEV 结果：
+
+| 场景 | CatBoost E | B0 | B1 | 质量 |
+| --- | ---: | ---: | ---: | --- |
+| DEV_LONG | 0.185646 | 0.176148 | 0.176101 | FAIL |
+| DEV_SHORT | 0.171456 | 0.178157 | 0.178897 | PASS |
+
+E 越低越好。这些是真实赛事数据上的授权本地运行证据，不是公共 GitHub 环境对私有数据的独立复现。两次干净重训的 raw prediction 完全一致；冻结后的 bundle v3 与此前 baseline 输出最大绝对差为 `0.0`。
+
+## 冻结内容
+
+模型路线保持为两个固定 CatBoost MAE 回归器。没有通过调参、改变窗口、放宽门槛或读取 11 月标签来制造质量通过。
+
+`configs/baseline.yaml` 声明三份 canonical SHA-256：
+
+| 契约 | SHA-256 |
+| --- | --- |
+| baseline | `798a44e4fb98a1f83d91f0077c32618117b9c25098562a73e6412e792911639c` |
+| feature | `c2fa86c47b4ef906591530cd7fbb368de14bf48f1b1fb3bc4f1dba6bd51e3191` |
+| semantic | `b54c7add8805094245548ac79ff9087d1d7183d68a79441b27a8a96604ad6a25` |
+
+启动时会重新 canonicalize 完整配置并核对摘要。因此 operation/burden 字段、6/24 小时窗口、24/72 小时陈旧阈值、history 3/10 窗口、布尔开关、类别缺失标记或时间语义发生漂移时，都不能继续冒充 `baseline-v0.1`。
+
+bundle v3 还包含 `inference_source_contract`，强绑定训练时公共 process source 的 SHA-256 和字节数。当前真实 source contract ID 为：
+
+```text
+public-process-sources-v1-2773c0f38f89ce32
+```
+
+本机路径不参与 source 身份：内容相同、路径不同可以恢复；内容变化即使列结构相同，也会在特征构建前失败。官方若更新公共表，必须显式训练新 bundle 并生成新 source contract/version。
+
+## 环境安装
+
+权威本地环境为 Python 3.12 和锁定的 `uv.lock`：
 
 ```bash
 uv sync --locked --extra dev --python 3.12
+uv run python -m bf_tap --help
 uv run pytest
 uv run python scripts/check_no_private_artifacts.py
-uv run python -m bf_tap --help
 ```
+
+CI 另有 Python 3.11 兼容性 job，但它不替代 Python 3.12 锁定环境证据。
 
 ## 数据准备
 
-将 `configs/data.example.yaml` 复制为被忽略的 `configs/data.local.yaml`，只填写本机路径。字段时间语义固定在可提交的 `configs/data_contract.yaml`，保护边界固定在 `configs/protection.yaml`；恢复语义不需要复制私人路径配置。
+复制示例配置并填写本机路径：
 
-真实数据、模型、运行报告和提交文件均由 `.gitignore` 与 CI allowlist 检查排除。仓库公开不代表赛事数据允许外发。
+```bash
+cp configs/data.example.yaml configs/data.local.yaml
+```
 
-## 结构审计与 DEV
+`configs/*.local.yaml` 已被 Git 忽略，只承载本机文件位置。可提交的字段映射和时间语义位于 `configs/data_contract.yaml`，保护边界位于 `configs/protection.yaml`；不要把私有路径复制进语义配置。
+
+真实 CSV/XLSX、字段字典、模型、预测、报告、访问账本和提交包不得进入 Git。仓库公开不代表赛事资产获准外发。
+
+推理可使用更小的 `configs/predict.local.yaml`：
+
+```yaml
+schema_version: 1
+paths:
+  test_a_samples: /absolute/path/to/test_a_samples.csv
+  operation_hourly: /absolute/path/to/operation_hourly.csv
+  burden_change: /absolute/path/to/burden_change.csv
+```
+
+推理不需要训练标签文件；历史授权快照、特征配置和时间语义都随 bundle 保存。
+
+## 运行流程
+
+### 1. 结构审计
+
+结构审计不会统计受保护目标值：
 
 ```bash
 uv run python -m bf_tap audit \
   --data-config configs/data.local.yaml \
-  --output local/reports/structural-audit-<id>.json
+  --output local/reports/structural-audit-<unique-id>.json
+```
 
+### 2. DEV 验证
+
+```bash
 uv run python -m bf_tap validate \
   --data-config configs/data.local.yaml \
   --data-contract configs/data_contract.yaml \
   --protection-policy configs/protection.yaml \
+  --protection-ledger local/manifests/protected_access.json \
   --config configs/baseline.yaml \
   --feature-config configs/features.yaml \
   --split-config configs/validation.yaml \
@@ -39,11 +112,9 @@ uv run python -m bf_tap validate \
   --output local/runs/<unique-dev-run-id>
 ```
 
-DEV 命令会在读取标签前校验所有 fold 及独立保护边界。run ID 已存在时直接失败；失败目录和证据不得删除或覆盖。
+DEV 会在读取标签前检查独立保护边界、fold 时序、时区、分区非空和 train/eval ID 交集。run ID 已存在时直接失败；失败目录和证据不得删除或覆盖。
 
-## 训练与离线推理
-
-先用不跨保护边界的 development 模式验证完整文件链路：
+### 3. Development bundle 训练
 
 ```bash
 uv run python -m bf_tap train \
@@ -56,7 +127,13 @@ uv run python -m bf_tap train \
   --train-start 2024-03-01T00:00:00+08:00 \
   --fit-cutoff 2024-11-01T00:00:00+08:00 \
   --output local/runs/<unique-train-run-id>
+```
 
+bundle v3 包含模型、特征 schema、完整配置、契约摘要、训练身份、授权历史快照、公共 source contract、环境和组件摘要。
+
+### 4. 独立离线推理
+
+```bash
 uv run python -m bf_tap predict \
   --bundle local/runs/<train-run-id>/bundle \
   --data-config configs/predict.local.yaml \
@@ -64,32 +141,66 @@ uv run python -m bf_tap predict \
   --output local/predictions/<unique-predict-run-id>
 ```
 
-`predict.local.yaml` 只需要对应阶段样本、operation 和 burden 路径；不需要 `train_samples.csv`。历史授权快照及特征语义随 bundle 保存。`predict` 不调用 `fit`。
+`predict` 从 bundle 恢复语义并校验公共 source，不调用 `fit`。同一 bundle 的两次独立进程推理应满足 raw 最大绝对差不超过 `1e-9`，结果 CSV 字节一致。
 
-本机文件路径不参与公共 source contract；内容相同而路径不同可以恢复，内容变化即使 schema 相同也会在特征构建前失败。
-
-正式 `official-release` 训练会读取受保护标签，必须先有冻结 manifest 和显式 `final_training` 访问账本。本轮禁止运行该生命周期。
-
-## 校验和打包
+### 5. 校验和打包
 
 ```bash
 uv run python -m bf_tap check-submission \
-  --data-config configs/predict.local.yaml --stage test_a \
+  --data-config configs/predict.local.yaml \
+  --stage test_a \
   --path local/predictions/<id>/result.csv
 
 uv run python -m bf_tap pack \
-  --data-config configs/predict.local.yaml --stage test_a \
-  --team-name <team> --result local/predictions/<id>/result.csv \
+  --data-config configs/predict.local.yaml \
+  --stage test_a \
+  --team-name <team> \
+  --result local/predictions/<id>/result.csv \
   --output-dir local/submissions/<id>
 ```
 
-`pack` 会自行按目标阶段主表重新检查列、ID、顺序、行数、有限性和非负性，并在压缩后重新读取 ZIP payload 验证摘要；不依赖先执行 `check-submission`。
+内部生成器要求 ID 集合和官方输入顺序同时一致。`pack` 会重新检查字段、阶段 ID、顺序、行数、有限性和非负性，并在压缩后回读 ZIP、复核 payload 摘要；不依赖操作者预先运行 `check-submission`。
 
-## 状态解释
+## 时间与保护集契约
 
-- G0：工程正确性与可复现性。
-- G1：冻结模型质量；DEV_LONG 已失败，修复工程代码不会改写该历史结果。
-- `ASSUMED`：可复现的操作口径，但仍待官方补充业务发布时间依据。
-- `VERIFIED`：有可定位的官方材料直接确认。
+当前时间映射是可复现的操作约定，不是官方确认的完整发布时间事实：
 
-工程冻结证据与延期项见 `docs/review/FREEZE_REPORT.md`。`baseline-v0.1-reproducible` 标签之后的模型改进必须进入独立的 optimization-v0.2 阶段，不回写 baseline 指标。
+- operation：`event_time = available_at = clock`
+- burden：`event_time = available_at = cal_time`
+- history/target：`available_at = tap_end_time`
+
+仍待官方确认：小时统计窗口边界、burden reporting delay、target reporting delay。不要擅自添加 1/6/24 小时滞后，也不要根据排行榜反馈修改时间含义；官方澄清后应创建新 contract ID，使相关旧产物失效。
+
+development 流程不能读取 2024 年 11 月目标。`official-release` 需要冻结 manifest 和显式 `final_training` 访问账本；当前 H1–H4 与真实 protected lifecycle 均未执行。
+
+## 项目结构
+
+```text
+configs/                 冻结模型、特征、验证、语义与保护配置
+src/bf_tap/              审计、特征、训练、推理、验证和提交实现
+tests/                   单元测试及 subprocess 文件级 E2E
+scripts/                 环境证据、私有资产检查和复现比较工具
+docs/                    当前契约、状态和审阅报告
+md/                      原始实施方案归档，不是运行权威来源
+EVIDENCE_STATUS.json     机器可读项目状态
+```
+
+## 证据与报告
+
+- [工程冻结报告](docs/review/FREEZE_REPORT.md)
+- [修复报告](docs/review/REPAIR_REPORT.md)
+- [历史验收报告](docs/review/ACCEPTANCE_REPORT.md)
+- [数据契约](docs/data_contract.md)
+- [发布身份](docs/release_identity.md)
+- [机器可读状态](EVIDENCE_STATUS.json)
+
+## 后续工作
+
+以下 P2 已记录，但不阻塞 optimization-v0.2：
+
+- 用纯合成数据贯通 `holdout_scoring` 与 `final_training` lifecycle；
+- 正式候选生成 bundle 外部 `release_manifest.json`；
+- 正式 candidate 强制 clean commit/tree；
+- 为 GitHub main 配置 branch protection 和 required `locked-tests`。
+
+下一阶段的首要建模问题是：为什么 DEV_LONG 上 CatBoost 弱于简单的 per-spout median？任何优化都应以冻结标签作为对照，使用新配置、run ID 和独立分支记录。
