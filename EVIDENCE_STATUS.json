@@ -1,6 +1,6 @@
 {
   "as_of": "2026-09-06",
-  "implementation_version": "0.1.0-repair",
+  "implementation_version": "baseline-v0.1-reproducible",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
   "repository_initialized": true,
@@ -22,8 +22,13 @@
     "junit_sha256": "0ff53c32a43185b0bf2348c73e79f9f7fbf486161b07c937067136e7fe1726af"
   },
   "baseline_freeze": {
-    "status": "P1_COMPLETE_PENDING_TAG",
-    "intended_tag": "baseline-v0.1-reproducible",
+    "status": "FROZEN",
+    "tag": "baseline-v0.1-reproducible",
+    "code_commit": "e24be809b55e2474ae6e82b273c7a4d8ddce1122",
+    "code_ci": {
+      "status": "PASS",
+      "actions_run": 34038910336
+    },
     "bundle_schema_version": 3,
     "contract_digests": {
       "baseline_contract_sha256": "798a44e4fb98a1f83d91f0077c32618117b9c25098562a73e6412e792911639c",

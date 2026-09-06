@@ -1,8 +1,10 @@
 # baseline-v0.1 工程冻结报告
 
-日期：2026-09-06。起始 main：`c8cb0468800db949e69e2eaea445a92e85217f00`。目标标签：`baseline-v0.1-reproducible`。
+日期：2026-09-06。起始 main：`c8cb0468800db949e69e2eaea445a92e85217f00`。冻结标签：`baseline-v0.1-reproducible`。
 
 结论：两个剩余 P1 已完成，模型输出没有变化。G0 保持 `PASS_LOCAL_LOCKED_ENVIRONMENT`，G1 保持 `FAIL_DEV_LONG`，发布口径保持 `BASELINE_REPRODUCIBLE_QUALITY_FAILED`。
+
+P1 代码提交为 `e24be809b55e2474ae6e82b273c7a4d8ddce1122`；对应 GitHub Actions run `34038910336` 已完成并成功。冻结标签指向包含本报告和机器状态的最终冻结提交。
 
 ## P1-1：公共推理 source 强绑定
 
