@@ -76,7 +76,22 @@
   "G0": "PASS_LOCAL_LOCKED_ENVIRONMENT",
   "G1": "FAIL_DEV_LONG",
   "official_baseline_status": "BASELINE_REPRODUCIBLE_QUALITY_FAILED",
-  "leaderboard_submission": false,
+  "leaderboard_submission": true,
+  "leaderboard_results": [
+    {
+      "reported_on": "2026-09-06",
+      "stage": "test_a",
+      "stage_suffix": "prelim",
+      "score": 81.4554,
+      "evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "submission_archive": "Luqhhh_bf_tap_predict_prelim.zip",
+      "submission_archive_sha256": "44ac6ced2fe3b871f387500caed325183bd73a55f11c56efb7a0f84531957c8f",
+      "training_run": "local/runs/baseline-v0.1-submission-test-a-r1",
+      "training_mode": "development",
+      "fit_cutoff": "2024-11-01T00:00:00+08:00",
+      "holdout_consumed": false
+    }
+  ],
   "remote_ci_for_repair": {
     "status": "PASS",
     "code_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",

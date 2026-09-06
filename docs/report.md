@@ -10,5 +10,6 @@
 - 契约：`competition-timestamp-contract-v1 / ASSUMED`，字段级依据与资产摘要见 `configs/data_contract.yaml`。
 - 详细命令、摘要、批次和未解决项见 `docs/review/REPAIR_REPORT.md`。
 - baseline 冻结身份和延期 P2 见 `docs/review/FREEZE_REPORT.md`。
+- test_a / prelim 平台成绩：`81.4554`，由用户报告，未由本次代理独立核验；提交包身份见 `docs/submission_log.md`。
 
 修复代码提交的 GitHub Actions run `34037523200` 已成功。本状态没有排行榜提交、正式最终训练或 GitHub 分支保护变更。

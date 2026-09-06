@@ -16,6 +16,7 @@
 | 时间可用性证据 | `competition-timestamp-contract-v1 / ASSUMED` |
 | 保护集 | `holdout_consumed=false`；H1–H4 未运行 |
 | 冻结测试 | 50 passed，0 failed，0 skipped |
+| test_a / prelim 平台成绩 | `81.4554`（用户报告，未独立核验） |
 
 真实 DEV 结果：
 
@@ -25,6 +26,8 @@
 | DEV_SHORT | 0.171456 | 0.178157 | 0.178897 | PASS |
 
 E 越低越好。这些是真实赛事数据上的授权本地运行证据，不是公共 GitHub 环境对私有数据的独立复现。两次干净重训的 raw prediction 完全一致；冻结后的 bundle v3 与此前 baseline 输出最大绝对差为 `0.0`。
+
+用户使用冻结 baseline、2024-11-01 development 截止点生成的 `Luqhhh_bf_tap_predict_prelim.zip` 报告 test_a 平台成绩 `81.4554`。提交包 SHA-256 为 `44ac6ced2fe3b871f387500caed325183bd73a55f11c56efb7a0f84531957c8f`；平台回执未纳入仓库，因此该成绩只标记为用户报告。详见 [提交记录](docs/submission_log.md)。
 
 ## 冻结内容
 
@@ -193,6 +196,7 @@ EVIDENCE_STATUS.json     机器可读项目状态
 - [数据契约](docs/data_contract.md)
 - [发布身份](docs/release_identity.md)
 - [机器可读状态](EVIDENCE_STATUS.json)
+- [平台提交记录](docs/submission_log.md)
 
 ## 后续工作
 
