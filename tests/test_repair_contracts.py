@@ -1,7 +1,15 @@
+from copy import deepcopy
+from pathlib import Path
+
 import pandas as pd
 import pytest
 
-from bf_tap.config import validate_data_paths, validate_semantic_contract
+from bf_tap.config import (
+    load_yaml,
+    validate_data_paths,
+    validate_frozen_contracts,
+    validate_semantic_contract,
+)
 from bf_tap.exceptions import ContractError, ProtectedLabelError
 from bf_tap.features.history import build_history_features
 from bf_tap.io import read_development_labels
@@ -245,3 +253,45 @@ def test_protected_access_ledger_is_explicit_and_policy_bound(tmp_path, protecti
     )
     assert recorded["consumed"] is True
     assert read_access_ledger(ledger, protection)["entries"][0]["lifecycle"] == "holdout_scoring"
+
+
+def test_frozen_contract_digests_reject_every_semantic_family_drift():
+    root = Path(__file__).parents[1]
+    baseline = load_yaml(root / "configs/baseline.yaml")
+    features = load_yaml(root / "configs/features.yaml")
+    semantic = load_yaml(root / "configs/data_contract.yaml")
+    identities = validate_frozen_contracts(baseline, features, semantic)
+    assert set(identities) == {
+        "baseline_contract_sha256",
+        "feature_contract_sha256",
+        "semantic_contract_sha256",
+    }
+
+    mutations = []
+    changed = deepcopy(features)
+    changed["sample"]["derived"] = ["hour_sin", "hour_cos"]
+    mutations.append((baseline, changed, semantic))
+    changed = deepcopy(features)
+    changed["operation"]["value_columns"] = changed["operation"]["value_columns"][:-1]
+    mutations.append((baseline, changed, semantic))
+    changed = deepcopy(features)
+    changed["operation"]["latest_max_event_age_hours"] = 25
+    mutations.append((baseline, changed, semantic))
+    changed = deepcopy(features)
+    changed["burden"]["latest_max_event_age_hours"] = 73
+    mutations.append((baseline, changed, semantic))
+    changed = deepcopy(features)
+    changed["history"]["exclude_current_tap"] = False
+    mutations.append((baseline, changed, semantic))
+    changed = deepcopy(semantic)
+    changed["evidence"]["pending"].append("new unresolved semantic")
+    mutations.append((baseline, features, changed))
+    changed = deepcopy(baseline)
+    changed["max_categorical_cardinality"] = 65
+    mutations.append((changed, features, semantic))
+
+    for baseline_value, feature_value, semantic_value in mutations:
+        with pytest.raises(ContractError, match="contract SHA256 mismatch"):
+            validate_frozen_contracts(
+                baseline_value, feature_value, semantic_value
+            )

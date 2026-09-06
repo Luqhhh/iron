@@ -12,3 +12,5 @@ This repository implements the frozen `baseline-v0.1`. Unless the user explicitl
 - report G0 engineering status separately from G1 model quality.
 
 The `md/` tree is the archived original implementation package. Active configuration and status live at repository root under `configs/`, `docs/`, and `EVIDENCE_STATUS.json`.
+
+The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do not change its model, feature, semantic, source, or acceptance contracts in place. Start model-quality work as optimization-v0.2 on a separate branch and preserve baseline comparisons.

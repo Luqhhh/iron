@@ -9,11 +9,13 @@ import pandas as pd
 
 from .artifacts import (
     atomic_write_json,
+    build_inference_source_contract,
     code_identity,
     file_identities,
     file_sha256,
     runtime_environment,
     stable_digest,
+    validate_inference_source_contract,
     verify_file_identities,
 )
 from .availability import freeze_history_origin
@@ -22,6 +24,7 @@ from .config import (
     validate_baseline_config,
     validate_data_paths,
     validate_feature_config,
+    validate_frozen_contracts,
     validate_semantic_contract,
 )
 from .data import normalize_event_source
@@ -138,6 +141,7 @@ def run_training(
     validate_baseline_config(baseline)
     features = load_yaml(feature_config_path)
     validate_feature_config(features)
+    contract_digests = validate_frozen_contracts(baseline, features, semantic)
     paths = data_cfg["paths"]
 
     destination = Path(output)
@@ -163,6 +167,12 @@ def run_training(
     started = perf_counter()
     try:
         inputs_before = file_identities(input_names)
+        inference_source_contract = build_inference_source_contract(
+            inputs_before,
+            semantic_contract_sha256=contract_digests[
+                "semantic_contract_sha256"
+            ],
+        )
         runtime = runtime_environment()
         code = code_identity(Path.cwd())
         lock_sha = file_sha256("uv.lock") if Path("uv.lock").is_file() else "UNAVAILABLE"
@@ -180,6 +190,8 @@ def run_training(
                 "environment": runtime,
                 "lockfile_sha256": lock_sha,
                 "resolved_config_sha256": stable_digest(resolved),
+                "contract_digests": contract_digests,
+                "inference_source_contract": inference_source_contract,
                 "cache": {"enabled": False, "reason": "baseline implementation has no cache I/O"},
             },
         )
@@ -293,8 +305,11 @@ def run_training(
         model.save(
             destination / "bundle",
             metadata={
+                "baseline_config": baseline,
                 "semantic_contract": semantic,
                 "feature_config": features,
+                "contract_digests": contract_digests,
+                "inference_source_contract": inference_source_contract,
                 "training": training_metadata,
                 "code_identity": code,
                 "environment": runtime,
@@ -344,7 +359,19 @@ def run_prediction(
         metadata = model.bundle_metadata_
         semantic = metadata["semantic_contract"]
         features = metadata["feature_config"]
-        validate_semantic_contract(semantic)
+        baseline = metadata["baseline_config"]
+        contract_digests = validate_frozen_contracts(
+            baseline, features, semantic
+        )
+        if metadata["contract_digests"] != contract_digests:
+            raise ContractError("bundle contract digest metadata mismatch")
+        validate_inference_source_contract(
+            metadata["inference_source_contract"],
+            inputs_before,
+            semantic_contract_sha256=contract_digests[
+                "semantic_contract_sha256"
+            ],
+        )
         atomic_write_json(
             destination / "run_state.json",
             {
@@ -352,6 +379,10 @@ def run_prediction(
                 "stage": stage,
                 "bundle_json_sha256": file_sha256(Path(bundle_path) / "bundle.json"),
                 "semantic_contract_id": semantic["contract_id"],
+                "contract_digests": contract_digests,
+                "inference_source_contract_id": metadata[
+                    "inference_source_contract"
+                ]["contract_id"],
                 "inputs_before": inputs_before,
                 "code_identity": code_identity(Path.cwd()),
                 "environment": runtime_environment(),
@@ -412,6 +443,10 @@ def run_prediction(
                 "rows": len(result),
                 "sample_id_sha256": stable_digest(result["sample_id"].astype(str).tolist()),
                 "bundle_json_sha256": file_sha256(Path(bundle_path) / "bundle.json"),
+                "contract_digests": contract_digests,
+                "inference_source_contract": metadata[
+                    "inference_source_contract"
+                ],
                 "input_identities": inputs_before,
                 "inputs_stable": True,
                 "parse_audit": parse_audit,

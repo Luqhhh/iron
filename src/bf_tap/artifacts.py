@@ -3,6 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import platform
+import re
 import subprocess
 from pathlib import Path
 from typing import Any
@@ -11,6 +12,10 @@ import catboost
 import numpy as np
 import pandas as pd
 import yaml
+
+from .exceptions import ContractError
+
+INFERENCE_SOURCE_NAMES = ("operation_hourly", "burden_change")
 
 
 def stable_digest(value: Any) -> str:
@@ -69,6 +74,84 @@ def file_identities(paths: dict[str, str | Path]) -> dict[str, dict[str, Any]]:
             "sha256": file_sha256(path),
         }
     return result
+
+
+def build_inference_source_contract(
+    identities: dict[str, dict[str, Any]], *, semantic_contract_sha256: str
+) -> dict[str, Any]:
+    if not re.fullmatch(r"[0-9a-f]{64}", semantic_contract_sha256):
+        raise ContractError("semantic contract SHA256 must be lowercase hexadecimal")
+    missing = set(INFERENCE_SOURCE_NAMES) - set(identities)
+    if missing:
+        raise ContractError(f"inference source identities missing: {sorted(missing)}")
+    sources: dict[str, dict[str, Any]] = {}
+    for name in INFERENCE_SOURCE_NAMES:
+        identity = identities[name]
+        if not isinstance(identity, dict) or not {
+            "sha256",
+            "bytes",
+        }.issubset(identity):
+            raise ContractError(f"inference source identity is invalid: {name}")
+        sha256 = identity["sha256"]
+        byte_count = identity["bytes"]
+        if not isinstance(sha256, str) or not re.fullmatch(r"[0-9a-f]{64}", sha256):
+            raise ContractError(f"inference source SHA256 is invalid: {name}")
+        if isinstance(byte_count, bool) or not isinstance(byte_count, int) or byte_count < 0:
+            raise ContractError(f"inference source byte count is invalid: {name}")
+        sources[name] = {"sha256": sha256, "bytes": byte_count}
+    payload = {
+        "schema_version": 1,
+        "semantic_contract_sha256": semantic_contract_sha256,
+        "sources": sources,
+    }
+    return {
+        **payload,
+        "contract_id": f"public-process-sources-v1-{stable_digest(payload)[:16]}",
+    }
+
+
+def validate_inference_source_contract(
+    contract: dict[str, Any],
+    identities: dict[str, dict[str, Any]],
+    *,
+    semantic_contract_sha256: str,
+) -> None:
+    expected_keys = {
+        "schema_version",
+        "contract_id",
+        "semantic_contract_sha256",
+        "sources",
+    }
+    if not isinstance(contract, dict) or set(contract) != expected_keys:
+        raise ContractError("inference source contract shape is invalid")
+    if not isinstance(contract["sources"], dict) or set(contract["sources"]) != set(
+        INFERENCE_SOURCE_NAMES
+    ):
+        raise ContractError("inference source contract sources are invalid")
+    for name, source in contract["sources"].items():
+        if not isinstance(source, dict) or set(source) != {"sha256", "bytes"}:
+            raise ContractError(f"inference source contract entry is invalid: {name}")
+    rebuilt = build_inference_source_contract(
+        {
+            name: {
+                "sha256": source["sha256"],
+                "bytes": source["bytes"],
+            }
+            for name, source in contract["sources"].items()
+        },
+        semantic_contract_sha256=contract["semantic_contract_sha256"],
+    )
+    if rebuilt != contract:
+        raise ContractError("inference source contract identity is invalid")
+    if contract["semantic_contract_sha256"] != semantic_contract_sha256:
+        raise ContractError("inference source contract semantic identity mismatch")
+    actual = build_inference_source_contract(
+        identities, semantic_contract_sha256=semantic_contract_sha256
+    )
+    if actual != contract:
+        raise ContractError(
+            "inference source identity mismatch; retrain under an explicit new source contract"
+        )
 
 
 def verify_file_identities(identities: dict[str, dict[str, Any]]) -> None:

@@ -191,6 +191,37 @@ def test_file_level_train_predict_twice_and_pack_without_training_labels(tmp_pat
     with ZipFile(archive) as handle:
         assert handle.namelist() == ["result.csv"]
 
+    bundle_metadata = json.loads((train_run / "bundle" / "bundle.json").read_text())
+    assert bundle_metadata["bundle_schema_version"] == 3
+    assert set(bundle_metadata["inference_source_contract"]["sources"]) == {
+        "burden_change",
+        "operation_hourly",
+    }
+    operation.to_csv(data / "operation_hourly.csv", index=False, float_format="%.12f")
+    mismatched = subprocess.run(
+        [
+            sys.executable,
+            "-m",
+            "bf_tap",
+            "predict",
+            "--bundle",
+            str(train_run / "bundle"),
+            "--data-config",
+            str(predict_paths),
+            "--stage",
+            "test_a",
+            "--output",
+            str(tmp_path / "predict-mismatched-source"),
+        ],
+        cwd=root,
+        env={**os.environ, "PYTHONPATH": str(root / "src")},
+        check=False,
+        text=True,
+        capture_output=True,
+    )
+    assert mismatched.returncode == 2
+    assert "inference source identity mismatch" in mismatched.stderr
+
 
 def test_prediction_preflight_failure_records_final_status(tmp_path):
     paths = tmp_path / "missing-paths.yaml"

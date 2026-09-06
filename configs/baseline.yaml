@@ -1,6 +1,9 @@
 schema_version: 1
 decision_status: frozen_by_ai
 baseline_id: baseline-v0.1
+baseline_contract_sha256: 798a44e4fb98a1f83d91f0077c32618117b9c25098562a73e6412e792911639c
+feature_contract_sha256: c2fa86c47b4ef906591530cd7fbb368de14bf48f1b1fb3bc4f1dba6bd51e3191
+semantic_contract_sha256: b54c7add8805094245548ac79ff9087d1d7183d68a79441b27a8a96604ad6a25
 targets: [tap_iron, tap_time_len]
 parameters:
   loss_function: MAE

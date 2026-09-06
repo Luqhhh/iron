@@ -18,3 +18,9 @@
 开发流程不得读取 2024 年 11 月目标值。保护边界不再从普通 fold 推导，而由带摘要的 `configs/protection.yaml` 独立提供。`read_development_labels` 会在解析标签前验证请求范围，再在 CSV 解析层跳过保护行。保护标签只允许在 `holdout_scoring` 或 `final_training` 生命周期中，凭冻结 manifest 摘要写入本地访问账本后读取。
 
 历史表先校验 `reference_time <= tap_end_time <= available_at`，再与样本主表核对 ID、铁次号、铁口号、参考时刻和 DEV 授权范围内的两个标签。11 月仅核对不含目标的元数据。
+
+## 冻结身份
+
+`configs/baseline.yaml` 声明 baseline、feature、semantic 三个 canonical SHA-256。baseline 摘要覆盖除三个摘要声明字段自身以外的完整 baseline mapping；feature 与 semantic 摘要覆盖各自完整 mapping。任何字段、顺序列表、布尔开关、窗口、阈值或证据状态变化都会拒绝以 `baseline-v0.1` 启动。
+
+bundle v3 的 `inference_source_contract` 绑定训练时 `operation_hourly` 和 `burden_change` 的 SHA-256 与字节数，并将 semantic contract 摘要纳入 source contract ID。本机路径不参与身份。官方公共表内容变化时必须显式训练新 bundle 并产生新 source contract/version，不能用同 schema 文件静默替换。

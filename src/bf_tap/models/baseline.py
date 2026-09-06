@@ -121,8 +121,11 @@ class DualTargetBaseline:
         destination = Path(directory)
         destination.mkdir(parents=True, exist_ok=False)
         required_metadata = {
+            "baseline_config",
             "semantic_contract",
             "feature_config",
+            "contract_digests",
+            "inference_source_contract",
             "training",
             "code_identity",
             "environment",
@@ -154,7 +157,7 @@ class DualTargetBaseline:
         }
         component_sha256[history_path.name] = sha256_file(history_path)
         bundle = {
-            "bundle_schema_version": 2,
+            "bundle_schema_version": 3,
             "parameters": self.parameters,
             "categorical": self.categorical,
             "feature_names": self.feature_names_,
@@ -172,9 +175,31 @@ class DualTargetBaseline:
     def load(cls, directory: str | Path) -> "DualTargetBaseline":
         source = Path(directory)
         metadata = json.loads((source / "bundle.json").read_text(encoding="utf-8"))
-        if metadata.get("bundle_schema_version") != 2:
+        if metadata.get("bundle_schema_version") != 3:
             raise ContractError("unsupported bundle schema")
-        for filename, expected in metadata.get("component_sha256", {}).items():
+        required_metadata = {
+            "baseline_config",
+            "semantic_contract",
+            "feature_config",
+            "contract_digests",
+            "inference_source_contract",
+            "training",
+            "code_identity",
+            "environment",
+            "lockfile_sha256",
+            "component_sha256",
+        }
+        missing = required_metadata - set(metadata)
+        if missing:
+            raise ContractError(f"bundle metadata missing keys: {sorted(missing)}")
+        expected_components = {
+            "tap_iron.cbm",
+            "tap_time_len.cbm",
+            "history_snapshot.csv",
+        }
+        if set(metadata["component_sha256"]) != expected_components:
+            raise ContractError("bundle component manifest is incomplete")
+        for filename, expected in metadata["component_sha256"].items():
             component = source / filename
             if not component.is_file() or sha256_file(component) != expected:
                 raise ContractError(f"bundle component hash mismatch: {filename}")

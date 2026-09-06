@@ -8,6 +8,7 @@ import pandas as pd
 
 from .artifacts import (
     atomic_write_json,
+    build_inference_source_contract,
     code_identity,
     file_identities,
     file_sha256,
@@ -22,6 +23,7 @@ from .config import (
     validate_baseline_config,
     validate_data_paths,
     validate_feature_config,
+    validate_frozen_contracts,
     validate_semantic_contract,
     validate_validation_config,
 )
@@ -121,6 +123,9 @@ def run_development_validation(
     validate_baseline_config(baseline_cfg)
     feature_cfg = load_yaml(feature_config_path)
     validate_feature_config(feature_cfg)
+    contract_digests = validate_frozen_contracts(
+        baseline_cfg, feature_cfg, semantic_cfg
+    )
     split_cfg = load_yaml(split_config_path)
     validate_validation_config(split_cfg, timezone=protection.timezone)
     acceptance_cfg = load_yaml(Path(baseline_config_path).with_name("acceptance.yaml"))
@@ -158,6 +163,12 @@ def run_development_validation(
     }
     try:
         inputs_before = file_identities(used_paths)
+        inference_source_contract = build_inference_source_contract(
+            inputs_before,
+            semantic_contract_sha256=contract_digests[
+                "semantic_contract_sha256"
+            ],
+        )
         code = code_identity(Path.cwd())
         environment = runtime_environment()
         lock_sha256 = file_sha256("uv.lock")
@@ -172,6 +183,8 @@ def run_development_validation(
                 "code_identity": code,
                 "lockfile_sha256": lock_sha256,
                 "resolved_config_sha256": stable_digest(resolved),
+                "contract_digests": contract_digests,
+                "inference_source_contract": inference_source_contract,
                 "protection_ledger": ledger_status,
                 "cache": {"enabled": False, "reason": "no cache I/O in DEV workflow"},
             },
@@ -318,8 +331,11 @@ def run_development_validation(
             model.save(
                 fold_dir / "bundle",
                 metadata={
+                    "baseline_config": baseline_cfg,
                     "semantic_contract": semantic_cfg,
                     "feature_config": feature_cfg,
+                    "contract_digests": contract_digests,
+                    "inference_source_contract": inference_source_contract,
                     "training": {
                         "mode": "development-validation",
                         "fold_id": fold.id,
@@ -486,6 +502,8 @@ def run_development_validation(
                 "code_identity": code,
                 "lockfile_sha256": lock_sha256,
                 "resolved_config_sha256": stable_digest(resolved),
+                "contract_digests": contract_digests,
+                "inference_source_contract": inference_source_contract,
                 "split_identities": split_identities,
                 "artifact_sha256": artifact_sha256,
                 "cache": {"enabled": False, "reason": "no cache I/O in DEV workflow"},

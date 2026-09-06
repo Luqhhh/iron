@@ -58,6 +58,7 @@ def test_dual_model_roundtrip_is_identical(tmp_path):
         }
     )
     metadata = {
+        "baseline_config": {"baseline_id": "test"},
         "semantic_contract": {"contract_id": "test"},
         "feature_config": {"version": 1},
         "training": {
@@ -69,6 +70,19 @@ def test_dual_model_roundtrip_is_identical(tmp_path):
         "code_identity": {"snapshot": "test"},
         "environment": {"python": "test"},
         "lockfile_sha256": "0" * 64,
+        "contract_digests": {
+            "baseline_contract_sha256": "1" * 64,
+            "feature_contract_sha256": "2" * 64,
+            "semantic_contract_sha256": "3" * 64,
+        },
+        "inference_source_contract": {
+            "schema_version": 1,
+            "contract_id": "synthetic-sources-v1",
+            "sources": {
+                "operation_hourly": {"sha256": "4" * 64, "bytes": 1},
+                "burden_change": {"sha256": "5" * 64, "bytes": 1},
+            },
+        },
     }
     model.save(bundle, metadata=metadata, history_snapshot=history)
     after = DualTargetBaseline.load(bundle).predict_raw(X)

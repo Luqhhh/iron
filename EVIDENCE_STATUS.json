@@ -15,11 +15,25 @@
   "M6_protected_lifecycle": "DEFERRED_NOT_CONSUMED",
   "tests": {
     "environment": "Python 3.12.12 / uv.lock",
-    "passed": 48,
+    "passed": 50,
     "failed": 0,
     "skipped": 0,
-    "junit": "local/reports/pytest-repair-main.xml",
-    "junit_sha256": "35b0716255fefe122068e11f1029a549b36e2477399d56ce74cb9976418e9129"
+    "junit": "local/reports/pytest-baseline-freeze.xml",
+    "junit_sha256": "0ff53c32a43185b0bf2348c73e79f9f7fbf486161b07c937067136e7fe1726af"
+  },
+  "baseline_freeze": {
+    "status": "P1_COMPLETE_PENDING_TAG",
+    "intended_tag": "baseline-v0.1-reproducible",
+    "bundle_schema_version": 3,
+    "contract_digests": {
+      "baseline_contract_sha256": "798a44e4fb98a1f83d91f0077c32618117b9c25098562a73e6412e792911639c",
+      "feature_contract_sha256": "c2fa86c47b4ef906591530cd7fbb368de14bf48f1b1fb3bc4f1dba6bd51e3191",
+      "semantic_contract_sha256": "b54c7add8805094245548ac79ff9087d1d7183d68a79441b27a8a96604ad6a25"
+    },
+    "inference_source_contract_id": "public-process-sources-v1-2773c0f38f89ce32",
+    "validation_run": "local/runs/dev-baseline-v0.1-frozen-r1",
+    "run_manifest_sha256": "417f1e97f54d981802ff806818ff837c04623f8548850746af8090342650e3ee",
+    "metrics_sha256": "1fee1898f694bdb010da107f37addd7571acf666da245273c4134721fe90419d"
   },
   "structural_audit": {
     "path": "local/reports/structural_audit_repair.json",

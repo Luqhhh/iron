@@ -6,7 +6,14 @@ from typing import Any
 
 import yaml
 
+from .artifacts import stable_digest
 from .exceptions import ContractError
+
+CONTRACT_DIGEST_KEYS = (
+    "baseline_contract_sha256",
+    "feature_contract_sha256",
+    "semantic_contract_sha256",
+)
 
 
 def load_yaml(path: str | Path) -> dict[str, Any]:
@@ -183,6 +190,7 @@ def validate_baseline_config(config: dict[str, Any]) -> None:
             "schema_version",
             "decision_status",
             "baseline_id",
+            *CONTRACT_DIGEST_KEYS,
             "targets",
             "parameters",
             "categorical_features",
@@ -194,6 +202,11 @@ def validate_baseline_config(config: dict[str, Any]) -> None:
     )
     if config["schema_version"] != 1 or config["decision_status"] != "frozen_by_ai":
         raise ContractError("baseline config must be schema v1 and frozen_by_ai")
+    for name in CONTRACT_DIGEST_KEYS:
+        if not isinstance(config[name], str) or not re.fullmatch(
+            r"[0-9a-f]{64}", config[name]
+        ):
+            raise ContractError(f"{name} must be lowercase hexadecimal SHA256")
     if config["targets"] != ["tap_iron", "tap_time_len"]:
         raise ContractError("baseline targets differ from frozen contract")
     if config["categorical_features"] != ["spout_no"]:
@@ -281,3 +294,34 @@ def validate_validation_config(config: dict[str, Any], *, timezone: str) -> None
         raise ContractError("validation interval must be left_closed_right_open")
     if not isinstance(config["folds"], list) or not config["folds"]:
         raise ContractError("validation folds must be a non-empty list")
+
+
+def validate_frozen_contracts(
+    baseline: dict[str, Any],
+    features: dict[str, Any],
+    semantic: dict[str, Any],
+) -> dict[str, str]:
+    """Validate every frozen configuration value through canonical JSON digests.
+
+    The baseline digest excludes the three digest declarations themselves, which
+    avoids a self-referential hash while freezing every executable baseline value.
+    """
+    validate_baseline_config(baseline)
+    validate_feature_config(features)
+    validate_semantic_contract(semantic)
+    baseline_payload = {
+        key: value for key, value in baseline.items() if key not in CONTRACT_DIGEST_KEYS
+    }
+    actual = {
+        "baseline_contract_sha256": stable_digest(baseline_payload),
+        "feature_contract_sha256": stable_digest(features),
+        "semantic_contract_sha256": stable_digest(semantic),
+    }
+    mismatches = {
+        name: {"declared": baseline[name], "actual": digest}
+        for name, digest in actual.items()
+        if baseline[name] != digest
+    }
+    if mismatches:
+        raise ContractError(f"frozen contract SHA256 mismatch: {mismatches}")
+    return actual

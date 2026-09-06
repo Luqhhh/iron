@@ -4,6 +4,8 @@
 
 模型路线固定为两个 CatBoost MAE 回归器。`competition-timestamp-contract-v1` 是基于赛事公开时间字段的 `ASSUMED` 操作约定，不等同于官方验证过的完整发布时间语义。11 月标签由独立的 `holdout-protection-v1` 硬门禁隔离。
 
+`baseline-v0.1` 的 baseline、feature、semantic 三份配置由 canonical SHA-256 完整冻结。bundle v3 另带 `inference_source_contract`：推理使用的公共 operation/burden 文件必须与训练时 SHA-256 和字节数一致；公共表更新必须产生新 source contract 和新 bundle，不能静默替换。
+
 ## 本地开发
 
 ```bash
@@ -64,6 +66,8 @@ uv run python -m bf_tap predict \
 
 `predict.local.yaml` 只需要对应阶段样本、operation 和 burden 路径；不需要 `train_samples.csv`。历史授权快照及特征语义随 bundle 保存。`predict` 不调用 `fit`。
 
+本机文件路径不参与公共 source contract；内容相同而路径不同可以恢复，内容变化即使 schema 相同也会在特征构建前失败。
+
 正式 `official-release` 训练会读取受保护标签，必须先有冻结 manifest 和显式 `final_training` 访问账本。本轮禁止运行该生命周期。
 
 ## 校验和打包
@@ -87,3 +91,5 @@ uv run python -m bf_tap pack \
 - G1：冻结模型质量；DEV_LONG 已失败，修复工程代码不会改写该历史结果。
 - `ASSUMED`：可复现的操作口径，但仍待官方补充业务发布时间依据。
 - `VERIFIED`：有可定位的官方材料直接确认。
+
+工程冻结证据与延期项见 `docs/review/FREEZE_REPORT.md`。`baseline-v0.1-reproducible` 标签之后的模型改进必须进入独立的 optimization-v0.2 阶段，不回写 baseline 指标。
