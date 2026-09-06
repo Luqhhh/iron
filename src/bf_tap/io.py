@@ -6,6 +6,7 @@ from typing import Iterable
 import pandas as pd
 
 from .exceptions import ContractError, ProtectedLabelError
+from .protection import ProtectionPolicy
 
 TZ = "Asia/Shanghai"
 TARGETS = ("tap_iron", "tap_time_len")
@@ -42,7 +43,12 @@ def read_csv(
     return frame
 
 
-def read_development_labels(path: str | Path, cutoff: str) -> pd.DataFrame:
+def read_development_labels(
+    path: str | Path,
+    *,
+    requested_end: str | pd.Timestamp,
+    protection_policy: ProtectionPolicy,
+) -> pd.DataFrame:
     """Read labels only for rows strictly before a declared development cutoff.
 
     The timestamp-only pass selects safe row numbers before target columns are read.
@@ -56,11 +62,7 @@ def read_development_labels(path: str | Path, cutoff: str) -> pd.DataFrame:
         required_columns=["sample_id", "reference_time"],
         time_columns=["reference_time"],
     )
-    boundary = pd.Timestamp(cutoff)
-    if boundary.tzinfo is None:
-        boundary = boundary.tz_localize(TZ)
-    else:
-        boundary = boundary.tz_convert(TZ)
+    boundary = protection_policy.validate_development_read(requested_end)
     safe = meta["reference_time"] < boundary
     protected_rows = set((meta.index[~safe] + 1).tolist())
     frame = pd.read_csv(
@@ -76,8 +78,9 @@ def read_development_labels(path: str | Path, cutoff: str) -> pd.DataFrame:
 
 def read_development_history(
     path: str | Path,
-    cutoff: str,
     *,
+    requested_end: str | pd.Timestamp,
+    protection_policy: ProtectionPolicy,
     available_at_column: str,
 ) -> pd.DataFrame:
     """Load only the history-label rows authorized at a development origin."""
@@ -89,11 +92,7 @@ def read_development_history(
         required_columns=meta_columns,
         time_columns=["reference_time", available_at_column],
     )
-    boundary = pd.Timestamp(cutoff)
-    if boundary.tzinfo is None:
-        boundary = boundary.tz_localize(TZ)
-    else:
-        boundary = boundary.tz_convert(TZ)
+    boundary = protection_policy.validate_development_read(requested_end)
     safe = (meta["reference_time"] < boundary) & (meta[available_at_column] <= boundary)
     protected_rows = set((meta.index[~safe] + 1).tolist())
     frame = pd.read_csv(

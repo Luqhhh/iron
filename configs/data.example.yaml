@@ -1,6 +1,4 @@
 schema_version: 1
-status: requires_official_availability_contract
-timezone: Asia/Shanghai
 paths:
   train_samples: null
   test_a_samples: null
@@ -10,15 +8,3 @@ paths:
   burden_change: null
   tap_history_train: null
   data_dictionary: null
-business_tap_key: sample_id
-supervised_target_available_at: null
-sources:
-  operation:
-    event_time_column: clock
-    available_at_column: null
-  burden:
-    event_time_column: cal_time
-    available_at_column: null
-  history:
-    event_time_column: reference_time
-    available_at_column: null

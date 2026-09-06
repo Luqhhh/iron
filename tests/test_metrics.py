@@ -15,6 +15,8 @@ def test_hand_calculated_score_is_90_and_id_order_is_irrelevant():
     result = score_predictions(actual, predicted)
     assert result["iron"]["wmape"] == pytest.approx(0.1)
     assert result["time"]["wmape"] == pytest.approx(0.1)
+    assert result["iron"]["signed_error_sum"] == pytest.approx(-10.0)
+    assert result["iron"]["signed_bias"] == pytest.approx(-5.0)
     assert result["score"] == pytest.approx(90.0)
 
 

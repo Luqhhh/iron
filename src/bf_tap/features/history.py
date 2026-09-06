@@ -5,6 +5,7 @@ import pandas as pd
 
 from ..availability import freeze_history_origin
 from ..exceptions import ContractError
+from ..schema import validate_history
 
 
 def build_history_features(
@@ -26,6 +27,7 @@ def build_history_features(
     missing = required - set(history.columns)
     if missing:
         raise ContractError(f"history missing columns: {sorted(missing)}")
+    validate_history(history, available_at=available_at)
     origin = freeze_history_origin(history, fit_cutoff, available_at=available_at)
     origin = origin.sort_values([available_at, "reference_time", "sample_id"], kind="mergesort")
     rows: list[dict[str, float]] = []

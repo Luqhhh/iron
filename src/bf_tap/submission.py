@@ -1,6 +1,8 @@
 from __future__ import annotations
 
 from pathlib import Path
+from io import BytesIO
+import hashlib
 from zipfile import ZIP_DEFLATED, ZipFile
 
 import numpy as np
@@ -47,6 +49,7 @@ def pack_submission(
     stage: str,
     team_name: str,
     output_dir: str | Path,
+    expected_ids: pd.Series,
 ) -> Path:
     if stage not in STAGE_SUFFIX:
         raise ContractError(f"unknown stage: {stage}")
@@ -55,6 +58,10 @@ def pack_submission(
     result = Path(result_path)
     if result.name != "result.csv" or not result.is_file():
         raise ContractError("pack input must be an existing result.csv")
+    frame = pd.read_csv(result, dtype={"sample_id": "string"})
+    validate_submission(frame, expected_ids)
+    payload = result.read_bytes()
+    payload_sha256 = hashlib.sha256(payload).hexdigest()
     destination = Path(output_dir) / f"{team_name}_bf_tap_predict_{STAGE_SUFFIX[stage]}.zip"
     destination.parent.mkdir(parents=True, exist_ok=True)
     if destination.exists():
@@ -64,4 +71,9 @@ def pack_submission(
     with ZipFile(destination) as archive:
         if archive.namelist() != ["result.csv"]:
             raise ContractError("submission ZIP root must contain only result.csv")
+        archived_payload = archive.read("result.csv")
+        if hashlib.sha256(archived_payload).hexdigest() != payload_sha256:
+            raise ContractError("submission ZIP payload hash differs from validated result")
+        archived = pd.read_csv(BytesIO(archived_payload), dtype={"sample_id": "string"})
+        validate_submission(archived, expected_ids)
     return destination

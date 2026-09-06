@@ -40,3 +40,16 @@ def test_one_official_timestamp_can_define_event_and_availability():
     )
     assert result.event_time.iloc[0] == result.available_at.iloc[0]
     assert result.value.iloc[0] == 1.0
+
+
+@pytest.mark.parametrize("bad", ["TYPO", "inf", "-inf"])
+def test_invalid_numeric_values_do_not_silently_become_model_input(bad):
+    frame = pd.DataFrame({"clock": ["2024-01-01"], "value": [bad]})
+    with pytest.raises(ContractError, match="invalid numeric|non-finite"):
+        normalize_event_source(
+            frame,
+            event_time_column="clock",
+            available_at_column="clock",
+            value_columns=["value"],
+            missing_markers=["MISSING"],
+        )

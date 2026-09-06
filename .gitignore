@@ -11,8 +11,23 @@ dist/
 # Official competition data and all recoverable real-data artifacts stay local.
 /初赛数据集/
 /local/
-/configs/data.local.yaml
+/configs/*.local.yaml
 *.cbm
 result.csv
 *.zip
 *:Zone.Identifier
+
+# Defense in depth for public repositories. Synthetic fixtures may be allowlisted.
+*.csv
+*.xlsx
+*.xls
+*.parquet
+*.pickle
+*.pkl
+*.joblib
+*.jsonl
+*.onnx
+/data/
+/datasets/
+/artifacts/
+!/tests/fixtures/synthetic/*.csv

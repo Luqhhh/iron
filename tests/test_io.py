@@ -1,6 +1,20 @@
 import pandas as pd
 
 from bf_tap.io import read_development_history, read_development_labels
+from bf_tap.protection import ProtectionPolicy
+
+
+def protection():
+    return ProtectionPolicy.from_config(
+        {
+            "schema_version": 1,
+            "contract_id": "holdout-protection-v1",
+            "timezone": "Asia/Shanghai",
+            "development_label_end_exclusive": "2024-11-01T00:00:00+08:00",
+            "protected_interval": {"start": "2024-11-01T00:00:00+08:00", "end": "2024-12-01T00:00:00+08:00"},
+            "allowed_protected_lifecycles": ["holdout_scoring", "final_training"],
+        }
+    )
 
 
 def test_development_reader_skips_protected_rows_and_preserves_id(tmp_path):
@@ -15,7 +29,11 @@ def test_development_reader_skips_protected_rows_and_preserves_id(tmp_path):
             "tap_time_len": [2.0, 999999.0],
         }
     ).to_csv(source, index=False)
-    safe = read_development_labels(source, "2024-11-01T00:00:00+08:00")
+    safe = read_development_labels(
+        source,
+        requested_end="2024-11-01T00:00:00+08:00",
+        protection_policy=protection(),
+    )
     assert safe.sample_id.tolist() == ["0001"]
     assert safe.tap_iron.tolist() == [1.0]
 
@@ -33,7 +51,8 @@ def test_history_reader_requires_reference_and_availability_before_origin(tmp_pa
     ).to_csv(source, index=False)
     safe = read_development_history(
         source,
-        "2024-11-01T00:00:00+08:00",
+        requested_end="2024-11-01T00:00:00+08:00",
+        protection_policy=protection(),
         available_at_column="tap_end_time",
     )
     assert safe.sample_id.tolist() == ["safe"]

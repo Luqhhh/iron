@@ -12,8 +12,10 @@ from .exceptions import ContractError
 class TargetMetrics:
     n: int
     abs_error_sum: float
+    signed_error_sum: float
     actual_sum: float
     mae: float
+    signed_bias: float
     wmape: float
 
 
@@ -28,7 +30,16 @@ def target_metrics(actual: np.ndarray, predicted: np.ndarray) -> TargetMetrics:
     if denominator <= 0:
         raise ContractError("WMAPE denominator must be positive")
     numerator = float(np.abs(p - y).sum())
-    return TargetMetrics(len(y), numerator, denominator, numerator / len(y), numerator / denominator)
+    signed_error = float((p - y).sum())
+    return TargetMetrics(
+        len(y),
+        numerator,
+        signed_error,
+        denominator,
+        numerator / len(y),
+        signed_error / len(y),
+        numerator / denominator,
+    )
 
 
 def score_predictions(actual: pd.DataFrame, predicted: pd.DataFrame) -> dict[str, object]:

@@ -1,5 +1,7 @@
 # AI 技术审阅与阶段验收报告
 
+> 历史快照：本文记录修复前运行 `dev-baseline-v0.1-contract-v1-r2` 的当时事实，不回写为已在公开提交上重新执行。修复后的证据与状态见 `REPAIR_REPORT.md` 和仓库根部 `EVIDENCE_STATUS.json`。
+
 审阅日期：2026-09-06。当前结论：`REAL_DEVELOPMENT_EXECUTED_QUALITY_FAILED`。
 
 - 审阅方式：self-review；没有把本次自审表述为独立审查。

@@ -26,6 +26,8 @@ def freeze_history_origin(
     missing = required - set(history.columns)
     if missing:
         raise ContractError(f"history missing columns: {sorted(missing)}")
+    if (history["reference_time"] > history[available_at]).any():
+        raise ContractError("history reference_time cannot follow available_at")
     return history.loc[
         (history["reference_time"] < fit_cutoff)
         & (history[available_at] <= fit_cutoff)

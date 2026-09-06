@@ -6,6 +6,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from ..audit import sha256_file
+from ..artifacts import stable_digest
 from ..exceptions import ContractError
 
 TARGETS = ("tap_iron", "tap_time_len")
@@ -71,6 +73,14 @@ class DualTargetBaseline:
             if X[column].nunique(dropna=False) > int(self.parameters["one_hot_max_size"]):
                 raise ContractError(f"categorical cardinality exceeds contract: {column}")
         self.feature_names_ = list(X.columns)
+        self.feature_schema_ = [
+            {
+                "name": column,
+                "dtype": str(X[column].dtype),
+                "categorical": column in self.categorical,
+            }
+            for column in X.columns
+        ]
         self.models_ = {}
         model_type = self._catboost_regressor()
         for target in TARGETS:
@@ -82,6 +92,16 @@ class DualTargetBaseline:
     def predict_raw(self, X: pd.DataFrame) -> pd.DataFrame:
         if list(X.columns) != self.feature_names_:
             raise ContractError("prediction feature order differs from bundle")
+        actual_schema = [
+            {
+                "name": column,
+                "dtype": str(X[column].dtype),
+                "categorical": column in self.categorical,
+            }
+            for column in X.columns
+        ]
+        if actual_schema != self.feature_schema_:
+            raise ContractError("prediction feature types differ from bundle")
         values = {f"pred_{t}": self.models_[t].predict(X) for t in TARGETS}
         result = pd.DataFrame(values, index=X.index)
         if not np.isfinite(result.to_numpy()).all():
@@ -91,28 +111,78 @@ class DualTargetBaseline:
     def predict(self, X: pd.DataFrame) -> pd.DataFrame:
         return self.predict_raw(X).clip(lower=0.0)
 
-    def save(self, directory: str | Path) -> None:
+    def save(
+        self,
+        directory: str | Path,
+        *,
+        metadata: dict,
+        history_snapshot: pd.DataFrame,
+    ) -> None:
         destination = Path(directory)
         destination.mkdir(parents=True, exist_ok=False)
+        required_metadata = {
+            "semantic_contract",
+            "feature_config",
+            "training",
+            "code_identity",
+            "environment",
+            "lockfile_sha256",
+        }
+        missing = required_metadata - set(metadata)
+        if missing:
+            raise ContractError(f"bundle metadata missing keys: {sorted(missing)}")
+        if history_snapshot.empty:
+            raise ContractError("bundle history snapshot must not be empty")
         for target, model in self.models_.items():
             model.save_model(destination / f"{target}.cbm")
-        metadata = {
+        history_path = destination / "history_snapshot.csv"
+        history_snapshot.to_csv(history_path, index=False, encoding="utf-8")
+        canonical_history = history_snapshot.copy()
+        for column in ("reference_time", "tap_end_time", "available_at"):
+            canonical_history[column] = pd.to_datetime(
+                canonical_history[column], utc=True
+            ).dt.tz_convert("Asia/Shanghai")
+        metadata = {**metadata, "training": dict(metadata["training"])}
+        metadata["training"]["history_origin_sha256"] = stable_digest(
+            canonical_history[["sample_id", "available_at"]]
+            .astype(str)
+            .to_dict("records")
+        )
+        component_sha256 = {
+            f"{target}.cbm": sha256_file(destination / f"{target}.cbm")
+            for target in TARGETS
+        }
+        component_sha256[history_path.name] = sha256_file(history_path)
+        bundle = {
+            "bundle_schema_version": 2,
             "parameters": self.parameters,
             "categorical": self.categorical,
             "feature_names": self.feature_names_,
+            "feature_schema": self.feature_schema_,
             "targets": TARGETS,
             "postprocess": {"lower_bound": 0.0},
+            "component_sha256": component_sha256,
+            **metadata,
         }
         (destination / "bundle.json").write_text(
-            json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+            json.dumps(bundle, indent=2, sort_keys=True) + "\n", encoding="utf-8"
         )
 
     @classmethod
     def load(cls, directory: str | Path) -> "DualTargetBaseline":
         source = Path(directory)
         metadata = json.loads((source / "bundle.json").read_text(encoding="utf-8"))
+        if metadata.get("bundle_schema_version") != 2:
+            raise ContractError("unsupported bundle schema")
+        for filename, expected in metadata.get("component_sha256", {}).items():
+            component = source / filename
+            if not component.is_file() or sha256_file(component) != expected:
+                raise ContractError(f"bundle component hash mismatch: {filename}")
         result = cls(metadata["parameters"], tuple(metadata["categorical"]))
         result.feature_names_ = metadata["feature_names"]
+        result.feature_schema_ = metadata["feature_schema"]
+        result.bundle_metadata_ = metadata
+        result.bundle_directory_ = source
         model_type = result._catboost_regressor()
         result.models_ = {}
         for target in TARGETS:
@@ -120,3 +190,20 @@ class DualTargetBaseline:
             model.load_model(source / f"{target}.cbm")
             result.models_[target] = model
         return result
+
+    def load_history_snapshot(self) -> pd.DataFrame:
+        if not hasattr(self, "bundle_directory_"):
+            raise ContractError("history snapshot is only available on a loaded bundle")
+        frame = pd.read_csv(
+            self.bundle_directory_ / "history_snapshot.csv",
+            dtype={"sample_id": "string"},
+        )
+        for column in ("reference_time", "tap_end_time", "available_at"):
+            frame[column] = pd.to_datetime(frame[column], utc=True).dt.tz_convert("Asia/Shanghai")
+        expected = self.bundle_metadata_["training"].get("history_origin_sha256")
+        actual = stable_digest(
+            frame[["sample_id", "available_at"]].astype(str).to_dict("records")
+        )
+        if expected != actual:
+            raise ContractError("history snapshot identity differs from training metadata")
+        return frame

@@ -1,32 +1,62 @@
 {
   "as_of": "2026-09-06",
-  "implementation_version": "0.1.0-uncommitted",
+  "implementation_version": "0.1.0-repair-uncommitted",
+  "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repository_initialized": true,
   "remote_bound": true,
   "remote_write_performed": false,
   "M0": "PASS",
-  "M1_generic": "PASS",
-  "M1_real_mapping": "PASS_COMPETITION_TIMESTAMP_CONTRACT_V1",
-  "M2": "PASS_SYNTHETIC",
-  "M3": "PASS_SYNTHETIC",
-  "M4_interface": "PASS_SYNTHETIC",
+  "M1_contracts": "PASS_LOCAL_LOCKED_ENVIRONMENT",
+  "M2_features": "PASS_LOCAL_LOCKED_ENVIRONMENT",
+  "M3_model_interface": "PASS_LOCAL_LOCKED_ENVIRONMENT",
   "M4_real_development": "PASS_EXECUTION_QUALITY_FAILED",
-  "M5": "NOT_STARTED",
-  "M6": "NOT_STARTED",
-  "synthetic_tests": {
-    "passed": 32,
+  "M5_offline_delivery": "PASS_LOCAL_LOCKED_ENVIRONMENT",
+  "M6_protected_lifecycle": "DEFERRED_NOT_CONSUMED",
+  "tests": {
+    "environment": "Python 3.12.12 / uv.lock",
+    "passed": 48,
     "failed": 0,
-    "junit": "local/reports/pytest_precommit.xml"
+    "skipped": 0,
+    "junit": "local/reports/pytest-repair-main.xml",
+    "junit_sha256": "35b0716255fefe122068e11f1029a549b36e2477399d56ce74cb9976418e9129"
   },
-  "structural_audit": "local/reports/structural_audit_v4.json",
-  "development_run": "local/runs/dev-baseline-v0.1-contract-v1-r2",
+  "structural_audit": {
+    "path": "local/reports/structural_audit_repair.json",
+    "sha256": "aeb9d435a252ce1536e7221043218676f98999598abe64cd9776da9bdb5d35d0"
+  },
+  "final_development_runs": [
+    {
+      "path": "local/runs/dev-baseline-v0.1-repair-r5",
+      "run_manifest_sha256": "4b34facf8205afc046bcfa6797a9650368d9c340d58908315566cc1571a11013",
+      "metrics_sha256": "78d44b5590b9fedd2c543d9ac2058a1a1f56f430905509f5fac578efec1e4f2c"
+    },
+    {
+      "path": "local/runs/dev-baseline-v0.1-repair-r6",
+      "run_manifest_sha256": "9da14363bf6f806025d12a3c71a070a6a678fb64d9aaae51c3e23804f5dc608b",
+      "metrics_sha256": "0950275c24e920de8ff2a2314ab7b7c758f6e664baf8f67b7387748402401a28"
+    }
+  ],
+  "reproducibility": {
+    "path": "local/reports/repair_reproducibility_release.json",
+    "sha256": "0917405c113f1ab7ce41e78a0e4f72808749d1f18d38cec8d476163f4db5cc4a",
+    "retrain_raw_max_abs_diff": 0.0,
+    "same_bundle_raw_max_abs_diff": 0.0,
+    "csv_byte_equal": true
+  },
   "development_quality": {
     "DEV_LONG": "FAIL",
     "DEV_SHORT": "PASS"
   },
+  "availability_contract": {
+    "contract_id": "competition-timestamp-contract-v1",
+    "evidence_status": "ASSUMED"
+  },
   "holdout_consumed": false,
-  "G0": "NOT_MEASURED",
+  "H1_H4": "NOT_EXECUTED",
+  "G0": "PASS_LOCAL_LOCKED_ENVIRONMENT",
   "G1": "FAIL_DEV_LONG",
-  "official_baseline_status": "UNKNOWN",
-  "leaderboard_submission": false
+  "official_baseline_status": "BASELINE_REPRODUCIBLE_QUALITY_FAILED",
+  "leaderboard_submission": false,
+  "remote_ci_for_repair": "NOT_EXECUTED",
+  "branch_protection": "NOT_CONFIGURED_BY_THIS_REPAIR"
 }

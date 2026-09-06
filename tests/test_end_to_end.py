@@ -2,8 +2,6 @@ import numpy as np
 import pandas as pd
 import pytest
 
-pytest.importorskip("catboost")
-
 from bf_tap.features import build_features
 from bf_tap.models.baseline import FROZEN_PARAMETERS
 from bf_tap.predict import predict_with_ids
@@ -42,6 +40,7 @@ def test_synthetic_feature_train_predict_contract():
     )
     history = samples.copy()
     history["available_at"] = history["reference_time"] + pd.Timedelta(hours=1)
+    history["tap_end_time"] = history["available_at"]
     cfg = {
         "categorical_missing": "__MISSING__",
         "operation": {"value_columns": ["air"], "windows_hours": [6, 24], "latest_max_event_age_hours": 24},

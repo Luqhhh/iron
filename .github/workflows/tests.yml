@@ -1,16 +1,47 @@
-name: synthetic-tests
+name: locked-tests
 on:
   push:
   pull_request:
 jobs:
-  test:
+  authoritative-python-312:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --locked --extra dev --python 3.12
+      - run: uv run python scripts/check_no_private_artifacts.py
+      - run: uv run pytest --junitxml=test-results-python312.xml
+      - if: always()
+        run: uv run python scripts/write_environment.py --output environment-python312.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: authoritative-python312-evidence
+          path: |
+            test-results-python312.xml
+            environment-python312.json
+
+  compatibility-python-311:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: pip
-      - run: pip install -r requirements-dev.txt
-      - run: pip install -e . --no-deps
-      - run: pytest
+      - uses: astral-sh/setup-uv@v6
+      - run: uv sync --locked --extra dev --python 3.11
+      - run: uv run pytest --junitxml=test-results-python311.xml
+      - if: always()
+        run: uv run python scripts/write_environment.py --output environment-python311.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: compatibility-python311-evidence
+          path: |
+            test-results-python311.xml
+            environment-python311.json
