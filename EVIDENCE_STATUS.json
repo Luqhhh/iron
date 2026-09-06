@@ -58,6 +58,10 @@
   "G1": "FAIL_DEV_LONG",
   "official_baseline_status": "BASELINE_REPRODUCIBLE_QUALITY_FAILED",
   "leaderboard_submission": false,
-  "remote_ci_for_repair": "NOT_EXECUTED",
+  "remote_ci_for_repair": {
+    "status": "PASS",
+    "code_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
+    "actions_run": 34037523200
+  },
   "branch_protection": "NOT_CONFIGURED_BY_THIS_REPAIR"
 }

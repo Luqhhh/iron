@@ -24,7 +24,7 @@
 
 - run 启动前写 resolved config、环境、代码 commit/tree/dirty/source snapshot、完整输入与 `uv.lock` 摘要；完成前复核输入未变化，最终状态原子写入，相同 run ID 拒绝复用。
 - DEV 保存模型/预测/分区/历史授权集合摘要。缓存明确为 `enabled=false`，没有把未接入的缓存函数写成已验证链路。
-- CI 的权威 job 使用 Python 3.12 + `uv sync --locked --extra dev`，输出 JUnit/环境并运行不可跳过的模型测试；Python 3.11 作为兼容性 job 单独标注。修复后的远程 CI 尚未执行。
+- CI 的权威 job 使用 Python 3.12 + `uv sync --locked --extra dev`，输出 JUnit/环境并运行不可跳过的模型测试；Python 3.11 作为兼容性 job 单独标注。修复代码提交对应的 Actions run `34037523200` 已完成并成功。
 - 添加公开仓库私有资产 allowlist 检查；根 `AGENTS.md` 和 `md/ARCHIVE_NOTICE.md` 明确执行权威位置与保密边界。
 
 ### Repair-4：P2、文档与真实复现
@@ -90,5 +90,5 @@ DEV_LONG/SHORT 重训 raw 最大绝对差均为 `0.0`，最终 CSV 均字节相�
 - r5/r6 均记录读取终点为 2024-11-01、输入稳定、保护 ledger absent、`consumed=false`。没有创建 `local/manifests/protected_access.json`。
 - H1–H4、保护集分数和正式最终训练：未执行。它们只在候选冻结且确需最终评分后，经显式生命周期账本统一执行。
 - operation `clock`、burden `cal_time`、history/target `tap_end_time` 的“可用时刻”仍是 `ASSUMED` 操作口径，不是完整报告可用性的已验证事实。小时窗口边界、变料报告延迟、目标报告延迟仍待官方确认。
-- GitHub 上修复后的 CI、PR 必需检查和 main 分支保护：未执行/未配置，不写成本地 G0 证据。
+- GitHub 上修复代码提交的 CI 已成功；PR 必需检查和 main 分支保护仍未配置，也不把平台治理状态写成本地 G0 证据。
 - 真实数据、模型、预测、报告、账本和提交包均只在获授权本地且被 Git 忽略；仓库公开不代表获准外发。
