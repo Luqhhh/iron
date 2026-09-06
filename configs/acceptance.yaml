@@ -1,0 +1,9 @@
+schema_version: 1
+same_bundle_raw_prediction_max_abs_diff: 1.0e-9
+same_bundle_csv_byte_equality: true
+same_environment_retrain_raw_prediction_max_abs_diff: 1.0e-6
+inference_walltime_seconds_per_sample_max: 1.0
+inference_total_seconds_max: 1800
+quality:
+  max_loss_relative_to_better_control: -1.0e-6
+  per_target_max_absolute_wmape_regression_vs_B1: 0.01

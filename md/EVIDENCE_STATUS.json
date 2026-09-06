@@ -1,0 +1,29 @@
+{
+  "artifact_type": "design_and_configuration_package",
+  "design_version": "ai-led-v2",
+  "static_package_checks": "PASS",
+  "static_checks_executed": [
+    "yaml_parsed:acceptance.yaml",
+    "yaml_parsed:baseline.yaml",
+    "yaml_parsed:data.example.yaml",
+    "yaml_parsed:features.yaml",
+    "yaml_parsed:validation.yaml",
+    "six_unique_valid_temporal_scenarios",
+    "development_excludes_november_labels",
+    "same_november_holdout_different_origins",
+    "fixed_mae_no_early_stopping",
+    "optimization_flags_disabled",
+    "acceptance_matches_scenarios"
+  ],
+  "model_parameters_api_smoke_test": "NOT_RUN",
+  "repository_code_implementation": "NOT_CREATED",
+  "remote_repository_created": false,
+  "official_csv_available": false,
+  "official_dictionary_available": false,
+  "real_model_training": "NOT_RUN",
+  "real_validation": "NOT_RUN",
+  "G0": "NOT_MEASURED",
+  "G1": "NOT_MEASURED",
+  "leaderboard_submission": false,
+  "official_baseline_score": null
+}

@@ -1,0 +1,36 @@
+schema_version: 1
+decision_status: frozen_by_ai
+review_authority: ai_technical_lead
+same_bundle_raw_prediction_max_abs_diff: 1.0e-09
+same_bundle_csv_byte_equality: true
+same_environment_retrain_raw_prediction_max_abs_diff: 1.0e-06
+inference_walltime_seconds_per_sample_max: 1.0
+inference_total_seconds_max: 1800
+timing_scope: new_process_start_through_data_model_load_feature_build_prediction_csv_write
+quality:
+  scenarios:
+  - DEV_LONG
+  - DEV_SHORT
+  - HOLDOUT_H1
+  - HOLDOUT_H2
+  - HOLDOUT_H3
+  - HOLDOUT_H4
+  loss: 0.5*WMAPE_iron+0.5*WMAPE_time
+  max_loss_relative_to_better_control: -1.0e-06
+  per_target_max_absolute_wmape_regression_vs_B1: 0.01
+  automatic_tuning_after_failure: false
+official_baseline_score: null
+official_baseline_status: UNKNOWN
+publish_remote_or_submit_automatically: false
+required_evidence:
+- data_contract
+- unit_tests
+- leakage_tests
+- feature_manifest
+- split_manifest
+- all_scenario_metrics
+- independent_process_reload
+- two_clean_retrains
+- offline_run
+- submission_roundtrip
+- review_report

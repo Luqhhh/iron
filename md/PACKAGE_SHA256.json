@@ -1,0 +1,20 @@
+{
+  "AGENTS.md": "676d89658fbfb3a67ef97dc541ec37f479570e241bcaf9849f9864a3e704214b",
+  "CHANGELOG.md": "1d8884ed87b413a91e0d2cead18e6d86a485457c04509fcafb5d3db74b994191",
+  "EVIDENCE_STATUS.json": "37bd6371775610610c010aa7a416d42e27148c96f59420ef8609ccde1e0e9211",
+  "IMPLEMENTATION_PLAN.md": "860a77a7b11cb00c9ab2455fc0b12154f389b90bcf3ba4f00085468fa08d48e6",
+  "README.md": "69493199ef6b2c6efa761e2df0c9f9a9cfb1f4f55dfa63c78d307b7851d077bc",
+  "TASKS.md": "4b0e2d6fe9a1b01c3894f632db59db999dfed59152f034d6a89e7ec6dfc6dec2",
+  "configs/acceptance.yaml": "893b54ff4abbc5ba8c8bf7cfb9ab624519d2d098fd509eff17577200a561c9a2",
+  "configs/baseline.yaml": "75f48e504230096f361a61e11717bf79f04d72203de42e1ff4a8baa46a8a7d38",
+  "configs/data.example.yaml": "3e95d8ddc2b24c9d33bec54dbc2ffef31e755bf08a60ae0d0b514783f3e653eb",
+  "configs/features.yaml": "445dbc2712c311b986f98d1b013d81126a134593cc30390ddac36324dd4007bf",
+  "configs/validation.yaml": "bb1cb2276b0cd6b0939b755ee9b1feebc4a1824e4e063a188d732d8b51c21aa0",
+  "decisions/D0-authority.md": "7057676a66aeea3166bfad9174240b7b1d6047ec826193d43db64a3743bd38d6",
+  "decisions/D1-validation.md": "d83eb5cdaa11266356d8086eedb9c64e5d385d25aedd730d5809c3ea9889b2a6",
+  "decisions/D2-baseline.md": "17ae7f98b88bfce0f753e5a1a4ce7e70a2e5f8dd891a9bd1a50b8d526c6ee7e6",
+  "decisions/D3-acceptance.md": "7965eb400fa93c3d96c544d081662c206605becfe809cd6968c1f3f09f2f42e8",
+  "docs/data_mapping_contract.md": "93ca5547596ab534b7dd611e378df1a7831b21b2c9c3665c82dfdfac75d8d11c",
+  "docs/rule_questions.md": "34f91dd0b35db9b1d54c984b3e7ac208b8cdb8cf7766b9cd671ede44e1c3f0bc",
+  "review/ACCEPTANCE_REPORT.template.md": "b23905534b6570f16ab0901ee05ddee4dcfd9e533c9f07e142f1b8f22466f5f7"
+}

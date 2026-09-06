@@ -1,0 +1,32 @@
+{
+  "as_of": "2026-09-06",
+  "implementation_version": "0.1.0-uncommitted",
+  "repository_initialized": true,
+  "remote_bound": true,
+  "remote_write_performed": false,
+  "M0": "PASS",
+  "M1_generic": "PASS",
+  "M1_real_mapping": "PASS_COMPETITION_TIMESTAMP_CONTRACT_V1",
+  "M2": "PASS_SYNTHETIC",
+  "M3": "PASS_SYNTHETIC",
+  "M4_interface": "PASS_SYNTHETIC",
+  "M4_real_development": "PASS_EXECUTION_QUALITY_FAILED",
+  "M5": "NOT_STARTED",
+  "M6": "NOT_STARTED",
+  "synthetic_tests": {
+    "passed": 32,
+    "failed": 0,
+    "junit": "local/reports/pytest_precommit.xml"
+  },
+  "structural_audit": "local/reports/structural_audit_v4.json",
+  "development_run": "local/runs/dev-baseline-v0.1-contract-v1-r2",
+  "development_quality": {
+    "DEV_LONG": "FAIL",
+    "DEV_SHORT": "PASS"
+  },
+  "holdout_consumed": false,
+  "G0": "NOT_MEASURED",
+  "G1": "FAIL_DEV_LONG",
+  "official_baseline_status": "UNKNOWN",
+  "leaderboard_submission": false
+}

@@ -1,0 +1,18 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Official competition data and all recoverable real-data artifacts stay local.
+/初赛数据集/
+/local/
+/configs/data.local.yaml
+*.cbm
+result.csv
+*.zip
+*:Zone.Identifier

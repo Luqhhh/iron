@@ -1,0 +1,82 @@
+schema_version: 1
+decision_status: frozen_by_ai
+column_mapping_status: missing_official_dictionary
+require_explicit_feature_manifest: true
+mapping_reference: configs/data.local.yaml
+sample:
+  categorical:
+  - spout_no
+  derived:
+  - hour_sin
+  - hour_cos
+  - weekday
+  excluded:
+  - sample_id
+  - tap_no
+  - raw_reference_timestamp
+  - global_row_index
+operation:
+  semantic_whitelist:
+  - 入炉风量
+  - 冷风压力
+  - 热风压力
+  - 富氧
+  - 热风温度
+  - 喷煤量
+  - 湿度
+  - 煤气利用率
+  - 炉顶压力
+  - 差压
+  - 风压比
+  - 炉顶温度平均
+  - 实际风速
+  - 炉喉温度
+  latest: true
+  latest_max_event_age_hours: 24
+  event_age: true
+  missing_and_stale_flags: true
+  windows_hours:
+  - 6
+  - 24
+  window_statistics:
+  - mean
+  - std_ddof0
+  - valid_count
+  window_axis: event_time
+  availability_filter: available_at <= reference_time
+burden:
+  semantic_whitelist:
+  - 铁量
+  - 综合品位
+  - 矿耗
+  - 燃料比
+  - 焦比
+  latest: true
+  latest_max_event_age_hours: 72
+  event_age: true
+  missing_and_stale_flags: true
+  rolling_windows: []
+history:
+  groups:
+  - all_furnace
+  - same_spout
+  targets:
+  - tap_iron
+  - tap_time_len
+  latest: true
+  last_k_mean:
+  - 3
+  - 10
+  include_actual_k_counts: true
+  include_latest_available_age_minutes: true
+  require_both_targets_available: true
+  exclude_current_tap: true
+  origin_frozen: true
+  recursive_prediction_fill: false
+unknown_optional_field: disable_and_disclose
+unknown_key_or_target_availability: block_real_validation
+numeric_missing: native_NaN
+categorical_missing: __MISSING__
+learned_imputation: false
+supervised_encoding: false
+test_distribution_feature_selection: false

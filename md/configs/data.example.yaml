@@ -1,0 +1,37 @@
+schema_version: 1
+status: missing_official_data_and_dictionary
+timezone: Asia/Shanghai
+paths:
+  train_samples: null
+  test_a_samples: null
+  test_b_samples: null
+  test_c_samples: null
+  operation_hourly: null
+  burden_change: null
+  tap_history_train: null
+  data_dictionary: null
+sample_columns_confirmed_by_readme:
+  sample_id: sample_id
+  tap_no: tap_no
+  spout_no: spout_no
+  reference_time: reference_time
+  tap_iron: tap_iron
+  tap_time_len: tap_time_len
+business_tap_key: null
+supervised_target_availability: null
+source_mappings:
+  operation: null
+  burden: null
+  history: null
+field_mapping_required_keys:
+- official_column
+- dtype
+- unit
+- null_semantics
+- event_time_column
+- available_at_rule
+- evidence_file
+- evidence_sheet_or_page
+- evidence_location
+duplicate_policy: drop_only_identical_rows_with_log_conflicting_keys_block
+source_snapshot_conflict_policy: block_until_official_semantics_verified

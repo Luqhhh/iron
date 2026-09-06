@@ -1,0 +1,18 @@
+schema_version: 1
+decision_status: frozen_by_ai
+sample:
+  categorical: [spout_no]
+  derived: [hour_sin, hour_cos, weekday]
+operation:
+  value_columns: [air_volume, cold_air_press, hot_air_press, oxygen, hot_air_temp, coal_rate, humidity, gas_rate, furnace_top_press, upper_press_diff, lower_press_diff, total_press_diff, air_press_ratio, furnace_top_temp_avg, air_speed, furnace_throat_temp]
+  windows_hours: [6, 24]
+  latest_max_event_age_hours: 24
+burden:
+  value_columns: [pig, all_quality, consumption, fuel_rate, coke_rate]
+  latest_max_event_age_hours: 72
+history:
+  targets: [tap_iron, tap_time_len]
+  last_k_mean: [3, 10]
+  require_both_targets_available: true
+  exclude_current_tap: true
+categorical_missing: __MISSING__

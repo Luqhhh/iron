@@ -1,0 +1,10 @@
+schema_version: 1
+timezone: Asia/Shanghai
+interval: left_closed_right_open
+folds:
+  - {id: DEV_LONG, kind: development, fit_cutoff: '2024-07-01T00:00:00+08:00', train_start: '2024-03-01T00:00:00+08:00', eval_start: '2024-07-01T00:00:00+08:00', eval_end: '2024-11-01T00:00:00+08:00'}
+  - {id: DEV_SHORT, kind: development, fit_cutoff: '2024-09-01T00:00:00+08:00', train_start: '2024-03-01T00:00:00+08:00', eval_start: '2024-09-01T00:00:00+08:00', eval_end: '2024-11-01T00:00:00+08:00'}
+  - {id: HOLDOUT_H1, kind: protected_report, fit_cutoff: '2024-11-01T00:00:00+08:00', train_start: '2024-03-01T00:00:00+08:00', eval_start: '2024-11-01T00:00:00+08:00', eval_end: '2024-12-01T00:00:00+08:00'}
+  - {id: HOLDOUT_H2, kind: protected_report, fit_cutoff: '2024-10-01T00:00:00+08:00', train_start: '2024-03-01T00:00:00+08:00', eval_start: '2024-11-01T00:00:00+08:00', eval_end: '2024-12-01T00:00:00+08:00'}
+  - {id: HOLDOUT_H3, kind: protected_report, fit_cutoff: '2024-09-01T00:00:00+08:00', train_start: '2024-03-01T00:00:00+08:00', eval_start: '2024-11-01T00:00:00+08:00', eval_end: '2024-12-01T00:00:00+08:00'}
+  - {id: HOLDOUT_H4, kind: protected_report, fit_cutoff: '2024-08-01T00:00:00+08:00', train_start: '2024-03-01T00:00:00+08:00', eval_start: '2024-11-01T00:00:00+08:00', eval_end: '2024-12-01T00:00:00+08:00'}

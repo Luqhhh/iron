@@ -1,0 +1,64 @@
+schema_version: 1
+decision_status: frozen_by_ai
+baseline_id: baseline-v0.1
+runtime_status: blocked_on_official_data_contract
+targets:
+- tap_iron
+- tap_time_len
+target_organization: independent_models
+shared_eligible_training_rows: true
+backend: catboost.CatBoostRegressor
+parameters:
+  loss_function: MAE
+  eval_metric: MAE
+  iterations: 800
+  depth: 5
+  learning_rate: 0.03
+  l2_leaf_reg: 5.0
+  random_seed: 2026
+  task_type: CPU
+  thread_count: 8
+  bootstrap_type: 'No'
+  random_strength: 0.0
+  rsm: 1.0
+  boosting_type: Plain
+  has_time: true
+  one_hot_max_size: 64
+  nan_mode: Min
+  use_best_model: false
+  allow_writing_files: false
+  verbose: false
+pass_eval_set: false
+early_stopping: false
+sample_weight: uniform
+target_transform: identity
+sort_training_by:
+- reference_time
+- stable_tap_key
+- sample_id
+categorical_features:
+- spout_no
+max_categorical_cardinality: 64
+controls:
+- id: B0
+  kind: global_train_median
+- id: B1
+  kind: spout_train_median
+  min_group_count: 20
+  fallback: B0
+postprocessing:
+  nonfinite_raw_prediction: error
+  require_nonnegative_targets: true
+  lower_bound: 0.0
+  upper_bound: null
+  save_raw_predictions: true
+submission:
+  csv_decimals: 6
+  compute_full_precision_and_roundtrip_metrics: true
+optimization:
+  hyperparameter_search: false
+  model_search: false
+  seed_search: false
+  feature_search: false
+  ensemble: false
+  leaderboard_feedback: false
