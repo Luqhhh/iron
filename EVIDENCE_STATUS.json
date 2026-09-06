@@ -1,10 +1,11 @@
 {
   "as_of": "2026-09-06",
-  "implementation_version": "0.1.0-repair-uncommitted",
+  "implementation_version": "0.1.0-repair",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
+  "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
   "repository_initialized": true,
   "remote_bound": true,
-  "remote_write_performed": false,
+  "remote_write_performed": true,
   "M0": "PASS",
   "M1_contracts": "PASS_LOCAL_LOCKED_ENVIRONMENT",
   "M2_features": "PASS_LOCAL_LOCKED_ENVIRONMENT",

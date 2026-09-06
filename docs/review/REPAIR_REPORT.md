@@ -2,7 +2,7 @@
 
 日期：2026-09-06。固定父提交：`3f94a9892bf5997746624672ea512ff0e7067495`。结论：本地锁定环境 G0 工程闭环通过，G1 保持 `FAIL_DEV_LONG`，发布状态为 `BASELINE_REPRODUCIBLE_QUALITY_FAILED`。
 
-本轮没有改变两个 CatBoost 模型的参数、800 轮、MAE、特征窗口、非负裁剪或质量门槛；没有执行 H1–H4、保护评分、正式最终训练、排行榜提交或远程写入。旧运行 `dev-baseline-v0.1-contract-v1-r2` 和原报告均保留。
+本轮没有改变两个 CatBoost 模型的参数、800 轮、MAE、特征窗口、非负裁剪或质量门槛；验收执行阶段没有执行 H1–H4、保护评分、正式最终训练或排行榜提交。旧运行 `dev-baseline-v0.1-contract-v1-r2` 和原报告均保留。修复工程随后以提交 `4d6c2be4420d631e8383b212b6fdab036031bc5b` 推送至 `origin/main`。
 
 ## 批次交付
 
