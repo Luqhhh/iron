@@ -208,3 +208,16 @@ EVIDENCE_STATUS.json     机器可读项目状态
 - 为 GitHub main 配置 branch protection 和 required `locked-tests`。
 
 下一阶段的首要建模问题是：为什么 DEV_LONG 上 CatBoost 弱于简单的 per-spout median？任何优化都应以冻结标签作为对照，使用新配置、run ID 和独立分支记录。
+
+## optimization-v0.2
+
+OPT-01/02 的独立入口、E00–E06 特征消融、origin×horizon 网格、候选登记和
+收缩诊断位于 `src/bf_tap/optimization/` 与 `configs/optimization_v0_2/`。
+冻结 baseline 文件及其行为保持不变。实施边界、决策和仅含汇总值的本地开发
+结果见 [执行计划](docs/optimization_v0_2/PLAN.md)、[决策记录](docs/optimization_v0_2/DECISIONS.md)
+与 [结果摘要](docs/optimization_v0_2/RESULTS_SUMMARY.md)。
+
+截至 2026-09-07，OPT-01/02 已完成，OPT-03～OPT-06 尚未完成。test_a
+探索候选的用户回传最高分为 `82.7046`；该序列不是独立验证，已停止依据平台
+分数继续调整候选。下一次平台验证须等待 OPT-03 候选在 development 网格中
+预注册、通过并冻结。

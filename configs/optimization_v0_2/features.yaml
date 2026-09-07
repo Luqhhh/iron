@@ -1,0 +1,11 @@
+schema_version: 1
+base_feature_config: configs/features.yaml
+source_prefixes:
+  sample: [spout_no, hour_sin, hour_cos, weekday]
+  operation: [operation__]
+  burden: [burden__]
+  history: [history__]
+history_component_patterns:
+  age: [__latest_available_age_minutes]
+  count: [_count]
+  target: [__tap_iron__latest, __tap_time_len__latest, _mean]

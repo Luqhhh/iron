@@ -1,0 +1,8 @@
+schema_version: 1
+selection_metric: equal_horizon_mean
+min_J_improvement: 0.002
+min_improved_horizons: 3
+max_any_horizon_regression: 0.002
+dev_short_max_regression: 0.002
+per_target_mean_wmape_max_regression: 0.005
+dev_long_must_beat_better_control: true

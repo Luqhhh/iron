@@ -11,6 +11,8 @@ from .audit import csv_manifest, write_json
 from .config import load_yaml, validate_data_paths
 from .exceptions import BFTapError, ContractError
 from .offline import run_prediction, run_training
+from .optimization import run_optimization_validation
+from .optimization.release import run_candidate_prediction, run_candidate_training
 from .protection import load_protection_policy, record_protected_access
 from .submission import pack_submission, validate_submission
 from .validation import run_development_validation
@@ -76,6 +78,65 @@ def _parser() -> argparse.ArgumentParser:
         "--lifecycle", required=True, choices=("holdout_scoring", "final_training")
     )
     access.add_argument("--frozen-manifest", required=True)
+
+    optimize = sub.add_parser(
+        "optimize-v0.2", help="run isolated optimization-v0.2 development experiments"
+    )
+    optimize.add_argument("--data-config", required=True)
+    optimize.add_argument("--data-contract", default="configs/data_contract.yaml")
+    optimize.add_argument("--protection-policy", default="configs/protection.yaml")
+    optimize.add_argument("--protection-ledger", default="local/manifests/protected_access.json")
+    optimize.add_argument("--baseline-config", default="configs/baseline.yaml")
+    optimize.add_argument("--feature-config", default="configs/features.yaml")
+    optimize.add_argument(
+        "--experiment-config", default="configs/optimization_v0_2/experiment.yaml"
+    )
+    optimize.add_argument(
+        "--optimization-feature-config", default="configs/optimization_v0_2/features.yaml"
+    )
+    optimize.add_argument(
+        "--optimization-validation-config", default="configs/optimization_v0_2/validation.yaml"
+    )
+    optimize.add_argument(
+        "--optimization-acceptance-config", default="configs/optimization_v0_2/acceptance.yaml"
+    )
+    optimize.add_argument(
+        "--optimization-model-config", default="configs/optimization_v0_2/models/catboost.yaml"
+    )
+    optimize.add_argument("--suite", choices=("screening", "grid", "all"), default="screening")
+    optimize.add_argument(
+        "--candidate",
+        action="append",
+        dest="optimization_candidates",
+        help="candidate ID to run; repeat to run a pre-registered subset (E00 required)",
+    )
+    optimize.add_argument("--e00-reference")
+    optimize.add_argument("--output", required=True)
+
+    opt_train = sub.add_parser(
+        "optimize-train-v0.2", help="train a registered v0.2 development candidate bundle"
+    )
+    opt_train.add_argument("--data-config", required=True)
+    opt_train.add_argument("--data-contract", default="configs/data_contract.yaml")
+    opt_train.add_argument("--protection-policy", default="configs/protection.yaml")
+    opt_train.add_argument("--protection-ledger", default="local/manifests/protected_access.json")
+    opt_train.add_argument("--baseline-config", default="configs/baseline.yaml")
+    opt_train.add_argument("--feature-config", default="configs/features.yaml")
+    opt_train.add_argument("--experiment-config", default="configs/optimization_v0_2/experiment.yaml")
+    opt_train.add_argument("--optimization-feature-config", default="configs/optimization_v0_2/features.yaml")
+    opt_train.add_argument("--optimization-model-config", default="configs/optimization_v0_2/models/catboost.yaml")
+    opt_train.add_argument("--candidate", required=True)
+    opt_train.add_argument("--train-start", required=True)
+    opt_train.add_argument("--fit-cutoff", required=True)
+    opt_train.add_argument("--output", required=True)
+
+    opt_predict = sub.add_parser(
+        "optimize-predict-v0.2", help="predict with a self-contained v0.2 candidate bundle"
+    )
+    opt_predict.add_argument("--bundle", required=True)
+    opt_predict.add_argument("--data-config", required=True)
+    opt_predict.add_argument("--stage", required=True, choices=("test_a", "test_b", "test_c"))
+    opt_predict.add_argument("--output", required=True)
     return parser
 
 
@@ -207,6 +268,53 @@ def main(argv: list[str] | None = None) -> int:
                 frozen_manifest_sha256=sha256_file(args.frozen_manifest),
             )
             print(json.dumps(result, ensure_ascii=False))
+            return 0
+        if args.command == "optimize-v0.2":
+            path = run_optimization_validation(
+                data_config_path=args.data_config,
+                baseline_config_path=args.baseline_config,
+                feature_config_path=args.feature_config,
+                semantic_contract_path=args.data_contract,
+                protection_policy_path=args.protection_policy,
+                protection_ledger_path=args.protection_ledger,
+                experiment_config_path=args.experiment_config,
+                optimization_feature_config_path=args.optimization_feature_config,
+                optimization_validation_config_path=args.optimization_validation_config,
+                optimization_acceptance_config_path=args.optimization_acceptance_config,
+                optimization_model_config_path=args.optimization_model_config,
+                suite=args.suite,
+                output=args.output,
+                e00_reference=args.e00_reference,
+                candidate_ids=args.optimization_candidates,
+            )
+            print(path)
+            return 0
+        if args.command == "optimize-train-v0.2":
+            path = run_candidate_training(
+                data_config_path=args.data_config,
+                semantic_contract_path=args.data_contract,
+                protection_policy_path=args.protection_policy,
+                protection_ledger_path=args.protection_ledger,
+                baseline_config_path=args.baseline_config,
+                feature_config_path=args.feature_config,
+                experiment_config_path=args.experiment_config,
+                optimization_feature_config_path=args.optimization_feature_config,
+                optimization_model_config_path=args.optimization_model_config,
+                candidate_id=args.candidate,
+                train_start=args.train_start,
+                fit_cutoff=args.fit_cutoff,
+                output=args.output,
+            )
+            print(path)
+            return 0
+        if args.command == "optimize-predict-v0.2":
+            path = run_candidate_prediction(
+                bundle_path=args.bundle,
+                data_config_path=args.data_config,
+                stage=args.stage,
+                output=args.output,
+            )
+            print(path)
             return 0
     except BFTapError as exc:
         print(f"ERROR: {exc}", file=sys.stderr)

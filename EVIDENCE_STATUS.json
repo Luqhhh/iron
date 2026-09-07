@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-06",
+  "as_of": "2026-09-07",
   "implementation_version": "baseline-v0.1-reproducible",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
@@ -92,6 +92,39 @@
       "holdout_consumed": false
     }
   ],
+  "optimization_v0_2": {
+    "branch": "optimization-v0.2",
+    "status": "OPT_01_02_COMPLETE_OPT_03_PENDING",
+    "implementation": {
+      "OPT_01": "COMPLETE",
+      "OPT_02": "COMPLETE",
+      "OPT_03": "NOT_IMPLEMENTED",
+      "OPT_04": "NOT_IMPLEMENTED",
+      "OPT_05": "PARTIAL_EXPERIMENTAL_ENSEMBLE_AND_CALIBRATION_ONLY",
+      "OPT_06": "NOT_IMPLEMENTED"
+    },
+    "engineering_status": "G0_OPT_EXECUTION_PASS",
+    "registered_candidate_quality": "G1_FAIL_OPTIMIZATION_ACCEPTANCE",
+    "protected_labels_read": false,
+    "holdout_consumed": false,
+    "locked_test_environment": "Python 3.12.12 / uv.lock",
+    "locked_tests_passed": 61,
+    "platform_evidence": {
+      "status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "adaptive_iteration_stopped": true,
+      "scores": [81.4554, 82.329, 82.4431, 82.6221, 82.7046],
+      "best_score": 82.7046,
+      "best_submission_sha256": "d38e7f2ae71fa88ae63ca7dd43ee8a176a8366776c69181b3797211ddf6bac36"
+    },
+    "development_platform_consistency": {
+      "candidate_count": 5,
+      "pearson": 0.9958453751,
+      "spearman": 0.9,
+      "mean_absolute_score_gap": 1.7258571391,
+      "conclusion": "HIGH_DIRECTIONAL_CONSISTENCY_LOW_ABSOLUTE_CALIBRATION_SMALL_DEPENDENT_SAMPLE"
+    },
+    "next_phase": "OPT_03_FROZEN_HISTORY_ADAPTATION"
+  },
   "remote_ci_for_repair": {
     "status": "PASS",
     "code_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",

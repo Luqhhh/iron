@@ -1,0 +1,48 @@
+schema_version: 1
+optimization_id: optimization-v0.2
+baseline_id: baseline-v0.1
+candidate_order:
+  - E00
+  - E01
+  - E02
+  - E03
+  - E04
+  - E05_OPERATION
+  - E05_BURDEN
+  - E06
+candidates:
+  E00:
+    kind: model
+    sources: [sample, operation, burden, history]
+    history_components: [age, count, target]
+  E01:
+    kind: model
+    sources: [sample, operation, burden]
+    history_components: []
+  E02:
+    kind: model
+    sources: [sample, operation, burden, history]
+    history_components: [count, target]
+  E03:
+    kind: model
+    sources: [sample, operation, burden, history]
+    history_components: [age, count]
+  E04:
+    kind: model
+    sources: [sample, history]
+    history_components: [age, count, target]
+  E05_OPERATION:
+    kind: model
+    sources: [sample, operation]
+    history_components: []
+  E05_BURDEN:
+    kind: model
+    sources: [sample, burden]
+    history_components: []
+  E06:
+    kind: shrink_b1
+    base_candidate: E00
+    weights:
+      tap_iron: 0.75
+      tap_time_len: 0.75
+shrinkage_grid: [0.0, 0.25, 0.5, 0.75, 1.0]

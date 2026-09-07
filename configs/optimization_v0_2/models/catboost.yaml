@@ -1,0 +1,3 @@
+schema_version: 1
+model_type: frozen_baseline_catboost
+baseline_config: configs/baseline.yaml
