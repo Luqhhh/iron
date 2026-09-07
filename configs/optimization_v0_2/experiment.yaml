@@ -10,39 +10,76 @@ candidate_order:
   - E05_OPERATION
   - E05_BURDEN
   - E06
+  - E07_FROZEN_E02
+  - E08_FROZEN_E04
+  - E09_PROCESS_CHANGE_E02
+  - E10_PROCESS_CHANGE_E01
+  - E11_PROCESS_CHANGE_E04
 candidates:
   E00:
     kind: model
     sources: [sample, operation, burden, history]
     history_components: [age, count, target]
+    history_view_ages_days: [0]
   E01:
     kind: model
     sources: [sample, operation, burden]
     history_components: []
+    history_view_ages_days: [0]
   E02:
     kind: model
     sources: [sample, operation, burden, history]
     history_components: [count, target]
+    history_view_ages_days: [0]
   E03:
     kind: model
     sources: [sample, operation, burden, history]
     history_components: [age, count]
+    history_view_ages_days: [0]
   E04:
     kind: model
     sources: [sample, history]
     history_components: [age, count, target]
+    history_view_ages_days: [0]
   E05_OPERATION:
     kind: model
     sources: [sample, operation]
     history_components: []
+    history_view_ages_days: [0]
   E05_BURDEN:
     kind: model
     sources: [sample, burden]
     history_components: []
+    history_view_ages_days: [0]
   E06:
     kind: shrink_b1
     base_candidate: E00
     weights:
       tap_iron: 0.75
       tap_time_len: 0.75
+  E07_FROZEN_E02:
+    kind: model
+    sources: [sample, operation, burden, history]
+    history_components: [count, target]
+    history_view_ages_days: [0, 7, 30, 60, 90]
+  E08_FROZEN_E04:
+    kind: model
+    sources: [sample, history]
+    history_components: [age, count, target]
+    history_view_ages_days: [0, 7, 30, 60, 90]
+  E09_PROCESS_CHANGE_E02:
+    kind: model
+    sources: [sample, operation, burden, history, process_change]
+    history_components: [count, target]
+    history_view_ages_days: [0]
+  E10_PROCESS_CHANGE_E01:
+    kind: model
+    sources: [sample, operation, burden, process_change]
+    history_components: []
+    history_view_ages_days: [0]
+  E11_PROCESS_CHANGE_E04:
+    kind: model
+    sources: [sample, history, process_change]
+    history_components: [age, count, target]
+    history_view_ages_days: [0]
 shrinkage_grid: [0.0, 0.25, 0.5, 0.75, 1.0]

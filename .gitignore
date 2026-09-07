@@ -31,3 +31,9 @@ result.csv
 /datasets/
 /artifacts/
 !/tests/fixtures/synthetic/*.csv
+
+# Explicit user-authorized exception: publish the official competition dataset.
+!/初赛数据集/
+!/初赛数据集/**
+/初赛数据集/*:Zone.Identifier
+/初赛数据集/**/*:Zone.Identifier

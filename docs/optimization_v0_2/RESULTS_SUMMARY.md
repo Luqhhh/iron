@@ -91,4 +91,61 @@ leaderboard parameter search.
 The formally registered OPT-02 run remains G1 failed because none of E02, E04 or
 E06 passes every gate. The later blends are promising derived experiments but have
 not been registered and rerun through the authoritative acceptance report. OPT-03
-frozen-history adaptation remains the next unimplemented phase.
+frozen-history adaptation was therefore executed next.
+
+## OPT-03 frozen-history adaptation
+
+The two candidates were registered before the run. Each original training sample
+was expanded into history views at ages `{0, 7, 30, 60, 90}` days. All five views
+remain in one outer/inner partition and receive weight `0.2`, so the total weight
+per original sample is one. Unavailable history rows are masked in full before
+target summaries and counts are built.
+
+| Candidate | J | H1 | H2 | H3 | H4 | DEV_LONG | DEV_SHORT |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| E00 | 0.183084 | 0.163007 | 0.181678 | 0.200155 | 0.187494 | 0.185646 | 0.171456 |
+| E01 | 0.177559 | 0.161222 | 0.180352 | 0.191192 | 0.177470 | 0.181472 | 0.171330 |
+| E02 | 0.177753 | 0.159263 | 0.175318 | 0.192766 | 0.183667 | 0.178950 | 0.163320 |
+| E04 | 0.174369 | 0.167339 | 0.173187 | 0.182692 | 0.174258 | 0.173937 | 0.173907 |
+| E07_FROZEN_E02 | 0.178193 | 0.162109 | 0.180739 | 0.190843 | 0.179081 | 0.181769 | 0.171019 |
+| E08_FROZEN_E04 | 0.182899 | 0.163815 | 0.176719 | 0.186785 | 0.204277 | 0.185517 | 0.178898 |
+
+G0 passed, E00 reproduced exactly, and protected labels were not read. G1 failed:
+E07 improved all four horizon means and J by `0.004891` versus E00, but its
+DEV_LONG loss did not beat the better median control (`0.181769` versus
+`0.176101`). E08 failed five of six gates. E07 is the stronger OPT-03 candidate,
+but it is not an accepted model-quality improvement.
+
+At the user's explicit request, E07 was frozen as an exploratory test_a platform
+probe despite the failed G1 gate. The release manifest labels this exception and
+the user subsequently reported a platform score of `82.3610`. This is `0.9056`
+above the frozen baseline and `0.0320` above E02, but `0.3436` below the incumbent
+time-calibrated 75/25 blend. The result is consistent with the failed G1 decision:
+OPT-03 does not replace the incumbent on current evidence. This does not reopen
+adaptive platform tuning.
+
+## OPT-04 signed process-change features
+
+F1 adds three signed changes for each frozen hourly operation variable:
+`latest−mean6h`, `latest−mean24h`, and `mean6h−mean24h`. These use the existing
+as-of aggregates and introduce no new window or source.
+
+Screening paired each increment with its unchanged route. E09 improved DEV_LONG
+by `0.002929` versus E02 while regressing DEV_SHORT by only `0.001392`. E10
+improved both folds versus E01. E11 improved DEV_SHORT but regressed DEV_LONG by
+`0.004365` versus E04 and was not promoted.
+
+| Candidate | J | H1 | H2 | H3 | H4 | DEV_LONG | DEV_SHORT |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| E00 | 0.183084 | 0.163007 | 0.181678 | 0.200155 | 0.187494 | 0.185646 | 0.171456 |
+| E01 | 0.177559 | 0.161222 | 0.180352 | 0.191192 | 0.177470 | 0.181472 | 0.171330 |
+| E02 | 0.177753 | 0.159263 | 0.175318 | 0.192766 | 0.183667 | 0.178950 | 0.163320 |
+| E09_PROCESS_CHANGE_E02 | 0.173861 | 0.157199 | 0.172630 | 0.185171 | 0.180445 | 0.176021 | 0.164712 |
+| E10_PROCESS_CHANGE_E01 | 0.175213 | 0.160900 | 0.175418 | 0.185402 | 0.179131 | 0.177931 | 0.170312 |
+
+E09 passed all six frozen acceptance checks. Relative to E00, J improved by
+`0.009222`, all four horizon means improved, and both target mean WMAPEs improved.
+DEV_LONG narrowly but validly beat the better median control (`0.176021` versus
+`0.176101`). E10 passed five checks but did not beat that control. OPT-04 therefore
+has G0 and G1 PASS with E09 as the accepted candidate. Its test_a submission is
+frozen and awaiting a user-reported platform score.

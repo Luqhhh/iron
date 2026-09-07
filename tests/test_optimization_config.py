@@ -28,7 +28,10 @@ def _write(path: Path, value: dict) -> None:
 def test_registered_first_batch_is_strict_and_has_14_grid_cells(tmp_path):
     config, candidates = load_experiment(ROOT / "configs/optimization_v0_2/experiment.yaml")
     assert [candidate.id for candidate in candidates] == config["candidate_order"]
-    assert len(candidates) == 8
+    assert len(candidates) == 13
+    by_id = {candidate.id: candidate for candidate in candidates}
+    assert by_id["E07_FROZEN_E02"].history_view_ages_days == (0, 7, 30, 60, 90)
+    assert by_id["E08_FROZEN_E04"].history_view_ages_days == (0, 7, 30, 60, 90)
     _, screening, origins = load_validation(
         ROOT / "configs/optimization_v0_2/validation.yaml",
         expected_timezone="Asia/Shanghai",
@@ -45,6 +48,13 @@ def test_registered_first_batch_is_strict_and_has_14_grid_cells(tmp_path):
     _write(path, invalid)
     with pytest.raises(ContractError, match="unknown"):
         load_experiment(path)
+
+    invalid_ages = deepcopy(config)
+    invalid_ages["candidates"]["E07_FROZEN_E02"]["history_view_ages_days"] = [7, 0]
+    ages_path = tmp_path / "invalid-ages.yaml"
+    _write(ages_path, invalid_ages)
+    with pytest.raises(ContractError, match="history_view_ages_days"):
+        load_experiment(ages_path)
 
 
 def test_feature_ablations_select_only_the_declared_components():
@@ -79,6 +89,16 @@ def test_feature_ablations_select_only_the_declared_components():
     e04 = select_candidate_features(frame, by_id["E04"], selection)
     assert "operation__air__latest" not in e04
     assert "burden__pig__latest" not in e04
+
+    with_changes = frame.assign(
+        process_change__air__latest_minus_6h_mean=[0.5]
+    )
+    e09 = select_candidate_features(
+        with_changes, by_id["E09_PROCESS_CHANGE_E02"], selection
+    )
+    assert "process_change__air__latest_minus_6h_mean" in e09
+    unchanged = select_candidate_features(with_changes, by_id["E02"], selection)
+    assert "process_change__air__latest_minus_6h_mean" not in unchanged
 
 
 def test_unclassified_feature_fails_closed():

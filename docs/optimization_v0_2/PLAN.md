@@ -1,7 +1,8 @@
 # optimization-v0.2 execution plan
 
-Status as of 2026-09-07: OPT-01 and OPT-02 are implemented and executed on the
-`optimization-v0.2` branch. OPT-03 through OPT-06 are not complete. The immutable
+Status as of 2026-09-07: OPT-01 through OPT-04 are implemented and executed on the
+`optimization-v0.2` branch. OPT-03 passed G0 but neither candidate passed G1;
+OPT-04 E09 passed G0 and every G1 gate. OPT-05 and OPT-06 are not complete. The immutable
 comparison remains `baseline-v0.1-reproducible`.
 
 This phase preserves the baseline data, timestamp, model-parameter and
@@ -62,7 +63,7 @@ presented as an independent final test. Adaptive platform replacement stopped af
 the time-calibrated 75/25 blend. That derived blend and calibration have local
 manifests, but are not yet registered candidates in the full-grid acceptance run.
 
-The next implementation is the original OPT-03 frozen-history adaptation:
+The OPT-03 implementation is the original frozen-history adaptation:
 
 - synthetic history origins at ages `{0, 7, 30, 60, 90}` days;
 - complete masking of unavailable historical result rows and their end/count data;
@@ -71,5 +72,28 @@ The next implementation is the original OPT-03 frozen-history adaptation:
 - auditable `original_sample_id`, `view_id`, `history_origin` and history identity;
 - direct comparison with original-history and no-history routes.
 
-No further platform submission should be generated until an OPT-03 candidate is
-pre-registered, passes the development protocol and is frozen with a manifest.
+The pre-registered model candidates are `E07_FROZEN_E02` and
+`E08_FROZEN_E04`. Both use the exact ages and weighting policy above; their only
+difference is the already registered E02 versus E04 feature route. The full-gate
+run includes E00, E01, E02 and E04 as controls.
+
+The user explicitly requested one exploratory platform probe despite the failed G1
+gate. `E07_FROZEN_E02` was frozen with a manifest and packaged without changing
+the gate or representing it as accepted. The user reported a platform score of
+`82.3610`, below the incumbent `82.7046`.
+This is an explicit exception, not a relaxation of the default rule that
+future platform candidates must pass the development protocol.
+
+## OPT-04 pre-registration
+
+OPT-04 adds a single fixed process-change feature family derived from the existing
+6-hour, 24-hour and latest operation aggregates. For each frozen operation value,
+the family contains `latest−mean6h`, `latest−mean24h` and `mean6h−mean24h`.
+Candidate E09 adds this family to E02, E10 adds it to E01, and E11 adds the family
+as the only process source on E04. The run retains E00/E01/E02/E04 as direct
+controls and uses the unchanged screening and full-grid protocol.
+
+Screening promoted E09 and E10; E11 was rejected for excessive DEV_LONG
+regression versus E04. In the complete grid, E09 passed all acceptance gates and
+E10 failed only the DEV_LONG control comparison. E09 is frozen and packaged for a
+single test_a platform check; the score is pending user report.

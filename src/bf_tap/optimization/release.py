@@ -36,7 +36,9 @@ from ..schema import validate_history, validate_samples
 from ..submission import write_submission
 from .config import load_experiment, load_feature_selection, load_model_config
 from .features import select_candidate_features
+from .history_adaptation import build_history_views
 from .models import FrozenBaselineAdapter
+from .process_change import add_process_change_features
 from .run import _load_inputs
 
 
@@ -46,6 +48,7 @@ def _candidate_payload(candidate) -> dict[str, object]:
         "kind": candidate.kind,
         "sources": list(candidate.sources),
         "history_components": list(candidate.history_components),
+        "history_view_ages_days": list(candidate.history_view_ages_days),
     }
 
 
@@ -158,18 +161,53 @@ def run_candidate_training(
         ].copy()
         if eligible.empty:
             raise ContractError("no eligible training rows")
+        if len(candidate.history_view_ages_days) > 1:
+            views = build_history_views(eligible, candidate.history_view_ages_days)
+            fit_samples = views.samples
+            fit_targets = views.targets
+            sample_weight = views.sample_weight
+            weight_policy = "total_one_per_original_sample"
+        else:
+            views = None
+            fit_samples = eligible
+            fit_targets = eligible[["tap_iron", "tap_time_len"]]
+            sample_weight = None
+            weight_policy = "uniform_original_samples"
         built = build_features(
-            eligible,
+            fit_samples,
             operation=operation,
             burden=burden,
             history=history,
             fit_cutoff=fit,
             config=features,
         )
-        selected = select_candidate_features(built.X, candidate, selection)
+        fit_features = add_process_change_features(
+            built.X,
+            selection["process_change"],
+            baseline_value_columns=list(features["operation"]["value_columns"]),
+        )
+        selected = select_candidate_features(fit_features, candidate, selection)
         model = FrozenBaselineAdapter(
             dict(baseline["parameters"]), tuple(baseline["categorical_features"])
-        ).fit(selected, eligible[["tap_iron", "tap_time_len"]])
+        ).fit(selected, fit_targets, sample_weight=sample_weight)
+        if views is not None:
+            history_audit = built.audit["history"]
+            if (
+                history_audit["max_available_at"].notna()
+                & (history_audit["max_available_at"] > history_audit["history_origin"])
+            ).any():
+                raise ContractError("synthetic view exposed history after its history_origin")
+            view_audit = views.audit.copy()
+            view_audit["history_visible_count"] = history_audit[
+                "history__visible_count"
+            ].to_numpy()
+            view_audit["history_identity_sha256"] = history_audit[
+                "history_identity_sha256"
+            ].to_numpy()
+            view_audit.to_csv(destination / "training_history_views.csv", index=False)
+            training_views_sha256 = file_sha256(destination / "training_history_views.csv")
+        else:
+            training_views_sha256 = None
         history_snapshot = freeze_history_origin(history, fit)
         optimization_metadata = {
             "schema_version": 1,
@@ -193,6 +231,10 @@ def run_candidate_training(
                     "fit_cutoff": str(fit),
                     "train_start": str(start),
                     "eligible_rows": len(eligible),
+                    "fit_rows": len(fit_samples),
+                    "history_view_ages_days": list(candidate.history_view_ages_days),
+                    "sample_weight_policy": weight_policy,
+                    "training_history_views_sha256": training_views_sha256,
                     "eligible_sample_id_sha256": stable_digest(
                         eligible["sample_id"].astype(str).tolist()
                     ),
@@ -266,7 +308,9 @@ def run_candidate_prediction(
         if declared_digest != stable_digest(digest_payload):
             raise ContractError("optimization bundle metadata digest mismatch")
         candidate_value = optimization["candidate"]
-        if set(candidate_value) != {"id", "kind", "sources", "history_components"}:
+        if set(candidate_value) != {
+            "id", "kind", "sources", "history_components", "history_view_ages_days"
+        }:
             raise ContractError("optimization bundle candidate metadata is invalid")
         if candidate_value["kind"] != "model":
             raise ContractError("optimization prediction requires a model candidate")
@@ -277,6 +321,7 @@ def run_candidate_prediction(
             candidate_value["kind"],
             tuple(candidate_value["sources"]),
             tuple(candidate_value["history_components"]),
+            history_view_ages_days=tuple(candidate_value["history_view_ages_days"]),
         )
         semantic = metadata["semantic_contract"]
         features = metadata["feature_config"]
@@ -319,8 +364,13 @@ def run_candidate_prediction(
             fit_cutoff=pd.Timestamp(metadata["training"]["fit_cutoff"]),
             config=features,
         )
+        prediction_features = add_process_change_features(
+            built.X,
+            optimization["feature_selection"]["process_change"],
+            baseline_value_columns=list(features["operation"]["value_columns"]),
+        )
         selected = select_candidate_features(
-            built.X, candidate, optimization["feature_selection"]
+            prediction_features, candidate, optimization["feature_selection"]
         )
         raw = model.predict_raw(selected)
         raw_frame = pd.DataFrame(

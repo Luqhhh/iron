@@ -3,6 +3,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
+from ..artifacts import stable_digest
 from ..availability import freeze_history_origin
 from ..exceptions import ContractError
 from ..schema import validate_history
@@ -33,9 +34,13 @@ def build_history_features(
     rows: list[dict[str, float]] = []
     audits: list[dict[str, object]] = []
     for sample in samples.itertuples(index=False):
+        sample_id = getattr(sample, "original_sample_id", sample.sample_id)
+        history_origin = getattr(sample, "history_origin", sample.reference_time)
+        if history_origin > sample.reference_time:
+            raise ContractError("history_origin cannot follow sample reference_time")
         visible = origin.loc[
-            (origin[available_at] <= sample.reference_time)
-            & (origin["sample_id"].astype(str) != str(sample.sample_id))
+            (origin[available_at] <= history_origin)
+            & (origin["sample_id"].astype(str) != str(sample_id))
         ]
         row: dict[str, float] = {}
         for group_name, group in (
@@ -65,6 +70,12 @@ def build_history_features(
                 "max_available_at": visible[available_at].max() if len(visible) else pd.NaT,
                 "history__visible_count": len(visible),
                 "history__origin_count": len(origin),
+                "original_sample_id": str(sample_id),
+                "view_id": str(getattr(sample, "view_id", sample.sample_id)),
+                "history_origin": history_origin,
+                "history_identity_sha256": stable_digest(
+                    visible[["sample_id", available_at]].astype(str).to_dict("records")
+                ),
             }
         )
     return pd.DataFrame(rows, index=samples.index), pd.DataFrame(audits, index=samples.index)

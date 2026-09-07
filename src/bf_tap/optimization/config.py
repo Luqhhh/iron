@@ -9,8 +9,13 @@ import pandas as pd
 from ..config import load_yaml
 from ..exceptions import ContractError
 
-SOURCES = {"sample", "operation", "burden", "history"}
+SOURCES = {"sample", "operation", "burden", "history", "process_change"}
 HISTORY_COMPONENTS = {"age", "count", "target"}
+PROCESS_CHANGE_TRANSFORMS = (
+    "latest_minus_6h_mean",
+    "latest_minus_24h_mean",
+    "mean_6h_minus_24h_mean",
+)
 
 
 def _exact(mapping: Any, expected: set[str], scope: str) -> None:
@@ -32,6 +37,7 @@ class Candidate:
     history_components: tuple[str, ...] = ()
     base_candidate: str | None = None
     weights: dict[str, float] | None = None
+    history_view_ages_days: tuple[int, ...] = (0,)
 
 
 @dataclass(frozen=True)
@@ -78,9 +84,14 @@ def load_experiment(path: str | Path) -> tuple[dict[str, Any], list[Candidate]]:
     for candidate_id in order:
         value = candidates[candidate_id]
         if value.get("kind") == "model":
-            _exact(value, {"kind", "sources", "history_components"}, candidate_id)
+            _exact(
+                value,
+                {"kind", "sources", "history_components", "history_view_ages_days"},
+                candidate_id,
+            )
             sources = tuple(value["sources"])
             components = tuple(value["history_components"])
+            ages = value["history_view_ages_days"]
             if not sources or len(sources) != len(set(sources)) or set(sources) - SOURCES:
                 raise ContractError(f"{candidate_id}: invalid or duplicate sources")
             if "sample" not in sources:
@@ -89,7 +100,29 @@ def load_experiment(path: str | Path) -> tuple[dict[str, Any], list[Candidate]]:
                 raise ContractError(f"{candidate_id}: invalid history_components")
             if ("history" in sources) != bool(components):
                 raise ContractError(f"{candidate_id}: history source/components disagree")
-            parsed.append(Candidate(candidate_id, "model", sources, components))
+            if (
+                not isinstance(ages, list)
+                or not ages
+                or ages != sorted(set(ages))
+                or ages[0] != 0
+                or any(isinstance(age, bool) or not isinstance(age, int) or age < 0 for age in ages)
+            ):
+                raise ContractError(
+                    f"{candidate_id}: history_view_ages_days must be sorted unique nonnegative integers starting at 0"
+                )
+            if "history" not in sources and ages != [0]:
+                raise ContractError(
+                    f"{candidate_id}: history-free candidates cannot use synthetic history views"
+                )
+            parsed.append(
+                Candidate(
+                    candidate_id,
+                    "model",
+                    sources,
+                    components,
+                    history_view_ages_days=tuple(ages),
+                )
+            )
         elif value.get("kind") == "shrink_b1":
             _exact(value, {"kind", "base_candidate", "weights"}, candidate_id)
             weights = value["weights"]
@@ -130,6 +163,7 @@ def load_feature_selection(path: str | Path) -> dict[str, Any]:
             "base_feature_config",
             "source_prefixes",
             "history_component_patterns",
+            "process_change",
         },
         "optimization feature selection",
     )
@@ -139,6 +173,23 @@ def load_feature_selection(path: str | Path) -> dict[str, Any]:
         HISTORY_COMPONENTS,
         "history_component_patterns",
     )
+    _exact(
+        config["process_change"],
+        {"feature_set_id", "value_columns", "transforms"},
+        "process_change",
+    )
+    process_change = config["process_change"]
+    if process_change["feature_set_id"] != "signed_operation_level_deltas_v1":
+        raise ContractError("unsupported process_change feature_set_id")
+    if (
+        not isinstance(process_change["value_columns"], list)
+        or not process_change["value_columns"]
+        or len(process_change["value_columns"]) != len(set(process_change["value_columns"]))
+        or not all(isinstance(value, str) and value for value in process_change["value_columns"])
+    ):
+        raise ContractError("process_change.value_columns must be a non-empty unique string list")
+    if tuple(process_change["transforms"]) != PROCESS_CHANGE_TRANSFORMS:
+        raise ContractError("process_change.transforms differ from signed delta v1 contract")
     for scope in ("source_prefixes", "history_component_patterns"):
         for name, values in config[scope].items():
             if not isinstance(values, list) or not values or not all(isinstance(x, str) and x for x in values):

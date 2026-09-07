@@ -7,7 +7,7 @@ This repository implements the frozen `baseline-v0.1`. Unless the user explicitl
 - protected-label access requires `configs/protection.yaml`, a frozen-manifest digest, and an append-only local access ledger;
 - use the same as-of feature builder for train, validation, and prediction;
 - never overwrite run directories or remove failed evidence;
-- keep official CSV/XLSX data, dictionaries, models, predictions, reports, ledgers, and submissions out of Git;
+- keep official CSV/XLSX data and dictionaries out of Git unless the user explicitly authorizes publication; publication is authorized only for `初赛数据集/` as of 2026-09-07; always keep models, predictions, reports, ledgers, and submissions out of Git;
 - run the locked Python 3.12 test path before claiming authoritative reproduction;
 - report G0 engineering status separately from G1 model quality.
 

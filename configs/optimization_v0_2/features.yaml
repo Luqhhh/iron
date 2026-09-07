@@ -5,7 +5,12 @@ source_prefixes:
   operation: [operation__]
   burden: [burden__]
   history: [history__]
+  process_change: [process_change__]
 history_component_patterns:
   age: [__latest_available_age_minutes]
   count: [_count]
   target: [__tap_iron__latest, __tap_time_len__latest, _mean]
+process_change:
+  feature_set_id: signed_operation_level_deltas_v1
+  value_columns: [air_volume, cold_air_press, hot_air_press, oxygen, hot_air_temp, coal_rate, humidity, gas_rate, furnace_top_press, upper_press_diff, lower_press_diff, total_press_diff, air_press_ratio, furnace_top_temp_avg, air_speed, furnace_throat_temp]
+  transforms: [latest_minus_6h_mean, latest_minus_24h_mean, mean_6h_minus_24h_mean]

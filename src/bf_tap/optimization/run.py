@@ -50,7 +50,9 @@ from .config import (
 )
 from .ensemble import shrink_toward_b1
 from .features import select_candidate_features
+from .history_adaptation import HistoryViewSet, build_history_views
 from .models import FrozenBaselineAdapter
+from .process_change import add_process_change_features
 from .registry import write_registry
 from .validation import (
     aggregate_grid,
@@ -329,6 +331,16 @@ def run_optimization_validation(
                 eval_samples, operation=operation, burden=burden, history=history,
                 fit_cutoff=first.fit_cutoff, config=feature_cfg,
             )
+            train_features = add_process_change_features(
+                train_result.X,
+                selection_cfg["process_change"],
+                baseline_value_columns=list(feature_cfg["operation"]["value_columns"]),
+            )
+            eval_features = add_process_change_features(
+                eval_result.X,
+                selection_cfg["process_change"],
+                baseline_value_columns=list(feature_cfg["operation"]["value_columns"]),
+            )
             controls = MedianControls(
                 min_group_count=int(baseline_cfg["controls"]["per_spout"]["min_group_count"])
             ).fit(train)
@@ -338,20 +350,81 @@ def run_optimization_validation(
             final_by_candidate: dict[str, pd.DataFrame] = {}
             feature_columns: dict[str, list[str]] = {}
             fit_seconds: dict[str, float] = {}
+            fit_rows: dict[str, int] = {}
+            training_history_identity: dict[str, str] = {}
+            sample_weight_policy: dict[str, str] = {}
             history_snapshot = freeze_history_origin(history, first.fit_cutoff)
             history_origin_sha256 = stable_digest(
                 history_snapshot[["sample_id", "available_at"]].astype(str).to_dict("records")
             )
+            augmented_cache: dict[
+                tuple[int, ...], tuple[HistoryViewSet, pd.DataFrame, str]
+            ] = {}
             for candidate in model_candidates:
-                X_train = select_candidate_features(train_result.X, candidate, selection_cfg)
-                X_eval = select_candidate_features(eval_result.X, candidate, selection_cfg)
+                if len(candidate.history_view_ages_days) == 1:
+                    candidate_train_features = train_features
+                    candidate_targets = train[["tap_iron", "tap_time_len"]]
+                    weights = None
+                    training_identity = history_origin_sha256
+                    weight_policy = "uniform_original_samples"
+                else:
+                    ages = candidate.history_view_ages_days
+                    cached = augmented_cache.get(ages)
+                    if cached is None:
+                        views = build_history_views(train, ages)
+                        augmented_result = build_features(
+                            views.samples,
+                            operation=operation,
+                            burden=burden,
+                            history=history,
+                            fit_cutoff=first.fit_cutoff,
+                            config=feature_cfg,
+                        )
+                        augmented_features = add_process_change_features(
+                            augmented_result.X,
+                            selection_cfg["process_change"],
+                            baseline_value_columns=list(
+                                feature_cfg["operation"]["value_columns"]
+                            ),
+                        )
+                        history_audit = augmented_result.audit["history"]
+                        if (
+                            history_audit["max_available_at"].notna()
+                            & (history_audit["max_available_at"] > history_audit["history_origin"])
+                        ).any():
+                            raise ContractError("synthetic view exposed history after its history_origin")
+                        view_audit = views.audit.copy()
+                        view_audit["history_visible_count"] = history_audit[
+                            "history__visible_count"
+                        ].to_numpy()
+                        view_audit["history_identity_sha256"] = history_audit[
+                            "history_identity_sha256"
+                        ].to_numpy()
+                        training_identity = stable_digest(
+                            view_audit.astype(str).to_dict("records")
+                        )
+                        audit_dir = destination / "training_views" / first.origin_id
+                        audit_dir.mkdir(parents=True, exist_ok=True)
+                        ages_name = "ages_" + "_".join(str(age) for age in ages)
+                        view_audit.to_csv(audit_dir / f"{ages_name}.csv", index=False)
+                        cached = (views, augmented_features, training_identity)
+                        augmented_cache[ages] = cached
+                    views, candidate_train_features, training_identity = cached
+                    candidate_targets = views.targets
+                    weights = views.sample_weight
+                    weight_policy = "total_one_per_original_sample"
+                X_train = select_candidate_features(candidate_train_features, candidate, selection_cfg)
+                X_eval = select_candidate_features(eval_features, candidate, selection_cfg)
                 if list(X_train.columns) != list(X_eval.columns):
                     raise ContractError(f"{candidate.id}: train/eval feature columns differ")
                 fit_started = perf_counter()
                 model = FrozenBaselineAdapter(
                     dict(baseline_cfg["parameters"]), tuple(baseline_cfg["categorical_features"])
-                ).fit(X_train, train[["tap_iron", "tap_time_len"]])
+                ).fit(X_train, candidate_targets, sample_weight=weights)
                 fit_seconds[candidate.id] = perf_counter() - fit_started
+                fit_rows[candidate.id] = len(X_train)
+                training_history_identity[candidate.id] = training_identity
+                sample_weight_policy[candidate.id] = weight_policy
                 raw = _prediction_frame(eval_samples["sample_id"], model.predict_raw(X_eval))
                 final = raw.copy()
                 for column in ("pred_tap_iron", "pred_tap_time_len"):
@@ -370,6 +443,11 @@ def run_optimization_validation(
                 final_by_candidate[candidate.id] = final
                 feature_columns[candidate.id] = feature_columns[candidate.base_candidate]
                 fit_seconds[candidate.id] = 0.0
+                fit_rows[candidate.id] = fit_rows[candidate.base_candidate]
+                training_history_identity[candidate.id] = training_history_identity[
+                    candidate.base_candidate
+                ]
+                sample_weight_policy[candidate.id] = sample_weight_policy[candidate.base_candidate]
 
             for unit in grouped_units:
                 _, actual, unit_split = select_partitions(labels, unit)
@@ -429,17 +507,23 @@ def run_optimization_validation(
                             "unit_id": unit.id,
                             "horizon": unit.horizon,
                             "fit_cutoff": str(unit.fit_cutoff),
-                            "history_policy": "baseline_origin_freeze",
-                            "history_origin_sha256": history_origin_sha256,
+                            "history_policy": (
+                                "synthetic_frozen_history_views"
+                                if len(candidate.history_view_ages_days) > 1
+                                else "baseline_origin_freeze"
+                            ),
+                            "history_view_ages_days": list(candidate.history_view_ages_days),
+                            "history_origin_sha256": training_history_identity[candidate.id],
                             "feature_columns_sha256": stable_digest(feature_columns[candidate.id]),
                             "model_parameters_sha256": stable_digest(baseline_cfg["parameters"]),
                             "tap_iron_parameters_sha256": stable_digest(baseline_cfg["parameters"]),
                             "tap_time_len_parameters_sha256": stable_digest(baseline_cfg["parameters"]),
-                            "sample_weight_policy": "uniform",
+                            "sample_weight_policy": sample_weight_policy[candidate.id],
                             "code_source_snapshot_sha256": code["source_snapshot_sha256"],
                             "input_identities_sha256": stable_digest(inputs_before),
                             "resolved_config_sha256": stable_digest(resolved),
                             "eligible_train_rows": unit_split["eligible_train_rows"],
+                            "fit_train_rows": fit_rows[candidate.id],
                             "eval_rows": unit_split["evaluation_rows"],
                             "iron_abs_error_sum": overall["iron"]["abs_error_sum"],
                             "iron_actual_sum": overall["iron"]["actual_sum"],

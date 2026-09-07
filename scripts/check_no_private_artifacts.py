@@ -4,7 +4,8 @@ import subprocess
 from pathlib import Path
 
 
-DENIED_PARTS = {"local", "初赛数据集", ".venv", "__pycache__"}
+DENIED_PARTS = {"local", ".venv", "__pycache__"}
+PUBLISHED_DATA_ROOT = "初赛数据集"
 DENIED_NAMES = {"data.local.yaml", "result.csv"}
 DENIED_SUFFIXES = {
     ".cbm",
@@ -29,13 +30,14 @@ def main() -> int:
     violations: list[str] = []
     for path in tracked:
         synthetic = path.parts[:3] == ("tests", "fixtures", "synthetic")
+        published_dataset = bool(path.parts) and path.parts[0] == PUBLISHED_DATA_ROOT
         if set(path.parts) & DENIED_PARTS:
             violations.append(f"protected path: {path}")
         if path.name in DENIED_NAMES:
             violations.append(f"protected filename: {path}")
         if path.parent == Path("configs") and path.name.endswith(".local.yaml"):
             violations.append(f"protected local config: {path}")
-        if path.suffix.lower() in DENIED_SUFFIXES and not synthetic:
+        if path.suffix.lower() in DENIED_SUFFIXES and not (synthetic or published_dataset):
             violations.append(f"protected extension: {path}")
         if path.is_file() and path.stat().st_size > 5 * 1024 * 1024:
             violations.append(f"tracked file exceeds 5 MiB: {path}")
