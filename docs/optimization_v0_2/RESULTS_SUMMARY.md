@@ -174,5 +174,7 @@ objective. E13 failed only the DEV_LONG control comparison.
 G0 is PASS: E00 reproduced the immutable reference with raw maximum absolute
 difference `0.0` and byte-identical validation CSVs; protected labels were not read;
 the locked Python 3.12 path passed 68 tests. G1 is independently PASS for E12. The
-test_a package contains 335 validated rows and is frozen pending the user-reported
-platform score; E09 remains the platform incumbent meanwhile.
+test_a package contains 335 validated rows. The user subsequently reported a
+platform score of `82.9543`, improving E09 by `0.1369`, the previous derived
+incumbent by `0.2497`, and the frozen baseline by `1.4989`. E12 is therefore the
+platform incumbent, while the score remains external, non-independent evidence.

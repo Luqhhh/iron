@@ -113,3 +113,11 @@ The E12 platform artifact must be the exact `0.8×E09 + 0.2×E04` derivation fro
 separately manifested component predictions. Its package is frozen before upload;
 the returned score may update external evidence and the incumbent, but it cannot
 retroactively tune OPT-05 weights or substitute E14.
+
+## D012 — Record E12 as incumbent without reopening OPT-05
+
+The user reported an E12 test_a score of `82.9543`, a `0.1369` improvement over
+E09. This confirms E12 as the platform incumbent but remains external evidence.
+OPT-05 stays frozen: the result does not authorize changing the `0.8/0.2` weights,
+applying E14 calibration, or evaluating another OPT-05 blend. OPT-06 must begin
+with a separate development-only pre-registration.
