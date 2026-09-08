@@ -146,3 +146,11 @@ the aggregate rule. The frozen E16 package is the exact E12 test_a result with o
 
 The pending platform score may update the incumbent but cannot refit the residual,
 switch to E15, or create another target combination within OPT-06.
+
+## D015 — Close OPT-06 after the E16 platform result
+
+The user reported `82.9918` for the frozen E16 package, improving E12 by `0.0375`.
+E16 becomes the platform incumbent, with the score retained as external,
+non-independent evidence. The small gain does not justify another calibration or
+blend variation inside OPT-06. Any further optimization requires a separately
+pre-registered OPT-07 direction rather than using this score to tune parameters.

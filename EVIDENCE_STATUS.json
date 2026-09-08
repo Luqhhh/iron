@@ -94,14 +94,14 @@
   ],
   "optimization_v0_2": {
     "branch": "optimization-v0.2",
-    "status": "OPT_01_06_COMPLETE_OPT_06_G0_G1_PASS_PLATFORM_PENDING",
+    "status": "OPT_01_06_COMPLETE_OPT_06_G0_G1_PASS_PLATFORM_REPORTED",
     "implementation": {
       "OPT_01": "COMPLETE",
       "OPT_02": "COMPLETE",
       "OPT_03": "COMPLETE_G0_PASS_G1_FAIL",
       "OPT_04": "COMPLETE_G0_PASS_G1_PASS",
       "OPT_05": "COMPLETE_G0_PASS_G1_PASS_PLATFORM_REPORTED",
-      "OPT_06": "COMPLETE_G0_PASS_G1_PASS_PLATFORM_PENDING"
+      "OPT_06": "COMPLETE_G0_PASS_G1_PASS_PLATFORM_REPORTED"
     },
     "engineering_status": "G0_OPT_EXECUTION_PASS",
     "registered_candidate_quality": "G1_PASS_OPTIMIZATION_DEVELOPMENT",
@@ -159,16 +159,16 @@
       "candidate_J_improvement_vs_E00": 0.0131818875,
       "release_manifest": "local/manifests/optimization-v0.2-opt06-e16-test-a-r1.json",
       "submission_zip_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa",
-      "platform_score": null,
-      "platform_evidence_status": "PENDING_USER_REPORT",
+      "platform_score": 82.9918,
+      "platform_evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "protected_labels_read": false
     },
     "platform_evidence": {
       "status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "adaptive_iteration_stopped": true,
-      "scores": [81.4554, 82.329, 82.4431, 82.6221, 82.7046, 82.361, 82.8174, 82.9543],
-      "best_score": 82.9543,
-      "best_submission_sha256": "5e628c5bdc3403f44b7272498345d2727df28a87f2ab97419a4edf65c02b593e"
+      "scores": [81.4554, 82.329, 82.4431, 82.6221, 82.7046, 82.361, 82.8174, 82.9543, 82.9918],
+      "best_score": 82.9918,
+      "best_submission_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa"
     },
     "development_platform_consistency": {
       "candidate_count": 5,
@@ -177,7 +177,7 @@
       "mean_absolute_score_gap": 1.7258571391,
       "conclusion": "HIGH_DIRECTIONAL_CONSISTENCY_LOW_ABSOLUTE_CALIBRATION_SMALL_DEPENDENT_SAMPLE"
     },
-    "next_phase": "WAIT_OPT_06_PLATFORM_SCORE"
+    "next_phase": "OPT_07_DECISION"
   },
   "remote_ci_for_repair": {
     "status": "PASS",

@@ -198,4 +198,7 @@ the pre-registered equal-horizon objective.
 G0 is PASS: E00 again reproduced with raw maximum absolute difference `0.0` and
 byte-identical validation CSVs. The run and E16 release used a clean pre-registration
 commit, protected labels were not read, and 69 locked Python 3.12 tests passed. G1
-is separately PASS. The 335-row test_a package is frozen pending platform evidence.
+is separately PASS. The 335-row test_a package was frozen before upload. The user
+subsequently reported `82.9918`, improving E12 by `0.0375`, E09 by `0.1744`, and
+the frozen baseline by `1.5364`. E16 is the platform incumbent; the small latest
+increment is consistent with diminishing returns in the derived-candidate family.
