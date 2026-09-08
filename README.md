@@ -8,10 +8,16 @@
 
 ## 当前状态
 
-当前优化发布候选已按用户批准恢复为 **E16**，桌面 test_a ZIP 已恢复原包。
-CB-FC-CVcal 用户回传平台成绩 82.2871，比 E16 的 82.9918 低 0.7047
-（均未独立核验），该候选、提交包及失败证据保留归档；
-使用方式、包摘要及证据边界见 [当前优化发布](docs/optimization_v0_3/CURRENT_RELEASE.md)。
+optimization-v0.3-r2 已完成 **E12-raw 正式全量训练与三阶段打包**：2,754 行合法
+训练标签，fit cutoff 为 2024-12-01 01:44+08:00。116 项锁定测试通过，三阶段
+独立进程原始预测差异均为 0。November 保护标签已按冻结流程消费。
+当前 r2 发布指针为 `configs/optimization_v0_3_r2/active_release.yaml`；
+流程、摘要与限制见 [OPT-10 实际执行](docs/optimization_v0_3/OPT10_EXECUTION_R2.md)。
+新包尚未上传平台，没有新平台分数；未承诺超过 83.9。
+
+E16 原包及历史用户回传 82.9918 保留；旧 v0.3 导出入口继续用于恢复该归档。
+CB-FC-CVcal 的 82.2871 及回退证据见
+[v0.3 历史发布](docs/optimization_v0_3/CURRENT_RELEASE.md)，均未独立核验平台。
 下表及后续旧阶段结果仍是冻结 baseline / 历史记录，不作为当前发布指针。
 
 | 项目 | 状态 |
@@ -20,7 +26,7 @@ CB-FC-CVcal 用户回传平台成绩 82.2871，比 E16 的 82.9918 低 0.7047
 | G1 冻结模型质量 | `FAIL_DEV_LONG` |
 | baseline 发布状态 | `BASELINE_REPRODUCIBLE_QUALITY_FAILED` |
 | 时间可用性证据 | `competition-timestamp-contract-v1 / ASSUMED` |
-| 保护集 | `holdout_consumed=false`；H1–H4 未运行 |
+| baseline 冻结时保护集 | 当时未消费；当前已由 r2 合法消费，见上方 |
 | 冻结测试 | 50 passed，0 failed，0 skipped |
 | test_a / prelim 平台成绩 | `81.4554`（用户报告，未独立核验） |
 

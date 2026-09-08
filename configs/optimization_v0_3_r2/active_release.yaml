@@ -1,0 +1,17 @@
+schema_version: 1
+release_protocol: e12-final-composite-v1
+active_candidate: E12-raw
+algorithm_identity: optimization-v0.3-r2/E12-raw/final-v1
+selection_basis: NO_ACCEPTED_CHALLENGER_USE_PREVIOUSLY_SELECTED_C_REF
+lifecycle: final_training
+fit_cutoff: '2024-12-01 01:44:00+08:00'
+training_rows: 2754
+bundle: local/runs/optimization-v0.3-r2-opt10-final-r1/bundle
+bundle_sha256: 1d920f4a6cac22bc705c0f985cff39defe718553105463e565e72d5d70acbdc7
+frozen_manifest_sha256: 00d712e4efee7c23d887c71fce1f6289c5267ee8c175d150b1c69cfb0df38045
+test_a_zip: local/runs/optimization-v0.3-r2-opt10-test-a-r1/Luqhhh_bf_tap_predict_prelim.zip
+test_a_zip_sha256: a713ee00f3f3a0d741199e8c271109c078312bd613a4a789a2cfb4b4128da8e6
+protected_labels_read: true
+platform_score: null
+platform_uploaded: false
+incumbent_e16_zip_sha256: 1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa

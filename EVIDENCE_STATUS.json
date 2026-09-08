@@ -71,7 +71,7 @@
     "contract_id": "competition-timestamp-contract-v1",
     "evidence_status": "ASSUMED"
   },
-  "holdout_consumed": false,
+  "holdout_consumed": true,
   "H1_H4": "NOT_EXECUTED",
   "G0": "PASS_LOCAL_LOCKED_ENVIRONMENT",
   "G1": "FAIL_DEV_LONG",
@@ -166,7 +166,17 @@
     "platform_evidence": {
       "status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "adaptive_iteration_stopped": true,
-      "scores": [81.4554, 82.329, 82.4431, 82.6221, 82.7046, 82.361, 82.8174, 82.9543, 82.9918],
+      "scores": [
+        81.4554,
+        82.329,
+        82.4431,
+        82.6221,
+        82.7046,
+        82.361,
+        82.8174,
+        82.9543,
+        82.9918
+      ],
       "best_score": 82.9918,
       "best_submission_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa"
     },
@@ -213,7 +223,12 @@
     "remaining_features_single_target_fits": 28,
     "F_C_J": 0.17317608924788452,
     "F_D_J": 0.17426962190166562,
-    "feature_experiments_completed": ["F-A", "F-B", "F-C", "F-D"],
+    "feature_experiments_completed": [
+      "F-A",
+      "F-B",
+      "F-C",
+      "F-D"
+    ],
     "cold_process_profile_bundles_checked": 14,
     "cold_process_profile_prediction_max_abs_diff": 0.0,
     "last_cross_run": "local/runs/optimization-v0.3-last-cross-r1",
@@ -242,7 +257,10 @@
     "release_single_target_fits": 5,
     "release_training_rows": 2424,
     "release_fit_cutoff": "2024-11-01T00:00:00+08:00",
-    "release_selected_iterations": {"tap_iron": 115, "tap_time_len": 220},
+    "release_selected_iterations": {
+      "tap_iron": 115,
+      "tap_time_len": 220
+    },
     "release_time_calibration": 10.710930574878446,
     "release_cold_process_max_difference": 0.0,
     "release_zip_sha256": "7a18681495803b22f3a8a0156606f0297864be2cfced2fe0fe16339c65d3d36c",
@@ -259,5 +277,74 @@
     "platform_upload_performed": false,
     "full_protected_lifecycle_release": "NOT_IMPLEMENTED",
     "status_document": "docs/optimization_v0_3/RESULTS_SUMMARY.md"
+  },
+  "optimization_v0_3_r2": {
+    "branch": "optimization-v0.3-r2",
+    "continuation_commit": "04a710d9c7bc137e765eb38ad79ab73ce138f7e2",
+    "status": "OPT10_COMPLETE_FROZEN_REFERENCE_FINAL_RELEASE",
+    "G0": "PASS_LOCKED_TESTS_AND_REAL_FINAL_RELEASE",
+    "G1": "FROZEN_REFERENCE_ONLY_NO_NEW_ALGORITHM_ACCEPTANCE",
+    "locked_python312_tests_passed": 116,
+    "tests_junit_sha256": "a52e4882610f7aa71de11a85fcacaf01c735af30d36c97e2ba35f82ebb3ae46f",
+    "C_ref": "E12-raw",
+    "refresh_pairs": 8,
+    "refresh_missing_pairs": 0,
+    "refresh_mean_gain": {
+      "E09": 0.007203614438569185,
+      "E12-raw": 0.005519805299912597
+    },
+    "refresh_comparison_csv_sha256": "192187611c7ac06695d9b984cae45c846e9681f0b0c12b06ad14d32a5f0753fc",
+    "new_model_fits": 20,
+    "protected_labels_read": true,
+    "holdout_scoring": "PASS_REFERENCE_REPORT",
+    "final_training": "PASS_2754_ELIGIBLE_ROWS",
+    "new_release_created": true,
+    "remote_write_performed": false,
+    "plan": "docs/optimization_v0_3/PLAN_R2.md",
+    "holdout_consumed": true,
+    "frozen_manifest_sha256": "00d712e4efee7c23d887c71fce1f6289c5267ee8c175d150b1c69cfb0df38045",
+    "holdout_metrics": {
+      "HOLDOUT_H1": {
+        "E": 0.15309062927083414,
+        "iron_wmape": 0.15273448297453857,
+        "time_wmape": 0.1534467755671297
+      },
+      "HOLDOUT_H2": {
+        "E": 0.15794315764506364,
+        "iron_wmape": 0.15595953607072793,
+        "time_wmape": 0.15992677921939935
+      },
+      "HOLDOUT_H3": {
+        "E": 0.1561253232768713,
+        "iron_wmape": 0.15388871432402174,
+        "time_wmape": 0.1583619322297208
+      },
+      "HOLDOUT_H4": {
+        "E": 0.1662111164628967,
+        "iron_wmape": 0.15782458583844586,
+        "time_wmape": 0.17459764708734757
+      }
+    },
+    "holdout_report_sha256": "010f63a6d42e0319f9b78e4b8805db1899c70acf888ae3535d8db93c3c598011",
+    "protected_status_scope": "Older optimization sections retain their historical pre-consumption snapshot. November is now consumed by r2.",
+    "final_fit_cutoff": "2024-12-01 01:44:00+08:00",
+    "final_training_rows": 2754,
+    "release_candidate": "E12-raw",
+    "release_bundle_sha256": "1d920f4a6cac22bc705c0f985cff39defe718553105463e565e72d5d70acbdc7",
+    "release_manifest_sha256": "d3c93dc4223d211e638a8b8fc171c64b43973ea3ac63ec9c7cc5a34ac1889254",
+    "release_csv_sha256": "6487bda96dfc519425418874ab9405d10a78ed677646af7d21e4780df5bd7cf0",
+    "release_zip_sha256": "a713ee00f3f3a0d741199e8c271109c078312bd613a4a789a2cfb4b4128da8e6",
+    "cold_process_prediction_max_abs_diff": 0.0,
+    "stage_rows": {
+      "test_a": 335,
+      "test_b": 322,
+      "test_c": 548
+    },
+    "ledger_entries": 2,
+    "ledger_sha256": "0b60fe8310643eeacedf5344f9e8d8118ed7deb38a57012f442d876432f6937e",
+    "platform_score": null,
+    "platform_uploaded": false,
+    "execution_document": "docs/optimization_v0_3/OPT10_EXECUTION_R2.md",
+    "verification_sha256": "3e9ad1f3c1fcb40c40b447887628f9e5c363efd6a615b1ea26cbf806b5bb3f46"
   }
 }
