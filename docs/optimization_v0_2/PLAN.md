@@ -1,10 +1,11 @@
 # optimization-v0.2 execution plan
 
-Status as of 2026-09-08: OPT-01 through OPT-05 are implemented and executed on the
+Status as of 2026-09-08: OPT-01 through OPT-06 are implemented and executed on the
 `optimization-v0.2` branch. OPT-03 passed G0 but neither candidate passed G1;
-OPT-04 E09 and OPT-05 E12 passed G0 and every G1 gate. The user reported an E12
-test_a score of `82.9543`; E12 is the platform incumbent. OPT-06 is not complete. The
-immutable comparison remains `baseline-v0.1-reproducible`.
+OPT-04 E09, OPT-05 E12 and OPT-06 E16 passed G0 and every G1 gate. The user reported
+an E12 test_a score of `82.9543`; E12 remains the platform incumbent while the E16
+platform result is pending. The immutable comparison remains
+`baseline-v0.1-reproducible`.
 
 This phase preserves the baseline data, timestamp, model-parameter and
 post-processing contracts. It introduces a separate strict configuration parser,
@@ -126,3 +127,9 @@ there is no weight or calibration grid, no model retraining, and the `82.9543`
 platform result selects no parameter. The full run includes E00, E04, E09, E12,
 E14 and both OPT-06 candidates. Selection requires the unchanged G1 gates and uses
 the registered equal-horizon J objective.
+
+The full OPT-06 run passed G0, including exact E00 reproduction. Both E15 and E16
+passed all six G1 gates. E16 was selected by the registered J objective (`0.169902`
+versus E15's `0.171057`) and improved all four horizons versus E00. Its test_a
+prediction is derived from the frozen E12 component with the fixed residual,
+validated over 335 rows and packaged without protected-label access.

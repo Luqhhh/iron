@@ -135,3 +135,14 @@ Nested derivations must reference earlier registered candidates, carry component
 manifest and result hashes, and preserve sample order. No new residual, blend weight,
 CatBoost parameter, feature window or acceptance threshold is introduced. Promotion
 is based on G1 and J only; the OPT-05 platform score is not a selection input.
+
+## D014 — Select E16 and preserve E15 as the H1 diagnostic
+
+E15 and E16 both passed every G1 gate. E16 is selected because its registered J is
+lower (`0.169902` versus `0.171057`) and it wins H2, H3 and H4. E15's slightly lower
+H1 (`0.156197` versus `0.156308`) is retained as a diagnostic, not used to override
+the aggregate rule. The frozen E16 package is the exact E12 test_a result with only
+`1.68610975` subtracted from time predictions and the nonnegative floor preserved.
+
+The pending platform score may update the incumbent but cannot refit the residual,
+switch to E15, or create another target combination within OPT-06.

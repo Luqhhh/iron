@@ -178,3 +178,24 @@ test_a package contains 335 validated rows. The user subsequently reported a
 platform score of `82.9543`, improving E09 by `0.1369`, the previous derived
 incumbent by `0.2497`, and the frozen baseline by `1.4989`. E12 is therefore the
 platform incumbent, while the score remains external, non-independent evidence.
+
+## OPT-06 target-level composition
+
+OPT-06 ran from the clean pre-registration commit `a343e96`. E15 combines E12 iron
+with E14 time; E16 applies the same frozen time residual after the E09/E04 blend.
+
+| Candidate | J | H1 | H2 | H3 | H4 | DEV_LONG | DEV_SHORT delta vs E00 | G1 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| E12_BLEND_E09_E04_80_20 | 0.171713 | 0.156806 | 0.170448 | 0.182095 | 0.177505 | 0.173574 | -0.007728 | PASS |
+| E15_TARGETWISE_E12_E14 | 0.171057 | 0.156197 | 0.169569 | 0.181391 | 0.177069 | 0.173168 | -0.008517 | PASS |
+| E16_TIMECAL_E12 | 0.169902 | 0.156308 | 0.168841 | 0.179582 | 0.174875 | 0.172042 | -0.008845 | PASS |
+
+Both candidates passed all six gates. E16 achieved the lower aggregate J and the
+best H2–H4, while E15 was lower only on H1. E16 improved J by `0.013182` versus E00,
+improved all four horizons, and improved both target mean WMAPEs. It is selected by
+the pre-registered equal-horizon objective.
+
+G0 is PASS: E00 again reproduced with raw maximum absolute difference `0.0` and
+byte-identical validation CSVs. The run and E16 release used a clean pre-registration
+commit, protected labels were not read, and 69 locked Python 3.12 tests passed. G1
+is separately PASS. The 335-row test_a package is frozen pending platform evidence.

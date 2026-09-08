@@ -140,3 +140,23 @@ E12 按预登记的等权 horizon 聚合目标优于 E14 后冻结，未依据 `
 融合权重。桌面提交包已替换并通过本地/桌面 SHA-256 一致性校验。用户回传分数
 比 E09 高 `0.1369`、比上一派生最高分 `82.7046` 高 `0.2497`、比冻结 baseline
 高 `1.4989`；E12 成为平台 incumbent，但 OPT-05 不据此继续调权或叠加校准。
+
+## 2026-09-08 · test_a / OPT-06 E16 post-blend calibration
+
+| 字段 | 记录 |
+| --- | --- |
+| 平台显示成绩 | 待用户回传 |
+| 证据状态 | `PENDING_USER_REPORT`；开发 G1 已通过 |
+| 候选 | `E16_TIMECAL_E12`；E12 铁水不变、时长减 `1.68610975` |
+| 开发门禁 | G0 通过；G1 六项全部通过 |
+| 开发 J | `0.169902`；相对 E00 改善 `0.013182` |
+| ZIP SHA-256 | `1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa` |
+| result.csv SHA-256 | `608e3c72db6ca2aab0fcd0dd11805334b682c60b8c321813f0690578eeb546b3` |
+| 开发 run | `local/runs/optimization-v0.2-opt06-targetwise-grid-r1` |
+| 派生预测 run | `local/predictions/optimization-v0.2-opt06-e16-test-a-r1` |
+| 源码身份 | clean commit `a343e96` |
+| 保护标签 | 未读取、未消费 |
+
+E16 按预登记 J 优于 E15 后冻结；E15 仅在 H1 略优，不替代聚合选择规则。桌面
+提交包已替换并通过 SHA-256 一致性校验。平台结果回传前，E12 的 `82.9543`
+仍为 incumbent。
