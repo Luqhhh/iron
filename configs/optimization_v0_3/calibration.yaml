@@ -1,0 +1,12 @@
+schema_version: calibration-protocol-v1
+selection_train_cutoff_days_before_outer: 56
+calibration_train_cutoff_days_before_outer: 28
+history_policy: frozen_at_each_fit_cutoff
+selection_label_available_by: calibration_train_cutoff
+calibration_label_available: strictly_before_outer_cutoff
+minimum_samples: 100
+fallback: zero
+residual: median_prediction_minus_actual
+targets: [tap_time_len]
+early_stopping_patience: 150
+frozen_component_iterations: 800

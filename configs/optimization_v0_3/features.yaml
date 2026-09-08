@@ -1,0 +1,8 @@
+schema_version: optimization-features-v1
+base_selection: configs/optimization_v0_2/features.yaml
+base_candidate: E09
+experiments:
+  F-A: {kind: remove_burden, status: registered}
+  F-B: {kind: segmented_operation, windows_hours: [[6, 12], [12, 24], [24, 48]], statistics: [mean, count], status: registered}
+  F-C: {kind: known_sample_index, status: BLOCKED, reason: explicit_stage_index_contract_not_verified}
+  F-D: {kind: burden_event_changes, status: BLOCKED, reason: field_semantics_not_yet_verified}

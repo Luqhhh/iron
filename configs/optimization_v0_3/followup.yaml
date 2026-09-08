@@ -1,0 +1,19 @@
+schema_version: optimization-v0.3-followup-v1
+reference: E12-raw
+reference_run: local/runs/optimization-v0.3-opt07-reference-r2
+screening_run: local/runs/optimization-v0.3-opt08-screening-r1
+grid_run: local/runs/optimization-v0.3-opt08-09-grid-r1
+candidates:
+  CB-CVcal: {base: CB-best-per-target, feature_increment: null, calibration: temporal_v1}
+  LG-CVcal: {base: LG-best-per-target, feature_increment: null, calibration: temporal_v1}
+  CB-FB-raw: {base: CB-best-per-target, feature_increment: F-B, calibration: none}
+  CB-FB-CVcal: {base: CB-best-per-target, feature_increment: F-B, calibration: temporal_v1}
+target_configs:
+  CB-best-per-target: {tap_iron: CB08, tap_time_len: CB02}
+  LG-best-per-target: {tap_iron: LG02, tap_time_len: LG01}
+selection_iteration_policy: reuse_verified_inner_selection_for_unchanged_features_reselect_for_cross
+new_feature_crosses: 1
+additional_parameter_configurations: 0
+additional_target_combinations: 0
+additional_blend_weights: 0
+protected_access_authorized: false

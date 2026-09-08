@@ -1,0 +1,21 @@
+schema_version: optimization-model-search-v1
+model_type: lightgbm_l1
+parameters:
+  objective: regression_l1
+  metric: l1
+  learning_rate: 0.03
+  num_boost_round: 3000
+  lambda_l2: 10
+  deterministic: true
+  force_col_wise: true
+  num_threads: 8
+  seed: 2026
+  data_random_seed: 2026
+  feature_fraction_seed: 2026
+  bagging_seed: 2026
+  drop_seed: 2026
+  extra_seed: 2026
+  verbosity: -1
+grid:
+  pairs_num_leaves_min_data_in_leaf: [[7, 40], [7, 80], [15, 40], [15, 80], [31, 80], [31, 160]]
+early_stopping_patience: 150

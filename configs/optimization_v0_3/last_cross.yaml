@@ -1,0 +1,23 @@
+schema_version: 1
+protocol: last-feature-cross-v1
+reference: E12-raw
+reference_run: local/runs/optimization-v0.3-opt07-reference-r2
+screening_run: local/runs/optimization-v0.3-opt08-screening-r1
+first_feature_run: local/runs/optimization-v0.3-opt08-09-grid-r1
+remaining_feature_run: local/runs/optimization-v0.3-remaining-features-r1
+previous_cross_run: local/runs/optimization-v0.3-followup-r1
+feature: F-C
+selection_reason: F-C_and_F-B_are_top_two_of_four_frozen_E09_feature_trials
+model_family: tunable_catboost_l1
+target_configs:
+  tap_iron: CB08
+  tap_time_len: CB02
+candidates: [CB-FC-raw, CB-FC-CVcal]
+calibration_protocol: calibration-protocol-v1
+new_feature_crosses: 1
+cumulative_feature_crosses: 2
+additional_parameter_configurations: 0
+additional_target_combinations: 0
+additional_feature_candidates: 0
+protected_labels_read: false
+stop_after_this_cross: true

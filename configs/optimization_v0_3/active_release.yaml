@@ -1,0 +1,17 @@
+schema_version: 1
+release_protocol: archived-e16-submission-v1
+active_candidate: E16_TIMECAL_E12
+selection_basis: USER_APPROVED_ROLLBACK_AFTER_PLATFORM_REGRESSION
+release_manifest: local/manifests/optimization-v0.2-opt06-e16-test-a-r1.json
+test_a_zip: local/submissions/optimization-v0.2-opt06-e16-test-a-r1/Luqhhh_bf_tap_predict_prelim.zip
+test_a_zip_sha256: 1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa
+test_a_result_sha256: 608e3c72db6ca2aab0fcd0dd11805334b682c60b8c321813f0690578eeb546b3
+platform_score_status: USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED
+platform_score: 82.9918
+rejected_candidate: CB-FC-CVcal
+rejected_release_config: configs/optimization_v0_3/cb_fc_release.yaml
+rejected_platform_score: 82.2871
+fit_cutoff: '2024-11-01T00:00:00+08:00'
+lifecycle: development
+protected_labels_read: false
+platform_uploaded_by_agent: false

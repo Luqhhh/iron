@@ -1,0 +1,13 @@
+schema_version: 1
+timezone: Asia/Shanghai
+interval: left_closed_right_open
+train_start: '2024-03-01T00:00:00+08:00'
+screening_folds:
+  - {id: DEV_LONG, fit_cutoff: '2024-07-01T00:00:00+08:00', eval_start: '2024-07-01T00:00:00+08:00', eval_end: '2024-11-01T00:00:00+08:00'}
+  - {id: DEV_SHORT, fit_cutoff: '2024-09-01T00:00:00+08:00', eval_start: '2024-09-01T00:00:00+08:00', eval_end: '2024-11-01T00:00:00+08:00'}
+origins:
+  - {id: O202406, fit_cutoff: '2024-06-01T00:00:00+08:00', horizons: 4}
+  - {id: O202407, fit_cutoff: '2024-07-01T00:00:00+08:00', horizons: 4}
+  - {id: O202408, fit_cutoff: '2024-08-01T00:00:00+08:00', horizons: 3}
+  - {id: O202409, fit_cutoff: '2024-09-01T00:00:00+08:00', horizons: 2}
+  - {id: O202410, fit_cutoff: '2024-10-01T00:00:00+08:00', horizons: 1}

@@ -1,0 +1,15 @@
+schema_version: optimization-v0.3-plan-v1
+optimization_id: optimization-v0.3
+source_snapshot: c88cdad01a52bce4270f20f7d2e82fa5f6fa42cf
+incumbent: E16
+references: [E12-raw, E12-CVcal]
+reference_selection: global_minimum_development_J_tie_raw
+search_feature_candidate: E09
+screening_metric: mean_two_fold_target_wmape
+promotion: one_configuration_per_model_type_per_target
+max_promoted_target_configurations: 4
+max_feature_experiments: 4
+max_feature_model_crosses: 2
+max_target_combinations: 2
+protected_access_authorized: false
+platform_upload_authorized: false

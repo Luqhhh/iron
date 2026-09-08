@@ -1,0 +1,13 @@
+schema_version: 1
+release_protocol: development-fc-catboost-v1
+active_candidate: CB-FC-CVcal
+promotion: USER_OVERRIDE_G1_FAIL
+release_run: local/runs/optimization-v0.3-cb-fc-cvcal-release-r1
+bundle: local/runs/optimization-v0.3-cb-fc-cvcal-release-r1/bundle
+bundle_sha256: 061714cd6e0bcf5476d5b39404492d48036e00e025fcd2718f85d91765270a74
+test_a_zip: local/runs/optimization-v0.3-cb-fc-cvcal-release-r1/submission/Luqhhh_bf_tap_predict_prelim.zip
+test_a_zip_sha256: 7a18681495803b22f3a8a0156606f0297864be2cfced2fe0fe16339c65d3d36c
+platform_score_status: USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED
+platform_score: 82.2871
+status: ARCHIVED_AFTER_USER_APPROVED_ROLLBACK
+protected_labels_read: false

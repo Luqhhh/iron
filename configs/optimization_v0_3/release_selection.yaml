@@ -1,0 +1,13 @@
+schema_version: 1
+release_protocol: development-fc-catboost-v1
+active_candidate: CB-FC-CVcal
+fallback_candidate: E16_TIMECAL_E12
+selection_basis: explicit_user_override_of_failed_J_margin
+approval: user_confirmed_replace_current_candidate_and_generate_platform_test_package
+development_evidence_run: local/runs/optimization-v0.3-last-cross-r1
+original_gate_status: G1_FAIL_DEVELOPMENT
+original_failed_gate: J
+fit_cutoff: '2024-11-01T00:00:00+08:00'
+lifecycle: development
+protected_access_authorized: false
+platform_upload_authorized: false

@@ -1,0 +1,24 @@
+schema_version: optimization-model-search-v1
+model_type: tunable_catboost_l1
+parameters:
+  loss_function: MAE
+  eval_metric: MAE
+  iterations: 3000
+  learning_rate: 0.03
+  random_seed: 2026
+  task_type: CPU
+  thread_count: 8
+  bootstrap_type: 'No'
+  random_strength: 0.0
+  rsm: 1.0
+  boosting_type: Plain
+  has_time: true
+  one_hot_max_size: 64
+  nan_mode: Min
+  use_best_model: false
+  allow_writing_files: false
+  verbose: false
+grid:
+  depth: [3, 4, 5]
+  l2_leaf_reg: [5, 20, 50]
+early_stopping_patience: 150

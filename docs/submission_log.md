@@ -162,3 +162,40 @@ E16 按预登记 J 优于 E15 后冻结；E15 仅在 H1 略优，不替代聚合
 提交包已替换并通过 SHA-256 一致性校验。用户回传分数比 E12 高 `0.0375`、比
 E09 高 `0.1744`、比冻结 baseline 高 `1.5364`。E16 成为平台 incumbent，
 OPT-06 到此关闭，不依据该分数继续调整残差或组合。
+
+## 2026-09-08：v0.3 CB-FC-CVcal 待平台测试包（用户例外选择）
+
+用户明确批准以当前优化阶段最好新增算法替换发布候选并生成测试包。
+当前发布指针为 `configs/optimization_v0_3/active_release.yaml`。未自动上传平台，
+没有平台成绩；开发 J=.1712251132，相对 C_ref 改善 .0004883073，原 .0010
+门槛未通过，因此记录为 USER_OVERRIDE_G1_FAIL，不回写 G1。
+
+训练 run：`local/runs/optimization-v0.3-cb-fc-cvcal-release-r1/`。
+2024-11-01 development 截止点，2,424 条训练样本，铁量 CB08 115 轮、时长
+CB02 220 轮，均使用 E09+F-C。时长校准使用截止前 299 个合法内部 OOF 样本，
+重估为减 10.710930574878446 分钟；没有读取 November 保护目标。
+
+test_a 共 335 行，对应 H2；新进程完整恢复及分批预测差异为 0，格式验证通过。
+ZIP SHA-256：`7a18681495803b22f3a8a0156606f0297864be2cfced2fe0fe16339c65d3d36c`。
+CSV SHA-256：`7d62409a4c433b1cab73de9593fb31cbb1042110a7ccd7b959a1b7fc6af73d91`。
+
+桌面 `Luqhhh_bf_tap_predict_prelim.zip` 已替换为新包并核验摘要；旧包另存为
+`Luqhhh_bf_tap_predict_prelim.E16-backup.zip`，原 local/submissions 的 E16 包
+亦原样保留，可恢复。详细证据和使用方式见 optimization_v0_3/CURRENT_RELEASE.md。
+
+### 后续用户成绩回传：82.2871
+
+按最新交付的 CB-FC-CVcal / test_a 包记录，ZIP SHA-256 为
+`7a18681495803b22f3a8a0156606f0297864be2cfced2fe0fe16339c65d3d36c`。
+用户报告成绩 82.2871，证据状态 USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED。
+相对旧 E16 82.9918 下降 0.7047；E16 仍为已记录的最高平台成绩。
+没有改写开发指标、G0 核验或原 G1_FAIL；没有根据平台总分继续调参、读取保护
+目标或自动回退。当前发布指针及桌面新包暂时保留，回退需用户确认。
+
+### 用户确认回退：恢复 E16
+
+用户随后确认回退并要求提交推送。active_release.yaml 与桌面
+`Luqhhh_bf_tap_predict_prelim.zip` 已恢复 E16 原包，SHA-256 为
+`1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa`。
+新包另存 `Luqhhh_bf_tap_predict_prelim.CB-FC-CVcal-backup.zip`，本地原运行
+目录与全部失败证据保留。没有重新训练、读取保护目标或自动上传平台。

@@ -1,0 +1,31 @@
+schema_version: 1
+profile_id: remaining-features-v1
+supersedes_blocked_registration: configs/optimization_v0_3/features.yaml
+rules_pdf_sha256: 18ee1e4c0217e8d6dab1225045418f8b79a93bd90cd4e958b6da23733dc57146
+dictionary_sha256: 816d886eeb0bec6a817f0e9e17316bc39dbc2093c84eb652d408f1f9fa5ed7cd
+reference: E12-raw
+feature_control: E09
+model_parameters: frozen_800
+profiles:
+  F-C:
+    kind: known_sample_index
+    columns: [sample_id, spout_no, reference_time]
+    visibility: strictly_before_current_reference_time
+    windows_hours: [6, 24]
+    window_left: exclusive
+    sources_must_be_explicit: true
+    deployment_roles:
+      development: [train_samples]
+      test_a: [train_samples, test_a_samples]
+      test_b: [train_samples, test_a_samples, test_b_samples]
+      test_c: [train_samples, test_a_samples, test_b_samples, test_c_samples]
+  F-D:
+    kind: burden_visible_event_changes
+    delta: latest_minus_previous_visible_event
+    reuse_age_column: burden__event_age_hours
+    count_windows_hours: [24, 72]
+    window: left_open_right_closed
+    continuous_state_assumption: false
+additional_parameter_configurations: 0
+additional_target_combinations: 0
+protected_labels_read: false
