@@ -121,3 +121,17 @@ E09. This confirms E12 as the platform incumbent but remains external evidence.
 OPT-05 stays frozen: the result does not authorize changing the `0.8/0.2` weights,
 applying E14 calibration, or evaluating another OPT-05 blend. OPT-06 must begin
 with a separate development-only pre-registration.
+
+## D013 — Pre-register target-level composition for OPT-06
+
+Before reading any OPT-06 run result, two deterministic candidates are fixed from
+the OPT-05 per-target evidence. `E15_TARGETWISE_E12_E14` takes `tap_iron` from E12
+and `tap_time_len` from E14. `E16_TIMECAL_E12` subtracts the already frozen
+`1.68610975` residual from E12 time and leaves E12 iron unchanged. E15 answers
+whether the documented target complement transfers across horizons; E16 isolates
+whether calibration should occur after rather than before the E09/E04 blend.
+
+Nested derivations must reference earlier registered candidates, carry component
+manifest and result hashes, and preserve sample order. No new residual, blend weight,
+CatBoost parameter, feature window or acceptance threshold is introduced. Promotion
+is based on G1 and J only; the OPT-05 platform score is not a selection input.

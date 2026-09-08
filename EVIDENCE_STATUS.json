@@ -101,7 +101,7 @@
       "OPT_03": "COMPLETE_G0_PASS_G1_FAIL",
       "OPT_04": "COMPLETE_G0_PASS_G1_PASS",
       "OPT_05": "COMPLETE_G0_PASS_G1_PASS_PLATFORM_REPORTED",
-      "OPT_06": "NOT_IMPLEMENTED"
+      "OPT_06": "PRE_REGISTERED_NOT_EXECUTED"
     },
     "engineering_status": "G0_OPT_EXECUTION_PASS",
     "registered_candidate_quality": "G1_PASS_OPTIMIZATION_DEVELOPMENT",
@@ -164,7 +164,7 @@
       "mean_absolute_score_gap": 1.7258571391,
       "conclusion": "HIGH_DIRECTIONAL_CONSISTENCY_LOW_ABSOLUTE_CALIBRATION_SMALL_DEPENDENT_SAMPLE"
     },
-    "next_phase": "OPT_06_PRE_REGISTRATION"
+    "next_phase": "OPT_06_DEVELOPMENT_EXECUTION"
   },
   "remote_ci_for_repair": {
     "status": "PASS",

@@ -87,6 +87,7 @@ def load_experiment(path: str | Path) -> tuple[dict[str, Any], list[Candidate]]:
     parsed: list[Candidate] = []
     for candidate_id in order:
         value = candidates[candidate_id]
+        registered_ids = {candidate.id for candidate in parsed}
         if value.get("kind") == "model":
             _exact(
                 value,
@@ -154,10 +155,9 @@ def load_experiment(path: str | Path) -> tuple[dict[str, Any], list[Candidate]]:
             if (
                 not isinstance(components, list)
                 or len(components) < 2
+                or any(not isinstance(component, str) or not component for component in components)
                 or len(components) != len(set(components))
-                or any(component not in candidates for component in components)
-                or candidate_id in components
-                or any(candidates[component].get("kind") != "model" for component in components)
+                or any(component not in registered_ids for component in components)
             ):
                 raise ContractError(f"{candidate_id}: invalid component_candidates")
             weights = value["weights"]
@@ -168,6 +168,11 @@ def load_experiment(path: str | Path) -> tuple[dict[str, Any], list[Candidate]]:
                     raise ContractError(
                         f"{candidate_id}: {target} weights must match component_candidates"
                     )
+                if any(
+                    isinstance(weight, bool) or not isinstance(weight, (int, float))
+                    for weight in target_weights.values()
+                ):
+                    raise ContractError(f"{candidate_id}: {target} weights must be numeric")
                 numeric = {name: float(weight) for name, weight in target_weights.items()}
                 if (
                     any(not isfinite(weight) or weight < 0 for weight in numeric.values())
@@ -188,11 +193,7 @@ def load_experiment(path: str | Path) -> tuple[dict[str, Any], list[Candidate]]:
         elif value.get("kind") == "residual_calibration":
             _exact(value, {"kind", "base_candidate", "median_prediction_minus_actual"}, candidate_id)
             base_candidate = value["base_candidate"]
-            if (
-                base_candidate not in candidates
-                or base_candidate == candidate_id
-                or candidates[base_candidate].get("kind") != "model"
-            ):
+            if base_candidate not in registered_ids:
                 raise ContractError(f"{candidate_id}: invalid base_candidate")
             residuals = value["median_prediction_minus_actual"]
             _exact(

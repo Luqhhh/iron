@@ -74,6 +74,39 @@ def test_registered_convex_blend_prediction_is_auditable(tmp_path):
     assert json.loads((output / "final_status.json").read_text())["status"] == "PASS"
 
 
+def test_registered_targetwise_blend_accepts_prior_derived_components(tmp_path):
+    samples = tmp_path / "samples.csv"
+    pd.DataFrame({"sample_id": ["001", "002"]}).to_csv(samples, index=False)
+    data_config = tmp_path / "data.yaml"
+    data_config.write_text(
+        yaml.safe_dump(
+            {"schema_version": 1, "paths": {"test_a_samples": str(samples)}}
+        ),
+        encoding="utf-8",
+    )
+    e12 = tmp_path / "e12"
+    e14 = tmp_path / "e14"
+    _write_component(e12, "E12_BLEND_E09_E04_80_20", [10.0, 20.0], [30.0, 40.0])
+    _write_component(e14, "E14_TIMECAL_E09", [11.0, 21.0], [27.0, 37.0])
+
+    output = run_derived_prediction(
+        experiment_config_path=ROOT / "configs/optimization_v0_2/experiment.yaml",
+        baseline_config_path=ROOT / "configs/baseline.yaml",
+        candidate_id="E15_TARGETWISE_E12_E14",
+        component_prediction_paths={
+            "E12_BLEND_E09_E04_80_20": e12,
+            "E14_TIMECAL_E09": e14,
+        },
+        data_config_path=data_config,
+        stage="test_a",
+        output=tmp_path / "targetwise",
+    )
+
+    result = pd.read_csv(output / "result.csv", dtype={"sample_id": "string"})
+    assert result["pred_tap_iron"].tolist() == pytest.approx([10.0, 20.0])
+    assert result["pred_tap_time_len"].tolist() == pytest.approx([27.0, 37.0])
+
+
 def test_derived_prediction_rejects_incomplete_component_mapping(tmp_path):
     samples = tmp_path / "samples.csv"
     pd.DataFrame({"sample_id": ["001"]}).to_csv(samples, index=False)

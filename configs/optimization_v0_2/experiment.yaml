@@ -18,6 +18,8 @@ candidate_order:
   - E12_BLEND_E09_E04_80_20
   - E13_BLEND_E09_E10_50_50
   - E14_TIMECAL_E09
+  - E15_TARGETWISE_E12_E14
+  - E16_TIMECAL_E12
 candidates:
   E00:
     kind: model
@@ -100,6 +102,18 @@ candidates:
   E14_TIMECAL_E09:
     kind: residual_calibration
     base_candidate: E09_PROCESS_CHANGE_E02
+    median_prediction_minus_actual:
+      tap_iron: 0.0
+      tap_time_len: 1.68610975
+  E15_TARGETWISE_E12_E14:
+    kind: convex_blend
+    component_candidates: [E12_BLEND_E09_E04_80_20, E14_TIMECAL_E09]
+    weights:
+      tap_iron: {E12_BLEND_E09_E04_80_20: 1.0, E14_TIMECAL_E09: 0.0}
+      tap_time_len: {E12_BLEND_E09_E04_80_20: 0.0, E14_TIMECAL_E09: 1.0}
+  E16_TIMECAL_E12:
+    kind: residual_calibration
+    base_candidate: E12_BLEND_E09_E04_80_20
     median_prediction_minus_actual:
       tap_iron: 0.0
       tap_time_len: 1.68610975

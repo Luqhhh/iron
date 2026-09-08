@@ -28,7 +28,7 @@ def _write(path: Path, value: dict) -> None:
 def test_registered_first_batch_is_strict_and_has_14_grid_cells(tmp_path):
     config, candidates = load_experiment(ROOT / "configs/optimization_v0_2/experiment.yaml")
     assert [candidate.id for candidate in candidates] == config["candidate_order"]
-    assert len(candidates) == 16
+    assert len(candidates) == 18
     by_id = {candidate.id: candidate for candidate in candidates}
     assert by_id["E07_FROZEN_E02"].history_view_ages_days == (0, 7, 30, 60, 90)
     assert by_id["E08_FROZEN_E04"].history_view_ages_days == (0, 7, 30, 60, 90)
@@ -39,6 +39,10 @@ def test_registered_first_batch_is_strict_and_has_14_grid_cells(tmp_path):
         "tap_iron": 0.0,
         "tap_time_len": 1.68610975,
     }
+    assert by_id["E15_TARGETWISE_E12_E14"].component_candidates == (
+        "E12_BLEND_E09_E04_80_20", "E14_TIMECAL_E09"
+    )
+    assert by_id["E16_TIMECAL_E12"].base_candidate == "E12_BLEND_E09_E04_80_20"
     _, screening, origins = load_validation(
         ROOT / "configs/optimization_v0_2/validation.yaml",
         expected_timezone="Asia/Shanghai",
@@ -62,6 +66,14 @@ def test_registered_first_batch_is_strict_and_has_14_grid_cells(tmp_path):
     _write(ages_path, invalid_ages)
     with pytest.raises(ContractError, match="history_view_ages_days"):
         load_experiment(ages_path)
+
+    invalid_order = deepcopy(config)
+    invalid_order["candidate_order"].remove("E15_TARGETWISE_E12_E14")
+    invalid_order["candidate_order"].insert(0, "E15_TARGETWISE_E12_E14")
+    order_path = tmp_path / "invalid-order.yaml"
+    _write(order_path, invalid_order)
+    with pytest.raises(ContractError, match="component_candidates"):
+        load_experiment(order_path)
 
 
 def test_feature_ablations_select_only_the_declared_components():
