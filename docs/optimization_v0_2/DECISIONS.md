@@ -84,3 +84,32 @@ E09 passed every development gate before upload. The user subsequently reported 
 test_a score of `82.8174`, improving the previous incumbent by `0.1128`. E09 is the
 new incumbent, but the external total score does not authorize changing the fixed
 F1 windows, signed-difference definitions, model parameters or acceptance policy.
+
+## D010 — Pre-register a three-candidate OPT-05 derived batch
+
+Before reading OPT-05 results, the derived batch is fixed without a weight grid:
+
+- `E12_BLEND_E09_E04_80_20` uses uniform per-target weights `0.8/0.2`; E09 is
+  dominant and E04 supplies the documented H3/H4 complement;
+- `E13_BLEND_E09_E10_50_50` equally averages the two promoted F1 routes;
+- `E14_TIMECAL_E09` subtracts `1.68610975` minutes from E09 time predictions and
+  leaves iron unchanged. This residual was frozen from early development OOF before
+  its earlier platform use and is not refitted from OPT-04 platform feedback.
+
+All components remain separately registered model candidates and are fitted once
+per origin. Derived predictions are evaluated by the same full acceptance policy.
+The platform score `82.8174` selects no weights or calibration values, and no grid
+or post-result substitution is permitted in this batch.
+
+## D011 — Select E12 by the registered aggregate objective
+
+E12 and E14 both passed all six development gates. E12 is selected because its
+registered equal-horizon objective J is lower (`0.171713` versus `0.171946`), not
+because of any platform observation. E14's slightly lower H1 is retained as a
+diagnostic and does not replace the declared aggregate selection rule. E13 is
+rejected because it did not beat the better DEV_LONG median control.
+
+The E12 platform artifact must be the exact `0.8×E09 + 0.2×E04` derivation from
+separately manifested component predictions. Its package is frozen before upload;
+the returned score may update external evidence and the incumbent, but it cannot
+retroactively tune OPT-05 weights or substitute E14.

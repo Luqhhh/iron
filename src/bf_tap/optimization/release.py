@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 import resource
 from pathlib import Path
 from time import perf_counter
@@ -33,7 +34,8 @@ from ..models.baseline import DualTargetBaseline
 from ..offline import _load_process_sources
 from ..protection import load_protection_policy, read_access_ledger
 from ..schema import validate_history, validate_samples
-from ..submission import write_submission
+from ..submission import validate_submission, write_submission
+from .ensemble import apply_global_residual_calibration, convex_blend
 from .config import load_experiment, load_feature_selection, load_model_config
 from .features import select_candidate_features
 from .history_adaptation import build_history_views
@@ -50,6 +52,151 @@ def _candidate_payload(candidate) -> dict[str, object]:
         "history_components": list(candidate.history_components),
         "history_view_ages_days": list(candidate.history_view_ages_days),
     }
+
+
+def _derived_candidate_payload(candidate) -> dict[str, object]:
+    return {
+        "id": candidate.id,
+        "kind": candidate.kind,
+        "component_candidates": list(candidate.component_candidates),
+        "base_candidate": candidate.base_candidate,
+        "blend_weights": candidate.blend_weights,
+        "residual_calibration": candidate.residual_calibration,
+    }
+
+
+def run_derived_prediction(
+    *,
+    experiment_config_path: str | Path,
+    baseline_config_path: str | Path,
+    candidate_id: str,
+    component_prediction_paths: dict[str, str | Path],
+    data_config_path: str | Path,
+    stage: str,
+    output: str | Path,
+) -> Path:
+    """Create an auditable prediction from frozen component prediction runs."""
+    destination = Path(output)
+    destination.mkdir(parents=True, exist_ok=False)
+    started = perf_counter()
+    try:
+        data_cfg = load_yaml(data_config_path)
+        validate_data_paths(data_cfg, command="pack", stage=stage)
+        baseline = load_yaml(baseline_config_path)
+        validate_baseline_config(baseline)
+        experiment, candidates = load_experiment(experiment_config_path)
+        matches = [candidate for candidate in candidates if candidate.id == candidate_id]
+        if len(matches) != 1 or matches[0].kind not in {
+            "convex_blend", "residual_calibration"
+        }:
+            raise ContractError("derived prediction requires one registered derived candidate")
+        candidate = matches[0]
+        dependencies = (
+            candidate.component_candidates
+            if candidate.kind == "convex_blend"
+            else (candidate.base_candidate,)
+        )
+        if None in dependencies or set(component_prediction_paths) != set(dependencies):
+            raise ContractError("component prediction paths do not match candidate dependencies")
+        expected = pd.read_csv(
+            data_cfg["paths"][f"{stage}_samples"],
+            usecols=["sample_id"],
+            dtype={"sample_id": "string"},
+        )["sample_id"]
+        inputs: dict[str, str | Path] = {}
+        predictions: dict[str, pd.DataFrame] = {}
+        component_manifests: dict[str, object] = {}
+        for dependency in dependencies:
+            assert dependency is not None
+            component_dir = Path(component_prediction_paths[dependency])
+            result_path = component_dir / "result.csv"
+            manifest_path = component_dir / "prediction_manifest.json"
+            if not result_path.is_file() or not manifest_path.is_file():
+                raise ContractError(f"component prediction run is incomplete: {dependency}")
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            result_sha256 = file_sha256(result_path)
+            if (
+                manifest.get("status") != "PASS"
+                or manifest.get("optimization_id") != experiment["optimization_id"]
+                or manifest.get("candidate_id") != dependency
+                or manifest.get("stage") != stage
+                or manifest.get("result_sha256") != result_sha256
+            ):
+                raise ContractError(f"component prediction manifest mismatch: {dependency}")
+            frame = pd.read_csv(result_path, dtype={"sample_id": "string"})
+            validate_submission(frame, expected)
+            predictions[dependency] = frame
+            inputs[f"{dependency}.result"] = result_path
+            inputs[f"{dependency}.manifest"] = manifest_path
+            component_manifests[dependency] = {
+                "prediction_manifest_sha256": file_sha256(manifest_path),
+                "result_sha256": result_sha256,
+            }
+        inputs_before = file_identities(inputs)
+        atomic_write_json(
+            destination / "run_state.json",
+            {
+                "status": "RUNNING",
+                "optimization_id": experiment["optimization_id"],
+                "stage": stage,
+                "candidate": _derived_candidate_payload(candidate),
+                "component_inputs": inputs_before,
+                "code_identity": code_identity(Path.cwd()),
+                "environment": runtime_environment(),
+            },
+        )
+        if candidate.kind == "convex_blend" and candidate.blend_weights is not None:
+            result = convex_blend(predictions, candidate.blend_weights)
+        elif (
+            candidate.kind == "residual_calibration"
+            and candidate.base_candidate is not None
+            and candidate.residual_calibration is not None
+        ):
+            result = apply_global_residual_calibration(
+                predictions[candidate.base_candidate],
+                candidate.residual_calibration,
+                lower_bound=float(baseline["postprocessing"]["lower_bound"]),
+            )
+        else:
+            raise ContractError("derived candidate configuration is incomplete")
+        result.to_csv(destination / "predictions_raw.csv", index=False)
+        write_submission(result, expected, destination / "result.csv")
+        verify_file_identities(inputs_before)
+        atomic_write_json(
+            destination / "prediction_manifest.json",
+            {
+                "schema_version": 1,
+                "status": "PASS",
+                "stage": stage,
+                "optimization_id": experiment["optimization_id"],
+                "candidate_id": candidate.id,
+                "candidate": _derived_candidate_payload(candidate),
+                "components": component_manifests,
+                "protected_labels_read": False,
+                "rows": len(result),
+                "sample_id_sha256": stable_digest(result["sample_id"].astype(str).tolist()),
+                "raw_prediction_sha256": file_sha256(destination / "predictions_raw.csv"),
+                "result_sha256": file_sha256(destination / "result.csv"),
+                "walltime_seconds": perf_counter() - started,
+            },
+        )
+        atomic_write_json(
+            destination / "final_status.json",
+            {
+                "status": "PASS",
+                "prediction_manifest_sha256": file_sha256(
+                    destination / "prediction_manifest.json"
+                ),
+            },
+        )
+        return destination
+    except Exception as exc:
+        if not (destination / "final_status.json").exists():
+            atomic_write_json(
+                destination / "final_status.json",
+                {"status": "FAILED", "error_type": type(exc).__name__, "error": str(exc)},
+            )
+        raise
 
 
 def run_candidate_training(

@@ -1,6 +1,6 @@
 # optimization-v0.2 results summary
 
-Review date: 2026-09-07. Scope: authorized local development labels strictly before
+Review date: 2026-09-08. Scope: authorized local development labels strictly before
 2024-11-01; no protected-label access. Detailed predictions, sample-level errors,
 source identities and run artifacts remain local and Git-ignored.
 
@@ -151,3 +151,28 @@ has G0 and G1 PASS with E09 as the accepted candidate. Its test_a submission is
 frozen; the user reported `82.8174`. This improves the previous platform incumbent
 by `0.1128` and the frozen baseline by `1.3620`. E09 is now the platform incumbent,
 with the platform result retained as external, non-independent evidence.
+
+## OPT-05 registered derived candidates
+
+OPT-05 evaluated the three fixed derivations from D010 in one full run with all
+required controls and components. No weight, residual or candidate definition was
+changed after reading the results.
+
+| Candidate | J | H1 | H2 | H3 | H4 | DEV_LONG | DEV_SHORT delta vs E00 | G1 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| E09_PROCESS_CHANGE_E02 | 0.173861 | 0.157199 | 0.172630 | 0.185171 | 0.180445 | 0.176021 | -0.006745 | PASS |
+| E12_BLEND_E09_E04_80_20 | 0.171713 | 0.156806 | 0.170448 | 0.182095 | 0.177505 | 0.173574 | -0.007728 | PASS |
+| E13_BLEND_E09_E10_50_50 | 0.173714 | 0.157973 | 0.173177 | 0.184684 | 0.179022 | 0.176371 | -0.005590 | FAIL |
+| E14_TIMECAL_E09 | 0.171946 | 0.156641 | 0.171015 | 0.182513 | 0.177615 | 0.174315 | -0.007644 | PASS |
+
+E12 achieved the lowest J and improved all four horizon means and both target mean
+WMAPEs versus E00. Its J improvement was `0.011370`; its DEV_LONG result also beat
+the better median control (`0.173574` versus `0.176101`). E14 passed all six gates
+and was slightly better on H1, but E12 was selected by the pre-registered aggregate
+objective. E13 failed only the DEV_LONG control comparison.
+
+G0 is PASS: E00 reproduced the immutable reference with raw maximum absolute
+difference `0.0` and byte-identical validation CSVs; protected labels were not read;
+the locked Python 3.12 path passed 68 tests. G1 is independently PASS for E12. The
+test_a package contains 335 validated rows and is frozen pending the user-reported
+platform score; E09 remains the platform incumbent meanwhile.

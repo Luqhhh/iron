@@ -28,10 +28,17 @@ def _write(path: Path, value: dict) -> None:
 def test_registered_first_batch_is_strict_and_has_14_grid_cells(tmp_path):
     config, candidates = load_experiment(ROOT / "configs/optimization_v0_2/experiment.yaml")
     assert [candidate.id for candidate in candidates] == config["candidate_order"]
-    assert len(candidates) == 13
+    assert len(candidates) == 16
     by_id = {candidate.id: candidate for candidate in candidates}
     assert by_id["E07_FROZEN_E02"].history_view_ages_days == (0, 7, 30, 60, 90)
     assert by_id["E08_FROZEN_E04"].history_view_ages_days == (0, 7, 30, 60, 90)
+    assert by_id["E12_BLEND_E09_E04_80_20"].component_candidates == (
+        "E09_PROCESS_CHANGE_E02", "E04"
+    )
+    assert by_id["E14_TIMECAL_E09"].residual_calibration == {
+        "tap_iron": 0.0,
+        "tap_time_len": 1.68610975,
+    }
     _, screening, origins = load_validation(
         ROOT / "configs/optimization_v0_2/validation.yaml",
         expected_timezone="Asia/Shanghai",

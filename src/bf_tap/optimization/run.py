@@ -48,7 +48,11 @@ from .config import (
     load_model_config,
     load_validation,
 )
-from .ensemble import shrink_toward_b1
+from .ensemble import (
+    apply_global_residual_calibration,
+    convex_blend,
+    shrink_toward_b1,
+)
 from .features import select_candidate_features
 from .history_adaptation import HistoryViewSet, build_history_views
 from .models import FrozenBaselineAdapter
@@ -235,6 +239,11 @@ def run_optimization_validation(
                 if candidate.base_candidate and candidate.base_candidate not in selected_ids:
                     raise ContractError(
                         f"{candidate.id}: selected subset omits base candidate {candidate.base_candidate}"
+                    )
+                missing_components = set(candidate.component_candidates) - selected_ids
+                if missing_components:
+                    raise ContractError(
+                        f"{candidate.id}: selected subset omits components {sorted(missing_components)}"
                     )
         selection_cfg = load_feature_selection(optimization_feature_config_path)
         model_cfg = load_model_config(optimization_model_config_path)
@@ -433,21 +442,56 @@ def run_optimization_validation(
                 final_by_candidate[candidate.id] = final
                 feature_columns[candidate.id] = list(X_train.columns)
             for candidate in derived_candidates:
-                if candidate.kind != "shrink_b1" or candidate.weights is None or candidate.base_candidate is None:
+                dependencies: tuple[str, ...]
+                if candidate.kind == "shrink_b1" and candidate.weights is not None and candidate.base_candidate:
+                    dependencies = (candidate.base_candidate,)
+                    base = final_by_candidate.get(candidate.base_candidate)
+                    if base is None:
+                        raise ContractError(f"{candidate.id}: base candidate has not been fitted")
+                    final = shrink_toward_b1(base, b1_all, candidate.weights)
+                elif candidate.kind == "convex_blend" and candidate.blend_weights is not None:
+                    dependencies = candidate.component_candidates
+                    missing = set(dependencies) - set(final_by_candidate)
+                    if missing:
+                        raise ContractError(
+                            f"{candidate.id}: components have not been fitted: {sorted(missing)}"
+                        )
+                    final = convex_blend(
+                        {name: final_by_candidate[name] for name in dependencies},
+                        candidate.blend_weights,
+                    )
+                elif (
+                    candidate.kind == "residual_calibration"
+                    and candidate.base_candidate
+                    and candidate.residual_calibration is not None
+                ):
+                    dependencies = (candidate.base_candidate,)
+                    base = final_by_candidate.get(candidate.base_candidate)
+                    if base is None:
+                        raise ContractError(f"{candidate.id}: base candidate has not been fitted")
+                    final = apply_global_residual_calibration(
+                        base,
+                        candidate.residual_calibration,
+                        lower_bound=float(baseline_cfg["postprocessing"]["lower_bound"]),
+                    )
+                else:
                     raise ContractError(f"unsupported derived candidate: {candidate.id}")
-                base = final_by_candidate.get(candidate.base_candidate)
-                if base is None:
-                    raise ContractError(f"{candidate.id}: base candidate has not been fitted")
-                final = shrink_toward_b1(base, b1_all, candidate.weights)
                 raw_by_candidate[candidate.id] = final.copy()
                 final_by_candidate[candidate.id] = final
-                feature_columns[candidate.id] = feature_columns[candidate.base_candidate]
-                fit_seconds[candidate.id] = 0.0
-                fit_rows[candidate.id] = fit_rows[candidate.base_candidate]
-                training_history_identity[candidate.id] = training_history_identity[
-                    candidate.base_candidate
+                feature_columns[candidate.id] = [
+                    f"{dependency}:{column}"
+                    for dependency in dependencies
+                    for column in feature_columns[dependency]
                 ]
-                sample_weight_policy[candidate.id] = sample_weight_policy[candidate.base_candidate]
+                fit_seconds[candidate.id] = 0.0
+                fit_rows[candidate.id] = max(fit_rows[dependency] for dependency in dependencies)
+                training_history_identity[candidate.id] = stable_digest(
+                    {
+                        dependency: training_history_identity[dependency]
+                        for dependency in dependencies
+                    }
+                )
+                sample_weight_policy[candidate.id] = "derived_from_component_predictions"
 
             for unit in grouped_units:
                 _, actual, unit_split = select_partitions(labels, unit)

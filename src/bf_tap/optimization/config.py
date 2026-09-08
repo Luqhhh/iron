@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from math import isfinite
 from pathlib import Path
 from typing import Any
 
@@ -38,6 +39,9 @@ class Candidate:
     base_candidate: str | None = None
     weights: dict[str, float] | None = None
     history_view_ages_days: tuple[int, ...] = (0,)
+    component_candidates: tuple[str, ...] = ()
+    blend_weights: dict[str, dict[str, float]] | None = None
+    residual_calibration: dict[str, float] | None = None
 
 
 @dataclass(frozen=True)
@@ -142,6 +146,75 @@ def load_experiment(path: str | Path) -> tuple[dict[str, Any], list[Candidate]]:
                     "shrink_b1",
                     base_candidate=value["base_candidate"],
                     weights={key: float(weight) for key, weight in weights.items()},
+                )
+            )
+        elif value.get("kind") == "convex_blend":
+            _exact(value, {"kind", "component_candidates", "weights"}, candidate_id)
+            components = value["component_candidates"]
+            if (
+                not isinstance(components, list)
+                or len(components) < 2
+                or len(components) != len(set(components))
+                or any(component not in candidates for component in components)
+                or candidate_id in components
+                or any(candidates[component].get("kind") != "model" for component in components)
+            ):
+                raise ContractError(f"{candidate_id}: invalid component_candidates")
+            weights = value["weights"]
+            _exact(weights, {"tap_iron", "tap_time_len"}, f"{candidate_id}.weights")
+            parsed_weights: dict[str, dict[str, float]] = {}
+            for target, target_weights in weights.items():
+                if not isinstance(target_weights, dict) or set(target_weights) != set(components):
+                    raise ContractError(
+                        f"{candidate_id}: {target} weights must match component_candidates"
+                    )
+                numeric = {name: float(weight) for name, weight in target_weights.items()}
+                if (
+                    any(not isfinite(weight) or weight < 0 for weight in numeric.values())
+                    or abs(sum(numeric.values()) - 1.0) > 1e-12
+                ):
+                    raise ContractError(
+                        f"{candidate_id}: {target} weights must be nonnegative and sum to one"
+                    )
+                parsed_weights[target] = numeric
+            parsed.append(
+                Candidate(
+                    candidate_id,
+                    "convex_blend",
+                    component_candidates=tuple(components),
+                    blend_weights=parsed_weights,
+                )
+            )
+        elif value.get("kind") == "residual_calibration":
+            _exact(value, {"kind", "base_candidate", "median_prediction_minus_actual"}, candidate_id)
+            base_candidate = value["base_candidate"]
+            if (
+                base_candidate not in candidates
+                or base_candidate == candidate_id
+                or candidates[base_candidate].get("kind") != "model"
+            ):
+                raise ContractError(f"{candidate_id}: invalid base_candidate")
+            residuals = value["median_prediction_minus_actual"]
+            _exact(
+                residuals,
+                {"tap_iron", "tap_time_len"},
+                f"{candidate_id}.median_prediction_minus_actual",
+            )
+            if any(
+                isinstance(residual, bool)
+                or not isinstance(residual, (int, float))
+                or not isfinite(float(residual))
+                for residual in residuals.values()
+            ):
+                raise ContractError(f"{candidate_id}: calibration residuals must be numeric")
+            parsed.append(
+                Candidate(
+                    candidate_id,
+                    "residual_calibration",
+                    base_candidate=base_candidate,
+                    residual_calibration={
+                        target: float(residual) for target, residual in residuals.items()
+                    },
                 )
             )
         else:

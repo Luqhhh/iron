@@ -12,7 +12,11 @@ from .config import load_yaml, validate_data_paths
 from .exceptions import BFTapError, ContractError
 from .offline import run_prediction, run_training
 from .optimization import run_optimization_validation
-from .optimization.release import run_candidate_prediction, run_candidate_training
+from .optimization.release import (
+    run_candidate_prediction,
+    run_candidate_training,
+    run_derived_prediction,
+)
 from .protection import load_protection_policy, record_protected_access
 from .submission import pack_submission, validate_submission
 from .validation import run_development_validation
@@ -137,7 +141,40 @@ def _parser() -> argparse.ArgumentParser:
     opt_predict.add_argument("--data-config", required=True)
     opt_predict.add_argument("--stage", required=True, choices=("test_a", "test_b", "test_c"))
     opt_predict.add_argument("--output", required=True)
+
+    derived_predict = sub.add_parser(
+        "optimize-derived-predict-v0.2",
+        help="combine registered v0.2 component prediction runs",
+    )
+    derived_predict.add_argument("--data-config", required=True)
+    derived_predict.add_argument("--baseline-config", default="configs/baseline.yaml")
+    derived_predict.add_argument(
+        "--experiment-config", default="configs/optimization_v0_2/experiment.yaml"
+    )
+    derived_predict.add_argument("--candidate", required=True)
+    derived_predict.add_argument(
+        "--component-prediction",
+        action="append",
+        required=True,
+        help="registered component and prediction directory as CANDIDATE=PATH",
+    )
+    derived_predict.add_argument(
+        "--stage", required=True, choices=("test_a", "test_b", "test_c")
+    )
+    derived_predict.add_argument("--output", required=True)
     return parser
+
+
+def _component_prediction_mapping(values: list[str]) -> dict[str, str]:
+    result: dict[str, str] = {}
+    for value in values:
+        if "=" not in value:
+            raise ContractError("component prediction must be CANDIDATE=PATH")
+        candidate, path = value.split("=", 1)
+        if not candidate or not path or candidate in result:
+            raise ContractError("component prediction mapping is invalid or duplicated")
+        result[candidate] = path
+    return result
 
 
 def _audit(args: argparse.Namespace) -> int:
@@ -310,6 +347,20 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "optimize-predict-v0.2":
             path = run_candidate_prediction(
                 bundle_path=args.bundle,
+                data_config_path=args.data_config,
+                stage=args.stage,
+                output=args.output,
+            )
+            print(path)
+            return 0
+        if args.command == "optimize-derived-predict-v0.2":
+            path = run_derived_prediction(
+                experiment_config_path=args.experiment_config,
+                baseline_config_path=args.baseline_config,
+                candidate_id=args.candidate,
+                component_prediction_paths=_component_prediction_mapping(
+                    args.component_prediction
+                ),
                 data_config_path=args.data_config,
                 stage=args.stage,
                 output=args.output,

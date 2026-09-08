@@ -118,3 +118,23 @@
 上一最佳 `82.7046` 高 `0.1128` 分、比 OPT-03 E07 高 `0.4564` 分、比冻结
 baseline 高 `1.3620` 分。E09 成为当前平台 incumbent；平台总分仍不作为其已
 通过开发门禁的替代证据，也不用于回调 F1 定义。
+
+## 2026-09-08 · test_a / OPT-05 E12 registered blend
+
+| 字段 | 记录 |
+| --- | --- |
+| 平台显示成绩 | 待用户回传 |
+| 证据状态 | `PENDING_USER_REPORT`；开发 G1 已通过 |
+| 候选 | `E12_BLEND_E09_E04_80_20`；两目标固定 `0.8×E09 + 0.2×E04` |
+| 开发门禁 | G0 通过；G1 六项全部通过 |
+| 开发 J | `0.171713`；相对 E00 改善 `0.011370` |
+| ZIP SHA-256 | `5e628c5bdc3403f44b7272498345d2727df28a87f2ab97419a4edf65c02b593e` |
+| result.csv SHA-256 | `0f271c7bff4b327e54294f2e286594fd41cfc6302e9087cd71f2e2ca820ba75e` |
+| 开发 run | `local/runs/optimization-v0.2-opt05-derived-grid-r1` |
+| 派生预测 run | `local/predictions/optimization-v0.2-opt05-e12-test-a-r2` |
+| 训练生命周期 | `development`；截止 `2024-11-01T00:00:00+08:00` |
+| 保护标签 | 未读取、未消费 |
+
+E12 按预登记的等权 horizon 聚合目标优于 E14 后冻结，未依据 `82.8174` 搜索
+融合权重。桌面提交包已替换并通过本地/桌面 SHA-256 一致性校验；在新成绩回传
+前，E09 的 `82.8174` 仍是平台 incumbent。
