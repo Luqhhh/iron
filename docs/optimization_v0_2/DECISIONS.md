@@ -77,3 +77,10 @@ E02, `E10_PROCESS_CHANGE_E01` adds F1 to the no-history E01 route, and
 `E11_PROCESS_CHANGE_E04` adds only the F1 process source to E04. E00, E01, E02 and
 E04 remain controls. Model parameters, post-processing and acceptance are
 unchanged; no platform result participates in feature or candidate selection.
+
+## D009 — Promote E09 as the platform incumbent without retuning F1
+
+E09 passed every development gate before upload. The user subsequently reported a
+test_a score of `82.8174`, improving the previous incumbent by `0.1128`. E09 is the
+new incumbent, but the external total score does not authorize changing the fixed
+F1 windows, signed-difference definitions, model parameters or acceptance policy.

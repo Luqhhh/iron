@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-07",
+  "as_of": "2026-09-08",
   "implementation_version": "baseline-v0.1-reproducible",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
@@ -94,7 +94,7 @@
   ],
   "optimization_v0_2": {
     "branch": "optimization-v0.2",
-    "status": "OPT_01_04_COMPLETE_OPT_04_G0_G1_PASS_PLATFORM_PENDING",
+    "status": "OPT_01_04_COMPLETE_OPT_04_G0_G1_PASS_PLATFORM_REPORTED",
     "implementation": {
       "OPT_01": "COMPLETE",
       "OPT_02": "COMPLETE",
@@ -133,15 +133,16 @@
       "candidate_J_improvement_vs_E00": 0.0092224312,
       "release_manifest": "local/manifests/optimization-v0.2-opt04-e09-test-a-r1.json",
       "submission_zip_sha256": "059f2b73baa026aa5b78ad58a641b848d777497eb77ef5d667ff1878d8bd1527",
-      "platform_score": "PENDING_USER_REPORT",
+      "platform_score": 82.8174,
+      "platform_evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "protected_labels_read": false
     },
     "platform_evidence": {
       "status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "adaptive_iteration_stopped": true,
-      "scores": [81.4554, 82.329, 82.4431, 82.6221, 82.7046, 82.361],
-      "best_score": 82.7046,
-      "best_submission_sha256": "d38e7f2ae71fa88ae63ca7dd43ee8a176a8366776c69181b3797211ddf6bac36"
+      "scores": [81.4554, 82.329, 82.4431, 82.6221, 82.7046, 82.361, 82.8174],
+      "best_score": 82.8174,
+      "best_submission_sha256": "059f2b73baa026aa5b78ad58a641b848d777497eb77ef5d667ff1878d8bd1527"
     },
     "development_platform_consistency": {
       "candidate_count": 5,
@@ -150,7 +151,7 @@
       "mean_absolute_score_gap": 1.7258571391,
       "conclusion": "HIGH_DIRECTIONAL_CONSISTENCY_LOW_ABSOLUTE_CALIBRATION_SMALL_DEPENDENT_SAMPLE"
     },
-    "next_phase": "WAIT_FOR_USER_REPORTED_OPT04_PLATFORM_SCORE"
+    "next_phase": "OPT_05_PRE_REGISTRATION"
   },
   "remote_ci_for_repair": {
     "status": "PASS",

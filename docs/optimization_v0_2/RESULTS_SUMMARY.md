@@ -148,4 +148,6 @@ E09 passed all six frozen acceptance checks. Relative to E00, J improved by
 DEV_LONG narrowly but validly beat the better median control (`0.176021` versus
 `0.176101`). E10 passed five checks but did not beat that control. OPT-04 therefore
 has G0 and G1 PASS with E09 as the accepted candidate. Its test_a submission is
-frozen and awaiting a user-reported platform score.
+frozen; the user reported `82.8174`. This improves the previous platform incumbent
+by `0.1128` and the frozen baseline by `1.3620`. E09 is now the platform incumbent,
+with the platform result retained as external, non-independent evidence.

@@ -1,6 +1,6 @@
 # optimization-v0.2 execution plan
 
-Status as of 2026-09-07: OPT-01 through OPT-04 are implemented and executed on the
+Status as of 2026-09-08: OPT-01 through OPT-04 are implemented and executed on the
 `optimization-v0.2` branch. OPT-03 passed G0 but neither candidate passed G1;
 OPT-04 E09 passed G0 and every G1 gate. OPT-05 and OPT-06 are not complete. The immutable
 comparison remains `baseline-v0.1-reproducible`.
@@ -96,4 +96,5 @@ controls and uses the unchanged screening and full-grid protocol.
 Screening promoted E09 and E10; E11 was rejected for excessive DEV_LONG
 regression versus E04. In the complete grid, E09 passed all acceptance gates and
 E10 failed only the DEV_LONG control comparison. E09 is frozen and packaged for a
-single test_a platform check; the score is pending user report.
+single test_a platform check. The user reported `82.8174`, making E09 the current
+platform incumbent while leaving its pre-existing G1 decision unchanged.
