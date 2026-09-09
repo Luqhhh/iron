@@ -837,5 +837,144 @@
       "decision": "DO_NOT_PROMOTE_KEEP_R2",
       "agent_uploaded": false
     }
+  },
+  "optimization_v0_7": {
+    "branch": "optimization-v0.7",
+    "base_commit": "9c42f4fa",
+    "run": "local/runs/optimization-v0.7-opt19-r1",
+    "status": "COMPLETE_FAIL_CLOSE_PSEUDO_HISTORY",
+    "G0": "PASS_OPT19",
+    "G1": "FAIL",
+    "acceptance": {
+      "DEV_deltas": {
+        "DEV_LONG": 0.0035905067155976855,
+        "DEV_SHORT": 0.010147809689807247
+      },
+      "H1_origin_deltas": {
+        "O202406_H1": -0.0018267647322986746,
+        "O202407_H1": -0.0025628490395071257,
+        "O202408_H1": 0.006177568063679806,
+        "O202409_H1": 0.007512214078543744,
+        "O202410_H1": 0.0064933600869834796,
+        "O202411_H1": -0.0018803241072737065
+      },
+      "H1_target_deltas": {
+        "iron": 0.0028691698156035894,
+        "time": 0.0017685649677722237
+      },
+      "J": 0.17175292397572037,
+      "J_delta": 0.004762479519001633,
+      "checks": {
+        "DEV": false,
+        "H1_mean": false,
+        "H1_origins": false,
+        "H1_targets": false,
+        "H234": false,
+        "extended_J": false,
+        "recent_H1": false
+      },
+      "horizon_deltas": {
+        "H1": 0.002318867391687962,
+        "H2": 0.006435550789740507,
+        "H3": 0.005411550313976693,
+        "H4": 0.004883949580601454
+      },
+      "passed": false,
+      "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION"
+    },
+    "summary": {
+      "U0": {
+        "J": 0.16699044445671873,
+        "horizons": {
+          "H1": {
+            "iron_mean_wmape": 0.16030701937377403,
+            "mean_loss": 0.15765228628387426,
+            "origins": 6,
+            "time_mean_wmape": 0.15499755319397454
+          },
+          "H2": {
+            "iron_mean_wmape": 0.1699452192962035,
+            "mean_loss": 0.16659989979443782,
+            "origins": 5,
+            "time_mean_wmape": 0.16325458029267215
+          },
+          "H3": {
+            "iron_mean_wmape": 0.17549692027210906,
+            "mean_loss": 0.17470617277786366,
+            "origins": 4,
+            "time_mean_wmape": 0.1739154252836183
+          },
+          "H4": {
+            "iron_mean_wmape": 0.16750959536677792,
+            "mean_loss": 0.16900341897069918,
+            "origins": 3,
+            "time_mean_wmape": 0.17049724257462048
+          }
+        }
+      },
+      "U1": {
+        "J": 0.17175292397572037,
+        "horizons": {
+          "H1": {
+            "iron_mean_wmape": 0.16317618918937762,
+            "mean_loss": 0.15997115367556222,
+            "origins": 6,
+            "time_mean_wmape": 0.15676611816174676
+          },
+          "H2": {
+            "iron_mean_wmape": 0.17680529265244754,
+            "mean_loss": 0.17303545058417832,
+            "origins": 5,
+            "time_mean_wmape": 0.1692656085159091
+          },
+          "H3": {
+            "iron_mean_wmape": 0.1802617124011857,
+            "mean_loss": 0.18011772309184035,
+            "origins": 4,
+            "time_mean_wmape": 0.179973733782495
+          },
+          "H4": {
+            "iron_mean_wmape": 0.1716177859802943,
+            "mean_loss": 0.17388736855130063,
+            "origins": 3,
+            "time_mean_wmape": 0.17615695112230698
+          }
+        }
+      }
+    },
+    "attempted_target_fits": 0,
+    "completed_target_fits": 0,
+    "origins": 6,
+    "grid_cells": 18,
+    "DEV_units": 2,
+    "origin_sample_rows": 5651,
+    "input_reversal": "EXACT_ALL_SIX_ORIGINS",
+    "independent_audit_report": "local/reports/optimization-v0.7-audit-final-r1.json",
+    "independent_audit_sha256": "d8d0a104efabf47adecf5e5209fc058768b3a1e19f5e706da12ef9f1be624cbe",
+    "first_test_timestamp_exact": true,
+    "test_labels_read": false,
+    "challenger_generated": false,
+    "platform_uploaded": false,
+    "active_candidate": "R2",
+    "active_user_reported_score": 83.0207,
+    "active_release_unchanged": true,
+    "desktop_delivery": {
+      "candidate": "R2",
+      "status": "RESTORED_AND_SHA256_VERIFIED",
+      "path": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
+      "sha256": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf"
+    },
+    "old_protected_ledger_unchanged": true,
+    "tests_passed": 182,
+    "test_report": "local/reports/pytest-optimization-v0.7-r2.xml",
+    "test_report_sha256": "52aacc3ae78b702dbae3a531b12210ca8f92344b9ac1fe7898de3aef5ed6b2e0",
+    "results_document": "docs/optimization_v0_7/RESULTS.md",
+    "decision_sha256": "34cf7f94b0b9f057a791f4b048d960820e3d6e2dc37b3341117b21434030d084",
+    "closed_directions": [
+      "old_model_routing_and_blending",
+      "causal_pseudo_history"
+    ],
+    "next_phase": "optimization-v0.8 cross-target structural regression",
+    "new_model_training_started": false
   }
 }

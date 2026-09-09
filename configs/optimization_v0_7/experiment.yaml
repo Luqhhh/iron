@@ -1,0 +1,16 @@
+schema_version: 1
+base_commit: 9c42f4fa
+candidates: [U0, U1]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+source_export: local/runs/optimization-v0.5-opt14-export-r1
+source_scores: local/runs/optimization-v0.5-opt14-score-r2
+max_target_fits: 0
+policy: causal_pseudo_completion_same_timestamp_snapshot
+H1_min_improvement: 0.001
+H1_min_improved_origins: 5
+recent_H1_must_improve: [9, 10, 11]
+H1_target_max_regression: 0.001
+H234_max_regression: 0.0015
+J_max_regression: 0.0
+DEV_max_regression: 0.0015
+platform_upload: false

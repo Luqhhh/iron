@@ -8,6 +8,15 @@
 
 ## 当前状态
 
+optimization-v0.7 / OPT-19 已完成：**G0 PASS，G1 FAIL，关闭 pseudo-history 路线**。
+六个 origin 连续滚动、18-cell 和 DEV_LONG/SHORT 均已评估，实验 0 fit；
+U1 的 H1 E 退化 0.0023189，extended J 退化 0.0047625，严格门槛全部失败。
+182 项锁定测试通过，未生成 challenger。详见 [v0.7 结果](docs/optimization_v0_7/RESULTS.md)。
+
+当前候选仍为 **R2 = 83.0207**（用户回传）。桌面已恢复 R2 原包并核验 SHA-256。
+v0.6 S1 的用户回传为 82.7707；旧模型路由/融合和伪历史递归方向均已关闭。
+下一方向为 v0.8 cross-target structural regression；本轮未启动新模型训练。
+
 optimization-v0.4 已完成 OPT-11 四臂解耦、OPT-12 两个固定历史候选、OPT-13 跨截止点组合、
 18 格回溯验证与唯一胜出候选发布。**R2** 通过全部预登记门槛，J 改善 0.0013787；
 132 项锁定测试通过。正式训练使用 2,754 行，截止点为 2024-12-01 01:44+08:00。
