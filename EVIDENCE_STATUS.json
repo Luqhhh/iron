@@ -1482,5 +1482,28 @@
     "completion_receipt": "local/reports/optimization-v0.10-completion-r1.json",
     "completion_receipt_sha256": "7fb6f5fd1312d71bb0198199262e38d44831564813f2eeccb714a1b93f93ee56",
     "results_document": "docs/optimization_v0_10/RESULTS.md"
+  },
+  "current_status": {
+    "as_of": "2026-09-09",
+    "latest_completed_phase": "optimization-v0.10",
+    "latest_experiment_commit": "fcda5e0054c2e1ab94a988f1224917e2ecc608ed",
+    "latest_experiment_branch_pushed": true,
+    "active_candidate": "V1_RATE_STRUCTURAL",
+    "active_release_config": "configs/optimization_v0_8/active_release.yaml",
+    "user_reported_test_a_score": 83.0319,
+    "platform_evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+    "fallback_candidate": "R2",
+    "fallback_release_config": "configs/optimization_v0_4/active_release.yaml",
+    "fallback_user_reported_score": 83.0207,
+    "latest_G0": "PASS_DEVELOPMENT_AND_INDEPENDENT_COLD",
+    "latest_G1": "FAIL_ALL_NINE_FROZEN_GATES",
+    "latest_locked_tests_passed": 221,
+    "pending_challenger": false,
+    "holdout_consumed": true,
+    "retrospective_grid_completed": true,
+    "next_model_registered": false,
+    "desktop_candidate": "V1_RATE_STRUCTURAL",
+    "documentation_index": "docs/INDEX.md",
+    "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview."
   }
 }

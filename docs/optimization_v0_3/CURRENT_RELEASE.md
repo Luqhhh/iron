@@ -1,4 +1,7 @@
-# 当前发布候选：E16（r2 平台回传后再次回退）
+# 历史 E16 发布与回退记录
+
+> 当前项目活动候选为 [V1_RATE_STRUCTURAL](../optimization_v0_8/CURRENT_RELEASE.md)，用户回传 83.0319。下文的配置、桌面状态及“当前”是本阶段的历史记录；其命令恢复旧包，不会导出当前 V1。
+
 
 后续 r2 已完成 E12-raw 的正式全量训练，回传 82.5430 后经用户确认再次恢复 E16。
 当前指针为 `configs/optimization_v0_3_r2/active_release.yaml`。r2 归档包及证据见

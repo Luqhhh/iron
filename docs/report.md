@@ -1,6 +1,21 @@
-# Baseline 实施报告
+# 项目实施报告
 
-当前状态：修复后的工程链路已在本地 Python 3.12 锁定环境验收通过；冻结模型质量未通过。
+截至 2026-09-09，optimization-v0.10 / OPT-23 已完成并推送至 `fcda5e0`。
+当前发布仍为 **V1_RATE_STRUCTURAL = 83.0319**（用户回传），R2 = 83.0207 保留回退。
+
+- 最新 G0：执行和独立冷进程通过；221 项 Python 3.12 锁定测试通过，六个 origin 预测最大差为 0。
+- 最新 G1：固定 V4 九项门槛全部失败，J 相对 V1 退化 0.0053128；12 次 residual 开发训练后关闭。
+- v0.9 V2/V3 同样未通过严格门槛；两阶段均无 final fit、无 challenger。
+- November 已经授权消费；18-cell、六个 H1 origins、DEV_LONG/SHORT 已执行。旧 baseline 的保护入口仍按原契约运行。
+- 桌面为 V1 原包，V1/R2 摘要保持不变；平台成绩未经独立回执核验。
+
+[完整 v0.10 结果](optimization_v0_10/RESULTS.md) · [当前发布](optimization_v0_8/CURRENT_RELEASE.md) · [文档索引](INDEX.md)
+
+## 历史 baseline 修复记录（非当前项目状态）
+
+以下为当时记录，其中测试数、保护集、未执行项和提交动作只适用于该次修复。
+
+当时状态：修复后的工程链路已在本地 Python 3.12 锁定环境验收通过；冻结模型质量未通过。
 
 剩余两个 P1 已收口：bundle v3 强绑定公共 process source 身份，baseline/feature/semantic 配置以 canonical SHA-256 全量冻结。新 v3 DEV 相对既有 baseline 原始预测差为 0；详见 `docs/review/FREEZE_REPORT.md`。
 

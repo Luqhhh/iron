@@ -9,9 +9,10 @@ ZIP：`local/runs/optimization-v0.8-v1-challenger-r1/Luqhhh_bf_tap_predict_preli
 
 SHA-256：`fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa`。
 
-独立推理（输出路径必须不存在）：
+独立推理（父目录须存在，输出文件必须不存在；脚本输出内部预测及审计 JSON，不直接生成赛事 ZIP）：
 
 ```bash
+mkdir -p local/predictions
 .venv/bin/python scripts/optimization_v8_cold_predict.py \
   --bundle local/runs/optimization-v0.8-v1-challenger-r1/bundle \
   --data-config local/runs/optimization-v0.8-v1-challenger-r1/cold_data_repaired.yaml \
@@ -26,3 +27,15 @@ R2 回退登记：`configs/optimization_v0_4/active_release.yaml`。
 没有新训练、标签读取、预测修改或平台上传；不根据这个分数继续调整系数。
 历史 RESULTS.md 和本地 release_validation 中的 R2 incumbent/未上传描述，
 对应反馈到来之前的实验交付状态，不回写旧证据。
+
+## v0.9/v0.10 完成后的状态
+
+两轮开发均未晋级，V1 保持活动发布，桌面包与原包 SHA-256 仍一致。
+v0.10 完成 12 次 residual fit，221 项测试通过，独立冷进程最大差为 0，
+但九项质量门槛全部失败。没有新增待测包或 final 模型。
+
+V1 专用脚本当前只接收 test_a；不能用原 baseline 通用 predict 入口加载这个复合
+bundle，也不能把内部 `pred_*` 列 CSV 直接当作赛事 `result.csv` 上传。
+现成 ZIP 已完成提交格式验证。新机器需要恢复本地模型和推理配置，Git 不存储模型。
+
+[最新结果](../optimization_v0_10/RESULTS.md) · [文档索引](../INDEX.md)

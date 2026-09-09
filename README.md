@@ -1,281 +1,114 @@
 # bf-tap-predict
 
-[![locked-tests](https://github.com/Luqhhh/iron/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/Luqhhh/iron/actions/workflows/tests.yml)
+[![locked-tests](https://github.com/Luqhhh/iron/actions/workflows/tests.yml/badge.svg?branch=optimization-v0.10)](https://github.com/Luqhhh/iron/actions/workflows/tests.yml)
 
-高炉铁次双目标预测的防时间泄漏 baseline。项目提供从原始文件审计、时间切分、特征构造、训练、离线推理到提交打包的完整工程链路。
-
-工程基线已冻结为 [`baseline-v0.1-reproducible`](https://github.com/Luqhhh/iron/tree/baseline-v0.1-reproducible)。后续模型质量工作必须进入独立的 optimization-v0.2 阶段，不回写 baseline 配置、结果或证据。
+高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
+工程基线 `baseline-v0.1-reproducible` 保持冻结；后续优化使用独立阶段、配置与运行目录。
 
 ## 当前状态
 
-optimization-v0.10 / OPT-23 已完成：**G0 执行与冷进程审计通过，V4 causal OOF residual stacking 九项 G1 门槛全部失败**。
-12 次低容量 residual 训练完成，R2/rate/q 均未重训；J 相对 V1 退化 0.0053128，H1 E 退化 0.0015335。
-221 项锁定测试通过；不消耗 final 训练预算、不生成 challenger。当前活动候选和桌面包仍为 **V1 = 83.0319**。
-本轮固定 V4 已关闭，不追加参数或目标消融搜索；[完整结果与冷进程审计](docs/optimization_v0_10/RESULTS.md)。
+截至 2026-09-09，最新完成阶段为 **optimization-v0.10 / OPT-23**，代码提交 `fcda5e0` 已推送。
+当前活动候选及桌面包仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
+平台成绩未独立核验，不代表开发结果能直接换算成排行榜收益。
 
-optimization-v0.9 / OPT-21、OPT-22 已完成：**G0 开发执行通过，V2/V3 均未通过 G1，关闭 ratio-structure 扩展**。
-W0 零训练消融保留 V1 开发 J 收益的 91.44%；八个 inverse-rate 模型完成，未重训 R2/rate。
-V2/V3 相对 V1 的 J 仅改善 0.0001607 / 0.0000530，均低于 0.0005 门槛；未训练 final q、未生成 challenger。
-209 项锁定测试通过；完整结果和独立冷进程审计见 [v0.9 结果](docs/optimization_v0_9/RESULTS.md)。
-当前活动候选和桌面包仍为 **V1 = 83.0319**，R2 原包保持回退。后续 v0.10 结果见上方。
-
-optimization-v0.8 / OPT-20 已完成：**V1 rate/iron/time 结构回归通过全部严格开发门槛**，
-J 改善 0.0012579，H1 改善 0.0010116，5/6 个 H1 origin 改善，Sep/Oct/Nov 全部改善。
-196 项测试通过，完整开发和最终 test_a 冷进程重现最大差均为 0。
-用户回传 V1 test_a **83.0319**，比 R2 的 83.0207 提高 **0.0112 分**；**当前活动候选更新为 V1**。
-桌面 V1 包已核验，R2 原包保留回退。当前登记为 `configs/optimization_v0_8/active_release.yaml`。
-成绩为用户回传、未独立核验；详见 [V1 当前发布](docs/optimization_v0_8/CURRENT_RELEASE.md) 与
-[v0.8 开发结果](docs/optimization_v0_8/RESULTS.md)。
-
-optimization-v0.7 / OPT-19 已完成：**G0 PASS，G1 FAIL，关闭 pseudo-history 路线**。
-六个 origin 连续滚动、18-cell 和 DEV_LONG/SHORT 均已评估，实验 0 fit；
-U1 的 H1 E 退化 0.0023189，extended J 退化 0.0047625，严格门槛全部失败。
-182 项锁定测试通过，未生成 challenger。详见 [v0.7 结果](docs/optimization_v0_7/RESULTS.md)。
-
-v0.7 结束时保留 **R2 = 83.0207**（用户回传），并恢复桌面 R2 原包；当前发布见上方。
-v0.6 S1 的用户回传为 82.7707；旧模型路由/融合和伪历史递归方向均已关闭。
-v0.7 未启动新模型训练；后续 v0.8 新模型结果见上方。
-
-optimization-v0.4 已完成 OPT-11 四臂解耦、OPT-12 两个固定历史候选、OPT-13 跨截止点组合、
-18 格回溯验证与唯一胜出候选发布。**R2** 通过全部预登记门槛，J 改善 0.0013787；
-132 项锁定测试通过。正式训练使用 2,754 行，截止点为 2024-12-01 01:44+08:00。
-
-2026-09-09 用户回传 R2 test_a 为 **83.0207**，相对 E16 的 82.9918 提高 **0.0289**。
-原 R2 发布登记 `configs/optimization_v0_4/active_release.yaml` 现保留为回退；当前发布见上方 v0.8 状态。
-成绩属于用户回传，未通过平台 API 或回执独立核验。November 始终是已消费的回溯开发数据。
-详见 [v0.4 完整结果](docs/optimization_v0_4/RESULTS.md) 和
-[当前发布与恢复方法](docs/optimization_v0_4/CURRENT_RELEASE.md)。本轮初赛工作包已收口；B/C 尚无本轮验收和平台结果。
-
-E16 原包保留为回退，旧 v0.3/r2 发布配置和导出入口保留历史含义。
-旧全量 E12-raw 的 82.5430、CB-FC-CVcal 的 82.2871 及失败证据均不覆盖。
-下表及后续旧阶段结果仍是冻结 baseline / 历史记录，不作为当前发布指针。
-
-| 项目 | 状态 |
+| 项目 | 当前状态 |
 | --- | --- |
-| G0 工程正确性与可复现性 | `PASS_LOCAL_LOCKED_ENVIRONMENT` |
-| G1 冻结模型质量 | `FAIL_DEV_LONG` |
-| baseline 发布状态 | `BASELINE_REPRODUCIBLE_QUALITY_FAILED` |
-| 时间可用性证据 | `competition-timestamp-contract-v1 / ASSUMED` |
-| baseline 冻结时保护集 | 当时未消费；当前已由 r2 合法消费，见上方 |
-| 冻结测试 | 50 passed，0 failed，0 skipped |
-| test_a / prelim 平台成绩 | `81.4554`（用户报告，未独立核验） |
+| 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
+| 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
+| 最新工程验收 G0 | v0.10 执行及独立冷进程通过，六个 origin 预测最大差为 0 |
+| 最新质量验收 G1 | V4 九项门槛全部失败，固定候选已关闭 |
+| 锁定环境测试 | Python 3.12.12，221 passed；本地证据，不等同于远端 CI 状态 |
+| 新待测包 | 无；v0.9/v0.10 均未生成 challenger |
+| 保护标签状态 | November 已在授权生命周期消费；后续为已消费回溯开发 |
+| 时间语义 | `competition-timestamp-contract-v1 / ASSUMED`，未新增官方确认 |
 
-真实 DEV 结果：
+[当前发布与推理](docs/optimization_v0_8/CURRENT_RELEASE.md) · [最新实施报告](docs/report.md) ·
+[文档索引与历史口径](docs/INDEX.md) · [机器可读状态](EVIDENCE_STATUS.json)
 
-| 场景 | CatBoost E | B0 | B1 | 质量 |
-| --- | ---: | ---: | ---: | --- |
-| DEV_LONG | 0.185646 | 0.176148 | 0.176101 | FAIL |
-| DEV_SHORT | 0.171456 | 0.178157 | 0.178897 | PASS |
+## 最近实验
 
-E 越低越好。这些是真实赛事数据上的授权本地运行证据，不是公共 GitHub 环境对私有数据的独立复现。两次干净重训的 raw prediction 完全一致；冻结后的 bundle v3 与此前 baseline 输出最大绝对差为 `0.0`。
+| 阶段 | 结果 | 决策 |
+| --- | --- | --- |
+| [v0.10 / OPT-23](docs/optimization_v0_10/RESULTS.md) | 12 次低容量 residual fit；相对 V1，J 退化 0.0053128，H1 E 退化 0.0015335 | 关闭固定 V4；无 final fit、无平台包 |
+| [v0.9 / OPT-21/22](docs/optimization_v0_9/RESULTS.md) | W0 保留 V1 开发收益 91.44%；8 次 q fit；V2/V3 J 改善仅 0.0001607 / 0.0000530 | 严格门槛失败，关闭 ratio 扩展 |
+| [v0.8 / OPT-20](docs/optimization_v0_8/RESULTS.md) | V1 通过开发门槛；平台用户回传比 R2 提高 0.0112 分 | 保留当前 V1 |
+| [v0.7 / OPT-19](docs/optimization_v0_7/RESULTS.md) | 0 fit；pseudo-history J 退化 0.0047625 | 关闭历史递归路线 |
+| [v0.6](docs/optimization_v0_6/RESULTS.md) | S1 开发通过，但平台回传 82.7707，比 R2 低 0.2500 分 | 未晋级；关闭旧模型路由/融合路线 |
 
-用户使用冻结 baseline、2024-11-01 development 截止点生成的 `Luqhhh_bf_tap_predict_prelim.zip` 报告 test_a 平台成绩 `81.4554`。提交包 SHA-256 为 `44ac6ced2fe3b871f387500caed325183bd73a55f11c56efb7a0f84531957c8f`；平台回执未纳入仓库，因此该成绩只标记为用户报告。详见 [提交记录](docs/submission_log.md)。
+各阶段报告记录当时的候选、桌面包和训练状态，不能用其中的“当前”替代上方发布登记。
+历史 baseline DEV_LONG 失败、50 项冻结测试等证据见 [冻结报告](docs/review/FREEZE_REPORT.md)，不作为最新项目状态。
 
-## 冻结内容
-
-模型路线保持为两个固定 CatBoost MAE 回归器。没有通过调参、改变窗口、放宽门槛或读取 11 月标签来制造质量通过。
-
-`configs/baseline.yaml` 声明三份 canonical SHA-256：
-
-| 契约 | SHA-256 |
-| --- | --- |
-| baseline | `798a44e4fb98a1f83d91f0077c32618117b9c25098562a73e6412e792911639c` |
-| feature | `c2fa86c47b4ef906591530cd7fbb368de14bf48f1b1fb3bc4f1dba6bd51e3191` |
-| semantic | `b54c7add8805094245548ac79ff9087d1d7183d68a79441b27a8a96604ad6a25` |
-
-启动时会重新 canonicalize 完整配置并核对摘要。因此 operation/burden 字段、6/24 小时窗口、24/72 小时陈旧阈值、history 3/10 窗口、布尔开关、类别缺失标记或时间语义发生漂移时，都不能继续冒充 `baseline-v0.1`。
-
-bundle v3 还包含 `inference_source_contract`，强绑定训练时公共 process source 的 SHA-256 和字节数。当前真实 source contract ID 为：
-
-```text
-public-process-sources-v1-2773c0f38f89ce32
-```
-
-本机路径不参与 source 身份：内容相同、路径不同可以恢复；内容变化即使列结构相同，也会在特征构建前失败。官方若更新公共表，必须显式训练新 bundle 并生成新 source contract/version。
-
-## 环境安装
-
-权威本地环境为 Python 3.12 和锁定的 `uv.lock`：
+## 环境与数据
 
 ```bash
 uv sync --locked --extra dev --python 3.12
-uv run python -m bf_tap --help
-uv run pytest
-uv run python scripts/check_no_private_artifacts.py
+uv run --locked --python 3.12 pytest
+uv run --locked --python 3.12 python scripts/check_no_private_artifacts.py
 ```
 
-CI 另有 Python 3.11 兼容性 job，但它不替代 Python 3.12 锁定环境证据。
+CI 另有 Python 3.11 兼容性检查。真实训练和推理的权威环境使用 Python 3.12 与 `uv.lock`。
 
-## 数据准备
+用户已授权将 **`初赛数据集/`** 内赛事数据纳入 Git；此授权不扩大到其他目录。
+模型、逐样本预测、本地报告、访问账本和提交 ZIP 仍保存在被忽略的 `local/`，不进入 Git。
+新机器仅克隆源码及数据不会自动获得已保存的 V1/R2 模型包，需要恢复匹配摘要的本地产物。
 
-复制示例配置并填写本机路径：
+本机路径配置可从 `configs/data.example.yaml` 复制为被忽略的 `configs/data.local.yaml`。
+当前 V1 的独立推理配置只包含 `test_a_samples`、`operation_hourly`、`burden_change` 和 `data_dictionary`，
+带 `schema_version: 1`；不包含训练标签或官方历史文件路径。使用与 bundle 内容身份匹配的公共源。
 
-```bash
-cp configs/data.example.yaml configs/data.local.yaml
-```
+## 使用当前 V1
 
-`configs/*.local.yaml` 已被 Git 忽略，只承载本机文件位置。可提交的字段映射和时间语义位于 `configs/data_contract.yaml`，保护边界位于 `configs/protection.yaml`；不要把私有路径复制进语义配置。
-
-真实 CSV/XLSX、字段字典、模型、预测、报告、访问账本和提交包不得进入 Git。仓库公开不代表赛事资产获准外发。
-
-推理可使用更小的 `configs/predict.local.yaml`：
-
-```yaml
-schema_version: 1
-paths:
-  test_a_samples: /absolute/path/to/test_a_samples.csv
-  operation_hourly: /absolute/path/to/operation_hourly.csv
-  burden_change: /absolute/path/to/burden_change.csv
-```
-
-推理不需要训练标签文件；历史授权快照、特征配置和时间语义都随 bundle 保存。
-
-## 运行流程
-
-### 1. 结构审计
-
-结构审计不会统计受保护目标值：
-
-```bash
-uv run python -m bf_tap audit \
-  --data-config configs/data.local.yaml \
-  --output local/reports/structural-audit-<unique-id>.json
-```
-
-### 2. DEV 验证
-
-```bash
-uv run python -m bf_tap validate \
-  --data-config configs/data.local.yaml \
-  --data-contract configs/data_contract.yaml \
-  --protection-policy configs/protection.yaml \
-  --protection-ledger local/manifests/protected_access.json \
-  --config configs/baseline.yaml \
-  --feature-config configs/features.yaml \
-  --split-config configs/validation.yaml \
-  --suite development \
-  --output local/runs/<unique-dev-run-id>
-```
-
-DEV 会在读取标签前检查独立保护边界、fold 时序、时区、分区非空和 train/eval ID 交集。run ID 已存在时直接失败；失败目录和证据不得删除或覆盖。
-
-### 3. Development bundle 训练
-
-```bash
-uv run python -m bf_tap train \
-  --data-config configs/data.local.yaml \
-  --data-contract configs/data_contract.yaml \
-  --protection-policy configs/protection.yaml \
-  --config configs/baseline.yaml \
-  --feature-config configs/features.yaml \
-  --mode development \
-  --train-start 2024-03-01T00:00:00+08:00 \
-  --fit-cutoff 2024-11-01T00:00:00+08:00 \
-  --output local/runs/<unique-train-run-id>
-```
-
-bundle v3 包含模型、特征 schema、完整配置、契约摘要、训练身份、授权历史快照、公共 source contract、环境和组件摘要。
-
-### 4. 独立离线推理
-
-```bash
-uv run python -m bf_tap predict \
-  --bundle local/runs/<train-run-id>/bundle \
-  --data-config configs/predict.local.yaml \
-  --stage test_a \
-  --output local/predictions/<unique-predict-run-id>
-```
-
-`predict` 从 bundle 恢复语义并校验公共 source，不调用 `fit`。同一 bundle 的两次独立进程推理应满足 raw 最大绝对差不超过 `1e-9`，结果 CSV 字节一致。
-
-### 5. 校验和打包
-
-```bash
-uv run python -m bf_tap check-submission \
-  --data-config configs/predict.local.yaml \
-  --stage test_a \
-  --path local/predictions/<id>/result.csv
-
-uv run python -m bf_tap pack \
-  --data-config configs/predict.local.yaml \
-  --stage test_a \
-  --team-name <team> \
-  --result local/predictions/<id>/result.csv \
-  --output-dir local/submissions/<id>
-```
-
-内部生成器要求 ID 集合和官方输入顺序同时一致。`pack` 会重新检查字段、阶段 ID、顺序、行数、有限性和非负性，并在压缩后回读 ZIP、复核 payload 摘要；不依赖操作者预先运行 `check-submission`。
-
-## 时间与保护集契约
-
-当前时间映射是可复现的操作约定，不是官方确认的完整发布时间事实：
-
-- operation：`event_time = available_at = clock`
-- burden：`event_time = available_at = cal_time`
-- history/target：`available_at = tap_end_time`
-
-仍待官方确认：小时统计窗口边界、burden reporting delay、target reporting delay。不要擅自添加 1/6/24 小时滞后，也不要根据排行榜反馈修改时间含义；官方澄清后应创建新 contract ID，使相关旧产物失效。
-
-development 流程不能读取 2024 年 11 月目标。`official-release` 需要冻结 manifest 和显式 `final_training` 访问账本；当前 H1–H4 与真实 protected lifecycle 均未执行。
-
-## 项目结构
+现成 test_a 原包：
 
 ```text
-configs/                 冻结模型、特征、验证、语义与保护配置
-src/bf_tap/              审计、特征、训练、推理、验证和提交实现
-tests/                   单元测试及 subprocess 文件级 E2E
-scripts/                 环境证据、私有资产检查和复现比较工具
-docs/                    当前契约、状态和审阅报告
-md/                      原始实施方案归档，不是运行权威来源
-初赛数据集/              用户明确授权纳入 Git 的赛事数据集
-EVIDENCE_STATUS.json     机器可读项目状态
+local/runs/optimization-v0.8-v1-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip
+SHA-256: fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa
 ```
 
-## 证据与报告
+从已保存模型重新进行独立推理（输出目录须存在，文件名须未使用）：
 
-- [工程冻结报告](docs/review/FREEZE_REPORT.md)
-- [修复报告](docs/review/REPAIR_REPORT.md)
-- [历史验收报告](docs/review/ACCEPTANCE_REPORT.md)
-- [数据契约](docs/data_contract.md)
-- [发布身份](docs/release_identity.md)
-- [机器可读状态](EVIDENCE_STATUS.json)
-- [平台提交记录](docs/submission_log.md)
+```bash
+mkdir -p local/predictions
+uv run --locked --python 3.12 python scripts/optimization_v8_cold_predict.py \
+  --bundle local/runs/optimization-v0.8-v1-challenger-r1/bundle \
+  --data-config local/runs/optimization-v0.8-v1-challenger-r1/cold_data_repaired.yaml \
+  --output local/predictions/v1-cold-UNIQUE.csv
+```
 
-## 后续工作
+该脚本验证原 R2 预测一致性和输入反序一致性，禁止推理 fit，输出内部预测及审计 JSON。
+它不生成新的提交 ZIP，也不上传平台。提交使用已核验原包；内部预测列不应直接作为赛事 `result.csv` 上传。
+通用 `python -m bf_tap predict` 是 baseline bundle 入口；当前 V1 复合模型使用上方专用入口。
+V1 现有专用入口面向 test_a；R2 的 B/C 冷检查是历史工程证据，不等于当前 V1 的 B/C 质量验收。
 
-以下 P2 已记录，但不阻塞 optimization-v0.2：
+R2 回退包 SHA-256：`e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf`。
+恢复方式见 [R2 回退说明](docs/optimization_v0_4/CURRENT_RELEASE.md)。
 
-- 用纯合成数据贯通 `holdout_scoring` 与 `final_training` lifecycle；
-- 正式候选生成 bundle 外部 `release_manifest.json`；
-- 正式 candidate 强制 clean commit/tree；
-- 为 GitHub main 配置 branch protection 和 required `locked-tests`。
+## 因果与保护边界
 
-下一阶段的首要建模问题是：为什么 DEV_LONG 上 CatBoost 弱于简单的 per-spout median？任何优化都应以冻结标签作为对照，使用新配置、run ID 和独立分支记录。
+- operation：`event_time = available_at = clock`；burden：`event_time = available_at = cal_time`。
+- 历史目标：`available_at = tap_end_time`，只纳入参考时刻前已可用且符合场景 cutoff 的记录。
+- 冻结 baseline 的 development 入口仍拒绝 November 目标。已授权的优化阶段使用自己的访问范围、冻结 manifest 和追加账本；November 已消费，不再称为未触碰 holdout。
+- v0.8–v0.10 已评估六个 H1 origins、18-cell 和 DEV_LONG/SHORT；真实 holdout/final-training 生命周期在早期 r2 阶段已执行。
+- 时间语义仍是条件性操作约定；官方若改变窗口或报送时点，应新建 contract ID，不能覆盖旧证据。
 
-## optimization-v0.2
+详细边界见 [数据契约](docs/data_contract.md) 和 [实施范围](docs/task_contract.md)。
+平台“最后一次提交”与“最优成绩”口径尚无本项目独立确认记录，上传前须确认；本项目不自动上传。
 
-OPT-01/02 的独立入口、E00–E06 特征消融、origin×horizon 网格、候选登记和
-收缩诊断位于 `src/bf_tap/optimization/` 与 `configs/optimization_v0_2/`。
-冻结 baseline 文件及其行为保持不变。实施边界、决策和仅含汇总值的本地开发
-结果见 [执行计划](docs/optimization_v0_2/PLAN.md)、[决策记录](docs/optimization_v0_2/DECISIONS.md)
-与 [结果摘要](docs/optimization_v0_2/RESULTS_SUMMARY.md)。
+## 文档与工程入口
 
-截至 2026-09-07，OPT-01/02 已完成；OPT-03 冻结历史适配已实施并完成全网格，
-G0 通过但 G1 未通过。test_a 探索候选的用户回传最高分仍为 `82.7046`；该序列
-不是独立验证。用户明确要求将较优的预登记 OPT-03 候选 E07 作为一次探索性
-平台探针，用户回传 `82.3610`，低于当前最高分 `82.7046`；该例外不改变失败
-的开发门禁，也不重启依据平台分数的自适应调参。
+```text
+configs/                 冻结契约、分阶段配置与发布登记
+src/bf_tap/              特征、模型、训练、推理、评估和审计
+scripts/                 冷进程复现、环境证据和私有资产检查
+tests/                   单元测试与合成端到端测试
+docs/                    当前入口文档及各阶段冻结报告
+md/                      原始实施包归档，不作为当前状态来源
+初赛数据集/              已授权公开的赛事数据
+local/                   本机模型、预测、报告、账本及 ZIP（不入 Git）
+EVIDENCE_STATUS.json     current_status 为当前摘要，旧字段保留历史含义
+```
 
-OPT-04 已加入基于冻结 as-of 聚合的有符号过程变化量。E09 在完整网格中通过
-全部 G1 门禁（J `0.173861`，相对 E00 改善 `0.009222`），用户回传 test_a
-成绩 `82.8174`，比此前最高分提高 `0.1128`，现为平台 incumbent。
+[平台记录](docs/submission_log.md) · [发布身份](docs/release_identity.md) · [文档目录](docs/INDEX.md)
 
-OPT-05 已将固定派生候选正式纳入完整门禁。`E12_BLEND_E09_E04_80_20` 的 J 为
-`0.171713`，相对 E00 改善 `0.011370`，G0/G1 均通过；其 335 行 test_a 包已
-冻结并替换桌面提交包。用户回传成绩 `82.9543`，比 E09 提高 `0.1369`，现为
-平台 incumbent；该分数不用于回调 OPT-05 权重。
-
-OPT-06 在 clean 预登记提交上比较目标级组合。`E16_TIMECAL_E12` 通过全部 G1
-门禁，J `0.169902`，相对 E00 改善 `0.013182`；其提交包已替换桌面包，平台
-回传成绩 `82.9918`，比 E12 提高 `0.0375`，现为 incumbent。OPT-06 已关闭，
-不依据该分数继续调整残差或组合。
+当前没有已登记的后续训练任务。后续实验须独立预注册候选、OOF 边界、预算与门槛；
+本轮 V4 的失败不自动推导为所有 residual 方法都无效，也不授权继续参数扫描。

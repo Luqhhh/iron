@@ -1,11 +1,32 @@
 # 当前实施范围
 
-本轮在固定父提交 `3f94a9892bf5997746624672ea512ff0e7067495` 上完成 R1–R8 与不改变模型的 P2 工程收口。CatBoost 参数、800 轮、MAE、特征窗口、非负裁剪和质量门槛均未调整。
+截至 optimization-v0.10，用户已授权并完成独立优化阶段。`baseline-v0.1-reproducible`
+仍是不可变工程基线；800 轮、MAE、原特征及保护入口的冻结约束只描述该 baseline，
+不把已登记的新模型误称为“未改变 baseline 参数”的同一模型。
 
-DEV_LONG/DEV_SHORT 已使用新 run ID 在锁定环境完成两次干净重训。H1–H4、保护集评分和正式最终训练均未执行；11 月目标仍封存。当前状态为本地 G0 工程通过、G1 因 DEV_LONG 失败，发布口径是 `BASELINE_REPRODUCIBLE_QUALITY_FAILED`，不是高质量 baseline 验收通过。
+## 当前结论
 
-字段可用性使用带证据摘要的 `competition-timestamp-contract-v1`，状态为 `ASSUMED`。官方澄清若改变时点含义，必须创建新 contract ID 并使相关 bundle/run 失效，不覆盖历史记录。
+当前发布为 V1（用户回传 83.0319），原 R2 保留回退。v0.10 的 V4 完成 12 次开发
+residual fit，G0 通过、G1 全部失败；没有 final fit 或 challenger。v0.9 ratio 扩展已关闭。
+下一轮模型没有登记，不追加本轮参数、缩放系数或目标消融扫描。
 
-两个后续 P1 已完成：公共 process source 内容与 bundle v3 强绑定，三份执行配置由 canonical digest 完整冻结。`baseline-v0.1-reproducible` 标签形成后 baseline-v0.1 不再原地修改；质量研究转入独立 optimization-v0.2。
+## 标签与时间范围
 
-synthetic protected lifecycle、外部 release manifest 与正式 candidate clean-tree gate 是已记录 P2，不阻塞优化，也不授权读取 11 月标签。
+November 在早期 r2 授权生命周期中已消费，真实 holdout scoring 和 final training
+已经执行。后续阶段的 18-cell/H1–H4 是已消费回溯验证，不能声称独立 holdout。
+冻结 baseline development 读取器仍拒绝 November；新优化入口必须根据本阶段明确
+授权、`configs/protection.yaml`、冻结 manifest 摘要及追加访问账本读取合法范围。
+v0.10 用各 outer cutoff 的已核验历史提供 residual 标签，使用此前 causal OOF 预测，
+先生成全部外层预测再评分；没有读取测试标签或依据 test_a 调参。
+
+字段可用性仍采用 `competition-timestamp-contract-v1 / ASSUMED`。窗口和报送时点
+没有新的官方确认记录。语义变化必须创建新 contract ID，并保留旧 run。
+
+## 产物与验收
+
+使用新 run ID，保留模型、失败证据与摘要，禁止覆盖冻结历史记录。G0 工程与 G1
+质量分别报告。现存 V1/R2 配置和 ZIP 不因失败实验改变；本轮不自动上传平台。
+历史报告中的“未消费、尚未训练、当前候选”按其阶段解释，见 [文档索引](INDEX.md)。
+
+实现和门槛见 [v0.10 冻结计划](optimization_v0_10/PLAN.md)，验收见
+[v0.10 结果](optimization_v0_10/RESULTS.md)。历史 baseline 修复见 [冻结报告](review/FREEZE_REPORT.md)。
