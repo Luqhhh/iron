@@ -1204,5 +1204,179 @@
     "original_R2_release_config_unchanged": true,
     "R2_original_archive_retained": true
   },
-  "current_release_config": "configs/optimization_v0_8/active_release.yaml"
+  "current_release_config": "configs/optimization_v0_8/active_release.yaml",
+  "optimization_v0_9": {
+    "status": "COMPLETE_CLOSE_RATIO_STRUCTURE_EXTENSION",
+    "G0": "PASS_DEVELOPMENT_AND_INDEPENDENT_COLD",
+    "G1": "FAIL_BOTH_REGISTERED_CANDIDATES",
+    "selected": null,
+    "development_run": "local/runs/optimization-v0.9-opt22-r1",
+    "ablation_run": "local/runs/optimization-v0.9-opt21-r1",
+    "cold_run": "local/runs/optimization-v0.9-opt22-cold-r1",
+    "new_inverse_rate_fits": 8,
+    "new_R2_fits": 0,
+    "new_rate_fits": 0,
+    "development_time_LAD_fits": 6,
+    "cold_time_LAD_recomputations": 6,
+    "final_inverse_rate_fits": 0,
+    "challengers_generated": 0,
+    "platform_uploaded": false,
+    "active_candidate": "V1_RATE_STRUCTURAL",
+    "active_user_reported_score": 83.0319,
+    "old_archives_and_desktop_unchanged": {
+      "local/runs/optimization-v0.8-v1-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa",
+      "local/runs/optimization-v0.4-r2-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
+      "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa"
+    },
+    "old_protected_ledger_unchanged": true,
+    "test_labels_read": false,
+    "test_inputs_used_for_selection": false,
+    "locked_tests_passed": 209,
+    "evidence_sha256": {
+      "local/runs/optimization-v0.9-opt22-r1/manifest.json": "883bebb28fb9077ff2e5e54050e520eb9442a533ff1acf00030e86254a3dd092",
+      "local/runs/optimization-v0.9-opt22-r1/final_status.json": "c930f093c857378725a85acae15ed93ae811604e1e690fda6d8c6893b7a7b806",
+      "local/runs/optimization-v0.9-opt22-r1/acceptance.json": "b2055e443d50affb0678250088b1c4522e369c12655712093ca6adb048c551ff",
+      "local/runs/optimization-v0.9-opt22-r1/summary.json": "03ecdbd4aae09bc7f548a81e3c3c3f65ae11636e6e58c206ca0a46b6a0c57ff2",
+      "local/runs/optimization-v0.9-opt22-r1/week_bootstrap.json": "f90be6f4c43bd16f9dc1f0abb4b995c07dd10f439f13f899cd365302bd5ac66c",
+      "local/runs/optimization-v0.9-opt22-r1/spout_metrics.json": "4b44759246075c7db4bfa0e33aef6719c6aa51cfb4a71723800bf9d7eab73ed8",
+      "local/runs/optimization-v0.9-opt22-r1/training_records.json": "27766284f0f2c9e94ab95bd45d00fe9cea1ad73e85a7b607878737afcbc7fdeb",
+      "local/runs/optimization-v0.9-opt22-r1/coefficients.json": "7aa248727b6bef992beb0ee48169875ded59904256ee95cd72c9a77e2152d8eb",
+      "local/runs/optimization-v0.9-opt22-cold-r1/validation.json": "49318ec9f71e378fbb28673dcad93f053e42f8808753be80eaca601770f46dd2",
+      "local/runs/optimization-v0.9-opt21-r1/manifest.json": "51a565a4a7d654b2e8dbc55e78bb50cf4847a51b61daa1abcf8b06da565f187d",
+      "local/runs/optimization-v0.9-opt21-r1/diagnosis.json": "06c9379063d2ddec37fe40d3718145ed1e5a4d91b6a3fac18bac48ab58f80920",
+      "local/runs/optimization-v0.9-opt21-r1/week_bootstrap.json": "ef3282bc4aa624540df27defa561b5d4e3669e33dbd96967ec721f7f0181f204",
+      "docs/optimization_v0_9/RESULTS.md": "224913f87954a79e5922f228ea06baaf030da30b53ae8a8cbf77821c8dd6e706",
+      "local/reports/pytest-optimization-v0.9-r1.xml": "7441310b1142cfd785f4a3388922d0d123725ae74e82b59632ce9752317e7a83",
+      "scripts/optimization_v9_cold_check.py": "74193d071d63eba7a3d37ce26c5286927548d9bbe909e9be16db5aca3576eb04"
+    },
+    "acceptance": {
+      "candidates": {
+        "V2_DUAL_RATIO": {
+          "DEV_deltas": {
+            "DEV_LONG": -0.0001708830033962938,
+            "DEV_SHORT": -0.0001996795228935977
+          },
+          "H1_origin_deltas": {
+            "O202406_H1": 5.305209548830958e-05,
+            "O202407_H1": 4.808903575201362e-05,
+            "O202408_H1": -0.00011040382031632379,
+            "O202409_H1": -0.00010202185893337656,
+            "O202410_H1": -0.0004113277925886505,
+            "O202411_H1": 0.00023542674712936917
+          },
+          "J": 0.16557185557873136,
+          "J_delta_vs_V1": -0.0001606810096795308,
+          "checks": {
+            "DEV": true,
+            "H1_E": true,
+            "H1_origins": false,
+            "H1_time": false,
+            "H234_E": true,
+            "H234_time": true,
+            "J_improvement": false,
+            "iron": true,
+            "recent_H1": true
+          },
+          "horizon_deltas": {
+            "H1": -4.7864265578095866e-05,
+            "H2": -0.0001984830129921622,
+            "H3": -0.0003616057037375553,
+            "H4": -3.4771056410365375e-05
+          },
+          "iron_exact": true,
+          "iron_exact_reference": "V1",
+          "passed": false,
+          "target_horizon_deltas": {
+            "H1": {
+              "iron": 0.0,
+              "time": -9.572853115621949e-05
+            },
+            "H2": {
+              "iron": 0.0,
+              "time": -0.0003969660259843799
+            },
+            "H3": {
+              "iron": 0.0,
+              "time": -0.0007232114074751661
+            },
+            "H4": {
+              "iron": 0.0,
+              "time": -6.954211282073075e-05
+            }
+          }
+        },
+        "V3_TIME_STRUCTURAL": {
+          "DEV_deltas": {
+            "DEV_LONG": 0.0015288190194321372,
+            "DEV_SHORT": 0.00015663376652941263
+          },
+          "H1_origin_deltas": {
+            "O202406_H1": 0.0011367397120866929,
+            "O202407_H1": 0.00021016172395557642,
+            "O202408_H1": -0.0023819971391158823,
+            "O202409_H1": 0.0004183567578969205,
+            "O202410_H1": 0.00041476197329701203,
+            "O202411_H1": 0.0004041859892771893
+          },
+          "J": 0.16567955586549946,
+          "J_delta_vs_V1": -5.298072291143319e-05,
+          "checks": {
+            "DEV": false,
+            "H1_E": true,
+            "H1_origins": false,
+            "H1_time": false,
+            "H234_E": true,
+            "H234_time": true,
+            "J_improvement": false,
+            "iron": true,
+            "recent_H1": false
+          },
+          "horizon_deltas": {
+            "H1": 3.370150289958018e-05,
+            "H2": 0.0002446145259551724,
+            "H3": -0.0003678084763956979,
+            "H4": -0.00012243044410478743
+          },
+          "iron_exact": true,
+          "iron_exact_reference": "R2",
+          "passed": false,
+          "target_horizon_deltas": {
+            "H1": {
+              "iron": 0.00016313153695537985,
+              "time": -9.572853115621949e-05
+            },
+            "H2": {
+              "iron": 0.0008861950778946692,
+              "time": -0.0003969660259843799
+            },
+            "H3": {
+              "iron": -1.2405545316285238e-05,
+              "time": -0.0007232114074751661
+            },
+            "H4": {
+              "iron": -0.0001753187753888441,
+              "time": -6.954211282073075e-05
+            }
+          }
+        }
+      },
+      "reference": "V1",
+      "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
+      "selected": null,
+      "status": "FAIL_CLOSE_RATIO_STRUCTURE_EXTENSION"
+    },
+    "ablation": {
+      "V1_J_improvement_vs_R2": 0.0012579078683078448,
+      "W0_J_improvement_vs_R2": 0.0011502075815396917,
+      "diagnostic_only": true,
+      "eligible_for_platform": false,
+      "retained_gain_fraction": 0.9143814189563556
+    },
+    "next_phase": "optimization-v0.10 causal OOF residual stacking",
+    "residual_models_trained": 0,
+    "branch": "optimization-v0.9",
+    "completion_receipt": "local/reports/optimization-v0.9-completion-r1.json",
+    "completion_receipt_sha256": "9b49848922ebf1406439a5e3e1c10e5929729ee5e3965b7890e369725313defe",
+    "results_document": "docs/optimization_v0_9/RESULTS.md"
+  }
 }
