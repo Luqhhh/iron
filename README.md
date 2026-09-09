@@ -8,11 +8,16 @@
 
 ## 当前状态
 
+optimization-v0.10 / OPT-23 已完成：**G0 执行与冷进程审计通过，V4 causal OOF residual stacking 九项 G1 门槛全部失败**。
+12 次低容量 residual 训练完成，R2/rate/q 均未重训；J 相对 V1 退化 0.0053128，H1 E 退化 0.0015335。
+221 项锁定测试通过；不消耗 final 训练预算、不生成 challenger。当前活动候选和桌面包仍为 **V1 = 83.0319**。
+本轮固定 V4 已关闭，不追加参数或目标消融搜索；[完整结果与冷进程审计](docs/optimization_v0_10/RESULTS.md)。
+
 optimization-v0.9 / OPT-21、OPT-22 已完成：**G0 开发执行通过，V2/V3 均未通过 G1，关闭 ratio-structure 扩展**。
 W0 零训练消融保留 V1 开发 J 收益的 91.44%；八个 inverse-rate 模型完成，未重训 R2/rate。
 V2/V3 相对 V1 的 J 仅改善 0.0001607 / 0.0000530，均低于 0.0005 门槛；未训练 final q、未生成 challenger。
 209 项锁定测试通过；完整结果和独立冷进程审计见 [v0.9 结果](docs/optimization_v0_9/RESULTS.md)。
-当前活动候选和桌面包仍为 **V1 = 83.0319**，R2 原包保持回退。v0.10 residual stacking 尚未训练。
+当前活动候选和桌面包仍为 **V1 = 83.0319**，R2 原包保持回退。后续 v0.10 结果见上方。
 
 optimization-v0.8 / OPT-20 已完成：**V1 rate/iron/time 结构回归通过全部严格开发门槛**，
 J 改善 0.0012579，H1 改善 0.0010116，5/6 个 H1 origin 改善，Sep/Oct/Nov 全部改善。

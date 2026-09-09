@@ -1378,5 +1378,109 @@
     "completion_receipt": "local/reports/optimization-v0.9-completion-r1.json",
     "completion_receipt_sha256": "9b49848922ebf1406439a5e3e1c10e5929729ee5e3965b7890e369725313defe",
     "results_document": "docs/optimization_v0_9/RESULTS.md"
+  },
+  "optimization_v0_10": {
+    "status": "COMPLETE_CLOSE_REGISTERED_V4",
+    "G0": "PASS_DEVELOPMENT_AND_INDEPENDENT_COLD",
+    "G1": "FAIL_ALL_NINE_FROZEN_GATES",
+    "selected": null,
+    "development_run": "local/runs/optimization-v0.10-opt23-r1",
+    "cold_run": "local/runs/optimization-v0.10-opt23-cold-r1",
+    "prefit_commit": "bc50eb0",
+    "new_development_residual_fits": 12,
+    "new_R2_fits": 0,
+    "new_rate_fits": 0,
+    "new_inverse_rate_fits": 0,
+    "new_LAD_fits": 0,
+    "final_fits": 0,
+    "challengers_generated": 0,
+    "platform_uploaded": false,
+    "inference_fit_attempts": 0,
+    "cold_max_prediction_difference": 0.0,
+    "active_candidate": "V1_RATE_STRUCTURAL",
+    "active_user_reported_score": 83.0319,
+    "old_archives_and_desktop_unchanged": {
+      "local/runs/optimization-v0.8-v1-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa",
+      "local/runs/optimization-v0.4-r2-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
+      "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa"
+    },
+    "old_protected_and_v9_ledgers_unchanged": true,
+    "test_labels_read": false,
+    "test_inputs_used_for_selection": false,
+    "locked_tests_passed": 221,
+    "evidence_sha256": {
+      "local/runs/optimization-v0.10-opt23-r1/manifest.json": "613eba7d5e2ab0d0b414c29de72d3d9459790097d8f6b4e7a8a805ee7479682f",
+      "local/runs/optimization-v0.10-opt23-r1/final_status.json": "ebe1a9b73f8b26e8136b23299861e32443e47eef895b7f7ce0f2530a05bd8e7d",
+      "local/runs/optimization-v0.10-opt23-r1/acceptance.json": "4a902f3972a6ea290db68c93853e7112f64e7dc9e428320bbaaadffa09d46d5c",
+      "local/runs/optimization-v0.10-opt23-r1/summary.json": "40c4430633d5a6ceff033a26f15a4778fbfd062835a900209a7e6ff74342f676",
+      "local/runs/optimization-v0.10-opt23-r1/metrics.json": "238a2e37f4cd65494d54f9cf227fcb3fb9921cedd8a87757f8da64cfeda60bbc",
+      "local/runs/optimization-v0.10-opt23-r1/week_bootstrap.json": "c969e2bd4002148058dfe99d590bda8dec5202159549f20f7bd7c5813d1cf2c9",
+      "local/runs/optimization-v0.10-opt23-r1/spout_metrics.json": "92046c2110d497a478c74b1046e8654c7cc47535a832aa57b4b5fcf74980b93b",
+      "local/runs/optimization-v0.10-opt23-r1/training_records.json": "a39129e8dfac9b34f2618e8db5e932b4865167b4c2368888a0f481dcc38fb603",
+      "local/runs/optimization-v0.10-opt23-cold-r1/validation.json": "10e747244e6a1e16cb88d0da6625668b334c48d9272e0ca9939b047d25357cf6",
+      "docs/optimization_v0_10/RESULTS.md": "5638a013dcd0618836862451e39472e670ec073749590823cc50afdce7f3691c",
+      "local/reports/optimization-v0.10-diagnostics-r1.json": "fe15ef6f5afb03c61800d36d046467d2776432f2fd22fa76bb79b669a5085362",
+      "local/reports/pytest-optimization-v0.10-r1.xml": "c7c8c2d18994cc4a52b637e83c1292bc80b0f630f5b5d5f41fdd5380f3f9a232",
+      "scripts/optimization_v10_cold_check.py": "1ed051d1dedc1182e1c0a514b395cb357f586bff94bb03c3db0c66c4a8756900"
+    },
+    "acceptance": {
+      "DEV_deltas": {
+        "DEV_LONG": 0.003736991445997151,
+        "DEV_SHORT": 0.003616176321993736
+      },
+      "H1_origin_deltas": {
+        "O202406_H1": 0.0026650518788639,
+        "O202407_H1": -0.0009563379215975776,
+        "O202408_H1": 0.0044199456322222275,
+        "O202409_H1": 0.001025170798442998,
+        "O202410_H1": 0.002347868555579058,
+        "O202411_H1": -0.0003008744389860485
+      },
+      "J": 0.17104532075165838,
+      "J_delta_vs_V1": 0.005312784163247486,
+      "candidate": "V4_R2_CAUSAL_RESIDUAL",
+      "checks": {
+        "DEV": false,
+        "H1_E": false,
+        "H1_origins": false,
+        "H1_time": false,
+        "H234_E": false,
+        "H234_time": false,
+        "J_improvement": false,
+        "iron": false,
+        "recent_H1": false
+      },
+      "horizon_deltas": {
+        "H1": {
+          "iron_mean_wmape": 0.0027288677062827504,
+          "mean_loss": 0.001533470750754079,
+          "time_mean_wmape": 0.00033807379522549086
+        },
+        "H2": {
+          "iron_mean_wmape": 0.005326015169892007,
+          "mean_loss": 0.004804982167093935,
+          "time_mean_wmape": 0.004283949164295836
+        },
+        "H3": {
+          "iron_mean_wmape": 0.006195688928745724,
+          "mean_loss": 0.007407949394693775,
+          "time_mean_wmape": 0.00862020986064177
+        },
+        "H4": {
+          "iron_mean_wmape": 0.007240500601296135,
+          "mean_loss": 0.007504734340448016,
+          "time_mean_wmape": 0.0077689680795998695
+        }
+      },
+      "passed": false,
+      "reference": "V1",
+      "selected": null,
+      "status": "FAIL_CLOSE_REGISTERED_V4"
+    },
+    "additional_candidate_search": false,
+    "branch": "optimization-v0.10",
+    "completion_receipt": "local/reports/optimization-v0.10-completion-r1.json",
+    "completion_receipt_sha256": "7fb6f5fd1312d71bb0198199262e38d44831564813f2eeccb714a1b93f93ee56",
+    "results_document": "docs/optimization_v0_10/RESULTS.md"
   }
 }
