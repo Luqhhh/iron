@@ -1,0 +1,68 @@
+schema_version: 1
+base_commit: 257968e
+scope: RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION
+candidate: V4_R2_CAUSAL_RESIDUAL
+source_v8: local/runs/optimization-v0.8-opt20-r1
+source_v9: local/runs/optimization-v0.9-opt22-r1
+source_v9_cold: local/runs/optimization-v0.9-opt22-cold-r1
+active_release: configs/optimization_v0_8/active_release.yaml
+fallback_release: configs/optimization_v0_4/active_release.yaml
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+oof_months: [4, 5, 6, 7, 8, 9, 10, 11]
+residual:
+  baseline: R2
+  targets: [tap_iron, tap_time_len]
+  target_definition: true_target_minus_corresponding_causal_R2_OOF
+  structure_features: [pred_tap_iron, pred_tap_time_len, pred_rate, pred_inverse_rate, direction_iron, direction_time]
+  context_features: [spout_no, operation__air_volume__6h__mean, operation__total_press_diff__6h__mean]
+  minimum_OOF_rows: 500
+  parameters:
+    loss_function: MAE
+    eval_metric: MAE
+    iterations: 200
+    depth: 2
+    learning_rate: 0.03
+    l2_leaf_reg: 20.0
+    random_seed: 2026
+    task_type: CPU
+    thread_count: 8
+    bootstrap_type: 'No'
+    random_strength: 0.0
+    rsm: 1.0
+    boosting_type: Plain
+    boost_from_average: true
+    has_time: true
+    one_hot_max_size: 64
+    nan_mode: Min
+    use_best_model: false
+    allow_writing_files: false
+    verbose: false
+  sample_weight: uniform_within_target
+  postprocessing: max_zero_R2_plus_residual
+  correction_scale: 1.0
+  validation_early_stopping: false
+  new_LAD_fits: 0
+budget:
+  development_residual_fits: 12
+  development_R2_rate_q_fits: 0
+  max_final_residual_fits: 2
+  max_final_q_fits: 1
+  max_total_new_CatBoost_fits: 15
+  max_challengers: 1
+acceptance:
+  reference: V1
+  J_min_improvement: 0.0005
+  H1_E_max_regression: 0.0002
+  H1_time_min_improvement: 0.0005
+  H1_min_nonworse_origins: 4
+  recent_H1_months: [9, 10, 11]
+  recent_H1_min_improved: 2
+  H234_E_max_regression: 0.0005
+  H234_time_max_regression: 0.0005
+  iron_max_horizon_regression: 0.0003
+  DEV_max_regression: 0.0007
+bootstrap: {repetitions: 1000, seed: 2026}
+failure_action: CLOSE_REGISTERED_V4_NO_PARAMETER_OR_TARGET_ABLATION_SEARCH
+active_release_overwrite: false
+original_V1_and_R2_archives_immutable: true
+platform_upload: false

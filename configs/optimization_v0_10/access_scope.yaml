@@ -1,0 +1,11 @@
+schema_version: 1
+authorization: user_continue_v0_10_causal_OOF_residual_stacking
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+training_labels: verified_v8_saved_history_at_each_outer_cutoff
+scoring_labels: archived_v8_errors_only_after_all_outer_predictions
+public_features: original_asof_builder_two_operation_means_and_spout
+new_ledger: local/ledgers/optimization-v0.10-development.jsonl
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+official_target_column_reads: false
+test_inputs_for_selection: false
