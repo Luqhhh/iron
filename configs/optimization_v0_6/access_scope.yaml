@@ -1,0 +1,10 @@
+schema_version: 1
+scope: RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION
+holdout_consumed: true
+authorization: user_optimization_v0_6_OPT17_OPT18
+labels: existing_v0_5_scored_error_csvs_only_for_scoring
+inference: metadata_public_process_and_verified_bundle_history_only
+new_ledger: local/ledgers/optimization-v0.6-development.jsonl
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+allow_fit: false
+allow_test_inputs_for_selection: false

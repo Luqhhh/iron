@@ -1,0 +1,32 @@
+schema_version: 1
+base_commit: 73a0abc27c6f102b6b03c9179e451b2ec28eba73
+candidate: S1_HORIZON_ROUTER
+routes: {1: P2, 2: P2, 3: P2, 4: R2}
+horizon_definition: local_calendar_month_difference_plus_one
+outside_horizons: reject
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+source_export: local/runs/optimization-v0.5-opt14-export-r1
+source_scores: local/runs/optimization-v0.5-opt14-score-r2
+max_target_fits: 0
+endpoint_tolerance_exclusive: 1.0e-8
+deployment_gate:
+  H1_min_improvement: 0.001
+  H1_min_improved_origins: 4
+  H2_H3_max_regression: 0.0003
+  H4_exact_R2: true
+  J_min_improvement: 0.0005
+  target_horizon_max_regression: 0.0015
+  DEV_max_regression: 0.001
+opt18:
+  condition: S1_deployment_pass_and_test_a_challenger_ready
+  choices: [P2, R2]
+  selection: minimum_equal_origin_target_wmape
+  tie_break: R2
+  evaluation: leave_one_origin_out_per_target_horizon
+  final_mapping: full_development_equal_origin_target_wmape_after_LOO_gate_pass
+  J_min_improvement_vs_S1: 0.0003
+  H1_max_regression_vs_S1: 0.0
+  target_horizon_max_regression_vs_S1: 0.001
+bootstrap: {repetitions: 1000, seed: 2026}
+active_release_overwrite: false
+platform_upload: false

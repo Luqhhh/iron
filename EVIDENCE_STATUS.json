@@ -661,5 +661,158 @@
       }
     ],
     "continuation_document": "docs/optimization_v0_5/OPT15_EXECUTION.md"
+  },
+  "optimization_v0_6": {
+    "base_commit": "73a0abc27c6f102b6b03c9179e451b2ec28eba73",
+    "branch": "optimization-v0.6",
+    "phase_status": "COMPLETE_S1_READY_CHALLENGER_S2_REJECTED",
+    "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
+    "holdout_consumed": true,
+    "G0": "PASS_REAL_COLD_REPLAY_RELEASE_AND_173_LOCKED_TESTS",
+    "G1_OPT17": "PASS",
+    "G1_OPT18": "FAIL",
+    "attempted_target_fits": 0,
+    "completed_target_fits": 0,
+    "opt17_run": "local/runs/optimization-v0.6-opt17-r1",
+    "opt17_manifest_sha256": "a859f815b74a0bbf1e7ebdb674dd12648283866e2143010285fcfe889bf69f50",
+    "opt17_acceptance": {
+      "DEV_deltas": {
+        "DEV_LONG": -0.003276604000897493,
+        "DEV_SHORT": -0.000469986878262163
+      },
+      "H1_origin_deltas": {
+        "O202406_H1": -0.002485482986493509,
+        "O202407_H1": -0.0006243405525075407,
+        "O202408_H1": -0.0007287207170244558,
+        "O202409_H1": -0.0005162310602381814,
+        "O202410_H1": 0.000753900129903895,
+        "O202411_H1": -0.005252741663145738
+      },
+      "J": 0.1661704617134884,
+      "J_delta_vs_R2": -0.0008199827432303353,
+      "checks": {
+        "DEV": true,
+        "H1_improvement": true,
+        "H1_origins": true,
+        "H2_H3": true,
+        "H4_exact": true,
+        "J_improvement": true,
+        "target_horizon": true
+      },
+      "horizon_deltas": {
+        "H1": -0.0014756028082508754,
+        "H2": -0.0005788172482752152,
+        "H3": -0.001225510916395195,
+        "H4": 0.0
+      },
+      "passed": true,
+      "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
+      "target_horizon_deltas": {
+        "H1": {
+          "iron": -0.001436334468350231,
+          "time": -0.001514871148151603
+        },
+        "H2": {
+          "iron": -0.00100295803750991,
+          "time": -0.00015467645904054805
+        },
+        "H3": {
+          "iron": -0.0014724237276743102,
+          "time": -0.000978598105116163
+        },
+        "H4": {
+          "iron": 0.0,
+          "time": 0.0
+        }
+      }
+    },
+    "opt18_run": "local/runs/optimization-v0.6-opt18-r1",
+    "opt18_acceptance": {
+      "DEV_deltas": {
+        "DEV_LONG": 0.003031956110690792,
+        "DEV_SHORT": 0.0006618474579084543
+      },
+      "H1_delta_vs_S1": 0.0,
+      "J": 0.16703904097505887,
+      "J_delta_vs_S1": 0.0008685792615704679,
+      "checks": {
+        "H1_no_regression": true,
+        "J_improvement": false,
+        "target_horizon": false
+      },
+      "passed": false,
+      "target_horizon_deltas": {
+        "H1": {
+          "iron": 0.0,
+          "time": 0.0
+        },
+        "H2": {
+          "iron": 0.0016426289900139113,
+          "time": 0.0008513549834292811
+        },
+        "H3": {
+          "iron": 0.0023343872203093474,
+          "time": 0.0021202628988112593
+        },
+        "H4": {
+          "iron": 0.0,
+          "time": 0.0
+        }
+      }
+    },
+    "release_run": "local/runs/optimization-v0.6-s1-challenger-r1",
+    "release_status": {
+      "active_R2_unchanged": true,
+      "archive_sha256": "5d74272c9abc6d12924f2c1ad96f534a0f19042210bdf7746a27e125a7498267",
+      "attempted_target_fits": 0,
+      "candidate": "S1_HORIZON_ROUTER",
+      "completed_target_fits": 0,
+      "stages": [
+        {
+          "R2_endpoint_max_difference": 5.684341886080802e-14,
+          "cold_max_difference": 5.684341886080802e-14,
+          "horizons": {
+            "1": 335
+          },
+          "rows": 335,
+          "scored": false,
+          "stage": "test_a"
+        },
+        {
+          "R2_endpoint_max_difference": 5.684341886080802e-14,
+          "cold_max_difference": 5.684341886080802e-14,
+          "horizons": {
+            "2": 322
+          },
+          "rows": 322,
+          "scored": false,
+          "stage": "test_b"
+        },
+        {
+          "R2_endpoint_max_difference": 5.684341886080802e-14,
+          "cold_max_difference": 5.684341886080802e-14,
+          "horizons": {
+            "3": 303,
+            "4": 245
+          },
+          "rows": 548,
+          "scored": false,
+          "stage": "test_c"
+        }
+      ],
+      "status": "READY_CHALLENGER",
+      "uploaded": false
+    },
+    "archive_sha256": "5d74272c9abc6d12924f2c1ad96f534a0f19042210bdf7746a27e125a7498267",
+    "selected_challenger": "S1_HORIZON_ROUTER",
+    "active_release_candidate": "R2",
+    "active_release_unchanged": true,
+    "old_protected_ledger_unchanged": true,
+    "platform_uploaded": false,
+    "test_a_used_for_selection": false,
+    "tests_passed": 173,
+    "test_report": "local/reports/pytest-optimization-v0.6-r1.xml",
+    "test_report_sha256": "83e48bfc22684f80e60ebfc5162199595722f3a5c061256f6738f46d879b3343",
+    "results_document": "docs/optimization_v0_6/RESULTS.md"
   }
 }
