@@ -1,0 +1,60 @@
+schema_version: 1
+base_commit: 9dcdf6a
+scope: RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION
+source_v8: local/runs/optimization-v0.8-opt20-r1
+source_v8_cold: local/runs/optimization-v0.8-opt20-cold-r2
+active_release: configs/optimization_v0_8/active_release.yaml
+fallback_release: configs/optimization_v0_4/active_release.yaml
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+oof_months: [4, 5, 6, 7, 8, 9, 10, 11]
+OPT21:
+  candidates: [R2, V1, W0_TIME_ABLATION]
+  W0: exact_R2_iron_and_exact_V1_time
+  model_fits: 0
+  coefficient_fits: 0
+  diagnostic_only: true
+  platform_package: false
+OPT22:
+  candidates: [V2_DUAL_RATIO, V3_TIME_STRUCTURAL]
+  target: tap_time_len_divided_by_tap_iron
+  positive_denominator: tap_iron_greater_than_zero
+  sample_weight: tap_iron_divided_by_positive_training_iron_mean
+  parameters: exact_frozen_baseline_CatBoost_MAE
+  features: E09_PROCESS_CHANGE_E02_R2_robust_history
+  prediction_lower_bound: 0.0
+  zero_predicted_q: valid_zero_structural_time_no_reciprocal_no_floor
+  direction_time: q_hat_times_R2_iron_minus_R2_time
+  coefficient: exact_constrained_LAD_lower_weighted_median_in_0_1
+  minimum_causal_OOF_rows: 100
+  V2_iron: exact_frozen_V1_iron_no_alpha_refit
+  V3_iron: exact_R2_iron
+  intercept: false
+  spout_specific: false
+  horizon_specific: false
+  new_base_or_rate_fits: 0
+  development_inverse_rate_fits: 8
+  development_time_LAD_coefficients: 6
+  max_final_inverse_rate_fits: 1
+  final_time_LAD_coefficients_if_pass: 1
+  max_challengers: 1
+  fail_action: CLOSE_RATIO_STRUCTURE_EXTENSION
+acceptance:
+  reference: V1
+  J_min_improvement: 0.0005
+  H1_E_max_regression: 0.0002
+  H1_time_min_improvement: 0.0005
+  H1_min_nonworse_origins: 4
+  recent_H1_months: [9, 10, 11]
+  recent_H1_min_improved: 2
+  H234_E_max_regression: 0.0005
+  H234_time_max_regression: 0.0005
+  V2_iron_max_horizon_regression_vs_V1: 0.0003
+  V3_iron_exact_R2: true
+  DEV_max_regression: 0.0007
+selection:
+  primary: lowest_J_among_full_passes
+  prefer_V3_when_abs_J_difference_exclusive: 0.0002
+bootstrap: {repetitions: 1000, seed: 2026}
+active_release_overwrite: false
+original_V1_and_R2_archives_immutable: true
+platform_upload: false

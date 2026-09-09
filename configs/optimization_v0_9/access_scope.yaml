@@ -1,0 +1,12 @@
+schema_version: 1
+authorization: user_OPT21_OPT22_dual_ratio_structural_regression
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+OPT21_labels: archived_v8_scored_errors_diagnostics_only
+OPT22_training_labels: verified_v8_bundled_history_at_each_cutoff_only
+OPT22_coefficient_labels: corresponding_outer_bundled_history_only
+OPT22_scoring_labels: archived_v8_errors_after_all_outer_predictions
+new_ledger: local/ledgers/optimization-v0.9-development.jsonl
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+official_target_column_reads: false
+test_inputs_for_selection: false
