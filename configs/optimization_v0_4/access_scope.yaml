@@ -1,0 +1,10 @@
+schema_version: 1
+purpose: official_train_post_holdout_consumption
+authorization: user_execute_optimization_v0_4_20260909
+holdout_consumed: true
+november_status: POST_HOLDOUT_CONSUMPTION
+reference_start: '2024-03-01T00:00:00+08:00'
+reference_end_exclusive: '2024-12-01T00:00:00+08:00'
+label_available_cutoff: earliest_official_test_a_reference_time
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+new_ledger: local/ledgers/optimization-v0.4-development.jsonl

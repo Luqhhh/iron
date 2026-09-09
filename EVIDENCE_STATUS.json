@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-08",
+  "as_of": "2026-09-09",
   "implementation_version": "baseline-v0.1-reproducible",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
@@ -363,5 +363,73 @@
     "rollback_targeted_tests_passed": 2,
     "rollback_test_report_sha256": "1800094a82558755ed5a244468b361ebb75701a09e5375346713579eb255fa4d",
     "remote_write_authorized": true
+  },
+  "optimization_v0_4": {
+    "base_commit": "b57d2ef21b35f5c6d57be3a8a05efcff9f834f01",
+    "branch": "optimization-v0.4",
+    "G0": "PASS_LOCAL_LOCKED_VALIDATION",
+    "G1": "PASS_REGISTERED_RETROSPECTIVE_GATE_R2",
+    "scope": "official_train_post_holdout_consumption",
+    "holdout_consumed": true,
+    "november_status": "POST_HOLDOUT_CONSUMPTION",
+    "run": "local/runs/optimization-v0.4-r4",
+    "manifest_sha256": "a61d88c85d0d9594dbbea626501f76390aa5019ca9c58f066c7587e9e2a4d122",
+    "factorial_months": [
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11"
+    ],
+    "factorial_endpoint_max_abs_difference": 1.1368683772161603e-13,
+    "legacy_14_E12_raw_J": 0.17171342055719652,
+    "extended_18_E12_raw_J": 0.16836914536496014,
+    "extended_18_R2_J": 0.16699044445671873,
+    "R2_J_improvement": 0.0013787009082414092,
+    "R2_H1_mean_regression": 0.0014653012403684773,
+    "R2_november_H1_regression_approx": 0.00685,
+    "candidate_gates": {
+      "R1": false,
+      "R2": true,
+      "R3": false
+    },
+    "tests_passed": 132,
+    "test_report_sha256": "714df7953cf1145be1c2a15a536c663c67bb2ef7a8a9277cb011a3954d6dbfe8",
+    "completed_target_fits": 64,
+    "fit_accounting": {
+      "OPT11_June_July": 8,
+      "OPT12_R1_R2": 48,
+      "OPT13_May_anchor": 4,
+      "R2_final": 4,
+      "sensitivity": 0
+    },
+    "diagnostics_run": "local/runs/optimization-v0.4-diagnostics-r1",
+    "release_candidate": "R2",
+    "release_run": "local/runs/optimization-v0.4-r2-challenger-r1",
+    "release_validation": {
+      "activated": false,
+      "archive_sha256": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
+      "candidate": "R2",
+      "cold_config_has_official_labels": false,
+      "cold_process_max_difference": 5.684341886080802e-14,
+      "incumbent": "E16",
+      "rows": 335,
+      "status": "PASS_CHALLENGER_READY",
+      "target_fits": 4,
+      "uploaded": false
+    },
+    "final_fit_cutoff": "2024-12-01 01:44:00+08:00",
+    "final_training_rows": 2754,
+    "active_release_candidate": "E16_TIMECAL_E12",
+    "active_release_zip_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa",
+    "platform_uploaded": false,
+    "platform_gain": "UNMEASURED",
+    "remote_write_performed": false,
+    "preserved_attempts": [
+      "optimization-v0.4-r1: configuration failure before access",
+      "optimization-v0.4-r2: interrupted after June fit for cache reuse",
+      "optimization-v0.4-r3: interrupted after July fit for public feature memoization"
+    ],
+    "execution_document": "docs/optimization_v0_4/RESULTS.md"
   }
 }

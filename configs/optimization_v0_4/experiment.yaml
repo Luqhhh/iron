@@ -1,0 +1,21 @@
+schema_version: 1
+base_commit: b57d2ef21b35f5c6d57be3a8a05efcff9f834f01
+scope: retrospective_development
+factorial_months: [7, 8, 9, 10, 11]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+candidates:
+  R1: remove_latest_and_last3_target_values_keep_counts
+  R2: replace_target_summaries_with_last30_last100_medians_and_counts
+  R3: equal_weight_previous_and_current_complete_E12_raw_anchors
+component_weights: [0.8, 0.2]
+anchor_weights: [0.5, 0.5]
+iterations: 800
+calibration: none
+acceptance:
+  min_J_improvement: 0.001
+  min_improved_horizons: 3
+  max_any_horizon_regression: 0.002
+  per_target_mean_wmape_max_regression: 0.003
+  dev_long_must_beat_better_control: true
+  dev_short_max_regression: 0.002
+max_challenger_releases: 1
