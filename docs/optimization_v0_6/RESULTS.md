@@ -99,3 +99,21 @@ verified as `5d74272c9abc6d12924f2c1ad96f534a0f19042210bdf7746a27e125a7498267`.
 The earlier no-desktop-overwrite statement describes the initial experiment delivery.
 The archived R2 ZIP and active release config remain unchanged. No platform upload
 or new platform score is recorded by this desktop-copy action.
+
+## User-reported test_a feedback
+
+After verified S1 desktop delivery, the user reported **82.7707**. This is associated
+with the delivered S1 ZIP from conversation context; no independent platform receipt
+or cross-submission evaluation-version verification was obtained. Compared with the
+user-reported R2 83.0207, the score change is **-0.2500** (vs E16 82.9918: -0.2211).
+
+S1 is not promoted. R2 remains the active repository release. S1's earlier deployment
+PASS and READY_CHALLENGER checks remain valid historical engineering/development
+results; this external result does not rewrite them. The development H1 improvement
+did not carry through to the reported test_a score. A total score cannot identify
+a target-specific problem or justify changing sample predictions, routing weights,
+windows or calibration. No further v0.6 candidate is introduced.
+
+The desktop still contains the explicitly requested S1 package; this score-recording
+action does not overwrite it or upload anything. The original R2 archive remains
+available for rollback. Official last-vs-best submission behavior remains unverified.

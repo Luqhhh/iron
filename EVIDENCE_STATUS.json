@@ -665,7 +665,7 @@
   "optimization_v0_6": {
     "base_commit": "73a0abc27c6f102b6b03c9179e451b2ec28eba73",
     "branch": "optimization-v0.6",
-    "phase_status": "COMPLETE_S1_READY_CHALLENGER_S2_REJECTED",
+    "phase_status": "COMPLETE_S1_PLATFORM_REGRESSION_KEEP_R2",
     "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
     "holdout_consumed": true,
     "G0": "PASS_REAL_COLD_REPLAY_RELEASE_AND_173_LOCKED_TESTS",
@@ -822,6 +822,20 @@
       "destination": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "platform_uploaded": false,
       "incumbent_R2_archive_retained": true
+    },
+    "platform_feedback": {
+      "candidate": "S1_HORIZON_ROUTER",
+      "stage": "test_a",
+      "score": 82.7707,
+      "status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "archive_sha256": "5d74272c9abc6d12924f2c1ad96f534a0f19042210bdf7746a27e125a7498267",
+      "association_basis": "user_report_after_verified_S1_desktop_delivery",
+      "reference_candidate": "R2",
+      "reference_user_reported_score": 83.0207,
+      "delta_vs_R2": -0.25,
+      "cross_submission_evaluation_version_independently_verified": false,
+      "decision": "DO_NOT_PROMOTE_KEEP_R2",
+      "agent_uploaded": false
     }
   }
 }
