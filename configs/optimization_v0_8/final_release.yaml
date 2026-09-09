@@ -1,0 +1,18 @@
+schema_version: 1
+candidate: V1_RATE_STRUCTURAL
+condition: OPT20_all_strict_gates_and_independent_cold_OOF_audit_pass
+base_release: configs/optimization_v0_4/active_release.yaml
+new_rate_fits: 1
+new_R2_fits: 0
+structural_LAD_target_coefficients: 2
+OOF_months: [4, 5, 6, 7, 8, 9, 10, 11]
+cutoff: exact_incumbent_R2_final_cutoff
+training_scope: official_rows_reference_before_cutoff_and_labels_available_by_cutoff
+protected_lifecycle: final_training
+authorization: user_start_v0_8_training_and_registered_conditional_final_challenger
+ledger: local/ledgers/optimization-v0.8-final-training.jsonl
+challenger_limit: 1
+stage: test_a
+active_release_overwrite: false
+desktop_overwrite: false
+platform_upload: false
