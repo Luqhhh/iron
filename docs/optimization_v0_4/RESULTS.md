@@ -54,7 +54,7 @@ from the expanded score and is not overwritten in old evidence.
 Both November combined endpoints additionally align with old prepared predictions
 (329 rows each, maximum difference 1.1368683772161603e-13).
 
-R2 is the sole development-accepted challenger. Final training, package verification and bootstrap diagnostics are complete. E16 remains incumbent.
+R2 is the sole development-accepted challenger. Final training, package verification and bootstrap diagnostics are complete. At initial delivery E16 remained incumbent; the platform feedback below records the subsequent R2 activation.
 
 ## Unlabeled sensitivity and week diagnostics
 
@@ -100,8 +100,8 @@ Candidate ZIP:
 
 SHA-256: `e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf`.
 
-E16 remains active and its original ZIP hash was verified unchanged. The challenger
-has not been uploaded or activated. There is no new platform result or B/C assessment.
+At initial delivery E16 was active and its original ZIP hash was verified unchanged.
+The following platform feedback supersedes that delivery-time status; B/C remain unassessed.
 
 Completed target-fit accounting across preserved attempts: 8 for OPT-11 June/July,
 48 for the two fixed OPT-12 candidates, 4 for the May R3 anchor, 4 for R2 final fit;
@@ -109,3 +109,20 @@ total 64. Sensitivity and cold-process checks perform zero fits.
 
 Initial failure/interrupted evidence and all previous-version results remain present.
 No remote write was performed in this phase.
+
+## Platform feedback and phase closure — 2026-09-09
+
+After the verified desktop replacement, the user reported R2 test_a **83.0207**:
+**+0.0289** versus E16 82.9918. Evidence status is
+USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED; no platform API/receipt was obtained.
+The result is associated with ZIP SHA-256
+`e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf`.
+No model, row prediction, window, weight or calibration was changed after feedback.
+
+R2 is now the current test_a release registration in
+`configs/optimization_v0_4/active_release.yaml`. E16 remains an exact recoverable fallback.
+OPT-11, OPT-12 and OPT-13, including the single challenger delivery and platform
+feedback, are complete for this phase. B/C validation and results require a separately
+scoped next phase; no future-month superiority is inferred. The user authorized
+committing and pushing this branch. The earlier no-remote-write statement describes
+the initial execution, before this authorization.

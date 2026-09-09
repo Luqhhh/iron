@@ -1,0 +1,16 @@
+schema_version: 1
+release_protocol: v4-stable-history-composite-v1
+active_candidate: R2
+selection_basis: REGISTERED_DEVELOPMENT_GATE_PASS_AND_USER_REPORTED_PLATFORM_IMPROVEMENT
+bundle: local/runs/optimization-v0.4-r2-challenger-r1/bundle
+composite_sha256: 66bf703931edf30f149508f8febc76fcf7b024ac6083524254a65f107b13b8da
+test_a_zip: local/runs/optimization-v0.4-r2-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip
+test_a_zip_sha256: e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf
+test_a_result_sha256: 85d84b09325b11d879e78d0a91fccfbf8a5d219916e5234570164944e8e4f080
+platform_score: 83.0207
+platform_score_status: USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED
+fit_cutoff: '2024-12-01T01:44:00+08:00'
+global_holdout_consumed: true
+fallback_release_config: configs/optimization_v0_3_r2/active_release.yaml
+inference_entrypoint: scripts/optimization_v4_cold_predict.py
+activated_on: '2026-09-09'

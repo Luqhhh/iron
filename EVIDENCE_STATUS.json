@@ -90,6 +90,20 @@
       "training_mode": "development",
       "fit_cutoff": "2024-11-01T00:00:00+08:00",
       "holdout_consumed": false
+    },
+    {
+      "reported_on": "2026-09-09",
+      "stage": "test_a",
+      "candidate": "R2",
+      "score": 83.0207,
+      "evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "archive_sha256": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
+      "association_basis": "user_feedback_after_verified_desktop_replacement",
+      "delta_vs_E16": 0.0289,
+      "uploaded_by_agent": false,
+      "submission_archive": "Luqhhh_bf_tap_predict_prelim.zip",
+      "submission_archive_sha256": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
+      "training_run": "local/runs/optimization-v0.4-r2-challenger-r1"
     }
   ],
   "optimization_v0_2": {
@@ -420,16 +434,26 @@
     },
     "final_fit_cutoff": "2024-12-01 01:44:00+08:00",
     "final_training_rows": 2754,
-    "active_release_candidate": "E16_TIMECAL_E12",
-    "active_release_zip_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa",
-    "platform_uploaded": false,
-    "platform_gain": "UNMEASURED",
-    "remote_write_performed": false,
+    "active_release_candidate": "R2",
+    "active_release_zip_sha256": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
+    "platform_uploaded": true,
+    "platform_gain": "USER_REPORTED_PLUS_0.0289_VS_E16",
     "preserved_attempts": [
       "optimization-v0.4-r1: configuration failure before access",
       "optimization-v0.4-r2: interrupted after June fit for cache reuse",
       "optimization-v0.4-r3: interrupted after July fit for public feature memoization"
     ],
-    "execution_document": "docs/optimization_v0_4/RESULTS.md"
+    "execution_document": "docs/optimization_v0_4/RESULTS.md",
+    "active_release_config": "configs/optimization_v0_4/active_release.yaml",
+    "platform_score": 83.0207,
+    "platform_score_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+    "platform_uploaded_by_agent": false,
+    "platform_feedback_sha256": "40ef94a1887c66816e56ed18b74583fe9fabb22dcfe0805a601533b684e11efe",
+    "desktop_zip_sha256": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
+    "phase_status": "COMPLETE",
+    "remote_write_authorized": true,
+    "fallback_release_candidate": "E16_TIMECAL_E12",
+    "fallback_zip_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa",
+    "remote_write_performed_during_initial_execution": false
   }
 }
