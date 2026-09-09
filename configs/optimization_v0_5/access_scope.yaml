@@ -1,0 +1,13 @@
+schema_version: 1
+purpose: official_train_post_holdout_consumption_component_development
+authorization: user_optimization_v0_5_20260909_OPT14
+holdout_consumed: true
+november_status: POST_HOLDOUT_CONSUMPTION
+reference_start: '2024-03-01T00:00:00+08:00'
+reference_end_exclusive: '2024-12-01T00:00:00+08:00'
+labels: existing_v0_4_errors_csv_scoring_only
+inference_metadata_columns: [sample_id, spout_no, reference_time]
+history: verified_saved_component_snapshot_only
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+new_ledger: local/ledgers/optimization-v0.5-development.jsonl
+test_a_used_for_selection: false

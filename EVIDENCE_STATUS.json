@@ -455,5 +455,82 @@
     "fallback_release_candidate": "E16_TIMECAL_E12",
     "fallback_zip_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa",
     "remote_write_performed_during_initial_execution": false
+  },
+  "optimization_v0_5": {
+    "base_commit": "1f23f28817734c45af2e91b1dd1094108a122b25",
+    "branch": "optimization-v0.5",
+    "delivery_scope": "OPT-14_FIRST_DELIVERY_ONLY",
+    "phase_status": "OPT14_COMPLETE_OPT15_ELIGIBLE_PENDING",
+    "G0": "PASS_REAL_COMPONENT_REPRODUCTION_AND_LOCKED_TESTS",
+    "G1_STAGE_A": "FAIL_ALL_THREE_CANDIDATES",
+    "G1_GENERAL": "FAIL_ALL_THREE_CANDIDATES",
+    "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
+    "holdout_consumed": true,
+    "november_status": "POST_HOLDOUT_CONSUMPTION",
+    "export_run": "local/runs/optimization-v0.5-opt14-export-r1",
+    "score_run": "local/runs/optimization-v0.5-opt14-score-r2",
+    "component_count": 24,
+    "evaluation_units": 20,
+    "attempted_target_fits": 0,
+    "completed_target_fits": 0,
+    "endpoint_checks": 40,
+    "endpoint_max_abs_difference": 1.7053025658242404e-13,
+    "export_manifest_sha256": "a2fd9d2bf02e5b71b62ee7909894ea8623455f6e5d7b8fc978775de61203a5f3",
+    "component_predictions_sha256": "1ad655d31ac98b5c2bb0c65cb5b573210f159fb2e133cf4bb5293d274b921330",
+    "acceptance_sha256": "bf7add356600aa21e61395b343508195812c8c2a54bd443e736de3bb4f271246",
+    "test_report": "local/reports/pytest-optimization-v0.5-opt14-r2.xml",
+    "test_report_sha256": "8f015025d67daef26ce4712d71517b58ae986ed3def1a6b7c30ba299ae96f0d5",
+    "tests_passed": 150,
+    "candidate_outcomes": {
+      "P1": {
+        "STAGE_A": false,
+        "GENERAL": false,
+        "H1_improvement_vs_R2": -0.00033976319789927323,
+        "J_delta_vs_R2": 0.001910142143361493,
+        "horizon_deltas": {
+          "H1": 0.00033976319789927323,
+          "H2": 0.0027580987253903178,
+          "H3": 0.002398177856606565,
+          "H4": 0.002144528793549816
+        }
+      },
+      "P2": {
+        "STAGE_A": false,
+        "GENERAL": false,
+        "H1_improvement_vs_R2": 0.0014756028082509032,
+        "J_delta_vs_R2": -0.00013209847228135008,
+        "horizon_deltas": {
+          "H1": -0.0014756028082509032,
+          "H2": -0.0005788172482752152,
+          "H3": -0.001225510916395195,
+          "H4": 0.002751537083795913
+        }
+      },
+      "P3": {
+        "STAGE_A": false,
+        "GENERAL": false,
+        "H1_improvement_vs_R2": -0.000809483462894528,
+        "J_delta_vs_R2": 0.0037782426680499914,
+        "horizon_deltas": {
+          "H1": 0.000809483462894528,
+          "H2": 0.0050380876963295185,
+          "H3": 0.005598646352946074,
+          "H4": 0.00366675316002979
+        }
+      }
+    },
+    "selected_challenger": null,
+    "OPT15_condition_met": true,
+    "OPT15_executed": false,
+    "OPT16_executed": false,
+    "active_release_candidate": "R2",
+    "active_release_unchanged": true,
+    "old_protected_ledger_unchanged": true,
+    "test_a_used_for_selection": false,
+    "new_submission_created": false,
+    "platform_uploaded": false,
+    "remote_write_performed": false,
+    "preserved_failure": "opt14-score-r1: JSON origin-key type normalization; predictions reused without inference or fit",
+    "results_document": "docs/optimization_v0_5/RESULTS.md"
   }
 }

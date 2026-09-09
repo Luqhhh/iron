@@ -1,0 +1,37 @@
+schema_version: 1
+base_commit: 1f23f28817734c45af2e91b1dd1094108a122b25
+phase: OPT-14
+source_run: local/runs/optimization-v0.4-r4
+scope: retrospective_post_holdout_consumption
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+candidates:
+  P1: {OR: 0.8, H0: 0.2}
+  P2: {O0: 0.8, HR: 0.2}
+  P3: {OR: 1.0}
+conditional_candidates:
+  T1: E09_R2_plus_mean10_minus_median30_and_median30_minus_median100
+  T2: E04_R2_without_two_age_columns
+opt15_condition: no_OPT14_STAGE_A_pass
+opt14_max_target_fits: 0
+opt15_max_development_target_fits: 24
+opt16_max_final_target_fits: 4
+stage_a:
+  min_H1_improvement: 0.001
+  min_improved_H1_origins: 4
+  max_J_regression: 0.0005
+  max_far_horizon_regression: 0.0015
+  max_H1_target_regression: 0.002
+  max_DEV_regression: 0.001
+  DEV_LONG_beats_better_control: true
+general:
+  min_J_improvement: 0.001
+  min_improved_horizons: 3
+  max_any_horizon_regression: 0.002
+  per_target_mean_wmape_max_regression: 0.003
+  dev_short_max_regression: 0.002
+selection_order: [H1_mean_E, J, component_count, candidate_id]
+bootstrap: {repetitions: 1000, seed: 2026}
+max_challengers: 1
+platform_upload_authorized: false
+remote_push_authorized: false
+active_package_overwrite_authorized: false
