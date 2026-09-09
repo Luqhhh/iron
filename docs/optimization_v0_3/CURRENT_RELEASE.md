@@ -1,6 +1,7 @@
-# v0.3 历史发布候选：E16（已回退）
+# 当前发布候选：E16（r2 平台回传后再次回退）
 
-后续 r2 已完成 E12-raw 的正式全量训练，当前 r2 包及证据见
+后续 r2 已完成 E12-raw 的正式全量训练，回传 82.5430 后经用户确认再次恢复 E16。
+当前指针为 `configs/optimization_v0_3_r2/active_release.yaml`。r2 归档包及证据见
 [OPT10_EXECUTION_R2.md](OPT10_EXECUTION_R2.md)。以下保留当时 E16 回退记录；
 原 v0.3 导出命令仍只恢复 E16 归档，不导出 r2 新包。
 

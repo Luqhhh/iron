@@ -281,7 +281,7 @@
   "optimization_v0_3_r2": {
     "branch": "optimization-v0.3-r2",
     "continuation_commit": "04a710d9c7bc137e765eb38ad79ab73ce138f7e2",
-    "status": "OPT10_COMPLETE_FROZEN_REFERENCE_FINAL_RELEASE",
+    "status": "OPT10_COMPLETE_PLATFORM_REPORTED_USER_APPROVED_E16_ROLLBACK",
     "G0": "PASS_LOCKED_TESTS_AND_REAL_FINAL_RELEASE",
     "G1": "FROZEN_REFERENCE_ONLY_NO_NEW_ALGORITHM_ACCEPTANCE",
     "locked_python312_tests_passed": 116,
@@ -342,9 +342,26 @@
     },
     "ledger_entries": 2,
     "ledger_sha256": "0b60fe8310643eeacedf5344f9e8d8118ed7deb38a57012f442d876432f6937e",
-    "platform_score": null,
+    "platform_score": 82.543,
     "platform_uploaded": false,
     "execution_document": "docs/optimization_v0_3/OPT10_EXECUTION_R2.md",
-    "verification_sha256": "3e9ad1f3c1fcb40c40b447887628f9e5c363efd6a615b1ea26cbf806b5bb3f46"
+    "verification_sha256": "3e9ad1f3c1fcb40c40b447887628f9e5c363efd6a615b1ea26cbf806b5bb3f46",
+    "platform_score_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+    "platform_stage": "test_a",
+    "platform_reported_on": "2026-09-09",
+    "platform_score_delta_vs_E16": -0.4488,
+    "platform_score_delta_vs_development_E12_raw": -0.4113,
+    "platform_feedback_sha256": "9e6c3da355856384cd6549dd74549accd7c829a4efcf9c10f9c011f1fd78c753",
+    "release_rollback_performed": true,
+    "active_release_candidate": "E16_TIMECAL_E12",
+    "active_release_config": "configs/optimization_v0_3_r2/active_release.yaml",
+    "active_release_zip_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa",
+    "active_release_platform_score": 82.9918,
+    "rollback_on": "2026-09-09",
+    "desktop_package_replaced": true,
+    "desktop_zip_sha256": "1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160aa",
+    "rollback_targeted_tests_passed": 2,
+    "rollback_test_report_sha256": "1800094a82558755ed5a244468b361ebb75701a09e5375346713579eb255fa4d",
+    "remote_write_authorized": true
   }
 }
