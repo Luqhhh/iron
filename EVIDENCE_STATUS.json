@@ -813,6 +813,15 @@
     "tests_passed": 173,
     "test_report": "local/reports/pytest-optimization-v0.6-r1.xml",
     "test_report_sha256": "83e48bfc22684f80e60ebfc5162199595722f3a5c061256f6738f46d879b3343",
-    "results_document": "docs/optimization_v0_6/RESULTS.md"
+    "results_document": "docs/optimization_v0_6/RESULTS.md",
+    "desktop_delivery": {
+      "status": "COPIED_AND_SHA256_VERIFIED",
+      "authorization": "user_overwrite_desktop_commit_push",
+      "candidate": "S1_HORIZON_ROUTER",
+      "archive_sha256": "5d74272c9abc6d12924f2c1ad96f534a0f19042210bdf7746a27e125a7498267",
+      "destination": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
+      "platform_uploaded": false,
+      "incumbent_R2_archive_retained": true
+    }
   }
 }

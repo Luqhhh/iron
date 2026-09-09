@@ -89,3 +89,13 @@ remain unchanged. A separate append-only v0.6 access ledger records new reads.
 
 Current platform last-submission vs best-submission behavior has not been verified
 in this execution; verify it before any later authorized platform upload.
+
+## Authorized desktop delivery
+
+After the completed experiment, the user explicitly requested desktop replacement
+and Git commit/push. The S1 ZIP was copied to
+`/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip`; its SHA256 was
+verified as `5d74272c9abc6d12924f2c1ad96f534a0f19042210bdf7746a27e125a7498267`.
+The earlier no-desktop-overwrite statement describes the initial experiment delivery.
+The archived R2 ZIP and active release config remain unchanged. No platform upload
+or new platform score is recorded by this desktop-copy action.
