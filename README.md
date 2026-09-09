@@ -11,15 +11,17 @@
 optimization-v0.8 / OPT-20 已完成：**V1 rate/iron/time 结构回归通过全部严格开发门槛**，
 J 改善 0.0012579，H1 改善 0.0010116，5/6 个 H1 origin 改善，Sep/Oct/Nov 全部改善。
 196 项测试通过，完整开发和最终 test_a 冷进程重现最大差均为 0。
-已生成唯一 V1 challenger，**尚未上传，当前活动候选和桌面仍为 R2**。
-H1 仅小幅超过门槛，回溯收益不代表平台收益；详见 [v0.8 结果与提交包](docs/optimization_v0_8/RESULTS.md)。
+用户回传 V1 test_a **83.0319**，比 R2 的 83.0207 提高 **0.0112 分**；**当前活动候选更新为 V1**。
+桌面 V1 包已核验，R2 原包保留回退。当前登记为 `configs/optimization_v0_8/active_release.yaml`。
+成绩为用户回传、未独立核验；详见 [V1 当前发布](docs/optimization_v0_8/CURRENT_RELEASE.md) 与
+[v0.8 开发结果](docs/optimization_v0_8/RESULTS.md)。
 
 optimization-v0.7 / OPT-19 已完成：**G0 PASS，G1 FAIL，关闭 pseudo-history 路线**。
 六个 origin 连续滚动、18-cell 和 DEV_LONG/SHORT 均已评估，实验 0 fit；
 U1 的 H1 E 退化 0.0023189，extended J 退化 0.0047625，严格门槛全部失败。
 182 项锁定测试通过，未生成 challenger。详见 [v0.7 结果](docs/optimization_v0_7/RESULTS.md)。
 
-当前候选仍为 **R2 = 83.0207**（用户回传）。桌面已恢复 R2 原包并核验 SHA-256。
+v0.7 结束时保留 **R2 = 83.0207**（用户回传），并恢复桌面 R2 原包；当前发布见上方。
 v0.6 S1 的用户回传为 82.7707；旧模型路由/融合和伪历史递归方向均已关闭。
 v0.7 未启动新模型训练；后续 v0.8 新模型结果见上方。
 
@@ -28,7 +30,7 @@ optimization-v0.4 已完成 OPT-11 四臂解耦、OPT-12 两个固定历史候�
 132 项锁定测试通过。正式训练使用 2,754 行，截止点为 2024-12-01 01:44+08:00。
 
 2026-09-09 用户回传 R2 test_a 为 **83.0207**，相对 E16 的 82.9918 提高 **0.0289**。
-当前发布登记为 `configs/optimization_v0_4/active_release.yaml`；桌面同名提交包已核验为 R2。
+原 R2 发布登记 `configs/optimization_v0_4/active_release.yaml` 现保留为回退；当前发布见上方 v0.8 状态。
 成绩属于用户回传，未通过平台 API 或回执独立核验。November 始终是已消费的回溯开发数据。
 详见 [v0.4 完整结果](docs/optimization_v0_4/RESULTS.md) 和
 [当前发布与恢复方法](docs/optimization_v0_4/CURRENT_RELEASE.md)。本轮初赛工作包已收口；B/C 尚无本轮验收和平台结果。

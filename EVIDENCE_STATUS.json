@@ -104,6 +104,21 @@
       "submission_archive": "Luqhhh_bf_tap_predict_prelim.zip",
       "submission_archive_sha256": "e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf",
       "training_run": "local/runs/optimization-v0.4-r2-challenger-r1"
+    },
+    {
+      "reported_on": "2026-09-09",
+      "stage": "test_a",
+      "candidate": "V1_RATE_STRUCTURAL",
+      "score": 83.0319,
+      "evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "archive_sha256": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa",
+      "association_basis": "user_feedback_after_verified_V1_desktop_delivery",
+      "reference_candidate": "R2",
+      "reference_score": 83.0207,
+      "delta_vs_R2": 0.0112,
+      "cross_submission_evaluation_version_independently_verified": false,
+      "uploaded_by_agent": false,
+      "decision": "PROMOTE_V1_RETAIN_R2_FALLBACK"
     }
   ],
   "optimization_v0_2": {
@@ -981,7 +996,7 @@
     "branch": "optimization-v0.8",
     "registration_commit": "8f9df0b",
     "experiment": "OPT20_CROSS_TARGET_STRUCTURAL_REGRESSION",
-    "status": "COMPLETE_READY_CHALLENGER",
+    "status": "COMPLETE_USER_REPORTED_PLATFORM_IMPROVEMENT",
     "candidate": "V1_RATE_STRUCTURAL",
     "development_run": "local/runs/optimization-v0.8-opt20-r1",
     "development_status": {
@@ -1148,16 +1163,46 @@
     "test_report": "local/reports/pytest-optimization-v0.8-r2.xml",
     "test_report_sha256": "7eaebfab4da3121481f548e31f1254934deaa77c36658e6283066a5498084dab",
     "results_document": "docs/optimization_v0_8/RESULTS.md",
-    "active_candidate": "R2",
+    "active_candidate": "V1_RATE_STRUCTURAL",
     "active_user_reported_score": 83.0207,
-    "active_release_unchanged": true,
-    "desktop_candidate": "R2",
-    "desktop_unchanged": true,
+    "active_release_unchanged": false,
+    "desktop_candidate": "V1_RATE_STRUCTURAL",
+    "desktop_unchanged": false,
     "platform_uploaded": false,
-    "platform_score": null,
+    "platform_score": 83.0319,
     "test_labels_read": false,
     "test_inputs_used_for_selection": false,
     "old_protected_ledger_unchanged": true,
-    "remote_write_performed": false
-  }
+    "remote_write_performed": false,
+    "desktop_delivery": {
+      "status": "COPIED_AND_SHA256_VERIFIED",
+      "candidate": "V1_RATE_STRUCTURAL",
+      "destination": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
+      "archive_sha256": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa",
+      "authorization": "user_desktop_delivery_request",
+      "platform_uploaded": false,
+      "active_candidate": "R2",
+      "R2_original_archive_preserved": true
+    },
+    "platform_feedback": {
+      "reported_on": "2026-09-09",
+      "stage": "test_a",
+      "candidate": "V1_RATE_STRUCTURAL",
+      "score": 83.0319,
+      "evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "archive_sha256": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa",
+      "association_basis": "user_feedback_after_verified_V1_desktop_delivery",
+      "reference_candidate": "R2",
+      "reference_score": 83.0207,
+      "delta_vs_R2": 0.0112,
+      "cross_submission_evaluation_version_independently_verified": false,
+      "uploaded_by_agent": false,
+      "decision": "PROMOTE_V1_RETAIN_R2_FALLBACK"
+    },
+    "platform_score_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+    "active_release_config": "configs/optimization_v0_8/active_release.yaml",
+    "original_R2_release_config_unchanged": true,
+    "R2_original_archive_retained": true
+  },
+  "current_release_config": "configs/optimization_v0_8/active_release.yaml"
 }

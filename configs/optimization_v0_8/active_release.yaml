@@ -1,0 +1,17 @@
+schema_version: 1
+release_protocol: v8-rate-structural-composite-v1
+active_candidate: V1_RATE_STRUCTURAL
+selection_basis: STRICT_DEVELOPMENT_GATE_PASS_AND_USER_REPORTED_PLATFORM_IMPROVEMENT
+bundle: local/runs/optimization-v0.8-v1-challenger-r1/bundle
+composite_sha256: 591fdfee4e79767fe709ff5ce45e986634b8c51b4b90a60816fc040ad5a9ee9a
+test_a_zip: local/runs/optimization-v0.8-v1-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip
+test_a_zip_sha256: fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa
+test_a_result_sha256: cb530d3579e96efa7711b67f267bd68719b3e2fe70a31e9d500bdf27c9956a94
+platform_score: 83.0319
+platform_score_status: USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED
+fit_cutoff: '2024-12-01 01:44:00+08:00'
+global_holdout_consumed: true
+fallback_release_config: configs/optimization_v0_4/active_release.yaml
+inference_entrypoint: scripts/optimization_v8_cold_predict.py
+inference_data_config: local/runs/optimization-v0.8-v1-challenger-r1/cold_data_repaired.yaml
+activated_on: '2026-09-09'

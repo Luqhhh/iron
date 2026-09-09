@@ -223,3 +223,15 @@ E16 ZIP SHA256：`1200d4dd8dee6e797aeeba86db1ceb02293c78dd36796d2e8d75156ce77160
 本次恢复归档包，不重训、不读取标签、不修改模型或原验收门槛。
 November 已消费状态保持；E16 bundle 本身仍为未使用 November 目标的历史开发训练包。
 桌面只保留当前提交文件，其他失败包继续保存在仓库忽略的本地归档中。
+
+## 2026-09-09：v0.8 V1_RATE_STRUCTURAL 用户回传 83.0319
+
+按刚刚核验交付的桌面 V1 test_a 包关联。ZIP SHA-256：
+`fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa`。
+用户回传 **83.0319**，相对 R2 **83.0207** 提高 **0.0112 分**。
+证据状态 USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED，未取得独立平台回执。
+V1 通过此前冻结的严格开发门槛，现更新为当前候选；
+新登记为 `configs/optimization_v0_8/active_release.yaml`。
+桌面继续保持 V1，原 R2 配置及原 ZIP 保留作为回退。本次没有新训练、
+读取标签、修改预测或上传平台，不由总分推断分目标收益或继续调整系数。
+详见 [V1 当前发布](optimization_v0_8/CURRENT_RELEASE.md)。
