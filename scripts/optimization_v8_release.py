@@ -71,7 +71,7 @@ def run(development,cold_check,output):
             variant='R2',rows=len(labels),sample_ids_sha256=stable_digest(labels.sample_id.astype(str).tolist()),
             reference_max=str(labels.reference_time.max()),label_available_max=str(labels.label_available_at.max()),
             history_available_max=str(history.available_at.max()),training_history_policy='original_per_sample_asof')
-        oof=pd.concat([pd.read_csv(development/'oof'/f'{m}.csv,float_precision='round_trip',dtype={'sample_id':'string'}) for m in release['OOF_months']],ignore_index=True)
+        oof=pd.concat([pd.read_csv(development/'oof'/f'{m}.csv',float_precision='round_trip',dtype={'sample_id':'string'}) for m in release['OOF_months']],ignore_index=True)
         for c in ('reference_time','label_available_at','fold_cutoff','train_reference_max','train_available_max','history_available_max'):oof[c]=pd.to_datetime(oof[c])
         oof=oof.merge(labels[['sample_id','tap_iron','tap_time_len']],on='sample_id',validate='one_to_one')
         alpha,used=fit_correction(oof,cutoff,reg['correction']['minimum_OOF_rows'],reg['rate']['unusable_predicted_rate_max'])
