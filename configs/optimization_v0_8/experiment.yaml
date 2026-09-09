@@ -1,0 +1,43 @@
+schema_version: 1
+experiment: OPT20_CROSS_TARGET_STRUCTURAL_REGRESSION
+base_commit: db32d2f
+candidates: [U0_R2, V1_RATE_STRUCTURAL]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+oof_months: [4, 5, 6, 7, 8, 9, 10, 11]
+source_export: local/runs/optimization-v0.5-opt14-export-r1
+source_scores: local/runs/optimization-v0.5-opt14-score-r2
+rate:
+  target: tap_iron_divided_by_tap_time_len
+  component: E09_PROCESS_CHANGE_E02
+  history_variant: R2
+  parameters: configs/baseline.yaml
+  loss: MAE
+  sample_weight: tap_time_len_divided_by_training_positive_duration_mean
+  zero_duration: exclude_only_from_rate_training
+  prediction_lower_bound: 0.0
+  unusable_predicted_rate_max: 1.0e-6
+  unusable_prediction_action: identity_R2_both_targets
+correction:
+  iron_direction: rate_pred_times_R2_time_minus_R2_iron
+  time_direction: R2_iron_divided_by_rate_pred_minus_R2_time
+  coefficients: independent_target_global_scalar_in_0_1
+  fitting: exact_constrained_LAD_lower_weighted_median_tie_break
+  intercept: false
+  OOF: expanding_monthly_cutoffs_prior_months_only
+  eligibility: reference_time_before_outer_cutoff_and_label_available_at_at_or_before_outer_cutoff
+  minimum_OOF_rows: 100
+  horizon_or_spout_routing: false
+fit_budget:
+  rate_regressors: 8
+  early_R2_target_regressors: 8
+  structural_LAD_target_coefficients: 12
+H1_min_improvement: 0.001
+H1_min_improved_origins: 5
+recent_H1_must_improve: [9, 10, 11]
+H1_target_max_regression: 0.001
+H234_max_regression: 0.0015
+J_max_regression: 0.0
+DEV_max_regression: 0.0015
+new_candidates_after_results: false
+platform_upload: false
+active_release_overwrite: false

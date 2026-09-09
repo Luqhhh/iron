@@ -1,0 +1,10 @@
+schema_version: 1
+authorization: user_start_v0_8_and_explicit_start_training
+scope: RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION
+protection_contract: configs/protection.yaml
+training_labels: official_rows_reference_before_2024_11_01_and_available_by_2024_11_01
+scoring_labels: existing_v0_5_error_CSVs_only_after_all_outer_predictions
+new_ledger: local/ledgers/optimization-v0.8-development.jsonl
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+allow_test_labels: false
+allow_test_inputs_for_selection: false
