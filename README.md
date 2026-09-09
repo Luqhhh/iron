@@ -8,6 +8,12 @@
 
 ## 当前状态
 
+optimization-v0.8 / OPT-20 已完成：**V1 rate/iron/time 结构回归通过全部严格开发门槛**，
+J 改善 0.0012579，H1 改善 0.0010116，5/6 个 H1 origin 改善，Sep/Oct/Nov 全部改善。
+196 项测试通过，完整开发和最终 test_a 冷进程重现最大差均为 0。
+已生成唯一 V1 challenger，**尚未上传，当前活动候选和桌面仍为 R2**。
+H1 仅小幅超过门槛，回溯收益不代表平台收益；详见 [v0.8 结果与提交包](docs/optimization_v0_8/RESULTS.md)。
+
 optimization-v0.7 / OPT-19 已完成：**G0 PASS，G1 FAIL，关闭 pseudo-history 路线**。
 六个 origin 连续滚动、18-cell 和 DEV_LONG/SHORT 均已评估，实验 0 fit；
 U1 的 H1 E 退化 0.0023189，extended J 退化 0.0047625，严格门槛全部失败。
@@ -15,7 +21,7 @@ U1 的 H1 E 退化 0.0023189，extended J 退化 0.0047625，严格门槛全部�
 
 当前候选仍为 **R2 = 83.0207**（用户回传）。桌面已恢复 R2 原包并核验 SHA-256。
 v0.6 S1 的用户回传为 82.7707；旧模型路由/融合和伪历史递归方向均已关闭。
-下一方向为 v0.8 cross-target structural regression；本轮未启动新模型训练。
+v0.7 未启动新模型训练；后续 v0.8 新模型结果见上方。
 
 optimization-v0.4 已完成 OPT-11 四臂解耦、OPT-12 两个固定历史候选、OPT-13 跨截止点组合、
 18 格回溯验证与唯一胜出候选发布。**R2** 通过全部预登记门槛，J 改善 0.0013787；

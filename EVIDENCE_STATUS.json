@@ -976,5 +976,188 @@
     ],
     "next_phase": "optimization-v0.8 cross-target structural regression",
     "new_model_training_started": false
+  },
+  "optimization_v0_8": {
+    "branch": "optimization-v0.8",
+    "registration_commit": "8f9df0b",
+    "experiment": "OPT20_CROSS_TARGET_STRUCTURAL_REGRESSION",
+    "status": "COMPLETE_READY_CHALLENGER",
+    "candidate": "V1_RATE_STRUCTURAL",
+    "development_run": "local/runs/optimization-v0.8-opt20-r1",
+    "development_status": {
+      "G0": "PASS_OPT20",
+      "G1": "PASS_REQUIRES_FINAL_RELEASE_VALIDATION",
+      "active_R2_unchanged": true,
+      "attempted_target_fits": 16,
+      "completed_target_fits": 16,
+      "early_R2_target_fits": 8,
+      "inference_fit_attempts": 0,
+      "rate_fits": 8,
+      "structural_LAD_target_fits": 12,
+      "test_inputs_read": false,
+      "units": 20
+    },
+    "acceptance": {
+      "DEV_deltas": {
+        "DEV_LONG": -0.0010661214031575383,
+        "DEV_SHORT": -0.001748509085585298
+      },
+      "H1_origin_deltas": {
+        "O202406_H1": -0.0011946575632764411,
+        "O202407_H1": -0.00021025472351771102,
+        "O202408_H1": 0.0011904659371660131,
+        "O202409_H1": -0.0008014278346378245,
+        "O202410_H1": -0.0001003610423838952,
+        "O202411_H1": -0.004953596709181357
+      },
+      "H1_target_deltas": {
+        "iron": -0.00016313153695537985,
+        "time": -0.0018601457749883865
+      },
+      "J": 0.1657325365884109,
+      "J_delta": -0.0012579078683078448,
+      "alias": "U1 denotes V1 in shared gate/score artifacts",
+      "candidate": "V1_RATE_STRUCTURAL",
+      "checks": {
+        "DEV": true,
+        "H1_mean": true,
+        "H1_origins": true,
+        "H1_targets": true,
+        "H234": true,
+        "extended_J": true,
+        "recent_H1": true
+      },
+      "horizon_deltas": {
+        "H1": -0.0010116386559718415,
+        "H2": -0.0013970920106134432,
+        "H3": -0.0018679822634796728,
+        "H4": -0.0007549185431663386
+      },
+      "passed": true,
+      "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION"
+    },
+    "summary": {
+      "U0": {
+        "J": 0.16699044445671873,
+        "horizons": {
+          "H1": {
+            "iron_mean_wmape": 0.16030701937377403,
+            "mean_loss": 0.15765228628387426,
+            "origins": 6,
+            "time_mean_wmape": 0.15499755319397454
+          },
+          "H2": {
+            "iron_mean_wmape": 0.1699452192962035,
+            "mean_loss": 0.16659989979443782,
+            "origins": 5,
+            "time_mean_wmape": 0.16325458029267215
+          },
+          "H3": {
+            "iron_mean_wmape": 0.17549692027210906,
+            "mean_loss": 0.17470617277786366,
+            "origins": 4,
+            "time_mean_wmape": 0.1739154252836183
+          },
+          "H4": {
+            "iron_mean_wmape": 0.16750959536677792,
+            "mean_loss": 0.16900341897069918,
+            "origins": 3,
+            "time_mean_wmape": 0.17049724257462048
+          }
+        }
+      },
+      "U1": {
+        "J": 0.1657325365884109,
+        "horizons": {
+          "H1": {
+            "iron_mean_wmape": 0.16014388783681865,
+            "mean_loss": 0.15664064762790242,
+            "origins": 6,
+            "time_mean_wmape": 0.15313740741898615
+          },
+          "H2": {
+            "iron_mean_wmape": 0.16905902421830882,
+            "mean_loss": 0.16520280778382437,
+            "origins": 5,
+            "time_mean_wmape": 0.16134659134933999
+          },
+          "H3": {
+            "iron_mean_wmape": 0.17550932581742534,
+            "mean_loss": 0.17283819051438398,
+            "origins": 4,
+            "time_mean_wmape": 0.17016705521134268
+          },
+          "H4": {
+            "iron_mean_wmape": 0.16768491414216677,
+            "mean_loss": 0.16824850042753284,
+            "origins": 3,
+            "time_mean_wmape": 0.1688120867128989
+          }
+        }
+      }
+    },
+    "cold_development_run": "local/runs/optimization-v0.8-opt20-cold-r2",
+    "cold_development_max_difference": 0.0,
+    "release_run": "local/runs/optimization-v0.8-v1-challenger-r1",
+    "release_validation": {
+      "active_R2_unchanged": true,
+      "additional_recovery_fits": 0,
+      "alpha": [
+        0.41483851005524874,
+        0.6224873204982649
+      ],
+      "archive_sha256": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa",
+      "candidate": "V1_RATE_STRUCTURAL",
+      "cold_max_difference": 0.0,
+      "correction_OOF_rows": 2457,
+      "desktop_unchanged": true,
+      "inference_fit_attempts": 0,
+      "new_R2_fits": 0,
+      "new_rate_fits": 1,
+      "original_R2_loader_max_difference": 0.0,
+      "packaging_recovered": true,
+      "rate_zero_duration_excluded": 0,
+      "repair_receipt_sha256": "d3a691b44711aec01fe238efcd6b5d01de108ba2775d11945ace426c789b089a",
+      "rows": 335,
+      "status": "READY_CHALLENGER",
+      "structural_LAD_target_fits": 2,
+      "test_labels_read": false,
+      "training": {
+        "fit_cutoff": "2024-12-01 01:44:00+08:00",
+        "history_available_max": "2024-12-01 01:32:00+08:00",
+        "history_cutoff": "2024-12-01 01:44:00+08:00",
+        "label_available_cutoff": "2024-12-01 01:44:00+08:00",
+        "label_available_max": "2024-12-01 01:32:00+08:00",
+        "reference_max": "2024-11-30 23:15:00+08:00",
+        "rows": 2754,
+        "sample_ids_sha256": "4c6280fec0e53dcf4ba8d4320efc891ac6d596f4c0d31435c62ed751804f8908",
+        "training_history_policy": "original_per_sample_asof",
+        "variant": "R2"
+      },
+      "uploaded": false
+    },
+    "archive": "local/runs/optimization-v0.8-v1-challenger-r1/Luqhhh_bf_tap_predict_prelim.zip",
+    "archive_sha256": "fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa",
+    "model_fits_total": 17,
+    "structural_LAD_coefficients_total": 14,
+    "final_OOF_audit": "local/reports/optimization-v0.8-final-oof-r1.json",
+    "final_OOF_rows": 2457,
+    "final_training_rows": 2754,
+    "decision_sha256": "798da8f9e44c82dc34b19262789c88629ae0fd7fbf342b4cabd45ef00234d64c",
+    "tests_passed": 196,
+    "test_report": "local/reports/pytest-optimization-v0.8-r2.xml",
+    "test_report_sha256": "7eaebfab4da3121481f548e31f1254934deaa77c36658e6283066a5498084dab",
+    "results_document": "docs/optimization_v0_8/RESULTS.md",
+    "active_candidate": "R2",
+    "active_user_reported_score": 83.0207,
+    "active_release_unchanged": true,
+    "desktop_candidate": "R2",
+    "desktop_unchanged": true,
+    "platform_uploaded": false,
+    "platform_score": null,
+    "test_labels_read": false,
+    "test_inputs_used_for_selection": false,
+    "old_protected_ledger_unchanged": true,
+    "remote_write_performed": false
   }
 }

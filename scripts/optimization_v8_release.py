@@ -91,7 +91,7 @@ def run(development,cold_check,output):
         atomic_write_json(bundle/'structural.json',composite);atomic_write_json(bundle/'identity.json',dict(sha256=file_sha256(bundle/'structural.json')))
         samples=sample_metadata(paths['test_a_samples'])[META];counter={'attempted_target_fits':0}
         with forbid_fit(counter):expected,parts=StructuralPredictor(bundle).predict(samples,op,burden,contract)
-        cold_config=output/'cold_data.yaml';cold_config.write_text(yaml.safe_dump(dict(paths={k:v for k,v in paths.items() if k not in ('train_samples','tap_history_train')})))
+        cold_config=output/'cold_data.yaml';cold_config.write_text(yaml.safe_dump(dict(schema_version=1,paths={k:v for k,v in paths.items() if k not in ('train_samples','tap_history_train')})))
         cold_path=output/'cold_predictions.csv'
         subprocess.run([sys.executable,'scripts/optimization_v8_cold_predict.py','--bundle',str(bundle),'--data-config',str(cold_config),'--output',str(cold_path)],check=True)
         cold=pd.read_csv(cold_path,float_precision='round_trip',dtype={'sample_id':str}).set_index('sample_id').sort_index()
