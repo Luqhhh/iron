@@ -1,0 +1,9 @@
+schema_version: 1
+optimization_id: optimization-v0.2
+candidate_id: M1_BLEND
+family: blend
+parameters:
+  weights: [0.0, 0.25, 0.5, 0.75, 1.0]
+  per_target: true
+  tie_break: prefer_b1
+  tie_tolerance: 1.0e-12

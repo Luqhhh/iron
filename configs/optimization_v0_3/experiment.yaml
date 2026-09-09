@@ -1,0 +1,20 @@
+schema_version: 1
+optimization_id: optimization-v0.3-drift
+baseline_id: baseline-v0.1
+core_experiment_config: configs/optimization_v0_2/experiment.yaml
+core_candidate_ids: [E00, E09_PROCESS_CHANGE_E02]
+candidate_ids:
+  m1: M1_FROZEN
+  c1: C1_RECENT30_TIME
+  c2: C2_PROCESS_CHANGE
+  stage2: C3_PREREG_COMBINED
+recent_window_days: 30
+m1_catboost_weights:
+  tap_iron: 0.5
+  tap_time_len: 0.0
+stage2_requires_all: [C1_RECENT30_TIME, C2_PROCESS_CHANGE]
+bootstrap:
+  block: local_calendar_day
+  repetitions: 2000
+  seed: 20260908
+evidence_scope: development_seen_through_2024_10

@@ -1,0 +1,14 @@
+schema_version: 1
+optimization_id: optimization-v0.2
+baseline_id: baseline-v0.1
+feature_contract: baseline-v0.1-asof
+development_label_end_exclusive: '2024-11-01T00:00:00+08:00'
+random_seed: 2026
+folds:
+  - {id: ROLL_2024_06, kind: development, train_start: '2024-03-01T00:00:00+08:00', fit_cutoff: '2024-06-01T00:00:00+08:00', eval_start: '2024-06-01T00:00:00+08:00', eval_end: '2024-07-01T00:00:00+08:00'}
+  - {id: ROLL_2024_07, kind: development, train_start: '2024-03-01T00:00:00+08:00', fit_cutoff: '2024-07-01T00:00:00+08:00', eval_start: '2024-07-01T00:00:00+08:00', eval_end: '2024-08-01T00:00:00+08:00'}
+  - {id: ROLL_2024_08, kind: development, train_start: '2024-03-01T00:00:00+08:00', fit_cutoff: '2024-08-01T00:00:00+08:00', eval_start: '2024-08-01T00:00:00+08:00', eval_end: '2024-09-01T00:00:00+08:00'}
+selection:
+  metric: pooled_wmape
+  per_target_max_absolute_wmape_regression: 0.002
+  minimum_winning_fold_fraction: 0.6666666666666666

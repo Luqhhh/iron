@@ -1,0 +1,8 @@
+schema_version: 1
+optimization_id: optimization-v0.2
+candidate_id: M2_RECENCY
+family: recency
+parameters:
+  half_life_days: [30, 60, 120]
+  normalize_mean: true
+  base_parameters_from: baseline-v0.1

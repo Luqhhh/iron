@@ -7,16 +7,45 @@ from pathlib import Path
 
 import pandas as pd
 
-from .audit import csv_manifest, write_json
+from .audit import csv_manifest, sha256_file, write_json
+from .artifacts import file_sha256
 from .config import load_yaml, validate_data_paths
 from .exceptions import BFTapError, ContractError
 from .offline import run_prediction, run_training
 from .optimization import run_optimization_validation
 from .optimization.release import run_candidate_prediction, run_candidate_training
+from .optimization_v03 import run_drift_validation
 from .protection import load_protection_policy, record_protected_access
 from .submission import pack_submission, validate_submission
 from .validation import run_development_validation
 
+def _canonical_v03_protection_arg(value: str) -> str:
+    normalized = str(value).replace("\\", "/")
+    if normalized != "configs/protection.yaml":
+        raise argparse.ArgumentTypeError(
+            "optimize-v0.3 requires the canonical configs/protection.yaml"
+        )
+    return "configs/protection.yaml"
+
+
+_V03_CANONICAL_PROTECTION = (
+    Path(__file__).resolve().parents[2] / "configs" / "protection.yaml"
+).resolve()
+_V03_CANONICAL_PROTECTION_SHA256 = "4bc88981583c0307de485bb422a38cb760ae0470fb5114a309dce1b1ade7e638"
+_V03_CANONICAL_BOUNDARY = pd.Timestamp("2024-11-01T00:00:00+08:00")
+
+
+def _validate_v03_protection(path: str | Path) -> None:
+    supplied = Path(path)
+    actual = (supplied if supplied.is_absolute() else Path(__file__).resolve().parents[2] / supplied).resolve()
+    if actual != _V03_CANONICAL_PROTECTION:
+        raise ContractError("canonical protection policy path is required")
+    if not actual.is_file() or file_sha256(actual) != _V03_CANONICAL_PROTECTION_SHA256:
+        raise ContractError("canonical protection policy digest mismatch")
+    policy = load_protection_policy(actual)
+    if policy.development_label_end_exclusive != _V03_CANONICAL_BOUNDARY:
+        raise ContractError("canonical protection boundary must be 2024-11-01")
+    return policy
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="bf-tap", description="Leakage-safe BF tap baseline")
@@ -112,6 +141,23 @@ def _parser() -> argparse.ArgumentParser:
     )
     optimize.add_argument("--e00-reference")
     optimize.add_argument("--output", required=True)
+    drift = sub.add_parser(
+        "optimize-v0.3",
+        help="run the frozen optimization-v0.3 drift development experiment",
+    )
+    drift.add_argument("--data-config", required=True)
+    drift.add_argument("--data-contract", default="configs/data_contract.yaml")
+    drift.add_argument("--protection-policy", default="configs/protection.yaml", type=_canonical_v03_protection_arg)
+    drift.add_argument("--protection-ledger", default="local/manifests/protected_access.json")
+    drift.add_argument("--baseline-config", default="configs/baseline.yaml")
+    drift.add_argument("--feature-config", default="configs/features.yaml")
+    drift.add_argument("--drift-experiment-config", default="configs/optimization_v0_3/experiment.yaml")
+    drift.add_argument("--core-experiment-config", default="configs/optimization_v0_2/experiment.yaml")
+    drift.add_argument("--optimization-feature-config", default="configs/optimization_v0_2/features.yaml")
+    drift.add_argument("--optimization-validation-config", default="configs/optimization_v0_2/validation.yaml")
+    drift.add_argument("--optimization-acceptance-config", default="configs/optimization_v0_2/acceptance.yaml")
+    drift.add_argument("--optimization-model-config", default="configs/optimization_v0_2/models/catboost.yaml")
+    drift.add_argument("--output", required=True)
 
     opt_train = sub.add_parser(
         "optimize-train-v0.2", help="train a registered v0.2 development candidate bundle"
@@ -268,6 +314,25 @@ def main(argv: list[str] | None = None) -> int:
                 frozen_manifest_sha256=sha256_file(args.frozen_manifest),
             )
             print(json.dumps(result, ensure_ascii=False))
+            return 0
+        if args.command == "optimize-v0.3":
+            _validate_v03_protection(args.protection_policy)
+            path = run_drift_validation(
+                data_config_path=args.data_config,
+                baseline_config_path=args.baseline_config,
+                feature_config_path=args.feature_config,
+                semantic_contract_path=args.data_contract,
+                protection_policy_path=args.protection_policy,
+                protection_ledger_path=args.protection_ledger,
+                drift_experiment_config_path=args.drift_experiment_config,
+                core_experiment_config_path=args.core_experiment_config,
+                optimization_feature_config_path=args.optimization_feature_config,
+                optimization_validation_config_path=args.optimization_validation_config,
+                optimization_acceptance_config_path=args.optimization_acceptance_config,
+                optimization_model_config_path=args.optimization_model_config,
+                output=args.output,
+            )
+            print(path)
             return 0
         if args.command == "optimize-v0.2":
             path = run_optimization_validation(

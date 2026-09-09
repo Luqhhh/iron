@@ -1,0 +1,10 @@
+schema_version: 1
+optimization_id: optimization-v0.2
+candidate_id: M3_RESIDUAL
+family: residual
+parameters:
+  anchor: B1
+  fallback: B0
+  min_group_count: 20
+  train_anchor_mode: expanding_asof
+  base_parameters_from: baseline-v0.1

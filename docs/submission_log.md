@@ -115,3 +115,20 @@
 
 该候选不使用 OPT-03 的平台回传分数选取特征、窗口或权重。平台结果仅待用户
 回传并记录，不作为 E09 已通过开发门禁的替代证据。
+
+## 2026-09-09 · test_a/test_b/test_c / E09 full-stage release
+
+| 字段 | 记录 |
+| --- | --- |
+| 候选 | `E09_PROCESS_CHANGE_E02` |
+| 训练 run | `local/optimization_v02_runs/release-e09-full-20260909-01/train_e09` |
+| 训练生命周期 | `development`；截止 `2024-11-01T00:00:00+08:00`；保护标签未读取 |
+| test_a ZIP | `local/submissions/release-e09-full-20260909-01/Luqhhh_bf_tap_predict_prelim.zip` |
+| test_b ZIP | `local/submissions/release-e09-full-20260909-01/Luqhhh_bf_tap_predict_round2.zip` |
+| test_c ZIP | `local/submissions/release-e09-full-20260909-01/Luqhhh_bf_tap_predict_semifinal.zip` |
+| result 行数 | test_a=335；test_b=322；test_c=548 |
+| result SHA-256 | test_a=`bf037c118a3ee55cdc95f5964868e312453d87139c4a0de2f8eb55f53cf46ac4`；test_b=`eda894da21f868677c84c02c8a7a4cd4a3a1bf71bb7ad924fe697fd9ee4cf1b7`；test_c=`6f35df2e6202119326dcbb36266196d74127f14b10b085cd9ce1834db263eec1` |
+| ZIP SHA-256 | prelim=`89F2822D5571BAEAF928EB238B6B1B2CE2EA50F3BECD80D4B33033FBC0E0292D`；round2=`B609188258FB4E9D13439D0B4209A6DBAC23E98EAEFD46CFCC9A277D5171600D`；semifinal=`CC87F31D7A2BC7E786A95CA56C2E092D09A4FCFB152760900ADCBF825AC7872C` |
+| 独立校验 | 三阶段 `check-submission` 均 PASS；每个 ZIP 根目录仅含 `result.csv` |
+
+本次只是按已通过 G1 的 E09 候选生成全阶段提交物；未使用平台回传分数继续搜索，也未读取 2024 年 11 月保护标签。

@@ -1,0 +1,7 @@
+schema_version: 1
+optimization_id: optimization-v0.2
+candidate_id: M4_ENSEMBLE
+family: ensemble
+parameters:
+  enabled: false
+  activation_gate: residual_complementarity_required
