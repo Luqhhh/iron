@@ -75,13 +75,13 @@ def complement(actual,predictions):
     return result
 
 
-def gates(metrics,summary,registration):
+def gates(metrics,summary,registration, candidates=CANDIDATES):
     reference=summary['R2'];old=summary['E12-raw']
     h1=[k for k,v in metrics.items() if v['horizon']==1]
     if len(h1)!=6:
         raise ContractError('STAGE_A requires six H1 origins')
     results={}
-    for candidate in CANDIDATES:
+    for candidate in candidates:
         s=summary[candidate]
         delta={h:s['horizons'][h]['mean_loss']-reference['horizons'][h]['mean_loss'] for h in ('H1','H2','H3','H4')}
         origin_delta={k:metrics[k]['candidates'][candidate]['overall']['loss']-metrics[k]['candidates']['R2']['overall']['loss'] for k in h1}

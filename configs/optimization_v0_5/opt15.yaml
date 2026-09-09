@@ -1,0 +1,20 @@
+schema_version: 1
+phase: OPT-15
+registration: configs/optimization_v0_5/experiment.yaml
+opt14_export: local/runs/optimization-v0.5-opt14-export-r1
+opt14_scores: local/runs/optimization-v0.5-opt14-score-r2
+authorization: user_continue_v0_5_OPT15_OPT16_20260909
+purpose: official_train_post_holdout_consumption_fixed_component_training
+training_label_source: official_train_samples_eligible_metadata_rows_only
+training_reference_start: '2024-03-01T00:00:00+08:00'
+training_available_cutoff: '2024-11-01T00:00:00+08:00'
+scoring_targets: existing_v0_4_error_csvs
+holdout_consumed: true
+november_status: POST_HOLDOUT_CONSUMPTION
+access_ledger: local/ledgers/optimization-v0.5-development.jsonl
+fit_budget_ledger: local/ledgers/optimization-v0.5-opt15-fit-budget.jsonl
+max_development_target_fits: 24
+max_final_target_fits: 4
+train_components: {T1: E09_PROCESS_CHANGE_E02, T2: E04}
+reuse_components: {T1: HR, T2: OR}
+test_a_used_for_selection: false

@@ -1,4 +1,12 @@
-# optimization-v0.5 OPT-14 results
+# optimization-v0.5 results
+
+Current phase status: **V05_CLOSED_KEEP_R2**. The authorized continuation completed
+OPT-15 with 24 target fits; T1/T2 also failed both gates. OPT-16 was not triggered.
+See [OPT15_EXECUTION.md](OPT15_EXECUTION.md) for the completed continuation and
+validation. The following OPT-14 first-delivery record is preserved as historical
+evidence; its pending statements describe that earlier delivery.
+
+## OPT-14 first-delivery record
 
 First delivery complete; OPT-15 and OPT-16 are not executed. No model was trained,
 no challenger was packaged, and the R2 active release remains unchanged.

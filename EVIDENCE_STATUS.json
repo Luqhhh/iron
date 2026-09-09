@@ -459,11 +459,11 @@
   "optimization_v0_5": {
     "base_commit": "1f23f28817734c45af2e91b1dd1094108a122b25",
     "branch": "optimization-v0.5",
-    "delivery_scope": "OPT-14_FIRST_DELIVERY_ONLY",
-    "phase_status": "OPT14_COMPLETE_OPT15_ELIGIBLE_PENDING",
+    "delivery_scope": "OPT14_OPT15_COMPLETE_OPT16_NOT_TRIGGERED",
+    "phase_status": "V05_CLOSED_KEEP_R2",
     "G0": "PASS_REAL_COMPONENT_REPRODUCTION_AND_LOCKED_TESTS",
-    "G1_STAGE_A": "FAIL_ALL_THREE_CANDIDATES",
-    "G1_GENERAL": "FAIL_ALL_THREE_CANDIDATES",
+    "G1_STAGE_A": "FAIL_ALL_FIVE_CANDIDATES",
+    "G1_GENERAL": "FAIL_ALL_FIVE_CANDIDATES",
     "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
     "holdout_consumed": true,
     "november_status": "POST_HOLDOUT_CONSUMPTION",
@@ -471,16 +471,16 @@
     "score_run": "local/runs/optimization-v0.5-opt14-score-r2",
     "component_count": 24,
     "evaluation_units": 20,
-    "attempted_target_fits": 0,
-    "completed_target_fits": 0,
+    "attempted_target_fits": 24,
+    "completed_target_fits": 24,
     "endpoint_checks": 40,
     "endpoint_max_abs_difference": 1.7053025658242404e-13,
     "export_manifest_sha256": "a2fd9d2bf02e5b71b62ee7909894ea8623455f6e5d7b8fc978775de61203a5f3",
     "component_predictions_sha256": "1ad655d31ac98b5c2bb0c65cb5b573210f159fb2e133cf4bb5293d274b921330",
     "acceptance_sha256": "bf7add356600aa21e61395b343508195812c8c2a54bd443e736de3bb4f271246",
-    "test_report": "local/reports/pytest-optimization-v0.5-opt14-r2.xml",
-    "test_report_sha256": "8f015025d67daef26ce4712d71517b58ae986ed3def1a6b7c30ba299ae96f0d5",
-    "tests_passed": 150,
+    "test_report": "local/reports/pytest-optimization-v0.5-opt15-r1.xml",
+    "test_report_sha256": "c182e79c0bdceed494bd782d42e6083db8defd0a7350ded2f7a0de58400d2d68",
+    "tests_passed": 161,
     "candidate_outcomes": {
       "P1": {
         "STAGE_A": false,
@@ -517,11 +517,97 @@
           "H3": 0.005598646352946074,
           "H4": 0.00366675316002979
         }
+      },
+      "T1": {
+        "H1": 0.1576164882918002,
+        "J": 0.16780809953594483,
+        "H1_improvement_vs_R2": 3.579799207409362e-05,
+        "J_delta_vs_R2": 0.0008176550792260984,
+        "horizon_deltas": {
+          "H1": -3.579799207409362e-05,
+          "H2": 9.658131275497306e-05,
+          "H3": -0.00019057858219545531,
+          "H4": 0.0034004155784189694
+        },
+        "H1_origin_deltas": {
+          "O202406_H1": -0.002946809646679885,
+          "O202407_H1": -0.0011339210394583077,
+          "O202408_H1": 0.001036264272349624,
+          "O202409_H1": -0.0007154280034830096,
+          "O202410_H1": 0.002216665880359653,
+          "O202411_H1": 0.0013284405844673497
+        },
+        "DEV_deltas": {
+          "DEV_LONG": 0.00044986296556376315,
+          "DEV_SHORT": -0.0020622229695545224
+        },
+        "STAGE_A": false,
+        "GENERAL": false,
+        "STAGE_A_checks": {
+          "DEV_LONG_beats_control": true,
+          "DEV_regression": true,
+          "H1_improvement": false,
+          "H1_target_regression": true,
+          "J_regression": false,
+          "far_horizon_regression": false,
+          "improved_H1_origins": false
+        },
+        "GENERAL_checks": {
+          "DEV_LONG_beats_control": true,
+          "DEV_SHORT_regression": true,
+          "J_improvement": false,
+          "horizon_regression": false,
+          "improved_horizons": false,
+          "target_regression": true
+        }
+      },
+      "T2": {
+        "H1": 0.15692519032757524,
+        "J": 0.16932295499788524,
+        "H1_improvement_vs_R2": 0.0007270959562990509,
+        "J_delta_vs_R2": 0.0023325105411665104,
+        "horizon_deltas": {
+          "H1": -0.0007270959562990509,
+          "H2": 0.0023317800034996228,
+          "H3": 0.00369946276254271,
+          "H4": 0.004025895354922759
+        },
+        "H1_origin_deltas": {
+          "O202406_H1": -0.0018347275334231194,
+          "O202407_H1": -0.002807728657292008,
+          "O202408_H1": 0.001998193335009335,
+          "O202409_H1": 0.0016596841374347249,
+          "O202410_H1": -0.0015758950128201832,
+          "O202411_H1": -0.0018021020067031657
+        },
+        "DEV_deltas": {
+          "DEV_LONG": 0.007860881111313667,
+          "DEV_SHORT": 0.0006452213640537052
+        },
+        "STAGE_A": false,
+        "GENERAL": false,
+        "STAGE_A_checks": {
+          "DEV_LONG_beats_control": false,
+          "DEV_regression": false,
+          "H1_improvement": false,
+          "H1_target_regression": true,
+          "J_regression": false,
+          "far_horizon_regression": false,
+          "improved_H1_origins": true
+        },
+        "GENERAL_checks": {
+          "DEV_LONG_beats_control": false,
+          "DEV_SHORT_regression": true,
+          "J_improvement": false,
+          "horizon_regression": false,
+          "improved_horizons": false,
+          "target_regression": false
+        }
       }
     },
     "selected_challenger": null,
     "OPT15_condition_met": true,
-    "OPT15_executed": false,
+    "OPT15_executed": true,
     "OPT16_executed": false,
     "active_release_candidate": "R2",
     "active_release_unchanged": true,
@@ -531,6 +617,49 @@
     "platform_uploaded": false,
     "remote_write_performed": false,
     "preserved_failure": "opt14-score-r1: JSON origin-key type normalization; predictions reused without inference or fit",
-    "results_document": "docs/optimization_v0_5/RESULTS.md"
+    "results_document": "docs/optimization_v0_5/RESULTS.md",
+    "opt14_first_delivery": {
+      "delivery_scope": "OPT-14_FIRST_DELIVERY_ONLY",
+      "phase_status": "OPT14_COMPLETE_OPT15_ELIGIBLE_PENDING",
+      "attempted_target_fits": 0,
+      "completed_target_fits": 0,
+      "tests_passed": 150,
+      "test_report": "local/reports/pytest-optimization-v0.5-opt14-r2.xml",
+      "test_report_sha256": "8f015025d67daef26ce4712d71517b58ae986ed3def1a6b7c30ba299ae96f0d5"
+    },
+    "OPT16_reason": "NO_STAGE_A_WINNER",
+    "final_target_fits": 0,
+    "inference_fit_attempts": 0,
+    "opt15_run": "local/runs/optimization-v0.5-opt15-r1",
+    "opt15_manifest_sha256": "e99203d7fd9a704fc162f0647a1d36b81de8ad1dcd78f4ac2f201c9b72506155",
+    "opt15_acceptance_sha256": "9bf1f163b49a992f2854767adbf088f227a08a86c2487bbf8a05ab91f1294ef3",
+    "opt15_status_sha256": "0378d1beb4dfdf0bc5563ae6bb46741e5111cb0f0112704ab420c0d91a18eb34",
+    "stage_mapping_report": "local/runs/optimization-v0.5-stage-check-r1/stage_mapping.json",
+    "stage_mapping_sha256": "26cb8fef649207578121dffaf1697f715d741891ff6b697c6a81ecae6f94950a",
+    "stage_check_status": "PASS_RUNNABILITY_ONLY",
+    "stage_checks": [
+      {
+        "stage": "test_b",
+        "candidate": "R2",
+        "rows": 322,
+        "calendar_horizon_counts": {
+          "2": 322
+        },
+        "scored": false,
+        "new_fits": 0
+      },
+      {
+        "stage": "test_c",
+        "candidate": "R2",
+        "rows": 548,
+        "calendar_horizon_counts": {
+          "3": 303,
+          "4": 245
+        },
+        "scored": false,
+        "new_fits": 0
+      }
+    ],
+    "continuation_document": "docs/optimization_v0_5/OPT15_EXECUTION.md"
   }
 }
