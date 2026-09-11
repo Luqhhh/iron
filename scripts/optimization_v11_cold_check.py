@@ -11,6 +11,7 @@ from bf_tap.optimization.structural import INPUT,directions,select_oof
 from bf_tap.optimization.trajectory_candidate import TimeModel,predict
 from bf_tap.optimization.trajectory_run import dated,builder_for,load_fold,candidate_inputs,equal
 from bf_tap.optimization.refresh_factorial import stamp
+from bf_tap.optimization.trajectory_complete import canonical_history_time,verify_execution
 
 
 def check_lad_optimal(selected, alpha):
@@ -29,7 +30,7 @@ def main(source):
         raise ContractError('cold evidence already exists')
     manifest=read_json(source/'manifest.json'); reg=manifest['registration']
     reg['origins']={int(k):v for k,v in reg['origins'].items()}
-    verify_manifest(manifest)
+    verify_execution(source)
     receipt=read_json(source/'predictions_complete.json');verify_file_identities(receipt['predictions'])
     if set(manifest['inputs']) != {'operation_hourly','burden_change','data_dictionary'}:
         raise ContractError('cold feature paths contain training labels')
@@ -58,7 +59,7 @@ def main(source):
             selected=select_oof(labeled,cutoff,reg['minimum_OOF_rows'])
             saved=dated(source/'corrections'/f'{month}_OOF.csv')
             for col in ('available_at',):
-                saved[col]=pd.to_datetime(saved[col])
+                saved[col]=canonical_history_time(saved[col])
             if not selected.reset_index(drop=True).equals(saved.reset_index(drop=True)):
                 raise ContractError('saved LAD rows differ from causal history join')
             coeff=read_json(source/'corrections'/f'{month}.json')
@@ -78,7 +79,7 @@ def main(source):
             checks.append(dict(origin=month,rows=len(pred),prediction_max_delta=delta,iron_exact=True,reversal=True))
             builder.cache.clear()
             print(f'OPT24 cold origin {month}: LAD certificate, iron exact and reversal PASS',flush=True)
-    verify_manifest(manifest)
+    verify_execution(source)
     atomic_write_json(dest,dict(status='PASS',checks=checks,**counter,LAD_fits=0,
         manifest_sha256=file_sha256(source/'manifest.json'),script_sha256=file_sha256(__file__),
         official_training_label_paths_in_feature_inputs=False))
