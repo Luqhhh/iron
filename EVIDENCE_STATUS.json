@@ -1484,10 +1484,10 @@
     "results_document": "docs/optimization_v0_10/RESULTS.md"
   },
   "current_status": {
-    "as_of": "2026-09-09",
-    "latest_completed_phase": "optimization-v0.10",
-    "latest_experiment_commit": "fcda5e0054c2e1ab94a988f1224917e2ecc608ed",
-    "latest_experiment_branch_pushed": true,
+    "as_of": "2026-09-11",
+    "latest_completed_phase": "optimization-v0.11",
+    "latest_experiment_commit": "e7952d5",
+    "latest_experiment_branch_pushed": false,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
     "user_reported_test_a_score": 83.0319,
@@ -1495,9 +1495,9 @@
     "fallback_candidate": "R2",
     "fallback_release_config": "configs/optimization_v0_4/active_release.yaml",
     "fallback_user_reported_score": 83.0207,
-    "latest_G0": "PASS_DEVELOPMENT_AND_INDEPENDENT_COLD",
-    "latest_G1": "FAIL_ALL_NINE_FROZEN_GATES",
-    "latest_locked_tests_passed": 221,
+    "latest_G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
+    "latest_G1": "FAIL_J_H1_TIME_H1_ORIGINS_H4",
+    "latest_locked_tests_passed": 235,
     "pending_challenger": false,
     "holdout_consumed": true,
     "retrospective_grid_completed": true,
@@ -1505,5 +1505,89 @@
     "desktop_candidate": "V1_RATE_STRUCTURAL",
     "documentation_index": "docs/INDEX.md",
     "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview."
+  },
+  "optimization_v0_11": {
+    "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
+    "G1": "FAIL_CLOSE_REGISTERED_V5",
+    "acceptance": {
+      "DEV_deltas": {
+        "DEV_LONG": 0.00041475164311433055,
+        "DEV_SHORT": -0.0004891348070857893
+      },
+      "H1_origin_deltas": {
+        "O202406_H1": 0.0004302348742902806,
+        "O202407_H1": 9.261570260585272e-05,
+        "O202408_H1": 7.93812009408923e-05,
+        "O202409_H1": -0.00041216715599312614,
+        "O202410_H1": 0.0006443187256887917,
+        "O202411_H1": -9.007276665917718e-05
+      },
+      "J": 0.16587089565544252,
+      "J_delta_vs_V1": 0.0001383590670316348,
+      "candidate": "V5_TIME_TRAJECTORY",
+      "checks": {
+        "DEV_LONG": true,
+        "DEV_SHORT": true,
+        "H1_origins": false,
+        "H1_time": false,
+        "H2": true,
+        "H3": true,
+        "H4": false,
+        "J": false,
+        "engineering_and_causal": true,
+        "iron_exact": true,
+        "recent_H1": true
+      },
+      "horizon_deltas": {
+        "H1": {
+          "iron_mean_wmape": 0.0,
+          "mean_loss": 0.00012405176347887736,
+          "time_mean_wmape": 0.00024810352695786575
+        },
+        "H2": {
+          "iron_mean_wmape": 0.0,
+          "mean_loss": 0.00028478352946809116,
+          "time_mean_wmape": 0.0005695670589361546
+        },
+        "H3": {
+          "iron_mean_wmape": 0.0,
+          "mean_loss": -0.0004600572437691297,
+          "time_mean_wmape": -0.0009201144875383149
+        },
+        "H4": {
+          "iron_mean_wmape": 0.0,
+          "mean_loss": 0.0006046582189486727,
+          "time_mean_wmape": 0.0012093164378972898
+        }
+      },
+      "passed": false,
+      "reference": "V1",
+      "selected": null,
+      "status": "FAIL_CLOSE_REGISTERED_V5"
+    },
+    "fit_counts": {
+      "challengers": 0,
+      "development_time_CatBoost_attempted": 8,
+      "development_time_CatBoost_completed": 8,
+      "development_time_LAD": 6,
+      "final_time_CatBoost": 0,
+      "final_time_LAD": 0,
+      "forbidden_fits": 0,
+      "inference_fit_attempts": 0,
+      "new_iron_E04_rate_q_residual_fits": 0
+    },
+    "locked_tests_passed": 235,
+    "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
+    "branch": "optimization-v0.11",
+    "branch_pushed": false,
+    "completion_receipt": "local/reports/optimization-v0.11-completion-r1.json",
+    "completion_receipt_sha256": "645db1b1ae1eedc4a27771ffd2c18d2a4eaa3c4126437dc298dd35d5f5a40678",
+    "results_document": "docs/optimization_v0_11/RESULTS.md",
+    "run_root": "local/runs/optimization-v0.11-opt24-r1",
+    "additional_candidate_search": false,
+    "final_training": false,
+    "challenger": null,
+    "prefit_commit": "1a5558a",
+    "audit_completion_commit": "e7952d5"
   }
 }
