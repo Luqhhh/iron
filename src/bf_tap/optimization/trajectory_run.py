@@ -131,7 +131,9 @@ def load_fold(manifest, month):
         if (model.parameters != a['baseline']['parameters'] or md['feature_config'] != a['features']
                 or md['contract_digests'] != a['contract_digests'] or tr['sample_ids_sha256'] != record['sample_ids_sha256']
                 or any(pd.Timestamp(tr[k]) != cutoff for k in ('fit_cutoff','history_cutoff','label_available_cutoff'))
-                or tr['component'] != entry['component'] or tr['variant'] != 'R2'):
+                or tr.get('component',entry['component']) != entry['component'] or tr.get('variant','raw') != 'R2'
+                or entry['role'] != role or entry['variant'] != 'R2'
+                or entry['component'] != {'OR':'E09_PROCESS_CHANGE_E02','HR':'E04'}[role]):
             raise ContractError('reused training/feature identity differs')
         relevant = {k:v for k,v in md['code_identity'].items() if k.startswith(('src/bf_tap/features/', 'src/bf_tap/models/', 'configs/')) or k in (
             'src/bf_tap/optimization/history_stable.py','src/bf_tap/optimization/features.py',
