@@ -1,0 +1,14 @@
+schema_version: 1
+profile: V5_TIME_TRAJECTORY
+base_component: E09_PROCESS_CHANGE_E02
+history_variant: R2
+value_columns: [air_volume, total_press_diff, hot_air_press, oxygen]
+windows_hours: [6, 24]
+statistics: [slope, mean_abs_step_rate, valid_pair_count]
+slope_minimum_distinct_finite_times: 3
+step_maximum_gap_hours: 1.5
+step_minimum_valid_pairs: 2
+window: '(reference_time - W, reference_time]'
+visibility: event_time_and_available_at_at_or_before_reference_time
+duplicates: frozen_temporal_builder_contract
+missing: no_interpolation_no_backfill_no_zero_fill

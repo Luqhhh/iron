@@ -1,0 +1,11 @@
+schema_version: 1
+authorization: user_20260911_OPT24_V5_TIME_TRAJECTORY_execution_plan
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+training_labels: verified_original_E09_R2_bundle_history_at_each_cutoff
+scoring_labels: archived_v8_errors_only_after_all_outer_predictions
+public_features: frozen_process_sources_fixed_trajectory_profile
+new_ledger: local/ledgers/optimization-v0.11-development.jsonl
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+official_target_column_reads: false
+test_inputs_for_selection: false

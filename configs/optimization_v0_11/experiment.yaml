@@ -1,0 +1,48 @@
+schema_version: 1
+experiment: OPT24_TIME_TRAJECTORY
+base_commit: a7bf539c07dc98d59b5c2432c1a60694c52f1fd1
+scope: RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION
+candidate: V5_TIME_TRAJECTORY
+source_v8: local/runs/optimization-v0.8-opt20-r1
+source_v8_cold: local/runs/optimization-v0.8-opt20-cold-r2
+active_release: configs/optimization_v0_8/active_release.yaml
+fallback_release: configs/optimization_v0_4/active_release.yaml
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+oof_months: [4, 5, 6, 7, 8, 9, 10, 11]
+features: configs/optimization_v0_11/features.yaml
+parameters: configs/baseline.yaml
+training: original_E09_R2_identity_order_history_and_range
+new_target: tap_time_len
+base_time_weights: [0.8, 0.2]
+iron: exact_copy_original_V1_output
+time_direction: original_R2_iron_divided_by_original_rate_minus_new_base_time
+rate_floor: 1.0e-6
+minimum_OOF_rows: 100
+correction: original_constrained_scalar_LAD_in_0_1_smallest_minimizer
+budget:
+  development_time_CatBoost_fits: 8
+  development_time_LAD_fits: 6
+  new_iron_E04_rate_q_residual_fits: 0
+  max_final_time_CatBoost_fits: 1
+  max_final_time_LAD_fits: 1
+  max_challengers: 1
+acceptance:
+  iron_exact: true
+  J_delta_max: -0.0005
+  H1_time_delta_max: -0.0010
+  H1_min_strictly_improved_origins: 4
+  recent_H1_months: [9, 10, 11]
+  recent_H1_min_improved: 2
+  H234_E_delta_max: 0.0005
+  DEV_E_delta_max: 0.0007
+  engineering_and_causal: ALL_PASS
+bootstrap: {repetitions: 1000, seed: 2026}
+final:
+  cutoff: '2024-12-01 01:44:00+08:00'
+  training_rows: 2754
+  test_a_rows: 335
+  status_if_pass: READY_CHALLENGER
+failure_action: CLOSE_REGISTERED_V5_RETAIN_V1_NO_SEARCH
+platform_upload: false
+active_release_overwrite: false
+desktop_overwrite: false
