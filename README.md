@@ -1,9 +1,10 @@
 # bf-tap-predict
 
-[![historical-v0.10-locked-tests](https://github.com/Luqhhh/iron/actions/workflows/tests.yml/badge.svg?branch=optimization-v0.10)](https://github.com/Luqhhh/iron/actions/workflows/tests.yml)
 
 高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
 工程基线 `baseline-v0.1-reproducible` 保持冻结；后续优化使用独立阶段、配置与运行目录。
+
+v0.12 / OPT-25–26 已按固定 recency60 规格在本地注册；当前完成状态仍按下表。历史 v0.10 CI badge 已移除，远端 HEAD 9a9437e 的成功 run 不代替本轮本地测试。
 
 ## 当前状态
 
@@ -49,7 +50,7 @@ uv run --locked --python 3.12 python scripts/check_no_private_artifacts.py
 
 CI 另有 Python 3.11 兼容性检查。真实训练和推理的权威环境使用 Python 3.12 与 `uv.lock`。
 
-用户已授权将 **`初赛数据集/`** 内赛事数据纳入 Git；此授权不扩大到其他目录。
+**2026-09-11 维护纠正：暂停公开发布。** 旧说明中的用户仓库授权不能替代赛事主办方的数据公开授权；当前历史含赛事数据，仓库仍为 public。v0.12 仅本地执行，数据历史处置完成前不推送。详见 [数据与发布边界核查](docs/optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
 模型、逐样本预测、本地报告、访问账本和提交 ZIP 仍保存在被忽略的 `local/`，不进入 Git。
 新机器仅克隆源码及数据不会自动获得已保存的 V1/R2 模型包，需要恢复匹配摘要的本地产物。
 

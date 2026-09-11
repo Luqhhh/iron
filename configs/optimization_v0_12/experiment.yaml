@@ -1,0 +1,78 @@
+schema_version: 1
+experiment: OPT25_PREFLIGHT_OPT26_RECENCY60
+base_commit: 9a9437e08026c8d69bc973aa35155dc2557751b8
+branch: optimization-v0.12
+scope: RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION
+source_v8: local/runs/optimization-v0.8-opt20-r1
+source_v11: local/runs/optimization-v0.11-opt24-r1/execution
+source_v11_receipt: local/reports/optimization-v0.11-completion-r1.json
+active_release: configs/optimization_v0_8/active_release.yaml
+fallback_release: configs/optimization_v0_4/active_release.yaml
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+oof_months: [4, 5, 6, 7, 8, 9, 10, 11]
+expected_training_rows: {4: 297, 5: 588, 6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424}
+component: E09_PROCESS_CHANGE_E02
+history_variant: R2
+feature_policy: EXACT_ORIGINAL_E09_R2_NO_TRAJECTORY_COLUMNS
+parameters: configs/baseline.yaml
+targets: [tap_iron, tap_time_len]
+weight:
+  half_life_days: 60.0
+  age: cutoff_minus_reference_time_seconds_divided_by_86400
+  raw: 2_power_minus_age_days_divided_by_60
+  normalization: per_cutoff_global_mean_one
+  availability: reference_time_before_cutoff_and_available_at_at_or_before_cutoff
+  target_or_spout_weighting: false
+  floor_clip_or_row_truncation: false
+base_weights: [0.8, 0.19999999999999996]
+rate_floor: 1.0e-6
+minimum_OOF_rows: 100
+correction:
+  iron: old_rate_times_old_R2_time_minus_new_iron_base
+  time: old_R2_iron_divided_by_old_rate_minus_new_time_base
+  fit: original_constrained_LAD_lower_weighted_median_in_0_1
+  additional_recency_weight: false
+  cross_inputs: false
+candidates:
+  V6I_RECENCY60_IRON: [tap_iron]
+  V6T_RECENCY60_TIME: [tap_time_len]
+  V6B_RECENCY60_BOTH: [tap_iron, tap_time_len]
+budget:
+  development_CatBoost: 16
+  development_LAD: 12
+  max_final_CatBoost: 2
+  max_final_LAD: 2
+  max_total_CatBoost: 18
+  max_total_LAD: 14
+  new_E04_rate_q_old_V1_R2_fits: 0
+  max_challengers: 1
+acceptance:
+  J_delta_max: -0.0005
+  H1_E_delta_max: -0.0005
+  H1_min_strict_improved: 4
+  recent_months: [9, 10, 11]
+  recent_min_strict_improved: 2
+  H1_changed_target_delta_max: 0.0
+  H234_E_delta_max: 0.0005
+  H234_changed_target_delta_max: 0.0010
+  DEV_E_delta_max: 0.0007
+  algebra_tolerance: 1.0e-12
+selection:
+  eligible: all_gates_passed_only
+  J_near_tie: 0.0001
+  tie_order: [changed_target_count, H1_mean_E, candidate_ID_lexicographic]
+bootstrap: {repetitions: 1000, seed: 2026}
+final:
+  cutoff: '2024-12-01 01:44:00+08:00'
+  original_training_rows: 2754
+  test_a_rows: 335
+  selected_targets_only: true
+  status: READY_CHALLENGER
+failure_action: CLOSE_FIXED_RECENCY60_RETAIN_V1_NO_SEARCH
+publication_hold: true
+public_push: false
+visibility_change: false
+history_rewrite: false
+platform_upload: false
+active_release_overwrite: false
+desktop_overwrite: false

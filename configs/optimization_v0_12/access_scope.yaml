@@ -1,0 +1,12 @@
+schema_version: 1
+authorization: user_20260911_OPT25_OPT26_fixed_recency60_execution_specification
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+training_labels: verified_original_E09_R2_bundle_history_at_each_cutoff
+P0_background_errors: archived_consumed_V1_errors_diagnostics_only_after_registration
+candidate_scoring_labels: archived_v8_errors_only_after_all_outer_predictions_frozen
+new_ledger: local/ledgers/optimization-v0.12-development.jsonl
+old_ledger: local/ledgers/optimization-v0.3-r2-protected.jsonl
+official_target_column_reads: false
+test_inputs_for_selection: false
+public_publication: BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION
