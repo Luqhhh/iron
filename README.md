@@ -4,11 +4,11 @@
 高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
 工程基线 `baseline-v0.1-reproducible` 保持冻结；后续优化使用独立阶段、配置与运行目录。
 
-v0.12 / OPT-25–26 已按固定 recency60 规格在本地注册；当前完成状态仍按下表。历史 v0.10 CI badge 已移除，远端 HEAD 9a9437e 的成功 run 不代替本轮本地测试。
+v0.12 / OPT-25–26 已完成固定 recency60 对照，三个候选均未通过完整质量门槛。历史 v0.10 CI badge 已移除，远端 HEAD 9a9437e 的成功 run 不代替本轮本地测试。
 
 ## 当前状态
 
-截至 2026-09-11，最新完成阶段为 **optimization-v0.11 / OPT-24**，本地执行与审计提交 `e7952d5`；本轮已推送。
+截至 2026-09-11，最新完成阶段为 **optimization-v0.12 / OPT-25–26**，评分前冻结实施提交 `e6dea84`；本轮仅本地提交，暂停公开推送。
 当前活动候选及桌面包仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
 平台成绩未独立核验，不代表开发结果能直接换算成排行榜收益。
 
@@ -16,10 +16,10 @@ v0.12 / OPT-25–26 已按固定 recency60 规格在本地注册；当前完成�
 | --- | --- |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
-| 最新工程验收 G0 | v0.11 执行及修正后的独立冷审计通过，八个 OOF fold 与六个 origin 预测最大差为 0 |
-| 最新质量验收 G1 | V5 的 J、H1 时长、H1 改善 origin 数和 H4 四项门槛失败，固定候选已关闭 |
-| 锁定环境测试 | Python 3.12.12，235 passed；本地证据，不等同于远端 CI 状态 |
-| 新待测包 | 无；v0.9/v0.10/v0.11 均未生成 challenger |
+| 最新工程验收 G0 | v0.12 预检、开发与独立冷审计通过，八个 OOF fold 与六个 origin 预测最大差为 0 |
+| 最新质量验收 G1 | V6I/V6T/V6B 均未通过完整门槛，FAIL_NO_RELEASE；固定 recency60 已关闭 |
+| 锁定环境测试 | Python 3.12.12，255 passed；本地证据，不等同于远端 CI 状态 |
+| 新待测包 | 无；v0.9–v0.12 均未生成 challenger |
 | 保护标签状态 | November 已在授权生命周期消费；后续为已消费回溯开发 |
 | 时间语义 | `competition-timestamp-contract-v1 / ASSUMED`，未新增官方确认 |
 
@@ -30,6 +30,7 @@ v0.12 / OPT-25–26 已按固定 recency60 规格在本地注册；当前完成�
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
+| [v0.12 / OPT-25–26](docs/optimization_v0_12/RESULTS.md) | 16 次直接目标 fit + 12 次 LAD；V6I/V6T/V6B 的 Delta J 为 +0.00022759 / -0.00062889 / -0.00040130 | 全部完整门槛失败；无 final fit、无新包；未推送 |
 | [v0.11 / OPT-24](docs/optimization_v0_11/RESULTS.md) | 8 次直接时长 fit + 6 次 LAD；相对 V1，J 退化 0.00013836，H1 时长 WMAPE 退化 0.00024810 | 关闭固定 V5；无 final fit、无新包 |
 | [v0.10 / OPT-23](docs/optimization_v0_10/RESULTS.md) | 12 次低容量 residual fit；相对 V1，J 退化 0.0053128，H1 E 退化 0.0015335 | 关闭固定 V4；无 final fit、无平台包 |
 | [v0.9 / OPT-21/22](docs/optimization_v0_9/RESULTS.md) | W0 保留 V1 开发收益 91.44%；8 次 q fit；V2/V3 J 改善仅 0.0001607 / 0.0000530 | 严格门槛失败，关闭 ratio 扩展 |
@@ -90,7 +91,7 @@ R2 回退包 SHA-256：`e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b0743
 - operation：`event_time = available_at = clock`；burden：`event_time = available_at = cal_time`。
 - 历史目标：`available_at = tap_end_time`，只纳入参考时刻前已可用且符合场景 cutoff 的记录。
 - 冻结 baseline 的 development 入口仍拒绝 November 目标。已授权的优化阶段使用自己的访问范围、冻结 manifest 和追加账本；November 已消费，不再称为未触碰 holdout。
-- v0.8–v0.11 已评估六个 H1 origins、18-cell 和 DEV_LONG/SHORT；真实 holdout/final-training 生命周期在早期 r2 阶段已执行。
+- v0.8–v0.12 已评估六个 H1 origins、18-cell 和 DEV_LONG/SHORT；真实 holdout/final-training 生命周期在早期 r2 阶段已执行。
 - 时间语义仍是条件性操作约定；官方若改变窗口或报送时点，应新建 contract ID，不能覆盖旧证据。
 
 详细边界见 [数据契约](docs/data_contract.md) 和 [实施范围](docs/task_contract.md)。

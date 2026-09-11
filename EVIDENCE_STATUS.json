@@ -1485,9 +1485,9 @@
   },
   "current_status": {
     "as_of": "2026-09-11",
-    "latest_completed_phase": "optimization-v0.11",
-    "latest_experiment_commit": "e7952d5",
-    "latest_experiment_branch_pushed": true,
+    "latest_completed_phase": "optimization-v0.12",
+    "latest_experiment_commit": "e6dea84c345e260ce2c5e3a6b487e64f8449079f",
+    "latest_experiment_branch_pushed": false,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
     "user_reported_test_a_score": 83.0319,
@@ -1495,16 +1495,19 @@
     "fallback_candidate": "R2",
     "fallback_release_config": "configs/optimization_v0_4/active_release.yaml",
     "fallback_user_reported_score": 83.0207,
-    "latest_G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
-    "latest_G1": "FAIL_J_H1_TIME_H1_ORIGINS_H4",
-    "latest_locked_tests_passed": 235,
+    "latest_G0": "PASS_OPT25_OPT26_AND_COLD",
+    "latest_G1": "FAIL_NO_RELEASE",
+    "latest_locked_tests_passed": 255,
     "pending_challenger": false,
     "holdout_consumed": true,
     "retrospective_grid_completed": true,
     "next_model_registered": false,
     "desktop_candidate": "V1_RATE_STRUCTURAL",
     "documentation_index": "docs/INDEX.md",
-    "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview."
+    "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview.",
+    "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
+    "repository_visibility": "public",
+    "actions_log_artifact_content_audit": "UNVERIFIED_DOWNLOAD_403_401"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -1589,5 +1592,265 @@
     "challenger": null,
     "prefit_commit": "1a5558a",
     "audit_completion_commit": "e7952d5"
+  },
+  "optimization_v0_12": {
+    "G0": "PASS_OPT25_OPT26_AND_COLD",
+    "G1": "FAIL_NO_RELEASE",
+    "prefit_commit": "e6dea84c345e260ce2c5e3a6b487e64f8449079f",
+    "run_root": "local/runs/optimization-v0.12-opt25-26-r1",
+    "locked_tests_passed": 255,
+    "fit_counts": {
+      "challengers": 0,
+      "development_CatBoost_attempted": 16,
+      "development_CatBoost_completed": 16,
+      "development_LAD_attempted": 12,
+      "development_LAD_completed": 12,
+      "final_CatBoost": 0,
+      "final_LAD": 0,
+      "new_E04_rate_q_old_V1_R2_fits": 0
+    },
+    "cold_prediction_maximum_difference": 0,
+    "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
+    "branch": "optimization-v0.12",
+    "branch_pushed": false,
+    "scope": "RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION",
+    "acceptance": {
+      "algebra": {
+        "errors": {
+          "DEV_LONG": 0.0,
+          "DEV_SHORT": 0.0,
+          "J": 2.7755575615628914e-17,
+          "O202406_H1": 0.0,
+          "O202406_H2": 2.7755575615628914e-17,
+          "O202406_H3": 0.0,
+          "O202406_H4": 0.0,
+          "O202407_H1": 2.7755575615628914e-17,
+          "O202407_H2": 0.0,
+          "O202407_H3": 2.7755575615628914e-17,
+          "O202407_H4": 2.7755575615628914e-17,
+          "O202408_H1": 0.0,
+          "O202408_H2": 0.0,
+          "O202408_H3": 0.0,
+          "O202408_H4": 0.0,
+          "O202409_H1": 2.7755575615628914e-17,
+          "O202409_H2": 0.0,
+          "O202409_H3": 2.7755575615628914e-17,
+          "O202410_H1": 0.0,
+          "O202410_H2": 2.7755575615628914e-17,
+          "O202411_H1": 2.7755575615628914e-17
+        },
+        "max_error": 2.7755575615628914e-17,
+        "passed": true,
+        "tolerance": 1e-12
+      },
+      "candidates": {
+        "V6B_RECENCY60_BOTH": {
+          "DEV_deltas": {
+            "DEV_LONG": 0.00018418380413387503,
+            "DEV_SHORT": -0.0009658864898315911
+          },
+          "H1_E": 0.15597156188566624,
+          "H1_origin_deltas": {
+            "O202406_H1": -0.0010940042391867633,
+            "O202407_H1": 0.0005934711012300642,
+            "O202408_H1": -0.0022988415749370383,
+            "O202409_H1": -0.0012453694028261852,
+            "O202410_H1": -5.086096480658164e-05,
+            "O202411_H1": 8.10906271095646e-05
+          },
+          "J": 0.16533123570543698,
+          "J_delta": -0.00040130088297390953,
+          "changed_targets": [
+            "tap_iron",
+            "tap_time_len"
+          ],
+          "checks": {
+            "DEV_LONG": true,
+            "DEV_SHORT": true,
+            "H1_E": true,
+            "H1_iron": true,
+            "H1_origins": true,
+            "H1_time": true,
+            "H2_E": true,
+            "H2_iron": true,
+            "H2_time": true,
+            "H3_E": true,
+            "H3_iron": false,
+            "H3_time": true,
+            "H4_E": true,
+            "H4_iron": true,
+            "H4_time": true,
+            "J": false,
+            "additive": true,
+            "engineering_and_causal": true,
+            "identity_and_composition": true,
+            "recent_H1": true
+          },
+          "horizon_deltas": {
+            "H1": {
+              "iron_mean_wmape": -0.0009129975702535931,
+              "mean_loss": -0.0006690857422361751,
+              "time_mean_wmape": -0.0004251739142186739
+            },
+            "H2": {
+              "iron_mean_wmape": 0.0002700676655232881,
+              "mean_loss": -0.0006545245651279896,
+              "time_mean_wmape": -0.0015791167957793228
+            },
+            "H3": {
+              "iron_mean_wmape": 0.0021944407755991047,
+              "mean_loss": -3.879930779704388e-05,
+              "time_mean_wmape": -0.00227203939119322
+            },
+            "H4": {
+              "iron_mean_wmape": 0.0002691743081902065,
+              "mean_loss": -0.00024279391673442952,
+              "time_mean_wmape": -0.0007547621416590378
+            }
+          },
+          "passed": false
+        },
+        "V6I_RECENCY60_IRON": {
+          "DEV_deltas": {
+            "DEV_LONG": 0.0008726549819914053,
+            "DEV_SHORT": 0.0004308742098088625
+          },
+          "H1_E": 0.15618414884277562,
+          "H1_origin_deltas": {
+            "O202406_H1": -0.0007349302752369669,
+            "O202407_H1": 0.000276399002675648,
+            "O202408_H1": -0.002117654706054267,
+            "O202409_H1": -0.0004141248007901166,
+            "O202410_H1": 0.00024176820849489133,
+            "O202411_H1": 9.549860150059875e-06
+          },
+          "J": 0.1659601222357933,
+          "J_delta": 0.00022758564738240006,
+          "changed_targets": [
+            "tap_iron"
+          ],
+          "checks": {
+            "DEV_LONG": false,
+            "DEV_SHORT": true,
+            "H1_E": false,
+            "H1_iron": true,
+            "H1_origins": false,
+            "H2_E": true,
+            "H2_iron": true,
+            "H3_E": false,
+            "H3_iron": false,
+            "H4_E": true,
+            "H4_iron": true,
+            "J": false,
+            "additive": true,
+            "engineering_and_causal": true,
+            "identity_and_composition": true,
+            "recent_H1": false
+          },
+          "horizon_deltas": {
+            "H1": {
+              "iron_mean_wmape": -0.0009129975702535931,
+              "mean_loss": -0.00045649878512679654,
+              "time_mean_wmape": 0.0
+            },
+            "H2": {
+              "iron_mean_wmape": 0.0002700676655232881,
+              "mean_loss": 0.0001350338327616718,
+              "time_mean_wmape": 0.0
+            },
+            "H3": {
+              "iron_mean_wmape": 0.0021944407755991047,
+              "mean_loss": 0.00109722038779958,
+              "time_mean_wmape": 0.0
+            },
+            "H4": {
+              "iron_mean_wmape": 0.0002691743081902065,
+              "mean_loss": 0.00013458715409508937,
+              "time_mean_wmape": 0.0
+            }
+          },
+          "passed": false
+        },
+        "V6T_RECENCY60_TIME": {
+          "DEV_deltas": {
+            "DEV_LONG": -0.0006884711778575303,
+            "DEV_SHORT": -0.0013967606996404536
+          },
+          "H1_E": 0.15642806067079304,
+          "H1_origin_deltas": {
+            "O202406_H1": -0.0003590739639497964,
+            "O202407_H1": 0.00031707209855438845,
+            "O202408_H1": -0.00018118686888277113,
+            "O202409_H1": -0.0008312446020360409,
+            "O202410_H1": -0.000292629173301473,
+            "O202411_H1": 7.154076695953249e-05
+          },
+          "J": 0.1651036500580546,
+          "J_delta": -0.0006288865303562818,
+          "changed_targets": [
+            "tap_time_len"
+          ],
+          "checks": {
+            "DEV_LONG": true,
+            "DEV_SHORT": true,
+            "H1_E": false,
+            "H1_origins": true,
+            "H1_time": true,
+            "H2_E": true,
+            "H2_time": true,
+            "H3_E": true,
+            "H3_time": true,
+            "H4_E": true,
+            "H4_time": true,
+            "J": true,
+            "additive": true,
+            "engineering_and_causal": true,
+            "identity_and_composition": true,
+            "recent_H1": true
+          },
+          "horizon_deltas": {
+            "H1": {
+              "iron_mean_wmape": 0.0,
+              "mean_loss": -0.00021258695710937858,
+              "time_mean_wmape": -0.0004251739142186739
+            },
+            "H2": {
+              "iron_mean_wmape": 0.0,
+              "mean_loss": -0.0007895583978896614,
+              "time_mean_wmape": -0.0015791167957793228
+            },
+            "H3": {
+              "iron_mean_wmape": 0.0,
+              "mean_loss": -0.0011360196955965685,
+              "time_mean_wmape": -0.00227203939119322
+            },
+            "H4": {
+              "iron_mean_wmape": 0.0,
+              "mean_loss": -0.00037738107082954664,
+              "time_mean_wmape": -0.0007547621416590378
+            }
+          },
+          "passed": false
+        }
+      },
+      "scope": "CONSUMED_RETROSPECTIVE",
+      "selected": null,
+      "selection_rule": {
+        "J_near_tie": 0.0001,
+        "eligible": "all_gates_passed_only",
+        "tie_order": [
+          "changed_target_count",
+          "H1_mean_E",
+          "candidate_ID_lexicographic"
+        ]
+      },
+      "status": "FAIL_NO_RELEASE"
+    },
+    "additional_candidate_search": false,
+    "final_training": false,
+    "challenger": null,
+    "completion_receipt": "local/reports/optimization-v0.12-completion-r1.json",
+    "completion_receipt_sha256": "815335729d413d6cc365d59d486d2b9bd9f2ab726290aad6d782e70f4b2e6bb7",
+    "results_document": "docs/optimization_v0_12/RESULTS.md"
   }
 }
