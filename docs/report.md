@@ -1,16 +1,17 @@
 # 项目实施报告
 
-截至 2026-09-11，optimization-v0.12 / OPT-25–26 已完成，评分前冻结实施提交 `e6dea84`。本阶段仅本地提交，暂停公开推送。
-当前发布仍为 **V1_RATE_STRUCTURAL = 83.0319**（用户回传），R2 = 83.0207 保留回退，未独立核验平台成绩。
+截至 2026-09-12，optimization-v0.13 / OPT-27–29 的零训练诊断和旧包 stage 工程预演已完成，预注册实施提交 `fcbf896`。正式复赛数据和平台有效提交回执仍待核验。本阶段不公开推送。
+当前发布仍为 **V1_RATE_STRUCTURAL = 83.0319**（用户回传），R2 = 83.0207 保留回退，未独立核验平台资格或成绩。
 
-- G0：预检、开发与独立冷进程审计通过；255 项 Python 3.12 锁定测试通过，八个 OOF folds 和六个 origins 的新候选冷预测最大差为 0。
-- G1：FAIL_NO_RELEASE。V6I 未通过 J、H1 E/改善 origins、最近改善数、H3 E/铁量和 DEV_LONG；V6T 未通过 H1 E；V6B 未通过 J 与 H3 铁量。
-- Delta J（候选减 V1）：V6I +0.0002275856，V6T -0.0006288865，V6B -0.0004013009。部分改善不能替代完整门槛。
-- 预算：16 次新直接目标 CatBoost + 12 次 LAD；旧模型和推理 0 fit；最终 0 fit、无 challenger、无上传。
-- 原 V1/R2 包、发布指针和桌面包不变；固定 recency60 关闭，V2–V5 保持关闭。November 已消费，不作独立 holdout 或平台收益推断。
-- 仓库仍为 public，数据历史处置待单独实施；已私下保存 Git 历史和摘要，未更改可见性或清史。Actions 日志/artifact 内容因下载权限未核验。
+- G0：原 E/J/目标分母和逐预测 J 贡献重建通过，最大误差 2.78e-17；286 项 Python 3.12 锁定测试通过。
+- 冷工程：test_a 335 行与旧 v8 exact equality；旧 test_b 322 行全量/反序/分块/子集/单样本一致，R2 stage 对照最大差 0；只作 PREVIEW_ENGINEERING_ONLY。
+- G1：本阶段未评估新模型质量；v0.12 三个 recency60 候选 FAIL_NO_RELEASE 保持关闭。
+- 诊断：V1 最高 10% 唯一铁次约贡献铁量/时长 J 误差的 32.32%/33.72%；H1 时长结构修正略扩大改进，H2/H3 则削弱 base 改进，不能统一归因于 LAD。
+- 预算：新增模型、LAD/校准、候选、challenger、上传和旧包覆盖均 0；原模型/历史/发布身份和账本不变。
+- 维护：v0.12 62c62cc 已在此前授权后推送且 CI 成功；旧报告保留当时未推送口径。仓库仍 public，历史处置待单独实施。
+- 平台回执已自行检索，只有原用户回传记录；动态平台需要账户会话，未取得有效提交证明。正式复赛数据 09-21 开放，现有同名文件不代表正式版。
 
-[完整 v0.12 结果](optimization_v0_12/RESULTS.md) · [数据与发布边界](optimization_v0_12/DATA_PUBLICATION_REVIEW.md) · [当前发布](optimization_v0_8/CURRENT_RELEASE.md) · [文档索引](INDEX.md)
+[完整 v0.13 结果](optimization_v0_13/RESULTS.md) · [维护观察](optimization_v0_13/MAINTENANCE_20260912.md) · [正式接入协议](optimization_v0_13/SECOND_ROUND_PROTOCOL.md) · [文档索引](INDEX.md)
 
 ## 历史 baseline 修复记录（非当前项目状态）
 

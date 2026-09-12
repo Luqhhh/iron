@@ -1,6 +1,6 @@
 # 文档索引与历史口径
 
-截至 2026-09-11，最新完成实验为 v0.12（仅本地，暂停公开推送），活动模型仍为 V1（用户回传 83.0319）。
+截至 2026-09-12，最新本地阶段为 v0.13（诊断/旧包预演，正式包与回执待核验），活动模型仍为 V1（用户回传 83.0319）。
 阅读当前状态时按以下入口；各阶段冻结计划和结果保留运行当时的含义。
 
 ## 当前维护文档
@@ -8,6 +8,7 @@
 - [README](../README.md)：状态、环境、当前 V1 推理入口与数据权限。
 - [实施报告](report.md)、[实施范围](task_contract.md)：最新 G0/G1、已消费状态和关闭决策。
 - [当前 V1 发布](optimization_v0_8/CURRENT_RELEASE.md)、[R2 回退](optimization_v0_4/CURRENT_RELEASE.md)。
+- [桌面副本核查补充](optimization_v0_13/DESKTOP_COPY_STATUS.md)。
 - [发布身份](release_identity.md)、[平台记录](submission_log.md)、[数据契约](data_contract.md)。
 - [机器状态](../EVIDENCE_STATUS.json)：`current_status` 是当前摘要；其余旧顶层 baseline 字段和版本字段是阶段证据。
 
@@ -15,7 +16,8 @@
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
-| v0.12 | [OPT-25–26](optimization_v0_12/RESULTS.md) | 三个 recency60 候选完整质量门槛失败；255 tests，G0 冷审计通过；16+12 fits，无新包；[发布暂停](optimization_v0_12/DATA_PUBLICATION_REVIEW.md) |
+| v0.13 | [OPT-27–29](optimization_v0_13/RESULTS.md) | 0 fit；E/J/贡献重建、旧 A/B stage 预演通过；286 tests；[维护观察](optimization_v0_13/MAINTENANCE_20260912.md)、[正式接入待办](optimization_v0_13/SECOND_ROUND_PROTOCOL.md)；未推送 |
+| v0.12 | [OPT-25–26](optimization_v0_12/RESULTS.md) | 三个 recency60 候选完整质量门槛失败；255 tests，G0 冷审计通过；16+12 fits，无新包；随后推送 62c62cc、CI 成功；[发布暂停](optimization_v0_12/DATA_PUBLICATION_REVIEW.md) |
 | v0.11 | [OPT-24](optimization_v0_11/RESULTS.md) | V5 四项质量门槛失败；235 tests，G0 修正后冷审计通过；8+6 fits，无新包；已推送 |
 | v0.10 | [OPT-23](optimization_v0_10/RESULTS.md) | V4 失败；221 tests，G0 冷审计通过；无新包 |
 | v0.9 | [OPT-21/22](optimization_v0_9/RESULTS.md) | ratio 扩展失败；“v0.10 尚未训练”仅描述该轮收口时 |

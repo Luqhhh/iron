@@ -4,22 +4,25 @@
 高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
 工程基线 `baseline-v0.1-reproducible` 保持冻结；后续优化使用独立阶段、配置与运行目录。
 
-v0.12 / OPT-25–26 已完成固定 recency60 对照，三个候选均未通过完整质量门槛。历史 v0.10 CI badge 已移除，远端 HEAD 9a9437e 的成功 run 不代替本轮本地测试。
+v0.13 / OPT-27–29 已完成零训练误差诊断和旧包 stage 工程预演，正式复赛数据与平台有效提交回执仍待核验。v0.12 的完整质量失败保持不变。
 
 ## 当前状态
 
-截至 2026-09-11，最新完成阶段为 **optimization-v0.12 / OPT-25–26**，评分前冻结实施提交 `e6dea84`；本轮仅本地提交，暂停公开推送。
-当前活动候选及桌面包仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
+截至 2026-09-12，最新本地实施阶段为 **optimization-v0.13 / OPT-27–29**，预注册实现提交 `fcbf896`；本轮不公开推送。v0.12 已在此前用户授权后推送到 `62c62cc`，其 locked-tests run `34685572032` 成功；时间观察见 [维护记录](docs/optimization_v0_13/MAINTENANCE_20260912.md)。旧阶段报告保留当时口径。
+当前活动候选仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
 平台成绩未独立核验，不代表开发结果能直接换算成排行榜收益。
 
 | 项目 | 当前状态 |
 | --- | --- |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
-| 最新工程验收 G0 | v0.12 预检、开发与独立冷审计通过，八个 OOF fold 与六个 origin 预测最大差为 0 |
-| 最新质量验收 G1 | V6I/V6T/V6B 均未通过完整门槛，FAIL_NO_RELEASE；固定 recency60 已关闭 |
-| 锁定环境测试 | Python 3.12.12，255 passed；本地证据，不等同于远端 CI 状态 |
-| 新待测包 | 无；v0.9–v0.12 均未生成 challenger |
+| 最新工程验收 G0 | v0.13 全精度 E/J/贡献重建与旧 test_a/B 冷预演通过；test_a 与旧 v8 exact equality，B 全量/反序/分块/子集一致 |
+| 最新质量验收 G1 | 本轮无新模型质量评价；最近模型阶段 v0.12 FAIL_NO_RELEASE，recency60 已关闭 |
+| 锁定环境测试 | Python 3.12.12，286 passed；本地 v0.13 证据，与旧 v0.12 CI 分开 |
+| 新待测包 | 无；v0.9–v0.13 均未生成 challenger |
+| 正式复赛数据 | 尚未到 09-21 官方开放时间；旧 test_b 仅 PREVIEW_ENGINEERING_ONLY |
+| 桌面副本 | 当前检查路径未找到；仓库 local 原包已核验，不重建或覆盖，见 [补充](docs/optimization_v0_13/DESKTOP_COPY_STATUS.md) |
+| 平台有效提交证据 | 已自行检索，未获得账号回执；不宣称资格已确认 |
 | 保护标签状态 | November 已在授权生命周期消费；后续为已消费回溯开发 |
 | 时间语义 | `competition-timestamp-contract-v1 / ASSUMED`，未新增官方确认 |
 
@@ -30,7 +33,8 @@ v0.12 / OPT-25–26 已完成固定 recency60 对照，三个候选均未通过�
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
-| [v0.12 / OPT-25–26](docs/optimization_v0_12/RESULTS.md) | 16 次直接目标 fit + 12 次 LAD；V6I/V6T/V6B 的 Delta J 为 +0.00022759 / -0.00062889 / -0.00040130 | 全部完整门槛失败；无 final fit、无新包；未推送 |
+| [v0.13 / OPT-27–29](docs/optimization_v0_13/RESULTS.md) | 0 fit；原 E/J 和 J 贡献重建，旧 A/B stage 预演通过，286 tests | 保留 V1；正式包/回执待核验，不新建候选 |
+| [v0.12 / OPT-25–26](docs/optimization_v0_12/RESULTS.md) | 16 次直接目标 fit + 12 次 LAD；V6I/V6T/V6B 的 Delta J 为 +0.00022759 / -0.00062889 / -0.00040130 | 全部完整门槛失败；无 final fit、无新包；随后推送 62c62cc |
 | [v0.11 / OPT-24](docs/optimization_v0_11/RESULTS.md) | 8 次直接时长 fit + 6 次 LAD；相对 V1，J 退化 0.00013836，H1 时长 WMAPE 退化 0.00024810 | 关闭固定 V5；无 final fit、无新包 |
 | [v0.10 / OPT-23](docs/optimization_v0_10/RESULTS.md) | 12 次低容量 residual fit；相对 V1，J 退化 0.0053128，H1 E 退化 0.0015335 | 关闭固定 V4；无 final fit、无平台包 |
 | [v0.9 / OPT-21/22](docs/optimization_v0_9/RESULTS.md) | W0 保留 V1 开发收益 91.44%；8 次 q fit；V2/V3 J 改善仅 0.0001607 / 0.0000530 | 严格门槛失败，关闭 ratio 扩展 |
@@ -51,7 +55,7 @@ uv run --locked --python 3.12 python scripts/check_no_private_artifacts.py
 
 CI 另有 Python 3.11 兼容性检查。真实训练和推理的权威环境使用 Python 3.12 与 `uv.lock`。
 
-**2026-09-11 维护纠正：暂停公开发布。** 旧说明中的用户仓库授权不能替代赛事主办方的数据公开授权；当前历史含赛事数据，仓库仍为 public。v0.12 仅本地执行，数据历史处置完成前不推送。详见 [数据与发布边界核查](docs/optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
+**2026-09-12 维护状态：暂停公开发布。** 旧说明中的用户仓库授权不能替代赛事主办方的数据公开授权；当前历史含赛事数据，仓库仍为 public。v0.12 已按此前用户明确指令推送；v0.13 在本地/私有环境执行，数据历史处置完成前不公开推送。详见 [数据与发布边界核查](docs/optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
 模型、逐样本预测、本地报告、访问账本和提交 ZIP 仍保存在被忽略的 `local/`，不进入 Git。
 新机器仅克隆源码及数据不会自动获得已保存的 V1/R2 模型包，需要恢复匹配摘要的本地产物。
 
@@ -81,10 +85,25 @@ uv run --locked --python 3.12 python scripts/optimization_v8_cold_predict.py \
 该脚本验证原 R2 预测一致性和输入反序一致性，禁止推理 fit，输出内部预测及审计 JSON。
 它不生成新的提交 ZIP，也不上传平台。提交使用已核验原包；内部预测列不应直接作为赛事 `result.csv` 上传。
 通用 `python -m bf_tap predict` 是 baseline bundle 入口；当前 V1 复合模型使用上方专用入口。
-V1 现有专用入口面向 test_a；R2 的 B/C 冷检查是历史工程证据，不等于当前 V1 的 B/C 质量验收。
+原 v8 专用入口面向 test_a；R2 的 B/C 冷检查是历史工程证据，不等于当前 V1 的 B/C 质量验收。
 
 R2 回退包 SHA-256：`e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf`。
 恢复方式见 [R2 回退说明](docs/optimization_v0_4/CURRENT_RELEASE.md)。
+
+## V1 的复赛工程预演
+
+新入口显式接收 stage，保留旧 v8 入口和原 bundle。已保存旧 test_b 的 322 行内部冷预测，只是工程预演；正式复赛包身份、质量和平台成绩均未核验。
+
+```bash
+uv run --locked --python 3.12 python scripts/optimization_v13_stage_predict.py \
+  --stage test_b \
+  --bundle local/runs/optimization-v0.8-v1-challenger-r1/bundle \
+  --data-config local/runs/optimization-v0.13-opt28-preview-r1/test_b_cold.yaml \
+  --output local/predictions/v1-test-b-preview-UNIQUE.csv
+```
+
+配置只允许 schema_version=1、test_b_samples、operation_hourly、burden_change、data_dictionary。源契约发生变化时阻断，不删掉检查；不移动旧 cutoff，不补造 December 真值或递归使用预测。入口输出内部三列 CSV 和 local 审计，不生成新 ZIP。
+正式包到达后需按 [复赛接入清单](docs/optimization_v0_13/SECOND_ROUND_PROTOCOL.md) 新建身份 manifest，再做冷推理和独立发布验收。
 
 ## 因果与保护边界
 
@@ -95,7 +114,7 @@ R2 回退包 SHA-256：`e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b0743
 - 时间语义仍是条件性操作约定；官方若改变窗口或报送时点，应新建 contract ID，不能覆盖旧证据。
 
 详细边界见 [数据契约](docs/data_contract.md) 和 [实施范围](docs/task_contract.md)。
-平台“最后一次提交”与“最优成绩”口径尚无本项目独立确认记录，上传前须确认；本项目不自动上传。
+[09-11 官方复赛通知](https://www.aicomp.cn/notice/notice-3/5248.html) 已明确复赛每日最多 5 次取最高成绩、算分延迟；不能推断初赛也取最高分。初赛有效回执仍未独立核验，本项目不自动上传。
 
 ## 文档与工程入口
 
