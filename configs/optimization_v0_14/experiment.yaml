@@ -1,0 +1,44 @@
+schema_version: 1
+experiment: OPT30_H2_MATCHED_TIME_OPT31_COLD_ACCEPTANCE
+base_commit: 2db6d5faae9c8568e01f5d75d145c17fc8404fb8
+branch: optimization-v0.14-h2-time
+scope: RETROSPECTIVE_POST_HOLDOUT_CONSUMPTION
+candidate: V7_H2_MATCHED_TIME
+diagnostic_control: D1_H1_SAME_CALENDAR
+source_v8: local/runs/optimization-v0.8-opt20-r1
+source_v8_cold: local/runs/optimization-v0.8-opt20-cold-r2
+inventory_manifest: local/runs/optimization-v0.12-opt25-26-r1/manifest.json
+prior_receipts: [local/reports/optimization-v0.13-completion-r1.json, local/reports/optimization-v0.13-completion-r2.json]
+active_release: configs/optimization_v0_8/active_release.yaml
+fallback_release: configs/optimization_v0_4/active_release.yaml
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+bank_model_months: [4, 5, 6, 7, 8, 9, 10]
+oof_months: [4, 5, 6, 7, 8, 9, 10, 11]
+rate_floor: 1.0e-6
+minimum_OOF_rows: 100
+prediction_tolerance: 1.0e-10
+metric_tolerance: 1.0e-12
+iron: exact_copy_original_complete_V1
+time: original_R2_time_plus_scalar_times_original_R2_iron_divided_by_rate_minus_original_R2_time
+fit: original_constrained_single_target_LAD_smallest_minimizer_no_additional_weights
+budget: {CatBoost: 0, candidate_time_LAD: 6, control_time_LAD: 6, iron_LAD: 0, conditional_final_time_LAD: 1}
+acceptance:
+  H2_E_delta_max: -0.0005
+  H2_min_strict_improved: 4
+  recent_H2_evaluation_months: [9, 10, 11]
+  recent_H2_min_strict_improved: 2
+  H2_single_E_delta_max: 0.0010
+  H2_E_minus_D1_max: 0.0
+  J_delta_max: 0.0002
+  H134_E_delta_max: 0.0005
+  DEV_E_delta_max: 0.0007
+bootstrap: {repetitions: 1000, seed: 2026}
+final: {cutoff: '2024-12-01 01:44:00+08:00', original_training_rows: 2754, requires_official_identity: true}
+failure_action: FAIL_CLOSE_V7_RETAIN_V1
+pass_status: DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY
+platform_upload: false
+active_release_overwrite: false
+desktop_overwrite: false
+public_push: false
+history_rewrite: false
+visibility_change: false
