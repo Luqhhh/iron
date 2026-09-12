@@ -1,5 +1,9 @@
 # 当前实施范围
 
+后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 成绩待反馈，当前最高用户回传仍是 V10 83.1951。[交付与推送回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+
+本轮 platform-probes-r2 已完成唯一 V11 零拟合探针的本地准备，以及 V10 独立模型推理：旧 test_a 335 行全精度分支和原 result.csv 字节精确复现；旧 test_b 322 行仅工程预演，全量/反序/分块/子集/单样本一致性及 root/worker 拟合保护通过。新模型、预处理、LAD 拟合均 0；V11 铁量原字段保持 V10，时长为同一最终 QRF 的加权均值，六位提交精度改变 335 行。根 Python 3.12 锁定测试 382 项、独立 worker 32 项分别通过。V11 未上传、无平台分数，桌面写入 0；当前最高用户回传仍是 V10 83.1951，旧 G1、发布指针与原包不变，V2/v0.16 暂停。平台剩余次数未知，仅本地准备；手动探针需剩余至少两次。[实施规格](platform_probes_r2/PLAN.md)、[本地完成记录](../local/runs/platform-probes-r2-r1/completion.json)。
+
 截至 optimization-v0.15，baseline-v0.1-reproducible保持冻结。当前V1活动发布、R2回退与用户成绩证据等级不变；V2–V8的固定失败设计和D1/D2诊断均不获得发布授权。
 
 用户后续指令“生成提交包放到桌面”“是v8”另行授权 V8 初赛实验提交，在独立 `local/runs/optimization-v0.15-v8-user-test-a-r1/` 冻结源码/输入/保护契约、追加独立账本，完成一次最终 QRF 和一次预处理、335 行冷验及桌面交付。用户回传 83.1636，比 V1 高 0.1317 分，绑定新包摘要；本次成绩登记不新增 fit。该后续授权及平台反馈不回写原开发 FAIL，不自动变更活动发布。[独立反馈记录](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) 仅存 local。

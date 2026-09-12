@@ -1,0 +1,11 @@
+schema_version: 1
+authorization: user_20260912_V11_zero_fit_and_V10_independent_stage_inference_specification
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+allowed_labels: certified_original_bundle_histories_and_saved_QRF_training_responses_only
+official_target_column_reads: false
+test_labels: forbidden
+source_migration: not_authorized
+automatic_upload: false
+desktop_writes: false
+historical_quality_decisions: immutable

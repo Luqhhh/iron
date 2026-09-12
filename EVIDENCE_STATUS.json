@@ -1721,7 +1721,82 @@
       "official_notification": "https://www.aicomp.cn/notice/notice-3/5248.html",
       "initial_and_round_two_score_rules_not_merged": true
     },
-    "feedback_maintenance_push_record": "local/runs/optimization-v0.15-feedback-push-cleanup-r1/publication_receipt.json"
+    "feedback_maintenance_push_record": "local/runs/optimization-v0.15-feedback-push-cleanup-r1/publication_receipt.json",
+    "platform_probes_r2": {
+      "V10_independent_test_a_replay": true,
+      "V2": "PAUSED",
+      "best_user_reported_test_a": "V10_V6I_IRON_V8_TIME",
+      "best_user_reported_test_a_score": 83.1951,
+      "candidate": "V11_V6I_IRON_QRF_MEAN_TIME",
+      "current_release_pointer_changed": false,
+      "desktop_writes": 0,
+      "engineering_valid": true,
+      "historical_quality_passed": false,
+      "new_LAD_fit_attempts": 0,
+      "new_model_fit_attempts": 0,
+      "new_preprocessor_fit_attempts": 0,
+      "official_round2_identity_verified": false,
+      "old_test_b_preview_rows": 322,
+      "platform_submissions": 0,
+      "platform_verified": false,
+      "status": "PREPARED_PENDING_MANUAL_PLATFORM_PROBE",
+      "v16": "PAUSED_NOT_IMPLEMENTED",
+      "branch": "platform-probes-r2",
+      "branch_pushed": true,
+      "component_bundle": "/home/lux1/iron/local/runs/platform-probes-r2-r1/component_bundle.json",
+      "component_bundle_sha256": "387a311128548fa6950bb3c9c2d714590f4c7ab3907551644f74f8d26672d43e",
+      "entrypoint": "scripts/platform_probe_r2.py",
+      "worker_entrypoint": "workers/qrf_v015/inference.py",
+      "candidate_validation": "/home/lux1/iron/local/runs/platform-probes-r2-r1/candidate_validation.json",
+      "platform_feedback": "/home/lux1/iron/local/runs/platform-probes-r2-r1/platform_feedback.json",
+      "completion": "/home/lux1/iron/local/runs/platform-probes-r2-r1/completion.json",
+      "receipt": "/home/lux1/iron/local/runs/platform-probes-r2-r1/receipt.json",
+      "receipt_sha256": "a6cc961a7f5b1fe4a9c88bb4a34961341f787877e15ca1b7e1478a57e70488ba",
+      "tests": {
+        "root": {
+          "passed": 382,
+          "xml_sha256": "c39c966efdee8e7231133d44cf8aeab4f323616da2522f7085da4dc6880ece20"
+        },
+        "worker": {
+          "passed": 32,
+          "xml_sha256": "2a99ec65c99e91952643a9f9e0b5ddebf45636639b56035fc83f7eecc3f62899"
+        }
+      },
+      "V11_zip": {
+        "/home/lux1/iron/local/runs/platform-probes-r2-r1/submission/Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip": {
+          "bytes": 4532,
+          "path": "/home/lux1/iron/local/runs/platform-probes-r2-r1/submission/Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip",
+          "sha256": "f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa"
+        }
+      },
+      "V11_score": null,
+      "remaining_account_submissions": "UNKNOWN",
+      "manual_probe_requires_remaining_submissions": 2,
+      "original_G1_unchanged": true,
+      "branch_pushed_observation_at_original_completion": false,
+      "followup_publication_delivery": {
+        "authorization": "user_20260912_commit_push_and_V11_desktop_copy",
+        "branch": "platform-probes-r2",
+        "publication_receipt": "/home/lux1/iron/local/runs/platform-probes-r2-publication-r1/publication_receipt.json",
+        "desktop_delivery_receipt": "/home/lux1/iron/local/runs/platform-probes-r2-publication-r1/desktop_delivery.json",
+        "desktop_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip",
+        "desktop_zip_sha256": "f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa",
+        "original_phase_desktop_writes": 0,
+        "followup_desktop_files_created": 1,
+        "new_submission_zips": 0,
+        "new_fits": 0,
+        "platform_uploads": 0,
+        "historical_quality_decisions_unchanged": true
+      }
+    },
+    "latest_observed_remote_CI": {
+      "branch": "optimization-v0.15-qrf-time",
+      "conclusion": "success",
+      "head_sha": "b01ab117589377073710de447114cdb1074db32c",
+      "id": 34700659289,
+      "status": "completed",
+      "url": "https://github.com/Luqhhh/iron/actions/runs/34700659289"
+    }
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",

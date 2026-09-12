@@ -1,5 +1,7 @@
 # bf-tap-predict
 
+后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 成绩待反馈，当前最高用户回传仍是 V10 83.1951。[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+
 
 高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
 工程基线 `baseline-v0.1-reproducible` 保持冻结；后续优化使用独立阶段、配置与运行目录。
@@ -8,11 +10,13 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、�
 
 ## 当前状态
 
-截至 2026-09-12，最新开发阶段为 **optimization-v0.15 / OPT-32–33**，执行登记 `5de6523`、P0 修复 `b515046`，随后按用户指令推送 `optimization-v0.15-qrf-time@6d19a29`。v0.14 的 `f940f9f` 已绑定成功 locked-tests run `34690189315`；v0.15 本阶段远端 CI 尚未在此次成绩登记中另行核验。历史报告不改写。
+已独立核验远端 `optimization-v0.15-qrf-time@b01ab117` 对应 locked-tests run `34700659289` 为 completed/success；后续已按用户指令提交推送 platform-probes-r2；[本次推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json) 记录实际提交 SHA 与远端核验。历史报告保留当时含义。
+
+截至 2026-09-12，最新开发阶段为 **optimization-v0.15 / OPT-32–33**，执行登记 `5de6523`、P0 修复 `b515046`，随后按用户指令推送 `optimization-v0.15-qrf-time@6d19a29`。v0.14 的 `f940f9f` 已绑定成功 locked-tests run `34690189315`；v0.15 原成绩登记未另行查询 CI；后续核验记录如下。
 当前活动候选仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
 当前初赛最高用户回传包为 **V10_V6I_IRON_V8_TIME：83.1951**，比 V8（83.1636）高 **0.0315** 分，比 V1（83.0319）高 **0.1632** 分，比 R2（83.0207）高 **0.1744** 分。V10 直接使用 V6I 原铁量列与 V8 原时长列；回传分数与封包前理论预期在显示的四位小数上一致，335 行原 ZIP 与两列精确身份已核验。本次登记不重新拟合或生成提交包，不自动修改原开发发布登记。[V10 平台反馈](local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json) 与完整模型/封包证据仅存 local，原高分 ZIP 保留。
 V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续按用户指定回收 V6I/V6T/D1，共 2 次最终单目标 CatBoost＋3 次标量 LAD，三包均已交付并有用户回传：V6I **83.0634**、V6T **82.9852**、D1 **82.9993**。原开发 FAIL 与 D1 诊断身份保留；初赛收益分别来自 V6I 铁量与 V8 时长，不能据此外推复赛。v0.16 暂缓。
-平台测试复核：没有必须追加的测试；若继续，优先复用现有最终 QRF 的加权均值 D2（零新增训练），V2 留作第二梯队（需另行注册 1 次最终 q＋1 次 LAD）。本次不新建候选或提交包，已删除桌面五份提交 ZIP，原包均留 local；V10 高分原包仍可恢复。
+本轮 platform-probes-r2 已完成唯一 V11 零拟合探针的本地准备，以及 V10 独立模型推理：旧 test_a 335 行全精度分支和原 result.csv 字节精确复现；旧 test_b 322 行仅工程预演，全量/反序/分块/子集/单样本一致性及 root/worker 拟合保护通过。新模型、预处理、LAD 拟合均 0；V11 铁量原字段保持 V10，时长为同一最终 QRF 的加权均值，六位提交精度改变 335 行。根 Python 3.12 锁定测试 382 项、独立 worker 32 项分别通过。V11 未上传、无平台分数，桌面写入 0；当前最高用户回传仍是 V10 83.1951，旧 G1、发布指针与原包不变，V2/v0.16 暂停。平台剩余次数未知，仅本地准备；手动探针需剩余至少两次。[实施规格](docs/platform_probes_r2/PLAN.md)、[本地完成记录](local/runs/platform-probes-r2-r1/completion.json)。
 平台成绩未独立核验，不代表开发结果能直接换算成排行榜收益。
 
 | 项目 | 当前状态 |
