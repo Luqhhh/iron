@@ -1485,8 +1485,8 @@
   },
   "current_status": {
     "as_of": "2026-09-12",
-    "latest_completed_phase": "optimization-v0.14",
-    "latest_experiment_commit": "4f855eddf66165dc617791065114fa10be1ce130",
+    "latest_completed_phase": "optimization-v0.15",
+    "latest_experiment_commit": "b51504655c85b43847bf8ca40161a365936182ea",
     "latest_experiment_branch_pushed": false,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
@@ -1495,9 +1495,9 @@
     "fallback_candidate": "R2",
     "fallback_release_config": "configs/optimization_v0_4/active_release.yaml",
     "fallback_user_reported_score": 83.0207,
-    "latest_G0": "PASS_ORIGINAL_FORECAST_BANK_AND_INDEPENDENT_COLD",
-    "latest_G1": "FAIL_CLOSE_V7",
-    "latest_locked_tests_passed": 342,
+    "latest_G0": "PASS_QRF_ENGINEERING_COLD",
+    "latest_G1": "FAIL_CLOSE_V8_RETAIN_V1",
+    "latest_locked_tests_passed": 364,
     "pending_challenger": false,
     "holdout_consumed": true,
     "retrospective_grid_completed": true,
@@ -1508,8 +1508,8 @@
     "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
     "repository_visibility": "public",
     "actions_log_artifact_content_audit": "UNVERIFIED_DOWNLOAD_403_401",
-    "last_model_quality_phase": "optimization-v0.14",
-    "last_model_quality_G1": "FAIL_CLOSE_V7",
+    "last_model_quality_phase": "optimization-v0.15",
+    "last_model_quality_G1": "FAIL_CLOSE_V8_RETAIN_V1",
     "official_second_round_data_identity_verified": false,
     "second_round_preview_engineering_valid": true,
     "platform_valid_submission_verified": false,
@@ -1531,6 +1531,22 @@
       "locked_tests_run": 34687452551,
       "maintenance_document": "docs/optimization_v0_14/MAINTENANCE_20260912.md",
       "status": "completed"
+    },
+    "latest_worker_locked_tests_passed": 25,
+    "latest_worker_environment": {
+      "joblib": "1.6.0",
+      "numpy": "2.2.6",
+      "python": "3.12.12",
+      "scipy": "1.18.1",
+      "sklearn": "1.8.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "v14_remote_observation": {
+      "head_sha": "f940f9f4ed09382b7948f84145ceccd3f542cdd7",
+      "actions_run": 34690189315,
+      "conclusion": "success",
+      "queried_at": "2026-09-12T11:52:07.292886+00:00",
+      "branch_pushed": true
     }
   },
   "optimization_v0_11": {
@@ -1986,5 +2002,87 @@
     "results_document": "docs/optimization_v0_14/RESULTS.md",
     "run_root": "local/runs/optimization-v0.14-opt30-r1",
     "primary_completion_receipt": "local/reports/optimization-v0.14-completion-r1.json"
+  },
+  "optimization_v0_15": {
+    "status": "FAIL_CLOSE_V8_RETAIN_V1",
+    "G0": "PASS",
+    "G1": "FAIL_CLOSE_V8",
+    "acceptance": {
+      "DEV_delta_E": {
+        "DEV_LONG": 0.0010034018177812465,
+        "DEV_SHORT": 0.0031102416177890557
+      },
+      "H2_delta_E": 0.0025314055021451952,
+      "H2_improved": 0,
+      "H2_single_max_delta_E": 0.005286931205547185,
+      "delta_J": 0.0032074898435972,
+      "diagnostic_releasable": false,
+      "engineering_valid": true,
+      "final_model_fitted": false,
+      "gates": {
+        "DEV_LONG_guardrail": false,
+        "DEV_SHORT_guardrail": false,
+        "H1_guardrail": false,
+        "H2_improved_origins": false,
+        "H2_mean_E": false,
+        "H2_single_origin": false,
+        "H3_guardrail": false,
+        "H4_guardrail": false,
+        "J_guardrail": false,
+        "engineering_causal_budget": true,
+        "iron_exact": true,
+        "recent_H2_improved": false
+      },
+      "historical_quality_passed": false,
+      "horizon_delta_E": {
+        "1": 0.0007829000211458844,
+        "2": 0.0025314055021451952,
+        "3": 0.00428685098457042,
+        "4": 0.0052288028665273085
+      },
+      "official_data_identity_verified": false,
+      "platform_verified": false,
+      "ready_challenger": false,
+      "recent_H2_improved": 0,
+      "source_semantics_status": "ORIGINAL_ASSUMED_CONTRACT_RETAINED",
+      "status": "FAIL_CLOSE_V8_RETAIN_V1"
+    },
+    "fit_counts": {
+      "CatBoost": 0,
+      "LAD": 0,
+      "challenger_ZIPs": 0,
+      "final_forest": 0,
+      "final_preprocessor": 0,
+      "forest_attempted": 6,
+      "forest_completed": 6,
+      "internal_trees_completed": 1536,
+      "preprocessor_attempted": 6,
+      "preprocessor_completed": 6
+    },
+    "branch": "optimization-v0.15-qrf-time",
+    "branch_pushed": false,
+    "registration_commit": "5de6523fae022c2c96c19aadeb154014ad57e058",
+    "engineering_repair_commit": "b51504655c85b43847bf8ca40161a365936182ea",
+    "worker_environment": {
+      "joblib": "1.6.0",
+      "numpy": "2.2.6",
+      "python": "3.12.12",
+      "scipy": "1.18.1",
+      "sklearn": "1.8.0",
+      "threadpoolctl": "3.6.0"
+    },
+    "locked_root_tests_passed": 364,
+    "locked_worker_tests_passed": 25,
+    "QRF_cold_max_difference": 0.0,
+    "root_lock_unchanged": true,
+    "old_artifacts_and_ledgers_unchanged": true,
+    "holdout_consumed": true,
+    "new_challenger_ZIPs": 0,
+    "official_data_identity_verified": false,
+    "platform_verified": false,
+    "run_root": "local/runs/optimization-v0.15-opt32-r1",
+    "results_document": "docs/optimization_v0_15/RESULTS.md",
+    "completion_receipt": "local/reports/optimization-v0.15-completion-r1.json",
+    "completion_receipt_sha256": "a975071fcb029dda293ef563592d0a7cbae537edeac33239940646174a4dc2f8"
   }
 }

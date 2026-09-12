@@ -1,15 +1,15 @@
 # 项目实施报告
 
-v0.14 / OPT-30–31 已完成 H2 匹配时长校准：G0 通过，G1 失败、关闭固定 V7；V1 与 R2 回退保持不变。
-当前 V1 83.0319、R2 83.0207 为用户回传，非独立平台核验。
+v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0通过，G1 FAIL_CLOSE_V8_RETAIN_V1。原 V1/R2不变，平台83.0319/83.0207仅用户回传。
 
-- G0：七份真实 H2 与配对 H1、八个旧月度 OOF、六个原 outer 复现和独立冷审计通过；342 项锁定测试通过，铁量完全不变。
-- G1：FAIL_CLOSE_V7_RETAIN_V1；H2 delta E +0.0001752136，delta J -0.0001585477；H2 改善 3/5，最近 2/3。
-- 预算：新基础模型 0，V7/D1 各 6 时长 LAD；最终拟合/封包/上传/原包覆盖 0。
-- 数据：已消费回溯，时间契约 ASSUMED；正式复赛身份与平台有效回执均待核验。
-- 维护：v0.13 已随后按用户指令推送 2db6d5f，其 CI 成功；旧报告不回写。本阶段本地提交，无公开推送或历史清理。
+- G0：原六个训练矩阵与V1/R2发布回读、旧E/J/分母重建、独立QRF冷进程和反序/分块/子集/单行exact equality通过；推理fit尝试0，铁量exact。
+- G1：十项质量门槛失败；H2 delta E +0.0025314055、0/5改善，delta J +0.0032074898。固定QRF关闭，D2加权均值只诊断。
+- 预算：6 forest + 6 preprocessor、1536内部树；新旧CatBoost/E04/rate/q/LAD/铁量模型fit均0，final/ZIP/上传/覆盖0。
+- 测试：根Python3.12.12原锁364 passed，独立worker锁25 passed，计数和合成fit分开记录；原P0与较早测试失败保留。
+- 来源：已消费回溯5651 exposures/1865唯一ID，原时间契约ASSUMED；正式新版身份与平台有效回执未核验。
+- 维护：已核实v14远端f940f9f及34690189315成功CI；v15本地提交，无本阶段远端CI，不改写旧报告或历史。
 
-[完整 v0.14 结果](optimization_v0_14/RESULTS.md) · [维护观察](optimization_v0_14/MAINTENANCE_20260912.md) · [文档索引](INDEX.md)
+[完整v15结果](optimization_v0_15/RESULTS.md) · [工程恢复](optimization_v0_15/ENGINEERING_REPAIR.md) · [维护记录](optimization_v0_15/MAINTENANCE_20260912.md) · [文档索引](INDEX.md)
 
 ## 历史 baseline 修复记录（非当前项目状态）
 

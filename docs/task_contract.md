@@ -1,13 +1,15 @@
 # 当前实施范围
 
-截至 optimization-v0.14，baseline-v0.1-reproducible 保持不可变。当前活动发布 V1（用户回传 83.0319），R2（83.0207）回退不变；关闭的 V2–V6 保持历史 FAIL。
+截至 optimization-v0.15，baseline-v0.1-reproducible保持冻结。当前V1活动发布、R2回退与用户成绩证据等级不变；V2–V8的固定失败设计和D1/D2诊断均不获得发布授权。
 
-本阶段只改变时长结构系数的校准预报跨度：七份真实 H2 bank、同 ID/同日期/同标签 H1 对照；原模型/特征/history/cutoff/source_contract 不变。V7 与诊断 D1 各六个 constrained 单时长 LAD，铁量直接复制完整 V1。开发预算完成 0 新基础模型、12 时长 LAD；最终拟合/ZIP/上传/旧发布覆盖均 0。结果 FAIL_CLOSE_V7_RETAIN_V1，D1 永不晋级。
+本轮唯一 V8_QRF_TIME：原完整V1铁量exact复制，原E09/R2 as-of特征经train-only填充/one-hot进入独立QRF worker，full-training-row叶分布取固定较小中位数。6 forest + 6 preprocessor、1536树预算完成；无新CatBoost/E04/rate/q、LAD或后校准。模型/原矩阵/历史/cutoff/source_contract/旧包不改。原P0元数据入口失败保留，工程修复只恢复认证OOF元数据和既有交接，无额外fit。
 
-校准标签仅来自各 outer cutoff 的认证原历史，先冻结 manifest/注册/来源/保护契约并追加新账本。所有 outer 输出和摘要保存后才读取评分归档。November 已消费，所有评价是回溯开发；早期 outer 标签可用于后期合法 OOF 系数，不能称 untouched holdout。不读取测试真值/分布来调整候选或阈值，禁止追加系数、偏置、路由、参数或历史递归搜索。
+G0独立冷审计通过，G1十项质量门槛失败、FAIL_CLOSE_V8_RETAIN_V1。H2 delta E +0.0025314055，J +0.0032074898；H2 0/5改善。根锁定Python3.12.12测试364项，独立worker25项，分别报告；推理所有fit尝试0。D2加权均值只诊断，不晋级。失败不授权叶子/树数/分位数/种子/融合/路由/偏置/旧recency变体搜索，条件最终预算不使用。
 
-G0 独立冷工程通过，G1 历史完整门槛 失败并关闭固定 V7，两者分开。新候选序列化和顺序/分块/子集/单样本 exact equality；原组件 tolerance 1e-10，E/J tolerance 1e-12 未放宽。342 项 Python 3.12 锁定测试通过。正式数据身份、时间语义、最终系数、challenger 和平台核验状态分别记录；旧 B 仍 preview，不能移动旧 cutoff 或补造 December 标签。
+manifest/源码/锁/输入/旧证据/保护契约在访问标签前冻结并追加新ledger。训练仅认证cutoff history，全部新输出摘要先落盘再读outer评分归档；P0旧V1已消费指标重建提前获准。November已消费，不是untouched holdout。固定J贡献和每cell半时长增量恒等式在1e-12内重建；原组件1e-10、候选exact等容差未放宽。后续固定诊断只读冻结errors，数字完成时ledger快照与追加前缀证据分别绑定，旧ledger不变。
 
-旧 run/模型/配置/失败报告/账本/发布哈希不改写，逐样本产物仅 local/。v0.13 在随后用户授权下已推送，旧“当时仅本地”记录保留。v0.14 仅本地提交，不公开推送、不自动改 visibility/force-push/覆盖桌面包；数据历史独立处置尚未完成。
+final model/preprocessor、新challenger ZIP、平台上传、active pointer/桌面覆盖均0。官方新版身份/source语义/质量/平台状态独立记录；旧包保留原README发布身份，与09-21版本关系待核验。保持原2754行与2024-12-01 01:44+08 cutoff定义，不移动训练历史或虚构December标签。当前固定QRF已关闭，正式版兼容也不授权失败模型最终训练。
 
-[冻结计划](optimization_v0_14/PLAN.md) · [执行结果](optimization_v0_14/RESULTS.md) · [新增维护观察](optimization_v0_14/MAINTENANCE_20260912.md) · [历史工程基线](review/FREEZE_REPORT.md)
+所有新模型及响应/叶成员、逐样本目标/预测/误差、账本与私有证据仅local。v14已随后按用户指令推送f940f9f并成功CI；v15本地提交，无自动公开推送/visibility修改/force-push/清史。旧阶段报告/配置/目录/失败/回执保持原文与摘要。后续训练需新明确阶段登记。
+
+[冻结计划](optimization_v0_15/PLAN.md) · [执行结果](optimization_v0_15/RESULTS.md) · [新增维护](optimization_v0_15/MAINTENANCE_20260912.md)

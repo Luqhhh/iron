@@ -4,11 +4,11 @@
 高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
 工程基线 `baseline-v0.1-reproducible` 保持冻结；后续优化使用独立阶段、配置与运行目录。
 
-v0.14 / OPT-30–31 已完成 H2 匹配时长校准：G0 通过，G1 失败、关闭固定 V7；V1 与 R2 回退保持不变。
+v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、关闭 V8；V1 与 R2 回退保持不变。
 
 ## 当前状态
 
-截至 2026-09-12，最新本地阶段为 **optimization-v0.14 / OPT-30–31**，评分前登记 `4f855ed`。v0.13 已在用户授权后推送 `2db6d5f`，其 locked-tests run `34687452551` 成功；本轮新增 [维护观察](docs/optimization_v0_14/MAINTENANCE_20260912.md)，旧历史报告不改写。v0.14 本地提交、未公开推送。
+截至 2026-09-12，最新本地阶段为 **optimization-v0.15 / OPT-32–33**，执行登记 `5de6523`、P0 修复 `b515046`。v0.14 已随后按用户指令推送 `f940f9f`，绑定该 SHA 的 locked-tests run `34690189315` 成功；见 [新增维护记录](docs/optimization_v0_15/MAINTENANCE_20260912.md)，旧历史报告不改写。v0.15 本地提交、未推送。
 当前活动候选仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
 平台成绩未独立核验，不代表开发结果能直接换算成排行榜收益。
 
@@ -16,11 +16,11 @@ v0.14 / OPT-30–31 已完成 H2 匹配时长校准：G0 通过，G1 失败、�
 | --- | --- |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
-| 最新工程验收 G0 | v0.14 七份真实 H2/同日期 H1、六个 outer 原模型复现与独立冷审计通过；铁量 exact equality |
-| 最新质量验收 G1 | FAIL_CLOSE_V7_RETAIN_V1；H2 delta E +0.00017521，delta J -0.00015855 |
-| 锁定环境测试 | Python 3.12.12，342 passed；v0.14 本地证据，与 v0.13 远端 CI 分开 |
-| 新待测包 | 无；v0.9–v0.14 均未生成 challenger |
-| 正式复赛数据 | 尚未到 09-21 官方开放时间；旧 test_b 仅 PREVIEW_ENGINEERING_ONLY |
+| 最新工程验收 G0 | v0.15 六个原矩阵/V1复现、独立 QRF 冷审计与全量/反序/分块/子集/单行一致性通过；铁量 exact equality |
+| 最新质量验收 G1 | FAIL_CLOSE_V8_RETAIN_V1；十项质量门槛失败，H2 delta E +0.00253141，delta J +0.00320749 |
+| 锁定环境测试 | 根 Python 3.12.12 / 原锁 364 passed；独立 worker 25 passed，分别记录；v14 远端 CI 另列 |
+| 新待测包 | 无；v0.9–v0.15 均未生成 challenger |
+| 正式复赛数据 | 09-21版身份与旧包关系待核验；旧包保留原发布身份，已有B验证仅工程预演 |
 | 桌面副本 | 当前检查路径未找到；仓库 local 原包已核验，不重建或覆盖，见 [补充](docs/optimization_v0_13/DESKTOP_COPY_STATUS.md) |
 | 平台有效提交证据 | 已自行检索，未获得账号回执；不宣称资格已确认 |
 | 保护标签状态 | November 已在授权生命周期消费；后续为已消费回溯开发 |
@@ -33,6 +33,7 @@ v0.14 / OPT-30–31 已完成 H2 匹配时长校准：G0 通过，G1 失败、�
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
+| [v0.15 / OPT-32–33](docs/optimization_v0_15/RESULTS.md) | 6 forest + 6 preprocessor、1536树；H2 delta E +0.00253141、0/5改善；delta J +0.00320749；根364/worker25测试及独立冷审计通过 | FAIL_CLOSE_V8_RETAIN_V1；无 final fit/新包，D2仅诊断 |
 | [v0.14 / OPT-30–31](docs/optimization_v0_14/RESULTS.md) | 0 新基础模型 fit、6+6 时长 LAD；H2 delta E +0.00017521，delta J -0.00015855；342 tests、独立冷审计通过 | FAIL_CLOSE_V7_RETAIN_V1；无 final fit/新包 |
 | [v0.13 / OPT-27–29](docs/optimization_v0_13/RESULTS.md) | 0 fit；原 E/J 和 J 贡献重建，旧 A/B stage 预演通过，286 tests | 保留 V1；正式包/回执待核验，不新建候选 |
 | [v0.12 / OPT-25–26](docs/optimization_v0_12/RESULTS.md) | 16 次直接目标 fit + 12 次 LAD；V6I/V6T/V6B 的 Delta J 为 +0.00022759 / -0.00062889 / -0.00040130 | 全部完整门槛失败；无 final fit、无新包；随后推送 62c62cc |
@@ -56,7 +57,7 @@ uv run --locked --python 3.12 python scripts/check_no_private_artifacts.py
 
 CI 另有 Python 3.11 兼容性检查。真实训练和推理的权威环境使用 Python 3.12 与 `uv.lock`。
 
-**2026-09-12 维护状态：暂停公开发布。** 旧说明中的用户仓库授权不能替代赛事主办方的数据公开授权；当前历史含赛事数据，仓库仍为 public。v0.12 已按此前用户明确指令推送；v0.13 随后按用户明确指令推送；v0.14 在本地执行，数据历史处置完成前不公开推送。详见 [数据与发布边界核查](docs/optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
+**2026-09-12 维护状态：暂停公开发布。** 旧说明中的用户仓库授权不能替代赛事主办方的数据公开授权；当前历史含赛事数据，仓库仍为 public。v0.12 已按此前用户明确指令推送；v0.13 随后按用户明确指令推送；v0.14 随后按用户明确指令推送 f940f9f；v0.15 本地执行，不自动公开推送新增敏感数据或改写历史。详见 [数据与发布边界核查](docs/optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
 模型、逐样本预测、本地报告、访问账本和提交 ZIP 仍保存在被忽略的 `local/`，不进入 Git。
 新机器仅克隆源码及数据不会自动获得已保存的 V1/R2 模型包，需要恢复匹配摘要的本地产物。
 
