@@ -1,0 +1,27 @@
+schema_version: 1
+phase: optimization-v0.13
+start_commit: 62c62cc92efa660674877254c6ae8dc2bceaba83
+source_v12: local/runs/optimization-v0.12-opt25-26-r1
+source_v8: local/runs/optimization-v0.8-opt20-r1
+component_export: local/runs/optimization-v0.5-opt14-export-r1/component_predictions.csv
+v12_completion: local/reports/optimization-v0.12-completion-r1.json
+active_release: configs/optimization_v0_8/active_release.yaml
+fallback_release: configs/optimization_v0_4/active_release.yaml
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+candidates: [R2, V1, V6I_RECENCY60_IRON, V6T_RECENCY60_TIME, V6B_RECENCY60_BOTH]
+targets: [tap_iron, tap_time_len]
+groups: [target, calendar_month, spout_no, horizon]
+top_error_fractions: [0.01, 0.05, 0.10]
+feature_bins:
+  missing_fraction: [0.0, 0.01, 0.05, 0.20, 1.0]
+  history_age_hours: [0.0, 1.5, 6.0, 24.0, 72.0, 168.0]
+  flags: [0.0, 1.0]
+bin_semantics: left_closed_right_open_with_explicit_missing_and_last_infinity
+metric_absolute_tolerance: 1.0e-12
+prediction_tolerance: {test_a: 0.0, reordering: 0.0, R2_original_loader_exclusive_upper: 1.0e-8}
+budget: {model_fits: 0, LAD_or_calibration_fits: 0, new_candidates: 0, challenger_ZIPs: 0, uploads: 0}
+preview_stages: [test_a, test_b]
+official_data_identity_verified: false
+quality_evaluated: false
+platform_verified: false
+public_push: false

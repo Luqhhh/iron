@@ -1,0 +1,15 @@
+schema_version: 1
+authorization: user_20260912_OPT27_OPT28_OPT29_zero_fit_v013_specification
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+allowed_labels: archived_consumed_v8_v12_errors_and_verified_bundle_histories
+reference_start: '2024-03-01 00:00:00+08:00'
+reference_end_exclusive: '2024-12-01 00:00:00+08:00'
+official_target_column_reads: false
+test_labels: forbidden
+test_inputs_for_selection: false
+new_ledger: local/ledgers/optimization-v0.13-audit.jsonl
+old_ledgers:
+  - local/ledgers/optimization-v0.3-r2-protected.jsonl
+  - local/ledgers/optimization-v0.12-development.jsonl
+public_publication: BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION
