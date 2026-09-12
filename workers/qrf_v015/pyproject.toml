@@ -1,0 +1,9 @@
+[project]
+name = "iron-qrf-v015-worker"
+version = "0.1.0"
+requires-python = "==3.12.*"
+dependencies = ["numpy==2.2.6", "scikit-learn==1.8.0", "joblib", "pytest>=8,<9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

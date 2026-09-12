@@ -1,0 +1,52 @@
+schema_version: 1
+phase: optimization-v0.15
+branch: optimization-v0.15-qrf-time
+base_commit: f940f9f4ed09382b7948f84145ceccd3f542cdd7
+candidate: V8_QRF_TIME
+diagnostic: D2_QRF_WEIGHTED_MEAN_TIME
+protocol: QRF_FULLTRAIN_LEAF_v1
+quantile: 0.5
+source_v8: local/runs/optimization-v0.8-opt20-r1
+source_v8_cold: local/runs/optimization-v0.8-opt20-cold-r2
+inventory_manifest: local/runs/optimization-v0.12-opt25-26-r1/manifest.json
+prior_receipts:
+  - local/reports/optimization-v0.14-completion-r1.json
+  - local/reports/optimization-v0.14-completion-r2.json
+active_release: configs/optimization_v0_8/active_release.yaml
+fallback_release: configs/optimization_v0_4/active_release.yaml
+worker: workers/qrf_v015
+required_test_evidence:
+  - local/reports/pytest-v015-root-locked-r2.xml
+  - local/reports/pytest-qrf-v015-worker-synthetic-r4.xml
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+expected_training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424}
+budget: {forest: 6, preprocessor: 6, internal_trees: 1536, CatBoost: 0, LAD: 0, conditional_final_forest: 1, conditional_final_preprocessor: 1}
+forest_parameters:
+  n_estimators: 256
+  criterion: squared_error
+  max_depth: null
+  min_samples_split: 2
+  min_samples_leaf: 10
+  min_weight_fraction_leaf: 0.0
+  max_features: 0.7
+  max_leaf_nodes: null
+  min_impurity_decrease: 0.0
+  bootstrap: true
+  max_samples: null
+  oob_score: false
+  random_state: 2026
+  n_jobs: 8
+  verbose: 0
+  warm_start: false
+  ccp_alpha: 0.0
+  monotonic_cst: null
+acceptance:
+  H2_mean_E: -0.0005
+  H2_improved_origins: 4
+  recent_H2_improved: 2
+  H2_single_origin: 0.0010
+  J_guardrail: 0.0002
+  other_horizon_guardrail: 0.0005
+  DEV_guardrail: 0.0007
+bootstrap: {repetitions: 1000, seed: 2026}
+conditional_final: {rows: 2754, cutoff: '2024-12-01 01:44:00+08:00', requires_official_identity: true}

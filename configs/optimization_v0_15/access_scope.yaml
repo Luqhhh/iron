@@ -1,0 +1,21 @@
+schema_version: 1
+authorization: user_20260912_OPT32_OPT33_fixed_QRF_time_v015_specification
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+training_labels: original_verified_cutoff_bundle_histories_only
+scoring_labels: archived_consumed_v8_units_after_all_outer_predictions_complete
+reference_start: '2024-03-01 00:00:00+08:00'
+reference_end_exclusive: '2024-12-01 00:00:00+08:00'
+official_target_column_reads: false
+test_labels: forbidden
+test_inputs_for_selection: false
+new_ledger: local/ledgers/optimization-v0.15-qrf.jsonl
+old_ledgers:
+  - local/ledgers/optimization-v0.3-r2-protected.jsonl
+  - local/ledgers/optimization-v0.12-development.jsonl
+  - local/ledgers/optimization-v0.13-audit.jsonl
+  - local/ledgers/optimization-v0.14-calibration.jsonl
+raw_labels_models_predictions_leaf_membership: ignored_private_local_only
+platform_uploads: 0
+active_release_changes: 0
+new_challenger_ZIPs: 0
