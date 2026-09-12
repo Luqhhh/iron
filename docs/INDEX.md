@@ -1,7 +1,9 @@
 # 文档索引与历史口径
 
 截至 2026-09-12，最新本地阶段为 v0.15（FAIL_CLOSE_V8_RETAIN_V1，正式包与回执待核验），活动模型仍为 V1（用户回传 83.0319）。
-随后按用户指定独立交付 V8 初赛实验包，用户回传 83.1636，比 V1 高 0.1317 分；原开发验收和发布指针保留。[独立平台反馈](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) 与训练/封包证据仅存 local。v0.15 代码已按用户指令推送 `6d19a29`。
+当前初赛最高用户回传为 **V10（V6I 铁量＋V8 时长）83.1951**，比 V8 高 0.0315、比 V1 高 0.1632 分，与封包前预期在显示四位小数上一致。[V10 后续反馈](../local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json) 绑定原 335 行 ZIP，登记新增拟合为 0，原开发 FAIL 与发布指针不改。
+V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三条回收实验另记 2 CatBoost＋3 LAD，回传 V6I 83.0634、V6T 82.9852、D1 82.9993。证据与原包仅存 local，v0.16 暂缓；不由初赛反馈外推复赛。v0.15 代码已按用户指令推送 6d19a29。
+已按用户指令删除桌面五份提交 ZIP，local 原包与旧证据保留。[清理与平台测试复核](../local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json)：无必须追加测试，D2 为零新增训练的第一可选对照，V2 为需单独注册拟合的第二梯队。
 阅读当前状态时按以下入口；各阶段冻结计划和结果保留运行当时的含义。
 
 ## 当前维护文档
@@ -10,6 +12,8 @@
 - [实施报告](report.md)、[实施范围](task_contract.md)：最新 G0/G1、已消费状态和关闭决策。
 - [当前 V1 发布](optimization_v0_8/CURRENT_RELEASE.md)、[R2 回退](optimization_v0_4/CURRENT_RELEASE.md)。
 - [用户指定 V8 实验包平台反馈](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json)：包摘要、用户成绩、与 V1 差值及未核验回执状态。
+- [V10 最高用户回传包反馈](../local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json)：83.1951、原包身份、相对 V8/V1 的增益和四位显示分数加法一致。
+- [V6I 更正成绩与 V10 零拟合组合](../local/runs/optimization-v0.15-v10-target-composition-r1/completion.json)：V6I 83.0634、原列精确组合、桌面包与理论分数；[三包回收记录](../local/runs/optimization-v0.15-platform-recovery-r1/completion.json) 的 2 CatBoost＋3 LAD 单独记账。
 - [桌面副本核查补充](optimization_v0_13/DESKTOP_COPY_STATUS.md)。
 - [发布身份](release_identity.md)、[平台记录](submission_log.md)、[数据契约](data_contract.md)。
 - [机器状态](../EVIDENCE_STATUS.json)：`current_status` 是当前摘要；其余旧顶层 baseline 字段和版本字段是阶段证据。

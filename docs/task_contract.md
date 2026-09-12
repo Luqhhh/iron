@@ -4,7 +4,17 @@
 
 用户后续指令“生成提交包放到桌面”“是v8”另行授权 V8 初赛实验提交，在独立 `local/runs/optimization-v0.15-v8-user-test-a-r1/` 冻结源码/输入/保护契约、追加独立账本，完成一次最终 QRF 和一次预处理、335 行冷验及桌面交付。用户回传 83.1636，比 V1 高 0.1317 分，绑定新包摘要；本次成绩登记不新增 fit。该后续授权及平台反馈不回写原开发 FAIL，不自动变更活动发布。[独立反馈记录](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) 仅存 local。
 
+本次 V10 用户回传 **83.1951** 的登记只核对原组合包及两列来源，新增拟合/标签读取/封包/上传均 0；将最高初赛用户回传记录更新为 V10，保留原高分 ZIP、原开发 FAIL、发布登记与历史账本。分数与原先预期在显示四位小数上一致；不宣称独立账号核验或复赛质量确认。[V10 反馈](../local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json) 及维护快照仅存 local。
+
+用户本次明确授权提交推送当前成绩维护，以及删除桌面提交包；仅删除五份已与 local 原包核验一致的桌面 ZIP，保留全部本地原始产物。推送范围仅五份可维护当前摘要，不包含模型/预测/账本/提交包或新赛事数据。平台测试评估只登记可选 D2 与第二梯队 V2，不授权新拟合、封包或上传；本次上述数量均 0。旧失败、旧目录与发布配置保持原样。[本次范围](../local/runs/optimization-v0.15-feedback-push-cleanup-r1/PLAN.md)。
+
 以下为原 OPT-32–33 注册与开发收口范围，最终预算 0 描述该原阶段。
+
+用户后续指定优先测试 V6I/V6T/D1，并明确 V6I 超过 V1 时组合其铁量与 V8 时长。这项独立实验授权已用于 2 次单目标最终 CatBoost＋3 次标量 LAD，三包交付与冷审计完成；不改判原开发 FAIL 或 D1 诊断身份。用户更正 V6I 为 83.0634，高于 V1 0.0315 分，满足组合条件。本次新增拟合/标签读取/平台上传均 0，直接按 ID 复制原 CSV 列，交付独立 V10 桌面包；封包时理论预期 83.1951 与其后同值用户回传分开登记，不改判历史质量。V8 原包与 83.1636 原最高回传记录保留，V6T 随后回传 82.9852、D1 随后回传 82.9993，v0.16 暂缓。见 [新阶段注册](../local/runs/optimization-v0.15-v10-target-composition-r1/PLAN.md)；不覆盖旧包，不自动改变发布指针。
+
+本次 V6T 成绩登记只核验原包身份及未改铁量列、保存用户回传证据与维护快照；所有拟合、标签读取、封包和上传均为 0。比较结果为 V6T 比 V1 低 0.0467、比 V8 低 0.1784 分，初赛时长选择继续保留 V8；不据此改写旧回溯结果或复赛选择协议。[新增反馈](../local/runs/optimization-v0.15-v6t-platform-feedback-r1/platform_feedback.json) 及新账本仅存 local。
+
+本次 D1 成绩登记只核对原包身份、ID 与未改铁量列，保存用户回传 82.9993 及维护快照；原 D1 诊断角色不改，所有拟合/标签读取/新包/上传为 0。三条回收实验已完成用户成绩登记，初赛保留 V6I 铁量收益与 V8 时长，其后已收到 V10 的 83.1951 用户回传，不追加候选搜索。[D1 反馈](../local/runs/optimization-v0.15-d1-platform-feedback-r1/platform_feedback.json) 仅存 local。
 
 本轮唯一 V8_QRF_TIME：原完整V1铁量exact复制，原E09/R2 as-of特征经train-only填充/one-hot进入独立QRF worker，full-training-row叶分布取固定较小中位数。6 forest + 6 preprocessor、1536树预算完成；无新CatBoost/E04/rate/q、LAD或后校准。模型/原矩阵/历史/cutoff/source_contract/旧包不改。原P0元数据入口失败保留，工程修复只恢复认证OOF元数据和既有交接，无额外fit。
 
