@@ -1,34 +1,13 @@
 # 当前实施范围
 
-截至 optimization-v0.13，用户已授权并完成独立优化阶段。`baseline-v0.1-reproducible`
-仍是不可变工程基线；800 轮、MAE、原特征及保护入口的冻结约束只描述该 baseline，
-不把已登记的新模型误称为“未改变 baseline 参数”的同一模型。
+截至 optimization-v0.14，baseline-v0.1-reproducible 保持不可变。当前活动发布 V1（用户回传 83.0319），R2（83.0207）回退不变；关闭的 V2–V6 保持历史 FAIL。
 
-## 当前结论
+本阶段只改变时长结构系数的校准预报跨度：七份真实 H2 bank、同 ID/同日期/同标签 H1 对照；原模型/特征/history/cutoff/source_contract 不变。V7 与诊断 D1 各六个 constrained 单时长 LAD，铁量直接复制完整 V1。开发预算完成 0 新基础模型、12 时长 LAD；最终拟合/ZIP/上传/旧发布覆盖均 0。结果 FAIL_CLOSE_V7_RETAIN_V1，D1 永不晋级。
 
-当前发布为 V1（用户回传 83.0319），原 R2 保留回退。v0.13 为零训练误差诊断、旧包 stage 适配与正式复赛协议草案；G0 诊断/preview 通过，正式包、模型质量与平台回执分别待核验。固定 recency60 与 V2–V6 均已关闭。
-本轮新模型/LAD/校准/候选/challenger/上传/旧包覆盖均 0，不预注册下一训练或设为旧失败候选定制的新阈值。
+校准标签仅来自各 outer cutoff 的认证原历史，先冻结 manifest/注册/来源/保护契约并追加新账本。所有 outer 输出和摘要保存后才读取评分归档。November 已消费，所有评价是回溯开发；早期 outer 标签可用于后期合法 OOF 系数，不能称 untouched holdout。不读取测试真值/分布来调整候选或阈值，禁止追加系数、偏置、路由、参数或历史递归搜索。
 
-## 标签与时间范围
+G0 独立冷工程通过，G1 历史完整门槛 失败并关闭固定 V7，两者分开。新候选序列化和顺序/分块/子集/单样本 exact equality；原组件 tolerance 1e-10，E/J tolerance 1e-12 未放宽。342 项 Python 3.12 锁定测试通过。正式数据身份、时间语义、最终系数、challenger 和平台核验状态分别记录；旧 B 仍 preview，不能移动旧 cutoff 或补造 December 标签。
 
-November 在早期 r2 授权生命周期中已消费，真实 holdout scoring 和 final training
-已经执行。后续阶段的 18-cell/H1–H4 是已消费回溯验证，不能声称独立 holdout。
-冻结 baseline development 读取器仍拒绝 November；新优化入口必须根据本阶段明确
-授权、`configs/protection.yaml`、冻结 manifest 摘要及追加访问账本读取合法范围。
-v0.13 仅读取已消费归档误差及匹配哈希的原模型/历史；冻结源码、来源、分组与账本后诊断，核验原训练/OOF/系数身份，不训练，不读取测试真值或依据测试分布挑模型。
+旧 run/模型/配置/失败报告/账本/发布哈希不改写，逐样本产物仅 local/。v0.13 在随后用户授权下已推送，旧“当时仅本地”记录保留。v0.14 仅本地提交，不公开推送、不自动改 visibility/force-push/覆盖桌面包；数据历史独立处置尚未完成。
 
-字段可用性仍采用 `competition-timestamp-contract-v1 / ASSUMED`。窗口和报送时点
-没有新的官方确认记录。语义变化必须创建新 contract ID，并保留旧 run。
-
-## 产物与验收
-
-使用新 run ID，保留模型、失败证据与摘要，禁止覆盖冻结历史记录。G0 工程与 G1
-质量分别报告。现存 V1/R2 配置和 ZIP 不因失败实验改变；本轮不自动上传平台。
-历史报告中的“未消费、尚未训练、当前候选”按其阶段解释，见 [文档索引](INDEX.md)。
-
-本轮范围见 [v0.13 冻结计划](optimization_v0_13/PLAN.md)，工程/诊断验收及缺失项见
-[v0.13 结果](optimization_v0_13/RESULTS.md)。历史 baseline 修复见 [冻结报告](review/FREEZE_REPORT.md)。
-
-本阶段仅本地提交，数据历史处置完成前不公开推送；没有自动修改仓库可见性或重写历史。
-当前 public 状态、元数据核查与日志/artifact 内容权限限制见
-[数据与发布边界](optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
+[冻结计划](optimization_v0_14/PLAN.md) · [执行结果](optimization_v0_14/RESULTS.md) · [新增维护观察](optimization_v0_14/MAINTENANCE_20260912.md) · [历史工程基线](review/FREEZE_REPORT.md)
