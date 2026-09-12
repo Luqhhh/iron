@@ -2,12 +2,16 @@
 
 v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0通过，G1 FAIL_CLOSE_V8_RETAIN_V1。原 V1/R2不变，平台83.0319/83.0207仅用户回传。
 
+随后用户明确要求生成 V8 初赛包并放到桌面，在独立 local 登记中完成原 2754 行与 `2024-12-01 01:44:00+08:00` cutoff 的一次最终 QRF、一次预处理，335 行包通过冷进程及 ZIP 回读检查。用户回传 **83.1636，比 V1 高 0.1317 分**，绑定 ZIP SHA256 `409218c364dac20f59169b08f95af54c1a9e206eb19b71a6115f05ce4889b402`。原开发 FAIL 保留，活动发布仍为 V1，平台有效回执未独立核验。[独立反馈记录](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) 及完整证据仅存 local。此次成绩登记新增 fit 为 0。
+
+以下预算及验收描述属于原 OPT-32–33 开发收口；用户后续指定的实验提交单独记账。
+
 - G0：原六个训练矩阵与V1/R2发布回读、旧E/J/分母重建、独立QRF冷进程和反序/分块/子集/单行exact equality通过；推理fit尝试0，铁量exact。
 - G1：十项质量门槛失败；H2 delta E +0.0025314055、0/5改善，delta J +0.0032074898。固定QRF关闭，D2加权均值只诊断。
 - 预算：6 forest + 6 preprocessor、1536内部树；新旧CatBoost/E04/rate/q/LAD/铁量模型fit均0，final/ZIP/上传/覆盖0。
 - 测试：根Python3.12.12原锁364 passed，独立worker锁25 passed，计数和合成fit分开记录；原P0与较早测试失败保留。
 - 来源：已消费回溯5651 exposures/1865唯一ID，原时间契约ASSUMED；正式新版身份与平台有效回执未核验。
-- 维护：已核实v14远端f940f9f及34690189315成功CI；v15本地提交，无本阶段远端CI，不改写旧报告或历史。
+- 维护：已核实v14远端f940f9f及34690189315成功CI；v15随后按用户指令推送6d19a29，本阶段远端CI未在此次登记中另行核验；旧报告及历史保持不变。
 
 [完整v15结果](optimization_v0_15/RESULTS.md) · [工程恢复](optimization_v0_15/ENGINEERING_REPAIR.md) · [维护记录](optimization_v0_15/MAINTENANCE_20260912.md) · [文档索引](INDEX.md)
 

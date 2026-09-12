@@ -1,6 +1,7 @@
 # 文档索引与历史口径
 
 截至 2026-09-12，最新本地阶段为 v0.15（FAIL_CLOSE_V8_RETAIN_V1，正式包与回执待核验），活动模型仍为 V1（用户回传 83.0319）。
+随后按用户指定独立交付 V8 初赛实验包，用户回传 83.1636，比 V1 高 0.1317 分；原开发验收和发布指针保留。[独立平台反馈](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) 与训练/封包证据仅存 local。v0.15 代码已按用户指令推送 `6d19a29`。
 阅读当前状态时按以下入口；各阶段冻结计划和结果保留运行当时的含义。
 
 ## 当前维护文档
@@ -8,6 +9,7 @@
 - [README](../README.md)：状态、环境、当前 V1 推理入口与数据权限。
 - [实施报告](report.md)、[实施范围](task_contract.md)：最新 G0/G1、已消费状态和关闭决策。
 - [当前 V1 发布](optimization_v0_8/CURRENT_RELEASE.md)、[R2 回退](optimization_v0_4/CURRENT_RELEASE.md)。
+- [用户指定 V8 实验包平台反馈](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json)：包摘要、用户成绩、与 V1 差值及未核验回执状态。
 - [桌面副本核查补充](optimization_v0_13/DESKTOP_COPY_STATUS.md)。
 - [发布身份](release_identity.md)、[平台记录](submission_log.md)、[数据契约](data_contract.md)。
 - [机器状态](../EVIDENCE_STATUS.json)：`current_status` 是当前摘要；其余旧顶层 baseline 字段和版本字段是阶段证据。
