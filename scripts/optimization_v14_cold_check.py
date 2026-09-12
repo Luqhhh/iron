@@ -13,13 +13,13 @@ from bf_tap.optimization.trajectory_run import builder_for, equal
 from bf_tap.optimization.v13_common import zero_fit
 from bf_tap.optimization.horizon_calibration import (CANDIDATE, CONTROL, read_bank,verify_bank,
     verify_pair,select_matched,predict_time,lad_certificate,month_start)
-from optimization_v14_h2_calibration import verify, original_fold
+from optimization_v14_h2_calibration import verify, original_fold, execution_manifest
 
 
 def check(root):
     if (root/'cold_validation.json').exists():
         raise ContractError('cold evidence already exists; preserve it')
-    manifest=read_json(root/'manifest.json');verify(manifest);reg=manifest['registration']
+    manifest=execution_manifest(root);verify(manifest);reg=manifest['registration']
     verify_file_identities(read_json(root/'predictions_complete.json')['identities'])
     verify_file_identities(read_json(root/'OOF_provenance.json')['forecast_bank_identities'])
     h2=read_bank(root/'paired_bank/H2.csv');h1=read_bank(root/'paired_bank/H1_same_calendar.csv')

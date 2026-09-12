@@ -109,6 +109,64 @@ def verify(manifest):
         validate_inference_source_contract(contract,manifest['inputs'],semantic_contract_sha256=contract['semantic_contract_sha256'])
 
 
+REPAIR_SOURCE_NAMES = ('scripts/optimization_v14_h2_calibration.py',
+    'scripts/optimization_v14_cold_check.py','tests/test_horizon_calibration.py')
+
+
+def execution_manifest(root):
+    """Restore original registration; explicitly bind additive engineering source repair."""
+    manifest=read_json(root/'manifest.json')
+    repair_path=root/'engineering_repair/manifest.json'
+    if repair_path.exists():
+        repair=read_json(repair_path)
+        if repair['original_manifest_sha256'] != file_sha256(root/'manifest.json'):
+            raise ContractError('original frozen manifest changed')
+        if set(repair['repaired_sources']) != set(REPAIR_SOURCE_NAMES) or set(repair['archived_original_sources']) != set(REPAIR_SOURCE_NAMES):
+            raise ContractError('unregistered engineering repair scope')
+        verify_file_identities(repair['archived_original_sources'])
+        verify_file_identities(repair['repaired_sources'])
+        for name in REPAIR_SOURCE_NAMES:
+            old=manifest['sources'][name]; archived=repair['archived_original_sources'][name]
+            if old['sha256'] != archived['sha256'] or old['bytes'] != archived['bytes']:
+                raise ContractError('archived original code identity differs')
+            if Path(repair['repaired_sources'][name]['path']).resolve() != Path(name).resolve():
+                raise ContractError('repaired source path differs')
+            manifest['sources'][name]=repair['repaired_sources'][name]
+        manifest['engineering_repair_manifest_sha256']=file_sha256(repair_path)
+        manifest['engineering_repair_commit']=repair['repair_registration_commit']
+    # JSON preserves values and turns object keys into strings; normalize only representation.
+    manifest['registration']['origins']={int(k):v for k,v in manifest['registration']['origins'].items()}
+    return manifest
+
+
+def register_engineering_repair(root):
+    if not (root/'failure.json').exists() or not (root/'predictions_complete.json').exists():
+        raise ContractError('preserved failure and completed fits/predictions required')
+    if subprocess.check_output(['git','status','--porcelain'],text=True).strip():
+        raise ContractError('clean engineering repair registration required')
+    original=read_json(root/'manifest.json'); repaired=root/'engineering_repair/manifest.json'
+    if repaired.exists(): raise ContractError('repair already registered; do not overwrite')
+    archives=file_identities({name:root/'engineering_repair/original_sources'/name for name in REPAIR_SOURCE_NAMES})
+    prior_sources=original['sources'].copy()
+    for name,identity in archives.items():
+        if identity['sha256'] != original['sources'][name]['sha256']:
+            raise ContractError('original code archive differs')
+        prior_sources[name]=identity
+    verify_file_identities(prior_sources)
+    for key in ('inputs','evidence','old_ledgers'):verify_file_identities(original[key])
+    verify_file_identities(read_json(root/'predictions_complete.json')['identities'])
+    if ScalarBudget(root/'coefficients').counts() != {role:{'attempted':6,'completed':6} for role in (CANDIDATE,CONTROL)}:
+        raise ContractError('restore successful 12 fits; no additional attempts')
+    atomic_write_json(repaired,{'original_manifest_sha256':file_sha256(root/'manifest.json'),
+        'repair_registration_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+        'archived_original_sources':archives,'repaired_sources':file_identities({name:name for name in REPAIR_SOURCE_NAMES}),
+        'cause':'JSON origin key representation; normalize monthly mapping at manifest load',
+        'prediction_or_coefficient_changes':False,'additional_competition_fits':0,
+        'configuration_parameters_inputs_old_evidence_unchanged':True})
+    event(root,original,'ENGINEERING_SOURCE_REPAIR_REGISTERED_WITH_ORIGINAL_ARCHIVES',repair_manifest_sha256=file_sha256(repaired))
+    return execution_manifest(root)
+
+
 def original_fold(manifest, month):
     fold, oof = load_fold(manifest,month)
     for name in ('reference_time','tap_end_time','available_at'):
@@ -285,6 +343,17 @@ def score_saved(root,manifest):
     return result
 
 
+def complete(root,manifest,result):
+    verify(manifest)
+    files=[p for p in root.rglob('*') if p.is_file()]
+    atomic_write_json(root/'completion.json',{'status':result['status'],'G0':'PASS','G1':'PASS_HISTORICAL' if result['historical_quality_passed'] else 'FAIL_CLOSE_V7',
+        'identities':file_identities({str(p):p for p in files}), 'ledger_sha256':file_sha256(manifest['scope']['new_ledger']),
+        'new_CatBoost_fits':0,'development_time_LAD':12,'final_time_LAD':0,'challenger_ZIPs':0,
+        'official_data_identity_verified':False,'platform_verified':False,
+        'engineering_repair_commit':manifest.get('engineering_repair_commit')})
+    print(result,flush=True)
+
+
 def run(root):
     manifest=freeze(root)
     try:
@@ -293,19 +362,28 @@ def run(root):
         fit_and_predict(root,manifest,h2,h1)
         subprocess.run([sys.executable,'scripts/optimization_v14_cold_check.py','--run',str(root)],check=True)
         result=score_saved(root,manifest)
-        verify(manifest)
-        files=[p for p in root.rglob('*') if p.is_file()]
-        atomic_write_json(root/'completion.json',{'status':result['status'],'G0':'PASS','G1':'PASS_HISTORICAL' if result['historical_quality_passed'] else 'FAIL_CLOSE_V7',
-            'identities':file_identities({str(p):p for p in files}), 'ledger_sha256':file_sha256(manifest['scope']['new_ledger']),
-            'new_CatBoost_fits':0,'development_time_LAD':12,'final_time_LAD':0,'challenger_ZIPs':0,
-            'official_data_identity_verified':False,'platform_verified':False})
-        print(result,flush=True)
+        complete(root,manifest,result)
     except Exception as exc:
         failure=root/'failure.json'
         if not failure.exists(): atomic_write_json(failure,{'error':str(exc),'fit_counts':ScalarBudget(root/'coefficients').counts()})
         raise
 
 
+def resume_engineering(root):
+    manifest=register_engineering_repair(root)
+    try:
+        verify(manifest)
+        # Only stored inference/coefficients are restored; P0 and ScalarBudget.fit are not rerun.
+        subprocess.run([sys.executable,'scripts/optimization_v14_cold_check.py','--run',str(root)],check=True)
+        result=score_saved(root,manifest)
+        complete(root,manifest,result)
+    except Exception as exc:
+        atomic_write_json(root/'engineering_repair/failure_r1.json',{'error':str(exc),'additional_fits':0})
+        raise
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True)
-    run(parser.parse_args().output)
+    parser.add_argument('--resume-engineering',action='store_true')
+    args=parser.parse_args()
+    (resume_engineering if args.resume_engineering else run)(args.output)

@@ -227,3 +227,13 @@ def test_changed_official_process_source_is_blocked():
     contract=build_inference_source_contract(identities,semantic_contract_sha256='b'*64)
     revised=copy.deepcopy(identities);revised['operation_hourly']['sha256']='c'*64
     with pytest.raises(ContractError):validate_inference_source_contract(contract,revised,semantic_contract_sha256='b'*64)
+
+
+def test_serialized_manifest_origin_keys_restore_integer_model_identity(tmp_path):
+    import importlib.util
+    spec=importlib.util.spec_from_file_location('v14_runner',Path('scripts/optimization_v14_h2_calibration.py'))
+    runner=importlib.util.module_from_spec(spec);spec.loader.exec_module(runner)
+    (tmp_path/'manifest.json').write_text(json.dumps({'registration':{'origins':{6:4,7:4,8:4,9:3,10:2,11:1}}}))
+    manifest=runner.execution_manifest(tmp_path)
+    assert manifest['registration']['origins']=={6:4,7:4,8:4,9:3,10:2,11:1}
+    assert {m:object() for m in range(6,12)}[next(iter(manifest['registration']['origins']))] is not None
