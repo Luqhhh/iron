@@ -25,6 +25,7 @@ from .v13_common import zero_fit, verify_receipt
 CANDIDATE = 'V8_QRF_TIME'
 DIAGNOSTIC = 'D2_QRF_WEIGHTED_MEAN_TIME'
 WORKER_FILES = ('worker.py','qrf_model.py','preprocessing.py','pyproject.toml','uv.lock')
+REPAIR_FILES = ('src/bf_tap/optimization/qrf_time_run.py','scripts/optimization_v15_cold_check.py','tests/test_qrf_time_contract.py')
 
 
 def registration():
@@ -55,9 +56,41 @@ def verify(manifest):
 
 def restore_manifest(root):
     manifest=read_json(root/'manifest.json')
+    if (root/'engineering_repair/manifest.json').exists():
+        repair=read_json(root/'engineering_repair/manifest.json')
+        if repair['original_manifest_sha256']!=file_sha256(root/'manifest.json'): raise ContractError('original manifest changed')
+        verify_file_identities(repair['original_sources'])
+        verify_file_identities(repair['preserved_handoffs'])
+        verify_file_identities(repair['repair_test_evidence'])
+        if repair['original_failure_sha256']!=file_sha256(root/'failure.json'): raise ContractError('original failed evidence changed')
+        for name in REPAIR_FILES:
+            if repair['original_sources'][name]['sha256']!=manifest['sources'][name]['sha256']: raise ContractError('original source archive differs')
+            manifest['sources'][name]=repair['repaired_sources'][name]
+        manifest['engineering_repair_sha256']=file_sha256(root/'engineering_repair/manifest.json')
     for key in ('origins','expected_training_rows'):
         manifest['registration'][key]={int(k):v for k,v in manifest['registration'][key].items()}
     return manifest
+
+
+def register_repair(root):
+    if any(fit_counts(root)[k] for k in ('forest_attempted','preprocessor_attempted')): raise ContractError('P0-only repair cannot rerun fitted models')
+    if subprocess.check_output(['git','status','--porcelain'],text=True).strip(): raise ContractError('clean engineering repair registration required')
+    original=read_json(root/'manifest.json')
+    archives=file_identities({name:root/'engineering_repair/original_sources'/name for name in REPAIR_FILES})
+    for name in REPAIR_FILES:
+        if archives[name]['sha256']!=original['sources'][name]['sha256']: raise ContractError('original archive differs')
+    prior=original['sources'].copy();prior.update(archives);verify_file_identities(prior)
+    for key in ('inputs','evidence','old_ledgers'):verify_file_identities(original[key])
+    atomic_write_json(root/'engineering_repair/manifest.json',dict(original_manifest_sha256=file_sha256(root/'manifest.json'),
+        original_failure_sha256=file_sha256(root/'failure.json'),original_sources=archives,
+        repaired_sources=file_identities({name:name for name in REPAIR_FILES}),
+        preserved_handoffs=file_identities({str(p):p for p in (root/'features').rglob('*') if p.is_file()}),
+        repair_test_evidence=file_identities({'locked_root_r4':'local/reports/pytest-v015-root-locked-r4.xml'}),
+        cause='Original outer inputs contain prediction components only; recover metadata from certified original OOF and match IDs',
+        fit_attempts_before_repair=fit_counts(root),candidate_parameters_or_inputs_changed=False,
+        registration_commit=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()))
+    event(root,original,'REGISTER_P0_ONLY_ENGINEERING_REPAIR_PRESERVE_ORIGINAL_FAILURE_AND_HANDOFFS')
+    return restore_manifest(root)
 
 
 def freeze(root):
@@ -128,6 +161,16 @@ def fold_for(manifest, month):
     return fold,oof
 
 
+def outer_samples(manifest, month):
+    reg=manifest['registration'];source=Path(reg['source_v8']);cutoff=stamp(month)
+    all_meta=pd.concat([frame(source/'oof'/f'{m}.csv',usecols=META)[META] for m in reg['origins']],ignore_index=True)
+    all_meta.reference_time=pd.to_datetime(all_meta.reference_time,utc=True).dt.tz_convert('Asia/Shanghai')
+    result=all_meta.loc[(all_meta.reference_time>=cutoff)&(all_meta.reference_time<cutoff+pd.DateOffset(months=reg['origins'][month]))].copy()
+    old=frame(source/'predictions'/f'{month}_inputs.csv',usecols=['sample_id'])
+    if result.sample_id.duplicated().any() or old.sample_id.duplicated().any() or set(result.sample_id)!=set(old.sample_id): raise ContractError('certified metadata and original prediction IDs differ')
+    return result.set_index('sample_id').loc[old.sample_id].reset_index()[META]
+
+
 def raw_matrix(builder, samples, fold, training=False):
     entry=fold[0]['OR']; h=fold[1]['OR'][1]
     x=(Context.X(builder,samples,stamp(pd.Timestamp(entry['cutoff']).month),entry['component'],'R2',h)
@@ -184,7 +227,8 @@ def rebuild_old(root,manifest):
 
 
 def preflight(root,manifest):
-    reg=manifest['registration']; dest=root/'p0';dest.mkdir(exist_ok=False)
+    reg=manifest['registration']; dest=root/'p0';dest.mkdir(exist_ok=True)
+    if (dest/'complete.json').exists(): raise ContractError('completed P0 cannot be overwritten')
     builder=builder_for(manifest);train_inputs={}; audits={}
     with zero_fit() as count:
         event(root,manifest,'P0_RESTORE_ORIGINAL_CUTOFF_HISTORIES_FOR_TRAIN_ONLY_FEATURES')
@@ -195,9 +239,16 @@ def preflight(root,manifest):
             digest=stable_digest(dict(schema=schema(x),row_hashes=pd.util.hash_pandas_object(x,index=False).astype(str).tolist()))
             prior_audit=read_json(Path(reg['inventory_manifest']).parent/'p0'/f'{month}_audit.json')
             if digest!=prior_audit['old_feature_matrix_sha256']: raise ContractError('original training feature values changed')
-            train_inputs[str(month)]=pack(root/'features'/str(month)/'train.npz',x,h[META],stamp(month),h)
-            samples=frame(Path(reg['source_v8'])/'predictions'/f'{month}_inputs.csv',usecols=META)
-            samples.reference_time=pd.to_datetime(samples.reference_time,utc=True).dt.tz_convert('Asia/Shanghai')
+            path=root/'features'/str(month)/'train.npz'
+            if path.exists():
+                info=read_json(str(path)+'.json')
+                expected_digest=stable_digest(dict(schema=schema(x),rows=pd.util.hash_pandas_object(x,index=False).astype(str).tolist()))
+                if info['sha256']!=file_sha256(path) or info['raw_matrix_sha256']!=expected_digest or info['ids']!=h.sample_id.astype(str).tolist(): raise ContractError('preserved original training handoff differs')
+                with np.load(path,allow_pickle=False) as data:
+                    if not np.array_equal(data['y'],h.tap_time_len.to_numpy()) or not np.array_equal(data['available_ns'],h.available_at.astype('int64').to_numpy()): raise ContractError('preserved training labels/availability changed')
+                train_inputs[str(month)]=info
+            else: train_inputs[str(month)]=pack(path,x,h[META],stamp(month),h)
+            samples=outer_samples(manifest,month)
             old_inputs=predict_inputs(samples,fold,builder,{'rate':{'unusable_predicted_rate_max':1e-6}})
             old_v1=apply_correction(old_inputs,read_json(Path(reg['source_v8'])/'corrections'/f'{month}.json')['alpha'],1e-6)
             original_v1=frame(Path(reg['source_v8'])/'predictions'/f'{month}_V1.csv')
@@ -324,18 +375,21 @@ def evaluate(root,manifest):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--action',choices=['run','cold'],default='run');args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True);parser.add_argument('--action',choices=['run','cold','resume-engineering'],default='run');args=parser.parse_args()
     root=args.output.resolve()
     try:
         if args.action=='cold':
             from subprocess import run
             run([sys.executable,'scripts/optimization_v15_cold_check.py','--run',str(root)],check=True)
             return
-        manifest=freeze(root);preflight(root,manifest);train_predict(root,manifest)
+        manifest=register_repair(root) if args.action=='resume-engineering' else freeze(root)
+        verify(manifest);preflight(root,manifest);train_predict(root,manifest)
         subprocess.run([sys.executable,'scripts/optimization_v15_cold_check.py','--run',str(root)],check=True)
         evaluate(root,manifest)
     except Exception as exc:
-        if root.exists(): atomic_write_json(root/'failure.json',dict(error=repr(exc),fit_counts=fit_counts(root)))
+        if root.exists():
+            failure=root/'failure.json' if not (root/'failure.json').exists() else root/'engineering_repair/failure-r2.json'
+            atomic_write_json(failure,dict(error=repr(exc),fit_counts=fit_counts(root)))
         raise
 
 

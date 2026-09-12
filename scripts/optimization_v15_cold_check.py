@@ -6,7 +6,7 @@ import pandas as pd
 from bf_tap.artifacts import atomic_write_json, stable_digest, verify_file_identities
 from bf_tap.optimization.component_export import META, PRED, read_json
 from bf_tap.optimization.dual_ratio_common import frame
-from bf_tap.optimization.qrf_time_run import (restore_manifest, verify, worker, fold_for, raw_matrix)
+from bf_tap.optimization.qrf_time_run import (restore_manifest, verify, worker, fold_for, raw_matrix, outer_samples)
 from bf_tap.optimization.rate_model import schema
 from bf_tap.optimization.structural import apply_correction
 from bf_tap.optimization.structural_run import predict_inputs
@@ -21,8 +21,7 @@ def check(root):
     with zero_fit() as counter:
         for month in reg['origins']:
             fold,_=fold_for(manifest,month)
-            samples=frame(Path(reg['source_v8'])/'predictions'/f'{month}_inputs.csv',usecols=META)
-            samples.reference_time=pd.to_datetime(samples.reference_time,utc=True).dt.tz_convert('Asia/Shanghai')
+            samples=outer_samples(manifest,month)
             x=raw_matrix(builder,samples,fold)
             info=read_json(root/'features'/str(month)/'evaluation.npz.json')
             digest=stable_digest(dict(schema=schema(x),rows=pd.util.hash_pandas_object(x,index=False).astype(str).tolist()))

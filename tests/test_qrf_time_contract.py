@@ -5,7 +5,7 @@ import pytest
 from bf_tap.config import load_yaml
 from bf_tap.exceptions import ContractError
 from bf_tap.optimization.component_export import META, units
-from bf_tap.optimization.qrf_time_run import (pack, fit_counts, acceptance, CANDIDATE, DIAGNOSTIC, registration)
+from bf_tap.optimization.qrf_time_run import (pack, fit_counts, acceptance, CANDIDATE, DIAGNOSTIC, registration, outer_samples)
 from bf_tap.optimization.v13_common import zero_fit
 
 
@@ -101,3 +101,16 @@ def test_old_fit_interfaces_remain_disabled():
         with pytest.raises(ContractError): DualTargetBaseline(FROZEN_PARAMETERS).fit(None,None)
         with pytest.raises(ContractError): structural.lad_coefficient(None,None)
     assert count['attempted_target_fits']==1 and count['attempted_calibration_fits']==1
+
+
+def test_metadata_recovered_from_oof_not_prediction_columns(tmp_path):
+    src=tmp_path/'source';(src/'oof').mkdir(parents=True);(src/'predictions').mkdir()
+    samples=pd.DataFrame({'sample_id':['a','b'],'spout_no':['1','2'],
+        'reference_time':['2024-06-01T01:00:00+08:00','2024-06-02T01:00:00+08:00']})
+    samples.to_csv(src/'oof/6.csv',index=False)
+    pd.DataFrame({'sample_id':['b','a'],'pred_tap_iron':[1.,2.]}).to_csv(src/'predictions/6_inputs.csv',index=False)
+    manifest={'registration':{'source_v8':str(src),'origins':{6:1}}}
+    out=outer_samples(manifest,6)
+    assert list(out)==META and out.sample_id.tolist()==['b','a']
+    pd.DataFrame({'sample_id':['wrong']}).to_csv(src/'predictions/6_inputs.csv',index=False)
+    with pytest.raises(ContractError,match='IDs differ'): outer_samples(manifest,6)
