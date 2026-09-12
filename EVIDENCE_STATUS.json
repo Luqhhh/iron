@@ -1502,7 +1502,7 @@
     "holdout_consumed": true,
     "retrospective_grid_completed": true,
     "next_model_registered": false,
-    "desktop_candidate": null,
+    "desktop_candidate": "V11_V6I_IRON_QRF_MEAN_TIME",
     "documentation_index": "docs/INDEX.md",
     "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview.",
     "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
@@ -1522,8 +1522,8 @@
       "conclusion": "success",
       "maintenance_document": "docs/optimization_v0_13/MAINTENANCE_20260912.md"
     },
-    "desktop_copy_status": "REMOVED_BY_USER_REQUEST_LOCAL_ORIGINALS_RETAINED",
-    "desktop_copy_document": "local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json",
+    "desktop_copy_status": "V11_USER_REQUESTED_COPY_VERIFIED_PLATFORM_PENDING",
+    "desktop_copy_document": "local/runs/platform-probes-r2-publication-r1/desktop_delivery.json",
     "v13_remote_observation": {
       "branch_pushed": true,
       "commit": "2db6d5faae9c8568e01f5d75d145c17fc8404fb8",
@@ -1692,7 +1692,7 @@
     "best_user_reported_test_a_package_path": "/home/lux1/iron/local/runs/optimization-v0.15-v10-target-composition-r1/submission/Luqhhh_bf_tap_predict_prelim.zip",
     "best_user_reported_test_a_zip_sha256": "be83f1f623c12f4ef03479f2fcacdfb756920d41c4e09d1c4f6b55a2279761ac",
     "best_user_reported_test_a_feedback_record": "local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json",
-    "desktop_submission_zip_count": 0,
+    "desktop_submission_zip_count": 1,
     "desktop_submission_cleanup_record": "local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json",
     "platform_testing_review": {
       "status": "REVIEW_COMPLETE_NO_MANDATORY_ADDITIONAL_TEST",
@@ -1796,7 +1796,9 @@
       "id": 34700659289,
       "status": "completed",
       "url": "https://github.com/Luqhhh/iron/actions/runs/34700659289"
-    }
+    },
+    "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip",
+    "desktop_submission_zip_sha256": "f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
