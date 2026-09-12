@@ -116,15 +116,14 @@ REPAIR_SOURCE_NAMES = ('scripts/optimization_v14_h2_calibration.py',
 def execution_manifest(root):
     """Restore original registration; explicitly bind additive engineering source repair."""
     manifest=read_json(root/'manifest.json')
-    repair_path=root/'engineering_repair/manifest.json'
-    if repair_path.exists():
+    for repair_path in (root/'engineering_repair/manifest.json',root/'engineering_scoring_repair/manifest.json'):
+        if not repair_path.exists(): continue
         repair=read_json(repair_path)
         if repair['original_manifest_sha256'] != file_sha256(root/'manifest.json'):
             raise ContractError('original frozen manifest changed')
         if set(repair['repaired_sources']) != set(REPAIR_SOURCE_NAMES) or set(repair['archived_original_sources']) != set(REPAIR_SOURCE_NAMES):
             raise ContractError('unregistered engineering repair scope')
         verify_file_identities(repair['archived_original_sources'])
-        verify_file_identities(repair['repaired_sources'])
         for name in REPAIR_SOURCE_NAMES:
             old=manifest['sources'][name]; archived=repair['archived_original_sources'][name]
             if old['sha256'] != archived['sha256'] or old['bytes'] != archived['bytes']:
@@ -132,8 +131,11 @@ def execution_manifest(root):
             if Path(repair['repaired_sources'][name]['path']).resolve() != Path(name).resolve():
                 raise ContractError('repaired source path differs')
             manifest['sources'][name]=repair['repaired_sources'][name]
-        manifest['engineering_repair_manifest_sha256']=file_sha256(repair_path)
-        manifest['engineering_repair_commit']=repair['repair_registration_commit']
+        prefix='engineering_repair' if repair_path.parent.name=='engineering_repair' else 'engineering_scoring_repair'
+        if prefix=='engineering_scoring_repair' and repair['prior_repair_manifest_sha256'] != file_sha256(root/'engineering_repair/manifest.json'):
+            raise ContractError('prior source repair identity differs')
+        manifest[prefix+'_manifest_sha256']=file_sha256(repair_path)
+        manifest[prefix+'_commit']=repair['repair_registration_commit']
     # JSON preserves values and turns object keys into strings; normalize only representation.
     manifest['registration']['origins']={int(k):v for k,v in manifest['registration']['origins'].items()}
     return manifest
@@ -292,7 +294,13 @@ def fit_and_predict(root,manifest,h2,h1):
     event(root,manifest,'ALL_OUTER_PREDICTIONS_FROZEN_BEFORE_SCORING_LABEL_ACCESS')
 
 
-def score_saved(root,manifest):
+def legacy_v1_summary(summary):
+    if set(summary) != {'U0','U1'}:
+        raise ContractError('original v8 U0/U1 evidence namespace required')
+    return summary['U1']
+
+
+def score_saved(root,manifest,restore_metrics=False):
     reg=manifest['registration']
     verify_file_identities(read_json(root/'predictions_complete.json')['identities'])
     if not read_json(root/'cold_validation.json')['engineering_valid']:
@@ -308,9 +316,16 @@ def score_saved(root,manifest):
             result[role]=p
         return result
     with zero_fit() as counts:
-        metrics,summary,errors,_=score(root,reg,provider)
+        if restore_metrics:
+            repair=read_json(root/'engineering_scoring_repair/manifest.json')
+            verify_file_identities(repair['completed_scoring_identities'])
+            metrics,summary=read_json(root/'metrics.json'),read_json(root/'summary.json')
+            errors=frame(root/'all_errors.csv')
+            errors['reference_time']=pd.to_datetime(errors.reference_time,utc=True).dt.tz_convert('Asia/Shanghai')
+        else:
+            metrics,summary,errors,_=score(root,reg,provider)
         old_summary=read_json(Path(reg['source_v8'])/'summary.json')
-        if abs(summary['V1']['J']-old_summary['V1']['J'])>reg['metric_tolerance']:
+        if abs(summary['V1']['J']-legacy_v1_summary(old_summary)['J'])>reg['metric_tolerance']:
             raise ContractError('legacy full-precision J differs')
         for unit,v in metrics.items():
             for target in ('iron','time'):
@@ -350,7 +365,8 @@ def complete(root,manifest,result):
         'identities':file_identities({str(p):p for p in files}), 'ledger_sha256':file_sha256(manifest['scope']['new_ledger']),
         'new_CatBoost_fits':0,'development_time_LAD':12,'final_time_LAD':0,'challenger_ZIPs':0,
         'official_data_identity_verified':False,'platform_verified':False,
-        'engineering_repair_commit':manifest.get('engineering_repair_commit')})
+        'engineering_repair_commit':manifest.get('engineering_repair_commit'),
+        'engineering_scoring_repair_commit':manifest.get('engineering_scoring_repair_commit')})
     print(result,flush=True)
 
 
@@ -382,8 +398,43 @@ def resume_engineering(root):
         raise
 
 
+def resume_scoring(root):
+    directory=root/'engineering_scoring_repair';repair_path=directory/'manifest.json'
+    if repair_path.exists() or not (root/'engineering_repair/failure_r1.json').exists():
+        raise ContractError('preserved scoring failure and exclusive repair registration required')
+    if not read_json(root/'cold_validation.json')['engineering_valid']:
+        raise ContractError('passed independent cold audit required')
+    if subprocess.check_output(['git','status','--porcelain'],text=True).strip():
+        raise ContractError('clean scoring identity repair registration required')
+    manifest=execution_manifest(root)
+    archives=file_identities({name:directory/'original_sources'/name for name in REPAIR_SOURCE_NAMES})
+    prior_sources=manifest['sources'].copy()
+    for name,identity in archives.items():
+        if identity['sha256'] != prior_sources[name]['sha256']:
+            raise ContractError('prior scoring code archive differs')
+        prior_sources[name]=identity
+    verify_file_identities(prior_sources)
+    for name in ('inputs','evidence','old_ledgers'):verify_file_identities(manifest[name])
+    verify_file_identities(read_json(root/'predictions_complete.json')['identities'])
+    preserved=[root/name for name in ('metrics.json','summary.json','all_errors.csv','all_units.csv','spout_metrics.json','h1_origins.csv','cold_validation.json')]
+    preserved += list((root/'units').rglob('*.csv'))
+    atomic_write_json(repair_path,{'original_manifest_sha256':file_sha256(root/'manifest.json'),
+        'prior_repair_manifest_sha256':file_sha256(root/'engineering_repair/manifest.json'),
+        'repair_registration_commit':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),
+        'archived_original_sources':archives,'repaired_sources':file_identities({name:name for name in REPAIR_SOURCE_NAMES}),
+        'completed_scoring_identities':file_identities({str(p):p for p in preserved}),
+        'cause':'explicit original U1 to current V1 summary identity mapping',
+        'additional_fits':0,'models_coefficients_predictions_completed_scores_unchanged':True})
+    event(root,manifest,'SCORING_EVIDENCE_NAME_REPAIR_REGISTERED_NO_REFIT_NO_RESCORE',repair_manifest_sha256=file_sha256(repair_path))
+    manifest=execution_manifest(root);verify(manifest)
+    result=score_saved(root,manifest,restore_metrics=True)
+    complete(root,manifest,result)
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--output',type=Path,required=True)
-    parser.add_argument('--resume-engineering',action='store_true')
+    group=parser.add_mutually_exclusive_group()
+    group.add_argument('--resume-engineering',action='store_true')
+    group.add_argument('--resume-scoring',action='store_true')
     args=parser.parse_args()
-    (resume_engineering if args.resume_engineering else run)(args.output)
+    (resume_engineering if args.resume_engineering else resume_scoring if args.resume_scoring else run)(args.output)

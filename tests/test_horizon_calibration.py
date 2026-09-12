@@ -237,3 +237,12 @@ def test_serialized_manifest_origin_keys_restore_integer_model_identity(tmp_path
     manifest=runner.execution_manifest(tmp_path)
     assert manifest['registration']['origins']=={6:4,7:4,8:4,9:3,10:2,11:1}
     assert {m:object() for m in range(6,12)}[next(iter(manifest['registration']['origins']))] is not None
+
+
+def test_original_v8_complete_V1_summary_uses_U1_identity():
+    import importlib.util
+    spec=importlib.util.spec_from_file_location('v14_score_alias',Path('scripts/optimization_v14_h2_calibration.py'))
+    runner=importlib.util.module_from_spec(spec);spec.loader.exec_module(runner)
+    summary={'U0':{'J':.2},'U1':{'J':.19}}
+    assert runner.legacy_v1_summary(summary) is summary['U1']
+    with pytest.raises(ContractError):runner.legacy_v1_summary({'V1':{'J':.19}})
