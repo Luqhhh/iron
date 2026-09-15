@@ -2,7 +2,7 @@
 
 2026-09-13，V11_V6I_IRON_QRF_MEAN_TIME 用户回传 **83.1806**，比 V10 83.1951 低 **0.0145** 分，比 V8 高 0.0170、比 V1 高 0.1487 分。已核验 V11 本地/桌面原 ZIP 身份和 335 行铁量字段与 V10 精确一致；回传依上下文关联该 V11 包，未取得账号原始回执。关闭本次均值探针并结束本轮回收，初赛最高用户回传继续保留 V10 原包，不追加混合/分位数/参数或其他候选。V2/v0.16 维持暂停，原历史 G1、V1 开发参照和复赛状态不改。本次新增拟合、官方标签读取、封包、桌面写入和自动上传均 0。[独立 V11 反馈](local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)。
 
-后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 后续用户回传 83.1806，低于 V10 0.0145 分；当前最高用户回传仍是 V10 83.1951。[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+2026-09-12，已按用户指令推送 platform-probes-r2，并把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 后续用户回传 83.1806，低于 V10 0.0145 分；当前最高用户回传仍是 V10 83.1951。[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
 
 高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
@@ -12,9 +12,9 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、�
 
 ## 当前状态
 
-已独立核验远端 `optimization-v0.15-qrf-time@b01ab117` 对应 locked-tests run `34700659289` 为 completed/success；后续已按用户指令提交推送 platform-probes-r2；[本次推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json) 记录实际提交 SHA 与远端核验。历史报告保留当时含义。
+截至 2026-09-15，`platform-probes-r2` 的探针实现提交 `85e4a06` 和 V11 反馈收口提交 `468207c` 均已推送；这两个哈希是语义提交锚点，不是分支最新 HEAD 声明。最近独立核验的远端 CI 仍是 `optimization-v0.15-qrf-time@b01ab117` 对应 locked-tests run `34700659289`，状态 completed/success。[探针首次推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json) 保留当时实际提交 SHA 与远端核验；历史报告继续按执行时口径阅读。
 
-截至 2026-09-12，最新开发阶段为 **optimization-v0.15 / OPT-32–33**，执行登记 `5de6523`、P0 修复 `b515046`，随后按用户指令推送 `optimization-v0.15-qrf-time@6d19a29`。v0.14 的 `f940f9f` 已绑定成功 locked-tests run `34690189315`；v0.15 原成绩登记未另行查询 CI；后续核验记录如下。
+最近的模型质量阶段仍为 **optimization-v0.15 / OPT-32–33**：执行登记 `5de6523`、P0 修复 `b515046`、质量收口 `6d19a29`；后续反馈维护已推送至 `optimization-v0.15-qrf-time@b01ab117`。v0.14 的 `f940f9f` 已绑定成功 locked-tests run `34690189315`。platform-probes-r2 是后续零拟合工程探针，不改写该 G1 结论。
 当前活动候选仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
 当前初赛最高用户回传包为 **V10_V6I_IRON_V8_TIME：83.1951**，比 V8（83.1636）高 **0.0315** 分，比 V1（83.0319）高 **0.1632** 分，比 R2（83.0207）高 **0.1744** 分。V10 直接使用 V6I 原铁量列与 V8 原时长列；回传分数与封包前理论预期在显示的四位小数上一致，335 行原 ZIP 与两列精确身份已核验。本次登记不重新拟合或生成提交包，不自动修改原开发发布登记。[V10 平台反馈](local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json) 与完整模型/封包证据仅存 local，原高分 ZIP 保留。
 V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续按用户指定回收 V6I/V6T/D1，共 2 次最终单目标 CatBoost＋3 次标量 LAD，三包均已交付并有用户回传：V6I **83.0634**、V6T **82.9852**、D1 **82.9993**。原开发 FAIL 与 D1 诊断身份保留；初赛收益分别来自 V6I 铁量与 V8 时长，不能据此外推复赛。v0.16 暂缓。
@@ -25,12 +25,12 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续按用户指定
 | --- | --- |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
-| 最新工程验收 G0 | v0.15 六个原矩阵/V1复现、独立 QRF 冷审计与全量/反序/分块/子集/单行一致性通过；铁量 exact equality |
-| 最新质量验收 G1 | FAIL_CLOSE_V8_RETAIN_V1；十项质量门槛失败，H2 delta E +0.00253141，delta J +0.00320749 |
-| 锁定环境测试 | 根 Python 3.12.12 / 原锁 364 passed；独立 worker 25 passed，分别记录；v14 远端 CI 另列 |
-| 实验提交包 | 当前最高用户回传 V10 83.1951，与预期一致；V8 83.1636、V6I 83.0634、D1 82.9993、V6T 82.9852；原包保留 |
+| 最新工程验收 G0 | platform-probes-r2：V10 独立复现、V11 封包与全量/反序/分块/子集/单行一致性通过；推理拟合 0 |
+| 最近模型质量验收 G1 | v0.15 `FAIL_CLOSE_V8_RETAIN_V1`；十项质量门槛失败，H2 delta E +0.00253141，delta J +0.00320749；后续探针不改判 |
+| 锁定环境测试 | platform-probes-r2 根 Python 3.12 原锁 382 passed、独立 worker 32 passed；v0.15 的 364/25 为上一质量阶段记录 |
+| 实验提交包 | 当前最高用户回传 V10 83.1951；V11 83.1806、V8 83.1636、V6I 83.0634、D1 82.9993、V6T 82.9852；原包保留 |
 | 正式复赛数据 | 09-21版身份与旧包关系待核验；旧包保留原发布身份，已有B验证仅工程预演 |
-| 桌面副本 | 已按用户指令删除 V8/V6I/V6T/D1/V10 五份桌面 ZIP；全部 local 原包与模型证据保留，见 [清理记录](local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json) |
+| 桌面副本 | V8/V6I/V6T/D1/V10 五份旧副本已按用户指令删除；V11 原包随后单独复制到桌面并核验，全部 local 原包与模型证据保留 |
 | 平台有效提交证据 | 已自行检索，未获得账号回执；不宣称资格已确认 |
 | 保护标签状态 | November 已在授权生命周期消费；后续为已消费回溯开发 |
 | 时间语义 | `competition-timestamp-contract-v1 / ASSUMED`，未新增官方确认 |
@@ -42,6 +42,7 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续按用户指定
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
+| [platform-probes-r2](docs/platform_probes_r2/PLAN.md) | 0 新拟合；V10 独立复现、V11 均值时长包；根 382/worker 32 项锁定测试通过；V11 用户回传 83.1806 | `CLOSE_V11_RETAIN_V10`；当前最高用户回传仍为 V10 83.1951，v0.16 暂停 |
 | [用户指定 V8 实验提交](local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) | 独立最终 1 forest + 1 preprocessor，原 2754 行/cutoff；335 行冷检查与封包通过；用户回传 83.1636，比 V1 高 0.1317 | 平台反馈单独登记；原开发 FAIL、V1 发布登记保留 |
 | [v0.15 / OPT-32–33](docs/optimization_v0_15/RESULTS.md) | 6 forest + 6 preprocessor、1536树；H2 delta E +0.00253141、0/5改善；delta J +0.00320749；根364/worker25测试及独立冷审计通过 | FAIL_CLOSE_V8_RETAIN_V1；无 final fit/新包，D2仅诊断 |
 | [v0.14 / OPT-30–31](docs/optimization_v0_14/RESULTS.md) | 0 新基础模型 fit、6+6 时长 LAD；H2 delta E +0.00017521，delta J -0.00015855；342 tests、独立冷审计通过 | FAIL_CLOSE_V7_RETAIN_V1；无 final fit/新包 |
@@ -67,7 +68,7 @@ uv run --locked --python 3.12 python scripts/check_no_private_artifacts.py
 
 CI 另有 Python 3.11 兼容性检查。真实训练和推理的权威环境使用 Python 3.12 与 `uv.lock`。
 
-**2026-09-12 维护状态：暂停公开发布赛事数据。** 旧说明中的用户仓库授权不能替代赛事主办方的数据公开授权；当前历史含赛事数据，仓库仍为 public。v0.12–v0.15 的代码与配置已先后按用户明确指令推送，v0.15 为 `6d19a29`；V8 实验模型、训练响应、预测、账本、提交包和平台反馈证据仅留 local。详见 [数据与发布边界核查](docs/optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
+**2026-09-15 维护状态：公开授权仅覆盖 `初赛数据集/`（授权日 2026-09-07）。** 其他官方 CSV/XLSX、字典，以及模型、预测、报告、账本和提交包均不进入 Git；仓库仍为 public。v0.12–v0.15 与 platform-probes-r2 的代码/当前摘要已按用户明确指令推送，V8–V11 的实验模型、训练响应、预测、账本、提交包和平台反馈原始证据仅留 local。历史边界核查见 [数据与发布边界核查](docs/optimization_v0_12/DATA_PUBLICATION_REVIEW.md)。
 模型、逐样本预测、本地报告、访问账本和提交 ZIP 仍保存在被忽略的 `local/`，不进入 Git。
 新机器仅克隆源码及数据不会自动获得已保存的 V1/R2 模型包，需要恢复匹配摘要的本地产物。
 

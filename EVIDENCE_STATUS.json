@@ -1484,9 +1484,9 @@
     "results_document": "docs/optimization_v0_10/RESULTS.md"
   },
   "current_status": {
-    "as_of": "2026-09-12",
-    "latest_completed_phase": "optimization-v0.15",
-    "latest_experiment_commit": "b51504655c85b43847bf8ca40161a365936182ea",
+    "as_of": "2026-09-15",
+    "latest_completed_phase": "platform-probes-r2",
+    "latest_experiment_commit": "85e4a060692984356d39ae08bc2da8da3e89f241",
     "latest_experiment_branch_pushed": true,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
@@ -1495,9 +1495,9 @@
     "fallback_candidate": "R2",
     "fallback_release_config": "configs/optimization_v0_4/active_release.yaml",
     "fallback_user_reported_score": 83.0207,
-    "latest_G0": "PASS_QRF_ENGINEERING_COLD",
+    "latest_G0": "PASS_PLATFORM_PROBE_ENGINEERING_COLD",
     "latest_G1": "FAIL_CLOSE_V8_RETAIN_V1",
-    "latest_locked_tests_passed": 364,
+    "latest_locked_tests_passed": 382,
     "pending_challenger": false,
     "holdout_consumed": true,
     "retrospective_grid_completed": true,
@@ -1522,7 +1522,7 @@
       "conclusion": "success",
       "maintenance_document": "docs/optimization_v0_13/MAINTENANCE_20260912.md"
     },
-    "desktop_copy_status": "V11_USER_REQUESTED_COPY_VERIFIED_PLATFORM_PENDING",
+    "desktop_copy_status": "V11_USER_REQUESTED_COPY_VERIFIED_FEEDBACK_RECORDED",
     "desktop_copy_document": "local/runs/platform-probes-r2-publication-r1/desktop_delivery.json",
     "v13_remote_observation": {
       "branch_pushed": true,
@@ -1532,7 +1532,7 @@
       "maintenance_document": "docs/optimization_v0_14/MAINTENANCE_20260912.md",
       "status": "completed"
     },
-    "latest_worker_locked_tests_passed": 25,
+    "latest_worker_locked_tests_passed": 32,
     "latest_worker_environment": {
       "joblib": "1.6.0",
       "numpy": "2.2.6",
@@ -1548,7 +1548,7 @@
       "queried_at": "2026-09-12T11:52:07.292886+00:00",
       "branch_pushed": true
     },
-    "latest_pushed_commit": "6d19a29320a1d6f7e7eb73c11518bf7dd6712571",
+    "v11_feedback_close_commit": "468207cfabdda87fc8a96193735b0fbc470ecba4",
     "V1_desktop_copy_status": "NOT_FOUND_IN_CHECKED_PATHS",
     "V1_desktop_copy_document": "docs/optimization_v0_13/DESKTOP_COPY_STATUS.md",
     "latest_user_reported_test_a_candidate": "V11_V6I_IRON_QRF_MEAN_TIME",
@@ -1688,7 +1688,7 @@
       "retained_local_zip": "/home/lux1/iron/local/runs/optimization-v0.15-v10-target-composition-r1/submission/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_cleanup_record": "local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json"
     },
-    "v16_execution_status": "PAUSED_USER_PLATFORM_EVIDENCE_REVIEW",
+    "v16_execution_status": "PAUSED_AFTER_V11_PROBE_CLOSED",
     "best_user_reported_test_a_package_path": "/home/lux1/iron/local/runs/optimization-v0.15-v10-target-composition-r1/submission/Luqhhh_bf_tap_predict_prelim.zip",
     "best_user_reported_test_a_zip_sha256": "be83f1f623c12f4ef03479f2fcacdfb756920d41c4e09d1c4f6b55a2279761ac",
     "best_user_reported_test_a_feedback_record": "local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json",

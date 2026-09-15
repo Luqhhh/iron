@@ -1,7 +1,7 @@
 # 发布与运行身份
 
-截至 2026-09-09，最近已推送的实验结果提交为 `optimization-v0.10@fcda5e0`。
-实验分支最新版与当前活动模型是两个不同身份：v0.10 失败，发布继续使用 v0.8 的 V1。
+截至 2026-09-15，`platform-probes-r2` 的 V11 反馈收口提交 `468207c` 已推送；最近模型质量分支为 `optimization-v0.15-qrf-time@b01ab117`。V11 仅是后续零拟合工程探针，用户回传 83.1806 后已关闭；上述哈希是语义提交锚点，不是分支最新 HEAD 声明。
+活动发布、模型质量结论与初赛实验最高回传是三个不同身份：活动发布继续使用 v0.8 的 V1；最近模型质量 G1 仍为 v0.15 失败；最高用户回传包为 V10 83.1951，未取得独立平台回执，也未改动发布登记。
 
 | 身份 | 当前值 |
 | --- | --- |
@@ -10,7 +10,10 @@
 | V1 ZIP SHA-256 | `fdcbe03e8ea31577bfeed0c45cd0a0013bda42ab88d29db703fad9c2f7e557aa` |
 | 回退登记 | `configs/optimization_v0_4/active_release.yaml` |
 | R2 ZIP SHA-256 | `e42602d3045e43b4b49dd1e1c104aa8e5c1f29c639ff5f892b3b07434ed9bbdf` |
-| 最新质量决策 | v0.10 V4 失败，无新发布包 |
+| 最近模型质量决策 G1 | v0.15 `FAIL_CLOSE_V8_RETAIN_V1`，无新发布包 |
+| 最新工程验收 G0 | platform-probes-r2 通过；V10 独立复现、V11 封包，根 382 / worker 32 项锁定测试通过 |
+| 最高用户回传实验包 | `V10_V6I_IRON_V8_TIME`，83.1951；ZIP SHA-256 `be83f1f623c12f4ef03479f2fcacdfb756920d41c4e09d1c4f6b55a2279761ac` |
+| 最近探针 | `V11_V6I_IRON_QRF_MEAN_TIME`，83.1806；`CLOSE_V11_RETAIN_V10` |
 
 推理使用与发布登记匹配的 bundle 和专用入口，见 [V1 发布说明](optimization_v0_8/CURRENT_RELEASE.md)。
 每次新实验冻结源码、配置、公共源、模型和预测身份；目录不可覆盖。历史 run 的
