@@ -1,0 +1,65 @@
+schema_version: 1
+phase: optimization-v0.16
+branch: optimization-v0.16-data-adaptive
+hypothesis: furnace_state_local_structural_calibration_beats_one_global_coefficient
+reference: V1_GLOBAL_STRUCTURAL_REPLAY
+candidate: V9_STATE_ANALOG_STRUCTURAL
+development_origins: [4, 5, 6, 7, 8, 9]
+evaluation_folds:
+  DEV_LONG: {origin: 7, end_month: 11}
+  DEV_SHORT: {origin: 9, end_month: 11}
+base:
+  components: [E09_PROCESS_CHANGE_E02, E04]
+  component_weights: [0.8, 0.2]
+  history_variant: R2
+  rate_component: E09_PROCESS_CHANGE_E02
+state:
+  operation_values:
+    - air_volume
+    - hot_air_press
+    - oxygen
+    - hot_air_temp
+    - coal_rate
+    - gas_rate
+    - total_press_diff
+    - furnace_top_temp_avg
+    - air_speed
+  operation_representations: [latest, 6h_mean, 24h_mean, latest_minus_24h_mean]
+  burden_values: [pig, all_quality, consumption, fuel_rate, coke_rate]
+  history_windows: [30, 100]
+  include_structural_predictions: true
+calibrators:
+  - {id: K32_P24, neighbors: 32, prior_strength: 24.0, ood_quantile: 0.9}
+  - {id: K64_P32, neighbors: 64, prior_strength: 32.0, ood_quantile: 0.9}
+  - {id: K96_P48, neighbors: 96, prior_strength: 48.0, ood_quantile: 0.9}
+state_alpha:
+  id: TREE_ALPHA_D2
+  target: clipped_per_sample_structural_LAD_ratio
+  sample_weight: absolute_structural_direction
+  local_strength: exact_LAD_on_latest_available_OOF_month
+  parameters:
+    loss_function: MAE
+    eval_metric: MAE
+    iterations: 200
+    depth: 2
+    learning_rate: 0.03
+    l2_leaf_reg: 20.0
+    random_seed: 2026
+    task_type: CPU
+    thread_count: 8
+    bootstrap_type: 'No'
+    random_strength: 0.0
+    rsm: 1.0
+    boosting_type: Plain
+    has_time: true
+    nan_mode: Min
+    use_best_model: false
+    allow_writing_files: false
+    verbose: false
+selection:
+  mean_development_delta_max: -0.0002
+  single_fold_delta_max: 0.0007
+  minimum_reliability_median: 0.05
+protected_labels_read: false
+platform_upload: false
+active_release_overwrite: false

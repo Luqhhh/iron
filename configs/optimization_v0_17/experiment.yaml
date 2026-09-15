@@ -1,0 +1,36 @@
+schema_version: 1
+phase: optimization-v0.17
+purpose: RECONSTRUCT_BEST_USER_SCORED_TEST_A_PACKAGE
+candidate: V10_V6I_IRON_V8_TIME
+stage: test_a
+selection_basis:
+  V1_user_reported_score: 83.0319
+  V6I_user_reported_score: 83.0634
+  V8_user_reported_score: 83.1636
+  V10_user_reported_score: 83.1951
+  score_identity: V10_equals_V6I_plus_V8_minus_V1
+fit_cutoff: '2024-12-01T01:44:00+08:00'
+training_rows: 2754
+test_rows: 335
+oof_months: [4, 5, 6, 7, 8, 9, 10, 11]
+iron_branch:
+  direct_model: E09_R2_RECENCY60_TAP_IRON
+  half_life_days: 60.0
+  base_components: [E09_PROCESS_CHANGE_E02, E04]
+  base_weights: [0.8, 0.2]
+  direction: old_rate_times_old_R2_time_minus_recency_iron_base
+  coefficient: constrained_LAD_smallest_minimizer_in_0_1_from_causal_OOF
+time_branch:
+  model: QRF_FULLTRAIN_LEAF_v1
+  source_features: E09_PROCESS_CHANGE_E02_R2
+  statistic: lower_weighted_median
+  trees: 256
+  min_samples_leaf: 10
+  max_features: 0.7
+  random_state: 2026
+known_result_csv_sha256: d430da7399c3125db1768b1d7d236ec6eb95e13c633e5389b138dfe39c97b3c6
+known_original_zip_sha256: be83f1f623c12f4ef03479f2fcacdfb756920d41c4e09d1c4f6b55a2279761ac
+automatic_platform_upload: false
+test_target_reads: false
+active_release_overwrite: false
+

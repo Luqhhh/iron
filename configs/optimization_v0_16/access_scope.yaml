@@ -1,0 +1,10 @@
+schema_version: 1
+phase: optimization-v0.16
+scope: DEVELOPMENT_ONLY_BEFORE_PROTECTED_NOVEMBER
+development_label_end_exclusive: '2024-11-01T00:00:00+08:00'
+protected_november_labels: forbidden_during_development
+test_labels: forbidden
+artifacts: ignored_private_local_only
+platform_upload: false
+public_push: false
+
