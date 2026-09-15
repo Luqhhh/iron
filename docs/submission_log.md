@@ -1,6 +1,6 @@
 # 平台提交记录
 
-本文件记录提交交付和后续用户回传；阶段中的“当前”仅指记录当时。项目当前发布为 V1 = 83.0319，R2 = 83.0207 保留回退。开发失败且未提交的候选不计作平台结果；v0.9/v0.10 均无新待测包。平台分数不表述为编码代理独立复现。
+本文件记录提交交付和后续用户回传；阶段中的“当前”仅指记录当时。项目历史发布登记仍为 V1 = 83.0319，R2 = 83.0207 保留回退；当前初赛最高用户回传为 V21/T_GATE_SPOUT1 = 83.2375。开发失败且未提交的候选不计作平台结果；平台分数不表述为编码代理独立复现。
 
 ## 2026-09-06 · test_a / prelim
 
@@ -249,3 +249,19 @@ V1 通过此前冻结的严格开发门槛，现更新为当前候选；
 v0.7 恢复 R2，再由 v0.8 交付 V1；不应按旧 S1 结果页恢复失败包。
 详见 [R2 结果](optimization_v0_4/RESULTS.md)、[S1 结果](optimization_v0_6/RESULTS.md)
 和 [V1 当前发布](optimization_v0_8/CURRENT_RELEASE.md)。
+
+## 2026-09-15 · test_a / V21 T_GATE_SPOUT1_ONLY
+
+| 字段 | 记录 |
+| --- | --- |
+| 平台显示成绩 | `83.2375` |
+| 证据状态 | `USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED` |
+| 候选 | V10 时间列上仅对 1 号铁口且 `effective_neighbors < 500` 的 32 行向 train-only 同铁口近 60 日中位数收缩 25%；铁量列保持 V10 |
+| 提交包 | `local/runs/optimization-v0.21-time-gate-spout1-r1/submission/Luqhhh_bf_tap_predict_prelim_TGATE_SPOUT1.zip` |
+| ZIP SHA-256 | `1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6` |
+| result.csv SHA-256 | `d5a2e118655107af39a76b99f3f1d053cc9469885d859113ba6f18ef20b9cece` |
+| 新模型/预处理/LAD fit | `0` |
+| 逻辑依据 | `83.1951 + (83.1973 - 83.1549) = 83.2375`；TGATE 与 TGATE_SPOUT2 的不相交行差分实验 |
+| 平台上传 | 用户手动上传；代理自动上传 `0` |
+
+该成绩与提交前基于线性 WMAPE 分解的推算值一致。V21 现为当前初赛最高用户回传；历史 V10、TGATE、TGATE600、TGATE_SPOUT2 包与反馈保持不变。

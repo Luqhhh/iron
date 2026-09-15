@@ -1,8 +1,8 @@
 # bf-tap-predict
 
-2026-09-13，V11_V6I_IRON_QRF_MEAN_TIME 用户回传 **83.1806**，比 V10 83.1951 低 **0.0145** 分，比 V8 高 0.0170、比 V1 高 0.1487 分。已核验 V11 本地/桌面原 ZIP 身份和 335 行铁量字段与 V10 精确一致；回传依上下文关联该 V11 包，未取得账号原始回执。关闭本次均值探针并结束本轮回收，初赛最高用户回传继续保留 V10 原包，不追加混合/分位数/参数或其他候选。V2/v0.16 维持暂停，原历史 G1、V1 开发参照和复赛状态不改。本次新增拟合、官方标签读取、封包、桌面写入和自动上传均 0。[独立 V11 反馈](local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)。
+最新 test_a 用户回传为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**。该包仅修改 1 号铁口低支持的 32 行时长预测，铁量列保持 V10；ZIP SHA-256 `1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6`。[V21 平台反馈](local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json) 仅记录用户回传，未独立登录平台核验。
 
-后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 后续用户回传 83.1806，低于 V10 0.0145 分；当前最高用户回传仍是 V10 83.1951。[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+2026-09-13 的 V11_V6I_IRON_QRF_MEAN_TIME 历史回传为 **83.1806**，比 V10 低 0.0145 分；该均值探针已关闭，本地 ZIP 与反馈身份保留。[独立 V11 反馈](local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
 
 高炉铁次铁量与时长预测项目，包含 as-of 特征、因果 OOF、训练、离线推理、质量门槛和提交包审计。
@@ -14,11 +14,11 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、�
 
 已独立核验远端 `optimization-v0.15-qrf-time@b01ab117` 对应 locked-tests run `34700659289` 为 completed/success；后续已按用户指令提交推送 platform-probes-r2；[本次推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json) 记录实际提交 SHA 与远端核验。历史报告保留当时含义。
 
-截至 2026-09-12，最新开发阶段为 **optimization-v0.15 / OPT-32–33**，执行登记 `5de6523`、P0 修复 `b515046`，随后按用户指令推送 `optimization-v0.15-qrf-time@6d19a29`。v0.14 的 `f940f9f` 已绑定成功 locked-tests run `34690189315`；v0.15 原成绩登记未另行查询 CI；后续核验记录如下。
+截至 2026-09-15，最新实验为 **optimization-v0.21 / T_GATE_SPOUT1_ONLY**；v0.16–v0.21 代码已纳入 `optimization-v0.16-data-adaptive` 分支，模型、预测、账本和提交包继续保存在忽略的 `local/` 运行目录。
 当前活动候选仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
-当前初赛最高用户回传包为 **V10_V6I_IRON_V8_TIME：83.1951**，比 V8（83.1636）高 **0.0315** 分，比 V1（83.0319）高 **0.1632** 分，比 R2（83.0207）高 **0.1744** 分。V10 直接使用 V6I 原铁量列与 V8 原时长列；回传分数与封包前理论预期在显示的四位小数上一致，335 行原 ZIP 与两列精确身份已核验。本次登记不重新拟合或生成提交包，不自动修改原开发发布登记。[V10 平台反馈](local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json) 与完整模型/封包证据仅存 local，原高分 ZIP 保留。
-V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续按用户指定回收 V6I/V6T/D1，共 2 次最终单目标 CatBoost＋3 次标量 LAD，三包均已交付并有用户回传：V6I **83.0634**、V6T **82.9852**、D1 **82.9993**。原开发 FAIL 与 D1 诊断身份保留；初赛收益分别来自 V6I 铁量与 V8 时长，不能据此外推复赛。v0.16 暂缓。
-本轮 platform-probes-r2 已完成唯一 V11 零拟合探针的本地准备，以及 V10 独立模型推理：旧 test_a 335 行全精度分支和原 result.csv 字节精确复现；旧 test_b 322 行仅工程预演，全量/反序/分块/子集/单样本一致性及 root/worker 拟合保护通过。新模型、预处理、LAD 拟合均 0；V11 铁量原字段保持 V10，时长为同一最终 QRF 的加权均值，六位提交精度改变 335 行。根 Python 3.12 锁定测试 382 项、独立 worker 32 项分别通过。初次准备时 V11 未上传、无平台分数，桌面写入 0；当前最高用户回传仍是 V10 83.1951，旧 G1、发布指针与原包不变，V2/v0.16 暂停。原探针安排要求剩余至少两次提交额度；本次反馈后结束探针，不继续追加测试。[实施规格](docs/platform_probes_r2/PLAN.md)、[本地完成记录](local/runs/platform-probes-r2-r1/completion.json)。
+当前初赛最高用户回传包为 **V21/T_GATE_SPOUT1_ONLY：83.2375**，比 V10（83.1951）高 **0.0424** 分，比 V1（83.0319）高 **0.2056** 分。V21 不重新训练模型，使用 V10 铁量列和 QRF 时长支持度诊断，仅对 1 号铁口低支持行做 train-only 近 60 日中位数收缩；提交前的差分分数推算与用户回传在四位小数上一致。[V21 平台反馈](local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)
+V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V10、TGATE、TGATE600、TGATE_SPOUT2 和 V21 均已单独留存包身份与反馈。原开发 FAIL 与 D1 诊断身份保留；V21 是基于平台黑箱差分实验得到的当前最高初赛包，不能据此外推复赛。v0.16 状态自适应候选的失败结论保留。
+本轮 platform-probes-r2 完成 V11 零拟合探针和 V10 独立模型推理，V11 后续用户回传 83.1806 并关闭；随后 v0.18–v0.21 完成不读取 test target 的时间门控实验。V21 只改变 1 号铁口 32 行，用户回传 83.2375；旧 G1、正式发布指针与历史包仍保留。[实施规格](docs/platform_probes_r2/PLAN.md)、[V21 本地反馈](local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)。
 平台成绩未独立核验，不代表开发结果能直接换算成排行榜收益。
 
 | 项目 | 当前状态 |
@@ -27,8 +27,8 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续按用户指定
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
 | 最新工程验收 G0 | v0.15 六个原矩阵/V1复现、独立 QRF 冷审计与全量/反序/分块/子集/单行一致性通过；铁量 exact equality |
 | 最新质量验收 G1 | FAIL_CLOSE_V8_RETAIN_V1；十项质量门槛失败，H2 delta E +0.00253141，delta J +0.00320749 |
-| 锁定环境测试 | 根 Python 3.12.12 / 原锁 364 passed；独立 worker 25 passed，分别记录；v14 远端 CI 另列 |
-| 实验提交包 | 当前最高用户回传 V10 83.1951，与预期一致；V8 83.1636、V6I 83.0634、D1 82.9993、V6T 82.9852；原包保留 |
+| 锁定环境测试 | 根 Python 3.12.12 当前 387 passed；独立 worker 32 passed；v14 远端 CI 另列 |
+| 实验提交包 | 当前最高用户回传 V21 83.2375；TGATE 83.1973、V10 83.1951、V8 83.1636、V6I 83.0634；全部原包保留 |
 | 正式复赛数据 | 09-21版身份与旧包关系待核验；旧包保留原发布身份，已有B验证仅工程预演 |
 | 桌面副本 | 已按用户指令删除 V8/V6I/V6T/D1/V10 五份桌面 ZIP；全部 local 原包与模型证据保留，见 [清理记录](local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json) |
 | 平台有效提交证据 | 已自行检索，未获得账号回执；不宣称资格已确认 |

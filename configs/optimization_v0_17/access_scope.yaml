@@ -8,4 +8,3 @@ test_metadata: prediction_only
 artifacts: ignored_private_local_only
 automatic_platform_upload: false
 public_push: false
-

@@ -7,4 +7,3 @@ test_labels: forbidden
 artifacts: ignored_private_local_only
 platform_upload: false
 public_push: false
-

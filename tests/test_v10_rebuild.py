@@ -15,4 +15,3 @@ def test_v10_recipe_is_fixed_to_scored_target_composition():
     assert value["qrf"]["statistic"] == "lower weighted median"
     assert value["qrf"]["parameters"] == QRF_PARAMETERS
     assert value["known_result_csv_sha256"] == EXPECTED_RESULT_SHA256
-

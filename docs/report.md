@@ -1,10 +1,8 @@
 # 项目实施报告
 
-2026-09-13，V11_V6I_IRON_QRF_MEAN_TIME 用户回传 **83.1806**，比 V10 83.1951 低 **0.0145** 分，比 V8 高 0.0170、比 V1 高 0.1487 分。已核验 V11 本地/桌面原 ZIP 身份和 335 行铁量字段与 V10 精确一致；回传依上下文关联该 V11 包，未取得账号原始回执。关闭本次均值探针并结束本轮回收，初赛最高用户回传继续保留 V10 原包，不追加混合/分位数/参数或其他候选。V2/v0.16 维持暂停，原历史 G1、V1 开发参照和复赛状态不改。本次新增拟合、官方标签读取、封包、桌面写入和自动上传均 0。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)。
+最新 test_a 用户回传为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**。V21 只对 1 号铁口低支持的 32 行时长预测做 train-only 近 60 日中位数收缩，铁量列保持 V10；ZIP SHA-256 为 `1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6`。[V21 反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)。
 
-后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 后续用户回传 83.1806，低于 V10 0.0145 分；当前最高用户回传仍是 V10 83.1951。[交付与推送回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
-
-本轮 platform-probes-r2 已完成唯一 V11 零拟合探针的本地准备，以及 V10 独立模型推理：旧 test_a 335 行全精度分支和原 result.csv 字节精确复现；旧 test_b 322 行仅工程预演，全量/反序/分块/子集/单样本一致性及 root/worker 拟合保护通过。新模型、预处理、LAD 拟合均 0；V11 铁量原字段保持 V10，时长为同一最终 QRF 的加权均值，六位提交精度改变 335 行。根 Python 3.12 锁定测试 382 项、独立 worker 32 项分别通过。初次准备时 V11 未上传、无平台分数，桌面写入 0；当前最高用户回传仍是 V10 83.1951，旧 G1、发布指针与原包不变，V2/v0.16 暂停。原探针安排要求剩余至少两次提交额度；本次反馈后结束探针，不继续追加测试。[实施规格](platform_probes_r2/PLAN.md)、[本地完成记录](../local/runs/platform-probes-r2-r1/completion.json)。
+V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，比 V10 低 0.0145 分，均值探针已关闭。随后 v0.18–v0.21 完成时间门控实验；V21 回传与 `V10 + (TGATE - TGATE_SPOUT2)` 的线性差分推算在四位小数上一致。旧 G1、正式发布指针与原包不变。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)。
 
 v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0通过，G1 FAIL_CLOSE_V8_RETAIN_V1。原 V1/R2不变，平台83.0319/83.0207仅用户回传。
 
@@ -16,7 +14,7 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0通过，G1 FAIL_CLOSE_
 
 以下预算及验收描述属于原 OPT-32–33 开发收口；用户后续指定的实验提交单独记账。
 
-用户后续指定优先回收 V6I/V6T/D1，独立完成 2 个最终单目标 CatBoost＋3 个标量 LAD，335 行三包通过冷审计并交付；ID 对齐修复不增加拟合，原失败证据保留。用户更正 V6I 成绩为 **83.0634，比 V1 高 0.0315 分**，绑定原桌面 ZIP 摘要。按用户事先指定的正交组合条件，已直接复制 V6I 铁量与 V8 时长的原 CSV 字符串，零拟合交付 V10；独立进程验证 ID 覆盖、反序/分块/子集/单行组合、列精确一致与 ZIP 回读。封包时理论预期为 **83.1951**，其后收到同值用户回传；最高回传现为 V10。D1 随后回传 82.9993，v0.16 暂缓，原质量结论与发布指针不改。[新增完成记录](../local/runs/optimization-v0.15-v10-target-composition-r1/completion.json) 仅存 local。
+用户后续指定优先回收 V6I/V6T/D1，独立完成 2 个最终单目标 CatBoost＋3 个标量 LAD，335 行三包通过冷审计并交付；ID 对齐修复不增加拟合，原失败证据保留。用户更正 V6I 成绩为 **83.0634，比 V1 高 0.0315 分**，绑定原桌面 ZIP 摘要。按用户事先指定的正交组合条件，已直接复制 V6I 铁量与 V8 时长的原 CSV 字符串，零拟合交付 V10；独立进程验证 ID 覆盖、反序/分块/子集/单行组合、列精确一致与 ZIP 回读。封包时理论预期为 **83.1951**，其后收到同值用户回传；当时最高回传为 V10。D1 随后回传 82.9993，v0.16 当时暂缓，原质量结论与发布指针不改。[新增完成记录](../local/runs/optimization-v0.15-v10-target-composition-r1/completion.json) 仅存 local。
 
 V6T 随后用户回传 **82.9852**，比 V1 低 **0.0467**、比 V8 低 **0.1784** 分。核验原桌面 ZIP SHA256 `7fde26ec525b1c9fdc70b9162095f5dd38819084ccc852144ce2db48d7deb1b7`、335 行覆盖与铁量列逐字一致 V1，未重新训练、读标签或生成新包。这条初赛反馈支持保留 V8 时长，不外推复赛；V10 原封包时的预期记录保持不变，后续反馈另行登记。[独立 V6T 反馈](../local/runs/optimization-v0.15-v6t-platform-feedback-r1/platform_feedback.json) 未独立登录平台核验；旧完成回执及快照不修改。
 

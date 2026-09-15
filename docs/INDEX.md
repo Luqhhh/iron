@@ -1,14 +1,12 @@
 # 文档索引与历史口径
 
-2026-09-13，V11_V6I_IRON_QRF_MEAN_TIME 用户回传 **83.1806**，比 V10 83.1951 低 **0.0145** 分，比 V8 高 0.0170、比 V1 高 0.1487 分。已核验 V11 本地/桌面原 ZIP 身份和 335 行铁量字段与 V10 精确一致；回传依上下文关联该 V11 包，未取得账号原始回执。关闭本次均值探针并结束本轮回收，初赛最高用户回传继续保留 V10 原包，不追加混合/分位数/参数或其他候选。V2/v0.16 维持暂停，原历史 G1、V1 开发参照和复赛状态不改。本次新增拟合、官方标签读取、封包、桌面写入和自动上传均 0。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)。
+最新 test_a 用户回传为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**，比 V10 高 0.0424 分。V21 仅修改 1 号铁口低支持的 32 行时长预测；ZIP SHA-256 为 `1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6`。[V21 本地反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)。
 
-后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 后续用户回传 83.1806，低于 V10 0.0145 分；当前最高用户回传仍是 V10 83.1951。[交付与推送回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，均值探针已关闭。随后 v0.18–v0.21 完成不读取 test target 的时间门控实验；旧 G1 与正式发布登记保持历史含义。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[V11 交付回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
-本轮 platform-probes-r2 已完成唯一 V11 零拟合探针的本地准备，以及 V10 独立模型推理：旧 test_a 335 行全精度分支和原 result.csv 字节精确复现；旧 test_b 322 行仅工程预演，全量/反序/分块/子集/单样本一致性及 root/worker 拟合保护通过。新模型、预处理、LAD 拟合均 0；V11 铁量原字段保持 V10，时长为同一最终 QRF 的加权均值，六位提交精度改变 335 行。根 Python 3.12 锁定测试 382 项、独立 worker 32 项分别通过。初次准备时 V11 未上传、无平台分数，桌面写入 0；当前最高用户回传仍是 V10 83.1951，旧 G1、发布指针与原包不变，V2/v0.16 暂停。原探针安排要求剩余至少两次提交额度；本次反馈后结束探针，不继续追加测试。[实施规格](platform_probes_r2/PLAN.md)、[本地完成记录](../local/runs/platform-probes-r2-r1/completion.json)。
-
-截至 2026-09-12，最新本地阶段为 v0.15（FAIL_CLOSE_V8_RETAIN_V1，正式包与回执待核验），活动模型仍为 V1（用户回传 83.0319）。
-当前初赛最高用户回传为 **V10（V6I 铁量＋V8 时长）83.1951**，比 V8 高 0.0315、比 V1 高 0.1632 分，与封包前预期在显示四位小数上一致。[V10 后续反馈](../local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json) 绑定原 335 行 ZIP，登记新增拟合为 0，原开发 FAIL 与发布指针不改。
-V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三条回收实验另记 2 CatBoost＋3 LAD，回传 V6I 83.0634、V6T 82.9852、D1 82.9993。证据与原包仅存 local，v0.16 暂缓；不由初赛反馈外推复赛。v0.15 代码已按用户指令推送 6d19a29。
+截至 2026-09-15，最新本地实验阶段为 v0.21（T_GATE_SPOUT1_ONLY）；正式活动模型仍为 V1（用户回传 83.0319），正式发布指针未随实验包改变。
+当前初赛最高用户回传为 **V21/T_GATE_SPOUT1_ONLY 83.2375**，比 V10 高 0.0424、比 V1 高 0.2056 分；提交前的 TGATE/TGATE_SPOUT2 差分推算与回传在四位小数上一致。[V21 反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)
+V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三条回收实验另记 2 CatBoost＋3 LAD，回传 V6I 83.0634、V6T 82.9852、D1 82.9993。证据与原包仅存 local，v0.16 状态自适应候选的失败结论保留；不由初赛反馈外推复赛。v0.15 代码已按用户指令推送 6d19a29。
 已按用户指令删除桌面五份提交 ZIP，local 原包与旧证据保留。[清理与平台测试复核](../local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json)：无必须追加测试，D2 为零新增训练的第一可选对照，V2 为需单独注册拟合的第二梯队。
 阅读当前状态时按以下入口；各阶段冻结计划和结果保留运行当时的含义。
 
@@ -19,6 +17,7 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 - [当前 V1 发布](optimization_v0_8/CURRENT_RELEASE.md)、[R2 回退](optimization_v0_4/CURRENT_RELEASE.md)。
 - [用户指定 V8 实验包平台反馈](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json)：包摘要、用户成绩、与 V1 差值及未核验回执状态。
 - [V10 最高用户回传包反馈](../local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json)：83.1951、原包身份、相对 V8/V1 的增益和四位显示分数加法一致。
+- [V21 当前最高用户回传包反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)：83.2375、1 号铁口 32 行门控、ZIP/result 哈希与差分推算记录。
 - [V6I 更正成绩与 V10 零拟合组合](../local/runs/optimization-v0.15-v10-target-composition-r1/completion.json)：V6I 83.0634、原列精确组合、桌面包与理论分数；[三包回收记录](../local/runs/optimization-v0.15-platform-recovery-r1/completion.json) 的 2 CatBoost＋3 LAD 单独记账。
 - [桌面副本核查补充](optimization_v0_13/DESKTOP_COPY_STATUS.md)。
 - [发布身份](release_identity.md)、[平台记录](submission_log.md)、[数据契约](data_contract.md)。
