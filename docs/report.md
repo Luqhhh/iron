@@ -1,8 +1,10 @@
 # 项目实施报告
 
-后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 成绩待反馈，当前最高用户回传仍是 V10 83.1951。[交付与推送回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+2026-09-13，V11_V6I_IRON_QRF_MEAN_TIME 用户回传 **83.1806**，比 V10 83.1951 低 **0.0145** 分，比 V8 高 0.0170、比 V1 高 0.1487 分。已核验 V11 本地/桌面原 ZIP 身份和 335 行铁量字段与 V10 精确一致；回传依上下文关联该 V11 包，未取得账号原始回执。关闭本次均值探针并结束本轮回收，初赛最高用户回传继续保留 V10 原包，不追加混合/分位数/参数或其他候选。V2/v0.16 维持暂停，原历史 G1、V1 开发参照和复赛状态不改。本次新增拟合、官方标签读取、封包、桌面写入和自动上传均 0。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)。
 
-本轮 platform-probes-r2 已完成唯一 V11 零拟合探针的本地准备，以及 V10 独立模型推理：旧 test_a 335 行全精度分支和原 result.csv 字节精确复现；旧 test_b 322 行仅工程预演，全量/反序/分块/子集/单样本一致性及 root/worker 拟合保护通过。新模型、预处理、LAD 拟合均 0；V11 铁量原字段保持 V10，时长为同一最终 QRF 的加权均值，六位提交精度改变 335 行。根 Python 3.12 锁定测试 382 项、独立 worker 32 项分别通过。V11 未上传、无平台分数，桌面写入 0；当前最高用户回传仍是 V10 83.1951，旧 G1、发布指针与原包不变，V2/v0.16 暂停。平台剩余次数未知，仅本地准备；手动探针需剩余至少两次。[实施规格](platform_probes_r2/PLAN.md)、[本地完成记录](../local/runs/platform-probes-r2-r1/completion.json)。
+后续按用户指令提交推送 platform-probes-r2，并已把原 V11 ZIP 字节一致地复制到桌面：`Luqhhh_bf_tap_predict_prelim_V11_V6I_IRON_QRF_MEAN_TIME.zip`，SHA-256 `f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa`。原开发阶段桌面写入 0 的冻结记录保持原意；本次独立交付新增桌面副本 1，未重训、未重新封包、未上传平台。V11 后续用户回传 83.1806，低于 V10 0.0145 分；当前最高用户回传仍是 V10 83.1951。[交付与推送回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+
+本轮 platform-probes-r2 已完成唯一 V11 零拟合探针的本地准备，以及 V10 独立模型推理：旧 test_a 335 行全精度分支和原 result.csv 字节精确复现；旧 test_b 322 行仅工程预演，全量/反序/分块/子集/单样本一致性及 root/worker 拟合保护通过。新模型、预处理、LAD 拟合均 0；V11 铁量原字段保持 V10，时长为同一最终 QRF 的加权均值，六位提交精度改变 335 行。根 Python 3.12 锁定测试 382 项、独立 worker 32 项分别通过。初次准备时 V11 未上传、无平台分数，桌面写入 0；当前最高用户回传仍是 V10 83.1951，旧 G1、发布指针与原包不变，V2/v0.16 暂停。原探针安排要求剩余至少两次提交额度；本次反馈后结束探针，不继续追加测试。[实施规格](platform_probes_r2/PLAN.md)、[本地完成记录](../local/runs/platform-probes-r2-r1/completion.json)。
 
 v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0通过，G1 FAIL_CLOSE_V8_RETAIN_V1。原 V1/R2不变，平台83.0319/83.0207仅用户回传。
 

@@ -1551,8 +1551,8 @@
     "latest_pushed_commit": "6d19a29320a1d6f7e7eb73c11518bf7dd6712571",
     "V1_desktop_copy_status": "NOT_FOUND_IN_CHECKED_PATHS",
     "V1_desktop_copy_document": "docs/optimization_v0_13/DESKTOP_COPY_STATUS.md",
-    "latest_user_reported_test_a_candidate": "V10_V6I_IRON_V8_TIME",
-    "latest_user_reported_test_a_score": 83.1951,
+    "latest_user_reported_test_a_candidate": "V11_V6I_IRON_QRF_MEAN_TIME",
+    "latest_user_reported_test_a_score": 83.1806,
     "best_user_reported_test_a_candidate": "V10_V6I_IRON_V8_TIME",
     "best_user_reported_test_a_score": 83.1951,
     "v8_user_requested_test_a": {
@@ -1739,7 +1739,7 @@
       "old_test_b_preview_rows": 322,
       "platform_submissions": 0,
       "platform_verified": false,
-      "status": "PREPARED_PENDING_MANUAL_PLATFORM_PROBE",
+      "status": "CLOSE_V11_RETAIN_V10",
       "v16": "PAUSED_NOT_IMPLEMENTED",
       "branch": "platform-probes-r2",
       "branch_pushed": true,
@@ -1748,7 +1748,7 @@
       "entrypoint": "scripts/platform_probe_r2.py",
       "worker_entrypoint": "workers/qrf_v015/inference.py",
       "candidate_validation": "/home/lux1/iron/local/runs/platform-probes-r2-r1/candidate_validation.json",
-      "platform_feedback": "/home/lux1/iron/local/runs/platform-probes-r2-r1/platform_feedback.json",
+      "platform_feedback": "/home/lux1/iron/local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json",
       "completion": "/home/lux1/iron/local/runs/platform-probes-r2-r1/completion.json",
       "receipt": "/home/lux1/iron/local/runs/platform-probes-r2-r1/receipt.json",
       "receipt_sha256": "a6cc961a7f5b1fe4a9c88bb4a34961341f787877e15ca1b7e1478a57e70488ba",
@@ -1769,7 +1769,7 @@
           "sha256": "f11dc1216c4c0742955a7222b16d65bc9ca4c1fd3b11d1c38fb7416f920b5efa"
         }
       },
-      "V11_score": null,
+      "V11_score": 83.1806,
       "remaining_account_submissions": "UNKNOWN",
       "manual_probe_requires_remaining_submissions": 2,
       "original_G1_unchanged": true,
@@ -1787,7 +1787,14 @@
         "new_fits": 0,
         "platform_uploads": 0,
         "historical_quality_decisions_unchanged": true
-      }
+      },
+      "platform_feedback_at_original_completion": "/home/lux1/iron/local/runs/platform-probes-r2-r1/platform_feedback.json",
+      "platform_feedback_sha256": "e5799e972be0a3ece55ab6647bc961245a89b30c153dcab17d16a7a95ccd9e2d",
+      "platform_evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "user_reported_platform_feedback_count": 1,
+      "delta_vs_V10": -0.0145,
+      "probe_round_closed": true,
+      "additional_variants_unlocked": false
     },
     "latest_observed_remote_CI": {
       "branch": "optimization-v0.15-qrf-time",
