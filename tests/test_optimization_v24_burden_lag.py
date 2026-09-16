@@ -5,6 +5,7 @@ import pytest
 from bf_tap.exceptions import ContractError
 from bf_tap.optimization.burden_lag_v24 import FEATURE_COLUMNS, append_burden_lag, build_burden_lag, normalize_events
 from bf_tap.optimization.dual_burden_v24 import CANDIDATE_A, CANDIDATE_B, compose_iron, compose_time, isolate
+from bf_tap.optimization.dual_burden_v24_run import _summary
 
 
 TZ = "Asia/Shanghai"
@@ -78,3 +79,13 @@ def test_target_isolation_and_unknown_candidate():
     assert a.pred_tap_time_len.tolist() == [2.] and b.pred_tap_iron.tolist() == [1.]
     with pytest.raises(ContractError): isolate(parent, iron=[3.], candidate="wrong")
 
+
+def test_summary_keeps_dev_cell_and_registered_development_rows_distinct():
+    rows=[]
+    for unit,horizon,value in (("O202406_H1",1,.1),("O202406_H2",2,.2),("O202406_H3",3,.3),("O202406_H4",4,.4),("DEV_LONG",None,.5),("DEV_SHORT",None,.6)):
+        for target in ("tap_iron","tap_time_len"):
+            rows.append(dict(algorithm="x",unit=unit,cutoff="O202406",horizon=horizon,target=target,E=value))
+    result=_summary(pd.DataFrame(rows))
+    assert len(result.loc[result.scope=="DEV_LONG"])==2
+    reported=result.loc[result.scope_type.isin(("HORIZON_MEAN","GRID","DEVELOPMENT"))]
+    assert not reported.duplicated(["algorithm","scope"]).any()

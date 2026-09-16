@@ -365,10 +365,16 @@ def score(root: Path):
     scorecard = pd.DataFrame([row for name, errors in {**references, **candidates}.items() for row in _score_rows(errors, name)])
     scorecard.to_csv(root / "canonical_scorecard.csv", index=False)
     summary = _summary(scorecard); summary.to_csv(root / "canonical_summary.csv", index=False)
-    lookup = summary.set_index(["algorithm","scope"]).E
+    # DEV units are retained as CELL rows for a complete scorecard and as the
+    # registered DEVELOPMENT summaries.  Only the latter enters the unique
+    # top-level comparison lookup.
+    reported = summary.loc[summary.scope_type.isin(("HORIZON_MEAN", "GRID", "DEVELOPMENT"))].copy()
+    if reported.duplicated(["algorithm", "scope"]).any():
+        raise ContractError("non-unique registered summary scope")
+    lookup = reported.set_index(["algorithm", "scope"]).E.sort_index()
     deltas=[]
     for candidate in (CANDIDATE_A,CANDIDATE_B):
-        for scope in summary.scope.unique():
+        for scope in reported.scope.unique():
             if (candidate,scope) not in lookup: continue
             deltas.append(dict(candidate=candidate,scope=scope,E=lookup[candidate,scope],
                 delta_vs_V1=lookup[candidate,scope]-lookup["V1",scope],
