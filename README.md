@@ -12,7 +12,7 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、�
 
 ## 当前状态
 
-**optimization-v0.24** 已按预注册定义完成两个目标隔离的变料历史特征实验。A/B 在统一六位历史评价中相对 V21_REPLAY 的 ΔJ 分别为 +0.00013344 / +0.00012778，均未显示离线优势；这项风险不取消用户预先指定的两个平台探索名额。7 个 CatBoost、7 个 QRF/预处理器（1,792 树）和 0 个校准拟合已完成，两份 335 行包在任何本轮反馈前同时冻结，独立冷推理通过；当前上传数 0、剩余预算 2，顺序固定 A→B。[v0.24 结果](docs/optimization_v0_24/RESULTS.md)
+**optimization-v0.24** 已按预注册定义完成两个目标隔离的变料历史特征实验。A/B 在统一六位历史评价中相对 V21_REPLAY 的 ΔJ 分别为 +0.00013344 / +0.00012778，均未显示离线优势；这项风险不取消用户预先指定的两个平台探索名额。7 个 CatBoost、7 个 QRF/预处理器（1,792 树）和 0 个校准拟合已完成，两份 335 行包在任何本轮反馈前同时冻结，独立冷推理通过。用户随后明确授权将两个不重名副本写入 C 盘桌面并推送工作分支；赛事平台上传仍为 0/2，顺序固定 A→B。[v0.24 结果](docs/optimization_v0_24/RESULTS.md)
 
 已独立核验远端 `optimization-v0.15-qrf-time@b01ab117` 对应 locked-tests run `34700659289` 为 completed/success；后续已按用户指令提交推送 platform-probes-r2；[本次推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json) 记录实际提交 SHA 与远端核验。历史报告保留当时含义。
 
@@ -28,7 +28,8 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 | 项目 | 当前状态 |
 | --- | --- |
 | v0.24 双候选 G0/G1 | G0 PASS；历史 G1 风险：A/B 相对 V21_REPLAY 的 ΔJ 为 +0.00013344 / +0.00012778；两份冻结包待各一次显式平台测试，尚未上传 |
-| v0.24 锁定测试 | 根 Python 3.12.12：433 passed；独立 worker：35 passed（原 34 + adapter 1）；私有产物守卫 PASS；远端 CI NOT_RUN（分支未推送） |
+| v0.24 锁定测试 | 根 Python 3.12.12：433 passed；独立 worker：35 passed（原 34 + adapter 1）；私有产物守卫 PASS；远端 CI 待本次推送后核验 |
+| v0.24 桌面交付 | A/B 两份不重名 ZIP 已写入 `C:\Users\lqh22\Desktop`，摘要与冻结包一致；这是文件交付，不是平台提交 |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
 | v0.23 恢复与统一对照 G0/G1 | G0 PASS；G1 N/A（无新候选）；V21 原 ZIP/payload 与正确规则回放三者一致，四算法统一六位 scorecard、M-only 诊断及旧 test_b 三算法冷推理通过 |

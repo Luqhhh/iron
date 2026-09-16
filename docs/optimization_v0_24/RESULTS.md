@@ -29,7 +29,14 @@ A 的未改时长各 horizon WMAPE 差值严格为 0；被改铁量的 H1/H2/H3/
 - `local/runs/optimization-v0.24-dual-target-burden-lag-r1/submissions/V24I_BURDEN_LAG_RECENCY_IRON/Luqhhh_bf_tap_predict_prelim.zip`
 - `local/runs/optimization-v0.24-dual-target-burden-lag-r1/submissions/V24T_BURDEN_LAG_QRF_TIME/Luqhhh_bf_tap_predict_prelim.zip`
 
-平台顺序固定为 A 后 B，每项最多一次；当前上传数为 0、剩余新候选预算为 2。未写桌面，也未自动恢复、覆盖或上传 V21。账号当前有效提交仍未知。
+平台顺序固定为 A 后 B，每项最多一次；当前上传数为 0、剩余新候选预算为 2。运行完成时没有自动写桌面，也未自动恢复、覆盖或上传 V21。账号当前有效提交仍未知。
+
+用户随后明确授权桌面交付和 Git 推送。两个不重名副本已写入：
+
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V24I_BURDEN_LAG_RECENCY_IRON.zip`
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V24T_BURDEN_LAG_QRF_TIME.zip`
+
+桌面摘要分别仍为 `c40592e9…144cee` 和 `5b76ddbf…4b6180`。这只是文件交付，不是赛事平台上传；平台使用量仍为 0/2。工作分支已按该单独授权推送，未推送 private local 产物。
 
 ## 预算、冷审计与修复
 
