@@ -1517,7 +1517,7 @@
       "median_statistics": 16,
       "iron_model": 0
     },
-    "desktop_candidate": "V25_A_AND_B_LOCAL_ONLY_PENDING_EXPLICIT_PLATFORM_TESTS",
+    "desktop_candidate": "V25_A_AND_B_DESKTOP_DELIVERED_PENDING_EXPLICIT_PLATFORM_TESTS",
     "documentation_index": "docs/INDEX.md",
     "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview.",
     "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
@@ -2784,7 +2784,15 @@
     "platform_uploads": 0,
     "platform_feedback": null,
     "automatic_upload": false,
-    "desktop_writes": 0,
+    "desktop_writes": 2,
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_2026_09_16",
+      "old_v024_desktop_copies_deleted": true,
+      "old_v024_private_originals_retained": true,
+      "A": {"path": "C:\\Users\\lqh22\\Desktop\\Luqhhh_bf_tap_predict_prelim_V25I_HISTORY_CENTERED_RECENCY_IRON.zip", "zip_sha256": "fbb2bed6a2f6653db22f1cfb37a33e6fec27d57488c01de28f2b230231e14423"},
+      "B": {"path": "C:\\Users\\lqh22\\Desktop\\Luqhhh_bf_tap_predict_prelim_V25T_HISTORY_CENTERED_QRF_TIME.zip", "zip_sha256": "eef2f7d1fe7faca533e04a7103a1ba0aa28502e53f1bf4dc3e734d4d4a8049d1"},
+      "platform_uploads": 0
+    },
     "public_pushes": 0,
     "cold_validation": "PASS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE",
     "locked_tests": {"root_python": "3.12.12", "root_passed": 441, "root_junit_sha256": "f37ebe1c2ee758e3b80ef4a40a3092162989ad44baf98069985eb2f8c19cccac", "worker_python": "3.12.12", "worker_passed": 35, "worker_frozen_v015": 34, "worker_v025_adapter": 1, "worker_junit_sha256": "a388e9998e6a9cc677d1ffafb8e4e3e30f03d8ab10cd538b5669af2a07b87ff0"},
