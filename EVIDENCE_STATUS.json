@@ -2738,7 +2738,7 @@
     "desktop_writes": 0,
     "automatic_upload": false,
     "cold_validation": "PASS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE",
-    "locked_tests": {"root_python": "3.12.12", "root_passed": 433, "root_junit_sha256": "939226b243397b5b99142ae48228b439c781a14b73fe868b41ab9e52ca949706", "worker_python": "3.12.12", "worker_passed": 35, "worker_frozen_v015": 34, "worker_v024_adapter": 1, "worker_junit_sha256": "e38dc72b6af5f3fb228c94aeed47de6b33a3745ce16f0709d218c931143491a0", "remote_CI": "NOT_RUN_BRANCH_NOT_PUSHED"},
+    "locked_tests": {"root_python": "3.12.12", "root_passed": 433, "root_junit_sha256": "939226b243397b5b99142ae48228b439c781a14b73fe868b41ab9e52ca949706", "worker_python": "3.12.12", "worker_passed": 35, "worker_frozen_v015": 34, "worker_v024_adapter": 1, "worker_junit_sha256": "e38dc72b6af5f3fb228c94aeed47de6b33a3745ce16f0709d218c931143491a0", "remote_CI": {"commit": "e4957a14e567202bdc246a62ced5a992d14924d8", "run": 35094553102, "status": "completed", "conclusion": "success"}},
     "engineering_repairs": ["SCORING_SCOPE_INDEX_ZERO_FIT", "OLD_SCHEMA_SELECTION_ZERO_REFIT"],
     "failures_preserved": true,
     "manifest_sha256": "7c0ca6b770750e57ff6973ee1ca8ce94e2b2c7ed1f34995e8fdb641132e4c545",

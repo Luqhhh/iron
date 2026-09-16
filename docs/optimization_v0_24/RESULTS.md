@@ -46,4 +46,4 @@ A 的未改时长各 horizon WMAPE 差值严格为 0；被改铁量的 H1/H2/H3/
 
 权威运行目录为 `local/runs/optimization-v0.24-dual-target-burden-lag-r1`。manifest SHA-256 为 `7c0ca6b770750e57ff6973ee1ca8ce94e2b2c7ed1f34995e8fdb641132e4c545`，completion SHA-256 为 `3be9d39b0477632e822c1f7ee195db2d692579981d4007771b940bcadd6943ff`。当前最高用户回传仍是 V21 的 83.2375；本阶段尚无平台结果，不能写成已提分。
 
-最终锁定 Python 3.12.12 根测试为 **433 passed**；独立 QRF worker 为 **35 passed**（原冻结 worker 34 项加 v0.24 adapter 1 项），两者未混计。私有产物守卫通过；分支尚未推送，因此远端 CI 为 `NOT_RUN`，不能用本地结果代替远端状态。
+最终锁定 Python 3.12.12 根测试为 **433 passed**；独立 QRF worker 为 **35 passed**（原冻结 worker 34 项加 v0.24 adapter 1 项），两者未混计。私有产物守卫通过。用户授权推送后，`e4957a1` 对应的远端 locked-tests run 35094553102 已为 `completed/success`；根 workflow 成功不替代独立 worker 的本地锁定验收。

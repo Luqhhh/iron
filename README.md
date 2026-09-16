@@ -28,7 +28,7 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 | 项目 | 当前状态 |
 | --- | --- |
 | v0.24 双候选 G0/G1 | G0 PASS；历史 G1 风险：A/B 相对 V21_REPLAY 的 ΔJ 为 +0.00013344 / +0.00012778；两份冻结包待各一次显式平台测试，尚未上传 |
-| v0.24 锁定测试 | 根 Python 3.12.12：433 passed；独立 worker：35 passed（原 34 + adapter 1）；私有产物守卫 PASS；远端 CI 待本次推送后核验 |
+| v0.24 锁定测试 | 根 Python 3.12.12：433 passed；独立 worker：35 passed（原 34 + adapter 1）；私有产物守卫 PASS；`e4957a1` 的 locked-tests run 35094553102 completed/success |
 | v0.24 桌面交付 | A/B 两份不重名 ZIP 已写入 `C:\Users\lqh22\Desktop`，摘要与冻结包一致；这是文件交付，不是平台提交 |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
