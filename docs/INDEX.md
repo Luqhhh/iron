@@ -1,10 +1,10 @@
 # 文档索引与历史口径
 
-最新一次 test_a 用户回传为 **V22_CAUSAL_H2_QRF_SHRINK = 83.1166**，比 V21 低 0.1209。当前最高用户回传仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**，比 V10 高 0.0424；其原 ZIP 在当前执行端缺失，P0 按用户豁免继续但未将其登记为已核验。
+最新一次 test_a 用户回传为 **V22_CAUSAL_H2_QRF_SHRINK = 83.1166**，比 V21 低 0.1209。当前最高用户回传仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**，比 V10 高 0.0424；v0.23 已恢复并精确核验其原 ZIP 与 payload，账号当前有效提交仍未独立核验。
 
 V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，均值探针已关闭。随后 v0.18–v0.21 完成不读取 test target 的时间门控实验；旧 G1 与正式发布登记保持历史含义。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[V11 交付回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
-截至 2026-09-16，v0.22 已完成开发，G0/G1 均 PASS，状态为 `DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`；H2 平均 ΔE -0.00216654、5/5 origins 改善，J Δ -0.00118555。用户明确豁免 V21 原 ZIP 恢复前置条件，但原包仍登记为未核验；随后另行授权生成 V22 test_a 平台包，桌面/local ZIP 摘要均为 `7752863b…fecee`。最新用户回传 83.1166，比 V21 低 0.1209，V22 test_a 候选已关闭。正式活动模型仍为 V1（用户回传 83.0319），正式发布指针未改变。
+截至 2026-09-16，v0.22 已完成开发，G0/G1 均 PASS，状态为 `DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`；H2 平均 ΔE -0.00216654、5/5 origins 改善，J Δ -0.00118555。其当时的 V21 原 ZIP waiver 保留原历史含义；v0.23 随后恢复原包，并发现 v0.22 的 test_a P0 存档回放有 12 行时区差异，正确重放与原 payload 字节一致。六个历史 outer replay 另行复验后均逐字节一致。V22 test_a 用户回传 83.1166，比 V21 低 0.1209，候选已关闭。正式活动模型仍为 V1（用户回传 83.0319），正式发布指针未改变。
 当前初赛最高用户回传为 **V21/T_GATE_SPOUT1_ONLY 83.2375**，比 V10 高 0.0424、比 V1 高 0.2056 分；提交前的 TGATE/TGATE_SPOUT2 差分推算与回传在四位小数上一致。[V21 反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)
 V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三条回收实验另记 2 CatBoost＋3 LAD，回传 V6I 83.0634、V6T 82.9852、D1 82.9993。证据与原包仅存 local，v0.16 状态自适应候选的失败结论保留；不由初赛反馈外推复赛。v0.15 代码已按用户指令推送 6d19a29。
 已按用户指令删除桌面五份提交 ZIP，local 原包与旧证据保留。[清理与平台测试复核](../local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json)：无必须追加测试，D2 为零新增训练的第一可选对照，V2 为需单独注册拟合的第二梯队。
@@ -27,6 +27,7 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
+| v0.23 | [恢复、统一参照与复赛完整算法预演](optimization_v0_23/RESULTS.md) | 0 fit；V21 原 ZIP/payload 恢复；六个历史 replay 逐字节复验；四算法统一六位 scorecard；M-only 数值对照优于 V22；旧 test_b 的 V1/V21/V22 双进程冷推理一致，正式复赛身份仍待核验 |
 | v0.22 | [V22 因果 H2 QRF 支持度收缩](optimization_v0_22/RESULTS.md) | 2 个 warmup QRF、七份真实 H2 bank、12 个开发 lambda；全部预注册门槛通过；后续 test_a 包冷验通过，用户回传 83.1166 后关闭该候选，V21/V10 保留 |
 | v0.15 | [OPT-32–33](optimization_v0_15/RESULTS.md) | 固定QRF时长分支6 forest/6 preprocessor、1536树；根364/worker25测试、独立冷审计；十项质量失败、关闭V8，无新包；[工程恢复](optimization_v0_15/ENGINEERING_REPAIR.md)、[维护记录](optimization_v0_15/MAINTENANCE_20260912.md) |
 | v0.14 | [OPT-30–31](optimization_v0_14/RESULTS.md) | 原基础模型 0 fit；V7/D1 6+6 时长 LAD；342 tests、独立冷审计；FAIL_CLOSE_V7_RETAIN_V1；[维护观察](optimization_v0_14/MAINTENANCE_20260912.md) |
@@ -53,6 +54,6 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 `AGENTS.md` 的旧 baseline 起点也按其“除非用户明确开启独立优化阶段”条件解释，
 不表示项目尚未进入后续优化阶段。`md/` 是原始实施包，不作为执行权威来源。
 
-v0.22 的 V21 原 ZIP 字节恢复条件已由用户显式豁免；P0 继续如实登记原包未核验，
-其余规则回放、来源、预算和质量门槛没有豁免。后续 test_a 封包来自单独明确授权，
-不构成额外参数扫描或平台上传授权。
+v0.22 的 V21 原 ZIP waiver 是该阶段当时的历史事实；v0.23 已用原 ZIP 和正确规则
+重放补齐恢复证据，同时保留旧回放差异而不改写旧结果。后续 test_a 封包来自单独
+明确授权，不构成额外参数扫描或平台上传授权。

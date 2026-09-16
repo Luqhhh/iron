@@ -1,0 +1,55 @@
+schema_version: 1
+phase: optimization-v0.23-recovery-and-stage-validation
+branch: optimization-v0.23-recovery-and-stage-validation
+base_commit: 3524fcbb0455092c868f1fa22f217084732059ff
+kind: recovery_comparison_and_stage_validation_not_a_prediction_candidate
+fixed_algorithms: [V1, V10, V21_REPLAY, V22_CAUSAL_H2_QRF_SHRINK]
+stage_candidates: [V1, V21, V22]
+internal_stage_reference: V10
+development_origins: [6, 7, 8, 9, 10, 11]
+origin_horizons: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+development_units: [DEV_LONG, DEV_SHORT]
+serialization:
+  prediction_decimals: 6
+  labels_rounded: false
+  J: equal_weight_origins_within_horizon_then_equal_weight_four_horizons
+recovery:
+  v21_zip_sha256: 1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6
+  v21_result_sha256: d5a2e118655107af39a76b99f3f1d053cc9469885d859113ba6f18ef20b9cece
+  v10_result_sha256: d430da7399c3125db1768b1d7d236ec6eb95e13c633e5389b138dfe39c97b3c6
+  allowed_search_roots: [local/runs, local/submissions]
+diagnostic:
+  name: D_M_CUTOFF_ONLY
+  median_source: saved_v0_22_16_group_certificates_only
+  missing_spout: original_Q
+  platform_package: false
+stage_preview:
+  identity: LEGACY_TEST_B_ENGINEERING_PREVIEW_NOT_OFFICIAL_ROUND2
+  fresh_effective_neighbors_required: true
+  v21_median: frozen_rule_query_anchored_60_day
+  v22_median: saved_final_cutoff_certificates
+  v22_lambda: saved_final_parameters
+budget:
+  forest_fits: 0
+  catboost_or_other_model_fits: 0
+  preprocessor_fits: 0
+  LAD_or_lambda_fits: 0
+  new_median_estimates: 0
+  new_candidates: 0
+  v21_recovery_archives_max: 1
+  test_a_uploads: 0
+  platform_uploads: 0
+  desktop_writes: 0
+  public_pushes: 0
+trusted_sources:
+  v22_development_run: local/runs/optimization-v0.22-causal-h2-r8
+  v22_final_run: local/runs/optimization-v0.22-test-a-platform-r1
+  v10_stage_run: local/runs/platform-probes-r2-r1
+  v1_stage_run: local/runs/optimization-v0.13-opt28-preview-r1
+platform_facts:
+  highest_user_reported_test_a: {candidate: V21, score: 83.2375, platform_verified: false}
+  v10_user_reported: {candidate: V10, score: 83.1951, platform_verified: false}
+  v22_user_reported: {candidate: V22, score: 83.1166, platform_verified: false, decision: closed_for_test_a}
+  v21_selection_used_platform_feedback: true
+  v22_parameter_fit_uses_test_scores: false
+  effective_submission: UNKNOWN_PENDING_ACCOUNT_CONFIRMATION

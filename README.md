@@ -14,10 +14,12 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、�
 
 已独立核验远端 `optimization-v0.15-qrf-time@b01ab117` 对应 locked-tests run `34700659289` 为 completed/success；后续已按用户指令提交推送 platform-probes-r2；[本次推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json) 记录实际提交 SHA 与远端核验。历史报告保留当时含义。
 
-截至 2026-09-16，**optimization-v0.22 / V22_CAUSAL_H2_QRF_SHRINK** 已完成开发：G0/G1 均 PASS，状态为 `DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`。六位精度 H2 平均 ΔE -0.00216654、5/5 origins 改善，J Δ -0.00118555。用户随后授权生成 test_a 平台包；最终两个 lambda 均为 1.0，两个中位数为 116/113，335 行包通过独立冷复算并写入 C 盘桌面。最新用户回传为 83.1166，故关闭 V22 test_a 候选并保留 V21/V10；开发结果不回写为失败，正式发布指针未改变。[v0.22 结果](docs/optimization_v0_22/RESULTS.md)。V21 原 ZIP 仍缺失，用户仅豁免该字节恢复前置条件；P0 没有把它登记为已核验，原 V21 规则回放仍执行。
+截至 2026-09-16，**optimization-v0.22 / V22_CAUSAL_H2_QRF_SHRINK** 已完成开发：G0/G1 均 PASS，状态为 `DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`。六位精度 H2 平均 ΔE -0.00216654、5/5 origins 改善，J Δ -0.00118555。用户随后授权生成 test_a 平台包；最终两个 lambda 均为 1.0，两个中位数为 116/113，335 行包通过独立冷复算并写入 C 盘桌面。最新用户回传为 83.1166，故关闭 V22 test_a 候选并保留 V21/V10；开发结果不回写为失败，正式发布指针未改变。[v0.22 结果](docs/optimization_v0_22/RESULTS.md)。v0.22 当时因未找到 V21 原 ZIP而使用的 waiver 作为历史事实保留。
+
+**optimization-v0.23** 已从用户给定下载路径恢复 V21 原 ZIP：归档 SHA-256 `1a1d34ba…d589a6`、payload SHA-256 `d5a2e118…9cece` 均精确匹配，335 个 ID 与独立 test_a metadata 顺序一致。恢复同时发现 v0.22 的 test_a P0 存档回放因把无时区历史时间解释为 UTC 而有 12 行时长差异；旧产物未改写，按上海时区和原 01:44 cutoff 重放后与原 payload 字节一致。June--November 六个历史 outer replay 使用显式 `+08:00` 冻结历史，重新执行后均与存档 V21 CSV 及评分输入一致。四算法统一六位重算表明 V22 的 J 相对 V10 改善 0.00118555、但相对 V1 退化 0.00224953；仅使用已存 M 的诊断 J 为 0.16727419，优于 V22 的 0.16798206，因此不支持把历史收益归因于支持度连续收缩。该阶段 G0 PASS，G1 为 `NOT_APPLICABLE_NO_NEW_PREDICTION_CANDIDATE`；未拟合、未封包、未上传、未写桌面、未公开推送。[v0.23 结果](docs/optimization_v0_23/RESULTS.md)
 当前活动候选仍为 **V1_RATE_STRUCTURAL，test_a 用户回传 83.0319**；回退候选为 **R2，83.0207**。
 当前初赛最高用户回传包为 **V21/T_GATE_SPOUT1_ONLY：83.2375**，比 V10（83.1951）高 **0.0424** 分，比 V1（83.0319）高 **0.2056** 分。V21 不重新训练模型，使用 V10 铁量列和 QRF 时长支持度诊断，仅对 1 号铁口低支持行做 train-only 近 60 日中位数收缩；提交前的差分分数推算与用户回传在四位小数上一致。[V21 平台反馈](local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)
-V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V10、TGATE、TGATE600、TGATE_SPOUT2 和 V21 的历史包身份与反馈登记均保留。当前执行端实际核验时缺少 V21 原 ZIP，不能把登记路径等同于字节仍在；原开发 FAIL 与 D1 诊断身份保留。V21 是基于平台黑箱差分实验得到的当前最高初赛包，不能据此外推复赛。v0.16 状态自适应候选的失败结论保留。
+V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V10、TGATE、TGATE600、TGATE_SPOUT2 和 V21 的历史包身份与反馈登记均保留。V21 原 ZIP 已在 v0.23 恢复并核验，但账号当前有效提交仍未独立核验；原开发 FAIL 与 D1 诊断身份保留。V21 是基于平台黑箱差分实验得到的当前最高初赛包，不能据此外推复赛。v0.16 状态自适应候选的失败结论保留。
 本轮 platform-probes-r2 完成 V11 零拟合探针和 V10 独立模型推理，V11 后续用户回传 83.1806 并关闭；随后 v0.18–v0.21 完成不读取 test target 的时间门控实验。V21 只改变 1 号铁口 32 行，用户回传 83.2375；旧 G1、正式发布指针与历史包仍保留。[实施规格](docs/platform_probes_r2/PLAN.md)、[V21 本地反馈](local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)。
 平台成绩未独立核验，不代表开发结果能直接换算成排行榜收益。
 
@@ -25,11 +27,12 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 | --- | --- |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
+| v0.23 恢复与统一对照 G0/G1 | G0 PASS；G1 N/A（无新候选）；V21 原 ZIP/payload 与正确规则回放三者一致，四算法统一六位 scorecard、M-only 诊断及旧 test_b 三算法冷推理通过 |
 | v0.22 工程状态 G0 | PASS；P0 显式记录 V21 原 ZIP waiver，冷审计 13 个 worker 任务、16 个 M 证书、12 个 lambda 证书通过 |
 | v0.22 模型质量 G1 | PASS；DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY，H2 ΔE -0.00216654、5/5 改善、J Δ -0.00118555 |
 | 最近已完成工程/质量阶段 | v0.15 G0 PASS；G1 FAIL_CLOSE_V8_RETAIN_V1，H2 delta E +0.00253141，delta J +0.00320749 |
-| 锁定环境测试 | v0.22 平台包生成后根 Python 3.12.12 为 405 passed；独立 worker 34 passed；真实开发与两级冷审计完成 |
-| 实验提交包 | 最新 V22 回传 83.1166，已关闭；当前最高仍为 V21 83.2375，其次 V10 83.1951；历史身份保留，但当前执行端缺 V21 原 ZIP |
+| 锁定环境测试 | v0.23 根 Python 3.12.12 为 425 passed；独立 worker 34 passed；恢复、六 origin V21 重放、统一计分与 stage 双进程冷审计完成 |
+| 实验提交包 | 最新 V22 回传 83.1166，已关闭；当前最高仍为 V21 83.2375，其次 V10 83.1951；V21 原 ZIP 已恢复，账号有效提交身份仍未知 |
 | 正式复赛数据 | 09-21版身份与旧包关系待核验；旧包保留原发布身份，已有B验证仅工程预演 |
 | 桌面副本 | V22 test_a 包：`C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim.zip`，SHA-256 `7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee`；未上传平台 |
 | 平台有效提交证据 | 已自行检索，未获得账号回执；不宣称资格已确认 |
@@ -43,6 +46,7 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
+| [v0.23](docs/optimization_v0_23/RESULTS.md) | 0 fit；恢复原 V21 ZIP/payload；六个历史 V21 replay 逐字节复验；V1/V10/V21_REPLAY/V22 统一六位重算；M-only J 0.16727419 优于 V22 0.16798206；旧 test_b 三算法双进程冷推理一致 | 恢复/审阅 G0 PASS，G1 N/A；不新建候选，不封包或上传，正式复赛身份待核验 |
 | [v0.22](docs/optimization_v0_22/RESULTS.md) | 开发新增 2 forest + 2 preprocessor、512 树、12 个 lambda 槽、16 个 M；H2 ΔE -0.00216654，5/5 改善，J Δ -0.00118555；随后以 0 个最终森林拟合、2 个最终 lambda 和 2 个 M 生成 test_a 包 | 用户回传 83.1166，比 V21 低 0.1209；关闭 test_a 候选，保留 V21/V10，不追加平台切片搜索 |
 | [用户指定 V8 实验提交](local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) | 独立最终 1 forest + 1 preprocessor，原 2754 行/cutoff；335 行冷检查与封包通过；用户回传 83.1636，比 V1 高 0.1317 | 平台反馈单独登记；原开发 FAIL、V1 发布登记保留 |
 | [v0.15 / OPT-32–33](docs/optimization_v0_15/RESULTS.md) | 6 forest + 6 preprocessor、1536树；H2 delta E +0.00253141、0/5改善；delta J +0.00320749；根364/worker25测试及独立冷审计通过 | FAIL_CLOSE_V8_RETAIN_V1；无 final fit/新包，D2仅诊断 |
