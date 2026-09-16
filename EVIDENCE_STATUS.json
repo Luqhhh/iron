@@ -2545,7 +2545,15 @@
   },
   "optimization_v0_23": {
     "branch": "optimization-v0.23-recovery-and-stage-validation",
-    "branch_pushed": false,
+    "branch_pushed": true,
+    "publication": {
+      "authorization": "USER_EXPLICIT_POST_RUN_PUSH_2026_09_16",
+      "remote": "origin",
+      "remote_branch": "optimization-v0.23-recovery-and-stage-validation",
+      "first_pushed_commit": "efce044a70ad41002503ff2fa16971c7ba8c84c4",
+      "remote_sha_verified": true,
+      "run_itself_remained_unpublished_until_user_authorization": true
+    },
     "base_commit": "3524fcbb0455092c868f1fa22f217084732059ff",
     "kind": "RECOVERY_COMPARISON_AND_STAGE_VALIDATION_NOT_A_NEW_PREDICTION_CANDIDATE",
     "status": "PASS_RECOVERY_AND_STAGE_VALIDATION",
@@ -2690,7 +2698,9 @@
     "platform_effective_submission": "UNKNOWN",
     "platform_uploads": 0,
     "desktop_writes": 0,
-    "public_pushes": 0,
+    "run_public_pushes": 0,
+    "post_run_publication_authorized": true,
+    "public_pushes": 1,
     "official_round2_identity_verified": false,
     "results_document": "docs/optimization_v0_23/RESULTS.md"
   }
