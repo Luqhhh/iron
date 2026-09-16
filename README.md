@@ -12,6 +12,8 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、�
 
 ## 当前状态
 
+**optimization-v0.24** 已按预注册定义完成两个目标隔离的变料历史特征实验。A/B 在统一六位历史评价中相对 V21_REPLAY 的 ΔJ 分别为 +0.00013344 / +0.00012778，均未显示离线优势；这项风险不取消用户预先指定的两个平台探索名额。7 个 CatBoost、7 个 QRF/预处理器（1,792 树）和 0 个校准拟合已完成，两份 335 行包在任何本轮反馈前同时冻结，独立冷推理通过；当前上传数 0、剩余预算 2，顺序固定 A→B。[v0.24 结果](docs/optimization_v0_24/RESULTS.md)
+
 已独立核验远端 `optimization-v0.15-qrf-time@b01ab117` 对应 locked-tests run `34700659289` 为 completed/success；后续已按用户指令提交推送 platform-probes-r2；[本次推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json) 记录实际提交 SHA 与远端核验。历史报告保留当时含义。
 
 截至 2026-09-16，**optimization-v0.22 / V22_CAUSAL_H2_QRF_SHRINK** 已完成开发：G0/G1 均 PASS，状态为 `DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`。六位精度 H2 平均 ΔE -0.00216654、5/5 origins 改善，J Δ -0.00118555。用户随后授权生成 test_a 平台包；最终两个 lambda 均为 1.0，两个中位数为 116/113，335 行包通过独立冷复算并写入 C 盘桌面。最新用户回传为 83.1166，故关闭 V22 test_a 候选并保留 V21/V10；开发结果不回写为失败，正式发布指针未改变。[v0.22 结果](docs/optimization_v0_22/RESULTS.md)。v0.22 当时因未找到 V21 原 ZIP而使用的 waiver 作为历史事实保留。
@@ -25,6 +27,8 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 
 | 项目 | 当前状态 |
 | --- | --- |
+| v0.24 双候选 G0/G1 | G0 PASS；历史 G1 风险：A/B 相对 V21_REPLAY 的 ΔJ 为 +0.00013344 / +0.00012778；两份冻结包待各一次显式平台测试，尚未上传 |
+| v0.24 锁定测试 | 根 Python 3.12.12：433 passed；独立 worker：35 passed（原 34 + adapter 1）；私有产物守卫 PASS；远端 CI NOT_RUN（分支未推送） |
 | 当前发布登记 | [configs/optimization_v0_8/active_release.yaml](configs/optimization_v0_8/active_release.yaml) |
 | 回退登记 | [configs/optimization_v0_4/active_release.yaml](configs/optimization_v0_4/active_release.yaml) |
 | v0.23 恢复与统一对照 G0/G1 | G0 PASS；G1 N/A（无新候选）；V21 原 ZIP/payload 与正确规则回放三者一致，四算法统一六位 scorecard、M-only 诊断及旧 test_b 三算法冷推理通过 |
@@ -46,6 +50,7 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
+| [v0.24](docs/optimization_v0_24/RESULTS.md) | 固定 30 列变料事件统计；7 CatBoost + 7 QRF/preprocessor，1792 树，0 校准；A/B 相对 V21_REPLAY 的 ΔJ +0.00013344 / +0.00012778；两份最终包及冷审计通过 | 离线风险如实保留；按预注册仍各保留一次平台探索，A→B，当前 0/2 已用；不自动上传或写桌面 |
 | [v0.23](docs/optimization_v0_23/RESULTS.md) | 0 fit；恢复原 V21 ZIP/payload；六个历史 V21 replay 逐字节复验；V1/V10/V21_REPLAY/V22 统一六位重算；M-only J 0.16727419 优于 V22 0.16798206；旧 test_b 三算法双进程冷推理一致 | 恢复/审阅 G0 PASS，G1 N/A；不新建候选，不封包或上传，正式复赛身份待核验 |
 | [v0.22](docs/optimization_v0_22/RESULTS.md) | 开发新增 2 forest + 2 preprocessor、512 树、12 个 lambda 槽、16 个 M；H2 ΔE -0.00216654，5/5 改善，J Δ -0.00118555；随后以 0 个最终森林拟合、2 个最终 lambda 和 2 个 M 生成 test_a 包 | 用户回传 83.1166，比 V21 低 0.1209；关闭 test_a 候选，保留 V21/V10，不追加平台切片搜索 |
 | [用户指定 V8 实验提交](local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json) | 独立最终 1 forest + 1 preprocessor，原 2754 行/cutoff；335 行冷检查与封包通过；用户回传 83.1636，比 V1 高 0.1317 | 平台反馈单独登记；原开发 FAIL、V1 发布登记保留 |

@@ -1485,11 +1485,11 @@
   },
   "current_status": {
     "as_of": "2026-09-16",
-    "latest_completed_phase": "optimization-v0.22",
-    "latest_experiment_commit": "8984c00f75eb1f2c7d659ba0b0e0e183cd85b478",
-    "latest_local_experiment_head": "8984c00f75eb1f2c7d659ba0b0e0e183cd85b478",
+    "latest_completed_phase": "optimization-v0.24",
+    "latest_experiment_commit": "3be5912",
+    "latest_local_experiment_head": "3be5912",
     "latest_local_experiment_changes_uncommitted": false,
-    "latest_experiment_branch_pushed": true,
+    "latest_experiment_branch_pushed": false,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
     "user_reported_test_a_score": 83.0319,
@@ -1498,9 +1498,9 @@
     "fallback_release_config": "configs/optimization_v0_4/active_release.yaml",
     "fallback_user_reported_score": 83.0207,
     "latest_G0": "PASS",
-    "latest_G1": "PASS_DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY",
-    "latest_locked_tests_passed": 405,
-    "pending_challenger": false,
+    "latest_G1": "CONSUMED_RETROSPECTIVE_BOTH_WORSE_THAN_V21_PLATFORM_SLOTS_PENDING",
+    "latest_locked_tests_passed": 433,
+    "pending_challenger": true,
     "holdout_consumed": true,
     "retrospective_grid_completed": true,
     "next_model_registered": true,
@@ -1517,7 +1517,7 @@
       "median_statistics": 16,
       "iron_model": 0
     },
-    "desktop_candidate": "V22_CAUSAL_H2_QRF_SHRINK",
+    "desktop_candidate": null,
     "documentation_index": "docs/INDEX.md",
     "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview.",
     "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
@@ -2703,5 +2703,40 @@
     "public_pushes": 1,
     "official_round2_identity_verified": false,
     "results_document": "docs/optimization_v0_23/RESULTS.md"
+  },
+  "optimization_v0_24": {
+    "branch": "optimization-v0.24-dual-target-burden-lag",
+    "branch_pushed": false,
+    "base_commit": "a2e18e9adb30581666ac28b3ec954515ee315281",
+    "implementation_commit": "c9d4da144d63dd6872e4d3004957ab64564825a8",
+    "latest_repair_commit": "3be5912",
+    "status": "READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "G0": "PASS",
+    "G1": "CONSUMED_RETROSPECTIVE_BOTH_WORSE_THAN_V21_NOT_A_PLATFORM_GATE",
+    "run_root": "local/runs/optimization-v0.24-dual-target-burden-lag-r1",
+    "candidates": ["V24I_BURDEN_LAG_RECENCY_IRON", "V24T_BURDEN_LAG_QRF_TIME"],
+    "offline_delta_vs_V21": {
+      "V24I_BURDEN_LAG_RECENCY_IRON": {"H1": 0.00010982663645378, "H2": 0.00001991816629517, "H3": 0.00009460269058688, "H4": 0.0003094122461453, "J": 0.0001334399348703, "DEV_LONG": 0.00025760578158299, "DEV_SHORT": -0.00001968115467194},
+      "V24T_BURDEN_LAG_QRF_TIME": {"H1": 0.00027022671599153, "H2": 0.00004016880017528, "H3": -0.00005340277724142, "H4": 0.00025411272402103, "J": 0.00012777636573663, "DEV_LONG": 0.00063788595823541, "DEV_SHORT": 0.00030778962833977}
+    },
+    "fit_counts": {"CatBoost": 7, "QRF_forest": 7, "QRF_preprocessor": 7, "internal_trees": 1792, "calibration": 0},
+    "packages": {
+      "A": {"result_sha256": "dd8b1a4d40648137f8f1b9f10636eb9042086587d56e28f0ad900847c038cb9e", "zip_sha256": "c40592e9b1891098f4224d98c16de35034ac246d736df4e2e23f5fa751144cee", "unchanged_time_exact": true},
+      "B": {"result_sha256": "97d64f52c4dc0bfe9625513f447f4773daa8e52233f6790dda3e52c802f9cc3f", "zip_sha256": "5b76ddbffe51bc72c59b09395822a57236bb3a7029401b40413830c73b4b6180", "unchanged_iron_exact": true}
+    },
+    "platform_order": ["A", "B"],
+    "platform_budget": 2,
+    "platform_uploads": 0,
+    "platform_feedback": null,
+    "desktop_writes": 0,
+    "automatic_upload": false,
+    "cold_validation": "PASS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE",
+    "locked_tests": {"root_python": "3.12.12", "root_passed": 433, "root_junit_sha256": "939226b243397b5b99142ae48228b439c781a14b73fe868b41ab9e52ca949706", "worker_python": "3.12.12", "worker_passed": 35, "worker_frozen_v015": 34, "worker_v024_adapter": 1, "worker_junit_sha256": "e38dc72b6af5f3fb228c94aeed47de6b33a3745ce16f0709d218c931143491a0", "remote_CI": "NOT_RUN_BRANCH_NOT_PUSHED"},
+    "engineering_repairs": ["SCORING_SCOPE_INDEX_ZERO_FIT", "OLD_SCHEMA_SELECTION_ZERO_REFIT"],
+    "failures_preserved": true,
+    "manifest_sha256": "7c0ca6b770750e57ff6973ee1ca8ce94e2b2c7ed1f34995e8fdb641132e4c545",
+    "completion_sha256": "3be9d39b0477632e822c1f7ee195db2d692579981d4007771b940bcadd6943ff",
+    "test_targets_read": false,
+    "results_document": "docs/optimization_v0_24/RESULTS.md"
   }
 }
