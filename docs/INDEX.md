@@ -1,6 +1,6 @@
 # 文档索引与历史口径
 
-最新一次 test_a 用户回传为 **V22_CAUSAL_H2_QRF_SHRINK = 83.1166**，比 V21 低 0.1209。当前最高用户回传仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**，比 V10 高 0.0424；v0.23 已恢复并精确核验其原 ZIP 与 payload，账号当前有效提交仍未独立核验。v0.24 的 A/B 两份新包已冻结但尚未上传，不能登记平台成绩。
+最新一轮 test_a 用户回传为 **V24I = 83.1902、V24T = 83.2288**，分别比 V21 低 0.0473、0.0087；两项固定候选均已关闭。当前最高用户回传仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**，比 V10 高 0.0424；v0.23 已恢复并精确核验其原 ZIP 与 payload，账号当前有效提交仍未独立核验。
 
 V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，均值探针已关闭。随后 v0.18–v0.21 完成不读取 test target 的时间门控实验；旧 G1 与正式发布登记保持历史含义。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[V11 交付回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
@@ -27,8 +27,9 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
+| v0.25 | [历史基准中心化双目标实验计划](optimization_v0_25/PLAN.md) | 实施中；原 210 列，分别训练 centered recency iron 与 signed-response QRF time；预算 7+7 模型、0 新预处理器、0 校准、两份预登记平台包；尚无赛事结果 |
 | v0.23 | [恢复、统一参照与复赛完整算法预演](optimization_v0_23/RESULTS.md) | 0 fit；V21 原 ZIP/payload 恢复；六个历史 replay 逐字节复验；四算法统一六位 scorecard；M-only 数值对照优于 V22；旧 test_b 的 V1/V21/V22 双进程冷推理一致，正式复赛身份仍待核验 |
-| v0.24 | [双目标隔离变料历史特征实验](optimization_v0_24/RESULTS.md) | 7 CatBoost + 7 QRF/preprocessor；A/B 相对 V21_REPLAY 的 ΔJ 均小幅退化；两份 335 行包、摘要和零拟合冷审计完成，按 A→B 各保留一次显式平台测试，当前上传 0/2 |
+| v0.24 | [双目标隔离变料历史特征实验](optimization_v0_24/RESULTS.md) | 7 CatBoost + 7 QRF/preprocessor；A/B 相对 V21_REPLAY 的 ΔJ 均小幅退化；平台用户回传 83.1902 / 83.2288，均未超过 V21，固定候选关闭 |
 | v0.22 | [V22 因果 H2 QRF 支持度收缩](optimization_v0_22/RESULTS.md) | 2 个 warmup QRF、七份真实 H2 bank、12 个开发 lambda；全部预注册门槛通过；后续 test_a 包冷验通过，用户回传 83.1166 后关闭该候选，V21/V10 保留 |
 | v0.15 | [OPT-32–33](optimization_v0_15/RESULTS.md) | 固定QRF时长分支6 forest/6 preprocessor、1536树；根364/worker25测试、独立冷审计；十项质量失败、关闭V8，无新包；[工程恢复](optimization_v0_15/ENGINEERING_REPAIR.md)、[维护记录](optimization_v0_15/MAINTENANCE_20260912.md) |
 | v0.14 | [OPT-30–31](optimization_v0_14/RESULTS.md) | 原基础模型 0 fit；V7/D1 6+6 时长 LAD；342 tests、独立冷审计；FAIL_CLOSE_V7_RETAIN_V1；[维护观察](optimization_v0_14/MAINTENANCE_20260912.md) |
