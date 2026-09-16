@@ -1,0 +1,80 @@
+schema_version: 1
+phase: optimization-v0.24-dual-target-burden-lag
+branch: optimization-v0.24-dual-target-burden-lag
+base_commit: a2e18e9adb30581666ac28b3ec954515ee315281
+candidates:
+  A: V24I_BURDEN_LAG_RECENCY_IRON
+  B: V24T_BURDEN_LAG_QRF_TIME
+parent: V21
+references: [V1, V10, V21_REPLAY]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+expected_training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+final_rows: 2754
+test_a_rows: 335
+burden_lag:
+  fields: [pig, all_quality, consumption, fuel_rate, coke_rate]
+  windows: [0_6h, 6_24h, 24_72h]
+  statistics: [mean, valid_count]
+  feature_count: 30
+  prefix: burden_lag__
+candidate_A:
+  target: tap_iron
+  learner: original_E09_R2_recency60_CatBoost
+  E09_weight: 0.8
+  E04_weight: 0.2
+  beta: restore_original_V6I_same_cutoff
+  structure_inputs: [old_rate, old_R2_time]
+  unchanged_target: exact_V21_time
+candidate_B:
+  target: tap_time_len
+  protocol: QRF_FULLTRAIN_LEAF_v1
+  gate_source: original_QRF_effective_neighbors
+  gate: {spout_no: '1', effective_neighbors_lt: 500.0}
+  shrink: 0.25
+  median: original_V21_query_anchored_60_day
+  qrf_roundtrip_before_gate_decimals: 6
+  unchanged_target: exact_V21_iron
+qrf_parameters:
+  n_estimators: 256
+  criterion: squared_error
+  max_depth: null
+  min_samples_split: 2
+  min_samples_leaf: 10
+  min_weight_fraction_leaf: 0.0
+  max_features: 0.7
+  max_leaf_nodes: null
+  min_impurity_decrease: 0.0
+  bootstrap: true
+  max_samples: null
+  oob_score: false
+  random_state: 2026
+  n_jobs: 8
+  verbose: 0
+  warm_start: false
+  ccp_alpha: 0.0
+  monotonic_cst: null
+budget:
+  development_catboost_fits: 6
+  final_catboost_fits: 1
+  development_qrf_fits: 6
+  final_qrf_fits: 1
+  development_qrf_preprocessor_fits: 6
+  final_qrf_preprocessor_fits: 1
+  qrf_internal_trees_total: 1792
+  LAD_beta_lambda_bias_fits: 0
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+serialization: {prediction_decimals: 6, labels_rounded: false}
+bootstrap: {repetitions: 1000, seed: 2026}
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+source_runs:
+  qrf_development: local/runs/optimization-v0.15-opt32-r1
+  qrf_final: local/runs/optimization-v0.15-v8-user-test-a-r1
+  recency_development: local/runs/optimization-v0.12-opt25-26-r1
+  recency_final: local/runs/optimization-v0.15-platform-recovery-r1
+  v21_development: local/runs/optimization-v0.22-causal-h2-r8
+  v21_recovery: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
+
