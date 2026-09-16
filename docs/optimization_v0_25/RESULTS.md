@@ -44,6 +44,8 @@ B 的 J 为 0.16677975，优于 V21_REPLAY 的 0.16899655，但仍高于 V1 的 
 
 桌面摘要与上表冻结 ZIP 完全一致。该操作是文件交付，不是赛事平台上传；平台使用量仍为 0/2。
 
+用户同时明确授权 Git 提交与推送。首个公开结果提交 `22545c0` 已推送至 `origin/optimization-v0.25-history-centered-targets`，绑定的 locked-tests run 35110078306 为 `completed/success`。private local 模型、响应、预测、账本、反馈槽和 ZIP 均未进入 Git。
+
 ## 预算、冷审计与测试
 
 实际完成 7 个 centered CatBoost、7 个 signed-response QRF、1,792 棵树；新增 QRF preprocessor、LAD/beta/lambda/偏置均为 0。最终冷进程验证 A 全量/反序/分块/单行以及 B 全量/反序/分块/子集/单行完全一致，所有推理 fit 尝试为 0，只恢复摘要绑定的私有模型和原预处理器。
