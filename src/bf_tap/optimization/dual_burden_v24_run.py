@@ -205,7 +205,9 @@ def _old_e04(slot: int, x: pd.DataFrame, old: pd.DataFrame):
     """Recover the frozen E04 component without rebuilding any old feature matrix."""
     if slot != 12:
         return (old.base_iron.to_numpy(dtype=float) - 0.8 * old.direct_iron.to_numpy(dtype=float)) / 0.2
-    old_direct = RecencyModel.load(RECENCY_FINAL / "models/tap_iron/bundle").predict(x)
+    old_model = RecencyModel.load(RECENCY_FINAL / "models/tap_iron/bundle")
+    old_names = [entry["name"] for entry in old_model.schema]
+    old_direct = old_model.predict(x[old_names])
     beta = _beta(slot); rate = old.pred_rate.to_numpy(dtype=float); time = old.pred_tap_time_len.to_numpy(dtype=float)
     delivered = pd.read_csv(RECENCY_FINAL / "predictions/V6I_RECENCY60_IRON.csv", dtype={"sample_id": str}).set_index("sample_id").loc[old.index]
     usable = rate > 1e-6; base = delivered.pred_tap_iron.to_numpy(dtype=float).copy()
@@ -398,8 +400,14 @@ def score(root: Path):
 
 def finalize(root: Path):
     if not (root / "offline_assessment.json").exists(): raise ContractError("score development before final fits")
-    _fit_A(root, 12); worker("fit", "--root", root.resolve(), "--slot", 12)
-    atomic_write_json(root / "final_models_complete.json", {"12": file_sha256(root / "models/B/12/bundle.json")})
+    completion = root / "final_models_complete.json"
+    if completion.exists():
+        expected = {"12": file_sha256(root / "models/B/12/bundle.json")}
+        if read_json(completion) != expected or not (root / "models/A/12/fit_record.json").is_file():
+            raise ContractError("partial final model completion identity differs")
+    else:
+        _fit_A(root, 12); worker("fit", "--root", root.resolve(), "--slot", 12)
+        atomic_write_json(completion, {"12": file_sha256(root / "models/B/12/bundle.json")})
     _predict_slot(root, 12)
     parent = _parent(12)
     package_receipts={}
