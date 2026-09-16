@@ -1,6 +1,6 @@
 # optimization-v0.25 执行结果
 
-执行日期为 2026-09-16，起点为 `d4342998176293262a030dcb2f6997cc39c871f3`，冻结实现提交为 `4fcf2b0ab88eb53a570da91c097e80f81c83bf39`。本阶段完成两个历史基准中心化候选。G0 为 **PASS**；两份 test_a 包已在任何本轮平台反馈前同时冻结。运行本身没有自动上传、桌面写入或公开推送；用户随后另行明确授权桌面替换与 Git 推送。
+执行日期为 2026-09-16，起点为 `d4342998176293262a030dcb2f6997cc39c871f3`，冻结实现提交为 `4fcf2b0ab88eb53a570da91c097e80f81c83bf39`。本阶段完成两个历史基准中心化候选。G0 为 **PASS**；两份 test_a 包已在任何本轮平台反馈前同时冻结。用户随后回传 A/I 为 **83.1516**、B/T 为 **83.0117**，两项均低于 V21 的 83.2375，固定候选关闭并保留 V21。运行本身没有自动上传；桌面替换与 Git 推送来自此前单独明确授权。
 
 ## P0 与训练身份
 
@@ -35,16 +35,29 @@ B 的 J 为 0.16677975，优于 V21_REPLAY 的 0.16899655，但仍高于 V1 的 
 - `local/runs/optimization-v0.25-history-centered-targets-r1/submissions/V25I_HISTORY_CENTERED_RECENCY_IRON/Luqhhh_bf_tap_predict_prelim.zip`
 - `local/runs/optimization-v0.25-history-centered-targets-r1/submissions/V25T_HISTORY_CENTERED_QRF_TIME/Luqhhh_bf_tap_predict_prelim.zip`
 
-两份包均为 335 个唯一 ID，ZIP 内仅含 `result.csv`。平台顺序固定 A→B，各有一个预登记名额；当前平台上传 0/2、反馈为空。原运行完成时尚未获得桌面写入或平台上传授权；后续桌面授权单独登记如下。
+两份包均为 335 个唯一 ID，ZIP 内仅含 `result.csv`。平台顺序固定 A→B，各有一个预登记名额。两项用户回传已经按该冻结顺序登记，预算 2/2 已消费；没有 submission ID 或账号回执，因此仍是未独立核验的用户回传。原运行完成时尚未获得桌面写入或平台上传授权；后续桌面授权单独登记如下。
 
 用户后续明确授权删除桌面旧提交包并替换。两份 v0.24 桌面副本已删除，其 private local 原包仍保留、可恢复；桌面当前只保留：
 
 - `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V25I_HISTORY_CENTERED_RECENCY_IRON.zip`
 - `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V25T_HISTORY_CENTERED_QRF_TIME.zip`
 
-桌面摘要与上表冻结 ZIP 完全一致。该操作是文件交付，不是赛事平台上传；平台使用量仍为 0/2。
+桌面摘要与上表冻结 ZIP 完全一致。该操作是文件交付，不是赛事平台上传；平台两次测试均由用户侧完成，agent 上传数为 0。
 
-用户同时明确授权 Git 提交与推送。首个公开结果提交 `22545c0` 已推送至 `origin/optimization-v0.25-history-centered-targets`，绑定的 locked-tests run 35110078306 为 `completed/success`。private local 模型、响应、预测、账本、反馈槽和 ZIP 均未进入 Git。
+用户同时明确授权 Git 提交与推送。首个公开结果提交 `22545c0` 已推送至 `origin/optimization-v0.25-history-centered-targets`；后续发布核验提交 `0b21de4` 绑定的 locked-tests run 35110398739 为 `completed/success`。private local 模型、响应、预测、账本、反馈槽和 ZIP 均未进入 Git。
+
+## 平台反馈与收口
+
+分数均为用户回传，未取得平台账号原始回执。首个未附候选字母的 `83.1516` 按预先冻结的 A→B 顺序映射为 A/I；用户明确标注 `T:83.0117` 的分数映射为 B/T。
+
+| 顺序 | 候选 | 用户回传 | Δ vs V21 | Δ vs V10 | 决策 |
+| --- | --- | ---: | ---: | ---: | --- |
+| A/I | V25I_HISTORY_CENTERED_RECENCY_IRON | 83.1516 | -0.0859 | -0.0435 | 关闭，保留 V21 |
+| B/T | V25T_HISTORY_CENTERED_QRF_TIME | 83.0117 | -0.2258 | -0.1834 | 关闭，保留 V21 |
+
+A 是本轮较高分，但仍低于 V21。按两个目标隔离和四位显示分数进行的纯算术组合为 `83.1516 + 83.0117 - 83.2375 = 82.9258`；这不是平台实测，也未生成或提交组合包。结果与离线排序不一致：B 的回溯指标较好，但平台回传更低；两种证据并列保留，不回写既有 G0/G1，也不据此追加基准、窗口、门控或参数搜索。
+
+本轮平台预算按用户回传计为 2/2，剩余 0；agent 自动上传为 0。账号当前有效提交仍未知。如果初赛实际采用最后一次提交，最后的 B 可能是当前有效条目，但本报告不在无账号回执时作此断言。
 
 ## 预算、冷审计与测试
 
@@ -52,4 +65,4 @@ B 的 J 为 0.16677975，优于 V21_REPLAY 的 0.16899655，但仍高于 V1 的 
 
 冻结实现的 Python 3.12.12 root 测试为 **441 passed**，私有产物守卫通过；worker 为 **35 passed**（原冻结 worker 34 项加 v0.25 adapter 1 项）。首次从仓库根调用 worker 测试因冻结测试要求 worker CWD 而在收集阶段失败，0 fit；失败回执已保留，随后在正确锁定目录通过，未隐藏为训练 retry。
 
-权威运行目录为 `local/runs/optimization-v0.25-history-centered-targets-r1`。manifest SHA-256 为 `bd1b369b8d57ad301a296b7fa5a6ddd42c4b9aa12c8de2a09f9cc556e412a59c`，completion SHA-256 为 `94401c597bc10a080ab6c9c2d1ae0769debfde990609263c9298677953573176`。当前状态为 `READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS`；这是本地候选准备完成，不代表平台提分或账号有效提交。
+权威运行目录为 `local/runs/optimization-v0.25-history-centered-targets-r1`。manifest SHA-256 为 `bd1b369b8d57ad301a296b7fa5a6ddd42c4b9aa12c8de2a09f9cc556e412a59c`，completion SHA-256 为 `94401c597bc10a080ab6c9c2d1ae0769debfde990609263c9298677953573176`。该 completion 是平台反馈前冻结的运行完成证据，保持原摘要不改写。当前阶段状态为 `COMPLETE_PLATFORM_FEEDBACK_BOTH_CLOSED_RETAIN_V21`。

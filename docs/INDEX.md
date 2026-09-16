@@ -1,6 +1,6 @@
 # 文档索引与历史口径
 
-最新一轮 test_a 用户回传为 **V24I = 83.1902、V24T = 83.2288**，分别比 V21 低 0.0473、0.0087；两项固定候选均已关闭。当前最高用户回传仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**，比 V10 高 0.0424；v0.23 已恢复并精确核验其原 ZIP 与 payload，账号当前有效提交仍未独立核验。
+最新一轮 test_a 用户回传为 **V25I = 83.1516、V25T = 83.0117**，分别比 V21 低 0.0859、0.2258；两项固定候选均已关闭。当前最高用户回传仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**，比 V10 高 0.0424；v0.23 已恢复并精确核验其原 ZIP 与 payload，账号当前有效提交仍未独立核验。
 
 V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，均值探针已关闭。随后 v0.18–v0.21 完成不读取 test target 的时间门控实验；旧 G1 与正式发布登记保持历史含义。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[V11 交付回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
@@ -27,7 +27,7 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
-| v0.25 | [历史基准中心化双目标实验](optimization_v0_25/RESULTS.md) | G0 PASS；7 centered CatBoost + 7 signed QRF、0 新预处理器/校准；A 相对 V21 的 J 退化 +0.00039378，B 改善 -0.00221680 但仍不及 V1；两份包已冻结，平台 0/2 |
+| v0.25 | [历史基准中心化双目标实验](optimization_v0_25/RESULTS.md) | G0 PASS；7 centered CatBoost + 7 signed QRF、0 新预处理器/校准；A 相对 V21 的 J 退化 +0.00039378，B 改善 -0.00221680 但仍不及 V1；平台用户回传 83.1516/83.0117，预算 2/2，两项关闭并保留 V21 |
 | v0.23 | [恢复、统一参照与复赛完整算法预演](optimization_v0_23/RESULTS.md) | 0 fit；V21 原 ZIP/payload 恢复；六个历史 replay 逐字节复验；四算法统一六位 scorecard；M-only 数值对照优于 V22；旧 test_b 的 V1/V21/V22 双进程冷推理一致，正式复赛身份仍待核验 |
 | v0.24 | [双目标隔离变料历史特征实验](optimization_v0_24/RESULTS.md) | 7 CatBoost + 7 QRF/preprocessor；A/B 相对 V21_REPLAY 的 ΔJ 均小幅退化；平台用户回传 83.1902 / 83.2288，均未超过 V21，固定候选关闭 |
 | v0.22 | [V22 因果 H2 QRF 支持度收缩](optimization_v0_22/RESULTS.md) | 2 个 warmup QRF、七份真实 H2 bank、12 个开发 lambda；全部预注册门槛通过；后续 test_a 包冷验通过，用户回传 83.1166 后关闭该候选，V21/V10 保留 |
