@@ -5,6 +5,8 @@
 审阅基点：`optimization-v0.16-data-adaptive@9c6cf42d16e369d8ce632806670d1bb170482b91`
 
 分支：`optimization-v0.22-causal-h2-qrf-shrink`
+
+实现提交：`8984c00f75eb1f2c7d659ba0b0e0e183cd85b478`，已推送至同名远端分支。
 开发运行：`local/runs/optimization-v0.22-causal-h2-r8`
 
 ## 当前结论

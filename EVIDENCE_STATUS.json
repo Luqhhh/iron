@@ -1486,10 +1486,10 @@
   "current_status": {
     "as_of": "2026-09-16",
     "latest_completed_phase": "optimization-v0.22",
-    "latest_experiment_commit": "9c6cf42d16e369d8ce632806670d1bb170482b91",
-    "latest_local_experiment_head": "9c6cf42d16e369d8ce632806670d1bb170482b91",
-    "latest_local_experiment_changes_uncommitted": true,
-    "latest_experiment_branch_pushed": false,
+    "latest_experiment_commit": "8984c00f75eb1f2c7d659ba0b0e0e183cd85b478",
+    "latest_local_experiment_head": "8984c00f75eb1f2c7d659ba0b0e0e183cd85b478",
+    "latest_local_experiment_changes_uncommitted": false,
+    "latest_experiment_branch_pushed": true,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
     "user_reported_test_a_score": 83.0319,
@@ -1563,7 +1563,7 @@
       "queried_at": "2026-09-12T11:52:07.292886+00:00",
       "branch_pushed": true
     },
-    "latest_pushed_commit": "c9fc61ef7001c58815110b4a740bb2890064f799",
+    "latest_pushed_commit": "8984c00f75eb1f2c7d659ba0b0e0e183cd85b478",
     "V1_desktop_copy_status": "NOT_FOUND_IN_CHECKED_PATHS",
     "V1_desktop_copy_document": "docs/optimization_v0_13/DESKTOP_COPY_STATUS.md",
     "latest_user_reported_test_a_candidate": "V22_CAUSAL_H2_QRF_SHRINK",
@@ -2385,6 +2385,8 @@
   },
   "optimization_v0_22": {
     "branch": "optimization-v0.22-causal-h2-qrf-shrink",
+    "branch_pushed": true,
+    "implementation_commit": "8984c00f75eb1f2c7d659ba0b0e0e183cd85b478",
     "base_commit": "9c6cf42d16e369d8ce632806670d1bb170482b91",
     "candidate": "V22_CAUSAL_H2_QRF_SHRINK",
     "phase_reference": "V10_V6I_IRON_V8_TIME",
