@@ -1,5 +1,17 @@
 # 当前实施范围
 
+截至 2026-09-16，v0.22 已按冻结规格完成开发：G0/G1 均 PASS，状态
+`DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`；H2 平均 ΔE -0.0021665373、5/5 origins
+改善，J Δ -0.0011855502。用户本轮明确允许在缺少 V21 原 ZIP 字节时继续，但该
+waiver 不等于原包核验，也不放宽 V21 规则回放、来源、预算或质量门槛。实际预算为
+2 forest + 2 preprocessor + 512 树、12 个 lambda 槽和 16 个中位数统计；无铁量
+fit。开发验收后，用户另行授权以 0 个最终森林、2 个最终 lambda 和 2 个最终中位数
+生成一个 test_a ZIP 并写入桌面；上传为 0、发布指针不变。正式复赛身份仍待独立核验。
+[v0.22 结果](optimization_v0_22/RESULTS.md)。
+
+该包最新用户回传为 83.1166，比 V21 低 0.1209、比 V10 低 0.0785；V22 test_a
+候选据此关闭。反馈不回写原开发 G0/G1，也不授权阈值、窗口、铁口子集或逐行搜索。
+
 截至 2026-09-15，项目已补录用户在测试平台回传的最新 test_a 成绩 **83.2375**：候选为 V21 `T_GATE_V10_QRF_MEDIAN_RECENT60_SPOUT1_ONLY`，仅对 spout=1 且 `effective_neighbors < 500` 的 32 行做 25% 向训练集同喷嘴近 60 天中位数收缩；未重新拟合模型、预处理器或 LAD。该实验包的 ZIP SHA-256 为 `1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6`，反馈记录见 [`platform_feedback.json`](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)。该分数由用户手工提交回传，项目未独立登录平台核验；正式发布指针仍保持 V1，V21 作为当前最高的实验性用户反馈保留。
 
 此前 V11_V6I_IRON_QRF_MEAN_TIME 用户回传 **83.1806**，比 V10 低 0.0145 分；已保留原 ZIP 身份并关闭该均值探针。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[交付与推送回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。

@@ -265,3 +265,40 @@ v0.7 恢复 R2，再由 v0.8 交付 V1；不应按旧 S1 结果页恢复失败�
 | 平台上传 | 用户手动上传；代理自动上传 `0` |
 
 该成绩与提交前基于线性 WMAPE 分解的推算值一致。V21 现为当前初赛最高用户回传；历史 V10、TGATE、TGATE600、TGATE_SPOUT2 包与反馈保持不变。
+
+### 2026-09-16 · v0.22 开发验收
+
+v0.22 P0 核验了 V10 原 ZIP 和六个历史 QRF，但没有找到上表登记 SHA-256 的 V21
+原 ZIP。用户随后仅授权跳过该恢复前置条件；P0 继续记录
+`v21_original_zip_verified=false`，没有把规则重建冒充原包核验。
+
+`V22_CAUSAL_H2_QRF_SHRINK` 随后完成开发，G0/G1 均 PASS，状态
+`DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`；H2 平均 ΔE -0.0021665373、5/5 origins
+改善，J Δ -0.0011855502。本轮平台候选 0、提交 ZIP 0、上传 0、桌面写入 0；正式
+V1 发布指针及最高用户回传 V21 均不改变。
+
+### 2026-09-16 · test_a / V22_CAUSAL_H2_QRF_SHRINK
+
+用户在开发验收后明确授权生成平台包到 C 盘桌面。最终化复用原 2,754 行 QRF 和
+V10 铁量，拟合 2 个最终 lambda、计算 2 个固定 cutoff 中位数；新增森林、预处理器、
+铁量模型及铁量 LAD 均为 0，test_a 目标读取为 0。
+
+| 字段 | 记录 |
+| --- | --- |
+| 状态 | `PASS_READY_FOR_USER_PLATFORM_UPLOAD` |
+| 本地包 | `local/runs/optimization-v0.22-test-a-platform-r1/submission/Luqhhh_bf_tap_predict_prelim.zip` |
+| 桌面包 | `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim.zip` |
+| ZIP SHA-256 | `7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee` |
+| result.csv SHA-256 | `be599de21a4b6063459e227cc939543b7403f2830d25dd3f5fab6f061b8fbb47` |
+| 最终 lambda（spout 1/2） | `1.0 / 1.0` |
+| 最终 M（spout 1/2） | `116.0 / 113.0` |
+| 平台上传/成绩 | `0 / 尚无回传` |
+
+独立冷进程验证来源、两个 M 证书、两个 lambda 证书、QRF batch 一致性、结果字节和
+ZIP payload；桌面与 local ZIP 摘要一致。该动作不修改 V1 正式发布指针，也不把
+尚无平台反馈的 V22 登记为最高用户回传。
+
+用户随后回传 V22 平台显示成绩 **83.1166**，证据状态
+`USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`。该成绩比 V21 低 0.1209、比 V10 低
+0.0785、比 V1 高 0.0847。按预注册边界关闭 V22 test_a 候选，保留 V21/V10，
+不追加阈值、窗口、铁口子集或逐行调整；原开发 G0/G1 和正式 V1 发布指针不改写。

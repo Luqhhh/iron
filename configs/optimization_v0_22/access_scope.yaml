@@ -1,0 +1,25 @@
+schema_version: 1
+authorization: user_20260916_v22_causal_h2_oof_support_shrink
+protection_contract: configs/protection.yaml
+holdout_consumed: true
+november_globally_consumed: true
+development_labels: certified_historical_outer_cutoff_only
+test_labels: forbidden
+test_scores_for_parameter_fit: forbidden
+test_error_groups_for_parameter_fit: forbidden
+platform_feedback_used_for_design: true
+official_target_column_reads: false
+source_migration: not_authorized
+automatic_upload: false
+desktop_writes: false
+public_push: false
+overwrite_prior_runs: false
+preserve_failed_evidence: true
+new_ledger: local/ledgers/optimization-v0.22.jsonl
+explicit_user_waivers:
+  missing_v21_original_zip:
+    authorized_at: "2026-09-16"
+    scope: permit_development_to_continue_without_original_v21_zip_bytes
+    does_not_assert_original_zip_verified: true
+    does_not_waive_v21_rule_replay: true
+    does_not_waive_other_provenance_or_quality_gates: true

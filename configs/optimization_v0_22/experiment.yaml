@@ -1,0 +1,113 @@
+schema_version: 1
+phase: optimization-v0.22
+branch: optimization-v0.22-causal-h2-qrf-shrink
+base_commit: 9c6cf42d16e369d8ce632806670d1bb170482b91
+candidate: V22_CAUSAL_H2_QRF_SHRINK
+phase_reference: V10_V6I_IRON_V8_TIME
+replay_control: V21_REPLAY
+historical_development_reference: V1_RATE_STRUCTURAL
+protocol: QRF_FULLTRAIN_LEAF_v1
+development_origins: [6, 7, 8, 9, 10, 11]
+origin_horizons: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+h2_bank:
+  model_cutoffs: [4, 5, 6, 7, 8, 9, 10]
+  query_months: [5, 6, 7, 8, 9, 10, 11]
+  outer_eligible_query_months:
+    6: [5]
+    7: [5, 6]
+    8: [5, 6, 7]
+    9: [5, 6, 7, 8]
+    10: [5, 6, 7, 8, 9]
+    11: [5, 6, 7, 8, 9, 10]
+expected_training_rows: {4: 297, 5: 588, 6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424}
+warmup:
+  model_cutoffs: [4, 5]
+  adapter_protocol: QRF_V022_WARMUP_ADAPTER_v1
+  reuse_equivalent_certified_model_first: true
+support:
+  definition: inverse_sum_squared_leaf_response_weights
+  denominator: certified_unique_original_training_rows
+  absolute_tolerance: 1.0e-8
+  relative_tolerance: 1.0e-12
+median:
+  window_days: 60
+  anchor: model_cutoff
+  statistic: pandas_ordinary_median
+  fallback: same_spout_all_legal_training_rows
+  no_legal_spout_history: no_shrink
+lambda:
+  bounds: [0.0, 1.0]
+  minimum_oof_rows_per_spout: 100
+  loss: unweighted_LAD
+  tie_break: smallest_minimizer
+  insufficient_rows: zero
+  parameters_per_origin: 2
+prediction:
+  iron: exact_certified_V10_copy
+  time: Q_plus_lambda_times_one_minus_u_times_M_minus_Q
+  csv_decimals: 6
+qrf_parameters:
+  n_estimators: 256
+  criterion: squared_error
+  max_depth: null
+  min_samples_split: 2
+  min_samples_leaf: 10
+  min_weight_fraction_leaf: 0.0
+  max_features: 0.7
+  max_leaf_nodes: null
+  min_impurity_decrease: 0.0
+  bootstrap: true
+  max_samples: null
+  oob_score: false
+  random_state: 2026
+  n_jobs: 8
+  verbose: 0
+  warm_start: false
+  ccp_alpha: 0.0
+  monotonic_cst: null
+budget:
+  development_forest_fits: 2
+  development_preprocessor_fits: 2
+  development_internal_trees: 512
+  development_lambda_slots: 12
+  development_cutoff_spout_medians: 16
+  final_forest_fits: 0
+  final_preprocessor_fits: 0
+  final_lambda_slots: 2
+  final_cutoff_spout_medians: 2
+  iron_model_fits: 0
+  iron_LAD_fits: 0
+  platform_candidates: 0
+  conditional_final_platform_candidates: 1
+acceptance:
+  H2_mean_E_delta_max: -0.0005
+  H2_min_strict_improved: 4
+  recent_H2_evaluation_months: [9, 10, 11]
+  recent_H2_min_strict_improved: 2
+  H2_single_origin_delta_max: 0.0010
+  H2_minus_V21_replay_max: 0.0
+  J_delta_max: 0.0002
+  H134_mean_E_delta_max: 0.0005
+  DEV_E_delta_max: 0.0007
+  pass_status: DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY
+  failure_status: FAIL_RETAIN_V21_AND_V10
+bootstrap: {repetitions: 1000, seed: 2026, cluster: calendar_week, invalid_draws: do_not_resample}
+trusted_sources:
+  qrf_development_run: local/runs/optimization-v0.15-opt32-r1
+  v10_composition_run: local/runs/optimization-v0.15-v10-target-composition-r1
+  stage_inference_run: local/runs/platform-probes-r2-r1
+  v10_result_sha256: d430da7399c3125db1768b1d7d236ec6eb95e13c633e5389b138dfe39c97b3c6
+  v10_zip_sha256: be83f1f623c12f4ef03479f2fcacdfb756920d41c4e09d1c4f6b55a2279761ac
+  v21_zip_sha256: 1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6
+  artifact_search_roots: [local/runs, local/submissions]
+platform:
+  automatic_upload: false
+  desktop_write: false
+  public_push: false
+  highest_user_reported_test_a: {candidate: V21, score: 83.2375}
+  V10_user_reported_score: 83.1951
+  V11_user_reported_score: 83.1806
+  v21_selection_used_platform_feedback: true
+  design_informed_by_prior_platform_observations: true
+  parameter_fit_uses_test_scores: false
+  november_globally_consumed: true

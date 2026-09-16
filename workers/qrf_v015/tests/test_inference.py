@@ -3,6 +3,7 @@ import json
 import numpy as np
 import pytest
 import inference as api
+import inference_v022 as v22
 from worker import zero_fit
 from preprocessing import Preprocessor
 from qrf_model import QRF
@@ -56,3 +57,42 @@ def test_worker_restores_once_and_all_order_checks_without_fit(tmp_path,monkeypa
     check=json.loads((tmp_path/'out.npz.json').read_text())
     assert len(calls)==1 and all(check['checks'].values()) and not any(check['zero_fit'].values())
     with pytest.raises(FileExistsError):api.inference(tmp_path,'hash',source,api.sha(source),out)
+
+
+def test_v22_fresh_support_output_uses_certified_training_denominator(tmp_path,monkeypatch):
+    source=tmp_path/'input.npz';source.write_bytes(b'trusted input')
+    model_manifest=tmp_path/'model.json'
+    model_manifest.write_text(json.dumps(dict(kind='V22_CERTIFIED_QRF_MODEL_v1',
+        protocol='QRF_FULLTRAIN_LEAF_v1',model_path=str(tmp_path/'model'),bundle_sha256='bundle',
+        training_identity_sha256='training',unique_training_rows=3,cutoff_ns=10)))
+    arrays=dict(ids=np.array(['001','002']),numeric=np.array([[2.],[3.]]),
+                spout=np.array(['1','2']),reference_ns=np.array([10,11]))
+    info=dict(training=False,cutoff_ns=10,raw_schema_sha256='schema',
+              ids=arrays['ids'].tolist(),numeric_columns=['feature'])
+    bundle=dict(input=dict(cutoff_ns=10,raw_schema_sha256='schema'))
+    class Model:
+        ids=['a','b','c'];y=np.array([1.,2.,3.]);training_months=np.array(['x','x','x'])
+        def predict(self,x,*args):
+            return x[:,0],x[:,0]+1.,[{'effective_neighbors':float(v)} for v in x[:,0]]
+    class Pre:
+        def transform(self,numeric,*args):return numeric,{}
+    monkeypatch.setattr(v22,'restore',lambda *args:(Model(),Pre(),bundle))
+    monkeypatch.setattr(v22,'payload',lambda *args:(arrays,info))
+    out=tmp_path/'v22.npz'
+    v22.infer(model_manifest,v22.sha(model_manifest),source,v22.sha(source),out)
+    with np.load(out,allow_pickle=False) as saved:
+        assert saved['ids'].tolist()==['001','002']
+        assert np.array_equal(saved['Q'],[2.,3.])
+        assert np.array_equal(saved['effective_neighbors'],[2.,3.])
+        assert np.array_equal(saved['N'],[3,3])
+    report=json.loads((tmp_path/'v22.npz.json').read_text())
+    assert report['unique_training_rows']==3 and all(report['checks'].values())
+    assert not any(report['zero_fit'].values())
+
+
+def test_v22_rejects_unregistered_model_manifest_before_joblib(tmp_path,monkeypatch):
+    source=tmp_path/'input.npz';source.write_bytes(b'trusted input')
+    model_manifest=tmp_path/'model.json';model_manifest.write_text('{}')
+    monkeypatch.setattr(v22,'restore',lambda *args:pytest.fail('must not load arbitrary joblib'))
+    with pytest.raises(ValueError,match='unknown V22'):
+        v22.infer(model_manifest,v22.sha(model_manifest),source,v22.sha(source),tmp_path/'out.npz')

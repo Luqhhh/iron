@@ -1,6 +1,18 @@
 # 项目实施报告
 
-最新 test_a 用户回传为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**。V21 只对 1 号铁口低支持的 32 行时长预测做 train-only 近 60 日中位数收缩，铁量列保持 V10；ZIP SHA-256 为 `1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6`。[V21 反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)。
+截至 2026-09-16，optimization-v0.22 / `V22_CAUSAL_H2_QRF_SHRINK` 已完成开发，
+G0/G1 均 PASS，状态 `DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`。六位精度 H2 平均
+ΔE -0.0021665373、5/5 origins 改善，J Δ -0.0011855502；13 组 worker 冷推理、
+16 个固定中位数证书和 12 个 lambda 证书通过零拟合冷审计。实际新增 2 forest、
+2 preprocessor、512 棵树、12 个标量拟合；铁量新 fit 为 0且逐样本保持 V10。
+用户明确豁免缺失 V21 原 ZIP 的恢复前置条件，但原包继续标记未核验。开发验收后，
+用户另行授权生成 test_a 平台包；最终两个 lambda 均为 1.0，两个 M 为 116/113，
+335 行 ZIP 已通过独立冷复算并写入 C 盘桌面，SHA-256 为 `7752863b…fecee`。
+用户随后回传 83.1166，比 V21/V10 分别低 0.1209/0.0785；V22 test_a 候选关闭，
+不追加平台切片搜索。代理未上传平台，也未改变正式 V1 发布指针。
+[完整 v0.22 结果](optimization_v0_22/RESULTS.md)。
+
+最新一次 test_a 用户回传为 **V22_CAUSAL_H2_QRF_SHRINK = 83.1166**；当前最高仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**。V21 只对 1 号铁口低支持的 32 行时长预测做 train-only 近 60 日中位数收缩，铁量列保持 V10；其登记 ZIP SHA-256 为 `1a1d34ba96501da1391d2f97b237630f25661b718439efd070c7e52186d589a6`，但当前执行端未恢复该原包。
 
 V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，比 V10 低 0.0145 分，均值探针已关闭。随后 v0.18–v0.21 完成时间门控实验；V21 回传与 `V10 + (TGATE - TGATE_SPOUT2)` 的线性差分推算在四位小数上一致。旧 G1、正式发布指针与原包不变。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)。
 
