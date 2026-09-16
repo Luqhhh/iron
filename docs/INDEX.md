@@ -27,7 +27,7 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
-| v0.25 | [历史基准中心化双目标实验计划](optimization_v0_25/PLAN.md) | 实施中；原 210 列，分别训练 centered recency iron 与 signed-response QRF time；预算 7+7 模型、0 新预处理器、0 校准、两份预登记平台包；尚无赛事结果 |
+| v0.25 | [历史基准中心化双目标实验](optimization_v0_25/RESULTS.md) | G0 PASS；7 centered CatBoost + 7 signed QRF、0 新预处理器/校准；A 相对 V21 的 J 退化 +0.00039378，B 改善 -0.00221680 但仍不及 V1；两份包已冻结，平台 0/2 |
 | v0.23 | [恢复、统一参照与复赛完整算法预演](optimization_v0_23/RESULTS.md) | 0 fit；V21 原 ZIP/payload 恢复；六个历史 replay 逐字节复验；四算法统一六位 scorecard；M-only 数值对照优于 V22；旧 test_b 的 V1/V21/V22 双进程冷推理一致，正式复赛身份仍待核验 |
 | v0.24 | [双目标隔离变料历史特征实验](optimization_v0_24/RESULTS.md) | 7 CatBoost + 7 QRF/preprocessor；A/B 相对 V21_REPLAY 的 ΔJ 均小幅退化；平台用户回传 83.1902 / 83.2288，均未超过 V21，固定候选关闭 |
 | v0.22 | [V22 因果 H2 QRF 支持度收缩](optimization_v0_22/RESULTS.md) | 2 个 warmup QRF、七份真实 H2 bank、12 个开发 lambda；全部预注册门槛通过；后续 test_a 包冷验通过，用户回传 83.1166 后关闭该候选，V21/V10 保留 |
