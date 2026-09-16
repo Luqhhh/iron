@@ -1,6 +1,6 @@
 # optimization-v0.24 执行结果
 
-执行日期为 2026-09-16，基点为 `a2e18e9adb30581666ac28b3ec954515ee315281`。本阶段按预注册方案完成两个目标隔离实验。G0 为 **PASS**；已消费历史上的 G1 证据显示两项均未超过 V21_REPLAY，但该证据不是本阶段两个预登记平台名额的提交门槛。两份 test_a 包已经在任何本轮平台反馈前同时冻结，尚未上传。
+执行日期为 2026-09-16，基点为 `a2e18e9adb30581666ac28b3ec954515ee315281`。本阶段按预注册方案完成两个目标隔离实验。G0 为 **PASS**；已消费历史上的 G1 证据显示两项均未超过 V21_REPLAY，但该证据不是本阶段两个预登记平台名额的提交门槛。两份 test_a 包在任何本轮平台反馈前同时冻结；随后两次预登记名额均获得用户回传结果，A 为 **83.1902**、B 为 **83.2288**，均未超过 V21 的 **83.2375**，本阶段两个候选关闭。
 
 ## 候选与离线结果
 
@@ -29,14 +29,25 @@ A 的未改时长各 horizon WMAPE 差值严格为 0；被改铁量的 H1/H2/H3/
 - `local/runs/optimization-v0.24-dual-target-burden-lag-r1/submissions/V24I_BURDEN_LAG_RECENCY_IRON/Luqhhh_bf_tap_predict_prelim.zip`
 - `local/runs/optimization-v0.24-dual-target-burden-lag-r1/submissions/V24T_BURDEN_LAG_QRF_TIME/Luqhhh_bf_tap_predict_prelim.zip`
 
-平台顺序固定为 A 后 B，每项最多一次；当前上传数为 0、剩余新候选预算为 2。运行完成时没有自动写桌面，也未自动恢复、覆盖或上传 V21。账号当前有效提交仍未知。
+平台顺序固定为 A 后 B，每项最多一次。用户后续回传了两项分数，故两次新候选预算按用户回传口径均已消费；执行代理没有登录平台或自动上传。账号当前有效提交仍未知。
 
 用户随后明确授权桌面交付和 Git 推送。两个不重名副本已写入：
 
 - `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V24I_BURDEN_LAG_RECENCY_IRON.zip`
 - `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V24T_BURDEN_LAG_QRF_TIME.zip`
 
-桌面摘要分别仍为 `c40592e9…144cee` 和 `5b76ddbf…4b6180`。这只是文件交付，不是赛事平台上传；平台使用量仍为 0/2。工作分支已按该单独授权推送，未推送 private local 产物。
+桌面摘要分别仍为 `c40592e9…144cee` 和 `5b76ddbf…4b6180`。工作分支已按该单独授权推送，未推送 private local 产物。
+
+## 平台反馈与收口
+
+| 顺序 | 候选 | 用户回传 | 相对 V21 | 相对 V10 | 决策 |
+| --- | --- | ---: | ---: | ---: | --- |
+| A | V24I_BURDEN_LAG_RECENCY_IRON | 83.1902 | -0.0473 | -0.0049 | 关闭，保留 V21 |
+| B | V24T_BURDEN_LAG_QRF_TIME | 83.2288 | -0.0087 | +0.0337 | 关闭，保留 V21 |
+
+B 比 A 高 0.0386，但仍比 V21 低 0.0087；当前最高用户回传保持 V21=83.2375。两项分数均为用户回传，未取得 submission ID、平台状态或账号回执，证据等级为 `USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`。按共同父候选和目标隔离关系，使用四位显示分数得到的双目标组合算术值约为 `83.1902 + 83.2288 - 83.2375 = 83.1815`，低于现有候选；这不是平台实测，也不生成第三个组合包。
+
+反馈记录保存在私有运行目录的 `platform_feedback_user_reported.json`。本轮平台预算按用户回传计为 2/2 已消费；代理上传数仍为 0。未读取测试目标、未在反馈后拟合或改变参数、窗口、门控及路由。
 
 ## 预算、冷审计与修复
 
@@ -44,6 +55,6 @@ A 的未改时长各 horizon WMAPE 差值严格为 0；被改铁量的 H1/H2/H3/
 
 运行中保留了两项工程失败：首次评分把 DEV 同时作为 CELL 和 DEVELOPMENT 建立非唯一索引；首次最终预测把扩展矩阵全部传给冻结旧 schema 的 recency 模型。两个修复都在原失败与产物摘要落盘后执行；前者只重算汇总，后者只显式选择旧模型登记列并复用已完成最终模型。两项修复的新增 fit 均为 0，候选定义和预测算法没有改变。
 
-权威运行目录为 `local/runs/optimization-v0.24-dual-target-burden-lag-r1`。manifest SHA-256 为 `7c0ca6b770750e57ff6973ee1ca8ce94e2b2c7ed1f34995e8fdb641132e4c545`，completion SHA-256 为 `3be9d39b0477632e822c1f7ee195db2d692579981d4007771b940bcadd6943ff`。当前最高用户回传仍是 V21 的 83.2375；本阶段尚无平台结果，不能写成已提分。
+权威运行目录为 `local/runs/optimization-v0.24-dual-target-burden-lag-r1`。manifest SHA-256 为 `7c0ca6b770750e57ff6973ee1ca8ce94e2b2c7ed1f34995e8fdb641132e4c545`，completion SHA-256 为 `3be9d39b0477632e822c1f7ee195db2d692579981d4007771b940bcadd6943ff`。这两个摘要对应反馈前冻结的原运行文件，不因后续反馈而改写。当前最高用户回传仍是 V21 的 83.2375；v0.24 未提分。
 
-最终锁定 Python 3.12.12 根测试为 **433 passed**；独立 QRF worker 为 **35 passed**（原冻结 worker 34 项加 v0.24 adapter 1 项），两者未混计。私有产物守卫通过。用户授权推送后，`e4957a1` 对应的远端 locked-tests run 35094553102 已为 `completed/success`；根 workflow 成功不替代独立 worker 的本地锁定验收。
+最终锁定 Python 3.12.12 根测试为 **433 passed**；独立 QRF worker 为 **35 passed**（原冻结 worker 34 项加 v0.24 adapter 1 项），两者未混计。私有产物守卫通过。用户授权推送后的最终登记提交 `b16cd84` 对应远端 locked-tests run 35094942455，状态为 `completed/success`；根 workflow 成功不替代独立 worker 的本地锁定验收。
