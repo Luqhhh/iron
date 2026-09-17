@@ -62,7 +62,7 @@ A 的时长、B 的铁量在每个 cell 和宏平均中均保持不变；`ΔE=0.
 
 权威运行目录为 `local/runs/optimization-v0.28-fixed-equal-blends-r3`。冷审计对 7 个 cutoff 分别恢复 V26A、V27I、V21 源端点，由冻结 worker 独立重算并核对原 NPZ，再验证新组合的全量、反序、分块、子集和单样本一致性；所有模型、森林、预处理器和校准 fit 尝试均为 0，双 ZIP/CSV 回读一致。
 
-r1 在冷审计阶段错误地假设旧 worker 会额外保存 cold NPZ；实际 worker 只保存重算/比对回执。r2 修正该假设后，又发现反序辅助断言错误比较 DataFrame 索引。两个目录均没有 completion，分别保留 3 份冷回执；候选定义、预测及包字节未因这两次修复改变。r3 使用“worker 冷重算核验冻结 NPZ，再读取被核验 NPZ”的正确接口和按字段内容的反序比较完成全流程。
+r1 在冷审计阶段错误地假设旧 worker 会额外保存 cold NPZ；实际 worker 只保存重算/比对回执。r2 修正该假设后，又发现反序辅助断言错误比较 DataFrame 索引。两个目录均没有 completion，分别保留 3 份冷回执；候选定义和 `result.csv` 预测内容未因这两次修复改变，r3 重新冻结最终 ZIP 身份。r3 使用“worker 冷重算核验冻结 NPZ，再读取被核验 NPZ”的正确接口和按字段内容的反序比较完成全流程。
 
 锁定 Python 3.12.12 根环境为 **465 passed**，JUnit SHA-256 为 `e72767b4c1ef249494451953461c38b8d859dc788292ca1e6c59ee9111853b2e`。独立 worker 合计 **48 passed**：v0.15 34、v0.25 1、v0.26 5、v0.27 8；四份 JUnit SHA-256 为 `9d782f2920a4192dac54d49c8b7fd70ecf7a763bf90db4e03cb69fa4dde7eac1`、`b77730740672d80d41251601a5df98c5e4db87f7eaffd1a2e69a9cb6de212989`、`c72fc7f1951b563ef9a3b2a3ce031f11fddf32a8fd39df418556248a51d0e40e`、`c3cb5e7c60fd072ad0660e8e1f0c41a70c3ea755babd21c604b7985943951af6`。
 
