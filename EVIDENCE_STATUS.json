@@ -2956,7 +2956,17 @@
     "platform_uploads": 0,
     "platform_feedback": null,
     "automatic_upload": false,
-    "desktop_writes": 0,
+    "desktop_writes": 2,
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_2026_09_17_DELETE_AND_REPLACE_DESKTOP_SUBMISSION_PACKAGES",
+      "old_v026_desktop_copies_moved_to_trash": true,
+      "old_v026_private_originals_retained": true,
+      "A": {"path": "C:\\Users\\lqh22\\Desktop\\Luqhhh_bf_tap_predict_prelim_V27I_ABS_QRF_DIRECT_IRON.zip", "zip_sha256": "5c5d8366962613f649fb82ca94df1796e55da1360a0783a01e7c19822e0f3ba5"},
+      "B": {"path": "C:\\Users\\lqh22\\Desktop\\Luqhhh_bf_tap_predict_prelim_V27T_ABS_QRF_LEAF_RECENCY60.zip", "zip_sha256": "767e515be195cf7df0839a7b1ac37217cb119260f86c3ee7405ac21114f4dc0e"},
+      "receipt": "local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1/desktop_delivery_receipt.json",
+      "receipt_sha256": "7baf0cb17035ac0a7af7698297a795a671220138492d8a3229b76db665c7125d",
+      "platform_uploads": 0
+    },
     "public_pushes": 0,
     "third_candidate_generated": false,
     "cold_validation": "PASS_21_GROUPS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD",

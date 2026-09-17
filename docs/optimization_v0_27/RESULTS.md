@@ -1,6 +1,6 @@
 # optimization-v0.27 执行结果
 
-执行日期为 2026-09-17，基点为 `193842e81385f51efd48792df652fc03e30cc812`，冻结实现提交为 `9bdcaa3a90ecde2bddbaefd6bb50a1faf0cf07b0`。A（铁量 absolute-error QRF）与 B（冻结 V26A 时长森林的叶内 recency60 响应加权）均已完成，G0 工程状态为 **PASS**。两份 test_a 包已在任何本轮平台反馈前同时冻结；本运行没有上传平台、没有写桌面、没有推送远端。
+执行日期为 2026-09-17，基点为 `193842e81385f51efd48792df652fc03e30cc812`，冻结实现提交为 `9bdcaa3a90ecde2bddbaefd6bb50a1faf0cf07b0`。A（铁量 absolute-error QRF）与 B（冻结 V26A 时长森林的叶内 recency60 响应加权）均已完成，G0 工程状态为 **PASS**。两份 test_a 包已在任何本轮平台反馈前同时冻结；运行本身没有上传平台、没有写桌面、没有推送远端，随后按用户明确授权完成桌面旧包替换，仍未上传平台或推送远端。
 
 ## P0、来源与训练身份
 
@@ -54,6 +54,13 @@ A 的时长、B 的铁量在全部 cell 与宏平均中均保持不变；`ΔE=0.
 
 - `local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1/submissions/V27I_ABS_QRF_DIRECT_IRON/Luqhhh_bf_tap_predict_prelim.zip`
 - `local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1/submissions/V27T_ABS_QRF_LEAF_RECENCY60/Luqhhh_bf_tap_predict_prelim.zip`
+
+用户随后明确授权删除桌面旧提交包并写入新包。两份 V26 桌面副本已移入系统回收站，其 private local 原包仍保留；桌面当前只保留：
+
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V27I_ABS_QRF_DIRECT_IRON.zip`
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V27T_ABS_QRF_LEAF_RECENCY60.zip`
+
+桌面摘要与上表冻结 ZIP 完全一致，每包仅含 `result.csv`。本地交付回执 SHA-256 为 `7baf0cb17035ac0a7af7698297a795a671220138492d8a3229b76db665c7125d`。该操作是文件交付，不是赛事平台上传。
 
 平台次序固定为 A→B，每项一个名额，总预算 2；当前平台上传为 0，反馈为空。没有生成第三个组合、融合、切片或校准候选，也没有自动准备恢复上传。当前最高用户回传仍是父 V26A 的 83.2828；账号当前有效条目未知。
 
