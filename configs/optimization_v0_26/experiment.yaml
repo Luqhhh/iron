@@ -1,0 +1,98 @@
+schema_version: 1
+phase: optimization-v0.26-qrf-partition-tests
+branch: optimization-v0.26-qrf-partition-tests
+base_commit: cd2e06848f55b993cbb456ae89cbd084ba93f4b3
+candidates:
+  A: V26A_QRF_ABSOLUTE_SPLIT_TIME
+  B: V26B_EXTRA_RANDOM_SPLIT_TIME
+parent: V21_REPLAY
+references: [V1, V10, V21_REPLAY]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+expected_training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+final_rows: 2754
+test_a_rows: 335
+raw_feature_columns: 210
+numeric_feature_columns: 209
+target: tap_time_len
+target_semantics: original_nonnegative_minutes
+parent_protocol: QRF_FULLTRAIN_LEAF_v1
+protocol: QRF_FULLTRAIN_PARTITION_v026
+candidate_A:
+  estimator: RandomForestRegressor
+  splitter: best
+  criterion: absolute_error
+candidate_B:
+  estimator: ExtraTreesRegressor
+  splitter: random
+  criterion: squared_error
+forest_common_parameters: &forest_common
+  n_estimators: 256
+  max_depth: null
+  min_samples_split: 2
+  min_samples_leaf: 10
+  min_weight_fraction_leaf: 0.0
+  max_features: 0.7
+  max_leaf_nodes: null
+  min_impurity_decrease: 0.0
+  bootstrap: true
+  max_samples: null
+  oob_score: false
+  random_state: 2026
+  n_jobs: 8
+  verbose: 0
+  warm_start: false
+  ccp_alpha: 0.0
+  monotonic_cst: null
+forest_parameters:
+  A:
+    <<: *forest_common
+    criterion: absolute_error
+  B:
+    <<: *forest_common
+    criterion: squared_error
+postprocessing:
+  gate_source: recomputed_original_QRF_effective_neighbors
+  gate: {spout_no: '1', effective_neighbors_lt: 500.0}
+  shrink: 0.25
+  median: original_V21_query_anchored_60_day
+  qrf_roundtrip_before_gate_decimals: 6
+  unchanged_target: exact_V21_iron_csv_string
+budget:
+  development_fits_per_candidate: 6
+  final_fits_per_candidate: 1
+  total_fits_per_candidate: 7
+  qrf_internal_trees_total: 3584
+  new_preprocessor_fits: 0
+  catboost_rate_e04_fits: 0
+  LAD_beta_lambda_bias_fits: 0
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+serialization: {prediction_decimals: 6, labels_rounded: false}
+bootstrap: {repetitions: 1000, seed: 2026, unit: calendar_week, invalid_draws_replaced: false}
+aggregation:
+  primary: macro_origin_mean_wmape
+  diagnostic: exposure_pooled_wmape
+  tolerance: 1.0e-12
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+source_runs:
+  qrf_development: local/runs/optimization-v0.15-opt32-r1
+  qrf_final: local/runs/optimization-v0.15-v8-user-test-a-r1
+  v21_development: local/runs/optimization-v0.22-causal-h2-r8
+  v21_recovery: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
+  v25_audit: local/runs/optimization-v0.25-history-centered-targets-r1
+v25_reported_target_deltas:
+  V25I_HISTORY_CENTERED_RECENCY_IRON:
+    target: tap_iron
+    H1: 0.00046666
+    H2: 0.00068485
+    H3: 0.00142269
+    H4: 0.00048443
+  V25T_HISTORY_CENTERED_QRF_TIME:
+    target: tap_time_len
+    H1: -0.00212737
+    H2: -0.00627728
+    H3: -0.00734820
+    H4: -0.00198287
