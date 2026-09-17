@@ -62,7 +62,18 @@ A 的时长、B 的铁量在全部 cell 与宏平均中均保持不变；`ΔE=0.
 
 桌面摘要与上表冻结 ZIP 完全一致，每包仅含 `result.csv`。本地交付回执 SHA-256 为 `7baf0cb17035ac0a7af7698297a795a671220138492d8a3229b76db665c7125d`。该操作是文件交付，不是赛事平台上传。
 
-平台次序固定为 A→B，每项一个名额，总预算 2；当前平台上传为 0，反馈为空。没有生成第三个组合、融合、切片或校准候选，也没有自动准备恢复上传。当前最高用户回传仍是父 V26A 的 83.2828；账号当前有效条目未知。
+平台次序固定为 A→B，每项一个名额，总预算 2。两次用户回传现已完成；agent 自动上传为 0。没有生成第三个组合、融合、切片或校准候选，也没有自动准备恢复上传。
+
+## 平台反馈与决策
+
+用户按冻结的 A→B 顺序一次回传两个分数；未取得 submission ID 或账号原始回执，因此证据等级保持为用户回传、未独立核验。
+
+| 顺序 | 候选 | 用户回传 | Δ vs V26A | Δ vs V21 | 决策 |
+| --- | --- | ---: | ---: | ---: | --- |
+| A | V27I_ABS_QRF_DIRECT_IRON | 83.2480 | -0.0348 | +0.0105 | 关闭，保留 V26A |
+| B | V27T_ABS_QRF_LEAF_RECENCY60 | 83.2710 | -0.0118 | +0.0335 | 关闭，保留 V26A |
+
+B 比 A 高 0.0230，但仍比 V26A 的 83.2828 低 0.0118。因此当前最高用户回传完整原包继续是 V26A；v0.27 两个固定候选都关闭，平台预算按用户回传计为 2/2、剩余 0。冻结模型、预测、ZIP 和 completion 均未改写。账号当前有效提交仍未知：如果初赛采用最后一次提交生效，最后测试的 B 可能是当前有效条目；恢复 V26A 前必须先核对账号状态和额度。反馈记录 SHA-256 为 `b60cb19f7749f48ef9b8ae2a87ebdd025698282361a65f652f2bfb5746234848`。
 
 ## 冷审计、测试与证据
 
@@ -70,4 +81,4 @@ A 的时长、B 的铁量在全部 cell 与宏平均中均保持不变；`ΔE=0.
 
 锁定 Python 3.12.12 根环境为 **455 passed**，JUnit SHA-256 为 `1599da3ad2437d79246f6f5ba65668926d0e965381e7674f7d7276174fa6604d`。worker 合计 **48 passed**：原 v0.15 34 项、v0.25 1 项、v0.26 5 项、v0.27 8 项；对应 JUnit SHA-256 分别为 `2247d976f156006f01f8712f24201513625c533ddd9e3cea58cc8949173d5d6f`、`5a23bc70784cf5b764cc0c54f15f6073740b8b406ec9b061be4189ed6e43bfda`、`78c9b252d44e6c204550ffde4e8bf0ca7225969069014b3d83cee039a9b83a65`、`4014c44aeebfe3624f8bb2907fbd93256995639bebf0b9ac27398bda87b8dbfe`。
 
-权威私有运行目录为 `local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1`。manifest SHA-256 为 `6bf2f834f7b1edb7a7b94974260f5d722297d0103546975b70585c4f69884ea2`，completion SHA-256 为 `4fc9c228e75a216accdf4c8dab4cc456714375e6fd39fd4d0b5f826bd492db73`，冷审计 SHA-256 为 `e6654e7344b583990a34a8c8cfe832d57ad83cdc95ed8749c8c155358ad85f41`。当前阶段状态为 `READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS`；private 模型、响应、预测、账本和 ZIP 均未进入 Git。
+权威私有运行目录为 `local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1`。manifest SHA-256 为 `6bf2f834f7b1edb7a7b94974260f5d722297d0103546975b70585c4f69884ea2`，completion SHA-256 为 `4fc9c228e75a216accdf4c8dab4cc456714375e6fd39fd4d0b5f826bd492db73`，冷审计 SHA-256 为 `e6654e7344b583990a34a8c8cfe832d57ad83cdc95ed8749c8c155358ad85f41`。当前阶段状态为 `COMPLETE_PLATFORM_FEEDBACK_BOTH_CLOSED_RETAIN_V26A`；private 模型、响应、预测、账本、反馈记录和 ZIP 均未进入 Git。
