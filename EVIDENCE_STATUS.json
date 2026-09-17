@@ -2268,7 +2268,7 @@
       "status": "FAIL_CLOSE_V7_RETAIN_V1"
     },
     "branch": "optimization-v0.14-h2-time",
-    "branch_pushed": false,
+    "branch_pushed": true,
     "cold_prediction_max_difference": 0.0,
     "completion_receipt": "local/reports/optimization-v0.14-completion-r2.json",
     "completion_receipt_sha256": "6f6a1d504c127979e13c384b3e546cdcb25d9a4358da3c04dddac490ce3fafd8",
@@ -2891,7 +2891,14 @@
       "receipt_sha256": "f9de48d5dc28abb4d73be27e5958de67dd7779f6f5a001072d45e7bc21fa9b88",
       "platform_uploads": 0
     },
-    "public_pushes": 0,
+    "public_pushes": 2,
+    "publication": {
+      "authorization": "USER_EXPLICIT_2026_09_17_COMMIT_AND_PUSH",
+      "remote": "origin",
+      "branch": "optimization-v0.26-qrf-partition-tests",
+      "first_pushed_head": "471ed27f9e2da6d60a2fb393c09111c3e608b287",
+      "private_local_artifacts_pushed": false
+    },
     "third_candidate_generated": false,
     "cold_validation": "PASS_21_GROUPS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD",
     "locked_tests": {

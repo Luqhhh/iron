@@ -1,6 +1,6 @@
 # optimization-v0.26 执行结果
 
-执行日期为 2026-09-17，基点为 `cd2e06848f55b993cbb456ae89cbd084ba93f4b3`，冻结实现提交为 `78ba01933e8a0e411571a314222fae327ef13444`。两项时长森林划分实验均已完成，G0 工程状态为 **PASS**；G1 离线质量单独报告，两项均保留预登记的平台探索名额。两份 test_a 包已在任何本轮平台反馈前同时冻结。运行本身未上传平台、未写桌面、未推送远端；随后按用户明确授权完成桌面替换，仍未上传平台或推送远端。
+执行日期为 2026-09-17，基点为 `cd2e06848f55b993cbb456ae89cbd084ba93f4b3`，冻结实现提交为 `78ba01933e8a0e411571a314222fae327ef13444`。两项时长森林划分实验均已完成，G0 工程状态为 **PASS**；G1 离线质量单独报告，两项均保留预登记的平台探索名额。两份 test_a 包已在任何本轮平台反馈前同时冻结。运行本身未上传平台、未写桌面、未推送远端；随后按用户分别明确授权完成桌面替换与 Git 分支推送，仍未由 agent 上传赛事平台。
 
 ## P0 与 v0.25 聚合勘误
 
@@ -70,3 +70,5 @@ A 比 B 高 0.2588，且超过此前 V21 的 83.2375；本阶段据此保留 A �
 锁定 Python 3.12.12 root 测试为 **448 passed**，JUnit SHA-256 为 `e38ca37eccf18bad5bef7c34377d5f378b1e6eee5742b986badba06d663bb4d5`；worker 测试为 **40 passed**（原 v0.15 34 项、v0.25 1 项、v0.26 5 项），JUnit SHA-256 为 `40d7699144e006ed6d8591944fd5933028c9f5dffc16d098322971b3490548a4`。
 
 权威私有运行目录为 `local/runs/optimization-v0.26-qrf-partition-tests-r1`。manifest SHA-256 为 `e703b869cd1cba40568e2951fc8ba504410a5840e1dd579255c59fcbd87a7f12`，completion SHA-256 为 `82e865ce88a5d7bd401ed7bc5006059f6f969d1950d068d2f5661690d12e3898`，冷审计 SHA-256 为 `7be840a294c072f75b42619ba41c60fd5a261d5dc0ddb2c41cc5e865b5567074`。冻结 completion 保持平台反馈前的 `READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS`；阶段当前状态为 `COMPLETE_PLATFORM_FEEDBACK_A_PROMOTED_B_CLOSED`。
+
+用户明确授权提交与推送后，分支 `optimization-v0.26-qrf-partition-tests` 已发布到 `origin`；首次发布头为 `471ed27f9e2da6d60a2fb393c09111c3e608b287`。private local 模型、响应、预测、账本、反馈记录和 ZIP 均未进入 Git。
