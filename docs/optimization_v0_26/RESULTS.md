@@ -50,7 +50,18 @@ V21_REPLAY 的 J 为 0.16899655，V1 为 0.16573254。A/B 的 J 均略差于 V21
 
 桌面摘要与上表冻结 ZIP 完全一致，每包仅含 `result.csv`。本地交付回执 SHA-256 为 `f9de48d5dc28abb4d73be27e5958de67dd7779f6f5a001072d45e7bc21fa9b88`。该操作是文件交付，不是赛事平台上传。
 
-平台顺序固定为 A→B，每项一个名额；反馈槽当前均为空。没有生成第三个融合、组合、切片或校准候选。平台当前账号状态与“最后一次/最高分”规则仍需用户侧在执行上传前确认；本运行不自动上传或安排恢复提交。
+平台顺序固定为 A→B，每项一个名额。没有生成第三个融合、组合、切片或校准候选。本运行不自动上传或安排恢复提交。
+
+## 平台反馈与决策
+
+用户按冻结的 A→B 顺序一次回传两个分数；未取得 submission ID 或账号原始回执，因此证据等级保持为用户回传、未独立核验。
+
+| 顺序 | 候选 | 用户回传 | Δ vs V21 | Δ vs V10 | 决策 |
+| --- | --- | ---: | ---: | ---: | --- |
+| A | V26A_QRF_ABSOLUTE_SPLIT_TIME | 83.2828 | +0.0453 | +0.0877 | 提升为当前最高用户回传完整原包 |
+| B | V26B_EXTRA_RANDOM_SPLIT_TIME | 83.0240 | -0.2135 | -0.1711 | 关闭，保留 A |
+
+A 比 B 高 0.2588，且超过此前 V21 的 83.2375；本阶段据此保留 A 的完整冻结原包。平台预算按用户回传计为 2/2，剩余 0；agent 自动上传为 0。账号当前有效提交仍未知：如果初赛平台仍采用“最后一次提交生效”，最后测试的 B 可能是当前有效条目；恢复 A 前必须先核对账号状态和剩余提交额度。反馈记录 SHA-256 为 `73572a331e9db156d22519131a05b3379dc2573d1489969f32b343346757fcda`。
 
 ## 冷审计、测试与证据
 
@@ -58,4 +69,4 @@ V21_REPLAY 的 J 为 0.16899655，V1 为 0.16573254。A/B 的 J 均略差于 V21
 
 锁定 Python 3.12.12 root 测试为 **448 passed**，JUnit SHA-256 为 `e38ca37eccf18bad5bef7c34377d5f378b1e6eee5742b986badba06d663bb4d5`；worker 测试为 **40 passed**（原 v0.15 34 项、v0.25 1 项、v0.26 5 项），JUnit SHA-256 为 `40d7699144e006ed6d8591944fd5933028c9f5dffc16d098322971b3490548a4`。
 
-权威私有运行目录为 `local/runs/optimization-v0.26-qrf-partition-tests-r1`。manifest SHA-256 为 `e703b869cd1cba40568e2951fc8ba504410a5840e1dd579255c59fcbd87a7f12`，completion SHA-256 为 `82e865ce88a5d7bd401ed7bc5006059f6f969d1950d068d2f5661690d12e3898`，冷审计 SHA-256 为 `7be840a294c072f75b42619ba41c60fd5a261d5dc0ddb2c41cc5e865b5567074`。当前状态为 `READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS`。
+权威私有运行目录为 `local/runs/optimization-v0.26-qrf-partition-tests-r1`。manifest SHA-256 为 `e703b869cd1cba40568e2951fc8ba504410a5840e1dd579255c59fcbd87a7f12`，completion SHA-256 为 `82e865ce88a5d7bd401ed7bc5006059f6f969d1950d068d2f5661690d12e3898`，冷审计 SHA-256 为 `7be840a294c072f75b42619ba41c60fd5a261d5dc0ddb2c41cc5e865b5567074`。冻结 completion 保持平台反馈前的 `READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS`；阶段当前状态为 `COMPLETE_PLATFORM_FEEDBACK_A_PROMOTED_B_CLOSED`。
