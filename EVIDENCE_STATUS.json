@@ -2919,5 +2919,67 @@
     "test_targets_read": false,
     "official_raw_training_target_reads": false,
     "results_document": "docs/optimization_v0_26/RESULTS.md"
+  },
+  "optimization_v0_27": {
+    "branch": "optimization-v0.27-qrf-iron-and-leaf-recency",
+    "branch_pushed": false,
+    "base_commit": "193842e81385f51efd48792df652fc03e30cc812",
+    "implementation_commit": "9bdcaa3a90ecde2bddbaefd6bb50a1faf0cf07b0",
+    "status": "READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "G0": "PASS",
+    "G1": "CONSUMED_RETROSPECTIVE_A_WORSE_B_IMPROVES_PARENT_BUT_NOT_V1_NOT_A_PLATFORM_GATE",
+    "run_root": "local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1",
+    "parent": "V26A_QRF_ABSOLUTE_SPLIT_TIME",
+    "parent_user_reported_score": 83.2828,
+    "candidates": ["V27I_ABS_QRF_DIRECT_IRON", "V27T_ABS_QRF_LEAF_RECENCY60"],
+    "P0": {
+      "equivalent_registry_matches": 0,
+      "raw_feature_columns": 210,
+      "numeric_feature_columns": 209,
+      "transformed_float32_columns": 213,
+      "old_v015_qrf_support_recomputed": true,
+      "test_a_gate_rows": 32,
+      "development_protected_november_target_reads": 0
+    },
+    "offline_delta_vs_V26A_PARENT_macro_origin_mean_wmape": {
+      "V27I_ABS_QRF_DIRECT_IRON": {"H1": 0.00031148, "H2": 0.00183682, "H3": 0.00193932, "H4": 0.00320245, "J": 0.00182252, "DEV_LONG": 0.00249334, "DEV_SHORT": 0.00008505},
+      "V27T_ABS_QRF_LEAF_RECENCY60": {"H1": -0.00056052, "H2": -0.00058720, "H3": -0.00047335, "H4": -0.00037947, "J": -0.00050014, "DEV_LONG": -0.00039878, "DEV_SHORT": -0.00071081}
+    },
+    "offline_J": {"V1": 0.16573254, "V21_REPLAY": 0.16899655, "V26A_PARENT": 0.16931966, "A": 0.17114218, "B": 0.16881951},
+    "fit_counts": {"A_forest_attempted": 7, "A_forest_completed": 7, "A_internal_trees": 1792, "B_forest_attempted": 0, "B_weight_vectors": 7, "new_preprocessor": 0, "other_models_and_calibration": 0},
+    "packages": {
+      "A": {"result_sha256": "a42df723b06ab714712d3e13a75af241af36751b61744bdbcee767e17fb50cbf", "zip_sha256": "5c5d8366962613f649fb82ca94df1796e55da1360a0783a01e7c19822e0f3ba5", "changed_iron_rows": 335, "unchanged_time_csv_strings": true},
+      "B": {"result_sha256": "3b3325107399b3a617c14d7a7c19f00f268a74846fc296d370f19e17b8360597", "zip_sha256": "767e515be195cf7df0839a7b1ac37217cb119260f86c3ee7405ac21114f4dc0e", "changed_time_rows": 174, "unchanged_iron_csv_strings": true}
+    },
+    "platform_order": ["A", "B"],
+    "platform_budget": 2,
+    "platform_uploads": 0,
+    "platform_feedback": null,
+    "automatic_upload": false,
+    "desktop_writes": 0,
+    "public_pushes": 0,
+    "third_candidate_generated": false,
+    "cold_validation": "PASS_21_GROUPS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD",
+    "locked_tests": {
+      "root_python": "3.12.12",
+      "root_passed": 455,
+      "root_junit": "local/reports/pytest-optimization-v0.27-r1.xml",
+      "root_junit_sha256": "1599da3ad2437d79246f6f5ba65668926d0e965381e7674f7d7276174fa6604d",
+      "worker_python": "3.12.12",
+      "worker_passed": 48,
+      "worker_frozen_v015": 34,
+      "worker_v025_adapter": 1,
+      "worker_v026": 5,
+      "worker_v027": 8,
+      "worker_junit_sha256": ["2247d976f156006f01f8712f24201513625c533ddd9e3cea58cc8949173d5d6f", "5a23bc70784cf5b764cc0c54f15f6073740b8b406ec9b061be4189ed6e43bfda", "78c9b252d44e6c204550ffde4e8bf0ca7225969069014b3d83cee039a9b83a65", "4014c44aeebfe3624f8bb2907fbd93256995639bebf0b9ac27398bda87b8dbfe"]
+    },
+    "protected_final_training_source_verified": true,
+    "protected_final_training_ledger_appended": true,
+    "manifest_sha256": "6bf2f834f7b1edb7a7b94974260f5d722297d0103546975b70585c4f69884ea2",
+    "completion_sha256": "4fc9c228e75a216accdf4c8dab4cc456714375e6fd39fd4d0b5f826bd492db73",
+    "cold_validation_sha256": "e6654e7344b583990a34a8c8cfe832d57ad83cdc95ed8749c8c155358ad85f41",
+    "test_targets_read": false,
+    "official_raw_training_iron_target_reads": true,
+    "results_document": "docs/optimization_v0_27/RESULTS.md"
   }
 }
