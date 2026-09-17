@@ -2865,7 +2865,17 @@
     "platform_uploads": 0,
     "platform_feedback": {"A": null, "B": null, "account_effective_submission": "UNKNOWN"},
     "automatic_upload": false,
-    "desktop_writes": 0,
+    "desktop_writes": 2,
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_2026_09_17_DELETE_AND_REPLACE_DESKTOP_SUBMISSION_PACKAGES",
+      "old_v025_desktop_copies_deleted": true,
+      "old_v025_private_originals_retained": true,
+      "A": {"path": "C:\\Users\\lqh22\\Desktop\\Luqhhh_bf_tap_predict_prelim_V26A_QRF_ABSOLUTE_SPLIT_TIME.zip", "zip_sha256": "e3aaaacd426b4113e120d8e3e90dd3e41d6d7ca71ffac70c6883a26ade60e60f"},
+      "B": {"path": "C:\\Users\\lqh22\\Desktop\\Luqhhh_bf_tap_predict_prelim_V26B_EXTRA_RANDOM_SPLIT_TIME.zip", "zip_sha256": "bf16b0fd1d7ce096a19abd9e23ae5e119d84cf43f553545bf8fbd9c173d2de74"},
+      "receipt": "local/runs/optimization-v0.26-qrf-partition-tests-r1/desktop_delivery_receipt.json",
+      "receipt_sha256": "f9de48d5dc28abb4d73be27e5958de67dd7779f6f5a001072d45e7bc21fa9b88",
+      "platform_uploads": 0
+    },
     "public_pushes": 0,
     "third_candidate_generated": false,
     "cold_validation": "PASS_21_GROUPS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD",

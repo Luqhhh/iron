@@ -1,6 +1,6 @@
 # optimization-v0.26 执行结果
 
-执行日期为 2026-09-17，基点为 `cd2e06848f55b993cbb456ae89cbd084ba93f4b3`，冻结实现提交为 `78ba01933e8a0e411571a314222fae327ef13444`。两项时长森林划分实验均已完成，G0 工程状态为 **PASS**；G1 离线质量单独报告，两项均保留预登记的平台探索名额。两份 test_a 包已在任何本轮平台反馈前同时冻结。当前未上传平台、未写桌面、未推送远端。
+执行日期为 2026-09-17，基点为 `cd2e06848f55b993cbb456ae89cbd084ba93f4b3`，冻结实现提交为 `78ba01933e8a0e411571a314222fae327ef13444`。两项时长森林划分实验均已完成，G0 工程状态为 **PASS**；G1 离线质量单独报告，两项均保留预登记的平台探索名额。两份 test_a 包已在任何本轮平台反馈前同时冻结。运行本身未上传平台、未写桌面、未推送远端；随后按用户明确授权完成桌面替换，仍未上传平台或推送远端。
 
 ## P0 与 v0.25 聚合勘误
 
@@ -42,6 +42,13 @@ V21_REPLAY 的 J 为 0.16899655，V1 为 0.16573254。A/B 的 J 均略差于 V21
 
 - `local/runs/optimization-v0.26-qrf-partition-tests-r1/submissions/V26A_QRF_ABSOLUTE_SPLIT_TIME/Luqhhh_bf_tap_predict_prelim.zip`
 - `local/runs/optimization-v0.26-qrf-partition-tests-r1/submissions/V26B_EXTRA_RANDOM_SPLIT_TIME/Luqhhh_bf_tap_predict_prelim.zip`
+
+用户随后明确授权删除桌面旧提交包并替换。两份 v0.25 桌面副本已删除，其 private local 原包仍保留、可恢复；桌面当前只保留：
+
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V26A_QRF_ABSOLUTE_SPLIT_TIME.zip`
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V26B_EXTRA_RANDOM_SPLIT_TIME.zip`
+
+桌面摘要与上表冻结 ZIP 完全一致，每包仅含 `result.csv`。本地交付回执 SHA-256 为 `f9de48d5dc28abb4d73be27e5958de67dd7779f6f5a001072d45e7bc21fa9b88`。该操作是文件交付，不是赛事平台上传。
 
 平台顺序固定为 A→B，每项一个名额；反馈槽当前均为空。没有生成第三个融合、组合、切片或校准候选。平台当前账号状态与“最后一次/最高分”规则仍需用户侧在执行上传前确认；本运行不自动上传或安排恢复提交。
 
