@@ -82,3 +82,5 @@ B 比 A 高 0.0230，但仍比 V26A 的 83.2828 低 0.0118。因此当前最高�
 锁定 Python 3.12.12 根环境为 **455 passed**，JUnit SHA-256 为 `1599da3ad2437d79246f6f5ba65668926d0e965381e7674f7d7276174fa6604d`。worker 合计 **48 passed**：原 v0.15 34 项、v0.25 1 项、v0.26 5 项、v0.27 8 项；对应 JUnit SHA-256 分别为 `2247d976f156006f01f8712f24201513625c533ddd9e3cea58cc8949173d5d6f`、`5a23bc70784cf5b764cc0c54f15f6073740b8b406ec9b061be4189ed6e43bfda`、`78c9b252d44e6c204550ffde4e8bf0ca7225969069014b3d83cee039a9b83a65`、`4014c44aeebfe3624f8bb2907fbd93256995639bebf0b9ac27398bda87b8dbfe`。
 
 权威私有运行目录为 `local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1`。manifest SHA-256 为 `6bf2f834f7b1edb7a7b94974260f5d722297d0103546975b70585c4f69884ea2`，completion SHA-256 为 `4fc9c228e75a216accdf4c8dab4cc456714375e6fd39fd4d0b5f826bd492db73`，冷审计 SHA-256 为 `e6654e7344b583990a34a8c8cfe832d57ad83cdc95ed8749c8c155358ad85f41`。当前阶段状态为 `COMPLETE_PLATFORM_FEEDBACK_BOTH_CLOSED_RETAIN_V26A`；private 模型、响应、预测、账本、反馈记录和 ZIP 均未进入 Git。
+
+用户明确授权提交与推送后，分支 `optimization-v0.27-qrf-iron-and-leaf-recency` 已发布到 `origin`；首次发布头为 `928fb08fd8bee6ca0010b1fe20ddb3d4e144caec`。private local 模型、训练响应、逐样本预测、账本、平台反馈记录和 ZIP 均被 `.gitignore` 排除，未进入远端。
