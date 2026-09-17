@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-16",
+  "as_of": "2026-09-17",
   "implementation_version": "baseline-v0.1-reproducible",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
@@ -2822,6 +2822,70 @@
     "manifest_sha256": "bd1b369b8d57ad301a296b7fa5a6ddd42c4b9aa12c8de2a09f9cc556e412a59c",
     "completion_sha256": "94401c597bc10a080ab6c9c2d1ae0769debfde990609263c9298677953573176",
     "test_targets_read": false,
+    "aggregation_errata": {
+      "status": "CONFIRMED_REPORTING_SCOPE_MIX_ONLY",
+      "cause": "RESULTS_TARGET_WMAPE_USED_EXPOSURE_POOLED_WHILE_E_USED_MACRO_ORIGIN_MEAN",
+      "old_artifacts_modified": false,
+      "audit_sha256": "d4700ac327bab7947b4e76c3a85eedc6ee52820c6b311e5c286df97f9ec262af",
+      "document": "docs/optimization_v0_25/AGGREGATION_ERRATA.md"
+    },
     "results_document": "docs/optimization_v0_25/RESULTS.md"
+  },
+  "optimization_v0_26": {
+    "branch": "optimization-v0.26-qrf-partition-tests",
+    "branch_pushed": false,
+    "base_commit": "cd2e06848f55b993cbb456ae89cbd084ba93f4b3",
+    "implementation_commit": "78ba01933e8a0e411571a314222fae327ef13444",
+    "status": "READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "G0": "PASS",
+    "G1": "CONSUMED_RETROSPECTIVE_BOTH_J_WORSE_THAN_V21_REPORTED_SEPARATELY_NOT_A_PLATFORM_GATE",
+    "run_root": "local/runs/optimization-v0.26-qrf-partition-tests-r1",
+    "candidates": ["V26A_QRF_ABSOLUTE_SPLIT_TIME", "V26B_EXTRA_RANDOM_SPLIT_TIME"],
+    "P0": {
+      "equivalent_registry_matches": 0,
+      "searched_manifests": 123,
+      "raw_feature_columns": 210,
+      "numeric_feature_columns": 209,
+      "transformed_float32_columns": 213,
+      "old_qrf_support_recomputed": true,
+      "test_a_gate_rows": 32,
+      "v25_aggregation_audit": "PASS_NO_RETRAIN"
+    },
+    "offline_delta_vs_V21_macro_origin_mean_wmape": {
+      "V26A_QRF_ABSOLUTE_SPLIT_TIME": {"H1": 0.0007344580518969523, "H2": 0.00046446286884163634, "H3": 0.000512818041068841, "H4": -0.00041929451352179514, "J": 0.00032311111207145027, "DEV_LONG": -0.00008852632624020695, "DEV_SHORT": 0.0007108069869946332},
+      "V26B_EXTRA_RANDOM_SPLIT_TIME": {"H1": -0.00015213225438606703, "H2": -0.0002515891910226109, "H3": 0.00024038125913428132, "H4": 0.00046715973344368944, "J": 0.0000759548867923232, "DEV_LONG": -0.0006982824238011831, "DEV_SHORT": 0.001040703052728964}
+    },
+    "fit_counts": {"A_attempted": 7, "A_completed": 7, "B_attempted": 7, "B_completed": 7, "new_preprocessor": 0, "internal_trees": 3584, "other_models_and_calibration": 0},
+    "packages": {
+      "A": {"result_sha256": "9b42d41778fa23dfb07e825ae2ad44461e4d9886c11ea08e23a2dc553428cbad", "zip_sha256": "e3aaaacd426b4113e120d8e3e90dd3e41d6d7ca71ffac70c6883a26ade60e60f", "changed_time_rows": 248, "unchanged_iron_csv_strings": true},
+      "B": {"result_sha256": "d666ac4edb94260e944cdf5a316ae72bbc46ab8b14e2a1267d48adaa2b66b5f5", "zip_sha256": "bf16b0fd1d7ce096a19abd9e23ae5e119d84cf43f553545bf8fbd9c173d2de74", "changed_time_rows": 277, "unchanged_iron_csv_strings": true}
+    },
+    "platform_order": ["A", "B"],
+    "platform_budget": 2,
+    "platform_uploads": 0,
+    "platform_feedback": {"A": null, "B": null, "account_effective_submission": "UNKNOWN"},
+    "automatic_upload": false,
+    "desktop_writes": 0,
+    "public_pushes": 0,
+    "third_candidate_generated": false,
+    "cold_validation": "PASS_21_GROUPS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD",
+    "locked_tests": {
+      "root_python": "3.12.12",
+      "root_passed": 448,
+      "root_junit": "local/reports/pytest-optimization-v0.26-r1.xml",
+      "root_junit_sha256": "e38ca37eccf18bad5bef7c34377d5f378b1e6eee5742b986badba06d663bb4d5",
+      "worker_python": "3.12.12",
+      "worker_passed": 40,
+      "worker_frozen_v015": 34,
+      "worker_v025_adapter": 1,
+      "worker_v026": 5,
+      "worker_junit": "local/reports/pytest-optimization-v0.26-worker-r1.xml",
+      "worker_junit_sha256": "40d7699144e006ed6d8591944fd5933028c9f5dffc16d098322971b3490548a4"
+    },
+    "manifest_sha256": "e703b869cd1cba40568e2951fc8ba504410a5840e1dd579255c59fcbd87a7f12",
+    "completion_sha256": "82e865ce88a5d7bd401ed7bc5006059f6f969d1950d068d2f5661690d12e3898",
+    "test_targets_read": false,
+    "official_raw_training_target_reads": false,
+    "results_document": "docs/optimization_v0_26/RESULTS.md"
   }
 }
