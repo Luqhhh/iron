@@ -1,6 +1,6 @@
 # bf-tap-predict
 
-最新一轮 test_a 用户回传为 **V25I = 83.1516、V25T = 83.0117**；分别比 V21 低 0.0859、0.2258。两项预登记名额均已消费并关闭，当前最高用户回传仍为 **V21/T_GATE_SPOUT1_ONLY = 83.2375**。这些分数均为用户回传，未独立登录平台核验。
+当前最高 test_a 用户回传为 **V26A = 83.2828**；最新已测试的 V27I/V27T 为 **83.2480 / 83.2710**，均已关闭。v0.28 已零拟合完成两项固定等权集成，G0 PASS，两份包已同时冻结但尚未上传或取得平台反馈。历史分数均为用户回传，未独立登录平台核验。
 
 2026-09-13 的 V11_V6I_IRON_QRF_MEAN_TIME 历史回传为 **83.1806**，比 V10 低 0.0145 分；该均值探针已关闭，本地 ZIP 与反馈身份保留。[独立 V11 反馈](local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
@@ -11,6 +11,8 @@
 v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、关闭 V8；V1 与 R2 回退保持不变。
 
 ## 当前状态
+
+**optimization-v0.28** 已完成两个固定 50/50 端点集成：A 平均 V26A/V27I 铁量并冻结 V26A 时长，B 平均 V26A/V21 时长并冻结 V26A 铁量。新增模型、树、预处理器、校准和权重拟合均为 0；根 Python 3.12.12 为 465 passed，独立 worker 48 passed，21 组源端点冷恢复及组合不变性检查通过。A 相对父方案的 H1/J ΔE 为 -0.00038062/+0.00025969；B 为 -0.00039447/-0.00020140，但 B 的 J 仍比 V21 高 +0.00012171。两份 335 行 ZIP 已冻结，平台预算 2、已用 0。[v0.28 结果](docs/optimization_v0_28/RESULTS.md)
 
 **optimization-v0.25** 已完成两个历史基准中心化实验。A/铁量相对 V21_REPLAY 的 H1/J ΔE 为 +0.00023041/+0.00039378；B/时长为 -0.00103613/-0.00221680，H1–H4 与两个 DEV 均优于 V21，但 J 仍比 V1 高 +0.00104721。实际完成 7 个 centered CatBoost、7 个 signed-response QRF（1,792 树）、0 个新预处理器和 0 个校准拟合。两份 335 行包在反馈前同时冻结并通过独立冷审计；用户回传 A=83.1516、B=83.0117，均低于 V21=83.2375，两个候选关闭，平台预算 2/2 已消费。离线与平台排序差异并列保留。[v0.25 结果](docs/optimization_v0_25/RESULTS.md)
 
@@ -56,6 +58,9 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
+| [v0.28](docs/optimization_v0_28/RESULTS.md) | 0 fit；A 为 V26A/V27I 铁量等权，B 为 V26A/V21 时长等权；A/B 相对父方案 ΔJ +0.00025969/-0.00020140；465 根测试、48 worker 测试及完整冷审计通过 | G0 PASS；两包在反馈前冻结，平台预算 2、已用 0；不追加权重、路由或第三包 |
+| [v0.27](docs/optimization_v0_27/RESULTS.md) | 7 个铁量 absolute-error QRF；冻结 V26A 森林的叶内 recency60；平台回传 83.2480/83.2710 | 两项均低于 V26A=83.2828 并关闭；保留 V26A |
+| [v0.26](docs/optimization_v0_26/RESULTS.md) | absolute-error RF QRF 与 ExtraTrees QRF；平台回传 83.2828/83.0240 | A 晋级为当前最高用户回传，B 关闭 |
 | [v0.25](docs/optimization_v0_25/RESULTS.md) | 原 210 列；7 centered CatBoost + 7 signed QRF，1792 树，0 新预处理器/校准；A/B 相对 V21 的 J Δ +0.00039378/-0.00221680；平台回传 83.1516/83.0117 | G0 PASS；两次预算已消费，两项均低于 V21 并关闭；不生成组合包，保留 V21 |
 | [v0.24](docs/optimization_v0_24/RESULTS.md) | 固定 30 列变料事件统计；7 CatBoost + 7 QRF/preprocessor，1792 树，0 校准；A/B 平台用户回传 83.1902 / 83.2288 | 两次预算均已消费；A/B 都低于 V21=83.2375，固定设计关闭，不生成组合包 |
 | [v0.23](docs/optimization_v0_23/RESULTS.md) | 0 fit；恢复原 V21 ZIP/payload；六个历史 V21 replay 逐字节复验；V1/V10/V21_REPLAY/V22 统一六位重算；M-only J 0.16727419 优于 V22 0.16798206；旧 test_b 三算法双进程冷推理一致 | 恢复/审阅 G0 PASS，G1 N/A；不新建候选，不封包或上传，正式复赛身份待核验 |
