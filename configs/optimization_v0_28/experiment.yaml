@@ -1,0 +1,64 @@
+schema_version: 1
+phase: optimization-v0.28-fixed-equal-blends
+branch: optimization-v0.28-fixed-equal-blends
+base_commit: eec5c95bef392348c2d7597d64b01a488be1d71c
+candidates:
+  A: V28I_CB_QRF_EQUAL_BLEND
+  B: V28T_L1_L2_QRF_EQUAL_BLEND
+parent: V26A_PARENT
+references: [V1, V21_REPLAY, V26A_PARENT, V27I_ENDPOINT]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+final_rows: 2754
+test_a_rows: 335
+candidate_A:
+  target: tap_iron
+  protocol: COMPLETE_ENDPOINT_EQUAL_BLEND_v028
+  left_endpoint: V26A_PARENT
+  right_endpoint: V27I_ABS_QRF_DIRECT_IRON
+  weight_left: 0.5
+  weight_right: 0.5
+  scope: all_samples
+  unchanged_target: exact_V26A_time_csv_string
+candidate_B:
+  target: tap_time_len
+  protocol: COMPLETE_ENDPOINT_EQUAL_BLEND_v028
+  left_endpoint: V26A_PARENT
+  right_endpoint: V21_REPLAY
+  weight_left: 0.5
+  weight_right: 0.5
+  scope: all_samples
+  unchanged_target: exact_V26A_iron_csv_string
+serialization:
+  endpoint_decimals: 6
+  arithmetic: integer_micro_units
+  half_micro_tie: ties_to_even
+  output_decimals: 6
+  labels_rounded: false
+budget:
+  new_base_model_fits: 0
+  new_tree_fits: 0
+  new_preprocessor_fits: 0
+  new_calibration_or_weight_fits: 0
+  fixed_blend_algorithms: 2
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+bootstrap: {repetitions: 1000, seed: 2026, unit: calendar_week, invalid_draws_replaced: false}
+aggregation:
+  primary: macro_origin_mean_wmape
+  diagnostic: exposure_pooled_wmape
+  tolerance: 1.0e-12
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+source_identities:
+  v26a_result_sha256: 9b42d41778fa23dfb07e825ae2ad44461e4d9886c11ea08e23a2dc553428cbad
+  v26a_zip_sha256: e3aaaacd426b4113e120d8e3e90dd3e41d6d7ca71ffac70c6883a26ade60e60f
+  v27i_result_sha256: a42df723b06ab714712d3e13a75af241af36751b61744bdbcee767e17fb50cbf
+  v21_result_sha256: d5a2e118655107af39a76b99f3f1d053cc9469885d859113ba6f18ef20b9cece
+parent_user_reported_score: 83.2828
+source_runs:
+  v26: local/runs/optimization-v0.26-qrf-partition-tests-r1
+  v27: local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1
+  v22_scoring: local/runs/optimization-v0.22-causal-h2-r8
+  v23_v21_recovery: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
