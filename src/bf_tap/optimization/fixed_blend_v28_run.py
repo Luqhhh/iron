@@ -120,7 +120,15 @@ def _registry_search():
         reasons = [value for value in (*CANDIDATES.values(), "COMPLETE_ENDPOINT_EQUAL_BLEND_v028") if value in text]
         if reasons:
             matches.append({"path": str(path), "sha256": file_sha256(path), "matches": reasons})
-    return {"searched_manifest_count": len(manifests), "equivalent_matches": matches}
+    completed, incomplete = [], []
+    for match in matches:
+        run_root = Path(match["path"]).parent
+        (completed if (run_root / "completion.json").is_file() else incomplete).append(match)
+    return {
+        "searched_manifest_count": len(manifests),
+        "equivalent_matches": completed,
+        "incomplete_equivalent_attempts": incomplete,
+    }
 
 
 def _worker(script: Path, command: str, *arguments):
@@ -513,11 +521,14 @@ def cold(root: Path):
         parent = _load_endpoint(slot, "parent")
         iron_donor = _load_endpoint(slot, "iron_donor")
         time_donor = _load_endpoint(slot, "time_donor")
-        with np.load(v26_path, allow_pickle=False) as raw_parent:
+        # The frozen workers deliberately emit only a receipt in cold mode. Each
+        # worker has just recomputed and byte-compared its prediction to these
+        # saved NPZs, so the saved arrays are the certified cold outputs.
+        with np.load(V26 / "worker_predictions" / "A" / f"{slot}.npz", allow_pickle=False) as raw_parent:
             reconstructed_parent, _ = replay_qrf(V26, slot, raw_parent["median"])
-        with np.load(old_path, allow_pickle=False) as raw_v21:
+        with np.load(V26 / "old_qrf_predictions" / f"{slot}.npz", allow_pickle=False) as raw_v21:
             reconstructed_time, _ = replay_qrf(V26, slot, raw_v21["median"])
-        with np.load(v27_path, allow_pickle=False) as raw_iron:
+        with np.load(V27 / "worker_predictions" / "A" / f"{slot}.npz", allow_pickle=False) as raw_iron:
             reconstructed_iron = reconstructed_parent.copy()
             reconstructed_iron["pred_tap_iron"] = roundtrip_six(raw_iron["median"])
         _assert_frame_equal(reconstructed_parent, parent, "cold V26A source reconstruction differs")
