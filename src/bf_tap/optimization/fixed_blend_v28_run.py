@@ -475,8 +475,8 @@ def finalize(root: Path):
 
 
 def _assert_frame_equal(actual: pd.DataFrame, expected: pd.DataFrame, message: str):
-    left = validate_endpoint(actual, label="actual")
-    right = validate_endpoint(expected, label="expected")
+    left = validate_endpoint(actual, label="actual").reset_index(drop=True)
+    right = validate_endpoint(expected, label="expected").reset_index(drop=True)
     if not left.equals(right):
         raise ContractError(message)
 

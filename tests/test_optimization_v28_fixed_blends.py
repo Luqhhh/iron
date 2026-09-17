@@ -52,6 +52,14 @@ def test_time_blend_preserves_parent_iron():
     assert got.pred_tap_time_len.tolist() == ["4.000000", "6.000000"]
 
 
+def test_reverse_composition_preserves_reverse_order():
+    parent = endpoint().iloc[::-1]
+    donor = endpoint(time=("5.000000", "8.000000")).iloc[::-1]
+    got = compose_candidate(parent, donor, changed_target="tap_time_len")
+    assert got.sample_id.tolist() == ["b", "a"]
+    assert got.pred_tap_time_len.tolist() == ["6.000000", "4.000000"]
+
+
 def test_wrong_isolated_target_or_id_set_is_rejected():
     with pytest.raises(ContractError, match="isolated"):
         compose_candidate(endpoint(), endpoint(time=("9.000000", "4.000000")), changed_target="tap_iron")
