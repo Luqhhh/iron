@@ -2358,7 +2358,7 @@
       "preprocessor_completed": 6
     },
     "branch": "optimization-v0.15-qrf-time",
-    "branch_pushed": true,
+    "branch_pushed": false,
     "registration_commit": "5de6523fae022c2c96c19aadeb154014ad57e058",
     "engineering_repair_commit": "b51504655c85b43847bf8ca40161a365936182ea",
     "worker_environment": {
@@ -2922,7 +2922,7 @@
   },
   "optimization_v0_27": {
     "branch": "optimization-v0.27-qrf-iron-and-leaf-recency",
-    "branch_pushed": false,
+    "branch_pushed": true,
     "base_commit": "193842e81385f51efd48792df652fc03e30cc812",
     "implementation_commit": "9bdcaa3a90ecde2bddbaefd6bb50a1faf0cf07b0",
     "status": "COMPLETE_PLATFORM_FEEDBACK_BOTH_CLOSED_RETAIN_V26A",
@@ -2982,7 +2982,7 @@
       "receipt_sha256": "7baf0cb17035ac0a7af7698297a795a671220138492d8a3229b76db665c7125d",
       "platform_uploads": 0
     },
-    "public_pushes": 2,
+    "public_pushes": 3,
     "publication": {
       "authorization": "USER_EXPLICIT_2026_09_17_COMMIT_AND_PUSH",
       "remote": "origin",
