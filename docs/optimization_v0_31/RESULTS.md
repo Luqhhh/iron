@@ -106,3 +106,24 @@ int64 累计 occurrence 质量首次达到 `ceil(S/2)`，偶数 `S` 返回较小
 更细的冻结源清单、池化汇总与后续平台反馈应分别读取同一运行目录下的
 `source_inventory.json`、`pool_diagnostics.json` 与 `platform_feedback.json`；
 后者只能由后续维护追加，不能覆盖。
+
+
+## 推送与桌面交付（2026-09-18 追加）
+
+用户在本轮冻结后显式要求提交推送并替换 C 盘桌面提交包。已执行：
+
+- Git：`origin` 的 `optimization-v0.31-oob-occurrence-pooling` 分支首次推送，远端头
+  `9b2b46fd2453e47dff2b198e55e534b905de4b9c` 与本地 HEAD 一致；仅推送代码、配置、
+  文档和测试，不推送 `local/runs`、模型、预测、训练数据或提交 ZIP。
+- 桌面旧包：递归检索 `C:\Users\lqh22\Desktop` 只发现 V30A/V30B 两份旧提交包；
+  经 SHA-256 与 v0.30 冻结包一致后删除，对应两个旧桌面副本不再存在。
+- 桌面新包：写入
+  `Luqhhh_bf_tap_predict_prelim_V31I_OOB_OCCURRENCE_POOL_BLEND.zip`
+  （SHA-256 `727a7f82132939d0785bee91e5f9e8d6b58f6c57e5cf94b32909945131e3aa73`）
+  与
+  `Luqhhh_bf_tap_predict_prelim_V31T_OOB_OCCURRENCE_POOL_TIME.zip`
+  （SHA-256 `87d7671afee55a326eb4b54b518c649dc5d7a226af4ff37d45e54bf40310d5c1`）。
+  两份 ZIP 均只含 `result.csv`，payload 与冻结 CSV 逐字节一致，335 行。
+- 本地私有原包、旧运行目录和证据均保留；agent 平台上传仍为 0。回执：
+  `local/runs/optimization-v0.31-oob-occurrence-pooling-r3/desktop_delivery_receipt.json`
+  与 `publication_receipt.json`。

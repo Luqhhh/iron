@@ -3341,7 +3341,7 @@
     "agent_platform_uploads": 0,
     "base_commit": "383610d615d9a4876a1d1dd44c3fb1ce238a5944",
     "branch": "optimization-v0.31-oob-occurrence-pooling",
-    "branch_pushed": false,
+    "branch_pushed": true,
     "candidates": [
       "V31I_OOB_OCCURRENCE_POOL_BLEND",
       "V31T_OOB_OCCURRENCE_POOL_TIME"
@@ -3349,6 +3349,33 @@
     "cold_validation": "PASS_CERTIFIED_V029_ATTACHMENT_REDERIVATION_FULL_REVERSE_CHUNK_SUBSET_SINGLE_LEGACY_SWITCH_BACK_ZERO_FIT_ZIP_REREAD",
     "cold_validation_sha256": "6a8300089a68952cc6876d1f71d8f2908411ab4bdb2ff6b7f3ae2f9524ded02c",
     "completion_sha256": "e13d59363381be5818367e1394ce72f3f0188937282379e54dfdbf34201c5dac",
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_DELETE_DESKTOP_OLD_AND_WRITE_V031",
+      "desktop": "C:\\Users\\lqh22\\Desktop",
+      "new_files": {
+        "A": {
+          "name": "Luqhhh_bf_tap_predict_prelim_V31I_OOB_OCCURRENCE_POOL_BLEND.zip",
+          "sha256": "727a7f82132939d0785bee91e5f9e8d6b58f6c57e5cf94b32909945131e3aa73"
+        },
+        "B": {
+          "name": "Luqhhh_bf_tap_predict_prelim_V31T_OOB_OCCURRENCE_POOL_TIME.zip",
+          "sha256": "87d7671afee55a326eb4b54b518c649dc5d7a226af4ff37d45e54bf40310d5c1"
+        }
+      },
+      "old_desktop_copies_removed": [
+        {
+          "name": "Luqhhh_bf_tap_predict_prelim_V30A_OOB_BOTH_TARGETS.zip",
+          "sha256": "fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986"
+        },
+        {
+          "name": "Luqhhh_bf_tap_predict_prelim_V30B_OOB_TIME_1024.zip",
+          "sha256": "25ef5659559bd2b4532997cd05b0d8098ca4489c027b830b0900d48b695c9dda"
+        }
+      ],
+      "platform_uploads": 0,
+      "receipt": "local/runs/optimization-v0.31-oob-occurrence-pooling-r3/desktop_delivery_receipt.json",
+      "unrelated_desktop_files_untouched": true
+    },
     "fit_counts": {
       "catboost_iron_forest_rate_q_LAD_preprocessor_calibration_attempted": 0,
       "certified_oob_attachment_reads_A": 7,
@@ -3426,6 +3453,15 @@
       "within_leaf_duplicates": "REJECTED"
     },
     "protocol": "QRF_FROZEN_FOREST_OOB_OCCURRENCE_POOLING_v031",
+    "publication": {
+      "authorization": "USER_EXPLICIT_SUBMIT_AND_PUSH_20260918",
+      "branch": "optimization-v0.31-oob-occurrence-pooling",
+      "first_pushed_head": "9b2b46fd2453e47dff2b198e55e534b905de4b9c",
+      "public_pushes": 1,
+      "receipt": "local/runs/optimization-v0.31-oob-occurrence-pooling-r3/publication_receipt.json",
+      "remote": "origin",
+      "remote_head_verified_after_push": "9b2b46fd2453e47dff2b198e55e534b905de4b9c"
+    },
     "registration_sha256": "5a3ad2cbd7335a7cb3201820841d76b54b778706b878fcd159bcb049fa7fbca7",
     "results_document": "docs/optimization_v0_31/RESULTS.md",
     "run_root": "local/runs/optimization-v0.31-oob-occurrence-pooling-r3",
