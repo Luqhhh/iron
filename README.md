@@ -1,6 +1,6 @@
 # bf-tap-predict
 
-当前最高 test_a 用户回传为 **V28I = 83.2936**；同轮 V28T 为 **83.2604**。A 晋级、B 关闭，V26A 的 83.2828 保留回退。两次成绩均为用户回传，未独立登录平台核验；最后测试的是较低的 B，账号当前有效条目仍未知。
+当前最高 test_a 用户回传为 **V29T = 83.3141**；同轮 V29I 为 **83.2970**，两者均超过父 V28I=83.2936，B 晋级。成绩均为用户回传，未独立登录平台核验；账号当前有效条目仍单独标为未知。
 
 2026-09-13 的 V11_V6I_IRON_QRF_MEAN_TIME 历史回传为 **83.1806**，比 V10 低 0.0145 分；该均值探针已关闭，本地 ZIP 与反馈身份保留。[独立 V11 反馈](local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
@@ -12,7 +12,7 @@ v0.15 / OPT-32–33 已完成固定 QRF 时长分支：G0 通过，G1 失败、�
 
 ## 当前状态
 
-**optimization-v0.29** 已完成冻结森林的双 OOB 叶响应实验，等待两次显式平台测试。14 份附件全部由已认证模型的 `estimators_samples_` 派生，新增模型/树、预处理器和校准拟合均为 0；原 full-leaf 输出精确复现，独立冷审计与两份 335 行 ZIP 回读通过。A/B 相对 V28I 的 H1/J ΔE 为 +0.00021632/-0.00009172 和 +0.00066117/+0.00025018；已消费历史风险如实保留，不作为取消预登记平台名额的门槛。根 Python 3.12.12 为 475 passed，独立 worker 68 passed；未上传、未写桌面、未公开推送。[v0.29 结果](docs/optimization_v0_29/RESULTS.md)
+**optimization-v0.29** 已完成冻结森林的双 OOB 叶响应实验。14 份附件全部由已认证模型的 `estimators_samples_` 派生，新增模型/树、预处理器和校准拟合均为 0；原 full-leaf 输出精确复现，独立冷审计与两份 335 行 ZIP 回读通过。A/B 相对 V28I 的 H1/J ΔE 为 +0.00021632/-0.00009172 和 +0.00066117/+0.00025018；平台用户回传分别为 83.2970/83.3141，预算 2/2，B 晋级为当前最高。根 Python 3.12.12 为 475 passed，独立 worker 68 passed。[v0.29 结果](docs/optimization_v0_29/RESULTS.md)
 
 **optimization-v0.28** 已完成两个固定 50/50 端点集成：A 平均 V26A/V27I 铁量并冻结 V26A 时长，B 平均 V26A/V21 时长并冻结 V26A 铁量。新增模型、树、预处理器、校准和权重拟合均为 0；根 Python 3.12.12 为 465 passed，独立 worker 48 passed，21 组源端点冷恢复及组合不变性检查通过。A 相对父方案的 H1/J ΔE 为 -0.00038062/+0.00025969；B 为 -0.00039447/-0.00020140，但 B 的 J 仍比 V21 高 +0.00012171。平台用户回传 A/B 为 83.2936/83.2604，预算 2/2；保留 A 为当前最高完整原包。[v0.28 结果](docs/optimization_v0_28/RESULTS.md)
 
@@ -60,7 +60,7 @@ V8 独立用户实验曾完成 1 forest＋1 preprocessor；后续 V6I/V6T/D1、V
 
 | 阶段 | 结果 | 决策 |
 | --- | --- | --- |
-| [v0.29](docs/optimization_v0_29/RESULTS.md) | 0 fit；14 份 OOB 叶响应附件；A/B 相对 V28I 的 ΔJ -0.00009172/+0.00025018；双包冷审计通过 | G0 PASS；两份包已在反馈前冻结，等待 A→B 各一次显式平台测试；不自动上传、写桌面或推送 |
+| [v0.29](docs/optimization_v0_29/RESULTS.md) | 0 fit；14 份 OOB 叶响应附件；A/B 相对 V28I 的 ΔJ -0.00009172/+0.00025018；平台回传 83.2970/83.3141 | G0 PASS；预算 2/2，B 晋级为当前最高；历史离线排序不回写 |
 | [v0.28](docs/optimization_v0_28/RESULTS.md) | 0 fit；A 为 V26A/V27I 铁量等权，B 为 V26A/V21 时长等权；A/B 相对父方案 ΔJ +0.00025969/-0.00020140；平台回传 83.2936/83.2604 | G0 PASS；预算 2/2，A 晋级为当前最高，B 关闭；不追加权重、路由或第三包 |
 | [v0.27](docs/optimization_v0_27/RESULTS.md) | 7 个铁量 absolute-error QRF；冻结 V26A 森林的叶内 recency60；平台回传 83.2480/83.2710 | 两项均低于 V26A=83.2828 并关闭；保留 V26A |
 | [v0.26](docs/optimization_v0_26/RESULTS.md) | absolute-error RF QRF 与 ExtraTrees QRF；平台回传 83.2828/83.0240 | A 晋级为当前最高用户回传，B 关闭 |
