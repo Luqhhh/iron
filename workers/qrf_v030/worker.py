@@ -386,11 +386,14 @@ def adopt_fit(root: Path, slot: int, source_folder: Path):
     if sha(source / "forest.joblib") != source_bundle["forest_sha256"]:
         raise ValueError("adopted append forest identity differs")
     source_sources = source_bundle["worker_sources"]
+    allowed_source_drift = {"adapter", "append_forest"}
     for name, item in source_identity().items():
-        if name == "adapter":
+        if name in allowed_source_drift:
             continue
         if source_sources.get(name, {}).get("sha256") != item["sha256"]:
             raise ValueError("adopted fit changed a registered training dependency")
+    if source_bundle["environment"] != environment():
+        raise ValueError("adopted fit environment differs")
     model = joblib.load(source / "forest.joblib")
     require_1024_identity(model)
     certificate = {**source_bundle["certificate"], "parent_candidate_id": PARENT_CANDIDATE_ID}
@@ -459,6 +462,11 @@ def adopt_fit(root: Path, slot: int, source_folder: Path):
             "source_model_bytes": source_bundle.get("model_bytes"),
             "adapter_sha256_at_fit": source_sources.get("adapter", {}).get("sha256"),
             "training_math_sources_identical": True,
+            "source_drift": {
+                name: {"at_fit": source_sources.get(name, {}).get("sha256"), "current": current["sha256"]}
+                for name, current in source_identity().items()
+                if name in allowed_source_drift and source_sources.get(name, {}).get("sha256") != current["sha256"]
+            },
         },
         "model_bytes": (folder / "forest.joblib").stat().st_size,
         "peak_memory_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
