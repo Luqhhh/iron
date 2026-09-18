@@ -1489,7 +1489,7 @@
     "latest_experiment_commit": "1fcbf88",
     "latest_local_experiment_head": "33defda",
     "latest_local_experiment_changes_uncommitted": false,
-    "latest_experiment_branch_pushed": false,
+    "latest_experiment_branch_pushed": true,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
     "user_reported_test_a_score": 83.0319,
@@ -1563,7 +1563,7 @@
       "queried_at": "2026-09-12T11:52:07.292886+00:00",
       "branch_pushed": true
     },
-    "latest_pushed_commit": "79ec9cdb8540be6a9ab12d3f5c4045fde89c1ff4",
+    "latest_pushed_commit": "e8d64154bc4ae424cf90f6bad40062ff645fcfac",
     "V1_desktop_copy_status": "NOT_FOUND_IN_CHECKED_PATHS",
     "V1_desktop_copy_document": "docs/optimization_v0_13/DESKTOP_COPY_STATUS.md",
     "latest_user_reported_test_a_candidate": "V30A_OOB_BOTH_TARGETS",
@@ -3300,6 +3300,16 @@
     "offline_platform_ordering_note": "Offline B was marginally better than A on J (-0.00004136); the platform reports B 0.0521 below A, so the fixed 1024-tree growth is not confirmed by the platform.",
     "highest_user_reported_after_feedback": {"candidate": "V30A_OOB_BOTH_TARGETS", "score": 83.3175},
     "retained_backup": {"candidate": "V29T_OOB_LEAF_QRF_TIME", "score": 83.3141},
+    "branch_pushed": true,
+    "publication": {
+      "authorization": "USER_EXPLICIT_SUBMIT_AND_PUSH_20260918",
+      "remote": "origin",
+      "branch": "optimization-v0.30-oob-compose-and-time-growth",
+      "first_pushed_head": "e8d64154bc4ae424cf90f6bad40062ff645fcfac",
+      "receipt": "local/runs/optimization-v0.30-oob-compose-and-time-growth-r6/publication_receipt.json",
+      "private_local_artifacts_pushed": false,
+      "public_pushes": 1
+    },
     "third_candidate_generated": false,
     "cold_validation": "PASS_APPENDED_FOREST_AND_ATTACHMENT_REDERIVATION_PREFIX_BOOTSTRAP_PARTITION_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD_ZERO_FIT",
     "locked_tests": {
