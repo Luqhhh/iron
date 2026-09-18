@@ -1517,7 +1517,7 @@
       "median_statistics": 16,
       "iron_model": 0
     },
-    "desktop_candidate": "V29_A_AND_B_DESKTOP_DELIVERED_PLATFORM_B_PROMOTED",
+    "desktop_candidate": "V30_A_AND_B_DESKTOP_DELIVERED_PLATFORM_SLOTS_PENDING",
     "documentation_index": "docs/INDEX.md",
     "historical_fields_notice": "Other root baseline fields and version entries preserve stage-time evidence; current_status and current_release_config define the current overview.",
     "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
@@ -1537,8 +1537,8 @@
       "conclusion": "success",
       "maintenance_document": "docs/optimization_v0_13/MAINTENANCE_20260912.md"
     },
-    "desktop_copy_status": "V29_A_B_PRESENT_PLATFORM_B_PROMOTED",
-    "desktop_copy_document": "local/runs/optimization-v0.29-oob-leaf-responses-r1/desktop_delivery_receipt.json",
+    "desktop_copy_status": "V30_A_B_PRESENT_PLATFORM_SLOTS_PENDING",
+    "desktop_copy_document": "local/runs/optimization-v0.30-oob-compose-and-time-growth-r6/desktop_delivery_receipt.json",
     "v13_remote_observation": {
       "branch_pushed": true,
       "commit": "2db6d5faae9c8568e01f5d75d145c17fc8404fb8",
