@@ -27,6 +27,7 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
+| v0.31 | [两个目标隔离的 OOB 叶响应汇总实验](optimization_v0_31/RESULTS.md) | 0 fit；14 份 v0.29 OOB 附件复用；整数 occurrence 质量池化；G0 PASS；A/B 相对 V30A 的 J Δ 为 +0.00002701/-0.00008593，均未超过 V1；两包冻结，平台 A→B 各一次待用户显式执行、agent 上传 0 |
 | v0.30 | [双目标 OOB 收益组合与时长森林固定扩容](optimization_v0_30/RESULTS.md) | G0 PASS；7 次追加 fit/5,376 棵新树（2 个已完成拟合显式恢复、0 re-fit）；A 列组合恒等式残差 ≤5.55e-17；平台用户回传 A=83.3175（晋级，与加性推算一致）、B=83.2654（关闭），预算 2/2、agent 上传 0 |
 | v0.29 | [冻结森林 OOB 叶响应双实验](optimization_v0_29/RESULTS.md) | 0 fit；14 份 OOB 附件；G0 PASS；平台回传 A/B=83.2970/83.3141，预算 2/2，B 晋级为当前最高；离线排序不回写 |
 | v0.28 | [固定等权、双目标隔离集成](optimization_v0_28/RESULTS.md) | 0 fit；A 平均 V26A/V27I 铁量，B 平均 V26A/V21 时长；G0 PASS，平台回传 83.2936/83.2604，预算 2/2，A 晋级、B 关闭 |
