@@ -1487,7 +1487,7 @@
     "as_of": "2026-09-18",
     "latest_completed_phase": "optimization-v0.30",
     "latest_experiment_commit": "1fcbf88",
-    "latest_local_experiment_head": "4bf3709",
+    "latest_local_experiment_head": "33defda",
     "latest_local_experiment_changes_uncommitted": false,
     "latest_experiment_branch_pushed": false,
     "active_candidate": "V1_RATE_STRUCTURAL",
