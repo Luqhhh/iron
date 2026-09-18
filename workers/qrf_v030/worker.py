@@ -180,8 +180,9 @@ def _restore_parent(slot):
     return folder, model, preprocessor, metadata
 
 
-def _features(root, slot, kind):
-    path = root / "features" / str(slot) / f"{kind}.npz"
+def _features(slot, kind):
+    """Read the certified V26A cutoff payloads that the parent forest was fit on."""
+    path = V26 / "features" / str(slot) / f"{kind}.npz"
     info = json.loads(Path(str(path) + ".json").read_text(encoding="utf-8"))
     if sha(path) != info["sha256"]:
         raise ValueError("v0.30 worker input identity changed")
@@ -282,7 +283,7 @@ def append_fit(root: Path, slot: int):
     if len(list((root / "models" / "B").glob("*/append_intent.json"))) >= MAX_APPEND_FITS:
         raise ValueError("seven-fit v0.30 warm-start append budget exhausted")
     folder.mkdir(parents=True, exist_ok=False)
-    arrays, info = _features(root, slot, "train")
+    arrays, info = _features(slot, "train")
     response = _training_boundary(arrays, info, ("ids", "numeric", "spout", "reference_ns", "available_ns", "y", "training_months"))
     parent_folder, parent, preprocessor, _ = _restore_parent(slot)
     if parent.ids != arrays["ids"].tolist() or not np.array_equal(parent.y, response):
@@ -467,7 +468,7 @@ def derive_predict(root: Path, slot: int, output: Path, cold: bool):
         start = time.perf_counter()
         model, bundle, folder = _restore_appended(root, slot)
         load_seconds = time.perf_counter() - start
-        train, train_info = _features(root, slot, "train")
+        train, train_info = _features(slot, "train")
         _training_boundary(train, train_info, ("ids", "numeric", "spout", "reference_ns", "available_ns", "y", "training_months"))
         preprocessor, _ = V26_ADAPTER.original_preprocessor(train_info, train, require_training_ids=True)
         train_x, train_diagnostic = _transform(preprocessor, train, train_info, True)
@@ -504,7 +505,7 @@ def derive_predict(root: Path, slot: int, output: Path, cold: bool):
         attachment_seconds = time.perf_counter() - start
         _, v29_arrays, v29_metadata, v29_prediction_path, v29_saved = _v29_evidence(slot)
         prefix = assert_prefix_equal(arrays, v29_arrays, PARENT_TREES, label="v0.30/v0.29 time attachment")
-        evaluation, evaluation_info = _features(root, slot, "evaluation")
+        evaluation, evaluation_info = _features(slot, "evaluation")
         if (evaluation["reference_ns"] < evaluation_info["cutoff_ns"]).any():
             raise ValueError("v0.30 evaluation payload precedes the registered cutoff")
         eval_x, eval_diagnostic = _transform(preprocessor, evaluation, evaluation_info, False)
@@ -600,7 +601,7 @@ def audit(root: Path, slot: int):
         raise ValueError("unregistered v0.30 audit slot")
     with zero_fit() as counter:
         parent_folder, parent, preprocessor, parent_metadata = _restore_parent(slot)
-        train, train_info = _features(root, slot, "train")
+        train, train_info = _features(slot, "train")
         response = _training_boundary(train, train_info, ("ids", "numeric", "spout", "reference_ns", "available_ns", "y", "training_months"))
         train_x, _ = _transform(preprocessor, train, train_info, True)
         identity = ordered_training_identity(train["ids"], train_x, response)
@@ -609,7 +610,7 @@ def audit(root: Path, slot: int):
         arrays, certificate = derive_attachment(parent, train_x)
         _, v29_arrays, v29_metadata, v29_prediction_path, v29_saved = _v29_evidence(slot)
         prefix = assert_prefix_equal(arrays, v29_arrays, PARENT_TREES, label="P0 v0.26A/v0.29 time attachment")
-        evaluation, evaluation_info = _features(root, slot, "evaluation")
+        evaluation, evaluation_info = _features(slot, "evaluation")
         eval_x, _ = _transform(preprocessor, evaluation, evaluation_info, False)
         full_median, full_mean, _ = predict(parent, eval_x, full_leaf_arrays(parent), parent.training_months)
         v26_prediction = V26 / "worker_predictions" / "A" / f"{slot}.npz"
