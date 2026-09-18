@@ -294,16 +294,24 @@ def _edge_identity_checks(slot: int):
         raise ContractError("V26A complete time endpoint differs from V28I")
     if parent.pred_tap_time_len.tolist() != v29t.pred_tap_time_len.tolist():
         raise ContractError("V30A parent time strings differ from V29T")
-    expected_iron = [equal_blend_six(complete, pooled) for complete, pooled in zip(v26a.pred_tap_iron, v29i.pred_tap_iron, strict=True)]
-    if expected_iron != parent.pred_tap_iron.tolist():
-        raise ContractError("V30A parent iron strings are not mean6(V26A complete, V29I)")
+    if parent.pred_tap_iron.tolist() != v29i.pred_tap_iron.tolist():
+        raise ContractError("V30A parent iron strings differ from V29I")
+    legacy_path = V29 / "worker_predictions" / "A" / f"{slot}.npz"
+    with np.load(legacy_path, allow_pickle=False) as source:
+        legacy_iron = source["median"]
+        if source["ids"].tolist() != parent.sample_id.tolist():
+            raise ContractError("v0.29 legacy iron prediction IDs differ")
+    recomposed = compose_iron_candidate(parent, v26a, legacy_iron)
+    if not recomposed.equals(parent):
+        raise ContractError("V30A parent is not reproduced by V26A + certified old-equal-tree pooled iron")
     return {
         "sample_ids_exact": True,
         "v29i_time_equals_v28i": True,
         "v29t_iron_equals_v28i": True,
         "v26a_time_equals_v28i": True,
         "parent_time_equals_v29t": True,
-        "parent_iron_recomposition_exact": True,
+        "parent_iron_equals_v29i": True,
+        "parent_iron_recomposition_from_v26a_and_certified_legacy_pool_exact": True,
     }
 
 
