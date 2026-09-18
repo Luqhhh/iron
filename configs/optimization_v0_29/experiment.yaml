@@ -1,0 +1,73 @@
+schema_version: 1
+phase: optimization-v0.29-oob-leaf-responses
+branch: optimization-v0.29-oob-leaf-responses
+base_commit: 00acbdfb44837f9280c5a233a5c5f7d394fcc070
+candidates:
+  A: V29I_OOB_LEAF_QRF_BLEND
+  B: V29T_OOB_LEAF_QRF_TIME
+parent: V28I_PARENT
+references: [V1, V21_REPLAY, V26A_PARENT, V28I_PARENT]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+test_a_rows: 335
+protocol: QRF_FROZEN_FOREST_OOB_LEAF_RESPONSE_v029
+leaf_response:
+  bootstrap_source: restored_estimator.estimators_samples_
+  selected: unique_original_rows_not_drawn_by_tree
+  empty_oob_leaf_fallback: full_same_leaf
+  minimum_oob_members: 1
+  tree_mass: equal_1_over_256
+  member_mass: equal_inside_selected_leaf
+  output: lower_weighted_median
+candidate_A:
+  target: tap_iron
+  source_forest: V27I_ABS_QRF_DIRECT_IRON
+  left_endpoint: V26A_COMPLETE_IRON
+  right_endpoint: OOB_LEAF_IRON_QRF
+  weight_left: 0.5
+  weight_right: 0.5
+  unchanged_target: exact_V28I_time_csv_string
+candidate_B:
+  target: tap_time_len
+  source_forest: V26A_QRF_ABSOLUTE_SPLIT_TIME
+  gate_source: recomputed_v015_effective_neighbors
+  gate: spout_1_and_effective_neighbors_lt_500
+  shrinkage: 0.25
+  anchor: original_V21_query_time_moving_60d_median
+  unchanged_target: exact_V28I_iron_csv_string
+serialization:
+  endpoint_decimals: 6
+  A_arithmetic: integer_micro_units_half_even
+  B_order: qrf_roundtrip_then_original_gate_then_roundtrip
+  output_decimals: 6
+  labels_rounded: false
+budget:
+  forest_or_tree_fits: 0
+  other_model_fits: 0
+  preprocessor_fits: 0
+  calibration_fits: 0
+  oob_attachments_A: 7
+  oob_attachments_B: 7
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+bootstrap: {repetitions: 1000, seed: 2026, unit: calendar_week, invalid_draws_replaced: false}
+aggregation:
+  primary: macro_origin_mean_wmape
+  diagnostic: exposure_pooled_wmape
+  tolerance: 1.0e-12
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+source_identities:
+  v28i_result_sha256: d97f13746eeaf7f00c916c52371234a9e9537f02d3b7ebec9407435bfb71b56d
+  v28i_zip_sha256: f56db20cf96ba16d0238f3f4cb338fe818d8021326e2d439d011f699f73c9ca7
+  v26a_result_sha256: 9b42d41778fa23dfb07e825ae2ad44461e4d9886c11ea08e23a2dc553428cbad
+  v21_result_sha256: d5a2e118655107af39a76b99f3f1d053cc9469885d859113ba6f18ef20b9cece
+parent_user_reported_score: 83.2936
+source_runs:
+  v28: local/runs/optimization-v0.28-fixed-equal-blends-r3
+  v27: local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1
+  v26: local/runs/optimization-v0.26-qrf-partition-tests-r1
+  v22_scoring: local/runs/optimization-v0.22-causal-h2-r8
+  v23_v21_recovery: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
