@@ -80,3 +80,5 @@ r1 在冷审计阶段错误地假设旧 worker 会额外保存 cold NPZ；实际
 锁定 Python 3.12.12 根环境为 **465 passed**，JUnit SHA-256 为 `e72767b4c1ef249494451953461c38b8d859dc788292ca1e6c59ee9111853b2e`。独立 worker 合计 **48 passed**：v0.15 34、v0.25 1、v0.26 5、v0.27 8；四份 JUnit SHA-256 为 `9d782f2920a4192dac54d49c8b7fd70ecf7a763bf90db4e03cb69fa4dde7eac1`、`b77730740672d80d41251601a5df98c5e4db87f7eaffd1a2e69a9cb6de212989`、`c72fc7f1951b563ef9a3b2a3ce031f11fddf32a8fd39df418556248a51d0e40e`、`c3cb5e7c60fd072ad0660e8e1f0c41a70c3ea755babd21c604b7985943951af6`。
 
 r3 manifest SHA-256 为 `3a979cb5b5310d15f4df8adbe43af7935e3d9f573ada48cb041dba83d7d23430`，completion 为 `f1e47fd0263fcb94ae3117ca3441d428afee0941e4ab11d07430c4bab53cc7c6`，冷审计为 `7a2b157beacd4923c7ff2b33ffab8a520bae0ca973969ba584ec6587d524ccdf`。private 端点、逐样本预测、账本、报告和 ZIP 均未进入 Git。
+
+用户明确授权提交与推送后，分支 `optimization-v0.28-fixed-equal-blends` 已发布到 `origin`，首次发布头为 `6b40b553921a2ac581232d050def6ad2ccc164b9`。推送前 private-artifact guard 为 PASS；private local 模型、端点、逐样本预测、账本、平台反馈文件和 ZIP 均未进入远端。

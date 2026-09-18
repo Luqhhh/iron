@@ -1489,7 +1489,7 @@
     "latest_experiment_commit": "48b0e7cebc48d4cf8c3d057b551360cdd971012c",
     "latest_local_experiment_head": "48b0e7cebc48d4cf8c3d057b551360cdd971012c",
     "latest_local_experiment_changes_uncommitted": false,
-    "latest_experiment_branch_pushed": false,
+    "latest_experiment_branch_pushed": true,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
     "user_reported_test_a_score": 83.0319,
@@ -1563,7 +1563,7 @@
       "queried_at": "2026-09-12T11:52:07.292886+00:00",
       "branch_pushed": true
     },
-    "latest_pushed_commit": "0b21de48cd09bfe17be396f4b194a999ed4a5f7a",
+    "latest_pushed_commit": "6b40b553921a2ac581232d050def6ad2ccc164b9",
     "V1_desktop_copy_status": "NOT_FOUND_IN_CHECKED_PATHS",
     "V1_desktop_copy_document": "docs/optimization_v0_13/DESKTOP_COPY_STATUS.md",
     "latest_user_reported_test_a_candidate": "V28T_L1_L2_QRF_EQUAL_BLEND",
@@ -2358,7 +2358,7 @@
       "preprocessor_completed": 6
     },
     "branch": "optimization-v0.15-qrf-time",
-    "branch_pushed": false,
+    "branch_pushed": true,
     "registration_commit": "5de6523fae022c2c96c19aadeb154014ad57e058",
     "engineering_repair_commit": "b51504655c85b43847bf8ca40161a365936182ea",
     "worker_environment": {
@@ -3069,7 +3069,14 @@
       "receipt": "local/runs/optimization-v0.28-fixed-equal-blends-r3/desktop_delivery_receipt.json",
       "receipt_sha256": "7f81627c944a464271a4c3640c46ea3e0e62af47e770c74923fe859bf88093f5"
     },
-    "public_pushes": 0,
+    "public_pushes": 2,
+    "publication": {
+      "authorization": "USER_EXPLICIT_COMMIT_AND_PUSH",
+      "remote": "origin",
+      "branch": "optimization-v0.28-fixed-equal-blends",
+      "first_pushed_head": "6b40b553921a2ac581232d050def6ad2ccc164b9",
+      "private_local_artifacts_pushed": false
+    },
     "third_candidate_generated": false,
     "cold_validation": "PASS_21_SOURCE_RECEIPTS_ZERO_FIT_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD",
     "locked_tests": {
