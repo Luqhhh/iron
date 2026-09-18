@@ -1,0 +1,93 @@
+schema_version: 1
+phase: optimization-v0.30-oob-compose-and-time-growth
+branch: optimization-v0.30-oob-compose-and-time-growth
+base_commit: 5e00f6340e5af3f4abedfc0f6365b2cb8a84a8d3
+review_point: optimization-v0.29-oob-leaf-responses
+candidates:
+  A: V30A_OOB_BOTH_TARGETS
+  B: V30B_OOB_TIME_1024
+parent: V28I_PARENT
+references: [V1, V21_REPLAY, V26A_PARENT, V28I_PARENT, V29I_OOB_LEAF_QRF_BLEND, V29T_OOB_LEAF_QRF_TIME]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+test_a_rows: 335
+protocol: QRF_OOB_COMPOSE_AND_TIME_GROWTH_v030
+appended_forest_protocol: QRF_TIME_WARM_START_APPEND_1024_v030
+oob_attachment_protocol: QRF_OOB_LEAF_APPENDED_1024_v030
+oob_core_protocol: QRF_FROZEN_FOREST_OOB_LEAF_RESPONSE_v029
+candidate_A:
+  target: both
+  iron: exact_V29I_result_iron_csv_strings
+  time: exact_V29T_result_time_csv_strings
+  no_rowwise_average: true
+  no_rescoring_of_inputs: true
+  no_regating: true
+  additivity_reference: V28I_PARENT
+candidate_B:
+  target: tap_time_len
+  source_forest: V26A_QRF_ABSOLUTE_SPLIT_TIME
+  append: deep_copy_warm_start_256_to_1024
+  parent_trees: 256
+  total_trees: 1024
+  new_trees: 768
+  oob_rule: v029_same_oob_leaf_protocol_all_1024_trees
+  gate_source: recomputed_original_v015_effective_neighbors
+  gate: spout_1_and_effective_neighbors_lt_500
+  shrinkage: 0.25
+  anchor: original_V21_query_time_moving_60d_median
+  primary_comparison: V30A_OOB_BOTH_TARGETS
+  unchanged_iron: exact_V30A_iron_csv_strings
+serialization:
+  endpoint_decimals: 6
+  A_arithmetic: exact_column_copy_no_recomputation
+  B_order: qrf_roundtrip_then_original_gate_then_roundtrip
+  output_decimals: 6
+  labels_rounded: false
+budget:
+  A_new_model_or_calibration_fits: 0
+  B_forest_append_fits_development: 6
+  B_forest_append_fits_final: 1
+  B_forest_append_fits_total: 7
+  B_new_trees_development: 4608
+  B_new_trees_final: 768
+  B_new_trees_total: 5376
+  B_reused_parent_trees_development: 1536
+  B_reused_parent_trees_final: 256
+  B_reused_parent_trees_total: 1792
+  B_models_held_trees_development: 6144
+  B_models_held_trees_final: 1024
+  B_models_held_trees_total: 7168
+  new_1024_oob_attachments_development: 6
+  new_1024_oob_attachments_final: 1
+  new_1024_oob_attachments_total: 7
+  catboost_iron_forest_rate_q_LAD_fits: 0
+  preprocessor_fits: 0
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+  recovery_uploads: 0
+  third_candidate: 0
+bootstrap: {repetitions: 1000, seed: 2026, unit: calendar_week, invalid_draws_replaced: false}
+aggregation:
+  primary: macro_origin_mean_wmape
+  diagnostic: exposure_pooled_wmape
+  tolerance: 1.0e-12
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+source_identities:
+  v29i_result_sha256: 2b5bb1284c25ba9548d7d0c91d167adee0cb34b1d658b10e778bedd35063cf6c
+  v29i_zip_sha256: 68320081ec34e8e1296ddff3ac75fdb5dfedffac5d07fff7be95bc74e1b3a581
+  v29t_result_sha256: 53bf201d6b524c10261364c530bd46a32dc794659b68cdb98a68764cc3ab3dcd
+  v29t_zip_sha256: 650765ff7b749eda2ff41c7f8c0e99a33e4171958ee79918a6e4f14e623f244b
+  v28i_result_sha256: d97f13746eeaf7f00c916c52371234a9e9537f02d3b7ebec9407435bfb71b56d
+  v28i_zip_sha256: f56db20cf96ba16d0238f3f4cb338fe818d8021326e2d439d011f699f73c9ca7
+  v26a_result_sha256: 9b42d41778fa23dfb07e825ae2ad44461e4d9886c11ea08e23a2dc553428cbad
+  v21_result_sha256: d5a2e118655107af39a76b99f3f1d053cc9469885d859113ba6f18ef20b9cece
+source_runs:
+  v29: local/runs/optimization-v0.29-oob-leaf-responses-r1
+  v28: local/runs/optimization-v0.28-fixed-equal-blends-r3
+  v27: local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1
+  v26: local/runs/optimization-v0.26-qrf-partition-tests-r1
+  v22_scoring: local/runs/optimization-v0.22-causal-h2-r8
+  v23_v21_recovery: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
