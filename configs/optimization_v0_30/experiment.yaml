@@ -91,3 +91,9 @@ source_runs:
   v26: local/runs/optimization-v0.26-qrf-partition-tests-r1
   v22_scoring: local/runs/optimization-v0.22-causal-h2-r8
   v23_v21_recovery: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
+recovery:
+  adopted_append:
+    '6': local/runs/optimization-v0.30-oob-compose-and-time-growth-r3/models/B/6
+  reason: v0_30_r3_completed_the_slot6_append_fit_before_the_adapter_certificate_key_fix
+  adopted_completed_fits: 1
+  retrained_fit_calls_for_adopted_slots: 0

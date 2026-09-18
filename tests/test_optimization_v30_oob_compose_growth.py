@@ -88,6 +88,10 @@ def test_registration_contract():
     assert budget["third_candidate"] == 0
     assert value["platform_order"] == ["A", "B"]
     assert value["platform_feedback_may_change_second_candidate"] is False
+    recovery = value["recovery"]
+    assert recovery["adopted_append"] == {"6": "local/runs/optimization-v0.30-oob-compose-and-time-growth-r3/models/B/6"}
+    assert recovery["adopted_completed_fits"] == 1
+    assert recovery["retrained_fit_calls_for_adopted_slots"] == 0
     identities = value["source_identities"]
     assert identities["v29i_result_sha256"] == "2b5bb1284c25ba9548d7d0c91d167adee0cb34b1d658b10e778bedd35063cf6c"
     assert identities["v29t_result_sha256"] == "53bf201d6b524c10261364c530bd46a32dc794659b68cdb98a68764cc3ab3dcd"

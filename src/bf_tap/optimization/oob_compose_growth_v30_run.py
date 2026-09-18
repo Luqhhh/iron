@@ -111,7 +111,18 @@ def registration():
         raise ContractError("v0.30 append size registration differs")
     if definition["shrinkage"] != 0.25 or definition["gate"] != "spout_1_and_effective_neighbors_lt_500":
         raise ContractError("v0.30 time post-processing registration differs")
+    recovery = value.get("recovery", {})
+    adopted = {int(slot): Path(path) for slot, path in recovery.get("adopted_append", {}).items()}
+    if set(adopted) - set(SLOTS):
+        raise ContractError("v0.30 adopted append slot is not registered")
+    if recovery and (recovery.get("retrained_fit_calls_for_adopted_slots") != 0):
+        raise ContractError("v0.30 adopted slots must not be retrained")
     return value
+
+
+def _adopted_slots(config=None):
+    value = registration() if config is None else config
+    return {int(slot): Path(path) for slot, path in value.get("recovery", {}).get("adopted_append", {}).items()}
 
 
 def _source_files():
@@ -225,6 +236,14 @@ def register(root: Path):
     missing = [name for name, path in evidence.items() if not Path(path).is_file()]
     if missing:
         raise ContractError(f"missing registered v0.30 evidence: {missing}")
+    adoption_sources = {}
+    for slot, source in _adopted_slots(config).items():
+        for name in ("bundle.json", "forest.joblib"):
+            if not (source / name).is_file():
+                raise ContractError(f"missing adopted append source for slot {slot}: {name}")
+        adoption_sources[str(slot)] = file_identities({
+            "bundle": source / "bundle.json", "forest": source / "forest.joblib",
+        })
     worker_environment = json.loads(_worker(V30_WORKER, "environment"))
     worker_sources = json.loads(_worker(V30_WORKER, "identity"))
     append_registration = json.loads(_worker(V30_WORKER, "registration"))
@@ -242,6 +261,7 @@ def register(root: Path):
         "oob_core_protocol": config["oob_core_protocol"],
         "candidate_targets": {"B": {"target": "tap_time_len", "unit": "minutes", "source": V26_SOURCE_ID}},
         "source_runs": {"v26": str(V26.resolve()), "v29": str(V29.resolve())},
+        "adoption_sources": adoption_sources,
         "registry_search": registry, "holdout_consumed": True, "test_targets_read": False,
         "new_append_fit_budget": 7, "platform_feedback_may_change_second_candidate": False,
     }
@@ -314,8 +334,12 @@ def _compose_slot(root: Path, slot: int, *, derive: bool):
     raw_output = root / "worker_predictions" / "B" / f"{slot}.npz"
     regression_output = root / "worker_predictions" / "regression_256" / f"{slot}.npz"
     if derive:
-        if not (root / "models" / "B" / str(slot) / "fit_record.json").is_file():
-            _worker(V30_WORKER, "append-fit", "--root", root.resolve(), "--slot", slot)
+        if not (root / "models" / "B" / str(slot) / "bundle.json").is_file():
+            adopted = _adopted_slots()
+            if slot in adopted:
+                _worker(V30_WORKER, "adopt-fit", "--root", root.resolve(), "--slot", slot, "--source", adopted[slot].resolve())
+            else:
+                _worker(V30_WORKER, "append-fit", "--root", root.resolve(), "--slot", slot)
         _worker(V30_WORKER, "derive-predict", "--root", root.resolve(), "--slot", slot, "--output", raw_output.resolve())
     with np.load(raw_output, allow_pickle=False) as source:
         if source["ids"].tolist() != a.sample_id.tolist():
@@ -360,6 +384,8 @@ def develop(root: Path):
     ledger = json.loads(_worker(V30_WORKER, "fit-ledger", "--root", root.resolve()))
     if ledger["fit_completed"] != 6 or ledger["new_trees_completed"] != 4608 or ledger["slots"] != list(ORIGINS):
         raise ContractError("v0.30 development append-fit ledger differs from the registration")
+    if ledger["adopted_fits"] != sorted(_adopted_slots()) or ledger["trained_fits"] != 6 - len(_adopted_slots()):
+        raise ContractError("v0.30 development adoption ledger differs from the registration")
     attachment_files = {
         f"B_{slot}": root / "oob_attachments" / "B" / f"{slot}.npz" for slot in ORIGINS
     }
@@ -543,6 +569,8 @@ def finalize(root: Path):
     ledger = json.loads(_worker(V30_WORKER, "fit-ledger", "--root", root.resolve()))
     if ledger["fit_completed"] != 7 or ledger["new_trees_completed"] != 5376 or ledger["reused_parent_trees"] != 1792:
         raise ContractError("v0.30 final append-fit ledger differs from the registration")
+    if ledger["adopted_fits"] != sorted(_adopted_slots()) or ledger["trained_fits"] != 7 - len(_adopted_slots()):
+        raise ContractError("v0.30 final adoption ledger differs from the registration")
     receipts = {}
     for key, candidate in CANDIDATES.items():
         prediction = validate_endpoint(
@@ -635,7 +663,9 @@ def cold(root: Path):
     fit_counts = {
         "new_base_model_attempted": 0, "new_base_model_completed": 0,
         "warm_start_append_fit_attempted": ledger["fit_attempted"], "warm_start_append_fit_completed": ledger["fit_completed"],
+        "warm_start_append_fit_trained_here": ledger["trained_fits"], "warm_start_append_fit_adopted": ledger["adopted_fits"],
         "new_trees_attempted": ledger["new_trees_attempted"], "new_trees_completed": ledger["new_trees_completed"],
+        "new_trees_trained_here": ledger["new_trees_trained_here"], "new_trees_adopted": ledger["new_trees_adopted"],
         "reused_parent_trees": ledger["reused_parent_trees"], "trees_held_total": ledger["trees_held"],
         "new_preprocessor_attempted": 0, "new_preprocessor_completed": 0,
         "new_calibration_attempted": 0, "new_calibration_completed": 0,

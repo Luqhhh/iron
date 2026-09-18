@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from copy import deepcopy
+import json
 from pathlib import Path
 import sys
 
@@ -144,3 +145,31 @@ def test_append_requires_deep_copy_parent(toy):
     assert all(left is not right for left, right in zip(parent.estimators_, forest.estimators_))
     snapshot = deepcopy(parent)
     assert forest_state_sha256(snapshot) == forest_state_sha256(parent)
+
+
+def test_fit_ledger_counts_adopted_and_trained_fits(tmp_path):
+    import importlib.util
+
+    spec = importlib.util.spec_from_file_location("qrf_v030_worker_ledger_test", HERE / "worker.py")
+    module = importlib.util.module_from_spec(spec)
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    fit_ledger = module.fit_ledger
+
+    for slot in ("6",):
+        folder = tmp_path / "models" / "B" / slot
+        folder.mkdir(parents=True)
+        (folder / "adoption_receipt.json").write_text(json.dumps({"new_trees": 768}), encoding="utf-8")
+    trained = tmp_path / "models" / "B" / "7"
+    trained.mkdir(parents=True)
+    (trained / "append_intent.json").write_text(json.dumps({"new_trees": 768}), encoding="utf-8")
+    (trained / "fit_record.json").write_text(json.dumps({"new_trees": 768}), encoding="utf-8")
+    ledger = fit_ledger(tmp_path)
+    assert ledger["fit_attempted"] == 2
+    assert ledger["fit_completed"] == 2
+    assert ledger["trained_fits"] == 1
+    assert ledger["adopted_fits"] == [6]
+    assert ledger["new_trees_completed"] == 1536
+    assert ledger["new_trees_trained_here"] == 768
+    assert ledger["new_trees_adopted"] == 768
+    assert ledger["slots"] == [6, 7]

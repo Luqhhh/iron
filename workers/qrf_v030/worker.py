@@ -259,16 +259,22 @@ def zero_fit():
 def fit_ledger(root: Path):
     intents = sorted((root / "models" / "B").glob("*/append_intent.json"))
     records = sorted((root / "models" / "B").glob("*/fit_record.json"))
+    adoptions = sorted((root / "models" / "B").glob("*/adoption_receipt.json"))
     attempted_trees = sum(json.loads(path.read_text(encoding="utf-8"))["new_trees"] for path in intents)
     completed_trees = sum(json.loads(path.read_text(encoding="utf-8"))["new_trees"] for path in records)
+    adopted_trees = sum(json.loads(path.read_text(encoding="utf-8"))["new_trees"] for path in adoptions)
     return {
-        "fit_attempted": len(intents),
-        "fit_completed": len(records),
-        "new_trees_attempted": attempted_trees,
-        "new_trees_completed": completed_trees,
-        "reused_parent_trees": PARENT_TREES * len(records),
-        "trees_held": TOTAL_TREES * len(records),
-        "slots": sorted(int(path.parent.name) for path in records),
+        "fit_attempted": len(intents) + len(adoptions),
+        "fit_completed": len(records) + len(adoptions),
+        "trained_fits": len(records),
+        "adopted_fits": sorted(int(path.parent.name) for path in adoptions),
+        "new_trees_attempted": attempted_trees + adopted_trees,
+        "new_trees_completed": completed_trees + adopted_trees,
+        "new_trees_trained_here": completed_trees,
+        "new_trees_adopted": adopted_trees,
+        "reused_parent_trees": PARENT_TREES * (len(records) + len(adoptions)),
+        "trees_held": TOTAL_TREES * (len(records) + len(adoptions)),
+        "slots": sorted(int(path.parent.name) for path in records + adoptions),
         "budget": {"development": 6, "final": 1, "total": MAX_APPEND_FITS},
     }
 
@@ -360,6 +366,113 @@ def append_fit(root: Path, slot: int):
         "total_trees": TOTAL_TREES,
         "append_seconds": append_seconds,
         "peak_memory_kib": bundle["peak_memory_kib"],
+    })
+
+
+def adopt_fit(root: Path, slot: int, source_folder: Path):
+    """Adopt one completed append fit from a preserved attempt without a new fit."""
+    _registered(root)
+    if slot not in SLOTS:
+        raise ValueError("unregistered v0.30 adoption slot")
+    folder = root / "models" / "B" / str(slot)
+    if folder.exists():
+        raise ValueError("never overwrite a v0.30 adoption slot")
+    source = Path(source_folder)
+    source_bundle = json.loads((source / "bundle.json").read_text(encoding="utf-8"))
+    if source_bundle["protocol"] != PROTOCOL or source_bundle["new_trees"] != NEW_TREES:
+        raise ValueError("adopted append protocol/tree count differs")
+    if source_bundle["parameters"] != APPENDED_PARAMETERS:
+        raise ValueError("adopted append parameters differ")
+    if sha(source / "forest.joblib") != source_bundle["forest_sha256"]:
+        raise ValueError("adopted append forest identity differs")
+    source_sources = source_bundle["worker_sources"]
+    for name, item in source_identity().items():
+        if name == "adapter":
+            continue
+        if source_sources.get(name, {}).get("sha256") != item["sha256"]:
+            raise ValueError("adopted fit changed a registered training dependency")
+    model = joblib.load(source / "forest.joblib")
+    require_1024_identity(model)
+    certificate = {**source_bundle["certificate"], "parent_candidate_id": PARENT_CANDIDATE_ID}
+    states = forest_state_sha256(model.forest)
+    if states != certificate["tree_state_sha256"] or states[:PARENT_TREES] != certificate["prefix"]["prefix_tree_state_sha256"]:
+        raise ValueError("adopted append tree states differ")
+    if bootstrap_sha256(bootstrap_draws(model.forest)) != certificate["bootstrap_sha256"]:
+        raise ValueError("adopted append bootstrap differs")
+    parent_folder, parent_model, preprocessor, _ = _restore_parent(slot)
+    train, info = _features(slot, "train")
+    response = _training_boundary(train, info, ("ids", "numeric", "spout", "reference_ns", "available_ns", "y", "training_months"))
+    train_x, diagnostic = _transform(preprocessor, train, info, True)
+    identity = ordered_training_identity(train["ids"], train_x, response)
+    if identity != source_bundle["training_identity"]:
+        raise ValueError("adopted append training identity differs")
+    if model.ids != train["ids"].tolist() or not np.array_equal(model.y, response):
+        raise ValueError("adopted append response identity differs")
+    parent_certificate = append_module.validate_parent(parent_model.forest, train["ids"], train_x, response)
+    partition = partition_sha256(model.forest, train_x)
+    if partition[:PARENT_TREES] != parent_certificate["partition_sha256"]:
+        raise ValueError("adopted append changed the certified parent full-leaf mapping")
+    if partition != source_bundle["full_leaf_partition_sha256"]:
+        raise ValueError("adopted append full-leaf partition differs")
+    leaves = full_leaf_mapping(model.forest, train_x)
+    if len(leaves) != TOTAL_TREES:
+        raise ValueError("adopted append full-leaf mapping count differs")
+    adopted = AppendedTimeForest(model.forest, model.ids, model.y, model.training_months, leaves, certificate)
+    folder.mkdir(parents=True, exist_ok=False)
+    joblib.dump(adopted, folder / "forest.joblib", compress=3)
+    bundle = {
+        "slot": slot,
+        "candidate": "B",
+        "protocol": PROTOCOL,
+        "parent_candidate_id": PARENT_CANDIDATE_ID,
+        "parent_protocol": PARENT_PROTOCOL,
+        "target": TARGET,
+        "unit": UNIT,
+        "parameters": APPENDED_PARAMETERS,
+        "parent_trees": PARENT_TREES,
+        "total_trees": TOTAL_TREES,
+        "new_trees": NEW_TREES,
+        "parent_folder": str(parent_folder.relative_to(REPOSITORY)),
+        "parent_bundle_sha256": _completion(slot),
+        "parent_forest_sha256": sha(parent_folder / "forest.joblib"),
+        "append_registration": registration(),
+        "worker_sources": source_identity(),
+        "environment": environment(),
+        "manifest_sha256": sha(root / "manifest.json"),
+        "input": info,
+        "input_sha256": info["sha256"],
+        "training_identity": identity,
+        "training_transform_diagnostic": diagnostic,
+        "forest_sha256": sha(folder / "forest.joblib"),
+        "certificate": certificate,
+        "full_leaf_partition_sha256": partition,
+        "support": adopted.prediction_support(),
+        "new_tree_random_states": certificate["new_tree_random_states"],
+        "fit_calls": 0,
+        "adopted_completed_fits": 1,
+        "adopted_from": {
+            "folder": str(source.resolve()),
+            "bundle_sha256": sha(source / "bundle.json"),
+            "forest_sha256": source_bundle["forest_sha256"],
+            "source_worker_sources": source_sources,
+            "source_append_seconds": source_bundle.get("append_seconds"),
+            "source_model_bytes": source_bundle.get("model_bytes"),
+            "adapter_sha256_at_fit": source_sources.get("adapter", {}).get("sha256"),
+            "training_math_sources_identical": True,
+        },
+        "model_bytes": (folder / "forest.joblib").stat().st_size,
+        "peak_memory_kib": resource.getrusage(resource.RUSAGE_SELF).ru_maxrss,
+    }
+    write(folder / "bundle.json", bundle)
+    write(folder / "adoption_receipt.json", {
+        "status": "ADOPTED_COMPLETED_APPEND_FIT_ZERO_NEW_FITS",
+        "slot": slot,
+        "protocol": PROTOCOL,
+        "new_trees": NEW_TREES,
+        "fit_calls": 0,
+        "adopted_bundle_sha256": sha(folder / "bundle.json"),
+        "adopted_forest_sha256": bundle["forest_sha256"],
+        "adopted_from": bundle["adopted_from"],
     })
 
 
@@ -647,11 +760,12 @@ def audit(root: Path, slot: int):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("command", choices=(
-        "environment", "identity", "registration", "audit", "append-fit",
+        "environment", "identity", "registration", "audit", "append-fit", "adopt-fit",
         "derive-predict", "cold", "fit-ledger",
     ))
     parser.add_argument("--root", type=Path)
     parser.add_argument("--slot", type=int)
+    parser.add_argument("--source", type=Path)
     parser.add_argument("--output", type=Path)
     arguments = parser.parse_args()
     if arguments.command == "environment":
@@ -666,6 +780,8 @@ def main():
         print(json.dumps(audit(arguments.root.resolve(), arguments.slot), sort_keys=True))
     elif arguments.command == "append-fit":
         append_fit(arguments.root.resolve(), arguments.slot)
+    elif arguments.command == "adopt-fit":
+        adopt_fit(arguments.root.resolve(), arguments.slot, arguments.source)
     else:
         derive_predict(arguments.root.resolve(), arguments.slot, arguments.output.resolve(), arguments.command == "cold")
 
