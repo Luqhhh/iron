@@ -285,11 +285,14 @@ def append_fit(root: Path, slot: int):
     folder.mkdir(parents=True, exist_ok=False)
     arrays, info = _features(slot, "train")
     response = _training_boundary(arrays, info, ("ids", "numeric", "spout", "reference_ns", "available_ns", "y", "training_months"))
-    parent_folder, parent, preprocessor, _ = _restore_parent(slot)
-    if parent.ids != arrays["ids"].tolist() or not np.array_equal(parent.y, response):
+    parent_folder, parent_model, preprocessor, _ = _restore_parent(slot)
+    if parent_model.ids != arrays["ids"].tolist() or not np.array_equal(parent_model.y, response):
         raise ValueError("certified V26A parent training identity differs from the frozen payload")
     train_x, diagnostic = _transform(preprocessor, arrays, info, True)
     identity = ordered_training_identity(arrays["ids"], train_x, response)
+    if len(parent_model.leaves) != PARENT_TREES:
+        raise ValueError("certified V26A parent full-leaf mapping differs")
+    append_module.validate_parent(parent_model.forest, arrays["ids"], train_x, response)
     intent = {
         "slot": slot,
         "candidate": "B",
@@ -308,7 +311,7 @@ def append_fit(root: Path, slot: int):
     start = time.perf_counter()
     with append_fit_counting() as counter:
         forest, certificate = append_module.append_forest(
-            parent, arrays["ids"], train_x, response,
+            parent_model.forest, arrays["ids"], train_x, response,
             fit_hook=lambda estimator, features, targets: estimator.fit(features, targets),
         )
     append_seconds = time.perf_counter() - start
@@ -317,7 +320,7 @@ def append_fit(root: Path, slot: int):
     partition = partition_sha256(forest, train_x)
     if partition[:PARENT_TREES] != certificate["partition_sha256"]:
         raise ValueError("appended forest changed the certified parent full-leaf mapping")
-    leaves = full_leaf_mapping(parent, train_x) + full_leaf_mapping(forest, train_x)[PARENT_TREES:]
+    leaves = list(parent_model.leaves) + full_leaf_mapping(forest, train_x)[PARENT_TREES:]
     if len(leaves) != TOTAL_TREES:
         raise ValueError("appended full-leaf mapping count differs")
     model = AppendedTimeForest(forest, arrays["ids"], response, arrays["training_months"], leaves, certificate)
@@ -449,9 +452,9 @@ def _check_invariance(model, transformed, arrays, median, mean):
 
 
 def _regression_prefix(model, parent, train_x):
-    if not np.array_equal(bootstrap_draws(parent), bootstrap_draws(model.forest)[:REGRESSION_TREES]):
+    if not np.array_equal(bootstrap_draws(parent.forest), bootstrap_draws(model.forest)[:REGRESSION_TREES]):
         raise ValueError("regression parent bootstrap prefix differs")
-    if partition_sha256(model.forest, train_x)[:REGRESSION_TREES] != partition_sha256(parent, train_x):
+    if partition_sha256(model.forest, train_x)[:REGRESSION_TREES] != partition_sha256(parent.forest, train_x):
         raise ValueError("regression parent full-leaf prefix differs")
     return RestrictedView(model, REGRESSION_TREES)
 
