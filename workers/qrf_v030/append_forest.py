@@ -251,6 +251,7 @@ def append_forest(parent, ids, matrix, response, *, fit_hook=None):
         **certificate,
         "protocol": PROTOCOL,
         "parent_protocol": PARENT_PROTOCOL,
+        "parent_candidate_id": PARENT_CANDIDATE_ID,
         "parent_trees": PARENT_TREES,
         "total_trees": TOTAL_TREES,
         "new_trees": NEW_TREES,

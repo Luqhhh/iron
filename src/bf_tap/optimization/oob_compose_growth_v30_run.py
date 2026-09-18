@@ -440,7 +440,7 @@ def _source_errors(path: Path, source_candidate: str, label: str):
 
 def _oob_diagnostics(root: Path):
     rows = []
-    for slot in SLOTS:
+    for slot in ORIGINS:
         attachment = read_json(str(root / "oob_attachments" / "B" / f"{slot}.npz") + ".json")
         receipt = read_json(str(root / "worker_predictions" / "B" / f"{slot}.npz") + ".json")
         with np.load(root / "worker_predictions" / "B" / f"{slot}.npz", allow_pickle=False) as current:

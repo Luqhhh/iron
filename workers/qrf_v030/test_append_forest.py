@@ -65,6 +65,9 @@ def test_append_preserves_parent_and_prefix(toy):
     assert len(forest.estimators_) == TOTAL_TREES
     assert certificate["new_trees"] == NEW_TREES
     assert certificate["prefix"]["prefix_exact"] is True
+    assert certificate["parent_candidate_id"] == "V26A_QRF_ABSOLUTE_SPLIT_TIME"
+    assert certificate["parent_trees"] == PARENT_TREES and certificate["total_trees"] == TOTAL_TREES
+    assert certificate["protocol"] == PROTOCOL and certificate["warm_start_registered"] is True
     assert certificate["tree_state_sha256"][:PARENT_TREES] == before
     assert np.array_equal(bootstrap_draws(parent), bootstrap_draws(forest)[:PARENT_TREES])
     assert len(set(certificate["new_tree_random_states"])) == NEW_TREES

@@ -94,6 +94,7 @@ source_runs:
 recovery:
   adopted_append:
     '6': local/runs/optimization-v0.30-oob-compose-and-time-growth-r3/models/B/6
-  reason: v0_30_r3_completed_the_slot6_append_fit_before_the_adapter_certificate_key_fix
-  adopted_completed_fits: 1
+    '7': local/runs/optimization-v0.30-oob-compose-and-time-growth-r4/models/B/7
+  reason: v0_30_completed_slot6_and_slot7_append_fits_before_the_adapter_certificate_key_fix
+  adopted_completed_fits: 2
   retrained_fit_calls_for_adopted_slots: 0
