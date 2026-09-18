@@ -53,6 +53,7 @@ WORKER_PYTHON = Path("workers/qrf_v015/.venv/bin/python")
 ORIGINS = range(6, 12)
 SLOTS = range(6, 13)
 CANDIDATES = {"A": CANDIDATE_A, "B": CANDIDATE_B}
+TARGET_META = {"A": ("tap_iron", "tonne"), "B": ("tap_time_len", "minutes")}
 V26_SOURCE_ID = "V26A_QRF_ABSOLUTE_SPLIT_TIME"
 V28_SOURCE_ID = "V28I_CB_QRF_EQUAL_BLEND"
 V30_SOURCE_ID = PARENT
@@ -364,8 +365,8 @@ def _pool_view(root: Path, slot: int, candidate: str, worker_path: Path):
     return {
         "slot": slot,
         "candidate": CANDIDATES[candidate],
-        "target": TARGETS[candidate]["target"],
-        "unit": TARGETS[candidate]["unit"],
+        "target": TARGET_META[candidate][0],
+        "unit": TARGET_META[candidate][1],
         "source_tree_count": 256,
         "S_is_occurrence_total_not_new_samples": True,
         "attachment_path": receipt["attachment_path"],
