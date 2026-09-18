@@ -1484,12 +1484,12 @@
     "results_document": "docs/optimization_v0_10/RESULTS.md"
   },
   "current_status": {
-    "as_of": "2026-09-17",
-    "latest_completed_phase": "optimization-v0.28",
-    "latest_experiment_commit": "48b0e7cebc48d4cf8c3d057b551360cdd971012c",
-    "latest_local_experiment_head": "48b0e7cebc48d4cf8c3d057b551360cdd971012c",
+    "as_of": "2026-09-18",
+    "latest_completed_phase": "optimization-v0.29",
+    "latest_experiment_commit": "8c0a470bcfe83aebec114c28ceec53b885aef8f3",
+    "latest_local_experiment_head": "0d74c78308b481d10b8caf76450b2d0ddaad7525",
     "latest_local_experiment_changes_uncommitted": false,
-    "latest_experiment_branch_pushed": true,
+    "latest_experiment_branch_pushed": false,
     "active_candidate": "V1_RATE_STRUCTURAL",
     "active_release_config": "configs/optimization_v0_8/active_release.yaml",
     "user_reported_test_a_score": 83.0319,
@@ -1498,9 +1498,9 @@
     "fallback_release_config": "configs/optimization_v0_4/active_release.yaml",
     "fallback_user_reported_score": 83.0207,
     "latest_G0": "PASS",
-    "latest_G1": "PLATFORM_USER_REPORTED_A_PROMOTED_B_CLOSED_RETROSPECTIVE_REPORTED_SEPARATELY",
-    "latest_locked_tests_passed": 465,
-    "pending_challenger": false,
+    "latest_G1": "CONSUMED_RETROSPECTIVE_REPORTED_SEPARATELY_TWO_PREREGISTERED_PLATFORM_SLOTS_PENDING",
+    "latest_locked_tests_passed": 475,
+    "pending_challenger": true,
     "holdout_consumed": true,
     "retrospective_grid_completed": true,
     "next_model_registered": false,
@@ -1523,7 +1523,7 @@
     "publication": "BLOCKED_PENDING_SEPARATE_DATA_HISTORY_REMEDIATION",
     "repository_visibility": "public",
     "actions_log_artifact_content_audit": "UNVERIFIED_DOWNLOAD_403_401",
-    "last_model_quality_phase": "optimization-v0.28",
+    "last_model_quality_phase": "optimization-v0.29",
     "last_model_quality_G1": "CONSUMED_RETROSPECTIVE_REPORTED_SEPARATELY_NOT_A_PLATFORM_GATE",
     "official_second_round_data_identity_verified": false,
     "second_round_preview_engineering_valid": true,
@@ -1547,7 +1547,7 @@
       "maintenance_document": "docs/optimization_v0_14/MAINTENANCE_20260912.md",
       "status": "completed"
     },
-    "latest_worker_locked_tests_passed": 48,
+    "latest_worker_locked_tests_passed": 68,
     "latest_worker_environment": {
       "joblib": "1.6.0",
       "numpy": "2.2.6",
@@ -1563,7 +1563,7 @@
       "queried_at": "2026-09-12T11:52:07.292886+00:00",
       "branch_pushed": true
     },
-    "latest_pushed_commit": "6b40b553921a2ac581232d050def6ad2ccc164b9",
+    "latest_pushed_commit": "00acbdfb44837f9280c5a233a5c5f7d394fcc070",
     "V1_desktop_copy_status": "NOT_FOUND_IN_CHECKED_PATHS",
     "V1_desktop_copy_document": "docs/optimization_v0_13/DESKTOP_COPY_STATUS.md",
     "latest_user_reported_test_a_candidate": "V28T_L1_L2_QRF_EQUAL_BLEND",
@@ -3096,5 +3096,71 @@
     "cold_validation_sha256": "7a2b157beacd4923c7ff2b33ffab8a520bae0ca973969ba584ec6587d524ccdf",
     "test_targets_read": false,
     "results_document": "docs/optimization_v0_28/RESULTS.md"
+  },
+  "optimization_v0_29": {
+    "branch": "optimization-v0.29-oob-leaf-responses",
+    "branch_pushed": false,
+    "base_commit": "00acbdfb44837f9280c5a233a5c5f7d394fcc070",
+    "implementation_commit": "8c0a470bcfe83aebec114c28ceec53b885aef8f3",
+    "results_commit": "0d74c78308b481d10b8caf76450b2d0ddaad7525",
+    "status": "COMPLETE_READY_FOR_TWO_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "G0": "PASS",
+    "G1": "CONSUMED_RETROSPECTIVE_REPORTED_SEPARATELY_NOT_A_PLATFORM_GATE",
+    "run_root": "local/runs/optimization-v0.29-oob-leaf-responses-r1",
+    "parent": "V28I_CB_QRF_EQUAL_BLEND",
+    "parent_user_reported_score": 83.2936,
+    "parent_platform_evidence": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+    "candidates": ["V29I_OOB_LEAF_QRF_BLEND", "V29T_OOB_LEAF_QRF_TIME"],
+    "offline_delta_vs_V28I_PARENT_macro_origin_mean_wmape": {
+      "V29I_OOB_LEAF_QRF_BLEND": {"H1": 0.00021632, "H2": -0.00004194, "H3": -0.00029260, "H4": -0.00024866, "J": -0.00009172, "DEV_LONG": -0.00046090, "DEV_SHORT": 0.00043436},
+      "V29T_OOB_LEAF_QRF_TIME": {"H1": 0.00066117, "H2": -0.00001991, "H3": -0.00038523, "H4": 0.00074468, "J": 0.00025018, "DEV_LONG": 0.00002813, "DEV_SHORT": 0.00191816}
+    },
+    "offline_J": {"V1": 0.16573254, "V21_REPLAY": 0.16899655, "V26A_PARENT": 0.16931966, "V28I_PARENT": 0.16957936, "A": 0.16948764, "B": 0.16982954},
+    "fit_counts": {"new_base_models": 0, "new_trees": 0, "new_preprocessors": 0, "new_calibrations": 0, "oob_attachments": 14},
+    "oob_protocol": {
+      "bootstrap_source": "restored_sklearn_1_8_estimators_samples_",
+      "response_members": "unique_OOB_original_rows_per_tree_leaf",
+      "empty_oob_leaf_fallback": "full_same_leaf",
+      "minimum_oob_members": 1,
+      "bootstrap_multiplicity_response_weight": false,
+      "each_tree_mass_equal": true,
+      "full_member_replay_exact": true,
+      "OOB_is_independent_validation": false
+    },
+    "final_oob_diagnostics": {
+      "A_iron": {"leaf_count": 35177, "fallback_leaf_count": 148, "fallback_leaf_fraction": 0.004207294539045399, "selected_count_min": 1, "selected_count_max": 34, "query_fallback_tree_mean": 0.5850746268656717, "query_fallback_tree_max": 3},
+      "B_time": {"leaf_count": 35205, "fallback_leaf_count": 163, "fallback_leaf_fraction": 0.004630024144297685, "selected_count_min": 1, "selected_count_max": 28, "query_fallback_tree_mean": 0.9283582089552239, "query_fallback_tree_max": 4}
+    },
+    "packages": {
+      "A": {"result_sha256": "2b5bb1284c25ba9548d7d0c91d167adee0cb34b1d658b10e778bedd35063cf6c", "zip_sha256": "68320081ec34e8e1296ddff3ac75fdb5dfedffac5d07fff7be95bc74e1b3a581", "changed_iron_rows": 329, "unchanged_time_csv_strings": true},
+      "B": {"result_sha256": "53bf201d6b524c10261364c530bd46a32dc794659b68cdb98a68764cc3ab3dcd", "zip_sha256": "650765ff7b749eda2ff41c7f8c0e99a33e4171958ee79918a6e4f14e623f244b", "changed_time_rows": 246, "unchanged_iron_csv_strings": true}
+    },
+    "platform_order": ["A", "B"],
+    "platform_budget": 2,
+    "platform_uploads": 0,
+    "platform_feedback": null,
+    "automatic_upload": false,
+    "desktop_writes": 0,
+    "public_pushes": 0,
+    "third_candidate_generated": false,
+    "cold_validation": "PASS_SOURCE_AND_OOB_BOOTSTRAP_REDERIVATION_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZIP_REREAD_ZERO_FIT",
+    "locked_tests": {
+      "root_python": "3.12.12",
+      "root_passed": 475,
+      "worker_python": "3.12.12",
+      "worker_passed": 68,
+      "worker_frozen_v015": 34,
+      "worker_v025_adapter": 1,
+      "worker_v026": 5,
+      "worker_v027": 8,
+      "worker_v029": 20,
+      "private_artifact_guard": "PASS"
+    },
+    "manifest_sha256": "18a40277602fb3317cff02139c4f1908a3b6013427bce3404ecfc9fbdb7dc88c",
+    "completion_sha256": "f589a7e6e7eebe26af1edc569cead14d933c61fc60b2ad594f46aaa7bfa467e5",
+    "cold_validation_sha256": "ffdbe8abda55e8f74f90e4993d798fbe64a8a2e016ed3d949a98873440a942f6",
+    "packages_frozen_sha256": "b80554e5db1cc7defb9003d30ab39ff6ae0a899165aaf80d340172717cc7d07b",
+    "test_targets_read": false,
+    "results_document": "docs/optimization_v0_29/RESULTS.md"
   }
 }
