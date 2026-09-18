@@ -1,6 +1,6 @@
 # 文档索引与历史口径
 
-当前最高 test_a 用户回传为 **V29T = 83.3141**；同轮 V29I 为 **83.2970**，两项均超过父 V28I=83.2936，B 晋级。两份包在反馈前同时冻结，新增拟合为 0；分数未由账号回执独立核验，账号当前有效条目仍未知。
+当前最高 test_a 用户回传为 **V30A_OOB_BOTH_TARGETS = 83.3175**，与预登记加性推算 `83.2970 + 83.3141 - 83.2936` 四位小数一致；同轮 V30B_OOB_TIME_1024 = 83.2654，比 A 低 0.0521，固定 1024 棵扩容关闭，V29T=83.3141 保留为后备。分数未由账号回执独立核验，账号当前有效条目仍未知。
 
 V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，均值探针已关闭。随后 v0.18–v0.21 完成不读取 test target 的时间门控实验；旧 G1 与正式发布登记保持历史含义。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[V11 交付回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
 
@@ -27,7 +27,7 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
-| v0.30 | [双目标 OOB 收益组合与时长森林固定扩容](optimization_v0_30/RESULTS.md) | G0 PASS；7 次追加 fit/5,376 棵新树（2 个已完成拟合显式恢复、0 re-fit）；A 列组合恒等式残差 ≤5.55e-17；B-A J ΔE -0.00004136；两份 335 行包冻结、平台预算 2/上传 0 |
+| v0.30 | [双目标 OOB 收益组合与时长森林固定扩容](optimization_v0_30/RESULTS.md) | G0 PASS；7 次追加 fit/5,376 棵新树（2 个已完成拟合显式恢复、0 re-fit）；A 列组合恒等式残差 ≤5.55e-17；平台用户回传 A=83.3175（晋级，与加性推算一致）、B=83.2654（关闭），预算 2/2、agent 上传 0 |
 | v0.29 | [冻结森林 OOB 叶响应双实验](optimization_v0_29/RESULTS.md) | 0 fit；14 份 OOB 附件；G0 PASS；平台回传 A/B=83.2970/83.3141，预算 2/2，B 晋级为当前最高；离线排序不回写 |
 | v0.28 | [固定等权、双目标隔离集成](optimization_v0_28/RESULTS.md) | 0 fit；A 平均 V26A/V27I 铁量，B 平均 V26A/V21 时长；G0 PASS，平台回传 83.2936/83.2604，预算 2/2，A 晋级、B 关闭 |
 | v0.27 | [铁量 QRF 与时长叶内 recency](optimization_v0_27/RESULTS.md) | G0 PASS；A/B 用户回传 83.2480/83.2710，均低于 V26A=83.2828，固定候选关闭 |
