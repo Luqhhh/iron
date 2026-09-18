@@ -27,6 +27,7 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
+| v0.29 | [冻结森林 OOB 叶响应双实验](optimization_v0_29/RESULTS.md) | 0 fit；14 份 OOB 附件；G0 PASS；A/B 相对 V28I 的 ΔJ -0.00009172/+0.00025018；两包已冻结，等待各一次显式平台测试，未写桌面/上传/推送 |
 | v0.28 | [固定等权、双目标隔离集成](optimization_v0_28/RESULTS.md) | 0 fit；A 平均 V26A/V27I 铁量，B 平均 V26A/V21 时长；G0 PASS，平台回传 83.2936/83.2604，预算 2/2，A 晋级、B 关闭 |
 | v0.27 | [铁量 QRF 与时长叶内 recency](optimization_v0_27/RESULTS.md) | G0 PASS；A/B 用户回传 83.2480/83.2710，均低于 V26A=83.2828，固定候选关闭 |
 | v0.26 | [时长森林分区双实验](optimization_v0_26/RESULTS.md) | G0 PASS；V26A 用户回传 83.2828 并晋级为当前最高，V26B 83.0240 关闭 |
