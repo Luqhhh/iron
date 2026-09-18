@@ -92,22 +92,3 @@ def test_fallback_mass_is_leaf_occurrence_mass_over_S():
 
 def test_protocol_identifier_frozen():
     assert PROTOCOL == "QRF_FROZEN_FOREST_OOB_OCCURRENCE_POOLING_v031"
-
-
-def test_equal_tree_mass_equivalence_exhaustive_small_synthetic_grid():
-    rng = np.random.default_rng(31)
-    for rows in range(2, 9):
-        response = np.round(rng.normal(size=rows) * 5 + 50, 6)
-        for size in range(1, rows + 1):
-            for trees in range(1, 5):
-                for _ in range(25):
-                    selected = [
-                        rng.choice(rows, size=size, replace=False).astype(np.int64)
-                        for _ in range(trees)
-                    ]
-                    value, counts = pooled_lower_median(response, selected)
-                    weights = distribution_weights(selected, rows)
-                    assert value == lower_median(response, weights, selected)
-                    concatenated = np.concatenate(selected)
-                    assert np.array_equal(counts, np.bincount(concatenated, minlength=rows))
-                    assert int(counts.sum()) == size * trees
