@@ -1,0 +1,98 @@
+schema_version: 1
+phase: optimization-v0.33-qrf-feature-and-row-sampling
+branch: optimization-v0.33-qrf-feature-and-row-sampling
+base_commit: f6eb91aebd0b827a0aac1d2c7f161a354f44c0fe
+review_point: optimization-v0.32-same-spout-oob-responses
+candidates:
+  A: V33A_OOB_TIME_FEATURE_THIRD
+  B: V33B_OOB_TIME_HALF_BOOTSTRAP
+parent: V30A_OOB_BOTH_TARGETS
+references: [V1, V21_REPLAY, V30A_OOB_BOTH_TARGETS]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+draws_per_tree:
+  A: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+  B: {6: 444, 7: 590, 8: 745, 9: 902, 10: 1046, 11: 1212, 12: 1377}
+test_a_rows: 335
+forest_protocol: QRF_TIME_FEATURE_AND_ROW_SAMPLING_FOREST_v033
+oob_protocol: QRF_SAMPLED_FOREST_OOB_LEAF_RESPONSE_v033
+common_parameters:
+  n_estimators: 256
+  criterion: absolute_error
+  splitter: best
+  max_depth: null
+  min_samples_split: 2
+  min_samples_leaf: 10
+  min_weight_fraction_leaf: 0.0
+  max_leaf_nodes: null
+  min_impurity_decrease: 0.0
+  bootstrap: true
+  oob_score: false
+  random_state: 2026
+  n_jobs: 8
+  verbose: 0
+  warm_start: false
+  ccp_alpha: 0.0
+  monotonic_cst: null
+candidate_A:
+  target: tap_time_len
+  only_parameter_change: {max_features: 0.3333333333333333}
+  max_samples: null
+  prohibited: [half_bootstrap, warm_start, old_tree_prefix, fixed_feature_subset]
+candidate_B:
+  target: tap_time_len
+  only_parameter_change: {max_samples: 0.5}
+  max_features: 0.7
+  prohibited: [feature_third, row_truncation, warm_start, old_tree_prefix]
+oob_rule:
+  draw_source: fitted_model_estimators_samples_
+  full_mapping_rows: all_N_original_unique_training_rows
+  nonempty_oob_leaf: use_each_unique_oob_member_once
+  empty_oob_leaf: use_full_same_leaf
+  tree_mass: equal
+  leaf_member_mass: equal
+  bootstrap_multiplicity_response_weight: forbidden
+  same_spout_conditioning: forbidden
+  occurrence_pooling: forbidden
+  recency_weight: forbidden
+  median: original_lower_weighted_median
+prediction_chain:
+  q6: original_six_decimal_roundtrip
+  gate: spout_no_1_and_original_v015_effective_neighbors_lt_500
+  anchor: original_V21_query_day_moving_60d_legal_history_median
+  shrink: 0.25
+  iron: exact_parent_V30A_csv_strings
+budget:
+  forest_fits_A_development: 6
+  forest_fits_A_final: 1
+  forest_fits_A_total: 7
+  forest_fits_B_development: 6
+  forest_fits_B_final: 1
+  forest_fits_B_total: 7
+  total_forest_fits: 14
+  total_new_trees: 3584
+  new_oob_attachments: 14
+  new_preprocessor_iron_catboost_lad_beta_lambda_bias_fits: 0
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+  automatic_uploads: 0
+  restore_uploads: 0
+  desktop_writes: 0
+  public_pushes: 0
+  third_candidate: 0
+bootstrap: {repetitions: 1000, seed: 2026, unit: calendar_week, invalid_draws_replaced: false}
+aggregation: {primary: macro_origin_mean_wmape, diagnostic: exposure_pooled_wmape, tolerance: 1.0e-12}
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+v32_user_reported_scores: {A: 83.2764, B: 83.0910, evidence: USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED}
+source_identities:
+  v30a_result_sha256: 97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a
+  v30a_zip_sha256: fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986
+source_runs:
+  v21_v23: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
+  v22_scoring: local/runs/optimization-v0.22-causal-h2-r8
+  v26: local/runs/optimization-v0.26-qrf-partition-tests-r1
+  v30: local/runs/optimization-v0.30-oob-compose-and-time-growth-r6
+  v32: local/runs/optimization-v0.32-same-spout-oob-responses-r2
