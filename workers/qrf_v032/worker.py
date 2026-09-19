@@ -207,6 +207,16 @@ def _diagnostic_arrays(diagnostics):
     return result
 
 
+def _arrays_equal(left, right):
+    """Exact array comparison, with NaN equality only for floating arrays."""
+    first, second = np.asarray(left), np.asarray(right)
+    if first.shape != second.shape or first.dtype != second.dtype:
+        return False
+    if first.dtype.kind in "fc":
+        return bool(np.array_equal(first, second, equal_nan=True))
+    return bool(np.array_equal(first, second))
+
+
 def _quantiles(values):
     array = np.asarray(values, dtype=np.float64)
     if not len(array):
@@ -384,7 +394,7 @@ def cold(root, slot, candidate, output):
             "ids": evaluation["ids"], "query_spout": exact_tokens(evaluation["spout"]),
             "median": median, "legacy_median": legacy, **_diagnostic_arrays(diagnostics),
         }
-        if set(expected) != set(actual) or any(not np.array_equal(expected[name], actual[name], equal_nan=True) for name in actual):
+        if set(expected) != set(actual) or any(not _arrays_equal(expected[name], actual[name]) for name in actual):
             raise ValueError("cold v0.32 prediction arrays differ")
         indices = np.asarray([0, len(evaluation_x) // 2, len(evaluation_x) - 1])
         checks = {

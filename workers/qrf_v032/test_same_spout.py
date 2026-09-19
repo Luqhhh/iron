@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib.util
 from pathlib import Path
 import sys
 
@@ -21,6 +22,12 @@ from same_spout import (
     query_state,
     validate_training_spout,
 )
+
+WORKER_SPEC = importlib.util.spec_from_file_location("qrf_v032_worker_test", HERE / "worker.py")
+WORKER = importlib.util.module_from_spec(WORKER_SPEC)
+assert WORKER_SPEC.loader is not None
+WORKER_SPEC.loader.exec_module(WORKER)
+_arrays_equal = WORKER._arrays_equal
 
 
 class Preprocessor:
@@ -204,3 +211,10 @@ def test_response_spout_length_mismatch_rejected():
 def test_original_fallback_flag_length_mismatch_rejected():
     with pytest.raises(ValueError, match="flags"):
         conditioned_lower_median([1.0, 2.0], [np.asarray([0, 1])], ["1", "2"], "1", ["1", "2"], original_fallback_modes=[])
+
+
+def test_cold_array_comparator_handles_strings_and_float_nan():
+    assert _arrays_equal(np.asarray(["1", "2"]), np.asarray(["1", "2"]))
+    assert not _arrays_equal(np.asarray(["1", "2"]), np.asarray(["1", "3"]))
+    assert _arrays_equal(np.asarray([1.0, np.nan]), np.asarray([1.0, np.nan]))
+    assert not _arrays_equal(np.asarray([1.0]), np.asarray([1.0], dtype=np.float32))
