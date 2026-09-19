@@ -3708,6 +3708,18 @@
     "results_document": "docs/optimization_v0_32/RESULTS.md",
     "test_targets_read": false,
     "third_candidate_generated": false,
-    "branch_pushed": false
+    "branch_pushed": true,
+    "publication": {
+      "authorization": "USER_EXPLICIT_SUBMIT_AND_PUSH_20260919",
+      "remote": "origin",
+      "branch": "optimization-v0.32-same-spout-oob-responses",
+      "first_pushed_head": "0c665684823794348c9ac79c5eacbeb3040a1794",
+      "initial_remote_head_verified_after_push": "0c665684823794348c9ac79c5eacbeb3040a1794",
+      "tracking_configured": true,
+      "private_local_artifacts_pushed": false,
+      "public_pushes_before_publication_record_commit": 1,
+      "receipt": "local/runs/optimization-v0.32-same-spout-oob-responses-r2/publication_receipt.json",
+      "receipt_sha256": "cd2dd5b0135d6358fd2953ed256c28b954336d31be6d0f4ae2274c84ecca66ce"
+    }
   }
 }

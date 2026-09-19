@@ -87,3 +87,7 @@ r2 在独立进程中对 A/B × 7 cutoff 全部重新恢复源森林、响应、
 A 比 B 高 0.1854，但仍低于 V30A、V29T、V29I 与 V28I。B 的历史 J 相对 V30A 小幅改善 `-0.00018334`，平台却低 0.2265；这不支持把显式同铁口条件化视为可泛化收益。原离线报告不回写，两个候选均关闭，不生成第三个双目标组合，也不追加铁口子集、最低成员数、回退或权重搜索。
 
 用户侧平台预算已按 2/2 消费，agent 上传仍为 0。当前最高用户回传完整包保持 V30A=83.3175；账号当前生效条目因无账号回执仍登记为未知。反馈记录为 `platform_feedback_user_reported.json`（SHA-256 `83df8bb71d734a998c76c132d4f11638084eaa5abfc967a0ef69324a58a384b5`）。
+
+## 远端推送（2026-09-19 追加）
+
+用户显式要求提交推送。`optimization-v0.32-same-spout-oob-responses` 已首次推送到 `origin` 并设置 upstream；初始远端头核验为 `0c665684823794348c9ac79c5eacbeb3040a1794`。推送内容仅包含 Git 已跟踪的代码、配置、测试和文档；`local/` 下的模型、逐样本预测、ledger、反馈回执及提交 ZIP 均未推送。平台上传仍为 0。发布回执保存在 `local/runs/optimization-v0.32-same-spout-oob-responses-r2/publication_receipt.json`。
