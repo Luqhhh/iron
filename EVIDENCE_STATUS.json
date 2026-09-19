@@ -3726,7 +3726,7 @@
     "as_of": "2026-09-19",
     "branch": "optimization-v0.33-qrf-feature-and-row-sampling",
     "implementation_commit": "441b09ba95c613379611de00af7a2e4c0a87f4d9",
-    "status": "G0_PASS_G1_REPORTED_TWO_PACKAGES_FROZEN_AWAITING_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "status": "G0_PASS_G1_REPORTED_A_PLATFORM_BELOW_PARENT_B_FROZEN_ONE_SLOT_REMAINING",
     "run_root": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1",
     "candidates": {
       "A": "V33A_OOB_TIME_FEATURE_THIRD",
@@ -3817,11 +3817,47 @@
     },
     "platform_order": ["A", "B"],
     "platform_budget": 2,
-    "platform_uploads": 0,
+    "platform_uploads": 1,
+    "platform_uploads_user_reported": 1,
+    "agent_platform_uploads": 0,
+    "platform_budget_remaining": 1,
     "automatic_uploads": 0,
-    "desktop_writes": 0,
+    "desktop_writes": 2,
     "public_pushes": 0,
     "third_candidate_generated": false,
+    "platform_feedback": {
+      "status": "PARTIAL_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "platform_verified": false,
+      "record": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/platform_feedback_user_reported.json",
+      "record_sha256": "caa50306043579cdb5cf887fda05ab32b38018f2b96edb5f49a1dbc5e46a0630",
+      "summary_record": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/platform_feedback.json",
+      "summary_record_sha256": "bbb4f0f181bb7f07cb870ec31d3d50cd96d6b1083d352c87821ae76df9ef1261",
+      "A": {
+        "candidate": "V33A_OOB_TIME_FEATURE_THIRD",
+        "score": 83.2241,
+        "delta_vs_parent_V30A": -0.0934,
+        "decision": "CLOSED_BELOW_PARENT_RETAIN_V30A"
+      },
+      "B": {
+        "candidate": "V33B_OOB_TIME_HALF_BOOTSTRAP",
+        "status": "FROZEN_AWAITING_USER_DECISION_OR_FEEDBACK",
+        "definition_and_package_changed_after_A_feedback": false
+      },
+      "highest_user_reported_after_A": {
+        "candidate": "V30A_OOB_BOTH_TARGETS",
+        "score": 83.3175
+      }
+    },
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_WRITE_V033_PACKAGES_TO_DESKTOP_AND_DELETE_OLD_PACKAGES_20260919",
+      "status": "PASS_OLD_V032_DESKTOP_PACKAGES_REMOVED_AND_TWO_V033_PACKAGES_COPIED",
+      "deleted_old_desktop_packages": 2,
+      "old_v032_private_frozen_sources_retained": true,
+      "A_sha256": "e7fe9c8cb82521b384b2b8d46031220b8f15bd7a09f00db7f3ccc95bc923a850",
+      "B_sha256": "0a50865800cba7181db115f50e31598b81c0a4f589fbb0c75d1a79774c3408c2",
+      "receipt": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/desktop_delivery_receipt.json",
+      "receipt_sha256": "cd1c98b29b0d912c799ef9afe98958f6fed64fad02729afaf6025d01acb1301e"
+    },
     "cold_validation": "PASS_ACTUAL_BOOTSTRAP_N_M_FULL_OOB_SELECTED_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZERO_FIT_ZIP_REREAD",
     "locked_tests": {
       "root_python": "3.12.12",
