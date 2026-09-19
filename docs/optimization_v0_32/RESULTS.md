@@ -65,3 +65,12 @@ r2 在独立进程中对 A/B × 7 cutoff 全部重新恢复源森林、响应、
 | B | V32T_SAME_SPOUT_OOB_TIME | `110d73543dc1829792a28efec93234dae245ed8059b6fae540b43a54f78fdc6a` | `3d4596b2ece3baca3d0a3529373ca5482d1db4c996fdb66533a40efc7cd4b620` |
 
 保底 V30A 原 ZIP 已重新核验为 `fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986`，用户回传最高分仍为 83.3175。v0.32 平台状态为 `AWAITING_USER_REPORTED_PLATFORM_FEEDBACK`，预算仍为 2/2，顺序 A→B；agent 自动上传为 0。提交前仍须由用户核对账号当前生效条目、当日额度和恢复 V30A 的机会。A 的平台反馈不得改变已冻结的 B，不追加第三个组合候选。
+
+## 桌面交付（2026-09-19 追加）
+
+用户在冻结后显式要求把提交包写入桌面。已使用不覆盖模式写入：
+
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V32I_SAME_SPOUT_OOB_BLEND.zip`
+- `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V32T_SAME_SPOUT_OOB_TIME.zip`
+
+桌面 SHA-256 分别为 `acafbc9d08540a1322802e339ff79ae5164e87391e893ed2ce3aad233931d6cd`、`3d4596b2ece3baca3d0a3529373ca5482d1db4c996fdb66533a40efc7cd4b620`，与冻结源包一致。两份 ZIP 均只含 `result.csv`，payload 逐字节一致、各 335 行。没有覆盖或删除桌面文件，平台上传仍为 0。回执保存在 `local/runs/optimization-v0.32-same-spout-oob-responses-r2/desktop_delivery_receipt.json`。

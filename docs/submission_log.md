@@ -317,3 +317,8 @@ ZIP payload；桌面与 local ZIP 摘要一致。该动作不修改 V1 正式发
 回传仍为 V30A=83.3175，V30A 原 ZIP 摘要
 `fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986` 已复核。
 本轮预算为 A→B 各一次；没有反馈前不登记成绩，也不把离线变化写成平台收益。
+
+用户随后显式要求写入桌面。A/B 两包分别以候选名复制到 `C:\Users\lqh22\Desktop`，
+使用不覆盖模式；摘要与上表一致，ZIP 均只含 `result.csv` 且 payload 与冻结 CSV
+逐字节相同。没有删除或覆盖其他桌面文件，平台上传仍为 0。交付回执：
+`local/runs/optimization-v0.32-same-spout-oob-responses-r2/desktop_delivery_receipt.json`。

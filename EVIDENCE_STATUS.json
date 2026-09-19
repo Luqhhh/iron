@@ -3640,6 +3640,26 @@
         "score": 83.3175
       }
     },
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_WRITE_SUBMISSION_PACKAGES_TO_DESKTOP_20260919",
+      "status": "PASS_TWO_FROZEN_PACKAGES_COPIED_AND_VERIFIED",
+      "copy_mode": "NO_CLOBBER",
+      "desktop": "C:\\Users\\lqh22\\Desktop",
+      "A": {
+        "name": "Luqhhh_bf_tap_predict_prelim_V32I_SAME_SPOUT_OOB_BLEND.zip",
+        "sha256": "acafbc9d08540a1322802e339ff79ae5164e87391e893ed2ce3aad233931d6cd"
+      },
+      "B": {
+        "name": "Luqhhh_bf_tap_predict_prelim_V32T_SAME_SPOUT_OOB_TIME.zip",
+        "sha256": "3d4596b2ece3baca3d0a3529373ca5482d1db4c996fdb66533a40efc7cd4b620"
+      },
+      "existing_files_overwritten": 0,
+      "files_deleted": 0,
+      "payloads_exact": true,
+      "platform_uploads": 0,
+      "receipt": "local/runs/optimization-v0.32-same-spout-oob-responses-r2/desktop_delivery_receipt.json",
+      "receipt_sha256": "6a5a12f58f39ee0767c4cf5a2e9976f6e4b00ea47abaa311b4dbebdd97eb8daf"
+    },
     "cold_validation": "PASS_SOURCE_FOREST_RESPONSE_BOOTSTRAP_ATTACHMENT_SPOUT_ALIGNMENT_FULL_REVERSE_CHUNK_SUBSET_SINGLE_LEGACY_SWITCH_BACK_ZERO_FIT_ZIP_REREAD",
     "locked_tests": {
       "root_python": "3.12.12",
