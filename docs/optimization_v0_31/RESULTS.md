@@ -127,3 +127,23 @@ int64 累计 occurrence 质量首次达到 `ceil(S/2)`，偶数 `S` 返回较小
 - 本地私有原包、旧运行目录和证据均保留；agent 平台上传仍为 0。回执：
   `local/runs/optimization-v0.31-oob-occurrence-pooling-r3/desktop_delivery_receipt.json`
   与 `publication_receipt.json`。
+
+
+## 平台反馈与决策（2026-09-19 追加）
+
+用户在冻结包提交后按 A→B 各提交一次并回传：
+**V31I = 83.3123**、**V31T = 83.3116**。两项均未取得账号原始回执，保持
+`USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`，不宣称账号当前生效条目已核验。
+
+| 槽 | 候选 | 用户回传 | Δ vs V30A=83.3175 | Δ vs V29T=83.3141 | Δ vs V29I=83.2970 | Δ vs V28I=83.2936 | Δ vs V1=83.0319 | 决策 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| A | V31I_OOB_OCCURRENCE_POOL_BLEND | 83.3123 | -0.0052 | -0.0018 | +0.0153 | +0.0187 | +0.2804 | 关闭，保留 V30A |
+| B | V31T_OOB_OCCURRENCE_POOL_TIME | 83.3116 | -0.0059 | -0.0025 | +0.0146 | +0.0180 | +0.2797 | 关闭，保留 V30A |
+
+两项都低于当前最高完整包 V30A=83.3175，也都低于旧后备 V29T=83.3141；
+提交顺序内 I 比 T 高 0.0007。离线历史评价中的排序（B 的 J 略好于 A）与本轮
+平台排序方向不完全一致，旧离线结论原样保留、不回写。按冻结规格，两个 v0.31
+候选均关闭，不生成第三个组合、不回滚原包、不进行新的 leaf-size/最低回退计数/
+权重搜索。用户侧本轮平台预算已按 2/2 消费，agent 上传仍为 0。
+回执：`local/runs/optimization-v0.31-oob-occurrence-pooling-r3/platform_feedback_user_reported.json`
+与 `platform_feedback.json`。

@@ -3433,16 +3433,51 @@
     },
     "packages_frozen_sha256": "3e3888095a2f8484b0754284268240775272cb0485b6023626e220a33aebfae3",
     "platform_budget": 2,
+    "platform_budget_remaining": 0,
     "platform_feedback": {
-      "record": "local/runs/optimization-v0.31-oob-occurrence-pooling-r3/platform_feedback.json",
-      "record_sha256": "3e91be1ae084d912c3aa96aa9b4e58487a26cc7e4f949cfc5f1a621bec8bd075",
-      "status": "AWAITING_USER_REPORTED_PLATFORM_FEEDBACK"
+      "agent_platform_uploads": 0,
+      "feedback": {
+        "A": {
+          "candidate": "V31I_OOB_OCCURRENCE_POOL_BLEND",
+          "decision": "CLOSED_BELOW_PARENT_RETAIN_V30A",
+          "delta_vs_V1": 0.2804,
+          "delta_vs_V28I": 0.0187,
+          "delta_vs_V29I": 0.0153,
+          "delta_vs_V29T": -0.0018,
+          "delta_vs_parent_V30A": -0.0052,
+          "score": 83.3123
+        },
+        "B": {
+          "candidate": "V31T_OOB_OCCURRENCE_POOL_TIME",
+          "decision": "CLOSED_BELOW_PARENT_RETAIN_V30A",
+          "delta_vs_V1": 0.2797,
+          "delta_vs_V28I": 0.018,
+          "delta_vs_V29I": 0.0146,
+          "delta_vs_V29T": -0.0025,
+          "delta_vs_parent_V30A": -0.0059,
+          "score": 83.3116
+        }
+      },
+      "highest_user_reported_after_feedback": {
+        "candidate": "V30A_OOB_BOTH_TARGETS",
+        "score": 83.3175
+      },
+      "latest_user_reported_test_a": {
+        "candidate": "V31T_OOB_OCCURRENCE_POOL_TIME",
+        "score": 83.3116
+      },
+      "platform_budget_remaining": 0,
+      "platform_uploads_user_reported": 2,
+      "platform_verified": false,
+      "record": "local/runs/optimization-v0.31-oob-occurrence-pooling-r3/platform_feedback_user_reported.json",
+      "record_sha256": "9695f581dae23d523d7ba7dc3d179fe4b55590902e74c3963e11feb62c28124b",
+      "status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED"
     },
     "platform_order": [
       "A",
       "B"
     ],
-    "platform_uploads": 0,
+    "platform_uploads": 2,
     "pool_diagnostics_sha256": "ac8a2102a188bcaf6ce11ce78bd0fa2398cef4efe78eb9609dda74f0a9005493",
     "pooling_rule": {
       "S": "sum_b_n_b_occurrences_not_new_samples",
@@ -3473,7 +3508,7 @@
       "v30a_zip_sha256": "fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986"
     },
     "source_inventory_sha256": "a6d1e84835b8067dc3f32e2e61903b0b0cba2418c1039bf00844613c5bf740c6",
-    "status": "COMPLETE_TWO_ZERO_FIT_PACKAGES_FROZEN_AWAITING_PLATFORM_FEEDBACK",
+    "status": "COMPLETE_PLATFORM_FEEDBACK_BOTH_V031_CANDIDATES_CLOSED_RETAIN_V30A",
     "test_targets_read": false,
     "third_candidate_generated": false
   }
