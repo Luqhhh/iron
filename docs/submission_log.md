@@ -302,3 +302,18 @@ ZIP payload；桌面与 local ZIP 摘要一致。该动作不修改 V1 正式发
 `USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`。该成绩比 V21 低 0.1209、比 V10 低
 0.0785、比 V1 高 0.0847。按预注册边界关闭 V22 test_a 候选，保留 V21/V10，
 不追加阈值、窗口、铁口子集或逐行调整；原开发 G0/G1 和正式 V1 发布指针不改写。
+
+## 2026-09-19 · v0.32 两份待用户平台测试包
+
+`optimization-v0.32-same-spout-oob-responses-r2` 在 0 个新增 fit 下完成 A/B × 7 cutoff
+独立冷审计并同时冻结两份 test_a 包；agent 平台上传与桌面写入均为 0：
+
+| 顺序 | 候选 | result.csv SHA-256 | ZIP SHA-256 | 平台状态 |
+| --- | --- | --- | --- | --- |
+| A | V32I_SAME_SPOUT_OOB_BLEND | `fa4e92fffff9aae4045fa8da6e7452dae0294bc1b5605f52772f057820effbc2` | `acafbc9d08540a1322802e339ff79ae5164e87391e893ed2ce3aad233931d6cd` | 待用户回传 |
+| B | V32T_SAME_SPOUT_OOB_TIME | `110d73543dc1829792a28efec93234dae245ed8059b6fae540b43a54f78fdc6a` | `3d4596b2ece3baca3d0a3529373ca5482d1db4c996fdb66533a40efc7cd4b620` | 待用户回传 |
+
+两包各 335 行且均非 NO-OP；A 只改铁量 321 行，B 只改时长 298 行。当前最高用户
+回传仍为 V30A=83.3175，V30A 原 ZIP 摘要
+`fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986` 已复核。
+本轮预算为 A→B 各一次；没有反馈前不登记成绩，也不把离线变化写成平台收益。
