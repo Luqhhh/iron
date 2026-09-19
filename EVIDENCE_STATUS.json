@@ -3823,7 +3823,7 @@
     "platform_budget_remaining": 1,
     "automatic_uploads": 0,
     "desktop_writes": 2,
-    "public_pushes": 0,
+    "public_pushes": 1,
     "third_candidate_generated": false,
     "platform_feedback": {
       "status": "PARTIAL_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
@@ -3876,6 +3876,19 @@
     "cold_validation_sha256": "534911b9caf92f01ddf730cb96d098b96735a090fb07a208c930663c24ad21a2",
     "completion_sha256": "a247fa5461c29be04b391b723ddfe1400f376a3b9318f5bcfb2bf725cbb52cf3",
     "results_document": "docs/optimization_v0_33/RESULTS.md",
-    "test_targets_read": false
+    "test_targets_read": false,
+    "branch_pushed": true,
+    "publication": {
+      "authorization": "USER_EXPLICIT_SUBMIT_AND_PUSH_20260919",
+      "remote": "origin",
+      "branch": "optimization-v0.33-qrf-feature-and-row-sampling",
+      "first_pushed_head": "1ac0b8538748da06f1ab7cf3ee01b9fab0443ee4",
+      "initial_remote_head_verified_after_push": "1ac0b8538748da06f1ab7cf3ee01b9fab0443ee4",
+      "tracking_configured": true,
+      "private_local_artifacts_pushed": false,
+      "public_pushes_before_publication_record_commit": 1,
+      "receipt": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/publication_receipt.json",
+      "receipt_sha256": "cd047d330d6b9da73779020a0908e57b91e273ae0848f7c9457ed3bf80ae68e1"
+    }
   }
 }

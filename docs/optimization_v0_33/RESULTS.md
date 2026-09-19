@@ -91,3 +91,7 @@ V30A 保底原 CSV/ZIP 已核验为 `97b6c3e0c648a0c6454cc9b36f518625487c03d1efd
 A 的历史 H1/J 相对 V30A 小幅改善，但平台显示分数低 0.0934；这不支持把 1/3 特征抽样视为可泛化收益。历史离线表不回写。当前最高用户回传完整包仍为 V30A=83.3175。
 
 B `V33B_OOB_TIME_HALF_BOOTSTRAP` 的定义、模型、预测和 ZIP 未根据 A 的成绩修改，仍保持冻结；预登记的第二个平台名额尚余 1。agent 平台上传为 0，不生成 A+B 或第三候选。反馈记录为 `platform_feedback_user_reported.json`（SHA-256 `caa50306043579cdb5cf887fda05ab32b38018f2b96edb5f49a1dbc5e46a0630`）。
+
+## 远端推送（2026-09-19 追加）
+
+用户明确要求提交推送。`optimization-v0.33-qrf-feature-and-row-sampling` 已首次推送至 `origin` 并设置 upstream；首次远端头核验为 `1ac0b8538748da06f1ab7cf3ee01b9fab0443ee4`。推送内容仅包含 Git 已跟踪的代码、配置、测试与文档；`local/` 中的模型、附件、逐样本预测、ledger、平台反馈原始记录和提交 ZIP 均未推送。agent 平台上传仍为 0。发布回执保存在 `publication_receipt.json`，SHA-256 为 `cd047d330d6b9da73779020a0908e57b91e273ae0848f7c9457ed3bf80ae68e1`。
