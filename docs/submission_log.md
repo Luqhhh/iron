@@ -322,3 +322,9 @@ ZIP payload；桌面与 local ZIP 摘要一致。该动作不修改 V1 正式发
 使用不覆盖模式；摘要与上表一致，ZIP 均只含 `result.csv` 且 payload 与冻结 CSV
 逐字节相同。没有删除或覆盖其他桌面文件，平台上传仍为 0。交付回执：
 `local/runs/optimization-v0.32-same-spout-oob-responses-r2/desktop_delivery_receipt.json`。
+
+用户随后按 A→B 回传平台显示成绩 **83.2764 / 83.0910**，证据状态为
+`USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`。两项分别比 V30A=83.3175 低
+0.0411 / 0.2265，均关闭；A 比 B 高 0.1854。预算已消费 2/2，agent 上传 0，
+不生成第三个组合或追加同铁口规则搜索，保留 V30A 原最高包。反馈记录：
+`local/runs/optimization-v0.32-same-spout-oob-responses-r2/platform_feedback_user_reported.json`。

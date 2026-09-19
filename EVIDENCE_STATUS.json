@@ -3515,7 +3515,7 @@
   "optimization_v0_32": {
     "G0": "PASS",
     "G1": "CONSUMED_RETROSPECTIVE_REPORTED_SEPARATELY_NOT_A_PLATFORM_GATE",
-    "status": "COMPLETE_PACKAGES_FROZEN_AWAITING_USER_REPORTED_PLATFORM_FEEDBACK",
+    "status": "COMPLETE_PLATFORM_FEEDBACK_BOTH_V032_CANDIDATES_CLOSED_RETAIN_V30A",
     "base_commit": "656be40fc19283972f6c757917d8caf460d75cd4",
     "branch": "optimization-v0.32-same-spout-oob-responses",
     "implementation_commits": [
@@ -3627,17 +3627,41 @@
       "B"
     ],
     "platform_budget": 2,
-    "platform_uploads": 0,
-    "platform_budget_remaining": 2,
+    "platform_uploads": 2,
+    "platform_budget_remaining": 0,
     "platform_feedback": {
-      "status": "AWAITING_USER_REPORTED_PLATFORM_FEEDBACK",
+      "status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "platform_verified": false,
       "agent_platform_uploads": 0,
-      "record": "local/runs/optimization-v0.32-same-spout-oob-responses-r2/platform_feedback.json",
-      "record_sha256": "f65780e2891808d0e271fdcefc3b211d8b9d72ab1779a6172b37634a68b65751",
-      "highest_user_reported_before_v032": {
+      "platform_uploads_user_reported": 2,
+      "platform_budget_remaining": 0,
+      "record": "local/runs/optimization-v0.32-same-spout-oob-responses-r2/platform_feedback_user_reported.json",
+      "record_sha256": "83df8bb71d734a998c76c132d4f11638084eaa5abfc967a0ef69324a58a384b5",
+      "summary_record": "local/runs/optimization-v0.32-same-spout-oob-responses-r2/platform_feedback.json",
+      "summary_record_sha256": "83b8a41e1fb42ebc0268555a9535d0a768f5e1c1abbad65cc4b0745209597dfc",
+      "feedback": {
+        "A": {
+          "candidate": "V32I_SAME_SPOUT_OOB_BLEND",
+          "score": 83.2764,
+          "delta_vs_parent_V30A": -0.0411,
+          "delta_vs_B": 0.1854,
+          "decision": "CLOSED_BELOW_PARENT_RETAIN_V30A"
+        },
+        "B": {
+          "candidate": "V32T_SAME_SPOUT_OOB_TIME",
+          "score": 83.091,
+          "delta_vs_parent_V30A": -0.2265,
+          "delta_vs_A": -0.1854,
+          "decision": "CLOSED_BELOW_PARENT_RETAIN_V30A"
+        }
+      },
+      "highest_user_reported_after_feedback": {
         "candidate": "V30A_OOB_BOTH_TARGETS",
         "score": 83.3175
+      },
+      "latest_user_reported_test_a": {
+        "candidate": "V32T_SAME_SPOUT_OOB_TIME",
+        "score": 83.091
       }
     },
     "desktop_delivery": {

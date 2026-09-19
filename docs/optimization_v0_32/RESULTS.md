@@ -74,3 +74,16 @@ r2 在独立进程中对 A/B × 7 cutoff 全部重新恢复源森林、响应、
 - `C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V32T_SAME_SPOUT_OOB_TIME.zip`
 
 桌面 SHA-256 分别为 `acafbc9d08540a1322802e339ff79ae5164e87391e893ed2ce3aad233931d6cd`、`3d4596b2ece3baca3d0a3529373ca5482d1db4c996fdb66533a40efc7cd4b620`，与冻结源包一致。两份 ZIP 均只含 `result.csv`，payload 逐字节一致、各 335 行。没有覆盖或删除桌面文件，平台上传仍为 0。回执保存在 `local/runs/optimization-v0.32-same-spout-oob-responses-r2/desktop_delivery_receipt.json`。
+
+## 平台反馈与决策（2026-09-19 追加）
+
+用户按冻结顺序 A→B 回传平台显示成绩：**A=83.2764，B=83.0910**。未取得账号原始回执，证据状态为 `USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`。
+
+| 槽 | 候选 | 用户回传 | Δ vs V30A=83.3175 | Δ vs V29T=83.3141 | Δ vs V29I=83.2970 | Δ vs V28I=83.2936 | Δ vs V1=83.0319 | 决策 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| A | V32I_SAME_SPOUT_OOB_BLEND | 83.2764 | -0.0411 | -0.0377 | -0.0206 | -0.0172 | +0.2445 | 关闭，保留 V30A |
+| B | V32T_SAME_SPOUT_OOB_TIME | 83.0910 | -0.2265 | -0.2231 | -0.2060 | -0.2026 | +0.0591 | 关闭，保留 V30A |
+
+A 比 B 高 0.1854，但仍低于 V30A、V29T、V29I 与 V28I。B 的历史 J 相对 V30A 小幅改善 `-0.00018334`，平台却低 0.2265；这不支持把显式同铁口条件化视为可泛化收益。原离线报告不回写，两个候选均关闭，不生成第三个双目标组合，也不追加铁口子集、最低成员数、回退或权重搜索。
+
+用户侧平台预算已按 2/2 消费，agent 上传仍为 0。当前最高用户回传完整包保持 V30A=83.3175；账号当前生效条目因无账号回执仍登记为未知。反馈记录为 `platform_feedback_user_reported.json`（SHA-256 `83df8bb71d734a998c76c132d4f11638084eaa5abfc967a0ef69324a58a384b5`）。
