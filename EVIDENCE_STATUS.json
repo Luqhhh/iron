@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-09-19",
+  "as_of": "2026-09-20",
   "implementation_version": "baseline-v0.1-reproducible",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",
@@ -3901,5 +3901,134 @@
       "receipt": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/publication_receipt.json",
       "receipt_sha256": "cd047d330d6b9da73779020a0908e57b91e273ae0848f7c9457ed3bf80ae68e1"
     }
+  },
+  "optimization_v0_34": {
+    "as_of": "2026-09-20",
+    "branch": "optimization-v0.34-oob-leaf-median-bagging",
+    "implementation_commit": "6be934c10a69a6072d6d37c9e6e0cb2b7d38929d",
+    "status": "G0_PASS_G1_REPORTED_READY_FOR_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "run_root": "local/runs/optimization-v0.34-oob-leaf-median-bagging-r2",
+    "preserved_incomplete_run": {
+      "path": "local/runs/optimization-v0.34-oob-leaf-median-bagging-r1",
+      "reason": "WORKER_RECEIPT_ROW_COUNT_USED_FEATURE_DICTIONARY_FIELD_COUNT",
+      "predictions_truncated": false,
+      "scored": false,
+      "packaged": false,
+      "completion_written": false,
+      "reused_by_r2": false
+    },
+    "candidates": {
+      "A": "V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND",
+      "B": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME"
+    },
+    "parent": {
+      "candidate": "V30A_OOB_BOTH_TARGETS",
+      "highest_user_reported_score": 83.3175,
+      "result_sha256": "97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a",
+      "zip_sha256": "fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986"
+    },
+    "fit_counts": {
+      "new_model_or_tree_attempted": 0,
+      "new_model_or_tree_completed": 0,
+      "new_preprocessor_or_calibration_attempted": 0,
+      "new_preprocessor_or_calibration_completed": 0,
+      "supervised_leaf_point_tables_A": 7,
+      "supervised_leaf_point_tables_B": 7,
+      "certified_oob_attachment_reads_A": 7,
+      "certified_oob_attachment_reads_B": 7
+    },
+    "offline_delta_vs_parent_macro_origin_mean_wmape": {
+      "V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND": {
+        "H1": -0.00019272,
+        "H2": -0.00060022,
+        "H3": -0.00114301,
+        "H4": -0.00117065,
+        "J": -0.00077665,
+        "DEV_LONG": -0.00113240,
+        "DEV_SHORT": -0.00025517
+      },
+      "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME": {
+        "H1": -0.00200911,
+        "H2": -0.00259521,
+        "H3": -0.00333027,
+        "H4": -0.00364102,
+        "J": -0.00289390,
+        "DEV_LONG": -0.00228421,
+        "DEV_SHORT": -0.00350687
+      }
+    },
+    "offline_delta_J_vs_V1": {
+      "V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND": 0.00322863,
+      "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME": 0.00111138
+    },
+    "target_isolation": {
+      "checked_cells": 40,
+      "checked_macro_summaries": 50,
+      "maximum_absolute_delta_identity_residual": 6.938893903907228e-17,
+      "tolerance": 1e-12
+    },
+    "final_diagnostics": {
+      "A": {
+        "leaf_keys": 35177,
+        "selected_count_range": [1, 34],
+        "distinct_leaf_points_per_query_min_median_max": [171, 211.0, 230],
+        "changed_iron_rows": 335,
+        "time_strings_exact_V30A": true
+      },
+      "B": {
+        "leaf_keys": 35205,
+        "selected_count_range": [1, 28],
+        "distinct_leaf_points_per_query_min_median_max": [42, 52.0, 69],
+        "changed_time_rows": 335,
+        "iron_strings_exact_V30A": true
+      }
+    },
+    "packages": {
+      "A": {
+        "candidate": "V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND",
+        "rows": 335,
+        "result_sha256": "e0a6353b0b630acf92b6f72a07c5c4fdbb0d600f7f65d47348b9ab44f8842985",
+        "zip_sha256": "80011770c3abbd108da59338ec9eb5e4e1c29c6d45b75387005349905d86311f"
+      },
+      "B": {
+        "candidate": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME",
+        "rows": 335,
+        "result_sha256": "80a74e687f74181ec962cc8a12328380706c0d6bbbc7d53dd932866a169d6466",
+        "zip_sha256": "e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924"
+      }
+    },
+    "platform_order": ["A", "B"],
+    "platform_budget": 2,
+    "platform_uploads": 0,
+    "agent_platform_uploads": 0,
+    "automatic_uploads": 0,
+    "desktop_writes": 0,
+    "third_candidate_generated": false,
+    "cold_validation": "PASS_SOURCE_FOREST_RESPONSE_BOOTSTRAP_V029_ATTACHMENT_LEAF_POINT_TABLE_FULL_REVERSE_CHUNK_SUBSET_SINGLE_LEGACY_SWITCH_BACK_ZERO_FIT_ZIP_REREAD",
+    "locked_tests": {
+      "root_python": "3.12.12",
+      "root_passed": 520,
+      "worker_python": "3.12.12",
+      "worker_v034_passed": 17,
+      "related_worker_regressions_passed": 94,
+      "private_artifact_guard": "PASS"
+    },
+    "manifest_sha256": "92a860029f30d2d4a3d19a432eb8e9e4e5e369e47ecc1ad2ac6d3dc51f3cc40e",
+    "registration_sha256": "a4ba5423c7f978a3670a7ec6a42c230ec51e497fa1e1ff070e94db7c3217a734",
+    "p0_complete_sha256": "52f96aa9294f3b3ef6c76b9f69fce227826a2bc1be4921be30ecd364e88ebe89",
+    "offline_assessment_sha256": "5c7b6a06a549ca37186c68c8d15e8f1b893d6721f789908777ccb2c59535e30a",
+    "leaf_point_diagnostics_sha256": "51899081391baab900b41be8816ad6ddd4d11357b910d78291b7c9fefeab1d6b",
+    "packages_frozen_sha256": "21f3c39c0b575d72d3e3d31a8e30acac30ce38095ed36f360e51687dc077d7da",
+    "fit_counts_sha256": "066375f6184315b09c24b361d2bb5e8d0f5420d5ed5c97147f82f34311e6c8b5",
+    "cold_validation_sha256": "a9fbd33b8a311425ae546c60ea65a5c39d29b074cb083ef4ddaac996e540be94",
+    "completion_sha256": "dcd727fcd4ef76ec6a5e76053ea09fa4488514cc792107c5c08cec08e2cb3473",
+    "results_document": "docs/optimization_v0_34/RESULTS.md",
+    "test_targets_read": false,
+    "branch_pushed": true,
+    "public_implementation_commits": [
+      "e594b108f49fab4e218e03a5c7e7a9a6c5c166ef",
+      "6be934c10a69a6072d6d37c9e6e0cb2b7d38929d"
+    ],
+    "private_local_artifacts_pushed": false
   }
 }
