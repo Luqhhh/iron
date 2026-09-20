@@ -80,17 +80,20 @@ V30A 保底原 CSV/ZIP 已核验为 `97b6c3e0c648a0c6454cc9b36f518625487c03d1efd
 
 桌面摘要分别为 `e7fe9c8cb82521b384b2b8d46031220b8f15bd7a09f00db7f3ccc95bc923a850`、`0a50865800cba7181db115f50e31598b81c0a4f589fbb0c75d1a79774c3408c2`，与冻结源包一致。桌面同赛事前缀 ZIP 核验后仅余这两份；平台上传仍由用户操作，agent 上传为 0。回执保存在 `desktop_delivery_receipt.json`，SHA-256 为 `cd1c98b29b0d912c799ef9afe98958f6fed64fad02729afaf6025d01acb1301e`。
 
-## A 平台反馈（2026-09-19 追加）
+## 平台反馈（2026-09-19 至 2026-09-20 追加）
 
 用户回传 A `V33A_OOB_TIME_FEATURE_THIRD` 的平台显示成绩为 **83.2241**，未取得账号原始回执，证据状态为 `USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`。
 
 | 候选 | 用户回传 | Δ vs V30A | Δ vs V29T | Δ vs V29I | Δ vs V28I | Δ vs V1 | 决策 |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | V33A_OOB_TIME_FEATURE_THIRD | 83.2241 | -0.0934 | -0.0900 | -0.0729 | -0.0695 | +0.1922 | 关闭 A，保留 V30A |
+| V33B_OOB_TIME_HALF_BOOTSTRAP | 83.2638 | -0.0537 | -0.0503 | -0.0332 | -0.0298 | +0.2319 | 关闭 B，保留 V30A |
 
 A 的历史 H1/J 相对 V30A 小幅改善，但平台显示分数低 0.0934；这不支持把 1/3 特征抽样视为可泛化收益。历史离线表不回写。当前最高用户回传完整包仍为 V30A=83.3175。
 
-B `V33B_OOB_TIME_HALF_BOOTSTRAP` 的定义、模型、预测和 ZIP 未根据 A 的成绩修改，仍保持冻结；预登记的第二个平台名额尚余 1。agent 平台上传为 0，不生成 A+B 或第三候选。反馈记录为 `platform_feedback_user_reported.json`（SHA-256 `caa50306043579cdb5cf887fda05ab32b38018f2b96edb5f49a1dbc5e46a0630`）。
+B `V33B_OOB_TIME_HALF_BOOTSTRAP` 的定义、模型、预测和 ZIP 未根据 A 的成绩修改。2026-09-20 用户回传 B=**83.2638**：比 A 高 0.0397，但仍比 V30A 低 0.0537。B 的历史 H1/J 也曾小幅优于 V30A，平台仍未提分；这不支持继续围绕固定半量 bootstrap 扫描抽样比例。
+
+本轮两个预登记平台名额已按 A→B 用完，A/B 均关闭，当前最高用户回传完整包保持 V30A=83.3175。不生成 A+B、第三候选或现场参数扫描。agent 平台上传为 0；未取得账号回执，因此账号当前生效条目仍登记为未知。A 的初始记录保持不改，B 使用新增 append-only 记录 `platform_feedback_B_user_reported.json`（SHA-256 `ff5cb35ec6175c64f4a575d954af644782b2162bc5e100decdc59ddc95256a72`）；完整摘要为 `platform_feedback_complete.json`（SHA-256 `9e862ff7f62ae5eac79b29c9dedad80e384842ed95c5a048a616d7f5f58569d0`）。
 
 ## 远端推送（2026-09-19 追加）
 

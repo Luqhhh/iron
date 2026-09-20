@@ -3723,10 +3723,10 @@
     }
   },
   "optimization_v0_33": {
-    "as_of": "2026-09-19",
+    "as_of": "2026-09-20",
     "branch": "optimization-v0.33-qrf-feature-and-row-sampling",
     "implementation_commit": "441b09ba95c613379611de00af7a2e4c0a87f4d9",
-    "status": "G0_PASS_G1_REPORTED_A_PLATFORM_BELOW_PARENT_B_FROZEN_ONE_SLOT_REMAINING",
+    "status": "G0_PASS_G1_REPORTED_BOTH_PLATFORM_BELOW_PARENT_V30A_RETAINED",
     "run_root": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1",
     "candidates": {
       "A": "V33A_OOB_TIME_FEATURE_THIRD",
@@ -3817,16 +3817,16 @@
     },
     "platform_order": ["A", "B"],
     "platform_budget": 2,
-    "platform_uploads": 1,
-    "platform_uploads_user_reported": 1,
+    "platform_uploads": 2,
+    "platform_uploads_user_reported": 2,
     "agent_platform_uploads": 0,
-    "platform_budget_remaining": 1,
+    "platform_budget_remaining": 0,
     "automatic_uploads": 0,
     "desktop_writes": 2,
     "public_pushes": 1,
     "third_candidate_generated": false,
     "platform_feedback": {
-      "status": "PARTIAL_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "status": "COMPLETE_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "platform_verified": false,
       "record": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/platform_feedback_user_reported.json",
       "record_sha256": "caa50306043579cdb5cf887fda05ab32b38018f2b96edb5f49a1dbc5e46a0630",
@@ -3840,12 +3840,23 @@
       },
       "B": {
         "candidate": "V33B_OOB_TIME_HALF_BOOTSTRAP",
-        "status": "FROZEN_AWAITING_USER_DECISION_OR_FEEDBACK",
-        "definition_and_package_changed_after_A_feedback": false
+        "score": 83.2638,
+        "delta_vs_parent_V30A": -0.0537,
+        "delta_vs_A": 0.0397,
+        "decision": "CLOSED_BELOW_PARENT_RETAIN_V30A",
+        "definition_and_package_changed_after_A_feedback": false,
+        "record": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/platform_feedback_B_user_reported.json",
+        "record_sha256": "ff5cb35ec6175c64f4a575d954af644782b2162bc5e100decdc59ddc95256a72"
       },
-      "highest_user_reported_after_A": {
+      "complete_summary_record": "local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1/platform_feedback_complete.json",
+      "complete_summary_record_sha256": "9e862ff7f62ae5eac79b29c9dedad80e384842ed95c5a048a616d7f5f58569d0",
+      "highest_user_reported_after_v033": {
         "candidate": "V30A_OOB_BOTH_TARGETS",
         "score": 83.3175
+      },
+      "latest_user_reported_test_a": {
+        "candidate": "V33B_OOB_TIME_HALF_BOOTSTRAP",
+        "score": 83.2638
       }
     },
     "desktop_delivery": {
