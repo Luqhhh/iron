@@ -286,6 +286,8 @@ def _compose_slot(root: Path, slot: int, *, derive: bool, write: bool):
         atomic_write_json(root / "predictions" / f"{slot}_audit.json", audits)
         for candidate in CANDIDATES:
             receipt = read_json(str(root / "worker_predictions" / candidate / f"{slot}.npz") + ".json")
+            if receipt["rows"] != len(parent):
+                raise ContractError("v0.34 worker receipt row count differs from parent")
             atomic_write_json(root / "leaf_point_views" / f"{candidate}_{slot}.json", {
                 "slot": slot, "candidate": CANDIDATES[candidate], "target": receipt["target"],
                 "leaf_point_table_path": receipt["leaf_point_table_path"],

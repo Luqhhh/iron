@@ -229,9 +229,10 @@ def derive_predict(root, slot, candidate, output):
         support = [float(np.min(model.y)), float(np.max(model.y))]
         if not np.isfinite(point_mean).all() or (point_mean < support[0]).any() or (point_mean > support[1]).any():
             raise ValueError("v0.34 prediction left raw response support")
+        row_count = len(evaluation["ids"])
         arrays_out = {"ids": evaluation["ids"], "point_mean": point_mean, "legacy_median": legacy, **_diagnostic_arrays(diagnostics)}
         receipt = {"slot": slot, "candidate": candidate, "candidate_id": CANDIDATES[candidate], "target": TARGETS[candidate],
-                   "rows": len(evaluation), "source_folder": str(folder), "source_bundle_sha256": sha(folder / "bundle.json"),
+                   "rows": row_count, "source_folder": str(folder), "source_bundle_sha256": sha(folder / "bundle.json"),
                    "source_forest_sha256": sha(folder / "forest.joblib"), "source_tree_structure_sha256": tree_structure_identity(model.forest),
                    "source_response": array_identity(model.y), "training_ids": array_identity(train["ids"]),
                    "attachment_path": str(attachment), "attachment_sha256": sha(attachment),
@@ -275,7 +276,7 @@ def cold(root, slot, candidate, output):
         if not np.array_equal(reverse, point_mean[::-1]) or not np.array_equal(subset, point_mean[indices]) or not np.array_equal(single, point_mean[middle:middle + 1]) or not np.array_equal(np.concatenate(chunks), point_mean):
             raise ValueError("cold v0.34 reverse/chunk/subset/single invariance failed")
         V31_ADAPTER._legacy_endpoint_check(candidate, slot, evaluation["ids"], legacy)
-        receipt = {"slot": slot, "candidate": candidate, "rows": len(evaluation), "match": True,
+        receipt = {"slot": slot, "candidate": candidate, "rows": len(evaluation["ids"]), "match": True,
                    "point_table_rederived_exact": True, "attachment_rederived_from_bootstrap_exact": True,
                    "reverse_chunk_subset_single_exact": True, "legacy_switch_back_exact": True,
                    "source_tree_structure_sha256": tree_structure_identity(model.forest),
