@@ -61,3 +61,11 @@ ZIP 只含 UTF-8 `result.csv`，三列、335 个唯一 ID、有限非负六位�
 - `completion.json`: `3df9a9d96a3d214f22b6ffc24b16c43870b53df8c63e00a59df7c87cf056fb52`
 
 平台反馈尚未产生。有效反馈高于 83.3201 才更新最高用户回传包；低于或等于时保留 V34T 的历史最高记录，但本轮不得安排恢复上传。最高历史回传、最新提交和账号当前生效条目继续分开登记。
+
+## 桌面替换交付（2026-09-20 追加）
+
+用户随后明确要求删除桌面旧提交包并写入 v0.36。桌面中识别出的 4 份旧赛事 ZIP（V34I、V34T、V35A、V35B）已删除；它们的 private local 冻结原件均保留，可由本地证据恢复。唯一新副本为：
+
+`C:\Users\lqh22\Desktop\Luqhhh_bf_tap_predict_prelim_V36T_V34_V30_EQUAL_BLEND.zip`
+
+桌面 SHA-256 为 `49b2e39a6019d341261221b40a58f7e773edad471896c35808b9e89551f35e80`，与冻结源包一致，且 ZIP 只包含 `result.csv`。交付后桌面匹配 `Luqhhh_bf_tap_predict*.zip` 的文件仅此一份；平台上传仍为 0。私有交付回执 `desktop_delivery_receipt.json` 的 SHA-256 为 `6f992966c8f5aea6224869d4336b922eba013471a2b6f85ee4e90309b228085c`。
