@@ -3906,7 +3906,7 @@
     "as_of": "2026-09-20",
     "branch": "optimization-v0.34-oob-leaf-median-bagging",
     "implementation_commit": "6be934c10a69a6072d6d37c9e6e0cb2b7d38929d",
-    "status": "G0_PASS_G1_REPORTED_READY_FOR_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "status": "G0_PASS_G1_REPORTED_B_PLATFORM_ABOVE_PARENT_NEW_HIGHEST_USER_REPORTED",
     "run_root": "local/runs/optimization-v0.34-oob-leaf-median-bagging-r2",
     "preserved_incomplete_run": {
       "path": "local/runs/optimization-v0.34-oob-leaf-median-bagging-r1",
@@ -3923,7 +3923,7 @@
     },
     "parent": {
       "candidate": "V30A_OOB_BOTH_TARGETS",
-      "highest_user_reported_score": 83.3175,
+      "previous_highest_user_reported_score": 83.3175,
       "result_sha256": "97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a",
       "zip_sha256": "fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986"
     },
@@ -3999,11 +3999,45 @@
     },
     "platform_order": ["A", "B"],
     "platform_budget": 2,
-    "platform_uploads": 0,
+    "platform_uploads": 2,
+    "platform_uploads_user_reported": 2,
+    "platform_budget_remaining": 0,
     "agent_platform_uploads": 0,
     "automatic_uploads": 0,
     "desktop_writes": 2,
     "third_candidate_generated": false,
+    "platform_feedback": {
+      "status": "COMPLETE_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "platform_verified": false,
+      "record": "local/runs/optimization-v0.34-oob-leaf-median-bagging-r2/platform_feedback_user_reported.json",
+      "record_sha256": "ed12f2abdef703fc2c8e00b4f93bad0a04b9228df7f67042d9d6edb059249539",
+      "complete_summary_record": "local/runs/optimization-v0.34-oob-leaf-median-bagging-r2/platform_feedback_complete.json",
+      "complete_summary_record_sha256": "1b60d158c685ab6b0ecd4f9c72b308d1616d7325c648baa6c59af9126443a3e3",
+      "A": {
+        "candidate": "V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND",
+        "score": 83.3104,
+        "delta_vs_parent_V30A": -0.0071,
+        "decision": "CLOSED_BELOW_PARENT"
+      },
+      "B": {
+        "candidate": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME",
+        "score": 83.3201,
+        "delta_vs_parent_V30A": 0.0026,
+        "delta_vs_A": 0.0097,
+        "decision": "PROMOTE_NEW_HIGHEST_USER_REPORTED_COMPLETE_PACKAGE",
+        "definition_and_package_changed_after_A_feedback": false
+      },
+      "highest_user_reported_after_v034": {
+        "candidate": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME",
+        "score": 83.3201,
+        "zip_sha256": "e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924"
+      },
+      "latest_user_reported_test_a": {
+        "candidate": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME",
+        "score": 83.3201
+      },
+      "account_effective_submission": "UNKNOWN_NO_ACCOUNT_RECEIPT"
+    },
     "desktop_delivery": {
       "authorization": "USER_EXPLICIT_WRITE_V034_SUBMISSION_PACKAGES_TO_DESKTOP_20260920",
       "status": "PASS_TWO_FROZEN_PACKAGES_COPIED_AND_VERIFIED",

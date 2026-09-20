@@ -69,7 +69,7 @@ A/B 相对 V30A 的 H1–H4、J 和两个 DEV 均改善，其中 B 的历史改�
 | A | V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND | `e0a6353b0b630acf92b6f72a07c5c4fdbb0d600f7f65d47348b9ab44f8842985` | `80011770c3abbd108da59338ec9eb5e4e1c29c6d45b75387005349905d86311f` |
 | B | V34T_OOB_LEAF_MEDIAN_BAGGING_TIME | `80a74e687f74181ec962cc8a12328380706c0d6bbbc7d53dd932866a169d6466` | `e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924` |
 
-V30A 保底原 CSV/ZIP 已核验为 `97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a` / `fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986`，当前最高用户回传仍为 83.3175。
+V30A 保底原 CSV/ZIP 已核验为 `97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a` / `fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986`；在取得本轮反馈前，最高用户回传为 83.3175。
 
 冻结状态为 `READY_FOR_EXPLICIT_PLATFORM_SUBMISSIONS`，预登记顺序 A→B、预算 2。agent 平台上传为 0，桌面写入为 0；两份定义、叶点表、预测与 ZIP 已在任何 v0.34 平台反馈前同时冻结。本轮没有第三组合或恢复上传预算；初赛阶段是否仍开放及账号当前生效条目尚未由本次运行核验。
 
@@ -85,3 +85,18 @@ V30A 保底原 CSV/ZIP 已核验为 `97b6c3e0c648a0c6454cc9b36f518625487c03d1efd
 - `Luqhhh_bf_tap_predict_prelim_V34T_OOB_LEAF_MEDIAN_BAGGING_TIME.zip`
 
 桌面摘要分别为 `80011770c3abbd108da59338ec9eb5e4e1c29c6d45b75387005349905d86311f`、`e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924`，与冻结源包逐份一致；每个 ZIP 只包含 `result.csv`。没有覆盖或删除任何现有桌面文件，平台上传仍为 0。私有交付回执为 `desktop_delivery_receipt.json`，SHA-256 `9abbe82ea1c9c015c0895d38d2626fac1def99eaa99ca7507c0ddfc5ffb3166e`。
+
+## 平台反馈（2026-09-20 追加）
+
+用户按预登记 A→B 顺序一次回传两个平台显示成绩，均未取得账号原始回执，证据状态为 `USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`：
+
+| 槽 | 候选 | 用户回传 | Δ vs V30A | Δ vs A | 决策 |
+| --- | --- | ---: | ---: | ---: | --- |
+| A | V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND | 83.3104 | -0.0071 | — | 关闭 A |
+| B | V34T_OOB_LEAF_MEDIAN_BAGGING_TIME | 83.3201 | +0.0026 | +0.0097 | 提升为最高用户回传完整包 |
+
+A 虽然历史 H1/J 相对 V30A 改善，平台显示仍低 0.0071；不把铁量叶点平均登记为平台收益。B 的历史 H1/J 和平台显示均高于 V30A，但 `+0.0026` 只支持这个固定完整包的结果，不证明跨月份显著改善，也不启动现场树、权重或收缩扫描。
+
+本轮两个预登记平台名额已经用完，不生成 A+B 或第三候选。当前最高用户回传完整包更新为 B `V34T_OOB_LEAF_MEDIAN_BAGGING_TIME` = **83.3201**，ZIP SHA-256 为 `e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924`。agent 平台上传仍为 0；账号当前生效条目因没有账号回执继续登记为未知。
+
+完整私有记录 `platform_feedback_user_reported.json` 的 SHA-256 为 `ed12f2abdef703fc2c8e00b4f93bad0a04b9228df7f67042d9d6edb059249539`；摘要 `platform_feedback_complete.json` 的 SHA-256 为 `1b60d158c685ab6b0ecd4f9c72b308d1616d7325c648baa6c59af9126443a3e3`。
