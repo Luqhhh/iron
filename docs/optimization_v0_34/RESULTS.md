@@ -76,3 +76,12 @@ V30A 保底原 CSV/ZIP 已核验为 `97b6c3e0c648a0c6454cc9b36f518625487c03d1efd
 ## Git 交付
 
 公共实现先后以 `e594b108f49fab4e218e03a5c7e7a9a6c5c166ef` 和证书修复 `6be934c10a69a6072d6d37c9e6e0cb2b7d38929d` 提交，并普通推送到 `origin/optimization-v0.34-oob-leaf-median-bagging`。推送前私有产物 guard 通过；`local/` 中的模型、响应、叶点表、逐样本预测、ledger、回执与提交 ZIP 均未进入 Git。
+
+## 桌面交付（2026-09-20 追加）
+
+用户随后明确要求把提交包写入桌面。两份冻结 ZIP 已采用不覆盖模式复制到 `C:\Users\lqh22\Desktop`：
+
+- `Luqhhh_bf_tap_predict_prelim_V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND.zip`
+- `Luqhhh_bf_tap_predict_prelim_V34T_OOB_LEAF_MEDIAN_BAGGING_TIME.zip`
+
+桌面摘要分别为 `80011770c3abbd108da59338ec9eb5e4e1c29c6d45b75387005349905d86311f`、`e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924`，与冻结源包逐份一致；每个 ZIP 只包含 `result.csv`。没有覆盖或删除任何现有桌面文件，平台上传仍为 0。私有交付回执为 `desktop_delivery_receipt.json`，SHA-256 `9abbe82ea1c9c015c0895d38d2626fac1def99eaa99ca7507c0ddfc5ffb3166e`。

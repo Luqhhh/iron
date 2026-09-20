@@ -4002,8 +4002,21 @@
     "platform_uploads": 0,
     "agent_platform_uploads": 0,
     "automatic_uploads": 0,
-    "desktop_writes": 0,
+    "desktop_writes": 2,
     "third_candidate_generated": false,
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_WRITE_V034_SUBMISSION_PACKAGES_TO_DESKTOP_20260920",
+      "status": "PASS_TWO_FROZEN_PACKAGES_COPIED_AND_VERIFIED",
+      "copy_mode": "NO_CLOBBER",
+      "existing_files_overwritten": 0,
+      "files_deleted": 0,
+      "old_desktop_packages_retained": true,
+      "A_sha256": "80011770c3abbd108da59338ec9eb5e4e1c29c6d45b75387005349905d86311f",
+      "B_sha256": "e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924",
+      "receipt": "local/runs/optimization-v0.34-oob-leaf-median-bagging-r2/desktop_delivery_receipt.json",
+      "receipt_sha256": "9abbe82ea1c9c015c0895d38d2626fac1def99eaa99ca7507c0ddfc5ffb3166e",
+      "platform_uploads": 0
+    },
     "cold_validation": "PASS_SOURCE_FOREST_RESPONSE_BOOTSTRAP_V029_ATTACHMENT_LEAF_POINT_TABLE_FULL_REVERSE_CHUNK_SUBSET_SINGLE_LEGACY_SWITCH_BACK_ZERO_FIT_ZIP_REREAD",
     "locked_tests": {
       "root_python": "3.12.12",
