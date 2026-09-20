@@ -1,0 +1,68 @@
+schema_version: 1
+phase: optimization-v0.35-time-leaf-location-and-vote
+branch: optimization-v0.35-time-leaf-location-and-vote
+base_commit: 6eee2e77e0d1393ea1e2f148eb230fa93a54ae4b
+candidates: {A: V35A_OOB_MIDPOINT_LEAF_MEAN_TIME, B: V35B_OOB_LOWER_MEDIAN_OF_LEAF_POINTS_TIME}
+parent: V34T_OOB_LEAF_MEDIAN_BAGGING_TIME
+references: [V34T_OOB_LEAF_MEDIAN_BAGGING_TIME, V30A_OOB_BOTH_TARGETS, V1, V21_REPLAY]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+test_a_rows: 335
+protocol: FROZEN_OOB_TIME_LEAF_LOCATION_AND_VOTE_v035
+oob_attachment_protocol: QRF_FROZEN_FOREST_OOB_LEAF_RESPONSE_v029
+parent_table_protocol: FROZEN_OOB_LEAF_LOWER_MEDIAN_BAGGING_v034
+common_source:
+  forest: V26A_QRF_ABSOLUTE_SPLIT_TIME
+  trees: 256
+  attachment: v029_B
+  response: raw_nonnegative_tap_time_len_minutes
+  gate: original_v015_spout_1_and_effective_neighbors_lt_500
+  anchor: original_V21_query_day_moving_60d_legal_history_median
+  shrink: 0.25
+  iron: exact_parent_V34T_csv_strings
+candidate_A:
+  within_leaf: median_interval_lower_and_upper_from_same_selected_members
+  cross_tree: exact_sum_of_256_lower_plus_256_upper_binary64_values_divided_by_512
+  persist: seven_new_midpoint_tables
+  invariants: [upper_gte_lower, odd_lower_eq_upper, raw_gte_parent, final_time_gte_parent]
+candidate_B:
+  within_leaf: exact_parent_v034_lower_median_raw
+  cross_tree: smaller_middle_value_index_127_of_256_tree_points
+  persist: reuse_seven_parent_lower_tables
+  numpy_median: forbidden
+parent_regression:
+  A: set_upper_equal_lower_recovers_parent_raw_and_final
+  B: switch_cross_tree_vote_to_exact_mean_recovers_parent_raw_and_final
+budget:
+  new_model_or_tree_fits: 0
+  new_preprocessing_catboost_calibration_fits: 0
+  new_midpoint_tables_A_development: 6
+  new_midpoint_tables_A_final: 1
+  new_midpoint_tables_A_total: 7
+  reused_lower_tables_B_development: 6
+  reused_lower_tables_B_final: 1
+  reused_lower_tables_B_total: 7
+  new_lower_tables_B_total: 0
+  unique_v029_time_attachment_sources: 7
+  new_read_protocol_manifests: 14
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+  automatic_uploads: 0
+  restore_uploads: 0
+  desktop_writes: 0
+  third_candidate: 0
+bootstrap: {repetitions: 1000, seed: 2026, unit: calendar_week, invalid_draws_replaced: false}
+aggregation: {primary: macro_origin_mean_wmape, diagnostic: exposure_pooled_wmape, tolerance: 1.0e-12}
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+parent_user_reported_score: 83.3201
+source_identities:
+  parent_result_sha256: 80a74e687f74181ec962cc8a12328380706c0d6bbbc7d53dd932866a169d6466
+  parent_zip_sha256: e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924
+source_runs:
+  v26: local/runs/optimization-v0.26-qrf-partition-tests-r1
+  v29: local/runs/optimization-v0.29-oob-leaf-responses-r1
+  v30: local/runs/optimization-v0.30-oob-compose-and-time-growth-r6
+  v34: local/runs/optimization-v0.34-oob-leaf-median-bagging-r2
