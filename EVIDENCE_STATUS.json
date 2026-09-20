@@ -4082,7 +4082,7 @@
     "as_of": "2026-09-20",
     "branch": "optimization-v0.35-time-leaf-location-and-vote",
     "implementation_commit": "282685a270f17de8a7cd37da8f27e8afb80f6106",
-    "status": "G0_PASS_G1_BOTH_BELOW_V34T_READY_FOR_EXPLICIT_PLATFORM_SUBMISSIONS",
+    "status": "G0_PASS_G1_BOTH_BELOW_V34T_B_PLATFORM_BELOW_PARENT_A_HELD",
     "run_root": "local/runs/optimization-v0.35-time-leaf-location-and-vote-r1",
     "candidates": {
       "A": "V35A_OOB_MIDPOINT_LEAF_MEAN_TIME",
@@ -4158,11 +4158,55 @@
     },
     "platform_order": ["A", "B"],
     "platform_budget": 2,
-    "platform_uploads": 0,
+    "platform_uploads": 1,
     "agent_platform_uploads": 0,
     "automatic_uploads": 0,
-    "desktop_writes": 0,
+    "desktop_writes": 2,
     "third_candidate_generated": false,
+    "platform_feedback": {
+      "status": "PARTIAL_B_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED_A_NOT_SUBMITTED",
+      "platform_verified": false,
+      "record": "local/runs/optimization-v0.35-time-leaf-location-and-vote-r1/platform_feedback_B_user_reported.json",
+      "record_sha256": "88a9d4412d07472c222e49e9399c1238464f82e4632a9c78d98faeaa14576110",
+      "planned_order": ["A", "B"],
+      "reported_actual_first_candidate": "B",
+      "order_deviation_recorded": true,
+      "B": {
+        "candidate": "V35B_OOB_LOWER_MEDIAN_OF_LEAF_POINTS_TIME",
+        "score": 83.2778,
+        "delta_vs_parent_V34T": -0.0423,
+        "delta_vs_V30A": -0.0397,
+        "decision": "CLOSED_BELOW_PARENT_RETAIN_V34T"
+      },
+      "A": {
+        "candidate": "V35A_OOB_MIDPOINT_LEAF_MEAN_TIME",
+        "platform_status": "NOT_SUBMITTED",
+        "recommendation": "SKIP_LOW_EXPECTED_VALUE_UNLESS_PURE_EXPERIMENTAL_COMPLETION_WITH_SAFE_RECOVERY"
+      },
+      "highest_user_reported_after_feedback": {
+        "candidate": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME",
+        "score": 83.3201,
+        "zip_sha256": "e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924"
+      },
+      "latest_user_reported_test_a": {
+        "candidate": "V35B_OOB_LOWER_MEDIAN_OF_LEAF_POINTS_TIME",
+        "score": 83.2778
+      },
+      "planned_experiment_slots_remaining": 1,
+      "actual_account_quota_remaining": "UNKNOWN",
+      "account_effective_submission": "UNKNOWN_NO_ACCOUNT_RECEIPT"
+    },
+    "desktop_delivery": {
+      "authorization": "USER_EXPLICIT_WRITE_V035_PACKAGES_TO_DESKTOP_20260920",
+      "status": "PASS_TWO_FROZEN_PACKAGES_COPIED_AND_VERIFIED",
+      "copy_mode": "NO_CLOBBER",
+      "existing_files_overwritten": 0,
+      "files_deleted": 0,
+      "A_sha256": "faf3ed009904f9253d3bd178c3b3b5b27bed60f743d4f7bad1ec70875d7cb63e",
+      "B_sha256": "11f9cd5a8dfb4eec846d4f60789ff1b211a3ed32ce3764d5642ed563f4b746a4",
+      "receipt": "local/runs/optimization-v0.35-time-leaf-location-and-vote-r1/desktop_delivery_receipt.json",
+      "receipt_sha256": "f534b01a4a4e3d2e92338bf9ac48967f11735af1ed734575dd393c9fbe646148"
+    },
     "cold_validation": "PASS_A_MIDPOINT_REDERIVE_B_PARENT_LOWER_REDERIVE_PARENT_SWITCH_BACK_FULL_REVERSE_CHUNK_SUBSET_SINGLE_ZERO_FIT_ZIP_REREAD",
     "locked_tests": {
       "root_python": "3.12.12",

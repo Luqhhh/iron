@@ -77,3 +77,11 @@ A 的 raw 和最终时长均逐行不低于 V34T，满足登记的不变量。B 
 - `Luqhhh_bf_tap_predict_prelim_V35B_OOB_LOWER_MEDIAN_OF_LEAF_POINTS_TIME.zip`
 
 桌面摘要分别为 `faf3ed009904f9253d3bd178c3b3b5b27bed60f743d4f7bad1ec70875d7cb63e`、`11f9cd5a8dfb4eec846d4f60789ff1b211a3ed32ce3764d5642ed563f4b746a4`，与冻结源包逐份一致；每个 ZIP 只包含 `result.csv`。没有覆盖或删除任何文件，平台上传仍为 0。私有交付回执为 `desktop_delivery_receipt.json`。
+
+## 平台反馈（2026-09-20 追加）
+
+用户明确标注 35B 并回传平台显示成绩 **83.2778**；未取得 submission ID 或账号原始回执，证据状态为 `USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED`。该分数比当前父方案 V34T=83.3201 低 `0.0423`，比旧 V30A=83.3175 低 `0.0397`，因此关闭 B 并继续保留 V34T 原高分包。
+
+实际反馈顺序为 B 先于 A，与预登记 A→B 不同；偏差已如实记录。两份候选在反馈前已经同时冻结，B 的定义、预测和 ZIP 没有因任何本轮平台反馈改变。A 截至本记录尚未提交，冻结包仍保留；考虑到 A 相对 V34T 的历史 J 退化 `+0.00269921`，约为 B 退化幅度的 6.7 倍，当前建议跳过 A，除非仅为补齐实验且已确认有安全恢复 V34T 的机会。这是提交建议，不把未测试的 A 伪记为平台关闭结果。
+
+本轮用户回传平台测试计数为 1，agent 上传仍为 0；计划实验槽剩余 1，但账号实际额度未知。当前最高用户回传仍为 V34T=83.3201，最新用户回传为 V35B=83.2778，账号当前生效条目仍因缺少回执登记为未知。私有反馈记录 `platform_feedback_B_user_reported.json` 的 SHA-256 为 `88a9d4412d07472c222e49e9399c1238464f82e4632a9c78d98faeaa14576110`。
