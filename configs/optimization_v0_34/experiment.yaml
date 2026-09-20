@@ -1,0 +1,93 @@
+schema_version: 1
+phase: optimization-v0.34-oob-leaf-median-bagging
+branch: optimization-v0.34-oob-leaf-median-bagging
+base_commit: e8dda75a93f159620d9f70ae0cfeed3e2cbf68d0
+review_point: optimization-v0.33-qrf-feature-and-row-sampling
+candidates:
+  A: V34I_OOB_LEAF_MEDIAN_BAGGING_BLEND
+  B: V34T_OOB_LEAF_MEDIAN_BAGGING_TIME
+parent: V30A_OOB_BOTH_TARGETS
+references: [V1, V21_REPLAY, V30A_OOB_BOTH_TARGETS]
+origins: {6: 4, 7: 4, 8: 4, 9: 3, 10: 2, 11: 1}
+final_cutoff: '2024-12-01 01:44:00+08:00'
+training_rows: {6: 888, 7: 1180, 8: 1490, 9: 1803, 10: 2091, 11: 2424, 12: 2754}
+test_a_rows: 335
+protocol: FROZEN_OOB_LEAF_LOWER_MEDIAN_BAGGING_v034
+oob_attachment_protocol: QRF_FROZEN_FOREST_OOB_LEAF_RESPONSE_v029
+member_rule:
+  source: per_tree_selected_members_from_certified_v029_attachments
+  oob_nonempty: use_oob_leaf_members
+  oob_empty: use_same_full_leaf_members
+  member_set_mutation: forbidden
+  one_member: allowed
+  bootstrap_multiplicity_as_response_weight: forbidden
+leaf_point_rule:
+  within_tree: smaller_lower_median_of_raw_selected_responses
+  even_count: smaller_middle_value
+  round_each_leaf_point_before_aggregation: false
+  cross_tree: exact_arithmetic_mean_of_binary64_leaf_points
+  tree_count: 256
+  tree_weight: equal
+  leaf_size_weight: forbidden
+  response_variance_weight: forbidden
+  recency_weight: forbidden
+  spout_conditioning: forbidden
+  occurrence_pooling: forbidden
+  call_forest_predict: forbidden
+candidate_A:
+  target: tap_iron
+  source_forest: V27I_ABS_QRF_DIRECT_IRON
+  source_attachment: v029_A
+  C6: original_V26A_complete_iron_endpoint_six_decimal_strings
+  q6: leaf_point_mean_then_original_six_decimal_roundtrip
+  I_A: mean6_C6_q6
+  T_A: exact_parent_V30A_time_csv_strings
+candidate_B:
+  target: tap_time_len
+  source_forest: V26A_QRF_ABSOLUTE_SPLIT_TIME
+  source_attachment: v029_B
+  q6: leaf_point_mean_then_original_six_decimal_roundtrip
+  gate: spout_no_1_and_original_v015_effective_neighbors_lt_500
+  anchor: M_old_original_V21_query_day_moving_60d_legal_history_median
+  shrink: 0.25
+  I_B: exact_parent_V30A_iron_csv_strings
+legacy_switch_back: original_v029_merged_distribution_lower_median_must_recover_V30A
+serialization:
+  endpoint_decimals: 6
+  iron_mean6: integer_micro_units_ties_to_even
+  time_order: leaf_point_mean_roundtrip_then_original_gate_then_roundtrip
+budget:
+  new_model_or_tree_fits: 0
+  new_preprocessing_lad_beta_lambda_bias_fits: 0
+  leaf_point_tables_A_development: 6
+  leaf_point_tables_A_final: 1
+  leaf_point_tables_A_total: 7
+  leaf_point_tables_B_development: 6
+  leaf_point_tables_B_final: 1
+  leaf_point_tables_B_total: 7
+  leaf_point_tables_total: 14
+  certified_oob_attachment_reads_total: 14
+  new_candidate_packages: 2
+  new_candidate_platform_tests: 2
+  automatic_uploads: 0
+  restore_uploads: 0
+  desktop_writes: 0
+  third_candidate: 0
+bootstrap: {repetitions: 1000, seed: 2026, unit: calendar_week, invalid_draws_replaced: false}
+aggregation: {primary: macro_origin_mean_wmape, diagnostic: exposure_pooled_wmape, tolerance: 1.0e-12}
+platform_order: [A, B]
+platform_upload: explicit_only
+platform_feedback_may_change_second_candidate: false
+v033_user_reported_scores: {A: 83.2241, B: 83.2638}
+v30a_user_reported_score: 83.3175
+source_identities:
+  v30a_result_sha256: 97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a
+  v30a_zip_sha256: fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986
+source_runs:
+  v21_v23: local/runs/optimization-v0.23-recovery-and-stage-validation-r6
+  v22_scoring: local/runs/optimization-v0.22-causal-h2-r8
+  v26: local/runs/optimization-v0.26-qrf-partition-tests-r1
+  v27: local/runs/optimization-v0.27-qrf-iron-and-leaf-recency-r1
+  v29: local/runs/optimization-v0.29-oob-leaf-responses-r1
+  v30: local/runs/optimization-v0.30-oob-compose-and-time-growth-r6
+  v33: local/runs/optimization-v0.33-qrf-feature-and-row-sampling-r1
