@@ -4236,7 +4236,7 @@
     "branch": "optimization-v0.36-single-slot-time-blend",
     "base_commit": "70eebab3c6f469ff2b9f0dc9baf42d0076de0f06",
     "implementation_commit": "14754ae1383859ede851d7ce95fddf77848883d1",
-    "status": "G0_PASS_G1_REPORTED_READY_FOR_ONE_EXPLICIT_PLATFORM_SUBMISSION",
+    "status": "G0_PASS_G1_REPORTED_PLATFORM_NEW_HIGHEST_USER_REPORTED_83_3264_SLOT_EXHAUSTED",
     "run_root": "local/runs/optimization-v0.36-single-slot-time-blend-r1",
     "candidate": "V36T_V34_V30_EQUAL_BLEND",
     "protocol": "COMPLETE_ENDPOINT_TIME_EQUAL_BLEND_v036",
@@ -4317,7 +4317,7 @@
       "platform_guarantee": false
     },
     "platform_submission_budget": 1,
-    "platform_uploads": 0,
+    "platform_uploads": 1,
     "restore_uploads": 0,
     "automatic_uploads": 0,
     "desktop_writes": 1,
@@ -4337,6 +4337,30 @@
       "receipt": "local/runs/optimization-v0.36-single-slot-time-blend-r1/desktop_delivery_receipt.json",
       "receipt_sha256": "6f992966c8f5aea6224869d4336b922eba013471a2b6f85ee4e90309b228085c",
       "platform_uploads": 0
+    },
+    "platform_feedback": {
+      "status": "COMPLETE_USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "platform_verified": false,
+      "record": "local/runs/optimization-v0.36-single-slot-time-blend-r1/platform_feedback_user_reported.json",
+      "record_sha256": "788d06a7faebf2e2f55011aaf486fb69078ea5a174fbc6cf42c5a906ac961a11",
+      "candidate": "V36T_V34_V30_EQUAL_BLEND",
+      "score": 83.3264,
+      "delta_vs_previous_highest_V34T": 0.0063,
+      "delta_vs_V30A": 0.0089,
+      "delta_vs_V35B": 0.0486,
+      "delta_vs_ideal_unrounded_midpoint_display_estimate": 0.0076,
+      "decision": "PROMOTE_NEW_HIGHEST_USER_REPORTED_COMPLETE_PACKAGE",
+      "highest_user_reported_after_feedback": {
+        "candidate": "V36T_V34_V30_EQUAL_BLEND",
+        "score": 83.3264,
+        "zip_sha256": "49b2e39a6019d341261221b40a58f7e773edad471896c35808b9e89551f35e80"
+      },
+      "platform_submission_budget": 1,
+      "platform_uploads_user_reported": 1,
+      "platform_budget_remaining": 0,
+      "restore_upload_budget": 0,
+      "agent_platform_uploads": 0,
+      "account_effective_submission": "UNKNOWN_NO_ACCOUNT_RECEIPT"
     },
     "locked_tests": {
       "root_python": "3.12.12",
