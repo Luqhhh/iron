@@ -1,0 +1,50 @@
+schema_version: 1
+phase: optimization-v0.36-single-slot-time-blend
+branch: optimization-v0.36-single-slot-time-blend
+base_commit: 70eebab3c6f469ff2b9f0dc9baf42d0076de0f06
+candidate: V36T_V34_V30_EQUAL_BLEND
+protocol: COMPLETE_ENDPOINT_TIME_EQUAL_BLEND_v036
+stage: test_a
+expected_rows: 335
+single_slot_user_constraint:
+  remaining_platform_submissions: 1
+  no_preliminary_promotion_score_requirement: true
+  independently_verified_by_agent: false
+algorithm:
+  iron: exact_V34T_csv_strings
+  time_left: complete_V34T_six_decimal_csv_endpoint
+  time_right: complete_V30A_six_decimal_csv_endpoint
+  left_weight: 0.5
+  right_weight: 0.5
+  rounding: integer_micro_units_ties_to_even
+  scope: all_sample_ids
+  platform_feedback_used_to_select_endpoints: true
+source_identities:
+  V34T:
+    candidate: V34T_OOB_LEAF_MEDIAN_BAGGING_TIME
+    result_sha256: 80a74e687f74181ec962cc8a12328380706c0d6bbbc7d53dd932866a169d6466
+    zip_sha256: e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924
+    user_reported_score: 83.3201
+  V30A:
+    candidate: V30A_OOB_BOTH_TARGETS
+    result_sha256: 97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a
+    zip_sha256: fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986
+    user_reported_score: 83.3175
+conditional_display_score_bound:
+  ideal_unrounded_midpoint: 83.3188
+  conservative_before_unknown_hidden_denominator_rounding_term: 83.31875
+  formula: 'S_emitted >= 83.31875 - 50*n*(0.5e-6)/D_T'
+budget:
+  new_model_fits: 0
+  new_tree_fits: 0
+  new_preprocessor_fits: 0
+  new_calibration_or_coefficient_fits: 0
+  new_candidate_packages: 1
+  candidate_platform_submissions_maximum: 1
+  restore_uploads: 0
+  automatic_uploads: 0
+  desktop_writes: 0
+v35_disposition:
+  V35A: UNTESTED_SKIPPED_SLOT_REALLOCATED
+  V35B: USER_REPORTED_83_2778_CLOSED
+  historical_best_V34T: RETAIN_PRIVATE_NO_RECOVERY_SLOT_PROMISED
