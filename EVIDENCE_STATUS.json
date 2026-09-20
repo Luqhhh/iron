@@ -4082,7 +4082,7 @@
     "as_of": "2026-09-20",
     "branch": "optimization-v0.35-time-leaf-location-and-vote",
     "implementation_commit": "282685a270f17de8a7cd37da8f27e8afb80f6106",
-    "status": "G0_PASS_G1_BOTH_BELOW_V34T_B_PLATFORM_BELOW_PARENT_A_HELD",
+    "status": "G0_PASS_G1_BOTH_BELOW_V34T_B_PLATFORM_BELOW_PARENT_A_UNTESTED_SKIPPED_SLOT_REALLOCATED",
     "run_root": "local/runs/optimization-v0.35-time-leaf-location-and-vote-r1",
     "candidates": {
       "A": "V35A_OOB_MIDPOINT_LEAF_MEAN_TIME",
@@ -4180,8 +4180,8 @@
       },
       "A": {
         "candidate": "V35A_OOB_MIDPOINT_LEAF_MEAN_TIME",
-        "platform_status": "NOT_SUBMITTED",
-        "recommendation": "SKIP_LOW_EXPECTED_VALUE_UNLESS_PURE_EXPERIMENTAL_COMPLETION_WITH_SAFE_RECOVERY"
+        "platform_status": "UNTESTED_SKIPPED_SLOT_REALLOCATED_TO_V36",
+        "recommendation": "CLOSED_WITHOUT_PLATFORM_TEST_BY_USER_SINGLE_SLOT_REALLOCATION"
       },
       "highest_user_reported_after_feedback": {
         "candidate": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME",
@@ -4192,7 +4192,8 @@
         "candidate": "V35B_OOB_LOWER_MEDIAN_OF_LEAF_POINTS_TIME",
         "score": 83.2778
       },
-      "planned_experiment_slots_remaining": 1,
+      "planned_experiment_slots_remaining": 0,
+      "remaining_slot_reallocated_to": "V36T_V34_V30_EQUAL_BLEND",
       "actual_account_quota_remaining": "UNKNOWN",
       "account_effective_submission": "UNKNOWN_NO_ACCOUNT_RECEIPT"
     },
@@ -4226,6 +4227,118 @@
     "cold_validation_sha256": "6a1fea446669f1103cf9d4e26cf3722cd4d19f6589d2f20d13918e9dbb1438da",
     "completion_sha256": "0f99a74ad2d1714f6eba3057c421ee7299ae4bbc992b770d99868ff48e0abb17",
     "results_document": "docs/optimization_v0_35/RESULTS.md",
+    "test_targets_read": false,
+    "branch_pushed": true,
+    "private_local_artifacts_pushed": false
+  },
+  "optimization_v0_36": {
+    "as_of": "2026-09-20",
+    "branch": "optimization-v0.36-single-slot-time-blend",
+    "base_commit": "70eebab3c6f469ff2b9f0dc9baf42d0076de0f06",
+    "implementation_commit": "14754ae1383859ede851d7ce95fddf77848883d1",
+    "status": "G0_PASS_G1_REPORTED_READY_FOR_ONE_EXPLICIT_PLATFORM_SUBMISSION",
+    "run_root": "local/runs/optimization-v0.36-single-slot-time-blend-r1",
+    "candidate": "V36T_V34_V30_EQUAL_BLEND",
+    "protocol": "COMPLETE_ENDPOINT_TIME_EQUAL_BLEND_v036",
+    "single_slot_user_constraint": {
+      "remaining_platform_submissions": 1,
+      "no_preliminary_promotion_score_requirement": true,
+      "independently_verified_by_agent": false
+    },
+    "sources": {
+      "V34T": {
+        "candidate": "V34T_OOB_LEAF_MEDIAN_BAGGING_TIME",
+        "user_reported_score": 83.3201,
+        "result_sha256": "80a74e687f74181ec962cc8a12328380706c0d6bbbc7d53dd932866a169d6466",
+        "zip_sha256": "e3f970fa96cad54e0a6c534cc473d3b19eeb88269cb8c2630411796bfa313924"
+      },
+      "V30A": {
+        "candidate": "V30A_OOB_BOTH_TARGETS",
+        "user_reported_score": 83.3175,
+        "result_sha256": "97b6c3e0c648a0c6454cc9b36f518625487c03d1efd7621746d049457c4aed9a",
+        "zip_sha256": "fffcf23b04b3069cd71027682047eea764a2747c2dea48cca91320d67e113986"
+      }
+    },
+    "algorithm": {
+      "iron": "exact_V34T_and_V30A_common_csv_strings",
+      "time": "mean6_complete_V34T_and_V30A_endpoints",
+      "weights": [0.5, 0.5],
+      "rounding": "integer_micro_units_ties_to_even",
+      "platform_feedback_used_to_select_endpoints": true
+    },
+    "fit_counts": {
+      "new_model_attempted": 0,
+      "new_tree_attempted": 0,
+      "new_preprocessor_attempted": 0,
+      "new_calibration_or_coefficient_attempted": 0
+    },
+    "offline_delta_vs_V34T_macro_origin_mean_wmape": {
+      "H1": 0.00090920,
+      "H2": 0.00119866,
+      "H3": 0.00158934,
+      "H4": 0.00174440,
+      "J": 0.00136040,
+      "DEV_LONG": 0.00106602,
+      "DEV_SHORT": 0.00161011
+    },
+    "offline_delta_vs_V30A_macro_origin_mean_wmape": {
+      "H1": -0.00109991,
+      "H2": -0.00139655,
+      "H3": -0.00174093,
+      "H4": -0.00189662,
+      "J": -0.00153350,
+      "DEV_LONG": -0.00121819,
+      "DEV_SHORT": -0.00189675
+    },
+    "target_isolation": {
+      "checked_cells": 20,
+      "checked_macro_summaries": 25,
+      "maximum_absolute_delta_identity_residual": 2.7755575615628914e-17,
+      "tolerance": 1e-12
+    },
+    "final_diagnostics": {
+      "rows": 335,
+      "iron_strings_exact_both_sources": true,
+      "changed_time_rows_vs_V34T": 335,
+      "changed_time_rows_vs_V30A": 335,
+      "delta_minutes_vs_V34T_min_median_max": [0.074219, 0.962891, 1.908203],
+      "time_within_endpoint_interval": true
+    },
+    "package": {
+      "result_sha256": "4b1ee14896dc2a77c19dfa9e6f213f59e9dd43f347b8dc10789fab01a2487577",
+      "zip_sha256": "49b2e39a6019d341261221b40a58f7e773edad471896c35808b9e89551f35e80",
+      "zip_members": ["result.csv"],
+      "status": "PAYLOAD_VALIDATED_NOT_UPLOADED"
+    },
+    "conditional_display_score_bound": {
+      "ideal_unrounded_midpoint": 83.3188,
+      "formula": "S_emitted >= 83.31875 - 50*n*(0.5e-6)/D_T",
+      "hidden_time_denominator_known": false,
+      "platform_guarantee": false
+    },
+    "platform_submission_budget": 1,
+    "platform_uploads": 0,
+    "restore_uploads": 0,
+    "automatic_uploads": 0,
+    "desktop_writes": 0,
+    "second_candidate_generated": false,
+    "V35A": "UNTESTED_SKIPPED_SLOT_REALLOCATED",
+    "cold_validation": "PASS_PAYLOAD_LEVEL_SUBPROCESS_REBUILD_FULL_REVERSE_CHUNK_SUBSET_SINGLE_SOURCE_COLD_EVIDENCE_REUSED_ZERO_FIT_ZIP_REREAD",
+    "source_model_cold_audit_completed_by_this_tool": false,
+    "locked_tests": {
+      "root_python": "3.12.12",
+      "root_passed": 557,
+      "targeted_v036_passed": 31,
+      "private_artifact_guard": "PASS"
+    },
+    "manifest_sha256": "c1db77a64b606d0d0954aecb1aac46f0f11e79e6d79f19d4470e2df227753ae5",
+    "p0_complete_sha256": "2e306555adc6191e4a1cc03ea46c30358f5ced1919ef286ae456e8287561578d",
+    "offline_assessment_sha256": "3d59cd225e292149ea6f502337691ba33775fe2c39cca93d1678f37566050e89",
+    "package_frozen_sha256": "6b8617d1cf6bcabed5c171cc57ec528fb687a9ee903558a301de7e7bbed31ef1",
+    "cold_validation_sha256": "6408e8111f87e62e5dc4809fb0d5a616e6148b1f8a59198d3ae9c43462052224",
+    "fit_counts_sha256": "1255527205a349d09628f3baf14f82b6fa24734c820f5af080227904c960d8b2",
+    "completion_sha256": "3df9a9d96a3d214f22b6ffc24b16c43870b53df8c63e00a59df7c87cf056fb52",
+    "results_document": "docs/optimization_v0_36/RESULTS.md",
     "test_targets_read": false,
     "branch_pushed": true,
     "private_local_artifacts_pushed": false
