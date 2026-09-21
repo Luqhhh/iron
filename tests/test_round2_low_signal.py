@@ -50,3 +50,31 @@ def test_hd_invalid(values):
 def test_hd_reference():
     values = np.array([1., 2., 4., 8., 16.])
     assert hd_median(values) == float(hdquantiles(values, prob=[.5])[0])
+
+
+def test_kernel_convergence_gate(monkeypatch):
+    import warnings
+    from sklearn.exceptions import ConvergenceWarning
+    class FakeSVR:
+        def __init__(self, **kwargs):
+            pass
+        def fit(self, x, y):
+            self.fit_status_ = 1
+            self.n_iter_ = 100000
+            self.n_support_ = np.array([1])
+            self._gamma = .1
+            warnings.warn("synthetic convergence failure", ConvergenceWarning)
+            return self
+    monkeypatch.setattr("bf_tap_r2.kernel_regressor.SVR", FakeSVR)
+    frame = pd.DataFrame(np.ones((4, len(FEATURES))), columns=FEATURES)
+    frame["spout_no"] = 1
+    model = KernelRegressor({})
+    with pytest.raises(RuntimeError, match="engineering gate failed"):
+        model.fit(frame, [1, 2, 3, 4])
+    assert model.fit_report_["convergence_warning"]
+
+
+def test_kernel_fixed_clipping(monkeypatch):
+    model = KernelRegressor({})
+    monkeypatch.setattr(model, "predict_raw", lambda frame: np.array([-1., 0., 10.]))
+    np.testing.assert_array_equal(model.predict(None), [0, 0, 10])

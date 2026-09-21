@@ -1,5 +1,21 @@
 {
   "as_of": "2026-09-21",
+  "round2_v0_3": {
+    "branch": "round2-v0.3-marginal-and-kernel-check",
+    "base_commit": "11db89e7",
+    "experiment_commit": "71707bd",
+    "G0": "PASS_606_LOCKED_TESTS_PLUS_8_NONFIT_CHECKS_AND_20_MODEL_READBACKS",
+    "G1": "M0_RETAINED_BOTH_TARGETS; M1_AND_K1_NOT_PROMOTED",
+    "run": "local/runs/round2-v0.3/validation-r1",
+    "summary_sha256": "41eeb861c0fd12e0e769b0dee7941ec7591bafcddc0994de79ef518333477c65",
+    "new_regression_fits": {"engineering": 2, "cv": 20, "full": 0, "total": 22, "cap": 24},
+    "m1_fold_statistical_estimates": 20,
+    "bootstrap": "not_triggered_no_eligible_candidate",
+    "new_submission_packages": 0,
+    "platform_uploads": 0,
+    "data_version": "unchanged_from_v0.2",
+    "results": "docs/round2_v0_3/RESULTS.md"
+  },
   "round2_safe_anchor": {
     "branch": "round2-v0.2-signal-audit-and-safe-anchor",
     "base_commit": "589bdeeb",
