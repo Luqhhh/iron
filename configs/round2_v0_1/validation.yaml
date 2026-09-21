@@ -1,5 +1,5 @@
 version: round2-v0.1
-status: planned_not_executed
+status: frozen_protocol
 main: {n_splits: 5, seed: 42, stratify: spout_no}
 recheck: {n_splits: 5, seed: 3407, max_candidates_per_target: 2}
 same_folds_for_both_targets: true

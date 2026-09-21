@@ -1,5 +1,5 @@
 version: round2-v0.1
-status: planned_not_executed
+status: frozen_protocol
 independent_targets: [tap_iron, tap_time_len]
 preprocessing_fit_scope: current_training_fold_only
 model_input: numeric_whitelist_plus_spout_no
@@ -42,3 +42,12 @@ models:
 fit_budget: {main: 50, recheck: 20, full: 4, total: 74}
 count_preprocessors_and_median_baselines_separately: true
 clipping: null
+execution:
+  model_seed: 42
+  catboost_thread_count: 4
+  missing_policy: error_no_imputation
+  one_hot_handle_unknown: ignore
+  spline_knots: uniform
+  spline_extrapolation: constant
+  spline_include_bias: false
+  ridge_solver: svd

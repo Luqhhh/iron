@@ -20,6 +20,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest==9.0.2"]
+round2 = ["scikit-learn==1.8.0"]
 
 [project.scripts]
 bf-tap = "bf_tap.cli:main"
