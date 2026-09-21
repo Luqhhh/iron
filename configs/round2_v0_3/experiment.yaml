@@ -1,0 +1,23 @@
+version: round2-v0.3
+seeds: [42, 3407]
+model:
+  kernel: rbf
+  C: 0.1
+  epsilon: 0.0
+  gamma: scale
+  tol: 0.00001
+  cache_size: 512
+  max_iter: 100000
+selection:
+  numerical_equality_tolerance: 1.0e-12
+  minimum_improved_folds: 7
+  max_spout_wmape_degradation: 0.001
+tie_band: 1.0e-6
+bootstrap:
+  repetitions: 2000
+  seed: 20260921
+budget:
+  engineering_fits: 2
+  cv_fits: 20
+  full_fits: 2
+  total_fits: 24
