@@ -1,0 +1,37 @@
+version: round2-v0.1
+local:
+  per_target: sum(abs(y - prediction)) / sum(abs(y))
+  zero_denominator: error
+  combined: 0.5 * W_I + 0.5 * W_T
+  aggregation: concatenate_all_oof_then_score
+  also_report: [per_fold, per_spout]
+platform:
+  verification_status: pending_round2_page_evidence
+  target_weights: null
+  score_mapping: null
+  clipping_rules: null
+  daily_limit: {value: 5, source: round2_notice_section_2_3, platform_verified: true}
+  quota_reset_time: {value: '24:00', source: user_confirmation_2026_09_21}
+  quota_reset_timezone: null
+  effective_submission_policy: {value: historical_highest_score, source: round2_notice_section_2_3}
+  page_url: https://www.aicomp.cn/notice/notice-3/5248.html
+  checked_on: '2026-09-21'
+  result_submission_opens: '2026-09-22 09:00'
+  result_submission_closes: '2026-10-05 20:00'
+  code_submission_closes: '2026-10-07 23:59'
+  schedule_timezone: not_explicitly_stated_on_notice
+  award_baseline_score: 80
+  submission_container: null
+  attachments:
+    competition_rules: https://www.aicomp.cn/wp-content/uploads/2026/09/%E9%99%84%E4%BB%B61%EF%BC%9A-AIC-%E4%BA%A7%E4%B8%9A%E5%91%BD%E9%A2%98%E8%B5%9B%EF%BC%88AI%EF%BC%8B%E9%92%A2%E9%93%81%EF%BC%89%E7%AB%9E%E8%B5%9B%E8%A7%84%E5%88%99.pdf
+    submission_requirements: https://www.aicomp.cn/wp-content/uploads/2026/09/%E9%99%84%E4%BB%B62%EF%BC%9A%E4%BA%A7%E4%B8%9A%E5%91%BD%E9%A2%98%E8%B5%9B%EF%BC%88AI%EF%BC%8B%E9%92%A2%E9%93%81%EF%BC%89%E5%A4%8D%E8%B5%9B%E4%BD%9C%E5%93%81%E6%8F%90%E4%BA%A4%E8%A6%81%E6%B1%82.pdf
+    retrieval_status: incomplete_downloads_after_timeout_not_verified
+submission:
+  source: 复赛_test/readme.txt
+  filename: result.csv
+  rows: 322
+  columns: [sample_id, pred_tap_iron, pred_tap_time_len]
+  unique_exact_test_ids: true
+  restore_test_sample_order: true
+  finite_numeric_predictions: true
+  platform_upload_authorized: false

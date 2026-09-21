@@ -1,0 +1,44 @@
+version: round2-v0.1
+status: planned_not_executed
+independent_targets: [tap_iron, tap_time_len]
+preprocessing_fit_scope: current_training_fold_only
+model_input: numeric_whitelist_plus_spout_no
+models:
+  L1:
+    estimator: Ridge
+    alpha: 10
+    numeric: StandardScaler
+    categorical: OneHotEncoder
+  L2:
+    estimator: QuantileRegressor
+    quantile: 0.5
+    alpha: 0.001
+    solver: highs
+    numeric: StandardScaler
+    categorical: OneHotEncoder
+    target_scale: training_fold_target_median
+    evaluation_units: original
+  S1:
+    estimator: Ridge
+    alpha: 10
+    numeric: {transformer: SplineTransformer, n_knots: 5, degree: 3}
+    categorical: OneHotEncoder
+  C1:
+    estimator: CatBoostRegressor
+    loss_function: MAE
+    depth: 6
+    iterations: 1500
+    learning_rate: 0.03
+    l2_leaf_reg: 10
+    outer_fold_early_stopping: false
+  C2:
+    estimator: CatBoostRegressor
+    loss_function: RMSE
+    depth: 6
+    iterations: 1500
+    learning_rate: 0.03
+    l2_leaf_reg: 10
+    outer_fold_early_stopping: false
+fit_budget: {main: 50, recheck: 20, full: 4, total: 74}
+count_preprocessors_and_median_baselines_separately: true
+clipping: null

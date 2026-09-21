@@ -1,0 +1,12 @@
+version: round2-v0.1
+status: planned_not_executed
+main: {n_splits: 5, seed: 42, stratify: spout_no}
+recheck: {n_splits: 5, seed: 3407, max_candidates_per_target: 2}
+same_folds_for_both_targets: true
+group_priority: confirmed_dependent_groups_before_spout_balance
+preprocessing_fit_scope: current_training_fold_only
+sample_id_role: join_alignment_and_fold_persistence_only
+oof_aggregation: concatenate_then_score
+baselines: [training_fold_global_median, training_fold_spout_median]
+unseen_spout_baseline_fallback: training_fold_global_median
+pressure_tests: add_when_dependence_or_distribution_shift_evidence_requires

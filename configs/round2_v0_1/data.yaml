@@ -1,0 +1,42 @@
+version: round2-v0.1
+train_samples: 复赛_train/train_samples.csv
+train_features: 复赛_train/train_features.csv
+test_samples: 复赛_test/test_samples.csv
+test_features: 复赛_test/test_features.csv
+template: 复赛_test/result_template.csv
+support_files:
+  - 复赛_train/readme.txt
+  - 复赛_train/data_dictionary.xlsx
+  - 复赛_test/readme.txt
+  - 复赛_test/data_dictionary.xlsx
+id_column: sample_id
+categorical_features: [spout_no]
+targets: [tap_iron, tap_time_len]
+expected_rows: {train: 2754, test: 322}
+numeric_features:
+  - air_volume
+  - cold_air_press
+  - hot_air_press
+  - oxygen
+  - hot_air_temp
+  - coal_rate
+  - humidity
+  - gas_rate
+  - furnace_top_press
+  - upper_press_diff
+  - lower_press_diff
+  - total_press_diff
+  - air_press_ratio
+  - furnace_top_temp_avg
+  - air_speed
+  - furnace_throat_temp
+  - pig
+  - all_quality
+  - consumption
+  - fuel_rate
+  - coke_rate
+audit:
+  absolute_pearson_threshold: 0.98
+  near_duplicate_max_train_iqr_distance: 0.01
+  distance_block_rows: 128
+  missing_or_nonfinite_policy: block_training_pending_explicit_rule

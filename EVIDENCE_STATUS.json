@@ -1,5 +1,22 @@
 {
-  "as_of": "2026-09-20",
+  "as_of": "2026-09-21",
+  "round2_v0_1": {
+    "branch": "round2-v0.1-snapshot-baseline",
+    "base_commit": "58a80645",
+    "scope": "P0 only; P1-P4 planned, not executed",
+    "G0": "SNAPSHOT_DATA_AUDIT_PASS",
+    "G1": "NOT_EVALUATED_NO_ROUND2_MODEL_FITS",
+    "audit_directory": "local/runs/round2-v0.1/p0-audit-r2",
+    "metric_contract": "configs/round2_v0_1/metric_contract.yaml",
+    "model_fits": 0,
+    "platform_submissions": 0,
+    "tests": {
+      "environment": "Python 3.12.12 / uv.lock",
+      "full_suite_passed_before_metric_addition": 568,
+      "final_round2_targeted_passed": 19
+    },
+    "results": "docs/round2_v0_1/RESULTS.md"
+  },
   "implementation_version": "baseline-v0.1-reproducible",
   "fixed_parent_commit": "3f94a9892bf5997746624672ea512ff0e7067495",
   "repair_commit": "4d6c2be4420d631e8383b212b6fdab036031bc5b",

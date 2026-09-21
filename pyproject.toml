@@ -25,7 +25,7 @@ dev = ["pytest==9.0.2"]
 bf-tap = "bf_tap.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/bf_tap"]
+packages = ["src/bf_tap", "src/bf_tap_r2"]
 
 [tool.pytest.ini_options]
 addopts = "-ra --strict-markers"
