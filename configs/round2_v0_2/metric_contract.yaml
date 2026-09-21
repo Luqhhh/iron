@@ -1,0 +1,43 @@
+version: round2-v0.2-safe-anchor
+source_document:
+  path: 初赛数据集/高炉铁次预测-1.pdf
+  sha256: 18ee1e4c0217e8d6dab1225045418f8b79a93bd90cd4e958b6da23733dc57146
+  scoring_pages: [4, 5]
+  packaging_page: 8
+  confidentiality_pages: [7, 9]
+scoring:
+  status: documented_platform_implementation_not_independently_verified
+  weights: {tap_iron: 0.5, tap_time_len: 0.5}
+  local_reference_score: max(0, 100 * (1 - 0.5 * W_I - 0.5 * W_T))
+  score_floor: 0
+  prediction_clipping: none
+  reference_is_platform_score: false
+submission:
+  zip_name: Luqhhh_bf_tap_predict_round2.zip
+  sole_member: result.csv
+  encoding: utf-8
+  columns: [sample_id, pred_tap_iron, pred_tap_time_len]
+  rows: 322
+  finite_nonnegative: true
+  exact_test_ids_and_order: true
+platform:
+  source: https://www.aicomp.cn/notice/notice-3/5248.html
+  highest_score_effective: true
+  daily_limit: 5
+  reset_time: {value: '24:00', source: user_confirmation}
+  reset_timezone: not_independently_confirmed
+  opens: '2026-09-22 09:00'
+  closes: '2026-10-05 20:00'
+  code_deadline: '2026-10-07 23:59'
+  award_baseline: 80
+  reaching_baseline_guarantees_award: false
+  score_delay_expected: true
+  reserve_slot_use: delivery_repair_or_evidence_backed_new_candidate
+  restore_high_score_resubmission: unnecessary
+  uploads_this_run: 0
+  new_notice_pdf_amendments: not_verified_previous_retrieval_timed_out
+data_scope:
+  active: round2_snapshot_readmes
+  old_time_tables: prohibited
+  new_raw_data_publication: prohibited_pending_organizer_authorization
+  visibility_or_history_changes: not_authorized
