@@ -1,5 +1,17 @@
 {
   "as_of": "2026-09-21",
+  "round2_safe_anchor": {
+    "branch": "round2-v0.2-signal-audit-and-safe-anchor",
+    "base_commit": "589bdeeb",
+    "M0_status": "BASELINE_READY_FOR_PLATFORM_CHECK",
+    "M0_release": "local/runs/round2-v0.2/m0-release-r1",
+    "M0_result_sha256": "4a15192972e3990e905a803d86b8a4222a6288a918087efd5fb3bf7830a27ec8",
+    "M0_zip_sha256": "5adc32eb9918c2e0235b193cbc00c20220b11f5263225589c02d7c7fea5f4b61",
+    "weak_candidate_status": "pending_bounded_validation",
+    "platform_uploads": 0,
+    "reference_score_source": "configs/round2_v0_2/metric_contract.yaml",
+    "raw_data_publication_delta": "none"
+  },
   "round2_v0_2": {
     "scope": "bounded signal audit; no model training",
     "G0": "PASS_588_LOCKED_TESTS_AND_INDEPENDENT_ID_ALIGNMENT",
