@@ -1,0 +1,25 @@
+version: round2-v0.2-signal-audit
+parent_run: local/runs/round2-v0.1/p2-cv-r1
+audit_run: local/runs/round2-v0.1/p0-audit-r2
+scope: diagnostics_only
+model_fit_budget: 0
+platform_uploads: 0
+permutation_seed: 20260921
+permutations: 999
+correlation_methods: [pearson, spearman]
+scopes: [all, spout_1, spout_2]
+family: both_targets_all_numeric_features_both_methods_within_each_scope
+multiple_testing: max_absolute_correlation_per_permutation
+scope_adjustment: bonferroni_three_scopes
+exchangeability: diagnostic_assumption_not_proof_of_iid
+fixed_numerical_constructions:
+  - cold_air_press_minus_hot_air_press
+  - upper_press_diff_minus_lower_press_diff
+  - air_volume_times_oxygen
+  - spout_2_times_air_volume
+  - spout_2_times_oxygen
+  - spout_2_times_total_press_diff
+  - spout_2_times_pig
+construction_family: separate_exploratory_family_no_model_selection_claim
+data_scope: round2_only_no_old_ids_or_time_recovery
+gate: audit_results_do_not_establish_absence_of_all_predictive_signal
