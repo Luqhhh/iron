@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 DENIED_PARTS = {"local", ".venv", "__pycache__"}
-PUBLISHED_DATA_ROOT = "初赛数据集"
+PUBLISHED_DATA_ROOTS = frozenset({"初赛数据集", "复赛_train", "复赛_test"})
 DENIED_NAMES = {"data.local.yaml", "result.csv"}
 DENIED_SUFFIXES = {
     ".cbm",
@@ -30,7 +30,7 @@ def main() -> int:
     violations: list[str] = []
     for path in tracked:
         synthetic = path.parts[:3] == ("tests", "fixtures", "synthetic")
-        published_dataset = bool(path.parts) and path.parts[0] == PUBLISHED_DATA_ROOT
+        published_dataset = bool(path.parts) and path.parts[0] in PUBLISHED_DATA_ROOTS
         if set(path.parts) & DENIED_PARTS:
             violations.append(f"protected path: {path}")
         if path.name in DENIED_NAMES:
