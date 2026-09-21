@@ -1,0 +1,32 @@
+version: round2-v0.2-signal-audit-and-safe-anchor
+parent: local/runs/round2-v0.1/p2-cv-r1
+m0_release: local/runs/round2-v0.2/m0-release-r1
+known_signal_evidence: local/runs/round2-v0.2/known-signal-r1
+fold_seeds: [42, 3407]
+regression_fit_budget: {known_signal: 2, q2: 20, full: 2, total: 24}
+S25:
+  weight: 0.25
+  sources: {tap_iron: L2, tap_time_len: L1}
+  anchor: current_training_fold_global_median
+Q2:
+  name: Q2_STRONG_L1_MEDIAN
+  polynomial: {degree: 2, include_bias: false, interaction_only: false}
+  regressor: {quantile: 0.5, alpha: 0.01, solver: highs}
+  target_scale: training_fold_target_median
+  numeric_pipeline: [StandardScaler, PolynomialFeatures, StandardScaler]
+  categorical: spout_no_OneHotEncoder
+permutation:
+  count: 999
+  seed: 20260922
+  scheme: paired_targets_jointly_permuted_within_each_spout
+  statistic: max_abs_all_within_spout_pearson_spearman_21_features_2_targets
+promotion:
+  pooled_improves_both_seeds: true
+  minimum_improved_folds: 7
+  max_spout_wmape_degradation: 0.001
+  numerical_equality_tolerance: 1.0e-12
+  near_tie_mean_wmape: 1.0e-6
+  simpler_preferred: S25
+extra_search: prohibited
+dependency_upgrade: prohibited
+platform_uploads: 0
