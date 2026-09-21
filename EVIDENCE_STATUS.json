@@ -1,5 +1,21 @@
 {
   "as_of": "2026-09-21",
+  "round2_v0_2": {
+    "scope": "bounded signal audit; no model training",
+    "G0": "PASS_588_LOCKED_TESTS_AND_INDEPENDENT_ID_ALIGNMENT",
+    "G1": "NO_SUPPORTED_UNIVARIATE_OR_FIXED_CONSTRUCTION_SIGNAL; NOT_PROOF_OF_NO_SIGNAL",
+    "code_sha": "d3d725b",
+    "run": "local/runs/round2-v0.2/signal-audit-r1",
+    "audit_sha256": "547472b799ce62a194db82a0e11494fe47e9c1afa9dde891e45fead21c69226b",
+    "independent_numeric_cells_checked": 66096,
+    "raw_all_max_abs_correlation": 0.03170875415735187,
+    "raw_all_max_statistic_permutation_p": 0.878,
+    "target_pearson": 0.9128083830858105,
+    "additional_model_fits": 0,
+    "platform_uploads": 0,
+    "decision": "no_candidate_promotion; verify_official_feature_label_pairing_before_more_search",
+    "results": "docs/round2_v0_2/RESULTS.md"
+  },
   "round2_v0_1": {
     "branch": "round2-v0.1-snapshot-baseline",
     "base_commit": "58a80645",
