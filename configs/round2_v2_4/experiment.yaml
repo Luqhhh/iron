@@ -1,0 +1,49 @@
+version: round2-v2.4-smooth-residual
+data_version: synthetic_round2_v2
+source_run: local/runs/round2-v2.3/robust-joint-recovery-r1
+v22_run: local/runs/round2-v2.2/checkpoint-r1
+fold_run: local/runs/round2-v2/comparison-r1
+reference_by_target:
+  tap_iron: C2_seed42_full1500
+  tap_time_len: B3_seeds42_2026_2027_full1500
+comparison_by_target:
+  tap_iron: [I2_C2_D4_IRON_EQUAL, AJ]
+  tap_time_len: [T1_B3_PREFIX1000]
+candidates:
+  tap_iron: [BAY, R30, QRC, ABAY, AR30, AQRC, DJ]
+  tap_time_len: [BAY, R30, QRC, ABAY, AR30, AQRC]
+tie_preference_by_target:
+  tap_iron: [BAY, R30, QRC, ABAY, AR30, AQRC, DJ]
+  tap_time_len: [BAY, R30, QRC, ABAY, AR30, AQRC]
+split_seeds: [42, 3407]
+folds: 5
+common:
+  task_type: CPU
+  loss_function: RMSE
+  depth: 6
+  iterations: 1500
+  learning_rate: 0.03
+  l2_leaf_reg: 10
+  random_seed: 42
+  thread_count: 4
+  cat_features: [spout_no]
+  use_best_model: false
+  allow_writing_files: false
+  verbose: false
+routes:
+  BAY: {bootstrap_type: Bayesian, bagging_temperature: 1.0}
+  R30: {l2_leaf_reg: 30}
+  QRC: {depth: 4}
+quadratic: {degree: 2, ridge_alpha: 10.0, solver: svd}
+# QRC: fold-only standardized quadratic Ridge in normalized units, then residual CatBoost.
+# A-prefix blends: .5 current target anchor + .5 new model, in original units.
+# DJ iron: .5 C2 + .25 D4 + .25 J1. No arbitrary weight search.
+bootstrap: {repetitions: 2000, seed: 20260922}
+policy: configs/candidate_tiers.yaml
+budget: {cv_wrapper_fits: 60, cv_regressor_fits: 80, full_wrapper_fits_max: 3}
+platform:
+  upload_actor: user
+  first_existing_packages: [V22_I_ONLY, V23_AJ_I_ONLY]
+  removed_candidate: V22_T_ONLY
+  all_new_packages_single_target: true
+  no_automatic_uploads: true
