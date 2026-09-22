@@ -1,0 +1,63 @@
+version: round2-v2.1-c2-refinement
+base_commit: 994dc4a76be0b95fd51f30159b0d6b83f35cdb72
+data_version: synthetic_round2_v2
+reference_route: C2
+reference_run: local/runs/round2-v2/comparison-r1
+reference_zip_sha256: b44b7cf325ab339dd10ef8adfc563694111fdbf46814d3e20526d76962839aa4
+reference_platform_score_user_reported: 96.0537
+split_seeds: [42, 3407]
+model_seeds: [42, 2026, 2027]
+folds: 5
+routes: [C2, B12_C1_C2_EQUAL, B3_C2_SEED_ENSEMBLE, D4_CATBOOST_SHALLOW, L15_LIGHTGBM, B2L_C2_LIGHTGBM_EQUAL]
+members:
+  C2: [C2_42]
+  B12_C1_C2_EQUAL: [C1, C2_42]
+  B3_C2_SEED_ENSEMBLE: [C2_42, C2_2026, C2_2027]
+  D4_CATBOOST_SHALLOW: [D4]
+  L15_LIGHTGBM: [L15]
+  B2L_C2_LIGHTGBM_EQUAL: [C2_42, L15]
+new_cv_members: [C2_2026, C2_2027, D4, L15]
+legacy_catboost_config: configs/round2_v0_1/models.yaml
+d4: {loss_function: RMSE, depth: 4, iterations: 3000, learning_rate: 0.03, l2_leaf_reg: 10}
+lightgbm:
+  objective: regression
+  n_estimators: 2000
+  learning_rate: 0.02
+  num_leaves: 15
+  max_depth: -1
+  min_child_samples: 30
+  reg_lambda: 10.0
+  colsample_bytree: 1.0
+  subsample: 1.0
+  subsample_freq: 0
+  random_state: 42
+  n_jobs: 4
+  deterministic: true
+  force_col_wise: true
+  verbosity: -1
+  device_type: cpu
+promotion:
+  numerical_equality_tolerance: 1.0e-12
+  minimum_improved_folds: 7
+  max_spout_wmape_degradation: 0.001
+tie_tolerance: 1.0e-6
+# Estimated traversal work (trees * depth) first, then members, then fixed order.
+inference_cost:
+  C2: [9000, 1]
+  B12_C1_C2_EQUAL: [18000, 2]
+  B3_C2_SEED_ENSEMBLE: [27000, 3]
+  D4_CATBOOST_SHALLOW: [12000, 1]
+  L15_LIGHTGBM: [8000, 1]
+  B2L_C2_LIGHTGBM_EQUAL: [17000, 2]
+tie_cost_note: L15 estimate uses 2000*ceil(log2(15)); static heuristic, not measured latency.
+bootstrap: {repetitions: 2000, seed: 20260922}
+diagnostic_tree_counts: [500, 1000, 1500]
+budget: {cv_fits: 80, full_fits: 4}
+platform:
+  max_batch_submissions: 3
+  remaining_account_quota: unknown
+  A: new_iron_original_C2_time
+  B: original_C2_iron_new_time
+  C_requires: both_A_and_B_platform_scores_above_96.0537
+  unchanged_target: copy_original_CSV_strings
+  upload_baseline_again: false
