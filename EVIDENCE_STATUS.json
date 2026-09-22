@@ -1,4 +1,27 @@
 {
+  "round2_v2_leakage_audit": {
+    "run": "local/runs/round2-v2/leakage-audit-r1",
+    "implementation_commit": "ad26158",
+    "G0": "PASS_18_LOCKED_PY312_TESTS_20_CONTROL_MODEL_READBACKS",
+    "finding": "NO_DIRECT_LEAKAGE_EVIDENCE_WITHIN_AUDIT_SCOPE",
+    "unresolved": [
+      "pig_and_other_features_causal_availability",
+      "official_generator_and_split_provenance",
+      "arbitrary_nonlinear_label_proxies"
+    ],
+    "ID_overlap": 0,
+    "cross_exact_duplicate_rows": 0,
+    "cross_near_duplicate_rows_at_005_IQR": 0,
+    "diagnostic_fits": 20,
+    "control_J": {
+      "original_C2": 0.04053800234093041,
+      "permuted_training_labels": 0.1814890320686322,
+      "pig_masked": 0.04750349808874939
+    },
+    "submission_changes": 0,
+    "agent_platform_uploads": 0,
+    "results": "docs/round2_v2_leakage_audit.md"
+  },
   "round2_v2_comparison": {
     "data_version": "synthetic_round2_v2",
     "run": "local/runs/round2-v2/comparison-r1",
