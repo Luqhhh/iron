@@ -1,4 +1,27 @@
 {
+  "round2_v2_9": {
+    "branch": "round2-v2.9-weighted-kernel-checkpoint",
+    "implementation_commit": "e0b0b24",
+    "run": "local/runs/round2-v2.9/checkpoint-r1",
+    "status": "LOCAL_COMPLETE_EXPLORATION_ONLY_NO_NEW_BEST",
+    "G0": "PASS_680_LOCKED_TESTS_AND_20_MODEL_INDEPENDENT_REPLAY",
+    "G1": {
+      "new_best": false,
+      "exploration_only": "AKW2_tap_iron",
+      "new_platform_score": null,
+      "best_existing_iron": "DJ",
+      "best_existing_time": "AORD"
+    },
+    "new_cv_fits": 20,
+    "failed_attempts": 0,
+    "new_full_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "known_engineering_fit_entries": 83,
+    "pending_queue_unchanged": true,
+    "kernel_parameter_route_closed": true,
+    "results": "docs/round2_v2_9/RESULTS.md"
+  },
   "round2_v2_8": {
     "branch": "round2-v2.8-kernel-geometry",
     "implementation_commit": "8c140f2",
