@@ -2,6 +2,8 @@
 
 复赛当前数据已于 2026-09-22 替换为 `synthetic_round2_v2`，训练/测试编号必须为 `R2S2_TRAIN_*` / `R2S2_TEST_*`。旧复赛模型和指标仅作历史证据；V2 重训入口及状态见 [V2 迁移说明](docs/round2_v2.md)。初赛冻结基线保持不变。
 
+V2 的 11 条旧复赛路线已重新比较，两个目标均选择 C2（CatBoost RMSE）。两种子平均 OOF J 为 **4.033654%**（M0 为 17.694999%），本地验证结果不代表平台成绩。140 次 CV 与 2 次全量拟合、66 项锁定测试及独立模型回读已完成，C2 新包已写入桌面 submission，M0 已备份。[完整对比](docs/round2_v2_comparison.md)
+
 当前最高 test_a 用户回传为 **V30A_OOB_BOTH_TARGETS = 83.3175**，与预登记加性推算 `83.2970 + 83.3141 - 83.2936` 四位小数一致；同轮 V30B_OOB_TIME_1024 为 **83.2654**，比 A 低 0.0521，固定 1024 棵扩容未获平台支持并关闭，原最高 V29T=83.3141 保留为后备。成绩均为用户回传，未独立登录平台核验；账号当前有效条目仍单独标为未知。
 
 2026-09-13 的 V11_V6I_IRON_QRF_MEAN_TIME 历史回传为 **83.1806**，比 V10 低 0.0145 分；该均值探针已关闭，本地 ZIP 与反馈身份保留。[独立 V11 反馈](local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[交付与推送回执](local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。

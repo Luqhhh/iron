@@ -1,4 +1,25 @@
 {
+  "round2_v2_comparison": {
+    "data_version": "synthetic_round2_v2",
+    "run": "local/runs/round2-v2/comparison-r1",
+    "implementation_commit": "ef85ed1",
+    "G0": "PASS_66_LOCKED_PY312_TESTS_140_MODEL_COLD_VERIFICATION",
+    "G1": {
+      "selected": {
+        "tap_iron": "C2",
+        "tap_time_len": "C2"
+      },
+      "mean_J": 0.04033653735138279,
+      "M0_mean_J": 0.17694998583530472,
+      "platform_score": null
+    },
+    "cv_fits": 140,
+    "full_fits": 2,
+    "desktop_delivered": true,
+    "zip_sha256": "b44b7cf325ab339dd10ef8adfc563694111fdbf46814d3e20526d76962839aa4",
+    "platform_uploads": 0,
+    "results": "docs/round2_v2_comparison.md"
+  },
   "as_of": "2026-09-22",
   "round2_v0_3": {
     "branch": "round2-v0.3-marginal-and-kernel-check",
