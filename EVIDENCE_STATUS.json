@@ -1,4 +1,42 @@
 {
+  "round2_v2_3": {
+    "branch": "round2-v2.3-robust-joint",
+    "implementation_commit": "22204c6",
+    "verification_fix_commit": "b65cb34",
+    "run": "local/runs/round2-v2.3/robust-joint-recovery-r1",
+    "original_fit_run": "local/runs/round2-v2.3/robust-joint-r1",
+    "status": "OFFLINE_COMPLETE_AJ_IRON_RECOMMENDED_V22_FIRST_PACKAGE_PRESERVED",
+    "G0": "PASS_657_FULL_LOCKED_TESTS_10_TARGETED_AND_50_MODEL_INDEPENDENT_REPLAY",
+    "G1": {
+      "formal_recommended": {
+        "tap_iron": "AJ",
+        "tap_time_len": null
+      },
+      "exploration_recommended": [],
+      "mean_AJ_iron_wmape": 0.03928655982738413,
+      "platform_score": null,
+      "current_platform_score_user_reported": 96.0982,
+      "reused_development_splits": true
+    },
+    "new_cv_fits": 50,
+    "new_full_fits": 0,
+    "recovery_new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "latest_quota_user_reported": {
+      "date": "2026-09-22",
+      "remaining": 0,
+      "daily_cap": 5,
+      "historical_records_unchanged": true
+    },
+    "next_first_package": {
+      "date": "2026-09-23",
+      "candidate": "V22_I_ONLY",
+      "sha256": "46c16936b13e18f3271f58f4de4aa18a87595f6a6612031710360c11f362b8fb",
+      "unchanged": true
+    },
+    "results": "docs/round2_v2_3/RESULTS.md"
+  },
   "round2_v2_2": {
     "branch": "round2-v2.2-checkpoint-and-iron-blend",
     "base_commit": "9f8801411a6204a3e844265fd599bf9d203800e6",

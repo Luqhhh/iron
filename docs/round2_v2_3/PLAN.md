@@ -11,3 +11,13 @@
 2026-09-22 用户最新反馈剩余 0 次；新记录追加在本阶段，不改旧报告剩余 1 次的历史快照。2026-09-23 首包仍是已交付 V22_I_ONLY，SHA-256 `46c16936b13e18f3271f58f4de4aa18a87595f6a6612031710360c11f362b8fb`。其铁量 C2/D4 等权、时长完整 B3，禁止覆盖、改列或重训。新候选无论离线更好与否，都不撤换该首包；AH/AJ 中的参照冻结，不随未来平台反馈静默变更。
 
 执行入口：`python -m bf_tap_r2.v2_robust_joint evaluate --output local/runs/round2-v2.3/robust-joint-r1`。回读入口 `verify` 不训练，在独立进程恢复所有新折模型和原 V22 参照、比较指标与分类，核对源文件和已交付包摘要。所有模型、逐样本预测、指标及额度反馈记录保存在忽略的 local/。
+
+执行后发现账本时间戳比较错误，修复后按新目录恢复，保留原失败证据并复用模型，新增训练 0：
+
+```bash
+uv run --locked --python 3.12 --extra round2 python -m bf_tap_r2.v2_robust_joint recover \
+  --source local/runs/round2-v2.3/robust-joint-r1 \
+  --output local/runs/round2-v2.3/robust-joint-recovery-r1
+```
+
+本轮已完成；最终结果见 `RESULTS.md`。以上命令为执行记录，已有目录不应重复覆盖。
