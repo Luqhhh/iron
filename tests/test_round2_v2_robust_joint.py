@@ -129,3 +129,25 @@ def test_report_replay_and_both_reference_layers(tmp_path, monkeypatch):
     assert result["platform_queue_first"] == "V22_I_ONLY"
     assert result["new_packages"] == 0
     assert all(r["candidate"] == "J1" for r in result["tiers"]["formal_selected"])
+
+
+def test_ledger_timestamp_is_transport_metadata_but_model_fields_are_checked():
+    from bf_tap_r2.v2_robust_joint import verify_ledger_record
+    record = {"event": "complete", "model": "fold.joblib", "model_sha256": "abc"}
+    verify_ledger_record(dict(record, time="2026-09-22T00:00:00Z"), record)
+    with pytest.raises(ValueError, match="Ledger"):
+        verify_ledger_record(dict(record, time="now", model_sha256="changed"), record)
+    with pytest.raises(ValueError, match="Ledger"):
+        verify_ledger_record(record, record)
+
+
+def test_recovery_rejects_existing_or_nonprivate_destinations(tmp_path):
+    from bf_tap_r2.v2_robust_joint import recover
+    source = tmp_path / "local/runs/round2-v2.3/failed"
+    source.mkdir(parents=True)
+    with pytest.raises(ValueError, match="fresh private"):
+        recover(tmp_path, source, source)
+    with pytest.raises(ValueError, match="fresh private"):
+        recover(tmp_path, source, tmp_path / "public")
+    with pytest.raises(ValueError, match="retained failed"):
+        recover(tmp_path, source, source.parent / "replay")

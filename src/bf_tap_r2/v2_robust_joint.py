@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -243,6 +244,12 @@ def finish(root, output, spec, train, predictions, replay=False):
     return summary
 
 
+def verify_ledger_record(event, record):
+    # append_event adds a timestamp; it is not part of model metadata.
+    if "time" not in event or {k: v for k, v in event.items() if k != "time"} != record:
+        raise ValueError("Ledger model record mismatch")
+
+
 def verify(root, output):
     manifest = checked_manifest(root, output)
     spec = manifest["spec"]
@@ -251,8 +258,7 @@ def verify(root, output):
     if len(starts) != 50 or len(done) != 50 or len({e["model"] for e in done}) != 50 or {e["model"] for e in starts} != {e["model"] for e in done}:
         raise ValueError("Real fit budget/ledger mismatch")
     for event in done:
-        if event != json.loads((output / "models" / event["model"]).with_suffix(".json").read_text()):
-            raise ValueError("Ledger model record mismatch")
+        verify_ledger_record(event, json.loads((output / "models" / event["model"]).with_suffix(".json").read_text()))
     train = load_v2(root / "复赛_train", "train", 2754)
     predictions = load_predictions(root, output, spec, train, replay=True)
     finish(root, output, spec, train, predictions, replay=True)
@@ -277,13 +283,68 @@ def evaluate(root, output):
         raise
 
 
+
+def recover(root, source, output):
+    """Preserve failed evidence and replay saved fits after a verifier-only repair."""
+    private = root / "local/runs/round2-v2.3"
+    if not output.is_relative_to(private) or not source.is_relative_to(private) or output.exists():
+        raise ValueError("Recovery requires a fresh private output and private source")
+    if not (source / "FAILED.json").is_file():
+        raise ValueError("Recovery must reference retained failed evidence")
+    manifest = json.loads((source / "manifest.json").read_text())
+    source_name = str(Path(__file__).relative_to(root))
+    # Only this orchestration source may change; frozen model code/config/data cannot.
+    for name, expected in manifest["files"].items():
+        if name != source_name and digest(root / name) != expected:
+            raise ValueError(f"Recovery input changed: {name}")
+    original_code = subprocess.check_output(["git", "show", f"{manifest['git_commit']}:{source_name}"], cwd=root)
+    if hashlib.sha256(original_code).hexdigest() != manifest["files"][source_name]:
+        raise ValueError("Original frozen source cannot be recovered from Git")
+    if check_packages(root, manifest["spec"]) != manifest["packages"]:
+        raise ValueError("Recovery package identity mismatch")
+    output.mkdir(parents=True, exist_ok=False)
+    (output / "source-before-repair.py").write_bytes(original_code)
+    for folder in ("models", "oof", "selection", "diagnostics"):
+        shutil.copytree(source / folder, output / folder)
+    for name in ("fit_ledger.jsonl", "platform_events.jsonl"):
+        shutil.copy2(source / name, output / name)
+    original_manifest_digest = digest(source / "manifest.json")
+    manifest["recovery"] = {"source_run": str(source.relative_to(root)), "source_manifest_sha256": original_manifest_digest,
+                            "source_git_commit": manifest["git_commit"], "changed_source": source_name,
+                            "old_source_sha256": manifest["files"][source_name], "new_source_sha256": digest(Path(__file__)),
+                            "new_real_fits_in_recovery": 0, "reused_cv_fits": 50,
+                            "reason": "Ignore append_event timestamp only when matching model metadata; model fields remain checked"}
+    manifest["files"][source_name] = digest(Path(__file__))
+    # Bind every original artifact, including the failure and original ledger, without editing it.
+    for path in source.rglob("*"):
+        if path.is_file():
+            manifest["files"][str(path.relative_to(root))] = digest(path)
+    manifest["git_commit"] = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=root, text=True).strip()
+    write_json(output / "manifest.json", manifest)
+    append_event(output / "recovery_events.jsonl", manifest["recovery"])
+    try:
+        subprocess.run([sys.executable, "-m", "bf_tap_r2.v2_robust_joint", "verify", "--output", str(output)], cwd=root, check=True)
+        write_json(output / "COMPLETE.json", {"status": "PASS", "stage_total_cv_fits": 50,
+                   "new_cv_fits_in_recovery": 0, "new_full_fits": 0, "new_packages": 0,
+                   "original_failed_run_retained": str(source.relative_to(root))})
+    except Exception as exc:
+        write_json(output / "FAILED.json", {"error": str(exc)})
+        raise
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["evaluate", "verify"])
+    parser.add_argument("action", choices=["evaluate", "verify", "recover"])
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--source", type=Path, help="Failed run for zero-fit recovery only")
     args = parser.parse_args()
     root = Path.cwd().resolve()
-    (evaluate if args.action == "evaluate" else verify)(root, args.output.resolve())
+    if args.action == "recover":
+        if args.source is None:
+            parser.error("recover requires --source")
+        recover(root, args.source.resolve(), args.output.resolve())
+    else:
+        (evaluate if args.action == "evaluate" else verify)(root, args.output.resolve())
 
 
 if __name__ == "__main__":
