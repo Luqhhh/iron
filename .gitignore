@@ -37,3 +37,11 @@ result.csv
 !/初赛数据集/**
 /初赛数据集/*:Zone.Identifier
 /初赛数据集/**/*:Zone.Identifier
+
+# V2 round-two data publication explicitly authorized on 2026-09-22.
+!/复赛_train/
+!/复赛_train/**
+!/复赛_test/
+!/复赛_test/**
+/复赛_train/*:Zone.Identifier
+/复赛_test/*:Zone.Identifier
