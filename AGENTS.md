@@ -61,3 +61,9 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - All final Top5 scores were explicitly returned by candidate: DJ=96.1079, J3=96.1131, DJ3=96.1191, AJ3=96.1259, AJ=96.1035. These are user reports, not independently verified platform receipts.
 - Current preferred package is final-top5/04_AJ3_IRON, SHA-256 a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354: AJ3 iron with unchanged full B3 time. Preserve original package bytes and old decisions.
 - The final Top5 batch is no longer pending. Future optimization, if requested, compares against AJ3 iron/full B3 time and 96.1259; do not keep using C2 iron as the current preferred reference. Details: docs/round2_final_top5/FEEDBACK.md. Do not infer account quota or automatically generate a two-target combination from unreported time results.
+
+## Platform test priority preference (2026-09-23)
+
+- The user prioritizes packages with larger offline gains against the current target reference or a clearly justified, important exploration question. Give small-gain, closely related variants lower platform-test priority; do not fill slots merely to use the daily allowance.
+- The observed final Top5 platform/local gap is about 0.09–0.11 score points: modest in absolute size but enough to reorder closely scored candidates. Do not generalize this to a fixed score correction or claim only low-scoring models can change order.
+- This manual release/scheduling preference supersedes automatic formal-first upload ordering, not candidate-tier classification, frozen gates, exploration caps, or historical evidence. Preserve small-gain candidates without promising they will be tested. See docs/candidate_tiers.md for the controlling explanation.
