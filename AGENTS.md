@@ -40,3 +40,5 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - The latest user-reported remaining submission quota is 0; the earlier V2.2 value of 1 is a historical snapshot only.
 - On 2026-09-23 prioritize the already delivered V22_I_ONLY ZIP, SHA-256 `46c16936b13e18f3271f58f4de4aa18a87595f6a6612031710360c11f362b8fb`. Preserve its C2/D4 equal iron blend and full B3 time strings. Never overwrite it with new experiments or substitute T1.
 - V2.3 is offline normalized RMSE/Huber/MultiRMSE exploration. Its frozen AH/AJ anchors remain C2 iron and full B3 time even if a later platform receipt favors V22. Report both current-anchor and V22-relative differences; do not move a new local winner ahead of the scheduled V22 first submission.
+
+- Subsequent explicit user authorization generated V22_T_ONLY and V23_AJ_I_ONLY as isolated alternatives to the same B parent. Three ZIPs are now pending platform feedback; V22_I_ONLY remains first. Details and exact hashes: `docs/round2_v2_3/CANDIDATE_RELEASE.md`. Additional full J1 fits: 1; no additional CV fits. Score-transfer arithmetic is not a verified platform forecast.

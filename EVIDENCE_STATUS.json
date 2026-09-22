@@ -1,4 +1,70 @@
 {
+  "round2_v2_3_candidate_release": {
+    "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
+    "branch": "round2-v2.3-robust-joint",
+    "implementation_commit": "f0e5bb9",
+    "run": "local/runs/round2-v2.3/candidate-release-r1",
+    "G0": "PASS_660_LOCKED_TESTS_3_TARGETED_AND_LABEL_FREE_BYTE_IDENTICAL_COLD_INFERENCE",
+    "G1": "OOF_ONLY_NO_NEW_PLATFORM_FEEDBACK",
+    "new_cv_fits": 0,
+    "new_full_fits": 1,
+    "platform_uploads": 0,
+    "first_package": "V22_I_ONLY",
+    "original_V22_unchanged": true,
+    "pending_packages": {
+      "V22_I_ONLY": {
+        "zip_sha256": "46c16936b13e18f3271f58f4de4aa18a87595f6a6612031710360c11f362b8fb"
+      },
+      "V22_T_ONLY": {
+        "zip_sha256": "ce2de4f0777f8f638e7bd9df7d9d91e951935ecd24552ec53de9483577e50cab",
+        "changed_rows_vs_B": {
+          "pred_tap_iron": 0,
+          "pred_tap_time_len": 322
+        },
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/round2-v2.2/V22_T_ONLY"
+      },
+      "V23_AJ_I_ONLY": {
+        "zip_sha256": "c74b4af65f3dcbe256f3aa476f93ed8e323078ac3017acfc54efe4de9ab8021b",
+        "changed_rows_vs_B": {
+          "pred_tap_iron": 322,
+          "pred_tap_time_len": 0
+        },
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/round2-v2.3/V23_AJ_I_ONLY"
+      }
+    },
+    "score_scenarios": {
+      "V22_I_ONLY": {
+        "iron_wmape": 0.03944226506170752,
+        "time_wmape": 0.040482139256378766,
+        "oof_reference_score": 96.00377978409568,
+        "oof_score_gain_vs_B": 0.023845889464123998,
+        "hypothetical_equal_gain_transfer_score": 96.12204588946413,
+        "interpretation": "Arithmetic scenario assuming full OOF gain transfers to platform; not a forecast or confidence interval"
+      },
+      "V22_T_ONLY": {
+        "iron_wmape": 0.03991918285099,
+        "time_wmape": 0.04040563935346941,
+        "oof_reference_score": 95.98375888977702,
+        "oof_score_gain_vs_B": 0.003824995145467608,
+        "hypothetical_equal_gain_transfer_score": 96.10202499514547,
+        "interpretation": "Arithmetic scenario assuming full OOF gain transfers to platform; not a forecast or confidence interval"
+      },
+      "V23_AJ_I_ONLY": {
+        "iron_wmape": 0.03928655982738413,
+        "time_wmape": 0.040482139256378766,
+        "oof_reference_score": 96.01156504581185,
+        "oof_score_gain_vs_B": 0.031631151180293304,
+        "hypothetical_equal_gain_transfer_score": 96.1298311511803,
+        "interpretation": "Arithmetic scenario assuming full OOF gain transfers to platform; not a forecast or confidence interval"
+      }
+    },
+    "results": "docs/round2_v2_3/CANDIDATE_RELEASE.md",
+    "submission_priority": [
+      "V22_I_ONLY",
+      "V23_AJ_I_ONLY",
+      "V22_T_ONLY"
+    ]
+  },
   "round2_v2_3": {
     "branch": "round2-v2.3-robust-joint",
     "implementation_commit": "22204c6",
