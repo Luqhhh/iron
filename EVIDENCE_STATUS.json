@@ -1,4 +1,61 @@
 {
+  "round2_v2_2": {
+    "branch": "round2-v2.2-checkpoint-and-iron-blend",
+    "base_commit": "9f8801411a6204a3e844265fd599bf9d203800e6",
+    "implementation_commit": "ba0c7fb",
+    "run": "local/runs/round2-v2.2/checkpoint-r1",
+    "reference_name": "ANCHOR_C2_IRON_B3_TIME",
+    "reference_zip_sha256": "ec12c3663edf77fdc0d7e8e9fa7bb1aeb1d1c46db4107a8c6724f25c8039e1e2",
+    "reference_platform_score_user_reported": 96.0982,
+    "reference_by_target": {
+      "tap_iron": "C2_seed42_full1500",
+      "tap_time_len": "B3_seeds42_2026_2027_full1500"
+    },
+    "status": "LOCAL_COMPLETE_V22_I_ONLY_AWAITING_USER_FEEDBACK",
+    "G0": "PASS_5_TARGETED_640_FULL_LOCKED_TESTS_AND_INDEPENDENT_REPLAY_AND_COLD_RELEASE",
+    "G1": {
+      "offline_selected": {
+        "tap_iron": "I2_C2_D4_IRON_EQUAL",
+        "tap_time_len": "T1_B3_PREFIX1000"
+      },
+      "anchor_J_mean": 0.04020066105368438,
+      "mean_target_wmape": {
+        "tap_iron": {
+          "C2_seed42_full1500": 0.03991918285099,
+          "I1_D4_IRON": 0.03960150851057584,
+          "I2_C2_D4_IRON_EQUAL": 0.03944226506170752
+        },
+        "tap_time_len": {
+          "B3_seeds42_2026_2027_full1500": 0.040482139256378766,
+          "T1_B3_PREFIX1000": 0.04040563935346941
+        }
+      },
+      "platform_score": null
+    },
+    "new_cv_fits": 0,
+    "new_full_fits": 1,
+    "synthetic_test_observed_outer_fits": {
+      "targeted_pytest_process": 1,
+      "full_pytest_process": 68,
+      "scope": "instrumented parent-process estimator entries only"
+    },
+    "released": [
+      "V22_I_ONLY"
+    ],
+    "deferred": [
+      "V22_T_ONLY"
+    ],
+    "combined_generated": false,
+    "package_sha256": "46c16936b13e18f3271f58f4de4aa18a87595f6a6612031710360c11f362b8fb",
+    "changed_prediction_rows": {
+      "pred_tap_iron": 322,
+      "pred_tap_time_len": 0
+    },
+    "remaining_quota_at_user_report": 1,
+    "upload_actor": "user",
+    "agent_uploads": 0,
+    "results": "docs/round2_v2_2/RESULTS.md"
+  },
   "round2_v2_1": {
     "branch": "round2-v2.1-c2-refinement",
     "base_commit": "994dc4a76be0b95fd51f30159b0d6b83f35cdb72",
