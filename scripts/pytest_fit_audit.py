@@ -21,6 +21,8 @@ def pytest_sessionstart(session):
     classes = {
         "catboost": ["CatBoostRegressor"],
         "lightgbm": ["LGBMRegressor"],
+        "sklearn.neural_network": ["MLPRegressor"],
+        "sklearn.kernel_ridge": ["KernelRidge"],
         "sklearn.linear_model": ["Ridge", "QuantileRegressor", "LinearRegression"],
         "sklearn.svm": ["SVR"],
         "sklearn.ensemble": ["RandomForestRegressor", "ExtraTreesRegressor", "HistGradientBoostingRegressor", "GradientBoostingRegressor"],

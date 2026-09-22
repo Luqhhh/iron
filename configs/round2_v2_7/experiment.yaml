@@ -1,0 +1,37 @@
+version: round2-v2.7-nonlinear
+source_run: local/runs/round2-v2.6/joint-seeds-r1
+reference_run: local/runs/round2-v2.4/smooth-r1
+time_best_run: local/runs/round2-v2.5/time-r1
+fold_run: local/runs/round2-v2/comparison-r1
+reference_by_target:
+  tap_iron: C2_seed42_full1500
+  tap_time_len: B3_seeds42_2026_2027_full1500
+best_by_target: {tap_iron: DJ, tap_time_len: AORD}
+candidates:
+  tap_iron: [JM1, KR1, KS1, AJM1, AKR1, AKS1]
+  tap_time_len: [JM1, KR1, KS1, AJM1, AKR1, AKS1]
+tie_preference_by_target:
+  tap_iron: [JM1, KR1, KS1, AJM1, AKR1, AKS1]
+  tap_time_len: [JM1, KR1, KS1, AJM1, AKR1, AKS1]
+split_seeds: [42, 3407]
+folds: 5
+models:
+  JM1:
+    hidden_layer_sizes: [32, 16]
+    activation: tanh
+    solver: lbfgs
+    alpha: 0.1
+    max_iter: 4000
+    max_fun: 50000
+    tol: 0.000001
+    random_state: 42
+    early_stopping: false
+  KR1: {alpha: 0.1, kernel: rbf, gamma: 0.02}
+  KS1: {kernel: rbf, C: 10.0, epsilon: 0.01, gamma: scale, tol: 0.00001, cache_size: 512, max_iter: 100000}
+bootstrap: {repetitions: 2000, seed: 20260922}
+policy: configs/candidate_tiers.yaml
+budget: {cv_regressor_fits: 40, full_fits_this_phase: 0}
+# Joint MLP shares nonlinear hidden representations. Multi-output KernelRidge solves
+# independent target systems with the same Gram matrix; do not call that target coupling.
+convergence_warnings: engineering_failure_not_exploration
+publication: {preserve_existing_five_packages: true, no_automatic_uploads: true}
