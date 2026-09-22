@@ -78,19 +78,21 @@ def infer(root,output):
             stream.write(payload)
 
 
-def release(root,source,output):
-    if not output.is_relative_to(root/'local/runs/round2-v2.4'):
-        raise ValueError('Private output required')
+def release(root,source,output,formal_only=False):
     frozen=check(root,source)
     spec=frozen['spec']
+    namespace=spec.get('run_namespace','round2-v2.4')
+    if namespace not in ('round2-v2.4','round2-v2.5') or not output.is_relative_to(root/'local/runs'/namespace):
+        raise ValueError('Private output required')
     if json.loads((source/'selection/independent_verification.json').read_text())['status']!='PASS':
         raise ValueError('Independent replay required')
     summary=json.loads((source/'selection/summary.json').read_text())
-    chosen=summary['tiers']['submission_priority']
+    chosen=summary['tiers']['formal_selected'] if formal_only else summary['tiers']['submission_priority']
     if not chosen:
         raise ValueError('No recommended candidates')
-    names=[f"V24_{r['tier'].upper()}_{'IRON' if r['target']=='tap_iron' else 'TIME'}_{r['candidate']}" for r in chosen]
-    desktop_base=Path('/mnt/c/Users/lqh22/Desktop/submission/round2-v2.4')
+    prefix=spec.get("release_prefix","V24")
+    names=[f"{prefix}_{r['tier'].upper()}_{'IRON' if r['target']=='tap_iron' else 'TIME'}_{r['candidate']}" for r in chosen]
+    desktop_base=Path('/mnt/c/Users/lqh22/Desktop/submission')/namespace
     for name in names:
         if (desktop_base/name).exists():
             raise FileExistsError(desktop_base/name)
@@ -173,10 +175,11 @@ def main():
     parser.add_argument('action',choices=['release','infer'])
     parser.add_argument('--source',type=Path,default=Path('local/runs/round2-v2.4/smooth-r1'))
     parser.add_argument('--output',type=Path,required=True)
+    parser.add_argument('--formal-only',action='store_true')
     args=parser.parse_args()
     root=Path.cwd().resolve()
     if args.action=='release':
-        release(root,args.source.resolve(),args.output.resolve())
+        release(root,args.source.resolve(),args.output.resolve(),args.formal_only)
     else:
         infer(root,args.output.resolve())
 

@@ -1,0 +1,32 @@
+version: round2-v2.5-time-capacity
+run_namespace: round2-v2.5
+release_prefix: V25
+source_run: local/runs/round2-v2.4/smooth-r1
+fold_run: local/runs/round2-v2/comparison-r1
+reference_by_target: {tap_time_len: B3_seeds42_2026_2027_full1500}
+candidates:
+  tap_time_len: [R3, D8, ORD, AR3, AD8, AORD]
+tie_preference_by_target:
+  tap_time_len: [R3, D8, ORD, AR3, AD8, AORD]
+split_seeds: [42, 3407]
+folds: 5
+common:
+  task_type: CPU
+  loss_function: RMSE
+  depth: 6
+  iterations: 1500
+  learning_rate: 0.03
+  l2_leaf_reg: 10
+  random_seed: 42
+  thread_count: 4
+  cat_features: [spout_no]
+  use_best_model: false
+  allow_writing_files: false
+  verbose: false
+routes:
+  R3: {l2_leaf_reg: 3}
+  D8: {depth: 8}
+  ORD: {boosting_type: Ordered, bootstrap_type: Bayesian, bagging_temperature: 1.0}
+bootstrap: {repetitions: 2000, seed: 20260922}
+policy: configs/candidate_tiers.yaml
+budget: {cv_wrapper_fits: 30, cv_regressor_fits: 30, full_wrapper_fits_max: 2}
