@@ -1,0 +1,18 @@
+version: round2-v2-retrain-comparison
+data_version: synthetic_round2_v2
+seeds: [42, 3407]
+n_splits: 5
+routes: [M0, MS, M1, L1, L2, S1, C1, C2, S25, Q2, K1]
+regressors: [L1, L2, S1, C1, C2, Q2, K1]
+legacy_models: configs/round2_v0_1/models.yaml
+legacy_anchor: configs/round2_v0_2/safe_anchor.yaml
+legacy_kernel: configs/round2_v0_3/experiment.yaml
+promotion:
+  numerical_equality_tolerance: 1.0e-12
+  minimum_improved_folds: 7
+  max_spout_wmape_degradation: 0.001
+selection: eligible_targetwise_lowest_two_seed_mean_wmape
+tie_tolerance: 1.0e-6
+tie_order: [M0, MS, M1, L1, L2, S1, S25, Q2, K1, C1, C2]
+budget: {cv_regressor_fits: 140, full_regressor_fits: 2}
+platform_uploads: 0
