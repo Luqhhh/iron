@@ -35,7 +35,12 @@ def predict_node(root,node,frame):
         weights=np.asarray(node['weights'],dtype=float)
         if len(weights)!=len(node['members']) or (weights<0).any() or not np.isfinite(weights).all() or abs(weights.sum()-1)>1e-14:
             raise ValueError('Invalid fixed blend')
-        return sum(w*predict_node(root,m,frame) for w,m in zip(weights,node['members']))
+        values=[predict_node(root,m,frame) for m in node['members']]
+        if node.get('aggregation')=='arithmetic_mean':
+            if not np.all(weights==weights[0]):
+                raise ValueError('Unequal arithmetic mean weights')
+            return np.mean(np.stack(values),axis=0)
+        return sum(w*v for w,v in zip(weights,values))
     path=root/node['path']
     if digest(path)!=node['sha256']:
         raise ValueError('Prediction member changed')
@@ -44,6 +49,11 @@ def predict_node(root,node,frame):
         if not source.sample_id.is_unique or len(source)!=322:
             raise ValueError('Source CSV identity mismatch')
         return source.set_index('sample_id').loc[frame.sample_id,'pred_'+node['target']].to_numpy()
+    if node['kind']=='joint_iron':
+        model=joblib.load(path)
+        if tuple(model.target_fields_)!=TARGETS or model.estimator_.tree_count_!=1500:
+            raise ValueError('Joint output identity mismatch')
+        return model.predict(frame)[:,0]
     if node['kind']!='model':
         raise ValueError('Unknown prediction node')
     model=joblib.load(path)

@@ -1,0 +1,29 @@
+version: round2-v2.6-joint-seeds
+source_run: local/runs/round2-v2.4/smooth-r1
+joint_cv_run: local/runs/round2-v2.3/robust-joint-recovery-r1
+joint_full_run: local/runs/round2-v2.3/candidate-release-r1
+fold_run: local/runs/round2-v2/comparison-r1
+reference_by_target: {tap_iron: C2_seed42_full1500}
+candidates: {tap_iron: [J3, AJ3, DJ3]}
+tie_preference_by_target: {tap_iron: [J3, AJ3, DJ3]}
+split_seeds: [42, 3407]
+model_seeds: [42, 2026, 2027]
+folds: 5
+common:
+  task_type: CPU
+  loss_function: MultiRMSE
+  depth: 6
+  iterations: 1500
+  learning_rate: 0.03
+  l2_leaf_reg: 10
+  thread_count: 4
+  cat_features: [spout_no]
+  use_best_model: false
+  allow_writing_files: false
+  verbose: false
+bootstrap: {repetitions: 2000, seed: 20260922}
+policy: configs/candidate_tiers.yaml
+budget: {new_cv_fits: 20, new_full_fits_max: 2}
+# J3 = three JointSnapshotRegressors averaged in original units, iron column only.
+# AJ3 = .5 C2 + .5 J3; DJ3 = .5 I2 + .5 AJ3.
+delivery: {require_formal: true, require_both_splits_better_than_DJ: true, max_new_packages: 1}
