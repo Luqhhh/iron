@@ -55,3 +55,9 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - The user explicitly requested the final Top 5 from all verified offline candidates, including not-yet-packaged V2.6 candidates. The resulting final handoff order is DJ, J3, DJ3, AJ3, AJ, under desktop submission/final-top5. All retain the original B package full-B3 time strings.
 - Treat the older queue above as historical; preserve its files and decisions. This separately requested ranked release does not retroactively change V2.6's failure to beat DJ. DJ and AJ ZIPs are exact copies of original deliveries; three new packages share two newly fitted full joint models.
 - Exact identities and validation: docs/round2_final_top5/DELIVERY.md. Local OOF rank does not establish platform rank. Users upload and return scores; do not ask again about mode or daily quota.
+
+## Final Top 5 scores received (2026-09-23)
+
+- All final Top5 scores were explicitly returned by candidate: DJ=96.1079, J3=96.1131, DJ3=96.1191, AJ3=96.1259, AJ=96.1035. These are user reports, not independently verified platform receipts.
+- Current preferred package is final-top5/04_AJ3_IRON, SHA-256 a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354: AJ3 iron with unchanged full B3 time. Preserve original package bytes and old decisions.
+- The final Top5 batch is no longer pending. Future optimization, if requested, compares against AJ3 iron/full B3 time and 96.1259; do not keep using C2 iron as the current preferred reference. Details: docs/round2_final_top5/FEEDBACK.md. Do not infer account quota or automatically generate a two-target combination from unreported time results.

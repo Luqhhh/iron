@@ -7,7 +7,7 @@
     "run": "local/runs/round2-final-top5/top5-r1",
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission/final-top5",
     "G0": "PASS_687_LOCKED_TESTS_2_TARGETED_AND_FIVE_COLD_BYTE_IDENTICAL_PACKAGES",
-    "G1": "DEVELOPMENT_OOF_RANKING_PLATFORM_FEEDBACK_PENDING_USER_UPLOAD",
+    "G1": "ALL_FIVE_PLATFORM_SCORES_USER_REPORTED_AJ3_HIGHEST_OBSERVED",
     "new_cv_fits": 0,
     "new_full_fits": 2,
     "new_unique_packages": 3,
@@ -47,7 +47,21 @@
       }
     ],
     "historical_v26_decision_preserved": true,
-    "results": "docs/round2_final_top5/DELIVERY.md"
+    "results": "docs/round2_final_top5/DELIVERY.md",
+    "platform_feedback": {
+      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json",
+      "best_candidate": "AJ3",
+      "best_score": 96.1259,
+      "all_five_improved_vs_B": true,
+      "results": {
+        "AJ3": 96.1259,
+        "DJ3": 96.1191,
+        "J3": 96.1131,
+        "DJ": 96.1079,
+        "AJ": 96.1035
+      }
+    }
   },
   "round2_v2_12": {
     "branch": "round2-v2.12-four-features",
@@ -220,39 +234,68 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "FINAL_TOP5_LOCAL_OOF_ORDER_PENDING_USER_FEEDBACK",
-    "submission_priority": [
-      "01_DJ_IRON",
-      "02_J3_IRON",
-      "03_DJ3_IRON",
-      "04_AJ3_IRON",
-      "05_AJ_IRON"
+    "status": "FINAL_TOP5_ALL_FEEDBACK_RECEIVED_AJ3_CURRENT_PREFERRED",
+    "submission_priority": [],
+    "current_preferred": {
+      "name": "04_AJ3_IRON",
+      "candidate": "AJ3",
+      "score": 96.1259,
+      "delta_vs_B": 0.0277,
+      "local_rank": 4,
+      "local_score": 96.0123883047359,
+      "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
+      "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
+      "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip"
+    },
+    "platform_ranking": [
+      "AJ3",
+      "DJ3",
+      "J3",
+      "DJ",
+      "AJ"
     ],
-    "selection_basis": "User explicitly requested Top5 from all verified offline candidates; each replaces only iron relative to B",
     "previous_queue_snapshot": {
-      "status": "FIVE_PACKAGES_PENDING_USER_FEEDBACK_TWO_NEW_FORMAL_ONE_NEW_EXPLORATION",
+      "status": "FINAL_TOP5_LOCAL_OOF_ORDER_PENDING_USER_FEEDBACK",
       "submission_priority": [
-        "V22_I_ONLY",
-        "V23_AJ_I_ONLY",
-        "V24_FORMAL_IRON_DJ",
-        "V25_FORMAL_TIME_AORD",
-        "V24_EXPLORATION_IRON_BAY"
+        "01_DJ_IRON",
+        "02_J3_IRON",
+        "03_DJ3_IRON",
+        "04_AJ3_IRON",
+        "05_AJ_IRON"
       ],
+      "selection_basis": "User explicitly requested Top5 from all verified offline candidates; each replaces only iron relative to B",
+      "previous_queue_snapshot": {
+        "status": "FIVE_PACKAGES_PENDING_USER_FEEDBACK_TWO_NEW_FORMAL_ONE_NEW_EXPLORATION",
+        "submission_priority": [
+          "V22_I_ONLY",
+          "V23_AJ_I_ONLY",
+          "V24_FORMAL_IRON_DJ",
+          "V25_FORMAL_TIME_AORD",
+          "V24_EXPLORATION_IRON_BAY"
+        ],
+        "removed_from_pending": [
+          "V22_T_ONLY"
+        ],
+        "exploration_only": [
+          "V24_EXPLORATION_IRON_BAY"
+        ],
+        "removed_package_artifacts_preserved": true,
+        "results": "docs/round2_v2_4/DELIVERY.md",
+        "platform_uploads_by_agent": 0
+      },
       "removed_from_pending": [
         "V22_T_ONLY"
       ],
-      "exploration_only": [
-        "V24_EXPLORATION_IRON_BAY"
-      ],
-      "removed_package_artifacts_preserved": true,
-      "results": "docs/round2_v2_4/DELIVERY.md",
+      "old_artifacts_preserved": true,
+      "results": "docs/round2_final_top5/DELIVERY.md",
       "platform_uploads_by_agent": 0
     },
     "removed_from_pending": [
       "V22_T_ONLY"
     ],
     "old_artifacts_preserved": true,
-    "results": "docs/round2_final_top5/DELIVERY.md",
+    "other_historical_packages": "Unreported historical packages are preserved; this record only closes the final Top5 batch",
+    "results": "docs/round2_final_top5/FEEDBACK.md",
     "platform_uploads_by_agent": 0
   },
   "round2_v2_3_candidate_release": {
@@ -5641,5 +5684,23 @@
     "data_publication_authorized": "2026-09-22",
     "historical_round2_results_apply_to": "R2S legacy data only",
     "agent_platform_uploads": 0
+  },
+  "round2_current_platform_best": {
+    "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+    "data_version": "synthetic_round2_v2",
+    "name": "04_AJ3_IRON",
+    "candidate": "AJ3",
+    "score": 96.1259,
+    "delta_vs_B": 0.0277,
+    "local_rank": 4,
+    "local_score": 96.0123883047359,
+    "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
+    "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
+    "reference_by_target": {
+      "tap_iron": "AJ3 = .5 C2 + .5 mean(J1 seeds 42,2026,2027)",
+      "tap_time_len": "B3 seeds 42,2026,2027 full1500; original B strings"
+    },
+    "feedback_record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json"
   }
 }
