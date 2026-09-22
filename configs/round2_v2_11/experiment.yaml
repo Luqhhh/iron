@@ -1,0 +1,18 @@
+version: round2-v2.11-residual-structure
+source_run: local/runs/round2-v2.10/depthwise-r1
+fold_run: local/runs/round2-v2/comparison-r1
+reference_runs:
+  tap_iron: local/runs/round2-v2.4/smooth-r1
+  tap_time_len: local/runs/round2-v2.5/time-r1
+reference_by_target: {tap_iron: DJ, tap_time_len: AORD}
+split_seeds: [42, 3407]
+bins: 10
+additional_diagnostics:
+  - oxygen_per_air_volume
+  - pressure_per_air_volume
+  - thermal_difference
+  - upper_pressure_fraction
+cv_fits: 0
+full_fits: 0
+new_packages: 0
+# Descriptive only: no thresholds for promotion or data exclusion.
