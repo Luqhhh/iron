@@ -44,3 +44,15 @@ def test_nonpositive_training_mean_rejected():
     frame=synthetic()
     with pytest.raises(ValueError,match='Positive'):
         NonlinearRegressor('KS1',{},'tap_iron').fit(frame,np.zeros(len(frame)))
+
+
+def test_completed_solver_cap_can_be_reused_but_not_other_parameters():
+    from bf_tap_r2.v2_nonlinear import compatible_parameters
+    old={'C':10.,'tol':1e-5,'max_iter':100000}
+    new={**old,'max_iter':1000000}
+    report={'iterations':90000,'fit_status':0,'convergence_warning':False}
+    assert compatible_parameters(old,new,'KS1',report,True)
+    assert not compatible_parameters(old,new,'KS1',report,False)
+    assert not compatible_parameters(old,{**new,'C':20.},'KS1',report,True)
+    assert not compatible_parameters(old,new,'KS1',{**report,'convergence_warning':True},True)
+    assert not compatible_parameters(old,new,'KS1',{**report,'iterations':100000},True)

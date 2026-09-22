@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import hashlib
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -51,6 +53,17 @@ def initialize(root,output):
         'commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip()})
 
 
+def compatible_parameters(stored, desired, route, report, allow_old_cap=False):
+    if stored == desired:
+        return True
+    if not allow_old_cap or route != 'KS1':
+        return False
+    return ({k:v for k,v in stored.items() if k!='max_iter'} == {k:v for k,v in desired.items() if k!='max_iter'}
+            and 0 < stored['max_iter'] <= desired['max_iter']
+            and report['fit_status']==0 and not report['convergence_warning']
+            and report['iterations'] < stored['max_iter'])
+
+
 def compute(root,output,replay=False):
     frozen=check(root,output)
     spec=frozen['spec']
@@ -66,14 +79,15 @@ def compute(root,output,replay=False):
                 path=output/'models'/f'{split}-{fold}-{route}-{target or "joint"}.joblib'
                 identity={'route':route,'target':target,'split':split,'heldout_fold':fold,'train_ids':id_digest(training),'valid_ids':id_digest(valid)}
                 fields=TARGETS if target is None else (target,)
-                if replay:
+                desired={**spec['models'][route],**frozen.get('execution_overrides',{}).get(route,{})}
+                if replay or (frozen.get('allow_cached_models',False) and path.exists()):
                     model=joblib.load(path)
-                    if model.model_identity_!=identity or model.spec!=spec['models'][route] or tuple(model.target_fields_)!=fields:
+                    if model.model_identity_!=identity or not compatible_parameters(model.spec,desired,route,model.fit_report_,frozen.get('allow_cached_models',False)) or tuple(model.target_fields_)!=fields:
                         raise ValueError('Model identity/spec mismatch')
                 else:
-                    model=NonlinearRegressor(route,spec['models'][route],target)
+                    model=NonlinearRegressor(route,desired,target)
                     model.model_identity_=identity
-                    fit_once(model,training,training[list(TARGETS)] if target is None else training[target],path,output,'cv',identity,40)
+                    fit_once(model,training,training[list(TARGETS)] if target is None else training[target],path,output,'cv',identity,frozen.get('fit_attempt_limit',40))
                     write_json(path.with_suffix('.json'),{'model_sha256':digest(path),'parameters':model.actual_parameters_,
                         'fit_report':model.fit_report_,'target_scales':model.scales_.tolist()})
                 record=json.loads(path.with_suffix('.json').read_text())
@@ -132,7 +146,8 @@ def compute(root,output,replay=False):
         else:
             distribution.to_csv(path,index=False,mode='x')
     result={'metrics':metrics,'tiers':tiers,'comparisons':rows,'bootstrap':bootstrap,'new_cv_fits':40,
-            'new_full_fits':0,'new_packages':0,'reused_development_splits':True}
+            'new_full_fits':0,'new_packages':0,'reused_development_splits':True,
+            'total_fit_attempts':frozen.get('fit_attempt_limit',40),'reused_converged_models':frozen.get('reused_converged_models',0)}
     if replay:
         if result!=json.loads((output/'selection/summary.json').read_text()):
             raise ValueError('Independent summary mismatch')
@@ -144,7 +159,7 @@ def compute(root,output,replay=False):
 def verify(root,output):
     es=[json.loads(s) for s in (output/'fit_ledger.jsonl').read_text().splitlines()]
     starts=[e for e in es if e['event']=='start'];done=[e for e in es if e['event']=='complete']
-    if len(starts)!=40 or len(done)!=40 or len({e['model'] for e in done})!=40:
+    if len(starts)!=check(root,output).get('fit_attempt_limit',40) or len(done)!=40 or len({e['model'] for e in done})!=40:
         raise ValueError('Nonlinear fit budget mismatch')
     for e in done:
         if digest(Path(e['model']))!=e['model_sha256']:
@@ -154,19 +169,67 @@ def verify(root,output):
         'training_only_transforms_and_fold_ids_checked':True,'metrics_tiers_bootstrap_reproduced':True})
 
 
+
+def initialize_completion(root,source,output):
+    private=root/'local/runs/round2-v2.7'
+    if not source.is_relative_to(private) or not output.is_relative_to(private) or output.exists():
+        raise ValueError('Completion needs a fresh private output')
+    original=json.loads((source/'manifest.json').read_text())
+    failure=json.loads((source/'FAILED.json').read_text())
+    if 'max_iter=100000' not in failure['error'] or 'convergence' not in failure['error']:
+        raise ValueError('This completion only handles the recorded SVR iteration cap')
+    name=str(Path(__file__).relative_to(root))
+    for path,sha in original['files'].items():
+        if path!=name and digest(root/path)!=sha:
+            raise ValueError(f'Frozen completion input changed: {path}')
+    code=subprocess.check_output(['git','show',f"{original['commit']}:{name}"],cwd=root)
+    if hashlib.sha256(code).hexdigest()!=original['files'][name]:
+        raise ValueError('Original orchestration source not recoverable')
+    events=[json.loads(line) for line in (source/'fit_ledger.jsonl').read_text().splitlines()]
+    done=[e for e in events if e['event']=='complete'];starts=[e for e in events if e['event']=='start']
+    if len(done)!=15 or len(starts)!=16:
+        raise ValueError('Unexpected predecessor fit accounting')
+    for event in done:
+        if digest(Path(event['model']))!=event['model_sha256']:
+            raise ValueError('Completed predecessor model changed')
+    output.mkdir(parents=True,exist_ok=False)
+    shutil.copytree(source/'models',output/'models')
+    for folder in ('oof','selection'):
+        (output/folder).mkdir()
+    shutil.copy2(source/'fit_ledger.jsonl',output/'fit_ledger.jsonl')
+    (output/'source_before_completion.py').write_bytes(code)
+    original['files'][name]=digest(Path(__file__))
+    for path in source.rglob('*'):
+        if path.is_file():
+            original['files'][str(path.relative_to(root))]=digest(path)
+    original.update(execution_overrides={'KS1':{'max_iter':1000000}},allow_cached_models=True,
+                    fit_attempt_limit=41,reused_converged_models=15,original_failed_attempts=1,
+                    completion_source=str(source.relative_to(root)),
+                    completion_reason='SVR solver resource cap only: preserve C/epsilon/gamma/tol and reuse already converged models',
+                    commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip())
+    write_json(output/'manifest.json',original)
+
+
 def main():
     p=argparse.ArgumentParser()
-    p.add_argument('action',choices=['evaluate','verify'])
+    p.add_argument('action',choices=['evaluate','verify','complete-fits'])
     p.add_argument('--output',type=Path,required=True)
+    p.add_argument('--source',type=Path)
     a=p.parse_args();root=Path.cwd().resolve();output=a.output.resolve()
     if a.action=='verify':
         verify(root,output)
     else:
-        initialize(root,output)
+        if a.action=='complete-fits':
+            if a.source is None:
+                p.error('complete-fits requires --source')
+            initialize_completion(root,a.source.resolve(),output)
+        else:
+            initialize(root,output)
         try:
             compute(root,output)
             subprocess.run([sys.executable,'-m','bf_tap_r2.v2_nonlinear','verify','--output',str(output)],cwd=root,check=True)
-            write_json(output/'COMPLETE.json',{'status':'PASS','new_cv_fits':40,'new_full_fits':0,'new_packages':0})
+            write_json(output/'COMPLETE.json',{'status':'PASS','completed_cv_models':40,'total_fit_attempts':check(root,output).get('fit_attempt_limit',40),
+                'reused_converged_models':check(root,output).get('reused_converged_models',0),'new_full_fits':0,'new_packages':0})
         except Exception as e:
             write_json(output/'FAILED.json',{'error':str(e)})
             raise
