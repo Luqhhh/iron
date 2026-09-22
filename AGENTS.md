@@ -49,3 +49,9 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - Three new isolated packages are ready: V24_FORMAL_IRON_DJ, V25_FORMAL_TIME_AORD, and low-priority V24_EXPLORATION_IRON_BAY. Keep the existing V22_I_ONLY and V23_AJ_I_ONLY first, then those three in that order. Do not imply all three have stable evidence; BAY is exploration only.
 - V26 J3/AJ3/DJ3 passed the C2-relative formal gate but did not satisfy the predeclared stricter delivery gate against DJ, so no V26 package was generated. Preserve the negative evidence and do not silently relax that gate.
 - V22_T_ONLY remains removed from pending tests. All packages use the unchanged B parent for isolated-column replacement. Details: `docs/round2_v2_4/DELIVERY.md`.
+
+## Final Top 5 handoff (2026-09-23)
+
+- The user explicitly requested the final Top 5 from all verified offline candidates, including not-yet-packaged V2.6 candidates. The resulting final handoff order is DJ, J3, DJ3, AJ3, AJ, under desktop submission/final-top5. All retain the original B package full-B3 time strings.
+- Treat the older queue above as historical; preserve its files and decisions. This separately requested ranked release does not retroactively change V2.6's failure to beat DJ. DJ and AJ ZIPs are exact copies of original deliveries; three new packages share two newly fitted full joint models.
+- Exact identities and validation: docs/round2_final_top5/DELIVERY.md. Local OOF rank does not establish platform rank. Users upload and return scores; do not ask again about mode or daily quota.
