@@ -1,4 +1,26 @@
 {
+  "round2_v2_12": {
+    "branch": "round2-v2.12-four-features",
+    "implementation_commit": "a14dd87",
+    "run": "local/runs/round2-v2.12/features-r1",
+    "status": "LOCAL_COMPLETE_FORMAL_IRON_BUT_NO_NEW_BEST",
+    "G0": "PASS_685_LOCKED_TESTS_1_TARGETED_AND_20_MODEL_REPLAY",
+    "G1": {
+      "formal_only": "AFE4_tap_iron",
+      "new_best": false,
+      "new_platform_score": null,
+      "best_existing_iron": "DJ",
+      "best_existing_time": "AORD"
+    },
+    "new_cv_fits": 20,
+    "failed_attempts": 0,
+    "new_full_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "known_engineering_fit_entries": 86,
+    "pending_queue_unchanged": true,
+    "results": "docs/round2_v2_12/RESULTS.md"
+  },
   "round2_v2_11": {
     "branch": "round2-v2.11-residual-structure",
     "implementation_commit": "a9b6b27",
