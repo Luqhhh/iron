@@ -1,4 +1,27 @@
 {
+  "round2_v2_10": {
+    "branch": "round2-v2.10-depthwise",
+    "implementation_commit": "1145cf4",
+    "run": "local/runs/round2-v2.10/depthwise-r1",
+    "status": "LOCAL_COMPLETE_NO_SHORTLISTED_CANDIDATES",
+    "G0": "PASS_681_LOCKED_TESTS_AND_20_NEW_MODEL_INDEPENDENT_REPLAY",
+    "G1": {
+      "new_best": false,
+      "shortlisted": [],
+      "new_platform_score": null,
+      "best_existing_iron": "DJ",
+      "best_existing_time": "AORD"
+    },
+    "new_cv_fits": 20,
+    "failed_attempts": 0,
+    "new_full_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "known_engineering_fit_entries": 84,
+    "pending_queue_unchanged": true,
+    "diagnostic_N1_models_replayed": 20,
+    "results": "docs/round2_v2_10/RESULTS.md"
+  },
   "round2_v2_9": {
     "branch": "round2-v2.9-weighted-kernel-checkpoint",
     "implementation_commit": "e0b0b24",
