@@ -1,0 +1,50 @@
+version: round2-final-top5
+data_version: synthetic_round2_v2
+source_run: local/runs/round2-v2.12/features-r1
+ranked_runs:
+- local/runs/round2-v2/comparison-r1
+- local/runs/round2-v2.1/refinement-r1
+- local/runs/round2-v2.2/checkpoint-r1
+- local/runs/round2-v2.3/robust-joint-recovery-r1
+- local/runs/round2-v2.4/smooth-r1
+- local/runs/round2-v2.5/time-r1
+- local/runs/round2-v2.6/joint-seeds-r1
+- local/runs/round2-v2.7/nonlinear-completion-r1
+- local/runs/round2-v2.8/geometry-r1
+- local/runs/round2-v2.9/checkpoint-r1
+- local/runs/round2-v2.10/depthwise-r1
+- local/runs/round2-v2.12/features-r1
+split_seeds:
+- 42
+- 3407
+fold_run: local/runs/round2-v2/comparison-r1
+base_csv: local/runs/round2-v2.1/refinement-r1/release/B/result.csv
+base_zip_sha256: ec12c3663edf77fdc0d7e8e9fa7bb1aeb1d1c46db4107a8c6724f25c8039e1e2
+anchor_reference:
+  tap_iron: C2_seed42_full1500
+  tap_time_len: B3_seeds42_2026_2027_full1500
+anchor_oof_run: local/runs/round2-v2.4/smooth-r1
+top5_expected:
+- DJ
+- J3
+- DJ3
+- AJ3
+- AJ
+joint_run: local/runs/round2-v2.6/joint-seeds-r1
+joint_config: configs/round2_v2_6/experiment.yaml
+model_seeds:
+- 42
+- 2026
+- 2027
+budget:
+  new_cv_fits: 0
+  new_full_fits: 2
+ranking: mean complete OOF WMAPE over two fixed splits; change one target relative
+  to B
+historical_v26_decision: preserve not promoted against DJ; this is a separately requested
+  top-five delivery, not retroactive promotion
+excluded:
+- V22_T_ONLY
+- T1_B3_PREFIX1000
+desktop: /mnt/c/Users/lqh22/Desktop/submission/final-top5
+count: 5
