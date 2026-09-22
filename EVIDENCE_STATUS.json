@@ -1,4 +1,19 @@
 {
+  "round2_v2_11": {
+    "branch": "round2-v2.11-residual-structure",
+    "implementation_commit": "a9b6b27",
+    "run": "local/runs/round2-v2.11/residual-r1",
+    "status": "DESCRIPTIVE_RESIDUAL_AUDIT_COMPLETE_NO_NEW_CANDIDATES",
+    "G0": "PASS_684_LOCKED_TESTS_3_TARGETED_AND_INDEPENDENT_GROUPBY_REPLAY",
+    "G1": "WEAK_NONMONOTONIC_RESIDUAL_STRUCTURE_NOT_A_VALIDATED_CORRECTION",
+    "new_cv_fits": 0,
+    "new_full_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "known_engineering_fit_entries": 168,
+    "pending_queue_unchanged": true,
+    "results": "docs/round2_v2_11/RESULTS.md"
+  },
   "round2_v2_10": {
     "branch": "round2-v2.10-depthwise",
     "implementation_commit": "1145cf4",
