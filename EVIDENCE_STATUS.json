@@ -8,7 +8,7 @@
     "reference_route": "C2",
     "reference_zip_sha256": "b44b7cf325ab339dd10ef8adfc563694111fdbf46814d3e20526d76962839aa4",
     "reference_score_user_reported": 96.0537,
-    "status": "LOCAL_COMPLETE_AWAITING_USER_A_B_UPLOAD_RESULTS",
+    "status": "COMPLETE_B_RETAINED_A_REJECTED_C_NOT_GENERATED",
     "G0": "PASS_9_LOCKED_TESTS_80_NEW_CV_MODELS_INDEPENDENT_READBACK_AND_LABEL_FREE_RELEASE",
     "G1": {
       "selected": {
@@ -41,7 +41,22 @@
           "tap_time_len": 0.042409145630768905
         }
       },
-      "platform_scores": null
+      "platform_scores": {
+        "A": 96.0448,
+        "B": 96.0982
+      },
+      "platform_deltas_vs_C2": {
+        "A": -0.0089,
+        "B": 0.0445
+      },
+      "platform_score_source": "user_report_A_then_B_2026-09-22",
+      "independently_platform_verified": false,
+      "platform_preferred_by_target": {
+        "tap_iron": "C2",
+        "tap_time_len": "B3_C2_SEED_ENSEMBLE"
+      },
+      "preferred_package": "B",
+      "preferred_score": 96.0982
     },
     "real_cv_fits": 80,
     "real_full_fits": 4,
@@ -53,7 +68,10 @@
     "remaining_quota_at_user_report": 3,
     "upload_actor": "user",
     "agent_uploads": 0,
-    "results": "docs/round2_v2_1/RESULTS.md"
+    "results": "docs/round2_v2_1/RESULTS.md",
+    "C_gate_passed": false,
+    "feedback_evidence": "local/runs/round2-v2.1/refinement-r1/platform_feedback_user_reported_r1.json",
+    "actual_remaining_account_quota": null
   },
   "round2_v2_leakage_audit": {
     "run": "local/runs/round2-v2/leakage-audit-r1",
