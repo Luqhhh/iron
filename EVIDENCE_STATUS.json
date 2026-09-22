@@ -1,4 +1,19 @@
 {
+  "round2_current_candidate_queue": {
+    "status": "TWO_PACKAGES_PENDING_USER_PLATFORM_FEEDBACK",
+    "submission_priority": [
+      "V22_I_ONLY",
+      "V23_AJ_I_ONLY"
+    ],
+    "removed_from_pending": [
+      "V22_T_ONLY"
+    ],
+    "reason": "Explicit user request to remove V22_T_ONLY from pending tests",
+    "removed_package_artifacts_preserved": true,
+    "platform_uploads_by_agent": 0,
+    "generated_package_history": "round2_v2_3_candidate_release",
+    "queue_event_run": "local/runs/round2-v2.3/candidate-release-r1/queue_events.jsonl"
+  },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
     "branch": "round2-v2.3-robust-joint",
