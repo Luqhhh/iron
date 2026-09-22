@@ -43,3 +43,9 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 
 - Subsequent explicit user authorization generated V22_T_ONLY and V23_AJ_I_ONLY as isolated alternatives to the same B parent. Three ZIPs are now pending platform feedback; V22_I_ONLY remains first. Details and exact hashes: `docs/round2_v2_3/CANDIDATE_RELEASE.md`. Additional full J1 fits: 1; no additional CV fits. Score-transfer arithmetic is not a verified platform forecast.
 - Latest queue correction: the user explicitly removed V22_T_ONLY from pending platform tests. Preserve its ZIP and evidence but do not recommend or schedule its upload. Current pending priority is V22_I_ONLY, then V23_AJ_I_ONLY; the earlier three-package delivery remains historical evidence.
+
+## Optimization delivery after V2.4–V2.6
+
+- Three new isolated packages are ready: V24_FORMAL_IRON_DJ, V25_FORMAL_TIME_AORD, and low-priority V24_EXPLORATION_IRON_BAY. Keep the existing V22_I_ONLY and V23_AJ_I_ONLY first, then those three in that order. Do not imply all three have stable evidence; BAY is exploration only.
+- V26 J3/AJ3/DJ3 passed the C2-relative formal gate but did not satisfy the predeclared stricter delivery gate against DJ, so no V26 package was generated. Preserve the negative evidence and do not silently relax that gate.
+- V22_T_ONLY remains removed from pending tests. All packages use the unchanged B parent for isolated-column replacement. Details: `docs/round2_v2_4/DELIVERY.md`.

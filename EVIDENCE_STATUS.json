@@ -1,18 +1,61 @@
 {
+  "round2_v2_4_to_v2_6_optimization": {
+    "branch": "round2-v2.4-smooth-residual",
+    "stage_runs": {
+      "v24": "local/runs/round2-v2.4/smooth-r1",
+      "v25": "local/runs/round2-v2.5/time-r1",
+      "v26": "local/runs/round2-v2.6/joint-seeds-r1"
+    },
+    "status": "THREE_NEW_ISOLATED_CANDIDATES_READY_TWO_FORMAL_ONE_EXPLORATION",
+    "G0": "PASS_670_LOCKED_TESTS_AND_COLD_BYTE_IDENTICAL_RELEASES",
+    "G1": "REUSED_DEVELOPMENT_OOF_ONLY_NO_NEW_PLATFORM_FEEDBACK",
+    "new_cv_regressor_fits": 130,
+    "new_cv_wrapper_fits": 110,
+    "new_full_fits": 2,
+    "known_engineering_fit_entries": 238,
+    "new_packages": {
+      "V24_FORMAL_IRON_DJ": {
+        "tier": "formal",
+        "zip_sha256": "5f8017757139171f570641735146e42804c367fd95dd0e51ced9e4ec8a1a43f2",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/round2-v2.4/V24_FORMAL_IRON_DJ",
+        "target": "tap_iron"
+      },
+      "V25_FORMAL_TIME_AORD": {
+        "tier": "formal",
+        "zip_sha256": "26dccaf31c1f57c426d3944f666326e93b55d8deccaae8990212f67e40eb07da",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/round2-v2.5/V25_FORMAL_TIME_AORD",
+        "target": "tap_time_len"
+      },
+      "V24_EXPLORATION_IRON_BAY": {
+        "tier": "exploration",
+        "zip_sha256": "09eaaea110555fe66472bab9dc22e91adfb058804f6d14f26e8a567abd95f40b",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/round2-v2.4/V24_EXPLORATION_IRON_BAY",
+        "target": "tap_iron"
+      }
+    },
+    "V26_delivery_gate_passed": false,
+    "existing_packages_unchanged": true,
+    "agent_platform_uploads": 0,
+    "results": "docs/round2_v2_4/DELIVERY.md"
+  },
   "round2_current_candidate_queue": {
-    "status": "TWO_PACKAGES_PENDING_USER_PLATFORM_FEEDBACK",
+    "status": "FIVE_PACKAGES_PENDING_USER_FEEDBACK_TWO_NEW_FORMAL_ONE_NEW_EXPLORATION",
     "submission_priority": [
       "V22_I_ONLY",
-      "V23_AJ_I_ONLY"
+      "V23_AJ_I_ONLY",
+      "V24_FORMAL_IRON_DJ",
+      "V25_FORMAL_TIME_AORD",
+      "V24_EXPLORATION_IRON_BAY"
     ],
     "removed_from_pending": [
       "V22_T_ONLY"
     ],
-    "reason": "Explicit user request to remove V22_T_ONLY from pending tests",
+    "exploration_only": [
+      "V24_EXPLORATION_IRON_BAY"
+    ],
     "removed_package_artifacts_preserved": true,
-    "platform_uploads_by_agent": 0,
-    "generated_package_history": "round2_v2_3_candidate_release",
-    "queue_event_run": "local/runs/round2-v2.3/candidate-release-r1/queue_events.jsonl"
+    "results": "docs/round2_v2_4/DELIVERY.md",
+    "platform_uploads_by_agent": 0
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
