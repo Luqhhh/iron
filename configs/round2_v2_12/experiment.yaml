@@ -1,0 +1,66 @@
+version: round2-v2.12-four-features
+source_run: local/runs/round2-v2.11/residual-r1
+reference_run: local/runs/round2-v2.4/smooth-r1
+time_best_run: local/runs/round2-v2.5/time-r1
+fold_run: local/runs/round2-v2/comparison-r1
+reference_by_target:
+  tap_iron: C2_seed42_full1500
+  tap_time_len: B3_seeds42_2026_2027_full1500
+best_by_target:
+  tap_iron: DJ
+  tap_time_len: AORD
+candidates:
+  tap_iron:
+  - FE4
+  - AFE4
+  tap_time_len:
+  - FE4
+  - AFE4
+tie_preference_by_target:
+  tap_iron:
+  - FE4
+  - AFE4
+  tap_time_len:
+  - FE4
+  - AFE4
+split_seeds:
+- 42
+- 3407
+folds: 5
+models:
+  FE4:
+    task_type: CPU
+    loss_function: RMSE
+    depth: 6
+    iterations: 1500
+    learning_rate: 0.03
+    l2_leaf_reg: 10
+    random_seed: 42
+    thread_count: 4
+    cat_features:
+    - spout_no
+    use_best_model: false
+    allow_writing_files: false
+    verbose: false
+    grow_policy: SymmetricTree
+    boosting_type: Plain
+    bootstrap_type: MVS
+bootstrap:
+  repetitions: 2000
+  seed: 20260922
+policy: configs/candidate_tiers.yaml
+budget:
+  cv_regressor_fits: 20
+  full_fits_this_phase: 0
+publication:
+  preserve_existing_five_packages: true
+  no_automatic_uploads: true
+delivery_gate: 'No automatic package: require selected candidate better than existing
+  best in both splits before separate release.'
+controls:
+  N1: local/runs/round2-v2.3/robust-joint-recovery-r1
+derived_features:
+- oxygen_per_air_volume
+- pressure_per_air_volume
+- thermal_difference
+- upper_pressure_fraction
