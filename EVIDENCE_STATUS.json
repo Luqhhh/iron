@@ -11,14 +11,21 @@
       },
       "mean_J": 0.04033653735138279,
       "M0_mean_J": 0.17694998583530472,
-      "platform_score": null
+      "platform_score": 96.0537,
+      "M0_platform_score": 82.7733,
+      "platform_score_delta": 13.2804,
+      "platform_score_source": "user_report_2026-09-22",
+      "independently_platform_verified": false
     },
     "cv_fits": 140,
     "full_fits": 2,
     "desktop_delivered": true,
     "zip_sha256": "b44b7cf325ab339dd10ef8adfc563694111fdbf46814d3e20526d76962839aa4",
-    "platform_uploads": 0,
-    "results": "docs/round2_v2_comparison.md"
+    "results": "docs/round2_v2_comparison.md",
+    "agent_platform_uploads": 0,
+    "user_reported_scored_candidates": 2,
+    "platform_submission_ids": null,
+    "feedback_evidence": "local/runs/round2-v2/platform-feedback-r1/feedback.json"
   },
   "as_of": "2026-09-22",
   "round2_v0_3": {
@@ -5112,11 +5119,13 @@
           "J": 0.17700477456380087
         }
       },
-      "platform_score": null
+      "platform_score": 82.7733,
+      "platform_score_source": "user_report_2026-09-22",
+      "independently_platform_verified": false
     },
     "zip_sha256": "b4f285db9d4549d4a2ed4536358f1973bd1bdab7f75d6dabc6a76307e909f766",
-    "platform_uploads": 0,
     "data_publication_authorized": "2026-09-22",
-    "historical_round2_results_apply_to": "R2S legacy data only"
+    "historical_round2_results_apply_to": "R2S legacy data only",
+    "agent_platform_uploads": 0
   }
 }
