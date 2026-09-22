@@ -1,0 +1,41 @@
+version: round2-v2.2-checkpoint-and-iron-blend
+base_commit: 9f8801411a6204a3e844265fd599bf9d203800e6
+data_version: synthetic_round2_v2
+reference:
+  name: ANCHOR_C2_IRON_B3_TIME
+  run: local/runs/round2-v2.1/refinement-r1
+  package: release/B/Luqhhh_bf_tap_predict_round2.zip
+  zip_sha256: ec12c3663edf77fdc0d7e8e9fa7bb1aeb1d1c46db4107a8c6724f25c8039e1e2
+  platform_score_user_reported: 96.0982
+original_c2_run: local/runs/round2-v2/comparison-r1
+previous_config: configs/round2_v2_1/experiment.yaml
+reference_by_target:
+  tap_iron: C2_seed42_full1500
+  tap_time_len: B3_seeds42_2026_2027_full1500
+candidates:
+  tap_iron: [I1_D4_IRON, I2_C2_D4_IRON_EQUAL]
+  tap_time_len: [T1_B3_PREFIX1000]
+split_seeds: [42, 3407]
+model_seeds: [42, 2026, 2027]
+folds: 5
+prefix: {ntree_start: 0, ntree_end: 1000, source_tree_count: 1500}
+promotion:
+  numerical_equality_tolerance: 1.0e-12
+  minimum_improved_folds: 7
+  max_spout_wmape_degradation: 0.001
+tie_tolerance: 1.0e-6
+iron_tie_preference: I1_D4_IRON
+single_slot_rule: largest_minimum_WMAPE_improvement_over_two_splits
+single_slot_tie_tolerance: 1.0e-6
+single_slot_tie_prefer: tap_time_len
+bootstrap: {repetitions: 2000, seed: 20260922}
+budget: {cv_fits: 0, full_fits: 1}
+platform:
+  upload_actor: user
+  daily_cap_user_stated: 5
+  remaining_quota_user_reported: 1
+  release_slots_this_batch: 1
+  no_repeated_quota_or_upload_mode_questions: true
+  max_submissions: 3
+  combined_requires: both_isolated_scores_above_96.0982_and_available_quota
+  names: [V22_I_ONLY, V22_T_ONLY, V22_IT_COMBINED]

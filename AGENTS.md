@@ -18,6 +18,12 @@ This repository implements the frozen `baseline-v0.1`. Unless the user explicitl
 - Before every commit and push, verify that private local artifacts remain outside Git. Models, predictions, reports under `local/`, access ledgers, platform receipts, and submission packages must never be committed or pushed.
 - This standing Git publication rule does not authorize platform uploads, desktop writes, deletion of evidence, or publication of otherwise private data. If commit or push is blocked, preserve the work and report the exact blocker promptly.
 
+## Platform handoff preference
+
+- As explicitly instructed on 2026-09-22, users always upload packages themselves and return scores; the assistant does not upload.
+- The user states a daily cap of 5 submissions. Do not repeatedly ask about upload mode or remaining quota. Use the latest explicit quota and recorded feedback for planning, retaining uncertainty about unrecorded account activity.
+- At the start of V2.2 the user reported 1 remaining submission. Apply the frozen single-slot priority rule and deliver the preferred isolated package without spending the slot on an unverified two-target combination.
+
 The `md/` tree is the archived original implementation package. Active configuration and status live at repository root under `configs/`, `docs/`, and `EVIDENCE_STATUS.json`.
 
 The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do not change its model, feature, semantic, source, or acceptance contracts in place. Start model-quality work as optimization-v0.2 on a separate branch and preserve baseline comparisons.
