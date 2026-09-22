@@ -1,0 +1,28 @@
+version: v22-t1-v23-aj-isolated-release
+# User explicitly authorized packaging after the completed offline-only round.
+source_run: local/runs/round2-v2.3/robust-joint-recovery-r1
+source_config: configs/round2_v2_3/experiment.yaml
+v22_run: local/runs/round2-v2.2/checkpoint-r1
+reference_csv: local/runs/round2-v2.1/refinement-r1/release/B/result.csv
+reference_zip: local/runs/round2-v2.1/refinement-r1/release/B/Luqhhh_bf_tap_predict_round2.zip
+reference_zip_sha256: ec12c3663edf77fdc0d7e8e9fa7bb1aeb1d1c46db4107a8c6724f25c8039e1e2
+reference_platform_score_user_reported: 96.0982
+c2_iron: local/runs/round2-v2/comparison-r1/release/tap_iron.joblib
+c2_iron_sha256: ea9b491ad02e6ff341df04ce7b4c4dc82fa783c2b68572760f8cf14e369b22a6
+budget: {new_cv_fits: 0, new_full_fits: 1}
+packages:
+  V22_T_ONLY:
+    target: tap_time_len
+    route: T1_B3_PREFIX1000
+    desktop: /mnt/c/Users/lqh22/Desktop/submission/round2-v2.2/V22_T_ONLY
+  V23_AJ_I_ONLY:
+    target: tap_iron
+    route: AJ
+    desktop: /mnt/c/Users/lqh22/Desktop/submission/round2-v2.3/V23_AJ_I_ONLY
+platform:
+  upload_actor: user
+  first_package: V22_I_ONLY
+  daily_cap_user_stated: 5
+  remaining_quota_latest_user_reported: 0
+  automatically_upload: false
+  combined_generated: false
