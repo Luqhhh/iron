@@ -1,4 +1,26 @@
 {
+  "round2_v2_8": {
+    "branch": "round2-v2.8-kernel-geometry",
+    "implementation_commit": "8c140f2",
+    "run": "local/runs/round2-v2.8/geometry-r1",
+    "status": "LOCAL_COMPLETE_NO_SHORTLISTED_CANDIDATES_GOAL_REMAINS_ACTIVE",
+    "G0": "PASS_680_LOCKED_TESTS_4_TARGETED_AND_40_MODEL_INDEPENDENT_REPLAY",
+    "G1": {
+      "new_best": false,
+      "shortlisted": [],
+      "new_platform_score": null,
+      "best_existing_iron": "DJ",
+      "best_existing_time": "AORD"
+    },
+    "new_cv_fits": 40,
+    "failed_attempts": 0,
+    "new_full_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "known_engineering_fit_entries": 85,
+    "pending_queue_unchanged": true,
+    "results": "docs/round2_v2_8/RESULTS.md"
+  },
   "round2_v2_7": {
     "branch": "round2-v2.7-nonlinear",
     "implementation_commit": "e3980f7",
