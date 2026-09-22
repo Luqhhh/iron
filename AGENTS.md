@@ -34,3 +34,9 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - Freeze the candidate pool, target-specific current references, and cost-based tie ordering before evaluation. Preserve formal promotion gates; retain mean-improving candidates that fail stability gates as exploration candidates with explicit failure reasons.
 - Recommend at most one exploration candidate per round across targets, after formal candidates. Keep evidence verification and isolated release checks mandatory; classification never authorizes automatic release or platform upload.
 - Do not retroactively reclassify or replace frozen V2.1/V2.2 decisions or packages.
+
+## Latest V2 handoff (2026-09-22)
+
+- The latest user-reported remaining submission quota is 0; the earlier V2.2 value of 1 is a historical snapshot only.
+- On 2026-09-23 prioritize the already delivered V22_I_ONLY ZIP, SHA-256 `46c16936b13e18f3271f58f4de4aa18a87595f6a6612031710360c11f362b8fb`. Preserve its C2/D4 equal iron blend and full B3 time strings. Never overwrite it with new experiments or substitute T1.
+- V2.3 is offline normalized RMSE/Huber/MultiRMSE exploration. Its frozen AH/AJ anchors remain C2 iron and full B3 time even if a later platform receipt favors V22. Report both current-anchor and V22-relative differences; do not move a new local winner ahead of the scheduled V22 first submission.

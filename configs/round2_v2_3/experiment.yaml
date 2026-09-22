@@ -1,0 +1,50 @@
+version: round2-v2.3-robust-joint
+data_version: synthetic_round2_v2
+base_commit: 50937b8
+previous_run: local/runs/round2-v2.2/checkpoint-r1
+fold_run: local/runs/round2-v2/comparison-r1
+reference_by_target:
+  tap_iron: C2_seed42_full1500
+  tap_time_len: B3_seeds42_2026_2027_full1500
+v22_by_target:
+  tap_iron: I2_C2_D4_IRON_EQUAL
+  tap_time_len: T1_B3_PREFIX1000
+candidates:
+  tap_iron: [N1, H1, J1, AH, AJ]
+  tap_time_len: [N1, H1, J1, AH, AJ]
+# Single models precede two-member blends; equal tree-count ties use fixed route order.
+tie_preference_by_target:
+  tap_iron: [N1, H1, J1, AH, AJ]
+  tap_time_len: [N1, H1, J1, AH, AJ]
+split_seeds: [42, 3407]
+folds: 5
+common:
+  task_type: CPU
+  depth: 6
+  iterations: 1500
+  learning_rate: 0.03
+  l2_leaf_reg: 10
+  random_seed: 42
+  thread_count: 4
+  cat_features: [spout_no]
+  use_best_model: false
+  allow_writing_files: false
+  verbose: false
+losses:
+  N1: RMSE
+  H1: Huber:delta=0.05
+  J1: MultiRMSE
+target_transform: {center: training_fold_target_mean, scale: training_fold_target_mean}
+bootstrap: {repetitions: 2000, seed: 20260922}
+policy: configs/candidate_tiers.yaml
+budget: {cv_fits: 50, full_fits: 0}
+platform:
+  upload_actor: user
+  daily_cap_user_stated: 5
+  remaining_quota_user_reported: 0
+  quota_date: '2026-09-22'
+  next_date: '2026-09-23'
+  first_package: V22_I_ONLY
+  zip_sha256: 46c16936b13e18f3271f58f4de4aa18a87595f6a6612031710360c11f362b8fb
+  desktop_package: /mnt/c/Users/lqh22/Desktop/submission/round2-v2.2/V22_I_ONLY/Luqhhh_bf_tap_predict_round2.zip
+  no_release_in_this_offline_round: true
