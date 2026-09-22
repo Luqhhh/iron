@@ -1,0 +1,8 @@
+# Applies to future rounds only. Freeze pool, references and tie order before evaluation.
+version: candidate-tiers-v1
+max_exploration_per_round: 1
+tie_tolerance: 1.0e-6
+promotion:
+  numerical_equality_tolerance: 1.0e-12
+  minimum_improved_folds: 7
+  max_spout_wmape_degradation: 0.001

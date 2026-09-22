@@ -27,3 +27,10 @@ This repository implements the frozen `baseline-v0.1`. Unless the user explicitl
 The `md/` tree is the archived original implementation package. Active configuration and status live at repository root under `configs/`, `docs/`, and `EVIDENCE_STATUS.json`.
 
 The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do not change its model, feature, semantic, source, or acceptance contracts in place. Start model-quality work as optimization-v0.2 on a separate branch and preserve baseline comparisons.
+
+## Future V2 candidate triage
+
+- For subsequent V2 optimization rounds, apply `configs/candidate_tiers.yaml` through `bf_tap_r2.candidate_tiers` and follow `docs/candidate_tiers.md`.
+- Freeze the candidate pool, target-specific current references, and cost-based tie ordering before evaluation. Preserve formal promotion gates; retain mean-improving candidates that fail stability gates as exploration candidates with explicit failure reasons.
+- Recommend at most one exploration candidate per round across targets, after formal candidates. Keep evidence verification and isolated release checks mandatory; classification never authorizes automatic release or platform upload.
+- Do not retroactively reclassify or replace frozen V2.1/V2.2 decisions or packages.
