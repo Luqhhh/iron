@@ -60,7 +60,7 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 
 - All final Top5 scores were explicitly returned by candidate: DJ=96.1079, J3=96.1131, DJ3=96.1191, AJ3=96.1259, AJ=96.1035. These are user reports, not independently verified platform receipts.
 - Current preferred package is final-top5/04_AJ3_IRON, SHA-256 a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354: AJ3 iron with unchanged full B3 time. Preserve original package bytes and old decisions.
-- The final Top5 batch is no longer pending. Future optimization, if requested, compares against AJ3 iron/full B3 time and 96.1259; do not keep using C2 iron as the current preferred reference. Details: docs/round2_final_top5/FEEDBACK.md. Do not infer account quota or automatically generate a two-target combination from unreported time results.
+- The final Top5 batch is no longer pending. Future optimization compares against the latest registered current platform best in `EVIDENCE_STATUS.json`; as of 2026-09-24 that is V34_A at `96.2684`, not AJ3 `96.1259`. Preserve AJ3 and the other final Top5 records as historical evidence. Do not infer account quota or automatically generate a two-target combination from unreported time results.
 
 ## Platform test priority preference (2026-09-23)
 
@@ -74,8 +74,8 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
   runner, fusion utilities, tests, and first-batch evidence.  Public heads:
   `configs/round2_v3/experiment.yaml`, `src/bf_tap_r2/v3_local_search.py`,
   `src/bf_tap_r2/v3_run.py`, `tests/test_round2_v3_local_search.py`.
-- The current platform reference remains AJ3 iron + full B3 time, user-reported
-  `96.1259`; the corresponding local reference is `96.0123883047359`.
+- At the time of the V3 local-search round, the platform reference was AJ3 iron + full B3 time, user-reported
+  `96.1259`; the corresponding local reference was `96.0123883047359`. For the current V3.4 reference see the 2026-09-24 section below.
 - The first V3 batch is complete: 400/400 coarse `(configuration, target)` items
   (CatBoost 240, LightGBM 40, XGBoost 40, MLP 20, kernel 20, expression 40).
   `xgboost==2.1.4` is installed through the `round2` optional dependency.  The
@@ -92,3 +92,16 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - No V3 package, independent cold release, or upload has been authorized.  Do
   not generate or upload a V3 package until the user explicitly requests it.
   The existing frozen release and platform-upload rules still apply.
+
+## Round2 V3.4 next phase (2026-09-24, current instruction)
+
+- User-reported platform scores: `V34_A = 96.2684`, `V34_B = 96.2660`. These are user reports, not independently verified platform receipts.
+- Current platform best is `V34_A`; `V34_B` is second. Historical AJ3 `96.1259` remains evidence but is no longer the current reference.
+- Next-phase platform target: **> 96.3**.
+- Pre-registered local working gate: **>= 96.25**; local stretch target: **>= 96.30**. The gate is derived from observed local-to-platform gaps of roughly `+0.069` to `+0.114`, but local scores remain non-guarantees.
+- **Do not consume platform test quota unless a candidate first reaches the local working gate and passes same-protocol outer validation.** Local score or local delta alone is not acceptance.
+- Continue **large-scale optimization search**: broad local exploration, not small variants of already-tested packages. Search structure, EBM boundary/residual, global/local spout experts, constrained composition and target-isolated fallbacks; preserve data protection, dedup, append-only cache identity, candidate freeze and cold-audit rules.
+- New candidates must have at least two positive complete development splits before any new outer seed is consumed; only clearly justified exceptional cases may bypass, with explicit pre-registration.
+- Users upload packages themselves and return scores. Do not auto-upload, auto-package for platform, or spend quota manually.
+- Latest score-transfer and gate analysis: `docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md`.
+
