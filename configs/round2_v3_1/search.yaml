@@ -1,0 +1,79 @@
+version: round2-v3.1-directed-search
+base_commit: 5bf681b7cd1680e06aad452a8239decaf7666acb
+status: s0_fusion_complete_s1_pending
+
+p0_platform_recipe:
+  candidate: AJ3_IRON
+  platform_score_user_reported: 96.1259
+  local_reference_score_seeds_42_3407: 96.0123883047359
+  note: user-reported platform receipt, not independently verified
+
+l0_v3_frozen_recipe:
+  iron_members:
+    round2-v2.7:nonlinear-completion-r1:AJM1: 0.33885313553698926
+    v3-refine:v3-catboost-tap_iron-0107: 0.21301331718102437
+    round2-v2.3:robust-joint-r1:J1: 0.23274115648858829
+    v3-refine:v3-catboost-tap_iron-0043: 0.2153923907933981
+  time_members:
+    v3-refine:v3-catboost-tap_time_len-0021: 0.6688582528038586
+    round2-v2.10:depthwise-r1:AORD: 0.17410974011267225
+    round2-v2.4:smooth-r1:T1_B3_PREFIX1000: 0.15703200708346923
+  note: zero-weight members are omitted; full-precision weights required for any package work
+
+triage:
+  monotonic: true
+  not_independent_below: 0.02
+  fallback_below: 0.05
+  candidate_pool_below: 0.15
+  primary_at_or_above: 0.15
+
+fusion:
+  member_min: 2
+  member_max: 5
+  simple_mix_alphas: [0.10, 0.25, 0.50]
+  fixed_member_solver: scipy.optimize.linprog
+  method: highs
+  max_retained_rules: 2
+
+s1_budget:
+  total: 320
+  target_totals: {tap_iron: 128, tap_time_len: 192}
+  lines:
+    time_catboost_neighborhood: 128
+    iron_catboost_neighborhood: 64
+    feature_and_expression: 48
+    smooth_and_residual: 48
+    far_family: 32
+  note: counts are configuration x target items, not fit counts
+
+stages:
+  coarse:
+    split_seed: 42
+    folds: [0, 1]
+    early_stopping: inner_train_validation
+  refine:
+    split_seeds: [42, 3407]
+    folds: 5
+    max_per_target: 3
+  confirm:
+    split_seeds: [42, 3407, 2026]
+    outer_folds: 5
+    inner_folds: 3
+
+batch_identity:
+  required_fields: [batch_id, trial_hash, target, data_hash, fold_hash, fold_ids, model_seed, stage, code_version]
+  independent_directory_required: true
+  mismatched_identity_must_fail: true
+  reuse_requires_identity_match: true
+
+metrics:
+  ranking: pooled_wmape
+  per_split_seed: pooled_over_complete_coverage
+  aggregate: arithmetic_mean_of_split_metrics
+  per_fold_mean: diagnostic_only
+
+publication:
+  upload_actor: user
+  agent_uploads: 0
+  no_automatic_packages: true
+  preserve_existing_local_packages: true

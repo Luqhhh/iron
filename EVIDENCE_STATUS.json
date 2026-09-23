@@ -5848,5 +5848,38 @@
     "formal_pending_strategy_names": [
       "V3 CatBoost+V2-OOF frozen weighted fusion"
     ]
+  },
+  "round2_v3_1_directed_search": {
+    "status": "S0_FUSION_COMPLETE_S1_PENDING",
+    "date": "2026-09-23",
+    "branch": "round2-v3.1-directed-search",
+    "base_commit": "5bf681b7cd1680e06aad452a8239decaf7666acb",
+    "s0": {
+      "new_base_fits": 0,
+      "p0_package_score_seeds_42_3407": 96.0123883047359,
+      "l0_both_seed_in_sample_package_score": 96.11430707024925,
+      "l0_nested_cross_seed_delta_vs_p0": 0.088347,
+      "lp_exact_reproduced_l0": true,
+      "existing_oof_package_improvement_beyond_l0": 0.0015,
+      "promoted_candidate": null,
+      "selected_directions_private": "local/runs/round2-v3.1-directed-search/s0-fusion-r1/s0_summary.json"
+    },
+    "s1_budget": {
+      "total": 320,
+      "tap_iron": 128,
+      "tap_time_len": 192,
+      "lines": {
+        "time_catboost_neighborhood": 128,
+        "iron_catboost_neighborhood": 64,
+        "feature_and_expression": 48,
+        "smooth_and_residual": 48,
+        "far_family": 32
+      }
+    },
+    "G0": "PASS_8_V3_1_LIGHTWEIGHT_TESTS",
+    "G1": "S0_NO_MATERIAL_FUSION_IMPROVEMENT_OVER_L0_S1_PENDING",
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "results": "docs/round2_v3_1/RESULTS.md"
   }
 }
