@@ -5702,5 +5702,79 @@
       "tap_time_len": "B3 seeds 42,2026,2027 full1500; original B strings"
     },
     "feedback_record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json"
+  },
+  "round2_v3_local_search": {
+    "status": "FIRST_BATCH_RECON_COMPLETE_NO_PACKAGE",
+    "date": "2026-09-23",
+    "branch": "round2-v3-local-search",
+    "baseline": {
+      "current_platform_best_candidate": "AJ3_IRON",
+      "current_platform_best_score_user_reported": 96.1259,
+      "local_reference_score": 96.0123883047359,
+      "sprint_target": 96.2,
+      "note": "corrects the older 96.0982 C2+B3 snapshot used in the initial V3 memo"
+    },
+    "budget": {
+      "total": 400,
+      "catboost": 240,
+      "lightgbm": 40,
+      "xgboost": 40,
+      "mlp": 20,
+      "kernel": 20,
+      "expression": 40
+    },
+    "coarse_complete": {
+      "catboost": 240,
+      "lightgbm": 40,
+      "mlp": 20,
+      "kernel": 20,
+      "expression": 40,
+      "xgboost_blocked": 40
+    },
+    "refine": {
+      "seeds": [
+        42,
+        3407
+      ],
+      "folds": 5,
+      "selected_trials": 24,
+      "new_trial_seed_fits": 16,
+      "single_best": {
+        "tap_iron": {
+          "trial_id": "v3-catboost-tap_iron-0075",
+          "mean_wmape": 0.03917428,
+          "seed_42": 0.03909385,
+          "seed_3407": 0.03925472
+        },
+        "tap_time_len": {
+          "trial_id": "v3-catboost-tap_time_len-0021",
+          "mean_wmape": 0.03956676,
+          "seed_42": 0.03921803,
+          "seed_3407": 0.03991548
+        }
+      }
+    },
+    "nested_fusion": {
+      "catboost_only": {
+        "iron_wmape": 0.03856469,
+        "time_wmape": 0.0394206,
+        "package_local_score": 96.100735,
+        "delta_vs_local_reference": 0.088347,
+        "triage": "candidate_pool"
+      },
+      "all_family": {
+        "iron_wmape": 0.03857898,
+        "time_wmape": 0.0394206,
+        "package_local_score": 96.100021,
+        "delta_vs_local_reference": 0.087633,
+        "triage": "candidate_pool"
+      }
+    },
+    "G0": "PASS_697_LOCKED_TESTS",
+    "G1": "NESTED_CROSS_SEED_LOCAL_DELTA_ABOUT_0.088_CANDIDATE_POOL_NOT_PACKAGED",
+    "new_full_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "results": "docs/round2_v3/RESULTS.md"
   }
 }
