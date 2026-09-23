@@ -1,0 +1,153 @@
+version: round2-v3.4-ebm-and-constrained-composition
+base_commit: 559cd9f0bb75d73958a047e04e2d490fa2e8885d
+created: "2026-09-23"
+status: implementation_batch_fixed_schedule_not_yet_executed
+
+references:
+  P0: {recipe: AJ3_IRON + full_B3_time, platform_score_user_reported: 96.1259}
+  L0: {recipe: V3_frozen_weighted_fusion, local_reference: historical}
+  L1: {recipe: V3.1_frozen_member_pool_inner_LP, comparison_protocol: same_outer_folds}
+  V32_material: {role: development_material_not_auto_promoted}
+  V33_material: {role: development_material_and_ebm_center_source_not_auto_promoted}
+
+fixed_budget:
+  total: 144
+  optional_max: 16
+  hard_max: 160
+  lines:
+    ebm_boundary: 96
+    ebm_residual: 32
+    global_spout_shrink: 16
+  target_totals:
+    ebm_boundary: {tap_iron: 64, tap_time_len: 32}
+    ebm_residual: {tap_iron: 16, tap_time_len: 16}
+    global_spout_shrink: {tap_iron: 8, tap_time_len: 8}
+
+ebm_boundary:
+  feature_source: raw21_plus_spout_no
+  objective: rmse
+  target_transforms_iron: [log1p, mean]
+  frozen_time_transform_fallback: log1p
+  base_recipe:
+    max_leaves: 2
+    objective: rmse
+    learning_rate: 0.03
+    outer_bags: 4
+    inner_bags: 0
+    max_rounds: 6000
+    early_stopping_rounds: 100
+    random_state: 42
+    n_jobs: 1
+  grid:
+    max_bins: [128, 256]
+    min_samples_leaf: [30, 60]
+    interactions: [10, 20, 40, 60]
+    max_interaction_bins: [32, 64]
+  interpretation:
+    interactions: automatic_selected_interaction_count_not_order
+    allowed_order: pairwise_only
+    max_rounds_policy: fixed_6000_until_development_trigger
+
+ebm_residual:
+  alpha_correction: 0.25
+  inner_seed: 777
+  inner_splits: 5
+  coordinates: [original_unit, log_unit]
+  correctors:
+    - {name: ridge_10, kind: ridge, params: {alpha: 10.0}}
+    - {name: ridge_100, kind: ridge, params: {alpha: 100.0}}
+    - name: catboost_l2_30
+      kind: catboost
+      params:
+        task_type: CPU
+        loss_function: RMSE
+        depth: 2
+        iterations: 600
+        learning_rate: 0.03
+        l2_leaf_reg: 30.0
+        random_strength: 0.3
+        random_seed: 42
+        thread_count: 1
+        cat_features: [spout_no]
+        allow_writing_files: false
+        verbose: false
+        bootstrap_type: MVS
+        subsample: 0.8
+    - name: catboost_l2_100
+      kind: catboost
+      params:
+        task_type: CPU
+        loss_function: RMSE
+        depth: 2
+        iterations: 600
+        learning_rate: 0.03
+        l2_leaf_reg: 100.0
+        random_strength: 0.3
+        random_seed: 42
+        thread_count: 1
+        cat_features: [spout_no]
+        allow_writing_files: false
+        verbose: false
+        bootstrap_type: MVS
+        subsample: 0.8
+  center_selection:
+    source: v33_full_development_refine_summary_and_selection
+    iron_first: v33-s1-ebm-0095
+    iron_second_policy: strongest_structurally_distinct_full_development_runner_up
+    time_first_policy: strongest_full_development_time_ebm
+    missing_center_policy: preserve_slot_mark_not_applicable
+
+global_spout_shrink:
+  parents:
+    tap_iron: [v31-s1-expr-iron-0018, v32-s1-iron_log_expression-0019]
+    tap_time_len: [v31-s1-time-0021-0050, v32-s1-time_neighborhood-0126]
+  local_l2_multipliers: [1.0, 3.0]
+  beta_values: [0.25, 0.50]
+  min_spout_samples: 200
+  local_include_spout: true
+  fallback_policy: global_only_for_unseen_or_small_spout
+
+composition:
+  max_new_experts: 2
+  max_new_expert_weight: 0.50
+  simple_mix_alphas: [0.10, 0.25, 0.50]
+  simple_mix_max_ebm_per_target: 2
+  l1_policy: always_include_l1_control
+  no_replace_option: true
+  weight_learning: training_part_only
+  member_pool_record: full_dag_required
+
+screening:
+  coarse:
+    fold_seed: 42
+    folds: [0, 1]
+  refine:
+    split_seeds: [42, 3407]
+    folds: 5
+    max_per_target: 10
+    composition_trigger_delta: 0.02
+
+conditional_extension:
+  max_new_slots: 16
+  trigger_delta: 0.02
+  trigger_positive_splits_required: true
+  center_count: 2
+  slots_per_center: 8
+  only_unscanned_training_length_or_learning_rate: true
+
+final_validation:
+  outer_seed: 16061
+  inner_seed: 7771
+  fallback_outer_seeds: [18041]
+  outer_folds: 5
+  inner_folds: 3
+  group_isolated: true
+  max_candidate_flows: 2
+  do_not_run_if_no_trigger: true
+
+publication:
+  upload_actor: user
+  agent_uploads: 0
+  no_automatic_packages: true
+  preserve_existing_packages: true
+  preserve_v31_zip_bytes: true
