@@ -213,3 +213,26 @@ was selected during prior development, so S3 reduces but does not erase all
 selection bias.  It is not a platform score forecast.
 
 No package was generated in this step.
+
+
+## Prepared package set (not a delivery decision)
+
+Five V3.1-based ZIPs were generated locally for preparation only under:
+
+`local/runs/round2-v3.1-directed-search/prepared-packages-r1/`
+
+They are **not** the next delivery object, have **no independent cold-release audit**,
+and have `platform_score = null`.
+
+| package | role | result SHA-256 prefix | ZIP SHA-256 prefix |
+|---|---|---|---|
+| `01_v31_s3_s1_full` | primary S3-confirmed S1 fusion | `4f57fa9fa224` | `1a26439a557d` |
+| `02_l0_v3_frozen` | V3 frozen L0 control/fallback | `9d74136a7866` | `f11ce68ab4d7` |
+| `03_s1_iron_l0_time` | S1 iron upgrade with L0 time | `10c3f9ad3524` | `bec5c0393a80` |
+| `04_l0_iron_s1_time` | L0 iron with S1 time upgrade | `527f5b0e774e` | `560d3c1da9ff` |
+| `05_aj3_iron_s1_time` | AJ3/P0 iron with S1 time upgrade | `f433b40551db` | `654afd218df9` |
+
+For the S1 portion, the package weights are the arithmetic mean of the five S3
+outer-fold LP weights, renormalized.  L0 and AJ3/P0 portions use their fixed
+frozen formulas.  All five result files passed V2 ID/order/nonnegativity checks
+and ZIP round-trip checks.  No desktop write and no platform upload occurred.

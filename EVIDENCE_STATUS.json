@@ -5948,6 +5948,40 @@
       },
       "decision": "candidate preferred over L0 under the +0.03 S3 rule; no package generated and no upload",
       "selection_bias_note": "member pool came from prior development; S3 is conditional validation, not a new hidden test set"
+    },
+    "prepared_packages": {
+      "status": "PREPARED_NOT_DELIVERY_NOT_AUDITED",
+      "run": "local/runs/round2-v3.1-directed-search/prepared-packages-r1",
+      "count": 5,
+      "platform_score": null,
+      "agent_uploads": 0,
+      "packages": {
+        "01_v31_s3_s1_full": {
+          "role": "primary S3-confirmed S1 fusion",
+          "result_sha256_prefix": "4f57fa9fa224",
+          "zip_sha256_prefix": "1a26439a557d"
+        },
+        "02_l0_v3_frozen": {
+          "role": "V3 frozen L0 control/fallback",
+          "result_sha256_prefix": "9d74136a7866",
+          "zip_sha256_prefix": "f11ce68ab4d7"
+        },
+        "03_s1_iron_l0_time": {
+          "role": "S1 iron with L0 time",
+          "result_sha256_prefix": "10c3f9ad3524",
+          "zip_sha256_prefix": "bec5c0393a80"
+        },
+        "04_l0_iron_s1_time": {
+          "role": "L0 iron with S1 time",
+          "result_sha256_prefix": "527f5b0e774e",
+          "zip_sha256_prefix": "560d3c1da9ff"
+        },
+        "05_aj3_iron_s1_time": {
+          "role": "AJ3/P0 iron with S1 time",
+          "result_sha256_prefix": "f433b40551db",
+          "zip_sha256_prefix": "654afd218df9"
+        }
+      }
     }
   }
 }
