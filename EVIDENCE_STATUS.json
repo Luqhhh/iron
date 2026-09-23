@@ -5985,7 +5985,7 @@
     }
   },
   "round2_v3_2_ensemble_target_search": {
-    "status": "PROTOCOL_PATCH_AND_SEED_ENSEMBLE_COMPLETE_SEARCH_PENDING",
+    "status": "SEARCH_AND_S3_COMPLETE_V32_FUSION_MATERIAL_ONLY",
     "date": "2026-09-23",
     "branch": "round2-v3.2-ensemble-and-target-search",
     "base_commit": "4b87834186a892a9299abf965973a12d74a5904a",
@@ -6027,6 +6027,63 @@
       "nested_gain": 0.00317054156741,
       "decision": "below +0.02 promotion line; retain as fusion material, do not expand seed count",
       "run": "local/runs/round2-v3.2-ensemble-and-target-search/seed-ensemble-r1"
+    },
+    "search": {
+      "configurations": 256,
+      "iron": 136,
+      "time": 120,
+      "coarse_complete": 256,
+      "first_pass_complete": 252,
+      "preserved_failures": 4,
+      "failures_rerun_complete": 4,
+      "refined_trials_per_target": 12,
+      "best_single": {
+        "tap_iron": {
+          "trial_id": "v32-s1-iron_log_expression-0019",
+          "mean_pooled_wmape": 0.0388946
+        },
+        "tap_time_len": {
+          "trial_id": "v32-s1-time_neighborhood-0126",
+          "mean_pooled_wmape": 0.0389088
+        }
+      }
+    },
+    "v32_fusion": {
+      "in_sample_package": 96.1651899568098,
+      "nested_cross_seed_package": 96.16002865365755,
+      "members": {
+        "tap_iron": [
+          "L0",
+          "v32-s1-quantization_rsm-0177",
+          "v32-s1-calibration_residual-0208",
+          "v32-s1-iron_log_expression-0064",
+          "v32-s1-iron_log_expression-0019"
+        ],
+        "tap_time_len": [
+          "v32-s1-time_neighborhood-0126",
+          "v32-s1-calibration_residual-0224",
+          "v32-s1-time_neighborhood-0137",
+          "v32-s1-time_wide-0132",
+          "v31-s1-time-0021-0002"
+        ]
+      }
+    },
+    "s3_outer_seed9091": {
+      "outer_seed": 9091,
+      "inner_seed_base": 5555,
+      "folds": 5,
+      "L1_package_score": 96.13620568102135,
+      "L1_delta_vs_L0": 0.03934866610326537,
+      "L1_delta_vs_P0": 0.12280633194494328,
+      "V32_package_score": 96.1400226373848,
+      "V32_delta_vs_L0": 0.04316562246671651,
+      "V32_delta_vs_P0": 0.12662328830839442,
+      "V32_delta_vs_L1": 0.003816956363451,
+      "target_wmape": {
+        "tap_iron": 0.03840082480513589,
+        "tap_time_len": 0.03879872244716818
+      },
+      "decision": "below +0.01 promotion line; retain as fusion material, no V3.2 package promotion"
     }
   }
 }

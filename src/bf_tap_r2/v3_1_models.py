@@ -13,7 +13,7 @@ from .splits import make_folds
 from .v3_local_search import TrialRegressor, expression_frame, fit_target_transform, inverse_target_transform
 
 TREE_FAMILIES = {"catboost", "lightgbm", "xgboost"}
-SPECIAL_FAMILIES = {"spline", "poly", "residual"}
+SPECIAL_FAMILIES = {"spline", "poly", "residual", "affine"}
 
 
 def _clone_trial_with_iterations(trial: Mapping[str, Any], best_iteration: int) -> dict:
@@ -64,6 +64,8 @@ class V31Regressor:
             return self
         if self.family == "residual":
             return self._fit_residual(frame, target)
+        if self.family == "affine":
+            return self._fit_affine(frame, target)
         if self.family in {"spline", "poly"}:
             return self._fit_regularized(frame, target)
         raise ValueError(self.family)
@@ -104,6 +106,43 @@ class V31Regressor:
         self.base_model_.fit(x_raw, y)
         self.input_columns_ = tuple(x_raw.columns) + ("_v31_base_oof",)
         self.target_state_ = {}
+        return self
+
+    def _fit_affine(self, frame: pd.DataFrame, target: np.ndarray) -> "V31Regressor":
+        y = np.asarray(target, dtype=float)
+        if y.ndim != 1 or len(y) != len(frame) or not np.isfinite(y).all():
+            raise ValueError("Invalid affine calibration labels")
+        params = dict(self.trial["parameters"])
+        base_trial = params["base_trial"]
+        inner_seed = int(params.get("inner_seed", 777))
+        lam = float(params.get("lambda", 0.0))
+        inner = make_folds(frame, seed=inner_seed, n_splits=5).set_index("sample_id").loc[frame.sample_id]
+        inner_fold = inner.fold.to_numpy()
+        base_oof = np.full(len(frame), np.nan)
+        for fold in range(5):
+            train_mask = inner_fold != fold
+            valid_mask = inner_fold == fold
+            m = V31Regressor(base_trial)
+            m.fit(frame.loc[train_mask], y[train_mask])
+            base_oof[valid_mask] = m.predict(frame.loc[valid_mask])
+        if not np.isfinite(base_oof).all():
+            raise ValueError("Affine calibration inner OOF coverage failed")
+        mu = float(y.mean())
+        if mu <= 0:
+            raise ValueError("Affine calibration requires positive target mean")
+        best = None
+        for a in np.linspace(0.95, 1.05, 21):
+            for b in np.linspace(-0.02 * mu, 0.02 * mu, 41):
+                pred = a * base_oof + b
+                loss = wmape(y, pred) + lam * (abs(a - 1.0) + abs(b) / mu)
+                if best is None or loss < best[0]:
+                    best = (loss, float(a), float(b))
+        self.affine_a_ = best[1]
+        self.affine_b_ = best[2]
+        self.base_model_ = V31Regressor(base_trial)
+        self.base_model_.fit(frame, y)
+        self.target_state_ = {}
+        self.input_columns_ = None
         return self
 
     def _fit_regularized(self, frame: pd.DataFrame, target: np.ndarray) -> "V31Regressor":
@@ -150,6 +189,11 @@ class V31Regressor:
             pred = self.base_model_.predict(x_raw) + self.alpha_ * self.residual_model_.predict(x_res)
             if pred.shape != (len(frame),) or not np.isfinite(pred).all():
                 raise ValueError("Invalid residual predictions")
+            return pred
+        if self.family == "affine":
+            pred = self.affine_a_ * self.base_model_.predict(frame) + self.affine_b_
+            if pred.shape != (len(frame),) or not np.isfinite(pred).all():
+                raise ValueError("Invalid affine predictions")
             return pred
         x = expression_frame(frame, self.feature_set)
         if tuple(x.columns) != self.input_columns_:

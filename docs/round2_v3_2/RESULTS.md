@@ -86,3 +86,63 @@ The three-seed ensemble is a real but small gain.  It is below the V3.2
 `+0.02` promotion line, so this line does not justify expanding to more seeds.
 It is retained as fusion material and for potential interaction with the
 remaining V3.2 search lines.
+
+
+## 256-configuration directed search
+
+The 256-item batch completed:
+
+| line | iron | time | total |
+|---|---:|---:|---:|
+| iron log target / feature expression | 96 | 0 | 96 |
+| time new-center neighborhood | 0 | 80 | 80 |
+| quantization and rsm | 16 | 16 | 32 |
+| calibration and shallow residual | 16 | 16 | 32 |
+| heterogeneous far family | 8 | 8 | 16 |
+| **total** | **136** | **120** | **256** |
+
+The first coarse pass completed 252/256 and preserved four kernel `random_state`
+failures; after removing the invalid KernelRidge parameter and rerunning the
+same trial identities, the final ledger has 256 complete trials and the failure
+history retained.
+
+Top refined single models on seeds 42/3407:
+
+| target | candidate | mean pooled WMAPE |
+|---|---|---:|
+| iron | `v32-s1-iron_log_expression-0019` | 0.0388946 |
+| time | `v32-s1-time_neighborhood-0126` | 0.0389088 |
+
+The V3.2 fusion on seeds 42/3407 selected log-expression, quantization and
+affine-calibration members:
+
+- in-sample package: `96.165190`;
+- nested cross-seed package: `96.160029`.
+
+## Final S3-style outer validation
+
+One fixed new outer split was used: outer seed `9091`, five
+sample/duplicate-group-isolated folds, inner seed `5555`, three-fold inner OOF
+for member/weight selection, then full outer-train refit.
+
+Under that same protocol:
+
+| candidate | package score | delta vs L0 | delta vs P0 |
+|---|---:|---:|---:|
+| L1 procedure | 96.136206 | +0.039349 | +0.122806 |
+| V3.2 candidate | **96.140023** | **+0.043166** | **+0.126623** |
+
+V3.2 improved over the L1 procedure under the same outer protocol by
+**+0.003817**.  This is below the task-book `+0.01` independent-promotion line.
+
+Decision:
+
+- V3.2 is retained as fusion material;
+- L1 remains the preferred procedure;
+- no V3.2 package is promoted or generated;
+- the five prepared V3.1 packages remain unchanged;
+- no platform upload occurred.
+
+The V3.2 target WMAPEs under outer seed 9091 were `0.03840082` for iron and
+`0.03879872` for time, versus L1's `0.03833417` and `0.03894172`.  The package
+gain therefore comes from the time side, while iron is slightly weaker.
