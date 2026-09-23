@@ -5850,7 +5850,7 @@
     ]
   },
   "round2_v3_1_directed_search": {
-    "status": "S0_S1_COMPLETE_S1_FUSION_PROVISIONAL_S3_PENDING",
+    "status": "S3_OUTER_CONFIRMED_CANDIDATE_PROMOTED_NO_PACKAGE",
     "date": "2026-09-23",
     "branch": "round2-v3.1-directed-search",
     "base_commit": "5bf681b7cd1680e06aad452a8239decaf7666acb",
@@ -5877,7 +5877,7 @@
       }
     },
     "G0": "PASS_8_V3_1_LIGHTWEIGHT_TESTS",
-    "G1": "S1_NESTED_CROSS_SEED_DELTA_VS_L0_0.0247_GRAY_BAND_S3_PENDING",
+    "G1": "S3_SAMPLE_GROUP_OUTER_CONFIRMED_DELTA_VS_L0_0.0459_PROMOTED_NO_PACKAGE",
     "new_packages": 0,
     "agent_uploads": 0,
     "results": "docs/round2_v3_1/RESULTS.md",
@@ -5928,6 +5928,26 @@
         "delta_vs_l0": 0.02470745747661,
         "interpretation": "gray band 0.02-0.03 vs L0; possible B candidate, not promoted, S3 pending"
       }
+    },
+    "s3": {
+      "outer_seed": 7777,
+      "inner_seed_base": 3333,
+      "outer_folds": 5,
+      "inner_folds": 3,
+      "protocol": "sample/duplicate-group-isolated outer folds; inner OOF selection and LP weights; full outer-train refit before outer validation",
+      "package_scores": {
+        "P0": 96.01665530494718,
+        "L0": 96.11810874436621,
+        "candidate": 96.16403585620796
+      },
+      "delta_vs_p0": 0.1473805512607811,
+      "delta_vs_l0": 0.045927111841749024,
+      "candidate_target_wmape": {
+        "tap_iron": 0.0381972744826181,
+        "tap_time_len": 0.03852200839322271
+      },
+      "decision": "candidate preferred over L0 under the +0.03 S3 rule; no package generated and no upload",
+      "selection_bias_note": "member pool came from prior development; S3 is conditional validation, not a new hidden test set"
     }
   }
 }

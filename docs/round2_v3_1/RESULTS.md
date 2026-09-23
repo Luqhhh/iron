@@ -159,3 +159,57 @@ cross-seed gain over L0 is in the 0.02–0.03 gray band, below the 0.03
 prioritization line.  The in-sample `+0.043313` over L0 should not be used as
 the promotion number.  S3 sample/group-isolated outer validation is still
 required before any queue decision.
+
+
+## S3 sample/duplicate-group-isolated outer validation
+
+S3 was run with:
+
+- outer split seed `7777`, 5 sample/duplicate-group-isolated folds;
+- inner split seed `3333 + outer_fold`, 3-fold inner OOF within each outer
+  training part;
+- member selection and LP weight fitting only on the inner OOF of the outer
+  training part;
+- base models retrained on the full outer training part after weights were
+  frozen, then used to predict the untouched outer validation fold;
+- P0 and L0 replayed under the same protocol.
+
+The candidate member pool was frozen from the S1 fusion:
+
+- iron: L0, `v31-s1-expr-iron-0018`, `AJM1`, `v31-s1-expr-iron-0012`, `J1`;
+- time: `v31-s1-time-0021-0050`, `0031`, `0039`, V3 CatBoost `0021`,
+  `v31-s1-time-0021-0002`.
+
+The LP weights were refit inside each outer training part; per-fold package
+scores were:
+
+| outer fold | candidate | L0 | P0 |
+|---|---:|---:|---:|
+| 0 | 96.122888 | 96.042605 | 95.985653 |
+| 1 | 96.138136 | 96.074684 | 95.975282 |
+| 2 | 96.223183 | 96.196907 | 96.058543 |
+| 3 | 96.181852 | 96.155395 | 96.065231 |
+| 4 | 96.154120 | 96.120953 | 95.998567 |
+
+Aggregate results:
+
+| package | local score |
+|---|---:|
+| P0 | 96.016655 |
+| L0 | 96.118109 |
+| S3 candidate | **96.164036** |
+| S3 candidate vs P0 | **+0.147381** |
+| S3 candidate vs L0 | **+0.045927** |
+
+The candidate target WMAPE over outer validation was:
+
+- iron: `0.03819727`
+- time: `0.03852201`
+
+Under the task-book queue rules, the confirmed candidate relative to L0 is
+above the `+0.03` prioritization line and is therefore preferred over L0 for
+the next queue slot.  This remains conditional local validation: the member pool
+was selected during prior development, so S3 reduces but does not erase all
+selection bias.  It is not a platform score forecast.
+
+No package was generated in this step.
