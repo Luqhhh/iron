@@ -1,0 +1,54 @@
+version: round2-v3.3-structure-search
+base_commit: 2e1a419ed85483a6a924214240f300f10eba9698
+status: residual_wrapper_started_structure_search_planned
+
+references:
+  P0: {recipe: AJ3_IRON + full_B3_time, platform_score_user_reported: 96.1259, local_s3_score: 96.01665530494718}
+  L0: {recipe: V3_frozen_weighted_fusion, local_s3_score: 96.11810874436621}
+  L1: {recipe: V3.1_frozen_member_pool_inner_LP, local_s3_score_7777: 96.164036, local_s3_score_9091: 96.13620568102135}
+  V32_material: {recipe: V3.2_fusion, local_s3_score_9091: 96.1400226373848, delta_vs_L1: 0.003816956363451}
+
+budget:
+  fixed_total: 192
+  optional_max: 32
+  hard_max: 224
+  fixed_lines:
+    original_unit_tree_selection_pair: {tap_iron: 8, tap_time_len: 8}
+    feature_group_deletion_compression: {tap_iron: 32, tap_time_len: 32}
+    ebm_main_effects_interactions: {tap_iron: 32, tap_time_len: 32}
+    full_recipe_residual: {tap_iron: 24, tap_time_len: 24}
+
+feature_groups:
+  A: [air_volume, oxygen, air_speed, humidity]
+  P: [cold_air_press, hot_air_press, furnace_top_press, upper_press_diff, lower_press_diff, total_press_diff, air_press_ratio]
+  T: [hot_air_temp, furnace_top_temp_avg, furnace_throat_temp]
+  F: [coal_rate, gas_rate, fuel_rate, coke_rate]
+  B: [pig, all_quality, consumption]
+
+feature_packs: [F0, F1, F2, F3, F4, F5, F6, F7]
+
+ebm_grid:
+  max_bins: [64, 128]
+  min_samples_leaf: [10, 30]
+  interactions: [0, 3, 6, 10]
+  target_transform: [mean, log1p]
+  fixed: {raw_input: true, nominal: [spout_no], max_interaction_bins: 32, max_leaves: 2, objective: rmse,
+          learning_rate: 0.03, outer_bags: 4, inner_bags: 0, max_rounds: 6000, early_stopping_rounds: 100,
+          random_state: 42, n_jobs: 1}
+
+residual_full_recipe:
+  coordinates: [original_unit, log_unit]
+  correctors: [ridge_alpha_1, ridge_alpha_10, ridge_alpha_100, catboost_depth2_l2_10, catboost_depth2_l2_30, catboost_depth2_l2_100]
+  alpha_correction: 0.25
+
+final_validation:
+  suggested_outer_seed: 12011
+  outer_folds: 5
+  inner_folds: 3
+  group_isolated: true
+
+publication:
+  upload_actor: user
+  agent_uploads: 0
+  no_automatic_packages: true
+  preserve_prepared_packages: true
