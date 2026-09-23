@@ -61,7 +61,51 @@
         "DJ": 96.1079,
         "AJ": 96.1035
       }
-    }
+    },
+    "superseded_as_current_best_by": "round2_v3_4:V34_A_96.2684",
+    "current_best_at_time_of_record": "AJ3_96.1259"
+  },
+  "round2_v3_4": {
+    "status": "V3_4_TOP2_PLATFORM_FEEDBACK_RECEIVED_A_PREFERRED",
+    "date": "2026-09-24",
+    "branch": "round2-v3.4-ebm-and-constrained-composition",
+    "public_evidence_commit_before_feedback": "264952d",
+    "run": "local/runs/round2-v3.4-ebm-and-constrained-composition",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission/round2-v3.4_top2_20260924",
+    "G0": "PASS_734_LOCKED_TESTS_AND_LOCAL_PACKAGE_VALIDATION",
+    "G1": "A_96.2684_B_96.2660_USER_REPORTED_A_CURRENT_BEST",
+    "featured_packages": [
+      {
+        "name": "01_V34_A_MECHANICAL_CONSTRAINED",
+        "candidate": "V34_A",
+        "role": "primary_current_best",
+        "zip_sha256": "0007230038f365126ae337c3e0af8b7bb040fe3d351c624ff2819ea1efe649e7",
+        "local_final_outer_score": 96.19973698527157,
+        "platform_score_user_reported": 96.2684,
+        "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/round2-v3.4_top2_20260924/01_V34_A_MECHANICAL_CONSTRAINED/Luqhhh_bf_tap_predict_round2.zip"
+      },
+      {
+        "name": "02_V34_B_DIVERSITY_CONSTRAINED_DEV",
+        "candidate": "V34_B",
+        "role": "second_platform_tested",
+        "zip_sha256": "f844470202a3f93d96eca0bfa6a85674337367dc935e363bdfc81fe47e89bddb",
+        "local_development_delta_vs_l1": 0.04384483535657159,
+        "platform_score_user_reported": 96.266,
+        "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/round2-v3.4_top2_20260924/02_V34_B_DIVERSITY_CONSTRAINED_DEV/Luqhhh_bf_tap_predict_round2.zip"
+      }
+    ],
+    "platform_feedback": {
+      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "input": "A96.2684 B96.266",
+      "scores": {
+        "V34_A": 96.2684,
+        "V34_B": 96.266
+      },
+      "preferred": "V34_A",
+      "receipt": "local/runs/round2-v3.4-ebm-and-constrained-composition/release-candidates-r1/platform-feedback-r1/feedback.json"
+    },
+    "agent_uploads": 0,
+    "results": "docs/round2_v3_4/DELIVERY_CANDIDATES.md"
   },
   "round2_v2_12": {
     "branch": "round2-v2.12-four-features",
@@ -234,18 +278,16 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "FINAL_TOP5_ALL_FEEDBACK_RECEIVED_AJ3_CURRENT_PREFERRED",
+    "status": "V3_4_TOP2_PLATFORM_FEEDBACK_RECEIVED_A_PREFERRED",
     "submission_priority": [],
     "current_preferred": {
-      "name": "04_AJ3_IRON",
-      "candidate": "AJ3",
-      "score": 96.1259,
-      "delta_vs_B": 0.0277,
-      "local_rank": 4,
-      "local_score": 96.0123883047359,
-      "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
-      "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
-      "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip"
+      "name": "01_V34_A_MECHANICAL_CONSTRAINED",
+      "candidate": "V34_A",
+      "score": 96.2684,
+      "local_score": 96.19973698527157,
+      "zip_sha256": "0007230038f365126ae337c3e0af8b7bb040fe3d351c624ff2819ea1efe649e7",
+      "package": "local/runs/round2-v3.4-ebm-and-constrained-composition/release-candidates-r1/01_V34_A_MECHANICAL_CONSTRAINED/Luqhhh_bf_tap_predict_round2.zip",
+      "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/round2-v3.4_top2_20260924/01_V34_A_MECHANICAL_CONSTRAINED/Luqhhh_bf_tap_predict_round2.zip"
     },
     "platform_ranking": [
       "AJ3",
@@ -296,7 +338,28 @@
     "old_artifacts_preserved": true,
     "other_historical_packages": "Unreported historical packages are preserved; this record only closes the final Top5 batch",
     "results": "docs/round2_final_top5/FEEDBACK.md",
-    "platform_uploads_by_agent": 0
+    "platform_uploads_by_agent": 0,
+    "previous_preferred_before_v3_4": {
+      "name": "04_AJ3_IRON",
+      "candidate": "AJ3",
+      "score": 96.1259,
+      "delta_vs_B": 0.0277,
+      "local_rank": 4,
+      "local_score": 96.0123883047359,
+      "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
+      "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
+      "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip"
+    },
+    "platform_ranking_v3_4": [
+      "V34_A",
+      "V34_B"
+    ],
+    "platform_scores_v3_4": {
+      "V34_A": 96.2684,
+      "V34_B": 96.266
+    },
+    "latest_feedback_receipt": "local/runs/round2-v3.4-ebm-and-constrained-composition/release-candidates-r1/platform-feedback-r1/feedback.json",
+    "latest_results": "docs/round2_v3_4/DELIVERY_CANDIDATES.md"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -584,7 +647,7 @@
     "platform_submission_ids": null,
     "feedback_evidence": "local/runs/round2-v2/platform-feedback-r1/feedback.json"
   },
-  "as_of": "2026-09-22",
+  "as_of": "2026-09-24",
   "round2_v0_3": {
     "branch": "round2-v0.3-marginal-and-kernel-check",
     "base_commit": "11db89e7",
