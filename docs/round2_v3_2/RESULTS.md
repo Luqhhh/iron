@@ -52,3 +52,37 @@ The historical V3/V3.1 scores are not retroactively invalidated by this patch.
 
 No V3.2 package has been generated, no existing prepared ZIP has been modified,
 and no platform upload has occurred.
+
+
+## Six-recipe fixed three-seed ensemble
+
+The six strong recipes were run with fixed training seeds `[42, 2026, 2027]`
+under the corrected index-aware protocol:
+
+- iron: `v31-s1-expr-iron-0018`, `v31-s1-expr-iron-0012`, V3 `0107`;
+- time: `v31-s1-time-0021-0050`, `0031`, `0039`.
+
+Each recipe's three-seed original-unit average improved over the mean of its
+individual seeds:
+
+| recipe | split 42 gain (WMAPE) | split 3407 gain (WMAPE) |
+|---|---:|---:|
+| iron 0018 | 0.0002522 | 0.0002298 |
+| iron 0012 | 0.0003008 | 0.0003284 |
+| iron 0107 | 0.0003996 | 0.0003475 |
+| time 0050 | 0.0002621 | 0.0002790 |
+| time 0031 | 0.0003942 | 0.0004099 |
+| time 0039 | 0.0004798 | 0.0004780 |
+
+A fixed-pool LP comparison was then made:
+
+| pool | in-sample package score | nested cross-seed package score |
+|---|---:|---:|
+| corrected single-seed members | 96.153377 | 96.145620 |
+| three-seed ensemble members | **96.157518** | **96.148790** |
+| gain | +0.004141 | +0.003171 |
+
+The three-seed ensemble is a real but small gain.  It is below the V3.2
+`+0.02` promotion line, so this line does not justify expanding to more seeds.
+It is retained as fusion material and for potential interaction with the
+remaining V3.2 search lines.

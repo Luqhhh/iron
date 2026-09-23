@@ -5985,7 +5985,7 @@
     }
   },
   "round2_v3_2_ensemble_target_search": {
-    "status": "PROTOCOL_PATCH_COMPLETE_SEARCH_PENDING",
+    "status": "PROTOCOL_PATCH_AND_SEED_ENSEMBLE_COMPLETE_SEARCH_PENDING",
     "date": "2026-09-23",
     "branch": "round2-v3.2-ensemble-and-target-search",
     "base_commit": "4b87834186a892a9299abf965973a12d74a5904a",
@@ -6011,6 +6011,22 @@
     "prepared_packages_preserved": true,
     "new_packages": 0,
     "agent_uploads": 0,
-    "results": "docs/round2_v3_2/RESULTS.md"
+    "results": "docs/round2_v3_2/RESULTS.md",
+    "seed_ensemble": {
+      "recipes": 6,
+      "training_seeds": [
+        42,
+        2026,
+        2027
+      ],
+      "corrected_single_in_sample_package": 96.15337662808864,
+      "seed_ensemble_in_sample_package": 96.15751750839821,
+      "corrected_single_nested_package": 96.14561992579955,
+      "seed_ensemble_nested_package": 96.14879046736696,
+      "in_sample_gain": 0.00414088030957,
+      "nested_gain": 0.00317054156741,
+      "decision": "below +0.02 promotion line; retain as fusion material, do not expand seed count",
+      "run": "local/runs/round2-v3.2-ensemble-and-target-search/seed-ensemble-r1"
+    }
   }
 }
