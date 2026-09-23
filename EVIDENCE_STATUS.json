@@ -5983,5 +5983,34 @@
         }
       }
     }
+  },
+  "round2_v3_2_ensemble_target_search": {
+    "status": "PROTOCOL_PATCH_COMPLETE_SEARCH_PENDING",
+    "date": "2026-09-23",
+    "branch": "round2-v3.2-ensemble-and-target-search",
+    "base_commit": "4b87834186a892a9299abf965973a12d74a5904a",
+    "protocol_patch": {
+      "version": "v3.2-index-aware-v1",
+      "catboost_xgboost_zero_based_best_index": true,
+      "zero_is_valid_best_index": true,
+      "lightgbm_retained_iterations_direct": true,
+      "recorded_fields": [
+        "best_iteration_index",
+        "selected_num_boost_round",
+        "actual_num_boost_round",
+        "configured_num_boost_round"
+      ],
+      "tests": "tests/test_round2_v3_2_protocol.py",
+      "private_report": "local/runs/round2-v3.2-ensemble-and-target-search/protocol-patch-r1/protocol_patch_report.json"
+    },
+    "references": {
+      "P0": 96.01665530494718,
+      "L0": 96.11810874436621,
+      "L1_procedure": 96.164036
+    },
+    "prepared_packages_preserved": true,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "results": "docs/round2_v3_2/RESULTS.md"
   }
 }

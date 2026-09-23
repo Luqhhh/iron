@@ -1,0 +1,60 @@
+version: round2-v3.2-ensemble-and-target-search
+base_commit: 4b87834186a892a9299abf965973a12d74a5904a
+status: protocol_patch_started
+
+references:
+  P0:
+    recipe: AJ3_IRON + full_B3_time
+    platform_score_user_reported: 96.1259
+    local_s3_protocol_score: 96.01665530494718
+    platform_independently_verified: false
+  L0:
+    recipe: V3_frozen_weighted_fusion
+    local_s3_protocol_score: 96.11810874436621
+    local_seed2026_score: 96.116174
+  L1_procedure:
+    recipe: V3.1 frozen candidate member pool and inner LP procedure
+    local_s3_outer_score: 96.164036
+    delta_vs_P0: 0.147381
+    delta_vs_L0: 0.045927
+
+prepared_packages:
+  01_v31_s3_s1_full: {zip_sha256_prefix: 1a26439a557d, status: prepared_not_delivery}
+  02_l0_v3_frozen: {zip_sha256_prefix: f11ce68ab4d7, status: prepared_not_delivery}
+  03_s1_iron_l0_time: {zip_sha256_prefix: bec5c0393a80, status: prepared_not_delivery}
+  04_l0_iron_s1_time: {zip_sha256_prefix: 560d3c1da9ff, status: prepared_not_delivery}
+  05_aj3_iron_s1_time: {zip_sha256_prefix: 654afd218df9, status: prepared_not_delivery}
+
+training_protocol:
+  version: v3.2-index-aware-v1
+  catboost_xgboost_best_index_is_zero_based: true
+  lightgbm_uses_retained_iterations_directly: true
+  zero_is_valid_best_index: true
+  record_fields: [best_iteration_index, selected_num_boost_round, actual_num_boost_round, configured_num_boost_round]
+  original_unit_tree_selection: required_for_refine
+  outer_label_isolation: required
+
+search_budget:
+  seed_ensemble_recipes: 6
+  seed_ensemble_training_seeds: [42, 2026, 2027]
+  new_configurations: 256
+  by_target: {tap_iron: 136, tap_time_len: 120}
+  lines:
+    iron_log_target_and_features: 96
+    time_new_center_neighborhood: 80
+    quantization_and_rsm: 32
+    calibration_and_residual: 32
+    hetero_far_family: 16
+
+thresholds:
+  delta_L1_stop_below: 0.0
+  fusion_material_below: 0.01
+  fallback_below: 0.02
+  promote_at_or_above: 0.02
+  sprint_target: [0.03, 0.05]
+
+publication:
+  upload_actor: user
+  agent_uploads: 0
+  no_automatic_packages: true
+  preserve_prepared_packages: true

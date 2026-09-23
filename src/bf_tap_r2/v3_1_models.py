@@ -161,17 +161,81 @@ class V31Regressor:
         return pred
 
 
-def _best_iteration(model: V31Regressor) -> int:
-    if model.family == "catboost":
-        value = int(model._delegate.estimator_.get_best_iteration())
-        return value if value > 0 else int(model.trial["parameters"].get("iterations", 1000))
-    if model.family == "lightgbm":
-        value = int(getattr(model._delegate.estimator_, "best_iteration_", 0) or 0)
-        return value if value > 0 else int(model.trial["parameters"].get("n_estimators", 1000))
-    if model.family == "xgboost":
-        value = int(getattr(model._delegate.estimator_, "best_iteration", 0) or 0)
-        return value if value > 0 else int(model.trial["parameters"].get("n_estimators", 1000))
+def configured_rounds(trial: Mapping[str, Any]) -> int:
+    family = trial.get("base_family", trial["family"])
+    params = trial["parameters"]
+    if family == "catboost":
+        return int(params.get("iterations", 1000))
+    if family in {"lightgbm", "xgboost"}:
+        return int(params.get("n_estimators", 1000))
     return 0
+
+
+def iteration_fields(family: str, estimator: Any, configured: int) -> dict:
+    """Return zero-based best index and actual one-based boosting rounds.
+
+    CatBoost and XGBoost expose a zero-based best index.  LightGBM exposes the
+    number of retained iterations directly.  A valid best index of 0 must not
+    be confused with "no early stopping".
+    """
+    configured = max(1, int(configured))
+    index: int | None
+    selected: int
+    actual: int
+    if family == "catboost":
+        raw = estimator.get_best_iteration() if hasattr(estimator, "get_best_iteration") else None
+        try:
+            index = int(raw)
+        except (TypeError, ValueError):
+            index = None
+        if index is not None and index < 0:
+            index = None
+        selected = configured if index is None else index + 1
+        actual = int(getattr(estimator, "tree_count_", selected) or selected)
+    elif family == "lightgbm":
+        raw = getattr(estimator, "best_iteration_", None)
+        try:
+            retained = int(raw)
+        except (TypeError, ValueError):
+            retained = 0
+        if retained <= 0:
+            index = None
+            selected = configured
+            actual = configured
+        else:
+            selected = retained
+            index = retained - 1
+            actual = retained
+    elif family == "xgboost":
+        raw = getattr(estimator, "best_iteration", None)
+        try:
+            index = int(raw)
+        except (TypeError, ValueError):
+            index = None
+        if index is not None and index < 0:
+            index = None
+        selected = configured if index is None else index + 1
+        actual = selected
+        if hasattr(estimator, "get_booster"):
+            try:
+                actual = int(estimator.get_booster().num_boosted_rounds())
+            except Exception:
+                pass
+    else:
+        index = None
+        selected = configured
+        actual = configured
+    return {
+        "best_iteration_index": index,
+        "selected_num_boost_round": int(selected),
+        "actual_num_boost_round": int(actual),
+        "configured_num_boost_round": int(configured),
+    }
+
+
+def _best_iteration(model: V31Regressor) -> int:
+    fields = iteration_fields(model.family, model._delegate.estimator_, configured_rounds(model.trial))
+    return int(fields["selected_num_boost_round"])
 
 
 def fit_with_inner_early_stop(trial: Mapping[str, Any], training: pd.DataFrame,
@@ -190,11 +254,14 @@ def fit_with_inner_early_stop(trial: Mapping[str, Any], training: pd.DataFrame,
         probe = V31Regressor(trial)
         probe.fit(inner_train, inner_train[target].to_numpy(),
                   eval_frame=inner_valid, eval_target=inner_valid[target].to_numpy())
-        best_iter = _best_iteration(probe)
-        refit_trial = _clone_trial_with_iterations(trial, best_iter)
+        fields = iteration_fields(family, probe._delegate.estimator_, configured_rounds(trial))
+        selected = int(fields["selected_num_boost_round"])
+        refit_trial = _clone_trial_with_iterations(trial, selected)
         model = V31Regressor(refit_trial)
         model.fit(training, training[target].to_numpy())
-        return model, {"inner_seed": int(inner_seed), "best_iteration": int(best_iter),
+        return model, {"inner_seed": int(inner_seed),
+                       "best_iteration": int(selected),
+                       **fields,
                        "refit_full_outer_training": True, "family": family}
     model = V31Regressor(trial)
     model.fit(training, training[target].to_numpy())
