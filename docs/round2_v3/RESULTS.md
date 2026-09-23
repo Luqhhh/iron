@@ -1,93 +1,107 @@
-# Round2 V3 Local Search: First Batch Recon
+# Round2 V3 Local Search: First Batch and Seed-2026 Confirmation
 
-Status: **first-batch reconnaissance complete; no package and no upload**.
+Status: **first-batch local search complete; seed-2026 outer confirmation completed; no package and no upload**.
 
 ## Executed budget
 
-| family | planned | complete | blocked | note |
-|---|---:|---:|---:|---|
-| CatBoost | 240 | 240 | 0 | coarse seed 42 / folds 0–1 |
-| LightGBM | 40 | 40 | 0 | coarse seed 42 / folds 0–1 |
-| XGBoost | 40 | 0 | 40 | `xgboost` not installed in the locked environment |
-| MLP | 20 | 20 | 0 | coarse seed 42 / folds 0–1 |
-| kernel | 20 | 20 | 0 | coarse seed 42 / folds 0–1 |
-| expression | 40 | 40 | 0 | CatBoost backbone, feature/target-expression axis |
-| **total** | **400** | **360** | **40** | blocked XGBoost is not treated as a closed route |
+| family | planned | complete | note |
+|---|---:|---:|---|
+| CatBoost | 240 | 240 | coarse seed 42 / folds 0–1 |
+| LightGBM | 40 | 40 | coarse seed 42 / folds 0–1 |
+| XGBoost | 40 | 40 | completed after adding `xgboost==2.1.4` to the `round2` optional extra |
+| MLP | 20 | 20 | coarse seed 42 / folds 0–1 |
+| kernel | 20 | 20 | coarse seed 42 / folds 0–1 |
+| expression | 40 | 40 | CatBoost backbone, feature/target-expression axis |
+| **total** | **400** | **400** | — |
 
 Refinement used the top 8 overall trials plus the best non-CatBoost trial from
 each available family, up to 12 per target.  Full 5-fold OOF was computed for
 seeds 42 and 3407.  Thirty-two CatBoost prediction arrays were reused from the
 CatBoost-only refine pass; 16 new `(trial, seed)` fits covered the selected
-LightGBM/MLP/kernel/expression entries.
+LightGBM/MLP/kernel/expression entries.  The top three XGBoost trials per target
+were also refined to full 5-fold OOF: their best mean WMAPE was `0.04203`
+(iron) and `0.04659` (time), worse than the CatBoost candidates, and none
+entered the selected fusion member set.
 
 ## Single-model findings
-
-The new CatBoost search produced two useful local single models:
 
 | target | candidate | seed 42 WMAPE | seed 3407 WMAPE | mean WMAPE | previous local strong single |
 |---|---|---:|---:|---:|---:|
 | iron | `v3-catboost-tap_iron-0075` | 0.03909385 | 0.03925472 | **0.03917428** | DJ 0.03920512 |
 | time | `v3-catboost-tap_time_len-0021` | 0.03921803 | 0.03991548 | **0.03956676** | B3/full-time local reference 0.04048214 |
 
-The iron improvement is only about `-0.0000308` in original-unit WMAPE, so by
-itself it is not enough for a platform candidate.  The time improvement is
-larger, about `-0.0009154`, and is the more important single-model signal.
-LightGBM/MLP/kernel/expression entries did not beat CatBoost on the same full
-OOF, but several are retained as potential complements.
+The iron single-model gain is marginal.  The time improvement is the more
+important single-model signal.  XGBoost/LightGBM/MLP/kernel/expression did not
+beat CatBoost on full OOF; they are retained as negative or complementary
+evidence, not silently removed.
 
-## Nested cross-seed fusion findings
+## Nested cross-seed fusion, seeds 42 and 3407
 
 Two nested leave-one-seed-out runs were compared.
 
-### CatBoost-refined candidate library
+| candidate library | iron WMAPE | time WMAPE | local package score | delta vs AJ3 local reference | triage |
+|---|---:|---:|---:|---:|---|
+| CatBoost-refined only | **0.03856469** | **0.03942060** | **96.100735** | **+0.088347** | candidate_pool |
+| all-family refined | 0.03857898 | 0.03942060 | 96.100021 | +0.087633 | candidate_pool |
 
-- iron held-out WMAPE: **0.03856469**
-- time held-out WMAPE: **0.03942060**
-- package local score: **96.100735**
-- delta vs AJ3 local reference: **+0.088347**
-- triage: `candidate_pool` (above 0.05, below 0.15–0.20 sprint band)
+Adding XGBoost/LightGBM/MLP/kernel/expression did not improve the nested package
+score over the CatBoost-refined-only pool.  XGBoost in particular was not
+selected by the outer weight fit.
 
-### All-family refined candidate library
+## Frozen outer weights and seed-2026 confirmation
 
-- iron held-out WMAPE: **0.03857898**
-- time held-out WMAPE: **0.03942060**
-- package local score: **96.100021**
-- delta vs AJ3 local reference: **+0.087633**
-- triage: `candidate_pool`
+The selected outer procedure was:
 
-The all-family additions did not improve the nested package score over the
-CatBoost-refined-only pool, so the current leading local direction is the
-CatBoost search plus fusion with the existing V2 OOF library.
+1. fit the candidate pool and simplex weights on seeds **42 and 3407 only**;
+2. freeze the selected members and weights;
+3. reconstruct the required non-V3 members on an independently derived seed
+   **2026** fold split without using 2026 labels;
+4. evaluate the frozen complete package on seed 2026.
 
-## Selected fusion structure in the CatBoost-only run
+The frozen weights were:
 
-- Iron, held-out seed 3407: new CatBoost `0075`, `AJM1`, CatBoost `0107`, `J1`,
-  `AKW2`.
-- Iron, held-out seed 42: `DJ`, CatBoost `0043`, `AKW2`, `J1`, expression `0002`.
-- Time, held-out seed 3407: CatBoost `0021` with large weight, plus `T1`, CatBoost
-  `0072`, `AFE4`, `ABAY`.
-- Time, held-out seed 42: CatBoost `0021`, `AORD`, `T1`, and a second `T1`
-  prediction.
+- iron:
+  - `AJM1` 0.338853,
+  - V3 CatBoost `0107` 0.213013,
+  - `J1` 0.232741,
+  - V3 CatBoost `0043` 0.215392,
+  - V3 CatBoost `0075` had a zero weight in the frozen fit and was omitted from
+    the final prediction.
+- time:
+  - V3 CatBoost `0021` 0.668858,
+  - `AORD` 0.174110,
+  - `T1_B3_PREFIX1000` 0.157032.
 
-The time side is more stable: CatBoost `0021` receives the largest weight in
-both held-out directions.  The iron side is less stable and must not be frozen
-from this single nested run.
+Seed-2026 result:
 
-## Interpretation and next steps
+| quantity | value |
+|---|---:|
+| seed-2026 AJ3-like local reference score | 96.027838 |
+| frozen package local score on seed 2026 | **96.116174** |
+| delta vs same-seed reference | **+0.088335** |
+| delta vs original AJ3 local reference 96.012388 | +0.103786 |
+| triage | candidate_pool |
 
-The first batch found a local complete-package gain of about `+0.088` against AJ3's
-local reference under leave-one-seed-out fusion.  This clears the `0.05` local
-candidate-pool gate and is worth continuing, but it does **not** yet justify a
-package because:
+The original `+0.088` gain was therefore retained in the frozen outer-weight
+confirmation on seed 2026.  The result is still below the `0.15–0.20` sprint
+band and is not a platform forecast.
 
-1. the 400-item budget has 40 blocked XGBoost trials;
-2. seed 2026 has not been used as a confirmation seed;
-3. fusion member sets and weights differ between held-out directions on iron;
-4. the final weights must be fitted inside an outer training split and then
-   applied to an untouched outer evaluation, not reused from the same OOF
-   selection pass;
-5. local gain is not a platform forecast.
+## Limitations
 
-The next action is therefore confirmation, not submission: add seed 2026,
-stabilize the time/iron fusion policy, and only then package if the confirmed
-complete-package delta remains at least 0.05.
+- Local OOF is repeatedly used for development; seed 2026 is the first untouched
+  fold seed for this fusion strategy, but the labels are not a new hidden
+  competition set.
+- Platform transfer is not guaranteed; the current platform reference remains
+  AJ3 `96.1259`, and no V3 package has been submitted.
+- XGBoost is now installed as an optional `round2` dependency; its 40 coarse
+  trials are complete and its refined candidates are recorded, but it did not
+  improve the selected fusion.
+- No package, independent cold release, or platform upload was performed.
+
+## Next action
+
+The next step is package preparation only if the user explicitly requests it:
+freeze the above members/weights, retrain the selected members on the full
+training data with the same recipes, rebuild the time/iron columns, and run the
+existing independent cold-release checks.  Until then the V3 result remains a
+candidate-pool local evidence, not a submission.

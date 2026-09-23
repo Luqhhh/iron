@@ -17,6 +17,7 @@ import numpy as np
 import pandas as pd
 
 from .data import TARGETS
+from .splits import make_folds
 from .v3_local_search import (
     XGBRegressor,
     evaluate_trial_folds,
@@ -53,14 +54,21 @@ def load_training_frame(root: Path) -> pd.DataFrame:
 
 
 def load_fold_vector(root: Path, train: pd.DataFrame, seed: int) -> np.ndarray:
-    assignment = pd.read_csv(root / "local/runs/round2-v2/comparison-r1" / f"folds-{seed}.csv",
-                             dtype={"group_id": str})
-    if not assignment.sample_id.is_unique or set(assignment.sample_id) != set(train.sample_id):
-        raise ValueError("V3 frozen fold identity mismatch")
-    a = assignment.set_index("sample_id").loc[train.sample_id]
-    if set(a.fold) != set(range(5)) or not (a.seed == seed).all():
-        raise ValueError("V3 frozen fold vector is invalid")
-    return a.fold.to_numpy()
+    frozen = root / "local/runs/round2-v2/comparison-r1" / f"folds-{seed}.csv"
+    if frozen.exists():
+        assignment = pd.read_csv(frozen, dtype={"group_id": str})
+        if not assignment.sample_id.is_unique or set(assignment.sample_id) != set(train.sample_id):
+            raise ValueError("V3 frozen fold identity mismatch")
+        a = assignment.set_index("sample_id").loc[train.sample_id]
+        if set(a.fold) != set(range(5)) or not (a.seed == seed).all():
+            raise ValueError("V3 frozen fold vector is invalid")
+        return a.fold.to_numpy()
+    # New V3 confirmation seeds are derived with the same deterministic
+    # stratified-group routine used for the original 42/3407 folds.
+    assignment = make_folds(train, seed).set_index("sample_id").loc[train.sample_id]
+    if set(assignment.fold) != set(range(5)) or not (assignment.seed == seed).all():
+        raise ValueError("V3 derived fold vector is invalid")
+    return assignment.fold.to_numpy()
 
 
 

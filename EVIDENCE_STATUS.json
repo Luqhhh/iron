@@ -5704,7 +5704,7 @@
     "feedback_record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json"
   },
   "round2_v3_local_search": {
-    "status": "FIRST_BATCH_RECON_COMPLETE_NO_PACKAGE",
+    "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
     "date": "2026-09-23",
     "branch": "round2-v3-local-search",
     "baseline": {
@@ -5726,10 +5726,15 @@
     "coarse_complete": {
       "catboost": 240,
       "lightgbm": 40,
+      "xgboost": 40,
       "mlp": 20,
       "kernel": 20,
-      "expression": 40,
-      "xgboost_blocked": 40
+      "expression": 40
+    },
+    "xgboost_dependency": {
+      "version": "2.1.4",
+      "extra": "round2",
+      "status": "installed"
     },
     "refine": {
       "seeds": [
@@ -5739,6 +5744,7 @@
       "folds": 5,
       "selected_trials": 24,
       "new_trial_seed_fits": 16,
+      "xgb_top_per_target": 3,
       "single_best": {
         "tap_iron": {
           "trial_id": "v3-catboost-tap_iron-0075",
@@ -5751,6 +5757,14 @@
           "mean_wmape": 0.03956676,
           "seed_42": 0.03921803,
           "seed_3407": 0.03991548
+        },
+        "xgboost_best_refined": {
+          "tap_iron": {
+            "mean_wmape": 0.04202909
+          },
+          "tap_time_len": {
+            "mean_wmape": 0.04658745
+          }
         }
       }
     },
@@ -5768,10 +5782,36 @@
         "package_local_score": 96.100021,
         "delta_vs_local_reference": 0.087633,
         "triage": "candidate_pool"
-      }
+      },
+      "xgboost_selected": false
+    },
+    "seed_2026_confirmation": {
+      "frozen_on_seeds": [
+        42,
+        3407
+      ],
+      "reference_local_score_seed2026": 96.02783832798598,
+      "frozen_package_local_score_seed2026": 96.116173815811,
+      "delta_vs_seed2026_reference": 0.08833548782502021,
+      "delta_vs_original_local_reference": 0.10378551107510248,
+      "triage": "candidate_pool",
+      "members": {
+        "tap_iron": [
+          "AJM1",
+          "v3-catboost-tap_iron-0107",
+          "J1",
+          "v3-catboost-tap_iron-0043"
+        ],
+        "tap_time_len": [
+          "v3-catboost-tap_time_len-0021",
+          "AORD",
+          "T1_B3_PREFIX1000"
+        ]
+      },
+      "note": "weights fit on seeds 42+3407 only; seed-2026 predictions reconstructed without 2026 labels"
     },
     "G0": "PASS_697_LOCKED_TESTS",
-    "G1": "NESTED_CROSS_SEED_LOCAL_DELTA_ABOUT_0.088_CANDIDATE_POOL_NOT_PACKAGED",
+    "G1": "SEED2026_FROZEN_OUTER_DELTA_0.0883_RETAINED_CANDIDATE_POOL_NOT_PACKAGED",
     "new_full_fits": 0,
     "new_packages": 0,
     "agent_uploads": 0,

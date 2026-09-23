@@ -409,6 +409,8 @@ class TrialRegressor:
         if self.family == "xgboost":
             if XGBRegressor is None:
                 raise RuntimeError("xgboost is not installed; install the declared optional dependency to run these trials")
+            if eval_x is not None:
+                params.setdefault("early_stopping_rounds", 100)
             estimator = XGBRegressor(**params)
             estimator.fit(x, z, eval_set=[(eval_x, eval_z)] if eval_x is not None else None,
                           verbose=False)

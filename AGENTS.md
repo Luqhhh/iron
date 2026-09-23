@@ -67,3 +67,28 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - The user prioritizes packages with larger offline gains against the current target reference or a clearly justified, important exploration question. Give small-gain, closely related variants lower platform-test priority; do not fill slots merely to use the daily allowance.
 - The observed final Top5 platform/local gap is about 0.09–0.11 score points: modest in absolute size but enough to reorder closely scored candidates. Do not generalize this to a fixed score correction or claim only low-scoring models can change order.
 - This manual release/scheduling preference supersedes automatic formal-first upload ordering, not candidate-tier classification, frozen gates, exploration caps, or historical evidence. Preserve small-gain candidates without promising they will be tested. See docs/candidate_tiers.md for the controlling explanation.
+
+## Round2 V3 local search (2026-09-23)
+
+- Branch `round2-v3-local-search` contains the unified V3 local-search sampler,
+  runner, fusion utilities, tests, and first-batch evidence.  Public heads:
+  `configs/round2_v3/experiment.yaml`, `src/bf_tap_r2/v3_local_search.py`,
+  `src/bf_tap_r2/v3_run.py`, `tests/test_round2_v3_local_search.py`.
+- The current platform reference remains AJ3 iron + full B3 time, user-reported
+  `96.1259`; the corresponding local reference is `96.0123883047359`.
+- The first V3 batch is complete: 400/400 coarse `(configuration, target)` items
+  (CatBoost 240, LightGBM 40, XGBoost 40, MLP 20, kernel 20, expression 40).
+  `xgboost==2.1.4` is installed through the `round2` optional dependency.  The
+  top three XGBoost candidates per target were also refined; they did not enter
+  the selected fusion.
+- The CatBoost-refined nested fusion reached local package score `96.100735`,
+  delta `+0.088347` vs the AJ3 local reference.  The all-family refined library
+  was slightly lower at `96.100021`, delta `+0.087633`.
+- The selected outer procedure fit members/weights on seeds 42 and 3407 only,
+  then reconstructed the required members on independently derived seed 2026
+  without using 2026 labels.  Seed 2026 package score: `96.116174`; delta vs the
+  same-seed AJ3 local reference: `+0.088335`.  The gain was retained, but this
+  remains local `candidate_pool` evidence, not a platform forecast.
+- No V3 package, independent cold release, or upload has been authorized.  Do
+  not generate or upload a V3 package until the user explicitly requests it.
+  The existing frozen release and platform-upload rules still apply.

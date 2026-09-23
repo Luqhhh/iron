@@ -21,7 +21,7 @@ The first batch is a 400-item `(configuration, target)` schedule:
 |---|---:|---|
 | CatBoost | 240 | main family; depth/loss/regularization/tree/bootstrap joint search |
 | LightGBM | 40 | tuned alternative and fusion complement |
-| XGBoost | 40 | independent tree family; blocked locally when the dependency is absent |
+| XGBoost | 40 | independent tree family; `xgboost==2.1.4` is installed as a `round2` optional extra |
 | MLP | 20 | low-budget structural alternative |
 | kernel | 20 | low-budget structural alternative |
 | expression | 40 | feature-set and target-transform variants on a tree backbone |
