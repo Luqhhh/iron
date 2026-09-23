@@ -35,6 +35,32 @@ important single-model signal.  XGBoost/LightGBM/MLP/kernel/expression did not
 beat CatBoost on full OOF; they are retained as negative or complementary
 evidence, not silently removed.
 
+
+## Direct single-model pair confirmation
+
+The borderline direct pair check was requested explicitly:
+
+- iron: `v3-catboost-tap_iron-0075`
+- time: `v3-catboost-tap_time_len-0021`
+- weights: fixed 1.0 / 1.0, no learned fusion.
+
+Reconstructed per-seed results:
+
+| seed | direct package score | same-seed AJ3-like reference | delta |
+|---|---:|---:|---:|
+| 42 | 96.083953 | 96.001405 | +0.082548 |
+| 3407 | 96.041314 | 96.023372 | +0.017942 |
+| 2026 | 96.065114 | 96.027838 | +0.037276 |
+| three-seed average | 96.063460 | 96.017538 | +0.045922 |
+
+The earlier `+0.05056` used the two-seed AJ3 local reference as a single
+reference point.  Propagating the same-seed reference and adding seed 2026 gives
+a three-seed average delta of **+0.045922**, below the 0.05 admission gate, and
+the untouched seed-2026 delta is **+0.037276**.  Therefore the direct single-model
+pair **does not qualify** as a formal V3 pending strategy after confirmation.
+Only the frozen weighted fusion strategy remains above the gate and stable on
+seed 2026.
+
 ## Nested cross-seed fusion, seeds 42 and 3407
 
 Two nested leave-one-seed-out runs were compared.

@@ -5815,6 +5815,38 @@
     "new_full_fits": 0,
     "new_packages": 0,
     "agent_uploads": 0,
-    "results": "docs/round2_v3/RESULTS.md"
+    "results": "docs/round2_v3/RESULTS.md",
+    "direct_pair_confirmation": {
+      "candidate": {
+        "tap_iron": "v3-catboost-tap_iron-0075",
+        "tap_time_len": "v3-catboost-tap_time_len-0021"
+      },
+      "weights": {
+        "tap_iron": 1.0,
+        "tap_time_len": 1.0
+      },
+      "seed_2026": {
+        "package_local_score": 96.0651143841895,
+        "reference_score": 96.02783832798598,
+        "delta_vs_reference": 0.03727605620352392,
+        "qualifies_0_05": false
+      },
+      "per_seed_delta_vs_same_seed_reference": {
+        "42": 0.08254765790461249,
+        "3407": 0.017941982597520223,
+        "2026": 0.03727605620352392
+      },
+      "three_seed_average": {
+        "package_local_score": 96.0634602113878,
+        "reference_score": 96.01753831248593,
+        "delta_vs_reference": 0.04592189890188081,
+        "qualifies_0_05": false
+      },
+      "conclusion": "direct single-model pair fails the confirmed 0.05 gate; not counted as a formal pending strategy"
+    },
+    "formal_pending_strategies": 1,
+    "formal_pending_strategy_names": [
+      "V3 CatBoost+V2-OOF frozen weighted fusion"
+    ]
   }
 }
