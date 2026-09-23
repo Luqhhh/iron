@@ -6087,7 +6087,7 @@
     }
   },
   "round2_v3_3_structure_search": {
-    "status": "RESIDUAL_WRAPPER_COMPLETE_STRUCTURE_SEARCH_PENDING",
+    "status": "METRIC_BRIDGE_COMPLETE_NO_CONSISTENT_GAIN_STRUCTURE_SEARCH_PENDING",
     "date": "2026-09-23",
     "branch": "round2-v3.3-structure-search",
     "base_commit": "2e1a419ed85483a6a924214240f300f10eba9698",
@@ -6111,6 +6111,20 @@
     },
     "new_packages": 0,
     "agent_uploads": 0,
-    "results": "docs/round2_v3_3/RESULTS.md"
+    "results": "docs/round2_v3_3/RESULTS.md",
+    "metric_bridge": {
+      "module": "src/bf_tap_r2/v3_3_metric.py",
+      "paired_backbones": 8,
+      "pairs": 16,
+      "seed": 42,
+      "folds": [
+        0,
+        1
+      ],
+      "consistent_gain": false,
+      "direction": "4 negative and 4 positive deltas; all |delta| < 0.00018 WMAPE",
+      "decision": "Mode B not automatically frozen for this batch; retained for interaction with structural search",
+      "run": "local/runs/round2-v3.3-structure-search/metric-pair-r1"
+    }
   }
 }

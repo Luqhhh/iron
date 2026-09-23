@@ -79,3 +79,27 @@ def test_v33_rejects_incomplete_base_trial():
     del trial["parameters"]["base_trial"]
     with pytest.raises(ValueError, match="base_trial"):
         FullRecipeResidualRegressor(trial)
+
+
+def test_v33_checkpoint_grid_is_fixed_and_includes_upper_round():
+    from bf_tap_r2.v3_3_metric import checkpoint_tree_counts
+    assert checkpoint_tree_counts(20, 10) == [10, 20]
+    assert checkpoint_tree_counts(25, 10) == [10, 20, 25]
+    with pytest.raises(ValueError):
+        checkpoint_tree_counts(0)
+
+
+def test_v33_mode_b_selects_original_unit_tree_count_and_refits():
+    from bf_tap_r2.v3_3_metric import fit_catboost_original_unit_selection
+    frame = synthetic()
+    trial = base_trial("raw", "identity")
+    trial["parameters"]["iterations"] = 40
+    model, record = fit_catboost_original_unit_selection(trial, frame, "tap_iron", inner_seed=321, checkpoint_step=10)
+    assert record["selection_mode"] == "original_unit_inner_wmape"
+    assert 1 <= record["selected_num_boost_round"] <= 40
+    assert record["best_iteration_index"] == record["selected_num_boost_round"] - 1
+    assert record["actual_num_boost_round"] == record["selected_num_boost_round"]
+    assert record["checkpoint_curve"]
+    pred = model.predict(frame)
+    assert pred.shape == (len(frame),)
+    assert np.isfinite(pred).all()
