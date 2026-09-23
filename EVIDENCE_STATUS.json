@@ -105,7 +105,30 @@
       "receipt": "local/runs/round2-v3.4-ebm-and-constrained-composition/release-candidates-r1/platform-feedback-r1/feedback.json"
     },
     "agent_uploads": 0,
-    "results": "docs/round2_v3_4/DELIVERY_CANDIDATES.md"
+    "results": "docs/round2_v3_4/DELIVERY_CANDIDATES.md",
+    "next_phase_target": {
+      "target": "platform_score_gt_96.3",
+      "user_instruction": "下一阶段目标定为96.3以上",
+      "date": "2026-09-24",
+      "current_platform_best_user_reported": 96.2684,
+      "gap_to_target": 0.0316,
+      "local_transfer_pairs": 7,
+      "local_transfer_mean_gap": 0.09143559048638394,
+      "local_transfer_median_gap": 0.0922630736629344,
+      "local_transfer_min_gap": 0.06866301472842906,
+      "local_transfer_max_gap": 0.11351169526410843,
+      "local_min_equivalent_for_target": 96.231337,
+      "local_mean_equivalent_for_target": 96.208564,
+      "recommended_local_gate": 96.25,
+      "recommended_local_stretch": 96.3,
+      "candidate_rules": [
+        "must_use_same_protocol_outer_validation",
+        "development_two_split_positive_before_new_outer",
+        "local_gate_is_not_platform_guarantee",
+        "no_relaxation_of_freeze_or_cold_audit_contract"
+      ],
+      "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md"
+    }
   },
   "round2_v2_12": {
     "branch": "round2-v2.12-four-features",
@@ -278,7 +301,7 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "V3_4_TOP2_PLATFORM_FEEDBACK_RECEIVED_A_PREFERRED",
+    "status": "V3_4_TOP2_FEEDBACK_RECEIVED_A_CURRENT_BEST_NEXT_TARGET_GT_96_3",
     "submission_priority": [],
     "current_preferred": {
       "name": "01_V34_A_MECHANICAL_CONSTRAINED",
@@ -359,7 +382,30 @@
       "V34_B": 96.266
     },
     "latest_feedback_receipt": "local/runs/round2-v3.4-ebm-and-constrained-composition/release-candidates-r1/platform-feedback-r1/feedback.json",
-    "latest_results": "docs/round2_v3_4/DELIVERY_CANDIDATES.md"
+    "latest_results": "docs/round2_v3_4/DELIVERY_CANDIDATES.md",
+    "next_phase_target": {
+      "target": "platform_score_gt_96.3",
+      "user_instruction": "下一阶段目标定为96.3以上",
+      "date": "2026-09-24",
+      "current_platform_best_user_reported": 96.2684,
+      "gap_to_target": 0.0316,
+      "local_transfer_pairs": 7,
+      "local_transfer_mean_gap": 0.09143559048638394,
+      "local_transfer_median_gap": 0.0922630736629344,
+      "local_transfer_min_gap": 0.06866301472842906,
+      "local_transfer_max_gap": 0.11351169526410843,
+      "local_min_equivalent_for_target": 96.231337,
+      "local_mean_equivalent_for_target": 96.208564,
+      "recommended_local_gate": 96.25,
+      "recommended_local_stretch": 96.3,
+      "candidate_rules": [
+        "must_use_same_protocol_outer_validation",
+        "development_two_split_positive_before_new_outer",
+        "local_gate_is_not_platform_guarantee",
+        "no_relaxation_of_freeze_or_cold_audit_contract"
+      ],
+      "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md"
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -6230,5 +6276,28 @@
       ],
       "decision": "below +0.01 promotion line; retain as fusion material, no V3.3 package"
     }
+  },
+  "round2_next_phase_target": {
+    "target": "platform_score_gt_96.3",
+    "user_instruction": "下一阶段目标定为96.3以上",
+    "date": "2026-09-24",
+    "current_platform_best_user_reported": 96.2684,
+    "gap_to_target": 0.0316,
+    "local_transfer_pairs": 7,
+    "local_transfer_mean_gap": 0.09143559048638394,
+    "local_transfer_median_gap": 0.0922630736629344,
+    "local_transfer_min_gap": 0.06866301472842906,
+    "local_transfer_max_gap": 0.11351169526410843,
+    "local_min_equivalent_for_target": 96.231337,
+    "local_mean_equivalent_for_target": 96.208564,
+    "recommended_local_gate": 96.25,
+    "recommended_local_stretch": 96.3,
+    "candidate_rules": [
+      "must_use_same_protocol_outer_validation",
+      "development_two_split_positive_before_new_outer",
+      "local_gate_is_not_platform_guarantee",
+      "no_relaxation_of_freeze_or_cold_audit_contract"
+    ],
+    "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md"
   }
 }
