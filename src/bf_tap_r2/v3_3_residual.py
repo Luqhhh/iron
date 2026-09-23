@@ -22,7 +22,7 @@ from .v3_local_search import expression_frame
 class FullRecipeResidualRegressor:
     def __init__(self, trial: Mapping[str, Any]):
         self.trial = deepcopy(dict(trial))
-        if self.trial.get("family") not in {"full_residual", "v33_residual"}:
+        if self.trial.get("family", self.trial.get("kind")) not in {"full_residual", "v33_residual"}:
             raise ValueError("Not a V3.3 full-recipe residual trial")
         params = self.trial.get("parameters", {})
         if "base_trial" not in params:
@@ -43,6 +43,7 @@ class FullRecipeResidualRegressor:
         base_trial = params["base_trial"]
         residual_spec = dict(params["residual"])
         self.alpha_ = float(params.get("alpha", 0.25))
+        self.coordinate_ = str(params.get("coordinate", "original_unit"))
         self.kind_ = str(residual_spec["kind"])
         inner_seed = int(params.get("inner_seed", 777))
         n_splits = int(params.get("inner_splits", 5))
@@ -57,7 +58,12 @@ class FullRecipeResidualRegressor:
             base_oof[valid_mask] = base.predict(frame.loc[valid_mask].reset_index(drop=True))
         if not np.isfinite(base_oof).all():
             raise ValueError("V3.3 base OOF coverage failed")
-        residual = y - base_oof
+        if self.coordinate_ == "original_unit":
+            residual = y - base_oof
+        elif self.coordinate_ == "log_unit":
+            residual = np.log1p(y) - np.log1p(np.maximum(base_oof, 0.0))
+        else:
+            raise ValueError(f"Unsupported V3.3 residual coordinate: {self.coordinate_}")
         x_res = self._residual_features(frame, base_oof)
         if self.kind_ == "catboost":
             self.residual_model_ = CatBoostRegressor(**dict(residual_spec["params"]))
@@ -90,7 +96,12 @@ class FullRecipeResidualRegressor:
         if self.kind_ == "catboost":
             x_res = x_res.assign(spout_no=x_res.spout_no.astype(str))
         correction = np.asarray(self.residual_model_.predict(x_res), dtype=float)
-        pred = base_pred + self.alpha_ * correction
+        if self.coordinate_ == "original_unit":
+            pred = base_pred + self.alpha_ * correction
+        elif self.coordinate_ == "log_unit":
+            pred = np.expm1(np.log1p(np.maximum(base_pred, 0.0)) + self.alpha_ * correction)
+        else:
+            raise ValueError(f"Unsupported V3.3 residual coordinate: {self.coordinate_}")
         if pred.shape != (len(frame),) or not np.isfinite(pred).all():
             raise ValueError("Invalid V3.3 residual predictions")
         return pred

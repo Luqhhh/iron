@@ -1,6 +1,6 @@
 # Round2 V3.3 Structural Search
 
-Status: **branch created; full-recipe residual wrapper implemented and tested; original-unit tree selection and 192-item structure search not yet executed; no package and no upload.**
+Status: **192-item V3.3 search complete; final outer validation complete; V3.3 retained as fusion material only; no package and no upload.**
 
 Base commit: `2e1a419ed85483a6a924214240f300f10eba9698`.
 
@@ -90,3 +90,79 @@ check shows **no consistent original-unit selection gain**: four backbones
 improve slightly, four degrade slightly, and all differences are below 0.00018
 WMAPE.  Mode B is therefore not automatically frozen for this batch; it remains
 available for interaction with the structural search lines.
+
+
+## Structural search execution
+
+The 192-item fixed budget is accounted for as:
+
+- 16 reusable original-unit tree-selection paired checks;
+- 64 feature-structure configurations;
+- 64 EBM configurations;
+- 48 full-recipe residual configurations.
+
+The 176 new trials (feature structure + EBM + residual) were executed on
+split seed 42, folds 0/1 with pooled WMAPE.  No failed trials were retained.
+
+Best coarse directions included:
+
+- iron EBM candidates;
+- time full-recipe residual and feature-structure candidates.
+
+Top refined single models on seeds 42/3407:
+
+| target | candidate | mean pooled WMAPE |
+|---|---|---:|
+| iron | `v33-s1-ebm-0095` | 0.0381738 |
+| time | `v33-s1-full_recipe_residual-0154` | 0.0389338 |
+
+## Development fusion
+
+The V3.3 fusion library added the refined V3.3 models to the existing
+V2/V3/V3.1/V3.2 OOF pool.  A fixed-member LP fusion on seeds 42/3407 gave:
+
+- in-sample package: `96.192103`;
+- nested cross-seed package: `96.185427`.
+
+## Final outer validation: seed 12011
+
+One new fixed outer split was used: outer seed `12011`, five
+sample/duplicate-group-isolated folds, inner seed `6666`, three-fold inner OOF
+selection, and full outer-train refit.
+
+Per-fold package scores:
+
+| fold | L1 | V3.3 candidate | delta |
+|---|---:|---:|---:|
+| 0 | 96.132555 | 96.144635 | +0.012080 |
+| 1 | 96.146756 | 96.155567 | +0.008811 |
+| 2 | 96.219470 | 96.208136 | -0.011334 |
+| 3 | 96.075241 | 96.089677 | +0.014436 |
+| 4 | 96.115310 | 96.112907 | -0.002403 |
+
+Aggregate under the same protocol:
+
+| candidate | package score | delta vs L0 | delta vs P0 |
+|---|---:|---:|---:|
+| L1 | 96.137867 | +0.037133 | +0.119168 |
+| V3.3 | **96.142185** | **+0.041451** | **+0.123486** |
+
+V3.3 relative to L1:
+
+$$
++0.004318
+$$
+
+This is below the `+0.01` independent-promotion line.  Three folds are positive
+and two are negative; aggregate gain is small.
+
+## Decision
+
+- L1 remains the preferred procedure;
+- V3.3 is retained as fusion material;
+- no V3.3 ZIP is generated;
+- the five V3.1 prepared ZIPs remain unchanged;
+- no platform upload occurred.
+
+The V3.3 code and results preserve the earlier five prepared package bytes and
+do not overwrite historical V3/V3.1/V3.2 evidence.

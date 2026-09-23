@@ -21,6 +21,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest==9.0.2"]
 round2 = [
+    "interpret==0.6.10",
     "scikit-learn==1.8.0",
     "xgboost==2.1.4",
 ]

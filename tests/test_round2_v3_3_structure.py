@@ -103,3 +103,37 @@ def test_v33_mode_b_selects_original_unit_tree_count_and_refits():
     pred = model.predict(frame)
     assert pred.shape == (len(frame),)
     assert np.isfinite(pred).all()
+
+
+@pytest.mark.parametrize("pack", ["F0", "F1", "F2", "F7"])
+def test_v33_pack_catboost_feature_pack_smoke(pack):
+    from bf_tap_r2.v3_3_models import PackCatBoostRegressor
+    frame = synthetic()
+    trial = {
+        "kind": "pack_catboost", "target": "tap_iron", "feature_pack": pack,
+        "target_transform": "mean", "l2_multiplier": 3.0,
+        "parameters": {
+            "task_type": "CPU", "loss_function": "RMSE", "depth": 2, "iterations": 20,
+            "learning_rate": 0.1, "l2_leaf_reg": 3.0, "random_seed": 42,
+            "thread_count": 1, "cat_features": ["spout_no"], "allow_writing_files": False, "verbose": False,
+            "bootstrap_type": "MVS", "subsample": 0.8,
+        },
+    }
+    model = PackCatBoostRegressor(trial).fit(frame, frame["tap_iron"].to_numpy())
+    pred = model.predict(frame)
+    assert pred.shape == (len(frame),)
+    assert np.isfinite(pred).all()
+
+
+def test_v33_ebm_smoke_and_feature_types():
+    from bf_tap_r2.v3_3_models import EBMRegressor
+    frame = synthetic(40)
+    trial = {"kind": "ebm", "target": "tap_iron", "target_transform": "mean",
+             "parameters": {"max_bins": 32, "min_samples_leaf": 10, "interactions": 0,
+                            "max_interaction_bins": 32, "max_leaves": 2, "objective": "rmse",
+                            "learning_rate": 0.1, "outer_bags": 2, "inner_bags": 0,
+                            "max_rounds": 100, "early_stopping_rounds": 20, "random_state": 42, "n_jobs": 1}}
+    model = EBMRegressor(trial).fit(frame, frame["tap_iron"].to_numpy())
+    pred = model.predict(frame)
+    assert pred.shape == (len(frame),)
+    assert np.isfinite(pred).all()
