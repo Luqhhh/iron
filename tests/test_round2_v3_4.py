@@ -34,6 +34,7 @@ from bf_tap_r2.v3_4_sampler import (
     sample_v34,
     schedule_summary,
 )
+from bf_tap_r2.v3_4_selection import canonical_structure, select_diverse_refinement
 from bf_tap_r2.v3_4_run import v34_trial_identity
 
 
@@ -391,6 +392,53 @@ def test_conditional_extension_changes_only_unscanned_dimensions():
         changed = (params["learning_rate"] != base_params["learning_rate"]
                    or params["max_rounds"] != base_params["max_rounds"])
         assert changed
+
+
+
+
+def test_diverse_refinement_roles_dedupe_and_structure_budget():
+    rng = np.random.default_rng(99)
+    y = {"42": 10.0 + rng.normal(size=50), "3407": 11.0 + rng.normal(size=50)}
+    l1 = {seed: y[seed] + 0.4 * rng.normal(size=50) for seed in y}
+    candidates = []
+    # Five strong single candidates.
+    for i in range(5):
+        candidates.append({
+            "trial_id": f"strong-{i}", "target": "tap_iron",
+            "trial": {"kind": "ebm_boundary", "line": "ebm_boundary", "target_transform": "log1p",
+                      "parameters": {"max_bins": 128, "min_samples_leaf": 30 + i, "interactions": 10, "max_interaction_bins": 32}},
+            "prediction_by_seed": {seed: y[seed] + (0.1 + 0.02 * i) * rng.normal(size=50) for seed in y},
+        })
+    # Three simple-mix effective candidates with different structures.
+    for i in range(3):
+        candidates.append({
+            "trial_id": f"combo-{i}", "target": "tap_iron",
+            "trial": {"kind": "ebm_residual", "line": "ebm_residual",
+                      "parameters": {"base_trial": {"trial_id": f"base-{i}"},
+                                     "coordinate": "log_unit" if i else "original_unit",
+                                     "corrector": {"kind": "ridge", "name": f"ridge_{10 * (i + 1)}"}}},
+            "prediction_by_seed": {seed: y[seed] + 0.3 * rng.normal(size=50) for seed in y},
+        })
+    # Two structurally distinct candidates.
+    candidates.append({
+        "trial_id": "shrink-0", "target": "tap_iron",
+        "trial": {"kind": "global_spout_shrink", "line": "global_spout_shrink",
+                  "parameters": {"parent_trial": {"trial_id": "parent"}, "local_l2_multiplier": 1.0, "beta": 0.25}},
+        "prediction_by_seed": {seed: y[seed] + 0.8 * rng.normal(size=50) for seed in y},
+    })
+    candidates.append({
+        "trial_id": "mean-boundary", "target": "tap_iron",
+        "trial": {"kind": "ebm_boundary", "line": "ebm_boundary", "target_transform": "mean",
+                  "parameters": {"max_bins": 256, "min_samples_leaf": 60, "interactions": 40, "max_interaction_bins": 64}},
+        "prediction_by_seed": {seed: y[seed] + 0.9 * rng.normal(size=50) for seed in y},
+    })
+    result = select_diverse_refinement(candidates, y, l1, target="tap_iron", max_per_target=10)
+    ids = result["selected_trial_ids"]
+    assert len(ids) == len(set(ids)) <= 10
+    assert result["role_counts"]["single_strong"] == 5
+    assert result["role_counts"]["simple_mix_effective"] <= 3
+    assert result["role_counts"]["different_structure"] <= 2
+    assert all(canonical_structure(c) for c in candidates)
 
 
 def test_outer_fold_evaluation_predictions_are_full_length():
