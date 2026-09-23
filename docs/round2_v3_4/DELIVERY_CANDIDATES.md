@@ -59,3 +59,19 @@
 - 未写桌面；
 - 未做模型级冷审计（A/B 都是新拟合包，模型级审计需要单独保留并回读序列化模型）；
 - 未生成单目标隔离包；若需要，可下一步从 A 的缓存预测生成“A 铁量 + AJ3 时长”或“AJ3 铁量 + A 时长”。
+
+## 5. 桌面写入回执
+
+桌面目录：
+
+`/mnt/c/Users/lqh22/Desktop/submission/round2-v3.4_top2_20260924/`
+
+内容：
+
+- `01_V34_A_MECHANICAL_CONSTRAINED/Luqhhh_bf_tap_predict_round2.zip`
+  - SHA-256：`0007230038f365126ae337c3e0af8b7bb040fe3d351c624ff2819ea1efe649e7`
+- `02_V34_B_DIVERSITY_CONSTRAINED_DEV/Luqhhh_bf_tap_predict_round2.zip`
+  - SHA-256：`f844470202a3f93d96eca0bfa6a85674337367dc935e363bdfc81fe47e89bddb`
+- `TOP2_ORDER.txt`
+
+直接挂载 `/mnt/c` 为只读，桌面文件通过 Windows PowerShell 互操作写入；写入后已通过 WSL 侧读取回环并核对 SHA-256。原桌面文件未覆盖，新目录为新唯一批次目录。
