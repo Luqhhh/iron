@@ -138,3 +138,24 @@ These weights and member choices were fitted on the same seeds used for the
 comparison, so this is **not** an outer or sample-isolated estimate.  It is a
 promising provisional direction, not a promoted package.  S3 must be run before
 any platform queue decision.
+
+
+## S1 nested cross-seed estimate
+
+A leave-one-seed-out LP check was run on the same S1 refined library:
+for each held-out seed, member selection and weights were fit on the other seed
+only.  This is a cross-seed stability estimate, not sample-level isolation.
+
+| package | nested cross-seed local score |
+|---|---:|
+| P0 | 96.012388 |
+| L0 | 96.114307 |
+| S1 provisional fusion | **96.139015** |
+| S1 delta vs P0 | **+0.126626** |
+| S1 delta vs L0 | **+0.024707** |
+
+The S1 fusion therefore remains a possible B-role candidate, but its
+cross-seed gain over L0 is in the 0.02–0.03 gray band, below the 0.03
+prioritization line.  The in-sample `+0.043313` over L0 should not be used as
+the promotion number.  S3 sample/group-isolated outer validation is still
+required before any queue decision.

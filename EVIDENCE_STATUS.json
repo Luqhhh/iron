@@ -5877,7 +5877,7 @@
       }
     },
     "G0": "PASS_8_V3_1_LIGHTWEIGHT_TESTS",
-    "G1": "S1_PROVISIONAL_DELTA_VS_L0_0.0433_S3_OUTER_VALIDATION_PENDING",
+    "G1": "S1_NESTED_CROSS_SEED_DELTA_VS_L0_0.0247_GRAY_BAND_S3_PENDING",
     "new_packages": 0,
     "agent_uploads": 0,
     "results": "docs/round2_v3_1/RESULTS.md",
@@ -5918,6 +5918,15 @@
           "v3-catboost-tap_time_len-0021",
           "v31-s1-time-0021-0002"
         ]
+      },
+      "nested_cross_seed": {
+        "method": "select members and fit LP weights on one seed; evaluate on the other seed",
+        "p0_score": 96.01238830473588,
+        "l0_score": 96.11430707024924,
+        "s1_score": 96.13901452772585,
+        "delta_vs_p0": 0.12662622298996,
+        "delta_vs_l0": 0.02470745747661,
+        "interpretation": "gray band 0.02-0.03 vs L0; possible B candidate, not promoted, S3 pending"
       }
     }
   }
