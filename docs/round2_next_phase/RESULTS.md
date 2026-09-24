@@ -203,7 +203,34 @@ LP 权重（fold 0）：
 
 ---
 
-## 7. 对计划的影响
+## 7. R1 扩展：结构多样性到达平台期
+
+在 R1 上加入三个结构性 CatBoost 变体（容量 `d8_deep`、正则 `l2_strong`、特征子采样 `rsm_half`）以及一个多目标联合成员 `joint_multirmse`。
+
+| pool | seed 42 | seed 3407 |
+|---|---:|---:|
+| R1 | 96.063181 | 96.081358 |
+| **R1 扩展** | **96.064394** | **96.086693** |
+| delta | +0.0012 | +0.0053 |
+
+LP 权重（fold 0）：
+
+```
+d8_deep         : 铁量 0.000 / 0.000   时长 0.000 / 0.000
+rsm_half        : 铁量 0.000 / 0.000   时长 0.000 / 0.000
+l2_strong       : 铁量 0.000 / 0.000   时长 0.059 / 0.006
+joint_multirmse : 铁量 0.498 / 0.262   时长 0.000 / 0.000
+```
+
+**结论**
+
+1. **结构多样性作为杠杆已经榨干。** 两个变体在全部四种组合下拿到 0 权重，第三个只在时长上有 0.006–0.059 的边际权重，整体增益 +0.0012 / +0.0053。继续增加同类 CatBoost 变体没有意义。
+2. **`joint_multirmse` 在铁量上拿 0.26–0.50、在时长上拿 0，两个种子完全一致。** 这**在不同基座上独立复现了 V2.3 的记录**（"MultiRMSE 只帮铁量，对时长无帮助"）。原记录来自单次实验；本次是在自行重建的成员池与不同折种子上的复现，因此更有说服力。
+3. 由此，计划中"非对称跨目标输入"的方向获得了实证支持，**且应指向铁量侧**：跨目标信息确实存在，但只在铁量上可利用。注意该收益已被 R1 通过 `joint_multirmse` 捕获，新设计必须证明**超出**它的增量。
+
+---
+
+## 8. 对计划的影响
 
 | 批次 | 原计划 | 调整后 |
 |---|---|---|
@@ -213,7 +240,7 @@ LP 权重（fold 0）：
 
 ---
 
-## 8. 复现方式
+## 9. 复现方式
 
 ```bash
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode linear   --root . --seeds 42 3407
@@ -222,6 +249,7 @@ uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0         --
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+time-ebm --root . --outer-seed 42   --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+shrink  --root . --outer-seed 42    --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1         --root . --outer-seed 42    --inner-seed 7771
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1-extended --root . --outer-seed 42   --inner-seed 7771
 ```
 
 线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）；单个种子的 `r0+time-ebm` 约 20 分钟；单个种子的 `r0+shrink` 约 15 分钟。
