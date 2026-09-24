@@ -230,7 +230,54 @@ joint_multirmse : 铁量 0.498 / 0.262   时长 0.000 / 0.000
 
 ---
 
-## 8. 对计划的影响
+## 8. 路径 D：L0 时长侧重建（seed 42）
+
+§3 的调查结论是 L0 七个成员里六个可重建、`AJM1` 不可。本节的模块重建**时长侧**——三个成员全部可追溯，不涉及任何猜测：
+
+| 成员 | L0 时长权重 | 配方来源 |
+|---|---:|---|
+| `v3-catboost-tap_time_len-0021` | 0.668858 | 冻结 V3 sampler 日程（种子化随机，种子固定故可重放） |
+| `AORD` | 0.174110 | `configs/round2_v2_5`：B3 与 ORD 的均值 |
+| `T1_B3_PREFIX1000` | 0.157032 | 同三成员截断到前 1000 棵树 |
+
+B3 = C2 在种子 42/2026/2027 的均值（`v2_refinement.new_model` 的 `int(member.split("_")[-1])` 证实种子绑定）。
+
+### 三组对照（时长，嵌套协议，同折，seed 42）
+
+| pool | 时长 WMAPE | 折算包分增量 |
+|---|---:|---:|
+| R1 扩展版（9 成员，折内调权） | 0.03922786 | — |
+| L0 冻结权重（3 成员，单成员评估） | 0.03915999 | +0.0034 |
+| **R1 扩展 + 3 个 L0 成员（12 成员，折内调权）** | **0.03882376** | **+0.0202** |
+
+权重（fold 0）：
+
+```
+v3-catboost-tap_time_len-0021 = 0.4541
+time_ebm_b128_l30_i20         = 0.2126
+time_ebm_b256_l60_i40         = 0.1833
+ord_ordered                   = 0.1031
+l2_strong                     = 0.0469
+aord = 0.0000 | t1_b3_prefix1000 = 0.0000 | c2_raw = 0.0000
+d4_shallow = 0.0000 | d8_deep = 0.0000 | joint_multirmse = 0.0000 | rsm_half = 0.0000
+```
+
+### 结论
+
+1. **§7 的"成员多样性到达平台期"结论需要修正：平台期是我们自选成员的平台期，不是这个问题的。** 加入三个历史成员得到 **+0.0202**，而此前加入三个新结构变体只得 +0.0012。差距约 17 倍。
+2. **增益来源集中在单一成员。** `v3-catboost-tap_time_len-0021` 独占 0.454 权重。它是 depth-4 / 3000 iters / **Ordered boosting** / log1p 的 V3 搜索产物，结构上与本计划自建的任何成员都不同。缺的不是成员数量，是这个成员。
+3. **L0 的冻结权重次优于重新调权，原因是它有两个冗余成员。** `AORD` 与 `T1_B3_PREFIX1000` 都拿到 0 权重——二者与 V3 trial 同源（B3/C2 派生），高度相关。历史配方在它们身上压了 0.331 的权重。
+4. 由此，seed 42 上 R1 扩展版的等效总分将从 96.064394 升至约 **96.084599**（铁量不变，时长 +0.0202）。
+
+### 边界
+
+- 本节**只建立时长侧可比性**，不是 V34_A 的全模型身份。铁量侧仍缺 `AJM1`。
+- 单成员评估（L0 冻结权重）的内层 OOF 步骤是平凡的（权重必为 1.0），因此它不含权重选择噪声；与多成员池比较时存在这一协议差异。
+- seed 3407 尚未完成，按计划需两个完整开发切分同向。
+
+---
+
+## 9. 对计划的影响
 
 | 批次 | 原计划 | 调整后 |
 |---|---|---|
@@ -240,7 +287,7 @@ joint_multirmse : 铁量 0.498 / 0.262   时长 0.000 / 0.000
 
 ---
 
-## 9. 复现方式
+## 10. 复现方式
 
 ```bash
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode linear   --root . --seeds 42 3407
@@ -250,6 +297,8 @@ uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+time-ebm -
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+shrink  --root . --outer-seed 42    --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1         --root . --outer-seed 42    --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1-extended --root . --outer-seed 42   --inner-seed 7771
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool l0-time              --root . --outer-seed 42 --inner-seed 7771 --targets tap_time_len
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1-extended+l0time   --root . --outer-seed 42 --inner-seed 7771 --targets tap_time_len
 ```
 
 线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）；单个种子的 `r0+time-ebm` 约 20 分钟；单个种子的 `r0+shrink` 约 15 分钟。
