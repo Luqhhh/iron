@@ -5797,20 +5797,30 @@
   "round2_current_platform_best": {
     "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
     "data_version": "synthetic_round2_v2",
-    "name": "04_AJ3_IRON",
-    "candidate": "AJ3",
-    "score": 96.1259,
-    "delta_vs_B": 0.0277,
-    "local_rank": 4,
-    "local_score": 96.0123883047359,
-    "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
-    "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
-    "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
-    "reference_by_target": {
-      "tap_iron": "AJ3 = .5 C2 + .5 mean(J1 seeds 42,2026,2027)",
-      "tap_time_len": "B3 seeds 42,2026,2027 full1500; original B strings"
-    },
-    "feedback_record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json"
+    "name": "01_V34_A_MECHANICAL_CONSTRAINED",
+    "candidate": "V34_A",
+    "score": 96.2684,
+    "local_score": 96.19973698527157,
+    "zip_sha256": "0007230038f365126ae337c3e0af8b7bb040fe3d351c624ff2819ea1efe649e7",
+    "package": "local/runs/round2-v3.4-ebm-and-constrained-composition/release-candidates-r1/01_V34_A_MECHANICAL_CONSTRAINED/Luqhhh_bf_tap_predict_round2.zip",
+    "previous_user_reported_best": {
+      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "data_version": "synthetic_round2_v2",
+      "name": "04_AJ3_IRON",
+      "candidate": "AJ3",
+      "score": 96.1259,
+      "delta_vs_B": 0.0277,
+      "local_rank": 4,
+      "local_score": 96.0123883047359,
+      "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
+      "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
+      "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
+      "reference_by_target": {
+        "tap_iron": "AJ3 = .5 C2 + .5 mean(J1 seeds 42,2026,2027)",
+        "tap_time_len": "B3 seeds 42,2026,2027 full1500; original B strings"
+      },
+      "feedback_record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json"
+    }
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -6299,5 +6309,181 @@
       "no_relaxation_of_freeze_or_cold_audit_contract"
     ],
     "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md"
+  },
+  "round2_v3_6": {
+    "status": "V36_FIXED_224_COMPLETE_DEV_COMPOSITION_NO_LOCAL_GATE_NO_OUTER",
+    "date": "2026-09-24",
+    "branch": "round2-v3.6-loss-training-and-numeric-encoding",
+    "base_commit": "3db353f89c8efbc60aea0fcbd4b4220b93e25f62",
+    "public_code": [
+      "configs/round2_v3_6/search.yaml",
+      "src/bf_tap_r2/v3_6_models.py",
+      "src/bf_tap_r2/v3_6_networks.py",
+      "src/bf_tap_r2/v3_6_reference.py",
+      "src/bf_tap_r2/v3_6_run.py",
+      "src/bf_tap_r2/v3_6_sampler.py",
+      "src/bf_tap_r2/v3_6_selection.py",
+      "src/bf_tap_r2/v3_6_report.py",
+      "tests/test_round2_v3_6.py",
+      "docs/round2_v3_6/RESULTS.md"
+    ],
+    "fixed_batch": {
+      "total": 224,
+      "counts": {
+        "O": {
+          "tap_iron": 32,
+          "tap_time_len": 32
+        },
+        "D": {
+          "tap_iron": 32,
+          "tap_time_len": 64
+        },
+        "N": {
+          "tap_iron": 16,
+          "tap_time_len": 48
+        }
+      },
+      "ledger": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/fixed-r2-final/fit_ledger.jsonl",
+      "complete": true
+    },
+    "a_dev_replay": {
+      "a_dev_package_score": 96.19464675636728,
+      "v35_dev_package_score": 96.2017309986138,
+      "delta_v35_vs_a_dev": 0.007084242246520489,
+      "objects": {
+        "A": {
+          "target_wmape": {
+            "tap_iron": 0.03768349758368067,
+            "tap_time_len": 0.03842356728897381
+          },
+          "per_seed_package_score": {
+            "42": 96.18989436014986,
+            "3407": 96.19939915258469
+          },
+          "package_score": 96.19464675636728
+        },
+        "V35": {
+          "target_wmape": {
+            "tap_iron": 0.03761583539492604,
+            "tap_time_len": 0.03834954463279791
+          },
+          "per_seed_package_score": {
+            "42": 96.19555256349231,
+            "3407": 96.2079094337353
+          },
+          "package_score": 96.2017309986138
+        },
+        "A_iron_V35_time": {
+          "target_wmape": {
+            "tap_iron": 0.03768349758368067,
+            "tap_time_len": 0.03834954463279791
+          },
+          "per_seed_package_score": {
+            "42": 96.19446263911392,
+            "3407": 96.20223313923822
+          },
+          "package_score": 96.19834788917608
+        },
+        "V35_iron_A_time": {
+          "target_wmape": {
+            "tap_iron": 0.03761583539492604,
+            "tap_time_len": 0.03842356728897381
+          },
+          "per_seed_package_score": {
+            "42": 96.19098428452826,
+            "3407": 96.20507544708177
+          },
+          "package_score": 96.19802986580501
+        }
+      }
+    },
+    "complete_development_composition": {
+      "candidate_package_score": 96.20376256899247,
+      "a_dev_package_score": 96.19464675636728,
+      "delta_A_dev": 0.009115812625196895,
+      "both_complete_splits_positive": true,
+      "per_seed_candidate_package_score": {
+        "42": 96.20130931837855,
+        "3407": 96.20621581960641
+      },
+      "per_seed_a_dev_package_score": {
+        "42": 96.18989436014986,
+        "3407": 96.19939915258469
+      },
+      "per_seed_delta_A_dev": {
+        "42": 0.011414958228684213,
+        "3407": 0.006816667021723788
+      },
+      "selected_members": {
+        "tap_iron": {
+          "members": [
+            "v36-s1-D-0029",
+            "v36-s1-N-0005"
+          ],
+          "weights": [
+            0.6039253390958377,
+            0.35979428049704243,
+            0.036280380407119985
+          ]
+        },
+        "tap_time_len": {
+          "members": [
+            "v36-s1-O-0057",
+            "v36-s1-D-0048"
+          ],
+          "weights": [
+            0.7810993469207348,
+            0.09014959669794487,
+            0.1287510563813204
+          ]
+        }
+      }
+    },
+    "local_working_gate": {
+      "threshold": 96.25,
+      "candidate_dev_package": 96.20376256899247,
+      "passed": false
+    },
+    "conditional_extension": {
+      "triggered": false,
+      "mean_complete_split_delta_A_required": 0.02,
+      "observed_mean_complete_split_delta_A": 0.009115812625196895,
+      "both_complete_splits_positive": true,
+      "reason": "mean complete-split gain below 0.02 and local working gate 96.25 not reached"
+    },
+    "final_outer": {
+      "outer_seed": 23003,
+      "consumed": false,
+      "reason": "development candidate did not pass local working gate or conditional-extension trigger"
+    },
+    "n_line": {
+      "status": "STOPPED_AFTER_FIXED_BATCH_NO_STRONG_SINGLE_MODEL",
+      "best_fixed_coarse_single": {
+        "tap_iron": {
+          "trial_id": "v36-s1-N-0006",
+          "pooled_wmape": 0.04005559414516534,
+          "structure": "ple_mlp",
+          "capacity": "small",
+          "training_setting": "huber_adam"
+        },
+        "tap_time_len": {
+          "trial_id": "v36-s1-N-0048",
+          "pooled_wmape": 0.0400177429609186,
+          "structure": "raw_tabm",
+          "capacity": "large",
+          "training_setting": "mse_adam"
+        }
+      },
+      "complete_development_time_refined": false,
+      "reason": "N time single models were materially weaker than A_dev and O/D candidates; limited-budget stop rule applied"
+    },
+    "ple_mlp_correction": {
+      "description": "PLE bins are fitted on the training part and applied to the same raw numerical representation for PLE-MLP trials.",
+      "superseded_records_preserved": true,
+      "n_ple_fixed_rerun_complete": true
+    },
+    "new_platform_packages": 0,
+    "agent_uploads": 0,
+    "results": "docs/round2_v3_6/RESULTS.md"
   }
 }

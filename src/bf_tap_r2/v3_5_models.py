@@ -31,6 +31,7 @@ from .v3_local_search import expression_frame, fit_target_transform, inverse_tar
 
 EBM_KINDS = {
     "ebm", "ebm_boundary", "ebm_base", "ebm_regularized", "ebm_expression",
+    "ebm_loss", "ebm_training",
 }
 
 

@@ -1,0 +1,157 @@
+version: round2-v3.6-loss-training-and-numeric-encoding
+base_commit: 3db353f89c8efbc60aea0fcbd4b4220b93e25f62
+created: "2026-09-24"
+status: implementation_batch_fixed_schedule_not_yet_executed
+
+references:
+  platform_best_user_reported: {name: V34_A, score: 96.2684}
+  platform_second_user_reported: {name: V34_B, score: 96.2660}
+  local_working_gate: 96.25
+  local_stretch_gate: 96.30
+  a_dev_replay_required: true
+  v35_development_package: 96.20173099861380
+
+fixed_budget:
+  total: 224
+  optional_max: 32
+  hard_max: 256
+  lines:
+    O: 64
+    D: 96
+    N: 64
+  target_totals:
+    O: {tap_iron: 32, tap_time_len: 32}
+    D: {tap_iron: 32, tap_time_len: 64}
+    N: {tap_iron: 16, tap_time_len: 48}
+
+recipe:
+  library: interpret==0.6.10
+  objective: rmse
+  target_transform: log1p
+  outer_bags: 4
+  inner_bags: 0
+  max_rounds: 6000
+  early_stopping_rounds: 100
+  learning_rate: 0.03
+  max_leaves: 2
+  random_state: 42
+  n_jobs: 1
+  bag_protocol: group-safe-bags-v1
+  inner_splits: 5
+  bag_seed: 42
+
+O_loss_and_regularization:
+  parent_centers:
+    tap_iron: [v35-s1-R-0036, v35-s1-R-0041]
+    tap_time_len: [v34-s1-ebm_boundary-0089, v35-s1-I-0181]
+  target_transforms: [mean, log1p]
+  objectives:
+    - rmse
+    - pseudo_huber:delta=0.01
+    - pseudo_huber:delta=0.03
+    - pseudo_huber:delta=0.10
+  reg_lambda: [0.0, 10.0]
+  target_key: {tap_iron: iron, tap_time_len: time}
+
+D_training_protocol:
+  parent_centers:
+    tap_iron: [v35-s1-R-0036, v35-s1-R-0041]
+    tap_time_len: [v34-s1-ebm_boundary-0081, v34-s1-ebm_boundary-0089, v35-s1-I-0181, v35-s1-R-0109]
+  training_modes:
+    greedy_original: {greedy_ratio: 10.0, cyclic_progress: false}
+    cyclic_only: {greedy_ratio: 0.0, cyclic_progress: true}
+  smoothing:
+    'off': {smoothing_rounds: 0, interaction_smoothing_rounds: 0}
+    'on': {smoothing_rounds: 500, interaction_smoothing_rounds: 100}
+  max_leaves: [2, 3]
+  learning_rate: [0.01, 0.05]
+
+N_numeric_encoding_networks:
+  structures: [raw_mlp, ple_mlp, raw_tabm, ple_tabm]
+  training_settings:
+    mse_adam: {loss: mse, optimizer: adam, learning_rate: 0.001, weight_decay: 0.0}
+    mae_adam: {loss: mae, optimizer: adam, learning_rate: 0.001, weight_decay: 0.0}
+    huber_adam: {loss: huber, optimizer: adam, learning_rate: 0.001, weight_decay: 0.0, huber_delta: 1.0}
+    mse_adamw: {loss: mse, optimizer: adamw, learning_rate: 0.0003, weight_decay: 0.0001}
+  mlp_capacities:
+    small: {hidden: [128, 64], dropout: 0.10}
+    medium: {hidden: [256, 128], dropout: 0.10}
+    large: {hidden: [512, 256], dropout: 0.15}
+  tabm_capacities:
+    small: {k: 8, n_blocks: 2, d_block: 128, dropout: 0.10}
+    medium: {k: 16, n_blocks: 2, d_block: 256, dropout: 0.10}
+    large: {k: 32, n_blocks: 3, d_block: 512, dropout: 0.15}
+  iron_capacity: small
+  time_capacities: [small, medium, large]
+  ple_n_bins: 16
+  ple_d_embedding: 8
+  target_standardization: train_fold_mean_std
+  random_seed: 42
+  batch_size: 256
+  max_epochs: 120
+  early_stopping_patience: 15
+  min_delta: 1.0e-5
+  inner_validation_folds: 5
+  inner_validation_seed: 42
+
+screening:
+  coarse:
+    split_seed: 42
+    folds: [0, 1]
+    comparison: pooled_wmape_same_sample_ids
+  complete_development:
+    split_seeds: [42, 3407]
+    folds: [0, 1, 2, 3, 4]
+    target_wmape_a_dev:
+      tap_iron: 0.03768349758368067
+      tap_time_len: 0.03842356728897381
+    a_dev_package_score: 96.19464675636728
+  shortlist:
+    max_per_line_per_target: 4
+    selection_units: pooled_wmape_same_sample_ids
+
+conditional_extension:
+  max_new_slots: 32
+  trigger:
+    two_complete_development_splits_positive_vs_a: true
+    mean_complete_split_delta_A_min: 0.02
+    valid_center_required: true
+  slots_per_center: 16
+  max_centers: 2
+  freeze_before_final_outer: true
+
+composition:
+  max_new_experts: 2
+  max_new_weight_total: 0.50
+  nonnegative_weights: true
+  weight_sum: 1.0
+  base: A_dev_replay
+  weight_objective: mean_complete_development_wmape
+  member_selection: pooled_wmape_same_sample_ids
+
+final_validation:
+  outer_seed: 23003
+  group_isolated: true
+  max_candidate_flows: 2
+  require_two_positive_complete_development_splits: true
+  freeze_flows_before_outer: true
+  forbidden:
+    - refit_after_outer
+    - use_outer_labels_for_member_or_weight_selection
+    - mix_protocols_from_unregistered_seeds
+    - fixed_score_correction_as_forecast
+
+promotion:
+  local_working_gate: 96.25
+  delta_A_min: 0.02
+  require_two_positive_development_splits: true
+  identity_and_cold_audit_required: true
+  user_upload_only: true
+  agent_uploads: 0
+  no_automatic_packages: true
+
+publication:
+  private_root: local/runs/round2-v3.6-loss-training-and-numeric-encoding
+  public_docs: docs/round2_v3_6
+  no_private_arrays_in_git: true
+  agent_uploads: 0
