@@ -126,6 +126,28 @@ def test_time_members_reject_the_iron_target_before_fitting(member):
         member.fit_predict(dummy, dummy, "tap_iron")
 
 
+def test_l1_time_members_are_the_four_replayed_s1_trials():
+    from bf_tap_r2.next_phase_v31_ref import L1_TIME_MEMBERS
+    from bf_tap_r2.next_phase_time_ref import V31TrialMember, l1_time_members
+
+    members = l1_time_members(ROOT)
+    assert [member.name for member in members] == list(L1_TIME_MEMBERS)
+    for member in members:
+        assert isinstance(member, V31TrialMember)
+        assert member.targets == ("tap_time_len",)
+        assert member.trial["trial_id"] == member.name
+        assert member.trial["target"] == "tap_time_len"
+
+
+def test_l1_time_members_reject_the_iron_target_before_fitting():
+    from bf_tap_r2.next_phase_time_ref import l1_time_members
+
+    dummy = pd.DataFrame({name: [0.0] for name in FEATURES} | {"spout_no": [1]})
+    for member in l1_time_members(ROOT):
+        with pytest.raises(ValueError):
+            member.fit_predict(dummy, dummy, "tap_iron")
+
+
 def test_prefix_member_rejects_an_impossible_prefix_at_construction():
     member = T1PrefixMember(ntree_end=PREFIX_TREES)
     assert member.ntree_end == 1000

@@ -273,6 +273,7 @@ def main() -> int:
             "r1-extended",
             "l0-time",
             "r1-extended+l0time",
+            "r1-extended+l0time+l1time",
         ),
         default="r0",
     )
@@ -298,7 +299,11 @@ def main() -> int:
             r1_extended_members,
             r1_members,
         )
-        from .next_phase_time_ref import l0_time_components, l0_time_member
+        from .next_phase_time_ref import (
+            l0_time_components,
+            l0_time_member,
+            l1_time_members,
+        )
 
         builders = {
             "r0+time-ebm": r0_plus_time_ebm,
@@ -309,6 +314,11 @@ def main() -> int:
             "r1-extended+l0time": lambda: [
                 *r1_extended_members(),
                 *l0_time_components(args.root),
+            ],
+            "r1-extended+l0time+l1time": lambda: [
+                *r1_extended_members(),
+                *l0_time_components(args.root),
+                *l1_time_members(args.root),
             ],
         }
         members = builders[args.pool]()

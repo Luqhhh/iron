@@ -244,6 +244,36 @@ def v3_time_0021(root: Path) -> dict[str, Any]:
     raise ValueError(f"{wanted} is not in the frozen V3 schedule")
 
 
+class V31TrialMember(Member):
+    """One replayed V3.1 S1 trial, fitted through the frozen V3.1 wrapper.
+
+    ``V31Regressor`` rather than the V3 wrapper because the S1 schedule also
+    contains residual/affine/spline families that only the V3.1 wrapper knows
+    how to fit.
+    """
+
+    def __init__(self, trial: dict[str, Any], name: str | None = None):
+        self.trial = dict(trial)
+        self.name = name or str(trial["trial_id"])
+        self.targets = (str(trial["target"]),)
+
+    def fit_predict(self, train: pd.DataFrame, valid: pd.DataFrame, target: str) -> np.ndarray:
+        if target != self.targets[0]:
+            raise ValueError(f"{self.name} is a {self.targets[0]} expert, asked for {target}")
+        from .v3_1_models import V31Regressor
+
+        model = V31Regressor(self.trial)
+        model.fit(train, train[target].to_numpy(dtype=float))
+        return np.asarray(model.predict(valid), dtype=float)
+
+
+def l1_time_members(root: Path) -> list[Member]:
+    """The V3.1 S1 trials that L1's time pool actually uses."""
+    from .next_phase_v31_ref import L1_TIME_MEMBERS, v31_trial_by_id
+
+    return [V31TrialMember(v31_trial_by_id(root, trial_id)) for trial_id in L1_TIME_MEMBERS]
+
+
 def l0_time_pairs(root: Path) -> list[tuple[Member, float]]:
     """L0's time members paired with their frozen full-precision weights."""
     return [
