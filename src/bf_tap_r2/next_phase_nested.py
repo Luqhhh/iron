@@ -265,13 +265,27 @@ def main() -> int:
     parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument(
         "--pool",
-        choices=("r0", "r0+time-ebm", "r0+shrink", "r1", "r1-extended"),
+        choices=(
+            "r0",
+            "r0+time-ebm",
+            "r0+shrink",
+            "r1",
+            "r1-extended",
+            "l0-time",
+            "r1-extended+l0time",
+        ),
         default="r0",
     )
     parser.add_argument("--outer-seed", type=int, default=16061)
     parser.add_argument("--inner-seed", type=int, default=7771)
     parser.add_argument("--outer-folds", type=int, default=5)
     parser.add_argument("--inner-folds", type=int, default=5)
+    parser.add_argument(
+        "--targets",
+        nargs="+",
+        default=list(TARGETS),
+        help="restrict the evaluation, which is what makes a target-isolated run cheap",
+    )
     parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
     if args.pool == "r0":
@@ -284,15 +298,24 @@ def main() -> int:
             r1_extended_members,
             r1_members,
         )
+        from .next_phase_time_ref import l0_time_components, l0_time_member
 
         builders = {
             "r0+time-ebm": r0_plus_time_ebm,
             "r0+shrink": r0_plus_shrink,
             "r1": r1_members,
             "r1-extended": r1_extended_members,
+            "l0-time": lambda: [l0_time_member(args.root)],
+            "r1-extended+l0time": lambda: [
+                *r1_extended_members(),
+                *l0_time_components(args.root),
+            ],
         }
         members = builders[args.pool]()
     label = args.pool.replace("+", "_plus_")
+    if tuple(args.targets) != tuple(TARGETS):
+        # Keep a target-isolated run from overwriting the full-pool record.
+        label += "-" + "-".join(args.targets)
     output = args.output or Path(f"local/runs/round2-next-phase/{label}-outer-{args.outer_seed}")
     train = load_v2(args.root / "复赛_train", "train", 2754)
     report = evaluate_outer(
@@ -302,6 +325,7 @@ def main() -> int:
         inner_seed=args.inner_seed,
         outer_folds=args.outer_folds,
         inner_folds=args.inner_folds,
+        targets=tuple(args.targets),
     )
     output.mkdir(parents=True, exist_ok=True)
     (output / "outer.json").write_text(
