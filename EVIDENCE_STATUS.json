@@ -6311,7 +6311,7 @@
     "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md"
   },
   "round2_v3_6": {
-    "status": "V36_FIXED_224_COMPLETE_DEV_COMPOSITION_NO_LOCAL_GATE_NO_OUTER",
+    "status": "V36_FIXED_224_AND_OUTER_23003_USER_DIRECTED_NO_GATE_NO_PACKAGE",
     "date": "2026-09-24",
     "branch": "round2-v3.6-loss-training-and-numeric-encoding",
     "base_commit": "3db353f89c8efbc60aea0fcbd4b4220b93e25f62",
@@ -6442,19 +6442,52 @@
     "local_working_gate": {
       "threshold": 96.25,
       "candidate_dev_package": 96.20376256899247,
-      "passed": false
+      "candidate_outer_package": 96.19003538073855,
+      "dev_passed": false,
+      "outer_passed": false
     },
     "conditional_extension": {
       "triggered": false,
       "mean_complete_split_delta_A_required": 0.02,
       "observed_mean_complete_split_delta_A": 0.009115812625196895,
       "both_complete_splits_positive": true,
-      "reason": "mean complete-split gain below 0.02 and local working gate 96.25 not reached"
+      "reason": "mean complete-split gain below 0.02 and local working gate 96.25 not reached",
+      "outer_delta_A_observed": 0.00874818131326549,
+      "outer_delta_A_required": 0.02,
+      "outer_delta_A_passed": false
     },
     "final_outer": {
       "outer_seed": 23003,
-      "consumed": false,
-      "reason": "development candidate did not pass local working gate or conditional-extension trigger"
+      "inner_seed": 8881,
+      "consumed": true,
+      "consumption_basis": "EXPLICIT_USER_INSTRUCTION_AFTER_PRE_REGISTERED_GATE_NOT_MET",
+      "a_outer_package_score": 96.18128719942528,
+      "v36_outer_package_score": 96.19003538073855,
+      "l1_outer_package_score": 96.13672893449238,
+      "delta_v36_vs_a_outer": 0.00874818131326549,
+      "delta_v36_vs_l1_outer": 0.05330644624616809,
+      "a_target_wmape": {
+        "tap_iron": 0.037836449000798036,
+        "tap_time_len": 0.03853780701069636
+      },
+      "v36_target_wmape": {
+        "tap_iron": 0.037737968371964414,
+        "tap_time_len": 0.038461324013264575
+      },
+      "l1_target_wmape": {
+        "tap_iron": 0.038417361626692424,
+        "tap_time_len": 0.03884805968345996
+      },
+      "fold_delta_v36_minus_a": [
+        0.004526857728734512,
+        -0.0030797846660561845,
+        0.01756095725238538,
+        0.008163405008076552,
+        0.016555176383562298
+      ],
+      "gate_local_working_96_25": false,
+      "gate_delta_A_0_02": false,
+      "results": "docs/round2_v3_6/RESULTS.md"
     },
     "n_line": {
       "status": "STOPPED_AFTER_FIXED_BATCH_NO_STRONG_SINGLE_MODEL",
