@@ -35,12 +35,23 @@ from .v3_1_fusion import lp_simplex_weights
 
 
 class Member:
-    """A named predictor fitted per fold on the current training part only."""
+    """A named predictor fitted per fold on the current training part only.
+
+    Set ``targets`` to restrict a member to specific targets; the rest of the
+    pool is then evaluated without it.  A target-specific expert should declare
+    its target, otherwise it is fitted redundantly for the other one.
+    """
 
     name: str
+    targets: tuple[str, ...] | None = None
 
     def fit_predict(self, train: pd.DataFrame, valid: pd.DataFrame, target: str) -> np.ndarray:
         raise NotImplementedError
+
+
+def applies_to(member: Member, target: str) -> bool:
+    supported = getattr(member, "targets", None)
+    return supported is None or target in supported
 
 
 def fold_vector(frame: pd.DataFrame, seed: int, n_splits: int = 5) -> np.ndarray:
@@ -139,6 +150,8 @@ def evaluate_outer(
     folds = fold_vector(train, outer_seed, outer_folds)
     per_target: dict[str, dict] = {}
     for target in targets:
+        active = [member for member in members if applies_to(member, target)]
+        active_names = _member_names(active)
         y = train[target].to_numpy(dtype=float)
         predictions = np.full(len(train), np.nan, dtype=float)
         fold_wmape: dict[str, float] = {}
@@ -148,8 +161,8 @@ def evaluate_outer(
             valid_mask = folds == fold
             outer_train = train.loc[train_mask].reset_index(drop=True)
             outer_valid = train.loc[valid_mask].reset_index(drop=True)
-            inner = inner_oof(outer_train, target, members, inner_seed + fold, inner_folds)
-            fit = fit_weights(inner, outer_train[target].to_numpy(dtype=float), names)
+            inner = inner_oof(outer_train, target, active, inner_seed + fold, inner_folds)
+            fit = fit_weights(inner, outer_train[target].to_numpy(dtype=float), active_names)
             columns = np.column_stack(
                 [
                     _aligned_predictions(
@@ -157,7 +170,7 @@ def evaluate_outer(
                         int(valid_mask.sum()),
                         member.name,
                     )
-                    for member in members
+                    for member in active
                 ]
             )
             predictions[valid_mask] = columns @ fit["weights"]
@@ -250,30 +263,41 @@ def r0_members() -> list[Member]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("."))
+    parser.add_argument("--pool", choices=("r0", "r0+time-ebm"), default="r0")
     parser.add_argument("--outer-seed", type=int, default=16061)
     parser.add_argument("--inner-seed", type=int, default=7771)
     parser.add_argument("--outer-folds", type=int, default=5)
     parser.add_argument("--inner-folds", type=int, default=5)
-    parser.add_argument(
-        "--output", type=Path, default=Path("local/runs/round2-next-phase/r0-outer-16061")
-    )
+    parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
+    if args.pool == "r0":
+        members = r0_members()
+    else:
+        # Imported here so the module graph stays acyclic.
+        from .next_phase_members import r0_plus_time_ebm
+
+        members = r0_plus_time_ebm()
+    label = args.pool.replace("+", "_plus_")
+    output = args.output or Path(f"local/runs/round2-next-phase/{label}-outer-{args.outer_seed}")
     train = load_v2(args.root / "复赛_train", "train", 2754)
     report = evaluate_outer(
         train,
-        r0_members(),
+        members,
         outer_seed=args.outer_seed,
         inner_seed=args.inner_seed,
         outer_folds=args.outer_folds,
         inner_folds=args.inner_folds,
     )
-    args.output.mkdir(parents=True, exist_ok=True)
-    (args.output / "r0-outer.json").write_text(
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "outer.json").write_text(
         json.dumps(report, ensure_ascii=False, indent=1), encoding="utf-8"
     )
-    print(f"R0 outer seed {report['outer_seed']}  score = {report['package_score']:.6f}")
+    print(f"{args.pool} outer seed {report['outer_seed']}  score = {report['package_score']:.6f}")
     for target, entry in report["targets"].items():
+        weights = entry["fold_weights"]["0"]
+        spread = ", ".join(f"{name}={value:.4f}" for name, value in sorted(weights.items()))
         print(f"  {target:14s} pooled WMAPE = {entry['pooled_wmape']:.8f}")
+        print(f"  {'':14s} fold-0 weights: {spread}")
     return 0
 
 

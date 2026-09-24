@@ -142,6 +142,28 @@ def test_evaluate_outer_pools_over_the_whole_coverage_set():
     )
 
 
+def test_target_scoped_members_are_only_fitted_for_their_own_target():
+    train = frame(120, 12)
+    calls: list[str] = []
+
+    class TimeOnly(MeanPredictor):
+        targets = ("tap_time_len",)
+
+        def fit_predict(self, train_part, valid, target):
+            calls.append(target)
+            return super().fit_predict(train_part, valid, target)
+
+    report = evaluate_outer(
+        train,
+        [MeanPredictor("mean"), TimeOnly("time_only")],
+        outer_seed=42,
+        inner_seed=7771,
+    )
+    assert set(calls) == {"tap_time_len"}
+    assert report["targets"]["tap_iron"]["fold_weights"]["0"] == {"mean": 1.0}
+    assert set(report["targets"]["tap_time_len"]["fold_weights"]["0"]) == {"mean", "time_only"}
+
+
 def test_package_score_matches_the_historical_frozen_formula():
     from bf_tap_r2.v3_local_search import package_local_score
 
@@ -164,6 +186,34 @@ def test_catboost_member_uses_the_frozen_recipe_and_fits():
     values = fast.fit_predict(train, train, "tap_iron")
     assert values.shape == (80,)
     assert np.isfinite(values).all()
+
+
+def test_time_ebm_member_fits_inside_the_nesting_contract():
+    from bf_tap_r2.next_phase_members import EBM_BASE, EBMMember
+
+    cheap = {**EBM_BASE, "max_rounds": 40, "early_stopping_rounds": 10}
+    member = EBMMember("time_ebm_cheap", target="tap_time_len", parameters=cheap)
+    report = evaluate_outer(
+        frame(160, 13),
+        [member],
+        outer_seed=42,
+        inner_seed=7771,
+        outer_folds=2,
+        inner_folds=2,
+        targets=("tap_time_len",),
+    )
+    assert set(report["targets"]) == {"tap_time_len"}
+    assert np.isfinite(report["targets"]["tap_time_len"]["pooled_wmape"])
+    assert report["targets"]["tap_time_len"]["fold_weights"]["0"] == {"time_ebm_cheap": 1.0}
+
+
+def test_time_ebm_member_refuses_the_wrong_target():
+    from bf_tap_r2.next_phase_members import EBM_BASE, EBMMember
+
+    member = EBMMember("time_ebm_cheap", target="tap_time_len", parameters={**EBM_BASE, "max_rounds": 5})
+    data = frame(40, 14)
+    with pytest.raises(ValueError):
+        member.fit_predict(data, data, "tap_iron")
 
 
 def test_r0_is_the_single_reproducible_c2_anchor():
