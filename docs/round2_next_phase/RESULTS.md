@@ -102,7 +102,44 @@
 
 ---
 
-## 4. 对计划的影响
+## 4. 批次 1：时长侧 EBM 专家（开发切分）
+
+在 R0 上加入两个时长侧 EBM 边界专家（冻结网格的两个点），走完整嵌套外层协议。
+
+| outer seed | 铁量 WMAPE | 时长 WMAPE | 分数 | 时长相对改善 |
+|---|---:|---:|---:|---:|
+| R0（42） | 0.04006564 | 0.04101036 | 95.946200 | — |
+| **R0 + 时长 EBM（42）** | 0.04006564 | **0.03950980** | **96.021228** | **−3.66%** |
+| R0（3407） | 0.03977273 | 0.04049742 | 95.986493 | — |
+| **R0 + 时长 EBM（3407）** | 0.03977273 | **0.03936810** | **96.042959** | **−2.79%** |
+
+铁量逐位不变，因为 EBM 成员声明只服务时长目标，铁量侧仍只有 C2 且权重为 1.0。
+
+LP 权重（fold 0）：
+
+```
+seed 42  : c2_raw 0.3420 | b128_l30_i20 0.2124 | b256_l60_i40 0.4456
+seed 3407: c2_raw 0.4077 | b128_l30_i20 0.3036 | b256_l60_i40 0.2886
+```
+
+**结论**
+
+1. **两个完整开发切分同时为正**，达到计划的晋级条件（+0.0750 / +0.0565 分）。
+2. 两个 EBM 点都拿到实质权重，说明它们与 C2 互补，不是噪声。
+3. **但这条结果主要是确认，不是新发现。** "EBM 专家在基座上做增量"正是 V3.4 已经建立的机制（V34_A 相对 L1 的 +0.0394 就来自 EBM 专家）。本批次在自建锚点上复现了该机制，验证了框架，但未提供超出 V3.4 的新方向。
+4. 与 V34_A 的对照只能定性：V34_A 的开发期时长 WMAPE 为 0.038423567，仍优于本批次最好值 0.03936810。差距来自基座（L1 成员池 vs 单一 C2），不是专家本身。
+
+### 尚未回答的问题
+
+**时长侧残差专家仍未验证。** V3.4 因 V3.3 只记录了一个时长 EBM 中心，其 16 个时长残差槽位有 8 个被迫标 `not_applicable`，且最终没有任何残差专家被选入 A。这才是批次 1 里信息量最大的部分，本批次尚未触及。
+
+### 关于 18041
+
+计划规定"两个完整开发切分为正才允许消耗新的最终外层种子"，本批次满足该条件。但**不建议现在动用 18041**：该条件是为"可晋级的候选"设的，而 R0 是弱锚点、其上产物无法与 V34_A 比较，消耗外层种子得不偿失。18041 应留给 0b 之后、在可比基座上产生的候选。
+
+---
+
+## 5. 对计划的影响
 
 | 批次 | 原计划 | 调整后 |
 |---|---|---|
@@ -112,15 +149,15 @@
 
 ---
 
-## 5. 复现方式
+## 6. 复现方式
 
 ```bash
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode linear   --root . --seeds 42 3407
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode catboost --root . --seeds 42 3407
-uv run --extra round2 python -m bf_tap_r2.next_phase_nested --root . --outer-seed 16061 --inner-seed 7771 \
-    --output local/runs/round2-next-phase/r0-outer-16061
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0         --root . --outer-seed 16061 --inner-seed 7771
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+time-ebm --root . --outer-seed 42   --inner-seed 7771
 ```
 
-线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）。
+线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）；单个种子的 `r0+time-ebm` 约 20 分钟。
 
 私有产物路径：`local/runs/round2-next-phase/linear-probe-r1/linear-probe.json`、`local/runs/round2-next-phase/catboost-increment-r1/catboost-increment.json`、`local/runs/round2-next-phase/r0-outer-{42,3407,16061}/r0-outer.json`。
