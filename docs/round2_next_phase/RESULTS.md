@@ -68,7 +68,41 @@
 
 ---
 
-## 3. 对计划的影响
+## 3. 步骤 0a：嵌套外层驱动与 R0 参照
+
+`V3.4` 的最终外层驱动从未进仓库（`constrained_forward_select` 在仓库内无调用方），新搜索线无法在记录所用的协议下评估候选。已补上：`src/bf_tap_r2/next_phase_nested.py`。
+
+每个外层折内的契约：成员在**内层训练部分**拟合产生 inner OOF → 权重**只用**这份 inner OOF 学 → 成员在**完整训练部分**重训 → 才预测 valid。验证标签全程不读。测试用一个「只返回训练时见过的标签」的成员直接攻击该边界：正确的嵌套下它必须对每一行返回 0。
+
+### R0 参照
+
+`R0` = 冻结的 C2 配方（`configs/round2_v0_1/models.yaml`），**不是 V34_A**。历史成员池在本机不可恢复，R0 是自行重建的可复现锚点。
+
+| outer seed | 分数 | 铁量 WMAPE | 时长 WMAPE |
+|---|---:|---:|---:|
+| 42 | 95.946200 | 0.04006564 | 0.04101036 |
+| 3407 | 95.986493 | 0.03977273 | 0.04049742 |
+| **16061** | **95.958389** | 0.04033063 | 0.04050158 |
+
+**框架正确性验证**：R0 在 seed 42/3407 上的两个 WMAPE 与 §0 的普通 CV 结果**逐位相同**。单成员时嵌套 LP 必然给出权重 1.0，嵌套框架因此必须退化为普通折 CV —— 它确实做到了 bit-for-bit，说明 inner OOF → LP → 重训 → 预测 整条链无泄漏且实现正确。
+
+### 参照强度对照（同协议，不同成员池）
+
+| | outer 16061 分数 |
+|---|---:|
+| R0（仅 C2） | 95.958389 |
+| V34_A（L1 + EBM 专家） | 96.199737 |
+| 差 | **−0.241348** |
+
+**R0 是弱锚点，这是本机没有历史缓存的直接代价。** 距本地门槛 96.25 名义上差 0.29，而 V34_A 只差 0.05。因此：
+
+- R0 上测出的 **delta（相对增量）** 用于机制筛选是有效的
+- 但 **R0 上的绝对分不能用于晋级声明**，也不能与 96.25 直接比较
+- 弱锚点还有一个风险：某个专家在 R0 上有增量，**不代表**它在 V34_A 更强的基座上仍有增量（可能与 V34_A 已有的 EBM 专家冗余）。任何"超出 V34_A"的声明都需要 0b
+
+---
+
+## 4. 对计划的影响
 
 | 批次 | 原计划 | 调整后 |
 |---|---|---|
@@ -78,13 +112,15 @@
 
 ---
 
-## 4. 复现方式
+## 5. 复现方式
 
 ```bash
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode linear   --root . --seeds 42 3407
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode catboost --root . --seeds 42 3407
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --root . --outer-seed 16061 --inner-seed 7771 \
+    --output local/runs/round2-next-phase/r0-outer-16061
 ```
 
-线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）。
+线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）。
 
-私有产物路径：`local/runs/round2-next-phase/linear-probe-r1/linear-probe.json`、`local/runs/round2-next-phase/catboost-increment-r1/catboost-increment.json`。
+私有产物路径：`local/runs/round2-next-phase/linear-probe-r1/linear-probe.json`、`local/runs/round2-next-phase/catboost-increment-r1/catboost-increment.json`、`local/runs/round2-next-phase/r0-outer-{42,3407,16061}/r0-outer.json`。
