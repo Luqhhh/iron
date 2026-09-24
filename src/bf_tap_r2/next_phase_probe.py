@@ -30,6 +30,7 @@ import pandas as pd
 
 from .data import FEATURES, TARGETS
 from .metrics import wmape
+from .next_phase_nested import C2_PARAMS, catboost_frame
 from .splits import make_folds
 from .v2_release import load_v2
 from .v3_local_search import package_local_score
@@ -133,35 +134,6 @@ def probe(root: Path, seeds: list[int], output: Path) -> dict:
         json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8"
     )
     return payload
-
-
-C2_PARAMS = {
-    "loss_function": "RMSE",
-    "depth": 6,
-    "iterations": 1500,
-    "learning_rate": 0.03,
-    "l2_leaf_reg": 10,
-    "random_seed": 42,
-    "thread_count": 4,
-    "verbose": False,
-    "allow_writing_files": False,
-}
-
-
-def catboost_frame(frame: pd.DataFrame, kind: str) -> pd.DataFrame:
-    """C2 input frame; ``degree2`` appends every pairwise product.
-
-    Built from one column mapping rather than repeated insertion: 210 inserts
-    fragment the block and pandas warns on every fit.
-    """
-    columns = {name: frame[name].to_numpy(dtype=float) for name in FEATURES}
-    if kind == "degree2":
-        values = frame[list(FEATURES)].to_numpy(dtype=float)
-        for i in range(len(FEATURES)):
-            for j in range(i + 1, len(FEATURES)):
-                columns[f"{FEATURES[i]}__x__{FEATURES[j]}"] = values[:, i] * values[:, j]
-    columns["spout_no"] = frame["spout_no"].astype(int).to_numpy()
-    return pd.DataFrame(columns, index=frame.index)
 
 
 def catboost_increment(root: Path, seeds: list[int], output: Path) -> dict:
