@@ -198,10 +198,18 @@ def far_trials(target: str, rng: np.random.Generator, v3spec: Mapping[str, Any])
     return out
 
 
-def sample_s1(root: Path | str, seed: int = 20260923) -> list[dict]:
+def sample_s1(root: Path | str, seed: int = 20260923,
+              centers: Mapping[str, Mapping[str, Any]] | None = None) -> list[dict]:
+    """The frozen V3.1 S1 schedule.
+
+    ``centers`` defaults to ``load_centers``, which reads a run ledger.  It is
+    injectable so the schedule can be replayed when that ledger is unavailable
+    but its contents are still reproducible; see ``next_phase_v31_ref``.
+    """
     root = Path(root)
     rng = np.random.default_rng(seed)
-    centers = load_centers(root)
+    if centers is None:
+        centers = load_centers(root)
     # Reuse the V3.1 config only for far-family spaces.
     import yaml
     v3spec = yaml.safe_load((root / "configs/round2_v3/experiment.yaml").read_text(encoding="utf-8"))
