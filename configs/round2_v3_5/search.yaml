@@ -1,0 +1,173 @@
+version: round2-v3.5-regularized-ebm-and-composition
+base_commit: fb689146d69147a14b56fe968d6a88a69a8bb5e3
+created: "2026-09-24"
+status: implementation_batch_fixed_schedule_not_yet_executed
+
+references:
+  platform_best_user_reported: {name: V34_A, score: 96.2684}
+  platform_second_user_reported: {name: V34_B, score: 96.2660}
+  A_outer_16061: 96.19973698527157
+  L1_same_outer_16061: 96.16031215578445
+  target_platform: ">96.3"
+  local_working_gate: 96.25
+  local_stretch_gate: 96.30
+
+fixed_budget:
+  total: 256
+  optional_max: 64
+  hard_max: 320
+  lines:
+    R: 144
+    I: 64
+    L: 48
+  target_totals:
+    R: {tap_iron: 72, tap_time_len: 72}
+    I: {tap_iron: 32, tap_time_len: 32}
+    L: {tap_iron: 24, tap_time_len: 24}
+
+recipe:
+  library: interpret==0.6.10
+  objective: rmse
+  target_transform: log1p
+  outer_bags: 4
+  inner_bags: 0
+  max_rounds: 6000
+  early_stopping_rounds: 100
+  learning_rate: 0.03
+  max_leaves: 2
+  random_state: 42
+  n_jobs: 1
+  bag_protocol: group-safe-bags-v1
+  inner_splits: 5
+  bag_seed: 42
+  interactions_semantics: automatic_pairwise_interaction_count_not_order
+  allowed_interaction_order: pairwise_only
+
+R_regularized_ebm:
+  iron:
+    max_bins: [64, 128, 256]
+    min_samples_leaf: [60, 100, 160]
+    interactions: [2, 5, 10, 20]
+    max_interaction_bins: [16, 32]
+  time:
+    max_bins: [128, 256, 512]
+    min_samples_leaf: [60, 100, 160]
+    interactions: [2, 5, 10, 20]
+    max_interaction_bins: [32, 64]
+
+I_feature_and_explicit_interactions:
+  feature_packs: [raw, four]
+  leaf_multipliers: [1, 2]
+  rounding: nearest_integer_clip_min_1
+  interaction_strategies:
+    I0: automatic_interactions_zero
+    I1: parent_automatic_interaction_count
+    I2: explicit_spout_pairs
+    I3: explicit_spout_pairs_plus_five_feature_pairs
+  explicit_pairs_I2:
+    - [spout_no, air_volume]
+    - [spout_no, total_press_diff]
+    - [spout_no, hot_air_temp]
+    - [spout_no, fuel_rate]
+    - [spout_no, pig]
+  explicit_pairs_I3_extra:
+    - [air_volume, oxygen]
+    - [cold_air_press, hot_air_press]
+    - [upper_press_diff, lower_press_diff]
+    - [hot_air_temp, furnace_throat_temp]
+    - [pig, all_quality]
+  parent_centers:
+    tap_iron: [v34-s1-ebm_boundary-0016, v34-s1-ebm_boundary-0020]
+    tap_time_len: [v34-s1-ebm_boundary-0089, v34-s1-ebm_boundary-0081]
+  parent_source:
+    refine_ledger: local/runs/round2-v3.4-ebm-and-constrained-composition/refine-r1/seed-42/fit_ledger.jsonl
+    fallback_refine_ledger: local/runs/round2-v3.4-ebm-and-constrained-composition/coarse-r1/fit_ledger.jsonl
+
+L_global_local_ebm:
+  local_min_samples_leaf: [30, 60]
+  local_interactions: [0, 5]
+  beta_values: [0.15, 0.30, 0.50]
+  min_spout_samples: 200
+  local_include_spout: true
+  fallback_policy: global_prediction_for_unseen_or_small_spout
+  shared_global_local_fit_across_beta: true
+  parent_centers: same_as_I
+
+composition_S0:
+  max_rules: 12
+  l1_caps: [0.65, 0.80, 1.00]
+  old_cap_control: 0.50
+  g1_policy: two_existing_A_experts
+  g2_policy: single_expert_best_full_dev_oof_tie_trial_id
+  joint_selection: true
+  weights:
+    l1_name: L1
+    total_weights: 1.0
+    nonnegative: true
+    new_weight_sum_upper_bound: cap
+    objective: pooled_wmape_mean_over_development_seeds
+
+new_expert_composition:
+  max_new_experts: 2
+  max_new_expert_weight: 0.50
+  l1_always_included: true
+  allowed_flows: [A_procedure_plus_two_new_experts, S0_cap_release_standalone]
+  no_boundless_recursion: true
+
+screening:
+  coarse:
+    split_seed: 42
+    folds: [0, 1]
+    comparison: pooled_wmape_same_sample_ids
+  refine:
+    split_seeds: [42, 3407]
+    folds: [0, 1, 2, 3, 4]
+    max_per_target: 12
+    quotas: {strong_single: 6, positive_mix: 4, distinct_structure: 2}
+    dedupe_before_quota: true
+    allow_fewer_when_no_qualified: true
+
+conditional_extension:
+  max_new_slots: 64
+  trigger:
+    complete_split_delta_A_positive_required: 2
+    mean_complete_split_delta_A_min: 0.02
+    valid_center_required: true
+  slots_per_direction: 32
+  directions:
+    - R_regularized_neighborhood
+    - I_structure
+    - L_local_setting
+    - training_length_only_with_censoring_evidence
+  freeze_before_outer: true
+
+final_validation:
+  outer_seed: 23003
+  inner_seed: 8881
+  outer_folds: 5
+  inner_folds: 3
+  group_isolated: true
+  max_candidate_flows: 2
+  require_two_positive_development_splits: true
+  freeze_flows_before_outer: true
+  forbidden:
+    - refit_after_outer
+    - use_outer_labels_for_member_or_weight_selection
+    - mix_protocols_from_unregistered_seeds
+    - fixed_score_correction_as_forecast
+
+promotion:
+  local_working_gate: 96.25
+  delta_A_min: 0.02
+  require_two_positive_development_splits: true
+  identity_and_cold_audit_required: true
+  user_upload_only: true
+  agent_uploads: 0
+  no_automatic_packages: true
+  preserve_existing_packages: true
+
+publication:
+  private_root: local/runs/round2-v3.5-regularized-ebm-and-composition
+  public_docs: docs/round2_v3_5
+  no_private_arrays_in_git: true
+  agent_uploads: 0
