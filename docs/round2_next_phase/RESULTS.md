@@ -139,7 +139,32 @@ seed 3407: c2_raw 0.4077 | b128_l30_i20 0.3036 | b256_l60_i40 0.2886
 
 ---
 
-## 5. 对计划的影响
+## 5. 批次 1：分铁口收缩专家（开发切分）
+
+在 R0 上加入两个分铁口收缩候选（`local_l2_multiplier ∈ {1.0, 3.0}` × `beta ∈ {0.25, 0.50}`），走完整嵌套外层协议。
+
+| outer seed | R0 | R0 + 收缩 | 收缩权重 |
+|---|---:|---:|---|
+| 42 | 95.946200 | **95.946200** | 0.0000 / 0.0000 |
+| 3407 | 95.986493 | **95.986493** | 0.0000 / 0.0000 |
+
+**LP 在两个开发切分上都给两个收缩成员恰好 0 权重，分数与 R0 逐位相同。**
+
+机制解释：训练集只有 2 个铁口、每口约 1370 行，局部模型与全局模型的结构几乎一致，`global + β·(local − global)` 的修正项携带的独立信号极少。这与 `spout_no` 的弱边际相关（铁量 −0.023 / 时长 +0.183）一致，也与 `min_spout_samples = 200` 在该样本量下不构成约束这一事实一致。
+
+### 负证据的边界（重要）
+
+本结论**不能**推广为"分铁口路线整体关闭"：
+
+- 它证明的是「**C2 父配方** + 分铁口修正」在时长上无效
+- V34_A 的收缩专家 `global_spout_shrink-0136` 用的是**另一个父配方**（`v31-s1-time-0021-0050`），且确实在 A 中被选中（时长权重 0.094）
+- 父配方的差异只能由 0b 回答；本筛选的父配方是替身（见 `next_phase_members.SHRINK_PARENT_PARAMS` 注释）
+
+另外，A/B 两个平台分仅差 0.0024，而它们唯一的实质差异就是"用收缩专家还是用残差专家"，这也说明该方向的效应量在噪声量级。
+
+---
+
+## 6. 对计划的影响
 
 | 批次 | 原计划 | 调整后 |
 |---|---|---|
@@ -149,15 +174,16 @@ seed 3407: c2_raw 0.4077 | b128_l30_i20 0.3036 | b256_l60_i40 0.2886
 
 ---
 
-## 6. 复现方式
+## 7. 复现方式
 
 ```bash
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode linear   --root . --seeds 42 3407
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode catboost --root . --seeds 42 3407
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0         --root . --outer-seed 16061 --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+time-ebm --root . --outer-seed 42   --inner-seed 7771
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+shrink  --root . --outer-seed 42    --inner-seed 7771
 ```
 
-线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）；单个种子的 `r0+time-ebm` 约 20 分钟。
+线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）；单个种子的 `r0+time-ebm` 约 20 分钟；单个种子的 `r0+shrink` 约 15 分钟。
 
 私有产物路径：`local/runs/round2-next-phase/linear-probe-r1/linear-probe.json`、`local/runs/round2-next-phase/catboost-increment-r1/catboost-increment.json`、`local/runs/round2-next-phase/r0-outer-{42,3407,16061}/r0-outer.json`。
