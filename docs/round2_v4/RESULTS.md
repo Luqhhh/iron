@@ -115,9 +115,10 @@ package_delta_single = 50 * (A_target_wmape - candidate_target_wmape)
 | 最终 outer 23003 | **不可用**；已在 V3.6 中按用户指令消费且未通过 |
 | 平台包 / 上传 | **0 / 0** |
 
-结论：本轮不产生平台候选，不更新平台最佳。V34_A = 96.2684 仍是用户回传的当前
-平台最佳；完整 `B_star = 01_V34_NE3_CAP50` 未恢复，因此本轮只报告 A-relative
-开发增量，不声称超过当前最佳。
+结论：本轮不产生平台候选。平台回传更新后，`V36_USER_REQUESTED_OUTER_FAILED`
+以用户回传 96.2734 成为当前平台最佳；该结果来自本轮之外的 V3.6 用户指令包，
+不改变 V4 coarse screen 的全负 A-relative 结果。完整 `B_star = 01_V34_NE3_CAP50`
+未恢复，因此本轮只报告 A-relative 开发增量，不声称 V4 机制已超过当前最佳。
 
 ## 6. 失败证据边界
 

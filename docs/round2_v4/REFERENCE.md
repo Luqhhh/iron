@@ -106,3 +106,12 @@ package_delta_single = 50 * (A_target_wmape - candidate_target_wmape)
 - 本文只恢复了 A 开发重放，没有恢复完整 B_star 流程，也没有生成平台包。
 - A 锚点上的 delta 只能用于机制筛选，不能直接当作平台分差。
 - `V34_A = 96.2684` 仍只是用户回传平台分，未独立核验。
+
+## 7. 平台回传更新（2026-09-24）
+
+`V36_USER_REQUESTED_OUTER_FAILED` 用户回传平台分 **96.2734**，超过 `V34_A = 96.2684`，
+成为新的当前平台最佳用户报告；距严格大于 `96.3` 还差 **0.0266**。该包 outer 23003 仍失败，
+且不是正式晋级包。A 开发锚点与 V4 coarse 结果不受影响；完整 `B_star` 仍未恢复。
+
+ZIP SHA-256：`ef6e72f140e314c995ccb40a79439bf0fe3846c6089917936b9cba24399da7b1`  
+result SHA-256：`b5ed9b51e9127aa0a7740be2100dd2b1d7464a357076aae9fe3068c664c35f20`。

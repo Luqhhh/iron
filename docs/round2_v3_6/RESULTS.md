@@ -234,4 +234,36 @@ w_A+\sum_jw_j=1,\quad \sum_jw_j\le0.5.
 - ZIP SHA-256：`ef6e72f140e314c995ccb40a79439bf0fe3846c6089917936b9cba24399da7b1`
 - 桌面路径：`C:\Users\lqh22\Desktop\submission\round2-V36-user-requested-outer-failed-20260924\`
 
-该包不构成最终验证通过，不应用来声称超过 A。当前平台最佳仍是用户回传的 V34_A = 96.2684。
+该包本身不构成最终验证通过，也不改变其 outer 23003 失败事实。平台回传后见下节更新。
+
+## 9. 平台回传：V36_USER_REQUESTED_OUTER_FAILED = 96.2734
+
+日期：2026-09-24  
+来源：**USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED**
+
+用户回传：
+
+```text
+C:\Users\lqh22\Desktop\submission\round2-V36-user-requested-outer-failed-20260924\Luqhhh_bf_tap_predict_round2.zip
+平台分 96.2734
+```
+
+| 项 | 值 |
+|---|---:|
+| 包名 | `V36_USER_REQUESTED_OUTER_FAILED` |
+| 平台分（用户回传） | **96.2734** |
+| 前一当前最佳 | `V34_A = 96.2684` |
+| 相对前一最佳 | **+0.0050** |
+| 距 `>96.3` | **0.0266** |
+| ZIP SHA-256 | `ef6e72f140e314c995ccb40a79439bf0fe3846c6089917936b9cba24399da7b1` |
+| result.csv SHA-256 | `b5ed9b51e9127aa0a7740be2100dd2b1d7464a357076aae9fe3068c664c35f20` |
+
+该回传使 `V36_USER_REQUESTED_OUTER_FAILED` 成为新的用户报告当前平台最佳，但它仍：
+
+- 不是正式晋级通过包：outer 23003 仍低于 96.25，`Δ_A` 仍低于 0.02；
+- 不满足 `>96.3` 目标；
+- 其预测与后生成的 `V36_COMPLETE_DEV_COMBINATION` 逐字节一致，二者是同一套冻结完整开发组合权重和同一组 full-test 专家预测。
+
+本地回传收据：
+
+`local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/platform-feedback-r1/feedback.json`

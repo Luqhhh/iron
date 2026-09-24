@@ -8,9 +8,16 @@ objective:
   metric: S = 100 - 50 * (WMAPE_iron + WMAPE_time)
   local_working_gate: 96.25
   current_platform_best_user_reported:
-    name: 01_V34_NE3_CAP50
-    score: 96.2698
-    verified_independently: false
+    name: V36_USER_REQUESTED_OUTER_FAILED
+    score: 96.2734
+    source: USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED
+    date: '2026-09-24'
+    previous_best:
+      name: V34_A
+      score: 96.2684
+    delta_vs_previous_best: 0.005
+    gap_to_strict_gt_96_3: 0.0266
+    zip_sha256: ef6e72f140e314c995ccb40a79439bf0fe3846c6089917936b9cba24399da7b1
   a_dev_package_score: 96.19464675636728
   v36_composition_package_score: 96.20376256899247
   v36_delta_vs_a_dev: 0.00911581
