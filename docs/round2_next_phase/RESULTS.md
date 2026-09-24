@@ -164,7 +164,46 @@ seed 3407: c2_raw 0.4077 | b128_l30_i20 0.3036 | b256_l60_i40 0.2886
 
 ---
 
-## 6. 对计划的影响
+## 6. R1 强锚点（开发切分）
+
+R0 是单一 C2 成员，候选相对它显得有用可能只是因为基座弱——批次 1 的三个筛选有两个因此无法与 V34_A 比较。R1 刻意**包含**批次 1 确认有效的时长 EBM 专家，使后续筛选提出的问题变成 V34_A 真实面对的那个：在已经带有已知有效机制的基座上，还有增量吗？
+
+成员池（全部可从公开 config 复现）：`c2_raw`（冻结 C2）、`d4_shallow`（V2.1 的 D4：depth 4 / 3000 iters）、`ord_ordered`（V2.5 的 ORD：Ordered boosting）、两个时长 EBM 边界专家。两个 CatBoost 变体是**结构性**差异（容量、boosting 类型），不是换种子。
+
+| pool | seed 42 | seed 3407 |
+|---|---:|---:|
+| R0 | 95.946200 | 95.986493 |
+| R0 + 时长 EBM | 96.021228 | 96.042959 |
+| **R1** | **96.063181** | **96.081358** |
+
+逐目标 WMAPE：
+
+| pool | 铁量 42 | 时长 42 | 铁量 3407 | 时长 3407 |
+|---|---:|---:|---:|---:|
+| R0 | 0.04006564 | 0.04101036 | 0.03977273 | 0.04049742 |
+| R1 | 0.03948823 | 0.03924815 | 0.03926056 | 0.03911227 |
+
+LP 权重（fold 0）：
+
+```
+铁量  42    : c2_raw 0.1490 | d4_shallow 0.6411 | ord_ordered 0.2099
+铁量  3407  : c2_raw 0.0975 | d4_shallow 0.6205 | ord_ordered 0.2820
+时长  42    : c2_raw 0.0000 | d4_shallow 0.0995 | ord_ordered 0.3205 | ebm1 0.2289 | ebm2 0.3511
+时长  3407  : c2_raw 0.0000 | d4_shallow 0.2053 | ord_ordered 0.2854 | ebm1 0.2749 | ebm2 0.2343
+```
+
+**结论**
+
+1. **C2 在时长上拿到 0 权重。** 一旦成员池有了多样性，作为 R0 唯一成员的 C2 就不再被使用。这从数据上确认了 R0 是个差基座，也说明批次 1 前两个筛选是在接近无用的基座上做的。
+2. **`d4_shallow` 在铁量上占约 0.64 权重**，压过 C2（depth 6 / 1500）。容量与训练轮数的配比比"更深更好"更重要。
+3. **两个时长 EBM 在更强基座上合计仍占 0.51–0.58 权重**，说明批次 1 的结论不是 R0 太弱造成的假象。
+4. **R1 仍低于 V34_A 的开发期水平（约 96.19）**，大致补上了 R0→V34_A 差距的一半。
+
+**边界**：R1 不是身份可比的 V34_A 参照，成员池由本计划自行定义。它让筛选**可解释**，但"达到 96.25"这类晋级声明仍需 0b。
+
+---
+
+## 7. 对计划的影响
 
 | 批次 | 原计划 | 调整后 |
 |---|---|---|
@@ -174,7 +213,7 @@ seed 3407: c2_raw 0.4077 | b128_l30_i20 0.3036 | b256_l60_i40 0.2886
 
 ---
 
-## 7. 复现方式
+## 8. 复现方式
 
 ```bash
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode linear   --root . --seeds 42 3407
@@ -182,6 +221,7 @@ uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode catboost --roo
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0         --root . --outer-seed 16061 --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+time-ebm --root . --outer-seed 42   --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r0+shrink  --root . --outer-seed 42    --inner-seed 7771
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1         --root . --outer-seed 42    --inner-seed 7771
 ```
 
 线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）；单个种子的 `r0+time-ebm` 约 20 分钟；单个种子的 `r0+shrink` 约 15 分钟。
