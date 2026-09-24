@@ -6553,5 +6553,57 @@
       "gate_delta_A_0_02_passed": false,
       "agent_uploads": 0
     }
+  },
+  "round2_v4_mechanism_search": {
+    "status": "COARSE_SCREEN_COMPLETED_NO_EXTENSION",
+    "date": "2026-09-24",
+    "branch": "round2-v3.6-loss-training-and-numeric-encoding",
+    "public_docs": [
+      "docs/round2_v4/PLAN.md",
+      "docs/round2_v4/REFERENCE.md",
+      "docs/round2_v4/RESULTS.md"
+    ],
+    "run": "local/runs/round2-v4-mechanism-search/coarse-r2",
+    "scratch_run": "local/runs/round2-v4-mechanism-search/coarse-r1",
+    "A_dev_reference": {
+      "package_score_full_five_fold_seed_mean": 96.19464675636728,
+      "iron_wmape": 0.03768349758368067,
+      "time_wmape": 0.03842356728897381,
+      "coarse_folds_0_1": {
+        "42": 96.28619180550385,
+        "3407": 96.15181534917012
+      }
+    },
+    "B_star": {
+      "status": "NOT_RECOVERED",
+      "name": "01_V34_NE3_CAP50",
+      "artificial_bonus_applied": false
+    },
+    "coarse_budget": {
+      "planned_units": 40,
+      "family_units": {
+        "F": 12,
+        "S": 12,
+        "P": 8,
+        "J": 8
+      }
+    },
+    "coarse_result": {
+      "available_seed_unit_events": 76,
+      "blocked_seed_unit_events": 4,
+      "external_fold_fits": 152,
+      "two_seed_positive_routes": 0,
+      "best_single_mean_package_delta": -0.11019862684885422,
+      "best_equal_blend_mean_package_delta": -0.03241180236066733
+    },
+    "extension": {
+      "triggered": false,
+      "units_used": 0,
+      "complete_development_flows": 0
+    },
+    "final_outer_23003": "CONSUMED_BY_V3_6_USER_INSTRUCTION_NOT_AVAILABLE_FOR_V4",
+    "platform_packages": 0,
+    "agent_uploads": 0,
+    "next_decision": "close tested low-capacity mechanism formulations; do not append grid; require new pre-registered budget and stronger orthogonal residual protocol for any follow-up"
   }
 }
