@@ -6517,6 +6517,41 @@
     },
     "new_platform_packages": 0,
     "agent_uploads": 0,
-    "results": "docs/round2_v3_6/RESULTS.md"
+    "results": "docs/round2_v3_6/RESULTS.md",
+    "user_requested_package": {
+      "name": "V36_USER_REQUESTED_OUTER_FAILED",
+      "status": "EXPLORATORY_USER_REQUESTED_OUTER_23003_FAILED",
+      "recipe": "V34_A full test predictions + frozen V3.6 development-composition experts",
+      "v36_experts": {
+        "tap_iron": [
+          "v36-s1-D-0029",
+          "v36-s1-N-0005"
+        ],
+        "tap_time_len": [
+          "v36-s1-O-0057",
+          "v36-s1-D-0048"
+        ]
+      },
+      "blend_weights": {
+        "tap_iron": [
+          0.6039253390958377,
+          0.35979428049704243,
+          0.036280380407119985
+        ],
+        "tap_time_len": [
+          0.7810993469207348,
+          0.09014959669794487,
+          0.1287510563813204
+        ]
+      },
+      "result_sha256": "b5ed9b51e9127aa0a7740be2100dd2b1d7464a357076aae9fe3068c664c35f20",
+      "zip_sha256": "ef6e72f140e314c995ccb40a79439bf0fe3846c6089917936b9cba24399da7b1",
+      "package": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/V36_USER_REQUESTED_OUTER_FAILED",
+      "desktop_package": "C:\\\\Users\\\\lqh22\\\\Desktop\\\\submission\\\\round2-V36-user-requested-outer-failed-20260924",
+      "outer_23003_package_score": 96.19003538073855,
+      "gate_local_working_96_25_passed": false,
+      "gate_delta_A_0_02_passed": false,
+      "agent_uploads": 0
+    }
   }
 }
