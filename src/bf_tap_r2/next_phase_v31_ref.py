@@ -12,9 +12,12 @@ search space.  So the parents can be looked up instead of read.
 
 Nothing here writes to ``local/runs``: no run record is fabricated, and the
 reconstruction is a lookup in the frozen schedule rather than an invention.
-What it does **not** verify is the ledger-independent assumption itself -- if
-the original coarse run had used a different sample seed, these parents would
-differ and the replay would silently produce a different schedule.
+
+The assumption underneath -- that the original coarse run used the default
+sample seed -- has since been checked against the real ledgers, which were
+recovered separately.  All six centres and all 320 S1 trials are identical to
+the originals, parameter for parameter.  See
+``docs/round2_next_phase/RESULTS.md`` section 9.
 """
 from __future__ import annotations
 
