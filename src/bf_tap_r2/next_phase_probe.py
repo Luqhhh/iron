@@ -135,20 +135,116 @@ def probe(root: Path, seeds: list[int], output: Path) -> dict:
     return payload
 
 
+C2_PARAMS = {
+    "loss_function": "RMSE",
+    "depth": 6,
+    "iterations": 1500,
+    "learning_rate": 0.03,
+    "l2_leaf_reg": 10,
+    "random_seed": 42,
+    "thread_count": 4,
+    "verbose": False,
+    "allow_writing_files": False,
+}
+
+
+def catboost_frame(frame: pd.DataFrame, kind: str) -> pd.DataFrame:
+    """C2 input frame; ``degree2`` appends every pairwise product.
+
+    Built from one column mapping rather than repeated insertion: 210 inserts
+    fragment the block and pandas warns on every fit.
+    """
+    columns = {name: frame[name].to_numpy(dtype=float) for name in FEATURES}
+    if kind == "degree2":
+        values = frame[list(FEATURES)].to_numpy(dtype=float)
+        for i in range(len(FEATURES)):
+            for j in range(i + 1, len(FEATURES)):
+                columns[f"{FEATURES[i]}__x__{FEATURES[j]}"] = values[:, i] * values[:, j]
+    columns["spout_no"] = frame["spout_no"].astype(int).to_numpy()
+    return pd.DataFrame(columns, index=frame.index)
+
+
+def catboost_increment(root: Path, seeds: list[int], output: Path) -> dict:
+    """Batch-2 decision: does an explicit pairwise block add to the tree model?
+
+    The linear probe showed a plain linear model needs the products.  Trees can
+    already express interactions, so this measures the increment that matters.
+    """
+    from catboost import CatBoostRegressor
+
+    train = load_v2(root / "复赛_train", "train", 2754)
+    results: dict[str, dict] = {}
+    for kind in ("raw", "degree2"):
+        per_seed: dict[str, dict] = {}
+        designs = catboost_frame(train, kind)
+        for seed in seeds:
+            folds = (
+                make_folds(train, seed)
+                .set_index("sample_id")
+                .loc[train.sample_id, "fold"]
+                .to_numpy()
+            )
+            predictions = {target: np.full(len(train), np.nan) for target in TARGETS}
+            for fold in range(5):
+                mask_train = folds != fold
+                mask_valid = folds == fold
+                for target in TARGETS:
+                    model = CatBoostRegressor(**C2_PARAMS)
+                    model.fit(
+                        designs.loc[mask_train],
+                        train.loc[mask_train, target].to_numpy(dtype=float),
+                        cat_features=["spout_no"],
+                    )
+                    predictions[target][mask_valid] = model.predict(designs.loc[mask_valid])
+            per_seed[str(seed)] = {
+                target: wmape(train[target].to_numpy(dtype=float), predictions[target])
+                for target in TARGETS
+            }
+        mean_iron = float(np.mean([s["tap_iron"] for s in per_seed.values()]))
+        mean_time = float(np.mean([s["tap_time_len"] for s in per_seed.values()]))
+        results[kind] = {
+            "two_seed_mean_W_I": mean_iron,
+            "two_seed_mean_W_T": mean_time,
+            "two_seed_mean_score": package_local_score(mean_iron, mean_time),
+            "per_seed": per_seed,
+        }
+    payload = {
+        "probe": "round2-next-phase batch 2 CatBoost increment",
+        "recipe": "configs/round2_v0_1/models.yaml C2",
+        "fold_seeds": seeds,
+        "results": results,
+    }
+    output.mkdir(parents=True, exist_ok=True)
+    (output / "catboost-increment.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8"
+    )
+    return payload
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", choices=("linear", "catboost"), default="linear")
     parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument("--seeds", type=int, nargs="+", default=[42, 3407])
-    parser.add_argument(
-        "--output", type=Path, default=Path("local/runs/round2-next-phase/linear-probe-r1")
-    )
+    parser.add_argument("--output", type=Path, default=None)
     args = parser.parse_args()
-    payload = probe(args.root, args.seeds, args.output)
-    print(f"{'design':10s} {'W_I':>10s} {'W_T':>10s} {'score':>10s}")
+    if args.mode == "linear":
+        output = args.output or Path("local/runs/round2-next-phase/linear-probe-r1")
+        payload = probe(args.root, args.seeds, output)
+        print(f"{'design':10s} {'W_I':>10s} {'W_T':>10s} {'score':>10s}")
+        for kind, row in payload["results"].items():
+            print(
+                f"{kind:10s} {row['pooled_W_I']:10.6f} {row['pooled_W_T']:10.6f} "
+                f"{row['package_score']:10.4f}"
+            )
+        return 0
+    output = args.output or Path("local/runs/round2-next-phase/catboost-increment-r1")
+    payload = catboost_increment(args.root, args.seeds, output)
+    print(f"{'design':10s} {'mean W_I':>10s} {'mean W_T':>10s} {'score':>10s}")
     for kind, row in payload["results"].items():
         print(
-            f"{kind:10s} {row['pooled_W_I']:10.6f} {row['pooled_W_T']:10.6f} "
-            f"{row['package_score']:10.4f}"
+            f"{kind:10s} {row['two_seed_mean_W_I']:10.6f} {row['two_seed_mean_W_T']:10.6f} "
+            f"{row['two_seed_mean_score']:10.4f}"
         )
     return 0
 

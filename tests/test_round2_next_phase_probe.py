@@ -6,7 +6,7 @@ import pandas as pd
 import pytest
 
 from bf_tap_r2.data import FEATURES
-from bf_tap_r2.next_phase_probe import build_design, ratio_features
+from bf_tap_r2.next_phase_probe import build_design, catboost_frame, ratio_features
 
 PAIRWISE = len(FEATURES) * (len(FEATURES) - 1) // 2
 EXPECTED_WIDTH = {
@@ -65,3 +65,17 @@ def test_spout_one_hot_is_explicit():
     design = build_design(train, train, "raw")
     columns = design[:, len(FEATURES) : len(FEATURES) + 2]
     assert np.allclose(columns, np.array([1.0, 0.0]))
+
+
+def test_catboost_frame_appends_every_pair_once():
+    train = frame(12, 7)
+    raw = catboost_frame(train, "raw")
+    assert list(raw.columns) == [*FEATURES, "spout_no"]
+    wide = catboost_frame(train, "degree2")
+    assert wide.shape == (12, len(FEATURES) + PAIRWISE + 1)
+    assert np.allclose(wide["oxygen__x__pig"], train["oxygen"] * train["pig"])
+    # Column order must stay deterministic for the recorded design digest.
+    assert list(wide.columns)[len(FEATURES) : len(FEATURES) + 2] == [
+        "air_volume__x__cold_air_press",
+        "air_volume__x__hot_air_press",
+    ]
