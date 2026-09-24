@@ -216,6 +216,29 @@ def test_time_ebm_member_refuses_the_wrong_target():
         member.fit_predict(data, data, "tap_iron")
 
 
+def test_shrink_member_fits_and_respects_its_target():
+    from bf_tap_r2.next_phase_members import ShrinkSpoutMember, catboost_trial
+    from bf_tap_r2.next_phase_nested import C2_PARAMS
+
+    cheap = {**C2_PARAMS, "iterations": 20, "thread_count": 1}
+    member = ShrinkSpoutMember(
+        "shrink_cheap",
+        target="tap_time_len",
+        beta=0.25,
+        local_l2_multiplier=1.0,
+        parent=catboost_trial(
+            "tap_time_len", parameters={**cheap, "cat_features": ["spout_no"]}
+        ),
+        min_spout_samples=20,
+    )
+    data = frame(160, 15)
+    values = member.fit_predict(data, data, "tap_time_len")
+    assert values.shape == (160,)
+    assert np.isfinite(values).all()
+    with pytest.raises(ValueError):
+        member.fit_predict(data, data, "tap_iron")
+
+
 def test_r0_is_the_single_reproducible_c2_anchor():
     from bf_tap_r2.next_phase_nested import r0_members
 

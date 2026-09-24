@@ -18,7 +18,7 @@ from typing import Any, Sequence
 import numpy as np
 import pandas as pd
 
-from .next_phase_nested import CatBoostMember, Member
+from .next_phase_nested import C2_PARAMS, CatBoostMember, Member
 
 EBM_BASE: dict[str, Any] = {
     "max_leaves": 2,
@@ -117,3 +117,101 @@ def time_ebm_members(centers: Sequence[dict[str, Any]] = TIME_EBM_CENTERS) -> li
 def r0_plus_time_ebm() -> list[Member]:
     """The anchor plus the batch-1 time-side experts."""
     return [CatBoostMember("c2_raw"), *time_ebm_members()]
+
+
+# The V3.1 parent recipes the frozen shrink grid points at
+# (v31-s1-time-0021-0050, v32-s1-time_neighborhood-0126) are search outputs
+# that only exist in the missing run cache.  The C2 recipe stands in for them
+# and is documented as a stand-in: this screen asks whether a per-spout
+# correction adds anything at all, not whether one particular parent wins.
+SHRINK_PARENT_PARAMS: dict[str, Any] = {**C2_PARAMS, "cat_features": ["spout_no"]}
+
+SHRINK_GRID: tuple[dict[str, Any], ...] = (
+    {"name": "shrink_m1.0_b0.25", "local_l2_multiplier": 1.0, "beta": 0.25},
+    {"name": "shrink_m3.0_b0.50", "local_l2_multiplier": 3.0, "beta": 0.50},
+)
+
+
+def catboost_trial(
+    target: str,
+    feature_set: str = "raw",
+    target_transform: str = "identity",
+    parameters: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """A V3.1/V3 trial dict, which is what the shrink wrapper consumes."""
+    return {
+        "family": "catboost",
+        "feature_set": feature_set,
+        "target_transform": target_transform,
+        "parameters": dict(SHRINK_PARENT_PARAMS if parameters is None else parameters),
+        "target": target,
+    }
+
+
+class ShrinkSpoutMember(Member):
+    """Global parent plus a per-spout correction, shrunk by beta.
+
+    Reuses ``ShrunkSpoutRegressor`` so the frozen combination rule, the
+    ``min_spout_samples`` fallback and the inverse-transform ordering are the
+    recorded ones rather than a reimplementation.
+    """
+
+    def __init__(
+        self,
+        name: str,
+        target: str,
+        beta: float,
+        local_l2_multiplier: float,
+        parent: dict[str, Any] | None = None,
+        min_spout_samples: int = 200,
+    ):
+        self.name = name
+        self.targets = (target,)
+        self.target = target
+        self.beta = float(beta)
+        self.local_l2_multiplier = float(local_l2_multiplier)
+        self.parent = catboost_trial(target) if parent is None else parent
+        self.min_spout_samples = int(min_spout_samples)
+
+    def fit_predict(self, train: pd.DataFrame, valid: pd.DataFrame, target: str) -> np.ndarray:
+        from .v3_4_models import ShrunkSpoutRegressor
+
+        if target != self.target:
+            raise ValueError(f"{self.name} is a {self.target} expert, asked for {target}")
+        model = ShrunkSpoutRegressor(
+            {
+                "kind": "global_spout_shrink",
+                "target": self.target,
+                "parameters": {
+                    "parent_trial": self.parent,
+                    "local_l2_multiplier": self.local_l2_multiplier,
+                    "beta": self.beta,
+                    "min_spout_samples": self.min_spout_samples,
+                    "local_include_spout": True,
+                },
+            }
+        )
+        model.fit(train, train[target].to_numpy(dtype=float))
+        return np.asarray(model.predict(valid), dtype=float)
+
+
+def spout_shrink_members(
+    target: str = TIME_TARGET,
+    grid: Sequence[dict[str, Any]] = SHRINK_GRID,
+) -> list[Member]:
+    members: list[Member] = []
+    for point in grid:
+        members.append(
+            ShrinkSpoutMember(
+                str(point["name"]),
+                target=target,
+                beta=float(point["beta"]),
+                local_l2_multiplier=float(point["local_l2_multiplier"]),
+            )
+        )
+    return members
+
+
+def r0_plus_shrink() -> list[Member]:
+    """The anchor plus the batch-1 per-spout shrink candidates."""
+    return [CatBoostMember("c2_raw"), *spout_shrink_members()]
