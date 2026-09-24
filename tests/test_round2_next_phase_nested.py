@@ -253,6 +253,34 @@ def test_r1_targets_every_target_and_differs_structurally():
         assert set(overrides) & {"depth", "iterations", "boosting_type"}
 
 
+def test_joint_member_serves_both_targets_from_one_fit():
+    from bf_tap_r2.next_phase_members import JointCatBoostMember
+    from bf_tap_r2.next_phase_nested import C2_PARAMS
+
+    member = JointCatBoostMember(params={**C2_PARAMS, "iterations": 20, "thread_count": 1})
+    data = frame(120, 16)
+    for target in TARGETS:
+        values = member.fit_predict(data, data, target)
+        assert values.shape == (120,)
+        assert np.isfinite(values).all()
+
+
+def test_r1_extended_superset_adds_structural_not_seed_variants():
+    from bf_tap_r2.next_phase_members import (
+        R1_EXTRA_VARIANTS,
+        JointCatBoostMember,
+        r1_extended_members,
+        r1_members,
+    )
+
+    names = [member.name for member in r1_extended_members()]
+    assert len(set(names)) == len(names)
+    assert {member.name for member in r1_members()} < set(names)
+    assert any(isinstance(member, JointCatBoostMember) for member in r1_extended_members())
+    for _, overrides in R1_EXTRA_VARIANTS:
+        assert set(overrides) & {"depth", "iterations", "l2_leaf_reg", "rsm"}
+
+
 def test_r0_is_the_single_reproducible_c2_anchor():
     from bf_tap_r2.next_phase_nested import r0_members
 

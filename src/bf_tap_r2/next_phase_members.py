@@ -18,7 +18,8 @@ from typing import Any, Sequence
 import numpy as np
 import pandas as pd
 
-from .next_phase_nested import C2_PARAMS, CatBoostMember, Member
+from .data import TARGETS
+from .next_phase_nested import C2_PARAMS, CatBoostMember, Member, catboost_frame
 
 EBM_BASE: dict[str, Any] = {
     "max_leaves": 2,
@@ -232,9 +233,60 @@ R1_CATBOOST_VARIANTS: tuple[tuple[str, dict[str, Any]], ...] = (
 )
 
 
+class JointCatBoostMember(Member):
+    """One CatBoost fitted on both targets at once, serving either of them.
+
+    Structurally unlike every other member: it is the only one that sees the
+    second target.  V2.3 recorded that MultiRMSE helped iron and not time, so
+    the harness reports per-target weights and can show that asymmetry rather
+    than assuming it.
+    """
+
+    def __init__(self, name: str = "joint_multirmse", params: dict[str, Any] | None = None):
+        self.name = name
+        # The loss is forced last: callers routinely spread C2_PARAMS into the
+        # overrides, and that carries loss_function="RMSE", which would
+        # otherwise undo the whole point of this member.
+        self.params = {**C2_PARAMS, **(params or {}), "loss_function": "MultiRMSE"}
+
+    def fit_predict(self, train: pd.DataFrame, valid: pd.DataFrame, target: str) -> np.ndarray:
+        from catboost import CatBoostRegressor
+
+        if target not in TARGETS:
+            raise ValueError(f"Unknown target {target}")
+        model = CatBoostRegressor(**self.params)
+        model.fit(
+            catboost_frame(train, "raw"),
+            train[list(TARGETS)].to_numpy(dtype=float),
+            cat_features=["spout_no"],
+        )
+        values = np.asarray(model.predict(catboost_frame(valid, "raw")), dtype=float)
+        if values.ndim != 2 or values.shape[1] != len(TARGETS):
+            raise ValueError(f"Joint member returned shape {values.shape}")
+        return values[:, list(TARGETS).index(target)]
+
+
+# Structural variants, not seed variants: V3.2 established that reseeding buys
+# about +0.004 while structural difference is what the fusion actually uses.
+R1_EXTRA_VARIANTS: tuple[tuple[str, dict[str, Any]], ...] = (
+    ("d8_deep", {"depth": 8, "iterations": 800}),
+    ("l2_strong", {"l2_leaf_reg": 100}),
+    ("rsm_half", {"rsm": 0.5}),
+)
+
+
 def r1_members() -> list[Member]:
     members: list[Member] = [CatBoostMember("c2_raw")]
     for name, overrides in R1_CATBOOST_VARIANTS:
         members.append(CatBoostMember(name, params={**C2_PARAMS, **overrides}))
     members.extend(time_ebm_members())
+    return members
+
+
+def r1_extended_members() -> list[Member]:
+    """R1 plus a wider structural spread and a joint multi-target member."""
+    members = r1_members()
+    for name, overrides in R1_EXTRA_VARIANTS:
+        members.append(CatBoostMember(name, params={**C2_PARAMS, **overrides}))
+    members.append(JointCatBoostMember())
     return members
