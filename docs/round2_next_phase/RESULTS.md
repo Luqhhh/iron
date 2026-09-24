@@ -336,7 +336,46 @@ L1 的成员池现在大部分可重建：
 
 ---
 
-## 10. 对计划的影响
+## 10. 复现 V34_A：原件驱动在本机跑通
+
+拿到完整交接材料后（含真实运行目录、`run_v34_final_outer.py`、`run_l1_oof.py`），把 `local/runs/round2-*` 还原到位，仅改动脚本中硬编码的 `ROOT`，并把输出指向 `final-outer-16061-repro-r1`（**不覆盖原件目录**）。
+
+### 结果
+
+| 指标 | 原件 | 复现 | 差 |
+|---|---:|---:|---:|
+| candidate 包分 | 96.19973698527157 | **96.19837140814283** | **−0.00137** |
+| L1 包分 | 96.16031215578445 | 96.15686584533933 | −0.00345 |
+| candidate 铁量 WMAPE | 0.037855457487617636 | 0.037882199754914254 | +2.7e-5 |
+| candidate 时长 WMAPE | 0.03814980280695106 | 0.03815037208222921 | +5.7e-7 |
+| L1 铁量 WMAPE | 0.038511981119337194 | 0.0385809073282394 | +6.9e-5 |
+| L1 时长 WMAPE | 0.038281775764973866 | 0.038281775764973956 | **+9e-17** |
+
+### 逐样本比对（2754 行，折号全部一致）
+
+| 列 | max\|差\| | 平均\|差\| | 相对 | >0.01 的样本 |
+|---|---:|---:|---:|---:|
+| `l1_tap_time_len` | **0.000000** | 0.000000 | **2.2e-15** | **0** |
+| `candidate_tap_time_len` | 0.154 | 0.0057 | 4.5e-5 | 424 |
+| `candidate_tap_iron` | 1.348 | 0.185 | 3.4e-4 | 2647 |
+| `l1_tap_iron` | 2.572 | 0.368 | 6.9e-4 | 2703 |
+
+### 判读
+
+1. **时长侧基础成员逐位复现**（`l1_tap_time_len` 的 max 差为 0，相对 2.2e-15）。这证明折协议、成员配方、LP 权重学习全部正确——**协议本身无差**。
+2. **差异集中在铁量侧**（相对 7e-4）**与时长侧的 EBM 专家**（相对 4.5e-5）。铁量侧独有的成分是 `j1_*`（MultiRMSE 联合）与 `jm1`（**MLP，lbfgs 求解**）。
+3. JM1 在本环境内**两次运行逐位相同**，故非进程内随机性。跨环境差异的首要嫌疑是 scipy/sklearn 的 `lbfgs` 实现差异——`nonlinear_models` 的 MLP 用 `lbfgs` + `tol=1e-6` + `max_iter=4000`，此类优化器对库版本敏感，末位差异会在迭代中放大。运行目录中**没有环境记录**可供比对，故该归因是首要假设而非已证实结论。
+4. 净影响：包分差 **0.0014**（0.0014%）。对方向判断无实质影响。
+
+### 使用口径
+
+- **作对照时使用原件 `final-outer-16061/final_oof.csv`**，那是平台最佳那次运行的逐样本预测
+- **本机复现件用于验证管线可跑通，以及作为后续候选的评估 harness**（改 `BASE_NAMES` 即可接入新成员）
+- 不得把复现件的分数当作原件分数引用
+
+---
+
+## 11. 对计划的影响
 
 | 批次 | 原计划 | 调整后 |
 |---|---|---|
@@ -346,7 +385,7 @@ L1 的成员池现在大部分可重建：
 
 ---
 
-## 11. 复现方式
+## 12. 复现方式
 
 ```bash
 uv run --extra round2 python -m bf_tap_r2.next_phase_probe --mode linear   --root . --seeds 42 3407
@@ -358,6 +397,12 @@ uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1         --
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1-extended --root . --outer-seed 42   --inner-seed 7771
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool l0-time              --root . --outer-seed 42 --inner-seed 7771 --targets tap_time_len
 uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1-extended+l0time   --root . --outer-seed 42 --inner-seed 7771 --targets tap_time_len
+uv run --extra round2 python -m bf_tap_r2.next_phase_nested --pool r1-extended+l0time+l1time --root . --outer-seed 42 --inner-seed 7771 --targets tap_time_len
+
+# §10 - reproduce V34_A with the original driver.  Needs local/runs/round2-*
+# restored from the handoff archive; the output directory is renamed so the
+# original final-outer-16061 record is never overwritten.
+uv run --extra round2 python local/runs/round2-v3.4-ebm-and-constrained-composition/run_v34_final_outer.py
 ```
 
 线性探针约 4 秒；CatBoost 增量检验约 5 分钟（40 次拟合）；单个种子的 R0 嵌套外层约 3 分钟（60 次拟合）；单个种子的 `r0+time-ebm` 约 20 分钟；单个种子的 `r0+shrink` 约 15 分钟。
