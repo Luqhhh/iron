@@ -263,7 +263,9 @@ def r0_members() -> list[Member]:
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path("."))
-    parser.add_argument("--pool", choices=("r0", "r0+time-ebm", "r0+shrink"), default="r0")
+    parser.add_argument(
+        "--pool", choices=("r0", "r0+time-ebm", "r0+shrink", "r1"), default="r0"
+    )
     parser.add_argument("--outer-seed", type=int, default=16061)
     parser.add_argument("--inner-seed", type=int, default=7771)
     parser.add_argument("--outer-folds", type=int, default=5)
@@ -274,9 +276,13 @@ def main() -> int:
         members = r0_members()
     else:
         # Imported here so the module graph stays acyclic.
-        from .next_phase_members import r0_plus_shrink, r0_plus_time_ebm
+        from .next_phase_members import r0_plus_shrink, r0_plus_time_ebm, r1_members
 
-        builders = {"r0+time-ebm": r0_plus_time_ebm, "r0+shrink": r0_plus_shrink}
+        builders = {
+            "r0+time-ebm": r0_plus_time_ebm,
+            "r0+shrink": r0_plus_shrink,
+            "r1": r1_members,
+        }
         members = builders[args.pool]()
     label = args.pool.replace("+", "_plus_")
     output = args.output or Path(f"local/runs/round2-next-phase/{label}-outer-{args.outer_seed}")

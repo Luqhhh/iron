@@ -239,6 +239,20 @@ def test_shrink_member_fits_and_respects_its_target():
         member.fit_predict(data, data, "tap_iron")
 
 
+def test_r1_targets_every_target_and_differs_structurally():
+    from bf_tap_r2.next_phase_members import R1_CATBOOST_VARIANTS, r1_members
+    from bf_tap_r2.next_phase_nested import applies_to
+
+    members = r1_members()
+    names = [member.name for member in members]
+    assert len(set(names)) == len(names)
+    for target in TARGETS:
+        assert any(applies_to(member, target) for member in members), target
+    # The variants must differ from C2 structurally, not by a seed alone.
+    for _, overrides in R1_CATBOOST_VARIANTS:
+        assert set(overrides) & {"depth", "iterations", "boosting_type"}
+
+
 def test_r0_is_the_single_reproducible_c2_anchor():
     from bf_tap_r2.next_phase_nested import r0_members
 

@@ -215,3 +215,26 @@ def spout_shrink_members(
 def r0_plus_shrink() -> list[Member]:
     """The anchor plus the batch-1 per-spout shrink candidates."""
     return [CatBoostMember("c2_raw"), *spout_shrink_members()]
+
+
+# R1 is the strong anchor.  R0 is a single C2 member, so a candidate measured
+# against it may look useful simply because the base is weak.  R1 deliberately
+# includes the time EBM experts that batch 1 confirmed, so a later screen asks
+# the question V34_A actually poses: does this add anything on top of a base
+# that already carries the known-good mechanism?
+#
+# The two CatBoost variants trace to documented V2 recipes: D4 is the shallow
+# depth-4/3000-iteration model from v2.1, and ORD is the Ordered-boosting
+# model from v2.5.  Both differ structurally from C2 rather than by a seed.
+R1_CATBOOST_VARIANTS: tuple[tuple[str, dict[str, Any]], ...] = (
+    ("d4_shallow", {"depth": 4, "iterations": 3000}),
+    ("ord_ordered", {"boosting_type": "Ordered"}),
+)
+
+
+def r1_members() -> list[Member]:
+    members: list[Member] = [CatBoostMember("c2_raw")]
+    for name, overrides in R1_CATBOOST_VARIANTS:
+        members.append(CatBoostMember(name, params={**C2_PARAMS, **overrides}))
+    members.extend(time_ebm_members())
+    return members
