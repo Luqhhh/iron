@@ -301,7 +301,7 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "V36_USER_REQUESTED_PACKAGE_PLATFORM_96_2734_NEW_BEST_NEXT_TARGET_GT_96_3",
+    "status": "V36_USER_REQUESTED_PACKAGE_PLATFORM_96_2734_REMAINS_BEST_NEXT_TARGET_GT_96_3",
     "submission_priority": [],
     "current_preferred": {
       "name": "V36_USER_REQUESTED_OUTER_FAILED",
@@ -382,8 +382,8 @@
       "V34_A": 96.2684,
       "V34_B": 96.266
     },
-    "latest_feedback_receipt": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/platform-feedback-r1/feedback.json",
-    "latest_results": "docs/round2_v3_6/RESULTS.md",
+    "latest_feedback_receipt": "local/runs/round2-v4.2-structure-search/release-r1/V42_IRON_N2_Q25/platform-feedback-r1/feedback.json",
+    "latest_results": "docs/round2_v4_2/FEEDBACK.md",
     "next_phase_target": {
       "target": "platform_score_gt_96.3",
       "user_instruction": "下一阶段目标定为96.3以上",
@@ -412,12 +412,23 @@
     "platform_ranking_latest": [
       "V36_USER_REQUESTED_OUTER_FAILED",
       "V34_A",
-      "V34_B"
+      "V34_B",
+      "V42_IRON_N2_Q25"
     ],
     "platform_scores_latest": {
       "V36_USER_REQUESTED_OUTER_FAILED": 96.2734,
       "V34_A": 96.2684,
-      "V34_B": 96.266
+      "V34_B": 96.266,
+      "V42_IRON_N2_Q25": 96.2533
+    },
+    "latest_exploratory_result": {
+      "candidate": "V42_IRON_N2_Q25",
+      "platform_score_user_reported": 96.2533,
+      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "delta_vs_current_best": -0.0201,
+      "promoted": false,
+      "effect_on_preference": "NONE; V36 remains the preferred package",
+      "reading": "The V4.2 N2 quarter-blend's local +0.0144 did not transfer; the pre-registered +0.02 fusion gate was never met."
     }
   },
   "round2_v2_3_candidate_release": {
@@ -5850,6 +5861,14 @@
         },
         "feedback_record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json"
       }
+    },
+    "latest_challenger": {
+      "name": "V42_IRON_N2_Q25",
+      "score": 96.2533,
+      "delta": -0.0201,
+      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "date": "2026-09-25",
+      "best_unchanged": true
     }
   },
   "round2_v3_local_search": {
@@ -6765,5 +6784,101 @@
     "agent_uploads": 0,
     "final_outer_23003": "NOT_USED_ALREADY_CONSUMED_BY_V3_6",
     "decision": "close tested C/E implementations after no reproducible A-relative positive increment; do not claim B_star or platform-level conclusions"
+  },
+  "round2_v4_2_structure_search": {
+    "status": "EXPLORATORY_PACKAGE_PLATFORM_TRIED_NO_PROMOTION",
+    "date": "2026-09-25",
+    "branch": "round2-v4.2-structure-search",
+    "public_docs": [
+      "docs/round2_v4_2/RESULTS.md",
+      "docs/round2_v4_2/FEEDBACK.md"
+    ],
+    "taskbook": "docs/round2_v4_2/V4_2_TASKBOOK.md",
+    "spec": "configs/round2_v4_2/SEARCH_SPEC.yaml",
+    "gates": {
+      "coarse_continuation_gate": {
+        "state": "PASSED",
+        "fixed_quarter_mean_gain_unrepaired": 0.009315530482098211,
+        "fixed_quarter_mean_gain_repaired_seed_init_v2": 0.009807,
+        "both_split_seeds_positive": true
+      },
+      "full_coverage_fusion_gate": {
+        "state": "FAILED",
+        "threshold_mean_gain": 0.02,
+        "repaired_mean_gain": 0.01437421,
+        "both_split_seeds_positive": true,
+        "positive_folds": "8/10",
+        "failure_mode": "mean_threshold_only",
+        "alpha_selection_run": false
+      },
+      "alpha_rescue_scan": "NOT_RUN_PER_FROZEN_STOP_RULE"
+    },
+    "lines": {
+      "R_retrieval": {
+        "standalone_win": false,
+        "best_direct_mean_gain": -0.348,
+        "quarter_blend_contribution": -0.0197,
+        "self_retrieval_count": 0,
+        "max_illegal_attention_weight": 0.0
+      },
+      "S_symbolic": {
+        "backend": "PySR",
+        "fallback_used": false,
+        "best_fixed_quarter_mean_gain": -0.2165
+      },
+      "N_differentiable_oblivious_trees": {
+        "finalist": "N-N2-tap_iron",
+        "numeric_encoding": "raw",
+        "n_parameters": 9881,
+        "collapse_warning": false
+      }
+    },
+    "submission": {
+      "package": "V42_IRON_N2_Q25",
+      "packaged": true,
+      "user_requested": true,
+      "recipe": "parent V36 tap_iron column + 0.25 * full-data V4.2 N-N2 on tap_iron; tap_time_len preserved",
+      "zip_sha256": "7fdfec5b3a2e3c58c01b526f1ee8f8b8e5d09625ec34ecbc581704b0c44fc2b5",
+      "result_sha256": "296e64c482f332191f7db5deaf26812c8ad057ced3e16bda1fc6ae67f7c9ee24",
+      "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V42-IRON-N2-Q25-20260925",
+      "platform_uploads_by_agent": 0,
+      "platform_score_user_reported": 96.2533,
+      "platform_score_source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+      "delta_vs_current_platform_best": -0.0201,
+      "promoted": false,
+      "feedback_record": "local/runs/round2-v4.2-structure-search/release-r1/V42_IRON_N2_Q25/platform-feedback-r1/feedback.json"
+    },
+    "local_evidence": {
+      "protocol": "same-protocol two split seeds x five folds, fixed_quarter alpha 0.25",
+      "baseline_mean_local_package_score": 96.20426522000835,
+      "repaired_seed_init_v2_mean_score": 96.21863943009,
+      "repaired_seed_init_v2_mean_gain": 0.01437421,
+      "unrepaired_r1_mean_score": 96.21788191535,
+      "unrepaired_r1_mean_gain": 0.013616695,
+      "transfer": {
+        "local_delta": 0.0144,
+        "platform_delta_vs_v36": -0.0201,
+        "miss": 0.0345,
+        "reading": "Local development-split gain did not transfer; it inverted into a platform loss against the incumbent."
+      }
+    },
+    "known_g0_discrepancy": {
+      "claim": "manifest time_column_preserved_byte_for_byte=true",
+      "observed": "136/322 rows differ as strings; 74/322 differ as float64 by <=2 ULP (max abs 2.84e-14)",
+      "root_cause": "src/bf_tap_r2/v4_2_package.py:200-207 reads the parent via pd.read_csv (float_precision='high') then reformats with str(v) instead of passing raw parent strings",
+      "impact": "numeric only; package identity and recipe unaffected",
+      "resolution": "PENDING_USER_DECISION"
+    },
+    "next_structural_hypothesis": {
+      "name": "N2_DEPTHSELECT",
+      "spec": "configs/round2_v4_2/FOLLOWUP_SPEC.yaml",
+      "enabled": false,
+      "note": "declared, not executed; must not start implicitly"
+    },
+    "followup_results_doc": {
+      "path": "docs/round2_v4_2/FOLLOWUP_RESULTS.md",
+      "publication": "PENDING_BY_AUTHORING_SESSION",
+      "run": "local/runs/round2-v4.2-structure-search/n2-seed-init-v2"
+    }
   }
 }
