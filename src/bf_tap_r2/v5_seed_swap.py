@@ -40,6 +40,7 @@ from .v5_spec import V5Spec, load_v5_spec
 __all__ = [
     "SEED_KEYS",
     "shift_trial",
+    "verify_zero_shift_reproduction",
     "load_v36_trials",
     "frozen_column_predictor",
     "shifted_expert_oof",
@@ -287,6 +288,49 @@ def _payload_both_columns(ids: Sequence[str], values: np.ndarray) -> bytes:
     writer.writerows((sid, format(i, ".17g"), format(t, ".17g")) for sid, (i, t) in zip(ids, values))
     payload = stream.getvalue().encode("utf-8")
     validate_result(payload, ids)
+    return payload
+
+
+def verify_zero_shift_reproduction(root: Path | str, spec: V5Spec, workers: int = 12,
+                                   rtol: float = 1e-6) -> dict[str, Any]:
+    """Refit the recipe with ``shift = 0`` and compare it to the parent package.
+
+    A seed-shift experiment is only interpretable if the unshifted rebuild
+    reproduces the released columns; this check is recorded before the package is
+    treated as evidence.
+    """
+    root = Path(root).resolve()
+    built = full_data_seed_swap_columns(root, spec, 0, workers=workers)
+    ids = list(built["ids"])
+    parent_path = root / str(spec.raw["reference"]["v36_parent_package"]) / "result.csv"
+    parent_ids, columns = read_parent_columns(parent_path)
+    if set(parent_ids) != set(ids):
+        raise ValueError("V5 zero-shift verification: parent ID set mismatch")
+    order = {sid: position for position, sid in enumerate(parent_ids)}
+    payload: dict[str, Any] = {
+        "parent": str(parent_path.relative_to(root)),
+        "rtol": float(rtol),
+        "targets": {},
+        "agent_uploads": 0,
+    }
+    passed = True
+    for target in TARGETS:
+        previous = np.asarray([columns[target][0][order[sid]] for sid in ids], dtype=float)
+        rebuilt = np.asarray(built["columns"][target], dtype=float)
+        difference = np.abs(rebuilt - previous)
+        scale = max(1.0, float(np.max(np.abs(previous))))
+        relative = float(difference.max() / scale)
+        ok = bool(relative <= float(rtol))
+        passed = passed and ok
+        payload["targets"][target] = {
+            "max_abs_diff": float(difference.max()),
+            "max_rel_diff": relative,
+            "mean_abs_diff": float(difference.mean()),
+            "passed": ok,
+        }
+    payload["passed"] = bool(passed)
+    if not passed:
+        raise AssertionError("V5 zero-shift rebuild does not reproduce the parent package")
     return payload
 
 

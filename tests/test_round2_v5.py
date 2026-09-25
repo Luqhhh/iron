@@ -351,3 +351,38 @@ def test_seed_swap_covers_the_frozen_expert_seed_keys() -> None:
     for trial_id in ("v36-s1-D-0029", "v36-s1-N-0005", "v36-s1-O-0057", "v36-s1-D-0048"):
         parameters = trials[trial_id]["parameters"]
         assert any(key in parameters for key in SEED_KEYS)
+
+# ---------------------------------------------------------------------------
+# replication vector resolution
+# ---------------------------------------------------------------------------
+
+def test_recorded_vector_prefers_the_v5_refinement_tree(tmp_path: Path) -> None:
+    from bf_tap_r2.v5_replicate import _recorded_vector
+    from bf_tap_r2.v5_spec import load_v5_spec
+
+    spec = load_v5_spec(REPO_ROOT)
+    vector = np.arange(2754, dtype=float)
+    path = (tmp_path / "local/runs/round2-v5-error-covariance/time-n-family-r1/seed-42"
+            / "pred-v36-s1-N-0049.npy")
+    path.parent.mkdir(parents=True)
+    np.save(path, vector)
+    loaded = _recorded_vector(tmp_path, spec, "v36", "v36-s1-N-0049", 42)
+    assert loaded.shape == (2754,)
+    assert np.array_equal(loaded, vector)
+    with pytest.raises(FileNotFoundError):
+        _recorded_vector(tmp_path, spec, "v36", "v36-s1-N-9999", 42)
+
+
+def test_recorded_vector_rejects_a_nonfinite_vector(tmp_path: Path) -> None:
+    from bf_tap_r2.v5_replicate import _recorded_vector
+    from bf_tap_r2.v5_spec import load_v5_spec
+
+    spec = load_v5_spec(REPO_ROOT)
+    vector = np.ones(2754, dtype=float)
+    vector[0] = np.nan
+    path = (tmp_path / "local/runs/round2-v5-error-covariance/time-n-family-r1/seed-42"
+            / "pred-v36-s1-N-0049.npy")
+    path.parent.mkdir(parents=True)
+    np.save(path, vector)
+    with pytest.raises(ValueError):
+        _recorded_vector(tmp_path, spec, "v36", "v36-s1-N-0049", 42)

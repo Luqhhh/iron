@@ -168,3 +168,59 @@ any further submission as an experiment worth declaring, not a routine slot.
   authored `src/bf_tap_r2/v4_2_followup.py` and the V4.2-r2 repair. Its
   collision record is in `docs/round2_v4_2/FOLLOWUP_RESULTS.md` section 8.
 
+
+## Round2 V5: error covariance, resolution, and the platform noise floor (2026-09-25, current instruction)
+
+Branch `round2-v5-error-covariance-resolution`; pre-registration `configs/round2_v5/SPEC.yaml`
++ `docs/round2_v5/PREREGISTRATION.md` (commit `f0d7900`); implementation commit `06f956c`;
+results `docs/round2_v5/RESULTS.md`. **No candidate was promoted, no candidate package was
+built and nothing was uploaded.** One *declared experiment* package exists (see below).
+
+**Premise correction that must not be repeated.** The earlier statement that
+`local/runs/round2-v3-local-search/*/pred-*.npy` holds "482 files / 444 trials with two split
+seeds" is wrong. Those 482 files are **400 distinct trial ids**; only **38 trials** have complete
+five-fold coverage at both seeds 42 and 3407. The other 400 entries are the coarse batch at
+**seed 42, folds 0/1 only** (1102/2754 rows). The same `trial_id` is a *different fit* in
+`coarse-*` (early stopping on) and `refine-*` (early stopping off), so any library key must be
+`(source directory, seed, trial id)`. The real zero-fit library is: 114 (iron) / 110 (time)
+two-seed complete columns assembled from the V3.6 development cache, the V3 refined trials and
+the recorded `round2-v2*` OOF columns.
+
+**Measured results.**
+
+- *Existing pool exhausted.* With the pre-registered rule (`rho <= 0.95`, single-model WMAPE
+  `<= 1.25x` base, interior alpha), 16 of 60 screened candidates have a positive nested mean and
+  **zero** pass the fold gate. Best: `v3-mlp-tap_time_len-0000` at `+0.0055` score points,
+  7/10 positive cells. Best composition *replacement* (drop the near-zero `O-0057`, add that
+  model) reaches `+0.0057`. Leave-one-out: `N-0005`, `O-0057`, `D-0048` together carry 0.255
+  weight and contribute about 0.002 points.
+- *The time column's N family was the real gap, and completing it nearly pays.* The frozen V3.6
+  round stopped the N line for `tap_time_len` on "single models are weak", although the iron side
+  was equally weak singly and still supplied the released composition's entire gain. Refining
+  the selected N candidates to complete coverage gives `v36-s1-N-0048` (large raw-TabM)
+  `+0.00978` points, **8/10 folds positive**, both split seeds positive (`+0.0121`/`+0.0075`),
+  `rho = 0.888`, accuracy ratio 1.07, fold-level LCB `-0.00015`. Lightweight N candidates only
+  reach `+0.002..0.003`. The family's value is correlation, not single-model score.
+- *Local resolution is the binding constraint.* Shifting **only the training seeds** (recipe,
+  weights, experts and split seeds unchanged) moves the local score by `-0.00496` (iron) and
+  `+0.00035` (time), and the `shift = 0` rebuild reproduces the parent columns to `2.6e-16`
+  relative. Candidate effects are therefore of the same order as a pure seed change, so any
+  further promotion needs the four-split-seed rule, not a mean threshold.
+- *Fold-level lower bounds are not protective.* The recorded N2 cells give a positive fold-level
+  95% lower bound (`+0.0067`, 8/10) even though the candidate lost `0.0201` on the platform. The
+  V5 rule refuses it only because it requires at least four split seeds. That arithmetic is pinned
+  by `tests/test_round2_v5.py`.
+- Backtest: 4/4 known-bad candidates (V42 N2, N4, N5, R4) rejected; the old mean-`+0.005` gate
+  would have admitted two of them.
+
+**Next action (platform).** `V5_SEED_SWAP_S1000` is prepared and verified
+(ZIP SHA-256 `4ff97c033f05b7e686453e913460b548cd7231d3736b3f431bb3882e1a82460f`). It is the frozen
+V34_A endpoint plus the four frozen experts with every training seed shifted by +1000. Upload is
+performed by the user. `|delta| ~ 0.02` against 96.2734 ends thousandth-chasing; `|delta| ~ 0.005`
+means seed sensitivity dominates and the error-covariance route continues under the four-seed
+rule. Stage 2b replication of `v36-s1-N-0048` on derived split seeds is cached per `(seed, fold)`
+and resumable; it is `NOT_EVALUATED_INCOMPLETE_COVERAGE` until all ten folds exist.
+
+**Closed routes are unchanged** (NODE per-depth, ODST core, TabR full fusion, residual
+correctors, sample reweighting, dense alpha scans). Temporal/lag features remain *unavailable*
+(`复赛_train/train_features.csv` has no timestamp or ordering column), not merely untried.

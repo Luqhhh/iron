@@ -12,7 +12,9 @@
 # AGENTS.md / CLAUDE.md.  The recorded user target text is preserved verbatim.
 
 version: round2-v5-error-covariance-resolution
-status: PRE_REGISTERED_NOT_EXECUTED
+# Only this status field is annotated after execution; every frozen threshold
+# above and below is unchanged from the pre-registered revision (commit f0d7900).
+status: EXECUTED_STAGE1_AND_STAGE2A_NO_PROMOTION
 date: 2026-09-25
 branch: round2-v5-error-covariance-resolution
 base_commit: 4a05321

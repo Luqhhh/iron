@@ -7064,5 +7064,169 @@
     "platform_uploads_by_agent": 0,
     "submission_packages": 0,
     "promotion": "none"
+  },
+  "round2_v5": {
+    "status": "STAGE1_AND_STAGE2A_EXECUTED_NO_PROMOTION_NO_CANDIDATE_PACKAGE",
+    "date": "2026-09-25",
+    "branch": "round2-v5-error-covariance-resolution",
+    "preregistration_commit": "f0d7900",
+    "implementation_commit": "06f956c",
+    "preregistration": "docs/round2_v5/PREREGISTRATION.md",
+    "spec": "configs/round2_v5/SPEC.yaml",
+    "results_doc": "docs/round2_v5/RESULTS.md",
+    "user_requested_platform_score_verbatim": 93.5,
+    "operational_target": "platform_gt_96.3",
+    "current_platform_best_at_time_of_record": {
+      "candidate": "V36_USER_REQUESTED_OUTER_FAILED",
+      "score": 96.2734,
+      "source": "user_reported_not_independently_verified"
+    },
+    "g0": "PASS_958_LOCKED_TESTS_INCLUDING_24_NEW_V5_TESTS",
+    "g1": "NO_PROMOTION_EXISTING_POOL_EXHAUSTED_AND_BEST_EFFECTS_BELOW_LOCAL_RESOLUTION",
+    "library_audit": {
+      "pred_files_in_v3_local_search": 482,
+      "distinct_trial_ids": 400,
+      "note": "the same trial id is a different fit in coarse-* (early stopping on, folds 0/1 only) and refine-* (early stopping off, five folds); library keys are (source, seed, trial id)",
+      "two_seed_full_coverage_per_target": {
+        "tap_iron": 114,
+        "tap_time_len": 110
+      },
+      "coarse_diagnostic_entries": 224
+    },
+    "stage1": {
+      "new_model_fits": 0,
+      "admissible_entries": {
+        "tap_iron": 67,
+        "tap_time_len": 52
+      },
+      "screened_per_target": 30,
+      "positive_mean_candidates": 16,
+      "candidates_passing_fold_gate": 0,
+      "best_candidate": "v3-mlp-tap_time_len-0000",
+      "best_candidate_score_gain": 0.00549,
+      "best_candidate_positive_cells": "7/10",
+      "best_candidate_residual_correlation": 0.819,
+      "best_replacement": "tap_time_len: drop O-0057, add v3-mlp-tap_time_len-0000",
+      "best_replacement_score_gain": 0.0057,
+      "leave_one_out_mean_score_delta": {
+        "tap_iron": {
+          "A_dev": -0.01716,
+          "v36-s1-D-0029": -0.00663,
+          "v36-s1-N-0005": -0.00031
+        },
+        "tap_time_len": {
+          "A_dev": -0.04265,
+          "v36-s1-O-0057": -0.0006,
+          "v36-s1-D-0048": -0.00114
+        }
+      },
+      "existing_pool_exhausted": true
+    },
+    "backtest": {
+      "known_bad_total": 4,
+      "known_bad_rejected": 4,
+      "requirement_met": true,
+      "old_gate_admitted_known_bad": [
+        "V42_iron_N2_quarter",
+        "V42_iron_N2_quarter_full_coverage"
+      ],
+      "v5_fold_only_rule_admitted": [
+        "V42_iron_N2_quarter_full_coverage"
+      ],
+      "note": "the recorded N2 cells give a positive fold-level lower bound (+0.00670 over ten cells, 8/10 positive); only the four-split-seed requirement refuses it, which is why promotion is defined on the split seed"
+    },
+    "stage2a_time_n_family": {
+      "purpose": "complete the time column's N family, which the frozen V3.6 round stopped before refinement",
+      "coarse_candidates": 48,
+      "admissible": 23,
+      "pre_registered_selection": 10,
+      "coverage": {
+        "seed_42": "10/10",
+        "seed_3407": "8/10 at time of record; N-0049 and N-0051 pending"
+      },
+      "best": {
+        "candidate": "v36-s1-N-0048",
+        "score_gain": 0.00978,
+        "positive_cells": "8/10",
+        "per_seed_gain": {
+          "42": 0.0121,
+          "3407": 0.0075
+        },
+        "residual_correlation": 0.888,
+        "accuracy_ratio": 1.07,
+        "fold_level_lcb95": -0.00015,
+        "admitted": false,
+        "reason": "insufficient_split_seeds"
+      },
+      "second": {
+        "candidate": "v36-s1-N-0050",
+        "score_gain": 0.00858,
+        "positive_cells": "8/10"
+      },
+      "lightweight_candidates_range": [
+        0.00186,
+        0.00333
+      ]
+    },
+    "stage2b_replication": {
+      "candidate": "v36-s1-N-0048",
+      "derived_seeds": [
+        7777,
+        12011
+      ],
+      "status": "IN_PROGRESS_INCOMPLETE_COVERAGE_AT_TIME_OF_RECORD",
+      "per_fold_cache": "local/runs/round2-v5-error-covariance/replication-r1/seed-{seed}/fold-{fold}.npz",
+      "note": "result not claimed; the run is resumable and refuses to reuse a (seed, fold) whose identity hash differs"
+    },
+    "stage3b_platform_noise_experiment": {
+      "local_seed_sensitivity_score": {
+        "tap_iron": -0.00496,
+        "tap_time_len": 0.00035
+      },
+      "seed_keys_shifted": [
+        "random_state",
+        "random_seed",
+        "inner_validation_seed"
+      ],
+      "shift": 1000,
+      "scope_limit": "expert-only; the V34_A endpoint is unchanged, so this is a lower bound on full-recipe seed sensitivity",
+      "zero_shift_reproduction": {
+        "max_rel_diff": {
+          "tap_iron": 1.39e-16,
+          "tap_time_len": 2.64e-16
+        },
+        "passed": true
+      },
+      "package": "local/runs/round2-v5-error-covariance/seed-swap-r1/V5_SEED_SWAP_S1000",
+      "zip_sha256": "4ff97c033f05b7e686453e913460b548cd7231d3736b3f431bb3882e1a82460f",
+      "result_sha256": "024a66f3744efede4dd6a39fba338703d22b290e77773a826f6241219d6016af",
+      "purpose": "split the platform delta against 96.2734 into recipe seed sensitivity and platform resolution",
+      "recommendation": "user uploads this before any further candidate package",
+      "interpretation_rule": {
+        "abs_delta_about_0.02": "stop chasing thousandths; structural change only",
+        "abs_delta_about_0.005": "seed sensitivity dominates; continue the error-covariance route under the four-seed rule"
+      }
+    },
+    "new_cv_fits": 0,
+    "new_development_fits": 130,
+    "new_full_fits": 8,
+    "new_packages": 1,
+    "candidate_packages": 0,
+    "agent_uploads": 0,
+    "closed_routes_reconfirmed": [
+      "NODE_per_depth_selection",
+      "ODST_core",
+      "TabR_full_fusion",
+      "residual_correctors",
+      "temporal_or_lag_features_unavailable"
+    ],
+    "collision_record": "docs/round2_v5/RESULTS.md section 8: two code revisions wrote the same Stage 2a output directory, so the ledger's code_version field has two values; predictions, folds and trial specs are unaffected",
+    "fit_accounting": {
+      "stage2a_fold_fits": 90,
+      "stage3b_seed_swap_local_expert_fits": 40,
+      "stage3b_full_data_expert_fits": 8,
+      "development_fold_fits_total": 130,
+      "note": "Stage 2a: 10 trials x 5 folds (seed 42) + 8 trials x 5 folds (seed 3407). Stage 3b: 4 experts x 2 split seeds x 5 folds, plus 4 package experts and 4 zero-shift reproduction experts on all training rows."
+    }
   }
 }

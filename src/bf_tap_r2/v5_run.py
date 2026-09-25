@@ -161,23 +161,39 @@ def run_stage1(root: Path | str, spec: V5Spec | None = None,
         candidates.sort(key=lambda r: -float(r["nested"]["fold_summary"]["mean"]))
 
         loo = leave_one_out(reference, actual, target, folds)
-        weakest = loo["drops"][0]["member"] if loo["drops"] else None
-        top_keys = [r["key"] for r in candidates[: int(replacement_limit)]]
-        replacement = (
-            replacement_sweep(actual, folds, reference, library, target, spec,
-                              candidates=top_keys, drop_member=None if weakest == "A_dev" else weakest,
-                              limit=int(replacement_limit))
-            if top_keys else None
+        # Replace the near-zero non-base members — never the base endpoint, and no
+        # weight re-tuning of the released members.  Both non-base members are
+        # swept so the choice is evidence-driven rather than arbitrary.
+        weak_members = sorted(
+            (row for row in loo["drops"] if row["member"] != "A_dev"),
+            key=lambda row: abs(float(row["mean_score_delta"])),
         )
-        for row in replacement["candidates"] if replacement else []:
-            row["provisional"] = _provisional_decision(row["nested"], spec)
+        top_keys = [r["key"] for r in candidates[: int(replacement_limit)]]
+        replacement: dict[str, Any] = {}
+        for drop in weak_members:
+            if not top_keys:
+                break
+            replacement[drop["member"]] = replacement_sweep(
+                actual, folds, reference, library, target, spec,
+                candidates=top_keys, drop_member=drop["member"], limit=int(replacement_limit),
+            )
+            for row in replacement[drop["member"]]["candidates"]:
+                row["provisional"] = _provisional_decision(row["nested"], spec)
 
-        best_provisional = [r for r in (replacement["candidates"] if replacement else candidates)
-                            if r["provisional"]["provisional"]]
+        best_provisional = []
+        for drop, sweep_rows in replacement.items():
+            for row in sweep_rows["candidates"]:
+                if row["provisional"]["provisional"]:
+                    best_provisional.append({**row, "dropped_member": drop})
+        for row in candidates:
+            if row["provisional"]["provisional"]:
+                best_provisional.append({**row, "dropped_member": None})
+        best_provisional.sort(key=lambda r: -float(r["nested"]["fold_summary"]["mean"]))
         payload["targets"][target] = {
             "base_per_seed_wmape": {str(s): wmape(actual, base_by_seed[s]) for s in EVIDENCE_SEEDS},
             "admissible_count": int(sum(1 for r in records if r.admissible)),
-            "admissible_excluding_released": len(ranked),
+            "admissible_excluding_released_total": int(len(admissible)),
+            "admissible_screened_count": len(ranked),
             "screened_candidates": candidates,
             "leave_one_out": loo,
             "replacement_sweep": replacement,

@@ -261,8 +261,15 @@ def run_time_family(root: Path | str, spec: V5Spec | None = None,
                     seeds: Sequence[int] = (42, 3407),
                     extra_seed_top_k: int = 0,
                     workers: int = 16,
-                    dry_run: bool = False) -> dict[str, Any]:
-    """Screen the time-side N family and refine the selected trials."""
+                    dry_run: bool = False,
+                    trial_ids: Sequence[str] | None = None) -> dict[str, Any]:
+    """Screen the time-side N family and refine the selected trials.
+
+    ``trial_ids`` lets a caller refine an explicitly named subset of the
+    pre-registered selection (for example to complete one split seed for the
+    cheaper candidates while the expensive ones are still running).  The
+    selection itself is never widened by this option.
+    """
     root = Path(root).resolve()
     spec = spec or load_v5_spec(root)
     stage2a = spec.stage2a
@@ -273,7 +280,15 @@ def run_time_family(root: Path | str, spec: V5Spec | None = None,
     reference = load_column_reference(root, train, spec)
     rows = screen_time_n_candidates(root, spec, train, library, reference)
     limit = int(max_trials if max_trials is not None else stage2a["max_selected_trials"])
-    selected = [r for r in rows if r["admissible"] and r["projected_gain_positive"]][:limit]
+    pre_registered = [r for r in rows if r["admissible"] and r["projected_gain_positive"]][:limit]
+    allowed = {r["trial_id"] for r in pre_registered}
+    if trial_ids is None:
+        selected = pre_registered
+    else:
+        unknown = sorted(set(str(v) for v in trial_ids) - allowed)
+        if unknown:
+            raise ValueError(f"V5 Stage 2a requested trials outside the pre-registered selection: {unknown}")
+        selected = [r for r in pre_registered if r["trial_id"] in set(str(v) for v in trial_ids)]
 
     payload: dict[str, Any] = {
         "version": spec.version,
@@ -284,14 +299,23 @@ def run_time_family(root: Path | str, spec: V5Spec | None = None,
         "screen_folds": list(SCREEN_FOLDS),
         "candidate_count": len(rows),
         "admissible_count": int(sum(1 for r in rows if r["admissible"])),
+        "pre_registered_selection": [r["trial_id"] for r in pre_registered],
         "selected": [r["trial_id"] for r in selected],
         "screening": rows,
         "dry_run": bool(dry_run),
         "agent_uploads": 0,
     }
     out.mkdir(parents=True, exist_ok=True)
-    (out / "selection.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2, default=float),
-                                        encoding="utf-8")
+    # ``selection.json`` always records the *pre-registered* screening selection; a
+    # partial invocation (for example one split seed of the cheaper candidates)
+    # must not shrink the artefact the evaluator reads.
+    selection_record = {
+        **payload,
+        "selected": [r["trial_id"] for r in pre_registered],
+        "requested_subset": [r["trial_id"] for r in selected],
+    }
+    (out / "selection.json").write_text(
+        json.dumps(selection_record, ensure_ascii=False, indent=2, default=float), encoding="utf-8")
     with (out / "selection.csv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=[
             "trial_id", "key", "admissible", "residual_correlation", "single_wmape",
@@ -323,6 +347,105 @@ def run_time_family(root: Path | str, spec: V5Spec | None = None,
     return payload
 
 
+def evaluate_refined_candidates(root: Path | str, spec: V5Spec | None = None,
+                                output: Path | str = DEFAULT_OUTPUT,
+                                seeds: Sequence[int] = (42, 3407)) -> dict[str, Any]:
+    """Re-score the newly complete N-family candidates against the released column.
+
+    The comparison uses the same nested protocol as Stage 1: the blend weight is
+    selected on one split seed and the paired cells are scored on the other, in
+    both directions.  Promotion still requires four split seeds, so every result
+    here is provisional screening evidence.
+    """
+    from .v5_resolution import admit, blend_record
+
+    root = Path(root).resolve()
+    spec = spec or load_v5_spec(root)
+    out = _private_output(root, Path(output))
+    train = load_v5_training_frame(root)
+    reference = load_column_reference(root, train, spec)
+    actual = train[SCREEN_TARGET].to_numpy(dtype=float)
+    seeds = [int(s) for s in seeds]
+    folds = {seed: fold_vector(root, train, seed, spec) for seed in seeds}
+    base_by_seed = {seed: reference.base_for(SCREEN_TARGET, seed) for seed in seeds}
+
+    selection = json.loads((out / "selection.json").read_text(encoding="utf-8"))
+    selected = [str(v) for v in selection.get("selected", [])]
+    rows: list[dict[str, Any]] = []
+    for trial_id in selected:
+        vectors: dict[int, np.ndarray] = {}
+        complete = True
+        for seed in seeds:
+            path = out / f"seed-{seed}" / f"pred-{trial_id}.npy"
+            if not path.is_file():
+                complete = False
+                break
+            values = np.load(path).astype(float, copy=False)
+            if values.shape != (len(train),) or not np.isfinite(values).all():
+                raise ValueError(f"V5 refined candidate is invalid: {path}")
+            vectors[seed] = values
+        if not complete:
+            continue
+        correlations = [
+            float(np.corrcoef(actual - base_by_seed[seed], actual - vectors[seed])[0, 1])
+            for seed in seeds
+        ]
+        single = float(np.mean([wmape(actual, vectors[seed]) for seed in seeds]))
+        base_mean = float(np.mean([wmape(actual, base_by_seed[seed]) for seed in seeds]))
+        nested = blend_record(actual, folds, base_by_seed, vectors, spec.alpha_grid)
+        decision = admit(
+            nested,
+            min_seeds=int(spec.raw["resolution"]["seed_level"]["min_seeds_for_promotion"]),
+            positive_cells_min=int(spec.raw["resolution"]["fold_level"]["positive_cells_min"]),
+            positive_cells_total=int(spec.raw["resolution"]["fold_level"]["positive_cells_total"]),
+        )
+        rows.append({
+            "trial_id": trial_id,
+            "family": SCREEN_FAMILY,
+            "residual_correlation": float(np.mean(correlations)),
+            "accuracy_ratio": float(single / base_mean) if base_mean > 0 else float("inf"),
+            "single_wmape": single,
+            "base_wmape": base_mean,
+            "nested": nested,
+            "promotion": decision,
+        })
+    rows.sort(key=lambda r: -float(r["nested"]["fold_summary"]["mean"]))
+    payload = {
+        "version": spec.version,
+        "stage": "stage2a_refined_evaluation",
+        "target": SCREEN_TARGET,
+        "seeds": seeds,
+        "candidates": rows,
+        "elapsed_selection": selection.get("elapsed_seconds"),
+        "agent_uploads": 0,
+    }
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "refined_evaluation.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, default=float), encoding="utf-8")
+    with (out / "refined_evaluation.csv").open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=[
+            "trial_id", "residual_correlation", "accuracy_ratio", "single_wmape", "base_wmape",
+            "fold_mean_score", "fold_lcb95", "positive_cells", "seed_42", "seed_3407",
+            "promotion_admitted", "promotion_reasons"], extrasaction="ignore")
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({
+                "trial_id": row["trial_id"],
+                "residual_correlation": row["residual_correlation"],
+                "accuracy_ratio": row["accuracy_ratio"],
+                "single_wmape": row["single_wmape"],
+                "base_wmape": row["base_wmape"],
+                "fold_mean_score": row["nested"]["fold_summary"]["mean"],
+                "fold_lcb95": row["nested"]["fold_summary"]["lcb95"],
+                "positive_cells": row["nested"]["fold_summary"]["positive"],
+                "seed_42": row["nested"]["seed_gains"].get(42),
+                "seed_3407": row["nested"]["seed_gains"].get(3407),
+                "promotion_admitted": row["promotion"]["admitted"],
+                "promotion_reasons": ";".join(row["promotion"]["reasons"]),
+            })
+    return payload
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd())
@@ -332,10 +455,21 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--extra-seed-top-k", type=int, default=0)
     parser.add_argument("--workers", type=int, default=16)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--evaluate-only", action="store_true")
+    parser.add_argument("--trial-ids", nargs="+", default=None)
     args = parser.parse_args(argv)
+    if args.evaluate_only:
+        payload = evaluate_refined_candidates(args.root, output=args.output)
+        print(json.dumps([{k: row[k] for k in ("trial_id", "residual_correlation", "accuracy_ratio")}
+                          | {"fold_mean_score": row["nested"]["fold_summary"]["mean"],
+                             "positive_cells": row["nested"]["fold_summary"]["positive"],
+                             "promotion_reasons": row["promotion"]["reasons"]}
+                          for row in payload["candidates"]], ensure_ascii=False, indent=2, default=float))
+        return 0
     payload = run_time_family(args.root, output=args.output, max_trials=args.max_trials,
                               seeds=tuple(args.seeds), extra_seed_top_k=args.extra_seed_top_k,
-                              workers=args.workers, dry_run=args.dry_run)
+                              workers=args.workers, dry_run=args.dry_run,
+                              trial_ids=args.trial_ids)
     print(json.dumps({
         "status": payload["status"],
         "candidate_count": payload["candidate_count"],
