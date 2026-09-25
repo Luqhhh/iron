@@ -6765,5 +6765,73 @@
     "agent_uploads": 0,
     "final_outer_23003": "NOT_USED_ALREADY_CONSUMED_BY_V3_6",
     "decision": "close tested C/E implementations after no reproducible A-relative positive increment; do not claim B_star or platform-level conclusions"
+  },
+  "round2_v4_3": {
+    "status": "CLOSED_NO_CONTINUATION_GATE_QUALIFIER",
+    "date": "2026-09-25",
+    "branch": "round2-v4.3-strong-base-time-residual",
+    "preregistration": "configs/round2_v4_3/experiment.yaml",
+    "evidence": "docs/round2_v4_3/RESULTS.md",
+    "objective": "redo the V4.1 orthogonal time-residual calibration on the real frozen V36 composition instead of a public rebuildable V34 EBM anchor",
+    "parent": {
+      "name": "V36_USER_REQUESTED_COMPOSITION",
+      "role": "frozen package composition behind the user-reported current platform best V36_USER_REQUESTED_OUTER_FAILED = 96.2734",
+      "identity_verified": "recorded complete_development_composition reproduced bitwise from private V3.4/V3.6 caches",
+      "mean_development_package_score": 96.20376256899247,
+      "per_seed_development_package_score": {
+        "42": 96.20130931837855,
+        "3407": 96.20621581960641
+      },
+      "time_development_wmape": {
+        "42": 0.03847465422923957,
+        "3407": 0.03828990083841439
+      }
+    },
+    "protocol": {
+      "target_in_scope": "tap_time_len",
+      "iron_side": "unchanged_out_of_scope",
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "coarse_folds": [
+        0,
+        1
+      ],
+      "complete_folds_planned": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "inner_folds": 3,
+      "residual_target": "y_minus_nested_cross_fitted_parent_prediction",
+      "validation_base": "recorded_parent_development_oof",
+      "candidate_pool": "same 12 candidates as the frozen V4.1 public-anchor run, so the base is the only changed variable"
+    },
+    "execution": {
+      "smoke_run": "local/runs/round2-v4.3-strong-base-time-residual/smoke-r1",
+      "coarse_run": "local/runs/round2-v4.3-strong-base-time-residual/coarse-r1",
+      "nested_parent_member_fits": 162,
+      "corrector_fits": 72,
+      "determinism_check": "smoke-r1 and coarse-r1 agree bitwise on the shared (seed, fold 0) pairs",
+      "complete_five_folds_run": false,
+      "complete_five_folds_reason": "pre-registered continuation gate was not met"
+    },
+    "coarse_result": {
+      "best_candidate": "SB10_M50_A050",
+      "best_mean_package_delta_single": 0.0017899482054944613,
+      "best_min_seed_package_delta_single": -0.0001818988212710232,
+      "qualifying_candidates": 0,
+      "continuation_gate": "both split seeds strictly positive and mean package delta >= 0.005",
+      "required_local_delta_for_gate_96_25": 0.0462374310075262,
+      "shortfall_to_local_working_gate": 0.044447482802031736
+    },
+    "key_finding": "the V4.1 public-anchor gain does not transfer to the real strong base: HGB_L2_L15_A050 scored +0.025705521343854718 on the public rebuildable anchor and -0.014503586051198107 on the real V36 parent; the shrink_bins family was best on the real base but only +0.0018",
+    "decision": "close the V4.3 direction; no platform package, no upload; current platform best remains the user-reported V36 96.2734 and the next-phase target remains strictly greater than 96.3",
+    "new_platform_packages": 0,
+    "agent_uploads": 0,
+    "tests": "tests/test_round2_v4_3.py 11 passed, including a hard parent-identity check when the private caches exist"
   }
 }

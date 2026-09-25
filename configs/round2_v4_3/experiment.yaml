@@ -1,0 +1,178 @@
+version: round2-v4.3-strong-base-time-residual
+status: CLOSED_NO_CONTINUATION_GATE_QUALIFIER
+created: '2026-09-25'
+base_commit: 6106299d4c098e668d5b7126c0203d978dcf9333
+
+# V4.3 redoes the V4.1 orthogonal time-residual calibration on the *real*
+# strong base instead of a publicly reconstructed V34 EBM anchor.  The private
+# V3.4/V3.6 caches required for the real base exist in this checkout, and the
+# recorded parent development composition reproduces exactly (identity check in
+# docs/round2_v4_3/PLAN.md section 2).
+
+objective:
+  platform_target_strictly_greater_than: 96.3
+  current_platform_best_user_reported:
+    name: V36_USER_REQUESTED_OUTER_FAILED
+    score: 96.2734
+    source: user_reported_not_independently_verified
+    gap_to_target: 0.0266
+  local_parent_package_score: 96.20376256899247
+  local_working_gate: 96.25
+  required_local_delta_for_gate: 0.04623743100753
+  scope: strong_base_time_residual_mechanism_no_release
+
+parent:
+  name: V36_USER_REQUESTED_COMPOSITION
+  role: frozen package composition behind the current user-reported platform best
+  summary: local/runs/round2-v3.6-loss-training-and-numeric-encoding/v36-summary.json
+  summary_key: complete_development_composition
+  development_predictions: local/runs/round2-v3.6-loss-training-and-numeric-encoding/complete-dev-combined-r1
+  a_reference_module: bf_tap_r2.v3_6_reference
+  target_in_scope: tap_time_len
+  iron_side: unchanged_and_out_of_scope
+  package_formula: 100 - 50 * (wmape_tap_iron + wmape_tap_time_len)
+  clip_at_zero_on_export: true
+  clip_active_on_development_replay: false
+  time:
+    # parent = w0 * A_dev + w1 * expert[0] + w2 * expert[1]
+    weights: [0.7810993469207348, 0.09014959669794487, 0.1287510563813204]
+    experts: [v36-s1-O-0057, v36-s1-D-0048]
+    a_dev_weights: [0.6192377408552066, 0.28691289439355067, 0.09384936475124295]
+    a_dev_experts: [v34-s1-ebm_boundary-0089, v34-s1-global_spout_shrink-0136]
+    # A_dev = a_dev_weights[0] * L1 + rest of the experts
+    l1_pool: [v31-s1-time-0021-0050, v31-s1-time-0021-0031, v31-s1-time-0021-0039,
+              v3-catboost-tap_time_len-0021, v31-s1-time-0021-0002]
+    l1_weights_source: lp_simplex_weights_on_inner_oof
+    l1_early_stop_inner_seed: 7771
+  member_trial_sources:
+    v31: local/runs/round2-v3.1-directed-search/s1-coarse-r1/fit_ledger.jsonl
+    v3: local/runs/round2-v3-local-search/coarse-catboost-r1/fit_ledger.jsonl
+    v34: local/runs/round2-v3.4-ebm-and-constrained-composition/refine-r1/seed-42/fit_ledger.jsonl
+    v36: local/runs/round2-v3.6-loss-training-and-numeric-encoding/complete-dev-r2-final/seed-42/fit_ledger.jsonl
+  claim_boundary: >-
+    Candidate deltas are measured against the real V36 development composition on
+    the frozen development folds.  They are not V34_A/V36 platform scores and not
+    a platform forecast.
+
+protocol:
+  split_seeds: [42, 3407]
+  coarse_folds: [0, 1]
+  complete_folds: [0, 1, 2, 3, 4]
+  inner_folds: 3
+  inner_seed_base: 9700
+  inner_seed_formula: inner_seed_base + split_seed * 10 + outer_fold
+  group_isolated_inner_folds: true
+  residual_definition: y_minus_nested_cross_fitted_parent_prediction
+  validation_base: recorded_parent_development_oof
+  validation_base_equivalence: >-
+    The recorded parent development OOF for fold k was produced by members fitted
+    on every fold except k, i.e. exactly the outer training part, so the
+    validation base is the parent refit on that part and no extra fits are needed.
+  residual_training_base: members refitted inside the outer training part only
+  outer_validation_labels_forbidden_during_fit: true
+  l1_weight_refit_scope: outer_training_part_inner_oof_only
+  known_stacking_approximation: >-
+    As in the V3.4 L1 recipe, the simplex weights are solved on the outer-training
+    inner-OOF matrix, so the weight vector of a training row sees that row's label.
+    This is the same construction used to record the parent and is declared, not
+    hidden; the row's own base prediction remains out-of-fold.
+
+candidate_budget:
+  per_target: 12
+  total: 12
+  families:
+    shrink_bins: 4
+    lightgbm_residual: 4
+    histgb_residual: 4
+  note: identical pool to the frozen V4.1 public-anchor run, so V4.3 isolates the base change
+
+candidates:
+  shrink_bins:
+    - {name: SB06_M50_A050, bins: 6, shrinkage: 50.0, statistic: mean, alpha: 0.50}
+    - {name: SB06_M200_A100, bins: 6, shrinkage: 200.0, statistic: mean, alpha: 1.00}
+    - {name: SB10_M50_A050, bins: 10, shrinkage: 50.0, statistic: mean, alpha: 0.50}
+    - {name: SB10_M200_A100, bins: 10, shrinkage: 200.0, statistic: mean, alpha: 1.00}
+  lightgbm_residual:
+    - {name: LGB_L1_L7_A025, objective: regression_l1, num_leaves: 7, alpha: 0.25}
+    - {name: LGB_L1_L15_A050, objective: regression_l1, num_leaves: 15, alpha: 0.50}
+    - {name: LGB_HUBER_L7_A025, objective: huber, num_leaves: 7, alpha: 0.25}
+    - {name: LGB_HUBER_L15_A050, objective: huber, num_leaves: 15, alpha: 0.50}
+  histgb_residual:
+    - {name: HGB_L1_L7_A025, loss: absolute_error, max_leaf_nodes: 7, alpha: 0.25}
+    - {name: HGB_L1_L15_A050, loss: absolute_error, max_leaf_nodes: 15, alpha: 0.50}
+    - {name: HGB_L2_L7_A025, loss: squared_error, max_leaf_nodes: 7, alpha: 0.25}
+    - {name: HGB_L2_L15_A050, loss: squared_error, max_leaf_nodes: 15, alpha: 0.50}
+
+fixed_corrector_defaults:
+  correction_clip_absolute_quantile: 0.95
+  lightgbm:
+    n_estimators: 400
+    learning_rate: 0.02
+    min_child_samples: 80
+    reg_lambda: 30.0
+    max_depth: -1
+    verbosity: -1
+    n_jobs: 1
+    random_state: 941
+  histgb:
+    max_iter: 300
+    learning_rate: 0.03
+    min_samples_leaf: 80
+    l2_regularization: 30.0
+    random_state: 941
+
+continuation_gate:
+  require_both_split_seeds_positive: true
+  mean_package_delta_single_min: 0.005
+  complete_development_only_after_gate: true
+  minimum_positive_complete_development_splits: 2
+  local_working_gate: 96.25
+  local_working_gate_rule: parent_local_package_score + mean_package_delta_single >= 96.25
+  final_outer_seed: null
+  reason_no_final_outer: >-
+    outer seed 23003 is already consumed and no replacement outer seed is
+    authorized; V4.3 therefore stops at complete development coverage.
+
+decision_rules:
+  - A candidate may only be called a formal strong-base candidate when both split
+    seeds are strictly positive and the mean package delta is at least 0.005.
+  - Reaching the 96.25 local working gate is the only condition that would
+    justify asking the user to spend a platform slot.
+  - No package is generated and no upload is performed by this flow.
+  - Failing candidates are recorded as negative evidence and are never relabelled.
+
+outputs:
+  private_root: local/runs/round2-v4.3-strong-base-time-residual
+  append_only: true
+  automatic_package: false
+  agent_uploads: 0
+
+execution:
+  smoke_run: local/runs/round2-v4.3-strong-base-time-residual/smoke-r1
+  coarse_run: local/runs/round2-v4.3-strong-base-time-residual/coarse-r1
+  complete_run: null
+  parent_identity_verified: true
+  parent_identity_mean_package_score: 96.20376256899247
+  determinism_check: smoke_and_coarse_agree_bitwise_on_shared_seed_fold_pairs
+  nested_parent_member_fits: 162
+  corrector_fits: 72
+  coarse_best_candidate:
+    name: SB10_M50_A050
+    mean_package_delta_single: 0.0017899482054944613
+    minimum_seed_package_delta_single: -0.0001818988212710232
+    continuation_gate_passed: false
+  required_local_delta_for_working_gate: 0.0462374310075262
+  shortfall_to_local_working_gate: 0.044447482802031736
+  v41_public_anchor_best_on_real_base:
+    name: HGB_L2_L15_A050
+    v41_public_anchor_delta: 0.025705521343854718
+    v43_real_base_delta: -0.014503586051198107
+  complete_five_folds_run: false
+  package_generated: false
+  platform_uploads: 0
+  decision: >-
+    No candidate reached the continuation gate (both split seeds positive and mean
+    package delta >= 0.005), so the pre-registered rule closes the line without
+    complete-development extension.  The V4.1 public-anchor gain does not transfer
+    to the real V36 parent.
+  evidence: docs/round2_v4_3/RESULTS.md

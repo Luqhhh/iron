@@ -105,3 +105,12 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - Users upload packages themselves and return scores. Do not auto-upload, auto-package for platform, or spend quota manually.
 - Latest score-transfer and gate analysis: `docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md`.
 
+## Round2 V4.3 real-strong-base time residual (2026-09-25, current instruction)
+
+- Current user-reported platform best is `V36_USER_REQUESTED_OUTER_FAILED = 96.2734` (supersedes `V34_A = 96.2684`; both are user reports, not independently verified platform receipts). Next-phase platform target stays **> 96.3**; the pre-registered local working gate stays **>= 96.25**.
+- V4.3 redid the V4.1 orthogonal time-residual calibration on the **real frozen V36 composition** instead of a publicly rebuilt V34 EBM anchor. The private V3.4/V3.6 development caches exist in this checkout, and the recorded parent development composition was reproduced bitwise (`96.20376256899247`).
+- Result: **no candidate passed the pre-registered continuation gate** (both split seeds positive and mean package delta `>= 0.005`). Best coarse candidate `SB10_M50_A050` scored `+0.00179` mean with seed 42 negative; the `96.25` local gate needs `+0.04624`. The line is closed without complete-development extension: no package, no upload.
+- Key negative evidence: the V4.1 winner `HGB_L2_L15_A050` scored **`+0.02571` on the public rebuildable anchor and `-0.01450` on the real V36 parent**. That gain corrected the public reconstruction's own miscalibration and does **not** transfer to the real strong base. Do not cite the V4.1 `+0.0257` as a strong-base or platform gain.
+- Details: `docs/round2_v4_3/PLAN.md`, `docs/round2_v4_3/RESULTS.md`, `configs/round2_v4_3/experiment.yaml`. Private evidence stays under `local/runs/round2-v4.3-strong-base-time-residual/` and is never committed.
+
+
