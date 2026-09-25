@@ -22,9 +22,20 @@ dependencies = [
 dev = ["pytest==9.0.2"]
 round2 = [
     "interpret==0.6.10",
+    "rtdl-num-embeddings==0.0.12",
     "scikit-learn==1.8.0",
+    "tabm==0.0.3",
+    "torch==2.9.1",
     "xgboost==2.1.4",
 ]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [project.scripts]
 bf-tap = "bf_tap.cli:main"

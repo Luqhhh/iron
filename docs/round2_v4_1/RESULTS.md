@@ -71,10 +71,12 @@
 
 - 新增 7 项 V4.1 定向测试；V4.1 + V4 联合定向为 16 passed。
 - V4.1 + V4 + candidate-tiers 为 **24 passed**。
-- 锁定 Python 3.12.12 全量回归为 **808 passed, 5 failed, 1 skipped**。
-  5 项失败全部来自既有 `tests/test_round2_v3_6.py` 神经网络路径：源码需要 `torch`，
-  但 `pyproject.toml`/`uv.lock` 的 `round2` extra 未声明该依赖。V4.1 不使用该路径，
-  无 V4.1 回归失败；因此本轮 G0 报告为**定向 PASS，全仓库环境依赖缺口未闭环**。
+- 提交 `7b31912` 的首次 CI 暴露出既有 V3.6 神经网络环境缺口：`round2` extra 未声明
+  `torch`、TabM 与数值编码依赖，导致 5 项网络测试失败。现已补齐并锁定 CPU-only
+  PyTorch 依赖，避免 CI 下载 CUDA 运行时。
+- 锁定全量回归现为：Python 3.12.12 **813 passed, 1 skipped**；Python 3.11.15
+  **813 passed, 1 skipped**。唯一跳过项按设计依赖本机不存在的私有 V3.4 OOF 证据；
+  本轮 G0 更新为**全仓库 PASS**。
 - Windows Git worktree 下的私有产物守卫通过：771 个已跟踪文件，未把 `local/`
   预测、ledger 或报告加入 Git。WSL 无法解析 Windows worktree `.git` 指针，
   因此守卫由 Windows Python 执行。

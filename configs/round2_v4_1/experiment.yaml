@@ -117,9 +117,15 @@ execution:
   validation:
     focused_v41_v4_candidate_tiers: 24_passed
     full_locked_suite:
-      passed: 808
-      failed: 5
-      skipped: 1
-      failure_scope: pre_existing_v3_6_network_tests_missing_unlocked_torch_dependency
-      v4_1_failures: 0
+      dependency_gap: closed_with_pinned_cpu_torch_tabm_and_rtdl_num_embeddings
+      python311:
+        interpreter: 3.11.15
+        passed: 813
+        failed: 0
+        skipped: 1
+      python312:
+        interpreter: 3.12.12
+        passed: 813
+        failed: 0
+        skipped: 1
     private_artifact_guard: PASS_WINDOWS_GIT_WORKTREE

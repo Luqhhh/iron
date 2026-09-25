@@ -6712,11 +6712,19 @@
     "validation": {
       "focused_v41_v4_candidate_tiers": "24_passed",
       "full_locked_suite": {
-        "passed": 808,
-        "failed": 5,
-        "skipped": 1,
-        "failure_scope": "PRE_EXISTING_V3_6_NETWORK_TESTS_REQUIRE_TORCH_NOT_DECLARED_IN_PYPROJECT_OR_UV_LOCK",
-        "v4_1_failures": 0
+        "dependency_gap": "CLOSED_WITH_PINNED_CPU_TORCH_TABM_AND_RTDL_NUM_EMBEDDINGS",
+        "python311": {
+          "interpreter": "3.11.15",
+          "passed": 813,
+          "failed": 0,
+          "skipped": 1
+        },
+        "python312": {
+          "interpreter": "3.12.12",
+          "passed": 813,
+          "failed": 0,
+          "skipped": 1
+        }
       },
       "private_artifact_guard": "PASS_WINDOWS_GIT_WORKTREE_771_TRACKED_FILES"
     },
