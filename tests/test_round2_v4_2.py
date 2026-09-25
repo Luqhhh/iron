@@ -676,3 +676,55 @@ def test_self_exclusion_mask_excludes_only_the_query_group() -> None:
     # Rows 0 and 1 are exact duplicates.
     assert not legal[0, 1] and not legal[1, 0]
     assert legal[0, 5]
+
+
+# ---------------------------------------------------------------------------
+# packaging contract
+# ---------------------------------------------------------------------------
+
+def test_iron_only_csv_preserves_parent_time_strings() -> None:
+    """An iron-only package must not move the unchanged target column at all."""
+    from bf_tap_r2.v4_2_package import _csv_payload_with_parent_time
+
+    # The submission validator fixes the round-two row count at 322.
+    ids = [f"R2S2_TEST_{i:012X}" for i in range(322)]
+    iron = np.linspace(0.0, 1000.0, len(ids))
+    parent_time = [format(100.0 + i * 0.1, ".17g") for i in range(len(ids))]
+    payload = _csv_payload_with_parent_time(ids, iron, parent_time).decode("utf-8")
+    lines = payload.splitlines()
+    assert lines[0] == "sample_id,pred_tap_iron,pred_tap_time_len"
+    assert len(lines) == len(ids) + 1
+    for line, expected in zip(lines[1:], parent_time):
+        assert line.endswith("," + expected), line
+    assert payload.endswith("\n")
+
+
+def test_packaging_rejects_negative_or_nonfinite_values() -> None:
+    from bf_tap_r2.v4_2_package import _csv_payload_with_parent_time
+
+    ids = ["R2S2_TEST_000000000001"]
+    with pytest.raises(ValueError):
+        _csv_payload_with_parent_time(ids, np.asarray([-1.0]), ["1.0"])
+    with pytest.raises(ValueError):
+        _csv_payload_with_parent_time(ids, np.asarray([np.nan]), ["1.0"])
+    with pytest.raises(ValueError):
+        _csv_payload_with_parent_time(ids, np.asarray([1.0]), ["nan"])
+
+
+def test_packaging_is_confined_to_local(tmp_path: Path) -> None:
+    from bf_tap_r2.v4_2_package import _require_private
+
+    with pytest.raises(ValueError, match="private"):
+        _require_private(REPO_ROOT, tmp_path / "escape")
+    inside = _require_private(REPO_ROOT, REPO_ROOT / "local/tmp/v42-tests/pkg")
+    assert inside.is_relative_to((REPO_ROOT / "local").resolve())
+
+
+def test_iron_blend_arithmetic_and_clip() -> None:
+    parent = np.asarray([100.0, 200.0, 10.0])
+    model = np.asarray([80.0, 400.0, -5.0])
+    alpha = 0.25
+    blended = (1.0 - alpha) * parent + alpha * model
+    assert np.allclose(blended, [95.0, 250.0, 6.25])
+    clipped = np.maximum((1.0 - 0.5) * parent + 0.5 * model, 0.0)
+    assert np.allclose(clipped, [90.0, 300.0, 2.5])

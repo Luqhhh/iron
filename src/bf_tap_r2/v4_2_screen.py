@@ -209,6 +209,7 @@ def run_screen(
     *,
     spec_path: Path | str = DEFAULT_SPEC_PATH,
     lines: Sequence[str] | None = None,
+    recipes: Sequence[str] | None = None,
     targets: Sequence[str] | None = None,
     seeds: Sequence[int] | None = None,
     folds: Sequence[int] | None = None,
@@ -220,6 +221,7 @@ def run_screen(
     verify_replay: bool = True,
     start_method: str = "spawn",
     aggregate_only: bool = False,
+    training_seed: int | None = None,
 ) -> dict[str, Any]:
     root = Path(root).resolve()
     spec: SearchSpec = load_search_spec(spec_path, root=root)
@@ -232,6 +234,7 @@ def run_screen(
     train = load_training_frame(root)
     fold_vectors = {int(seed): load_fold_vector(root, train, int(seed)) for seed in spec.seeds}
     selected_lines = tuple(str(v) for v in (lines or ("R", "S", "N")))
+    selected_recipes = None if recipes is None else {str(v).upper() for v in recipes}
     selected_targets = tuple(str(v) for v in (targets or spec.targets))
     selected_seeds = tuple(int(v) for v in (seeds or spec.seeds))
     selected_folds = tuple(int(v) for v in (folds or spec.folds))
@@ -240,9 +243,18 @@ def run_screen(
         (line, recipe, target)
         for line, recipe, target in spec.units
         if line in selected_lines and target in selected_targets
+        and (selected_recipes is None or recipe in selected_recipes)
     ]
     if limit is not None:
         units = units[: int(limit)]
+
+    # The training seed is a *randomness* control, kept separate from the split
+    # seeds.  Overriding it never re-selects a structure or a blend weight.
+    worker_spec = json.loads(json.dumps(spec.raw, default=str))
+    if training_seed is not None:
+        worker_spec["common_training"]["neural_starting_point"]["initialisation_seed"] = int(
+            training_seed
+        )
 
     ledger = output / "fit_ledger.jsonl"
     known = {
@@ -369,7 +381,7 @@ def run_screen(
             max_workers=int(jobs),
             mp_context=context,
             initializer=_initialise_worker,
-            initargs=(train, fold_vectors, spec.raw, str(root), torch_threads),
+            initargs=(train, fold_vectors, worker_spec, str(root), torch_threads),
         ) as executor:
             futures = {executor.submit(_fit_one, task): task for task in scheduled}
             for future in as_completed(futures):
@@ -382,7 +394,7 @@ def run_screen(
                     "seconds": round(float(outcome.get("seconds", 0.0)), 1),
                 }, ensure_ascii=False), flush=True)
     else:
-        _initialise_worker(train, fold_vectors, spec.raw, str(root), torch_threads)
+        _initialise_worker(train, fold_vectors, worker_spec, str(root), torch_threads)
         for task in scheduled:
             outcome = _fit_one(task)
             persist(outcome)
@@ -411,6 +423,9 @@ def run_screen(
         "already_complete": len(tasks) - len(scheduled),
         "failed_slots": int(sum(1 for r in results if r["status"] != "available")),
         "worker_start_method": str(start_method),
+        "training_seed": int(training_seed) if training_seed is not None
+        else int(spec.raw["common_training"]["neural_starting_point"]["initialisation_seed"]),
+        "split_seeds": [int(v) for v in selected_seeds],
         "baseline": baseline_meta,
         "seconds": round(float(time.perf_counter() - started), 2),
         "platform_uploads": 0,
@@ -424,6 +439,60 @@ def run_screen(
 # ---------------------------------------------------------------------------
 # aggregation, gating and ranking
 # ---------------------------------------------------------------------------
+
+def _coverage_gate(
+    spec: SearchSpec,
+    coarse_gate: Mapping[str, Any],
+    positive_folds: Mapping[str, Any],
+    seeds: Sequence[int],
+    folds: Sequence[int],
+) -> dict[str, Any]:
+    """Section-9 gate: may this recipe proceed to inner fusion selection?
+
+    Requires, on the *complete* coverage, one and the same pre-declared path with
+    a mean full-package gain of at least ``mean_gain_min``, positive gains in both
+    split seeds, and at least ``positive_folds_min`` positive folds out of the
+    covered ``seed x fold`` cells.
+    """
+    thresholds = dict(spec.raw.get("full_coverage", {}).get("fusion_eligibility_gate", {}))
+    mean_min = float(thresholds.get("mean_gain_min", 0.02))
+    folds_min = int(thresholds.get("positive_folds_min", 8))
+    expected_total = int(len(seeds) * len(folds))
+    per_path: dict[str, Any] = {}
+    for path in SCREEN_PATHS:
+        values = coarse_gate.get("per_path", {}).get(path)
+        if values is None:
+            per_path[path] = {"available": False, "passes": False}
+            continue
+        counted = positive_folds.get(path, {"positive": 0, "total": 0})
+        per_path[path] = {
+            "available": True,
+            "mean_gain": float(values["mean_gain"]),
+            "both_seeds_positive": bool(values["both_seeds_positive"]),
+            "positive_folds": int(counted["positive"]),
+            "covered_folds": int(counted["total"]),
+            "expected_folds": expected_total,
+            "passes": bool(
+                float(values["mean_gain"]) >= mean_min
+                and values["both_seeds_positive"]
+                and int(counted["positive"]) >= folds_min
+                and int(counted["total"]) == expected_total
+            ),
+        }
+    passing = [path for path in SCREEN_PATHS if per_path[path].get("passes")]
+    best = max(passing, key=lambda p: per_path[p]["mean_gain"]) if passing else None
+    return {
+        "mean_gain_min": mean_min,
+        "positive_folds_min": folds_min,
+        "expected_folds": expected_total,
+        "per_path": per_path,
+        "passes": bool(passing),
+        "path": best,
+        "note": (
+            "Gate evaluated on the covered outer folds only; it authorises inner "
+            "fusion selection and nothing else."
+        ),
+    }
 
 def aggregate_screen(
     *,
@@ -535,6 +604,52 @@ def aggregate_screen(
                     )),
                 }
             per_seed[str(int(seed))] = entry
+            # Fold-level accounting, needed by the section-9 coverage gate.
+            fold_level: dict[str, Any] = {}
+            for fold in folds:
+                rows = (fold_vectors[int(seed)] == int(fold)) & selector
+                if not rows.any() or not available:
+                    continue
+                actual_target_fold = train.loc[rows, target].to_numpy(dtype=float)
+                other_name = "tap_time_len" if target == "tap_iron" else "tap_iron"
+                actual_other_fold = train.loc[rows, other_name].to_numpy(dtype=float)
+                base_target_fold = baseline[int(seed)][target][rows]
+                base_other_fold = baseline[int(seed)][other][rows]
+                w_other_fold = pooled_wmape(actual_other_fold, base_other_fold)
+                base_score_fold = package_score(
+                    pooled_wmape(actual_target_fold, base_target_fold), w_other_fold
+                )
+                values_fold = candidate[int(seed)][rows]
+                fold_level[str(int(fold))] = {
+                    "direct_gain": float(
+                        package_score(pooled_wmape(actual_target_fold, values_fold), w_other_fold)
+                        - base_score_fold
+                    ),
+                    "fixed_quarter_gain": float(
+                        package_score(
+                            pooled_wmape(
+                                actual_target_fold,
+                                (1.0 - weight) * base_target_fold + weight * values_fold,
+                            ),
+                            w_other_fold,
+                        ) - base_score_fold
+                    ),
+                }
+            entry["fold_level"] = fold_level
+            per_seed[str(int(seed))] = entry
+
+        positive_folds: dict[str, Any] = {}
+        for path_key in SCREEN_PATHS:
+            positives = sum(
+                1
+                for seed in seeds
+                for fold_values in per_seed[str(int(seed))].get("fold_level", {}).values()
+                if fold_values[f"{path_key}_gain"] > 0.0
+            )
+            total = sum(
+                len(per_seed[str(int(seed))].get("fold_level", {})) for seed in seeds
+            )
+            positive_folds[path_key] = {"positive": int(positives), "total": int(total)}
 
         gate: dict[str, Any] = {"passes": False, "path": None, "per_path": {}}
         if available:
@@ -569,6 +684,8 @@ def aggregate_screen(
             "per_seed": per_seed,
             "baseline_scores": baseline_scores,
             "gate": gate,
+            "positive_folds": positive_folds,
+            "coverage_gate": _coverage_gate(spec, gate, positive_folds, seeds, folds),
             "ranking_score": float(max(
                 (gate["per_path"][p]["mean_gain"] for p in gate["per_path"]), default=float("-inf")
             )),
@@ -666,6 +783,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--output", type=Path, default=None)
     parser.add_argument("--spec", type=Path, default=Path(DEFAULT_SPEC_PATH))
     parser.add_argument("--lines", nargs="+", choices=["R", "S", "N"], default=None)
+    parser.add_argument("--recipes", nargs="+", default=None,
+                        help="restrict to specific recipes, e.g. --recipes N2")
     parser.add_argument("--targets", nargs="+", choices=list(TARGETS), default=None)
     parser.add_argument("--seeds", type=int, nargs="+", default=None)
     parser.add_argument("--folds", type=int, nargs="+", default=None)
@@ -675,6 +794,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser.add_argument("--b-fit-workers", type=int, default=12)
     parser.add_argument("--skip-baseline", action="store_true")
     parser.add_argument("--no-verify-replay", action="store_true")
+    parser.add_argument("--training-seed", type=int, default=None,
+                        help="randomness control only; never re-selects a structure")
     parser.add_argument("--aggregate-only", action="store_true",
                         help="re-derive the summary from persisted slots without fitting")
     parser.add_argument("--start-method", choices=["spawn", "fork", "forkserver"],
@@ -682,11 +803,13 @@ def main(argv: Sequence[str] | None = None) -> int:
                         help="worker start method; spawn avoids fork-with-OpenMP deadlocks")
     args = parser.parse_args(argv)
     result = run_screen(
-        args.root, args.output, spec_path=args.spec, lines=args.lines, targets=args.targets,
+        args.root, args.output, spec_path=args.spec, lines=args.lines,
+        recipes=args.recipes, targets=args.targets,
         seeds=args.seeds, folds=args.folds, limit=args.limit, jobs=args.jobs,
         torch_threads=args.torch_threads, b_fit_workers=args.b_fit_workers,
         skip_baseline=args.skip_baseline, verify_replay=not args.no_verify_replay,
         start_method=args.start_method, aggregate_only=args.aggregate_only,
+        training_seed=args.training_seed,
     )
     print(json.dumps({k: v for k, v in result.items() if k != "summary"}, ensure_ascii=False, indent=2))
     return 0
