@@ -147,7 +147,7 @@ SPEC 的晋级要求是 ≥4 个独立 split seed 的 seed 级配对 LCB>0。
 | 项 | 值 |
 |---|---|
 | 路径 | `local/runs/round2-v5-error-covariance/seed-swap-r1/V5_SEED_SWAP_S1000` |
-| ZIP | `V5_SEED_SWAP_S1000.zip` |
+| ZIP | `Luqhhh_bf_tap_predict_round2.zip` |
 | ZIP SHA-256 | `4ff97c033f05b7e686453e913460b548cd7231d3736b3f431bb3882e1a82460f` |
 | result.csv SHA-256 | `024a66f3744efede4dd6a39fba338703d22b290e77773a826f6241219d6016af` |
 | 行/顺序 | 322 行，与 `result_template.csv` 顺序一致（独立回读校验） |

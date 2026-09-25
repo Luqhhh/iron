@@ -7216,7 +7216,8 @@
       "interpretation_rule": {
         "abs_delta_about_0.02": "stop chasing thousandths; structural change only",
         "abs_delta_about_0.005": "seed sensitivity dominates; continue the error-covariance route under the four-seed rule"
-      }
+      },
+      "zip_name": "Luqhhh_bf_tap_predict_round2.zip"
     },
     "new_cv_fits": 0,
     "new_development_fits": 130,
