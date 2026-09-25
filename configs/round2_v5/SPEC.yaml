@@ -1,0 +1,204 @@
+# Round2 V5 pre-registration contract.
+#
+# This file is the declarative pre-registration for the V5 round
+# "error-covariance member search, composition shape, evaluation resolution and
+# the platform noise floor".  It is written BEFORE any evaluation is executed.
+#
+# Thresholds here are frozen: `src/bf_tap_r2/v5_spec.py` refuses to load a file
+# whose hard constraints have been changed to something the plan does not
+# allow.  The only field that may be annotated after execution is `status`.
+#
+# Sources: the approved V5 plan (2026-09-25) and the repo instructions in
+# AGENTS.md / CLAUDE.md.  The recorded user target text is preserved verbatim.
+
+version: round2-v5-error-covariance-resolution
+status: PRE_REGISTERED_NOT_EXECUTED
+date: 2026-09-25
+branch: round2-v5-error-covariance-resolution
+base_commit: 4a05321
+
+targets:
+  # Preserved verbatim from the user request; it is not changed here.  The
+  # operating target is the repo's current next-phase target.
+  user_requested_platform_score_verbatim: 93.5
+  operational_platform_target: platform_gt_96.3
+  current_platform_best:
+    candidate: V36_USER_REQUESTED_OUTER_FAILED
+    score: 96.2734
+    source: user_reported_not_independently_verified
+  local_working_gate: 96.25
+  local_stretch_gate: 96.3
+
+data_contract:
+  train_samples: 复赛_train/train_samples.csv
+  train_features: 复赛_train/train_features.csv
+  test_samples: 复赛_test/test_samples.csv
+  test_features: 复赛_test/test_features.csv
+  template: 复赛_test/result_template.csv
+  targets: [tap_iron, tap_time_len]
+  id_column: sample_id
+  expected_rows: {train: 2754, test: 322}
+
+reference:
+  v36_summary: local/runs/round2-v3.6-loss-training-and-numeric-encoding/v36-summary.json
+  v36_development_cache: local/runs/round2-v3.6-loss-training-and-numeric-encoding/complete-dev-r2-final
+  v36_coarse_ledger: local/runs/round2-v3.6-loss-training-and-numeric-encoding/fixed-r2-final/fit_ledger.jsonl
+  v36_parent_package: local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/V36_USER_REQUESTED_OUTER_FAILED
+  a_dev_l1_run: local/runs/round2-v3.4-ebm-and-constrained-composition
+  frozen_folds:
+    42: local/runs/round2-v2/comparison-r1/folds-42.csv
+    3407: local/runs/round2-v2/comparison-r1/folds-3407.csv
+    2026: local/runs/round2-v3-local-search/frozen-seed2026-r1/folds-2026.csv
+  weights_basis: "read exact values from v36-summary.json; never round from docs"
+
+library:
+  # Every entry is keyed by (source directory, seed, trial id).  The same trial
+  # id appears in more than one directory with a different training convention;
+  # merging on trial id alone is forbidden.
+  sources:
+    - name: v36_dev_experts
+      path: local/runs/round2-v3.6-loss-training-and-numeric-encoding/complete-dev-r2-final
+      pattern: "seed-{seed}/pred-{trial_id}.npy"
+      seeds: [42, 3407]
+      folds: [0, 1, 2, 3, 4]
+      early_stopping: fixed_recipe
+      coverage: full
+    - name: v3_refine_catboost
+      path: local/runs/round2-v3-local-search/refine-catboost-r1
+      pattern: "pred-{seed}-{trial_id}.npy"
+      seeds: [42, 3407]
+      folds: [0, 1, 2, 3, 4]
+      early_stopping: false
+      coverage: full
+    - name: v3_refine_all
+      path: local/runs/round2-v3-local-search/refine-all-r1
+      pattern: "pred-{seed}-{trial_id}.npy"
+      seeds: [42, 3407]
+      folds: [0, 1, 2, 3, 4]
+      early_stopping: false
+      coverage: full
+    - name: v3_refine_xgboost
+      path: local/runs/round2-v3-local-search/refine-xgboost-r1
+      pattern: "pred-{seed}-{trial_id}.npy"
+      seeds: [42, 3407]
+      folds: [0, 1, 2, 3, 4]
+      early_stopping: false
+      coverage: full
+    - name: v2_oof_columns
+      path: local/runs
+      pattern: "round2-v2*/**/oof/{seed}-{target}.csv"
+      seeds: [42, 3407]
+      folds: [0, 1, 2, 3, 4]
+      early_stopping: recorded
+      coverage: full
+    - name: v36_coarse_diagnostic
+      path: local/runs/round2-v3.6-loss-training-and-numeric-encoding/fixed-r2-final
+      pattern: "pred-{trial_id}.npy"
+      seeds: [42]
+      folds: [0, 1]
+      early_stopping: fixed_recipe
+      coverage: folds01
+  require_fold_alignment: true
+  forbid_trial_id_only_keys: true
+  packagability_classes:
+    P0: "test prediction already recorded under local/"
+    P1: "recipe reproducible from a frozen in-repo ledger"
+    P2: "diagnostic only; must not be promoted"
+
+admissibility:
+  # "Low correlation" alone selects noise: in the coarse pool the least
+  # correlated candidates (rho ~= 0.27) are ~2x worse than the base and never
+  # improve under a nested two-fold alpha test.
+  residual_correlation_max: 0.95
+  single_wmape_ratio_max: 1.25
+  alpha_search_bounds: [0.05, 0.5]
+  alpha_grid_points: 46
+  require_alpha_interior: true
+  notes:
+    - "Thresholds are derived from the observed V36 pool and the v2.7-v2.9 geometry line; the Stage-1 backtest must confirm they reject known-bad candidates before any fit is spent."
+
+resolution:
+  # Fold-level lower confidence bounds cannot reject the historical N2
+  # candidate (mean +0.014374 over ten cells, 8/10 positive, LCB95 ~ +0.008).
+  # The effective unit of evidence is therefore the split seed.
+  fold_level:
+    unit: split_seed_x_fold
+    positive_cells_min: 8
+    positive_cells_total: 10
+    role: descriptive_only
+  seed_level:
+    unit: split_seed
+    min_seeds_for_promotion: 4
+    paired_lcb_level: 0.95
+    require_paired_lcb_gt_zero: true
+    require_both_initial_seeds_positive: true
+  new_seed_derivation:
+    routine: bf_tap_r2.splits.make_folds
+    frozen_seeds: [42, 3407, 2026]
+    derived_seeds: [7777, 12011]
+    note: "Derived seeds are deterministic and group-safe but are not frozen artifacts; they are declared here before use."
+  backtest:
+    # The rule must reject the known-bad lines before the round may spend fits.
+    known_bad_min_rejected: 3
+    known_bad_total: 4
+    known_bad:
+      - V42_iron_N2_quarter
+      - NODE_per_depth_N4
+      - ODST_core_N5
+      - TabR_full_fusion_R4
+    known_good_must_remain_eligible:
+      - N2_iron_coarse_pass
+    role: calibration_only
+
+budget:
+  stage1_new_model_fits: 0
+  stage2a:
+    source: v36_coarse_diagnostic
+    family: N
+    target: tap_time_len
+    max_selected_trials: 16
+    seeds: [42, 3407]
+    folds: [0, 1, 2, 3, 4]
+    extra_seed: 2026
+    extra_seed_top_k: 3
+    max_fit_slots: 190
+  stage2b:
+    new_split_seeds: [7777, 12011]
+    max_candidates: 2
+    seeds_per_candidate: 2
+    folds_per_seed: 5
+    max_fit_slots: 40
+  stage3_full_data_fits: 1
+  stop_rule_on_backtest_failure: stop_before_stage2
+
+gates:
+  stage1:
+    require_admissible_candidate: true
+    require_nested_held_seed_positive: true
+    report_only_if_no_candidate: true
+  stage2:
+    require_seed_level_lcb_gt_zero: true
+    require_min_positive_seeds: 4
+    require_local_package_min: 96.25
+  stage3:
+    require_unchanged_column_byte_identical: true
+    require_parent_reproduction_check: true
+    require_cold_consistency_check: true
+
+closed_routes:
+  do_not_reopen:
+    - NODE_per_depth_selection
+    - ODST_core
+    - TabR_full_fusion
+    - residual_correctors
+    - sample_reweighting_or_manual_prediction_edits
+    - dense_alpha_grid_scan
+  unavailable_not_untried:
+    - temporal_or_lag_features
+
+publication:
+  upload_actor: user
+  agent_uploads: 0
+  no_automatic_packages: true
+  daily_cap_user_stated: 5
+  private_outputs_only: local/runs/round2-v5-*
