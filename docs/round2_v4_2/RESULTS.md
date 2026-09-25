@@ -55,8 +55,16 @@ other unit fails; the closest miss is `N-N1-tap_iron` at a fixed-quarter mean ga
 of `−0.002834` (positive in seed 3407, negative in seed 42).
 
 Because at most one recipe per family and target may advance, the single
-finalist is **`N-N2-tap_iron`** (2-layer PLE differentiable oblivious tree
-ensemble, only the `tap_iron` column replaced at weight 0.25).
+finalist is **`N-N2-tap_iron`** (2-layer raw-standardised differentiable oblivious
+tree ensemble, only the `tap_iron` column replaced at weight 0.25).
+
+> **Correction (2026-09-25, V4.2-r2 review).** Earlier revisions of this file
+> described `N-N2-tap_iron` as PLE-encoded. That was a documentation error:
+> `SEARCH_SPEC.yaml`, `v4_2_n_node.N_RECIPES` and the private fit ledger all
+> record `numeric_encoding: raw` for N2 (N3 is the PLE two-layer recipe), with
+> `n_features_numeric = 21` and `n_features_categorical = 3` and transform hash
+> `35c31efc563928175f33f31e45a6e8959176832fc014be017a8b7c9c4fa38bca`. Only the
+> wording is corrected here; no score was recomputed or altered.
 
 The full ranking is in `coarse_summary.csv`; the complete per-unit record,
 including both paths' per-seed gains, is in `coarse_summary.json`.
@@ -109,18 +117,39 @@ training was 0.94–0.99 MB for N; the worker process high-water mark was
 
 ## 5. What this does and does not show
 
-Does show: with 2 layers and PLE numerics, a differentiable oblivious tree
-ensemble that is clearly worse than `B_fit` on its own can still carry a small,
-consistent positive contribution when given a fixed 0.25 weight on the iron
-target. The effect is small (`+0.0093` mean package) and it does not meet the
-`+0.02` full-coverage fusion gate.
+Does show: with 2 layers and raw-standardised numerics, a differentiable
+oblivious tree ensemble that is clearly worse than `B_fit` on its own can still
+carry a small, consistent positive contribution when given a fixed 0.25 weight on
+the iron target. The effect is small (`+0.0093` mean package gain on folds 0/1).
 
-Does **not** show: any platform gain. The screen is coarse development evidence
-on two folds only. Folds 2/3/4 were not evaluated, the inner fusion selection was
-not run, the training-randomness replication was not run, and nothing was
-packaged or uploaded.
+Does **not** show: any platform gain, and — as originally reported — not a
+full-coverage or fusion result. At the time of the coarse screen only folds 0/1
+existed, so the full-coverage gate was not evaluated at all; the inner fusion
+selection and the training-randomness replication had not been run, and nothing
+was packaged or uploaded.
 
 ## 6. Pre-registered stopping point
+
+The pre-registration separates two different gates:
+
+* the **coarse continuation gate** — one and the same pre-declared path positive
+  in both split seeds with a mean full-package gain of at least `+0.005` on folds
+  0/1. `N-N2-tap_iron` met this at `+0.0093` on `fixed_quarter`;
+* the **full-coverage fusion gate** — after folds 2/3/4 are added, a mean gain of
+  at least `+0.02`, both split seeds positive and at least 8/10 positive folds.
+  This gate may only be judged on the complete ten cells.
+
+> **Correction (2026-09-25, V4.2-r2 review).** The original text of this section
+> applied the `+0.02` full-coverage gate to stop *before* folds 2/3/4 were run,
+> and recorded that as a gate failure. That is inconsistent with
+> `configs/round2_v4_2/SEARCH_SPEC.yaml`: with only folds 0/1 the full-coverage
+> gate state is `NOT_EVALUATED_INCOMPLETE_COVERAGE`, never a failure and never a
+> pass. The original wording is preserved below as the historical record; the
+> 0.005 coarse gate was met, so full coverage was the permitted next step.
+> `bf_tap_r2.v4_2_screen._coverage_gate` now returns exactly those three states.
+
+<details>
+<summary>Original section 6 text (historical record, superseded)</summary>
 
 The next stage — folds 2/3/4 coverage and inner fusion selection — is gated on a
 unit reaching a mean gain of `+0.02` with both seeds positive and at least 8/10
@@ -128,6 +157,13 @@ positive folds on complete coverage. The best coarse unit is at `+0.0093`, less
 than half of that. Per the frozen stop rule, **the line stops here and no alpha
 rescue scan is performed**; folds 2/3/4, the inner nested fusion and the
 seed-3407 replication were deliberately not started.
+
+</details>
+
+The subsequent repair round re-ran the candidate under an explicit
+initialisation-seed protocol and completed folds 2/3/4; the outcomes, the
+repaired-coverage gate state and the preserved pre-repair diagnostics are in
+`docs/round2_v4_2/FOLLOWUP_RESULTS.md`.
 
 ## 7. Guardrails held
 

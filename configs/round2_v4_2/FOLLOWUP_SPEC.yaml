@@ -1,0 +1,142 @@
+# Round2 V4.2-r2 follow-up declarations.
+#
+# This file records two things that are *not* part of the frozen V4.2
+# pre-registration in SEARCH_SPEC.yaml:
+#
+#   1. the N2 seed-initialisation repair identity and its stage gates;
+#   2. the design of the next structural hypothesis, per-depth feature
+#      selection, which is declared with ``enabled: false`` and must not be
+#      started automatically in this plan.
+#
+# Editing SEARCH_SPEC.yaml is not required and its frozen thresholds are not
+# duplicated here.
+
+schema_version: v4.2-r2
+date: 2026-09-25
+base_commit: 63d0adc3e11fc6e22e08eef62fb68963ea0959ae
+branch: round2-v4.2-structure-search
+# The pre-registered thresholds above are unchanged; this status records what
+# happened when the plan was executed, not a relaxation of the plan.
+status: REPAIR_EXECUTED_FULL_GATE_FAILED
+
+execution_record:
+  private_evidence: local/runs/round2-v4.2-structure-search/n2-seed-init-v2
+  identity_digest: "1356558248df257433d2b4b337467caa0faf7211b46d8eb68a2c05a8f1cc3693"
+  source_digest: "c78134ea7167b835646ae67b61fe095caae030de1d6f1e09c5288e61256f868f"
+  coarse_gate: PASSED          # +0.009807 mean, both split seeds positive, folds 0/1
+  full_coverage_gate: FAILED   # +0.014374 mean, both seeds positive, 8/10 folds; needs >=0.02
+  fusion: NOT_EVALUATED
+  replication: NOT_EVALUATED
+  submission: NOT_EVALUATED
+  fits: {n2_fit_calls: 10, neural_trainings: 20, b_fit_factory_calls: 0, b_fit_cache_hits: 10}
+  report: docs/round2_v4_2/FOLLOWUP_RESULTS.md
+
+followup:
+  repair_version: SEED_INIT_V2
+  candidate_trial_id: N-N2-tap_iron-SEED_INIT_V2
+  line: N
+  recipe: N2
+  target: tap_iron
+  numeric_encoding: raw
+  split_seeds: [42, 3407]
+  training_seed: 42
+  coarse_folds: [0, 1]
+  full_folds: [0, 1, 2, 3, 4]
+  path: fixed_quarter
+  fixed_quarter_weight: 0.25
+  # Fold state machine.  An incomplete full coverage is explicitly *not* a
+  # failure and *not* a pass.
+  stage_states:
+    - PASSED
+    - FAILED
+    - NOT_EVALUATED
+    - NOT_EVALUATED_INCOMPLETE_COVERAGE
+  gates:
+    coarse:
+      same_path_both_seeds: true
+      both_seed_gains_positive: true
+      mean_full_package_gain_min: 0.005
+    full_coverage:
+      mean_gain_min: 0.02
+      both_seeds_positive: true
+      positive_folds_min: 8
+  unchanged:
+    - loss
+    - learning_rate
+    - tree_count
+    - depth
+    - routing_temperature
+    - encoding
+    - fusion_weight
+  identity_required:
+    - data_hash
+    - train_and_evaluation_ids_and_order
+    - group_hash
+    - fold_vector
+    - model_recipe
+    - encoder_and_target_transform
+    - initialisation_and_batch_order_seeds
+    - model_and_training_source_digest
+    - dependency_identity
+
+path_b:
+  # Design only: the per-depth selector is the next hypothesis to test, and it
+  # is never started merely because path A missed a gate.
+  enabled: false
+  candidate_trial_id: N-N2_DEPTHSELECT-tap_iron
+  base_recipe: N2
+  hypothesis: |
+    A single tree currently reuses one feature projection at every depth; only
+    the threshold changes.  Allowing each depth to select its own feature is a
+    different, still-oblivious model: every node at one depth still shares that
+    depth's feature and threshold, but the four depths need not agree.
+  source_comparison:
+    in_repo: "bf_tap_r2.v4_2_n_node:_ObliviousLayer.feature_logits -> (trees, features)"
+    reference: "Qwicen/node/lib/odst.py: the selector carries a depth axis"
+  proposed_change:
+    feature_logits_shape: [trees, depth, features]
+    selectors: "entmax15(feature_logits, dim=-1)"
+    z: "einsum('bf,tdf->btd', x, selectors)"
+    route: "sigmoid(z - threshold[trees, depth])"
+    removes: "depth-shared feature projection"
+    keeps:
+      - raw numeric encoding
+      - two layers
+      - 64 trees per layer
+      - depth 4
+      - linear head
+      - threshold initialisation
+      - fixed routing temperature
+      - MAE objective
+      - AdamW optimiser
+      - early-stopping protocol
+    forbidden_additions:
+      - learnable_temperature
+      - data_aware_initialisation
+      - ple_encoding
+      - more_trees
+  required_control: |
+    The repaired shared-selector N-N2-tap_iron-SEED_INIT_V2, never the
+    pre-repair N2 whose initialisation seed was not controlled.
+  reporting:
+    - true_parameter_count
+    - capacity_increase_is_not_a_strict_equal-capacity_causal_proof
+  acceptance_checks:
+    - "binding every depth's selector to one vector reproduces the shared-selector forward output"
+    - "perturbing one depth's selector does not rewrite another depth's selector"
+    - "the selector gradient is non-zero for each depth"
+    - "serialisation round-trips the (trees, depth, features) shape"
+    - "outputs and gradients are checked numerically, not inferred from a class name"
+  budget:
+    coarse_slots: 4
+    extend_slots: 6
+    coarse_slot_definition: "two split seeds x folds 0/1"
+    extension_precondition: |
+      Same pre-declared path positive in both split seeds, mean full-package
+      gain >= 0.005, and a positive mean increment against the shared-selector
+      control; then add the six remaining slots.
+    mixes_with_path_a: false
+  note: |
+    This is the next-step design under enabled: false.  It does not reuse or
+    rename the failed R/S units, and it does not weaken the original
+    full-coverage gate.

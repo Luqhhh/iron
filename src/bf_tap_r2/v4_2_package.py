@@ -69,6 +69,61 @@ def _require_private(root: Path, path: Path) -> Path:
     return resolved
 
 
+def _read_parent_csv(parent_path: Path) -> tuple[list[str], np.ndarray, list[str]]:
+    """Read the parent package while preserving the exact field text.
+
+    ``pd.read_csv`` parses the text column to ``float64`` and a later ``str()``
+    re-formats it, so a value written as ``.17g`` can come back as the shortest
+    repr and a 74-row / 136-string drift appears in a column the manifest calls
+    byte-for-byte preserved.  The unchanged column is therefore taken straight
+    from the CSV field text instead of being round-tripped through a float.
+    """
+    text = parent_path.read_text(encoding="utf-8")
+    reader = csv.reader(io.StringIO(text, newline=""))
+    try:
+        header = next(reader)
+    except StopIteration as exc:  # pragma: no cover - an empty file is a hard error
+        raise ValueError("Parent package is empty") from exc
+    if list(header) != list(SUBMISSION_COLUMNS):
+        raise ValueError("Parent package column mismatch")
+    id_index = header.index("sample_id")
+    iron_index = header.index("pred_tap_iron")
+    time_index = header.index("pred_tap_time_len")
+    parent_ids: list[str] = []
+    iron: list[float] = []
+    time_strings: list[str] = []
+    for row in reader:
+        if not row:
+            continue
+        if len(row) != len(header):
+            raise ValueError("Parent package row width mismatch")
+        parent_ids.append(row[id_index])
+        iron.append(float(row[iron_index]))
+        time_strings.append(row[time_index])
+    return parent_ids, np.asarray(iron, dtype=float), time_strings
+
+
+def _align_parent_columns(
+    parent_ids: Sequence[str],
+    parent_iron: np.ndarray,
+    parent_time: Sequence[str],
+    ids: Sequence[str],
+) -> tuple[np.ndarray, list[str]]:
+    """Reorder the parent columns onto ``ids`` without touching the time text."""
+    ids = list(ids)
+    parent_ids = [str(value) for value in parent_ids]
+    if len(parent_ids) != len(set(parent_ids)):
+        raise ValueError("Parent package has duplicate sample_id values")
+    if set(parent_ids) != set(ids):
+        raise ValueError("Parent package ID set mismatch")
+    order = {value: position for position, value in enumerate(parent_ids)}
+    aligned_iron = np.asarray([parent_iron[order[sid]] for sid in ids], dtype=float)
+    aligned_time = [parent_time[order[sid]] for sid in ids]
+    if not np.isfinite(aligned_iron).all():
+        raise ValueError("Parent iron column is not finite")
+    return aligned_iron, aligned_time
+
+
 def _csv_payload(ids: Sequence[str], values: np.ndarray) -> bytes:
     ids = list(ids)
     values = np.asarray(values, dtype=float)
@@ -197,16 +252,13 @@ def build_iron_only_package(
     test = load_v2(root / "复赛_test", "test", 322)
     ids = test.sample_id.tolist()
 
-    parent = pd.read_csv(parent_path, dtype={"sample_id": "string"})
-    if list(parent.columns) != list(SUBMISSION_COLUMNS):
-        raise ValueError("Parent package column mismatch")
-    if parent.sample_id.duplicated().any() or set(parent.sample_id) != set(ids):
-        raise ValueError("Parent package ID set mismatch")
-    parent = parent.set_index("sample_id").loc[ids].reset_index()
-    parent_iron = parent["pred_tap_iron"].to_numpy(dtype=float)
-    parent_time_strings = [str(v) for v in parent["pred_tap_time_len"].tolist()]
-    if not np.isfinite(parent_iron).all():
-        raise ValueError("Parent iron column is not finite")
+    # Read the parent package as raw CSV text so the unchanged column keeps its
+    # exact field strings; parsing to float and re-formatting would silently
+    # rewrite it (see `_read_parent_csv`).
+    parent_ids, parent_iron_raw, parent_time_raw = _read_parent_csv(parent_path)
+    parent_iron, parent_time_strings = _align_parent_columns(
+        parent_ids, parent_iron_raw, parent_time_raw, ids
+    )
 
     # ---- independent full-data B36 reproduction check -------------------
     references = V42References(root, train, workers=int(b_fit_workers), verify_replay=False)
