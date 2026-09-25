@@ -51,6 +51,7 @@ def test_v41_plan_and_candidate_budget_are_frozen():
     assert config["status"] in {
         "PLAN_FROZEN_NOT_EXECUTED",
         "COMPLETE_DEVELOPMENT_FORMAL_TIME_CANDIDATE_NO_RELEASE",
+        "COMPLETE_DEVELOPMENT_USER_REQUESTED_EXPLORATORY_PACKAGE_READY",
     }
     assert config["protocol"]["split_seeds"] == [42, 3407]
     assert config["protocol"]["coarse_folds"] == [0, 1]

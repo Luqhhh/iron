@@ -6668,7 +6668,7 @@
     }
   },
   "round2_v4_1_orthogonal_residual_search": {
-    "status": "COMPLETE_DEVELOPMENT_FORMAL_TIME_CANDIDATE_NO_RELEASE",
+    "status": "COMPLETE_DEVELOPMENT_USER_REQUESTED_EXPLORATORY_PACKAGE_READY",
     "date": "2026-09-25",
     "branch": "round2-v4.1-orthogonal-residual-search",
     "public_docs": [
@@ -6729,8 +6729,28 @@
       "private_artifact_guard": "PASS_WINDOWS_GIT_WORKTREE_771_TRACKED_FILES"
     },
     "final_outer": "NOT_RUN_NO_REPLACEMENT_SEED_AUTHORIZED",
-    "platform_packages": 0,
+    "platform_packages": 1,
     "agent_uploads": 0,
+    "user_requested_exploratory_package": {
+      "candidate": "V41_PUBLIC_ANCHOR_HGB_L2_L15_A050_TIME",
+      "claim_boundary": "PUBLIC_ANCHOR_EXPLORATORY_NOT_V34_A_OR_V36_REPLAY",
+      "private_run": "local/runs/round2-v4.1-orthogonal-residual-search/release-user-requested-r3",
+      "local_validation": {
+        "seed_42_package_score": 96.13260310284053,
+        "seed_3407_package_score": 96.10736627561516,
+        "mean_package_score": 96.11998468922785,
+        "public_anchor_package_score": 96.094279167884,
+        "delta_vs_public_anchor": 0.025705521343854718,
+        "v36_development_package_score": 96.20376256899247,
+        "delta_vs_v36_development": -0.08377787976462
+      },
+      "zip_sha256": "5941762c0ae6e6d18fd0dc456ea1de57767679e7838ca4beff026e265ddf6ba5",
+      "result_sha256": "ddeaeb6350015ed6661f19f97a26a575e09bd19070d495c0054ccd440c7acdae",
+      "rows": 322,
+      "verification": "PASS_COLD_SHUFFLE_CHUNK_ZIP_IDENTITY",
+      "platform_uploads": 0,
+      "upload_actor": "user"
+    },
     "current_platform_best_unchanged": {
       "name": "V36_USER_REQUESTED_OUTER_FAILED",
       "score": 96.2734,

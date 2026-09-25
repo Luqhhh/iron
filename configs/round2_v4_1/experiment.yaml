@@ -1,5 +1,5 @@
 version: round2-v4.1-orthogonal-residual-search
-status: COMPLETE_DEVELOPMENT_FORMAL_TIME_CANDIDATE_NO_RELEASE
+status: COMPLETE_DEVELOPMENT_USER_REQUESTED_EXPLORATORY_PACKAGE_READY
 created: '2026-09-25'
 base_commit: ac6a3b40b49df8dd60a53047bf525feb801f21a0
 
@@ -9,7 +9,7 @@ objective:
     name: V36_USER_REQUESTED_OUTER_FAILED
     score: 96.2734
     gap_to_target: 0.0266
-  scope: mechanism_screen_not_release
+  scope: mechanism_screen_plus_user_requested_public_anchor_exploratory_package
 
 reference:
   name: PUBLIC_REBUILDABLE_V34_EBM_ANCHOR
@@ -112,7 +112,20 @@ execution:
     total_folds: 10
     worst_spout_wmape_delta: -0.0003272872896820933
   final_outer_run: false
-  package_generated: false
+  package_generated: true
+  user_requested_exploratory_package:
+    candidate: V41_PUBLIC_ANCHOR_HGB_L2_L15_A050_TIME
+    claim_boundary: public_anchor_exploratory_not_v34_a_or_v36_replay
+    private_run: local/runs/round2-v4.1-orthogonal-residual-search/release-user-requested-r3
+    mean_package_score: 96.11998468922785
+    public_anchor_package_score: 96.09427916788400
+    delta_vs_public_anchor: 0.025705521343854718
+    v36_development_package_score: 96.20376256899247
+    delta_vs_v36_development: -0.08377787976462
+    zip_sha256: 5941762c0ae6e6d18fd0dc456ea1de57767679e7838ca4beff026e265ddf6ba5
+    result_sha256: ddeaeb6350015ed6661f19f97a26a575e09bd19070d495c0054ccd440c7acdae
+    rows: 322
+    verification: PASS
   platform_uploads: 0
   validation:
     focused_v41_v4_candidate_tiers: 24_passed
