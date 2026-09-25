@@ -166,3 +166,13 @@ E 线产物：
 - 任务书：`docs/round2_v4_1/V4_1_TASKBOOK.md`。
 - 实现：`src/bf_tap_r2/v4_1_reference.py`、`v4_1_paired_terms.py`、`v4_1_residuals.py`、`v4_1_nested.py`、`v4_1_run.py`。
 - 私有逐样本证据全部留在 `local/runs/round2-v4.1-strong-increment/`，未提交。
+
+---
+
+## 7. 2026-09-25 strong-base C2/C3/C4 later execution
+
+The self-contained V4.1 strong-base C2/C3/C4 path was later implemented and
+executed as a descriptive frozen-V3.6 development screen.  It did not promote a
+candidate.  See `docs/round2_v4_1/STRONG_INCREMENT_RESULTS.md` for the first
+round and complete iron follow-up tables, blocked time-C4 units, real fit
+counts, and the zero-submission decision.

@@ -1,0 +1,118 @@
+# Round2 V4.1 strong-base increment configuration.
+# This file is an implementation/pre-registration contract.  It does not claim
+# that real training has been executed.
+status: EXECUTED_DEVELOPMENT_SCREEN_NO_PROMOTION
+
+experiment:
+  name: round2_v4_1_strong_increment_c234
+  branch: round2-v4.1-strong-increment
+  reviewed_commit: ac6a3b40b49df8dd60a53047bf525feb801f21a0
+  target_platform_score: 93.5
+  user_requested_outer_failed: 96.2734
+  note: "Keep the original 93.5 target in the record; 96.2734 is user-returned and not independently verified."
+
+# Round-two data contract keys (also accepted by bf_tap_r2.data.load_config).
+train_samples: 复赛_train/train_samples.csv
+train_features: 复赛_train/train_features.csv
+test_samples: 复赛_test/test_samples.csv
+test_features: 复赛_test/test_features.csv
+template: 复赛_test/result_template.csv
+numeric_features:
+  - air_volume
+  - cold_air_press
+  - hot_air_press
+  - oxygen
+  - hot_air_temp
+  - coal_rate
+  - humidity
+  - gas_rate
+  - furnace_top_press
+  - upper_press_diff
+  - lower_press_diff
+  - total_press_diff
+  - air_press_ratio
+  - furnace_top_temp_avg
+  - air_speed
+  - furnace_throat_temp
+  - pig
+  - all_quality
+  - consumption
+  - fuel_rate
+  - coke_rate
+categorical_features:
+  - spout_no
+targets:
+  - tap_iron
+  - tap_time_len
+id_column: sample_id
+support_files:
+  - 复赛_train/readme.txt
+  - 复赛_train/data_dictionary.xlsx
+  - 复赛_test/readme.txt
+  - 复赛_test/data_dictionary.xlsx
+expected_rows:
+  train: 2754
+  test: 322
+
+reference:
+  v36_summary: local/runs/round2-v3.6-loss-training-and-numeric-encoding/v36-summary.json
+  v36_ledger: local/runs/round2-v3.6-loss-training-and-numeric-encoding/fixed-r2-final/fit_ledger.jsonl
+  v36_development_cache: local/runs/round2-v3.6-loss-training-and-numeric-encoding/complete-dev-r2-final
+  base_name: V36_USER_REQUESTED_OUTER_FAILED
+  evidence_level: DESCRIPTIVE_FROZEN_V36_DEVELOPMENT_REPLAY
+  weights_basis: "read exact values from v36-summary.json; do not round from docs"
+  separate_test_identity: true
+
+fixed_slots:
+  tap_iron: v36-s1-D-0029
+  tap_time_len: v36-s1-O-0057
+
+budget:
+  seeds: [42, 3407]
+  first_round_folds: [0, 1]
+  full_development_folds: [0, 1, 2, 3, 4]
+  methods: [C2, C3, C4]
+  first_round_outer_evaluations: 24
+  full_development_outer_evaluations_cap: 60
+  inner_c4_folds: 3
+  inner_seed: 41017
+  max_triple_candidates: 8
+  max_selected_triples: 2
+
+recipes:
+  C2:
+    description: "Exact selected V3.6 strong EBM parent replay; original feature_set, target transform, category handling, bags, rounds, loss and capacity."
+    interaction_policy: "as released / automatic count"
+  C3:
+    description: "Same parent recipe with the current training-part C2 fitted pair set made explicit."
+    interaction_policy: "explicit pairs only; no univariate tuples"
+  C4:
+    description: "C3's exact pair set plus at most two triples selected only on group-safe internal training validation."
+    interaction_policy: "explicit pairs plus at most two triples"
+    selection: "compare k=0,1,2 by original-unit WMAPE; ties choose smaller k"
+    candidate_rule: "shared-feature unions of parent pair edges ranked by parent pair importance"
+
+gates:
+  coarse:
+    rule: "C3 or C4 fixed-slot package delta positive in both seeds"
+  candidate_pool:
+    mean_delta_vs_b36_min: 0.02
+    both_seeds_positive: true
+    positive_development_folds_min: 8
+    total_development_folds: 10
+  submission:
+    local_working_score_min: 96.25
+    requires_candidate_pool: true
+    requires_full_inference_audit: true
+  c4_only_beats_c3_but_loses_b36: do_not_promote
+  c3_positive_c4_no_extra: keep_c3_only
+  one_target_only: keep_other_target_v36
+  no_candidate: zero_submissions_no_new_grid
+
+execution:
+  real_training_executed: true
+  real_training_scope: "descriptive frozen V3.6 development C2/C3/C4 screen; no new outer seed"
+  packaging_executed: false
+  platform_upload_executed: false
+  consumed_outer_seed: 23003
+  outcome: DEVELOPMENT_SCREEN_NO_PROMOTION

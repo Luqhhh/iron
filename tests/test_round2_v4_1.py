@@ -155,3 +155,114 @@ def test_nested_cache_keeps_fit_and_query_groups_disjoint(tmp_path: Path) -> Non
     assert len(factory.calls) >= 7
     for train_ids, query_ids in factory.calls:
         assert not train_ids & query_ids
+
+
+# ---------------------------------------------------------------------------
+# 2026-09-25 strong-increment implementation tests
+# ---------------------------------------------------------------------------
+
+from bf_tap_r2.v4_1_c234 import apply_slot_replacement  # noqa: E402
+from bf_tap_r2.v4_1_models import (  # noqa: E402
+    V41EBMRegressor,
+    normalise_interactions,
+    resolve_interactions,
+    select_shared_edge_triples,
+    structure_audit,
+)
+
+
+def test_slot_replacement_uses_original_units_and_exact_weight() -> None:
+    baseline = np.array([100.0, 200.0])
+    parent = np.array([90.0, 150.0])
+    replacement = np.array([110.0, 130.0])
+    result = apply_slot_replacement(baseline, parent, replacement, 0.25)
+    assert np.allclose(result, baseline + 0.25 * (replacement - parent))
+    clipped = apply_slot_replacement(np.array([1.0]), np.array([0.0]), np.array([-10.0]), 1.0,
+                                     clip_nonnegative=True)
+    assert clipped[0] == 0.0
+
+
+def test_normalise_interactions_supports_pairs_and_triples() -> None:
+    assert normalise_interactions(3) == 3
+    assert normalise_interactions([(2, 1), (1, 2), (0, 1, 2)]) == [(1, 2), (0, 1, 2)]
+    with pytest.raises(ValueError):
+        normalise_interactions([(0, 0)])
+    with pytest.raises(ValueError):
+        normalise_interactions([(0, 1), ()])
+    with pytest.raises(ValueError):
+        normalise_interactions([])
+
+
+def test_resolve_interactions_maps_names_and_indices_to_actual_frame() -> None:
+    names = ["a", "b", "c", "d"]
+    assert resolve_interactions([("b", "a"), ("d", "c", "a")], names) == [(0, 1), (0, 2, 3)]
+    assert resolve_interactions([(3, 0), (1, 2, 0)], names) == [(0, 3), (0, 1, 2)]
+    with pytest.raises(ValueError):
+        resolve_interactions([("missing", "a")], names)
+
+
+def test_shared_edge_triple_candidates_are_canonical_and_ranked() -> None:
+    candidates = select_shared_edge_triples(
+        [(0, 1), (1, 2), (2, 3)],
+        [1.0, 5.0, 2.0],
+    )
+    assert candidates[:2] == [(1, 2, 3), (0, 1, 2)]
+    assert select_shared_edge_triples([(0, 1), (2, 3)], [1.0, 1.0]) == []
+
+
+def test_v41_ebm_preserves_pairs_and_adds_triples_native() -> None:
+    pytest.importorskip("interpret")
+    rng = np.random.default_rng(20260925)
+    n = 320
+    frame = pd.DataFrame({name: rng.normal(size=n) for name in FEATURES})
+    frame["spout_no"] = rng.integers(1, 5, size=n)
+    frame["sample_id"] = [f"R2S_TRAIN_{i:012X}" for i in range(n)]
+    y = (
+        5.0
+        + 0.4 * frame["air_volume"].to_numpy()
+        + 0.2 * frame["oxygen"].to_numpy()
+        + 0.1 * frame["spout_no"].to_numpy()
+        + rng.normal(scale=0.05, size=n)
+    )
+    trial = {
+        "trial_id": "synthetic_v41",
+        "kind": "ebm_training",
+        "target": "tap_iron",
+        "target_transform": "log1p",
+        "feature_set": "raw",
+        "parameters": {
+            "max_rounds": 30,
+            "early_stopping_rounds": 10,
+            "max_bins": 32,
+            "max_interaction_bins": 16,
+            "learning_rate": 0.05,
+            "outer_bags": 4,
+            "inner_bags": 0,
+            "random_state": 42,
+            "n_jobs": 1,
+            "max_leaves": 2,
+            "min_samples_leaf": 20,
+            "objective": "rmse",
+            "interactions": [(0, 1), (0, 2, 3)],
+        },
+        "protocol": {"inner_splits": 5, "bag_seed": 42},
+    }
+    model = V41EBMRegressor(trial).fit(frame, y)
+    predicted = model.predict(frame)
+    assert predicted.shape == (n,)
+    audit = structure_audit(model, expected_pairs=[(0, 1)], expected_triples=[(0, 2, 3)])
+    assert audit["pair_set_preserved"] is True
+    assert audit["triple_set_preserved"] is True
+    assert audit["n_triples"] == 1
+    # Row order, single-row and block predictions must agree.
+    assert np.allclose(model.predict(frame.iloc[::-1])[::-1], predicted)
+    assert np.allclose(model.predict(frame.iloc[[7]]), predicted[[7]])
+    block = np.concatenate([model.predict(frame.iloc[i:i + 17]) for i in range(0, n, 17)])
+    assert np.allclose(block, predicted)
+    # The requested interaction parameter must be visible on the estimator.
+    actual = model.estimator_.get_params(deep=False)["interactions"]
+    assert [[int(v) for v in term] for term in actual] == [[0, 1], [0, 2, 3]]
+    # Serialization readback must preserve predictions.
+    import pickle
+    restored = pickle.loads(pickle.dumps(model))
+    assert np.allclose(restored.predict(frame), predicted)

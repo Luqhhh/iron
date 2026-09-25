@@ -1,8 +1,8 @@
 """Local, private-only execution helpers for the V4.1 taskbook.
 
-This module currently exposes the C-line runner.  It never writes a submission,
-never reads platform labels, never uploads, and refuses to overwrite an
-existing evidence directory.
+This module exposes the earlier paired-terms runner and the 2026-09-25 C2/C3/C4
+strong-increment screen.  It never writes a submission, never reads platform
+labels, never uploads, and refuses to overwrite an existing evidence directory.
 """
 from __future__ import annotations
 
@@ -20,6 +20,7 @@ import pandas as pd
 from .data import FEATURES, TARGETS
 from .v3_run import load_fold_vector, load_training_frame
 from .v4_run import COARSE_FOLDS, SEEDS, _load_a_dev_reference, _metrics_for_unit
+from .v4_1_c234 import run_c234_screen
 from .v4_1_paired_terms import (
     V34_PARENT_TRIAL,
     fit_c1_category_ebm,
@@ -226,12 +227,30 @@ def run_paired_terms(root: Path | str = ".", output: Path | str | None = None,
 
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--experiment", choices=("paired_terms", "c234"), default="paired_terms",
+                        help="paired_terms preserves the earlier C0-C4 runner; c234 runs the 2026-09-25 strong-increment screen.")
     parser.add_argument("--root", type=Path, default=Path("."))
     parser.add_argument("--output", type=Path, default=None)
+    parser.add_argument("--targets", nargs="+", choices=["tap_iron", "tap_time_len"], default=list(TARGETS))
+    parser.add_argument("--methods", nargs="+", choices=["C2", "C3", "C4"], default=["C2", "C3", "C4"])
     parser.add_argument("--seeds", type=int, nargs="+", default=list(SEEDS))
     parser.add_argument("--folds", type=int, nargs="+", default=list(COARSE_FOLDS))
+    parser.add_argument("--n-inner", type=int, default=3, help="group-safe C4 internal folds")
+    parser.add_argument("--inner-seed", type=int, default=41017, help="C4 internal fold seed")
+    parser.add_argument("--no-clip", action="store_true", help="do not clip fixed-slot candidate predictions at zero")
+    parser.add_argument("--allow-intractable-high-dim-c4", action="store_true",
+                        help="attempt exact high-dimensional time C4 instead of recording it blocked")
     args = parser.parse_args(argv)
-    result = run_paired_terms(args.root, args.output, seeds=args.seeds, folds=args.folds)
+    if args.experiment == "c234":
+        result = run_c234_screen(
+            args.root, args.output, targets=args.targets, methods=args.methods,
+            seeds=args.seeds, folds=args.folds,
+            n_inner=args.n_inner, inner_seed=args.inner_seed,
+            clip_nonnegative=not args.no_clip,
+            allow_intractable_high_dim_c4=args.allow_intractable_high_dim_c4,
+        )
+    else:
+        result = run_paired_terms(args.root, args.output, seeds=args.seeds, folds=args.folds)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 
