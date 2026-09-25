@@ -54,6 +54,13 @@ from .v4_2_prep import (
     sha256_hex,
     transform_hash,
 )
+from .v4_2_rng import (
+    V42RandomnessPlan,
+    initialisation_hash,
+    parameter_state_hash,
+    source_digest_payload,
+    torch_seed_context,
+)
 from .v4_2_train import NEURAL_LOSS, FitTimer, TrainConfig, TrainOutcome, regression_epochs
 
 __all__ = ["R_RECIPES", "R_START", "TabRRetrievalRegressor", "TabRSpec", "recipe_spec"]
@@ -91,6 +98,45 @@ R_RECIPES: dict[str, dict[str, Any]] = {
         "numeric_encoding": "ple",
         "role": "R2_with_eight_segment_ple",
         "counts_as_retrieval_success": True,
+    },
+    # V4.4 mechanism-completion controls.  ``fusion`` defaults to ``output_add``
+    # above, so R0-R3 keep exactly the structure they were executed with.
+    #
+    # R4 restores the authors' information-fusion mechanism: a retrieval key that
+    # is projected separately from the base representation, a learned label
+    # encoding E_y, a learned query-minus-neighbour transform T, and the fusion
+    # of ``E_y(y_j) + T(k(x) - k(x_j))`` into the internal representation before
+    # the predictor blocks.  It is still trained from random initialisation on
+    # the event training data only.
+    "R4": {
+        "recipe_id": "R4",
+        "retrieval": True,
+        "use_support_labels": True,
+        "numeric_encoding": "raw",
+        "fusion": "representation_augment",
+        "separate_key_projection": True,
+        "label_encoder": True,
+        "neighbour_difference_transform": True,
+        "predictor_blocks": True,
+        "role": "authors_label_encoding_and_neighbour_difference_fusion",
+        "counts_as_retrieval_success": True,
+    },
+    # R5 keeps the complete R4 architecture and switches the retrieval channel
+    # off: the same modules and the same parameter count, but no attention, no
+    # label memory and no neighbour difference.  It separates "retrieval helped"
+    # from "the plain network was replaced".
+    "R5": {
+        "recipe_id": "R5",
+        "retrieval": False,
+        "use_support_labels": False,
+        "numeric_encoding": "raw",
+        "fusion": "representation_augment",
+        "separate_key_projection": True,
+        "label_encoder": True,
+        "neighbour_difference_transform": True,
+        "predictor_blocks": True,
+        "role": "R4_architecture_with_retrieval_channel_disabled",
+        "counts_as_retrieval_success": False,
     },
 }
 
@@ -135,6 +181,14 @@ class TabRSpec:
         self.numeric_encoding = str(payload["numeric_encoding"])
         self.role = str(payload["role"])
         self.counts_as_retrieval_success = bool(payload["counts_as_retrieval_success"])
+        # Fusion mechanism.  ``output_add`` is the executed V4.2 behaviour.
+        self.fusion = str(payload.get("fusion", "output_add"))
+        self.separate_key_projection = bool(payload.get("separate_key_projection", False))
+        self.label_encoder = bool(payload.get("label_encoder", False))
+        self.neighbour_difference_transform = bool(
+            payload.get("neighbour_difference_transform", False)
+        )
+        self.predictor_blocks = bool(payload.get("predictor_blocks", False))
         self.repr_width = int(merged["repr_width"])
         self.n_blocks = int(merged["n_blocks"])
         self.n_neighbors = int(merged["n_neighbors"])
@@ -148,6 +202,16 @@ class TabRSpec:
             raise ValueError("Invalid PLE segment count")
         if self.use_support_labels and not self.retrieval:
             raise ValueError("Open support labels require retrieval to be enabled")
+        if self.fusion not in ("output_add", "representation_augment"):
+            raise ValueError(f"Unknown R fusion mechanism: {self.fusion!r}")
+        if self.fusion == "representation_augment" and not self.predictor_blocks:
+            raise ValueError(
+                "The authors' fusion requires the predictor stage it feeds"
+            )
+        if self.label_encoder and not self.neighbour_difference_transform:
+            raise ValueError(
+                "The label encoding is fused through the neighbour difference transform"
+            )
 
     def as_dict(self) -> dict[str, Any]:
         return {
@@ -157,6 +221,11 @@ class TabRSpec:
             "numeric_encoding": str(self.numeric_encoding),
             "role": str(self.role),
             "counts_as_retrieval_success": bool(self.counts_as_retrieval_success),
+            "fusion": str(self.fusion),
+            "separate_key_projection": bool(self.separate_key_projection),
+            "label_encoder": bool(self.label_encoder),
+            "neighbour_difference_transform": bool(self.neighbour_difference_transform),
+            "predictor_blocks": bool(self.predictor_blocks),
             "repr_width": int(self.repr_width),
             "n_blocks": int(self.n_blocks),
             "n_neighbors": int(self.n_neighbors),
@@ -182,13 +251,45 @@ def _make_network(spec: TabRSpec, n_num: int, n_cat: int):
                 ])
                 previous = width
             self.encoder = torch.nn.Sequential(*blocks)
-            self.head = torch.nn.Sequential(
-                torch.nn.Linear(width * 2, width),
-                torch.nn.ReLU(),
-                torch.nn.Dropout(float(spec.dropout)),
-                torch.nn.Linear(width, 1),
-            )
-            if spec.retrieval:
+            if spec.fusion == "representation_augment":
+                # The authors' retrieval block: the key is a *separate*
+                # projection of the base representation, the label gets its own
+                # encoding, and the query-minus-neighbour difference has its own
+                # transform.  All three exist even when retrieval is switched
+                # off, so R4 and R5 stay parameter-identical.
+                self.key_norm = torch.nn.LayerNorm(width)
+                self.key_projection = torch.nn.Linear(width, width)
+                self.label_embedding = torch.nn.Linear(1, width)
+                self.difference_transform = torch.nn.Sequential(
+                    torch.nn.Linear(width, width),
+                    torch.nn.ReLU(),
+                    torch.nn.Dropout(float(spec.dropout)),
+                    torch.nn.Linear(width, width, bias=False),
+                )
+                self.predictor = torch.nn.ModuleList([
+                    torch.nn.Sequential(
+                        torch.nn.LayerNorm(width),
+                        torch.nn.Linear(width, width),
+                        torch.nn.ReLU(),
+                        torch.nn.Dropout(float(spec.dropout)),
+                        torch.nn.Linear(width, width),
+                        torch.nn.Dropout(float(spec.dropout)),
+                    )
+                    for _ in range(int(spec.n_blocks))
+                ])
+                self.head = torch.nn.Sequential(
+                    torch.nn.LayerNorm(width),
+                    torch.nn.ReLU(),
+                    torch.nn.Linear(width, 1),
+                )
+            else:
+                self.head = torch.nn.Sequential(
+                    torch.nn.Linear(width * 2, width),
+                    torch.nn.ReLU(),
+                    torch.nn.Dropout(float(spec.dropout)),
+                    torch.nn.Linear(width, 1),
+                )
+            if spec.retrieval or spec.fusion == "representation_augment":
                 # Learnable retrieval temperature: part of the learned metric.
                 self.log_scale = torch.nn.Parameter(
                     torch.tensor(math.log(math.e - 1.0), dtype=torch.float32)
@@ -197,11 +298,27 @@ def _make_network(spec: TabRSpec, n_num: int, n_cat: int):
         def encode(self, x_num, x_cat):
             return self.encoder(torch.cat([x_num, x_cat], dim=1))
 
+        def retrieval_key(self, h):
+            """The key used for retrieval, kept distinct from the representation."""
+            return self.key_projection(self.key_norm(h))
+
         def attention(self, q, k_emb, legal):
             """Symmetric top-k attention weights in the learned representation."""
             torch_mod = _torch()
-            d2 = (q * q).sum(dim=1, keepdim=True) + (k_emb * k_emb).sum(dim=1)[None, :]
-            d2 = d2 - 2.0 * (q @ k_emb.transpose(0, 1))
+            q_sq = (q * q).sum(dim=1, keepdim=True)
+            k_sq = (k_emb * k_emb).sum(dim=1)[None, :]
+            d2 = q_sq + k_sq - 2.0 * (q @ k_emb.transpose(0, 1))
+            # A self query or an exact duplicate has a true squared distance of
+            # zero, but the expanded form computes it as a cancellation residual
+            # whose sign and magnitude depend on the BLAS tiling, and therefore
+            # on the batch shape.  A residual of -1e-8 and one of +2e-8 both mean
+            # "distance zero", yet they floored to different distances and moved
+            # the top-1 self weight by ~1e-3 of the label scale, so a single-row
+            # call disagreed with the same row inside a batch.  Collapse the
+            # numerically-zero band to exactly zero: the distance is then
+            # identical for every batch composition.
+            tolerance = 1e-6 * (q_sq + k_sq).clamp_min(1e-12)
+            d2 = torch_mod.where(d2 <= tolerance, torch_mod.zeros_like(d2), d2)
             # ``clamp_min`` keeps the square-root derivative finite at zero
             # distance: sqrt' is unbounded at exactly zero.
             distance = d2.clamp_min(1e-8).sqrt()
@@ -231,6 +348,8 @@ def _make_network(spec: TabRSpec, n_num: int, n_cat: int):
 
         def forward(self, x_num_q, x_cat_q, x_num_s, x_cat_s, labels, legal):
             q = self.encode(x_num_q, x_cat_q)
+            if spec.fusion == "representation_augment":
+                return self._forward_augment(q, x_num_s, x_cat_s, labels, legal)
             if spec.retrieval:
                 k_emb = self.encode(x_num_s, x_cat_s)
                 weights = self.attention(q, k_emb, legal)
@@ -246,6 +365,59 @@ def _make_network(spec: TabRSpec, n_num: int, n_cat: int):
                     raise ValueError("R recipe requires open support labels but none were supplied")
                 return base + y_term
             return base
+
+        def _forward_augment(self, q, x_num_s, x_cat_s, labels, legal):
+            """``h + sum_j w_j (E_y(y_j) + T(k(x) - k(x_j)))``, then predict.
+
+            This is the authors' fusion order.  With retrieval disabled the
+            context term is exactly zero, so the same weights and the same
+            predictor are trained on the base representation alone: that is the
+            R5 architecture control.
+            """
+            torch_mod = _torch()
+            if spec.retrieval:
+                h_s = self.encode(x_num_s, x_cat_s)
+                if spec.separate_key_projection:
+                    q_key = self.retrieval_key(q)
+                    s_key = self.retrieval_key(h_s)
+                else:
+                    q_key, s_key = q, h_s
+                weights = self.attention(q_key, s_key, legal)              # (B, S)
+                # The authors compute the neighbourhood values only for the
+                # retrieved context, never for every support row.  ``attention``
+                # assigns exactly zero weight outside the kept set (its softmax
+                # is taken over -inf there), so the non-zero columns *are* the
+                # context and gathering them is exact, not an approximation.
+                # Building the full ``(B, S, W)`` difference tensor instead cost
+                # ~290 MB per intermediate at S = 2203 and dominated the fit.
+                k_context = int((weights > 0).sum(dim=1).max().item())
+                if k_context <= 0:
+                    raise ValueError("R fusion found no legal neighbour to attend to")
+                indices = torch_mod.topk(weights, k_context, dim=1).indices  # (B, K)
+                context_key = s_key[indices]                                # (B, K, W)
+                if spec.use_support_labels:
+                    if labels is None:
+                        raise ValueError(
+                            "R recipe requires open support labels but none were supplied"
+                        )
+                    embedding = self.label_embedding(
+                        labels[indices].reshape(-1, 1).to(q.dtype)
+                    ).reshape(q.shape[0], k_context, -1)                    # (B, K, W)
+                    difference = self.difference_transform(
+                        q_key[:, None, :] - context_key
+                    )                                                       # (B, K, W)
+                    values = embedding + difference                         # (B, K, W)
+                else:
+                    values = context_key
+                context = (
+                    weights.gather(1, indices)[:, :, None] * values
+                ).sum(dim=1)                                                # (B, W)
+            else:
+                context = torch_mod.zeros_like(q)
+            augmented = q + context
+            for block in self.predictor:
+                augmented = augmented + block(augmented)
+            return self.head(augmented).reshape(-1)
 
     return _TabRNet()
 
@@ -336,20 +508,31 @@ class TabRRetrievalRegressor:
         n_num = int(np.asarray(u_support["x_num"]).shape[1])
         n_cat = int(np.asarray(u_support["x_cat"]).shape[1])
 
+        # SEED_INIT_V2: both stages initialise inside an explicit seed scope,
+        # before the first ``torch.randn``.  Until this repair the network was
+        # built first and ``torch.manual_seed`` ran afterwards inside
+        # ``_run_epochs``, so the recorded training seed did not control the
+        # initial weights.  The batch order is a separate registered stream.
+        plan = V42RandomnessPlan.from_training_seed(
+            config.seed, inner_split_seed=self.inner_seed, torch_threads=self.torch_threads
+        )
         with FitTimer() as timer:
-            stage1_net = _make_network(self.spec, n_num, n_cat)
-            stage1 = self._run_epochs(
-                stage1_net,
-                encoder=u_encoder,
-                fit_frame=u_frame,
-                target=target,
-                support=u_support,
-                scaler=self.scaler_,
-                config=config,
-                monitor=(h_frame, u_support, u_encoder),
-                epochs=int(config.max_epochs),
-                early_stopping=True,
-            )
+            with torch_seed_context(plan.stage_init_seed("stage1")):
+                stage1_net = _make_network(self.spec, n_num, n_cat)
+                stage1_init_hash = initialisation_hash(stage1_net)
+                stage1 = self._run_epochs(
+                    stage1_net,
+                    encoder=u_encoder,
+                    fit_frame=u_frame,
+                    target=target,
+                    support=u_support,
+                    scaler=self.scaler_,
+                    config=config,
+                    monitor=(h_frame, u_support, u_encoder),
+                    epochs=int(config.max_epochs),
+                    early_stopping=True,
+                    batch_order_seed=plan.stage_batch_order_seed("stage1"),
+                )
         stage1_seconds, stage1_memory = timer.seconds, timer.report()
         best_epoch = max(1, int(stage1["best_epoch"]))
 
@@ -362,20 +545,24 @@ class TabRRetrievalRegressor:
         self.scaler_ = TargetScaler.fit(y_raw)
         support = self._prepare_support(frame, target, encoder=self.encoder_)
         with FitTimer() as timer:
-            self.model_ = _make_network(self.spec, n_num, n_cat)
-            final = self._run_epochs(
-                self.model_,
-                encoder=self.encoder_,
-                fit_frame=frame,
-                target=target,
-                support=support,
-                scaler=self.scaler_,
-                config=config,
-                monitor=None,
-                epochs=best_epoch,
-                early_stopping=False,
-            )
+            with torch_seed_context(plan.stage_init_seed("stage2")):
+                self.model_ = _make_network(self.spec, n_num, n_cat)
+                stage2_init_hash = initialisation_hash(self.model_)
+                final = self._run_epochs(
+                    self.model_,
+                    encoder=self.encoder_,
+                    fit_frame=frame,
+                    target=target,
+                    support=support,
+                    scaler=self.scaler_,
+                    config=config,
+                    monitor=None,
+                    epochs=best_epoch,
+                    early_stopping=False,
+                    batch_order_seed=plan.stage_batch_order_seed("stage2"),
+                )
         stage2_seconds, stage2_memory = timer.seconds, timer.report()
+        final_state_hash = parameter_state_hash(self.model_)
 
         self.support_ = support
         self._support_tensor_cache = None
@@ -401,6 +588,11 @@ class TabRRetrievalRegressor:
                 "distance": "exact_euclidean_in_learned_representation",
                 "tie_handling": "symmetric_admit_all_ties_at_kth",
                 "faiss_used": False,
+                "fusion": str(self.spec.fusion),
+                "retrieval_enabled": bool(self.spec.retrieval),
+                "separate_key_projection": bool(self.spec.separate_key_projection),
+                "label_encoder": bool(self.spec.label_encoder),
+                "neighbour_difference_transform": bool(self.spec.neighbour_difference_transform),
                 "reference_neighbour_crosscheck": "tests/test_round2_v4_2.py brute-force comparison",
             },
             stop_reason=str(stage1["stop_reason"]),
@@ -411,11 +603,18 @@ class TabRRetrievalRegressor:
             seconds=float(stage1_seconds + stage2_seconds),
             peak_memory={"stage1": stage1_memory, "stage2": stage2_memory},
             randomness={
-                "training_seed": int(config.seed),
-                "inner_split_seed": int(self.inner_seed),
+                **plan.as_dict(),
                 "inner_splits": int(self.n_inner_splits),
-                "batch_order_rng": "numpy_default_rng",
-                "initialisation": "torch_manual_seed",
+                "initialisation": "torch_seed_context_before_first_randn",
+                "initialisation_hash_stage1": str(stage1_init_hash),
+                "initialisation_hash_stage2": str(stage2_init_hash),
+                "final_model_state_hash": str(final_state_hash),
+                "stage_inits_share_registered_seed": True,
+                "source_digest": source_digest_payload(),
+                "reproducibility_scope": (
+                    "conditional on the recorded dependency identity, source digest, "
+                    "data, and torch thread count; no bitwise claim across thread counts"
+                ),
             },
             fit_row_id_hash=str(support["source_id_hash"]),
             fit_group_hash=str(support["fit_row_hash"]),
@@ -451,10 +650,13 @@ class TabRRetrievalRegressor:
         monitor,
         epochs: int,
         early_stopping: bool,
+        batch_order_seed: int,
     ) -> dict[str, Any]:
         torch = _torch()
-        torch.manual_seed(int(config.seed) % (2**32 - 1))
-        rng = np.random.default_rng(int(config.seed))
+        # The network was initialised inside an explicit seed scope; nothing here
+        # touches the ambient torch RNG, so the seed is never reset after the
+        # weights exist.  The batch order is its own registered stream.
+        rng = np.random.default_rng(int(batch_order_seed))
         x_num_q, x_cat_q = encode_frame(fit_frame, encoder)
         s_num, s_cat, s_labels = self._tensors_for(support, scaler)
         support_keys = np.asarray(support["group_keys"], dtype=object)

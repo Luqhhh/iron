@@ -17,10 +17,19 @@ __all__ = ["DEFAULT_SPEC_PATH", "SearchSpec", "load_search_spec"]
 
 DEFAULT_SPEC_PATH = "configs/round2_v4_2/SEARCH_SPEC.yaml"
 
-_EXPECTED_LINES = {
-    "R": {"R0", "R1", "R2", "R3"},
-    "S": {"S0", "S1", "S2", "S3"},
-    "N": {"N0", "N1", "N2", "N3"},
+#: The exact recipe set each accepted schema version may declare.  The V4.2 set
+#: is unchanged from the executed screen; V4.4 adds only the two mechanism
+#: recipes per line that the round pre-registers.
+_EXPECTED_LINES_BY_SCHEMA: dict[str, dict[str, set[str]]] = {
+    "v4.2": {
+        "R": {"R0", "R1", "R2", "R3"},
+        "S": {"S0", "S1", "S2", "S3"},
+        "N": {"N0", "N1", "N2", "N3"},
+    },
+    "v4.4": {
+        "N": {"N2", "N4", "N5"},
+        "R": {"R2", "R4", "R5"},
+    },
 }
 
 
@@ -63,9 +72,9 @@ class SearchSpec:
 
     @property
     def units(self) -> list[tuple[str, str, str]]:
-        """The 24 ``(line, recipe, target)`` units."""
+        """Every pre-registered ``(line, recipe, target)`` unit."""
         out: list[tuple[str, str, str]] = []
-        for line in ("R", "S", "N"):
+        for line in self.raw["lines"]:
             for recipe in self.recipes(line):
                 for target in self.targets:
                     out.append((line, recipe, target))
@@ -131,8 +140,13 @@ def load_search_spec(path: Path | str = DEFAULT_SPEC_PATH, *,
     raw = yaml.safe_load(target.read_text(encoding="utf-8"))
     if not isinstance(raw, dict):
         raise ValueError("SEARCH_SPEC must be a YAML mapping")
-    if str(raw.get("schema_version")) != "v4.2":
-        raise ValueError("Only a v4.2 SEARCH_SPEC is accepted")
+    schema = str(raw.get("schema_version"))
+    if schema not in _EXPECTED_LINES_BY_SCHEMA:
+        raise ValueError(
+            f"Unsupported SEARCH_SPEC schema_version: {schema!r}; "
+            f"accepted: {sorted(_EXPECTED_LINES_BY_SCHEMA)}"
+        )
+    expected_lines = _EXPECTED_LINES_BY_SCHEMA[schema]
 
     data = _require(raw, "data_contract")
     if int(data["numeric_features"]) != 21:
@@ -148,15 +162,35 @@ def load_search_spec(path: Path | str = DEFAULT_SPEC_PATH, *,
             raise ValueError(f"V4.2 forbids {key}")
     data.setdefault("targets", ["tap_iron", "tap_time_len"])
 
+    lines = _require(raw, "lines")
+    if set(lines) != set(expected_lines):
+        raise ValueError(f"{schema} lines must be exactly {sorted(expected_lines)}")
+    for line, expected in expected_lines.items():
+        recipes = lines[line].get("recipes")
+        if not isinstance(recipes, dict) or set(recipes) != expected:
+            raise ValueError(f"Line {line} must declare exactly {sorted(expected)}")
+
     screen = _require(raw, "screen")
-    if int(screen["units"]) != 24:
-        raise ValueError("V4.2 pre-registers 24 target-recipe units")
     if list(int(v) for v in screen["seeds"]) != [42, 3407]:
         raise ValueError("V4.2 pre-registers split seeds 42 and 3407")
     if list(int(v) for v in screen["folds"]) != [0, 1]:
         raise ValueError("V4.2 coarse screen uses outer folds 0 and 1")
-    if int(screen["outer_recipe_slots"]) != 96:
-        raise ValueError("V4.2 pre-registers 96 outer recipe slots")
+    # The unit and slot counts are derived from the declared recipe table rather
+    # than hard-coded, so adding a pre-registered recipe cannot silently reuse
+    # the old budget.  For v4.2 the derivation reproduces 24 and 96 exactly.
+    declared_units = sum(len(lines[name]["recipes"]) for name in expected_lines)
+    declared_units *= len(data["targets"])
+    if int(screen["units"]) != declared_units:
+        raise ValueError(
+            f"{schema} must pre-register {declared_units} target-recipe units, "
+            f"the file declares {screen['units']}"
+        )
+    declared_slots = declared_units * len(screen["seeds"]) * len(screen["folds"])
+    if int(screen["outer_recipe_slots"]) != declared_slots:
+        raise ValueError(
+            f"{schema} must pre-register {declared_slots} outer recipe slots, "
+            f"the file declares {screen['outer_recipe_slots']}"
+        )
     if float(screen["fixed_quarter_weight"]) != 0.25:
         raise ValueError("V4.2 pre-registers a fixed 0.25 quarter blend")
     if screen.get("weight_scan") != "forbidden":
@@ -169,25 +203,19 @@ def load_search_spec(path: Path | str = DEFAULT_SPEC_PATH, *,
     if not bool(gate["r0_control_never_counts_as_retrieval_success"]):
         raise ValueError("R0 must never count as retrieval success")
 
-    lines = _require(raw, "lines")
-    if set(lines) != set(_EXPECTED_LINES):
-        raise ValueError(f"V4.2 lines must be exactly {sorted(_EXPECTED_LINES)}")
-    for line, expected in _EXPECTED_LINES.items():
-        recipes = lines[line].get("recipes")
-        if not isinstance(recipes, dict) or set(recipes) != expected:
-            raise ValueError(f"Line {line} must declare exactly {sorted(expected)}")
+    if "R" in lines:
+        r_start = lines["R"]["starting_point"]
+        if (int(r_start["repr_width"]), int(r_start["n_blocks"]), int(r_start["n_neighbors"]),
+                float(r_start["dropout"]), int(r_start["ple_segments"])) != (128, 2, 32, 0.10, 8):
+            raise ValueError("R fixed starting point changed")
 
-    r_start = lines["R"]["starting_point"]
-    if (int(r_start["repr_width"]), int(r_start["n_blocks"]), int(r_start["n_neighbors"]),
-            float(r_start["dropout"]), int(r_start["ple_segments"])) != (128, 2, 32, 0.10, 8):
-        raise ValueError("R fixed starting point changed")
-
-    s_limits = lines["S"]["limits"]
-    if (int(s_limits["max_nodes"]), int(s_limits["max_depth"]),
-            int(s_limits["eval_budget_per_training_subset"])) != (24, 5, 200_000):
-        raise ValueError("S complexity or budget limits changed")
-    if not bool(lines["S"]["backend"]["verified"]["budget_controllable"]):
-        raise ValueError("The S backend budget-control verification must be recorded")
+    if "S" in lines:
+        s_limits = lines["S"]["limits"]
+        if (int(s_limits["max_nodes"]), int(s_limits["max_depth"]),
+                int(s_limits["eval_budget_per_training_subset"])) != (24, 5, 200_000):
+            raise ValueError("S complexity or budget limits changed")
+        if not bool(lines["S"]["backend"]["verified"]["budget_controllable"]):
+            raise ValueError("The S backend budget-control verification must be recorded")
 
     n_line = lines["N"]
     if int(n_line["total_trees"]) != 128 or int(n_line["depth"]) != 4:

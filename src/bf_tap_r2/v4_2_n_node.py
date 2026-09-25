@@ -60,7 +60,10 @@ from .v4_2_rng import (
 )
 from .v4_2_train import NEURAL_LOSS, FitTimer, TrainConfig, TrainOutcome, regression_epochs
 
-__all__ = ["N_RECIPES", "NodeEnsembleRegressor", "NodeSpec", "entmax15", "n_recipe_spec"]
+__all__ = [
+    "N_RECIPES", "NodeEnsembleRegressor", "NodeSpec", "binary_routing_entropy",
+    "entmax15", "n_recipe_spec",
+]
 
 #: The four pre-registered N recipes of the V4.2 screen.
 #:
@@ -191,6 +194,21 @@ def entmax15(values, dim: int = -1):
         raise ValueError("entmax15 currently supports the last dimension only")
     del torch
     return _entmax15_class().apply(values, int(dim))
+
+
+def binary_routing_entropy(response):
+    """Normalised binary entropy of a routing response, defined at saturation.
+
+    ``1 - 1e-9`` is exactly ``1.0`` in float32, so the previous upper clamp left
+    ``p == 1`` and made ``(1 - p) * log(1 - p)`` evaluate to ``0 * -inf = NaN``.
+    Recipes with a learnable routing scale saturate far more often than the
+    fixed-scale ones, so the entropy silently became NaN precisely where the
+    collapse check mattered.  A float32-representable margin plus a float64
+    evaluation keeps it finite for every input in ``[0, 1]``.
+    """
+    torch = _torch()
+    p = response.clamp(1e-9, 1.0 - 1e-6).double()
+    return -(p * p.log() + (1.0 - p) * (1.0 - p).log()) / math.log(2.0)
 
 
 def n_recipe_spec(recipe_id: str) -> dict[str, Any]:
@@ -770,8 +788,7 @@ class NodeEnsembleRegressor:
                 response = layer.routing(x)
                 probabilities = layer.leaf_probabilities(response)
                 # Binary routing entropy, normalised to [0, 1] by log(2).
-                p = response.clamp(1e-9, 1 - 1e-9)
-                entropy = -(p * p.log() + (1 - p) * (1 - p).log()) / math.log(2.0)
+                entropy = binary_routing_entropy(response)
                 entropies.append(float(entropy.mean().item()))
                 mean_leaf = probabilities.mean(dim=0)              # (T, L)
                 used = (mean_leaf > (1.0 / (2.0 * mean_leaf.shape[1]))).float().mean()

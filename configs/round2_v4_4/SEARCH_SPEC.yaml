@@ -1,0 +1,279 @@
+# Round2 V4.4 declarative search specification (pre-registration).
+#
+# V4.4 is the mechanism-completion round.  It asks whether two *structural*
+# restrictions in the V4.2 adapted implementations, not their training
+# parameters, are what held the N and R lines back:
+#
+#   N  the current tree reuses ONE feature projection at every depth and only
+#      changes the threshold.  The authors' ODST layer carries a depth axis on
+#      the selector, a learnable per-tree/per-depth log-temperature and a
+#      data-aware initialiser.
+#   R  the current model adds a weighted mean of neighbour labels directly to
+#      the final scalar.  The authors' TabR encodes the label, transforms the
+#      query-minus-neighbour key difference and fuses the result into the
+#      internal representation before the predictor.
+#
+# Priority order is N first, then R.  Both are compared against the same
+# pre-existing recipes (N2, R2) executed with the SEED_INIT_V2 randomness
+# control, so the comparison is mechanism-for-mechanism and not a re-tune.
+#
+# Frozen gates are copied verbatim from the V4.2 pre-registration.  Nothing here
+# relaxes them: the coarse continuation gate is still +0.005 and the
+# full-coverage fusion gate is still +0.02 with 8/10 positive folds.
+schema_version: v4.4
+status: PRE_REGISTERED_NOT_STARTED
+date: 2026-09-25
+base_commit: 63d0adc3e11fc6e22e08eef62fb68963ea0959ae
+branch: round2-v4.2-n2-seed-repair
+
+experiment:
+  name: round2_v4_4_mechanism_completion
+  user_target_platform_score: 96.30      # frozen: EVIDENCE_STATUS round2_next_phase_target
+  target_is_strict: true                 # "> 96.30"
+  current_platform_best:
+    name: V36_USER_REQUESTED_OUTER_FAILED
+    score: 96.2734
+    source: USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED
+  required_mean_wmape_reduction:
+    total_wmape_delta: 0.000532          # (96.30 - 96.2734) / 50
+    mean_wmape_from: 0.037266
+    mean_wmape_to: 0.036734
+    relative_reduction: 0.00714          # ~0.71%, not the ~2.06% implied by 96.35
+  improvement_basis: real_V36_B_fit      # never a weaker reconstructed anchor
+  note: |
+    The 2026-09-25 V4.3 finding is the reason the real B_fit is mandatory: the
+    same candidate measured +0.0257 against a weak anchor and -0.0145 against
+    the real V36.  Historical development replays are identity checks only.
+
+data_contract:
+  snapshot: round2_v2
+  numeric_features: 21
+  categorical_features: [spout_no]
+  train_rows: 2754
+  test_rows: 322
+  external_data: forbidden
+  pretrained_weights: forbidden
+  test_labels: forbidden
+  id_or_row_order_features: forbidden
+  per_row_prediction_editing: forbidden
+  official_dependency_installs: allowed
+  example_data_downloads: forbidden
+  private_artifacts: [models, training_support_sets, labels, oof]
+
+references:
+  b_replay:
+    class: bf_tap_r2.v4_1_reference.V36DevelopmentReference
+    role: regression_test_and_diagnostics_only
+    historical_mean_package_score: 96.20376256899247
+  b_fit:
+    class: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+    role: formal_relative_increment_reference
+  rule: |
+    B_fit and every new model are fitted on the same outer training part T and
+    evaluated on the same outer evaluation part V.  A difference against
+    B_replay is never reported as a gain over B_fit.
+
+common_training:
+  target_scaling: train_subset_mean_abs      # m = mean(abs(y)), m > 0
+  metric: original_unit_wmape
+  neural_loss: mae                           # R and N share one fixed scheme
+  neural_starting_point:
+    optimizer: adamw
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    batch_size: 256
+    max_epochs: 1000
+    early_stopping_patience: 50
+    initialisation_seed: 42
+    note: unchanged from V4.2; V4.4 changes structure, never this schedule
+  early_stopping_metric: original_unit_wmape
+  refit_rule: |
+    After the epoch count is determined on the inner U/H split, refit on the
+    complete training part T.  V is never used for early stopping.
+  unstable_trial_label: budget_limited
+
+lines:
+  N:
+    evidence:
+      - https://arxiv.org/abs/1909.06312
+      - https://github.com/Qwicen/node
+      - https://raw.githubusercontent.com/Qwicen/node/master/lib/odst.py
+    implementation_status: ADAPTED_NODE_STYLE_IMPLEMENTATION_NOT_PAPER_REPRODUCTION
+    total_trees: 128
+    depth: 4
+    recipes:
+      # N2 is the repaired control: the executed shared-selector structure run
+      # under SEED_INIT_V2, so a per-depth gain is attributable to the selector.
+      N2: {numeric_encoding: raw, n_layers: 2, trees_per_layer: 64}
+      # N4 restores ONLY the depth axis of the selector.
+      N4: {numeric_encoding: raw, n_layers: 2, trees_per_layer: 64,
+           selector: per_depth, learnable_temperature: false, data_aware_init: false}
+      # N5 is the ODST core: depth-axis selector, learnable per-tree/per-depth
+      # log-temperature and the authors' data-aware threshold/temperature init.
+      N5: {numeric_encoding: raw, n_layers: 2, trees_per_layer: 64,
+           selector: per_depth, learnable_temperature: true, data_aware_init: true,
+           threshold_init_beta: 1.0, threshold_init_cutoff: 1.0}
+    forbidden_changes: [more_trees, deeper_trees, ple_encoding, dense_alpha_scan]
+    parameter_matching_claim: none
+    capacity_note: |
+      Per-depth selection multiplies the selector's parameter count by the depth.
+      The reported true parameter count is therefore mandatory, and a gain is
+      NOT a strict equal-capacity causal proof.  It is evidence about the
+      declared structural hypothesis only.
+    report: [true_parameter_count, training_volume, peak_memory]
+    required_operators: [differentiable_feature_selection, soft_routing]
+    hard_argmax: forbidden
+    diagnostics: [routing_entropy, leaf_usage, parameter_update]
+    acceptance_checks:
+      - binding every depth's selector to one vector reproduces the shared-selector forward output
+      - perturbing one depth's selector does not rewrite another depth's selector
+      - the selector gradient is non-zero for each depth
+      - serialisation round-trips the (trees, depth, features) shape
+      - outputs and gradients are checked numerically, not inferred from a class name
+      - the reproduced shared selector keeps the original two-dimensional parameter layout
+    environment: independent_reproducible_with_limited_concurrency
+    v36_locked_environment_upgrade: forbidden
+    example_data_downloads: forbidden
+
+  R:
+    evidence:
+      - https://arxiv.org/abs/2307.14338
+      - https://github.com/yandex-research/tabular-dl-tabr
+      - https://raw.githubusercontent.com/yandex-research/tabular-dl-tabr/main/bin/tabr.py
+    implementation_status: ADAPTED_TABR_STYLE_IMPLEMENTATION_NOT_PAPER_REPRODUCTION
+    neighbour_search: exact_euclidean_in_learned_representation
+    faiss: not_used
+    starting_point:
+      repr_width: 128
+      n_blocks: 2
+      n_neighbors: 32
+      dropout: 0.10
+      ple_segments: 8
+    recipes:
+      # R2 is the repaired control: the executed output-add fusion.
+      R2: {retrieval: true, use_support_labels: true, numeric_encoding: raw,
+           fusion: output_add, counts_as_retrieval_success: true}
+      # R4 is the authors' fusion: separate key projection, label encoder,
+      # neighbour difference transform, fused into the internal representation.
+      R4: {retrieval: true, use_support_labels: true, numeric_encoding: raw,
+           fusion: representation_augment, separate_key_projection: true,
+           label_encoder: true, neighbour_difference_transform: true,
+           predictor_blocks: true, counts_as_retrieval_success: true}
+      # R5 keeps the full R4 architecture and switches the retrieval channel off.
+      R5: {retrieval: false, use_support_labels: false, numeric_encoding: raw,
+           fusion: representation_augment, separate_key_projection: true,
+           label_encoder: true, neighbour_difference_transform: true,
+           predictor_blocks: true, counts_as_retrieval_success: false}
+    isolation:
+      outer_evaluation_in_support: forbidden
+      inner_early_stop_part_in_support: forbidden
+      self_or_exact_duplicate_retrieval: forbidden
+      test_rows_in_support: forbidden
+      test_labels_readable: false
+      only_current_target_support_labels_opened: true
+      small_sample_k: min(32, legal_support_count)
+      no_legal_support: explicit_error_or_documented_fallback
+      distance_ties: symmetric_admit_all_ties_at_kth
+      support_serialisation: model_state_with_source_id_and_fit_row_hashes
+      cold_inference_may_read_model_memory: true
+      cold_inference_may_reopen_training_csv: false
+    acceptance_checks:
+      - R5 and R4 have the same architecture and parameter count, differing only in the retrieval channel
+      - R4's label encoder and difference transform receive nonzero gradient
+      - the retrieval key projection is not the base representation
+      - self and duplicate-group retrieval count is zero
+      - V and H are absent from the support set
+      - chunked, reversed and single-row inference agree
+      - exact distances are cross-checked against a brute-force reference
+
+screen:
+  units: 12
+  unit_definition: "6 recipes x 2 targets (3 N + 3 R)"
+  seeds: [42, 3407]
+  folds: [0, 1]
+  outer_recipe_slots: 48
+  slot_note: "12 x 2 seeds x 2 folds; not a fit count"
+  paths:
+    direct: "target t replaced entirely by the new model, the other target stays B_fit"
+    fixed_quarter: "0.75 * B_fit_t + 0.25 * f_t, the other target stays B_fit"
+  fixed_quarter_weight: 0.25
+  weight_scan: forbidden
+  oracle_weight_on_same_labels: forbidden
+  score:
+    formula: "S = max(0, 100 - 50 * (W_I + W_T))"
+    single_target_increment_when_unclamped: "50 * (W_B - W_C)"
+    recompute_on_combined_prediction: true
+    per_seed_pooling: "pool numerators and denominators over covered samples, then average seed scores"
+  continuation_gate:
+    same_fixed_path_for_both_seeds: true
+    both_seed_gains_positive: true
+    mean_full_package_gain_min: 0.005
+    r0_control_never_counts_as_retrieval_success: true
+  selection:
+    max_per_family_per_target: 1
+    max_total_finalists: 6
+    order: [better_mean_gain_across_two_paths, worse_seed_gain, fixed_trial_id]
+
+full_coverage:
+  add_folds: [2, 3, 4]
+  max_new_outer_recipe_slots: 18
+  refit_completed_folds: forbidden
+  fusion_eligibility_gate:
+    mean_gain_min: 0.02
+    both_seeds_positive: true
+    positive_folds_min: 8
+    positive_folds_total: 10
+  stop_rule_if_gate_fails: stop_the_line_no_alpha_rescue_scan
+
+fusion:
+  form: "P_t = (1 - a_t) * B_fit_t + a_t * f_t"
+  max_new_models_per_target: 1
+  alpha_grid: [0, 0.1, 0.25, 0.5, 1]
+  inner_folds: 3
+  inner_folds_group_safe: true
+  refit_both_endpoints_in_every_inner_U_H: true
+  r_support_from_U_only: true
+  select_alpha_on_aligned_inner_oof: true
+  tie_break: smaller_alpha
+  alpha_zero_fallback_allowed: true
+  evaluate_on_V_after_fixing_alpha: true
+  forbidden: "slicing the full-data outer OOF as an inner OOF"
+  baseline_cache:
+    reusable: true
+    key_fields: [exact_train_ids, exact_train_groups, model_recipe, preprocessing, source_hash, dependency_identity]
+    missing_cache_may_substitute_b_replay: false
+  ledger_required: [real_base_fits, neural_fits, formula_searches, constant_refits]
+
+replication:
+  max_complete_recipes: 2
+  recipes_per_target_max: 1
+  rerun_training_seed: 3407
+  split_seed_and_training_seed_logged_separately: true
+  max_new_outer_recipe_slots: 20
+  b_fit_cache_reused: true
+  structure_reselection_on_second_seed: forbidden
+  gates:
+    mean_gain_min: 0.02
+    both_split_seeds_positive: true
+    positive_folds_min: 8
+  final_training_seed: 42
+  final_alpha_selection: full_training_internal_oof
+  weight_selection_on_test_predictions: forbidden
+
+submission:
+  max_preferred_packages: 1
+  auto_upload: false
+  remaining_quota_assumption: unknown
+  preserve: [v36_original, hashes, platform_feedback_mapping]
+  last_vs_best_rule: "follow the verified platform rule; do not infer from contradictory notes"
+  cold_audit:
+    - v2_id_set
+    - template_order
+    - three_columns
+    - nonnegative_finite
+    - result_readback
+    - model_readback
+    - full_reverse_chunk_subset_single_row_consistency
+    - training_csv_read_ban
+    - private_data_out_of_repository
+  tabr_support_set_is_private_model_state: true

@@ -1,0 +1,103 @@
+# Round2 V4.4-r1 follow-up declarations.
+#
+# The V4.4 round enables what the V4.2-r2 FOLLOWUP_SPEC could only declare as a
+# disabled design: the per-depth selector.  This file records the enabled
+# mechanisms, the stage machine and the gates.  It does not restate or relax the
+# thresholds frozen in configs/round2_v4_4/SEARCH_SPEC.yaml.
+schema_version: v4.4-r1
+date: 2026-09-25
+base_commit: 63d0adc3e11fc6e22e08eef62fb68963ea0959ae
+branch: round2-v4.2-n2-seed-repair
+status: PRE_REGISTERED_NOT_STARTED
+
+seed_init_protocol: SEED_INIT_V2
+seed_init_scope:
+  - N-line and R-line networks alike are constructed inside an explicit torch
+    seed scope, so ``initialisation_seed`` governs the initial weights
+  - the two stages share the registered initialisation seed
+  - batch order is a separate stream derived by fixed arithmetic offset
+  - data-aware (ODST) initialisation draws from its own registered numpy stream
+  - every fit records initialisation hashes for both stages and the final state
+  - no seed is derived from a worker id, process id or scheduling index
+
+mechanisms:
+  N:
+    enabled: true
+    trial_ids:
+      control: N2
+      depth_only: N4
+      odst_core: N5
+    hypothesis: |
+      The V4.2 tree reused one feature projection at every depth and only moved
+      the threshold.  Restoring the depth axis is a different, still-oblivious
+      model: nodes at one depth still share that depth's feature, threshold and
+      (for N5) scale, but the depths need not agree.
+    source_comparison:
+      in_repo_before: "v4_2_n_node:_ObliviousLayer.feature_logits -> (trees, features)"
+      reference: "Qwicen/node lib/odst.py: feature_selection_logits -> (in_features, num_trees, depth)"
+    acceptance_checks:
+      - binding every depth's selector to one vector reproduces the shared-selector forward output
+      - perturbing one depth's selector does not rewrite another depth's selector
+      - the selector gradient is non-zero for each depth
+      - serialisation round-trips the (trees, depth, features) shape
+      - outputs and gradients are checked numerically, not inferred from a class name
+    required_control: N2 under SEED_INIT_V2, never the pre-repair N2
+    reporting: [true_parameter_count, capacity_increase_is_not_a_strict_equal_capacity_causal_proof]
+
+  R:
+    enabled: true
+    trial_ids:
+      control: R2
+      full_fusion: R4
+      architecture_control: R5
+    hypothesis: |
+      The V4.2 model added a weighted mean of neighbour labels directly to the
+      final scalar.  The authors encode the label, transform the
+      query-minus-neighbour key difference and fuse the result into the internal
+      representation before the predictor.  R5 keeps that architecture and
+      switches retrieval off, so a gain can be attributed to the retrieval
+      channel rather than to merely replacing the network.
+    source_comparison:
+      in_repo_before: "v4_2_r_tabr: forward returns head(cat[q, agg]) + sum_j w_j y_j"
+      reference: "yandex-research/tabular-dl-tabr bin/tabr.py: x = x + sum_j p_j (E_y(y_j) + T(k(x)-k(x_j)))"
+    acceptance_checks:
+      - R5 and R4 have the same architecture and parameter count, differing only in the retrieval channel
+      - R4's label encoder and difference transform receive nonzero gradient
+      - the retrieval key projection is not the base representation
+      - an excluded neighbour's label cannot change the prediction
+      - single-row, chunked and batched inference agree
+    preserved:
+      - exact_euclidean_distances
+      - self_and_duplicate_group_exclusion
+      - support_set_isolation_from_V_and_H
+
+stage_machine:
+  states: [PASSED, FAILED, NOT_EVALUATED, NOT_EVALUATED_INCOMPLETE_COVERAGE]
+  coarse:
+    folds: [0, 1]
+    gate: {same_fixed_path_for_both_seeds: true, both_seed_gains_positive: true,
+           mean_full_package_gain_min: 0.005}
+  full_coverage:
+    folds: [0, 1, 2, 3, 4]
+    gate: {mean_gain_min: 0.02, both_seeds_positive: true, positive_folds_min: 8,
+           positive_folds_total: 10}
+  stop_rule: |
+    An incomplete full coverage is NOT_EVALUATED_INCOMPLETE_COVERAGE, never a
+    failure and never a pass.  The +0.02 gate is judged only on the complete ten
+    cells.  Failing it stops the line with no alpha rescue scan.
+  max_advanced_per_family_per_target: 1
+
+paths:
+  direct: "target t replaced entirely by the new model, the other target stays B_fit"
+  fixed_quarter: "0.75 * B_fit_t + 0.25 * f_t, the other target stays B_fit"
+  weight_scan: forbidden
+  note: |
+    Both declared paths are reported for every unit.  No fusion weight is chosen
+    after seeing a result.
+
+history_note: |
+  The pre-repair V4.2 N2 extension (local/runs/round2-v4.2-structure-search/full-r1)
+  reached +0.014213 over the complete ten cells with both split seeds positive.
+  It is preserved as evidence but its initialisation seed was not controlled, so
+  it is NOT the V4.4 control and its four pre-repair coarse cells must not be
+  merged with repaired cells.
