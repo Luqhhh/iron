@@ -262,23 +262,45 @@ source identity.
   `local/runs/round2-v4.4-mechanism-completion/`, one directory per unit, with
   `-V4_4` trial ids, and was not written into any of the other session's paths.
 * The other session has since pushed its work (`origin/round2-v4.2-structure-search`
-  is at `2dd5772`) and stopped writing. It left the follow-up runner it authored
+  is at `2dd5772`) and stopped writing, leaving the follow-up runner it authored
   (`src/bf_tap_r2/v4_2_followup.py`) plus `configs/round2_v4_2/FOLLOWUP_SPEC.yaml`,
   `docs/round2_v4_2/FOLLOWUP_RESULTS.md` and `tests/test_round2_v4_2_followup.py`
-  uncommitted. **No commit or push was made by this session**, on the user's
-  instruction to run only the R-line fits without committing while the checkout
-  was contested; the commit decision is still open.
+  uncommitted. While it was still writing, this session deliberately made no
+  commit. Once the checkout was quiet it committed and pushed **only its own
+  artifacts** (`2208bd1` on `round2-v4.2-n2-seed-repair`); the other session's
+  seven uncommitted files were left untouched for it or the user to finish.
 
-### Reproduction prerequisites (open item)
+### Reproduction status of the N-line (corrected)
 
-The N-line full-coverage stage was executed through the V4.2-r2 follow-up runner
-`bf_tap_r2.v4_2_followup`, which the concurrent session authored and left
-untracked. This round's edits to it are the schema-aware trial-id suffix and the
-`v4.4-r1` declarations loader. Until that file (and, for the full test set,
-`configs/round2_v4_2/FOLLOWUP_SPEC.yaml` and its test) is committed, the N-line
-evidence in section 3–4 can be inspected but not re-executed from the public
-repository. The R-line evidence has no such dependency: it used
-`bf_tap_r2.v4_2_screen`, which is committed.
+An earlier draft of this section claimed the N-line "can be inspected but not
+re-executed from the public repository". **That was too pessimistic and is
+wrong.** The follow-up runner was only the *stage-machine wrapper* around
+`bf_tap_r2.v4_2_screen`, which is committed, and both paths aggregate through
+the same committed `aggregate_screen`.
+
+Verified after this commit: re-running one recorded cell through the committed
+screen
+
+```
+bf_tap_r2.v4_2_screen --spec configs/round2_v4_4/SEARCH_SPEC.yaml \
+  --lines N --recipes N2 --targets tap_iron --seeds 42 --folds 0
+```
+
+reproduces `N2-tap_iron`, seed 42, fold 0 at
+`fixed_quarter_gain = +0.02485918` — **identical to the value recorded by the
+follow-up runner, difference `0.000e+00`**, in a fresh process
+(`local/runs/round2-v4.4-mechanism-completion/repro-check/`). So:
+
+* the coarse and full-coverage *numbers* are reproducible from the committed
+  code, and full coverage is obtained with `--folds 0 1 2 3 4`;
+* only the explicit stage-state reporting (`NOT_EVALUATED_INCOMPLETE_COVERAGE`,
+  the stop-without-alpha-scan decision) came from the wrapper
+  `bf_tap_r2.v4_2_followup`, which the concurrent session authored and left
+  uncommitted along with `configs/round2_v4_2/FOLLOWUP_SPEC.yaml`,
+  `docs/round2_v4_2/FOLLOWUP_RESULTS.md` and its test;
+* the bit-identical reproduction in a separate process is independent evidence
+  that the `SEED_INIT_V2` initialisation control actually pins the initial
+  weights, which was the whole point of the repair.
 
 ## 9. Guardrails held
 
