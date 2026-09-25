@@ -10,6 +10,14 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 已按用户指令删除桌面五份提交 ZIP，local 原包与旧证据保留。[清理与平台测试复核](../local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json)：无必须追加测试，D2 为零新增训练的第一可选对照，V2 为需单独注册拟合的第二梯队。
 阅读当前状态时按以下入口；各阶段冻结计划和结果保留运行当时的含义。
 
+## 当前 Round2 V4.1 残差校准（2026-09-25）
+
+- [V4.1 计划](round2_v4_1/PLAN.md) · [V4.1 结果](round2_v4_1/RESULTS.md)
+- 当前平台最高用户回传为 V36=96.2734，目标仍为 >96.3。
+- 24 个固定候选粗筛后，7 个时长候选进入完整五折；最优 `HGB_L2_L15_A050`
+  相对公开 EBM 锚点的平均完整包贡献 +0.02570552，9/10 折改善、两铁口均改善。
+- candidate-tiers-v1 选为 formal，但 `release_authorized=false`；因缺少 V34_A/V36 私有强基座证据，无 ZIP、无上传。
+
 ## 当前复赛 V3 本地搜索（2026-09-23）
 
 - [V3 搜索计划](round2_v3/PLAN.md)

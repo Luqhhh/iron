@@ -6666,5 +6666,68 @@
       "gap_to_96_3": 0.0266,
       "feedback_record": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/platform-feedback-r1/feedback.json"
     }
+  },
+  "round2_v4_1_orthogonal_residual_search": {
+    "status": "COMPLETE_DEVELOPMENT_FORMAL_TIME_CANDIDATE_NO_RELEASE",
+    "date": "2026-09-25",
+    "branch": "round2-v4.1-orthogonal-residual-search",
+    "public_docs": [
+      "docs/round2_v4_1/PLAN.md",
+      "docs/round2_v4_1/RESULTS.md"
+    ],
+    "reference": {
+      "name": "PUBLIC_REBUILDABLE_V34_EBM_ANCHOR",
+      "exact_v34_a_or_v36_replay": false,
+      "reason": "private V34_A/V36 OOF, model and test caches are absent on this machine"
+    },
+    "coarse": {
+      "candidate_slots": 24,
+      "anchor_ebm_fits": 48,
+      "corrector_fits": 96,
+      "iron_qualifiers": 0,
+      "time_qualifiers": 7,
+      "summary_sha256": "75625dcedfb4536f10e2879b764fdff54c87a8d2885eaa1e48bccb5537eace36"
+    },
+    "complete_development": {
+      "split_seeds": [42, 3407],
+      "folds": 5,
+      "anchor_ebm_fits": 40,
+      "corrector_fits": 70,
+      "summary_sha256": "81b7b6631036aee4dc326d0641aaf4e271feaef0cd4faddf96bb9b1fc4767c67"
+    },
+    "selected": {
+      "target": "tap_time_len",
+      "candidate": "HGB_L2_L15_A050",
+      "tier": "formal",
+      "mean_anchor_wmape": 0.0401536212096283,
+      "mean_candidate_wmape": 0.03963951078275121,
+      "mean_package_delta_single": 0.025705521343854718,
+      "minimum_seed_package_delta_single": 0.022314083419574388,
+      "improved_folds": 9,
+      "total_folds": 10,
+      "worst_spout_wmape_delta": -0.0003272872896820933,
+      "candidate_tiers_sha256": "c032d59f8f351cfc3dbc039eb392ffb4b2872fdd64fb72504cdd6a22e6fea8a2",
+      "release_authorized": false
+    },
+    "validation": {
+      "focused_v41_v4_candidate_tiers": "24_passed",
+      "full_locked_suite": {
+        "passed": 808,
+        "failed": 5,
+        "skipped": 1,
+        "failure_scope": "PRE_EXISTING_V3_6_NETWORK_TESTS_REQUIRE_TORCH_NOT_DECLARED_IN_PYPROJECT_OR_UV_LOCK",
+        "v4_1_failures": 0
+      },
+      "private_artifact_guard": "PASS_WINDOWS_GIT_WORKTREE_771_TRACKED_FILES"
+    },
+    "final_outer": "NOT_RUN_NO_REPLACEMENT_SEED_AUTHORIZED",
+    "platform_packages": 0,
+    "agent_uploads": 0,
+    "current_platform_best_unchanged": {
+      "name": "V36_USER_REQUESTED_OUTER_FAILED",
+      "score": 96.2734,
+      "gap_to_96_3": 0.0266
+    },
+    "next_decision": "recover or rebuild exact V34_A/V36 OOF and test predictions, then repeat the fully cross-fitted time residual protocol on the same strong base"
   }
 }

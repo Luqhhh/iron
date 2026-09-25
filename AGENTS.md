@@ -105,3 +105,19 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - Users upload packages themselves and return scores. Do not auto-upload, auto-package for platform, or spend quota manually.
 - Latest score-transfer and gate analysis: `docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md`.
 
+## Round2 V4.1 orthogonal residual handoff (2026-09-25)
+
+- V4.1 completed a public-rebuildable V34 EBM anchor screen because the private
+  V34_A/V36 OOF, model and test caches are absent on this machine.  Never call
+  its anchor an exact V34_A or V36 replay.
+- The formal time mechanism is `HGB_L2_L15_A050`: two-seed complete-development
+  mean package contribution +0.02570552 versus the public anchor, 9/10 folds
+  improved, and both spouts improved.  Details: `docs/round2_v4_1/RESULTS.md`.
+- `candidate-tiers-v1` selected it as formal but did not authorize release.
+  Do not add +0.0257 to the V36 platform score, generate a standalone anchor
+  package, invent a replacement final outer seed, or upload automatically.
+- The next valid step is to recover or independently rebuild the exact
+  V34_A/V36 OOF and test predictions, then repeat the fully cross-fitted time
+  residual protocol on that same strong base.  Preserve the current best user
+  report V36=96.2734 until a separately verified package exceeds it.
+

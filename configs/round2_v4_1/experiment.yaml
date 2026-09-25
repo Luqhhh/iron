@@ -1,0 +1,125 @@
+version: round2-v4.1-orthogonal-residual-search
+status: COMPLETE_DEVELOPMENT_FORMAL_TIME_CANDIDATE_NO_RELEASE
+created: '2026-09-25'
+base_commit: ac6a3b40b49df8dd60a53047bf525feb801f21a0
+
+objective:
+  platform_target_strictly_greater_than: 96.3
+  current_platform_best_user_reported:
+    name: V36_USER_REQUESTED_OUTER_FAILED
+    score: 96.2734
+    gap_to_target: 0.0266
+  scope: mechanism_screen_not_release
+
+reference:
+  name: PUBLIC_REBUILDABLE_V34_EBM_ANCHOR
+  rationale: private V34_A and V36 OOF/model caches are absent on this machine
+  tap_iron:
+    trial_ids: [v34-s1-ebm_boundary-0016, v34-s1-ebm_boundary-0020]
+    weights: [0.6794076338695793, 0.3205923661304206]
+    note: V34_A expert weights renormalized after omitting unavailable L1
+  tap_time_len:
+    trial_ids: [v34-s1-ebm_boundary-0089]
+    weights: [1.0]
+    note: strongest publicly reconstructible V34_A time EBM; unavailable L1 and spout expert are not imputed
+  target_transform: log1p
+  claim_boundary: results are anchor-relative mechanism evidence, not V34_A or V36 package scores
+
+protocol:
+  split_seeds: [42, 3407]
+  coarse_folds: [0, 1]
+  complete_folds: [0, 1, 2, 3, 4]
+  residual_inner_folds: 3
+  residual_inner_seed_base: 9410
+  group_isolated: true
+  residual_definition: y_minus_cross_fitted_anchor_prediction
+  full_anchor_prediction_for_validation_only: true
+  outer_validation_labels_forbidden_during_fit: true
+
+candidate_budget:
+  per_target: 12
+  total: 24
+  families:
+    shrink_bins: 4
+    lightgbm_residual: 4
+    histgb_residual: 4
+
+candidates:
+  shrink_bins:
+    - {name: SB06_M50_A050, bins: 6, shrinkage: 50.0, statistic: mean, alpha: 0.50}
+    - {name: SB06_M200_A100, bins: 6, shrinkage: 200.0, statistic: mean, alpha: 1.00}
+    - {name: SB10_M50_A050, bins: 10, shrinkage: 50.0, statistic: mean, alpha: 0.50}
+    - {name: SB10_M200_A100, bins: 10, shrinkage: 200.0, statistic: mean, alpha: 1.00}
+  lightgbm_residual:
+    - {name: LGB_L1_L7_A025, objective: regression_l1, num_leaves: 7, alpha: 0.25}
+    - {name: LGB_L1_L15_A050, objective: regression_l1, num_leaves: 15, alpha: 0.50}
+    - {name: LGB_HUBER_L7_A025, objective: huber, num_leaves: 7, alpha: 0.25}
+    - {name: LGB_HUBER_L15_A050, objective: huber, num_leaves: 15, alpha: 0.50}
+  histgb_residual:
+    - {name: HGB_L1_L7_A025, loss: absolute_error, max_leaf_nodes: 7, alpha: 0.25}
+    - {name: HGB_L1_L15_A050, loss: absolute_error, max_leaf_nodes: 15, alpha: 0.50}
+    - {name: HGB_L2_L7_A025, loss: squared_error, max_leaf_nodes: 7, alpha: 0.25}
+    - {name: HGB_L2_L15_A050, loss: squared_error, max_leaf_nodes: 15, alpha: 0.50}
+
+fixed_corrector_defaults:
+  correction_clip_absolute_quantile: 0.95
+  lightgbm:
+    n_estimators: 400
+    learning_rate: 0.02
+    min_child_samples: 80
+    reg_lambda: 30.0
+    max_depth: -1
+    verbosity: -1
+    n_jobs: 1
+    random_state: 941
+  histgb:
+    max_iter: 300
+    learning_rate: 0.03
+    min_samples_leaf: 80
+    l2_regularization: 30.0
+    random_state: 941
+
+continuation_gate:
+  require_both_split_seeds_positive: true
+  mean_package_delta_single_min: 0.005
+  complete_development_only_after_gate: true
+  final_outer_seed: null
+  reason_no_final_outer: seed 23003 is already consumed and no replacement outer seed is authorized
+
+outputs:
+  private_root: local/runs/round2-v4.1-orthogonal-residual-search
+  append_only: true
+  automatic_package: false
+  agent_uploads: 0
+
+execution:
+  coarse_run: local/runs/round2-v4.1-orthogonal-residual-search/coarse-r1
+  complete_run: local/runs/round2-v4.1-orthogonal-residual-search/complete-r1
+  coarse_anchor_ebm_fits: 48
+  coarse_corrector_fits: 96
+  coarse_qualifiers: 7
+  complete_anchor_ebm_fits: 40
+  complete_corrector_fits: 70
+  best_candidate:
+    target: tap_time_len
+    name: HGB_L2_L15_A050
+    tier: formal
+    mean_anchor_wmape: 0.04015362120962830
+    mean_candidate_wmape: 0.03963951078275121
+    mean_package_delta_single: 0.025705521343854718
+    minimum_seed_package_delta_single: 0.022314083419574388
+    improved_folds: 9
+    total_folds: 10
+    worst_spout_wmape_delta: -0.0003272872896820933
+  final_outer_run: false
+  package_generated: false
+  platform_uploads: 0
+  validation:
+    focused_v41_v4_candidate_tiers: 24_passed
+    full_locked_suite:
+      passed: 808
+      failed: 5
+      skipped: 1
+      failure_scope: pre_existing_v3_6_network_tests_missing_unlocked_torch_dependency
+      v4_1_failures: 0
+    private_artifact_guard: PASS_WINDOWS_GIT_WORKTREE
