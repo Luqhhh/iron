@@ -93,15 +93,78 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
   not generate or upload a V3 package until the user explicitly requests it.
   The existing frozen release and platform-upload rules still apply.
 
-## Round2 V3.4 next phase (2026-09-24, current instruction)
+## Round2 V3.4 next phase (2026-09-24, historical context)
 
 - User-reported platform scores: `V34_A = 96.2684`, `V34_B = 96.2660`. These are user reports, not independently verified platform receipts.
-- Current platform best is `V34_A`; `V34_B` is second. Historical AJ3 `96.1259` remains evidence but is no longer the current reference.
-- Next-phase platform target: **> 96.3**.
+- At that time the current platform best was `V34_A`. Historical AJ3 `96.1259` remains evidence but is no longer the current reference.
+- Next-phase platform target: **> 96.3**. This target is still in force.
 - Pre-registered local working gate: **>= 96.25**; local stretch target: **>= 96.30**. The gate is derived from observed local-to-platform gaps of roughly `+0.069` to `+0.114`, but local scores remain non-guarantees.
 - **Do not consume platform test quota unless a candidate first reaches the local working gate and passes same-protocol outer validation.** Local score or local delta alone is not acceptance.
-- Continue **large-scale optimization search**: broad local exploration, not small variants of already-tested packages. Search structure, EBM boundary/residual, global/local spout experts, constrained composition and target-isolated fallbacks; preserve data protection, dedup, append-only cache identity, candidate freeze and cold-audit rules.
+- Continue **large-scale optimization search**: broad local exploration, not small variants of already-tested packages. Preserve data protection, dedup, append-only cache identity, candidate freeze and cold-audit rules.
 - New candidates must have at least two positive complete development splits before any new outer seed is consumed; only clearly justified exceptional cases may bypass, with explicit pre-registration.
 - Users upload packages themselves and return scores. Do not auto-upload, auto-package for platform, or spend quota manually.
 - Latest score-transfer and gate analysis: `docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md`.
+
+## Round2 V4.2 through V4.5: mechanisms tested, residual route closed (2026-09-25, current instruction)
+
+Current platform best is still **`V36_USER_REQUESTED_OUTER_FAILED` = 96.2734**
+(user-reported, not independently verified); next-phase target remains **> 96.3**.
+The V4.2–V4.5 rounds produced **no promoted candidate, no package and no upload**.
+
+Two independent facts now constrain the next round:
+
+1. **Local gains are not transferring.** `V42_IRON_N2_Q25` (parent V36 iron +
+   0.25 × V4.2 `N-N2`) scored **96.2533** on the platform, **−0.0201** against
+   V36, while its local same-protocol gain was **+0.0144**. The local-to-platform
+   gap across verified pairs is not constant (`+0.0687` for V34_A, `+0.0696` for
+   V36, `+0.0347` for V42_IRON_N2_Q25), so the gap's own spread is larger than
+   the effects being selected on.
+2. **The local ranking signal is weaker than the effects.** The N2 blend's
+   per-fold gain spans `−0.009` to `+0.028`; V34_A's final outer five folds span
+   `+0.0078` to `+0.0641` around a `+0.0394` mean. The pre-registered coarse
+   threshold of `+0.005` sits inside that noise.
+
+**Closed by direct measurement — do not reopen without new evidence:**
+
+- **NODE per-depth selection (N4) and the ODST core (N5):** both fail the coarse
+  gate on both targets (`N4 +0.00094 / −0.00093`; `N5 −0.00311 / +0.00459`). The
+  repaired shared-selector control N2 passes on `tap_iron` (`+0.00901`) and then
+  fails the full-coverage fusion gate on complete coverage (`+0.014934`, 8/10
+  folds). `docs/round2_v4_4/RESULTS.md`.
+- **TabR full retrieval fusion (R4) and its no-retrieval control (R5):** all six
+  units fail the coarse gate. R4 − R5 is `+0.0176` / `+0.0037`, so the retrieval
+  channel is active, but R4 − R2 is `+0.0123` / `−0.0118`, so the fusion gain
+  does not reproduce across targets and the family stays far below `B_fit`.
+- **Residual correctors:** the strong base's out-of-fold residual has no
+  predictable direction (mean sign AUC `0.5092` / `0.5070`; the fitted sign model
+  is worse than a calibrated constant by Brier score; `P(r>0)` is 0.4938/0.4996
+  against residual standard deviations of 26.07/6.23). Every pre-registered
+  correction raised held-out MAE. `docs/round2_v4_5/RESULTS.md`.
+- **Temporal/lag features are unavailable, not merely untried:**
+  `复赛_train/train_features.csv` carries only `sample_id` plus the 21
+  instantaneous features — there is no timestamp or ordering column.
+
+**Where the remaining leverage is, given the above:** the V36 composition is
+weight-concentrated (`tap_iron` 0.604 A + 0.360 D + 0.036 N; `tap_time_len`
+0.781 A + 0.090 O + 0.129 D), `tap_time_len` is worth ~4.2× per absolute-error
+unit because its WMAPE denominator is ~4.2× smaller, and the gains actually being
+harvested are diversification gains (the N2 candidate is *worse* alone, MAE
+21.4 vs 20.2, but only 0.887-correlated, and a 0.25 blend wins 0.16 MAE).
+A 482-file / 444-trial OOF prediction pool already exists under
+`local/runs/round2-v3-local-search/*/pred-*.npy`, so an explicit
+error-covariance-based member search needs no new model fits. The V3.4
+"diversity" work was *structural* de-duplication, not error-correlation
+selection.
+
+**Process constraints for the next round:** raise the local evaluation
+resolution (more split seeds, paired standard errors, admit on a lower confidence
+bound rather than a mean) before trusting any `+0.01`-scale candidate; and treat
+any further submission as an experiment worth declaring, not a routine slot.
+
+- Implementation commits on `round2-v4.2-n2-seed-repair`: `2208bd1` (V4.4
+  mechanisms), `d774195` (bit-identical N-line reproduction through the
+  committed screen), `91dded2` (V4.5 residual diagnostic).
+- A second agent session was active in this checkout during these rounds; it
+  authored `src/bf_tap_r2/v4_2_followup.py` and the V4.2-r2 repair. Its
+  collision record is in `docs/round2_v4_2/FOLLOWUP_RESULTS.md` section 8.
 

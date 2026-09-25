@@ -70,7 +70,13 @@ def test_trial_lookup_reports_a_missing_id():
         v31_trial_by_id(ROOT, "v31-s1-not-a-trial-9999")
 
 
-def test_default_path_still_requires_the_ledger():
-    """The refactor must not have made the ledger optional by accident."""
+def test_default_path_still_requires_the_ledger(tmp_path: Path):
+    """The refactor must not have made the ledger optional by accident.
+
+    The assertion is about the *missing-ledger* path, so it must not depend on
+    whether this checkout still holds the V3.1 run ledger.  An empty root is
+    used instead: ``load_centers`` then resolves nothing and must fail loudly
+    rather than silently substituting a reconstruction.
+    """
     with pytest.raises(ValueError, match="Missing V3.1 centers"):
-        sample_s1(ROOT)
+        sample_s1(tmp_path)

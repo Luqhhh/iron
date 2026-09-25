@@ -301,7 +301,7 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "V36_USER_REQUESTED_PACKAGE_PLATFORM_96_2734_REMAINS_BEST_NEXT_TARGET_GT_96_3",
+    "status": "V36_USER_REQUESTED_PACKAGE_PLATFORM_96_2734_REMAINS_BEST_V42_V45_CLOSED_NO_CANDIDATE",
     "submission_priority": [],
     "current_preferred": {
       "name": "V36_USER_REQUESTED_OUTER_FAILED",
@@ -6357,7 +6357,36 @@
       "local_gate_is_not_platform_guarantee",
       "no_relaxation_of_freeze_or_cold_audit_contract"
     ],
-    "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md"
+    "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md",
+    "latest_update_2026_09_25": {
+      "latest_platform_best_user_reported": 96.2734,
+      "latest_platform_best_candidate": "V36_USER_REQUESTED_OUTER_FAILED",
+      "latest_gap_to_target": 0.0266,
+      "required_total_wmape_reduction": 0.000532,
+      "required_mean_wmape_from": 0.037266,
+      "required_mean_wmape_to": 0.036734,
+      "required_relative_reduction": 0.00714,
+      "target_anchor_note": "The frozen target is platform > 96.30. A 96.35 anchor appeared in a later discussion and is NOT recorded here; it would imply a ~2.06% relative reduction instead of ~0.71%.",
+      "recent_verified_transfer_pairs": {
+        "V34_A": {
+          "local": 96.19973698527157,
+          "platform": 96.2684,
+          "gap": 0.0687
+        },
+        "V36": {
+          "local": 96.20376256899247,
+          "platform": 96.2734,
+          "gap": 0.0696
+        },
+        "V42_IRON_N2_Q25": {
+          "local": 96.2186,
+          "platform": 96.2533,
+          "gap": 0.0347
+        }
+      },
+      "transfer_reading": "The local-to-platform gap itself varies by more than the gains being selected on (0.0347 to 0.0696 across these three pairs), so a local delta is not a ranking signal at the 0.01 level.",
+      "local_resolution_note": "The pre-registered coarse threshold of +0.005 sits inside the per-fold spread: the N2 blend's per-fold gain spans -0.009 to +0.028, and V34_A's final outer folds span +0.0078 to +0.0641."
+    }
   },
   "round2_v3_6": {
     "status": "V36_FIXED_224_AND_OUTER_23003_USER_DIRECTED_NO_GATE_NO_PACKAGE",
@@ -6880,5 +6909,160 @@
       "publication": "PENDING_BY_AUTHORING_SESSION",
       "run": "local/runs/round2-v4.2-structure-search/n2-seed-init-v2"
     }
+  },
+  "round2_v4_4_mechanism_completion": {
+    "status": "EXECUTED_NO_PROMOTION_MECHANISM_ROUTES_CLOSED",
+    "date": "2026-09-25",
+    "branch": "round2-v4.2-n2-seed-repair",
+    "implementation_commit": "2208bd1",
+    "reproduction_verification_commit": "d774195",
+    "preregistration": [
+      "configs/round2_v4_4/SEARCH_SPEC.yaml",
+      "configs/round2_v4_4/FOLLOWUP_SPEC.yaml"
+    ],
+    "results_doc": "docs/round2_v4_4/RESULTS.md",
+    "pre_registered_units": 12,
+    "pre_registered_outer_recipe_slots": 48,
+    "n_line_coarse": {
+      "run_root": "local/runs/round2-v4.4-mechanism-completion",
+      "cells_completed": 24,
+      "fixed_quarter_mean_gain": {
+        "N2-tap_iron": 0.009006,
+        "N2-tap_time_len": -0.01285,
+        "N4-tap_iron": 0.000939,
+        "N4-tap_time_len": -0.00093,
+        "N5-tap_iron": -0.00311,
+        "N5-tap_time_len": 0.00459
+      },
+      "gate_passing_units": [
+        "N2-tap_iron"
+      ],
+      "true_parameter_count": {
+        "N2": 9881,
+        "N4": 31385,
+        "N5": 31897
+      },
+      "reading": "per-depth selection and the ODST core fail the coarse gate on both targets; only the repaired shared-selector control advances"
+    },
+    "n_control_full_coverage": {
+      "unit": "N2-tap_iron",
+      "covered_folds": 10,
+      "per_seed_fixed_quarter_gain": {
+        "42": 0.013874,
+        "3407": 0.015993
+      },
+      "mean_gain": 0.014934,
+      "positive_folds": 8,
+      "fusion_eligibility_gate": "FAILED_MEAN_BELOW_0.02",
+      "next_action": "STOP_FULL_GATE_FAILED"
+    },
+    "r_line_coarse": {
+      "run": "local/runs/round2-v4.4-mechanism-completion/r-coarse-r2",
+      "cells_completed": 24,
+      "gate_passing_units": [],
+      "fixed_quarter_mean_gain": {
+        "R2-tap_iron": -0.05398,
+        "R2-tap_time_len": -0.07537,
+        "R4-tap_iron": -0.04169,
+        "R4-tap_time_len": -0.08713,
+        "R5-tap_iron": -0.05933,
+        "R5-tap_time_len": -0.09085
+      },
+      "r4_minus_r5_retrieval_channel": {
+        "tap_iron": 0.01763,
+        "tap_time_len": 0.00372
+      },
+      "r4_minus_r2_fusion_mechanism": {
+        "tap_iron": 0.01229,
+        "tap_time_len": -0.01176
+      },
+      "true_parameter_count": {
+        "R2": 52738,
+        "R4": 136578,
+        "R5": 136578
+      },
+      "reading": "retrieval is active relative to its own architecture control, but the full fusion gain does not reproduce across targets and the family stays far below B_fit"
+    },
+    "defects_fixed": [
+      "R retrieval distance was batch-shape dependent: the expanded squared distance floored a cancellation residual, breaking single-row vs chunked inference agreement",
+      "routing-entropy diagnostic returned NaN at saturation because 1 - 1e-9 is exactly 1.0 in float32, silently disabling the collapse warning",
+      "the R4/R5 neighbourhood values are now gathered over the retrieved context only, matching the authors and replacing a full-support (B, S, W) tensor"
+    ],
+    "platform_uploads_by_agent": 0,
+    "submission_packages": 0,
+    "promotion": "none"
+  },
+  "round2_v4_5_residual_direction": {
+    "status": "EXECUTED_RESIDUAL_DIRECTION_ROUTE_CLOSED",
+    "date": "2026-09-25",
+    "branch": "round2-v4.2-n2-seed-repair",
+    "implementation_commit": "91dded2",
+    "preregistration": "docs/round2_v4_5/PREREGISTRATION.md",
+    "results_doc": "docs/round2_v4_5/RESULTS.md",
+    "private_evidence": "local/runs/round2-v4.5-residual-direction/diagnostic-r1/diagnostic.json",
+    "protocol": "leave-one-fold-out within each split seed; 2 split seeds x 5 folds x 2 targets; base predictions are the frozen V3.6 B_fit out-of-fold vectors; no base model was refitted",
+    "coverage_verified": "all 2754 rows non-NaN in exactly one fold per seed and target; fold/NaN pattern equals the repository fold vector; no duplicate-feature group spans folds",
+    "question": "whether the residual's direction (conditional median / P(r>0)) is predictable, as opposed to only its magnitude",
+    "verdict": {
+      "tap_iron": "CLOSE_RESIDUAL_ROUTE",
+      "tap_time_len": "CLOSE_RESIDUAL_ROUTE"
+    },
+    "mean_sign_auc": {
+      "tap_iron": 0.509227,
+      "tap_time_len": 0.506957
+    },
+    "mean_sign_accuracy": {
+      "tap_iron": 0.503818,
+      "tap_time_len": 0.503817
+    },
+    "brier_model_vs_calibrated_constant": {
+      "tap_iron": [
+        0.25261,
+        0.250359
+      ],
+      "tap_time_len": [
+        0.253167,
+        0.250282
+      ]
+    },
+    "cells_where_median_correction_improves_mae": {
+      "tap_iron": 0,
+      "tap_time_len": 0
+    },
+    "cells_total_per_target": 10,
+    "mean_mae_by_correction": {
+      "tap_iron": {
+        "delta0": 20.2145,
+        "delta_const": 20.2371,
+        "delta_sign": 24.6203,
+        "delta_median": 20.5157
+      },
+      "tap_time_len": {
+        "delta0": 4.9047,
+        "delta_const": 4.9089,
+        "delta_sign": 5.9225,
+        "delta_median": 5.0129
+      }
+    },
+    "residual_shape": {
+      "tap_iron": {
+        "positive_rate": 0.4938,
+        "median": -0.33,
+        "std": 26.0701
+      },
+      "tap_time_len": {
+        "positive_rate": 0.4996,
+        "median": 0.0312,
+        "std": 6.2264
+      }
+    },
+    "plus_other_target_feature_set_auc": {
+      "tap_iron": 0.514294
+    },
+    "stage_2_training_scale_diagnostic": "NOT_ESCALATED_PER_PREREGISTERED_RULE",
+    "reading": "the error is magnitude dominated: near-zero median against a large spread, direction at chance, and every pre-registered correction raised held-out error",
+    "platform_uploads_by_agent": 0,
+    "submission_packages": 0,
+    "promotion": "none"
   }
 }
