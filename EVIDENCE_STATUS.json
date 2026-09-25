@@ -6666,5 +6666,104 @@
       "gap_to_96_3": 0.0266,
       "feedback_record": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/platform-feedback-r1/feedback.json"
     }
+  },
+  "round2_v4_1_strong_increment": {
+    "status": "EXECUTED_NO_PROMOTION",
+    "date": "2026-09-25",
+    "branch": "round2-v4.1-strong-increment",
+    "taskbook": "docs/round2_v4_1/V4_1_TASKBOOK.md",
+    "results_doc": "docs/round2_v4_1/RESULTS.md",
+    "d0_diagnostic": {
+      "run": "local/runs/round2-v4.1-strong-increment/diagnostic-r1",
+      "available_seed_unit_events": 76,
+      "blocked_seed_unit_events": 4,
+      "model_training_fits": 0,
+      "directions_worth_nested_retest": 0,
+      "max_oracle_mean_delta_same_labels": 0.00029091338876248516,
+      "max_oracle_method": "v4-F-006 tap_iron"
+    },
+    "r0_baseline_factory": {
+      "implementation": "src/bf_tap_r2/v4_1_reference.py",
+      "protocol": "A_frozen_deployment_weights_v1",
+      "b_star_recovered": false,
+      "seed42_fold0_factory_wmape": {
+        "tap_iron": 0.03645231962521205,
+        "tap_time_len": 0.03817201354361257
+      },
+      "seed42_fold0_a_dev_wmape": {
+        "tap_iron": 0.03644501789277538,
+        "tap_time_len": 0.038141269817860646
+      },
+      "limitation": "frozen deployment weights, no per-training-subset re-selection; A-relative only"
+    },
+    "c_line": {
+      "run": "local/runs/round2-v4.1-strong-increment/paired-terms-r1",
+      "method_target_units": 10,
+      "new_units": 8,
+      "new_external_fits": 32,
+      "mean_delta_by_method_target": {
+        "C0": {
+          "tap_iron": -0.11019862684885422,
+          "tap_time_len": -0.7445019115814308
+        },
+        "C1": {
+          "tap_iron": -0.10969816458111861,
+          "tap_time_len": -0.27807667182754536
+        },
+        "C2": {
+          "tap_iron": -0.018102368863915,
+          "tap_time_len": -0.10563949665834994
+        },
+        "C3": {
+          "tap_iron": -0.0191096794768598,
+          "tap_time_len": -0.12169674938961221
+        },
+        "C4": {
+          "tap_iron": -0.02463907117183248,
+          "tap_time_len": -0.1322194892830949
+        }
+      },
+      "two_seed_positive_units": 0,
+      "time_c3_c4_coarsened_interaction_bins": 16,
+      "time_c2_inherited_interaction_bins": 64
+    },
+    "e_line": {
+      "run": "local/runs/round2-v4.1-strong-increment/nested-residual-r1",
+      "method_target_units": 8,
+      "base_factory": "A_frozen_deployment_weights_v1",
+      "base_fits_shared": 36,
+      "meta_folds": 2,
+      "inner_subfolds_per_meta": 2,
+      "mean_nested_target_delta_by_method_target": {
+        "E0": {
+          "tap_iron": 0.001645,
+          "tap_time_len": 5e-06
+        },
+        "E1": {
+          "tap_iron": 0.001693,
+          "tap_time_len": 0.000824
+        },
+        "E2": {
+          "tap_iron": 0.000417,
+          "tap_time_len": -0.001956
+        },
+        "E3": {
+          "tap_iron": -0.002568,
+          "tap_time_len": -0.003007
+        }
+      },
+      "two_seed_positive_units": 0,
+      "mean_delta_ge_0_02_units": 0
+    },
+    "tests": {
+      "test_increment_diagnostic.py": "30 passed",
+      "test_round2_v4_1.py": "10 passed",
+      "v4_and_v41_combined": "50 passed"
+    },
+    "complete_development_five_fold": false,
+    "new_platform_packages": 0,
+    "agent_uploads": 0,
+    "final_outer_23003": "NOT_USED_ALREADY_CONSUMED_BY_V3_6",
+    "decision": "close tested C/E implementations after no reproducible A-relative positive increment; do not claim B_star or platform-level conclusions"
   }
 }

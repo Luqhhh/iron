@@ -1,0 +1,30 @@
+{
+  "status": "CODE_REVIEW_AND_DIAGNOSTIC_IMPLEMENTED_SYNTHETIC_TESTED",
+  "repo": "Luqhhh/iron",
+  "reviewed_commit": "fae282e0ac8847265f050205caf62ec9d7a07206",
+  "known_platform_best": {
+    "name": "01_V34_NE3_CAP50",
+    "score": 96.2698,
+    "source": "repository_user_report_not_independently_verified"
+  },
+  "platform_target": ">96.3",
+  "synthetic_tests": {
+    "passed": 30,
+    "failed": 0,
+    "data": "constructed_math_examples_and_mocked_IO_no_competition_data"
+  },
+  "real_oof_diagnostic_executed": false,
+  "competition_training_fits": 0,
+  "new_submission_packages": 0,
+  "platform_uploads": 0,
+  "remote_git_writes": 0,
+  "consumed_seed_23003": "NOT_AVAILABLE_FOR_NEW_CONFIRMATION",
+  "files": {
+    "README.md": "8eff8c059bfe668226c16c4c6ab5ab6a2c754f4b63d7b2ad6e0e64a4f1eb99b0",
+    "V4_1_TASKBOOK.md": "e0ad4e98ab55ba1d72d76541f7c2ca49833a2689fe3899ccddc9c35d928230d7",
+    "synthetic_test_results.txt": "f38d7cc8808936083068919e16367270336befe78504d20d7a29053a3639b3a2",
+    "diagnose_v4_oof.py": "7970ebaac96a15a2d503a75e5755fddeeb66e7a3e850ee498700ca9654a22642",
+    "test_increment_diagnostic.py": "879a10fbe755e980c6367de1f7f7033c2129aec265f7274ea232ebabfa6b4bbf",
+    "increment_diagnostic.py": "1a07ad8f003749934736eb142036db19ac68f61e9a5c6122627fab191baf9e6f"
+  }
+}
