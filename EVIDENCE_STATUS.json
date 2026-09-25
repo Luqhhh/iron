@@ -7142,7 +7142,12 @@
       "pre_registered_selection": 10,
       "coverage": {
         "seed_42": "10/10",
-        "seed_3407": "8/10 at time of record; N-0049 and N-0051 pending"
+        "seed_3407": "8/10; N-0049 and N-0051 were not completed within the session (budget long tail), their seed-42 coverage is complete",
+        "evaluated_two_seed_candidates": 8,
+        "pending_trial_ids": [
+          "v36-s1-N-0049",
+          "v36-s1-N-0051"
+        ]
       },
       "best": {
         "candidate": "v36-s1-N-0048",
@@ -7174,9 +7179,15 @@
         7777,
         12011
       ],
-      "status": "IN_PROGRESS_INCOMPLETE_COVERAGE_AT_TIME_OF_RECORD",
+      "status": "NOT_EVALUATED_INCOMPLETE_COVERAGE",
       "per_fold_cache": "local/runs/round2-v5-error-covariance/replication-r1/seed-{seed}/fold-{fold}.npz",
-      "note": "result not claimed; the run is resumable and refuses to reuse a (seed, fold) whose identity hash differs"
+      "note": "result not claimed; the run is resumable and refuses to reuse a (seed, fold) whose identity hash differs. Status file: local/runs/round2-v5-error-covariance/replication-r1/replication-v36-s1-N-0048-status.json",
+      "cached_folds": "3/10",
+      "cached_fold_detail": [
+        "s7777-f0",
+        "s7777-f1",
+        "s7777-f2"
+      ]
     },
     "stage3b_platform_noise_experiment": {
       "local_seed_sensitivity_score": {
