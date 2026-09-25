@@ -25,6 +25,16 @@ round2 = [
     "scikit-learn==1.8.0",
     "xgboost==2.1.4",
 ]
+# Round2 V4.2 structure search.  ``torch`` powers the R (retrieval) and N
+# (differentiable oblivious tree) lines; ``sympy`` converts PySR equations back
+# into the frozen V4.2 expression language.  PySR itself is deliberately not
+# listed here: the S line installs it into the independent interpreter
+# ``local/envs/v4_2_pysr`` with its own Julia depot, so the frozen V3.6
+# environment is never upgraded.  See docs/round2_v4_2/S_BACKEND_FREEZE.md.
+round2_v4_2 = [
+    "torch>=2.4",
+    "sympy==1.14.0",
+]
 
 [project.scripts]
 bf-tap = "bf_tap.cli:main"
