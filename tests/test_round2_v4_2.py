@@ -365,10 +365,26 @@ def test_n_diagnostics_report_routing_and_leaf_usage(n_models) -> None:
 
 
 def test_n_chunked_inference_agrees(n_models) -> None:
+    """Agreement is float32 agreement across batch shapes, not bitwise equality.
+
+    A fixed fitted network returns identical values for a fixed batch shape, but
+    a different chunk size changes the GEMM reduction order, which moves float32
+    results by a few units in the last place.  The documented tolerance and the
+    observed difference are both reported rather than hidden.
+    """
+    from bf_tap_r2.v4_2_train import NEURAL_INFERENCE_ATOL, NEURAL_INFERENCE_RTOL
+
     frame, models = n_models
     query = frame.iloc[:40].reset_index(drop=True)
-    assert np.allclose(models["N0"].predict(query),
-                       models["N0"].predict_chunked(query, chunk_size=7), atol=1e-9)
+    full = models["N0"].predict(query)
+    # Same batch shape twice: exactly equal.
+    assert np.array_equal(models["N0"].predict(query), full)
+    chunked = models["N0"].predict_chunked(query, chunk_size=7)
+    difference = float(np.max(np.abs(full - chunked)))
+    assert difference <= NEURAL_INFERENCE_ATOL + NEURAL_INFERENCE_RTOL * float(np.max(np.abs(full))), (
+        difference
+    )
+    assert np.allclose(full, chunked, atol=NEURAL_INFERENCE_ATOL, rtol=NEURAL_INFERENCE_RTOL)
 
 
 # ---------------------------------------------------------------------------

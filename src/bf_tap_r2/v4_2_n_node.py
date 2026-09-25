@@ -51,11 +51,23 @@ from .v4_2_prep import (
     inner_uh_split,
     transform_hash,
 )
+from .v4_2_rng import (
+    V42RandomnessPlan,
+    initialisation_hash,
+    parameter_state_hash,
+    source_digest_payload,
+    torch_seed_context,
+)
 from .v4_2_train import NEURAL_LOSS, FitTimer, TrainConfig, TrainOutcome, regression_epochs
 
 __all__ = ["N_RECIPES", "NodeEnsembleRegressor", "NodeSpec", "entmax15", "n_recipe_spec"]
 
-#: The four pre-registered N recipes.
+#: The four pre-registered N recipes of the V4.2 screen.
+#:
+#: ``selector`` defaults to ``shared`` (one projection per tree, reused at every
+#: depth) so N0-N3 keep exactly the structure they were executed with.  The
+#: V4.4 recipes below restore the authors' per-depth selection; see
+#: ``docs/round2_v4_2/FOLLOWUP_RESULTS.md`` for why that distinction matters.
 N_RECIPES: dict[str, dict[str, Any]] = {
     "N0": {"recipe_id": "N0", "n_layers": 1, "trees_per_layer": 128, "depth": 4,
            "numeric_encoding": "raw", "hierarchy": "1_layer_x_128_trees"},
@@ -65,6 +77,22 @@ N_RECIPES: dict[str, dict[str, Any]] = {
            "numeric_encoding": "raw", "hierarchy": "2_layers_x_64_trees"},
     "N3": {"recipe_id": "N3", "n_layers": 2, "trees_per_layer": 64, "depth": 4,
            "numeric_encoding": "ple", "hierarchy": "2_layers_x_64_trees"},
+    # N4: the attribution control.  Only the depth axis of the feature selector
+    # is restored; thresholds, the fixed routing temperature, the raw encoding,
+    # the two-layer/64-tree hierarchy and the MAE training scheme are unchanged.
+    "N4": {"recipe_id": "N4", "n_layers": 2, "trees_per_layer": 64, "depth": 4,
+           "numeric_encoding": "raw", "hierarchy": "2_layers_x_64_trees",
+           "selector": "per_depth", "learnable_temperature": False,
+           "data_aware_init": False},
+    # N5: the authors' ODST core.  Adds the learnable per-tree, per-depth
+    # log-temperature and the data-aware threshold/temperature initialisation on
+    # top of N4.  Still oblivious: every node at one depth shares that depth's
+    # feature, threshold and scale.
+    "N5": {"recipe_id": "N5", "n_layers": 2, "trees_per_layer": 64, "depth": 4,
+           "numeric_encoding": "raw", "hierarchy": "2_layers_x_64_trees",
+           "selector": "per_depth", "learnable_temperature": True,
+           "data_aware_init": True,
+           "threshold_init_beta": 1.0, "threshold_init_cutoff": 1.0},
 }
 
 #: Fixed starting point.  ``selection_sparsity`` is pre-registered as 0.0 so the
@@ -77,6 +105,12 @@ N_START: dict[str, Any] = {
     "selection_sparsity": 0.0,
     "init_scale": 0.05,
 }
+
+
+#: Fixed arithmetic offset for the ODST data-aware initialisation stream.  It is
+#: deliberately a plain offset from the registered initialisation seed, never a
+#: process-local value, so the same candidate hashes identically in any worker.
+DATA_AWARE_INIT_SEED_OFFSET = 2_000_003
 
 
 def _torch():
@@ -186,6 +220,23 @@ class NodeSpec:
         self.ple_segments = int(merged["ple_segments"])
         self.selection_sparsity = float(merged["selection_sparsity"])
         self.init_scale = float(merged["init_scale"])
+        # Mechanism flags.  ``None`` defaults reproduce the executed V4.2
+        # structure exactly, so adding these keys never silently changes N0-N3.
+        self.selector = str(payload.get("selector", "shared"))
+        self.learnable_temperature = bool(payload.get("learnable_temperature", False))
+        self.data_aware_init = bool(payload.get("data_aware_init", False))
+        self.threshold_init_beta = float(payload.get("threshold_init_beta", 1.0))
+        self.threshold_init_cutoff = float(payload.get("threshold_init_cutoff", 1.0))
+        if self.selector not in ("shared", "per_depth"):
+            raise ValueError(f"Unknown N selector: {self.selector!r}")
+        if self.learnable_temperature and self.selector != "per_depth":
+            raise ValueError(
+                "A learnable per-depth temperature requires per-depth selection"
+            )
+        if self.data_aware_init and self.selector != "per_depth":
+            raise ValueError("Data-aware initialisation requires per-depth selection")
+        if self.threshold_init_beta <= 0.0 or self.threshold_init_cutoff <= 0.0:
+            raise ValueError("Invalid data-aware initialisation parameters")
         if self.n_layers * self.trees_per_layer != int(merged["total_trees"]):
             raise ValueError(
                 "N recipes must keep the total tree count fixed at "
@@ -213,14 +264,24 @@ class NodeSpec:
             "ple_segments": int(self.ple_segments),
             "selection_sparsity": float(self.selection_sparsity),
             "init_scale": float(self.init_scale),
+            "selector": str(self.selector),
+            "learnable_temperature": bool(self.learnable_temperature),
+            "data_aware_init": bool(self.data_aware_init),
+            "threshold_init_beta": float(self.threshold_init_beta),
+            "threshold_init_cutoff": float(self.threshold_init_cutoff),
             "oblivious": True,
-            "note": "oblivious trees share one feature and threshold per level",
+            "note": (
+                "oblivious trees share one feature and threshold per level"
+                if self.selector == "shared"
+                else "oblivious trees select the feature and threshold per depth"
+            ),
         }
 
 
 def _make_network(spec: NodeSpec, n_num: int, n_cat: int):
     torch = _torch()
     n_leaves = 2 ** int(spec.depth)
+    per_depth = str(spec.selector) == "per_depth"
 
     class _ObliviousLayer(torch.nn.Module):
         def __init__(self, n_features: int, n_trees: int) -> None:
@@ -228,8 +289,16 @@ def _make_network(spec: NodeSpec, n_num: int, n_cat: int):
             self.n_features = int(n_features)
             self.n_trees = int(n_trees)
             self.depth = int(spec.depth)
+            self.per_depth = bool(per_depth)
+            # shared      -> (trees, features): every depth re-reads one projection
+            # per_depth   -> (trees, depth, features): each depth has its own
+            selector_shape = (
+                (self.n_trees, self.depth, self.n_features)
+                if self.per_depth
+                else (self.n_trees, self.n_features)
+            )
             self.feature_logits = torch.nn.Parameter(
-                spec.init_scale * torch.randn(self.n_trees, self.n_features)
+                spec.init_scale * torch.randn(*selector_shape)
             )
             self.thresholds = torch.nn.Parameter(
                 0.05 * torch.randn(self.n_trees, self.depth)
@@ -237,17 +306,82 @@ def _make_network(spec: NodeSpec, n_num: int, n_cat: int):
             self.leaf_weights = torch.nn.Parameter(
                 0.05 * torch.randn(self.n_trees, n_leaves)
             )
+            if spec.learnable_temperature:
+                # ODST stores a log-temperature per tree *and* depth and routes
+                # with ``exp(-log_temperature)``; this is a real parameter, so it
+                # persists and is covered by the initialisation hash.
+                self.log_temperatures = torch.nn.Parameter(
+                    torch.full(
+                        (self.n_trees, self.depth), math.log(float(spec.temperature))
+                    )
+                )
             bits = ((torch.arange(n_leaves)[:, None] >> torch.arange(self.depth)[None, :]) & 1)
             self.register_buffer("leaf_bits", bits.to(torch.float32), persistent=False)
 
         def selection(self):
-            return entmax15(self.feature_logits, dim=1)
+            if self.per_depth:
+                return entmax15(self.feature_logits, dim=-1)          # (T, D, F)
+            return entmax15(self.feature_logits, dim=1)              # (T, F)
+
+        def routing_scale(self):
+            if spec.learnable_temperature:
+                return torch.exp(-self.log_temperatures)             # (T, D)
+            return float(spec.temperature)
 
         def routing(self, x):
-            selected = x @ self.selection().transpose(0, 1)          # (B, T)
+            selectors = self.selection()
+            if self.per_depth:
+                selected = torch.einsum("bf,tdf->btd", x, selectors)  # (B, T, D)
+            else:
+                selected = (x @ selectors.transpose(0, 1)).unsqueeze(-1)  # (B, T, 1)
             return torch.sigmoid(
-                (selected.unsqueeze(-1) - self.thresholds) * float(spec.temperature)
-            )                                                        # (B, T, depth)
+                (selected - self.thresholds) * self.routing_scale()
+            )                                                        # (B, T, D)
+
+        def initialize_data_aware(self, x, generator) -> None:
+            """ODST's data-aware threshold/temperature initialisation.
+
+            The thresholds become ``threshold_init_beta``-shaped Beta-quantiles of
+            the *projected* feature values, and the temperatures become a
+            percentile of ``|value - threshold|``.  This is what makes an ODST
+            layer usable without an arbitrary ``0.05 * randn`` threshold draw.
+            """
+            torch_mod = _torch()
+            if not self.per_depth:
+                raise ValueError("Data-aware init requires per-depth selection")
+            with torch_mod.no_grad():
+                selectors = self.selection()                          # (T, D, F)
+                values = torch_mod.einsum("bf,tdf->btd", x, selectors)  # (B, T, D)
+                values_np = values.detach().cpu().numpy()
+                beta = float(spec.threshold_init_beta)
+                quantiles = 100.0 * generator.beta(
+                    beta, beta, size=(self.n_trees, self.depth)
+                )
+                columns = values_np.reshape(values_np.shape[0], -1).T  # (T*D, B)
+                thresholds = np.asarray(
+                    [
+                        np.percentile(column, q)
+                        for column, q in zip(columns, quantiles.reshape(-1))
+                    ],
+                    dtype=np.float64,
+                ).reshape(self.n_trees, self.depth)
+                self.thresholds.data.copy_(
+                    torch_mod.as_tensor(thresholds, dtype=self.thresholds.dtype)
+                )
+                if spec.learnable_temperature:
+                    cutoff = float(spec.threshold_init_cutoff)
+                    spread = np.abs(values_np - thresholds[None, :, :])
+                    temperatures = np.percentile(
+                        spread, q=100.0 * min(1.0, cutoff), axis=0
+                    ) / max(1.0, cutoff)
+                    self.log_temperatures.data.copy_(
+                        torch_mod.log(
+                            torch_mod.as_tensor(
+                                temperatures, dtype=self.log_temperatures.dtype
+                            )
+                            + 1e-6
+                        )
+                    )
 
         def leaf_probabilities(self, response):
             eps = 1e-6
@@ -274,6 +408,17 @@ def _make_network(spec: NodeSpec, n_num: int, n_cat: int):
                 self.layers.append(_ObliviousLayer(width, int(spec.trees_per_layer)))
                 width += int(spec.trees_per_layer)
             self.head = torch.nn.Linear(width, 1)
+
+        def initialize_data_aware(self, x_num, x_cat, generator) -> None:
+            """Initialise every layer on the input it will actually receive."""
+            if not spec.data_aware_init:
+                return
+            torch_mod = _torch()
+            x = torch_mod.cat([x_num, x_cat], dim=1)
+            with torch_mod.no_grad():
+                for layer in self.layers:
+                    layer.initialize_data_aware(x, generator)
+                    x = torch_mod.cat([x, layer(x)], dim=1)
 
         def forward(self, x_num, x_cat):
             x = torch.cat([x_num, x_cat], dim=1)
@@ -330,13 +475,30 @@ class NodeEnsembleRegressor:
         n_num, n_cat = int(np.asarray(u_num).shape[1]), int(np.asarray(u_cat).shape[1])
         u_scaler = TargetScaler.fit(np.asarray(u_frame[target], dtype=np.float64))
 
+        # Both stages initialise inside an explicit seed scope, before the first
+        # ``torch.randn``.  The ambient torch RNG state is restored afterwards, so
+        # neither stage can be moved by an unrelated earlier task.
+        plan = V42RandomnessPlan.from_training_seed(
+            config.seed, inner_split_seed=self.inner_seed, torch_threads=self.torch_threads
+        )
         with FitTimer() as timer:
-            stage1_net = _make_network(self.spec, n_num, n_cat)
-            stage1 = self._run_epochs(
-                stage1_net, u_encoder, u_frame, target, u_scaler, config,
-                monitor=(h_frame, n_num, n_cat), epochs=int(config.max_epochs),
-                early_stopping=True,
-            )
+            with torch_seed_context(plan.stage_init_seed("stage1")):
+                stage1_net = _make_network(self.spec, n_num, n_cat)
+                if self.spec.data_aware_init:
+                    stage1_num, stage1_cat = self._encode(u_frame, u_encoder)
+                    stage1_net.initialize_data_aware(
+                        stage1_num, stage1_cat,
+                        np.random.default_rng(
+                            plan.init_seed + DATA_AWARE_INIT_SEED_OFFSET
+                        ),
+                    )
+                stage1_init_hash = initialisation_hash(stage1_net)
+                stage1 = self._run_epochs(
+                    stage1_net, u_encoder, u_frame, target, u_scaler, config,
+                    monitor=(h_frame, n_num, n_cat), epochs=int(config.max_epochs),
+                    early_stopping=True,
+                    batch_order_seed=plan.stage_batch_order_seed("stage1"),
+                )
         stage1_seconds, stage1_memory = timer.seconds, timer.report()
         best_epoch = max(1, int(stage1["best_epoch"]))
 
@@ -345,12 +507,24 @@ class NodeEnsembleRegressor:
         ).fit(frame)
         self.scaler_ = TargetScaler.fit(y_raw)
         with FitTimer() as timer:
-            self.model_ = _make_network(self.spec, n_num, n_cat)
-            final = self._run_epochs(
-                self.model_, self.encoder_, frame, target, self.scaler_, config,
-                monitor=None, epochs=best_epoch, early_stopping=False,
-            )
+            with torch_seed_context(plan.stage_init_seed("stage2")):
+                self.model_ = _make_network(self.spec, n_num, n_cat)
+                if self.spec.data_aware_init:
+                    stage2_num, stage2_cat = self._encode(frame, self.encoder_)
+                    self.model_.initialize_data_aware(
+                        stage2_num, stage2_cat,
+                        np.random.default_rng(
+                            plan.init_seed + DATA_AWARE_INIT_SEED_OFFSET
+                        ),
+                    )
+                stage2_init_hash = initialisation_hash(self.model_)
+                final = self._run_epochs(
+                    self.model_, self.encoder_, frame, target, self.scaler_, config,
+                    monitor=None, epochs=best_epoch, early_stopping=False,
+                    batch_order_seed=plan.stage_batch_order_seed("stage2"),
+                )
         stage2_seconds, stage2_memory = timer.seconds, timer.report()
+        final_state_hash = parameter_state_hash(self.model_)
 
         self.model_.eval()
         self.diagnostics_ = self._diagnostics(frame)
@@ -376,6 +550,12 @@ class NodeEnsembleRegressor:
                 "depth": int(self.spec.depth),
                 "routing": "soft_sigmoid_no_hard_argmax",
                 "feature_selection": "differentiable_entmax15",
+                "feature_selector_scope": (
+                    "per_depth" if self.spec.selector == "per_depth" else "shared_across_depths"
+                ),
+                "learnable_routing_temperature": bool(self.spec.learnable_temperature),
+                "data_aware_initialisation": bool(self.spec.data_aware_init),
+                "true_parameter_count": int(self.parameter_count()),
                 "hard_argmax_used": False,
             },
             stop_reason=str(stage1["stop_reason"]),
@@ -386,11 +566,19 @@ class NodeEnsembleRegressor:
             seconds=float(stage1_seconds + stage2_seconds),
             peak_memory={"stage1": stage1_memory, "stage2": stage2_memory},
             randomness={
-                "training_seed": int(config.seed),
-                "inner_split_seed": int(self.inner_seed),
+                **plan.as_dict(),
                 "inner_splits": int(self.n_inner_splits),
-                "batch_order_rng": "numpy_default_rng",
-                "initialisation": "torch_manual_seed",
+                "initialisation": "torch_seed_context_before_first_randn",
+                "initialisation_hash_stage1": str(stage1_init_hash),
+                "initialisation_hash_stage2": str(stage2_init_hash),
+                "final_model_state_hash": str(final_state_hash),
+                "stage_inits_share_registered_seed": True,
+                "data_aware_init_seed_offset": int(DATA_AWARE_INIT_SEED_OFFSET),
+                "source_digest": source_digest_payload(),
+                "reproducibility_scope": (
+                    "conditional on the recorded dependency identity, source digest, "
+                    "data, and torch thread count; no bitwise claim across thread counts"
+                ),
             },
             fit_row_id_hash=fit_row_id_hash(frame["sample_id"].tolist()),
             fit_group_hash=group_hash(exclusion_group_keys(frame).tolist()),
@@ -443,10 +631,14 @@ class NodeEnsembleRegressor:
         monitor,
         epochs: int,
         early_stopping: bool,
+        batch_order_seed: int,
     ) -> dict[str, Any]:
         torch = _torch()
-        torch.manual_seed(int(config.seed) % (2**32 - 1))
-        rng = np.random.default_rng(int(config.seed))
+        # The network was already initialised inside an explicit seed scope; the
+        # batch order is a *separate*, explicitly registered stream.  Nothing here
+        # touches the ambient torch RNG, so the seed is never reset after the
+        # weights exist.
+        rng = np.random.default_rng(int(batch_order_seed))
         train_num, train_cat = self._encode(fit_frame, encoder)
         target_scaled = scaler.transform(np.asarray(fit_frame[target], dtype=np.float64))
         criterion = torch.nn.L1Loss()
@@ -473,8 +665,13 @@ class NodeEnsembleRegressor:
             target_t = torch.as_tensor(target_scaled[batch], dtype=torch.float32)
             loss = criterion(prediction, target_t)
             if self.spec.selection_sparsity > 0.0:
+                # ``selection`` sums to 1 per (tree, depth) under per-depth
+                # selection and to 1 per tree under the shared selector; divide
+                # by the depth so the penalty keeps one meaning.  Inert at the
+                # pre-registered sparsity of 0.0.
                 penalty = sum(
-                    layer.selection().sum() for layer in net.layers
+                    layer.selection().sum() / (layer.depth if layer.per_depth else 1.0)
+                    for layer in net.layers
                 ) / max(1, self.spec.total_trees)
                 loss = loss + self.spec.selection_sparsity * penalty
             loss.backward()
@@ -579,7 +776,7 @@ class NodeEnsembleRegressor:
                 mean_leaf = probabilities.mean(dim=0)              # (T, L)
                 used = (mean_leaf > (1.0 / (2.0 * mean_leaf.shape[1]))).float().mean()
                 used_fraction.append(float(used.item()))
-                selection_mass.append(float(layer.selection().max(dim=1).values.mean().item()))
+                selection_mass.append(float(layer.selection().max(dim=-1).values.mean().item()))
                 x = torch.cat([x, layer(x)], dim=1)
         leaf_weights = torch.cat([layer.leaf_weights.detach().reshape(-1) for layer in self.model_.layers])
         return {

@@ -447,50 +447,87 @@ def _coverage_gate(
     seeds: Sequence[int],
     folds: Sequence[int],
 ) -> dict[str, Any]:
-    """Section-9 gate: may this recipe proceed to inner fusion selection?
+    """Section-9 full-coverage gate, with explicit incomplete-coverage states.
 
-    Requires, on the *complete* coverage, one and the same pre-declared path with
-    a mean full-package gain of at least ``mean_gain_min``, positive gains in both
-    split seeds, and at least ``positive_folds_min`` positive folds out of the
-    covered ``seed x fold`` cells.
+    The gate may only be *evaluated* once every pre-registered ``seed x fold``
+    cell is covered.  With folds 0/1 only, the honest state is
+    ``NOT_EVALUATED_INCOMPLETE_COVERAGE``: reporting either "failed" or "passed"
+    from a partial coverage would misstate the pre-registration.  When complete,
+    one and the same pre-declared path must reach a mean full-package gain of at
+    least ``mean_gain_min``, be positive in both split seeds, and have at least
+    ``positive_folds_min`` positive folds.
     """
     thresholds = dict(spec.raw.get("full_coverage", {}).get("fusion_eligibility_gate", {}))
     mean_min = float(thresholds.get("mean_gain_min", 0.02))
     folds_min = int(thresholds.get("positive_folds_min", 8))
-    expected_total = int(len(seeds) * len(folds))
+    # The expected coverage is the *pre-registered* full set (screen folds plus
+    # the full-coverage add_folds), not the folds being aggregated right now:
+    # aggregating folds 0/1 must still know that 10 cells are required.
+    registered_folds = {int(v) for v in spec.raw["screen"]["folds"]}
+    registered_folds |= {
+        int(v) for v in spec.raw.get("full_coverage", {}).get("add_folds", [])
+    }
+    expected_total = int(len(seeds) * len(registered_folds))
+    covered_total = 0
+    for path in SCREEN_PATHS:
+        counted = positive_folds.get(path, {"positive": 0, "total": 0})
+        covered_total = max(covered_total, int(counted.get("total", 0)))
+    complete = bool(covered_total == expected_total and expected_total > 0)
+
     per_path: dict[str, Any] = {}
     for path in SCREEN_PATHS:
         values = coarse_gate.get("per_path", {}).get(path)
-        if values is None:
-            per_path[path] = {"available": False, "passes": False}
-            continue
         counted = positive_folds.get(path, {"positive": 0, "total": 0})
-        per_path[path] = {
+        if values is None:
+            per_path[path] = {
+                "available": False,
+                "evaluated": False,
+                "passes": None,
+                "covered_folds": int(counted.get("total", 0)),
+                "expected_folds": expected_total,
+            }
+            continue
+        entry = {
             "available": True,
+            "evaluated": complete,
             "mean_gain": float(values["mean_gain"]),
             "both_seeds_positive": bool(values["both_seeds_positive"]),
             "positive_folds": int(counted["positive"]),
             "covered_folds": int(counted["total"]),
             "expected_folds": expected_total,
-            "passes": bool(
+            "passes": None,
+        }
+        if complete:
+            entry["passes"] = bool(
                 float(values["mean_gain"]) >= mean_min
                 and values["both_seeds_positive"]
                 and int(counted["positive"]) >= folds_min
-                and int(counted["total"]) == expected_total
-            ),
-        }
-    passing = [path for path in SCREEN_PATHS if per_path[path].get("passes")]
-    best = max(passing, key=lambda p: per_path[p]["mean_gain"]) if passing else None
+            )
+        per_path[path] = entry
+
+    if not complete:
+        status = "NOT_EVALUATED_INCOMPLETE_COVERAGE"
+        passing: list[str] = []
+        best = None
+    else:
+        passing = [path for path in SCREEN_PATHS if per_path[path].get("passes") is True]
+        best = max(passing, key=lambda p: per_path[p]["mean_gain"]) if passing else None
+        status = "PASSED" if passing else "FAILED"
     return {
+        "status": status,
+        "evaluated": complete,
         "mean_gain_min": mean_min,
         "positive_folds_min": folds_min,
         "expected_folds": expected_total,
+        "covered_folds": covered_total,
         "per_path": per_path,
-        "passes": bool(passing),
+        "passes": None if not complete else bool(passing),
         "path": best,
         "note": (
             "Gate evaluated on the covered outer folds only; it authorises inner "
-            "fusion selection and nothing else."
+            "fusion selection and nothing else.  An incomplete coverage is "
+            "reported as NOT_EVALUATED_INCOMPLETE_COVERAGE, never as a failure "
+            "or a pass."
         ),
     }
 
@@ -504,6 +541,7 @@ def aggregate_screen(
     units: Sequence[tuple[str, str, str]],
     seeds: Sequence[int],
     folds: Sequence[int],
+    trial_id_suffix: str = "",
 ) -> dict[str, Any]:
     baseline_path = output / "baselines.npz"
     if not baseline_path.is_file():
@@ -672,7 +710,7 @@ def aggregate_screen(
                 gate["passes"] = True
                 gate["path"] = best
         unit_rows.append({
-            "trial_id": f"{line}-{recipe}-{target}",
+            "trial_id": f"{line}-{recipe}-{target}{trial_id_suffix}",
             "line": line,
             "recipe": recipe,
             "target": target,

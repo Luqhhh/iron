@@ -16,6 +16,12 @@ recipe is also run as an independent *reproduction check*, and a material
 disagreement fails the build instead of being absorbed into the blend.
 
 This module never uploads anything and refuses to write outside ``local/``.
+
+NOTE (V4.2-r2): this is a pre-repair exploratory packaging helper.  The
+pre-registered A4 deliverable may only be produced after the fusion stage (A3)
+passes its gate and selects ``alpha`` on training-internal OOF; the default
+``alpha`` here is a previously declared screening weight and must never be used
+to bypass that chain.  No gate outcome is asserted by this module.
 """
 from __future__ import annotations
 
@@ -104,7 +110,15 @@ def _csv_payload_with_parent_time(
 
 
 def _cold_consistency(model, test: pd.DataFrame, predictions: np.ndarray) -> dict[str, Any]:
-    """Reversed, chunked, subset and single-row inference must agree."""
+    """Reversed, chunked, subset and single-row inference must agree.
+
+    Agreement is a *float32* agreement: changing the batch shape changes the GEMM
+    reduction order, so the comparison uses the documented
+    ``NEURAL_INFERENCE_ATOL`` / ``NEURAL_INFERENCE_RTOL`` and records the observed
+    differences instead of claiming a bitwise match.
+    """
+    from .v4_2_train import NEURAL_INFERENCE_ATOL, NEURAL_INFERENCE_RTOL
+
     reversed_frame = test.iloc[::-1].reset_index(drop=True)
     reversed_prediction = np.asarray(model.predict(reversed_frame), dtype=float)[::-1]
     chunked = np.asarray(model.predict_chunked(test, chunk_size=37), dtype=float)
@@ -116,16 +130,28 @@ def _cold_consistency(model, test: pd.DataFrame, predictions: np.ndarray) -> dic
         [model.predict(test.iloc[[i]].reset_index(drop=True))[0] for i in subset_index],
         dtype=float,
     )
+
+    def agrees(left: np.ndarray, right: np.ndarray) -> bool:
+        return bool(np.allclose(
+            left, right, atol=NEURAL_INFERENCE_ATOL, rtol=NEURAL_INFERENCE_RTOL
+        ))
+
     return {
         "reversed_max_abs_diff": float(np.max(np.abs(reversed_prediction - predictions))),
         "chunked_max_abs_diff": float(np.max(np.abs(chunked - predictions))),
         "subset_max_abs_diff": float(np.max(np.abs(subset - predictions[subset_index]))),
         "single_row_max_abs_diff": float(np.max(np.abs(single - subset))),
+        "atol": float(NEURAL_INFERENCE_ATOL),
+        "rtol": float(NEURAL_INFERENCE_RTOL),
+        "note": (
+            "float32 batch-shape tolerance; the network is deterministic for a fixed "
+            "batch shape, not bitwise-invariant across batch shapes"
+        ),
         "passed": bool(
-            np.allclose(reversed_prediction, predictions, atol=1e-9)
-            and np.allclose(chunked, predictions, atol=1e-9)
-            and np.allclose(subset, predictions[subset_index], atol=1e-9)
-            and np.allclose(single, subset, atol=1e-9)
+            agrees(reversed_prediction, predictions)
+            and agrees(chunked, predictions)
+            and agrees(subset, predictions[subset_index])
+            and agrees(single, subset)
         ),
     }
 
@@ -284,10 +310,9 @@ def build_iron_only_package(
         f"V4.2 iron-only package: {name}",
         "=" * (24 + len(str(name))),
         "",
-        "Generated after the user explicitly requested a V4.2 submission package.",
-        "The V4.2 coarse screen passed its continuation gate only at a small margin",
-        "and the +0.02 full-coverage fusion gate was NOT met, so this is an",
-        "exploratory package, not a validated promotion.",
+        f"Status: {status}",
+        "Gate provenance is recorded verbatim in manifest.json -> gate_summary;",
+        "no gate outcome is asserted by this README.",
         "",
         f"Changed column : {target}   (alpha = {alpha:g})",
         f"Unchanged      : {', '.join(t for t in TARGETS if t != target)} (parent strings preserved byte-for-byte)",

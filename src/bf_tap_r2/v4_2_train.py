@@ -25,6 +25,8 @@ from .metrics import wmape
 
 __all__ = [
     "DEFAULT_TRAIN",
+    "NEURAL_INFERENCE_ATOL",
+    "NEURAL_INFERENCE_RTOL",
     "TrainConfig",
     "TrainOutcome",
     "WmapeEarlyStopping",
@@ -47,6 +49,17 @@ DEFAULT_TRAIN: dict[str, Any] = {
 #: R and N share this fixed objective; S optimises absolute error as well.
 NEURAL_LOSS = "mae"
 SYMBOLIC_LOSS = "absolute_error"
+
+#: Float32 inference tolerance for comparing two *different batch shapes* of the
+#: same fitted network (full batch versus chunked, reversed, subset or single
+#: row).  The network is deterministic for a fixed input; changing the batch
+#: shape changes the GEMM reduction order, which moves float32 results by a few
+#: units in the last place.  Observed on the V4.2 N line: ~3.6e-6 absolute on
+#: predictions of order 24 (~1.5e-7 relative).  Agreement is therefore asserted
+#: within this tolerance and the *observed* difference is recorded, never
+#: presented as a bitwise guarantee.
+NEURAL_INFERENCE_ATOL = 1e-4
+NEURAL_INFERENCE_RTOL = 1e-5
 
 
 @dataclass(frozen=True)
