@@ -186,6 +186,9 @@ class FrozenAReferenceFactory:
         bundle = BaselinePrediction(
             predictions=predictions,
             disagreement=disagreement,
+            l1={target: np.asarray(l1_predictions[target], dtype=float) for target in TARGETS},
+            experts={target: {name: np.asarray(value, dtype=float) for name, value in expert_predictions[target].items()}
+                      for target in TARGETS},
             members=members_store,
             meta={
                 "factory": "A_frozen_deployment_weights_v1",
