@@ -7081,7 +7081,7 @@
       "score": 96.2734,
       "source": "user_reported_not_independently_verified"
     },
-    "g0": "PASS_958_LOCKED_TESTS_INCLUDING_24_NEW_V5_TESTS",
+    "g0": "PASS_958_LOCKED_TESTS_INCLUDING_22_NEW_V5_TESTS",
     "g1": "NO_PROMOTION_EXISTING_POOL_EXHAUSTED_AND_BEST_EFFECTS_BELOW_LOCAL_RESOLUTION",
     "library_audit": {
       "pred_files_in_v3_local_search": 482,
@@ -7238,6 +7238,11 @@
       "stage3b_full_data_expert_fits": 8,
       "development_fold_fits_total": 130,
       "note": "Stage 2a: 10 trials x 5 folds (seed 42) + 8 trials x 5 folds (seed 3407). Stage 3b: 4 experts x 2 split seeds x 5 folds, plus 4 package experts and 4 zero-shift reproduction experts on all training rows."
+    },
+    "g0_detail": {
+      "locked_suite_total": 958,
+      "v5_module_tests": 22,
+      "command": ".venv/bin/python -m pytest -q"
     }
   }
 }
