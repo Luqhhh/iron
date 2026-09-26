@@ -1,0 +1,111 @@
+version: round2-v10-periodic-loss-control
+platform_target: 96.4
+platform_reference:
+  candidate: V6_PORT_TIME_A35
+  score: 96.3366
+  source: user_reported
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+runtime_versions:
+  torch: 2.14.0+cpu
+  tabm: 0.0.3
+  rtdl-num-embeddings: 0.0.12
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+split_seeds:
+- 42
+- 3407
+folds: 5
+targets:
+- tap_time_len
+recipes:
+  mae:
+    backbone: tabm
+    frequency: 0.01
+    loss: mae
+  smooth_l1_01:
+    backbone: tabm
+    frequency: 0.01
+    loss: smooth_l1
+    beta: 0.1
+training:
+  random_seed: 42
+  inner_seed: 42
+  width: 256
+  blocks: 2
+  tabm_k: 16
+  dropout: 0.1
+  embedding_dim: 16
+  n_frequencies: 16
+  lite: true
+  loss: recipe_specific_per_head_then_mean
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 240
+  patience: 25
+  min_delta: 1.0e-05
+  early_stop_metric: standardized_mae_of_ensemble_prediction
+  preprocessing: inner_training_only_then_refit_outer_training
+  refit: fresh_initialization_full_outer_training_at_selected_epoch
+blend_grid:
+- 0.0
+- 0.05
+- 0.1
+- 0.2
+- 0.35
+- 0.5
+- 0.75
+- 1.0
+reference_time_alpha: 0.35
+secondary_reference_time_alpha: 0.2
+v7_reference:
+  prediction_directory: local/runs/round2-v7-periodic-networks/development-r1
+  recipe: tabm_plr001
+  blend_weight: 0.5
+primary_reference_audit: local/runs/round2-v8-feature-attention/development-r1/reference-audit-r2.json
+candidates:
+  tap_time_len:
+  - mae
+  - smooth_l1_01
+reference_by_target:
+  tap_time_len: V7_TIME
+tie_preference_by_target:
+  tap_time_len:
+  - mae
+  - smooth_l1_01
+control:
+  target: tap_time_len
+  recipe: tabm_plr001
+  split_seed: 42
+  fold: 0
+  require_max_absolute_difference: 0.0
+budget:
+  development_outer_fits: 20
+  control_outer_fits: 1
+  optimizer_runs_per_outer_fit: 2
+  workers: 4
+  full_data_fits: 0
+confirmation:
+  max_candidates: 1
+  require_both_complete_seeds_positive_against:
+  - A35
+  - V7_TIME
+  order: V7_TIME_mean_gain_then_frozen_cost_order
+  seeds:
+  - 7777
+  - 12011
+  candidate_outer_fit_budget: 10
+  seed_history: previously_used_not_new_labels
+promotion:
+  minimum_split_seeds: 4
+  every_seed_positive: true
+  seed_level_lcb95_positive: true
+  folds: descriptive_only
+  local_working_gate: 96.25
+release:
+  packages: 0
+  uploads: 0
