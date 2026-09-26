@@ -1,5 +1,11 @@
 # 文档索引与历史口径
 
+## 当前团队研究入口（2026-09-26）
+
+- [团队研究策略复核](team_strategy_20260926/REVIEW.md)：必要因素、现有不足、样本级选权边界反例、输入分布诊断和下一阶段优先级。
+- [V7 交付](round2_v7/DELIVERY.md)、[V12 结果](round2_v12/RESULTS.md)、[V13 机制诊断](round2_v13/MECHANISM_DIAGNOSTIC.md)。
+- 最新复赛平台记录以 `EVIDENCE_STATUS.json -> round2_current_platform_best` 为准：A35=96.3366（用户回传）；目标96.4。下方初赛和旧复赛入口保留历史含义。
+
 当前最高 test_a 用户回传为 **V30A_OOB_BOTH_TARGETS = 83.3175**，与预登记加性推算 `83.2970 + 83.3141 - 83.2936` 四位小数一致；同轮 V30B_OOB_TIME_1024 = 83.2654，比 A 低 0.0521，固定 1024 棵扩容关闭，V29T=83.3141 保留为后备。分数未由账号回执独立核验，账号当前有效条目仍未知。
 
 V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，均值探针已关闭。随后 v0.18–v0.21 完成不读取 test target 的时间门控实验；旧 G1 与正式发布登记保持历史含义。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[V11 交付回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
