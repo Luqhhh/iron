@@ -9895,5 +9895,18 @@
       "log": "local/reports/v12-development-r1.log",
       "note": "revalidate process or exec handle on continuation; this record alone is not proof of liveness"
     }
+  },
+  "round2_ple_mechanism_diagnostic_2026_09_26": {
+    "status": "synthetic_dead_nonlinear_branch_verified",
+    "evidence": "docs/round2_v13/MECHANISM_DIAGNOSTIC.md",
+    "private_diagnostic": "local/reports/ple-b-gradient-diagnostic-r2.json",
+    "historical_configuration": "PLE version B activation=True with raw inputs",
+    "finding": "zero initialized nonlinear weights followed by ReLU have zero gradients and remain zero; activation=False restores gradients",
+    "official_data_fits": 0,
+    "historical_sources_changed": false,
+    "quality_gain_verified": false,
+    "packages": 0,
+    "uploads": 0,
+    "next_action": "preregister repaired standardized PLE and standardized inactive-branch control before full-coverage evaluation"
   }
 }
