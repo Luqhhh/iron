@@ -9865,7 +9865,7 @@
     }
   },
   "round2_v12_joint_tabm_2026_09_26": {
-    "status": "development_running_exact_single_output_control_passed",
+    "status": "development_complete_iron_joint_periodic_selected_for_confirmation",
     "platform_target": 96.4,
     "spec": "configs/round2_v12/SPEC.yaml",
     "preregistration": "docs/round2_v12/PREREGISTRATION.md",
@@ -9878,7 +9878,11 @@
       "reference_preflight": "local/reports/v12-reference-preflight-r1.json",
       "reference_files": 70,
       "single_output_control_max_absolute_difference": 0.0,
-      "control": "local/runs/round2-v12-joint-tabm/development-r1/control.json"
+      "control": "local/runs/round2-v12-joint-tabm/development-r1/control.json",
+      "candidate_fits_complete": 20,
+      "failed_fits": 0,
+      "epoch_cap_hits": 6,
+      "independent_audit": "local/runs/round2-v12-joint-tabm/development-r1/audit-r1.json"
     },
     "budget": {
       "development_outer_fits": 20,
@@ -9889,11 +9893,21 @@
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false,
-    "live_process_at_observation": {
-      "pid": 189775,
-      "exec_session": 96072,
-      "log": "local/reports/v12-development-r1.log",
-      "note": "revalidate process or exec handle on continuation; this record alone is not proof of liveness"
+    "results": "docs/round2_v12/RESULTS.md",
+    "G1": {
+      "selected_confirmation": {
+        "target": "tap_iron",
+        "recipe": "joint_plr001"
+      },
+      "development_current_mean": 0.012444164661519104,
+      "development_current_seed_gains": {
+        "42": 0.011571166049695464,
+        "3407": 0.013317163273342744
+      },
+      "development_a35_mean": 0.01815863768253715,
+      "development_package_score": 96.22644112166778,
+      "local_working_gate_met": false,
+      "confirmation_complete": false
     }
   },
   "round2_ple_mechanism_diagnostic_2026_09_26": {
@@ -9908,5 +9922,28 @@
     "packages": 0,
     "uploads": 0,
     "next_action": "preregister repaired standardized PLE and standardized inactive-branch control before full-coverage evaluation"
+  },
+  "round2_v13_ple_repair_2026_09_26": {
+    "status": "preregistered_tests_passed_waiting_for_v12_confirmation",
+    "spec": "configs/round2_v13/SPEC.yaml",
+    "preregistration": "docs/round2_v13/PREREGISTRATION.md",
+    "mechanism_evidence": "docs/round2_v13/MECHANISM_DIAGNOSTIC.md",
+    "G0": {
+      "locked_python312_tests": 1039,
+      "warnings": 23,
+      "test_log": "local/reports/v13-python312-tests-r1.log",
+      "reference_preflight": "local/reports/v13-reference-preflight-r1.json",
+      "reference_files": 70
+    },
+    "budget": {
+      "development_outer_fits": 40,
+      "control_outer_fits": 1,
+      "workers": 8,
+      "full_data_fits": 0
+    },
+    "official_data_fits_complete": 0,
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
