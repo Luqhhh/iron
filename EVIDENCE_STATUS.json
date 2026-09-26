@@ -301,24 +301,26 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "V36_USER_REQUESTED_PACKAGE_PLATFORM_96_2734_REMAINS_BEST_V42_V45_CLOSED_NO_CANDIDATE",
+    "status": "ROUND2_CLOSED_TARGET_EXCEEDED_NO_PENDING_SUBMISSION",
     "submission_priority": [],
     "current_preferred": {
-      "name": "V36_USER_REQUESTED_OUTER_FAILED",
-      "candidate": "V36_USER_REQUESTED_OUTER_FAILED",
-      "score": 96.2734,
-      "local_score": 96.20376256899247,
-      "zip_sha256": "ef6e72f140e314c995ccb40a79439bf0fe3846c6089917936b9cba24399da7b1",
-      "result_sha256": "b5ed9b51e9127aa0a7740be2100dd2b1d7464a357076aae9fe3068c664c35f20",
-      "package": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/V36_USER_REQUESTED_OUTER_FAILED",
-      "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V36-user-requested-outer-failed-20260924"
+      "name": "V5_TIME_N0048_Q20",
+      "candidate": "V5_TIME_N0048_Q20",
+      "score": 96.3143,
+      "delta_vs_previous_preferred": 0.0409,
+      "local_score": null,
+      "local_score_basis": "single-column replacement of the V36 parent; expected local package 96.2135 (below the frozen gate, submitted under explicit user authorisation)",
+      "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
+      "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
+      "package": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
+      "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926"
     },
     "platform_ranking": [
-      "AJ3",
-      "DJ3",
-      "J3",
-      "DJ",
-      "AJ"
+      "V5_TIME_N0048_Q20",
+      "V5_SEED_SWAP_S1000",
+      "V36_USER_REQUESTED_OUTER_FAILED",
+      "V34_A",
+      "V34_B"
     ],
     "previous_queue_snapshot": {
       "status": "FINAL_TOP5_LOCAL_OOF_ORDER_PENDING_USER_FEEDBACK",
@@ -354,7 +356,9 @@
       ],
       "old_artifacts_preserved": true,
       "results": "docs/round2_final_top5/DELIVERY.md",
-      "platform_uploads_by_agent": 0
+      "platform_uploads_by_agent": 0,
+      "superseded_on": "2026-09-26",
+      "superseded_reason": "the queue pointed at V36 96.2734; V5 delivered 96.3143 and round 2 is closed"
     },
     "removed_from_pending": [
       "V22_T_ONLY"
@@ -429,7 +433,8 @@
       "promoted": false,
       "effect_on_preference": "NONE; V36 remains the preferred package",
       "reading": "The V4.2 N2 quarter-blend's local +0.0144 did not transfer; the pre-registered +0.02 fusion gate was never met."
-    }
+    },
+    "previous_queue_snapshot_note": []
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -7781,5 +7786,91 @@
       "the iron capacity lever fails at its most favourable single test (v6-s1-N-0024)"
     ],
     "process_lesson": "the folds 0/1 screen (1102 rows, one split seed) is too noisy to rank candidates - the winner's single-fold alpha estimates range 0.12-0.38 and only converge with sample size; every V5 and V6 selection decision was made on that screen, so a future search must screen at complete coverage"
+  },
+  "round2_closure": {
+    "status": "ROUND2_CLOSED_TARGET_EXCEEDED",
+    "date": "2026-09-26",
+    "final_platform_best": {
+      "candidate": "V5_TIME_N0048_Q20",
+      "score": 96.3143,
+      "source": "user_reported_not_independently_verified",
+      "target": 96.3,
+      "target_met": true,
+      "margin_over_target": 0.0143,
+      "previous_best_before_the_final_round": {
+        "candidate": "V36_USER_REQUESTED_OUTER_FAILED",
+        "score": 96.2734
+      },
+      "delta_vs_previous_best": 0.0409,
+      "recipe": "frozen V36 parent; tap_time_len = 0.8 x V36 + 0.2 x v36-s1-N-0048 (large raw-TabM refit on all training rows); tap_iron byte-identical"
+    },
+    "packages_delivered": [
+      {
+        "name": "V5_SEED_SWAP_S1000",
+        "score": 96.2739,
+        "role": "noise-floor control",
+        "zip_sha256": "4ff97c033f05b7e686453e913460b548cd7231d3736b3f431bb3882e1a82460f",
+        "desktop": "round2-V5-seed-swap-noise-experiment-20260926"
+      },
+      {
+        "name": "V5_TIME_N0048_Q20",
+        "score": 96.3143,
+        "role": "promoted candidate, current best",
+        "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
+        "desktop": "round2-V5-time-N0048-Q20-20260926"
+      }
+    ],
+    "hypotheses_closed": [
+      {
+        "hypothesis": "blend-stability signature (per-direction alpha stability + sign agreement) identifies useful members",
+        "verdict": "REFUTED",
+        "evidence": "docs/round2_v6/RESULTS.md section 2.1.1",
+        "detail": "under one protocol the validated winner is LESS stable (|delta alpha| 0.22, opposite gain signs) than the failed probe (0.13); single-fold alpha estimates for the winner span 0.12-0.38"
+      },
+      {
+        "hypothesis": "a structurally different recorded member adds on top of the winner",
+        "verdict": "REFUTED",
+        "evidence": "docs/round2_v6/RESULTS.md section 2.2.1",
+        "detail": "leave-one-fold-out weight fitting zeroes all six distinct members; the incremental gain is exactly 0.00000"
+      },
+      {
+        "hypothesis": "the iron capacity lever transfers from the time column",
+        "verdict": "NOT_SUPPORTED",
+        "evidence": "docs/round2_v6/RESULTS.md section 2",
+        "detail": "the direct analogue v6-s1-N-0024 passed rho (0.896) and accuracy ratio (1.095) but its projected gain is -0.0014 with opposite signs per fold direction"
+      }
+    ],
+    "transferable_conclusions": [
+      {
+        "claim": "the four-split-seed rule works",
+        "basis": "v36-s1-N-0048 was positive on two derived split seeds that never entered selection and delivered +0.0409 on the platform; the old two-seed mean gate would have admitted the historically failing N2",
+        "rule": "at least 4 split seeds, seed-level paired LCB95 > 0, every contributing seed positive; the fold level is descriptive only"
+      },
+      {
+        "claim": "local magnitude is compressed and does not forecast the platform",
+        "basis": "local +0.00975 -> platform +0.0409 (4.19x); the seed-swap control moved -0.0046 locally and +0.0005 on the platform",
+        "consequence": "local evidence may be used for sign and ranking among four-seed-rule candidates only; the earlier constant 0.005 transfer-error claim is retracted"
+      },
+      {
+        "claim": "marginal statistics do not identify a useful member",
+        "basis": "over 14 witnesses, rho, accuracy ratio, row-win rate, mean absolute error and blend stability all fail to order success from failure; only the mean nested gain does",
+        "consequence": "the binding test is the incremental blend gain, not any single-model quality statistic"
+      },
+      {
+        "claim": "the folds 0/1 screen (1102 rows, one split seed) is too noisy to rank candidates",
+        "basis": "the validated winner shows single-fold alpha estimates of 0.12-0.38; they only converge with sample size (2 folds 0.31, 5 folds 0.24, 10 cells 0.20/0.21)",
+        "consequence": "every V5 and V6 selection decision was made on that screen; any future search must screen at complete coverage (>=5 folds x 2 split seeds)"
+      }
+    ],
+    "pending_submissions": [],
+    "recommended_next_action": {
+      "primary": "stop; the target is met and no lever with a positive prior remains",
+      "if_a_slot_is_spent_anyway": "alpha 0.25 probe of the current best (near-neutral locally: -0.0005 score against alpha 0.20), and only if the platform keeps the best score rather than the latest submission",
+      "if_the_search_is_resumed": "a new model family, screened at complete coverage, judged by the incremental blend gain rather than by rho or accuracy ratio"
+    },
+    "g0": "PASS_976_LOCKED_TESTS",
+    "g1": "TARGET_EXCEEDED_PLATFORM_96_3143_USER_REPORTED",
+    "new_fits_total_this_round": 4,
+    "agent_uploads": 0
   }
 }

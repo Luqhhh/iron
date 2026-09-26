@@ -105,7 +105,7 @@ The `baseline-v0.1-reproducible` tag is the immutable engineering baseline. Do n
 - Users upload packages themselves and return scores. Do not auto-upload, auto-package for platform, or spend quota manually.
 - Latest score-transfer and gate analysis: `docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md`.
 
-## Round2 V4.2 through V4.5: mechanisms tested, residual route closed (2026-09-25, current instruction)
+## Round2 V4.2 through V4.5: mechanisms tested, residual route closed (2026-09-25, historical context)
 
 Current platform best is still **`V36_USER_REQUESTED_OUTER_FAILED` = 96.2734**
 (user-reported, not independently verified); next-phase target remains **> 96.3**.
@@ -169,7 +169,7 @@ any further submission as an experiment worth declaring, not a routine slot.
   collision record is in `docs/round2_v4_2/FOLLOWUP_RESULTS.md` section 8.
 
 
-## Round2 V5: error covariance, resolution, and the platform noise floor (2026-09-25, current instruction)
+## Round2 V5: error covariance, resolution, and the platform noise floor (2026-09-25, historical context)
 
 Branch `round2-v5-error-covariance-resolution`; pre-registration `configs/round2_v5/SPEC.yaml`
 + `docs/round2_v5/PREREGISTRATION.md` (commit `f0d7900`); implementation commit `06f956c`;
@@ -291,3 +291,48 @@ more member search in the same pool.
 **Closed routes are unchanged** (NODE per-depth, ODST core, TabR full fusion, residual
 correctors, sample reweighting, dense alpha scans). Temporal/lag features remain *unavailable*
 (`复赛_train/train_features.csv` has no timestamp or ordering column), not merely untried.
+
+## Round2 closure (2026-09-26, current instruction): target exceeded, round 2 closed
+
+**Final platform best: `V5_TIME_N0048_Q20 = 96.3143`** (user-reported, not independently verified),
+**+0.0409 over the previous best `V36 = 96.2734`** and **+0.0143 over the 96.3 target**. Recipe: the
+frozen V36 parent with only `tap_time_len` replaced by `0.8 x V36 + 0.2 x v36-s1-N-0048` (large
+raw-TabM refit on all training rows); `tap_iron` is byte-identical to the parent. ZIP SHA-256
+`5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982`, on the desktop under
+`round2-V5-time-N0048-Q20-20260926`. Nothing is pending: `EVIDENCE_STATUS.json ->
+round2_current_candidate_queue.submission_priority` is empty and
+`round2_closure.pending_submissions` is empty.
+
+**Transferable conclusions** (full evidence in `docs/round2_v5/RESULTS.md`,
+`docs/round2_v6/RESULTS.md`, `EVIDENCE_STATUS.json -> round2_closure`):
+
+1. **The four-split-seed rule works.** A member that was positive on the two derived split seeds
+   that never entered selection delivered `+0.0409`; the old "two seeds with the same sign and a
+   mean of at least +0.005" gate would have admitted the historically failing N2. Promotion is
+   therefore: at least four split seeds, a positive seed-level paired LCB95, every contributing
+   seed positive — with the fold level **descriptive only**.
+2. **Local magnitude is compressed and does not forecast the platform.** Local `+0.00975` became
+   platform `+0.0409` (4.19x), while the seed-swap control moved `-0.0046` locally and `+0.0005` on
+   the platform. Local evidence may be used for **sign and ranking** among four-seed-rule
+   candidates only. The earlier claim of a constant `0.005` transfer error is **retracted**.
+3. **Marginal statistics do not identify a useful member.** Over fourteen witnesses, residual
+   correlation, accuracy ratio, row-win rate, mean absolute error and blend stability all fail to
+   order success from failure; only the **mean nested gain** does. The binding test is the
+   **incremental blend gain** on top of the incumbent, not any single-model quality statistic.
+4. **The folds 0/1 screen (1102 rows, one split seed) is too noisy to rank candidates.** The
+   validated winner's single-fold alpha estimates span `0.12-0.38` and only converge with sample
+   size (2 folds `0.31`, 5 folds `0.24`, 10 cells `0.20/0.21`) — yet every V5 and V6 selection
+   decision was made on that screen. Any future search must screen at complete coverage.
+
+**Closed by direct measurement — do not reopen without new evidence:** the blend-stability
+signature; a second recorded member on top of the winner (exactly zero incremental gain); the iron
+capacity lever (its most favourable single test passed rho and accuracy ratio but produced no blend
+gain); and, from the earlier rounds, NODE per-depth, the ODST core, TabR full fusion, residual
+correctors, sample reweighting and dense alpha scans. Temporal/lag features remain *unavailable*
+(`复赛_train/train_features.csv` has no timestamp or ordering column).
+
+**If the search is ever resumed**, the controlling design is: screen at complete coverage, judge by
+incremental blend gain, promote under the four-seed rule, and treat any submission as a declared
+experiment. The only bounded experiment left with a near-neutral prior is an `alpha = 0.25` probe of
+the current best (`-0.0005` score against `alpha = 0.20` locally), and it is only worth a slot if the
+platform keeps the best score rather than the latest submission.
