@@ -8808,5 +8808,37 @@
       "baseline_outer_recipe_fit_budget": 10,
       "candidate_outer_fit_budget": 10
     }
+  },
+  "round2_v9_realmlp_2026_09_26": {
+    "status": "development_running",
+    "platform_target": 96.4,
+    "spec": "configs/round2_v9/SPEC.yaml",
+    "preregistration": "docs/round2_v9/PREREGISTRATION.md",
+    "results": "docs/round2_v9/RESULTS.md",
+    "run": "local/runs/round2-v9-realmlp/development-r1",
+    "recipes": [
+      "realmlp_td",
+      "realmlp_td_s"
+    ],
+    "target_recipe_units": 4,
+    "development_outer_fits": 40,
+    "primary_reference": "A35",
+    "secondary_time_reference": "V7_candidate_pool",
+    "secondary_iron_diagnostic": "V8_ft_learned_development_blend_not_a_promotion_gate",
+    "external_pretrained_weights": false,
+    "G0": {
+      "locked_python312_tests_passed": 997,
+      "warnings": 23,
+      "test_log": "local/reports/v9-python312-tests-r1.log",
+      "inner_native_preprocessing_row_identity": "PASS",
+      "cold_process_synthetic_predictions": "bit_identical_both_recipes",
+      "existing_distributions_preserved": 106,
+      "new_distributions": 12,
+      "native_shuffled_drop_last_retained": true
+    },
+    "G1": "pending",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
