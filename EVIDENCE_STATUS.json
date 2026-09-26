@@ -8963,5 +8963,36 @@
       "development_package_score": 96.21400347194779,
       "local_working_gate_met": false
     }
+  },
+  "round2_v10_periodic_loss_2026_09_26": {
+    "status": "development_running",
+    "spec": "configs/round2_v10/SPEC.yaml",
+    "preregistration": "docs/round2_v10/PREREGISTRATION.md",
+    "run": "local/runs/round2-v10-periodic-loss/development-r1",
+    "platform_target": 96.4,
+    "pretrained_weights": "forbidden",
+    "platform_reference": "V6_PORT_TIME_A35",
+    "ranking_reference": "V7_TIME_candidate_pool",
+    "G0": {
+      "locked_python312_tests": {
+        "passed": 1005,
+        "warnings": 23,
+        "log": "local/reports/v10-python312-tests-r1.log"
+      },
+      "control_mse_replay_max_absolute_difference": 0.0,
+      "control_artifact": "local/runs/round2-v10-periodic-loss/development-r1/control.json"
+    },
+    "G1": {
+      "status": "not_yet_evaluated",
+      "no_partial_selection": true
+    },
+    "budget": {
+      "control_outer_fits": 1,
+      "development_outer_fits": 20,
+      "full_data_fits": 0
+    },
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
