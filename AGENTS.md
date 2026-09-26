@@ -240,6 +240,26 @@ blend, which produced a spurious `-0.11..-0.14` before being caught. Stage 1 was
 fixes: the backtest still rejects 4/4 known-bad candidates, and the full-coverage N2 record is still
 admitted by the fold-level rule alone and refused only by `insufficient_split_seeds`.
 
+**Noise-floor experiment returned (user-reported, 2026-09-26).** `V5_SEED_SWAP_S1000 = 96.2739`,
+**+0.0005** against V36, while its local seed sensitivity is `-0.0046`. Two consequences, and the
+earlier reading must be replaced:
+
+* **the platform resolution for this perturbation class is about 0.0005** — the platform does not
+  jitter at the 0.01–0.02 level, so "local gains do not transfer because the platform is noisy" is
+  refuted;
+* **the transfer error of a clean control is about 0.005**, which is the honest uncertainty for
+  turning a local gain into a platform gain; the `V42` inversion (`+0.0144` local, `-0.0201`
+  platform) is therefore better explained as local selection overfitting than as platform noise.
+
+`V5_SEED_SWAP_S1000` is now the highest user-reported score and is registered in
+`EVIDENCE_STATUS.json -> round2_current_platform_best` as a **noise-floor control, not an
+optimization candidate**; every candidate still uses the frozen `V36` as its parent.
+`v36-s1-N-0048` (four-seed replication, LCB `+0.0075`) has an expected platform effect of roughly
+`+0.005..+0.015` — about 20x the demonstrated platform resolution — which would refresh the best to
+about `96.278..96.288` but still not reach 96.3. The frozen local working gate `96.25` was
+calibrated on the now-refuted large-noise assumption; changing it is a user decision and has not
+been made.
+
 **Closed routes are unchanged** (NODE per-depth, ODST core, TabR full fusion, residual
 correctors, sample reweighting, dense alpha scans). Temporal/lag features remain *unavailable*
 (`复赛_train/train_features.csv` has no timestamp or ordering column), not merely untried.
