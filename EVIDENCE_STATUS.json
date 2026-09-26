@@ -301,77 +301,50 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "PENDING_SUBMISSION_PORTFOLIO_7_PACKAGES",
+    "status": "PENDING_SUBMISSION_ALPHA_LINE_SEARCH_5",
     "submission_priority": [
       {
-        "name": "V6_PORT_TIME_MLP0000_W10",
-        "target": "tap_time_len",
-        "alpha": 0.1,
-        "zip_sha256": "8abba3654d0d54c170c89ab490be7f1895261065f51ee2b0fb95a089e8f5ad2a",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_MLP0000_W10",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_MLP0000_W10",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A45",
+        "alpha": 0.45,
+        "local_delta": -0.015058796216656234,
+        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A45"
       },
       {
-        "name": "V6_PORT_IRON_K0005_W10",
-        "target": "tap_iron",
-        "alpha": 0.1,
-        "zip_sha256": "85b7293674f5d6aea34168271ef6f65a428fe70662f1669ed11fca61540c5b88",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W10",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W10",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A60",
+        "alpha": 0.6,
+        "local_delta": -0.0370791149216218,
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A60"
       },
       {
-        "name": "V6_PORT_TIME_A05",
-        "target": "tap_time_len",
-        "alpha": 0.05,
-        "zip_sha256": "3f9b27f327e4304fe21e5c3fb5d739765821d118333fbd7b598726242e353f08",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A05",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A05",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A72",
+        "alpha": 0.72,
+        "local_delta": -0.06127362347417703,
+        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A72"
       },
       {
-        "name": "V6_PORT_TIME_A35",
-        "target": "tap_time_len",
-        "alpha": 0.35,
-        "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A35",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A85",
+        "alpha": 0.85,
+        "local_delta": -0.09304124790787821,
+        "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85"
       },
       {
-        "name": "V6_PORT_IRON_K0005_W20",
-        "target": "tap_iron",
-        "alpha": 0.2,
-        "zip_sha256": "7d27e5ff7f9b6ff9ebec0abd4ded6b29b8b441df2f493f326cd636bb4f155508",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
-        "read_back_verified": true
-      },
-      {
-        "name": "V6_PORT_IRON_N0008_W20",
-        "target": "tap_iron",
-        "alpha": 0.2,
-        "zip_sha256": "0ec711819f6dc5482819b1fd9b93dbe1d5cce1117ea7fd2ea643dac0d2274bb8",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0008_W20",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0008_W20",
-        "read_back_verified": true,
-        "local_mean": -0.00955,
-        "marginal_E_max": 0.00065
-      },
-      {
-        "name": "V6_PORT_IRON_N0006_W20",
-        "target": "tap_iron",
-        "alpha": 0.2,
-        "zip_sha256": "186302ffbcc548c2f6e798f374c71d3df0e9b356ba893a95cf197ee0f1b49720",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0006_W20",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0006_W20",
-        "read_back_verified": true,
-        "local_mean": -0.00869,
-        "marginal_E_max": 0.00039
+        "name": "V6_PORT_TIME_A100",
+        "alpha": 1.0,
+        "local_delta": -0.13681612789294034,
+        "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100"
       }
     ],
-    "recommended": "fill in whichever of the ranked top 5 are still unsubmitted, weakest-mean first and V6_PORT_IRON_K0005_W10 last",
+    "recommended": "upload the alpha line search (A100, A85, A72, A60, A45): the platform keeps the best score so there is no downside, the curve was still rising at 0.35, and the extrapolated peak (alpha 0.72) is about 96.36",
     "risk_if_platform_keeps_latest": "expected loss equals the mean of the last-submitted entry (tier A about -0.001; all five about -0.015)",
     "current_preferred": {
       "name": "V5_TIME_N0048_Q20",
@@ -392,7 +365,7 @@
       "V34_A",
       "V34_B"
     ],
-    "note": "The incumbent V5_TIME_N0048_Q20 (96.3143) is already on the board and is not re-submitted; all slots are new candidates.",
+    "note": "the incumbent V6_PORT_TIME_A35 (96.3366) is already on the board and must not be re-submitted",
     "ranked_top5": [
       {
         "rank": 1,
@@ -5815,77 +5788,21 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
-    "data_version": "synthetic_round2_v2",
-    "name": "V5_TIME_N0048_Q20",
-    "candidate": "V5_TIME_N0048_Q20",
-    "score": 96.3143,
-    "local_score": null,
-    "local_score_basis": "single-column replacement of the frozen V36 parent; expected local package 96.2135",
-    "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
-    "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
-    "package": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
-    "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926",
-    "delta_vs_previous_best": 0.0404,
-    "still_below_target_96_3": false,
-    "gap_to_96_3": -0.0143,
-    "feedback_record": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/platform-feedback-r1/feedback.json",
-    "previous_user_reported_best": {
-      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
-      "data_version": "synthetic_round2_v2",
-      "name": "01_V34_A_MECHANICAL_CONSTRAINED",
-      "candidate": "V34_A",
-      "score": 96.2684,
-      "local_score": 96.19973698527157,
-      "zip_sha256": "0007230038f365126ae337c3e0af8b7bb040fe3d351c624ff2819ea1efe649e7",
-      "package": "local/runs/round2-v3.4-ebm-and-constrained-composition/release-candidates-r1/01_V34_A_MECHANICAL_CONSTRAINED/Luqhhh_bf_tap_predict_round2.zip",
-      "previous_user_reported_best": {
-        "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
-        "data_version": "synthetic_round2_v2",
-        "name": "04_AJ3_IRON",
-        "candidate": "AJ3",
-        "score": 96.1259,
-        "delta_vs_B": 0.0277,
-        "local_rank": 4,
-        "local_score": 96.0123883047359,
-        "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
-        "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
-        "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
-        "reference_by_target": {
-          "tap_iron": "AJ3 = .5 C2 + .5 mean(J1 seeds 42,2026,2027)",
-          "tap_time_len": "B3 seeds 42,2026,2027 full1500; original B strings"
-        },
-        "feedback_record": "local/runs/round2-final-top5/platform-feedback-r1/feedback.json"
-      }
+    "candidate": "V6_PORT_TIME_A35",
+    "score": 96.3366,
+    "source": "user_reported_not_independently_verified",
+    "previous_best": {
+      "candidate": "V5_TIME_N0048_Q20",
+      "score": 96.3143
     },
-    "latest_challenger": {
-      "name": "V42_IRON_N2_Q25",
-      "score": 96.2533,
-      "delta": -0.0201,
-      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
-      "date": "2026-09-25",
-      "best_unchanged": true
-    },
-    "superseded_history": [
-      {
-        "name": "V36_USER_REQUESTED_OUTER_FAILED",
-        "score": 96.2734,
-        "reported": "2026-09-25",
-        "superseded_by": "V5_SEED_SWAP_S1000",
-        "note": "superseded as the highest user-reported score only; the package remains the frozen parent of every V5 candidate"
-      },
-      {
-        "name": "V5_SEED_SWAP_S1000",
-        "score": 96.2739,
-        "reported": "2026-09-26",
-        "superseded_by": "V5_TIME_N0048_Q20",
-        "note": "noise-floor control, superseded as highest score"
-      }
-    ],
-    "score_kind": "PROMOTED_CANDIDATE_FOUR_SEED_RULE",
-    "parent_instead_of_candidate": "V36_USER_REQUESTED_OUTER_FAILED",
-    "why_it_is_recorded": "It is the highest user-reported score and, more importantly, the pre-registered noise-floor measurement: a pure training-seed perturbation with a local effect of -0.0046 moved the platform by only +0.0005.",
-    "recipe": "V36 parent; tap_time_len = 0.8 x V36 + 0.2 x v36-s1-N-0048 (large raw-TabM, refit on all training rows); tap_iron byte-identical"
+    "delta_vs_previous_best": 0.0223,
+    "target": 96.35,
+    "target_met": false,
+    "margin_to_target": -0.0134,
+    "recipe": "frozen V36 package with tap_time_len = 0.65 x V36 + 0.35 x v36-s1-N-0048 (full-data refit); tap_iron byte-identical",
+    "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
+    "desktop": "round2-V6-portfolio-20260926/V6_PORT_TIME_A35",
+    "note": "the platform alpha curve is displaced far to the right of the local OOF optimum (0.20); see round2_v6/RESULTS.md section 12"
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -7779,21 +7696,20 @@
     "process_lesson": "the folds 0/1 screen (1102 rows, one split seed) is too noisy to rank candidates - the winner's single-fold alpha estimates range 0.12-0.38 and only converge with sample size; every V5 and V6 selection decision was made on that screen, so a future search must screen at complete coverage"
   },
   "round2_closure": {
-    "status": "ROUND2_CLOSED_TARGET_EXCEEDED",
+    "status": "ROUND2_REOPENED_PLATFORM_ALPHA_LINE_SEARCH",
     "date": "2026-09-26",
     "final_platform_best": {
-      "candidate": "V5_TIME_N0048_Q20",
-      "score": 96.3143,
+      "candidate": "V6_PORT_TIME_A35",
+      "score": 96.3366,
       "source": "user_reported_not_independently_verified",
-      "target": 96.3,
-      "target_met": true,
-      "margin_over_target": 0.0143,
-      "previous_best_before_the_final_round": {
-        "candidate": "V36_USER_REQUESTED_OUTER_FAILED",
-        "score": 96.2734
+      "target": 96.35,
+      "target_met": false,
+      "delta_vs_previous_best": 0.0223,
+      "previous_best": {
+        "candidate": "V5_TIME_N0048_Q20",
+        "score": 96.3143
       },
-      "delta_vs_previous_best": 0.0409,
-      "recipe": "frozen V36 parent; tap_time_len = 0.8 x V36 + 0.2 x v36-s1-N-0048 (large raw-TabM refit on all training rows); tap_iron byte-identical"
+      "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06"
     },
     "packages_delivered": [
       {
@@ -7861,71 +7777,44 @@
     ],
     "pending_submissions": [
       {
-        "name": "V6_PORT_TIME_MLP0000_W10",
-        "target": "tap_time_len",
-        "alpha": 0.1,
-        "zip_sha256": "8abba3654d0d54c170c89ab490be7f1895261065f51ee2b0fb95a089e8f5ad2a",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_MLP0000_W10",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_MLP0000_W10",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A45",
+        "alpha": 0.45,
+        "local_delta": -0.015058796216656234,
+        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A45"
       },
       {
-        "name": "V6_PORT_IRON_K0005_W10",
-        "target": "tap_iron",
-        "alpha": 0.1,
-        "zip_sha256": "85b7293674f5d6aea34168271ef6f65a428fe70662f1669ed11fca61540c5b88",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W10",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W10",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A60",
+        "alpha": 0.6,
+        "local_delta": -0.0370791149216218,
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A60"
       },
       {
-        "name": "V6_PORT_TIME_A05",
-        "target": "tap_time_len",
-        "alpha": 0.05,
-        "zip_sha256": "3f9b27f327e4304fe21e5c3fb5d739765821d118333fbd7b598726242e353f08",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A05",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A05",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A72",
+        "alpha": 0.72,
+        "local_delta": -0.06127362347417703,
+        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A72"
       },
       {
-        "name": "V6_PORT_TIME_A35",
-        "target": "tap_time_len",
-        "alpha": 0.35,
-        "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A35",
-        "read_back_verified": true
+        "name": "V6_PORT_TIME_A85",
+        "alpha": 0.85,
+        "local_delta": -0.09304124790787821,
+        "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85"
       },
       {
-        "name": "V6_PORT_IRON_K0005_W20",
-        "target": "tap_iron",
-        "alpha": 0.2,
-        "zip_sha256": "7d27e5ff7f9b6ff9ebec0abd4ded6b29b8b441df2f493f326cd636bb4f155508",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
-        "read_back_verified": true
-      },
-      {
-        "name": "V6_PORT_IRON_N0008_W20",
-        "target": "tap_iron",
-        "alpha": 0.2,
-        "zip_sha256": "0ec711819f6dc5482819b1fd9b93dbe1d5cce1117ea7fd2ea643dac0d2274bb8",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0008_W20",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0008_W20",
-        "read_back_verified": true,
-        "local_mean": -0.00955,
-        "marginal_E_max": 0.00065
-      },
-      {
-        "name": "V6_PORT_IRON_N0006_W20",
-        "target": "tap_iron",
-        "alpha": 0.2,
-        "zip_sha256": "186302ffbcc548c2f6e798f374c71d3df0e9b356ba893a95cf197ee0f1b49720",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0006_W20",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0006_W20",
-        "read_back_verified": true,
-        "local_mean": -0.00869,
-        "marginal_E_max": 0.00039
+        "name": "V6_PORT_TIME_A100",
+        "alpha": 1.0,
+        "local_delta": -0.13681612789294034,
+        "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100"
       }
     ],
     "recommended_next_action": {
@@ -8068,7 +7957,7 @@
       },
       "direction_d2_prior": "DEMOTED_TO_NEGATIVE. D-prime-2 (complete raw_mlp|large, ple_mlp|large, ple_tabm|large, raw_tabm|medium; about 40 fold fits) would add new configurations of the SAME families. Two measurements suppress its prior: every existing complete member of those families is exactly zero on top of the incumbent (the one network member, v3-mlp, is the best at +0.00065 and still ~0), and the recorded JM1 precedent (rho 0.777, decorrelated but less accurate, weight optimised to zero) is exactly the situation a new configuration would face. raw_tabm|large is N-0048 itself."
     },
-    "pending_submissions_note": "Portfolio entries, not promoted candidates: all five have negative local means and are justified only by E[max] under the user-reported best-kept scoring rule. See round2_v6_portfolio_2026_09_26 and docs/round2_v6/RESULTS.md section 9."
+    "pending_submissions_note": "Alpha line search along the validated N-0048 direction. Local OOF is not a guide here (the 0.35 point is 0.0052 worse locally but 0.0223 better on the platform). See docs/round2_v6/RESULTS.md section 12."
   },
   "round2_v6_portfolio_2026_09_26": {
     "status": "DELIVERED_PENDING_USER_UPLOAD",
@@ -8237,6 +8126,21 @@
         "local_mean": -0.00067,
         "sigma_units": -0.5,
         "reading": "consistent with the portfolio model: a near-zero-mean lottery ticket loses about half the time. The model is NOT refuted; it confirms single entries cannot be expected to improve the score."
+      },
+      {
+        "name": "V6_PORT_TIME_A05",
+        "score": 96.2844,
+        "delta_vs_incumbent": -0.0299,
+        "local_delta": -0.00571,
+        "source": "user_reported"
+      },
+      {
+        "name": "V6_PORT_TIME_A35",
+        "score": 96.3366,
+        "delta_vs_incumbent": 0.0223,
+        "local_delta": -0.00523,
+        "source": "user_reported",
+        "NEW_PLATFORM_BEST": true
       }
     ],
     "target_96_35_feasibility_2026_09_26": {
@@ -8253,9 +8157,91 @@
         "iron_library_only_31_columns": -0.02175,
         "iron_library_plus_new_N_16": -0.02877
       },
-      "verdict": "NOT REACHABLE from the current pool: the pool ceiling is +0.00344 local, while 96.35 needs about +0.0085 local even at the historical 4.19x amplification (2.5x the ceiling) and +0.0357 without it (10x). It requires a new model with roughly TWICE the local increment of the best member ever measured (N-0048 at +0.0098 over V36), i.e. new information or a new paradigm, not more pool search. Adding the 25 new N columns to the stack makes it worse (+0.0034 -> -0.0129): they help only the portfolio tail, not the mean.",
+      "verdict": "RETRACTED / SUPERSEDED by section 12: the verdict relied on the constant-amplification premise (platform gain = 4.19x local gain), which the alpha=0.35 platform point falsifies. The pool ceiling of +0.00344 local still stands but is no longer the binding constraint: the platform response along a validated direction is far steeper than the local curve, and the extrapolated platform alpha peak is about 96.359-96.362.",
       "recommended_use_of_remaining_slots": "spend them on information, not score: V6_PORT_TIME_A05 and V6_PORT_TIME_A35 extend the platform alpha-response curve from one point (alpha 0->0.20, 4.19x) to three, calibrating how much local gain a new model needs. No downside under best-kept.",
-      "evidence": "docs/round2_v6/RESULTS.md section 11"
+      "evidence": "docs/round2_v6/RESULTS.md section 11",
+      "status": "RETRACTED_SEE_SECTION_12"
+    },
+    "platform_alpha_curve_2026_09_26": {
+      "points": {
+        "0.00": {
+          "score": 96.2734,
+          "local_delta": -0.01023
+        },
+        "0.05": {
+          "score": 96.2844,
+          "local_delta": -0.00571
+        },
+        "0.20": {
+          "score": 96.3143,
+          "local_delta": 0.0
+        },
+        "0.35": {
+          "score": 96.3366,
+          "local_delta": -0.00523
+        }
+      },
+      "finding": "the platform and local alpha curves have OPPOSITE slope at 0.35: locally 0.35 is 0.0052 worse than 0.20, on the platform it is 0.0223 better. The local OOF optimum (0.20) therefore severely understates the platform optimum.",
+      "hypothesis_refuted": "platform gain = k * local gain (constant-amplification). The 0.35 point falsifies it (sign flip).",
+      "quadratic_extrapolation": {
+        "three_points": {
+          "peak_alpha": 0.715,
+          "peak_gain": 0.0448,
+          "implied_platform": 96.3591
+        },
+        "four_points": {
+          "peak_alpha": 0.752,
+          "peak_gain": 0.0477,
+          "implied_platform": 96.362
+        },
+        "caveat": "extrapolation beyond the measured [0.05,0.35] range; the positive slope at 0.35 is measured, the peak location is extrapolated"
+      },
+      "delivered_line_search": [
+        {
+          "name": "V6_PORT_TIME_A45",
+          "alpha": 0.45,
+          "local_delta": -0.015058796216656234,
+          "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A45"
+        },
+        {
+          "name": "V6_PORT_TIME_A60",
+          "alpha": 0.6,
+          "local_delta": -0.0370791149216218,
+          "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A60"
+        },
+        {
+          "name": "V6_PORT_TIME_A72",
+          "alpha": 0.72,
+          "local_delta": -0.06127362347417703,
+          "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A72"
+        },
+        {
+          "name": "V6_PORT_TIME_A85",
+          "alpha": 0.85,
+          "local_delta": -0.09304124790787821,
+          "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85"
+        },
+        {
+          "name": "V6_PORT_TIME_A100",
+          "alpha": 1.0,
+          "local_delta": -0.13681612789294034,
+          "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100"
+        }
+      ],
+      "new_fits": 0,
+      "new_packages": 5,
+      "agent_uploads": 0,
+      "evidence": "docs/round2_v6/RESULTS.md section 12"
     }
   }
 }

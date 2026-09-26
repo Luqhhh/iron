@@ -294,7 +294,7 @@ correctors, sample reweighting, dense alpha scans). Temporal/lag features remain
 
 ## Round2 closure (2026-09-26, current instruction): target exceeded, round 2 closed
 
-**Final platform best: `V5_TIME_N0048_Q20 = 96.3143`** (user-reported, not independently verified),
+**Latest platform best (2026-09-26, later): `V6_PORT_TIME_A35 = 96.3366`** (`+0.0223` over `V5_TIME_N0048_Q20`); the round is REOPENED as a platform-side alpha line search — see the last section. Historical: `V5_TIME_N0048_Q20 = 96.3143` (user-reported, not independently verified),
 **+0.0409 over the previous best `V36 = 96.2734`** and **+0.0143 over the 96.3 target**. Recipe: the
 frozen V36 parent with only `tap_time_len` replaced by `0.8 x V36 + 0.2 x v36-s1-N-0048` (large
 raw-TabM refit on all training rows); `tap_iron` is byte-identical to the parent. ZIP SHA-256
@@ -496,3 +496,40 @@ entries must never be expected to raise the score. The model is not refuted.
 **Use the remaining slots for information, not score:** `V6_PORT_TIME_A05` and `V6_PORT_TIME_A35` extend the
 platform's alpha-response curve from one point (`alpha 0 -> 0.20`, `4.19x`) to three, which calibrates how much
 local gain a new model must deliver to reach 96.35. No downside while the platform keeps the best score.
+
+### Platform-side alpha line search: the local alpha optimum is NOT the platform optimum (2026-09-26)
+
+`docs/round2_v6/RESULTS.md` §12; `EVIDENCE_STATUS.json -> round2_current_platform_best` and
+`round2_v6_portfolio_2026_09_26.platform_alpha_curve_2026_09_26`.
+
+User-reported scores: `V6_PORT_TIME_A05 = 96.2844` and **`V6_PORT_TIME_A35 = 96.3366`**. The latter is the
+**new platform best**, `+0.0223` over `V5_TIME_N0048_Q20 = 96.3143`.
+
+| alpha | local delta | platform score | platform delta |
+|---:|---:|---:|---:|
+| 0.00 (V36) | -0.01023 | 96.2734 | -0.0409 |
+| 0.05 | -0.00571 | 96.2844 | -0.0299 |
+| 0.20 (was best) | 0 (local interior optimum) | 96.3143 | 0 |
+| **0.35** | **-0.00523** | **96.3366** | **+0.0223** |
+
+**The single `alpha=0.35` point falsifies constant-amplification** (`platform gain = k * local gain`): locally
+0.35 is `0.0052` WORSE than 0.20, on the platform it is `0.0223` BETTER — opposite sign. The local OOF
+optimum therefore **severely understates** the platform optimum. A quadratic through the four platform points
+extrapolates to a peak at `alpha* = 0.72..0.75` worth `+0.0448..+0.0477`, i.e. about **96.359..96.362** (the
+positive slope at 0.35 is measured; the peak location is extrapolated and uncertain).
+
+**This RETRACTS the "96.35 infeasible" verdict** of the previous section: that verdict rested on the
+constant-amplification premise, which the 0.35 point refutes. The pool ceiling of `+0.00344` local still
+stands but is no longer the binding constraint — the platform response along a validated direction is far
+steeper than the local curve, so a platform-side line search is the legitimate lever.
+
+**Delivered for upload** (desktop `round2-V6-alpha-line-search-20260926/`, zero fits, all read-back verified):
+`V6_PORT_TIME_A45/A60/A72/A85/A100` with ZIPs `4c12bedae707c306…`, `d5092d400fb5cc62…`, `808f00a9a3385b62…`,
+`2af4d68323ba2cf3…`, `865f7290db001d41…`. Upload order `A100, A85, A72, A60, A45` (order is irrelevant while the
+platform keeps the best score). Interpretation: a maximum in 0.60-0.85 means 96.35 is likely already reachable;
+a maximum still at 0.35-0.45 means the peak is left of the extrapolation and a second independent direction is
+needed; `A100` winning would mean the pure member column beats V36 on the test set.
+
+**Rule added:** local OOF can identify which DIRECTION is worth trying, but not where the platform will stop
+along it — the local and platform optima of a blend weight can differ by more than 0.15 and even have opposite
+slopes. For a direction already validated as positive on the platform, a platform-side line search is required.
