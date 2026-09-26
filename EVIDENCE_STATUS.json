@@ -8698,7 +8698,7 @@
     "audit": "PASS; full gradient coverage and direct pooled arithmetic; audit-r1.json"
   },
   "round2_v8_feature_attention_2026_09_26": {
-    "status": "confirmation_reference_control_running",
+    "status": "confirmation_running",
     "platform_target": 96.4,
     "spec": "configs/round2_v8/SPEC.yaml",
     "preregistration": "docs/round2_v8/PREREGISTRATION.md",
@@ -8735,7 +8735,12 @@
         "independent_arithmetic_tolerance": 1e-12
       },
       "confirmation_query_label_guard_tests": "PASS",
-      "test_log": "local/reports/v8-confirm-python312-tests-r1.log"
+      "test_log": "local/reports/v8-confirm-python312-tests-r1.log",
+      "same_fold_reference_control": {
+        "status": "PASS",
+        "maximum_absolute_difference": 0.0,
+        "artifact": "local/runs/round2-v8-feature-attention/confirmation-r1/control.json"
+      }
     },
     "G1": {
       "status": "development_only_small_increments",
@@ -8797,7 +8802,7 @@
       "selected_target": "tap_iron",
       "selected_recipe": "ft_learned",
       "spec": "configs/round2_v8/CONFIRMATION.yaml",
-      "status": "reference_control_running",
+      "status": "reference_control_passed_candidate_fitting",
       "four_seed_pass": false,
       "run": "local/runs/round2-v8-feature-attention/confirmation-r1",
       "baseline_outer_recipe_fit_budget": 10,

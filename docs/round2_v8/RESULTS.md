@@ -80,8 +80,8 @@ fold counts are descriptive only. The local working gate remains 96.25.
 Current platform best remains user-reported **A35 = 96.3366**. The **96.4**
 objective is unproven. No full-data fit, package, desktop write or upload occurred.
 
-Confirmation implementation is running its first same-fold reference control
-under the frozen execution specification. No candidate confirmation result is
-yet available. The baseline manifest binds recovered source, source catalogues,
+The first same-fold reference control **passed with maximum absolute difference
+0** against the frozen V5 time cache. Candidate confirmation fitting has started;
+no four-seed candidate result is yet available. The baseline manifest binds recovered source, source catalogues,
 weights, configuration files, runtime versions, fold identity and data identity.
 Both baseline columns will be retained for every successful fold.
