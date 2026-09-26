@@ -7142,12 +7142,9 @@
       "pre_registered_selection": 10,
       "coverage": {
         "seed_42": "10/10",
-        "seed_3407": "8/10; N-0049 and N-0051 were not completed within the session (budget long tail), their seed-42 coverage is complete",
-        "evaluated_two_seed_candidates": 8,
-        "pending_trial_ids": [
-          "v36-s1-N-0049",
-          "v36-s1-N-0051"
-        ]
+        "seed_3407": "10/10",
+        "evaluated_two_seed_candidates": 10,
+        "pending_trial_ids": []
       },
       "best": {
         "candidate": "v36-s1-N-0048",
@@ -7171,7 +7168,39 @@
       "lightweight_candidates_range": [
         0.00186,
         0.00333
-      ]
+      ],
+      "large_capacity_cluster": {
+        "v36-s1-N-0048": {
+          "gain": 0.00978,
+          "positive_cells": "8/10",
+          "rho": 0.888,
+          "accuracy_ratio": 1.07,
+          "lcb95": -0.00015
+        },
+        "v36-s1-N-0049": {
+          "gain": 0.00873,
+          "positive_cells": "8/10",
+          "rho": 0.88,
+          "accuracy_ratio": 1.08,
+          "lcb95": -0.00114
+        },
+        "v36-s1-N-0050": {
+          "gain": 0.00858,
+          "positive_cells": "8/10",
+          "rho": 0.885,
+          "accuracy_ratio": 1.07,
+          "lcb95": -0.00106
+        },
+        "v36-s1-N-0051": {
+          "gain": 0.00756,
+          "positive_cells": "8/10",
+          "rho": 0.878,
+          "accuracy_ratio": 1.08,
+          "lcb95": -0.00011
+        },
+        "note": "all four raw-TabM large candidates are positive on both split seeds at 8/10 folds; none reaches a positive fold-level lower bound"
+      },
+      "promotion_arithmetic": "Even if Stage 2b replication passes, the single-column gain of about +0.0098 over the local package 96.2038 gives about 96.2136, still below the frozen local working gate 96.25; no candidate platform package follows from this round."
     },
     "stage2b_replication": {
       "candidate": "v36-s1-N-0048",
