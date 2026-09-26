@@ -533,3 +533,21 @@ needed; `A100` winning would mean the pure member column beats V36 on the test s
 **Rule added:** local OOF can identify which DIRECTION is worth trying, but not where the platform will stop
 along it — the local and platform optima of a blend weight can differ by more than 0.15 and even have opposite
 slopes. For a direction already validated as positive on the platform, a platform-side line search is required.
+
+### Alpha feedback received (2026-09-27, current reference)
+
+- User-reported scores: A60 = **96.3465**, A72 = **96.3425**, A45 = **96.3438**;
+  these are not independently verified platform receipts. Current best is now
+  `V6_PORT_TIME_A60`, +0.0099 over A35; the current target **>96.4** remains unmet.
+- A60 ZIP SHA-256: `d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147`.
+  Preserve its bytes: V36 iron and `0.40*V36 + 0.60*N-0048` time.
+- A45/A60/A72 are no longer pending. A60 is the best observed alpha, not a
+  verified continuous optimum. A72 is 0.0040 lower; the historical quadratic
+  peak forecast is unconfirmed. Preserve A85/A100 but defer their upload priority.
+- Prioritize the already delivered V12 iron and V7 time packages; their scores
+  remain unreported and their frozen A35-parent recipes remain unchanged.
+  No reparenting or two-target combination is authorized by these scores.
+- Five slots were reported before this three-score feedback; two remain only
+  if there was no other account activity. Do not infer unreported submissions.
+  Details: `docs/round2_v6/RESULTS.md` section 13 and
+  `EVIDENCE_STATUS.json -> round2_v6_alpha_feedback_2026_09_27`.

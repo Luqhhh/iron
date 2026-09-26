@@ -301,71 +301,57 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "PENDING_SUBMISSION_ALPHA_LINE_SEARCH_5",
+    "status": "ALPHA_THREE_SCORES_RECEIVED_V12_V7_PENDING_A85_A100_DEFERRED",
     "submission_priority": [
       {
-        "name": "V6_PORT_TIME_A45",
-        "alpha": 0.45,
-        "local_delta": -0.015058796216656234,
-        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A45"
+        "candidate": "V12_IRON_JOINT_PLR001_A50",
+        "status": "delivered_pending_user_platform_feedback",
+        "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+        "evidence_key": "round2_v12_release_2026_09_27",
+        "original_pending_deliveries_preserved": true
       },
       {
-        "name": "V6_PORT_TIME_A60",
-        "alpha": 0.6,
-        "local_delta": -0.0370791149216218,
-        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A60"
-      },
-      {
-        "name": "V6_PORT_TIME_A72",
-        "alpha": 0.72,
-        "local_delta": -0.06127362347417703,
-        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A72"
-      },
-      {
-        "name": "V6_PORT_TIME_A85",
-        "alpha": 0.85,
-        "local_delta": -0.09304124790787821,
-        "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85"
-      },
-      {
-        "name": "V6_PORT_TIME_A100",
-        "alpha": 1.0,
-        "local_delta": -0.13681612789294034,
-        "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100"
+        "candidate": "V7_TIME_PLR001_A50",
+        "status": "delivered_pending_user_feedback",
+        "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+        "evidence_key": "round2_v7_release_2026_09_26",
+        "original_alpha_queue_unchanged": true
       }
     ],
-    "recommended": "upload the alpha line search (A100, A85, A72, A60, A45): the platform keeps the best score so there is no downside, the curve was still rising at 0.35, and the extrapolated peak (alpha 0.72) is about 96.36",
-    "risk_if_platform_keeps_latest": "expected loss equals the mean of the last-submitted entry (tier A about -0.001; all five about -0.015)",
+    "recommended": "Prioritize delivered V12 iron, then V7 time; both remain unreported. Defer A85/A100 after A72 fell below A60. Do not resubmit scored packages or modify the frozen A35-parent deliveries.",
+    "risk_if_platform_keeps_latest": "Historical hypothetical only; user reports the platform keeps the best score.",
     "current_preferred": {
-      "name": "V5_TIME_N0048_Q20",
-      "candidate": "V5_TIME_N0048_Q20",
-      "score": 96.3143,
-      "delta_vs_previous_preferred": 0.0409,
-      "local_score": null,
-      "local_score_basis": "single-column replacement of the V36 parent; expected local package 96.2135 (below the frozen gate, submitted under explicit user authorisation)",
-      "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
-      "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
-      "package": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
-      "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926"
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V6_PORT_TIME_A35",
+        "score": 96.3366
+      },
+      "delta_vs_previous_best": 0.0099,
+      "target": 96.4,
+      "target_met": false,
+      "margin_to_target": -0.0535,
+      "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
+      "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+      "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
+      "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
+      "reported_date": "2026-09-27"
     },
     "platform_ranking": [
+      "V6_PORT_TIME_A60",
+      "V6_PORT_TIME_A45",
+      "V6_PORT_TIME_A72",
+      "V6_PORT_TIME_A35",
       "V5_TIME_N0048_Q20",
       "V5_SEED_SWAP_S1000",
       "V36_USER_REQUESTED_OUTER_FAILED",
       "V34_A",
       "V34_B"
     ],
-    "note": "the incumbent V6_PORT_TIME_A35 (96.3366) is already on the board and must not be re-submitted",
+    "note": "Current best A60=96.3465 is already scored. A45/A60/A72 are no longer pending; V12/V7 remain unreported. Historical queues and package bytes are preserved.",
     "ranked_top5": [
       {
         "rank": 1,
@@ -415,6 +401,125 @@
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
         "evidence_key": "round2_v12_release_2026_09_27",
         "original_pending_deliveries_preserved": true
+      }
+    ],
+    "history_before_alpha_feedback_2026_09_27": {
+      "status": "PENDING_SUBMISSION_ALPHA_LINE_SEARCH_5",
+      "submission_priority": [
+        {
+          "name": "V6_PORT_TIME_A45",
+          "alpha": 0.45,
+          "local_delta": -0.015058796216656234,
+          "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A45"
+        },
+        {
+          "name": "V6_PORT_TIME_A60",
+          "alpha": 0.6,
+          "local_delta": -0.0370791149216218,
+          "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A60"
+        },
+        {
+          "name": "V6_PORT_TIME_A72",
+          "alpha": 0.72,
+          "local_delta": -0.06127362347417703,
+          "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A72"
+        },
+        {
+          "name": "V6_PORT_TIME_A85",
+          "alpha": 0.85,
+          "local_delta": -0.09304124790787821,
+          "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85"
+        },
+        {
+          "name": "V6_PORT_TIME_A100",
+          "alpha": 1.0,
+          "local_delta": -0.13681612789294034,
+          "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100"
+        }
+      ],
+      "recommended": "upload the alpha line search (A100, A85, A72, A60, A45): the platform keeps the best score so there is no downside, the curve was still rising at 0.35, and the extrapolated peak (alpha 0.72) is about 96.36",
+      "risk_if_platform_keeps_latest": "expected loss equals the mean of the last-submitted entry (tier A about -0.001; all five about -0.015)",
+      "current_preferred": {
+        "name": "V5_TIME_N0048_Q20",
+        "candidate": "V5_TIME_N0048_Q20",
+        "score": 96.3143,
+        "delta_vs_previous_preferred": 0.0409,
+        "local_score": null,
+        "local_score_basis": "single-column replacement of the V36 parent; expected local package 96.2135 (below the frozen gate, submitted under explicit user authorisation)",
+        "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
+        "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
+        "package": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
+        "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926"
+      },
+      "platform_ranking": [
+        "V5_TIME_N0048_Q20",
+        "V5_SEED_SWAP_S1000",
+        "V36_USER_REQUESTED_OUTER_FAILED",
+        "V34_A",
+        "V34_B"
+      ],
+      "note": "the incumbent V6_PORT_TIME_A35 (96.3366) is already on the board and must not be re-submitted"
+    },
+    "completed_alpha_feedback": [
+      {
+        "candidate": "V6_PORT_TIME_A60",
+        "alpha": 0.6,
+        "score": 96.3465,
+        "delta_vs_A35": 0.0099,
+        "delta_vs_A60": 0.0,
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A72",
+        "alpha": 0.72,
+        "score": 96.3425,
+        "delta_vs_A35": 0.0059,
+        "delta_vs_A60": -0.004,
+        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A45",
+        "alpha": 0.45,
+        "score": 96.3438,
+        "delta_vs_A35": 0.0072,
+        "delta_vs_A60": -0.0027,
+        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      }
+    ],
+    "deferred_alpha_packages": [
+      {
+        "name": "V6_PORT_TIME_A85",
+        "alpha": 0.85,
+        "local_delta": -0.09304124790787821,
+        "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85",
+        "status": "unreported_deferred_after_A72_below_A60"
+      },
+      {
+        "name": "V6_PORT_TIME_A100",
+        "alpha": 1.0,
+        "local_delta": -0.13681612789294034,
+        "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100",
+        "status": "unreported_deferred_after_A72_below_A60"
       }
     ]
   },
@@ -5806,21 +5911,22 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V6_PORT_TIME_A35",
-    "score": 96.3366,
+    "candidate": "V6_PORT_TIME_A60",
+    "score": 96.3465,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V5_TIME_N0048_Q20",
-      "score": 96.3143
+      "candidate": "V6_PORT_TIME_A35",
+      "score": 96.3366
     },
-    "delta_vs_previous_best": 0.0223,
+    "delta_vs_previous_best": 0.0099,
     "target": 96.4,
     "target_met": false,
-    "margin_to_target": -0.0634,
-    "recipe": "frozen V36 package with tap_time_len = 0.65 x V36 + 0.35 x v36-s1-N-0048 (full-data refit); tap_iron byte-identical",
-    "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
-    "desktop": "round2-V6-portfolio-20260926/V6_PORT_TIME_A35",
-    "note": "the platform alpha curve is displaced far to the right of the local OOF optimum (0.20); see round2_v6/RESULTS.md section 12"
+    "margin_to_target": -0.0535,
+    "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
+    "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+    "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
+    "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
+    "reported_date": "2026-09-27"
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -8212,7 +8318,8 @@
           "peak_gain": 0.0477,
           "implied_platform": 96.362
         },
-        "caveat": "extrapolation beyond the measured [0.05,0.35] range; the positive slope at 0.35 is measured, the peak location is extrapolated"
+        "caveat": "extrapolation beyond the measured [0.05,0.35] range; the positive slope at 0.35 is measured, the peak location is extrapolated",
+        "followup_status": "Historical extrapolation, not confirmed: A72=96.3425 versus A60=96.3465; see 2026-09-27 feedback."
       },
       "delivered_line_search": [
         {
@@ -8259,7 +8366,8 @@
       "new_fits": 0,
       "new_packages": 5,
       "agent_uploads": 0,
-      "evidence": "docs/round2_v6/RESULTS.md section 12"
+      "evidence": "docs/round2_v6/RESULTS.md section 12",
+      "followup_feedback": "round2_v6_alpha_feedback_2026_09_27"
     }
   },
   "round2_v7_periodic_search_2026_09_26": {
@@ -10381,5 +10489,74 @@
       "log": "local/reports/v14-development-r1.log",
       "note": "Control passed. Revalidate process/session before treating the recorded batch as live."
     }
+  },
+  "round2_v6_alpha_feedback_2026_09_27": {
+    "date": "2026-09-27",
+    "source": "user_reported_not_independently_verified",
+    "user_message": "96.3465 A60 A72 96.3425 A45 96.3438 提交推送",
+    "results": [
+      {
+        "candidate": "V6_PORT_TIME_A60",
+        "alpha": 0.6,
+        "score": 96.3465,
+        "delta_vs_A35": 0.0099,
+        "delta_vs_A60": 0.0,
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A72",
+        "alpha": 0.72,
+        "score": 96.3425,
+        "delta_vs_A35": 0.0059,
+        "delta_vs_A60": -0.004,
+        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A45",
+        "alpha": 0.45,
+        "score": 96.3438,
+        "delta_vs_A35": 0.0072,
+        "delta_vs_A60": -0.0027,
+        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      }
+    ],
+    "previous_current_platform_best": {
+      "candidate": "V6_PORT_TIME_A35",
+      "score": 96.3366,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V5_TIME_N0048_Q20",
+        "score": 96.3143
+      },
+      "delta_vs_previous_best": 0.0223,
+      "target": 96.4,
+      "target_met": false,
+      "margin_to_target": -0.0634,
+      "recipe": "frozen V36 package with tap_time_len = 0.65 x V36 + 0.35 x v36-s1-N-0048 (full-data refit); tap_iron byte-identical",
+      "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
+      "desktop": "round2-V6-portfolio-20260926/V6_PORT_TIME_A35",
+      "note": "the platform alpha curve is displaced far to the right of the local OOF optimum (0.20); see round2_v6/RESULTS.md section 12"
+    },
+    "best_observed_alpha": 0.6,
+    "continuous_optimum_verified": false,
+    "interpretation": "A60 is the best measured point. A72 is below A60; the historical quadratic peak forecast is not confirmed. Defer A85/A100; prioritize the already delivered V12 iron and V7 time isolated candidates, whose platform scores remain unreported. Their frozen A35 parents are unchanged.",
+    "quota": {
+      "last_explicit_available": 5,
+      "newly_reported_submissions": 3,
+      "remaining_if_no_other_activity": 2,
+      "unreported_account_activity_unknown": true
+    },
+    "G0": "Three existing desktop ZIP hashes and archive integrity verified; no fits, package changes or uploads.",
+    "G1": "User-reported A60 gain +0.0099 vs A35; target 96.4 not reached.",
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "evidence": "docs/round2_v6/RESULTS.md section 13"
   }
 }
