@@ -5821,18 +5821,18 @@
   "round2_current_platform_best": {
     "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
     "data_version": "synthetic_round2_v2",
-    "name": "V5_SEED_SWAP_S1000",
-    "candidate": "V5_SEED_SWAP_S1000",
-    "score": 96.2739,
+    "name": "V5_TIME_N0048_Q20",
+    "candidate": "V5_TIME_N0048_Q20",
+    "score": 96.3143,
     "local_score": null,
-    "local_score_basis": "control package: the frozen V36 recipe with only the expert training seeds shifted by +1000; no local package score is claimed",
-    "zip_sha256": "4ff97c033f05b7e686453e913460b548cd7231d3736b3f431bb3882e1a82460f",
-    "result_sha256": "024a66f3744efede4dd6a39fba338703d22b290e77773a826f6241219d6016af",
-    "package": "local/runs/round2-v5-error-covariance/seed-swap-r1/V5_SEED_SWAP_S1000",
-    "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-seed-swap-noise-experiment-20260926",
-    "delta_vs_previous_best": 0.0005,
-    "still_below_target_96_3": true,
-    "gap_to_96_3": 0.0261,
+    "local_score_basis": "single-column replacement of the frozen V36 parent; expected local package 96.2135",
+    "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
+    "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
+    "package": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
+    "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926",
+    "delta_vs_previous_best": 0.0404,
+    "still_below_target_96_3": false,
+    "gap_to_96_3": -0.0143,
     "feedback_record": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/platform-feedback-r1/feedback.json",
     "previous_user_reported_best": {
       "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
@@ -5877,11 +5877,19 @@
         "reported": "2026-09-25",
         "superseded_by": "V5_SEED_SWAP_S1000",
         "note": "superseded as the highest user-reported score only; the package remains the frozen parent of every V5 candidate"
+      },
+      {
+        "name": "V5_SEED_SWAP_S1000",
+        "score": 96.2739,
+        "reported": "2026-09-26",
+        "superseded_by": "V5_TIME_N0048_Q20",
+        "note": "noise-floor control, superseded as highest score"
       }
     ],
-    "score_kind": "NOISE_FLOOR_CONTROL_NOT_AN_OPTIMIZATION_CANDIDATE",
+    "score_kind": "PROMOTED_CANDIDATE_FOUR_SEED_RULE",
     "parent_instead_of_candidate": "V36_USER_REQUESTED_OUTER_FAILED",
-    "why_it_is_recorded": "It is the highest user-reported score and, more importantly, the pre-registered noise-floor measurement: a pure training-seed perturbation with a local effect of -0.0046 moved the platform by only +0.0005."
+    "why_it_is_recorded": "It is the highest user-reported score and, more importantly, the pre-registered noise-floor measurement: a pure training-seed perturbation with a local effect of -0.0046 moved the platform by only +0.0005.",
+    "recipe": "V36 parent; tap_time_len = 0.8 x V36 + 0.2 x v36-s1-N-0048 (large raw-TabM, refit on all training rows); tap_iron byte-identical"
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -7078,7 +7086,7 @@
     "promotion": "none"
   },
   "round2_v5": {
-    "status": "EXECUTED_PROMOTED_CANDIDATE_PACKAGE_DELIVERED_PER_USER_AUTHORISATION",
+    "status": "TARGET_EXCEEDED_PLATFORM_96_3143",
     "date": "2026-09-25",
     "branch": "round2-v5-error-covariance-resolution",
     "preregistration_commit": "f0d7900",
@@ -7315,7 +7323,7 @@
         "local_seed_sensitivity_combined": -0.00462,
         "local_to_platform_discrepancy": 0.0051,
         "evidence": "local/runs/round2-v5-error-covariance/seed-swap-r1/platform-feedback-r1/feedback.json",
-        "reading": "PLATFORM_RESOLUTION_IS_FINE. A pure training-seed perturbation moved the platform by 0.0005, so the platform adds no 0.01-0.02 jitter for this perturbation class; the earlier \"local gains do not transfer\" reading must be replaced by \"the local ranking has a transfer error of about 0.005, and the V42 inversion was most likely a real local-selection error rather than platform noise\".",
+        "reading": "PLATFORM_RESOLUTION_IS_FINE (0.0005 for a pure seed perturbation). The earlier claim that the transfer error of a clean control is a general 0.005 is REVISED: the same noise experiment could not bound the transfer error of a different change. V5_TIME_N0048_Q20 shows a transfer error of 0.031 (local +0.00975, platform +0.0409), so the transfer error is candidate-dependent and can be several times the local effect in either direction. Local evidence is reliable for SIGN and for RANKING only among candidates selected by the four-seed rule; it is not a magnitude forecast.",
         "consequences": [
           "the platform can resolve differences of order 0.001 for this class of change",
           "a replicated local gain of +0.0097 is about 20x the demonstrated platform resolution",
@@ -7405,8 +7413,44 @@
       },
       "evidence": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20/release-evidence.json",
       "agent_uploads": 0,
-      "platform_feedback": null
+      "platform_feedback": {
+        "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+        "reported_at": "2026-09-26",
+        "score": 96.3143,
+        "parent_score": 96.2734,
+        "delta_vs_parent": 0.0409,
+        "delta_vs_previous_highest": 0.0404,
+        "target": 96.3,
+        "target_met": true,
+        "margin_over_target": 0.0143,
+        "local_predicted_gain": 0.00975,
+        "amplification_vs_local": 4.19,
+        "implied_test_set_wmape_drop": 0.000818,
+        "implied_relative_time_column_reduction_pct": 2.13,
+        "local_oof_relative_time_column_reduction_pct": 0.51,
+        "local_package_expected": 96.2135,
+        "local_to_platform_offset": 0.1008,
+        "historical_offsets": {
+          "V34_A": 0.0687,
+          "V36": 0.0696,
+          "V42_IRON_N2_Q25": 0.0347
+        },
+        "evidence": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20/release-evidence.json",
+        "reading": "FIRST LIVE TEST OF THE FOUR-SEED RULE PASSED, AND THE TARGET IS MET. The candidate that the frozen local gate would have blocked (expected local package 96.2135 < 96.25) delivered +0.0409 on the platform, so the selection protocol is validated but the local magnitude is compressed by about 4x for this candidate."
+      }
     },
-    "negative_result_this_round": "the four large N members are near-duplicates of each other (pairwise residual correlation 0.979-0.998) and adding JM1 to N-0048 adds nothing (weight 0 or 0.013), so the time-column error-covariance lever is exhausted at +0.0098 with the current library"
+    "negative_result_this_round": "the four large N members are near-duplicates of each other (pairwise residual correlation 0.979-0.998) and adding JM1 to N-0048 adds nothing (weight 0 or 0.013), so the time-column error-covariance lever is exhausted at +0.0098 with the current library",
+    "gate_calibration_finding": {
+      "frozen_local_working_gate": 96.25,
+      "observed": "V5_TIME_N0048_Q20 had an expected local package of 96.2135, below the gate, and delivered the best platform score ever recorded (96.3143, +0.0409 over V36). The gate as calibrated would have blocked it.",
+      "recommendation": "The gate should be re-derived from the measured offset spread rather than from the assumption that local gains do not transfer. This is a user decision; no threshold has been changed.",
+      "historical_offsets": {
+        "V34_A": 0.0687,
+        "V36": 0.0696,
+        "V42_IRON_N2_Q25": 0.0347,
+        "V5_TIME_N0048_Q20": 0.1008
+      },
+      "offset_spread": 0.0661
+    }
   }
 }

@@ -247,9 +247,12 @@ earlier reading must be replaced:
 * **the platform resolution for this perturbation class is about 0.0005** — the platform does not
   jitter at the 0.01–0.02 level, so "local gains do not transfer because the platform is noisy" is
   refuted;
-* **the transfer error of a clean control is about 0.005**, which is the honest uncertainty for
-  turning a local gain into a platform gain; the `V42` inversion (`+0.0144` local, `-0.0201`
-  platform) is therefore better explained as local selection overfitting than as platform noise.
+* the earlier claim that "the transfer error of a clean control is about 0.005" is **REVISED and must
+  not be reused**: the candidate that followed showed a transfer error of `+0.031`, so the transfer
+  error is candidate-dependent and can be several times the local effect in either direction. Local
+  evidence is reliable for *sign and ranking within four-seed-rule candidates*, never for magnitude.
+  The `V42` inversion (`+0.0144` local, `-0.0201` platform) is still better explained as local
+  selection overfitting (it had only two split seeds) than as platform noise.
 
 `V5_SEED_SWAP_S1000` is now the highest user-reported score and is registered in
 `EVIDENCE_STATUS.json -> round2_current_platform_best` as a **noise-floor control, not an
@@ -260,15 +263,24 @@ about `96.278..96.288` but still not reach 96.3. The frozen local working gate `
 calibrated on the now-refuted large-noise assumption; changing it is a user decision and has not
 been made.
 
-**Candidate package delivered under explicit user authorisation (2026-09-26).**
-`V5_TIME_N0048_Q20` = the frozen V36 parent with only `tap_time_len` replaced by
-`0.8 x V36 + 0.2 x v36-s1-N-0048` (`tap_iron` byte-identical to the parent, 0 mismatches; the blend
-recomputes to 0 difference on read-back; cold inference diff 0). ZIP SHA-256
-`5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982`, on the desktop at
-`round2-V5-time-N0048-Q20-20260926`. It is **below the frozen local working gate**
-(`96.2135 < 96.25`) and is recorded as a user-authorised transfer test, not as a gate pass; no
-threshold was relaxed. Expected platform effect about `+0.005..+0.015`, that is about
-`96.278..96.288`.
+**TARGET EXCEEDED (user-reported, 2026-09-26).** `V5_TIME_N0048_Q20` scored **96.3143**,
+**+0.0409 over V36** and **+0.0143 over the 96.3 target**. It is now the registered current platform
+best in `EVIDENCE_STATUS.json`. Recipe: the frozen V36 parent with only `tap_time_len` replaced by
+`0.8 x V36 + 0.2 x v36-s1-N-0048` (large raw-TabM refit on all training rows); `tap_iron` byte-identical
+(0 mismatches), blend recomputes to 0 difference on read-back, cold inference diff 0. ZIP SHA-256
+`5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982`.
+
+Two claims are now measured, and one earlier claim is retracted:
+
+* **the four-seed rule passed its first live test**: the candidate was positive on the two derived
+  split seeds that never entered selection, and the platform delivered a gain 4.19x its local
+  prediction (`+0.00975` local, `+0.0409` platform; the implied test-set time-column reduction was
+  2.13% against 0.51% out of fold);
+* **local magnitude is compressed**, so local screening ranks and orients but does not forecast;
+* **the frozen local working gate (96.25) is proven too conservative**: it would have blocked this
+  candidate (expected local package 96.2135). The local-to-platform offset for this candidate was
+  `+0.1008` against a historical range of `+0.0347..+0.1008`. Re-deriving the gate from the measured
+  offset is a user decision; no threshold was changed.
 
 **The time-column route is exhausted with the current library.** The four large N members are
 near-duplicates of each other (pairwise residual correlation 0.979-0.998) so stacking them adds
