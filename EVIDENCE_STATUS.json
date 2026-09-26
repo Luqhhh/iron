@@ -7871,6 +7871,27 @@
     "g0": "PASS_976_LOCKED_TESTS",
     "g1": "TARGET_EXCEEDED_PLATFORM_96_3143_USER_REPORTED",
     "new_fits_total_this_round": 4,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "resolution_analysis_2026_09_26": {
+      "method": "paired row bootstrap (2000 replicates) of the time-column blend against the released column, seeds 42/3407, then scaled by sqrt(2754/322) to the 322-row test set",
+      "local_delta_point_estimate": 0.01023,
+      "sd_delta_at_2754_rows": 0.00397,
+      "sd_delta_at_322_rows": 0.01161,
+      "sd_score_level_at_322_rows": 0.11854,
+      "bootstrap_share_delta_positive": 0.997,
+      "observed_platform_delta": 0.0409,
+      "observed_delta_in_sigma": 3.5,
+      "minimum_detectable_delta_95pct_at_322_rows": 0.02276,
+      "correction": "The earlier statement \"platform resolution is about 0.0005\" is WRONG and is retracted. That measurement was the observed change produced by one particular perturbation (a training-seed shift), not the platform resolution. The correct A/B resolution for two packages scored on the same fixed 322 test rows is a PAIRED comparison whose sampling sd is about 0.0116, so the 95% minimum detectable difference is about 0.0228.",
+      "consequences": [
+        "the delivered +0.0409 is 3.5 sigma and is therefore real",
+        "any single-column improvement below about 0.023 is indistinguishable from row-sampling noise on 322 rows",
+        "this explains why the V42 candidate (+0.0144 local) could not transfer and why several 0.005-0.015 candidates were unreadable",
+        "the correct strategic bar is a LARGE structural gain (>0.02), not member tweaking at the 0.005 level",
+        "the level error bar (sd 0.119) is irrelevant for A/B comparison because the platform scores on the same fixed rows; only the paired difference sd matters"
+      ],
+      "sanity_check": "the per-cell spread of the same delta (sd 0.0143 over ten 551-row cells) is the same order, as expected",
+      "evidence": "derived from local/runs/round2-v5-error-covariance/time-n-family-r1 (no fit spent; recompute with the same script)"
+    }
   }
 }

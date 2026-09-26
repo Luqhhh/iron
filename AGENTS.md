@@ -336,3 +336,23 @@ incremental blend gain, promote under the four-seed rule, and treat any submissi
 experiment. The only bounded experiment left with a near-neutral prior is an `alpha = 0.25` probe of
 the current best (`-0.0005` score against `alpha = 0.20` locally), and it is only worth a slot if the
 platform keeps the best score rather than the latest submission.
+
+### Resolution correction (2026-09-26, after the closure section)
+
+The closure section's claim that "the platform resolution for this perturbation class is about 0.0005" was
+**wrong and is retracted**. That number was the *observed change* produced by one particular perturbation (a
+training-seed shift), not the platform's resolving power. A paired row bootstrap of the delivered blend
+against the released column (2000 replicates, seeds 42/3407, scaled to the 322-row test set) gives:
+
+| quantity | value |
+|---|---:|
+| sd of the paired delta at 2754 rows | 0.00397 |
+| **sd of the paired delta at 322 rows** | **0.0116** |
+| 95% minimum detectable delta on 322 rows | **0.0228** |
+| observed platform delta (+0.0409) | **3.5 sigma** |
+| sd of the score *level* at 322 rows | 0.119 (irrelevant for A/B: the platform scores the same fixed rows, so the level noise cancels) |
+
+The strategic consequence is sharper than the earlier picture: a single-column improvement must be worth
+**more than about 0.023** to be distinguish-able from row-sampling noise at all. That is why `V42`'s `+0.0144`
+local gain could not transfer and why every `+0.005..0.015` candidate was unreadable, and it means the only
+strategy with a positive prior is a **large structural gain**, not member tweaking.
