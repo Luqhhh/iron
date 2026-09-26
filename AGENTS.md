@@ -581,3 +581,11 @@ slopes. For a direction already validated as positive on the platform, a platfor
   authorization. No combined file was created.
 - Evidence: docs/round2_v12/PLATFORM_BOUNDARIES.md. Preserve V7 as the pending
   isolated test; do not reinterpret upper-envelope intersections as optima.
+
+### Stop after V16 (2026-09-27, explicit user instruction)
+
+The user instructed **v16完成后停止后续工作**. Complete the frozen V16
+sequential-mask development, confirmation only if earned, audits and normal
+commit/push. Then stop further optimization and pause the active goal. Do not
+start V17 or another round without a subsequent explicit user resumption.
+This does not declare the >96.4 objective achieved.

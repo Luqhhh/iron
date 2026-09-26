@@ -11463,5 +11463,44 @@
     "agent_uploads": 0,
     "promotion_or_release_authorization": false,
     "next_action": "V7 original package feedback; investigate new directions. Do not claim the two measured affine families reach >96.4 by increasing iron weight >=0.5 and time alpha in [0,1]. No dense alpha search or new package authorized."
+  },
+  "round2_v16_sequential_masks_2026_09_27": {
+    "status": "frozen_ready_for_development",
+    "spec": "configs/round2_v16/SPEC.yaml",
+    "preregistration": "docs/round2_v16/PREREGISTRATION.md",
+    "platform_reference": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "recipes": [
+      "uniform_masks",
+      "sparse_masks"
+    ],
+    "G0": {
+      "targeted_tests_passed": 17,
+      "reference_preflight": "local/reports/v16-reference-preflight-r1.json",
+      "reference_preflight_sha256": "6297f23e6d2c600027592560c2859e83eb8e57f73cbf49205b39cf8c4a19ed6b",
+      "reference_files": 83,
+      "implementation": "pytorch-tabnet==4.1.0; source only, no pretrained weights or extra data",
+      "locked_python312_tests_passed": 1109,
+      "warnings": 23,
+      "test_log": "local/reports/v16-python312-tests-r1.log",
+      "test_log_sha256": "fdac93cd657ed4b3436555824582ab3aa5c0c0e0852b85ae5da2b05adb4368f5"
+    },
+    "budget": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "conditional_confirmation_outer_fits_max": 10,
+      "full_data_fits": 0,
+      "workers": 8
+    },
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false,
+    "user_stop_instruction": {
+      "message": "v16完成后停止后续工作",
+      "action": "Finish the frozen V16 development, earned confirmation if any, audits and publication; then pause goal work without starting V17."
+    }
   }
 }
