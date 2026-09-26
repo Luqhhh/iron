@@ -7732,11 +7732,48 @@
       }
     },
     "method_conclusion": {
-      "finding": "rho and accuracy ratio are NOT the operative signature",
-      "why": "the winner worked because blending it helped in BOTH nested fold directions at a stable alpha; the probe matched the winner on rho and ratio and failed exactly that property",
-      "consequence": "the V6 signature was under-specified; the projected-gain criterion is what prevented a false positive",
-      "recommendation": "a future round must define the signature as the blend property itself: per-direction alpha stability, same sign in both directions, and a small-alpha gain"
+      "finding": "the operative criterion is the plain mean nested gain at folds 0/1; the proposed blend-stability signature is refuted",
+      "calibration": {
+        "witnesses": 14,
+        "composition": "1 platform-validated winner, 6 complete-coverage time members, 4 V3.6 iron members, 2 iron capacity probes, plus the winner family siblings",
+        "not_discriminating": [
+          "residual_correlation",
+          "accuracy_ratio",
+          "row_win_rate",
+          "mean_absolute_error",
+          "per_direction_alpha_stability",
+          "per_direction_gain_sign_agreement"
+        ],
+        "discriminating": [
+          "mean_nested_gain_at_folds01"
+        ],
+        "ordering_by_mean_gain": {
+          "time_raw_tabm_large": [
+            0.0113,
+            0.0201
+          ],
+          "time_raw_tabm_small_medium": [
+            0.001,
+            0.0041
+          ],
+          "iron_ple_mlp_small": [
+            -0.0019,
+            -0.0007
+          ],
+          "iron_probe_raw_tabm_large": -0.0014,
+          "iron_probe_ple_tabm_large": -0.0522
+        }
+      },
+      "retracted": "the V6 RESULTS section 2.1/2.2 diagnosis that per-direction alpha stability separates success from failure is withdrawn: it compared the winner alpha measured over 10 cells (0.20/0.21) with the probe alpha measured on folds 0/1 (0.18/0.05). Under one protocol (folds 0/1) the winner is LESS stable (|delta alpha| 0.22, opposite signs) than the failed probe (0.13). Single-fold alpha estimates for the winner range 0.12-0.38 and only converge with sample size (2 folds 0.31, 3 folds 0.30, 5 folds 0.24, 10 cells 0.20/0.21).",
+      "real_problem": "the folds 0/1 screen (1102 rows, one split seed) is too noisy to rank candidates, yet it carried every V5 and V6 selection decision"
     },
-    "current_platform_best_unchanged": "V5_TIME_N0048_Q20"
+    "current_platform_best_unchanged": "V5_TIME_N0048_Q20",
+    "direction_d_reframed": {
+      "premise_refuted": "the new-signature re-screen assumed alpha stability discriminates; it does not",
+      "D1": "four-split-seed replication of the six complete-coverage small/medium time members (cached baselines, candidate fits only)",
+      "D2": "complete coverage for one best setting of each unrefined distinct time family",
+      "D3": "one platform slot on an alpha up-probe (alpha 0.30) of the validated winner, since the local curve is flat between 0.20 and 0.25 and the platform amplified local magnitude 4.19x in an unknown direction",
+      "status": "PENDING_USER"
+    }
   }
 }
