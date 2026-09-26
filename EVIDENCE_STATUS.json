@@ -7684,13 +7684,52 @@
       "iron_base_wmape_folds01": 0.036498,
       "probe_gate_passed": false,
       "stage_a2_full_screen_unlocked": false,
-      "diagnosis": "the direct analogue of the winning member matched its marginal signature (rho 0.896 vs 0.888, accuracy ratio 1.095 vs 1.060) but produced no stable blend gain: the two nested fold directions disagree in sign and diverge with alpha (+0.0068 at alpha 0.2 in one direction, -0.0078 in the other). It is better on only 41.7% of rows, has a larger mean absolute error (21.31 vs 19.47) and a positive mean signed residual (+1.03 against -0.58), so its correlation comes from shared error structure rather than complementary error.",
+      "diagnosis": "the direct analogue of the winning member matched its marginal signature (rho 0.896 vs 0.888, accuracy ratio 1.095 vs 1.060) but produced no stable blend gain: the two nested fold directions disagree in sign and diverge with alpha (+0.0068 at alpha 0.2 in one direction, -0.0078 in the other; per-direction optima 0.18 vs 0.05). A follow-up measurement also refuted the first explanation: the WINNER is equally worse on most rows (better on 47.5% vs the probe 41.7%) and equally has a larger mean absolute error (5.11 vs 4.82 for the winner), so row-win rate and MAE are not discriminators either. The only quantities that separate success from failure are the stability of the per-direction blend weight and the sign agreement of the per-direction gain.",
       "verdict": "the iron capacity lever is not supported at its most favourable single test; the space is not screened further",
       "evidence": [
         "local/runs/round2-v6-iron-capacity-networks/probe-r1/fit_ledger.jsonl",
         "local/runs/round2-v6-iron-capacity-networks/stage-a-r1/probe.json",
         "local/runs/round2-v6-iron-capacity-networks/stage-a-r1/probe.csv"
-      ]
+      ],
+      "discriminators": {
+        "not_discriminating": [
+          "residual_correlation",
+          "accuracy_ratio",
+          "row_win_rate",
+          "mean_absolute_error"
+        ],
+        "discriminating": [
+          "per_direction_optimal_alpha_stability",
+          "per_direction_gain_sign_agreement",
+          "projected_nested_gain"
+        ],
+        "winner": {
+          "trial_id": "v36-s1-N-0048",
+          "per_direction_alpha": [
+            0.2,
+            0.21
+          ],
+          "row_win_rate": 0.475,
+          "mae_candidate_vs_base": [
+            5.107,
+            4.819
+          ],
+          "projected_gain": 0.0114
+        },
+        "probe": {
+          "trial_id": "v6-s1-N-0024",
+          "per_direction_alpha": [
+            0.18,
+            0.05
+          ],
+          "row_win_rate": 0.417,
+          "mae_candidate_vs_base": [
+            21.312,
+            19.47
+          ],
+          "projected_gain": -0.0014
+        }
+      }
     },
     "method_conclusion": {
       "finding": "rho and accuracy ratio are NOT the operative signature",
