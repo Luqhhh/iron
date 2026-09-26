@@ -1,0 +1,67 @@
+version: round2-v8-feature-attention
+date: 2026-09-26
+platform_target: 96.4
+platform_reference: {candidate: V6_PORT_TIME_A35, score: 96.3366, source: user_reported}
+data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden}
+runtime_versions: {torch: 2.14.0+cpu, rtdl-revisiting-models: 0.0.2, numpy: 2.2.6, scikit-learn: 1.8.0}
+split_seeds: [42, 3407]
+folds: 5
+recipes:
+  ft_uniform: {attention: uniform}
+  ft_learned: {attention: learned}
+candidates:
+  tap_iron: [ft_uniform, ft_learned]
+  tap_time_len: [ft_uniform, ft_learned]
+tie_preference_by_target:
+  tap_iron: [ft_uniform, ft_learned]
+  tap_time_len: [ft_uniform, ft_learned]
+reference_by_target: {tap_iron: A35_IRON, tap_time_len: A35_TIME}
+reference_time_alpha: 0.35
+secondary_reference_time_alpha: 0.20
+v7_reference:
+  role: secondary_local_candidate_pool_not_platform_best
+  time_column: 0.5*A35_time+0.5*V7_tabm_plr001
+  prediction_directory: local/runs/round2-v7-periodic-networks/development-r1
+  recipe: tabm_plr001
+  blend_weight: 0.5
+training:
+  random_seed: 42
+  inner_seed: 42
+  width: 96
+  blocks: 2
+  heads: 4
+  attention_dropout: 0.2
+  ffn_hidden_multiplier: 1.3333333333333333
+  ffn_dropout: 0.1
+  residual_dropout: 0.0
+  learning_rate: 0.0001
+  weight_decay: 0.00001
+  loss: mse
+  optimizer: adamw_author_parameter_groups
+  batch_size: 256
+  max_epochs: 240
+  patience: 25
+  min_delta: 0.00001
+  early_stop_metric: standardized_mae
+  preprocessing: inner_training_only_then_refit_outer_training
+  refit: fresh_initialization_full_outer_training_at_selected_epoch
+blend_grid: [0.0, 0.05, 0.1, 0.2, 0.35, 0.5, 0.75, 1.0]
+budget:
+  development_outer_fits: 40
+  optimizer_runs_per_outer_fit: 2
+  workers: 8
+  full_data_fits: 0
+confirmation:
+  max_candidates: 1
+  requires_two_positive_complete_development_seeds_against_a35: true
+  time_also_requires_two_positive_complete_seeds_against_v7: true
+  split_seeds: [7777, 12011]
+  seed_history: previously_used_in_V5_and_V7_not_globally_untouched
+  same_fold_reference_required: true
+promotion:
+  minimum_split_seeds: 4
+  seed_level_paired_lcb95_gt: 0.0
+  all_seed_gains_positive: true
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+release: {packages: 0, agent_uploads: 0}
