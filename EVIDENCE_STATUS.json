@@ -9347,5 +9347,38 @@
       "target_96_4_verified": false
     },
     "uploads": 0
+  },
+  "round2_v11_quantile_representation_2026_09_26": {
+    "status": "development_running",
+    "spec": "configs/round2_v11/SPEC.yaml",
+    "preregistration": "docs/round2_v11/PREREGISTRATION.md",
+    "run": "local/runs/round2-v11-quantile-representation/development-r1",
+    "platform_target": 96.4,
+    "platform_reference": "V6_PORT_TIME_A35",
+    "incremental_references": {
+      "tap_iron": "V9_IRON_candidate_pool",
+      "tap_time_len": "V7_TIME"
+    },
+    "external_pretrained_weights": "forbidden",
+    "G0": {
+      "locked_python312_tests": 1020,
+      "warnings": 23,
+      "test_log": "local/reports/v11-python312-tests-r1.log",
+      "standard_control_max_absolute_difference": 0.0,
+      "control": "local/runs/round2-v11-quantile-representation/development-r1/control.json"
+    },
+    "G1": {
+      "status": "not_yet_evaluated",
+      "no_partial_selection": true
+    },
+    "budget": {
+      "development_outer_fits": 80,
+      "control_outer_fits": 1,
+      "workers": 8,
+      "full_data_fits": 0
+    },
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
