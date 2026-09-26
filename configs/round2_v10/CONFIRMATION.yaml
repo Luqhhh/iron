@@ -1,0 +1,20 @@
+version: round2-v10-smooth-l1-confirmation
+parent_spec: configs/round2_v10/SPEC.yaml
+development_run: local/runs/round2-v10-periodic-loss/development-r1
+selected: {target: tap_time_len, recipe: smooth_l1_01}
+ranking_reference: V7_TIME_candidate_pool
+confirmation_seeds: [7777, 12011]
+seed_history: previously_used_not_new_labels
+reference:
+  v7_run: local/runs/round2-v7-periodic-networks/confirmation-r1
+  v7_independent_audit: audit-r2.json
+  v5_time_cache: local/runs/round2-v5-error-covariance/replication-r1
+  v7_time: 0.5*A35_time+0.5*V7_tabm_plr001
+budget: {candidate_outer_fits: 10, baseline_outer_fits: 0, workers: 4, full_data_fits: 0}
+promotion:
+  minimum_split_seeds: 4
+  every_seed_positive: true
+  seed_level_lcb95_positive: true
+  folds: descriptive_only
+  local_working_gate: 96.25
+release: {packages: 0, uploads: 0}

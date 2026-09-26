@@ -8965,7 +8965,7 @@
     }
   },
   "round2_v10_periodic_loss_2026_09_26": {
-    "status": "development_running",
+    "status": "development_complete_confirmation_selected",
     "spec": "configs/round2_v10/SPEC.yaml",
     "preregistration": "docs/round2_v10/PREREGISTRATION.md",
     "run": "local/runs/round2-v10-periodic-loss/development-r1",
@@ -8980,11 +8980,113 @@
         "log": "local/reports/v10-python312-tests-r1.log"
       },
       "control_mse_replay_max_absolute_difference": 0.0,
-      "control_artifact": "local/runs/round2-v10-periodic-loss/development-r1/control.json"
+      "control_artifact": "local/runs/round2-v10-periodic-loss/development-r1/control.json",
+      "independent_audit": {
+        "status": "passed",
+        "artifact": "local/runs/round2-v10-periodic-loss/development-r1/audit-r1.json",
+        "prediction_count": 20,
+        "arithmetic_tolerance": 1e-12
+      }
     },
     "G1": {
-      "status": "not_yet_evaluated",
-      "no_partial_selection": true
+      "status": "development_only",
+      "records": [
+        {
+          "recipe": "mae",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0151907857572766,
+                "3407": 0.017434529461335113
+              },
+              "mean": 0.016312657609305857,
+              "lcb95": 0.009229437504284854,
+              "positive_folds": 8,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              }
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.015652464941262392,
+                "3407": 0.01719987074650202
+              },
+              "mean": 0.016426167843882206,
+              "lcb95": 0.011541199970557886,
+              "positive_folds": 8,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.5
+              }
+            },
+            "V7_TIME": {
+              "seed_gains": {
+                "42": 0.0010005981550257476,
+                "3407": 0.0009340871750205398
+              },
+              "mean": 0.0009673426650231437,
+              "lcb95": 0.0007573757646479431,
+              "positive_folds": 7,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.2
+              }
+            }
+          },
+          "confirmation_eligible": true,
+          "development_package_score": 96.23054301999926
+        },
+        {
+          "recipe": "smooth_l1_01",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.016724972778266803,
+                "3407": 0.024972582725815776
+              },
+              "mean": 0.02084877775204129,
+              "lcb95": -0.005187902147351823,
+              "positive_folds": 9,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              }
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.01831544130073151,
+                "3407": 0.024274202822289134
+              },
+              "mean": 0.021294822061510323,
+              "lcb95": 0.0024837522703494395,
+              "positive_folds": 8,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              }
+            },
+            "V7_TIME": {
+              "seed_gains": {
+                "42": 0.002688684673185851,
+                "3407": 0.0034491403687274963
+              },
+              "mean": 0.0030689125209566737,
+              "lcb95": 0.000668248371172013,
+              "positive_folds": 8,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.2
+              }
+            }
+          },
+          "confirmation_eligible": true,
+          "development_package_score": 96.23264390227084
+        }
+      ],
+      "selected_confirmation": "smooth_l1_01",
+      "development_package_score": 96.23264390227084,
+      "local_working_gate_met": false
     },
     "budget": {
       "control_outer_fits": 1,
@@ -8993,6 +9095,12 @@
     },
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "confirmation": {
+      "spec": "configs/round2_v10/CONFIRMATION.yaml",
+      "status": "selected_not_started",
+      "candidate_outer_fit_budget": 10,
+      "baseline_outer_fit_budget": 0
+    }
   }
 }
