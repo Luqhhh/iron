@@ -10805,7 +10805,7 @@
     "evidence": "docs/round2_v6/RESULTS.md section 13"
   },
   "round2_v15_task_experts_2026_09_27": {
-    "status": "development_complete_gated_time_selected_for_confirmation",
+    "status": "confirmation_running_for_gated_time_only",
     "spec": "configs/round2_v15/SPEC.yaml",
     "preregistration": "docs/round2_v15/PREREGISTRATION.md",
     "mechanism_source": "https://research.google/pubs/modeling-task-relationships-in-multi-task-learning-with-multi-gate-mixture-of-experts/",
@@ -11104,7 +11104,7 @@
     },
     "results": "docs/round2_v15/RESULTS.md",
     "confirmation": {
-      "status": "frozen_preflight_passed_before_fits",
+      "status": "running",
       "spec": "configs/round2_v15/CONFIRMATION.yaml",
       "selected": {
         "target": "tap_time_len",
@@ -11122,7 +11122,13 @@
       "reference_files": 105,
       "locked_python312_tests": 1082,
       "warnings": 23,
-      "test_log": "local/reports/v15-confirmation-python312-tests-r1.log"
+      "test_log": "local/reports/v15-confirmation-python312-tests-r1.log",
+      "live_process_at_observation": {
+        "pid": 230115,
+        "exec_session": 81832,
+        "log": "local/reports/v15-confirmation-r1.log",
+        "note": "Revalidate process/session before treating this observation as live."
+      }
     }
   }
 }
