@@ -7078,7 +7078,7 @@
     "promotion": "none"
   },
   "round2_v5": {
-    "status": "STAGE1_STAGE2A_STAGE2B_EXECUTED_CANDIDATE_POOL_ENTRY_NO_PACKAGE",
+    "status": "EXECUTED_PROMOTED_CANDIDATE_PACKAGE_DELIVERED_PER_USER_AUTHORISATION",
     "date": "2026-09-25",
     "branch": "round2-v5-error-covariance-resolution",
     "preregistration_commit": "f0d7900",
@@ -7354,6 +7354,59 @@
       "fold criterion changed from an absolute count to the specification fraction (8/10), so 20 cells require 16",
       "fold level restored to descriptive_only as the specification states; it is reported in decision.fold_criteria, not used to refuse admission by default",
       "the replication initially compared the raw candidate instead of the weighted blend (producing -0.11..-0.14); fixed before any conclusion was recorded"
-    ]
+    ],
+    "candidate_release": {
+      "name": "V5_TIME_N0048_Q20",
+      "status": "USER_AUTHORISED_TRANSFER_TEST_BELOW_FROZEN_LOCAL_GATE",
+      "parent": "V36_USER_REQUESTED_OUTER_FAILED",
+      "changed_target": "tap_time_len",
+      "unchanged_target": "tap_iron",
+      "alpha": 0.2,
+      "alpha_basis": "grid optimum of the mean WMAE over all four available split seeds; nested per-seed weights 0.20/0.21/0.20/0.20",
+      "member": {
+        "trial_id": "v36-s1-N-0048",
+        "kind": "v3_6_trial",
+        "line": "N",
+        "recipe": "large raw-TabM, frozen V3.6 specification, refit on all 2754 training rows"
+      },
+      "per_seed_gain_score": {
+        "42": 0.01233,
+        "3407": 0.0082,
+        "7777": 0.0097,
+        "12011": 0.00876
+      },
+      "mean_gain_score": 0.00975,
+      "seed_level_positive_seeds": 4,
+      "fold_profile": "14/20 positive (descriptive_only)",
+      "promotion_rule": "PASSED_FOUR_SPLIT_SEED_RULE",
+      "local_working_gate": 96.25,
+      "expected_local_package": 96.2135,
+      "below_local_gate": true,
+      "authorisation": "explicit user choice on 2026-09-26 (option A) after the noise-floor measurement showed platform resolution about 0.0005 and a clean-control transfer error of about 0.005",
+      "expected_platform_effect": "about +0.005..+0.015 (point estimate +0.01) => about 96.278..96.288, a likely new best but still below 96.3",
+      "package_dir": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
+      "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926",
+      "zip_name": "Luqhhh_bf_tap_predict_round2.zip",
+      "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
+      "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
+      "verification": {
+        "rows": 322,
+        "ids_match_template_order": true,
+        "unique_ids": 322,
+        "unchanged_column_byte_identical": true,
+        "unchanged_column_mismatches": 0,
+        "recomputed_blend_max_abs_diff": 0.0,
+        "changed_column_mean_abs_diff_vs_parent": 0.4442,
+        "cold_inference": {
+          "reversed_max_abs_diff": 0.0,
+          "subset_max_abs_diff": 0.0,
+          "passed": true
+        }
+      },
+      "evidence": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20/release-evidence.json",
+      "agent_uploads": 0,
+      "platform_feedback": null
+    },
+    "negative_result_this_round": "the four large N members are near-duplicates of each other (pairwise residual correlation 0.979-0.998) and adding JM1 to N-0048 adds nothing (weight 0 or 0.013), so the time-column error-covariance lever is exhausted at +0.0098 with the current library"
   }
 }
