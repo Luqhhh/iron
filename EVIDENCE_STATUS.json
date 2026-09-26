@@ -8717,7 +8717,17 @@
       "locked_python312_tests_passed": 990,
       "warnings": 3,
       "cold_process_synthetic_test": "PASS",
-      "attention_attribution_tests": "PASS"
+      "attention_attribution_tests": "PASS",
+      "reference_audit": {
+        "status": "PASS",
+        "member_seed_records": 10,
+        "current_source_hashes": 15,
+        "historical_identity_and_fold_metrics_verified": true,
+        "historical_byte_identity_not_claimed": true,
+        "artifact": "local/runs/round2-v8-feature-attention/development-r1/reference-audit-r2.json",
+        "parser_failure_preserved": "local/runs/round2-v8-feature-attention/development-r1/reference-audit-r1-failure.json",
+        "new_fits": 0
+      }
     },
     "G1": "pending",
     "packages": 0,

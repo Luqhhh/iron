@@ -15,6 +15,16 @@ no existing dependency version was changed and no pretrained weight was used.
 The V7 secondary reference was checked against its original data/fold identities
 and per-fold prediction hashes before the batch launched. Comparisons will
 report A35, Q20, and the already-qualified V7 time column separately.
+The N-0048 time reference and all four V36 experts were additionally checked
+against their historical ledgers: ten member/seed records reproduce the original
+data identity, five-fold assignment, pooled WMAPE and every fold WMAPE to 1e-12.
+Private `reference-audit-r2.json` records the checks and current hashes of 15
+source files. These historical ledgers did not store prediction-file hashes;
+this is identity/metric verification, not a claim of historical byte identity.
+The first audit parser expected `fold_seed` in the older V36 ledger, which uses
+`batch_id`; that parser failure is preserved separately. No source prediction
+was changed and no additional fit was needed.
+
 An increment over A35 that does not survive the V7 comparison cannot trigger
 time-side confirmation. Existing four-seed, local working-gate and release
 constraints remain unchanged. No models were fitted on all 2754 training rows,
