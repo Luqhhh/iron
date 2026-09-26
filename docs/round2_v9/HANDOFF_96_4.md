@@ -113,3 +113,9 @@ passed independent audit. Joint training improves PLE iron standalone quality,
 but every recipe/target selects zero weight over V12 iron or V7 time at both
 development splits. No confirmation candidate, full-data fit or package resulted.
 Delivered V7/V12 feedback is pending; platform >96.4 remains unverified.
+
+The separately recorded alpha feedback updates the current user-reported platform
+best to A60=96.3465 (A45=96.3438, A72=96.3425). Historical A35 references above
+remain frozen experiment comparisons, not the current platform incumbent. See
+[alpha feedback](../round2_v6/RESULTS.md#13-α-线搜索反馈a60-成为当前最佳2026-09-27).
+V12 then V7 remain the delivery priorities; their original packages are unchanged.

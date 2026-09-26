@@ -57,5 +57,8 @@ not an isolated measurement of gradient sharing alone.
 The zero increment applies to this preregistered candidate pool and sparse blend
 grid; no global impossibility claim follows. V12 and V13 historical results and
 all thresholds remain unchanged. Delivered V7 and V12 remain pending platform
-feedback; current reported best remains A35=96.3366. A score above 96.4 is still
-unverified and the user goal remains active.
+feedback. Concurrently registered alpha-line feedback (commit `c7ec56f`) makes
+A60=96.3465 the current user-reported platform best, replacing A35=96.3366.
+V14 was frozen earlier and retains its A35-derived comparisons; no post-result
+reference substitution was made. A score above 96.4 is still unverified and the
+user goal remains active.

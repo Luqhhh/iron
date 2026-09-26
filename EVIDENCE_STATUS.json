@@ -10726,7 +10726,14 @@
       "platform_score": null,
       "interpretation": "Joint PLE improves standalone iron but leaves zero measured incremental blend gain over delivered local references under the frozen sparse grid."
     },
-    "results": "docs/round2_v14/RESULTS.md"
+    "results": "docs/round2_v14/RESULTS.md",
+    "platform_reference_at_closure": {
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465,
+      "source": "user_reported_not_independently_verified",
+      "feedback_commit": "c7ec56f",
+      "frozen_local_comparisons_unchanged": true
+    }
   },
   "round2_v6_alpha_feedback_2026_09_27": {
     "date": "2026-09-27",
