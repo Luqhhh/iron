@@ -8975,9 +8975,10 @@
     "ranking_reference": "V7_TIME_candidate_pool",
     "G0": {
       "locked_python312_tests": {
-        "passed": 1005,
+        "passed": 1007,
         "warnings": 23,
-        "log": "local/reports/v10-python312-tests-r1.log"
+        "log": "local/reports/v10-confirm-python312-tests-r1.log",
+        "final_targeted_guards_passed": 2
       },
       "control_mse_replay_max_absolute_difference": 0.0,
       "control_artifact": "local/runs/round2-v10-periodic-loss/development-r1/control.json",
@@ -8986,6 +8987,11 @@
         "artifact": "local/runs/round2-v10-periodic-loss/development-r1/audit-r1.json",
         "prediction_count": 20,
         "arithmetic_tolerance": 1e-12
+      },
+      "confirmation_reference_preflight": {
+        "status": "passed",
+        "verified_files": 32,
+        "artifact": "local/reports/v10-confirm-reference-preflight-r2.json"
       }
     },
     "G1": {
@@ -9098,7 +9104,7 @@
     "goal_achieved": false,
     "confirmation": {
       "spec": "configs/round2_v10/CONFIRMATION.yaml",
-      "status": "selected_not_started",
+      "status": "implementation_verified",
       "candidate_outer_fit_budget": 10,
       "baseline_outer_fit_budget": 0
     }

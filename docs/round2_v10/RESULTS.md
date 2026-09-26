@@ -6,7 +6,7 @@ All **20/20** candidate outer fits and the one predeclared MSE control completed
 without failure. None reached the240-epoch cap. The MSE time seed42/fold0 replay
 is **bit-identical** to V7 (maximum absolute prediction difference0).
 
-Locked Python3.12 full test path: **1005 passed, 23 warnings**. The new tests
+Locked Python3.12 full test path: **1007 passed, 23 warnings**. The new tests
 verify non-cancelling per-head losses and exact gradients, full MSE training
 compatibility, train-only preprocessing, outer-label isolation, deterministic
 refits, row-independent inference and exact cold-process predictions.
@@ -39,6 +39,12 @@ The selected direction's development package score, retaining A35 iron, is
 **96.232644 <96.25**. Its per-seed scores are96.233749/96.231539. Even if the
 four-seed check passes, it remains in the candidate pool under the unchanged
 absolute gate. Formal development classification is not a release permission.
+
+The confirmation implementation additionally refuses missing/duplicate candidate
+pools, foreign or incomplete seed/fold coverage, and selection that loses its
+V7-relative incremental gate. A zero-fit preflight verifies32 reference files
+and exact agreement with the frozen development reference hashes. Two targeted
+selection guards also pass after the final identity-check additions.
 
 The next ten fits use seeds7777/12011 and the existing verified same-fold V7
 and V5 reference caches, with no new baseline fits. These are previously used
