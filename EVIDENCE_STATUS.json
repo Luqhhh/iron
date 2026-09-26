@@ -8698,7 +8698,7 @@
     "audit": "PASS; full gradient coverage and direct pooled arithmetic; audit-r1.json"
   },
   "round2_v8_feature_attention_2026_09_26": {
-    "status": "confirmation_running",
+    "status": "confirmation_complete_failed_four_seed_gate",
     "platform_target": 96.4,
     "spec": "configs/round2_v8/SPEC.yaml",
     "preregistration": "docs/round2_v8/PREREGISTRATION.md",
@@ -8740,10 +8740,16 @@
         "status": "PASS",
         "maximum_absolute_difference": 0.0,
         "artifact": "local/runs/round2-v8-feature-attention/confirmation-r1/control.json"
+      },
+      "confirmation_independent_audit": {
+        "status": "passed",
+        "artifact": "local/runs/round2-v8-feature-attention/confirmation-r1/audit-r1.json",
+        "candidate_prediction_files": 20,
+        "arithmetic_tolerance": 1e-12
       }
     },
     "G1": {
-      "status": "development_only_small_increments",
+      "status": "four_seed_confirmation_failed",
       "records": [
         {
           "target": "tap_iron",
@@ -8802,15 +8808,34 @@
       "selected_target": "tap_iron",
       "selected_recipe": "ft_learned",
       "spec": "configs/round2_v8/CONFIRMATION.yaml",
-      "status": "reference_control_passed_candidate_fitting",
+      "status": "complete",
       "four_seed_pass": false,
       "run": "local/runs/round2-v8-feature-attention/confirmation-r1",
       "baseline_outer_recipe_fit_budget": 10,
-      "candidate_outer_fit_budget": 10
+      "candidate_outer_fit_budget": 10,
+      "seed_gains": {
+        "42": 0.003865678936661593,
+        "3407": 0.0018453920851916467,
+        "7777": 0.002358047239382835,
+        "12011": -0.000493835536970258
+      },
+      "mean_gain": 0.0018938206810664542,
+      "lcb95": -0.00023366182213648478,
+      "alphas": {
+        "42": 0.1,
+        "3407": 0.1,
+        "7777": 0.1,
+        "12011": 0.1
+      },
+      "positive_folds": 14,
+      "total_folds": 20,
+      "fold_level": "descriptive_only",
+      "development_package_score": 96.21159423848879,
+      "local_working_gate_met": false
     }
   },
   "round2_v9_realmlp_2026_09_26": {
-    "status": "development_complete_confirmation_selected",
+    "status": "confirmation_complete_candidate_pool_below_working_gate",
     "platform_target": 96.4,
     "spec": "configs/round2_v9/SPEC.yaml",
     "preregistration": "docs/round2_v9/PREREGISTRATION.md",
@@ -8827,9 +8852,9 @@
     "secondary_iron_diagnostic": "V8_ft_learned_development_blend_not_a_promotion_gate",
     "external_pretrained_weights": false,
     "G0": {
-      "locked_python312_tests_passed": 997,
+      "locked_python312_tests_passed": 999,
       "warnings": 23,
-      "test_log": "local/reports/v9-python312-tests-r1.log",
+      "test_log": "local/reports/v9-confirm-python312-tests-r1.log",
       "inner_native_preprocessing_row_identity": "PASS",
       "cold_process_synthetic_predictions": "bit_identical_both_recipes",
       "existing_distributions_preserved": 106,
@@ -8840,10 +8865,17 @@
         "prediction_count": 40,
         "artifact": "local/runs/round2-v9-realmlp/development-r1/audit-r1.json",
         "arithmetic_tolerance": 1e-12
-      }
+      },
+      "confirmation_independent_audit": {
+        "status": "passed",
+        "artifact": "local/runs/round2-v9-realmlp/confirmation-r1/audit-r1.json",
+        "candidate_prediction_files": 20,
+        "arithmetic_tolerance": 1e-12
+      },
+      "reference_reuse_identity_and_partial_ledger_guards": "PASS"
     },
     "G1": {
-      "status": "development_only",
+      "status": "four_seed_qualified_candidate_pool",
       "records": [
         {
           "target": "tap_iron",
@@ -8906,10 +8938,30 @@
       "spec": "configs/round2_v9/CONFIRMATION.yaml",
       "selected_target": "tap_iron",
       "selected_recipe": "realmlp_td_s",
-      "status": "selected_not_started",
+      "status": "complete",
       "candidate_outer_fit_budget": 10,
       "baseline_outer_fit_budget": 0,
-      "four_seed_pass": false
+      "four_seed_pass": true,
+      "run": "local/runs/round2-v9-realmlp/confirmation-r1",
+      "seed_gains": {
+        "42": 0.005500475267100832,
+        "3407": 0.004964028697353531,
+        "7777": 0.004778827944907013,
+        "12011": 0.0023127037306325954
+      },
+      "mean_gain": 0.004389008909998493,
+      "lcb95": 0.002720911980035273,
+      "alphas": {
+        "42": 0.1,
+        "3407": 0.1,
+        "7777": 0.1,
+        "12011": 0.1
+      },
+      "positive_folds": 15,
+      "total_folds": 20,
+      "fold_level": "descriptive_only",
+      "development_package_score": 96.21400347194779,
+      "local_working_gate_met": false
     }
   }
 }

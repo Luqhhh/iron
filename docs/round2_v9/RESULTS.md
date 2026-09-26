@@ -7,7 +7,7 @@ full-training-partition refitting. Private evidence is in
 
 ## G0
 
-Locked Python 3.12 test path: **997 passed, 23 warnings**, including 20
+Locked Python 3.12 test path: **999 passed, 23 warnings**, including 20
 PyTorch Lightning deprecation warnings from the new synthetic tests.
 Both author recipes pass repeat-fit determinism, reverse/chunk/single-query
 consistency, and exact cold-process prediction equality. The input adapter
@@ -73,18 +73,39 @@ model/source/runtime identity and all reference hashes. Direct arithmetic
 reproduces each of the four reference comparisons, alpha choices, fold and seed
 gains, paired lower bounds and eligibility to 1e-12. No audit fit was needed.
 
-## Confirmation and release boundary
+## Four-seed confirmation: qualified local candidate pool
 
-`configs/round2_v9/CONFIRMATION.yaml` freezes ten candidate fits on seeds7777/12011.
-These are previously used split seeds, not new labels. Same-fold iron references
-will be reused from the ongoing V8 reconstruction: its time control already
-reproduced the old V5 cache with maximum difference0. Each reused fold must be
-complete in the ledger, match its prediction hash, and match data/fold identity.
-No new baseline fit is budgeted. Candidate fitting may proceed while V8 finishes,
-but scoring waits for complete verified references; a time column is never used
-as the iron reference.
+All ten additional candidate fits completed. No new baseline fit was needed:
+V8's ten same-fold baseline files were reused only after their complete ledger
+entries, hashes, row positions, data identity and fixed-recipe identity passed
+checks. A live incomplete final ledger line is ignored until terminated, and
+partial, duplicate or foreign fold coverage cannot trigger evaluation. V8's
+attention candidate failed its quality gate; that does not invalidate its
+separately verified reconstruction of the frozen baseline.
 
-Four positive split seeds and a positive seed-level paired LCB95 remain mandatory;
-fold counts remain descriptive. Current platform best is still user-reported
-A35 = **96.3366**, and the **96.4** objective is unproven. No full-data model,
-package, desktop write or upload occurred.
+| Split seed | A35-relative iron score gain | Held-seed alpha |
+|---|---:|---:|
+| 42 | +0.005500 | 0.10 |
+| 3407 | +0.004964 | 0.10 |
+| 7777 | +0.004779 | 0.10 |
+| 12011 | +0.002313 | 0.10 |
+
+Mean **+0.004389**, seed standard deviation0.001418, seed-level paired LCB95
+**+0.002721**, **4/4** positive seeds: the frozen four-seed rule passes.
+The fold profile is **15/20 positive (75%)**, below the descriptive80% reference;
+per the frozen rule it is disclosed rather than converted into a new veto.
+These are previously used split seeds of the same labelled dataset, not newly
+independent test datasets.
+
+Private `confirmation-r1/audit-r1.json` independently reconstructs all 20
+candidate prediction files, reference identities, sparse-grid choices, fold
+and seed gains and paired lower bound to 1e-12. No audit fit was needed.
+The fixed two-development-seed package score remains **96.214003 <96.25**.
+Disposition: **four-seed-qualified candidate_pool only**. The local working gate
+was not changed and no release exception is inferred from a positive LCB.
+
+This supplies a second measured direction alongside V7 time. It remains a small
+local increment and is not a platform forecast or permission for a two-target
+package. Current platform best remains user-reported **A35 =96.3366**, and the
+**96.4** objective is unproven. No full-data model, package, desktop write or
+upload occurred.

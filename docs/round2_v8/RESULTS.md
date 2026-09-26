@@ -64,24 +64,34 @@ is retained; V36 uses `batch_id`. A premature descriptive iron summary was also
 refused while one fit was pending; the later complete iron summary is retained.
 No original prediction or failed evidence was overwritten.
 
-## Next offline check and release boundary
+## Four-seed confirmation: failed the frozen promotion rule
 
-The selected iron candidate needs same-fold iron baselines at seeds 7777/12011.
-The V5 replication caches contain time only; they cannot be substituted for iron.
-Fresh `V36FixedRecipeFactory` fold fits are therefore required. Before trusting
-new baseline outputs, the first fit's time column will be compared with the
-existing same-fold V5 cache as an engineering control. Both reconstructed
-baseline columns will be preserved, although only the selected iron candidate
-enters confirmation. Execution details are frozen in `CONFIRMATION.yaml` before
-those fits; the V8 model recipe and development decision stay unchanged.
+The first reconstructed same-fold time baseline matched the historical V5
+cache with maximum absolute difference **0**. All ten new baseline recipe fits
+and ten iron candidate fits then completed. Both baseline columns were retained;
+they are usable reference evidence independently of the attention candidate's
+quality result.
 
-Four positive split seeds and a positive seed-level LCB95 remain mandatory;
-fold counts are descriptive only. The local working gate remains 96.25.
+| Split seed | A35-relative iron score gain | Held-seed alpha |
+|---|---:|---:|
+| 42 | +0.003866 | 0.10 |
+| 3407 | +0.001845 | 0.10 |
+| 7777 | +0.002358 | 0.10 |
+| 12011 | -0.000494 | 0.10 |
+
+Mean **+0.001894**, seed standard deviation0.001808, seed-level paired LCB95
+**-0.000234**, **3/4** positive seeds. The result fails both the every-seed-positive
+and positive-LCB conditions. Fold gains are 14/20 positive and descriptive only.
+This frozen compact attention recipe is **not promoted**; its failure is retained,
+with no fallback candidate, extra alpha scan, full-data model or package.
+
+Private `confirmation-r1/audit-r1.json` independently verifies the 20 candidate
+prediction files across development and confirmation, same-fold reference
+identity, reference-control bytes, fit IDs, blend choices, gains and LCB to 1e-12.
+The confirmation's development package score is96.211594, also below96.25.
+Seeds7777/12011 are previously used splits of the same labelled data, not newly
+untouched labels. Source manifests bind recovered source/catalogues, weights,
+configuration files, runtime versions and data/fold identity.
+
 Current platform best remains user-reported **A35 = 96.3366**. The **96.4**
 objective is unproven. No full-data fit, package, desktop write or upload occurred.
-
-The first same-fold reference control **passed with maximum absolute difference
-0** against the frozen V5 time cache. Candidate confirmation fitting has started;
-no four-seed candidate result is yet available. The baseline manifest binds recovered source, source catalogues,
-weights, configuration files, runtime versions, fold identity and data identity.
-Both baseline columns will be retained for every successful fold.
