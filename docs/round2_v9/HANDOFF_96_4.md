@@ -90,3 +90,18 @@ A concrete [V12 isolated iron release proposal](../round2_v12/RELEASE_PROPOSAL.m
 and tested adapter are prepared. They use the development-selected0.50 weight
 against A35 and preserve A35 time strings. Authorization remains pending; no
 full-data release fit, package or desktop write is implied by readiness.
+
+The user subsequently authorized that V12 proposal, and the isolated iron ZIP
+was delivered on2026-09-27. [V12 delivery](../round2_v12/DELIVERY.md) records the
+exact SHA-256 and independent verification. V7 and V12 are delivered with no
+reported platform scores; V9 remains an undelivered historical candidate-pool
+direction. This explicit V12 exception does not change the global96.25 gate.
+
+## Subsequent V13 closure (2026-09-27)
+
+[V13 results](../round2_v13/RESULTS.md) record all 40 completed development fits and
+a passed independent audit. The PLE repair activates learning and improves standalone
+models, but no candidate adds a positive increment over the frozen V7/V9 references.
+Both iron recipes also select zero weight on top of delivered V12 iron. No
+confirmation fits or V13 packages were generated. V7 and V12 platform feedback
+remains pending; A35=96.3366 remains the reported best.

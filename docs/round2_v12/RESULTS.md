@@ -99,3 +99,11 @@ any historical decision. The separately frozen V13 comparison still uses its
 predeclared V7/V9 references; any V12-relative diagnostic must be identified as
 additional evidence and must not silently alter that registration or count
 already captured gain as a fresh increment.
+
+## Subsequent explicitly authorized release
+
+After the above candidate-pool decision, the user authorized the concrete V12
+isolated iron proposal. It was delivered on2026-09-27 with one replay and one
+full-data joint model; the search/confirmation budgets and failed absolute gate
+remain historical facts. See [delivery identity and validation](DELIVERY.md).
+No platform score has yet been reported and no global threshold changed.

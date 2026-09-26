@@ -407,6 +407,14 @@
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
         "evidence_key": "round2_v7_release_2026_09_26",
         "original_alpha_queue_unchanged": true
+      },
+      {
+        "candidate": "V12_IRON_JOINT_PLR001_A50",
+        "status": "delivered_pending_user_platform_feedback",
+        "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+        "evidence_key": "round2_v12_release_2026_09_27",
+        "original_pending_deliveries_preserved": true
       }
     ]
   },
@@ -9996,7 +10004,7 @@
       "release_authorized": false
     },
     "release_proposal": {
-      "status": "user_authorized_ready_to_execute",
+      "status": "delivered_under_explicit_exception_pending_platform_feedback",
       "candidate": "V12_IRON_JOINT_PLR001_A50",
       "spec": "configs/round2_v12/RELEASE_PROPOSAL.yaml",
       "plan": "docs/round2_v12/RELEASE_PROPOSAL.md",
@@ -10009,14 +10017,18 @@
         "zero_fit_preflight": "local/reports/v12-release-proposal-preflight-r1.json"
       },
       "release_authorized": true,
-      "official_release_fits": 0,
-      "packages": 0,
-      "desktop_writes": 0,
+      "official_release_fits": 2,
+      "packages": 1,
+      "desktop_writes": 1,
       "uploads": 0,
       "authorized_spec": "configs/round2_v12/RELEASE.yaml",
       "authorization_source": "explicit user answer: 授权这一个 V12 包",
-      "authorization_scope": "this candidate only; one replay, one full joint fit, isolated iron package and desktop delivery; user uploads"
-    }
+      "authorization_scope": "this candidate only; one replay, one full joint fit, isolated iron package and desktop delivery; user uploads",
+      "official_full_data_fits": 1,
+      "official_replay_fits": 1,
+      "delivery_evidence": "round2_v12_release_2026_09_27"
+    },
+    "subsequent_user_authorized_release": "round2_v12_release_2026_09_27"
   },
   "round2_ple_mechanism_diagnostic_2026_09_26": {
     "status": "synthetic_dead_nonlinear_branch_verified",
@@ -10032,7 +10044,7 @@
     "next_action": "preregister repaired standardized PLE and standardized inactive-branch control before full-coverage evaluation"
   },
   "round2_v13_ple_repair_2026_09_26": {
-    "status": "development_running_exact_periodic_control_passed",
+    "status": "development_complete_no_confirmation_candidate",
     "spec": "configs/round2_v13/SPEC.yaml",
     "preregistration": "docs/round2_v13/PREREGISTRATION.md",
     "mechanism_evidence": "docs/round2_v13/MECHANISM_DIAGNOSTIC.md",
@@ -10043,7 +10055,13 @@
       "reference_preflight": "local/reports/v13-reference-preflight-r1.json",
       "reference_files": 70,
       "control": "local/runs/round2-v13-ple-repair/development-r1/control.json",
-      "control_max_absolute_difference": 0.0
+      "control_max_absolute_difference": 0.0,
+      "independent_audit": "local/runs/round2-v13-ple-repair/development-r1/audit-r1.json",
+      "prediction_count_verified": 40,
+      "preprocessing_reconstructions": 20,
+      "audit_status": "passed",
+      "fit_failures": 0,
+      "selection_cap_hits": 1
     },
     "budget": {
       "development_outer_fits": 40,
@@ -10051,22 +10069,274 @@
       "workers": 8,
       "full_data_fits": 0
     },
-    "official_data_fits_complete": 0,
+    "official_data_fits_complete": 41,
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false,
     "run": "local/runs/round2-v13-ple-repair/development-r1",
-    "live_process_at_observation": {
+    "historical_live_process_observation": {
       "pid": 204984,
       "exec_session": 44562,
       "log": "local/reports/v13-development-r1.log",
       "note": "Revalidate process/session; this record does not prove current liveness"
-    }
+    },
+    "completed_fits": {
+      "development_outer_fits": 40,
+      "control_outer_fits": 1,
+      "confirmation_outer_fits": 0,
+      "full_data_fits": 0
+    },
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "ple_b_inactive_control",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0011694272722565652,
+                "3407": 0.0019015371131106407
+              },
+              "mean": 0.001535482192683603,
+              "lcb95": -0.0007756976156168562,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.1
+              },
+              "positive_folds": 6
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0011694272722565652,
+                "3407": 0.0019015371131106407
+              },
+              "mean": 0.001535482192683603,
+              "lcb95": -0.0007756976156168562,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.1
+              },
+              "positive_folds": 6
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "ple_b_repaired",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.00011777098277800102,
+                "3407": 0.000556980750571201
+              },
+              "mean": 0.000337375866674601,
+              "lcb95": -0.0010491548016575926,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.05
+              },
+              "positive_folds": 7
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.00011777098277800102,
+                "3407": 0.000556980750571201
+              },
+              "mean": 0.000337375866674601,
+              "lcb95": -0.0010491548016575926,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.05
+              },
+              "positive_folds": 7
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "ple_b_inactive_control",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.001131661030078085,
+                "3407": -0.00014983006285093636
+              },
+              "mean": 0.0004909154836135743,
+              "lcb95": -0.003554592680898014,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.1
+              },
+              "positive_folds": 5
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.22958502884302
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "ple_b_repaired",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.002463264318317629,
+                "3407": 0.0018108003502367853
+              },
+              "mean": 0.002137032334277207,
+              "lcb95": 7.72846509065517e-05,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0028903878368631564,
+                "3407": 0.0010399680007028983
+              },
+              "mean": 0.0019651779187830273,
+              "lcb95": -0.003876367602887754,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": -0.0007621584844082901
+              },
+              "mean": -0.0003810792422041451,
+              "lcb95": -0.002787118884881781,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.05
+              },
+              "positive_folds": 1
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.22920040410233
+        }
+      ],
+      "selected_confirmation": null,
+      "all_candidates_tier": "not_shortlisted",
+      "platform_score": null,
+      "interpretation": "Restored PLE learning improves standalone models but adds no positive increment over the frozen current references."
+    },
+    "supplemental_v12_iron": {
+      "evidence": "local/runs/round2-v13-ple-repair/development-r1/v12-increment-r1.json",
+      "sha256": "c95f924f746fa4958dd823ef302c3b6d1d55af1940a87ebbfd8fb55772a4535c",
+      "reference": "0.5*A35_iron+0.5*V12_joint_plr001_iron",
+      "mean_gains": {
+        "ple_b_inactive_control": 0.0,
+        "ple_b_repaired": 0.0
+      },
+      "all_selected_alphas_zero": true,
+      "model_fits": 0,
+      "selection_changed": false
+    },
+    "results": "docs/round2_v13/RESULTS.md"
+  },
+  "round2_v12_release_2026_09_27": {
+    "status": "delivered_pending_user_platform_feedback",
+    "candidate": "V12_IRON_JOINT_PLR001_A50",
+    "date": "2026-09-27",
+    "authorization_date": "2026-09-26",
+    "authorization": "explicit user answer 授权这一个 V12 包; this-candidate-only gate exception",
+    "spec": "configs/round2_v12/RELEASE.yaml",
+    "delivery_document": "docs/round2_v12/DELIVERY.md",
+    "run": "local/runs/round2-v12-joint-tabm/release-r1",
+    "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+    "result_sha256": "9da53ccd520627e7be9cf1e191ea20f802e4936e679121a79b9e09aefde0bdec",
+    "parent": "V6_PORT_TIME_A35",
+    "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
+    "G0": {
+      "rows": 322,
+      "time_string_mismatches": 0,
+      "blend_max_absolute_difference": 0.0,
+      "cold_max_absolute_difference": 0.0,
+      "official_replay_fits": 1,
+      "official_full_data_fits": 1,
+      "selected_full_epoch": 85,
+      "full_selection_cap_hit": false,
+      "parent_and_v7_original_hashes_unchanged": true
+    },
+    "locked_python312_tests": 1052,
+    "G1": {
+      "platform_score": null,
+      "local_working_gate_met": false,
+      "release_exception": "explicit_this_candidate_only",
+      "four_seed_gate_passed": true
+    },
+    "packages": 1,
+    "desktop_writes": 1,
+    "uploads": 0,
+    "goal_achieved": false
   },
   "round2_team_strategy_review_2026_09_26": {
     "status": "analysis_complete_with_verified_synthetic_selection_counterexample",
     "team_snapshot_commit": "2b6ac58ae69dd395c8231e990fda50e6153a6c66",
-    "subsequent_team_update": "cbc2bb6: V12 isolated release authorized; V13 running with supplemental V12 comparison preregistered",
+    "subsequent_team_update": "8316f5e: V12 isolated iron delivered; V13 complete with no incremental candidate",
     "G0_ci_repair_2026_09_27": {
       "initial_failed_commit": "521f209",
       "initial_failed_run": "https://github.com/Luqhhh/iron/actions/runs/36253661237",
@@ -10078,7 +10348,8 @@
       "private_test_evidence": "local/reports/team-strategy-ci-20260927-py{312,311}-r2.xml",
       "historical_model_sources_and_specs_changed": false,
       "optional_realmlp_model_tests_executed": false,
-      "remote_status": "verify Actions for repair commit; local passes do not substitute for remote passes"
+      "remote_status": "both jobs passed at 22ae5cd",
+      "remote_run": "https://github.com/Luqhhh/iron/actions/runs/36254698100"
     },
     "evidence": "docs/team_strategy_20260926/REVIEW.md",
     "implementation": "src/bf_tap_r2/team_strategy_audit.py",
@@ -10098,13 +10369,59 @@
     "interpretation": "no strong feature drift detected; cannot exclude concept shift",
     "historical_gates_unchanged": true,
     "recommended_priorities": [
-      "recover V7 and already-delivered alpha platform feedback",
-      "add outer-row-disjoint selection provenance to the next stage",
-      "supplement confirmed V12 evidence and execute V13 controlled PLE repair",
+      "recover V7 and V12 isolated package scores plus already-delivered alpha feedback",
+      "implement row-disjoint nested execution before another model search",
+      "close the measured single-output PLE recipes without promoting standalone improvements",
       "validate isolated target gains before any separately authorized composition"
     ],
     "official_target_model_fits": 0,
     "domain_classifier_fits_per_diagnostic_run": 10,
+    "packages": 0,
+    "uploads": 0
+  },
+  "round2_row_nested_execution_2026_09_27": {
+    "status": "synthetic_execution_verified_real_model_integration_pending",
+    "team_snapshot_commit": "8316f5e",
+    "implementation": "src/bf_tap_r2/row_nested_blend.py",
+    "tests": "tests/test_row_nested_blend.py",
+    "evidence": "docs/team_strategy_20260926/FOLLOWUP_20260927.md",
+    "private_synthetic_probe": "local/reports/row-nested-synthetic-20260927-r2.json",
+    "new_tests": 29,
+    "selection_api_accepts_evaluation_labels": false,
+    "global_oof_reuse_accepted": false,
+    "training_and_scoring_labels_id_aligned": true,
+    "synthetic_evaluation_label_perturbation": {
+      "rows": 6,
+      "choice_unchanged": true,
+      "predictions_identical": true,
+      "fit_ledger_identical": true,
+      "score_changes_only_after_prediction": true,
+      "synthetic_fit_calls_per_probe": 16
+    },
+    "G0": {
+      "python312": {"version": "3.12.12", "passed": 1081, "skipped": 11, "warnings": 3},
+      "python311": {"version": "3.11.15", "passed": 1081, "skipped": 11, "warnings": 3},
+      "private_xml": "local/reports/row-nested-full-20260927-py{312,311}-r1.xml",
+      "remote_status": "verify Actions for this commit; local passes are not remote passes"
+    },
+    "G1": {
+      "official_target_model_fits": 0,
+      "new_platform_score": null,
+      "historical_quality_rerun": false,
+      "joint_target_adapter_supported": false,
+      "arbitrary_factory_callbacks_sandboxed": false,
+      "full_competition_runner_ready": false
+    },
+    "remaining_before_official_experiment": [
+      "review real model factories for train-only preprocessing, early stopping and ID feature exclusion",
+      "add explicit train-only joint-label contract for V12 rather than closure-based auxiliary labels",
+      "preregister candidates, folds, hashes and true training cost; append private ledger before fits",
+      "run complete outer coverage and independent cold/evidence audit"
+    ],
+    "closed_measured_route": "V13 frozen single-output PLE recipes; no incremental candidate",
+    "platform_best_at_snapshot": {"candidate": "V6_PORT_TIME_A35", "score": 96.3366, "source": "user_reported"},
+    "pending_isolated_feedback": ["V7_TIME_PLR001_A50", "V12_IRON_JOINT_PLR001_A50"],
+    "historical_sources_specs_and_gates_unchanged": true,
     "packages": 0,
     "uploads": 0
   }

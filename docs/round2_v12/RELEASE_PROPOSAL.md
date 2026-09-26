@@ -68,3 +68,8 @@ specification is `configs/round2_v12/RELEASE.yaml`; the original pending proposa
 is retained. The scope is this candidate only, with unchanged A35 time strings.
 Agent uploads remain0. No second permission is needed for the authorized work.
 The private authorization receipt is under local/authorizations/.
+
+The authorized execution completed successfully on2026-09-27: one replay, one
+full-data joint model, one independently verified isolated iron ZIP and desktop
+copy. See [delivery](DELIVERY.md). The pending proposal YAML is retained as the
+original proposal; RELEASE.yaml records the authorization actually executed.

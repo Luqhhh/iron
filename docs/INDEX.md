@@ -3,6 +3,7 @@
 ## 当前团队研究入口（2026-09-26，09-27更新）
 
 - [团队研究策略复核](team_strategy_20260926/REVIEW.md)：必要因素、现有不足、样本级选权边界反例、输入分布诊断和下一阶段优先级。
+- [09-27后续研究与实现](team_strategy_20260926/FOLLOWUP_20260927.md)：V12已交付、V13无增量闭合；样本级嵌套执行核心及29项新测试，真实模型接入的剩余边界。
 - [V7 交付](round2_v7/DELIVERY.md)、[V12 结果](round2_v12/RESULTS.md)、[V13 机制诊断](round2_v13/MECHANISM_DIAGNOSTIC.md)。
 - 最新复赛平台记录以 `EVIDENCE_STATUS.json -> round2_current_platform_best` 为准：A35=96.3366（用户回传）；目标96.4。下方初赛和旧复赛入口保留历史含义。
 
