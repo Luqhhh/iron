@@ -173,9 +173,9 @@ any further submission as an experiment worth declaring, not a routine slot.
 
 Branch `round2-v5-error-covariance-resolution`; pre-registration `configs/round2_v5/SPEC.yaml`
 + `docs/round2_v5/PREREGISTRATION.md` (commit `f0d7900`); implementation commit `06f956c`;
-results `docs/round2_v5/RESULTS.md`. **No candidate package was built and nothing was uploaded.**
-`v36-s1-N-0048` did enter the `candidate_pool` by passing the four-split-seed rule, but it stays
-below the frozen local working gate. One *declared experiment* package exists (see below).
+results `docs/round2_v5/RESULTS.md`. **The round exceeded the 96.3 target: `V5_TIME_N0048_Q20`
+scored 96.3143, +0.0409 over the V36 parent.** Two packages were delivered for the user to upload —
+a declared noise-floor control and the promoted candidate — and nothing was uploaded by the agent.
 
 **Premise correction that must not be repeated.** The earlier statement that
 `local/runs/round2-v3-local-search/*/pred-*.npy` holds "482 files / 444 trials with two split
@@ -257,11 +257,11 @@ earlier reading must be replaced:
 `V5_SEED_SWAP_S1000` is now the highest user-reported score and is registered in
 `EVIDENCE_STATUS.json -> round2_current_platform_best` as a **noise-floor control, not an
 optimization candidate**; every candidate still uses the frozen `V36` as its parent.
-`v36-s1-N-0048` (four-seed replication, LCB `+0.0075`) has an expected platform effect of roughly
-`+0.005..+0.015` — about 20x the demonstrated platform resolution — which would refresh the best to
-about `96.278..96.288` but still not reach 96.3. The frozen local working gate `96.25` was
-calibrated on the now-refuted large-noise assumption; changing it is a user decision and has not
-been made.
+`v36-s1-N-0048` (four-seed replication, LCB `+0.0075`) was predicted at `+0.005..+0.015` from its
+local evidence; the actual platform effect was `+0.0409`. That single comparison is the reason the
+magnitude reading above is retracted, and it is why the frozen local working gate `96.25` — which
+would have blocked this candidate — is recorded as too conservative. Re-deriving the gate is a user
+decision and has not been made.
 
 **TARGET EXCEEDED (user-reported, 2026-09-26).** `V5_TIME_N0048_Q20` scored **96.3143**,
 **+0.0409 over V36** and **+0.0143 over the 96.3 target**. It is now the registered current platform
