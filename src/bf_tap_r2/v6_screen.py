@@ -36,9 +36,10 @@ from .v5_library import fold_vector, load_column_reference, load_v5_training_fra
 from .v5_resolution import select_alpha
 from .v6_spec import V6Spec, load_v6_spec
 
-__all__ = ["StageARecord", "stage_a_screen", "screen_records_for_target", "main"]
+__all__ = ["StageARecord", "stage_a_screen", "screen_records_for_target", "evaluate_probe", "main"]
 
 DEFAULT_OUTPUT = "local/runs/round2-v6-iron-capacity-networks/stage-a-r1"
+DEFAULT_PROBE_DIR = "local/runs/round2-v6-iron-capacity-networks/probe-r1"
 V36_FIXED_DIR = "local/runs/round2-v3.6-loss-training-and-numeric-encoding/fixed-r2-final"
 V36_DEV_CACHE = "local/runs/round2-v3.6-loss-training-and-numeric-encoding/complete-dev-r2-final"
 V5_TIME_FAMILY = "local/runs/round2-v5-error-covariance/time-n-family-r1"
@@ -302,12 +303,93 @@ def stage_a_screen(root: Path | str, spec: V6Spec | None = None,
     return payload
 
 
+def evaluate_probe(root: Path | str, spec: V6Spec | None = None,
+                   probe_dir: Path | str = DEFAULT_PROBE_DIR,
+                   output: Path | str = DEFAULT_OUTPUT) -> dict[str, Any]:
+    """Judge the authorised iron capacity probe with the same stage A signature.
+
+    The probe is the only part of the new iron capacity space fitted before the
+    gate is read: ``v6-s1-N-0024`` (raw_tabm large mse_adam) and ``v6-s1-N-0028``
+    (ple_tabm large mse_adam), the direct analogues of the winning member.  At
+    least one must be admissible for the full coarse screen to be unlocked.
+    """
+    from .v6_sampler import sample_v6_iron_capacity_trials
+
+    root = Path(root).resolve()
+    spec = spec or load_v6_spec(root)
+    out = _private_output(root, Path(output))
+    probe_path = root / probe_dir if not Path(probe_dir).is_absolute() else Path(probe_dir)
+    probe = spec.budget["stage_a2_iron_capacity_screen"]["probe"]
+    trials = {str(t["trial_id"]): t for t in sample_v6_iron_capacity_trials(root)}
+    requested = [str(v) for v in probe["trial_ids"]]
+    missing = [name for name in requested
+               if not (probe_path / f"pred-{name}.npy").is_file()]
+    train = load_v5_training_frame(root)
+    reference = load_column_reference(root, train, spec)
+    folds = fold_vector(root, train, RECORDED_SEED, None)
+    mask = np.isin(folds, list(RECORDED_FOLDS))
+    records = screen_records_for_target(
+        "tap_iron", train["tap_iron"].to_numpy(dtype=float),
+        reference.base_for("tap_iron", RECORDED_SEED), mask, folds,
+        {name: trials[name] for name in requested if name not in missing},
+        probe_path, spec)
+    admissible = [record for record in records if record.admissible]
+    payload = {
+        "version": spec.version,
+        "stage": "stage_a2_iron_capacity_probe",
+        "authorised_by": probe.get("authorised_by"),
+        "probe_trial_ids": requested,
+        "missing_predictions": missing,
+        "recorded_seed": RECORDED_SEED,
+        "recorded_folds": list(RECORDED_FOLDS),
+        "records": [record.as_dict() for record in records],
+        "admissible": [record.trial_id for record in admissible],
+        "probe_gate_passed": bool(admissible),
+        "stage_a2_full_screen_unlocked": bool(admissible),
+        "next": ("the full 64-slot coarse screen may be authorised"
+                 if admissible else
+                 "the new iron capacity space is not screened further, per the pre-registered probe gate"),
+        "agent_uploads": 0,
+    }
+    out.mkdir(parents=True, exist_ok=True)
+    (out / "probe.json").write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2, default=float), encoding="utf-8")
+    with (out / "probe.csv").open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.DictWriter(handle, fieldnames=[
+            "trial_id", "family", "training_setting", "residual_correlation", "single_wmape",
+            "base_wmape", "accuracy_ratio", "projected_gain_score", "admissible", "reasons"],
+            extrasaction="ignore")
+        writer.writeheader()
+        for record in records:
+            row = record.as_dict()
+            row["reasons"] = ";".join(row["reasons"])
+            writer.writerow(row)
+    return payload
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=Path.cwd())
     parser.add_argument("--output", type=Path, default=Path(DEFAULT_OUTPUT))
     parser.add_argument("--limit-per-target", type=int, default=6)
+    parser.add_argument("--probe", action="store_true",
+                        help="judge the authorised iron capacity probe instead of stage A")
+    parser.add_argument("--probe-dir", type=Path, default=Path(DEFAULT_PROBE_DIR))
     args = parser.parse_args(argv)
+    if args.probe:
+        payload = evaluate_probe(args.root, probe_dir=args.probe_dir, output=args.output)
+        print(json.dumps({
+            "stage": payload["stage"],
+            "probe_trial_ids": payload["probe_trial_ids"],
+            "missing_predictions": payload["missing_predictions"],
+            "records": [{k: row[k] for k in ("trial_id", "family", "residual_correlation",
+                                             "accuracy_ratio", "projected_gain_score",
+                                             "admissible", "reasons")}
+                        for row in payload["records"]],
+            "probe_gate_passed": payload["probe_gate_passed"],
+            "next": payload["next"],
+        }, ensure_ascii=False, indent=2, default=float))
+        return 0
     payload = stage_a_screen(args.root, output=args.output,
                              limit_per_target=args.limit_per_target)
     summary = {

@@ -275,3 +275,43 @@ def test_screen_reproduces_the_known_winner_as_admissible() -> None:
         assert record.residual_correlation < 0.90
         assert record.accuracy_ratio < 1.10
         assert record.projected_gain_score > 0.01
+
+# ---------------------------------------------------------------------------
+# runner safety rails
+# ---------------------------------------------------------------------------
+
+def test_probe_default_set_is_the_winner_analogue_pair() -> None:
+    """The authorised probe must be the direct capacity analogue of the winner."""
+    spec = load_v6_spec(REPO_ROOT)
+    probe = spec.budget["stage_a2_iron_capacity_screen"]["probe"]["trial_ids"]
+    assert probe == ["v6-s1-N-0024", "v6-s1-N-0028"]
+    assert v6_trial_id("large", "raw_tabm", "mse_adam") == probe[0]
+    assert v6_trial_id("large", "ple_tabm", "mse_adam") == probe[1]
+    assert "user decision" in spec.budget["stage_a2_iron_capacity_screen"]["probe"]["authorised_by"]
+
+
+def test_probe_stage_refuses_unauthorised_trials_without_fitting() -> None:
+    """No part of the new space may be fitted outside the authorised probe."""
+    from bf_tap_r2.v6_run import run_v6_batch
+
+    guard = Path("local/runs/round2-v6-iron-capacity-networks/_guard_test")
+    with pytest.raises(ValueError):
+        run_v6_batch(REPO_ROOT, guard, seed=42, folds=(0, 1),
+                     trial_ids=["v6-s1-N-0000"], workers=1)
+    assert not (REPO_ROOT / guard).exists()
+
+
+def test_probe_evaluation_reports_missing_predictions(tmp_path: Path) -> None:
+    """An unevaluated probe must be reported as missing, not as a pass."""
+    from bf_tap_r2.v6_screen import evaluate_probe
+
+    spec = load_v6_spec(REPO_ROOT)
+    payload = evaluate_probe(REPO_ROOT, spec=spec, probe_dir=tmp_path,
+                             output="local/runs/round2-v6-iron-capacity-networks/_probe_eval_test")
+    assert payload["missing_predictions"] == ["v6-s1-N-0024", "v6-s1-N-0028"]
+    assert payload["probe_gate_passed"] is False
+    assert payload["stage_a2_full_screen_unlocked"] is False
+    assert payload["records"] == []
+    for path in (REPO_ROOT / "local/runs/round2-v6-iron-capacity-networks/_probe_eval_test").glob("*"):
+        path.unlink()
+    (REPO_ROOT / "local/runs/round2-v6-iron-capacity-networks/_probe_eval_test").rmdir()

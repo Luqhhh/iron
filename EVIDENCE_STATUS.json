@@ -7454,7 +7454,7 @@
     }
   },
   "round2_v6": {
-    "status": "STAGE_A_EXECUTED_ZERO_ADMISSIBLE_STOPPED_NO_FITS",
+    "status": "STAGE_A_NEGATIVE_AND_IRON_CAPACITY_PROBE_FAILED_ROUND_CLOSED",
     "date": "2026-09-26",
     "branch": "round2-v6-iron-capacity-networks",
     "base_commit": "a1cd7c5",
@@ -7582,13 +7582,13 @@
       "constant 0.005 transfer error",
       "local gain implies equal platform gain"
     ],
-    "g0": "PASS_973_LOCKED_TESTS_INCLUDING_10_NEW_V6_TESTS",
-    "g1": "STAGE_A_NEGATIVE_NO_PROMOTION",
-    "new_cv_fits": 0,
+    "g0": "PASS_976_LOCKED_TESTS_INCLUDING_13_NEW_V6_TESTS",
+    "g1": "NEGATIVE_STAGE_A_AND_PROBE_NO_PROMOTION",
+    "new_cv_fits": 4,
     "new_full_fits": 0,
     "new_packages": 0,
     "agent_uploads": 0,
-    "execution_authorisation": "STAGE_A_AUTHORISED_AND_EXECUTED; STAGE_A2_PENDING_USER",
+    "execution_authorisation": "COMPLETE_FOR_OPTION_A; FURTHER_STAGES_PENDING_USER",
     "results_doc": "docs/round2_v6/RESULTS.md",
     "stage_a": {
       "protocol": "zero-fit signature screen on recorded V3.6 folds 0/1 predictions (seed 42) against the released column",
@@ -7635,19 +7635,69 @@
       "action_taken": "stopped as written (stage_a2_unlocked=false); no fit spent; the decision to amend the rule scope is left to the user"
     },
     "preregistration_amendment": {
-      "revision": 2,
+      "revision": 3,
       "before_execution": true,
       "thresholds_changed": false,
       "added": [
         "fusion alpha grid",
         "stage_a2_iron_capacity_screen budget (64 slots)",
         "reference paths for the frozen replay and the cached derived-seed baselines"
-      ]
+      ],
+      "scope_correction": "stop rule 1 originally forbade fitting the new iron capacity space on the basis of stage A, which by construction cannot see that space; per explicit user decision the source gate now applies to the recorded source only and the new space is gated by its own authorised probe. No threshold changed."
     },
     "next_decision_options": {
       "A_minimal_probe": "authorise 2 slots: iron raw_tabm|large|mse_adam and ple_tabm|large|mse_adam at folds 0/1 (~15 min)",
       "B_full_coarse_screen": "authorise the 64-slot stage_a2 coarse screen (~30-45 min, 16 workers)",
       "C_honour_stop_rule": "end the round; re-register the capacity lever with source-specific stop rules"
-    }
+    },
+    "stage_a2_iron_capacity_probe": {
+      "authorised_by": "explicit user decision 2026-09-26 (option A, minimal probe)",
+      "fit_slots_spent": 4,
+      "trials": [
+        "v6-s1-N-0024",
+        "v6-s1-N-0028"
+      ],
+      "results": {
+        "v6-s1-N-0024": {
+          "family": "raw_tabm|large",
+          "setting": "mse_adam",
+          "pooled_wmape_folds01": 0.039951,
+          "accuracy_ratio": 1.0946,
+          "residual_correlation": 0.8957,
+          "projected_gain_score": -0.0014,
+          "admissible": false,
+          "per_direction_alpha": {
+            "fit0_eval1": 0.18,
+            "fit1_eval0": 0.05
+          },
+          "per_direction_gain_sign": "opposite"
+        },
+        "v6-s1-N-0028": {
+          "family": "ple_tabm|large",
+          "setting": "mse_adam",
+          "pooled_wmape_folds01": 0.138513,
+          "accuracy_ratio": 3.7951,
+          "projected_gain_score": -0.0522,
+          "admissible": false
+        }
+      },
+      "iron_base_wmape_folds01": 0.036498,
+      "probe_gate_passed": false,
+      "stage_a2_full_screen_unlocked": false,
+      "diagnosis": "the direct analogue of the winning member matched its marginal signature (rho 0.896 vs 0.888, accuracy ratio 1.095 vs 1.060) but produced no stable blend gain: the two nested fold directions disagree in sign and diverge with alpha (+0.0068 at alpha 0.2 in one direction, -0.0078 in the other). It is better on only 41.7% of rows, has a larger mean absolute error (21.31 vs 19.47) and a positive mean signed residual (+1.03 against -0.58), so its correlation comes from shared error structure rather than complementary error.",
+      "verdict": "the iron capacity lever is not supported at its most favourable single test; the space is not screened further",
+      "evidence": [
+        "local/runs/round2-v6-iron-capacity-networks/probe-r1/fit_ledger.jsonl",
+        "local/runs/round2-v6-iron-capacity-networks/stage-a-r1/probe.json",
+        "local/runs/round2-v6-iron-capacity-networks/stage-a-r1/probe.csv"
+      ]
+    },
+    "method_conclusion": {
+      "finding": "rho and accuracy ratio are NOT the operative signature",
+      "why": "the winner worked because blending it helped in BOTH nested fold directions at a stable alpha; the probe matched the winner on rho and ratio and failed exactly that property",
+      "consequence": "the V6 signature was under-specified; the projected-gain criterion is what prevented a false positive",
+      "recommendation": "a future round must define the signature as the blend property itself: per-direction alpha stability, same sign in both directions, and a small-alpha gain"
+    },
+    "current_platform_best_unchanged": "V5_TIME_N0048_Q20"
   }
 }

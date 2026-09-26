@@ -23,7 +23,7 @@ preregistration_of_record: docs/round2_v6/PREREGISTRATION.md
 # folds 0/1 predictions), and the frozen reference paths the column replay reads.
 # All three were added BEFORE any V6 fit or evaluation.  No threshold, gate, stop
 # rule or budget cap was relaxed.
-amendment: {revision: 2, date: 2026-09-26, reason: executability, thresholds_changed: false}
+amendment: {revision: 3, date: 2026-09-26, reason: stop-rule scope corrected for the new-space probe per explicit user decision, thresholds_changed: false}
 
 reference:
   v36_summary: local/runs/round2-v3.6-loss-training-and-numeric-encoding/v36-summary.json
@@ -138,7 +138,12 @@ budget:
     seeds: [42]
     folds: [0, 1]
     note: "32 trials x 2 folds; this is the only way the new space can enter the signature screen"
-    gated_on: "stage A must yield at least one admissible candidate in either target"
+    gated_on: "the probe below must yield at least one admissible candidate"
+    probe:
+      authorised_by: "explicit user decision 2026-09-26 (option A)"
+      trial_ids: [v6-s1-N-0024, v6-s1-N-0028]
+      note: "v6-s1-N-0024 = raw_tabm|large|mse_adam and v6-s1-N-0028 = ple_tabm|large|mse_adam, the direct analogues of the V5 winner; this is the only part of the new space fitted before the probe gate is read"
+      gate: "if neither probe trial is admissible, the new iron capacity space is not screened further"
   stage_b:
     max_trials_per_target: 6
     max_fit_slots_per_target: 60
@@ -180,7 +185,8 @@ gates:
 
 stop_rules:
   - "stage A uses only recorded folds 0/1 predictions; no fit is spent before a candidate is admissible"
-  - "if neither target yields an admissible stage A candidate, stop and report; do not fit the new iron capacity space"
+  - "the stage A source gate applies only to the s1 recorded predictors: if neither target yields an admissible recorded candidate, do not complete coverage for s1"
+  - "the new iron capacity space has no recorded folds 0/1 predictions by construction, so it is gated by its own probe rather than by stage A (stop-rule scope corrected on 2026-09-26, after stage A returned zero admissible candidates and the original wording was found to forbid the only object the round exists to test)"
   - "if stage B yields no candidate with a positive nested mean and at least 8 of 10 positive cells, stop before stage C"
   - "if stage C admits nothing, stop; no package is built"
   - "no threshold in this file may be relaxed during execution; a failed gate is recorded as failure"

@@ -62,7 +62,8 @@ BUDGET = {"stage_a_new_fits": 0, "stage_b_max_trials_per_target": 6,
 DERIVED_SEEDS = (7777, 12011)
 ALPHA_BOUNDS = (0.05, 0.5)
 ALPHA_GRID_POINTS = 46
-STAGE_A2 = {"target": "tap_iron", "max_fit_slots": 64, "seeds": (42,), "folds": (0, 1)}
+STAGE_A2 = {"target": "tap_iron", "max_fit_slots": 64, "seeds": (42,), "folds": (0, 1),
+            "probe_trial_ids": ("v6-s1-N-0024", "v6-s1-N-0028"), "probe_fit_slots": 4}
 MEASURED_OFFSET_RANGE = (0.0347, 0.1008)
 
 EXPECTED_SOURCE_TRIALS = {"s1_iron_recorded_never_complete": 12,
@@ -179,8 +180,15 @@ def validate_v6_spec(raw: Mapping[str, Any]) -> None:
                             "budget.stage_a2_iron_capacity_screen.seeds")
     _require_sequence_equal(_require(stage_a2, "folds"), STAGE_A2["folds"],
                             "budget.stage_a2_iron_capacity_screen.folds")
-    if "stage A" not in str(stage_a2.get("gated_on", "")):
-        raise ValueError("the new iron capacity screen must stay gated on stage A")
+    if "probe" not in str(stage_a2.get("gated_on", "")):
+        raise ValueError("the new iron capacity screen must stay gated on the probe")
+    probe = _require(stage_a2, "probe")
+    _require_sequence_equal(_require(probe, "trial_ids"), STAGE_A2["probe_trial_ids"],
+                            "budget.stage_a2_iron_capacity_screen.probe.trial_ids")
+    if "user decision" not in str(probe.get("authorised_by", "")):
+        raise ValueError("the probe must record its explicit user authorisation")
+    if int(stage_a2.get("max_fit_slots", 0)) < len(STAGE_A2["probe_trial_ids"]) * len(STAGE_A2["folds"]):
+        raise ValueError("the probe must fit inside the stage-a2 slot budget")
     reference = _require(raw, "reference")
     for key in ("v36_summary", "v36_development_cache", "v36_coarse_ledger", "v36_parent_package",
                 "v5_time_family", "baseline_cache"):
