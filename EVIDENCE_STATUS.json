@@ -8349,7 +8349,7 @@
     "completed_confirmation_outer_fits": 10
   },
   "round2_v7b_training_coverage_2026_09_26": {
-    "status": "control_passed_candidate_development_refits_running",
+    "status": "development_complete_failed_two_positive_seeds_no_confirmation",
     "platform_target": 96.4,
     "source_trial": "v36-s1-N-0048",
     "spec": "configs/round2_v7/COVERAGE_SPEC.yaml",
@@ -8373,9 +8373,328 @@
       "locked_python312_tests_passed": 987,
       "warnings": 3
     },
-    "G1": "control is bit-identical; candidate score not yet available",
+    "G1": {
+      "A35": {
+        "cells": [
+          {
+            "seed": 42,
+            "fold": 0,
+            "rows": 551,
+            "wmape_base": 0.03743302162154931,
+            "wmape_candidate": 0.03807219752044309,
+            "delta_wmape": -0.0006391758988937846,
+            "delta_score": -0.03195879494468923
+          },
+          {
+            "seed": 42,
+            "fold": 1,
+            "rows": 551,
+            "wmape_base": 0.03731137563814232,
+            "wmape_candidate": 0.037432305952714774,
+            "delta_wmape": -0.00012093031457245662,
+            "delta_score": -0.006046515728622831
+          },
+          {
+            "seed": 42,
+            "fold": 2,
+            "rows": 551,
+            "wmape_base": 0.03832707694948541,
+            "wmape_candidate": 0.03813241971825405,
+            "delta_wmape": 0.0001946572312313613,
+            "delta_score": 0.009732861561568065
+          },
+          {
+            "seed": 42,
+            "fold": 3,
+            "rows": 551,
+            "wmape_base": 0.03944362438623685,
+            "wmape_candidate": 0.03922565612743613,
+            "delta_wmape": 0.00021796825880072285,
+            "delta_score": 0.010898412940036142
+          },
+          {
+            "seed": 42,
+            "fold": 4,
+            "rows": 550,
+            "wmape_base": 0.03890233283222341,
+            "wmape_candidate": 0.0387450015935937,
+            "delta_wmape": 0.00015733123862970988,
+            "delta_score": 0.007866561931485494
+          },
+          {
+            "seed": 3407,
+            "fold": 0,
+            "rows": 551,
+            "wmape_base": 0.03784247080286312,
+            "wmape_candidate": 0.03773838046674184,
+            "delta_wmape": 0.00010409033612127777,
+            "delta_score": 0.0052045168060638886
+          },
+          {
+            "seed": 3407,
+            "fold": 1,
+            "rows": 551,
+            "wmape_base": 0.039071251334430915,
+            "wmape_candidate": 0.0389292795823411,
+            "delta_wmape": 0.00014197175208981172,
+            "delta_score": 0.007098587604490586
+          },
+          {
+            "seed": 3407,
+            "fold": 2,
+            "rows": 551,
+            "wmape_base": 0.037201567090205154,
+            "wmape_candidate": 0.03719647542046645,
+            "delta_wmape": 5.091669738700733e-06,
+            "delta_score": 0.00025458348693503663
+          },
+          {
+            "seed": 3407,
+            "fold": 3,
+            "rows": 551,
+            "wmape_base": 0.039055069824761285,
+            "wmape_candidate": 0.03911742293911303,
+            "delta_wmape": -6.235311435174445e-05,
+            "delta_score": -0.0031176557175872227
+          },
+          {
+            "seed": 3407,
+            "fold": 4,
+            "rows": 550,
+            "wmape_base": 0.03820007556801011,
+            "wmape_candidate": 0.037886868654054155,
+            "delta_wmape": 0.00031320691395595596,
+            "delta_score": 0.015660345697797798
+          }
+        ],
+        "seed_gains": {
+          "42": -0.0019014948480444716,
+          "3407": 0.005020075575540017
+        },
+        "seed_summary": {
+          "n": 2,
+          "mean": 0.0015592903637477729,
+          "sd": 0.0048942893829768365,
+          "se": 0.0034607852117922444,
+          "lcb95": -0.02029124750917048,
+          "positive": 1,
+          "positive_seeds": 1,
+          "seeds": [
+            42,
+            3407
+          ]
+        },
+        "pooled_seed_gains": {
+          "42": -0.001888318604141223,
+          "3407": 0.0050273714574718825
+        }
+      },
+      "Q20": {
+        "cells": [
+          {
+            "seed": 42,
+            "fold": 0,
+            "rows": 551,
+            "wmape_base": 0.03761335956645576,
+            "wmape_candidate": 0.037951060683988916,
+            "delta_wmape": -0.00033770111753315263,
+            "delta_score": -0.01688505587665763
+          },
+          {
+            "seed": 42,
+            "fold": 1,
+            "rows": 551,
+            "wmape_base": 0.03718676494712591,
+            "wmape_candidate": 0.03724901535161902,
+            "delta_wmape": -6.225040449311242e-05,
+            "delta_score": -0.003112520224655621
+          },
+          {
+            "seed": 42,
+            "fold": 2,
+            "rows": 551,
+            "wmape_base": 0.03833396204133458,
+            "wmape_candidate": 0.038256903779115954,
+            "delta_wmape": 7.705826221862666e-05,
+            "delta_score": 0.003852913110931333
+          },
+          {
+            "seed": 42,
+            "fold": 3,
+            "rows": 551,
+            "wmape_base": 0.03909452438763281,
+            "wmape_candidate": 0.03896217661031096,
+            "delta_wmape": 0.00013234777732185066,
+            "delta_score": 0.006617388866092533
+          },
+          {
+            "seed": 42,
+            "fold": 4,
+            "rows": 550,
+            "wmape_base": 0.038902751929293225,
+            "wmape_candidate": 0.0388036945108557,
+            "delta_wmape": 9.90574184375273e-05,
+            "delta_score": 0.004952870921876365
+          },
+          {
+            "seed": 3407,
+            "fold": 0,
+            "rows": 551,
+            "wmape_base": 0.03768333304160356,
+            "wmape_candidate": 0.037622358335874316,
+            "delta_wmape": 6.097470572924424e-05,
+            "delta_score": 0.003048735286462212
+          },
+          {
+            "seed": 3407,
+            "fold": 1,
+            "rows": 551,
+            "wmape_base": 0.03868017023978551,
+            "wmape_candidate": 0.03860509207438886,
+            "delta_wmape": 7.507816539665396e-05,
+            "delta_score": 0.003753908269832698
+          },
+          {
+            "seed": 3407,
+            "fold": 2,
+            "rows": 551,
+            "wmape_base": 0.03748385005772732,
+            "wmape_candidate": 0.03750865693432794,
+            "delta_wmape": -2.4806876600620698e-05,
+            "delta_score": -0.0012403438300310349
+          },
+          {
+            "seed": 3407,
+            "fold": 3,
+            "rows": 551,
+            "wmape_base": 0.03906321280029817,
+            "wmape_candidate": 0.039131086412846905,
+            "delta_wmape": -6.787361254873697e-05,
+            "delta_score": -0.0033936806274368486
+          },
+          {
+            "seed": 3407,
+            "fold": 4,
+            "rows": 550,
+            "wmape_base": 0.03770597663417247,
+            "wmape_candidate": 0.037554949227116455,
+            "delta_wmape": 0.00015102740705601192,
+            "delta_score": 0.007551370352800596
+          }
+        ],
+        "seed_gains": {
+          "42": -0.0009148806404826043,
+          "3407": 0.0019439978903255245
+        },
+        "seed_summary": {
+          "n": 2,
+          "mean": 0.0005145586249214601,
+          "sd": 0.002021532395723062,
+          "se": 0.0014294392654040642,
+          "lcb95": -0.008510565702159422,
+          "positive": 1,
+          "positive_seeds": 1,
+          "seeds": [
+            42,
+            3407
+          ]
+        },
+        "pooled_seed_gains": {
+          "42": -0.0009096999795215471,
+          "3407": 0.0019516865778425319
+        }
+      }
+    },
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "completed_candidate_fits": 10,
+    "failed_candidate_fits": 0,
+    "results": "docs/round2_v7/COVERAGE_RESULTS.md",
+    "candidate_tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_time_len": {
+          "N0048_FULL_REFIT_A35": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": true,
+              "42": false
+            },
+            "improved_folds": 7,
+            "worst_spout_delta": 6.98517887882319e-05,
+            "mean_wmape": 0.03825087820417575,
+            "target": "tap_time_len",
+            "candidate": "N0048_FULL_REFIT_A35",
+            "reference": "A35_TIME",
+            "tier": "exploration",
+            "failed_conditions": [
+              "both_splits_improve"
+            ],
+            "gains_by_split": {
+              "42": -3.776637208282446e-05,
+              "3407": 0.00010054742914943765
+            },
+            "mean_gain": 3.1390528533306594e-05,
+            "minimum_gain": -3.776637208282446e-05
+          }
+        }
+      },
+      "formal_selected": [],
+      "exploration_selected": [
+        {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": false
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": 6.98517887882319e-05,
+          "mean_wmape": 0.03825087820417575,
+          "target": "tap_time_len",
+          "candidate": "N0048_FULL_REFIT_A35",
+          "reference": "A35_TIME",
+          "tier": "exploration",
+          "failed_conditions": [
+            "both_splits_improve"
+          ],
+          "gains_by_split": {
+            "42": -3.776637208282446e-05,
+            "3407": 0.00010054742914943765
+          },
+          "mean_gain": 3.1390528533306594e-05,
+          "minimum_gain": -3.776637208282446e-05
+        }
+      ],
+      "submission_priority": [
+        {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": false
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": 6.98517887882319e-05,
+          "mean_wmape": 0.03825087820417575,
+          "target": "tap_time_len",
+          "candidate": "N0048_FULL_REFIT_A35",
+          "reference": "A35_TIME",
+          "tier": "exploration",
+          "failed_conditions": [
+            "both_splits_improve"
+          ],
+          "gains_by_split": {
+            "42": -3.776637208282446e-05,
+            "3407": 0.00010054742914943765
+          },
+          "mean_gain": 3.1390528533306594e-05,
+          "minimum_gain": -3.776637208282446e-05
+        }
+      ],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "confirmation_eligible": false,
+    "audit": "PASS; full gradient coverage and direct pooled arithmetic; audit-r1.json"
   }
 }

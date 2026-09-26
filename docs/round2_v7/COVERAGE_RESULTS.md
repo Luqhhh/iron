@@ -7,16 +7,39 @@ fixed-epoch optimizer loop therefore passed the predeclared 1e-9 control gate
 before any candidate refit started. Control metadata and predictions remain in
 `local/runs/round2-v7-coverage/development-r1/`.
 
-The ten full-training-fold refits are running with two single-thread workers.
+The ten full-training-fold refits completed with two single-thread workers,
+zero failures, and verified full gradient-training row coverage.
 They retain the original architecture, optimizer, preprocessing and cached
 inner-selected epochs. Their additional training rows also increase optimizer
 steps; this is the declared procedure, not an isolated causal estimate of row
 coverage alone. Original models, ZIPs and past decisions are unchanged.
 
-**G1: candidate results pending.** A bit-identical control establishes the
-comparison, not an improvement. No four-seed confirmation, full-data fit,
-package or upload has occurred for this strategy. The platform target remains
-96.4; current user-reported best remains A35 = 96.3366.
+**G1: failed the predeclared two-positive-development-seed condition.**
+
+| Reference | seed 42 score gain | seed 3407 score gain | mean fold-aggregated gain |
+|---|---:|---:|---:|
+| A35, endpoint weight 0.35 | -0.001901 | +0.005020 | +0.001559 |
+| Q20, endpoint weight 0.20 | -0.000915 | +0.001944 | +0.000515 |
+
+A35 pooled gains are -0.001888 / +0.005027, with the same mixed signs; 7/10
+folds improve. The frozen tier policy labels this `exploration` solely because
+the mean improves; its explicit failed condition is `both_splits_improve`.
+That classification does not authorize confirmation or a platform experiment.
+No further seeds are consumed and no package is recommended for this small,
+unstable gain. The tested fixed-epoch coverage procedure stops here.
+
+Both standalone N refits have slightly lower WMAPE than their originals
+(0.040737 -> 0.040683 and 0.041091 -> 0.040569), yet one blend split loses.
+Residual correlations with V36 rise from 0.8868/0.8885 to 0.8950/0.8976.
+These are descriptive observations, not a causal proof or a new correlation
+gate; incremental blend gain remains the binding comparison.
+
+Independent direct arithmetic reproduces both pooled A35 gains to 1e-12.
+All ten prediction files are hashed in private `audit-r1.json`, and every
+fit's metadata confirms `gradient_rows == provided_rows`. Actual experiment
+cost: one exact real control plus ten candidate refits. No four-seed
+confirmation, full-data fit, package or upload occurred. The platform target
+remains 96.4; current user-reported best remains A35 = 96.3366.
 
 Latest locked Python 3.12 test path: **987 passed, 3 warnings**. This includes
 the new coverage-loop control and V7 confirmation identity/coverage guards.
