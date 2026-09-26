@@ -36,3 +36,14 @@ Verify the copied ZIP SHA-256 and archive contents. The original five alpha
 packages and the A35 parent remain untouched; the user uploads and returns the
 score. Local confirmation is not a forecast of96.4, and the current registered
 platform best remains A35=96.3366 until feedback says otherwise.
+
+## Parent-path repair before any fit
+
+The original A35 desktop directory no longer exists. Release-r1 stopped at
+parent validation, before its manifest or any model fit; `FAILED.json` and the
+failed ledger entry are preserved. The private archived ZIP under
+`local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35/` was verified to have
+the exact frozen parent SHA-256. `RELEASE_R2.yaml` changes only the parent file
+location and fresh output-run identity, retaining all model, blend, validation
+and delivery settings. The runner accepts an explicit release-spec path so the
+original specification and failed directory remain unchanged.

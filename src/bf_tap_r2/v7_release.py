@@ -135,9 +135,11 @@ def append_event(out, event):
         stream.write(json.dumps(event, allow_nan=False)+'\n')
 
 
-def run(root):
+def run(root, release_spec=Path('configs/round2_v7/RELEASE.yaml')):
     root = Path(root).resolve()
-    release_path = root/'configs/round2_v7/RELEASE.yaml'
+    release_path = (root/release_spec).resolve()
+    if not release_path.is_relative_to(root/'configs/round2_v7'):
+        raise ValueError('V7 release specification required')
     release = yaml.safe_load(release_path.read_text())
     spec_path = root/release['model_spec']; spec = yaml.safe_load(spec_path.read_text())
     out = (root/release['output']).resolve(); desktop = Path(release['desktop'])
@@ -250,6 +252,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode', choices=['release', 'infer'])
     parser.add_argument('--work', type=Path)
+    parser.add_argument('--spec', type=Path, default=Path('configs/round2_v7/RELEASE.yaml'))
     args = parser.parse_args()
     for name in ['OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS']:
         if os.environ.get(name) != '1':
@@ -259,7 +262,7 @@ def main():
             parser.error('--work required for inference')
         cold_infer(args.work)
     else:
-        run(Path.cwd())
+        run(Path.cwd(), args.spec)
 
 
 if __name__ == '__main__':
