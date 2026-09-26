@@ -69,3 +69,39 @@ four-seed nested blend and admission decisions. No fallback finalist is allowed.
 Before confirmation, the locked Python 3.12 full suite passed **1082 tests,
 23 warnings**. The original development suite and audited decisions remain
 recorded above. The four-seed check is mandatory before any promotion claim.
+
+## Four-seed confirmation: failed
+
+All ten confirmation joint fits completed with no failure and no epoch-cap hit;
+selected epochs span 69–137. The independent audit passed 20 candidate prediction
+matrices (ten development plus ten confirmation), source/data/reference/fold
+identities, training rows and both target scalers, gate metadata, blend arithmetic,
+seed-level confidence bounds and admission decisions. No additional fit was used
+by the audit. Total round budget consumed: 20 development + 1 exact control +
+10 confirmation outer fits; full-data fits and packages remain zero.
+
+| Split seed | Gain vs A60 | A60 weight | Gain vs V7 CURRENT | CURRENT weight |
+|---|---:|---:|---:|---:|
+| 42 | +0.027189 | 0.50 | +0.001164 | 0.10 |
+| 3407 | +0.029884 | 0.50 | +0.001413 | 0.10 |
+| 7777 | -0.000307 | 0.50 | -0.001665 | 0.20 |
+| 12011 | +0.029504 | 0.50 | +0.001997 | 0.10 |
+
+Against A60: mean **+0.021567**, seed-level LCB95 **+0.004351**, but only **3/4**
+positive seeds (7777 is **−0.000307**). A positive lower bound alone is not
+sufficient under the frozen all-seeds-positive rule. Against V7 CURRENT: mean
+**+0.000727**, LCB95 **−0.001194**, **3/4** positive seeds; 7777 is **−0.001665**.
+Fold counts (15/20 and 14/20) remain descriptive, not the reason for refusal.
+
+Weights are reselected on the other three seeds in four-seed nested evaluation;
+this explains the small change in the seed42 CURRENT gain from development.
+No development result or frozen decision is replaced. The development package
+score remains 96.230821 <96.25. The confirmed disposition is **not promoted**.
+No fallback finalist, full-data model, package, desktop write or upload follows.
+
+Private confirmation evidence is under
+`local/runs/round2-v15-task-experts/confirmation-r1`, including the manifest,
+append-only fit ledger, summary and independent audit. The failed evidence is
+retained. This registered expert-routing round is complete; the global objective
+above 96.4 remains open. Current user-reported best is A60=96.3465. V12 then V7
+remain the pending platform priorities, with original A35-parent bytes unchanged.

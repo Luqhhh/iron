@@ -119,3 +119,12 @@ best to A60=96.3465 (A45=96.3438, A72=96.3425). Historical A35 references above
 remain frozen experiment comparisons, not the current platform incumbent. See
 [alpha feedback](../round2_v6/RESULTS.md#13-α-线搜索反馈a60-成为当前最佳2026-09-27).
 V12 then V7 remain the delivery priorities; their original packages are unchanged.
+
+## Subsequent V15 confirmation (2026-09-27)
+
+[V15 expert-routing results](../round2_v15/RESULTS.md) include a complete audited
+20-fit development pool and 10-fit confirmation. The sole finalist, gated time,
+fails the four-seed rule: relative to V7, mean +0.000727, LCB95 −0.001194,
+3/4 positive seeds; relative to A60, mean +0.021567 and positive LCB95, but
+still only 3/4 positive. No fallback or new package was generated. A60=96.3465
+remains the reported platform best; V12 then V7 remain pending feedback.
