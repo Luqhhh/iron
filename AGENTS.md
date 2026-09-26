@@ -327,15 +327,30 @@ round2_current_candidate_queue.submission_priority` is empty and
 **Closed by direct measurement — do not reopen without new evidence:** the blend-stability
 signature; a second recorded member on top of the winner (exactly zero incremental gain); the iron
 capacity lever (its most favourable single test passed rho and accuracy ratio but produced no blend
-gain); and, from the earlier rounds, NODE per-depth, the ODST core, TabR full fusion, residual
-correctors, sample reweighting and dense alpha scans. Temporal/lag features remain *unavailable*
+gain); a **learned/regularized combiner over the whole reproducible OOF library** (a nested-`alpha`
+ridge over 27-28 reproducible members adds only `+0.00425` over the delivered incumbent column,
+6/10 cells, one split seed negative, below the `0.0232` MDE, and `-0.00139` without N-0048; the
+apparent `+0.017..+0.023` against V36 is mostly restatement of what N-0048 already captured, and
+LightGBM stackers are negative on both targets — `docs/round2_v6/RESULTS.md` §7); and, from the
+earlier rounds, NODE per-depth, the ODST core, TabR full fusion, residual correctors, sample
+reweighting and dense alpha scans. Temporal/lag features remain *unavailable*
 (`复赛_train/train_features.csv` has no timestamp or ordering column).
+
+**Leakage rule added by the stacking diagnostic (`docs/round2_v6/RESULTS.md` §7):** averaging OOF
+vectors **across split seeds** is a leak, not a variance reduction — a row held out under one split
+seed can carry another seed's component produced by a model trained on that row, so the held-out
+feature itself encodes the label. That defect manufactured spurious `+0.0125/+0.0135` incumbent
+gains before it was caught. Any design matrix that mixes split seeds must be closed **within a single
+seed**. This is the same error family as the V5 replication defect (comparing the raw candidate
+instead of the blended column, which produced a spurious `-0.11..-0.14`).
 
 **If the search is ever resumed**, the controlling design is: screen at complete coverage, judge by
 incremental blend gain, promote under the four-seed rule, and treat any submission as a declared
 experiment. The only bounded experiment left with a near-neutral prior is an `alpha = 0.25` probe of
 the current best (`-0.0005` score against `alpha = 0.20` locally), and it is only worth a slot if the
-platform keeps the best score rather than the latest submission.
+platform keeps the best score rather than the latest submission. The stacking closure above removes
+the last in-pool hope: a better combiner is not a new problem class, and the measured ceiling of the
+existing pool is already captured.
 
 ### Resolution correction (2026-09-26, after the closure section)
 

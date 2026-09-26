@@ -7838,6 +7838,12 @@
         "verdict": "NOT_SUPPORTED",
         "evidence": "docs/round2_v6/RESULTS.md section 2",
         "detail": "the direct analogue v6-s1-N-0024 passed rho (0.896) and accuracy ratio (1.095) but its projected gain is -0.0014 with opposite signs per fold direction"
+      },
+      {
+        "hypothesis": "a fitted (learned/regularized) combiner over the whole reproducible OOF library adds on top of the delivered incumbent",
+        "verdict": "REFUTED",
+        "evidence": "docs/round2_v6/RESULTS.md section 7",
+        "detail": "nested-alpha ridge over 27-28 reproducible members adds only +0.00425 over the incumbent column 0.8*V36+0.2*N-0048 (6/10 cells, one split seed negative, fold LCB -0.00815) and -0.00139 without N-0048; below the 0.0232 MDE. The apparent +0.017..+0.023 versus V36 is mostly restatement of what N-0048 already captured. Nonlinear (LightGBM) stackers are negative on both targets."
       }
     ],
     "transferable_conclusions": [
@@ -7929,6 +7935,41 @@
         "climbing the field requires a fundamentally better model (different features or paradigm), a different problem class with an unknown prior"
       ],
       "portfolio_note": "because the score is deterministic, submitting several genuinely independent candidates is a portfolio play: each has a fixed realization, and the best one is kept. But near-duplicate candidates (shared base, rho 0.98 members) have correlated realizations, so the portfolio only diversifies with genuinely independent models - again a new-model problem, not a search problem."
+    },
+    "in_pool_stacking_closed_2026_09_26": {
+      "purpose": "test the one remaining in-pool lever with a superficially positive prior: a learned combiner fitted over the whole OOF library, rather than a hand-picked few-column linear blend",
+      "protocol": "ridge alpha in {1e1..1e5} selected by inner 5-fold CV inside each outer training part, scored on the held-out outer fold; 10 cells = 5 folds x seeds 42/3407; reference = true incumbent column 0.8*V36 + 0.2*v36-s1-N-0048",
+      "reproducible_subset": "27 complete columns: v36_dev_experts (8) + v3_refine_* (19); the 83 v2 OOF columns are excluded because their full-data test predictions are not reproducible",
+      "device_defect_found": "the first version built each design-matrix column as the mean of the member's two split-seed OOF vectors; that is a leak (a row held out under seed 42 can carry a seed-3407 component produced by a model trained on that row), and it produced spurious gains of +0.01255 (27 members) and +0.01351 (28 members) over the incumbent",
+      "leak_free_result_vs_incumbent": {
+        "members_27_mean": -0.00139,
+        "members_27_cells": "5/10",
+        "members_28_mean": 0.00425,
+        "members_28_cells": "6/10",
+        "members_28_fold_lcb95": -0.00815,
+        "members_28_seeds": [
+          0.00895,
+          -0.00045
+        ]
+      },
+      "leak_free_result_vs_v36": {
+        "members_27_mean": 0.01371,
+        "members_27_cells": "7/10",
+        "members_28_mean": 0.01731,
+        "members_28_cells": "8/10"
+      },
+      "weight_concentration": "effective members 18.5 of 27 (participation ratio); top 12 carry 70%; top-3 subset is negative (-0.00359, 3/10), so no small replication-friendly subset carries the gain",
+      "nonlinear_stackers": "LightGBM depth 2/3 stackers are negative on both targets (iron -0.075/-0.072, time -0.081/-0.084, 0/10)",
+      "anchors": {
+        "incumbent_local_gain_vs_v36": 0.00809,
+        "incumbent_platform_realisation": 0.0409,
+        "mde_322_rows": 0.0232
+      },
+      "verdict": "CLOSED. Handing the entire reproducible library to a fitted combiner only restates the incumbent; the incremental gain sits below the MDE. This reinforces, rather than reopens, the recorded member-blending ceiling of about +0.010.",
+      "process_rule": "averaging OOF vectors across split seeds is a leak, not a variance reduction; any design matrix mixing split seeds must be closed within a single seed. Same error family as the V5 replication defect (comparing the raw candidate instead of the blended column, spurious -0.11..-0.14).",
+      "new_fits": 0,
+      "new_packages": 0,
+      "agent_uploads": 0
     }
   }
 }
