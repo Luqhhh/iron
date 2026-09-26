@@ -9349,7 +9349,7 @@
     "uploads": 0
   },
   "round2_v11_quantile_representation_2026_09_26": {
-    "status": "development_running",
+    "status": "development_complete_confirmation_frozen",
     "spec": "configs/round2_v11/SPEC.yaml",
     "preregistration": "docs/round2_v11/PREREGISTRATION.md",
     "run": "local/runs/round2-v11-quantile-representation/development-r1",
@@ -9365,10 +9365,401 @@
       "warnings": 23,
       "test_log": "local/reports/v11-python312-tests-r1.log",
       "standard_control_max_absolute_difference": 0.0,
-      "control": "local/runs/round2-v11-quantile-representation/development-r1/control.json"
+      "control": "local/runs/round2-v11-quantile-representation/development-r1/control.json",
+      "candidate_fits_complete": 80,
+      "failed_fits": 0,
+      "epoch_cap_hits": 7,
+      "independent_audit": "local/runs/round2-v11-quantile-representation/development-r1/audit-r1.json",
+      "audit_prediction_count": 80,
+      "audit_model_fits": 0,
+      "quantile_statistic_reconstructions": 40
     },
     "G1": {
-      "status": "not_yet_evaluated",
+      "status": "development_complete",
+      "selected_confirmation": {
+        "target": "tap_time_len",
+        "recipe": "plr_quniform"
+      },
+      "development_records": [
+        {
+          "target": "tap_iron",
+          "recipe": "raw_qnormal",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "raw_quniform",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.000513844103247757,
+                "3407": 0.0007279345064297588
+              },
+              "mean": 0.0006208893048387579,
+              "lcb95": -5.496749884511859e-05,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.05
+              },
+              "positive_folds": 7
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.000513844103247757,
+                "3407": 0.0007279345064297588
+              },
+              "mean": 0.0006208893048387579,
+              "lcb95": -5.496749884511859e-05,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.05
+              },
+              "positive_folds": 7
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "plr_qnormal",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.00019842250514115478,
+                "3407": 0.00042971617352415004
+              },
+              "mean": 0.0003140693393326524,
+              "lcb95": -0.00041609603521128844,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.05
+              },
+              "positive_folds": 5
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.00019842250514115478,
+                "3407": 0.00042971617352415004
+              },
+              "mean": 0.0003140693393326524,
+              "lcb95": -0.00041609603521128844,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.05
+              },
+              "positive_folds": 5
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "plr_quniform",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0007485256977914079,
+                "3407": 0.0005378304061710165
+              },
+              "mean": 0.0006431780519812122,
+              "lcb95": -2.1960806320359995e-05,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.05
+              },
+              "positive_folds": 6
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0007485256977914079,
+                "3407": 0.0005378304061710165
+              },
+              "mean": 0.0006431780519812122,
+              "lcb95": -2.1960806320359995e-05,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.05
+              },
+              "positive_folds": 6
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "raw_qnormal",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.22958502884302
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "raw_quniform",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": -0.00035791708748011963
+              },
+              "mean": -0.00017895854374005982,
+              "lcb95": -0.0013088583203429013,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.05
+              },
+              "positive_folds": 3
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.22958502884302
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "plr_qnormal",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.005648585150214297,
+                "3407": 0.006703004790081027
+              },
+              "mean": 0.006175794970147662,
+              "lcb95": 0.0028471231709918257,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.006904417898130136,
+                "3407": 0.006746048020365852
+              },
+              "mean": 0.006825232959247994,
+              "lcb95": 0.0063252789314414215,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": -0.00025619107776410355,
+                "3407": 0.0
+              },
+              "mean": -0.00012809553888205177,
+              "lcb95": -0.0009368589415217211,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.0
+              },
+              "positive_folds": 2
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.22945758817649
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "plr_quniform",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.013366433823758725,
+                "3407": 0.011674392109462459
+              },
+              "mean": 0.012520412966610592,
+              "lcb95": 0.0071788474983448935,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.01362189124480516,
+                "3407": 0.010738456805649138
+              },
+              "mean": 0.012180174025227149,
+              "lcb95": 0.003077529746383402,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.003120576650718701,
+                "3407": 0.002316143864432643
+              },
+              "mean": 0.002718360257575672,
+              "lcb95": 0.00017886589614174355,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.2
+              },
+              "positive_folds": 7
+            }
+          },
+          "confirmation_eligible": true,
+          "development_package_score": 96.23229332105564
+        }
+      ],
+      "absolute_local_gate": 96.25,
+      "local_working_gate_met": false,
       "no_partial_selection": true
     },
     "budget": {
@@ -9379,6 +9770,22 @@
     },
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "results": "docs/round2_v11/RESULTS.md",
+    "confirmation": {
+      "status": "validated_ready_to_run",
+      "spec": "configs/round2_v11/CONFIRMATION.yaml",
+      "candidate_outer_fits": 10,
+      "new_baseline_fits": 0,
+      "full_data_fits": 0,
+      "G0": {
+        "locked_python312_tests": 1027,
+        "warnings": 23,
+        "test_log": "local/reports/v11-confirmation-python312-tests-r1.log",
+        "reference_preflight": "local/reports/v11-confirmation-preflight-r1.json",
+        "reference_files": 92,
+        "new_baseline_fits": 0
+      }
+    }
   }
 }
