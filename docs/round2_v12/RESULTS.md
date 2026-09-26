@@ -49,3 +49,19 @@ All four gains must be positive with positive seed-level paired LCB95; fold coun
 remain descriptive. No newly acquired labels are implied. The V7 delivery remains
 unchanged and unreported on the platform. Current platform best A35=96.3366;
 96.4 is unproven. Full-data fits0, packages0, desktop writes0 and uploads0.
+
+## Confirmation allocation
+
+`configs/round2_v12/CONFIRMATION.yaml` freezes iron joint_plr001 and ten candidate
+fits on7777/12011, evaluating only iron for admission. A zero-fit preflight
+verified97 reference files: the V9 candidate and its previously audited V8
+same-fold V36 baseline. No new baseline fit is required. The joint prediction
+files retain both outputs, but the nonselected time column cannot be promoted
+from this confirmation.
+
+The entrance rejects incomplete/duplicate pools and unelected or unearned
+selection; the iron adapter rejects matrices without both expected output
+columns. Eight targeted checks passed; the locked Python3.12 full suite passed
+**1047 tests,23 warnings**. The independent confirmation audit is prepared in
+`scripts/round2_v12_confirmation_audit.py`. All six development cap hits belonged
+to joint_raw; the selected periodic recipe had zero cap hits.

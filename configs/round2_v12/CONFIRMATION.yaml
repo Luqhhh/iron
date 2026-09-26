@@ -1,0 +1,30 @@
+version: round2-v12-joint-periodic-iron-confirmation
+parent_spec: configs/round2_v12/SPEC.yaml
+development_run: local/runs/round2-v12-joint-tabm/development-r1
+selected:
+  target: tap_iron
+  recipe: joint_plr001
+ranking_reference: V9_IRON_candidate_pool_not_platform_incumbent
+confirmation_seeds:
+- 7777
+- 12011
+seed_history: previously_used_not_new_labels
+reference:
+  v9_run: local/runs/round2-v9-realmlp/confirmation-r1
+  v9_independent_audit: audit-r1.json
+  iron_baseline: verified V8 same-fold V36 iron
+  current_iron: 0.9*V36_iron+0.1*V9_realmlp_td_s
+budget:
+  candidate_outer_fits: 10
+  baseline_outer_fits: 0
+  workers: 8
+  full_data_fits: 0
+promotion:
+  minimum_split_seeds: 4
+  every_seed_positive: true
+  seed_level_lcb95_positive: true
+  folds: descriptive_only
+  local_working_gate: 96.25
+release:
+  packages: 0
+  uploads: 0

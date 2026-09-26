@@ -9908,6 +9908,21 @@
       "development_package_score": 96.22644112166778,
       "local_working_gate_met": false,
       "confirmation_complete": false
+    },
+    "confirmation": {
+      "status": "frozen_ready_to_execute",
+      "spec": "configs/round2_v12/CONFIRMATION.yaml",
+      "run": "local/runs/round2-v12-joint-tabm/confirmation-r1",
+      "candidate_outer_fits": 10,
+      "new_baseline_fits": 0,
+      "full_data_fits": 0,
+      "G0": {
+        "locked_python312_tests": 1047,
+        "warnings": 23,
+        "test_log": "local/reports/v12-confirmation-python312-tests-r1.log",
+        "reference_preflight": "local/reports/v12-confirmation-preflight-r1.json",
+        "reference_files": 97
+      }
     }
   },
   "round2_ple_mechanism_diagnostic_2026_09_26": {
