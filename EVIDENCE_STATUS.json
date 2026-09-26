@@ -10805,7 +10805,7 @@
     "evidence": "docs/round2_v6/RESULTS.md section 13"
   },
   "round2_v15_task_experts_2026_09_27": {
-    "status": "preregistered_tests_passed_before_official_fits",
+    "status": "exact_joint_control_running_before_candidate_fits",
     "spec": "configs/round2_v15/SPEC.yaml",
     "preregistration": "docs/round2_v15/PREREGISTRATION.md",
     "mechanism_source": "https://research.google/pubs/modeling-task-relationships-in-multi-task-learning-with-multi-gate-mixture-of-experts/",
@@ -10840,6 +10840,12 @@
     "run": "local/runs/round2-v15-task-experts/development-r1",
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "live_process_at_observation": {
+      "pid": 225772,
+      "exec_session": 18142,
+      "log": "local/reports/v15-development-r1.log",
+      "note": "Revalidate process/session. The exact control must finish and pass before candidate fits start."
+    }
   }
 }
