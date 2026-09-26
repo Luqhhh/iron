@@ -57,3 +57,18 @@ apply. Full-data fits0, packages0, desktop writes0 and uploads0 for this round.
 Freeze all source/runtime/spec/data/fold/reference identities before fitting.
 Audit complete predictions and independent scoring arithmetic before any
 quality claim. Official private run root: local/runs/round2-v13-ple-repair/.
+
+## Supplemental reference, declared before complete-pool readout (2026-09-27)
+
+V12 subsequently passed four-seed confirmation and the user explicitly authorized
+its isolated50% iron release. V13's originally frozen V7/V9 ranking, candidate
+pool, tier classification and confirmation criteria remain unchanged. To avoid
+calling an already captured improvement a new one, also report both V13 iron
+recipes against fixed `0.5*A35_iron+0.5*V12_joint_plr001_iron` on the complete
+42/3407 development splits. This is additional evidence, not a replacement for
+the frozen comparison or a new candidate/alpha search. It is declared while
+V13 fitting is ongoing, before its complete-pool summary exists, and reads no
+partial quality metrics. Use the same sparse alpha grid and verified same-fold
+V12 prediction matrices. Run `scripts/round2_v13_v12_increment.py` only after
+V13's full independent audit passes. Preserve the original V13 decisions and
+report disagreement explicitly; no release or additional fits are authorized.
