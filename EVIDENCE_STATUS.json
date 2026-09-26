@@ -8872,7 +8872,19 @@
         "candidate_prediction_files": 20,
         "arithmetic_tolerance": 1e-12
       },
-      "reference_reuse_identity_and_partial_ledger_guards": "PASS"
+      "reference_reuse_identity_and_partial_ledger_guards": "PASS",
+      "cross_round_reference_consistency": {
+        "status": "passed",
+        "compared": "V8 reconstructed V36 time versus V5 cached V36 time",
+        "seeds": [
+          7777,
+          12011
+        ],
+        "folds": 10,
+        "max_absolute_difference": 0.0,
+        "artifact": "local/reports/v7-v9-reference-consistency-r1.json",
+        "new_fits": 0
+      }
     },
     "G1": {
       "status": "four_seed_qualified_candidate_pool",
@@ -9104,9 +9116,10 @@
     "goal_achieved": false,
     "confirmation": {
       "spec": "configs/round2_v10/CONFIRMATION.yaml",
-      "status": "implementation_verified",
+      "status": "running",
       "candidate_outer_fit_budget": 10,
-      "baseline_outer_fit_budget": 0
+      "baseline_outer_fit_budget": 0,
+      "run": "local/runs/round2-v10-periodic-loss/confirmation-r1"
     }
   }
 }
