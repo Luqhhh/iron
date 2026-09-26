@@ -10334,7 +10334,7 @@
     "goal_achieved": false
   },
   "round2_v14_joint_ple_2026_09_27": {
-    "status": "preregistered_tests_passed_before_official_fits",
+    "status": "development_running_exact_joint_control_passed",
     "spec": "configs/round2_v14/SPEC.yaml",
     "preregistration": "docs/round2_v14/PREREGISTRATION.md",
     "new_evidence": [
@@ -10346,7 +10346,10 @@
       "warnings": 23,
       "test_log": "local/reports/v14-python312-tests-r1.log",
       "reference_preflight": "local/reports/v14-reference-preflight-r1.json",
-      "reference_files": 126
+      "reference_files": 126,
+      "control": "local/runs/round2-v14-joint-ple/development-r1/control.json",
+      "control_max_absolute_difference": 0.0,
+      "control_outputs": 2
     },
     "budget": {
       "development_joint_outer_fits": 20,
@@ -10359,10 +10362,16 @@
       "tap_iron": "V12_IRON_A50",
       "tap_time_len": "V7_TIME_A50"
     },
-    "official_data_fits_complete": 0,
+    "official_data_fits_complete": 1,
     "run": "local/runs/round2-v14-joint-ple/development-r1",
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "live_process_at_observation": {
+      "pid": 220769,
+      "exec_session": 76668,
+      "log": "local/reports/v14-development-r1.log",
+      "note": "Control passed. Revalidate process/session before treating the recorded batch as live."
+    }
   }
 }
