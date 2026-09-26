@@ -8698,7 +8698,7 @@
     "audit": "PASS; full gradient coverage and direct pooled arithmetic; audit-r1.json"
   },
   "round2_v8_feature_attention_2026_09_26": {
-    "status": "development_complete_confirmation_selected",
+    "status": "confirmation_reference_control_running",
     "platform_target": 96.4,
     "spec": "configs/round2_v8/SPEC.yaml",
     "preregistration": "docs/round2_v8/PREREGISTRATION.md",
@@ -8714,7 +8714,7 @@
     "secondary_time_reference": "four_seed_qualified_V7_candidate_pool",
     "external_pretrained_weights": false,
     "G0": {
-      "locked_python312_tests_passed": 990,
+      "locked_python312_tests_passed": 993,
       "warnings": 3,
       "cold_process_synthetic_test": "PASS",
       "attention_attribution_tests": "PASS",
@@ -8733,7 +8733,9 @@
         "predictions": 40,
         "artifact": "local/runs/round2-v8-feature-attention/development-r1/audit-r1.json",
         "independent_arithmetic_tolerance": 1e-12
-      }
+      },
+      "confirmation_query_label_guard_tests": "PASS",
+      "test_log": "local/reports/v8-confirm-python312-tests-r1.log"
     },
     "G1": {
       "status": "development_only_small_increments",
@@ -8795,8 +8797,11 @@
       "selected_target": "tap_iron",
       "selected_recipe": "ft_learned",
       "spec": "configs/round2_v8/CONFIRMATION.yaml",
-      "status": "selected_not_started",
-      "four_seed_pass": false
+      "status": "reference_control_running",
+      "four_seed_pass": false,
+      "run": "local/runs/round2-v8-feature-attention/confirmation-r1",
+      "baseline_outer_recipe_fit_budget": 10,
+      "candidate_outer_fit_budget": 10
     }
   }
 }

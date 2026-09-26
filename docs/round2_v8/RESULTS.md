@@ -40,9 +40,11 @@ configuration, not proof that every attention architecture is exhausted.
 
 ## G0: execution and independent arithmetic passed
 
-Locked Python 3.12 test path: **990 passed, 3 warnings**. Tests cover uniform
+Locked Python 3.12 test path: **993 passed, 3 warnings**. Tests cover uniform
 attention versus zero logits, Q/K gradient attribution, deterministic fits,
-row/chunk/single-query consistency, and fresh-process synthetic-model inference.
+row/chunk/single-query consistency, fresh-process synthetic-model inference,
+complete-pool selection against the correct incremental reference, and removal
+of both target columns from every baseline/candidate query frame.
 Only the fixed source-code package was added; existing dependency versions
 were preserved. The cold-process test is synthetic, not a full-data release audit.
 
@@ -77,3 +79,9 @@ Four positive split seeds and a positive seed-level LCB95 remain mandatory;
 fold counts are descriptive only. The local working gate remains 96.25.
 Current platform best remains user-reported **A35 = 96.3366**. The **96.4**
 objective is unproven. No full-data fit, package, desktop write or upload occurred.
+
+Confirmation implementation is running its first same-fold reference control
+under the frozen execution specification. No candidate confirmation result is
+yet available. The baseline manifest binds recovered source, source catalogues,
+weights, configuration files, runtime versions, fold identity and data identity.
+Both baseline columns will be retained for every successful fold.
