@@ -10349,7 +10349,15 @@
       "reference_files": 126,
       "control": "local/runs/round2-v14-joint-ple/development-r1/control.json",
       "control_max_absolute_difference": 0.0,
-      "control_outputs": 2
+      "control_outputs": 2,
+      "four_seed_reference_preflight": {
+        "path": "local/reports/v14-four-seed-reference-preflight-r1.json",
+        "sha256": "bc5d388d23db8d3b1d1782af84bee2763273acc1496f98d7281eb4edfc688efe",
+        "files": 188,
+        "model_fits": 0,
+        "candidate_predictions_read": false,
+        "status": "passed"
+      }
     },
     "budget": {
       "development_joint_outer_fits": 20,
