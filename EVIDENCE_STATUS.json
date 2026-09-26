@@ -8696,5 +8696,32 @@
     },
     "confirmation_eligible": false,
     "audit": "PASS; full gradient coverage and direct pooled arithmetic; audit-r1.json"
+  },
+  "round2_v8_feature_attention_2026_09_26": {
+    "status": "development_running",
+    "platform_target": 96.4,
+    "spec": "configs/round2_v8/SPEC.yaml",
+    "preregistration": "docs/round2_v8/PREREGISTRATION.md",
+    "results": "docs/round2_v8/RESULTS.md",
+    "run": "local/runs/round2-v8-feature-attention/development-r1",
+    "mechanisms": [
+      "learned_feature_attention",
+      "uniform_attention_control"
+    ],
+    "target_recipe_units": 4,
+    "development_outer_fits": 40,
+    "primary_reference": "A35",
+    "secondary_time_reference": "four_seed_qualified_V7_candidate_pool",
+    "external_pretrained_weights": false,
+    "G0": {
+      "locked_python312_tests_passed": 990,
+      "warnings": 3,
+      "cold_process_synthetic_test": "PASS",
+      "attention_attribution_tests": "PASS"
+    },
+    "G1": "pending",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
