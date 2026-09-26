@@ -17,7 +17,7 @@ and fold identity, training and inner-row IDs, preprocessing means, selected
 epochs, loss metadata, historical references and direct scoring arithmetic to
 1e-12. It also independently reproduces the selected candidate. Audit fits:0.
 
-## G1: small increment beyond V7; confirmation pending
+## G1 development: small increment beyond V7
 
 All values below are full-package score-point gains; each development split
 contains all five folds. The main reference is the existing **local candidate**
@@ -46,10 +46,45 @@ V7-relative incremental gate. A zero-fit preflight verifies32 reference files
 and exact agreement with the frozen development reference hashes. Two targeted
 selection guards also pass after the final identity-check additions.
 
-The next ten fits use seeds7777/12011 and the existing verified same-fold V7
-and V5 reference caches, with no new baseline fits. These are previously used
-split seeds, not independent newly collected labels. Positive seed-level LCB
-and all four seeds positive remain required; folds are descriptive only.
+The confirmation plan allocated ten fits at seeds7777/12011 and the existing
+verified same-fold V7 and V5 reference caches, with no new baseline fits. These
+are previously used split seeds, not independent newly collected labels.
+Positive seed-level LCB and all four seeds positive remain required; folds are
+descriptive only.
+
+## Four-seed confirmation: failed, no further continuation
+
+All ten candidate fits finished without failure or epoch-cap hits. Private
+evidence is in `local/runs/round2-v10-periodic-loss/confirmation-r1`.
+The independent `audit-r1.json` verifies20 candidate prediction files (ten
+development and ten confirmation), reference/data/fold/source identity, training
+row and preprocessing metadata, sparse-grid choices and direct fold/seed/LCB
+arithmetic to1e-12. No new baseline or audit fit was needed.
+
+| Split seed | Increment over V7_TIME | Held-seed alpha | A35-relative gain |
+|---|---:|---:|---:|
+| 42 | +0.001962 | 0.10 | +0.015318 |
+| 3407 | +0.002148 | 0.10 | +0.022019 |
+| 7777 | -0.000863 | 0.20 | +0.005737 |
+| 12011 | -0.001042 | 0.20 | +0.000641 |
+
+V7-relative mean **+0.000551**, seed-level paired LCB95 **-0.001496**, only
+**2/4** positive seeds and12/20 positive folds. Both newly evaluated split
+seeds lose the incremental gain. Development cells above change in this table
+because confirmation selects each held seed's weight using the other **three**
+seeds rather than the other development seed; no original record was replaced.
+
+Even relative to A35, four positive seeds are insufficient: mean **+0.010929**
+has LCB95 **-0.000338** and fails the predeclared confidence gate. Q20-relative
+mean is+0.011365 with LCB95-0.000503 and3/4 positive seeds. No historical
+reference or descriptive fold bound is substituted for the binding seed rule.
+
+Disposition: **failed four-seed confirmation**. The two-seed `formal` labels
+remain historical development classifications. There is no promoted V10
+candidate, no extra MAE confirmation, no smaller-alpha repair, and no release.
+This closes these fixed MAE/SmoothL1 recipes on V7's representation, not every
+possible robust-loss method. The original V7 time and V9 iron confirmations
+remain unchanged, and their larger independent increments retain priority.
 
 No external weights/data, full-data model, package, desktop write or upload.
 Platform best remains user-reported **A35=96.3366**. No result here establishes

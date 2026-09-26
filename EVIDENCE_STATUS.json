@@ -8977,7 +8977,7 @@
     }
   },
   "round2_v10_periodic_loss_2026_09_26": {
-    "status": "development_complete_confirmation_selected",
+    "status": "confirmation_complete_failed_four_seed_gate",
     "spec": "configs/round2_v10/SPEC.yaml",
     "preregistration": "docs/round2_v10/PREREGISTRATION.md",
     "run": "local/runs/round2-v10-periodic-loss/development-r1",
@@ -9004,10 +9004,17 @@
         "status": "passed",
         "verified_files": 32,
         "artifact": "local/reports/v10-confirm-reference-preflight-r2.json"
+      },
+      "confirmation_independent_audit": {
+        "status": "passed",
+        "artifact": "local/runs/round2-v10-periodic-loss/confirmation-r1/audit-r1.json",
+        "prediction_count": 20,
+        "arithmetic_tolerance": 1e-12,
+        "new_fits": 0
       }
     },
     "G1": {
-      "status": "development_only",
+      "status": "failed_four_seed_confirmation",
       "records": [
         {
           "recipe": "mae",
@@ -9116,10 +9123,171 @@
     "goal_achieved": false,
     "confirmation": {
       "spec": "configs/round2_v10/CONFIRMATION.yaml",
-      "status": "running",
+      "status": "complete",
       "candidate_outer_fit_budget": 10,
       "baseline_outer_fit_budget": 0,
-      "run": "local/runs/round2-v10-periodic-loss/confirmation-r1"
+      "run": "local/runs/round2-v10-periodic-loss/confirmation-r1",
+      "comparisons": {
+        "A35": {
+          "seed_gains": {
+            "42": 0.015317765168050487,
+            "3407": 0.022019482708118543,
+            "7777": 0.005737179480491059,
+            "12011": 0.0006410298786128921
+          },
+          "alphas": {
+            "42": 0.35,
+            "3407": 0.35,
+            "7777": 0.35,
+            "12011": 0.5
+          },
+          "mean": 0.010928864308818245,
+          "sd": 0.009575270158957556,
+          "lcb95": -0.0003381810264016325,
+          "positive_seeds": 4,
+          "positive_folds": 15,
+          "four_seed_pass": false
+        },
+        "Q20": {
+          "seed_gains": {
+            "42": 0.017156398072606174,
+            "3407": 0.021994605046066554,
+            "7777": 0.006604595675296782,
+            "12011": -0.00029656550919437974
+          },
+          "alphas": {
+            "42": 0.35,
+            "3407": 0.35,
+            "7777": 0.35,
+            "12011": 0.5
+          },
+          "mean": 0.011364758321193782,
+          "sd": 0.010086002747983639,
+          "lcb95": -0.0005032567140139197,
+          "positive_seeds": 3,
+          "positive_folds": 15,
+          "four_seed_pass": false
+        },
+        "V7_TIME": {
+          "seed_gains": {
+            "42": 0.0019617948933627755,
+            "3407": 0.0021479955970136327,
+            "7777": -0.0008631618470498342,
+            "12011": -0.0010422222463449954
+          },
+          "alphas": {
+            "42": 0.1,
+            "3407": 0.1,
+            "7777": 0.2,
+            "12011": 0.2
+          },
+          "mean": 0.0005511015992453946,
+          "sd": 0.0017396309936908824,
+          "lcb95": -0.0014958903860546476,
+          "positive_seeds": 2,
+          "positive_folds": 12,
+          "four_seed_pass": false
+        }
+      },
+      "decisions": {
+        "A35": {
+          "admitted": false,
+          "reasons": [
+            "seed_level_lcb_not_positive"
+          ],
+          "fold_summary": {
+            "n": 20,
+            "mean": 0.010928864308818245,
+            "sd": 0.020234019071228973,
+            "se": 0.004524464210129514,
+            "lcb95": 0.003105464788529192,
+            "positive": 15
+          },
+          "fold_criteria": {
+            "met": false,
+            "reasons": [
+              "positive_cells_below_minimum"
+            ],
+            "positive": 15,
+            "cells": 20,
+            "required_positive": 16,
+            "role": "descriptive_only"
+          },
+          "seed_summary": {
+            "n": 4,
+            "mean": 0.010928864308818245,
+            "sd": 0.009575270158957556,
+            "se": 0.004787635079478778,
+            "lcb95": -0.0003381810264016325,
+            "positive": 4,
+            "positive_seeds": 4,
+            "seeds": [
+              42,
+              3407,
+              7777,
+              12011
+            ]
+          },
+          "seed_gains": {
+            "42": 0.015317765168050487,
+            "3407": 0.022019482708118543,
+            "7777": 0.005737179480491059,
+            "12011": 0.0006410298786128921
+          },
+          "required_split_seeds": 4
+        },
+        "V7_TIME": {
+          "admitted": false,
+          "reasons": [
+            "seed_level_lcb_not_positive",
+            "initial_split_seed_not_positive"
+          ],
+          "fold_summary": {
+            "n": 20,
+            "mean": 0.0005511015992453946,
+            "sd": 0.004954774925432536,
+            "se": 0.0011079213546478601,
+            "lcb95": -0.0013646415676614226,
+            "positive": 12
+          },
+          "fold_criteria": {
+            "met": false,
+            "reasons": [
+              "positive_cells_below_minimum",
+              "initial_split_seed_not_positive"
+            ],
+            "positive": 12,
+            "cells": 20,
+            "required_positive": 16,
+            "role": "descriptive_only"
+          },
+          "seed_summary": {
+            "n": 4,
+            "mean": 0.0005511015992453946,
+            "sd": 0.0017396309936908824,
+            "se": 0.0008698154968454412,
+            "lcb95": -0.0014958903860546476,
+            "positive": 2,
+            "positive_seeds": 2,
+            "seeds": [
+              42,
+              3407,
+              7777,
+              12011
+            ]
+          },
+          "seed_gains": {
+            "42": 0.0019617948933627755,
+            "3407": 0.0021479955970136327,
+            "7777": -0.0008631618470498342,
+            "12011": -0.0010422222463449954
+          },
+          "required_split_seeds": 4
+        }
+      },
+      "development_package_score": 96.23264390227084,
+      "local_working_gate_met": false,
+      "new_baseline_fits": 0
     }
   }
 }
