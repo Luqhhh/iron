@@ -105,3 +105,11 @@ models, but no candidate adds a positive increment over the frozen V7/V9 referen
 Both iron recipes also select zero weight on top of delivered V12 iron. No
 confirmation fits or V13 packages were generated. V7 and V12 platform feedback
 remains pending; A35=96.3366 remains the reported best.
+
+## Subsequent V14 closure (2026-09-27)
+
+[V14 results](../round2_v14/RESULTS.md) record 20 completed joint PLE fits and a
+passed independent audit. Joint training improves PLE iron standalone quality,
+but every recipe/target selects zero weight over V12 iron or V7 time at both
+development splits. No confirmation candidate, full-data fit or package resulted.
+Delivered V7/V12 feedback is pending; platform >96.4 remains unverified.

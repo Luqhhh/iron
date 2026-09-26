@@ -10442,7 +10442,7 @@
     "goal_achieved": false
   },
   "round2_v14_joint_ple_2026_09_27": {
-    "status": "development_running_exact_joint_control_passed",
+    "status": "development_complete_no_confirmation_candidate",
     "spec": "configs/round2_v14/SPEC.yaml",
     "preregistration": "docs/round2_v14/PREREGISTRATION.md",
     "new_evidence": [
@@ -10465,7 +10465,14 @@
         "model_fits": 0,
         "candidate_predictions_read": false,
         "status": "passed"
-      }
+      },
+      "independent_audit": "local/runs/round2-v14-joint-ple/development-r1/audit-r1.json",
+      "audit_sha256": "2ca6ef47b4b8dcc482b0202fbba98d722cbb277b53d399dcdab13ef9aa37717c",
+      "audit_status": "passed",
+      "prediction_count_verified": 20,
+      "preprocessing_reconstructions": 20,
+      "fit_failures": 0,
+      "epoch_cap_hits": 1
     },
     "budget": {
       "development_joint_outer_fits": 20,
@@ -10478,17 +10485,248 @@
       "tap_iron": "V12_IRON_A50",
       "tap_time_len": "V7_TIME_A50"
     },
-    "official_data_fits_complete": 1,
+    "official_data_fits_complete": 21,
     "run": "local/runs/round2-v14-joint-ple/development-r1",
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false,
-    "live_process_at_observation": {
+    "historical_live_process_observation": {
       "pid": 220769,
       "exec_session": 76668,
       "log": "local/reports/v14-development-r1.log",
       "note": "Control passed. Revalidate process/session before treating the recorded batch as live."
-    }
+    },
+    "completed_fits": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "confirmation_outer_fits": 0,
+      "full_data_fits": 0
+    },
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "joint_ple_inactive_control",
+          "single_wmape": {
+            "42": 0.039332438579464994,
+            "3407": 0.0398142714597233
+          },
+          "single_output_control_wmape": {
+            "42": 0.04025554454986306,
+            "3407": 0.04038259553615516
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.004079260874521526,
+                "3407": 0.0025552650624716816
+              },
+              "mean": 0.0033172629684966037,
+              "lcb95": -0.0014938024648474546,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 7
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.004079260874521526,
+                "3407": 0.0025552650624716816
+              },
+              "mean": 0.0033172629684966037,
+              "lcb95": -0.0014938024648474546,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 7
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "joint_ple_repaired",
+          "single_wmape": {
+            "42": 0.0384327249514163,
+            "3407": 0.038216450422957134
+          },
+          "single_output_control_wmape": {
+            "42": 0.03882581924412328,
+            "3407": 0.03918387804885103
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0023059923681632843,
+                "3407": 0.008525145551816632
+              },
+              "mean": 0.005415568959989958,
+              "lcb95": -0.014217524956653738,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0023059923681632843,
+                "3407": 0.008525145551816632
+              },
+              "mean": 0.005415568959989958,
+              "lcb95": -0.014217524956653738,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "joint_ple_inactive_control",
+          "single_wmape": {
+            "42": 0.04160596653841724,
+            "3407": 0.04169029962337098
+          },
+          "single_output_control_wmape": {
+            "42": 0.0402379580211561,
+            "3407": 0.040643301364797324
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "joint_ple_repaired",
+          "single_wmape": {
+            "42": 0.03989468300672589,
+            "3407": 0.03982107652555667
+          },
+          "single_output_control_wmape": {
+            "42": 0.03961172370947606,
+            "3407": 0.03946128699334107
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0008574990387854448,
+                "3407": 0.0010954167407106058
+              },
+              "mean": 0.0009764578897480253,
+              "lcb95": 0.00022538126429903066,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.1
+              },
+              "positive_folds": 4
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0008271968817451236,
+                "3407": 0.0005519826606930484
+              },
+              "mean": 0.000689589771219086,
+              "lcb95": -0.00017922733129473927,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.1
+              },
+              "positive_folds": 6
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        }
+      ],
+      "selected_confirmation": null,
+      "all_current_reference_alphas_zero": true,
+      "platform_score": null,
+      "interpretation": "Joint PLE improves standalone iron but leaves zero measured incremental blend gain over delivered local references under the frozen sparse grid."
+    },
+    "results": "docs/round2_v14/RESULTS.md"
   },
   "round2_v6_alpha_feedback_2026_09_27": {
     "date": "2026-09-27",
