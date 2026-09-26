@@ -135,6 +135,13 @@ def append_event(out, event):
         stream.write(json.dumps(event, allow_nan=False)+'\n')
 
 
+def authorization_record(release):
+    record = dict(release['authorization'])
+    # Safe YAML parsing turns an unquoted ISO date into datetime.date.
+    record['date'] = str(record['date'])
+    return record
+
+
 def run(root, release_spec=Path('configs/round2_v7/RELEASE.yaml')):
     root = Path(root).resolve()
     release_path = (root/release_spec).resolve()
@@ -181,7 +188,7 @@ def run(root, release_spec=Path('configs/round2_v7/RELEASE.yaml')):
         files += [root/f'复赛_{stage}/{stage}_{kind}.csv' for stage in ['train', 'test'] for kind in ['samples', 'features']]
         files += [root/'复赛_test/result_template.csv']
         hashes = {str(p): file_hash(p) for p in files}
-        write_new(out/'manifest.json', {'candidate': release['candidate'], 'authorization': release['authorization'],
+        write_new(out/'manifest.json', {'candidate': release['candidate'], 'authorization': authorization_record(release),
                   'files': hashes, 'data_digest': data_hash, 'versions': versions,
                   'git_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()})
         recipe, settings = spec['recipes'][release['recipe']], spec['training']

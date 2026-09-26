@@ -47,3 +47,11 @@ the exact frozen parent SHA-256. `RELEASE_R2.yaml` changes only the parent file
 location and fresh output-run identity, retaining all model, blend, validation
 and delivery settings. The runner accepts an explicit release-spec path so the
 original specification and failed directory remain unchanged.
+
+Release-r2 also stopped before any fit: safe YAML loading returned the unquoted
+authorization date as a `datetime.date`, which the JSON manifest writer refused.
+The incomplete manifest and failure ledger remain preserved. The writer now
+serializes that date explicitly; a regression test covers the actual YAML/JSON
+boundary. `RELEASE_R3.yaml` uses a fresh output directory, with the same verified
+archived parent, model, weight, validation and desktop destination. Total fits
+consumed by the two failed preflights:0.

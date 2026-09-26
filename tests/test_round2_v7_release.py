@@ -1,5 +1,6 @@
 import csv
 import io
+import json
 from pathlib import Path
 import subprocess
 import sys
@@ -16,7 +17,7 @@ pytest.importorskip('rtdl_num_embeddings')
 
 from bf_tap_r2.data import FEATURES, SUBMISSION_COLUMNS
 from bf_tap_r2.v7_periodic import PeriodicRegressor, file_hash
-from bf_tap_r2.v7_release import blended_payload, parent_payload, save_and_cold, verify_payload
+from bf_tap_r2.v7_release import authorization_record, blended_payload, parent_payload, save_and_cold, verify_payload
 
 
 def parent_fixture():
@@ -25,6 +26,13 @@ def parent_fixture():
     writer.writerow(SUBMISSION_COLUMNS)
     writer.writerows((sid, '500.12345678901234500', '100.50000000000000') for sid in ids)
     return ids, stream.getvalue().encode()
+
+
+def test_yaml_authorization_date_can_be_serialized_without_changing_source():
+    raw = yaml.safe_load('authorization:\n  date: 2026-09-26\n  desktop_write: true\n  uploads: false\n')
+    record = json.loads(json.dumps(authorization_record(raw), allow_nan=False))
+    assert record == {'date': '2026-09-26', 'desktop_write': True, 'uploads': False}
+    assert not isinstance(raw['authorization']['date'], str)
 
 
 def test_release_preserves_iron_text_and_exact_blend_with_frozen_clip(tmp_path):
