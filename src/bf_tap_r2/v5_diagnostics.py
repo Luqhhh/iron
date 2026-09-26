@@ -349,9 +349,8 @@ def backtest_discrimination(root: Path | str, spec: V5Spec,
             "old_gate_would_admit": old_gate,
             "v5_admitted": bool(record_decision["admitted"]),
             "v5_reasons": record_decision["reasons"],
-            "v5_fold_only_admitted": not [r for r in record_decision["reasons"]
-                                          if r in {"positive_cells_below_minimum", "fold_cells_incomplete",
-                                                   "initial_split_seed_not_positive"}],
+            "v5_fold_only_admitted": bool(record_decision["fold_criteria"]["met"]),
+            "v5_fold_criteria": record_decision["fold_criteria"],
         })
     known_bad = [r for r in rows if str(r["role"]) == "known_bad"]
     replication = [r for r in rows if str(r["role"]) != "known_bad"]

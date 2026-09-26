@@ -280,11 +280,19 @@ def blend_record(y: Sequence[float], folds: Mapping[int, np.ndarray],
 
 def fold_criteria_met(fold_summary: Mapping[str, Any], positive_min: int,
                       total_min: int, both_initial_seeds_positive: bool) -> tuple[bool, list[str]]:
-    """The descriptive fold-level criteria, kept for reporting and backtest."""
+    """The descriptive fold-level criteria, kept for reporting and backtest.
+
+    ``positive_min``/``total_min`` are the reference pair from the specification
+    (8 of 10, that is 80%).  The requirement scales with the number of cells
+    actually available, so a four-seed replication with 20 cells is judged on the
+    same fraction instead of on the absolute count of eight.
+    """
+    observed = int(fold_summary.get("n") or 0)
+    required = int(math.ceil(float(positive_min) / float(total_min) * observed)) if observed else 0
     reasons: list[str] = []
-    if int(fold_summary.get("positive") or 0) < int(positive_min):
+    if int(fold_summary.get("positive") or 0) < required:
         reasons.append("positive_cells_below_minimum")
-    if int(fold_summary.get("n") or 0) < int(total_min):
+    if observed < int(total_min):
         reasons.append("fold_cells_incomplete")
     if not bool(both_initial_seeds_positive):
         reasons.append("initial_split_seed_not_positive")
@@ -292,12 +300,16 @@ def fold_criteria_met(fold_summary: Mapping[str, Any], positive_min: int,
 
 
 def admit(record: Mapping[str, Any], *, min_seeds: int, positive_cells_min: int,
-          positive_cells_total: int, lcb_level: float = 0.95) -> dict[str, Any]:
-    """Apply the full V5 promotion rule to one candidate's evidence record.
+          positive_cells_total: int, lcb_level: float = 0.95,
+          enforce_fold_criteria: bool = False) -> dict[str, Any]:
+    """Apply the V5 promotion rule to one candidate's evidence record.
 
-    The rule admits a candidate only when the split-seed-level paired lower
-    confidence bound is positive over at least ``min_seeds`` seeds.  Fold-level
-    evidence is required but explicitly insufficient on its own.
+    The pre-registration designates the fold level ``descriptive_only``
+    (``configs/round2_v5/SPEC.yaml -> resolution.fold_level.role``): promotion is
+    decided on the split-seed level — at least ``min_seeds`` seeds, a positive
+    paired lower bound, and every contributing seed positive.  The fold profile
+    is always computed and reported alongside, and callers that want it to block
+    admission can set ``enforce_fold_criteria``.
     """
     fold_summary = dict(record["fold_summary"])
     gains = {int(k): float(v) for k, v in record["seed_gains"].items()}
@@ -311,11 +323,24 @@ def admit(record: Mapping[str, Any], *, min_seeds: int, positive_cells_min: int,
         reasons.append("insufficient_split_seeds")
     if seed_summary.get("lcb95") is None or float(seed_summary["lcb95"]) <= 0.0:
         reasons.append("seed_level_lcb_not_positive")
-    reasons.extend(fold_reasons)
+    if gains and not all(v > 0 for v in gains.values()):
+        reasons.append("initial_split_seed_not_positive")
+    if enforce_fold_criteria:
+        reasons.extend(fold_reasons)
+    observed = int(fold_summary.get("n") or 0)
     return {
         "admitted": not reasons,
         "reasons": reasons,
         "fold_summary": fold_summary,
+        "fold_criteria": {
+            "met": ok_folds,
+            "reasons": fold_reasons,
+            "positive": int(fold_summary.get("positive") or 0),
+            "cells": observed,
+            "required_positive": int(math.ceil(float(positive_cells_min) / float(positive_cells_total)
+                                               * observed)) if observed else 0,
+            "role": "descriptive_only",
+        },
         "seed_summary": seed_summary,
         "seed_gains": gains,
         "required_split_seeds": int(min_seeds),

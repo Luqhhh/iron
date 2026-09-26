@@ -386,3 +386,52 @@ def test_recorded_vector_rejects_a_nonfinite_vector(tmp_path: Path) -> None:
     np.save(path, vector)
     with pytest.raises(ValueError):
         _recorded_vector(tmp_path, spec, "v36", "v36-s1-N-0049", 42)
+
+def test_fold_criteria_scale_with_the_number_of_cells() -> None:
+    """The 8-of-10 reference is a fraction: 20 cells require 16, not 8."""
+    ok, reasons = fold_criteria_met({"n": 20, "positive": 14, "mean": 0.01}, 8, 10, True)
+    assert ok is False
+    assert "positive_cells_below_minimum" in reasons
+    ok, _ = fold_criteria_met({"n": 20, "positive": 16, "mean": 0.01}, 8, 10, True)
+    assert ok is True
+    ok, _ = fold_criteria_met({"n": 10, "positive": 8, "mean": 0.01}, 8, 10, True)
+    assert ok is True
+    ok, reasons = fold_criteria_met({"n": 10, "positive": 8, "mean": 0.01}, 8, 10, True)
+    assert ok is True and not reasons
+
+
+def test_admission_is_decided_on_the_seed_level_and_reports_the_fold_profile() -> None:
+    """The specification marks the fold level ``descriptive_only``.
+
+    Promotion therefore follows the four-seed criterion, while a weaker fold
+    profile is surfaced next to it instead of being hidden or silently binding.
+    """
+    gains = {1: 0.010, 2: 0.010, 3: 0.010, 4: 0.010}
+    record = {
+        "fold_summary": {"n": 20, "positive": 14, "mean": 0.010, "sd": 0.013, "se": 0.003,
+                         "lcb95": 0.0045},
+        "seed_gains": gains,
+    }
+    decision = admit(record, min_seeds=4, positive_cells_min=8, positive_cells_total=10)
+    assert decision["admitted"] is True
+    assert decision["reasons"] == []
+    assert decision["fold_criteria"]["met"] is False
+    assert decision["fold_criteria"]["required_positive"] == 16
+    assert decision["fold_criteria"]["role"] == "descriptive_only"
+    strict = admit(record, min_seeds=4, positive_cells_min=8, positive_cells_total=10,
+                   enforce_fold_criteria=True)
+    assert strict["admitted"] is False
+    assert "positive_cells_below_minimum" in strict["reasons"]
+
+
+def test_admission_rejects_a_negative_seed_lower_bound_even_with_four_seeds() -> None:
+    gains = {1: 0.01, 2: 0.01, 3: -0.02, 4: 0.01}
+    record = {
+        "fold_summary": {"n": 20, "positive": 15, "mean": 0.003, "sd": 0.013, "se": 0.003,
+                         "lcb95": -0.003},
+        "seed_gains": gains,
+    }
+    decision = admit(record, min_seeds=4, positive_cells_min=8, positive_cells_total=10)
+    assert decision["admitted"] is False
+    assert "seed_level_lcb_not_positive" in decision["reasons"]
+    assert "initial_split_seed_not_positive" in decision["reasons"]

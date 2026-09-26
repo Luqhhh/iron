@@ -29,7 +29,14 @@ import numpy as np
 
 from .data import TARGETS
 from .v5_library import fold_vector, load_column_reference, load_v5_training_frame
-from .v5_resolution import admit, paired_cells, paired_summary, seed_gains, seed_level_summary, wmape
+from .v5_resolution import (
+    admit,
+    nested_blend,
+    paired_cells,
+    paired_summary,
+    seed_gains,
+    wmape,
+)
 from .v5_spec import V5Spec, load_v5_spec
 
 __all__ = ["load_candidate", "replicate_candidate", "replication_status", "main"]
@@ -229,10 +236,16 @@ def replicate_candidate(root: Path | str, spec: V5Spec, output: Path | str,
         base_by_seed[seed] = derived_base[seed]
         candidate_by_seed[seed] = derived_candidate[seed]
 
-    cells = paired_cells(actual, folds_by_seed, base_by_seed, candidate_by_seed)
-    gains = seed_gains(cells)
+    # The candidate is never used alone: the released column is the incumbent and a
+    # small diversification weight is blended in.  Comparing the raw candidate
+    # against the base would measure its standalone 7% accuracy deficit (about
+    # -0.13 score points) rather than the blend's gain, so the blend weight is
+    # selected on the other split seeds and scored on the held-out one.
+    nested = nested_blend(actual, folds_by_seed, base_by_seed, candidate_by_seed, spec.alpha_grid)
+    raw_cells = paired_cells(actual, folds_by_seed, base_by_seed, candidate_by_seed)
+    raw_gains = seed_gains(raw_cells)
     decision = admit(
-        {"fold_summary": paired_summary([cell.delta_score for cell in cells]), "seed_gains": gains},
+        nested,
         min_seeds=int(spec.raw["resolution"]["seed_level"]["min_seeds_for_promotion"]),
         positive_cells_min=int(spec.raw["resolution"]["fold_level"]["positive_cells_min"]),
         positive_cells_total=int(spec.raw["resolution"]["fold_level"]["positive_cells_total"]),
@@ -244,10 +257,25 @@ def replicate_candidate(root: Path | str, spec: V5Spec, output: Path | str,
         "target": target,
         "derived_seeds": [int(s) for s in seeds],
         "recorded_seeds": [int(s) for s in recorded_seeds],
-        "seed_coverage": {str(cell.seed): int(cell.rows) for cell in cells},
-        "cells": [cell.as_dict() for cell in cells],
-        "seed_gains": gains,
-        "seed_summary": seed_level_summary(gains),
+        "protocol": (
+            "blend weight selected on the other two split seeds and scored on the held-out "
+            "one; the released column is the blend endpoint, never replaced outright"
+        ),
+        "blend_alphas": {str(k): float(v) for k, v in nested["alphas"].items()},
+        "base_per_seed_wmape": {str(s): wmape(actual, base_by_seed[s]) for s in sorted(base_by_seed)},
+        "candidate_only_per_seed_wmape": {str(s): wmape(actual, candidate_by_seed[s])
+                                          for s in sorted(candidate_by_seed)},
+        "candidate_only": {
+            "fold_summary": paired_summary([cell.delta_score for cell in raw_cells]),
+            "seed_gains": raw_gains,
+            "note": "standalone comparison, reported for context only; it is not the candidate",
+        },
+        "seed_coverage": {str(cell.seed): int(cell.rows)
+                          for cell in paired_cells(actual, folds_by_seed, base_by_seed,
+                                                   {s: np.asarray(base_by_seed[s]) for s in base_by_seed})},
+        "nested": nested,
+        "seed_gains": nested["seed_gains"],
+        "seed_summary": nested["seed_summary"],
         "decision": decision,
         "new_folds_fitted": int(new_folds),
         "agent_uploads": 0,

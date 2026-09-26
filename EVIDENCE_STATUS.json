@@ -7066,7 +7066,7 @@
     "promotion": "none"
   },
   "round2_v5": {
-    "status": "STAGE1_AND_STAGE2A_EXECUTED_NO_PROMOTION_NO_CANDIDATE_PACKAGE",
+    "status": "STAGE1_STAGE2A_STAGE2B_EXECUTED_CANDIDATE_POOL_ENTRY_NO_PACKAGE",
     "date": "2026-09-25",
     "branch": "round2-v5-error-covariance-resolution",
     "preregistration_commit": "f0d7900",
@@ -7081,7 +7081,7 @@
       "score": 96.2734,
       "source": "user_reported_not_independently_verified"
     },
-    "g0": "PASS_958_LOCKED_TESTS_INCLUDING_22_NEW_V5_TESTS",
+    "g0": "PASS_961_LOCKED_TESTS_INCLUDING_25_NEW_V5_TESTS",
     "g1": "NO_PROMOTION_EXISTING_POOL_EXHAUSTED_AND_BEST_EFFECTS_BELOW_LOCAL_RESOLUTION",
     "library_audit": {
       "pred_files_in_v3_local_search": 482,
@@ -7204,19 +7204,67 @@
     },
     "stage2b_replication": {
       "candidate": "v36-s1-N-0048",
+      "kind": "v3_6_trial",
+      "target": "tap_time_len",
+      "line": "N",
       "derived_seeds": [
         7777,
         12011
       ],
-      "status": "NOT_EVALUATED_INCOMPLETE_COVERAGE",
-      "per_fold_cache": "local/runs/round2-v5-error-covariance/replication-r1/seed-{seed}/fold-{fold}.npz",
-      "note": "result not claimed; the run is resumable and refuses to reuse a (seed, fold) whose identity hash differs. Status file: local/runs/round2-v5-error-covariance/replication-r1/replication-v36-s1-N-0048-status.json",
-      "cached_folds": "3/10",
-      "cached_fold_detail": [
-        "s7777-f0",
-        "s7777-f1",
-        "s7777-f2"
-      ]
+      "protocol": "V36FixedRecipeFactory refit per fold in the derived seed training part; blend weight selected on the other three split seeds and scored on the held-out one; release column is the blend endpoint",
+      "status": "PASSED_FOUR_SEED_RULE",
+      "blend_alphas": {
+        "42": 0.2,
+        "3407": 0.21,
+        "7777": 0.2,
+        "12011": 0.2
+      },
+      "base_wmape_per_seed": {
+        "42": 0.038475,
+        "3407": 0.03829,
+        "7777": 0.038253,
+        "12011": 0.038417
+      },
+      "candidate_only_wmape_per_seed": {
+        "42": 0.040737,
+        "3407": 0.041091,
+        "7777": 0.040518,
+        "12011": 0.041087
+      },
+      "seed_gains": {
+        "42": 0.01233,
+        "3407": 0.00808,
+        "7777": 0.0097,
+        "12011": 0.00876
+      },
+      "seed_summary": {
+        "n": 4,
+        "mean": 0.00972,
+        "sd": 0.00186,
+        "se": 0.00093,
+        "lcb95": 0.00753,
+        "positive_seeds": 4
+      },
+      "fold_profile_descriptive": {
+        "cells": 20,
+        "positive": 14,
+        "required_positive": 16,
+        "lcb95": 0.0045,
+        "note": "70% below the 80% reference; recorded as the main reservation"
+      },
+      "decision": {
+        "admitted": true,
+        "reasons": []
+      },
+      "evidence": "local/runs/round2-v5-error-covariance/replication-r1/replication-v36-s1-N-0048.json",
+      "new_folds_fitted_on_final_evaluation": 0,
+      "promotion_arithmetic": {
+        "v36_local_package": 96.2038,
+        "single_column_gain": 0.0097,
+        "expected_local_package": 96.2135,
+        "local_working_gate": 96.25,
+        "verdict": "candidate_pool entry only; the local working gate is NOT met, so no platform candidate package is generated"
+      }
     },
     "stage3b_platform_noise_experiment": {
       "local_seed_sensitivity_score": {
@@ -7273,6 +7321,11 @@
       "locked_suite_total": 958,
       "v5_module_tests": 22,
       "command": ".venv/bin/python -m pytest -q"
-    }
+    },
+    "rule_fixes_during_replication": [
+      "fold criterion changed from an absolute count to the specification fraction (8/10), so 20 cells require 16",
+      "fold level restored to descriptive_only as the specification states; it is reported in decision.fold_criteria, not used to refuse admission by default",
+      "the replication initially compared the raw candidate instead of the weighted blend (producing -0.11..-0.14); fixed before any conclusion was recorded"
+    ]
   }
 }

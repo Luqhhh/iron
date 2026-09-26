@@ -218,8 +218,26 @@ the recorded `round2-v2*` OOF columns.
 V34_A endpoint plus the four frozen experts with every training seed shifted by +1000. Upload is
 performed by the user. `|delta| ~ 0.02` against 96.2734 ends thousandth-chasing; `|delta| ~ 0.005`
 means seed sensitivity dominates and the error-covariance route continues under the four-seed
-rule. Stage 2b replication of `v36-s1-N-0048` on derived split seeds is cached per `(seed, fold)`
-and resumable; it is `NOT_EVALUATED_INCOMPLETE_COVERAGE` until all ten folds exist.
+rule.
+
+**Stage 2b passed.** `v36-s1-N-0048` was replicated on the derived split seeds `7777` and `12011`
+(`V36FixedRecipeFactory` refit per fold; the released column is the blend endpoint, with the weight
+selected on the other three seeds). Per-seed gains are `+0.01233 / +0.00808 / +0.00970 / +0.00876`,
+mean `+0.00972`, sd `0.00186`, **seed-level paired LCB95 `+0.00753` with 4/4 seeds positive**, and
+the derived-seed baselines (`0.03825`/`0.03842`) match the recorded ones (`0.03829`/`0.03848`).
+This is the first candidate in the project to pass an independent-split-seed gate. Its fold profile
+is the reservation: 14/20 cells positive (70% against the 80% reference), reported under
+`decision.fold_criteria` and `descriptive_only` per the specification. **It still does not reach the
+frozen local working gate** (`96.2038 + 0.0097 ≈ 96.2135 < 96.25`), so it enters `candidate_pool`
+and no candidate platform package was generated.
+
+Three implementation defects were found and fixed during replication, all now pinned by tests in
+`tests/test_round2_v5.py`: the fold criterion was an absolute count (8) instead of the
+specification's fraction (so 20 cells only needed 40%); `admit` treated the `descriptive_only` fold
+level as binding; and the replication initially compared the raw candidate rather than the weighted
+blend, which produced a spurious `-0.11..-0.14` before being caught. Stage 1 was re-run after the
+fixes: the backtest still rejects 4/4 known-bad candidates, and the full-coverage N2 record is still
+admitted by the fold-level rule alone and refused only by `insufficient_split_seeds`.
 
 **Closed routes are unchanged** (NODE per-depth, ODST core, TabR full fusion, residual
 correctors, sample reweighting, dense alpha scans). Temporal/lag features remain *unavailable*
