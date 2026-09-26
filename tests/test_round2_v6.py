@@ -161,3 +161,117 @@ def test_sampler_is_deterministic_and_collision_free() -> None:
     second = sample_v6_iron_capacity_trials(REPO_ROOT)
     assert first == second
     verify_no_v36_collision(REPO_ROOT)
+
+# ---------------------------------------------------------------------------
+# Stage A screen
+# ---------------------------------------------------------------------------
+
+def _synthetic_screen_inputs():
+    import numpy as np
+
+    rng = np.random.default_rng(7)
+    rows = 40
+    actual = rng.normal(100.0, 10.0, rows)
+    base = actual + rng.normal(0.0, 1.0, rows)
+    folds = np.array([0] * 20 + [1] * 20)
+    mask = np.ones(rows, dtype=bool)
+    close = actual + 0.1 * (actual - base)          # slightly decorrelated, same accuracy
+    duplicate = close + 0.01 * rng.normal(size=rows)
+    # a candidate whose residual points in an independent direction: not a scaled
+    # copy of the base residual, but far less accurate
+    far = actual + rng.normal(0.0, 5.0, rows)
+    return actual, base, folds, mask, close, duplicate, far
+
+
+def test_selection_enforces_family_and_mutual_correlation_constraints() -> None:
+    import numpy as np
+
+    from bf_tap_r2.v6_screen import StageARecord, select_with_diversity
+
+    actual, base, folds, mask, close, duplicate, far = _synthetic_screen_inputs()
+    del folds
+    first = StageARecord("t1", "tap_iron", "raw_tabm", "large", "mse_adam", "raw_tabm|large",
+                         "test", 0.8, 1.0, 1.0, 1.05, 0.01, admissible=True)
+    same_family = StageARecord("t2", "tap_iron", "raw_tabm", "large", "mae_adam", "raw_tabm|large",
+                               "test", 0.8, 1.0, 1.0, 1.05, 0.01, admissible=True)
+    other_family_dup = StageARecord("t3", "tap_iron", "ple_tabm", "large", "mse_adam", "ple_tabm|large",
+                                    "test", 0.8, 1.0, 1.0, 1.05, 0.01, admissible=True)
+    other_family_far = StageARecord("t4", "tap_iron", "raw_mlp", "large", "mse_adam", "raw_mlp|large",
+                                    "test", 0.8, 1.0, 1.0, 1.05, 0.01, admissible=True)
+    wrong = StageARecord("t5", "tap_iron", "ple_mlp", "large", "mse_adam", "ple_mlp|large",
+                         "test", 0.8, 1.0, 1.0, 1.05, 0.01, admissible=False,
+                         reasons=["projected_gain_not_positive"])
+    records = [first, same_family, other_family_dup, other_family_far, wrong]
+    vectors = {"t1": close, "t2": duplicate, "t3": duplicate, "t4": far, "t5": far}
+    chosen = select_with_diversity(records, vectors, actual, mask, mutual_max=0.95, limit=6)
+    ids = [record.trial_id for record in chosen]
+    assert ids == ["t1", "t4"]
+    assert same_family.selection_note == "family_already_selected"
+    assert other_family_dup.selection_note.startswith("mutual_residual_correlation_above_max")
+    assert wrong.selection_note == ""
+
+
+def test_screen_flags_each_admissibility_reason(tmp_path: Path) -> None:
+    import numpy as np
+
+    from bf_tap_r2.v6_screen import screen_records_for_target
+    from bf_tap_r2.v6_spec import load_v6_spec
+
+    spec = load_v6_spec(REPO_ROOT)
+    actual, base, folds, mask, close, duplicate, far = _synthetic_screen_inputs()
+    del duplicate
+    candidates = {
+        "good": {"structure": "raw_tabm", "capacity_name": "large", "training_setting": "mse_adam"},
+        "bad_ratio": {"structure": "ple_tabm", "capacity_name": "small", "training_setting": "mse_adam"},
+    }
+    records = _screen_with_vectors(
+        screen_records_for_target, spec, actual, base, folds, mask, candidates,
+        {"good": close, "bad_ratio": far}, tmp_path)
+    by_id = {record.trial_id: record for record in records}
+    assert by_id["good"].admissible is True
+    assert by_id["bad_ratio"].admissible is False
+    assert "accuracy_loss_above_max" in by_id["bad_ratio"].reasons
+
+
+def _screen_with_vectors(screen_fn, spec, actual, base, folds, mask, candidates, vectors, tmp: Path):
+    """Run the screen against in-memory vectors written to a temporary directory."""
+    import numpy as np
+
+    for trial_id, vector in vectors.items():
+        np.save(tmp / f"pred-{trial_id}.npy", vector)
+    return screen_fn("tap_iron", actual, base, mask, folds, candidates, tmp, spec)
+
+
+@pytest.mark.skipif(not (REPO_ROOT / "local/runs/round2-v3.6-loss-training-and-numeric-encoding/"
+                         "fixed-r2-final/fit_ledger.jsonl").is_file(),
+                    reason="private V3.6 caches are absent")
+def test_screen_reproduces_the_known_winner_as_admissible() -> None:
+    """The V5 winner must pass Stage A when judged from the recorded folds 0/1 files.
+
+    If this ever fails, the screen is mis-calibrated and a Stage A negative cannot
+    be read as evidence about the candidate space.
+    """
+    import numpy as np
+
+    from bf_tap_r2.v3_6_sampler import sample_v36
+    from bf_tap_r2.v5_library import fold_vector, load_column_reference, load_v5_training_frame
+    from bf_tap_r2.v6_screen import RECORDED_FOLDS, RECORDED_SEED, V36_FIXED_DIR, screen_records_for_target
+    from bf_tap_r2.v6_spec import load_v6_spec
+
+    spec = load_v6_spec(REPO_ROOT)
+    train = load_v5_training_frame(REPO_ROOT)
+    reference = load_column_reference(REPO_ROOT, train, spec)
+    trials = {str(t["trial_id"]): t for t in sample_v36(REPO_ROOT)}
+    folds = fold_vector(REPO_ROOT, train, RECORDED_SEED, None)
+    mask = np.isin(folds, list(RECORDED_FOLDS))
+    witnesses = ("v36-s1-N-0048", "v36-s1-N-0049", "v36-s1-N-0050", "v36-s1-N-0051")
+    records = screen_records_for_target(
+        "tap_time_len", train["tap_time_len"].to_numpy(dtype=float),
+        reference.base_for("tap_time_len", RECORDED_SEED), mask, folds,
+        {name: trials[name] for name in witnesses}, REPO_ROOT / V36_FIXED_DIR, spec)
+    assert len(records) == 4
+    for record in records:
+        assert record.admissible is True, record.reasons
+        assert record.residual_correlation < 0.90
+        assert record.accuracy_ratio < 1.10
+        assert record.projected_gain_score > 0.01

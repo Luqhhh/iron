@@ -60,6 +60,9 @@ BUDGET = {"stage_a_new_fits": 0, "stage_b_max_trials_per_target": 6,
           "stage_c_max_candidates": 2, "stage_c_max_candidate_fit_slots": 20,
           "stage_d_max_packages": 1, "wall_clock_cap_hours": 3}
 DERIVED_SEEDS = (7777, 12011)
+ALPHA_BOUNDS = (0.05, 0.5)
+ALPHA_GRID_POINTS = 46
+STAGE_A2 = {"target": "tap_iron", "max_fit_slots": 64, "seeds": (42,), "folds": (0, 1)}
 MEASURED_OFFSET_RANGE = (0.0347, 0.1008)
 
 EXPECTED_SOURCE_TRIALS = {"s1_iron_recorded_never_complete": 12,
@@ -158,8 +161,38 @@ def validate_v6_spec(raw: Mapping[str, Any]) -> None:
     for key, expected in MUTUAL_DIVERSITY.items():
         _require_equal(diversity.get(key), expected, f"signature.mutual_diversity.{key}")
 
+    fusion = _require(raw, "fusion")
+    _require_sequence_equal(_require(fusion, "alpha_search_bounds"), ALPHA_BOUNDS,
+                            "fusion.alpha_search_bounds")
+    _require_equal(fusion.get("alpha_grid_points"), ALPHA_GRID_POINTS, "fusion.alpha_grid_points")
+    if not bool(fusion.get("no_alpha_scan_at_release")):
+        raise ValueError("V6 SPEC must forbid an alpha scan at release")
+
     budget = _require(raw, "budget")
     _require_equal(budget.get("stage_a_new_fits"), BUDGET["stage_a_new_fits"], "budget.stage_a_new_fits")
+    stage_a2 = _require(budget, "stage_a2_iron_capacity_screen")
+    _require_equal(stage_a2.get("target"), STAGE_A2["target"],
+                   "budget.stage_a2_iron_capacity_screen.target")
+    _require_equal(stage_a2.get("max_fit_slots"), STAGE_A2["max_fit_slots"],
+                   "budget.stage_a2_iron_capacity_screen.max_fit_slots")
+    _require_sequence_equal(_require(stage_a2, "seeds"), STAGE_A2["seeds"],
+                            "budget.stage_a2_iron_capacity_screen.seeds")
+    _require_sequence_equal(_require(stage_a2, "folds"), STAGE_A2["folds"],
+                            "budget.stage_a2_iron_capacity_screen.folds")
+    if "stage A" not in str(stage_a2.get("gated_on", "")):
+        raise ValueError("the new iron capacity screen must stay gated on stage A")
+    reference = _require(raw, "reference")
+    for key in ("v36_summary", "v36_development_cache", "v36_coarse_ledger", "v36_parent_package",
+                "v5_time_family", "baseline_cache"):
+        if not str(_require(reference, key, "reference")):
+            raise ValueError(f"V6 SPEC reference.{key} must be a non-empty path")
+    frozen_folds = _require(reference, "frozen_folds")
+    if {int(k) for k in frozen_folds} != {42, 3407, 2026}:
+        raise ValueError("V6 SPEC must freeze the fold vectors for seeds 42, 3407 and 2026")
+
+    amendment = _require(raw, "amendment")
+    if bool(amendment.get("thresholds_changed")):
+        raise ValueError("the V6 amendment must not have changed a threshold")
     stage_b_budget = _require(budget, "stage_b")
     _require_equal(stage_b_budget.get("max_trials_per_target"), BUDGET["stage_b_max_trials_per_target"],
                    "budget.stage_b.max_trials_per_target")
@@ -272,6 +305,13 @@ class V6Spec:
     @property
     def budget(self) -> dict[str, Any]:
         return dict(self.raw["budget"])
+
+    @property
+    def alpha_grid(self) -> tuple[float, ...]:
+        import numpy as np
+
+        low, high = (float(v) for v in self.raw["fusion"]["alpha_search_bounds"])
+        return tuple(float(v) for v in np.linspace(low, high, int(self.raw["fusion"]["alpha_grid_points"])))
 
     @property
     def new_iron_structure_families(self) -> list[str]:

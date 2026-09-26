@@ -17,6 +17,26 @@ branch: round2-v6-iron-capacity-networks
 base_commit: a1cd7c5
 preregistration_of_record: docs/round2_v6/PREREGISTRATION.md
 
+# Pre-execution amendment (recorded, not silent): the first revision of this file
+# left three execution details unspecified - the fusion alpha grid, the fit budget
+# for the coarse screen of the new iron capacity space (which has no recorded
+# folds 0/1 predictions), and the frozen reference paths the column replay reads.
+# All three were added BEFORE any V6 fit or evaluation.  No threshold, gate, stop
+# rule or budget cap was relaxed.
+amendment: {revision: 2, date: 2026-09-26, reason: executability, thresholds_changed: false}
+
+reference:
+  v36_summary: local/runs/round2-v3.6-loss-training-and-numeric-encoding/v36-summary.json
+  v36_development_cache: local/runs/round2-v3.6-loss-training-and-numeric-encoding/complete-dev-r2-final
+  v36_coarse_ledger: local/runs/round2-v3.6-loss-training-and-numeric-encoding/fixed-r2-final/fit_ledger.jsonl
+  v36_parent_package: local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/V36_USER_REQUESTED_OUTER_FAILED
+  v5_time_family: local/runs/round2-v5-error-covariance/time-n-family-r1
+  baseline_cache: local/runs/round2-v5-error-covariance/replication-r1
+  frozen_folds:
+    42: local/runs/round2-v2/comparison-r1/folds-42.csv
+    3407: local/runs/round2-v2/comparison-r1/folds-3407.csv
+    2026: local/runs/round2-v3-local-search/frozen-seed2026-r1/folds-2026.csv
+
 targets:
   user_requested_platform_score_verbatim: 93.5
   current_platform_best:
@@ -103,8 +123,22 @@ signature:
     mutual_residual_correlation_max: 0.95
     note: enforced across every selected candidate of a target, in stage A and again in stage B
 
+fusion:
+  alpha_search_bounds: [0.05, 0.5]
+  alpha_grid_points: 46
+  weight_objective: pooled_wmape_at_fixed_alpha_mean_over_seeds
+  no_alpha_scan_at_release: true
+
 budget:
   stage_a_new_fits: 0
+  stage_a2_iron_capacity_screen:
+    purpose: "coarse screen of the new iron capacity space, which has no recorded folds 0/1 predictions"
+    target: tap_iron
+    max_fit_slots: 64
+    seeds: [42]
+    folds: [0, 1]
+    note: "32 trials x 2 folds; this is the only way the new space can enter the signature screen"
+    gated_on: "stage A must yield at least one admissible candidate in either target"
   stage_b:
     max_trials_per_target: 6
     max_fit_slots_per_target: 60

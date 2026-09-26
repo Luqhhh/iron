@@ -7454,7 +7454,7 @@
     }
   },
   "round2_v6": {
-    "status": "PRE_REGISTERED_NOT_EXECUTED",
+    "status": "STAGE_A_EXECUTED_ZERO_ADMISSIBLE_STOPPED_NO_FITS",
     "date": "2026-09-26",
     "branch": "round2-v6-iron-capacity-networks",
     "base_commit": "a1cd7c5",
@@ -7582,12 +7582,72 @@
       "constant 0.005 transfer error",
       "local gain implies equal platform gain"
     ],
-    "g0": "PASS_970_LOCKED_TESTS_INCLUDING_7_NEW_V6_TESTS",
-    "g1": "NOT_EXECUTED_NO_FITS",
+    "g0": "PASS_973_LOCKED_TESTS_INCLUDING_10_NEW_V6_TESTS",
+    "g1": "STAGE_A_NEGATIVE_NO_PROMOTION",
     "new_cv_fits": 0,
     "new_full_fits": 0,
     "new_packages": 0,
     "agent_uploads": 0,
-    "execution_authorisation": "PENDING_USER"
+    "execution_authorisation": "STAGE_A_AUTHORISED_AND_EXECUTED; STAGE_A2_PENDING_USER",
+    "results_doc": "docs/round2_v6/RESULTS.md",
+    "stage_a": {
+      "protocol": "zero-fit signature screen on recorded V3.6 folds 0/1 predictions (seed 42) against the released column",
+      "screened": {
+        "tap_iron": 12,
+        "tap_time_len": 38
+      },
+      "admissible": {
+        "tap_iron": 0,
+        "tap_time_len": 0
+      },
+      "selected": {
+        "tap_iron": [],
+        "tap_time_len": []
+      },
+      "failure_modes": {
+        "tap_iron": {
+          "accuracy_loss_above_max": 9,
+          "projected_gain_not_positive": 12
+        },
+        "tap_time_len": {
+          "accuracy_loss_above_max": 25,
+          "projected_gain_not_positive": 38
+        }
+      },
+      "structural_finding": "the unrefined recorded space is small-capacity on iron (ratios 1.15-3.03) and, on time, the ple_mlp families pass the correlation and accuracy gates but produce no positive blend gain; rho and accuracy ratio are necessary but not sufficient - the binding criterion is the projected gain",
+      "apparatus_self_check": {
+        "known_winner_witnesses": [
+          "v36-s1-N-0048",
+          "v36-s1-N-0049",
+          "v36-s1-N-0050",
+          "v36-s1-N-0051"
+        ],
+        "result": "all four admissible from the recorded files (rho 0.874-0.888, ratio 1.060-1.068, projection +0.0113..+0.0201)",
+        "identity": "recorded folds01 predictions are bit-identical (max diff 0) to the V5 refined seed-42 vectors on those rows",
+        "test": "tests/test_round2_v6.py::test_screen_reproduces_the_known_winner_as_admissible"
+      },
+      "evidence": "local/runs/round2-v6-iron-capacity-networks/stage-a-r1/stage_a.json"
+    },
+    "stop_triggered": "stop_rule_1_no_admissible_candidate_in_either_target",
+    "design_flaw_found": {
+      "rule": "stop rule 1 forbids fitting the new iron capacity space when Stage A yields nothing",
+      "problem": "the new iron capacity space has no recorded folds 0/1 predictions by construction, so Stage A cannot test it; the rule therefore blocks the one object the round exists to test. This is a rule-scope defect, not a threshold question.",
+      "action_taken": "stopped as written (stage_a2_unlocked=false); no fit spent; the decision to amend the rule scope is left to the user"
+    },
+    "preregistration_amendment": {
+      "revision": 2,
+      "before_execution": true,
+      "thresholds_changed": false,
+      "added": [
+        "fusion alpha grid",
+        "stage_a2_iron_capacity_screen budget (64 slots)",
+        "reference paths for the frozen replay and the cached derived-seed baselines"
+      ]
+    },
+    "next_decision_options": {
+      "A_minimal_probe": "authorise 2 slots: iron raw_tabm|large|mse_adam and ple_tabm|large|mse_adam at folds 0/1 (~15 min)",
+      "B_full_coarse_screen": "authorise the 64-slot stage_a2 coarse screen (~30-45 min, 16 workers)",
+      "C_honour_stop_rule": "end the round; re-register the capacity lever with source-specific stop rules"
+    }
   }
 }
