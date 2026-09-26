@@ -8258,10 +8258,11 @@
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false,
-    "pending_alpha_packages": "unchanged; original five desktop ZIP hashes verified"
+    "pending_alpha_packages": "unchanged; original five desktop ZIP hashes verified",
+    "confirmation_implementation": "bf_tap_r2.v7_confirm; strongest frozen-pool candidate only; cached reference supports time only"
   },
   "round2_v7b_training_coverage_2026_09_26": {
-    "status": "real_control_running_before_candidate_refits",
+    "status": "control_passed_candidate_development_refits_running",
     "platform_target": 96.4,
     "source_trial": "v36-s1-N-0048",
     "spec": "configs/round2_v7/COVERAGE_SPEC.yaml",
@@ -8272,17 +8273,20 @@
       "seed": 42,
       "fold": 2,
       "epoch": 55,
-      "required_max_abs_diff": 1e-09
+      "required_max_abs_diff": 1e-09,
+      "observed_max_abs_diff": 0.0,
+      "gradient_rows": 1762,
+      "provided_rows": 2203
     },
     "budget": {
       "control_fits": 1,
       "candidate_development_fits": 10
     },
     "G0": {
-      "locked_python312_tests_passed": 985,
+      "locked_python312_tests_passed": 987,
       "warnings": 3
     },
-    "G1": "no real-data result yet",
+    "G1": "control is bit-identical; candidate score not yet available",
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false
