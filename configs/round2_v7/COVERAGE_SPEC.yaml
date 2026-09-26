@@ -1,0 +1,48 @@
+version: round2-v7b-n0048-training-coverage
+date: 2026-09-26
+platform_target: 96.4
+source_trial: v36-s1-N-0048
+target: tap_time_len
+source_directory: local/runs/round2-v5-error-covariance/time-n-family-r1
+split_seeds: [42, 3407]
+folds: 5
+reference_by_target: {tap_time_len: A35_TIME}
+candidates: {tap_time_len: [N0048_FULL_REFIT_A35]}
+tie_preference_by_target: {tap_time_len: [N0048_FULL_REFIT_A35]}
+endpoint_alpha: 0.35
+secondary_endpoint_alpha: 0.20
+epoch_source: recorded_per_outer_fold_inner_best_epoch
+epochs:
+  42: {0: 98, 1: 65, 2: 55, 3: 63, 4: 70}
+  3407: {0: 85, 1: 91, 2: 60, 3: 73, 4: 75}
+control:
+  seed: 42
+  fold: 2
+  mode: original_inner_training_at_recorded_epoch
+  prediction_max_abs_tolerance: 0.000000001
+new_recipe:
+  architecture_loss_optimizer_preprocessing: unchanged_from_source_trial
+  initialisation: fresh_same_source_seed
+  training_rows: all_outer_training_rows
+  epoch_count: unchanged_from_recorded_best_epoch
+  early_stopping: false_recorded_epoch_already_selected_within_outer_training
+  note: total_optimizer_steps_increase_with_the_expanded_training_set
+budget:
+  real_control_fits: 1
+  development_refits: 10
+  workers: 2
+  new_full_data_fits: 0
+confirmation:
+  seeds: [7777, 12011]
+  requires_two_positive_complete_development_seeds: true
+  max_candidate_outer_fits: 10
+  max_epoch_selection_fits: 10
+  use_verified_v5_time_baseline_cache: true
+promotion:
+  minimum_split_seeds: 4
+  seed_level_paired_lcb95_gt: 0.0
+  all_seed_gains_positive: true
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden, test_labels: forbidden}
+release: {packages: 0, agent_uploads: 0}
