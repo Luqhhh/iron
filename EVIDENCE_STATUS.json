@@ -407,6 +407,14 @@
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
         "evidence_key": "round2_v7_release_2026_09_26",
         "original_alpha_queue_unchanged": true
+      },
+      {
+        "candidate": "V12_IRON_JOINT_PLR001_A50",
+        "status": "delivered_pending_user_platform_feedback",
+        "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+        "evidence_key": "round2_v12_release_2026_09_27",
+        "original_pending_deliveries_preserved": true
       }
     ]
   },
@@ -9996,7 +10004,7 @@
       "release_authorized": false
     },
     "release_proposal": {
-      "status": "user_authorized_ready_to_execute",
+      "status": "delivered_under_explicit_exception_pending_platform_feedback",
       "candidate": "V12_IRON_JOINT_PLR001_A50",
       "spec": "configs/round2_v12/RELEASE_PROPOSAL.yaml",
       "plan": "docs/round2_v12/RELEASE_PROPOSAL.md",
@@ -10009,14 +10017,18 @@
         "zero_fit_preflight": "local/reports/v12-release-proposal-preflight-r1.json"
       },
       "release_authorized": true,
-      "official_release_fits": 0,
-      "packages": 0,
-      "desktop_writes": 0,
+      "official_release_fits": 2,
+      "packages": 1,
+      "desktop_writes": 1,
       "uploads": 0,
       "authorized_spec": "configs/round2_v12/RELEASE.yaml",
       "authorization_source": "explicit user answer: 授权这一个 V12 包",
-      "authorization_scope": "this candidate only; one replay, one full joint fit, isolated iron package and desktop delivery; user uploads"
-    }
+      "authorization_scope": "this candidate only; one replay, one full joint fit, isolated iron package and desktop delivery; user uploads",
+      "official_full_data_fits": 1,
+      "official_replay_fits": 1,
+      "delivery_evidence": "round2_v12_release_2026_09_27"
+    },
+    "subsequent_user_authorized_release": "round2_v12_release_2026_09_27"
   },
   "round2_ple_mechanism_diagnostic_2026_09_26": {
     "status": "synthetic_dead_nonlinear_branch_verified",
@@ -10062,5 +10074,42 @@
       "log": "local/reports/v13-development-r1.log",
       "note": "Revalidate process/session; this record does not prove current liveness"
     }
+  },
+  "round2_v12_release_2026_09_27": {
+    "status": "delivered_pending_user_platform_feedback",
+    "candidate": "V12_IRON_JOINT_PLR001_A50",
+    "date": "2026-09-27",
+    "authorization_date": "2026-09-26",
+    "authorization": "explicit user answer 授权这一个 V12 包; this-candidate-only gate exception",
+    "spec": "configs/round2_v12/RELEASE.yaml",
+    "delivery_document": "docs/round2_v12/DELIVERY.md",
+    "run": "local/runs/round2-v12-joint-tabm/release-r1",
+    "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+    "result_sha256": "9da53ccd520627e7be9cf1e191ea20f802e4936e679121a79b9e09aefde0bdec",
+    "parent": "V6_PORT_TIME_A35",
+    "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
+    "G0": {
+      "rows": 322,
+      "time_string_mismatches": 0,
+      "blend_max_absolute_difference": 0.0,
+      "cold_max_absolute_difference": 0.0,
+      "official_replay_fits": 1,
+      "official_full_data_fits": 1,
+      "selected_full_epoch": 85,
+      "full_selection_cap_hit": false,
+      "parent_and_v7_original_hashes_unchanged": true
+    },
+    "locked_python312_tests": 1052,
+    "G1": {
+      "platform_score": null,
+      "local_working_gate_met": false,
+      "release_exception": "explicit_this_candidate_only",
+      "four_seed_gate_passed": true
+    },
+    "packages": 1,
+    "desktop_writes": 1,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
