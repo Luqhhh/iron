@@ -9910,7 +9910,7 @@
       "confirmation_complete": false
     },
     "confirmation": {
-      "status": "frozen_ready_to_execute",
+      "status": "running",
       "spec": "configs/round2_v12/CONFIRMATION.yaml",
       "run": "local/runs/round2-v12-joint-tabm/confirmation-r1",
       "candidate_outer_fits": 10,
@@ -9922,6 +9922,12 @@
         "test_log": "local/reports/v12-confirmation-python312-tests-r1.log",
         "reference_preflight": "local/reports/v12-confirmation-preflight-r1.json",
         "reference_files": 97
+      },
+      "live_process_at_observation": {
+        "pid": 204297,
+        "exec_session": 13920,
+        "log": "local/reports/v12-confirmation-r1.log",
+        "note": "Revalidate process or session; record is not proof of current liveness"
       }
     }
   },
