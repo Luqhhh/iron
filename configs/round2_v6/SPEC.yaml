@@ -1,0 +1,174 @@
+# Round2 V6 pre-registration contract.
+#
+# Written BEFORE any V6 fit or evaluation.  Thresholds, budgets and stop rules in
+# this file are frozen: `src/bf_tap_r2/v6_spec.py` refuses to load a weakened
+# revision, exactly as the V5 loader does.  Only `status` may be annotated after
+# execution.
+#
+# Design basis: the V5 round (docs/round2_v5/RESULTS.md).  In particular, the one
+# change that ever beat the frozen release was a single large raw-TabM member on
+# the time column mixed at weight 0.2, and the only reason the iron column never
+# got that lever is that the V3.6 sampler fixed iron_capacity to "small".
+
+version: round2-v6-iron-capacity-networks
+status: PRE_REGISTERED_NOT_EXECUTED
+date: 2026-09-26
+branch: round2-v6-iron-capacity-networks
+base_commit: a1cd7c5
+preregistration_of_record: docs/round2_v6/PREREGISTRATION.md
+
+targets:
+  user_requested_platform_score_verbatim: 93.5
+  current_platform_best:
+    candidate: V5_TIME_N0048_Q20
+    score: 96.3143
+    delta_vs_parent_v36: 0.0409
+    source: user_reported_not_independently_verified
+  objective: improve_on_current_platform_best
+  frozen_local_working_gate: 96.25
+  submission_requires: frozen_gate_or_recorded_user_authorisation
+
+context_from_v5:
+  winning_member:
+    trial_id: v36-s1-N-0048
+    target: tap_time_len
+    structure: raw_tabm
+    capacity: large
+    training_setting: mse_adam
+    residual_correlation: 0.888
+    accuracy_ratio: 1.07
+    release_alpha: 0.20
+    local_gain_score: 0.00975
+    platform_gain_score: 0.0409
+    amplification: 4.19
+  sibling_duplication:
+    trials: [v36-s1-N-0048, v36-s1-N-0049, v36-s1-N-0050, v36-s1-N-0051]
+    note: four training settings of one structure/capacity; pairwise residual correlation 0.979-0.998
+    consequence: seed and loss diversity inside one family does not create independent members
+  platform_resolution_score: 0.0005
+  transfer_error:
+    observed: 0.031
+    role: candidate_dependent
+    retracted: "the earlier claim of a constant 0.005 transfer error is withdrawn and must not be reused"
+  local_magnitude:
+    role: sign_and_ranking_only
+    forbidden_use: platform_magnitude_forecast
+  existing_pool: exhausted_for_both_targets
+  iron_column_state:
+    weights: {A_dev: 0.60393, v36-s1-D-0029: 0.35979, v36-s1-N-0005: 0.03628}
+    v36_s1_N_0005_leave_one_out_score: -0.00031
+    verdict: the iron N member is decorative; the iron column has never used the capacity lever
+  v36_iron_capacity_policy: "build_N_trials sets iron_capacity: small; medium and large were never sampled for tap_iron"
+
+candidate_sources:
+  - name: s1_iron_recorded_never_complete
+    kind: recorded_folds01
+    target: tap_iron
+    expected_trials: 12
+    zero_fit_screen: true
+    families: 3
+    note: raw_mlp|small, raw_tabm|small and ple_tabm|small have folds 0/1 recorded but no complete coverage
+  - name: s1_time_recorded_never_complete
+    kind: recorded_folds01
+    target: tap_time_len
+    expected_trials: 44
+    zero_fit_screen: true
+    families: 11
+    note: all time N families except raw_tabm|large, which V5 completed
+  - name: s2_iron_capacity_networks
+    kind: new_fits
+    target: tap_iron
+    expected_trials: 32
+    sampler: bf_tap_r2.v6_sampler
+    zero_fit_screen: false
+    families: 8
+    note: medium and large capacities across the four frozen structures and four frozen training settings
+
+signature:
+  stage_a:
+    residual_correlation_max: 0.95
+    accuracy_ratio_max: 1.25
+    projected_nested_fold_gain_min: 0.0
+    folds: [0, 1]
+    split_seed: 42
+  stage_b:
+    residual_correlation_max: 0.95
+    accuracy_ratio_max: 1.15
+    positive_cells_min: 8
+    positive_cells_total: 10
+    split_seeds: [42, 3407]
+    folds: [0, 1, 2, 3, 4]
+  mutual_diversity:
+    max_members_per_structural_family: 1
+    mutual_residual_correlation_max: 0.95
+    note: enforced across every selected candidate of a target, in stage A and again in stage B
+
+budget:
+  stage_a_new_fits: 0
+  stage_b:
+    max_trials_per_target: 6
+    max_fit_slots_per_target: 60
+    max_fit_slots_total: 120
+    seeds: [42, 3407]
+    folds: [0, 1, 2, 3, 4]
+  stage_c:
+    derived_seeds: [7777, 12011]
+    max_candidates: 2
+    reuse_cached_baselines: true
+    max_candidate_fit_slots: 20
+    baseline_cache: "local/runs/round2-v5-error-covariance/replication-r1/seed-{seed}/fold-{fold}.npz"
+  stage_d:
+    max_packages: 1
+    full_data_fits: 1
+  wall_clock_cap_hours: 3
+  workers: 16
+
+gates:
+  promotion:
+    unit: split_seed
+    min_seeds: 4
+    paired_lcb_level: 0.95
+    require_paired_lcb_gt_zero: true
+    require_all_contributing_seeds_positive: true
+    fold_level_role: descriptive_only
+    fold_reference_pair: [8, 10]
+  release:
+    single_target_replacement_only: true
+    require_unchanged_column_byte_identical: true
+    require_read_back_verification: true
+    require_cold_check: true
+    alpha_basis: all_seed_grid_optimum
+  platform_submission:
+    frozen_local_working_gate: 96.25
+    gate_rederivation: PENDING_USER_DECISION
+    measured_offset_range: [0.0347, 0.1008]
+    note: "a candidate below the frozen gate may only be submitted under recorded explicit user authorisation, as V5_TIME_N0048_Q20 was"
+
+stop_rules:
+  - "stage A uses only recorded folds 0/1 predictions; no fit is spent before a candidate is admissible"
+  - "if neither target yields an admissible stage A candidate, stop and report; do not fit the new iron capacity space"
+  - "if stage B yields no candidate with a positive nested mean and at least 8 of 10 positive cells, stop before stage C"
+  - "if stage C admits nothing, stop; no package is built"
+  - "no threshold in this file may be relaxed during execution; a failed gate is recorded as failure"
+
+non_goals:
+  - NODE_per_depth_selection
+  - ODST_core
+  - TabR_retrieval_fusion
+  - residual_correctors
+  - sample_reweighting_or_manual_prediction_edits
+  - dense_alpha_grid_scan
+  - temporal_or_lag_features
+  - researching_the_existing_oof_pool_for_more_members
+  - seed_or_loss_diversity_inside_one_structural_family
+
+retracted_claims:
+  - "constant 0.005 local-to-platform transfer error"
+  - "a local gain of about +0.01 implies a platform gain of about +0.01"
+
+publication:
+  upload_actor: user
+  agent_uploads: 0
+  no_automatic_packages: true
+  daily_cap_user_stated: 5
+  private_outputs_only: local/runs/round2-v6-*
