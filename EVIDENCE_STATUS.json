@@ -7770,10 +7770,16 @@
     "current_platform_best_unchanged": "V5_TIME_N0048_Q20",
     "direction_d_reframed": {
       "premise_refuted": "the new-signature re-screen assumed alpha stability discriminates; it does not",
-      "D1": "four-split-seed replication of the six complete-coverage small/medium time members (cached baselines, candidate fits only)",
-      "D2": "complete coverage for one best setting of each unrefined distinct time family",
+      "D1": "EXECUTED_AND_REFUTED: no distinct time member adds on top of the winner (leave-one-fold-out weight fitting zeroes every one of the six; gain exactly 0.00000)",
+      "D2": "not run; the unrefined families were screened only at folds 0/1, which this round proved too noisy for ranking",
       "D3": "one platform slot on an alpha up-probe (alpha 0.30) of the validated winner, since the local curve is flat between 0.20 and 0.25 and the platform amplified local magnitude 4.19x in an unknown direction",
       "status": "PENDING_USER"
-    }
+    },
+    "three_closures": [
+      "the proposed blend-stability signature is refuted by a 14-witness calibration under one protocol",
+      "no structurally distinct recorded time member adds on top of the validated winner (exactly zero)",
+      "the iron capacity lever fails at its most favourable single test (v6-s1-N-0024)"
+    ],
+    "process_lesson": "the folds 0/1 screen (1102 rows, one split seed) is too noisy to rank candidates - the winner's single-fold alpha estimates range 0.12-0.38 and only converge with sample size; every V5 and V6 selection decision was made on that screen, so a future search must screen at complete coverage"
   }
 }
