@@ -260,6 +260,22 @@ about `96.278..96.288` but still not reach 96.3. The frozen local working gate `
 calibrated on the now-refuted large-noise assumption; changing it is a user decision and has not
 been made.
 
+**Candidate package delivered under explicit user authorisation (2026-09-26).**
+`V5_TIME_N0048_Q20` = the frozen V36 parent with only `tap_time_len` replaced by
+`0.8 x V36 + 0.2 x v36-s1-N-0048` (`tap_iron` byte-identical to the parent, 0 mismatches; the blend
+recomputes to 0 difference on read-back; cold inference diff 0). ZIP SHA-256
+`5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982`, on the desktop at
+`round2-V5-time-N0048-Q20-20260926`. It is **below the frozen local working gate**
+(`96.2135 < 96.25`) and is recorded as a user-authorised transfer test, not as a gate pass; no
+threshold was relaxed. Expected platform effect about `+0.005..+0.015`, that is about
+`96.278..96.288`.
+
+**The time-column route is exhausted with the current library.** The four large N members are
+near-duplicates of each other (pairwise residual correlation 0.979-0.998) so stacking them adds
+nothing, and adding the decorrelated but less accurate `JM1` (`rho = 0.777`) to `N-0048` optimises
+to weight 0 and does not improve the held-out seeds. Going further needs new model families, not
+more member search in the same pool.
+
 **Closed routes are unchanged** (NODE per-depth, ODST core, TabR full fusion, residual
 correctors, sample reweighting, dense alpha scans). Temporal/lag features remain *unavailable*
 (`复赛_train/train_features.csv` has no timestamp or ordering column), not merely untried.

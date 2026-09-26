@@ -435,3 +435,66 @@ def test_admission_rejects_a_negative_seed_lower_bound_even_with_four_seeds() ->
     assert decision["admitted"] is False
     assert "seed_level_lcb_not_positive" in decision["reasons"]
     assert "initial_split_seed_not_positive" in decision["reasons"]
+
+# ---------------------------------------------------------------------------
+# candidate release
+# ---------------------------------------------------------------------------
+
+RELEASE_PACKAGE = (REPO_ROOT / "local/runs/round2-v5-error-covariance/release-r1/"
+                   "V5_TIME_N0048_Q20")
+
+
+@pytest.mark.skipif(not _has_private_caches(), reason="private round2 caches are absent")
+def test_release_alpha_is_the_all_seed_grid_optimum() -> None:
+    from bf_tap_r2.v5_candidate_release import release_alpha
+    from bf_tap_r2.v5_spec import load_v5_spec
+
+    spec = load_v5_spec(REPO_ROOT)
+    release = release_alpha(REPO_ROOT, spec, "v36-s1-N-0048", "tap_time_len")
+    assert release["seeds"] == [42, 3407, 7777, 12011]
+    assert release["release_alpha"] == pytest.approx(0.20)
+    gains = release["per_seed_gain"]
+    assert set(gains) == {"42", "3407", "7777", "12011"}
+    assert all(value > 0 for value in gains.values())
+    assert release["fold_summary"]["mean"] == pytest.approx(0.00975, abs=5e-5)
+    # the grid optimum is the minimum over the pre-registered grid
+    assert release["grid"][0]["alpha"] == pytest.approx(0.20)
+
+
+@pytest.mark.skipif(not RELEASE_PACKAGE.is_dir(), reason="candidate package is absent")
+def test_built_candidate_package_passes_read_back() -> None:
+    """The unchanged column must be byte-identical and the blend reproducible."""
+    import csv
+    import io
+    import json
+    import zipfile
+
+    from bf_tap_r2.v5_candidate_release import read_back_package
+    from bf_tap_r2.v5_package import DEFAULT_PARENT_CSV, read_parent_columns
+
+    evidence = json.loads((RELEASE_PACKAGE / "release-evidence.json").read_text(encoding="utf-8"))
+    member = np.load(RELEASE_PACKAGE / "member-predictions.npy")
+    check = read_back_package(REPO_ROOT, RELEASE_PACKAGE, DEFAULT_PARENT_CSV,
+                              "tap_time_len", float(evidence["alpha"]), member)
+    assert check["rows"] == 322
+    assert check["ids_match_template_order"] is True
+    assert check["unique_ids"] == 322
+    assert check["unchanged_column"]["byte_identical_to_parent"] is True
+    assert check["unchanged_column"]["mismatches"] == 0
+    assert check["changed_column"]["max_abs_diff_vs_recomputed_blend"] == pytest.approx(0.0, abs=1e-12)
+
+    # The ZIP holds exactly one member and the manifest records the same hashes.
+    with zipfile.ZipFile(RELEASE_PACKAGE / "Luqhhh_bf_tap_predict_round2.zip") as archive:
+        assert archive.namelist() == ["result.csv"]
+        rows = list(csv.DictReader(io.StringIO(archive.read("result.csv").decode("utf-8"))))
+    assert len(rows) == 322
+    manifest = json.loads((RELEASE_PACKAGE / "manifest.json").read_text(encoding="utf-8"))
+    assert manifest["gate_summary"]["below_local_gate"] is True
+    assert manifest["gate_summary"]["local_working_gate"] == 96.25
+    assert manifest["release"]["release_alpha"] == pytest.approx(0.20)
+
+    # Independent re-read of the parent proves the unchanged column is the parent text.
+    parent_ids, parent_columns = read_parent_columns(REPO_ROOT / DEFAULT_PARENT_CSV)
+    parent_other = {sid: value for sid, value in zip(parent_ids, parent_columns["tap_iron"][1])}
+    observed = [row["pred_tap_iron"] for row in rows]
+    assert observed == [parent_other[row["sample_id"]] for row in rows]
