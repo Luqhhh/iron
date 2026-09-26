@@ -9994,6 +9994,25 @@
       "development_package_score": 96.22644112166778,
       "local_working_gate_met": false,
       "release_authorized": false
+    },
+    "release_proposal": {
+      "status": "implemented_and_tested_awaiting_explicit_candidate_exception",
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "spec": "configs/round2_v12/RELEASE_PROPOSAL.yaml",
+      "plan": "docs/round2_v12/RELEASE_PROPOSAL.md",
+      "parent": "V6_PORT_TIME_A35",
+      "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time strings unchanged",
+      "G0": {
+        "locked_python312_tests": 1052,
+        "warnings": 23,
+        "test_log": "local/reports/v12-release-python312-tests-r1.log",
+        "zero_fit_preflight": "local/reports/v12-release-proposal-preflight-r1.json"
+      },
+      "release_authorized": false,
+      "official_release_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "uploads": 0
     }
   },
   "round2_ple_mechanism_diagnostic_2026_09_26": {
@@ -10010,7 +10029,7 @@
     "next_action": "preregister repaired standardized PLE and standardized inactive-branch control before full-coverage evaluation"
   },
   "round2_v13_ple_repair_2026_09_26": {
-    "status": "preregistered_tests_passed_ready_to_execute",
+    "status": "development_running_exact_periodic_control_passed",
     "spec": "configs/round2_v13/SPEC.yaml",
     "preregistration": "docs/round2_v13/PREREGISTRATION.md",
     "mechanism_evidence": "docs/round2_v13/MECHANISM_DIAGNOSTIC.md",
@@ -10019,7 +10038,9 @@
       "warnings": 23,
       "test_log": "local/reports/v13-python312-tests-r1.log",
       "reference_preflight": "local/reports/v13-reference-preflight-r1.json",
-      "reference_files": 70
+      "reference_files": 70,
+      "control": "local/runs/round2-v13-ple-repair/development-r1/control.json",
+      "control_max_absolute_difference": 0.0
     },
     "budget": {
       "development_outer_fits": 40,
@@ -10030,6 +10051,13 @@
     "official_data_fits_complete": 0,
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "run": "local/runs/round2-v13-ple-repair/development-r1",
+    "live_process_at_observation": {
+      "pid": 204984,
+      "exec_session": 44562,
+      "log": "local/reports/v13-development-r1.log",
+      "note": "Revalidate process/session; this record does not prove current liveness"
+    }
   }
 }

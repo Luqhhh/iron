@@ -85,3 +85,8 @@ V7 remains the already delivered time direction with platform feedback pending.
 V9 and all earlier decisions remain historical evidence. V13's separately frozen
 PLE repair experiment retains its registered V7/V9 comparisons and zero-release
 budget. Current reported platform best remains A35=96.3366;96.4 is unverified.
+
+A concrete [V12 isolated iron release proposal](../round2_v12/RELEASE_PROPOSAL.md)
+and tested adapter are prepared. They use the development-selected0.50 weight
+against A35 and preserve A35 time strings. Authorization remains pending; no
+full-data release fit, package or desktop write is implied by readiness.
