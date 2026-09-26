@@ -7892,6 +7892,22 @@
       ],
       "sanity_check": "the per-cell spread of the same delta (sd 0.0143 over ten 551-row cells) is the same order, as expected",
       "evidence": "derived from local/runs/round2-v5-error-covariance/time-n-family-r1 (no fit spent; recompute with the same script)"
+    },
+    "feasibility_analysis_2026_09_26": {
+      "question": "what kind of time-column member would be needed to reach the 0.023 detectability threshold?",
+      "method": "two synthetic member families on the frozen OOF: (a) base plus independent noise, (b) base where a random p fraction of rows has an h fraction of the base error corrected and nothing else changes; each scored with 5-fold leave-one-fold-out alpha selection",
+      "family_a_conclusion": "adding noise to the base tops out at +0.00123 - a noised copy can never be a better model, so it is the wrong generative model",
+      "family_b_result": "correcting only 20% of the base error on 20% of rows already yields +0.0376, but ONLY because that member never introduces a new error (its accuracy ratio is 0.961, i.e. better than the base)",
+      "the_real_bar": "family (b) is an optimistic upper bound. The best real member has ratio 1.06 and is better on 47.5% of rows while worse on 52.5%, and that mixture yields only +0.0103 in the blend. Therefore the empirical ceiling of member blending in this pool is about +0.010, and reaching the 0.023 threshold would require a member that is either outright better than the released column (ratio < 1) or has roughly twice the complementary error structure",
+      "what_does_not_work": [
+        "no member in the pool has ratio < 1 (best is 1.06 vs the released column)",
+        "nothing adds on top of the winner (leave-one-fold-out weights zero every one of six distinct members)",
+        "the four large members are near-duplicates (rho 0.979-0.998)",
+        "alternative combination operators (sibling mean/median, trimmed mean, pure median) are all worse"
+      ],
+      "conclusion": "the <=0.023 gap cannot be closed by member selection. Closing it requires a fundamentally better model (different features or paradigm) that beats or substantially complements the released column, and no evidence in the current corpus shows such a model is reachable.",
+      "strategic_implication": "member blending on the time column is exhausted; the honest options are to stop at 96.3143, or to start a different problem class with an unknown prior",
+      "evidence": "derived from local/runs/round2-v5-error-covariance/time-n-family-r1 (no fit spent; rerunnable)"
     }
   }
 }
