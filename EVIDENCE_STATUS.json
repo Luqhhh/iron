@@ -8227,6 +8227,35 @@
       "title": "process pool + BLAS/torch thread explosion",
       "detail": "Launched with workers=16 the batch produced ZERO completions in five minutes while single-fold timing said 6-31 s. Each forked worker had inherited 16 BLAS/torch threads (ps showed 16 threads and 432% CPU per worker), so 8-16 workers meant 128-256 threads on 32 cores, load 106 and near-zero throughput. Setting OPENBLAS_NUM_THREADS=1 alone was NOT enough; adding OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 made 41 trials finish in ~110 s per seed.",
       "rule": "any parallel fitting batch must pin BLAS/OMP/MKL/NUMEXPR thread counts before launch"
+    },
+    "platform_feedback": [
+      {
+        "name": "V6_PORT_IRON_K0005_W10",
+        "score": 96.3081,
+        "delta_vs_incumbent": -0.0062,
+        "source": "user_reported",
+        "local_mean": -0.00067,
+        "sigma_units": -0.5,
+        "reading": "consistent with the portfolio model: a near-zero-mean lottery ticket loses about half the time. The model is NOT refuted; it confirms single entries cannot be expected to improve the score."
+      }
+    ],
+    "target_96_35_feasibility_2026_09_26": {
+      "new_user_target": 96.35,
+      "current_best": 96.3143,
+      "required_gain": 0.0357,
+      "sigma_units": 3.1,
+      "required_local_gain_if_amplification_4_19x": 0.0085,
+      "tail_probability_best_candidate": 0.01,
+      "tail_probability_note": "of 990 candidates (each member x w in [0.05,0.50]) the highest bootstrap P(delta >= +0.0357) is 1.00%, and the top entries are the direction already tested (highly correlated)",
+      "pool_ceiling_local": {
+        "time_library_only_27_columns": 0.00344,
+        "time_library_plus_new_N_25": -0.01293,
+        "iron_library_only_31_columns": -0.02175,
+        "iron_library_plus_new_N_16": -0.02877
+      },
+      "verdict": "NOT REACHABLE from the current pool: the pool ceiling is +0.00344 local, while 96.35 needs about +0.0085 local even at the historical 4.19x amplification (2.5x the ceiling) and +0.0357 without it (10x). It requires a new model with roughly TWICE the local increment of the best member ever measured (N-0048 at +0.0098 over V36), i.e. new information or a new paradigm, not more pool search. Adding the 25 new N columns to the stack makes it worse (+0.0034 -> -0.0129): they help only the portfolio tail, not the mean.",
+      "recommended_use_of_remaining_slots": "spend them on information, not score: V6_PORT_TIME_A05 and V6_PORT_TIME_A35 extend the platform alpha-response curve from one point (alpha 0->0.20, 4.19x) to three, calibrating how much local gain a new model needs. No downside under best-kept.",
+      "evidence": "docs/round2_v6/RESULTS.md section 11"
     }
   }
 }

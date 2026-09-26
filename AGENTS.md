@@ -467,3 +467,32 @@ launch.** With `workers=16` and only `OPENBLAS_NUM_THREADS=1`, each forked worke
 threads (16 threads, 432% CPU each), giving 128-256 threads on 32 cores, load 106 and *zero* completions
 in five minutes, while single-fold timing said 6-31 s. Adding `OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 NUMEXPR_NUM_THREADS=1` made 41 trials finish in ~110 s per seed.
+
+### Target raised to 96.35: measured infeasible from the current pool (2026-09-26)
+
+`docs/round2_v6/RESULTS.md` §11; `EVIDENCE_STATUS.json ->
+round2_v6_portfolio_2026_09_26.target_96_35_feasibility_2026_09_26`.
+
+The user set a new platform target of **96.35** (current best `96.3143`, so `+0.0357` more) and reported the
+first portfolio entry's score: **`V6_PORT_IRON_K0005_W10 = 96.3081`, i.e. `-0.0062` against the incumbent**.
+That is `-0.5 sigma` against its own `-0.00067` local mean and `0.0116` generalization sd, so it is fully
+consistent with the portfolio model — a near-zero-mean lottery ticket loses about half the time, and single
+entries must never be expected to raise the score. The model is not refuted.
+
+**96.35 is measured infeasible from the current pool, and the number is not close:**
+
+* Tail probability: over 990 candidates (every member at `w` in `[0.05, 0.50]`, 322-row paired bootstrap) the
+  highest `P(delta >= +0.0357)` is **1.00%**, and the top entries are the direction already tested. Two
+  remaining slots are worth about 2% at best.
+* Pool ceiling: an unconstrained leak-free ridge stack over the library reaches only **`+0.00344`** local
+  against the incumbent (time, 27 library columns, 5/10 cells). Adding today's 25 new N columns makes it
+  *worse* (`-0.01293`) — they help only the portfolio tail, never the mean. Iron stacking is negative.
+* Therefore `+0.0357` platform needs about `+0.0085` local even at the historical `4.19x` amplification —
+  **2.5x the pool ceiling** — and `+0.0357` local without it (10x). Reaching it requires a model with roughly
+  **twice** the local increment of the best member ever measured (`N-0048` at `+0.0098` over V36), i.e. new
+  information or a new paradigm. Every in-pool route (members, blends, operators, stacking), temporal
+  features, residual correctors and sample reweighting are closed or unavailable.
+
+**Use the remaining slots for information, not score:** `V6_PORT_TIME_A05` and `V6_PORT_TIME_A35` extend the
+platform's alpha-response curve from one point (`alpha 0 -> 0.20`, `4.19x`) to three, which calibrates how much
+local gain a new model must deliver to reach 96.35. No downside while the platform keeps the best score.
