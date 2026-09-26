@@ -301,8 +301,56 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "ROUND2_CLOSED_TARGET_EXCEEDED_NO_PENDING_SUBMISSION",
-    "submission_priority": [],
+    "status": "PENDING_SUBMISSION_PORTFOLIO_OF_5",
+    "submission_priority": [
+      {
+        "name": "V6_PORT_TIME_MLP0000_W10",
+        "target": "tap_time_len",
+        "alpha": 0.1,
+        "zip_sha256": "8abba3654d0d54c170c89ab490be7f1895261065f51ee2b0fb95a089e8f5ad2a",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_MLP0000_W10",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_MLP0000_W10",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_K0005_W10",
+        "target": "tap_iron",
+        "alpha": 0.1,
+        "zip_sha256": "85b7293674f5d6aea34168271ef6f65a428fe70662f1669ed11fca61540c5b88",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W10",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W10",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_TIME_A05",
+        "target": "tap_time_len",
+        "alpha": 0.05,
+        "zip_sha256": "3f9b27f327e4304fe21e5c3fb5d739765821d118333fbd7b598726242e353f08",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A05",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A05",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_TIME_A35",
+        "target": "tap_time_len",
+        "alpha": 0.35,
+        "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A35",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_K0005_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "7d27e5ff7f9b6ff9ebec0abd4ded6b29b8b441df2f493f326cd636bb4f155508",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
+        "read_back_verified": true
+      }
+    ],
+    "recommended": "tier A only (V6_PORT_IRON_K0005_W10 + V6_PORT_TIME_MLP0000_W10, expected max +0.0057) unless the user is certain the platform keeps the best score",
+    "risk_if_platform_keeps_latest": "expected loss equals the mean of the last-submitted entry (tier A about -0.001; all five about -0.015)",
     "current_preferred": {
       "name": "V5_TIME_N0048_Q20",
       "candidate": "V5_TIME_N0048_Q20",
@@ -322,119 +370,7 @@
       "V34_A",
       "V34_B"
     ],
-    "previous_queue_snapshot": {
-      "status": "FINAL_TOP5_LOCAL_OOF_ORDER_PENDING_USER_FEEDBACK",
-      "submission_priority": [
-        "01_DJ_IRON",
-        "02_J3_IRON",
-        "03_DJ3_IRON",
-        "04_AJ3_IRON",
-        "05_AJ_IRON"
-      ],
-      "selection_basis": "User explicitly requested Top5 from all verified offline candidates; each replaces only iron relative to B",
-      "previous_queue_snapshot": {
-        "status": "FIVE_PACKAGES_PENDING_USER_FEEDBACK_TWO_NEW_FORMAL_ONE_NEW_EXPLORATION",
-        "submission_priority": [
-          "V22_I_ONLY",
-          "V23_AJ_I_ONLY",
-          "V24_FORMAL_IRON_DJ",
-          "V25_FORMAL_TIME_AORD",
-          "V24_EXPLORATION_IRON_BAY"
-        ],
-        "removed_from_pending": [
-          "V22_T_ONLY"
-        ],
-        "exploration_only": [
-          "V24_EXPLORATION_IRON_BAY"
-        ],
-        "removed_package_artifacts_preserved": true,
-        "results": "docs/round2_v2_4/DELIVERY.md",
-        "platform_uploads_by_agent": 0
-      },
-      "removed_from_pending": [
-        "V22_T_ONLY"
-      ],
-      "old_artifacts_preserved": true,
-      "results": "docs/round2_final_top5/DELIVERY.md",
-      "platform_uploads_by_agent": 0,
-      "superseded_on": "2026-09-26",
-      "superseded_reason": "the queue pointed at V36 96.2734; V5 delivered 96.3143 and round 2 is closed"
-    },
-    "removed_from_pending": [
-      "V22_T_ONLY"
-    ],
-    "old_artifacts_preserved": true,
-    "other_historical_packages": "Unreported historical packages are preserved; this record only closes the final Top5 batch",
-    "results": "docs/round2_final_top5/FEEDBACK.md",
-    "platform_uploads_by_agent": 0,
-    "previous_preferred_before_v3_4": {
-      "name": "04_AJ3_IRON",
-      "candidate": "AJ3",
-      "score": 96.1259,
-      "delta_vs_B": 0.0277,
-      "local_rank": 4,
-      "local_score": 96.0123883047359,
-      "zip_sha256": "a9e1a57ab6bba020ab4729bdac4f7a657f7f40d249504e0c35f5b0d9c48d0354",
-      "package": "local/runs/round2-final-top5/top5-r1/release/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip",
-      "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission/final-top5/04_AJ3_IRON/Luqhhh_bf_tap_predict_round2.zip"
-    },
-    "platform_ranking_v3_4": [
-      "V34_A",
-      "V34_B"
-    ],
-    "platform_scores_v3_4": {
-      "V34_A": 96.2684,
-      "V34_B": 96.266
-    },
-    "latest_feedback_receipt": "local/runs/round2-v4.2-structure-search/release-r1/V42_IRON_N2_Q25/platform-feedback-r1/feedback.json",
-    "latest_results": "docs/round2_v4_2/FEEDBACK.md",
-    "next_phase_target": {
-      "target": "platform_score_gt_96.3",
-      "user_instruction": "下一阶段目标定为96.3以上",
-      "date": "2026-09-24",
-      "current_platform_best_user_reported": 96.2734,
-      "gap_to_target": 0.0266,
-      "local_transfer_pairs": 7,
-      "local_transfer_mean_gap": 0.09143559048638394,
-      "local_transfer_median_gap": 0.0922630736629344,
-      "local_transfer_min_gap": 0.06866301472842906,
-      "local_transfer_max_gap": 0.11351169526410843,
-      "local_min_equivalent_for_target": 96.231337,
-      "local_mean_equivalent_for_target": 96.208564,
-      "recommended_local_gate": 96.25,
-      "recommended_local_stretch": 96.3,
-      "candidate_rules": [
-        "must_use_same_protocol_outer_validation",
-        "development_two_split_positive_before_new_outer",
-        "local_gate_is_not_platform_guarantee",
-        "no_relaxation_of_freeze_or_cold_audit_contract"
-      ],
-      "results": "docs/round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md",
-      "current_platform_best_name": "V36_USER_REQUESTED_OUTER_FAILED",
-      "updated_after_user_reported_score": true
-    },
-    "platform_ranking_latest": [
-      "V36_USER_REQUESTED_OUTER_FAILED",
-      "V34_A",
-      "V34_B",
-      "V42_IRON_N2_Q25"
-    ],
-    "platform_scores_latest": {
-      "V36_USER_REQUESTED_OUTER_FAILED": 96.2734,
-      "V34_A": 96.2684,
-      "V34_B": 96.266,
-      "V42_IRON_N2_Q25": 96.2533
-    },
-    "latest_exploratory_result": {
-      "candidate": "V42_IRON_N2_Q25",
-      "platform_score_user_reported": 96.2533,
-      "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
-      "delta_vs_current_best": -0.0201,
-      "promoted": false,
-      "effect_on_preference": "NONE; V36 remains the preferred package",
-      "reading": "The V4.2 N2 quarter-blend's local +0.0144 did not transfer; the pre-registered +0.02 fusion gate was never met."
-    },
-    "previous_queue_snapshot_note": []
+    "note": "The incumbent V5_TIME_N0048_Q20 (96.3143) is already on the board and is not re-submitted; all slots are new candidates."
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -7868,7 +7804,53 @@
         "consequence": "every V5 and V6 selection decision was made on that screen; any future search must screen at complete coverage (>=5 folds x 2 split seeds)"
       }
     ],
-    "pending_submissions": [],
+    "pending_submissions": [
+      {
+        "name": "V6_PORT_TIME_MLP0000_W10",
+        "target": "tap_time_len",
+        "alpha": 0.1,
+        "zip_sha256": "8abba3654d0d54c170c89ab490be7f1895261065f51ee2b0fb95a089e8f5ad2a",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_MLP0000_W10",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_MLP0000_W10",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_K0005_W10",
+        "target": "tap_iron",
+        "alpha": 0.1,
+        "zip_sha256": "85b7293674f5d6aea34168271ef6f65a428fe70662f1669ed11fca61540c5b88",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W10",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W10",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_TIME_A05",
+        "target": "tap_time_len",
+        "alpha": 0.05,
+        "zip_sha256": "3f9b27f327e4304fe21e5c3fb5d739765821d118333fbd7b598726242e353f08",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A05",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A05",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_TIME_A35",
+        "target": "tap_time_len",
+        "alpha": 0.35,
+        "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A35",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_K0005_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "7d27e5ff7f9b6ff9ebec0abd4ded6b29b8b441df2f493f326cd636bb4f155508",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
+        "read_back_verified": true
+      }
+    ],
     "recommended_next_action": {
       "primary": "stop; no lever with a positive prior remains under the correct incumbent reference",
       "if_a_slot_is_spent_anyway": "the alpha=0.25/0.30 probe is now a declared diagnostic with no expected gain (locally -0.0005/-0.0021 at complete coverage); it is safe only because the user reports the platform keeps the best score, and it tests whether platform amplification is a smooth function of local gain",
@@ -8008,6 +7990,88 @@
         "consequence": "the recorded alpha=0.25 delta of -0.0005 is upgraded from folds 0/1 to complete-coverage evidence; an upward probe is a falsification test of 'platform amplification is a smooth function of local gain', not an optimisation"
       },
       "direction_d2_prior": "DEMOTED_TO_NEGATIVE. D-prime-2 (complete raw_mlp|large, ple_mlp|large, ple_tabm|large, raw_tabm|medium; about 40 fold fits) would add new configurations of the SAME families. Two measurements suppress its prior: every existing complete member of those families is exactly zero on top of the incumbent (the one network member, v3-mlp, is the best at +0.00065 and still ~0), and the recorded JM1 precedent (rho 0.777, decorrelated but less accurate, weight optimised to zero) is exactly the situation a new configuration would face. raw_tabm|large is N-0048 itself."
-    }
+    },
+    "pending_submissions_note": "Portfolio entries, not promoted candidates: all five have negative local means and are justified only by E[max] under the user-reported best-kept scoring rule. See round2_v6_portfolio_2026_09_26 and docs/round2_v6/RESULTS.md section 9."
+  },
+  "round2_v6_portfolio_2026_09_26": {
+    "status": "DELIVERED_PENDING_USER_UPLOAD",
+    "date": "2026-09-26",
+    "branch": "round2-v6-iron-capacity-networks",
+    "premise": "The delivered incumbent V5_TIME_N0048_Q20 = 96.3143 is already on the board, so all daily slots go to NEW candidates. The user reports (a) five submissions per day and (b) the platform keeps the best score; under (b) a submission is a free option, so the rational play is a portfolio of partially independent realizations and keep the max.",
+    "selection_method": "Paired 322-row row-bootstrap (4000 replicates, seeds 42/3407) over 48 candidate directions (alpha grid on N-0048; each of the most decorrelated time and iron members at weights 0.05/0.10/0.20); greedy forward selection maximising E[max]; the selection was re-run on one half of the replicates and honestly evaluated on the other half (+0.00722 vs +0.00709), so it is not a bootstrap overfit.",
+    "why_iron": "The incumbent changed only tap_time_len; tap_iron is still byte-identical to V36. The iron direction is therefore the most valuable portfolio entry (marginal +0.00403), and v3-kernel-tap_iron-0005 is the most decorrelated iron member (rho 0.767).",
+    "packages": [
+      {
+        "name": "V6_PORT_IRON_K0005_W10",
+        "target": "tap_iron",
+        "alpha": 0.1,
+        "zip_sha256": "85b7293674f5d6aea34168271ef6f65a428fe70662f1669ed11fca61540c5b88",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W10",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W10",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_TIME_MLP0000_W10",
+        "target": "tap_time_len",
+        "alpha": 0.1,
+        "zip_sha256": "8abba3654d0d54c170c89ab490be7f1895261065f51ee2b0fb95a089e8f5ad2a",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_MLP0000_W10",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_MLP0000_W10",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_TIME_A05",
+        "target": "tap_time_len",
+        "alpha": 0.05,
+        "zip_sha256": "3f9b27f327e4304fe21e5c3fb5d739765821d118333fbd7b598726242e353f08",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A05",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A05",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_TIME_A35",
+        "target": "tap_time_len",
+        "alpha": 0.35,
+        "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_TIME_A35",
+        "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_K0005_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "7d27e5ff7f9b6ff9ebec0abd4ded6b29b8b441df2f493f326cd636bb4f155508",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
+        "read_back_verified": true
+      }
+    ],
+    "local_expectations_of_entries": {
+      "V6_PORT_IRON_K0005_W10": -0.00071,
+      "V6_PORT_TIME_MLP0000_W10": -0.00105,
+      "V6_PORT_TIME_A05": -0.00574,
+      "V6_PORT_TIME_A35": -0.0052,
+      "V6_PORT_IRON_K0005_W20": -0.01525
+    },
+    "expected_gain": {
+      "tier_A_2_slots": 0.00568,
+      "tier_B_3_slots": 0.00651,
+      "all_5_slots": 0.00748,
+      "note": "E[max] versus the incumbent under the bootstrap; the entries own local means are all negative"
+    },
+    "risk": "Every entry has a NEGATIVE local mean; the positive expectation is entirely E[max] under the best-kept rule. If the platform in fact keeps the latest submission, the expected outcome is the mean of whichever package is last (about -0.001 for tier A, -0.006 for tier B, -0.015 for all five). Delivery README recommends tier A unless the user is certain about the keep-best rule.",
+    "new_fits": 2,
+    "new_packages": 5,
+    "agent_uploads": 0,
+    "verification": {
+      "member_full_fit_reproduces_fold_oof": {
+        "v3-mlp-tap_time_len-0000": "max abs diff 0.000e+00",
+        "v3-kernel-tap_iron-0005": "max abs diff 1.4e-11"
+      },
+      "cold_checks": "row-order permutation and row-subset invariance at 1e-11..1e-14",
+      "read_back": "template order, blend arithmetic, and the unchanged column byte-identical to the parent, for all five packages"
+    },
+    "evidence": "docs/round2_v6/RESULTS.md section 9"
   }
 }

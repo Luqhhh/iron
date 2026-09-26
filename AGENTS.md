@@ -299,9 +299,9 @@ correctors, sample reweighting, dense alpha scans). Temporal/lag features remain
 frozen V36 parent with only `tap_time_len` replaced by `0.8 x V36 + 0.2 x v36-s1-N-0048` (large
 raw-TabM refit on all training rows); `tap_iron` is byte-identical to the parent. ZIP SHA-256
 `5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982`, on the desktop under
-`round2-V5-time-N0048-Q20-20260926`. Nothing is pending: `EVIDENCE_STATUS.json ->
-round2_current_candidate_queue.submission_priority` is empty and
-`round2_closure.pending_submissions` is empty.
+`round2-V5-time-N0048-Q20-20260926`. The round-2 search itself is closed with no promoted candidate
+pending, **but a five-package exploration portfolio is now pending user upload** — see the
+"Portfolio delivery" section below and `EVIDENCE_STATUS.json -> round2_v6_portfolio_2026_09_26`.
 
 **Transferable conclusions** (full evidence in `docs/round2_v5/RESULTS.md`,
 `docs/round2_v6/RESULTS.md`, `EVIDENCE_STATUS.json -> round2_closure`):
@@ -413,3 +413,32 @@ Two facts from the user change the framing and must be carried forward:
 Because the score is deterministic, submitting several **genuinely independent** candidates is a portfolio
 play (each has a fixed realization and the best is kept); near-duplicate candidates (shared base, members at
 `rho 0.98`) have correlated realizations, so the portfolio only diversifies with independent models.
+
+### Portfolio delivery (2026-09-26, current pending handoff)
+
+`EVIDENCE_STATUS.json -> round2_v6_portfolio_2026_09_26`; evidence `docs/round2_v6/RESULTS.md` §9;
+desktop `round2-V6-portfolio-20260926/`. Five packages are **pending user upload** (the agent does not
+upload). Full analysis: `EVIDENCE_STATUS.json -> round2_current_candidate_queue`.
+
+Premise: the incumbent `V5_TIME_N0048_Q20 = 96.3143` is already on the board, so all slots go to new
+candidates; and with the platform keeping the best score a submission is a free option, so the rational
+play is a portfolio of partially independent realizations keeping the max. Selection used a paired
+322-row row-bootstrap over 48 directions, greedy on `E[max]`, **half-sample validated** (select on one
+half +0.0072, honest on the other +0.0071) — not a bootstrap overfit. The most valuable entry is the
+**iron** direction, because the incumbent changed only `tap_time_len` and `tap_iron` is still
+byte-identical to V36: `v3-kernel-tap_iron-0005` has residual correlation `rho = 0.767` (marginal
++0.00403).
+
+| tier | slots | packages | E[max] if best-kept | if latest-kept instead |
+|---|---|---:|---:|---:|
+| A | 2 | `V6_PORT_IRON_K0005_W10`, `V6_PORT_TIME_MLP0000_W10` | +0.0057 | about -0.001 |
+| B | 3 | A + `V6_PORT_TIME_A05` | +0.0065 | about -0.006 |
+| all | 5 | B + `V6_PORT_TIME_A35`, `V6_PORT_IRON_K0005_W20` | +0.0075 | about -0.015 |
+
+**Every entry has a NEGATIVE local mean** (-0.0007 to -0.0153): these are portfolio lottery tickets,
+not better models, and the positive expectation is entirely `E[max]` under the best-kept rule. Deliver
+**tier A only** unless the user is certain about that rule. Upload weakest-first so the last slot lands
+on the best-mean entry (`V6_PORT_IRON_K0005_W10`). Verified: both new members' full-data fits reproduce
+their fold OOF bit-identically (`v3-mlp` max abs diff `0.000e+00`, `v3-kernel` `1.4e-11`), cold checks
+1e-11..1e-14, and all five packages read back with template order, blend arithmetic and a byte-identical
+unchanged column. New fits 2, new packages 5, agent uploads 0.
