@@ -5821,18 +5821,18 @@
   "round2_current_platform_best": {
     "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
     "data_version": "synthetic_round2_v2",
-    "name": "V36_USER_REQUESTED_OUTER_FAILED",
-    "candidate": "V36_USER_REQUESTED_OUTER_FAILED",
-    "score": 96.2734,
-    "local_score": 96.20376256899247,
-    "local_score_basis": "V3.6 complete development composition (seeds 42/3407, 5-fold); package uses the same frozen weights and full-test analog",
-    "zip_sha256": "ef6e72f140e314c995ccb40a79439bf0fe3846c6089917936b9cba24399da7b1",
-    "result_sha256": "b5ed9b51e9127aa0a7740be2100dd2b1d7464a357076aae9fe3068c664c35f20",
-    "package": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/V36_USER_REQUESTED_OUTER_FAILED",
-    "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V36-user-requested-outer-failed-20260924",
-    "delta_vs_previous_best": 0.005,
+    "name": "V5_SEED_SWAP_S1000",
+    "candidate": "V5_SEED_SWAP_S1000",
+    "score": 96.2739,
+    "local_score": null,
+    "local_score_basis": "control package: the frozen V36 recipe with only the expert training seeds shifted by +1000; no local package score is claimed",
+    "zip_sha256": "4ff97c033f05b7e686453e913460b548cd7231d3736b3f431bb3882e1a82460f",
+    "result_sha256": "024a66f3744efede4dd6a39fba338703d22b290e77773a826f6241219d6016af",
+    "package": "local/runs/round2-v5-error-covariance/seed-swap-r1/V5_SEED_SWAP_S1000",
+    "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-seed-swap-noise-experiment-20260926",
+    "delta_vs_previous_best": 0.0005,
     "still_below_target_96_3": true,
-    "gap_to_96_3": 0.0266,
+    "gap_to_96_3": 0.0261,
     "feedback_record": "local/runs/round2-v3.6-loss-training-and-numeric-encoding/release-user-requested-r1/platform-feedback-r1/feedback.json",
     "previous_user_reported_best": {
       "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
@@ -5869,7 +5869,19 @@
       "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
       "date": "2026-09-25",
       "best_unchanged": true
-    }
+    },
+    "superseded_history": [
+      {
+        "name": "V36_USER_REQUESTED_OUTER_FAILED",
+        "score": 96.2734,
+        "reported": "2026-09-25",
+        "superseded_by": "V5_SEED_SWAP_S1000",
+        "note": "superseded as the highest user-reported score only; the package remains the frozen parent of every V5 candidate"
+      }
+    ],
+    "score_kind": "NOISE_FLOOR_CONTROL_NOT_AN_OPTIMIZATION_CANDIDATE",
+    "parent_instead_of_candidate": "V36_USER_REQUESTED_OUTER_FAILED",
+    "why_it_is_recorded": "It is the highest user-reported score and, more importantly, the pre-registered noise-floor measurement: a pure training-seed perturbation with a local effect of -0.0046 moved the platform by only +0.0005."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -7294,7 +7306,23 @@
         "abs_delta_about_0.02": "stop chasing thousandths; structural change only",
         "abs_delta_about_0.005": "seed sensitivity dominates; continue the error-covariance route under the four-seed rule"
       },
-      "zip_name": "Luqhhh_bf_tap_predict_round2.zip"
+      "zip_name": "Luqhhh_bf_tap_predict_round2.zip",
+      "platform_feedback": {
+        "source": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
+        "reported_at": "2026-09-26",
+        "score": 96.2739,
+        "delta_vs_v36": 0.0005,
+        "local_seed_sensitivity_combined": -0.00462,
+        "local_to_platform_discrepancy": 0.0051,
+        "evidence": "local/runs/round2-v5-error-covariance/seed-swap-r1/platform-feedback-r1/feedback.json",
+        "reading": "PLATFORM_RESOLUTION_IS_FINE. A pure training-seed perturbation moved the platform by 0.0005, so the platform adds no 0.01-0.02 jitter for this perturbation class; the earlier \"local gains do not transfer\" reading must be replaced by \"the local ranking has a transfer error of about 0.005, and the V42 inversion was most likely a real local-selection error rather than platform noise\".",
+        "consequences": [
+          "the platform can resolve differences of order 0.001 for this class of change",
+          "a replicated local gain of +0.0097 is about 20x the demonstrated platform resolution",
+          "the transfer error of a clean control is about 0.005, which bounds how precisely a candidate local gain predicts a platform gain",
+          "the frozen local working gate 96.25 was calibrated on the assumption of large platform-side noise; that assumption is now measured to be wrong, and any change to the gate is a user decision"
+        ]
+      }
     },
     "new_cv_fits": 0,
     "new_development_fits": 130,
