@@ -9865,7 +9865,7 @@
     }
   },
   "round2_v12_joint_tabm_2026_09_26": {
-    "status": "preregistered_ready_to_execute",
+    "status": "development_running_exact_single_output_control_passed",
     "platform_target": 96.4,
     "spec": "configs/round2_v12/SPEC.yaml",
     "preregistration": "docs/round2_v12/PREREGISTRATION.md",
@@ -9876,7 +9876,9 @@
       "warnings": 23,
       "test_log": "local/reports/v12-python312-tests-r1.log",
       "reference_preflight": "local/reports/v12-reference-preflight-r1.json",
-      "reference_files": 70
+      "reference_files": 70,
+      "single_output_control_max_absolute_difference": 0.0,
+      "control": "local/runs/round2-v12-joint-tabm/development-r1/control.json"
     },
     "budget": {
       "development_outer_fits": 20,
@@ -9886,6 +9888,12 @@
     },
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "live_process_at_observation": {
+      "pid": 189775,
+      "exec_session": 96072,
+      "log": "local/reports/v12-development-r1.log",
+      "note": "revalidate process or exec handle on continuation; this record alone is not proof of liveness"
+    }
   }
 }
