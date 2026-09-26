@@ -1,35 +1,79 @@
-# V8 execution status (2026-09-26)
+# V8 feature attention: complete development evidence (2026-09-26)
 
-Status: complete-coverage development batch running; no quality result yet.
-Four frozen target/mechanism units, 40 outer fits, two optimizer runs per fit.
-Eight workers run with BLAS/OMP/MKL/NUMEXPR and torch pinned to one thread each.
+All 40 predeclared outer fits completed without failure: four target/mechanism
+units, seeds 42/3407, five folds each, with inner epoch selection and a fresh
+full-training-fold refit. No external data or pretrained weight was used.
 Private evidence: `local/runs/round2-v8-feature-attention/development-r1/`.
 
-**G0:** locked Python 3.12 test path **990 passed, 3 warnings**. New tests
-verify that uniform attention equals zero-logit attention, learned Q/K receive
-gradients while uniform Q/K do not, repeated fits are deterministic, and a
-fresh process reproduces predictions without training data. Reverse, chunked
-and single-row queries are also checked. Only the fixed code package was added;
-no existing dependency version was changed and no pretrained weight was used.
+## G1: attention helps, but the incremental effects are small
 
-The V7 secondary reference was checked against its original data/fold identities
-and per-fold prediction hashes before the batch launched. Comparisons will
-report A35, Q20, and the already-qualified V7 time column separately.
-The N-0048 time reference and all four V36 experts were additionally checked
-against their historical ledgers: ten member/seed records reproduce the original
-data identity, five-fold assignment, pooled WMAPE and every fold WMAPE to 1e-12.
-Private `reference-audit-r2.json` records the checks and current hashes of 15
-source files. These historical ledgers did not store prediction-file hashes;
-this is identity/metric verification, not a claim of historical byte identity.
-The first audit parser expected `fold_seed` in the older V36 ledger, which uses
-`batch_id`; that parser failure is preserved separately. No source prediction
-was changed and no additional fit was needed.
+Values below are full-package score-point changes, averaged over folds within
+each complete split. Blend weights are selected on the other split's OOF
+predictions; vectors from different split seeds are never averaged.
 
-An increment over A35 that does not survive the V7 comparison cannot trigger
-time-side confirmation. Existing four-seed, local working-gate and release
-constraints remain unchanged. No models were fitted on all 2754 training rows,
-no packages were generated, and no desktop or platform writes occurred.
+| Target | Mechanism | A35 gain, seed 42 | A35 gain, seed 3407 | A35 mean | Additional mean over V7 | Development tier |
+|---|---|---:|---:|---:|---:|---|
+| Iron | Uniform | +0.002554 | -0.000260 | +0.001147 | same iron reference | exploration |
+| Iron | Learned | +0.003866 | +0.001845 | +0.002856 | same iron reference | formal |
+| Time | Uniform | 0.000000 | -0.002487 | -0.001244 | 0.000000 | not shortlisted |
+| Time | Learned | +0.003006 | +0.004145 | +0.003575 | +0.000718 | formal |
 
-**G1:** pending. Current platform best remains user-reported A35 = 96.3366;
-the 96.4 objective has not been established. V7 periodic time remains a
-four-seed-qualified candidate-pool entry, not a released platform best.
+The time learned-attention model adds only +0.000184 / +0.001252 over the frozen
+V7 candidate-pool time column, with weights 0.05/0.05 and 5/10 positive folds.
+Its Q20-relative mean is +0.004794. The iron learned model uses weights 0.10/0.10
+and improves 8/10 folds. Iron uniform fails both-split and improved-fold gates;
+time uniform has a negative mean. The frozen `candidate_tiers` classification
+is descriptive development evidence, not four-seed promotion or release.
+
+Learned attention improves standalone WMAPE over its uniform control on both
+targets and both split seeds, but standalone quality is not the admission test.
+The strongest remaining increment is iron learned attention at +0.002856.
+The predeclared ranking therefore selects **iron `ft_learned`** as the sole
+confirmation candidate, ahead of time's V7-relative +0.000718. Selection does
+not imply a useful platform effect. The gains remain small, and neither
+candidate is scheduled for platform testing.
+
+Two uniform-control fits reached the 240-epoch selection budget: iron seed42
+fold4 (best epoch225) and time seed42 fold3 (best epoch232). All learned-attention
+fits stopped before that cap. This is evidence about the frozen compact
+configuration, not proof that every attention architecture is exhausted.
+
+## G0: execution and independent arithmetic passed
+
+Locked Python 3.12 test path: **990 passed, 3 warnings**. Tests cover uniform
+attention versus zero logits, Q/K gradient attribution, deterministic fits,
+row/chunk/single-query consistency, and fresh-process synthetic-model inference.
+Only the fixed source-code package was added; existing dependency versions
+were preserved. The cold-process test is synthetic, not a full-data release audit.
+
+Private `audit-r1.json` verifies all 40 prediction hashes, full OOF coverage,
+outer/inner training-ID digests, selected epochs, implementation hashes, runtime
+versions and V7 reference hashes. Independent arithmetic reconstructs all three
+reference comparisons, sparse-grid alpha choices, per-fold gains, paired seed
+statistics and confirmation eligibility to 1e-12. No audit refit was needed.
+
+The N-0048 time reference and four V36 experts were additionally checked against
+their historical ledgers: ten member/seed records reproduce data identity,
+five-fold assignment, pooled WMAPE and each fold WMAPE to 1e-12.
+`reference-audit-r2.json` records these checks and current hashes of 15 source
+files. Historical ledgers did not store prediction-file hashes, so historical
+byte identity is not claimed. The first parser's missing-`fold_seed` failure
+is retained; V36 uses `batch_id`. A premature descriptive iron summary was also
+refused while one fit was pending; the later complete iron summary is retained.
+No original prediction or failed evidence was overwritten.
+
+## Next offline check and release boundary
+
+The selected iron candidate needs same-fold iron baselines at seeds 7777/12011.
+The V5 replication caches contain time only; they cannot be substituted for iron.
+Fresh `V36FixedRecipeFactory` fold fits are therefore required. Before trusting
+new baseline outputs, the first fit's time column will be compared with the
+existing same-fold V5 cache as an engineering control. Both reconstructed
+baseline columns will be preserved, although only the selected iron candidate
+enters confirmation. Execution details are frozen in `CONFIRMATION.yaml` before
+those fits; the V8 model recipe and development decision stay unchanged.
+
+Four positive split seeds and a positive seed-level LCB95 remain mandatory;
+fold counts are descriptive only. The local working gate remains 96.25.
+Current platform best remains user-reported **A35 = 96.3366**. The **96.4**
+objective is unproven. No full-data fit, package, desktop write or upload occurred.

@@ -1,0 +1,36 @@
+version: round2-v8-iron-attention-confirmation
+parent_spec: configs/round2_v8/SPEC.yaml
+development_run: local/runs/round2-v8-feature-attention/development-r1
+selection: highest_mean_increment_after_complete_frozen_pool
+selected: {target: tap_iron, recipe: ft_learned}
+ranking_reference: {tap_iron: A35, tap_time_len: V7_candidate_pool}
+confirmation_seeds: [7777, 12011]
+seed_history: previously_used_in_V5_and_V7_not_new_labels
+folds: [0, 1, 2, 3, 4]
+baseline:
+  factory: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+  protocol: same_fixed_recipe_adapter_as_V5_replication
+  reselect_weights: false
+  preserve_both_target_columns: true
+  query_labels: forbidden
+control:
+  seed: 7777
+  fold: 0
+  target: tap_time_len
+  reference: local/runs/round2-v5-error-covariance/replication-r1/seed-7777/fold-0.npz
+  maximum_absolute_difference: 1.0e-9
+  count_within_baseline_fit_budget: true
+  halt_on_failure: true
+budget:
+  baseline_outer_recipe_fits: 10
+  candidate_outer_fits: 10
+  outer_workers: 2
+  baseline_workers_per_outer: 6
+  full_data_fits: 0
+promotion:
+  minimum_split_seeds: 4
+  every_seed_positive: true
+  seed_level_lcb95_positive: true
+  folds: descriptive_only
+  local_working_gate: 96.25
+release: {packages: 0, uploads: 0}

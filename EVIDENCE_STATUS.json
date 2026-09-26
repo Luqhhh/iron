@@ -8698,7 +8698,7 @@
     "audit": "PASS; full gradient coverage and direct pooled arithmetic; audit-r1.json"
   },
   "round2_v8_feature_attention_2026_09_26": {
-    "status": "development_running",
+    "status": "development_complete_confirmation_selected",
     "platform_target": 96.4,
     "spec": "configs/round2_v8/SPEC.yaml",
     "preregistration": "docs/round2_v8/PREREGISTRATION.md",
@@ -8727,11 +8727,76 @@
         "artifact": "local/runs/round2-v8-feature-attention/development-r1/reference-audit-r2.json",
         "parser_failure_preserved": "local/runs/round2-v8-feature-attention/development-r1/reference-audit-r1-failure.json",
         "new_fits": 0
+      },
+      "development_prediction_audit": {
+        "status": "passed",
+        "predictions": 40,
+        "artifact": "local/runs/round2-v8-feature-attention/development-r1/audit-r1.json",
+        "independent_arithmetic_tolerance": 1e-12
       }
     },
-    "G1": "pending",
+    "G1": {
+      "status": "development_only_small_increments",
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "ft_uniform",
+          "a35_seed_gains": {
+            "42": 0.002554123865210825,
+            "3407": -0.00025997655441978296
+          },
+          "a35_mean_gain": 0.001147073655395521,
+          "v7_relative_mean_gain": 0.001147073655395521,
+          "confirmation_eligible": false,
+          "development_tier": "exploration"
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "ft_learned",
+          "a35_seed_gains": {
+            "42": 0.003865678936661593,
+            "3407": 0.0018453920851916467
+          },
+          "a35_mean_gain": 0.0028555355109266198,
+          "v7_relative_mean_gain": 0.0028555355109266198,
+          "confirmation_eligible": true,
+          "development_tier": "formal"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "ft_uniform",
+          "a35_seed_gains": {
+            "42": 0.0,
+            "3407": -0.0024871821130936778
+          },
+          "a35_mean_gain": -0.0012435910565468389,
+          "v7_relative_mean_gain": 0.0,
+          "confirmation_eligible": false,
+          "development_tier": "not_shortlisted"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "ft_learned",
+          "a35_seed_gains": {
+            "42": 0.003006120709924051,
+            "3407": 0.004144675923765037
+          },
+          "a35_mean_gain": 0.003575398316844544,
+          "v7_relative_mean_gain": 0.0007181895947268313,
+          "confirmation_eligible": true,
+          "development_tier": "formal"
+        }
+      ]
+    },
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "confirmation": {
+      "selected_target": "tap_iron",
+      "selected_recipe": "ft_learned",
+      "spec": "configs/round2_v8/CONFIRMATION.yaml",
+      "status": "selected_not_started",
+      "four_seed_pass": false
+    }
   }
 }
