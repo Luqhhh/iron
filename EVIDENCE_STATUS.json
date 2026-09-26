@@ -11465,7 +11465,7 @@
     "next_action": "V7 original package feedback; investigate new directions. Do not claim the two measured affine families reach >96.4 by increasing iron weight >=0.5 and time alpha in [0,1]. No dense alpha search or new package authorized."
   },
   "round2_v16_sequential_masks_2026_09_27": {
-    "status": "frozen_ready_for_development",
+    "status": "development_running",
     "spec": "configs/round2_v16/SPEC.yaml",
     "preregistration": "docs/round2_v16/PREREGISTRATION.md",
     "platform_reference": {
@@ -11486,7 +11486,15 @@
       "locked_python312_tests_passed": 1109,
       "warnings": 23,
       "test_log": "local/reports/v16-python312-tests-r1.log",
-      "test_log_sha256": "fdac93cd657ed4b3436555824582ab3aa5c0c0e0852b85ae5da2b05adb4368f5"
+      "test_log_sha256": "fdac93cd657ed4b3436555824582ab3aa5c0c0e0852b85ae5da2b05adb4368f5",
+      "control_max_absolute_difference": 0.0,
+      "four_seed_reference_preflight": {
+        "path": "local/reports/v16-four-seed-reference-preflight-r1.json",
+        "sha256": "c894c53730dc24e988f96d1a0bd1e49bdfb8a3bbf03223bdf385633f66a087ba",
+        "files": 145,
+        "model_fits": 0,
+        "status": "passed"
+      }
     },
     "budget": {
       "development_joint_outer_fits": 20,
@@ -11501,6 +11509,23 @@
     "user_stop_instruction": {
       "message": "v16完成后停止后续工作",
       "action": "Finish the frozen V16 development, earned confirmation if any, audits and publication; then pause goal work without starting V17."
+    },
+    "run": "local/runs/round2-v16-sequential-masks/development-r1",
+    "live_process_observation": {
+      "pid": 238829,
+      "exec_session": 81665,
+      "workers": 8,
+      "worker_threads": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "note": "Live process verified at this update; re-poll handle before claiming later liveness."
     }
   }
 }
