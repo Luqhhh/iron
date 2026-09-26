@@ -173,8 +173,9 @@ any further submission as an experiment worth declaring, not a routine slot.
 
 Branch `round2-v5-error-covariance-resolution`; pre-registration `configs/round2_v5/SPEC.yaml`
 + `docs/round2_v5/PREREGISTRATION.md` (commit `f0d7900`); implementation commit `06f956c`;
-results `docs/round2_v5/RESULTS.md`. **No candidate was promoted, no candidate package was
-built and nothing was uploaded.** One *declared experiment* package exists (see below).
+results `docs/round2_v5/RESULTS.md`. **No candidate package was built and nothing was uploaded.**
+`v36-s1-N-0048` did enter the `candidate_pool` by passing the four-split-seed rule, but it stays
+below the frozen local working gate. One *declared experiment* package exists (see below).
 
 **Premise correction that must not be repeated.** The earlier statement that
 `local/runs/round2-v3-local-search/*/pred-*.npy` holds "482 files / 444 trials with two split

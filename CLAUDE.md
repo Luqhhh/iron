@@ -68,8 +68,8 @@
 
 分支 `round2-v5-error-covariance-resolution`；预登记 `configs/round2_v5/SPEC.yaml` 与
 `docs/round2_v5/PREREGISTRATION.md`（提交 `f0d7900`）；实现提交 `06f956c`；结果见
-`docs/round2_v5/RESULTS.md`。**本轮没有晋级候选、没有生成候选包、没有上传**；只生成 1 个
-已声明的对照实验包。
+`docs/round2_v5/RESULTS.md`。**本轮没有生成候选包、没有上传**；`v36-s1-N-0048` 通过四 seed 规则
+进入 `candidate_pool`，但仍低于冻结的本地工作门槛。只生成 1 个已声明的对照实验包。
 
 **必须纠正的前提：** `local/runs/round2-v3-local-search/*/pred-*.npy` 的“482 文件 / 444 trial、
 两个 split seed 都在”不成立。482 个文件只对应 **400 个不同 trial id**，其中只有 **38 个 trial**
