@@ -3,6 +3,7 @@ date: 2026-09-26
 platform_target: 96.4
 platform_reference: {candidate: V6_PORT_TIME_A35, score: 96.3366, source: user_reported}
 data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden}
+runtime_versions: {torch: 2.14.0+cpu, tabm: 0.0.3, rtdl-num-embeddings: 0.0.12, numpy: 2.2.6, scikit-learn: 1.8.0}
 split_seeds: [42, 3407]
 folds: 5
 confirmation_seeds: [7777, 12011]

@@ -5796,9 +5796,9 @@
       "score": 96.3143
     },
     "delta_vs_previous_best": 0.0223,
-    "target": 96.35,
+    "target": 96.4,
     "target_met": false,
-    "margin_to_target": -0.0134,
+    "margin_to_target": -0.0634,
     "recipe": "frozen V36 package with tap_time_len = 0.65 x V36 + 0.35 x v36-s1-N-0048 (full-data refit); tap_iron byte-identical",
     "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
     "desktop": "round2-V6-portfolio-20260926/V6_PORT_TIME_A35",
@@ -8243,5 +8243,21 @@
       "agent_uploads": 0,
       "evidence": "docs/round2_v6/RESULTS.md section 12"
     }
+  },
+  "round2_v7_periodic_search_2026_09_26": {
+    "status": "development_running",
+    "platform_target": 96.4,
+    "pretrained_weights": "forbidden_user_reconfirmed",
+    "preregistration": "docs/round2_v7/PREREGISTRATION.md",
+    "spec": "configs/round2_v7/SPEC.yaml",
+    "run": "local/runs/round2-v7-periodic-networks/development-r1",
+    "target_recipe_units": 12,
+    "development_outer_fits": 120,
+    "primary_reference": "A35: V36 iron, 0.65*V36+0.35*N0048 time",
+    "secondary_reference": "Q20: V36 iron, 0.8*V36+0.2*N0048 time",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false,
+    "pending_alpha_packages": "unchanged; original five desktop ZIP hashes verified"
   }
 }

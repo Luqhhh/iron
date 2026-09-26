@@ -48,3 +48,9 @@ deterministic refit and row/chunk invariance; identities include data, folds,
 code, spec and installed versions. Run directories and failures are retained;
 all outputs remain private. Pin BLAS/OMP/MKL/NUMEXPR and torch to one thread per
 worker. G1: no model quality claim until complete-coverage evidence exists.
+
+Pre-execution environment annotation: the root lockfile had omitted the V4.2
+optional torch/sympy dependencies already declared in `pyproject.toml`.
+`uv lock` reconciles those entries without upgrading any previously locked
+package. V7 records and enforces its installed CPU torch/TabM/embedding versions
+separately in the specification; root dependencies are not expanded for V7.
