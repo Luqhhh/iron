@@ -7870,9 +7870,10 @@
     ],
     "pending_submissions": [],
     "recommended_next_action": {
-      "primary": "stop; the target is met and no lever with a positive prior remains",
-      "if_a_slot_is_spent_anyway": "alpha 0.25 probe of the current best (near-neutral locally: -0.0005 score against alpha 0.20), and only if the platform keeps the best score rather than the latest submission",
-      "if_the_search_is_resumed": "a new model family, screened at complete coverage, judged by the incremental blend gain rather than by rho or accuracy ratio"
+      "primary": "stop; no lever with a positive prior remains under the correct incumbent reference",
+      "if_a_slot_is_spent_anyway": "the alpha=0.25/0.30 probe is now a declared diagnostic with no expected gain (locally -0.0005/-0.0021 at complete coverage); it is safe only because the user reports the platform keeps the best score, and it tests whether platform amplification is a smooth function of local gain",
+      "slots_are_free_options": "with 'platform keeps the best score' confirmed by the user, a submission carries no downside beyond quota, so a portfolio of GENUINELY INDEPENDENT candidates would be rational; however no such candidate exists in the repository without new fits, and D-prime-2 is now negative-prior",
+      "if_the_search_is_resumed": "a different paradigm or new information, not another configuration of the existing families; screened at complete coverage, judged by the incremental blend gain over the delivered incumbent"
     },
     "g0": "PASS_976_LOCKED_TESTS",
     "g1": "TARGET_EXCEEDED_PLATFORM_96_3143_USER_REPORTED",
@@ -7970,6 +7971,43 @@
       "new_fits": 0,
       "new_packages": 0,
       "agent_uploads": 0
+    },
+    "incumbent_relative_member_and_alpha_2026_09_26": {
+      "purpose": "answer the two binding questions under the correct reference (the delivered incumbent column 0.8*V36 + 0.2*v36-s1-N-0048, not V36): (1) does any existing complete-coverage member add on top of it, and (2) is the alpha=0.20 blend weight optimal at complete coverage rather than only on folds 0/1",
+      "new_fits": 0,
+      "new_packages": 0,
+      "agent_uploads": 0,
+      "member_check": {
+        "protocol": "per-member 2-column blend (1-w)*incumbent + w*member, w in [0,0.6] on 25 grid points, nested (w selected on one split seed, scored on 5 folds of the other, both directions, 10 cells)",
+        "result": "of 27 non-v2 complete members only ONE is positive: v3-mlp-tap_time_len-0000 at +0.00065 (6/10 cells, rho 0.844); the other 26 are exactly 0.00000 (weight driven to zero) or negative; worst is -0.00108",
+        "verdict": "CLOSED. This is stronger than the V5 screening: not 'no gain relative to V36' but 'no member of the existing library leaves a measurable increment on top of the delivered incumbent'. Best value is 3 percent of the 0.0232 MDE."
+      },
+      "alpha_surface_complete_coverage": {
+        "target": "tap_time_len",
+        "cells": "10 = 5 folds x seeds 42/3407",
+        "wmape": {
+          "0.00": 0.03838,
+          "0.10": 0.038224,
+          "0.15": 0.038187,
+          "0.20": 0.038175,
+          "0.25": 0.038184,
+          "0.30": 0.038218,
+          "0.40": 0.038365,
+          "0.60": 0.038915
+        },
+        "delta_score_vs_alpha_020": {
+          "0.00": -0.0103,
+          "0.10": -0.0025,
+          "0.15": -0.0006,
+          "0.25": -0.0005,
+          "0.30": -0.0021,
+          "0.40": -0.0095,
+          "0.60": -0.037
+        },
+        "shape": "clean interior optimum at alpha=0.20; both split seeds agree on the direction (seed 42 marginally favours 0.25 by 2e-6, seed 3407 favours 0.20 by 2.1e-5); decay is faster upward than downward",
+        "consequence": "the recorded alpha=0.25 delta of -0.0005 is upgraded from folds 0/1 to complete-coverage evidence; an upward probe is a falsification test of 'platform amplification is a smooth function of local gain', not an optimisation"
+      },
+      "direction_d2_prior": "DEMOTED_TO_NEGATIVE. D-prime-2 (complete raw_mlp|large, ple_mlp|large, ple_tabm|large, raw_tabm|medium; about 40 fold fits) would add new configurations of the SAME families. Two measurements suppress its prior: every existing complete member of those families is exactly zero on top of the incumbent (the one network member, v3-mlp, is the best at +0.00065 and still ~0), and the recorded JM1 precedent (rho 0.777, decorrelated but less accurate, weight optimised to zero) is exactly the situation a new configuration would face. raw_tabm|large is N-0048 itself."
     }
   }
 }

@@ -336,6 +336,27 @@ earlier rounds, NODE per-depth, the ODST core, TabR full fusion, residual correc
 reweighting and dense alpha scans. Temporal/lag features remain *unavailable*
 (`复赛_train/train_features.csv` has no timestamp or ordering column).
 
+**Incumbent-relative member check (2026-09-26, `docs/round2_v6/RESULTS.md` §8).** Under the correct
+reference — the delivered incumbent column `0.8*V36 + 0.2*N-0048`, not V36 — a nested 2-column blend
+of every one of the **27 non-v2 complete members** leaves **only one positive**: `v3-mlp-tap_time_len-0000`
+at `+0.00065` (6/10 cells), i.e. 3% of the `0.0232` MDE; the other 26 are exactly `0.00000` (weight
+driven to zero) or negative. This upgrades the V5 statement from "no gain relative to V36" to "no
+member of the existing library leaves a measurable increment on top of the delivered incumbent".
+The complete-coverage `alpha` surface is a clean interior optimum at `alpha=0.20` (`0.25`: `-0.0005`,
+`0.30`: `-0.0021`, `0.40`: `-0.0095`, `0.60`: `-0.0370`), so the recorded `alpha=0.25` delta is now
+10-cell evidence. **D-prime-2 (completing `raw_mlp|large`, `ple_mlp|large`, `ple_tabm|large`,
+`raw_tabm|medium`, ~40 fold fits) is demoted to a negative prior**: it would add new configurations
+of the same families whose existing complete members are all exactly zero, and the recorded `JM1`
+precedent (`rho` 0.777 but less accurate, weight optimised to zero) is the situation it faces;
+`raw_tabm|large` is N-0048 itself.
+
+**Platform scoring note (user-reported 2026-09-26): the platform keeps the best score.** A new
+submission therefore carries **no downside beyond quota** — it is a free option — so a portfolio of
+**genuinely independent** candidates would be rational. Be precise about the limit: no such candidate
+exists in this repository without new fits, and near-duplicates (shared base, members at `rho` 0.98)
+have correlated realizations, so they do not diversify. The `alpha` probe is safe but is a diagnostic
+with no expected gain, not an optimization.
+
 **Leakage rule added by the stacking diagnostic (`docs/round2_v6/RESULTS.md` §7):** averaging OOF
 vectors **across split seeds** is a leak, not a variance reduction — a row held out under one split
 seed can carry another seed's component produced by a model trained on that row, so the held-out
@@ -346,11 +367,12 @@ instead of the blended column, which produced a spurious `-0.11..-0.14`).
 
 **If the search is ever resumed**, the controlling design is: screen at complete coverage, judge by
 incremental blend gain, promote under the four-seed rule, and treat any submission as a declared
-experiment. The only bounded experiment left with a near-neutral prior is an `alpha = 0.25` probe of
-the current best (`-0.0005` score against `alpha = 0.20` locally), and it is only worth a slot if the
-platform keeps the best score rather than the latest submission. The stacking closure above removes
-the last in-pool hope: a better combiner is not a new problem class, and the measured ceiling of the
-existing pool is already captured.
+experiment. The user has confirmed the platform **keeps the best score**, so the earlier condition
+("only worth a slot if the platform keeps the best score") is satisfied: the `alpha = 0.25` probe is
+now safe to spend, but it is a **diagnostic with no expected gain** (locally `-0.0005` at complete
+coverage), not an optimization. The stacking closure and the incumbent-relative member check remove
+the last in-pool hopes: a better combiner is not a new problem class, and every existing member is
+already exactly zero on top of the incumbent.
 
 ### Resolution correction (2026-09-26, after the closure section)
 
