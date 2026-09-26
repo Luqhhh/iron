@@ -10044,7 +10044,7 @@
     "next_action": "preregister repaired standardized PLE and standardized inactive-branch control before full-coverage evaluation"
   },
   "round2_v13_ple_repair_2026_09_26": {
-    "status": "development_running_exact_periodic_control_passed",
+    "status": "development_complete_no_confirmation_candidate",
     "spec": "configs/round2_v13/SPEC.yaml",
     "preregistration": "docs/round2_v13/PREREGISTRATION.md",
     "mechanism_evidence": "docs/round2_v13/MECHANISM_DIAGNOSTIC.md",
@@ -10055,7 +10055,13 @@
       "reference_preflight": "local/reports/v13-reference-preflight-r1.json",
       "reference_files": 70,
       "control": "local/runs/round2-v13-ple-repair/development-r1/control.json",
-      "control_max_absolute_difference": 0.0
+      "control_max_absolute_difference": 0.0,
+      "independent_audit": "local/runs/round2-v13-ple-repair/development-r1/audit-r1.json",
+      "prediction_count_verified": 40,
+      "preprocessing_reconstructions": 20,
+      "audit_status": "passed",
+      "fit_failures": 0,
+      "selection_cap_hits": 1
     },
     "budget": {
       "development_outer_fits": 40,
@@ -10063,17 +10069,232 @@
       "workers": 8,
       "full_data_fits": 0
     },
-    "official_data_fits_complete": 0,
+    "official_data_fits_complete": 41,
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false,
     "run": "local/runs/round2-v13-ple-repair/development-r1",
-    "live_process_at_observation": {
+    "historical_live_process_observation": {
       "pid": 204984,
       "exec_session": 44562,
       "log": "local/reports/v13-development-r1.log",
       "note": "Revalidate process/session; this record does not prove current liveness"
-    }
+    },
+    "completed_fits": {
+      "development_outer_fits": 40,
+      "control_outer_fits": 1,
+      "confirmation_outer_fits": 0,
+      "full_data_fits": 0
+    },
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "ple_b_inactive_control",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0011694272722565652,
+                "3407": 0.0019015371131106407
+              },
+              "mean": 0.001535482192683603,
+              "lcb95": -0.0007756976156168562,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.1
+              },
+              "positive_folds": 6
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0011694272722565652,
+                "3407": 0.0019015371131106407
+              },
+              "mean": 0.001535482192683603,
+              "lcb95": -0.0007756976156168562,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.1
+              },
+              "positive_folds": 6
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "ple_b_repaired",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.00011777098277800102,
+                "3407": 0.000556980750571201
+              },
+              "mean": 0.000337375866674601,
+              "lcb95": -0.0010491548016575926,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.05
+              },
+              "positive_folds": 7
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.00011777098277800102,
+                "3407": 0.000556980750571201
+              },
+              "mean": 0.000337375866674601,
+              "lcb95": -0.0010491548016575926,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.05
+              },
+              "positive_folds": 7
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.21400347194779
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "ple_b_inactive_control",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.001131661030078085,
+                "3407": -0.00014983006285093636
+              },
+              "mean": 0.0004909154836135743,
+              "lcb95": -0.003554592680898014,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.1
+              },
+              "positive_folds": 5
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.22958502884302
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "ple_b_repaired",
+          "checks": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.002463264318317629,
+                "3407": 0.0018108003502367853
+              },
+              "mean": 0.002137032334277207,
+              "lcb95": 7.72846509065517e-05,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0028903878368631564,
+                "3407": 0.0010399680007028983
+              },
+              "mean": 0.0019651779187830273,
+              "lcb95": -0.003876367602887754,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": -0.0007621584844082901
+              },
+              "mean": -0.0003810792422041451,
+              "lcb95": -0.002787118884881781,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.05
+              },
+              "positive_folds": 1
+            }
+          },
+          "confirmation_eligible": false,
+          "development_package_score": 96.22920040410233
+        }
+      ],
+      "selected_confirmation": null,
+      "all_candidates_tier": "not_shortlisted",
+      "platform_score": null,
+      "interpretation": "Restored PLE learning improves standalone models but adds no positive increment over the frozen current references."
+    },
+    "supplemental_v12_iron": {
+      "evidence": "local/runs/round2-v13-ple-repair/development-r1/v12-increment-r1.json",
+      "sha256": "c95f924f746fa4958dd823ef302c3b6d1d55af1940a87ebbfd8fb55772a4535c",
+      "reference": "0.5*A35_iron+0.5*V12_joint_plr001_iron",
+      "mean_gains": {
+        "ple_b_inactive_control": 0.0,
+        "ple_b_repaired": 0.0
+      },
+      "all_selected_alphas_zero": true,
+      "model_fits": 0,
+      "selection_changed": false
+    },
+    "results": "docs/round2_v13/RESULTS.md"
   },
   "round2_v12_release_2026_09_27": {
     "status": "delivered_pending_user_platform_feedback",
