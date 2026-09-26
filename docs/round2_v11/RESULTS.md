@@ -35,4 +35,25 @@ All four iron directions optimize to zero weight on top of V9. Raw normal/unifor
 
 The confirmation entrance rejects missing/duplicate candidate pools, incomplete seed/fold coverage, and unearned or changed selection. Promotion still requires all four seeds positive and a positive seed-level paired LCB95; fold counts are descriptive. No other finalist or extra confirmation budget is authorized by this round.
 
-Confirmation results will be appended when complete. External data and pretrained weights remain forbidden; full-data fits0, packages0, desktop writes0 and uploads0 for V11. The separately delivered V7 package is unchanged. Platform best remains user-reported A35=96.3366;96.4 has not been established.
+The completed confirmation is reported below. External data and pretrained weights remain forbidden; full-data fits0, packages0, desktop writes0 and uploads0 for V11. The separately delivered V7 package is unchanged. Platform best remains user-reported A35=96.3366;96.4 has not been established.
+
+## Four-seed confirmation: failed
+
+All ten confirmation candidate fits completed without failure or epoch-cap hits. Private run: `local/runs/round2-v11-quantile-representation/confirmation-r1`. No new baseline fits were needed. The independent audit verifies20 candidate prediction files (ten development plus ten confirmation), source/runtime/data/fold/reference identities, training metadata,20 independently reconstructed inner/full quantile statistic sets, and direct sparse-grid/fold/seed/LCB arithmetic to1e-12. Audit model fits0.
+
+| Split seed | V7-relative increment | Held-seed alpha | A35-relative increment |
+|---|---:|---:|---:|
+| 42 | +0.002670 | 0.10 | +0.010770 |
+| 3407 | +0.001803 | 0.10 | +0.010098 |
+| 7777 | -0.004099 | 0.20 | -0.000274 |
+| 12011 | +0.001287 | 0.10 | +0.004777 |
+
+The V7-relative mean is **+0.000415**, seed-level paired LCB95 **-0.003189**, with only **3/4** positive seeds and11/20 positive folds. Seed7777 loses0.004099, outweighing the small apparent development increment. Confirmation reselects each held-seed weight using the other three seeds, so the development-seed entries differ from the original two-seed table; both records are retained.
+
+Even the A35 comparison fails the all-seeds-positive requirement: mean+0.006343, LCB95+0.000269, but seed7777 is negative. A positive lower bound alone is insufficient. Q20 also fails (mean+0.005646, LCB95-0.001380,3/4 positive seeds). The fold level remains descriptive.
+
+Disposition: **failed four-seed confirmation; no promoted candidate or new package**. The original development formal classification remains historical. There is no extra finalist, weight repair, increased-epoch refit or automatic joint-column blend. This rejects the frozen quantile recipes as a next increment over the present candidates; it does not establish that every quantile-based model is ineffective.
+
+Total V11 budget consumed:80 development candidate fits+1 exact-control fit+10 confirmation candidate fits, each using inner selection plus a fresh outer-partition refit. Full-data fits0, packages0 and agent uploads0. Locked Python3.12 tests:1027 passed,23 warnings. All private predictions, ledgers and audits remain outside Git.
+
+The [delivered V7 package](../round2_v7/DELIVERY.md) remains available for user upload. V7 has no recorded platform result; current platform best is still user-reported A35=96.3366. The96.4 objective is unresolved, and these failed V11 increments provide no platform forecast.

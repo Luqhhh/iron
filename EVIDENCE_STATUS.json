@@ -9349,7 +9349,7 @@
     "uploads": 0
   },
   "round2_v11_quantile_representation_2026_09_26": {
-    "status": "development_complete_confirmation_frozen",
+    "status": "confirmation_complete_failed_four_seed_gate",
     "spec": "configs/round2_v11/SPEC.yaml",
     "preregistration": "docs/round2_v11/PREREGISTRATION.md",
     "run": "local/runs/round2-v11-quantile-representation/development-r1",
@@ -9760,20 +9760,24 @@
       ],
       "absolute_local_gate": 96.25,
       "local_working_gate_met": false,
-      "no_partial_selection": true
+      "no_partial_selection": true,
+      "disposition": "development_formal_only_confirmation_failed_no_promotion"
     },
     "budget": {
       "development_outer_fits": 80,
       "control_outer_fits": 1,
       "workers": 8,
-      "full_data_fits": 0
+      "full_data_fits": 0,
+      "confirmation_candidate_outer_fits": 10,
+      "confirmation_baseline_outer_fits": 0,
+      "total_outer_fits_including_control": 91
     },
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false,
     "results": "docs/round2_v11/RESULTS.md",
     "confirmation": {
-      "status": "validated_ready_to_run",
+      "status": "complete_failed_four_seed_gate",
       "spec": "configs/round2_v11/CONFIRMATION.yaml",
       "candidate_outer_fits": 10,
       "new_baseline_fits": 0,
@@ -9785,7 +9789,79 @@
         "reference_preflight": "local/reports/v11-confirmation-preflight-r1.json",
         "reference_files": 92,
         "new_baseline_fits": 0
-      }
+      },
+      "run": "local/runs/round2-v11-quantile-representation/confirmation-r1",
+      "independent_audit": "local/runs/round2-v11-quantile-representation/confirmation-r1/audit-r1.json",
+      "failed_fits": 0,
+      "epoch_cap_hits": 0,
+      "audit_prediction_count": 20,
+      "audit_model_fits": 0,
+      "quantile_statistic_reconstructions": 20,
+      "comparisons": {
+        "A35": {
+          "seed_gains": {
+            "42": 0.010769955985840199,
+            "3407": 0.010098381061668382,
+            "7777": -0.000273534153019811,
+            "12011": 0.004776810955309033
+          },
+          "alphas": {
+            "42": 0.2,
+            "3407": 0.2,
+            "7777": 0.35,
+            "12011": 0.35
+          },
+          "mean": 0.006342903462449451,
+          "sd": 0.005161792276054688,
+          "lcb95": 0.0002691168621946601,
+          "positive_seeds": 3,
+          "positive_folds": 13,
+          "four_seed_pass": false
+        },
+        "Q20": {
+          "seed_gains": {
+            "42": 0.011237667670130694,
+            "3407": 0.009523465124756728,
+            "7777": -0.001902422307214699,
+            "12011": 0.003725691958100519
+          },
+          "alphas": {
+            "42": 0.2,
+            "3407": 0.2,
+            "7777": 0.35,
+            "12011": 0.2
+          },
+          "mean": 0.00564610061144331,
+          "sd": 0.005971257416162841,
+          "lcb95": -0.0013801688200501113,
+          "positive_seeds": 3,
+          "positive_folds": 13,
+          "four_seed_pass": false
+        },
+        "CURRENT": {
+          "seed_gains": {
+            "42": 0.0026700864554515813,
+            "3407": 0.0018029210896120668,
+            "7777": -0.004098955183790484,
+            "12011": 0.00128701696775195
+          },
+          "alphas": {
+            "42": 0.1,
+            "3407": 0.1,
+            "7777": 0.2,
+            "12011": 0.1
+          },
+          "mean": 0.00041526733225627846,
+          "sd": 0.0030631108685997242,
+          "lcb95": -0.003189039225197043,
+          "positive_seeds": 3,
+          "positive_folds": 11,
+          "four_seed_pass": false
+        }
+      },
+      "development_package_score": 96.23229332105564,
+      "local_working_gate_met": false,
+      "release_authorized": false
     }
   }
 }

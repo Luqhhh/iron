@@ -68,3 +68,7 @@ V7 本次交付前，锁定 Python 3.12 路径的完整测试 **1011 passed，23
 截至初次交接，V7–V10 新全量模型0、新提交包0、桌面写入0。后续此次授权新增
 V7 全量模型1、独立包1，并已写入 `submission/V7_TIME_PLR001_A50`；代理上传仍为0。
 本次交付不替换原五包或其既定交接。
+
+## Subsequent V11 result (2026-09-26)
+
+After the user-authorized [V7 delivery](../round2_v7/DELIVERY.md), V11 completed80 quantile-representation development fits, one exact standard-coordinate control, and10 confirmation fits. Only periodic-uniform time qualified for confirmation; its four-seed increment over V7 failed (mean+0.000415, LCB95-0.003189,3/4 positive seeds). No V11 package was generated, no other finalist was substituted, and V7/V9 historical decisions are unchanged. See [V11 results](../round2_v11/RESULTS.md). The current platform best remains user-reported A35=96.3366;96.4 is still unverified.
