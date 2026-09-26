@@ -1,0 +1,130 @@
+version: round2-v12-joint-tabm
+platform_target: 96.4
+platform_reference:
+  candidate: V6_PORT_TIME_A35
+  score: 96.3366
+  source: user_reported
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+runtime_versions:
+  torch: 2.14.0+cpu
+  tabm: 0.0.3
+  rtdl-num-embeddings: 0.0.12
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+split_seeds:
+- 42
+- 3407
+folds: 5
+training:
+  random_seed: 42
+  inner_seed: 42
+  width: 256
+  blocks: 2
+  tabm_k: 16
+  dropout: 0.1
+  embedding_dim: 16
+  n_frequencies: 16
+  lite: true
+  loss: mse
+  optimizer: adamw
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 240
+  patience: 25
+  min_delta: 1.0e-05
+  early_stop_metric: mean_standardized_mae_both_outputs
+  preprocessing: training_only_standardization_per_partition
+  refit: fresh_initialization_full_outer_training_at_selected_epoch
+recipes:
+  joint_raw:
+    backbone: tabm
+    frequency: null
+  joint_plr001:
+    backbone: tabm
+    frequency: 0.01
+targets:
+- tap_iron
+- tap_time_len
+blend_grid:
+- 0.0
+- 0.05
+- 0.1
+- 0.2
+- 0.35
+- 0.5
+- 0.75
+- 1.0
+reference_time_alpha: 0.35
+secondary_reference_time_alpha: 0.2
+v7_reference:
+  prediction_directory: local/runs/round2-v7-periodic-networks/development-r1
+  recipe: tabm_plr001
+  blend_weight: 0.5
+v9_reference:
+  prediction_directory: local/runs/round2-v9-realmlp/development-r1
+  recipe: realmlp_td_s
+  blend_weight: 0.1
+primary_reference_audit: local/runs/round2-v8-feature-attention/development-r1/reference-audit-r2.json
+reference_by_target:
+  tap_iron: V9_IRON_candidate_pool
+  tap_time_len: V7_TIME
+control:
+  target: tap_time_len
+  recipe: tabm_plr001
+  split_seed: 42
+  fold: 0
+  outputs: 1
+  maximum_absolute_difference: 0.0
+budget:
+  development_outer_fits: 20
+  control_outer_fits: 1
+  optimizer_runs_per_outer_fit: 2
+  workers: 8
+  full_data_fits: 0
+confirmation:
+  max_candidates: 1
+  requires_two_positive_complete_seeds_against:
+  - A35
+  - target_specific_current_candidate
+  ranking: incremental_mean_gain_then_frozen_cost_order_then_target
+  split_seeds:
+  - 7777
+  - 12011
+  candidate_outer_fits_max: 10
+  baseline_outer_fits: 0
+  seed_history: previously_used_not_new_labels
+promotion:
+  minimum_split_seeds: 4
+  every_seed_positive: true
+  seed_level_lcb95_positive: true
+  folds: descriptive_only
+  local_working_gate: 96.25
+release:
+  packages: 0
+  uploads: 0
+candidates:
+  tap_iron:
+  - joint_raw
+  - joint_plr001
+  tap_time_len:
+  - joint_raw
+  - joint_plr001
+tie_preference_by_target:
+  tap_iron:
+  - joint_raw
+  - joint_plr001
+  tap_time_len:
+  - joint_raw
+  - joint_plr001
+joint_policy:
+  target_order:
+  - tap_iron
+  - tap_time_len
+  loss: equal_mean_per_head_per_target_standardized_mse
+  target_scaler: each_training_partition_mean_and_population_std
+  inference: features_only_two_outputs
+  selection_metric: equal_mean_standardized_mae_both_targets

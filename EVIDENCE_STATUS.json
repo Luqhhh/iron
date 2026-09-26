@@ -9863,5 +9863,29 @@
       "local_working_gate_met": false,
       "release_authorized": false
     }
+  },
+  "round2_v12_joint_tabm_2026_09_26": {
+    "status": "preregistered_ready_to_execute",
+    "platform_target": 96.4,
+    "spec": "configs/round2_v12/SPEC.yaml",
+    "preregistration": "docs/round2_v12/PREREGISTRATION.md",
+    "run": "local/runs/round2-v12-joint-tabm/development-r1",
+    "mechanism": "two supervised standardized outputs sharing raw or periodic TabM trunk",
+    "G0": {
+      "locked_python312_tests": 1034,
+      "warnings": 23,
+      "test_log": "local/reports/v12-python312-tests-r1.log",
+      "reference_preflight": "local/reports/v12-reference-preflight-r1.json",
+      "reference_files": 70
+    },
+    "budget": {
+      "development_outer_fits": 20,
+      "control_outer_fits": 1,
+      "full_data_fits": 0,
+      "workers": 8
+    },
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
