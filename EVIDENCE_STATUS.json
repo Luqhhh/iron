@@ -8259,5 +8259,32 @@
     "uploads": 0,
     "goal_achieved": false,
     "pending_alpha_packages": "unchanged; original five desktop ZIP hashes verified"
+  },
+  "round2_v7b_training_coverage_2026_09_26": {
+    "status": "real_control_running_before_candidate_refits",
+    "platform_target": 96.4,
+    "source_trial": "v36-s1-N-0048",
+    "spec": "configs/round2_v7/COVERAGE_SPEC.yaml",
+    "preregistration": "docs/round2_v7/COVERAGE_PREREGISTRATION.md",
+    "run": "local/runs/round2-v7-coverage/development-r1",
+    "new_strategy": "same frozen N0048 architecture/optimizer/selected epoch; fresh refit on all outer-training rows",
+    "control": {
+      "seed": 42,
+      "fold": 2,
+      "epoch": 55,
+      "required_max_abs_diff": 1e-09
+    },
+    "budget": {
+      "control_fits": 1,
+      "candidate_development_fits": 10
+    },
+    "G0": {
+      "locked_python312_tests_passed": 985,
+      "warnings": 3
+    },
+    "G1": "no real-data result yet",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
