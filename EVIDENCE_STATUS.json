@@ -398,7 +398,17 @@
         "local_mean": -0.00523
       }
     ],
-    "saturation_note": "The portfolio play is near saturation: 41 fresh directions (including the most decorrelated time family found, rho 0.69-0.72) added only +0.00095 to E[max], and the newly selected entry has a WORSE local mean (-0.00955). E[max] grows logarithmically in the number of directions, so multi-day continuation is worth about +0.008..0.01 in total and cannot approach the 0.1945 gap to first place."
+    "saturation_note": "The portfolio play is near saturation: 41 fresh directions (including the most decorrelated time family found, rho 0.69-0.72) added only +0.00095 to E[max], and the newly selected entry has a WORSE local mean (-0.00955). E[max] grows logarithmically in the number of directions, so multi-day continuation is worth about +0.008..0.01 in total and cannot approach the 0.1945 gap to first place.",
+    "additional_authorized_deliveries": [
+      {
+        "candidate": "V7_TIME_PLR001_A50",
+        "status": "delivered_pending_user_feedback",
+        "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+        "evidence_key": "round2_v7_release_2026_09_26",
+        "original_alpha_queue_unchanged": true
+      }
+    ]
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -8346,7 +8356,8 @@
       "verified_prediction_hashes": 120,
       "independent_four_seed_arithmetic_audit": "PASS; audit-r2.json; failed serialization r1 retained"
     },
-    "completed_confirmation_outer_fits": 10
+    "completed_confirmation_outer_fits": 10,
+    "subsequent_user_authorized_release": "round2_v7_release_2026_09_26"
   },
   "round2_v7b_training_coverage_2026_09_26": {
     "status": "development_complete_failed_two_positive_seeds_no_confirmation",
@@ -9289,5 +9300,52 @@
       "local_working_gate_met": false,
       "new_baseline_fits": 0
     }
+  },
+  "round2_v7_release_2026_09_26": {
+    "status": "delivered_pending_user_platform_feedback",
+    "candidate": "V7_TIME_PLR001_A50",
+    "explicit_user_authorization": true,
+    "local_working_gate_exception": "this_candidate_only",
+    "global_gate_unchanged": 96.25,
+    "spec": "configs/round2_v7/RELEASE_R3.yaml",
+    "run": "local/runs/round2-v7-periodic-networks/release-r3",
+    "delivery_document": "docs/round2_v7/DELIVERY.md",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+    "parent_candidate": "V6_PORT_TIME_A35",
+    "parent_zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
+    "target": "tap_time_len",
+    "alpha": 0.5,
+    "unchanged_target": "tap_iron",
+    "G0": {
+      "status": "PASS",
+      "locked_python312_tests": 1011,
+      "independent_audit": "local/runs/round2-v7-periodic-networks/release-r3/independent-audit-r1.json",
+      "rows": 322,
+      "iron_string_mismatches": 0,
+      "cold_prediction_max_difference": 0.0,
+      "blend_readback_max_difference": 0.0,
+      "replay_prediction_max_difference": 0.0,
+      "full_fit_rows": 2754,
+      "selected_epoch": 75,
+      "replay_fits": 1,
+      "full_data_fits": 1,
+      "failed_preflight_runs_preserved": [
+        "release-r1",
+        "release-r2"
+      ],
+      "failed_preflight_fits": 0
+    },
+    "G1": {
+      "four_seed_local_mean_gain": 0.015269866485056304,
+      "seed_level_lcb95": 0.0071683144009384355,
+      "positive_seeds": 4,
+      "positive_folds": 14,
+      "total_folds": 20,
+      "development_package_score": 96.22958502884302,
+      "platform_score": null,
+      "target_96_4_verified": false
+    },
+    "uploads": 0
   }
 }
