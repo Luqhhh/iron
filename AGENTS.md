@@ -356,3 +356,23 @@ The strategic consequence is sharper than the earlier picture: a single-column i
 **more than about 0.023** to be distinguish-able from row-sampling noise at all. That is why `V42`'s `+0.0144`
 local gain could not transfer and why every `+0.005..0.015` candidate was unreadable, and it means the only
 strategy with a positive prior is a **large structural gain**, not member tweaking.
+
+### Platform determinism and leaderboard context (2026-09-26, user-reported)
+
+Two facts from the user change the framing and must be carried forward:
+
+* **The platform is deterministic.** Re-submitting the same package returned the same score, so an observed
+  difference between two packages is **exact**, with no platform-side jitter to average out. The paired
+  `0.0116` sd above is therefore **not** the platform resolution; it is the **generalization uncertainty** —
+  how far a local gain can differ from its realization on the fixed 322-row test set. A package with a local
+  gain of `+0.01` lands around `+0.01 ± 0.012`; a `+0.005` local gain is a coin flip. The delivered `+0.0409`
+  is an exact leaderboard improvement, 3.5 sd above zero in generalization terms.
+* **Leaderboard position: first place is `96.5088`, and the project sits around the median.** The gap to first
+  is `0.1945` — about **five times** the largest gain this project has ever produced (`+0.0409`). Since the
+  empirical ceiling of member blending on the time column is about `+0.010` and it has already been captured,
+  that gap **cannot** be closed by further member search. Climbing the field requires a fundamentally better
+  model (different features or paradigm) — a different problem class with an unknown prior.
+
+Because the score is deterministic, submitting several **genuinely independent** candidates is a portfolio
+play (each has a fixed realization and the best is kept); near-duplicate candidates (shared base, members at
+`rho 0.98`) have correlated realizations, so the portfolio only diversifies with independent models.

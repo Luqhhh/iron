@@ -7908,6 +7908,27 @@
       "conclusion": "the <=0.023 gap cannot be closed by member selection. Closing it requires a fundamentally better model (different features or paradigm) that beats or substantially complements the released column, and no evidence in the current corpus shows such a model is reachable.",
       "strategic_implication": "member blending on the time column is exhausted; the honest options are to stop at 96.3143, or to start a different problem class with an unknown prior",
       "evidence": "derived from local/runs/round2-v5-error-covariance/time-n-family-r1 (no fit spent; rerunnable)"
+    },
+    "platform_determinism": {
+      "reported_by": "user, 2026-09-26",
+      "statement": "re-submitting the same package returned the same score (user has repeated submissions before with identical results)",
+      "consequence": "the platform is deterministic for a fixed package: an observed score difference between two packages is EXACT, not noisy. There is no platform-side jitter to average out.",
+      "reframing": "the 0.0116 paired sd is therefore NOT the platform resolution. It is the uncertainty of GENERALIZATION: how far a local gain can differ from its realization on the fixed 322-row test set. A package with a local gain of +0.01 lands anywhere around +0.01 +- 0.012 on the leaderboard; a local gain of +0.005 is a coin flip.",
+      "what_it_means_for_the_delivered_gain": "the +0.0409 is an exact leaderboard improvement, 3.5 sd above zero in generalization terms"
+    },
+    "leaderboard_context": {
+      "reported_by": "user, 2026-09-26",
+      "first_place": 96.5088,
+      "our_score": 96.3143,
+      "gap_to_first": 0.1945,
+      "our_position": "around the median of the field",
+      "consequences": [
+        "the >96.3 target was met and the result sits mid-field, so the delivered package is a legitimate, non-marginal result",
+        "closing the 0.1945 gap to first is about 5x the largest gain this project has ever produced (+0.0409)",
+        "the empirical ceiling of member blending on the time column is about +0.010 and it has already been captured, so the gap cannot be closed by more member search",
+        "climbing the field requires a fundamentally better model (different features or paradigm), a different problem class with an unknown prior"
+      ],
+      "portfolio_note": "because the score is deterministic, submitting several genuinely independent candidates is a portfolio play: each has a fixed realization, and the best one is kept. But near-duplicate candidates (shared base, rho 0.98 members) have correlated realizations, so the portfolio only diversifies with genuinely independent models - again a new-model problem, not a search problem."
     }
   }
 }
