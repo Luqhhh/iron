@@ -1,0 +1,50 @@
+version: round2-v12-proposed-isolated-iron-release
+candidate: V12_IRON_JOINT_PLR001_A50
+authorization:
+  user_requested_release: false
+  date: null
+  user_request: null
+  local_working_gate_exception: null
+  desktop_write: false
+  uploads: false
+parent:
+  candidate: V6_PORT_TIME_A35
+  zip: /home/lux1/iron/local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35/Luqhhh_bf_tap_predict_round2.zip
+  sha256: b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06
+model_spec: configs/round2_v12/SPEC.yaml
+recipe: joint_plr001
+target: tap_iron
+blend_weight: 0.5
+unchanged_target: tap_time_len
+preserve_parent_field_strings: true
+postprocessing: frozen_nonnegative_clip
+development_run: local/runs/round2-v12-joint-tabm/development-r1
+confirmation_run: local/runs/round2-v12-joint-tabm/confirmation-r1
+confirmation_audit: audit-r1.json
+replay:
+  split_seed: 42
+  fold: 0
+  maximum_absolute_difference: 0.0
+full_training:
+  rows: 2754
+  protocol: frozen_joint_two_output_inner_MAE_epoch_selection_then_fresh_full_training_partition_refit
+  random_seed: 42
+  external_data: forbidden
+  pretrained_weights: forbidden
+budget:
+  replay_outer_fits: 1
+  full_data_fits: 1
+  optimizer_runs_per_fit: 2
+validation:
+  cold_process_exact: true
+  inference_training_reads: forbidden
+  row_order_and_chunk_relative_tolerance: 1.0e-06
+  test_rows: 322
+  unchanged_column_mismatches: 0
+  blend_readback_maximum_difference: 0.0
+output: local/runs/round2-v12-joint-tabm/release-r1
+desktop: /mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50
+overwrite: forbidden
+agent_uploads: 0
+weight_basis: both frozen development A35-relative alpha choices were 0.50; no release-time
+  alpha search

@@ -22,7 +22,11 @@ dependencies = [
 dev = ["pytest==9.0.2"]
 round2 = [
     "interpret==0.6.10",
+    "rtdl-num-embeddings==0.0.12",
+    "rtdl-revisiting-models==0.0.2",
     "scikit-learn==1.8.0",
+    "tabm==0.0.3",
+    "torch==2.14.0",
     "xgboost==2.1.4",
 ]
 # Round2 V4.2 structure search.  ``torch`` powers the R (retrieval) and N
@@ -35,6 +39,16 @@ round2_v4_2 = [
     "torch>=2.4",
     "sympy==1.14.0",
 ]
+
+# CPU-only tests use the same torch release as the frozen V7--V13 runtime.
+# This installs libraries, not pretrained weights, and leaves experiment specs intact.
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
 
 [project.scripts]
 bf-tap = "bf_tap.cli:main"
