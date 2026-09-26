@@ -9865,7 +9865,7 @@
     }
   },
   "round2_v12_joint_tabm_2026_09_26": {
-    "status": "development_complete_iron_joint_periodic_selected_for_confirmation",
+    "status": "four_seed_pass_candidate_pool_below_working_gate",
     "platform_target": 96.4,
     "spec": "configs/round2_v12/SPEC.yaml",
     "preregistration": "docs/round2_v12/PREREGISTRATION.md",
@@ -9907,10 +9907,10 @@
       "development_a35_mean": 0.01815863768253715,
       "development_package_score": 96.22644112166778,
       "local_working_gate_met": false,
-      "confirmation_complete": false
+      "confirmation_complete": true
     },
     "confirmation": {
-      "status": "running",
+      "status": "complete_passed_four_seed_gate",
       "spec": "configs/round2_v12/CONFIRMATION.yaml",
       "run": "local/runs/round2-v12-joint-tabm/confirmation-r1",
       "candidate_outer_fits": 10,
@@ -9921,14 +9921,79 @@
         "warnings": 23,
         "test_log": "local/reports/v12-confirmation-python312-tests-r1.log",
         "reference_preflight": "local/reports/v12-confirmation-preflight-r1.json",
-        "reference_files": 97
+        "reference_files": 97,
+        "completed_candidate_fits": 10,
+        "failed_fits": 0,
+        "epoch_cap_hits": 0,
+        "audit_prediction_count": 20,
+        "audit_model_fits": 0
       },
-      "live_process_at_observation": {
-        "pid": 204297,
-        "exec_session": 13920,
-        "log": "local/reports/v12-confirmation-r1.log",
-        "note": "Revalidate process or session; record is not proof of current liveness"
-      }
+      "independent_audit": "local/runs/round2-v12-joint-tabm/confirmation-r1/audit-r1.json",
+      "comparisons": {
+        "A35": {
+          "seed_gains": {
+            "42": 0.016899139716087738,
+            "3407": 0.019418135648986562,
+            "7777": 0.018325277884334787,
+            "12011": 0.009708813337029401
+          },
+          "alphas": {
+            "42": 0.5,
+            "3407": 0.5,
+            "7777": 0.35,
+            "12011": 0.5
+          },
+          "mean": 0.016087841646609622,
+          "sd": 0.0043759641144216575,
+          "lcb95": 0.010938724677167187,
+          "positive_seeds": 4,
+          "positive_folds": 18,
+          "four_seed_pass": true
+        },
+        "Q20": {
+          "seed_gains": {
+            "42": 0.016899139716087738,
+            "3407": 0.019418135648986562,
+            "7777": 0.018325277884334787,
+            "12011": 0.009708813337029401
+          },
+          "alphas": {
+            "42": 0.5,
+            "3407": 0.5,
+            "7777": 0.35,
+            "12011": 0.5
+          },
+          "mean": 0.016087841646609622,
+          "sd": 0.0043759641144216575,
+          "lcb95": 0.010938724677167187,
+          "positive_seeds": 4,
+          "positive_folds": 18,
+          "four_seed_pass": true
+        },
+        "CURRENT": {
+          "seed_gains": {
+            "42": 0.011571166049695464,
+            "3407": 0.013317163273342744,
+            "7777": 0.013820667357056365,
+            "12011": 0.0077977247796889165
+          },
+          "alphas": {
+            "42": 0.35,
+            "3407": 0.35,
+            "7777": 0.35,
+            "12011": 0.35
+          },
+          "mean": 0.011626680364945872,
+          "sd": 0.002728570694105869,
+          "lcb95": 0.008416021114555581,
+          "positive_seeds": 4,
+          "positive_folds": 16,
+          "four_seed_pass": true
+        }
+      },
+      "development_package_score": 96.22644112166778,
+      "local_working_gate_met": false,
+      "release_authorized": false
     }
   },
   "round2_ple_mechanism_diagnostic_2026_09_26": {
@@ -9945,7 +10010,7 @@
     "next_action": "preregister repaired standardized PLE and standardized inactive-branch control before full-coverage evaluation"
   },
   "round2_v13_ple_repair_2026_09_26": {
-    "status": "preregistered_tests_passed_waiting_for_v12_confirmation",
+    "status": "preregistered_tests_passed_ready_to_execute",
     "spec": "configs/round2_v13/SPEC.yaml",
     "preregistration": "docs/round2_v13/PREREGISTRATION.md",
     "mechanism_evidence": "docs/round2_v13/MECHANISM_DIAGNOSTIC.md",

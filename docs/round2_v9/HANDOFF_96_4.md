@@ -72,3 +72,16 @@ V7 全量模型1、独立包1，并已写入 `submission/V7_TIME_PLR001_A50`；�
 ## Subsequent V11 result (2026-09-26)
 
 After the user-authorized [V7 delivery](../round2_v7/DELIVERY.md), V11 completed80 quantile-representation development fits, one exact standard-coordinate control, and10 confirmation fits. Only periodic-uniform time qualified for confirmation; its four-seed increment over V7 failed (mean+0.000415, LCB95-0.003189,3/4 positive seeds). No V11 package was generated, no other finalist was substituted, and V7/V9 historical decisions are unchanged. See [V11 results](../round2_v11/RESULTS.md). The current platform best remains user-reported A35=96.3366;96.4 is still unverified.
+
+## V12: subsequent qualified iron direction
+
+[V12 joint periodic iron](../round2_v12/RESULTS.md) passed four-seed confirmation
+against both A35 (mean+0.016088, LCB95+0.010939,4/4 positive) and the V9 iron
+candidate (mean+0.011627, LCB95+0.008416,4/4 positive). It is the stronger measured
+iron direction now available in the local candidate pool. Its frozen development
+score96.226441 is still below96.25; no full-data model or submission package is
+authorized or generated. This is not a platform rank or a joint-column release.
+V7 remains the already delivered time direction with platform feedback pending.
+V9 and all earlier decisions remain historical evidence. V13's separately frozen
+PLE repair experiment retains its registered V7/V9 comparisons and zero-release
+budget. Current reported platform best remains A35=96.3366;96.4 is unverified.

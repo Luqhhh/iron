@@ -65,3 +65,37 @@ columns. Eight targeted checks passed; the locked Python3.12 full suite passed
 **1047 tests,23 warnings**. The independent confirmation audit is prepared in
 `scripts/round2_v12_confirmation_audit.py`. All six development cap hits belonged
 to joint_raw; the selected periodic recipe had zero cap hits.
+
+## Four-seed confirmation: passed, candidate pool only
+
+All ten confirmation joint fits completed without failure or selection-cap hits.
+Private run: local/runs/round2-v12-joint-tabm/confirmation-r1. The independent
+zero-fit audit checks20 two-column prediction files (ten development and ten
+confirmation), all frozen identities and references, inner/full target scales,
+training rows, blend weights, gains, confidence bounds and promotion decisions.
+
+| Split seed | Gain over V9 iron | Held-seed weight | Gain over A35 iron | A35 held-seed weight |
+|---|---:|---:|---:|---:|
+| 42 | +0.011571 | 0.35 | +0.016899 | 0.50 |
+| 3407 | +0.013317 | 0.35 | +0.019418 | 0.50 |
+| 7777 | +0.013821 | 0.35 | +0.018325 | 0.35 |
+| 12011 | +0.007798 | 0.35 | +0.009709 | 0.50 |
+
+CURRENT-relative mean **+0.011627**, seed-level paired LCB95 **+0.008416**,
+**4/4 positive seeds**,16/20 positive folds. A35-relative mean **+0.016088**,
+LCB95 **+0.010939**,4/4 positive seeds and18/20 positive folds. The four-seed
+rule passes against both references; folds remain descriptive. Weights for each
+held seed are chosen using the other three seeds, never by averaging their OOF
+vectors into a feature. Previously used split seeds are not new independent data.
+
+Disposition: **four-seed-qualified candidate_pool**. The frozen development
+package score remains **96.226441 <96.25**. No release exception follows from
+four positive seeds; V7's explicit exception was for V7 only. No full-data model,
+package, desktop write, or upload was generated. The current reported platform
+best remains A35=96.3366, and96.4 has not been demonstrated.
+
+This gives a stronger measured iron direction than V9 alone, without replacing
+any historical decision. The separately frozen V13 comparison still uses its
+predeclared V7/V9 references; any V12-relative diagnostic must be identified as
+additional evidence and must not silently alter that registration or count
+already captured gain as a fresh increment.
