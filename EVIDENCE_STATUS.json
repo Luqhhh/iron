@@ -11422,5 +11422,46 @@
     "new_fits": 0,
     "new_packages": 0,
     "agent_uploads": 0
+  },
+  "round2_platform_line_boundaries_2026_09_27": {
+    "status": "conditional_bounds_verified",
+    "document": "docs/round2_v12/PLATFORM_BOUNDARIES.md",
+    "source": "documented_metric_and_user_reported_scores_not_independently_verified_receipts",
+    "score_error_allowance": 0.0001,
+    "score_source_current_best": "V12_IRON_JOINT_PLR001_A50=96.3526",
+    "assumptions": [
+      "documented equal-weight WMAPE score; unchanged hidden cohort and labels",
+      "same fixed prediction endpoints, unmodified other column, no nonlinear postprocessing",
+      "reported four-decimal scores within +/-0.0001 of true score; not independently verified receipts"
+    ],
+    "G0": {
+      "audit": "local/reports/platform-line-bounds-20260927-r2.json",
+      "audit_sha256": "fdd688f1f3ab703df940e972223090d1ab47a341514db2842691f630048ad054",
+      "affine_package_hashes_verified": 5,
+      "max_affine_residual": 5.684341886080802e-14,
+      "targeted_tests_passed": 10,
+      "initial_audit_failure_preserved": "local/reports/platform-line-bounds-20260927-failed-r1.json",
+      "locked_python312_tests_passed": 1092,
+      "warnings": 23,
+      "test_log": "local/reports/platform-line-bounds-python312-r1.log",
+      "test_log_sha256": "8f55d2aaf934ab0480136e0f4f0c325ecff1a685db5689ed5d75702bbd0579c2"
+    },
+    "G1": {
+      "V12_iron_A50_plus_A60_time_conditional_score": 96.3625,
+      "V12_iron_A50_plus_A60_time_score_error": 0.0003,
+      "V12_iron_A50_plus_any_N0048_time_upper_bound": 96.36549724770643,
+      "V12_iron_A50_to_A100_plus_A60_time_upper_bound": 96.379,
+      "V12_iron_A50_to_A100_plus_any_N0048_time_upper_bound": 96.38169724770641,
+      "V7_score_for_conditional_A50_V12_combination_to_exceed_96_4_central": 96.384,
+      "V7_score_for_conditional_A50_V12_combination_to_exceed_96_4_conservative_strict": 96.3843
+    },
+    "time_alpha_0_to_1_upper_bound": 96.34929724770642,
+    "iron_weight_below_0_5_not_bounded": true,
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "promotion_or_release_authorization": false,
+    "next_action": "V7 original package feedback; investigate new directions. Do not claim the two measured affine families reach >96.4 by increasing iron weight >=0.5 and time alpha in [0,1]. No dense alpha search or new package authorized."
   }
 }

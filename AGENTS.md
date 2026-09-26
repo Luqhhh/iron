@@ -566,3 +566,18 @@ slopes. For a direction already validated as positive on the platform, a platfor
   two-target combination. Preserve prior gates, decisions and original files.
 - See docs/round2_v12/DELIVERY.md and EVIDENCE_STATUS.json ->
   round2_v12_platform_feedback_2026_09_27.
+
+### Conditional platform line bounds after V12 (2026-09-27)
+
+- Under the documented fixed-cohort equal-weight WMAPE metric and reported
+  score error ±0.0001, the old V36/N-0048 time line has an upper bound96.349298
+  with V36 iron. With released V12 iron A50 this becomes96.365498.
+- Raising V12 iron weight within[0.5,1], while choosing any N-0048 time
+  weight within[0,1], has conditional score upper bound96.381698. Hence
+  increasing those weights is insufficient for >96.4 under these assumptions.
+  Iron weights below0.5 and other model directions are not bounded by this result.
+- V12 iron A50 plus A60 time gives conditional additive arithmetic96.3625
+  ±0.0003. This is not a verified combined platform score, forecast or release
+  authorization. No combined file was created.
+- Evidence: docs/round2_v12/PLATFORM_BOUNDARIES.md. Preserve V7 as the pending
+  isolated test; do not reinterpret upper-envelope intersections as optima.
