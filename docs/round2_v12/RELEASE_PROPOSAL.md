@@ -58,3 +58,13 @@ optimizer from the underlying estimator, idempotently; the original failed log
 is retained as v12-release-targeted-tests-r1.log, and r2 passed. No official-data
 release fit was attempted. Parent identity and fixed-weight preflight passed
 without model fitting. The pending proposal is rejected before output creation.
+
+## Explicit authorization received (2026-09-26)
+
+The user answered **“授权这一个 V12 包”** to the concrete question covering the
+single-candidate gate exception, one replay fit, one full-data joint fit, and
+submission-folder delivery at the frozen50% iron recipe. The authorized execution
+specification is `configs/round2_v12/RELEASE.yaml`; the original pending proposal
+is retained. The scope is this candidate only, with unchanged A35 time strings.
+Agent uploads remain0. No second permission is needed for the authorized work.
+The private authorization receipt is under local/authorizations/.

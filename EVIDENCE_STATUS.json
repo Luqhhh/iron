@@ -9996,7 +9996,7 @@
       "release_authorized": false
     },
     "release_proposal": {
-      "status": "implemented_and_tested_awaiting_explicit_candidate_exception",
+      "status": "user_authorized_ready_to_execute",
       "candidate": "V12_IRON_JOINT_PLR001_A50",
       "spec": "configs/round2_v12/RELEASE_PROPOSAL.yaml",
       "plan": "docs/round2_v12/RELEASE_PROPOSAL.md",
@@ -10008,11 +10008,14 @@
         "test_log": "local/reports/v12-release-python312-tests-r1.log",
         "zero_fit_preflight": "local/reports/v12-release-proposal-preflight-r1.json"
       },
-      "release_authorized": false,
+      "release_authorized": true,
       "official_release_fits": 0,
       "packages": 0,
       "desktop_writes": 0,
-      "uploads": 0
+      "uploads": 0,
+      "authorized_spec": "configs/round2_v12/RELEASE.yaml",
+      "authorization_source": "explicit user answer: 授权这一个 V12 包",
+      "authorization_scope": "this candidate only; one replay, one full joint fit, isolated iron package and desktop delivery; user uploads"
     }
   },
   "round2_ple_mechanism_diagnostic_2026_09_26": {
