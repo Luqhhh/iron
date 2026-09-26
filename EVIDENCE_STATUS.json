@@ -11465,7 +11465,7 @@
     "next_action": "V7 original package feedback; investigate new directions. Do not claim the two measured affine families reach >96.4 by increasing iron weight >=0.5 and time alpha in [0,1]. No dense alpha search or new package authorized."
   },
   "round2_v16_sequential_masks_2026_09_27": {
-    "status": "development_running",
+    "status": "complete_no_confirmation_candidate_stop_requested",
     "spec": "configs/round2_v16/SPEC.yaml",
     "preregistration": "docs/round2_v16/PREREGISTRATION.md",
     "platform_reference": {
@@ -11494,7 +11494,13 @@
         "files": 145,
         "model_fits": 0,
         "status": "passed"
-      }
+      },
+      "independent_audit": "local/runs/round2-v16-sequential-masks/development-r1/audit-r1.json",
+      "audit_sha256": "a24ccedf66f728dd8727aa4215baf2102b6f7b9bc096b03f362823dedaedd656",
+      "audit_status": "passed",
+      "prediction_count_verified": 20,
+      "fit_failures": 0,
+      "epoch_cap_hits": 9
     },
     "budget": {
       "development_joint_outer_fits": 20,
@@ -11511,7 +11517,7 @@
       "action": "Finish the frozen V16 development, earned confirmation if any, audits and publication; then pause goal work without starting V17."
     },
     "run": "local/runs/round2-v16-sequential-masks/development-r1",
-    "live_process_observation": {
+    "historical_live_process_observation": {
       "pid": 238829,
       "exec_session": 81665,
       "workers": 8,
@@ -11526,6 +11532,407 @@
         1
       ],
       "note": "Live process verified at this update; re-poll handle before claiming later liveness."
-    }
+    },
+    "terminal_process_observation": {
+      "exec_session": 81665,
+      "exit_code": 0,
+      "pid": 238829,
+      "pid_exists": false,
+      "audit_exec_session": 81340,
+      "audit_exit_code": 0
+    },
+    "official_data_fits_complete": 21,
+    "confirmation_fits": 0,
+    "selected_confirmation": null,
+    "results": "docs/round2_v16/RESULTS.md",
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "uniform_masks",
+          "single_wmape": {
+            "42": 0.05661589089049141,
+            "3407": 0.055906119910382884
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "sparse_masks",
+          "single_wmape": {
+            "42": 0.05284963108680013,
+            "3407": 0.05147419881302863
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": -0.0006167297535587118,
+              "seed_gains": {
+                "42": -0.0012334595071174237,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": -0.0006167297535587118,
+              "seed_gains": {
+                "42": -0.0012334595071174237,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": -0.0006167297535587118,
+              "seed_gains": {
+                "42": -0.0012334595071174237,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "uniform_masks",
+          "single_wmape": {
+            "42": 0.06349386546715369,
+            "3407": 0.06338880645026437
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "sparse_masks",
+          "single_wmape": {
+            "42": 0.05965719817368569,
+            "3407": 0.05991569155236746
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        }
+      ],
+      "all_primary_and_current_weights_zero": true,
+      "candidate_tiers": {
+        "policy": "candidate-tiers-v1",
+        "decisions": {
+          "tap_iron": {
+            "uniform_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03717938754875991,
+              "target": "tap_iron",
+              "candidate": "uniform_masks",
+              "reference": "V12_IRON_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            },
+            "sparse_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03717938754875991,
+              "target": "tap_iron",
+              "candidate": "sparse_masks",
+              "reference": "V12_IRON_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            }
+          },
+          "tap_time_len": {
+            "uniform_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03786582833681623,
+              "target": "tap_time_len",
+              "candidate": "uniform_masks",
+              "reference": "V7_TIME_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            },
+            "sparse_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03786582833681623,
+              "target": "tap_time_len",
+              "candidate": "sparse_masks",
+              "reference": "V7_TIME_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            }
+          }
+        },
+        "formal_selected": [],
+        "exploration_selected": [],
+        "submission_priority": [],
+        "release_authorized": false,
+        "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+      },
+      "interpretation": "Sparse masks improve standalone WMAPE but add zero to V12/V7 references. Nine sparse fits hit the epoch cap; result is limited to frozen recipe and budget."
+    },
+    "stop_disposition": "V16 complete; stop further optimization after publication as explicitly requested. Goal >96.4 remains unmet; pause, do not mark achieved."
+  },
+  "round2_optimization_stop_after_v16_2026_09_27": {
+    "user_message": "v16完成后停止后续工作",
+    "v16_complete": true,
+    "v17_started": false,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "goal_above_96_4_achieved": false,
+    "resume_requires_user_request": true
   }
 }

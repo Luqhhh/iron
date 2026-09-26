@@ -589,3 +589,17 @@ sequential-mask development, confirmation only if earned, audits and normal
 commit/push. Then stop further optimization and pause the active goal. Do not
 start V17 or another round without a subsequent explicit user resumption.
 This does not declare the >96.4 objective achieved.
+
+### V16 completed; optimization stops (2026-09-27)
+
+V16 finished20 development joint fits plus1 exact V12 control, all successful;
+independent audit passed20 prediction matrices. Both uniform and learned sparse
+feature-mask recipes select zero blend weight against V12_PLATFORM and CURRENT
+on both complete development seeds. No finalist, confirmation, full-data fit,
+new package or upload follows. Nine of10 sparse fits reached the400-epoch limit;
+this is a result for the frozen recipe/budget, not closure of the entire family.
+Locked Python3.12 suite:1109 passed,23 warnings. Evidence: docs/round2_v16/RESULTS.md.
+
+The explicit stop-after-V16 instruction now applies: stop further optimization,
+pause the active goal, and do not start another round without user resumption.
+Current user-reported best remains V12=96.3526; >96.4 was not achieved.
