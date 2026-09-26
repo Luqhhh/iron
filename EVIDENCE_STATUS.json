@@ -10805,7 +10805,7 @@
     "evidence": "docs/round2_v6/RESULTS.md section 13"
   },
   "round2_v15_task_experts_2026_09_27": {
-    "status": "exact_joint_control_running_before_candidate_fits",
+    "status": "development_running_exact_joint_control_passed",
     "spec": "configs/round2_v15/SPEC.yaml",
     "preregistration": "docs/round2_v15/PREREGISTRATION.md",
     "mechanism_source": "https://research.google/pubs/modeling-task-relationships-in-multi-task-learning-with-multi-gate-mixture-of-experts/",
@@ -10827,7 +10827,10 @@
       "reference_files": 83,
       "parameter_count_both_recipes": 284870,
       "uniform_trainable_parameters": 284770,
-      "learned_gate_trainable_parameters": 284870
+      "learned_gate_trainable_parameters": 284870,
+      "control": "local/runs/round2-v15-task-experts/development-r1/control.json",
+      "control_max_absolute_difference": 0.0,
+      "control_outputs": 2
     },
     "budget": {
       "development_joint_outer_fits": 20,
@@ -10836,7 +10839,7 @@
       "full_data_fits": 0,
       "workers": 8
     },
-    "official_data_fits_complete": 0,
+    "official_data_fits_complete": 1,
     "run": "local/runs/round2-v15-task-experts/development-r1",
     "packages": 0,
     "uploads": 0,
@@ -10845,7 +10848,7 @@
       "pid": 225772,
       "exec_session": 18142,
       "log": "local/reports/v15-development-r1.log",
-      "note": "Revalidate process/session. The exact control must finish and pass before candidate fits start."
+      "note": "Exact joint control passed. Revalidate process/session before treating the recorded candidate batch as live."
     }
   }
 }
