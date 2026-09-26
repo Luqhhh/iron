@@ -10805,7 +10805,7 @@
     "evidence": "docs/round2_v6/RESULTS.md section 13"
   },
   "round2_v15_task_experts_2026_09_27": {
-    "status": "development_running_exact_joint_control_passed",
+    "status": "development_complete_gated_time_selected_for_confirmation",
     "spec": "configs/round2_v15/SPEC.yaml",
     "preregistration": "docs/round2_v15/PREREGISTRATION.md",
     "mechanism_source": "https://research.google/pubs/modeling-task-relationships-in-multi-task-learning-with-multi-gate-mixture-of-experts/",
@@ -10830,7 +10830,12 @@
       "learned_gate_trainable_parameters": 284870,
       "control": "local/runs/round2-v15-task-experts/development-r1/control.json",
       "control_max_absolute_difference": 0.0,
-      "control_outputs": 2
+      "control_outputs": 2,
+      "independent_development_audit": "local/runs/round2-v15-task-experts/development-r1/audit-r1.json",
+      "prediction_count_verified": 20,
+      "audit_status": "passed",
+      "fit_failures": 0,
+      "epoch_cap_hits": 0
     },
     "budget": {
       "development_joint_outer_fits": 20,
@@ -10839,16 +10844,264 @@
       "full_data_fits": 0,
       "workers": 8
     },
-    "official_data_fits_complete": 1,
+    "official_data_fits_complete": 21,
     "run": "local/runs/round2-v15-task-experts/development-r1",
     "packages": 0,
     "uploads": 0,
     "goal_achieved": false,
-    "live_process_at_observation": {
+    "historical_live_process_observation": {
       "pid": 225772,
       "exec_session": 18142,
       "log": "local/reports/v15-development-r1.log",
       "note": "Exact joint control passed. Revalidate process/session before treating the recorded candidate batch as live."
-    }
+    },
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "uniform_experts",
+          "tier": "not_shortlisted",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.017556277378877952,
+                "3407": 0.010984705317210047
+              },
+              "mean": 0.014270491348044,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.017556277378877952,
+                "3407": 0.010984705317210047
+              },
+              "mean": 0.014270491348044,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.017556277378877952,
+                "3407": 0.010984705317210047
+              },
+              "mean": 0.014270491348044,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": -0.0020923991240387463
+              },
+              "mean": -0.0010461995620193731,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.2
+              },
+              "positive_folds": 1
+            }
+          },
+          "single_wmape": {
+            "42": 0.03765362282810868,
+            "3407": 0.03815888611974887
+          }
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "task_gated_experts",
+          "tier": "exploration",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.028032631327222158,
+                "3407": 0.019043376260838157
+              },
+              "mean": 0.023538003794030156,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.028032631327222158,
+                "3407": 0.019043376260838157
+              },
+              "mean": 0.023538003794030156,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.028032631327222158,
+                "3407": 0.019043376260838157
+              },
+              "mean": 0.023538003794030156,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.007199659528676766,
+                "3407": -0.0020793482743309416
+              },
+              "mean": 0.0025601556271729123,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.5
+              },
+              "positive_folds": 6
+            }
+          },
+          "single_wmape": {
+            "42": 0.037245308342619694,
+            "3407": 0.03775992848558579
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "uniform_experts",
+          "tier": "exploration",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.028562215654139855,
+                "3407": 0.02764571389453116
+              },
+              "mean": 0.028103964774335508,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.011801434346090378,
+                "3407": 0.00947411655196087
+              },
+              "mean": 0.010637775449025624,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 7
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.01267421666414588,
+                "3407": 0.0087193527636769
+              },
+              "mean": 0.01069678471391139,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 7
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0007784153454439002,
+                "3407": -0.000168747944683037
+              },
+              "mean": 0.0003048337003804316,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.1
+              },
+              "positive_folds": 5
+            }
+          },
+          "single_wmape": {
+            "42": 0.03860598019412031,
+            "3407": 0.03883112815408425
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "task_gated_experts",
+          "tier": "formal",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.02718895702492514,
+                "3407": 0.029883534828104158
+              },
+              "mean": 0.02853624592651465,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.012224882018953623,
+                "3407": 0.011875332696395721
+              },
+              "mean": 0.012050107357674672,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.01303214025898447,
+                "3407": 0.010605439343171416
+              },
+              "mean": 0.011818789801077943,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.001061740088601007,
+                "3407": 0.0014132391500934482
+              },
+              "mean": 0.0012374896193472276,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.1
+              },
+              "positive_folds": 8
+            }
+          },
+          "single_wmape": {
+            "42": 0.038856071243540694,
+            "3407": 0.038836636925849426
+          }
+        }
+      ],
+      "selected_confirmation": {
+        "target": "tap_time_len",
+        "recipe": "task_gated_experts"
+      },
+      "development_package_score": 96.23082100184455,
+      "local_working_gate_met": false,
+      "platform_score": null
+    },
+    "results": "docs/round2_v15/RESULTS.md"
   }
 }
