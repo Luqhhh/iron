@@ -49,3 +49,23 @@ LCB95 as admission conditions; folds remain descriptive. Full-data fits, package
 desktop writes and uploads remain zero. A60=96.3465 is the registered reported
 platform best; the above-96.4 goal is not achieved. V12 then V7 remain the pending
 platform priorities; no original package is changed.
+
+## Confirmation allocation
+
+`configs/round2_v15/CONFIRMATION.yaml` freezes only gated time for ten joint
+candidate fits at 7777/12011. A zero-fit preflight verified 105 reference files
+for A60/A35/Q20 and the unchanged V7 time blend on all four split seeds. A60
+is reconstructed directly from the frozen V36 and N-0048 fold cache; a separate
+affine identity using A35 and Q20 checks the new alpha on every seed. No new
+baseline fit is needed. Previously used split seeds are not newly acquired data.
+
+Nine targeted tests passed, covering complete-pool selection, the A60 prerequisite,
+rejection of unearned selections and correct time-column extraction from the
+joint matrix. The other output is retained for artifact integrity, not for an
+additional iron promotion. The independent confirmation audit reconstructs both
+target scalers, checks learned-gate metadata and independently recomputes the
+four-seed nested blend and admission decisions. No fallback finalist is allowed.
+
+Before confirmation, the locked Python 3.12 full suite passed **1082 tests,
+23 warnings**. The original development suite and audited decisions remain
+recorded above. The four-seed check is mandatory before any promotion claim.

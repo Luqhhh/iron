@@ -11102,6 +11102,27 @@
       "local_working_gate_met": false,
       "platform_score": null
     },
-    "results": "docs/round2_v15/RESULTS.md"
+    "results": "docs/round2_v15/RESULTS.md",
+    "confirmation": {
+      "status": "frozen_preflight_passed_before_fits",
+      "spec": "configs/round2_v15/CONFIRMATION.yaml",
+      "selected": {
+        "target": "tap_time_len",
+        "recipe": "task_gated_experts"
+      },
+      "run": "local/runs/round2-v15-task-experts/confirmation-r1",
+      "split_seeds": [
+        7777,
+        12011
+      ],
+      "candidate_joint_outer_fits": 10,
+      "baseline_fits": 0,
+      "full_data_fits": 0,
+      "reference_preflight": "local/reports/v15-confirmation-reference-preflight-r1.json",
+      "reference_files": 105,
+      "locked_python312_tests": 1082,
+      "warnings": 23,
+      "test_log": "local/reports/v15-confirmation-python312-tests-r1.log"
+    }
   }
 }
