@@ -10803,5 +10803,43 @@
     "new_packages": 0,
     "agent_uploads": 0,
     "evidence": "docs/round2_v6/RESULTS.md section 13"
+  },
+  "round2_v15_task_experts_2026_09_27": {
+    "status": "preregistered_tests_passed_before_official_fits",
+    "spec": "configs/round2_v15/SPEC.yaml",
+    "preregistration": "docs/round2_v15/PREREGISTRATION.md",
+    "mechanism_source": "https://research.google/pubs/modeling-task-relationships-in-multi-task-learning-with-multi-gate-mixture-of-experts/",
+    "new_evidence": "V12/V14 joint training improves iron standalone but worsens time; task-specific routing has not been evaluated in this repository. This motivates an experiment, not a proven negative-transfer mechanism.",
+    "platform_reference": {
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465,
+      "source": "user_reported_not_independently_verified"
+    },
+    "local_reference_by_target": {
+      "tap_iron": "V12_IRON_A50_original_A35_parent",
+      "tap_time_len": "V7_TIME_A50_original_A35_parent"
+    },
+    "G0": {
+      "locked_python312_tests": 1073,
+      "warnings": 23,
+      "test_log": "local/reports/v15-python312-tests-r1.log",
+      "reference_preflight": "local/reports/v15-reference-preflight-r1.json",
+      "reference_files": 83,
+      "parameter_count_both_recipes": 284870,
+      "uniform_trainable_parameters": 284770,
+      "learned_gate_trainable_parameters": 284870
+    },
+    "budget": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "conditional_confirmation_outer_fits_max": 10,
+      "full_data_fits": 0,
+      "workers": 8
+    },
+    "official_data_fits_complete": 0,
+    "run": "local/runs/round2-v15-task-experts/development-r1",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
