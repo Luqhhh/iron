@@ -1,8 +1,8 @@
 # V9 execution status (2026-09-26)
 
-The complete-coverage development batch is running: four frozen target/recipe
-units, 40 outer fits, two optimizer runs per fit. Four single-threaded workers
-use only the approved round-two training data. Private evidence is in
+All 40 predeclared outer fits completed without failure: four target/recipe
+units, seeds42/3407, five folds each, with inner epoch selection and fresh
+full-training-partition refitting. Private evidence is in
 `local/runs/round2-v9-realmlp/development-r1/`.
 
 ## G0
@@ -34,10 +34,57 @@ were downloaded. Before fitting, the runner verified the historical primary
 reference hashes and the V7/V8 diagnostic data, fold and prediction identities.
 The manifest also freezes all author source-file hashes and resolved recipes.
 
-## G1
+## G1: a stronger iron direction, still development evidence
 
-Pending complete development results and independent arithmetic. Current
-platform best remains user-reported A35 = **96.3366**; the **96.4** objective
-is unproven. V7 is a qualified local candidate-pool direction, and V8 iron is
-undergoing additional split validation. Neither becomes a new platform best
-without feedback. No full-data model, package, desktop write or upload occurred.
+Score-point changes use fold means within each complete split. Sparse-grid
+weights are selected on the other split's predictions; no OOF vectors are
+averaged across split seeds.
+
+| Target | Recipe | A35 seed42 | A35 seed3407 | A35 mean | Increment over V7 time | Development tier |
+|---|---|---:|---:|---:|---:|---|
+| Iron | TD | +0.007482 | +0.001497 | +0.004490 | same iron reference | formal |
+| Iron | TD-S | +0.005500 | +0.004964 | +0.005232 | same iron reference | formal |
+| Time | TD | +0.010876 | +0.013264 | +0.012070 | +0.002320 | formal |
+| Time | TD-S | 0.000000 | -0.000601 | -0.000301 | 0.000000 | not shortlisted |
+
+The predeclared incremental ranking selects **iron `realmlp_td_s`** as the sole
+confirmation candidate. Its alpha is 0.10 on both splits, with 10/10 positive
+folds. The V8-iron diagnostic also improves on both splits, +0.003224/+0.003739,
+mean +0.003482, 8/10 folds. Its standalone WMAPE is worse than full TD
+(0.041956/0.042371 versus 0.039539/0.041321), yet its blend gain is larger and
+more consistent: incremental usefulness remains the selection criterion.
+
+Time full TD has a larger A35-relative mean, but most of that direction is
+already covered by V7. Its additional V7-relative gains are only
++0.001830/+0.002810, with 7/10 positive folds, so it is not the extra candidate.
+Time TD-S improves relative to historical Q20 (+0.001352 mean) but loses against
+the actual A35 reference; it fails continuation. No old reference is substituted
+to admit it. These tiers are descriptive development classifications and do not
+establish four-seed promotion or platform rank.
+
+The selected iron direction's two-seed pooled package score is **96.214003**,
+below the unchanged 96.25 working gate. Even a successful four-seed check would
+leave it in `candidate_pool` under the frozen release rule. The 10/10 folds are
+descriptive, not ten independent datasets or a replacement for seed-level evidence.
+
+Private `audit-r1.json` independently verifies all 40 prediction hashes, full
+row coverage, inner/outer training identities, median/vocabulary metadata,
+model/source/runtime identity and all reference hashes. Direct arithmetic
+reproduces each of the four reference comparisons, alpha choices, fold and seed
+gains, paired lower bounds and eligibility to 1e-12. No audit fit was needed.
+
+## Confirmation and release boundary
+
+`configs/round2_v9/CONFIRMATION.yaml` freezes ten candidate fits on seeds7777/12011.
+These are previously used split seeds, not new labels. Same-fold iron references
+will be reused from the ongoing V8 reconstruction: its time control already
+reproduced the old V5 cache with maximum difference0. Each reused fold must be
+complete in the ledger, match its prediction hash, and match data/fold identity.
+No new baseline fit is budgeted. Candidate fitting may proceed while V8 finishes,
+but scoring waits for complete verified references; a time column is never used
+as the iron reference.
+
+Four positive split seeds and a positive seed-level paired LCB95 remain mandatory;
+fold counts remain descriptive. Current platform best is still user-reported
+A35 = **96.3366**, and the **96.4** objective is unproven. No full-data model,
+package, desktop write or upload occurred.

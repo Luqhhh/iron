@@ -1,0 +1,29 @@
+version: round2-v9-realmlp-iron-confirmation
+parent_spec: configs/round2_v9/SPEC.yaml
+development_run: local/runs/round2-v9-realmlp/development-r1
+selected: {target: tap_iron, recipe: realmlp_td_s}
+ranking_reference: {tap_iron: A35, tap_time_len: V7_candidate_pool}
+confirmation_seeds: [7777, 12011]
+seed_history: previously_used_not_new_labels
+folds: [0, 1, 2, 3, 4]
+reference:
+  run: local/runs/round2-v8-feature-attention/confirmation-r1
+  column: iron
+  factory: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+  require_completed_fold_ledger_and_prediction_hash: true
+  require_same_data_and_fold_identity: true
+  require_bit_identical_time_control: true
+  if_incomplete: fit_candidates_then_wait_for_existing_reference_job
+budget:
+  max_candidates: 1
+  candidate_outer_fits: 10
+  baseline_outer_fits: 0
+  workers: 4
+  full_data_fits: 0
+promotion:
+  minimum_split_seeds: 4
+  every_seed_positive: true
+  seed_level_lcb95_positive: true
+  folds: descriptive_only
+  local_working_gate: 96.25
+release: {packages: 0, uploads: 0}

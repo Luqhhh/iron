@@ -8810,7 +8810,7 @@
     }
   },
   "round2_v9_realmlp_2026_09_26": {
-    "status": "development_running",
+    "status": "development_complete_confirmation_selected",
     "platform_target": 96.4,
     "spec": "configs/round2_v9/SPEC.yaml",
     "preregistration": "docs/round2_v9/PREREGISTRATION.md",
@@ -8834,11 +8834,82 @@
       "cold_process_synthetic_predictions": "bit_identical_both_recipes",
       "existing_distributions_preserved": 106,
       "new_distributions": 12,
-      "native_shuffled_drop_last_retained": true
+      "native_shuffled_drop_last_retained": true,
+      "independent_audit": {
+        "status": "passed",
+        "prediction_count": 40,
+        "artifact": "local/runs/round2-v9-realmlp/development-r1/audit-r1.json",
+        "arithmetic_tolerance": 1e-12
+      }
     },
-    "G1": "pending",
+    "G1": {
+      "status": "development_only",
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "realmlp_td",
+          "a35_seed_gains": {
+            "42": 0.007482160550744202,
+            "3407": 0.0014969341688957777
+          },
+          "a35_mean_gain": 0.00448954735981999,
+          "v7_relative_mean_gain": 0.00448954735981999,
+          "v8_iron_diagnostic_mean_gain": 0.002454655316752527,
+          "confirmation_eligible": true,
+          "development_tier": "formal"
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "realmlp_td_s",
+          "a35_seed_gains": {
+            "42": 0.005500475267100832,
+            "3407": 0.004964028697353531
+          },
+          "a35_mean_gain": 0.005232251982227182,
+          "v7_relative_mean_gain": 0.005232251982227182,
+          "v8_iron_diagnostic_mean_gain": 0.0034817157382900296,
+          "confirmation_eligible": true,
+          "development_tier": "formal"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "realmlp_td",
+          "a35_seed_gains": {
+            "42": 0.01087589606463206,
+            "3407": 0.01326401628499306
+          },
+          "a35_mean_gain": 0.01206995617481256,
+          "v7_relative_mean_gain": 0.002319791047579421,
+          "v8_iron_diagnostic_mean_gain": 0.01206995617481256,
+          "confirmation_eligible": true,
+          "development_tier": "formal"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "realmlp_td_s",
+          "a35_seed_gains": {
+            "42": 0.0,
+            "3407": -0.0006012396981898427
+          },
+          "a35_mean_gain": -0.00030061984909492134,
+          "v7_relative_mean_gain": 0.0,
+          "v8_iron_diagnostic_mean_gain": -0.00030061984909492134,
+          "confirmation_eligible": false,
+          "development_tier": "not_shortlisted"
+        }
+      ]
+    },
     "packages": 0,
     "uploads": 0,
-    "goal_achieved": false
+    "goal_achieved": false,
+    "confirmation": {
+      "spec": "configs/round2_v9/CONFIRMATION.yaml",
+      "selected_target": "tap_iron",
+      "selected_recipe": "realmlp_td_s",
+      "status": "selected_not_started",
+      "candidate_outer_fit_budget": 10,
+      "baseline_outer_fit_budget": 0,
+      "four_seed_pass": false
+    }
   }
 }
