@@ -301,7 +301,7 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "PENDING_SUBMISSION_PORTFOLIO_OF_5",
+    "status": "PENDING_SUBMISSION_PORTFOLIO_7_PACKAGES",
     "submission_priority": [
       {
         "name": "V6_PORT_TIME_MLP0000_W10",
@@ -347,9 +347,31 @@
         "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
         "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
         "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_N0008_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "0ec711819f6dc5482819b1fd9b93dbe1d5cce1117ea7fd2ea643dac0d2274bb8",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0008_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0008_W20",
+        "read_back_verified": true,
+        "local_mean": -0.00955,
+        "marginal_E_max": 0.00065
+      },
+      {
+        "name": "V6_PORT_IRON_N0006_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "186302ffbcc548c2f6e798f374c71d3df0e9b356ba893a95cf197ee0f1b49720",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0006_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0006_W20",
+        "read_back_verified": true,
+        "local_mean": -0.00869,
+        "marginal_E_max": 0.00039
       }
     ],
-    "recommended": "tier A only (V6_PORT_IRON_K0005_W10 + V6_PORT_TIME_MLP0000_W10, expected max +0.0057) unless the user is certain the platform keeps the best score",
+    "recommended": "fill in whichever of the ranked top 5 are still unsubmitted, weakest-mean first and V6_PORT_IRON_K0005_W10 last",
     "risk_if_platform_keeps_latest": "expected loss equals the mean of the last-submitted entry (tier A about -0.001; all five about -0.015)",
     "current_preferred": {
       "name": "V5_TIME_N0048_Q20",
@@ -370,7 +392,40 @@
       "V34_A",
       "V34_B"
     ],
-    "note": "The incumbent V5_TIME_N0048_Q20 (96.3143) is already on the board and is not re-submitted; all slots are new candidates."
+    "note": "The incumbent V5_TIME_N0048_Q20 (96.3143) is already on the board and is not re-submitted; all slots are new candidates.",
+    "ranked_top5": [
+      {
+        "rank": 1,
+        "name": "V6_PORT_IRON_K0005_W10",
+        "marginal": 0.00403,
+        "local_mean": -0.00067
+      },
+      {
+        "rank": 2,
+        "name": "V6_PORT_TIME_MLP0000_W10",
+        "marginal": 0.00165,
+        "local_mean": -0.00105
+      },
+      {
+        "rank": 3,
+        "name": "V6_PORT_TIME_A05",
+        "marginal": 0.00082,
+        "local_mean": -0.00571
+      },
+      {
+        "rank": 4,
+        "name": "V6_PORT_IRON_N0008_W20",
+        "marginal": 0.00065,
+        "local_mean": -0.00955
+      },
+      {
+        "rank": 5,
+        "name": "V6_PORT_TIME_A35",
+        "marginal": 0.00049,
+        "local_mean": -0.00523
+      }
+    ],
+    "saturation_note": "The portfolio play is near saturation: 41 fresh directions (including the most decorrelated time family found, rho 0.69-0.72) added only +0.00095 to E[max], and the newly selected entry has a WORSE local mean (-0.00955). E[max] grows logarithmically in the number of directions, so multi-day continuation is worth about +0.008..0.01 in total and cannot approach the 0.1945 gap to first place."
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -7849,6 +7904,28 @@
         "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
         "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
         "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_N0008_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "0ec711819f6dc5482819b1fd9b93dbe1d5cce1117ea7fd2ea643dac0d2274bb8",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0008_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0008_W20",
+        "read_back_verified": true,
+        "local_mean": -0.00955,
+        "marginal_E_max": 0.00065
+      },
+      {
+        "name": "V6_PORT_IRON_N0006_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "186302ffbcc548c2f6e798f374c71d3df0e9b356ba893a95cf197ee0f1b49720",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0006_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0006_W20",
+        "read_back_verified": true,
+        "local_mean": -0.00869,
+        "marginal_E_max": 0.00039
       }
     ],
     "recommended_next_action": {
@@ -8045,6 +8122,28 @@
         "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_K0005_W20",
         "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-20260926\\V6_PORT_IRON_K0005_W20",
         "read_back_verified": true
+      },
+      {
+        "name": "V6_PORT_IRON_N0008_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "0ec711819f6dc5482819b1fd9b93dbe1d5cce1117ea7fd2ea643dac0d2274bb8",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0008_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0008_W20",
+        "read_back_verified": true,
+        "local_mean": -0.00955,
+        "marginal_E_max": 0.00065
+      },
+      {
+        "name": "V6_PORT_IRON_N0006_W20",
+        "target": "tap_iron",
+        "alpha": 0.2,
+        "zip_sha256": "186302ffbcc548c2f6e798f374c71d3df0e9b356ba893a95cf197ee0f1b49720",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_IRON_N0006_W20",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-portfolio-r2-20260926\\V6_PORT_IRON_N0006_W20",
+        "read_back_verified": true,
+        "local_mean": -0.00869,
+        "marginal_E_max": 0.00039
       }
     ],
     "local_expectations_of_entries": {
@@ -8061,8 +8160,8 @@
       "note": "E[max] versus the incumbent under the bootstrap; the entries own local means are all negative"
     },
     "risk": "Every entry has a NEGATIVE local mean; the positive expectation is entirely E[max] under the best-kept rule. If the platform in fact keeps the latest submission, the expected outcome is the mean of whichever package is last (about -0.001 for tier A, -0.006 for tier B, -0.015 for all five). Delivery README recommends tier A unless the user is certain about the keep-best rule.",
-    "new_fits": 2,
-    "new_packages": 5,
+    "new_fits": 412,
+    "new_packages": 7,
     "agent_uploads": 0,
     "verification": {
       "member_full_fit_reproduces_fold_oof": {
@@ -8072,6 +8171,62 @@
       "cold_checks": "row-order permutation and row-subset invariance at 1e-11..1e-14",
       "read_back": "template order, blend arithmetic, and the unchanged column byte-identical to the parent, for all five packages"
     },
-    "evidence": "docs/round2_v6/RESULTS.md section 9"
+    "evidence": "docs/round2_v6/RESULTS.md section 9",
+    "n_line_completion_batch": {
+      "date": "2026-09-26",
+      "stage": "v6-n-line-completion",
+      "trials": 41,
+      "seeds": [
+        42,
+        3407
+      ],
+      "folds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "fold_fits": 410,
+      "wall_minutes": 4.3,
+      "workers": 8,
+      "coverage": "iron N-0000..0015 (all 16, small capacity); time N-0016..0039 (raw_mlp + ple_mlp) + N-0043",
+      "excluded_family": {
+        "ple_tabm": "v36-s1-N-0060 fold0 WMAPE 0.1712 versus baseline 0.0384 (4.5x); the family is broken under the current recipe"
+      },
+      "new_member_stats": {
+        "time_raw_mlp": "rho 0.69-0.72, accuracy ratio 1.39-1.51 (most decorrelated time family so far)",
+        "time_ple_mlp": "rho 0.86-0.875, ratio 1.16-1.19",
+        "iron_N-0015": "rho 0.329, ratio 3.578"
+      },
+      "private_output": "local/runs/round2-v5-error-covariance/n-portfolio-r1"
+    },
+    "saturation_2026_09_26": {
+      "candidate_count": 162,
+      "greedy_top5": [
+        "I+0.1*v3-kernel-tap_iron-0005",
+        "T+0.1*v3-mlp-tap_time_len-0000",
+        "alpha=0.05",
+        "I+0.2*v36-s1-N-0008",
+        "alpha=0.35"
+      ],
+      "marginal_gains": [
+        0.00403,
+        0.00165,
+        0.00082,
+        0.00065,
+        0.00049,
+        0.0004,
+        0.00039
+      ],
+      "expected_max_gain": 0.00843,
+      "gain_from_41_new_directions": 0.00095,
+      "verdict": "The portfolio play is near saturation: 41 fresh directions (including the most decorrelated time family found, rho 0.69-0.72) added only +0.00095 to E[max], and the newly selected entry has a WORSE local mean (-0.00955). E[max] grows logarithmically in the number of directions, so multi-day continuation is worth about +0.008..0.01 in total and cannot approach the 0.1945 gap to first place."
+    },
+    "engineering_lesson": {
+      "title": "process pool + BLAS/torch thread explosion",
+      "detail": "Launched with workers=16 the batch produced ZERO completions in five minutes while single-fold timing said 6-31 s. Each forked worker had inherited 16 BLAS/torch threads (ps showed 16 threads and 432% CPU per worker), so 8-16 workers meant 128-256 threads on 32 cores, load 106 and near-zero throughput. Setting OPENBLAS_NUM_THREADS=1 alone was NOT enough; adding OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 made 41 trials finish in ~110 s per seed.",
+      "rule": "any parallel fitting batch must pin BLAS/OMP/MKL/NUMEXPR thread counts before launch"
+    }
   }
 }

@@ -442,3 +442,28 @@ on the best-mean entry (`V6_PORT_IRON_K0005_W10`). Verified: both new members' f
 their fold OOF bit-identically (`v3-mlp` max abs diff `0.000e+00`, `v3-kernel` `1.4e-11`), cold checks
 1e-11..1e-14, and all five packages read back with template order, blend arithmetic and a byte-identical
 unchanged column. New fits 2, new packages 5, agent uploads 0.
+
+### Portfolio delivery, second batch (2026-09-26, pending)
+
+`docs/round2_v6/RESULTS.md` §10; desktop `round2-V6-portfolio-r2-20260926/`. Two further iron
+packages from the newly completed **N line** (`v36-s1-N-0008`, `v36-s1-N-0006`; raw-TabM small):
+
+- `V6_PORT_IRON_N0008_W20` — `0.8*V36 iron + 0.2*N-0008`, local mean `-0.00955`, marginal E[max]
+  `+0.00065`, rank 4; ZIP `0ec711819f6dc5482819b1fd9b93dbe1d5cce1117ea7fd2ea643dac0d2274bb8`
+- `V6_PORT_IRON_N0006_W20` — `0.8*V36 iron + 0.2*N-0006`, local mean `-0.00869`, marginal `+0.00039`;
+  ZIP `186302ffbcc548c2f6e798f374c71d3df0e9b356ba893a95cf197ee0f1b49720`
+
+**The portfolio play is near saturation** (`EVIDENCE_STATUS.json ->
+round2_v6_portfolio_2026_09_26.saturation_2026_09_26`). Completing 41 fresh N-line directions (410 fold
+fits; including the most decorrelated time family found, `raw_mlp` at `rho` 0.69-0.72) raised `E[max]`
+only from `+0.00748` to `+0.00843`, i.e. `+0.00095`, and the newly selected rank-4 entry has a *worse*
+local mean (`-0.00955`). Marginal contributions of the top five are now `+0.0040/+0.0017/+0.0008/+0.0007/+0.0005`.
+`E[max]` grows logarithmically in the number of directions, so multi-day continuation is worth roughly
+`+0.008..0.01` in total and **cannot** approach the `0.1945` gap to first place. `ple_tabm` is excluded
+as broken (`N-0060` fold-0 WMAPE 0.1712 against a 0.0384 baseline).
+
+**Engineering rule (G0): any parallel fitting batch must pin BLAS/OMP/MKL/NUMEXPR thread counts before
+launch.** With `workers=16` and only `OPENBLAS_NUM_THREADS=1`, each forked worker inherited 16 BLAS/torch
+threads (16 threads, 432% CPU each), giving 128-256 threads on 32 cores, load 106 and *zero* completions
+in five minutes, while single-fold timing said 6-31 s. Adding `OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
+NUMEXPR_NUM_THREADS=1` made 41 trials finish in ~110 s per seed.
