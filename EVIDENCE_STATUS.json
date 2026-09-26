@@ -8245,7 +8245,7 @@
     }
   },
   "round2_v7_periodic_search_2026_09_26": {
-    "status": "development_complete_strongest_time_candidate_confirmation_running",
+    "status": "four_seed_pass_candidate_pool_below_working_gate",
     "platform_target": 96.4,
     "pretrained_weights": "forbidden_user_reconfirmed",
     "preregistration": "docs/round2_v7/PREREGISTRATION.md",
@@ -8276,12 +8276,77 @@
       "positive_development_folds": 8,
       "development_package_score": 96.22958502884302,
       "local_working_gate_met": false,
-      "four_seed_gate": "pending"
+      "four_seed_gate": {
+        "admitted": true,
+        "reasons": [],
+        "fold_summary": {
+          "n": 20,
+          "mean": 0.015269866485056304,
+          "sd": 0.020323212338322953,
+          "se": 0.004544408430965257,
+          "lcb95": 0.007411980758119939,
+          "positive": 14
+        },
+        "fold_criteria": {
+          "met": false,
+          "reasons": [
+            "positive_cells_below_minimum"
+          ],
+          "positive": 14,
+          "cells": 20,
+          "required_positive": 16,
+          "role": "descriptive_only"
+        },
+        "seed_summary": {
+          "n": 4,
+          "mean": 0.015269866485056304,
+          "sd": 0.006885083675824257,
+          "se": 0.0034425418379121285,
+          "lcb95": 0.0071683144009384355,
+          "positive": 4,
+          "positive_seeds": 4,
+          "seeds": [
+            42,
+            3407,
+            7777,
+            12011
+          ]
+        },
+        "seed_gains": {
+          "42": 0.020124960153349233,
+          "3407": 0.02145181380610324,
+          "7777": 0.006627519205733984,
+          "12011": 0.01287517277503876
+        },
+        "required_split_seeds": 4
+      },
+      "four_seed_mean_gain_vs_a35": 0.015269866485056304,
+      "four_seed_lcb95_vs_a35": 0.0071683144009384355,
+      "four_seed_secondary_q20": {
+        "seed_gains": {
+          "42": 0.019197176910807565,
+          "3407": 0.019838009966680892,
+          "7777": 0.006466201436398089,
+          "12011": 0.011404837384300232
+        },
+        "alphas": {
+          "42": 0.35,
+          "3407": 0.35,
+          "7777": 0.5,
+          "12011": 0.5
+        },
+        "mean": 0.014226556424546694,
+        "lcb95": 0.006649947808462472,
+        "positive_folds": 15
+      },
+      "disposition": "candidate_pool; no automatic release; local working gate unchanged"
     },
     "G0": {
       "locked_python312_tests_passed": 987,
-      "verified_prediction_hashes": 120
-    }
+      "verified_prediction_hashes": 120,
+      "independent_four_seed_arithmetic_audit": "PASS; audit-r2.json; failed serialization r1 retained"
+    },
+    "completed_confirmation_outer_fits": 10
   },
   "round2_v7b_training_coverage_2026_09_26": {
     "status": "control_passed_candidate_development_refits_running",

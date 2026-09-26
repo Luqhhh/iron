@@ -7,7 +7,8 @@ The user reconfirmed the ban on external pretrained weights.
 **Development finished: 120/120 outer fits, zero failures.** The strongest
 candidate is time `tabm_plr001`: +0.020125 / +0.021452 package-score points on
 the two complete development splits, 8/10 folds positive. Its mean gain against
-Q20 is also +0.020736. It is frozen for four-split-seed confirmation, now running.
+Q20 is also +0.020736. Its four-split-seed confirmation has now passed:
+mean +0.015270, seed-level LCB95 +0.007168, all four seeds positive.
 Mean development package score is **96.229585**, below the unchanged 96.25
 working gate. No release is authorized and no platform gain is forecast.
 
@@ -89,6 +90,44 @@ reconstruct A35. Each candidate is freshly fitted on the matching outer
 training portion. The four-seed blend is evaluated without averaging prediction
 vectors across split seeds. Identity, mask, complete-pool and runtime checks
 pass before those fits are scheduled.
+
+## Four-seed confirmation: passed; candidate pool only
+
+Ten additional outer fits completed with zero failures. Same-fold cached V36
+and N-0048 references passed identity and mask checks; no new baseline or
+full-data fit was needed. The selected candidate's results against A35 are:
+
+| Split seed | package-score gain | selected blend weight |
+|---|---:|---:|
+| 42 | +0.020125 | 0.50 |
+| 3407 | +0.021452 | 0.50 |
+| 7777 | +0.006628 | 0.50 |
+| 12011 | +0.012875 | 0.50 |
+
+Mean gain **+0.015270**, seed-level standard deviation 0.006885,
+one-sided paired LCB95 **+0.007168**, **4/4 split seeds positive**. The held-out
+split-seed gains are smaller than development gains, but retain the sign.
+Only **14/20 folds are positive** (70%, below the descriptive 80% reference).
+This reservation is retained; the predeclared fold level is descriptive and
+does not override the seed-level rule.
+
+The separately reported Q20 comparison also stays positive on all four seeds:
++0.019197 / +0.019838 / +0.006466 / +0.011405, mean **+0.014227**, seed-level
+LCB95 **+0.006650**, 15/20 folds positive. Its cross-seed weights are
+0.35 / 0.35 / 0.50 / 0.50; it is a secondary comparison, not a new selection.
+
+Independent direct arithmetic reproduced the four A35 seed gains and LCB to
+1e-12, with 20 candidate prediction-file hashes recorded. Private evidence:
+`confirmation-r1/summary.json` and `confirmation-r1/audit-r2.json` under the
+V7 run tree. The first audit's JSON serialization failure and partial file
+remain preserved; correction required zero model fits.
+
+**Disposition:** four-seed-qualified `candidate_pool`, not an authorized
+release. Development package score remains **96.229585 < 96.25**. The local
+working gate is unchanged; no package, desktop write or upload was performed.
+The actual platform best is still user-reported A35 = 96.3366 and the 96.4
+objective remains unverified. The existing five alpha ZIPs remain intact and
+keep their original handoff.
 
 ## Additional training-coverage finding
 
