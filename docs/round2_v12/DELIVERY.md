@@ -47,3 +47,22 @@ The frozen development package score96.226441 remains below96.25. Release was
 explicitly authorized for this one candidate; no threshold or historical
 promotion decision was changed. Local gains do not establish platform magnitude
 or rank. The user uploads and returns the candidate's score.
+
+## Platform feedback (2026-09-27; supersedes delivery-time pending status)
+
+The user reported **V12 = 96.3526** (`96.3526 v12`). This identifies the
+delivered V12_IRON_JOINT_PLR001_A50 package above; it is user-reported feedback,
+not an independently verified platform receipt. It becomes the registered best:
+**+0.0061 vs A60=96.3465**, **+0.0160 vs its A35=96.3366 parent**. The target
+above96.4 remains unmet; the gap to96.4 is0.0474.
+
+G0: a fresh read-only audit verified the original V12, V7, A35 and A60 ZIP
+hashes, archive structure,322 aligned unique IDs and finite/nonnegative values.
+V12 retains exactly the A35 time strings; V7 and A60 retain its iron strings.
+No fitting, package creation, desktop write or agent upload occurred. Private
+evidence: local/reports/v12-platform-feedback-20260927-r1.json.
+
+G1: the positive A35-relative result supports the released iron direction.
+It does not establish a different blend weight or a two-target package.
+V7 remains the next pending isolated test, with its original A35 parent.
+No quota is inferred and no global threshold or frozen experiment is changed.

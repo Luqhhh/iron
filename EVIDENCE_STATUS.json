@@ -301,16 +301,8 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "ALPHA_THREE_SCORES_RECEIVED_V12_V7_PENDING_A85_A100_DEFERRED",
+    "status": "V12_SCORE_RECEIVED_V7_PENDING_A85_A100_DEFERRED",
     "submission_priority": [
-      {
-        "candidate": "V12_IRON_JOINT_PLR001_A50",
-        "status": "delivered_pending_user_platform_feedback",
-        "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
-        "evidence_key": "round2_v12_release_2026_09_27",
-        "original_pending_deliveries_preserved": true
-      },
       {
         "candidate": "V7_TIME_PLR001_A50",
         "status": "delivered_pending_user_feedback",
@@ -320,27 +312,28 @@
         "original_alpha_queue_unchanged": true
       }
     ],
-    "recommended": "Prioritize delivered V12 iron, then V7 time; both remain unreported. Defer A85/A100 after A72 fell below A60. Do not resubmit scored packages or modify the frozen A35-parent deliveries.",
+    "recommended": "V12=96.3526 is scored; next pending isolated package is V7_TIME_PLR001_A50 with its original A35 parent. Preserve all package bytes. No reparenting, new alpha package or two-target combination is authorized by feedback alone.",
     "risk_if_platform_keeps_latest": "Historical hypothetical only; user reports the platform keeps the best score.",
     "current_preferred": {
-      "candidate": "V6_PORT_TIME_A60",
-      "score": 96.3465,
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
       "source": "user_reported_not_independently_verified",
       "previous_best": {
-        "candidate": "V6_PORT_TIME_A35",
-        "score": 96.3366
+        "candidate": "V6_PORT_TIME_A60",
+        "score": 96.3465
       },
-      "delta_vs_previous_best": 0.0099,
+      "delta_vs_previous_best": 0.0061,
       "target": 96.4,
       "target_met": false,
-      "margin_to_target": -0.0535,
-      "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
-      "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
-      "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
-      "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
-      "reported_date": "2026-09-27"
+      "margin_to_target": -0.0474,
+      "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
+      "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+      "reported_date": "2026-09-27",
+      "note": "V12 changes iron only against A35. Its +0.0160 vs A35 is the isolated iron effect. V7 remains unreported."
     },
     "platform_ranking": [
+      "V12_IRON_JOINT_PLR001_A50",
       "V6_PORT_TIME_A60",
       "V6_PORT_TIME_A45",
       "V6_PORT_TIME_A72",
@@ -351,7 +344,7 @@
       "V34_A",
       "V34_B"
     ],
-    "note": "Current best A60=96.3465 is already scored. A45/A60/A72 are no longer pending; V12/V7 remain unreported. Historical queues and package bytes are preserved.",
+    "note": "V12 is the current user-reported best. V7 remains pending feedback. Target >96.4 is unmet; do not infer remaining quota.",
     "ranked_top5": [
       {
         "rank": 1,
@@ -396,11 +389,13 @@
       },
       {
         "candidate": "V12_IRON_JOINT_PLR001_A50",
-        "status": "delivered_pending_user_platform_feedback",
+        "status": "submitted_user_feedback_received",
         "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
         "evidence_key": "round2_v12_release_2026_09_27",
-        "original_pending_deliveries_preserved": true
+        "original_pending_deliveries_preserved": true,
+        "platform_score": 96.3526,
+        "source": "user_reported_not_independently_verified"
       }
     ],
     "history_before_alpha_feedback_2026_09_27": {
@@ -521,7 +516,59 @@
         "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100",
         "status": "unreported_deferred_after_A72_below_A60"
       }
-    ]
+    ],
+    "history_before_v12_feedback_2026_09_27": {
+      "status": "ALPHA_THREE_SCORES_RECEIVED_V12_V7_PENDING_A85_A100_DEFERRED",
+      "submission_priority": [
+        {
+          "candidate": "V12_IRON_JOINT_PLR001_A50",
+          "status": "delivered_pending_user_platform_feedback",
+          "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+          "evidence_key": "round2_v12_release_2026_09_27",
+          "original_pending_deliveries_preserved": true
+        },
+        {
+          "candidate": "V7_TIME_PLR001_A50",
+          "status": "delivered_pending_user_feedback",
+          "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+          "evidence_key": "round2_v7_release_2026_09_26",
+          "original_alpha_queue_unchanged": true
+        }
+      ],
+      "recommended": "Prioritize delivered V12 iron, then V7 time; both remain unreported. Defer A85/A100 after A72 fell below A60. Do not resubmit scored packages or modify the frozen A35-parent deliveries.",
+      "current_preferred": {
+        "candidate": "V6_PORT_TIME_A60",
+        "score": 96.3465,
+        "source": "user_reported_not_independently_verified",
+        "previous_best": {
+          "candidate": "V6_PORT_TIME_A35",
+          "score": 96.3366
+        },
+        "delta_vs_previous_best": 0.0099,
+        "target": 96.4,
+        "target_met": false,
+        "margin_to_target": -0.0535,
+        "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
+        "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
+        "reported_date": "2026-09-27"
+      },
+      "platform_ranking": [
+        "V6_PORT_TIME_A60",
+        "V6_PORT_TIME_A45",
+        "V6_PORT_TIME_A72",
+        "V6_PORT_TIME_A35",
+        "V5_TIME_N0048_Q20",
+        "V5_SEED_SWAP_S1000",
+        "V36_USER_REQUESTED_OUTER_FAILED",
+        "V34_A",
+        "V34_B"
+      ],
+      "note": "Current best A60=96.3465 is already scored. A45/A60/A72 are no longer pending; V12/V7 remain unreported. Historical queues and package bytes are preserved."
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -5911,22 +5958,22 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V6_PORT_TIME_A60",
-    "score": 96.3465,
+    "candidate": "V12_IRON_JOINT_PLR001_A50",
+    "score": 96.3526,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V6_PORT_TIME_A35",
-      "score": 96.3366
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465
     },
-    "delta_vs_previous_best": 0.0099,
+    "delta_vs_previous_best": 0.0061,
     "target": 96.4,
     "target_met": false,
-    "margin_to_target": -0.0535,
-    "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
-    "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
-    "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
-    "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
-    "reported_date": "2026-09-27"
+    "margin_to_target": -0.0474,
+    "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
+    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+    "reported_date": "2026-09-27",
+    "note": "V12 changes iron only against A35. Its +0.0160 vs A35 is the isolated iron effect. V7 remains unreported."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -10405,7 +10452,7 @@
     "results": "docs/round2_v13/RESULTS.md"
   },
   "round2_v12_release_2026_09_27": {
-    "status": "delivered_pending_user_platform_feedback",
+    "status": "submitted_user_feedback_received",
     "candidate": "V12_IRON_JOINT_PLR001_A50",
     "date": "2026-09-27",
     "authorization_date": "2026-09-26",
@@ -10431,10 +10478,13 @@
     },
     "locked_python312_tests": 1052,
     "G1": {
-      "platform_score": null,
+      "platform_score": 96.3526,
       "local_working_gate_met": false,
       "release_exception": "explicit_this_candidate_only",
-      "four_seed_gate_passed": true
+      "four_seed_gate_passed": true,
+      "platform_score_source": "user_reported_not_independently_verified",
+      "platform_delta_vs_A35": 0.016,
+      "platform_delta_vs_previous_best_A60": 0.0061
     },
     "packages": 1,
     "desktop_writes": 1,
@@ -11331,5 +11381,46 @@
       "confirmation_joint_outer_fits": 10,
       "full_data_fits": 0
     }
+  },
+  "round2_v12_platform_feedback_2026_09_27": {
+    "date": "2026-09-27",
+    "user_message": "96.3526 v12",
+    "source": "user_reported_not_independently_verified",
+    "candidate": "V12_IRON_JOINT_PLR001_A50",
+    "score": 96.3526,
+    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+    "delta_vs_A35": 0.016,
+    "delta_vs_previous_best_A60": 0.0061,
+    "remaining_to_96_4": 0.0474,
+    "previous_current_platform_best": {
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V6_PORT_TIME_A35",
+        "score": 96.3366
+      },
+      "delta_vs_previous_best": 0.0099,
+      "target": 96.4,
+      "target_met": false,
+      "margin_to_target": -0.0535,
+      "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
+      "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+      "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
+      "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
+      "reported_date": "2026-09-27"
+    },
+    "G0": {
+      "audit": "local/reports/v12-platform-feedback-20260927-r1.json",
+      "sha256": "f43ca255cf6c7d18f5504c0e117c87d04fa3511369397f9b999e88403dde2df9",
+      "status": "passed",
+      "packages_rechecked": 4,
+      "rows_each": 322,
+      "V12_time_string_mismatches_vs_A35": 0
+    },
+    "G1": "Positive platform iron effect relative to A35; no claim of platform >96.4 or new release authorization. V7 still unreported.",
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0
   }
 }

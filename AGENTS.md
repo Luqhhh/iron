@@ -551,3 +551,18 @@ slopes. For a direction already validated as positive on the platform, a platfor
   if there was no other account activity. Do not infer unreported submissions.
   Details: `docs/round2_v6/RESULTS.md` section 13 and
   `EVIDENCE_STATUS.json -> round2_v6_alpha_feedback_2026_09_27`.
+
+### V12 platform feedback (2026-09-27, latest reference)
+
+- User-reported **V12_IRON_JOINT_PLR001_A50 =96.3526** is the current best,
+  +0.0061 over A60 and +0.0160 over its A35 parent. This is not an independently
+  verified receipt. The target >96.4 remains unmet (gap0.0474).
+- Preserve ZIP SHA-256
+  `a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669`: iron
+  `0.5*A35+0.5*V12`, with A35 time strings unchanged.
+- V12 is no longer pending. V7_TIME_PLR001_A50 is the next already-delivered
+  isolated test; its score remains unreported. Do not infer quota.
+- Feedback alone does not authorize new alpha packages, reparenting or a
+  two-target combination. Preserve prior gates, decisions and original files.
+- See docs/round2_v12/DELIVERY.md and EVIDENCE_STATUS.json ->
+  round2_v12_platform_feedback_2026_09_27.
