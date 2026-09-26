@@ -10332,5 +10332,37 @@
     "desktop_writes": 1,
     "uploads": 0,
     "goal_achieved": false
+  },
+  "round2_v14_joint_ple_2026_09_27": {
+    "status": "preregistered_tests_passed_before_official_fits",
+    "spec": "configs/round2_v14/SPEC.yaml",
+    "preregistration": "docs/round2_v14/PREREGISTRATION.md",
+    "new_evidence": [
+      "V12 joint supervision passed four-seed iron gate",
+      "V13 PLE repair restored learning and improved standalone models, but single-output increments failed"
+    ],
+    "G0": {
+      "locked_python312_tests": 1062,
+      "warnings": 23,
+      "test_log": "local/reports/v14-python312-tests-r1.log",
+      "reference_preflight": "local/reports/v14-reference-preflight-r1.json",
+      "reference_files": 126
+    },
+    "budget": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "conditional_confirmation_outer_fits_max": 10,
+      "full_data_fits": 0,
+      "workers": 8
+    },
+    "reference_by_target": {
+      "tap_iron": "V12_IRON_A50",
+      "tap_time_len": "V7_TIME_A50"
+    },
+    "official_data_fits_complete": 0,
+    "run": "local/runs/round2-v14-joint-ple/development-r1",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false
   }
 }
