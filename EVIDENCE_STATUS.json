@@ -11934,5 +11934,17 @@
     },
     "goal_above_96_4_achieved": false,
     "resume_requires_user_request": true
+  },
+  "round2_latest_submission_quota_2026_09_27": {
+    "remaining": 1,
+    "source": "explicit_user_report",
+    "user_message": "v7有必要测试吗，今天只剩一个名额了",
+    "recommended_existing_package": "V7_TIME_PLR001_A50",
+    "reason": "Four positive complete split seeds; pending isolated time direction. Compare score against A60=96.3465, which has the same iron column. No guarantee of >96.4.",
+    "package_hash_reverified": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+    "optimization_goal_remains_paused": true,
+    "uploads": 0,
+    "new_fits": 0,
+    "new_packages": 0
   }
 }
