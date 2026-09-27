@@ -12015,5 +12015,53 @@
     "new_packages": 0,
     "agent_uploads": 0,
     "optimization_goal_remains_paused": true
+  },
+  "round2_v17_2026_09_28": {
+    "resumption": "User explicitly requested implementation of D:\\Edge\\iron_964_v17_plan_and_tools.zip after V16 stop",
+    "source_plan": "docs/round2_v17/PREREGISTRATION.md",
+    "result": "docs/round2_v17/RESULTS.md",
+    "candidate_register": "docs/round2_v17/CANDIDATES.md",
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "conditional_B0_arithmetic": {
+      "score": 96.3679,
+      "actual_platform_result": false,
+      "source_zip_audit": "passed",
+      "source_zip_audit_sha256": "fe56e0def388e076b60b9747ea042f5a1460a870d781460a436c993dd04e5507",
+      "combined_zip_created": false
+    },
+    "G0": {
+      "locked_python_3_12_tests_passed": 1120,
+      "locked_python_3_12_warnings": 23,
+      "development_fits": 60,
+      "confirmation_fits": 20,
+      "failed_fits": 0,
+      "development_prediction_matrices_audited": 60,
+      "confirmation_prediction_matrices_audited": 20,
+      "development_summary_sha256": "5bfc50e4faa7009360cd728a35748bad22bc0aade53c86f53c9bfe7e20bef1c2",
+      "confirmation_summary_sha256": "5bc0ab77c69f32ff36c4a23c6af4b34ba8c3bee29bd625aac567e0c65b8918b4",
+      "development_audit": "local/runs/round2-v17/development-r1/audit-r1.json",
+      "confirmation_audit": "local/runs/round2-v17/confirmation-r1/audit-r1.json",
+      "full_data_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "G1": {
+      "B0_development_package_scores": {"42": 96.24797438041294, "3407": 96.24750403102945},
+      "selected_for_confirmation": {"tap_iron": "J2", "tap_time_len": "P_LL_T"},
+      "J2_four_seed_gains": {"42": 0.0016130051527056821, "3407": 0.003279508641327311, "7777": -0.001212135336800202, "12011": -0.00026903156238233805},
+      "J2_seed_lcb95": -0.0014994763567244798,
+      "P_LL_T_four_seed_gains": {"42": 0.0024330783140555923, "3407": 0.0007055293926612194, "7777": 0.006455547712036491, "12011": 0.009330308934593745},
+      "P_LL_T_seed_lcb95": 0.00014293419673824977,
+      "P_LL_T_development_package_score": 96.24930850957455,
+      "local_working_gate": 96.25,
+      "promoted_candidates": [],
+      "platform_target_above_96_4_achieved": false
+    },
+    "disposition": "No V17 package or upload; preserve negative four-seed evidence and frozen gates."
   }
 }

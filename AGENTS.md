@@ -621,3 +621,25 @@ Current user-reported best remains V12=96.3526; >96.4 was not achieved.
 - Optimization remains paused after V16. Score recording does not resume
   experiments or authorize a new package. See docs/round2_v7/DELIVERY.md and
   EVIDENCE_STATUS.json -> round2_v7_platform_feedback_2026_09_27.
+
+### V17 implementation after explicit user resumption (2026-09-28)
+
+- The user's request to implement `D:\Edge\iron_964_v17_plan_and_tools.zip`
+  explicitly resumed a bounded V17 round after the V16 stop. The source ZIP
+  supplied a plan and source-ZIP composition auditor, not training code.
+- Exact V12/V7/A35 originals passed the 322-row isolation and SHA-256 audit.
+  The conditional combined score `96.3679` has not been tested on the platform;
+  no combined ZIP was created.
+- V17 completed all 60 frozen development and 20 earned confirmation outer
+  fits, with zero failures and independent prediction audits. The fixed B0
+  reference is V12 iron and V7 time on the same seed/fold, with no cross-seed
+  OOF averaging.
+- J2 iron failed the four-seed gate: gains `+0.001613/+0.003280/−0.001212/−0.000269`.
+  P-LL time passed four positive seeds and seed LCB `+0.000143`, but its
+  development package score `96.249309` fails the frozen `96.25` working gate.
+  Neither is promoted. Preserve both negative decisions and the local evidence;
+  do not relax gates or generate a V17 package from this round.
+- V17 created no full-data model, package, desktop write or upload. The current
+  best remains user-reported V12 `96.3526`; the `>96.4` objective is unmet.
+  See `docs/round2_v17/RESULTS.md`, `docs/round2_v17/CANDIDATES.md`, and
+  `EVIDENCE_STATUS.json -> round2_v17_2026_09_28`.
