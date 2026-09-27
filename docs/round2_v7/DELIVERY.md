@@ -62,3 +62,33 @@ The current registered platform best remains user-reported A35=96.3366. There
 is no V7 platform result and no guarantee of96.4. Further offline optimization
 is separately preregistered as V11, with no pretrained weights, new submission
 packages or automatic uploads authorized for that search.
+
+## Platform feedback (2026-09-27; supersedes pending status above)
+
+The user replied **96.3519** immediately after the recommendation to submit
+V7_TIME_PLR001_A50 using the last reported daily slot. Attribute this score to
+the original V7 ZIP above. This is user-reported feedback, not an independently
+verified platform receipt.
+
+V7 gains **+0.0153 vs A35=96.3366** and **+0.0054 vs A60=96.3465**. Both
+comparators retain the same iron column, so this supports the released time
+direction. V7 is **0.0007 below V12=96.3526**, which remains the current best.
+The local four-seed mean gain+0.015270 happens to be close to this platform
+gain; it does not establish a general transfer factor or guarantee.
+
+G0: a fresh read-only audit rechecked the V7, V12 and A35 original ZIP hashes,
+archive structure,322 aligned unique IDs, finite/nonnegative predictions,
+unchanged V7 iron strings and unchanged V12 time strings. Private evidence:
+local/reports/v7-platform-feedback-20260927-r1.json. No fit, new package, desktop
+write or agent upload was performed.
+
+Under the documented equal-weight WMAPE formula, a fixed hidden cohort and
+unchanged original columns, V12 iron plus V7 time has conditional arithmetic
+`96.3526+96.3519-96.3366 = 96.3679` (±0.0003 if each reported score is within
+±0.0001). This is below96.4 and is **not an actual combined platform result**.
+No combined package is created or authorized by feedback alone.
+
+V7 and V12 are both scored; neither remains pending. The last explicit slot
+is accounted for by this feedback, so recorded remaining quota is0, without
+independent account verification. Optimization remains paused pursuant to the
+stop-after-V16 instruction. The >96.4 goal remains unmet.

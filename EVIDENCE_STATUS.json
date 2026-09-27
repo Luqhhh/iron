@@ -301,18 +301,9 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "V12_SCORE_RECEIVED_V7_PENDING_A85_A100_DEFERRED",
-    "submission_priority": [
-      {
-        "candidate": "V7_TIME_PLR001_A50",
-        "status": "delivered_pending_user_feedback",
-        "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
-        "evidence_key": "round2_v7_release_2026_09_26",
-        "original_alpha_queue_unchanged": true
-      }
-    ],
-    "recommended": "V12=96.3526 is scored; next pending isolated package is V7_TIME_PLR001_A50 with its original A35 parent. Preserve all package bytes. No reparenting, new alpha package or two-target combination is authorized by feedback alone.",
+    "status": "V12_V7_SCORES_RECEIVED_OPTIMIZATION_PAUSED",
+    "submission_priority": [],
+    "recommended": "Both V12 and V7 are scored. Optimization remains paused after V16. No new test, reparenting, combined package or alpha package is authorized by this feedback.",
     "risk_if_platform_keeps_latest": "Historical hypothetical only; user reports the platform keeps the best score.",
     "current_preferred": {
       "candidate": "V12_IRON_JOINT_PLR001_A50",
@@ -330,10 +321,11 @@
       "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
       "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
       "reported_date": "2026-09-27",
-      "note": "V12 changes iron only against A35. Its +0.0160 vs A35 is the isolated iron effect. V7 remains unreported."
+      "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
     },
     "platform_ranking": [
       "V12_IRON_JOINT_PLR001_A50",
+      "V7_TIME_PLR001_A50",
       "V6_PORT_TIME_A60",
       "V6_PORT_TIME_A45",
       "V6_PORT_TIME_A72",
@@ -344,7 +336,7 @@
       "V34_A",
       "V34_B"
     ],
-    "note": "V12 is the current user-reported best. V7 remains pending feedback. Target >96.4 is unmet; do not infer remaining quota.",
+    "note": "V12=96.3526 remains best; V7=96.3519 is +0.0054 vs A60 and +0.0153 vs A35. Last stated single slot is accounted for by this report; no independent account verification.",
     "ranked_top5": [
       {
         "rank": 1,
@@ -381,11 +373,13 @@
     "additional_authorized_deliveries": [
       {
         "candidate": "V7_TIME_PLR001_A50",
-        "status": "delivered_pending_user_feedback",
+        "status": "submitted_user_feedback_received",
         "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
         "evidence_key": "round2_v7_release_2026_09_26",
-        "original_alpha_queue_unchanged": true
+        "original_alpha_queue_unchanged": true,
+        "platform_score": 96.3519,
+        "source": "user_reported_not_independently_verified"
       },
       {
         "candidate": "V12_IRON_JOINT_PLR001_A50",
@@ -568,6 +562,33 @@
         "V34_B"
       ],
       "note": "Current best A60=96.3465 is already scored. A45/A60/A72 are no longer pending; V12/V7 remain unreported. Historical queues and package bytes are preserved."
+    },
+    "history_before_v7_feedback_2026_09_27": {
+      "status": "V12_SCORE_RECEIVED_V7_PENDING_A85_A100_DEFERRED",
+      "submission_priority": [
+        {
+          "candidate": "V7_TIME_PLR001_A50",
+          "status": "delivered_pending_user_feedback",
+          "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+          "evidence_key": "round2_v7_release_2026_09_26",
+          "original_alpha_queue_unchanged": true
+        }
+      ],
+      "recommended": "V12=96.3526 is scored; next pending isolated package is V7_TIME_PLR001_A50 with its original A35 parent. Preserve all package bytes. No reparenting, new alpha package or two-target combination is authorized by feedback alone.",
+      "note": "V12 is the current user-reported best. V7 remains pending feedback. Target >96.4 is unmet; do not infer remaining quota.",
+      "platform_ranking": [
+        "V12_IRON_JOINT_PLR001_A50",
+        "V6_PORT_TIME_A60",
+        "V6_PORT_TIME_A45",
+        "V6_PORT_TIME_A72",
+        "V6_PORT_TIME_A35",
+        "V5_TIME_N0048_Q20",
+        "V5_SEED_SWAP_S1000",
+        "V36_USER_REQUESTED_OUTER_FAILED",
+        "V34_A",
+        "V34_B"
+      ]
     }
   },
   "round2_v2_3_candidate_release": {
@@ -5973,7 +5994,7 @@
     "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
     "reported_date": "2026-09-27",
-    "note": "V12 changes iron only against A35. Its +0.0160 vs A35 is the isolated iron effect. V7 remains unreported."
+    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -9465,7 +9486,7 @@
     }
   },
   "round2_v7_release_2026_09_26": {
-    "status": "delivered_pending_user_platform_feedback",
+    "status": "submitted_user_feedback_received",
     "candidate": "V7_TIME_PLR001_A50",
     "explicit_user_authorization": true,
     "local_working_gate_exception": "this_candidate_only",
@@ -9506,8 +9527,12 @@
       "positive_folds": 14,
       "total_folds": 20,
       "development_package_score": 96.22958502884302,
-      "platform_score": null,
-      "target_96_4_verified": false
+      "platform_score": 96.3519,
+      "target_96_4_verified": false,
+      "platform_score_source": "user_reported_not_independently_verified",
+      "platform_delta_vs_A35": 0.0153,
+      "platform_delta_vs_A60": 0.0054,
+      "platform_delta_vs_best_V12": -0.0007
     },
     "uploads": 0
   },
@@ -11936,15 +11961,59 @@
     "resume_requires_user_request": true
   },
   "round2_latest_submission_quota_2026_09_27": {
-    "remaining": 1,
-    "source": "explicit_user_report",
-    "user_message": "v7有必要测试吗，今天只剩一个名额了",
-    "recommended_existing_package": "V7_TIME_PLR001_A50",
-    "reason": "Four positive complete split seeds; pending isolated time direction. Compare score against A60=96.3465, which has the same iron column. No guarantee of >96.4.",
-    "package_hash_reverified": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+    "remaining": 0,
+    "source": "accounted_from_explicit_one_remaining_and_subsequent_V7_feedback",
+    "previous_explicit_report": {
+      "remaining": 1,
+      "source": "explicit_user_report",
+      "user_message": "v7有必要测试吗，今天只剩一个名额了",
+      "recommended_existing_package": "V7_TIME_PLR001_A50",
+      "reason": "Four positive complete split seeds; pending isolated time direction. Compare score against A60=96.3465, which has the same iron column. No guarantee of >96.4.",
+      "package_hash_reverified": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+      "optimization_goal_remains_paused": true,
+      "uploads": 0,
+      "new_fits": 0,
+      "new_packages": 0
+    },
+    "newly_reported_submission": "V7_TIME_PLR001_A50",
+    "independent_account_verification": false,
     "optimization_goal_remains_paused": true,
-    "uploads": 0,
+    "agent_uploads": 0
+  },
+  "round2_v7_platform_feedback_2026_09_27": {
+    "date": "2026-09-27",
+    "user_message": "96.3519",
+    "candidate": "V7_TIME_PLR001_A50",
+    "attribution": "Reply to sole V7 upload recommendation",
+    "source": "user_reported_not_independently_verified",
+    "score": 96.3519,
+    "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+    "delta_vs_A35": 0.0153,
+    "delta_vs_A60": 0.0054,
+    "delta_vs_current_best_V12": -0.0007,
+    "current_platform_best_changed": false,
+    "G0": {
+      "audit": "local/reports/v7-platform-feedback-20260927-r1.json",
+      "audit_sha256": "3641dc2128306eea1f82c717fd43ef5094fa7e54bc8481220438aa44bda7eb2a",
+      "status": "passed",
+      "packages_rechecked": 3,
+      "rows_each": 322
+    },
+    "G1": "Time direction positive against A35 and A60; V7 alone does not exceed V12 or96.4. Local gain magnitude here is close to the platform gain, not a general transfer rule.",
+    "conditional_combination": {
+      "iron": "original V12 A50 column",
+      "time": "original V7 A50 column",
+      "formula": "96.3526+96.3519-96.3366",
+      "score": 96.3679,
+      "score_error_allowance": 0.0003,
+      "actual_platform_result": false,
+      "assumptions": "Documented equal-weight WMAPE; same hidden cohort/labels; unchanged original columns; each reported score within +/-0.0001.",
+      "package_created": false,
+      "release_authorized": false
+    },
     "new_fits": 0,
-    "new_packages": 0
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "optimization_goal_remains_paused": true
   }
 }

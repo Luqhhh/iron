@@ -603,3 +603,21 @@ Locked Python3.12 suite:1109 passed,23 warnings. Evidence: docs/round2_v16/RESUL
 The explicit stop-after-V16 instruction now applies: stop further optimization,
 pause the active goal, and do not start another round without user resumption.
 Current user-reported best remains V12=96.3526; >96.4 was not achieved.
+
+### V7 feedback received while paused (2026-09-27)
+
+- User reply `96.3519`, immediately following the sole V7 submission
+  recommendation, is recorded as V7_TIME_PLR001_A50=96.3519. It is
+  user-reported, not an independently verified receipt. Original ZIP SHA-256:
+  `4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299`.
+- V7 is +0.0153 vs A35 and +0.0054 vs A60, with the same iron column, but
+  -0.0007 vs V12. Current best remains V12=96.3526. Both packages are now
+  scored; do not recommend resubmitting them as untested candidates.
+- The user reported one remaining slot before this V7 feedback. Recorded
+  remaining quota is now0 by that accounting, not independent account access.
+- V12 iron plus V7 time gives conditional arithmetic96.3679 ±0.0003 under
+  the documented same-cohort metric and score-precision assumptions. This is
+  not a verified combined result, release authorization or >96.4 achievement.
+- Optimization remains paused after V16. Score recording does not resume
+  experiments or authorize a new package. See docs/round2_v7/DELIVERY.md and
+  EVIDENCE_STATUS.json -> round2_v7_platform_feedback_2026_09_27.
