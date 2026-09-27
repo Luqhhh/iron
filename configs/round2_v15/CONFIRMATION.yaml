@@ -1,0 +1,31 @@
+version: round2-v15-gated-time-confirmation
+parent_spec: configs/round2_v15/SPEC.yaml
+development_run: local/runs/round2-v15-task-experts/development-r1
+selected:
+  target: tap_time_len
+  recipe: task_gated_experts
+ranking_reference: V7_TIME_delivered_platform_unreported
+confirmation_seeds:
+- 7777
+- 12011
+seed_history: previously_used_not_new_labels
+reference:
+  v7_run: local/runs/round2-v7-periodic-networks/confirmation-r1
+  v7_independent_audit: audit-r2.json
+  v5_time_cache: local/runs/round2-v5-error-covariance/replication-r1
+  v7_time: 0.5*A35_time+0.5*V7_tabm_plr001
+  platform_time: 0.4*V36_time+0.6*N0048_time
+budget:
+  candidate_outer_fits: 10
+  baseline_outer_fits: 0
+  workers: 8
+  full_data_fits: 0
+promotion:
+  minimum_split_seeds: 4
+  every_seed_positive: true
+  seed_level_lcb95_positive: true
+  folds: descriptive_only
+  local_working_gate: 96.25
+release:
+  packages: 0
+  uploads: 0

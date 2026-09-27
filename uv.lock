@@ -74,6 +74,7 @@ dev = [
 ]
 round2 = [
     { name = "interpret" },
+    { name = "pytorch-tabnet" },
     { name = "rtdl-num-embeddings" },
     { name = "rtdl-revisiting-models" },
     { name = "scikit-learn" },
@@ -98,6 +99,7 @@ requires-dist = [
     { name = "pandas", specifier = "==2.3.3" },
     { name = "psutil", specifier = "==5.9.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = "==9.0.2" },
+    { name = "pytorch-tabnet", marker = "extra == 'round2'", specifier = "==4.1.0" },
     { name = "pyyaml", specifier = "==6.0.2" },
     { name = "rtdl-num-embeddings", marker = "extra == 'round2'", specifier = "==0.0.12" },
     { name = "rtdl-revisiting-models", marker = "extra == 'round2'", specifier = "==0.0.2" },
@@ -1346,6 +1348,24 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/66/c0/0c8b6ad9f17a802ee498c46e004a0eb49bc148f2fd230864601a86dcf6db/python-dateutil-2.9.0.post0.tar.gz", hash = "sha256:37dd54208da7e1cd875388217d5e00ebd4179249f90fb72437e91a35459a0ad3", size = 342432, upload-time = "2024-03-01T18:36:20.211Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ec/57/56b9bcc3c9c6a792fcbaf139543cee77261f3651ca9da0c93f5c1221264b/python_dateutil-2.9.0.post0-py2.py3-none-any.whl", hash = "sha256:a8b2bc7bffae282281c8140a97d3aa9c14da0b136dfe83f850eea9a5f7470427", size = 229892, upload-time = "2024-03-01T18:36:18.57Z" },
+]
+
+[[package]]
+name = "pytorch-tabnet"
+version = "4.1.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "numpy" },
+    { name = "scikit-learn" },
+    { name = "scipy", version = "1.17.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.12'" },
+    { name = "scipy", version = "1.18.1", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.12'" },
+    { name = "torch", version = "2.14.0", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "platform_machine != 'x86_64' and sys_platform == 'darwin'" },
+    { name = "torch", version = "2.14.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "platform_machine == 'x86_64' or sys_platform != 'darwin'" },
+    { name = "tqdm" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/19/c7/bb93b92e8e123308737240a26aa0868e05e2549ea8ece533b45f37b284d5/pytorch_tabnet-4.1.0.tar.gz", hash = "sha256:18887b993a8bf86ec05a576b5cf93f09e08b778cd9f418c5b254b6566df673a5", size = 44925, upload-time = "2023-07-23T13:26:59.063Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0f/92/ed98b89b7cf5661656daa4cc88e578f712eb5eae41b8f46a56c1ece3a895/pytorch_tabnet-4.1.0-py3-none-any.whl", hash = "sha256:70e8c9803f68f7cb26930d4cdb88857d1d98c745e0daf99d0f870fc70698515f", size = 44481, upload-time = "2023-07-23T13:26:57.044Z" },
 ]
 
 [[package]]

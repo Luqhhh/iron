@@ -14,6 +14,7 @@ import yaml
         ("tabm", "tabm", "configs/round2_v7/SPEC.yaml"),
         ("rtdl-num-embeddings", "rtdl_num_embeddings", "configs/round2_v7/SPEC.yaml"),
         ("rtdl-revisiting-models", "rtdl_revisiting_models", "configs/round2_v8/SPEC.yaml"),
+        ("pytorch-tabnet", "pytorch_tabnet.tab_network", "configs/round2_v16/SPEC.yaml"),
     ],
 )
 def test_round2_extra_installs_frozen_neural_libraries(distribution, module, spec_path):

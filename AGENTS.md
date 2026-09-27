@@ -533,3 +533,91 @@ needed; `A100` winning would mean the pure member column beats V36 on the test s
 **Rule added:** local OOF can identify which DIRECTION is worth trying, but not where the platform will stop
 along it — the local and platform optima of a blend weight can differ by more than 0.15 and even have opposite
 slopes. For a direction already validated as positive on the platform, a platform-side line search is required.
+
+### Alpha feedback received (2026-09-27, current reference)
+
+- User-reported scores: A60 = **96.3465**, A72 = **96.3425**, A45 = **96.3438**;
+  these are not independently verified platform receipts. Current best is now
+  `V6_PORT_TIME_A60`, +0.0099 over A35; the current target **>96.4** remains unmet.
+- A60 ZIP SHA-256: `d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147`.
+  Preserve its bytes: V36 iron and `0.40*V36 + 0.60*N-0048` time.
+- A45/A60/A72 are no longer pending. A60 is the best observed alpha, not a
+  verified continuous optimum. A72 is 0.0040 lower; the historical quadratic
+  peak forecast is unconfirmed. Preserve A85/A100 but defer their upload priority.
+- Prioritize the already delivered V12 iron and V7 time packages; their scores
+  remain unreported and their frozen A35-parent recipes remain unchanged.
+  No reparenting or two-target combination is authorized by these scores.
+- Five slots were reported before this three-score feedback; two remain only
+  if there was no other account activity. Do not infer unreported submissions.
+  Details: `docs/round2_v6/RESULTS.md` section 13 and
+  `EVIDENCE_STATUS.json -> round2_v6_alpha_feedback_2026_09_27`.
+
+### V12 platform feedback (2026-09-27, latest reference)
+
+- User-reported **V12_IRON_JOINT_PLR001_A50 =96.3526** is the current best,
+  +0.0061 over A60 and +0.0160 over its A35 parent. This is not an independently
+  verified receipt. The target >96.4 remains unmet (gap0.0474).
+- Preserve ZIP SHA-256
+  `a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669`: iron
+  `0.5*A35+0.5*V12`, with A35 time strings unchanged.
+- V12 is no longer pending. V7_TIME_PLR001_A50 is the next already-delivered
+  isolated test; its score remains unreported. Do not infer quota.
+- Feedback alone does not authorize new alpha packages, reparenting or a
+  two-target combination. Preserve prior gates, decisions and original files.
+- See docs/round2_v12/DELIVERY.md and EVIDENCE_STATUS.json ->
+  round2_v12_platform_feedback_2026_09_27.
+
+### Conditional platform line bounds after V12 (2026-09-27)
+
+- Under the documented fixed-cohort equal-weight WMAPE metric and reported
+  score error ±0.0001, the old V36/N-0048 time line has an upper bound96.349298
+  with V36 iron. With released V12 iron A50 this becomes96.365498.
+- Raising V12 iron weight within[0.5,1], while choosing any N-0048 time
+  weight within[0,1], has conditional score upper bound96.381698. Hence
+  increasing those weights is insufficient for >96.4 under these assumptions.
+  Iron weights below0.5 and other model directions are not bounded by this result.
+- V12 iron A50 plus A60 time gives conditional additive arithmetic96.3625
+  ±0.0003. This is not a verified combined platform score, forecast or release
+  authorization. No combined file was created.
+- Evidence: docs/round2_v12/PLATFORM_BOUNDARIES.md. Preserve V7 as the pending
+  isolated test; do not reinterpret upper-envelope intersections as optima.
+
+### Stop after V16 (2026-09-27, explicit user instruction)
+
+The user instructed **v16完成后停止后续工作**. Complete the frozen V16
+sequential-mask development, confirmation only if earned, audits and normal
+commit/push. Then stop further optimization and pause the active goal. Do not
+start V17 or another round without a subsequent explicit user resumption.
+This does not declare the >96.4 objective achieved.
+
+### V16 completed; optimization stops (2026-09-27)
+
+V16 finished20 development joint fits plus1 exact V12 control, all successful;
+independent audit passed20 prediction matrices. Both uniform and learned sparse
+feature-mask recipes select zero blend weight against V12_PLATFORM and CURRENT
+on both complete development seeds. No finalist, confirmation, full-data fit,
+new package or upload follows. Nine of10 sparse fits reached the400-epoch limit;
+this is a result for the frozen recipe/budget, not closure of the entire family.
+Locked Python3.12 suite:1109 passed,23 warnings. Evidence: docs/round2_v16/RESULTS.md.
+
+The explicit stop-after-V16 instruction now applies: stop further optimization,
+pause the active goal, and do not start another round without user resumption.
+Current user-reported best remains V12=96.3526; >96.4 was not achieved.
+
+### V7 feedback received while paused (2026-09-27)
+
+- User reply `96.3519`, immediately following the sole V7 submission
+  recommendation, is recorded as V7_TIME_PLR001_A50=96.3519. It is
+  user-reported, not an independently verified receipt. Original ZIP SHA-256:
+  `4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299`.
+- V7 is +0.0153 vs A35 and +0.0054 vs A60, with the same iron column, but
+  -0.0007 vs V12. Current best remains V12=96.3526. Both packages are now
+  scored; do not recommend resubmitting them as untested candidates.
+- The user reported one remaining slot before this V7 feedback. Recorded
+  remaining quota is now0 by that accounting, not independent account access.
+- V12 iron plus V7 time gives conditional arithmetic96.3679 ±0.0003 under
+  the documented same-cohort metric and score-precision assumptions. This is
+  not a verified combined result, release authorization or >96.4 achievement.
+- Optimization remains paused after V16. Score recording does not resume
+  experiments or authorize a new package. See docs/round2_v7/DELIVERY.md and
+  EVIDENCE_STATUS.json -> round2_v7_platform_feedback_2026_09_27.

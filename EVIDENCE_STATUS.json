@@ -301,71 +301,42 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "PENDING_SUBMISSION_ALPHA_LINE_SEARCH_5",
-    "submission_priority": [
-      {
-        "name": "V6_PORT_TIME_A45",
-        "alpha": 0.45,
-        "local_delta": -0.015058796216656234,
-        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A45"
-      },
-      {
-        "name": "V6_PORT_TIME_A60",
-        "alpha": 0.6,
-        "local_delta": -0.0370791149216218,
-        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A60"
-      },
-      {
-        "name": "V6_PORT_TIME_A72",
-        "alpha": 0.72,
-        "local_delta": -0.06127362347417703,
-        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A72"
-      },
-      {
-        "name": "V6_PORT_TIME_A85",
-        "alpha": 0.85,
-        "local_delta": -0.09304124790787821,
-        "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85"
-      },
-      {
-        "name": "V6_PORT_TIME_A100",
-        "alpha": 1.0,
-        "local_delta": -0.13681612789294034,
-        "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
-        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
-        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100"
-      }
-    ],
-    "recommended": "upload the alpha line search (A100, A85, A72, A60, A45): the platform keeps the best score so there is no downside, the curve was still rising at 0.35, and the extrapolated peak (alpha 0.72) is about 96.36",
-    "risk_if_platform_keeps_latest": "expected loss equals the mean of the last-submitted entry (tier A about -0.001; all five about -0.015)",
+    "status": "V12_V7_SCORES_RECEIVED_OPTIMIZATION_PAUSED",
+    "submission_priority": [],
+    "recommended": "Both V12 and V7 are scored. Optimization remains paused after V16. No new test, reparenting, combined package or alpha package is authorized by this feedback.",
+    "risk_if_platform_keeps_latest": "Historical hypothetical only; user reports the platform keeps the best score.",
     "current_preferred": {
-      "name": "V5_TIME_N0048_Q20",
-      "candidate": "V5_TIME_N0048_Q20",
-      "score": 96.3143,
-      "delta_vs_previous_preferred": 0.0409,
-      "local_score": null,
-      "local_score_basis": "single-column replacement of the V36 parent; expected local package 96.2135 (below the frozen gate, submitted under explicit user authorisation)",
-      "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
-      "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
-      "package": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
-      "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926"
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V6_PORT_TIME_A60",
+        "score": 96.3465
+      },
+      "delta_vs_previous_best": 0.0061,
+      "target": 96.4,
+      "target_met": false,
+      "margin_to_target": -0.0474,
+      "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
+      "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+      "reported_date": "2026-09-27",
+      "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
     },
     "platform_ranking": [
+      "V12_IRON_JOINT_PLR001_A50",
+      "V7_TIME_PLR001_A50",
+      "V6_PORT_TIME_A60",
+      "V6_PORT_TIME_A45",
+      "V6_PORT_TIME_A72",
+      "V6_PORT_TIME_A35",
       "V5_TIME_N0048_Q20",
       "V5_SEED_SWAP_S1000",
       "V36_USER_REQUESTED_OUTER_FAILED",
       "V34_A",
       "V34_B"
     ],
-    "note": "the incumbent V6_PORT_TIME_A35 (96.3366) is already on the board and must not be re-submitted",
+    "note": "V12=96.3526 remains best; V7=96.3519 is +0.0054 vs A60 and +0.0153 vs A35. Last stated single slot is accounted for by this report; no independent account verification.",
     "ranked_top5": [
       {
         "rank": 1,
@@ -402,21 +373,223 @@
     "additional_authorized_deliveries": [
       {
         "candidate": "V7_TIME_PLR001_A50",
-        "status": "delivered_pending_user_feedback",
+        "status": "submitted_user_feedback_received",
         "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
         "evidence_key": "round2_v7_release_2026_09_26",
-        "original_alpha_queue_unchanged": true
+        "original_alpha_queue_unchanged": true,
+        "platform_score": 96.3519,
+        "source": "user_reported_not_independently_verified"
       },
       {
         "candidate": "V12_IRON_JOINT_PLR001_A50",
-        "status": "delivered_pending_user_platform_feedback",
+        "status": "submitted_user_feedback_received",
         "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
         "evidence_key": "round2_v12_release_2026_09_27",
-        "original_pending_deliveries_preserved": true
+        "original_pending_deliveries_preserved": true,
+        "platform_score": 96.3526,
+        "source": "user_reported_not_independently_verified"
       }
-    ]
+    ],
+    "history_before_alpha_feedback_2026_09_27": {
+      "status": "PENDING_SUBMISSION_ALPHA_LINE_SEARCH_5",
+      "submission_priority": [
+        {
+          "name": "V6_PORT_TIME_A45",
+          "alpha": 0.45,
+          "local_delta": -0.015058796216656234,
+          "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A45"
+        },
+        {
+          "name": "V6_PORT_TIME_A60",
+          "alpha": 0.6,
+          "local_delta": -0.0370791149216218,
+          "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A60"
+        },
+        {
+          "name": "V6_PORT_TIME_A72",
+          "alpha": 0.72,
+          "local_delta": -0.06127362347417703,
+          "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A72"
+        },
+        {
+          "name": "V6_PORT_TIME_A85",
+          "alpha": 0.85,
+          "local_delta": -0.09304124790787821,
+          "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85"
+        },
+        {
+          "name": "V6_PORT_TIME_A100",
+          "alpha": 1.0,
+          "local_delta": -0.13681612789294034,
+          "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
+          "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
+          "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100"
+        }
+      ],
+      "recommended": "upload the alpha line search (A100, A85, A72, A60, A45): the platform keeps the best score so there is no downside, the curve was still rising at 0.35, and the extrapolated peak (alpha 0.72) is about 96.36",
+      "risk_if_platform_keeps_latest": "expected loss equals the mean of the last-submitted entry (tier A about -0.001; all five about -0.015)",
+      "current_preferred": {
+        "name": "V5_TIME_N0048_Q20",
+        "candidate": "V5_TIME_N0048_Q20",
+        "score": 96.3143,
+        "delta_vs_previous_preferred": 0.0409,
+        "local_score": null,
+        "local_score_basis": "single-column replacement of the V36 parent; expected local package 96.2135 (below the frozen gate, submitted under explicit user authorisation)",
+        "zip_sha256": "5ed99b8014fb1650b88b6ae57cc3ed4dac378a20831eab5efc800de91ab2c982",
+        "result_sha256": "d4e1a8e3a0061aaa40d4fa77e1425e25c567f302addd2d199774afcaf7abe688",
+        "package": "local/runs/round2-v5-error-covariance/release-r1/V5_TIME_N0048_Q20",
+        "desktop_package": "C:\\Users\\lqh22\\Desktop\\submission\\round2-V5-time-N0048-Q20-20260926"
+      },
+      "platform_ranking": [
+        "V5_TIME_N0048_Q20",
+        "V5_SEED_SWAP_S1000",
+        "V36_USER_REQUESTED_OUTER_FAILED",
+        "V34_A",
+        "V34_B"
+      ],
+      "note": "the incumbent V6_PORT_TIME_A35 (96.3366) is already on the board and must not be re-submitted"
+    },
+    "completed_alpha_feedback": [
+      {
+        "candidate": "V6_PORT_TIME_A60",
+        "alpha": 0.6,
+        "score": 96.3465,
+        "delta_vs_A35": 0.0099,
+        "delta_vs_A60": 0.0,
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A72",
+        "alpha": 0.72,
+        "score": 96.3425,
+        "delta_vs_A35": 0.0059,
+        "delta_vs_A60": -0.004,
+        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A45",
+        "alpha": 0.45,
+        "score": 96.3438,
+        "delta_vs_A35": 0.0072,
+        "delta_vs_A60": -0.0027,
+        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      }
+    ],
+    "deferred_alpha_packages": [
+      {
+        "name": "V6_PORT_TIME_A85",
+        "alpha": 0.85,
+        "local_delta": -0.09304124790787821,
+        "zip_sha256": "2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A85",
+        "status": "unreported_deferred_after_A72_below_A60"
+      },
+      {
+        "name": "V6_PORT_TIME_A100",
+        "alpha": 1.0,
+        "local_delta": -0.13681612789294034,
+        "zip_sha256": "865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23",
+        "package": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100",
+        "desktop": "C:\\Users\\lqh22\\Desktop\\round2-V6-alpha-line-search-20260926\\V6_PORT_TIME_A100",
+        "status": "unreported_deferred_after_A72_below_A60"
+      }
+    ],
+    "history_before_v12_feedback_2026_09_27": {
+      "status": "ALPHA_THREE_SCORES_RECEIVED_V12_V7_PENDING_A85_A100_DEFERRED",
+      "submission_priority": [
+        {
+          "candidate": "V12_IRON_JOINT_PLR001_A50",
+          "status": "delivered_pending_user_platform_feedback",
+          "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+          "evidence_key": "round2_v12_release_2026_09_27",
+          "original_pending_deliveries_preserved": true
+        },
+        {
+          "candidate": "V7_TIME_PLR001_A50",
+          "status": "delivered_pending_user_feedback",
+          "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+          "evidence_key": "round2_v7_release_2026_09_26",
+          "original_alpha_queue_unchanged": true
+        }
+      ],
+      "recommended": "Prioritize delivered V12 iron, then V7 time; both remain unreported. Defer A85/A100 after A72 fell below A60. Do not resubmit scored packages or modify the frozen A35-parent deliveries.",
+      "current_preferred": {
+        "candidate": "V6_PORT_TIME_A60",
+        "score": 96.3465,
+        "source": "user_reported_not_independently_verified",
+        "previous_best": {
+          "candidate": "V6_PORT_TIME_A35",
+          "score": 96.3366
+        },
+        "delta_vs_previous_best": 0.0099,
+        "target": 96.4,
+        "target_met": false,
+        "margin_to_target": -0.0535,
+        "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
+        "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
+        "reported_date": "2026-09-27"
+      },
+      "platform_ranking": [
+        "V6_PORT_TIME_A60",
+        "V6_PORT_TIME_A45",
+        "V6_PORT_TIME_A72",
+        "V6_PORT_TIME_A35",
+        "V5_TIME_N0048_Q20",
+        "V5_SEED_SWAP_S1000",
+        "V36_USER_REQUESTED_OUTER_FAILED",
+        "V34_A",
+        "V34_B"
+      ],
+      "note": "Current best A60=96.3465 is already scored. A45/A60/A72 are no longer pending; V12/V7 remain unreported. Historical queues and package bytes are preserved."
+    },
+    "history_before_v7_feedback_2026_09_27": {
+      "status": "V12_SCORE_RECEIVED_V7_PENDING_A85_A100_DEFERRED",
+      "submission_priority": [
+        {
+          "candidate": "V7_TIME_PLR001_A50",
+          "status": "delivered_pending_user_feedback",
+          "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+          "evidence_key": "round2_v7_release_2026_09_26",
+          "original_alpha_queue_unchanged": true
+        }
+      ],
+      "recommended": "V12=96.3526 is scored; next pending isolated package is V7_TIME_PLR001_A50 with its original A35 parent. Preserve all package bytes. No reparenting, new alpha package or two-target combination is authorized by feedback alone.",
+      "note": "V12 is the current user-reported best. V7 remains pending feedback. Target >96.4 is unmet; do not infer remaining quota.",
+      "platform_ranking": [
+        "V12_IRON_JOINT_PLR001_A50",
+        "V6_PORT_TIME_A60",
+        "V6_PORT_TIME_A45",
+        "V6_PORT_TIME_A72",
+        "V6_PORT_TIME_A35",
+        "V5_TIME_N0048_Q20",
+        "V5_SEED_SWAP_S1000",
+        "V36_USER_REQUESTED_OUTER_FAILED",
+        "V34_A",
+        "V34_B"
+      ]
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -5806,21 +5979,22 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V6_PORT_TIME_A35",
-    "score": 96.3366,
+    "candidate": "V12_IRON_JOINT_PLR001_A50",
+    "score": 96.3526,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V5_TIME_N0048_Q20",
-      "score": 96.3143
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465
     },
-    "delta_vs_previous_best": 0.0223,
+    "delta_vs_previous_best": 0.0061,
     "target": 96.4,
     "target_met": false,
-    "margin_to_target": -0.0634,
-    "recipe": "frozen V36 package with tap_time_len = 0.65 x V36 + 0.35 x v36-s1-N-0048 (full-data refit); tap_iron byte-identical",
-    "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
-    "desktop": "round2-V6-portfolio-20260926/V6_PORT_TIME_A35",
-    "note": "the platform alpha curve is displaced far to the right of the local OOF optimum (0.20); see round2_v6/RESULTS.md section 12"
+    "margin_to_target": -0.0474,
+    "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
+    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+    "reported_date": "2026-09-27",
+    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -8212,7 +8386,8 @@
           "peak_gain": 0.0477,
           "implied_platform": 96.362
         },
-        "caveat": "extrapolation beyond the measured [0.05,0.35] range; the positive slope at 0.35 is measured, the peak location is extrapolated"
+        "caveat": "extrapolation beyond the measured [0.05,0.35] range; the positive slope at 0.35 is measured, the peak location is extrapolated",
+        "followup_status": "Historical extrapolation, not confirmed: A72=96.3425 versus A60=96.3465; see 2026-09-27 feedback."
       },
       "delivered_line_search": [
         {
@@ -8259,7 +8434,8 @@
       "new_fits": 0,
       "new_packages": 5,
       "agent_uploads": 0,
-      "evidence": "docs/round2_v6/RESULTS.md section 12"
+      "evidence": "docs/round2_v6/RESULTS.md section 12",
+      "followup_feedback": "round2_v6_alpha_feedback_2026_09_27"
     }
   },
   "round2_v7_periodic_search_2026_09_26": {
@@ -9310,7 +9486,7 @@
     }
   },
   "round2_v7_release_2026_09_26": {
-    "status": "delivered_pending_user_platform_feedback",
+    "status": "submitted_user_feedback_received",
     "candidate": "V7_TIME_PLR001_A50",
     "explicit_user_authorization": true,
     "local_working_gate_exception": "this_candidate_only",
@@ -9351,8 +9527,12 @@
       "positive_folds": 14,
       "total_folds": 20,
       "development_package_score": 96.22958502884302,
-      "platform_score": null,
-      "target_96_4_verified": false
+      "platform_score": 96.3519,
+      "target_96_4_verified": false,
+      "platform_score_source": "user_reported_not_independently_verified",
+      "platform_delta_vs_A35": 0.0153,
+      "platform_delta_vs_A60": 0.0054,
+      "platform_delta_vs_best_V12": -0.0007
     },
     "uploads": 0
   },
@@ -10297,7 +10477,7 @@
     "results": "docs/round2_v13/RESULTS.md"
   },
   "round2_v12_release_2026_09_27": {
-    "status": "delivered_pending_user_platform_feedback",
+    "status": "submitted_user_feedback_received",
     "candidate": "V12_IRON_JOINT_PLR001_A50",
     "date": "2026-09-27",
     "authorization_date": "2026-09-26",
@@ -10323,10 +10503,13 @@
     },
     "locked_python312_tests": 1052,
     "G1": {
-      "platform_score": null,
+      "platform_score": 96.3526,
       "local_working_gate_met": false,
       "release_exception": "explicit_this_candidate_only",
-      "four_seed_gate_passed": true
+      "four_seed_gate_passed": true,
+      "platform_score_source": "user_reported_not_independently_verified",
+      "platform_delta_vs_A35": 0.016,
+      "platform_delta_vs_previous_best_A60": 0.0061
     },
     "packages": 1,
     "desktop_writes": 1,
@@ -10402,7 +10585,9 @@
       "python312": {"version": "3.12.12", "passed": 1081, "skipped": 11, "warnings": 3},
       "python311": {"version": "3.11.15", "passed": 1081, "skipped": 11, "warnings": 3},
       "private_xml": "local/reports/row-nested-full-20260927-py{312,311}-r1.xml",
-      "remote_status": "verify Actions for this commit; local passes are not remote passes"
+      "remote_status": "both_jobs_passed",
+      "remote_tested_commit": "eed60ba78c30bda8b0ff5438934766e516869d2d",
+      "remote_run": "https://github.com/Luqhhh/iron/actions/runs/36256052870"
     },
     "G1": {
       "official_target_model_fits": 0,
@@ -10421,8 +10606,1558 @@
     "closed_measured_route": "V13 frozen single-output PLE recipes; no incremental candidate",
     "platform_best_at_snapshot": {"candidate": "V6_PORT_TIME_A35", "score": 96.3366, "source": "user_reported"},
     "pending_isolated_feedback": ["V7_TIME_PLR001_A50", "V12_IRON_JOINT_PLR001_A50"],
+    "snapshot_note": "Historical 8316f5e snapshot before both scores; superseded by round2_team_followup_after_v16_2026_09_27 for current planning.",
     "historical_sources_specs_and_gates_unchanged": true,
     "packages": 0,
     "uploads": 0
+  },
+  "round2_team_followup_after_v16_2026_09_27": {
+    "status": "synchronized_feedback_and_paused_optimization",
+    "team_snapshot_commit": "931cdd1",
+    "evidence": "docs/team_strategy_20260926/STATUS_UPDATE_20260927.md",
+    "current_platform_best": {"candidate": "V12_IRON_JOINT_PLR001_A50", "score": 96.3526, "source": "user_reported_not_independently_verified"},
+    "v7_platform_score": 96.3519,
+    "v7_v12_pending_feedback": false,
+    "optimization_resume_requires_explicit_user_direction": true,
+    "official_target_model_fits_this_followup": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "team_recorded_outer_fits_v14_v15_v16": 73,
+    "private_real_model_artifacts_reproduced_here": false,
+    "G0": {
+      "status": "both_locked_local_suites_pass_after_tabnet_environment_repair",
+      "initial_python312": {"passed": 1121, "skipped": 12, "warnings": 3},
+      "initial_python311": {"passed": 1121, "skipped": 12, "warnings": 3},
+      "initial_additional_skip": "Entire V16 test module skipped because pytorch-tabnet was absent; not successful V16 coverage.",
+      "repair": "Add frozen pytorch-tabnet==4.1.0 to round2 and uv.lock; mandatory import check; do not change historical source/spec hashes or gates.",
+      "targeted_passed": 33,
+      "targeted_tests": "V16 mechanisms, partition isolation, cold inference and installed source hashes; required dependencies; conditional platform bounds",
+      "private_initial_xml": "local/reports/team-sync-931cdd1-py{312,311}-r1.xml",
+      "private_targeted_xml": "local/reports/team-sync-931cdd1-targeted-r1.xml",
+      "python312": {"version": "3.12.12", "passed": 1139, "skipped": 11, "warnings": 3, "seconds": 178.82},
+      "python311": {"version": "3.11.15", "passed": 1139, "skipped": 11, "warnings": 3, "seconds": 179.47},
+      "private_final_xml": "local/reports/team-sync-931cdd1-py{312,311}-r2.xml",
+      "remaining_skip_scope": "Optional pytabkit/RealMLP module plus private OOF/parent-cache integration checks; no V16 dependency skip remains.",
+      "remote_status": "verify Actions after publication; do not equate local and remote passes"
+    },
+    "conditional_v12_v7_combination": {"score": 96.3679, "allowance": 0.0003, "actual_platform_result": false, "package_created": false},
+    "conditional_fixed_endpoint_weight_bounds": {
+      "iron_weight_range": [0.5, 1.0],
+      "time_weight_range": [0.5, 1.0],
+      "both_weights_upper_bound": 96.3999,
+      "fixed_v7_time_iron_weight_upper_bound": 96.3844,
+      "score_error_assumption": 0.0001,
+      "assumptions": "Same hidden cohort and labels; documented equal-weight WMAPE; original fixed affine endpoints; unchanged postprocessing and correctly attributed scores.",
+      "private_endpoint_arrays_revalidated_here": false,
+      "upper_bound_if_error_0_0002": 96.4006,
+      "not_a_forecast_or_overall_impossibility_result": true,
+      "private_evidence": "local/reports/team-followup-v7-v12-bounds-20260927-r1.json",
+      "synthetic_curves": 40,
+      "synthetic_score_checks": 38440,
+      "synthetic_bound_violations": 0
+    },
+    "real_row_nested_integration_complete": false,
+    "historical_models_specs_gates_and_packages_unchanged": true
+  },
+  "round2_v14_joint_ple_2026_09_27": {
+    "status": "development_complete_no_confirmation_candidate",
+    "spec": "configs/round2_v14/SPEC.yaml",
+    "preregistration": "docs/round2_v14/PREREGISTRATION.md",
+    "new_evidence": [
+      "V12 joint supervision passed four-seed iron gate",
+      "V13 PLE repair restored learning and improved standalone models, but single-output increments failed"
+    ],
+    "G0": {
+      "locked_python312_tests": 1062,
+      "warnings": 23,
+      "test_log": "local/reports/v14-python312-tests-r1.log",
+      "reference_preflight": "local/reports/v14-reference-preflight-r1.json",
+      "reference_files": 126,
+      "control": "local/runs/round2-v14-joint-ple/development-r1/control.json",
+      "control_max_absolute_difference": 0.0,
+      "control_outputs": 2,
+      "four_seed_reference_preflight": {
+        "path": "local/reports/v14-four-seed-reference-preflight-r1.json",
+        "sha256": "bc5d388d23db8d3b1d1782af84bee2763273acc1496f98d7281eb4edfc688efe",
+        "files": 188,
+        "model_fits": 0,
+        "candidate_predictions_read": false,
+        "status": "passed"
+      },
+      "independent_audit": "local/runs/round2-v14-joint-ple/development-r1/audit-r1.json",
+      "audit_sha256": "2ca6ef47b4b8dcc482b0202fbba98d722cbb277b53d399dcdab13ef9aa37717c",
+      "audit_status": "passed",
+      "prediction_count_verified": 20,
+      "preprocessing_reconstructions": 20,
+      "fit_failures": 0,
+      "epoch_cap_hits": 1
+    },
+    "budget": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "conditional_confirmation_outer_fits_max": 10,
+      "full_data_fits": 0,
+      "workers": 8
+    },
+    "reference_by_target": {
+      "tap_iron": "V12_IRON_A50",
+      "tap_time_len": "V7_TIME_A50"
+    },
+    "official_data_fits_complete": 21,
+    "run": "local/runs/round2-v14-joint-ple/development-r1",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false,
+    "historical_live_process_observation": {
+      "pid": 220769,
+      "exec_session": 76668,
+      "log": "local/reports/v14-development-r1.log",
+      "note": "Control passed. Revalidate process/session before treating the recorded batch as live."
+    },
+    "completed_fits": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "confirmation_outer_fits": 0,
+      "full_data_fits": 0
+    },
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "joint_ple_inactive_control",
+          "single_wmape": {
+            "42": 0.039332438579464994,
+            "3407": 0.0398142714597233
+          },
+          "single_output_control_wmape": {
+            "42": 0.04025554454986306,
+            "3407": 0.04038259553615516
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.004079260874521526,
+                "3407": 0.0025552650624716816
+              },
+              "mean": 0.0033172629684966037,
+              "lcb95": -0.0014938024648474546,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 7
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.004079260874521526,
+                "3407": 0.0025552650624716816
+              },
+              "mean": 0.0033172629684966037,
+              "lcb95": -0.0014938024648474546,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.2
+              },
+              "positive_folds": 7
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "joint_ple_repaired",
+          "single_wmape": {
+            "42": 0.0384327249514163,
+            "3407": 0.038216450422957134
+          },
+          "single_output_control_wmape": {
+            "42": 0.03882581924412328,
+            "3407": 0.03918387804885103
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0023059923681632843,
+                "3407": 0.008525145551816632
+              },
+              "mean": 0.005415568959989958,
+              "lcb95": -0.014217524956653738,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0023059923681632843,
+                "3407": 0.008525145551816632
+              },
+              "mean": 0.005415568959989958,
+              "lcb95": -0.014217524956653738,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.2
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "joint_ple_inactive_control",
+          "single_wmape": {
+            "42": 0.04160596653841724,
+            "3407": 0.04169029962337098
+          },
+          "single_output_control_wmape": {
+            "42": 0.0402379580211561,
+            "3407": 0.040643301364797324
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "joint_ple_repaired",
+          "single_wmape": {
+            "42": 0.03989468300672589,
+            "3407": 0.03982107652555667
+          },
+          "single_output_control_wmape": {
+            "42": 0.03961172370947606,
+            "3407": 0.03946128699334107
+          },
+          "comparisons": {
+            "A35": {
+              "seed_gains": {
+                "42": 0.0008574990387854448,
+                "3407": 0.0010954167407106058
+              },
+              "mean": 0.0009764578897480253,
+              "lcb95": 0.00022538126429903066,
+              "alphas": {
+                "42": 0.1,
+                "3407": 0.1
+              },
+              "positive_folds": 4
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.0008271968817451236,
+                "3407": 0.0005519826606930484
+              },
+              "mean": 0.000689589771219086,
+              "lcb95": -0.00017922733129473927,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.1
+              },
+              "positive_folds": 6
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean": 0.0,
+              "lcb95": 0.0,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "positive_folds": 0
+            }
+          },
+          "tier": "not_shortlisted"
+        }
+      ],
+      "selected_confirmation": null,
+      "all_current_reference_alphas_zero": true,
+      "platform_score": null,
+      "interpretation": "Joint PLE improves standalone iron but leaves zero measured incremental blend gain over delivered local references under the frozen sparse grid."
+    },
+    "results": "docs/round2_v14/RESULTS.md",
+    "platform_reference_at_closure": {
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465,
+      "source": "user_reported_not_independently_verified",
+      "feedback_commit": "c7ec56f",
+      "frozen_local_comparisons_unchanged": true
+    }
+  },
+  "round2_v6_alpha_feedback_2026_09_27": {
+    "date": "2026-09-27",
+    "source": "user_reported_not_independently_verified",
+    "user_message": "96.3465 A60 A72 96.3425 A45 96.3438 提交推送",
+    "results": [
+      {
+        "candidate": "V6_PORT_TIME_A60",
+        "alpha": 0.6,
+        "score": 96.3465,
+        "delta_vs_A35": 0.0099,
+        "delta_vs_A60": 0.0,
+        "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A72",
+        "alpha": 0.72,
+        "score": 96.3425,
+        "delta_vs_A35": 0.0059,
+        "delta_vs_A60": -0.004,
+        "zip_sha256": "808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      },
+      {
+        "candidate": "V6_PORT_TIME_A45",
+        "alpha": 0.45,
+        "score": 96.3438,
+        "delta_vs_A35": 0.0072,
+        "delta_vs_A60": -0.0027,
+        "zip_sha256": "4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7",
+        "source": "user_reported_not_independently_verified",
+        "status": "submitted_user_feedback_received"
+      }
+    ],
+    "previous_current_platform_best": {
+      "candidate": "V6_PORT_TIME_A35",
+      "score": 96.3366,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V5_TIME_N0048_Q20",
+        "score": 96.3143
+      },
+      "delta_vs_previous_best": 0.0223,
+      "target": 96.4,
+      "target_met": false,
+      "margin_to_target": -0.0634,
+      "recipe": "frozen V36 package with tap_time_len = 0.65 x V36 + 0.35 x v36-s1-N-0048 (full-data refit); tap_iron byte-identical",
+      "zip_sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06",
+      "desktop": "round2-V6-portfolio-20260926/V6_PORT_TIME_A35",
+      "note": "the platform alpha curve is displaced far to the right of the local OOF optimum (0.20); see round2_v6/RESULTS.md section 12"
+    },
+    "best_observed_alpha": 0.6,
+    "continuous_optimum_verified": false,
+    "interpretation": "A60 is the best measured point. A72 is below A60; the historical quadratic peak forecast is not confirmed. Defer A85/A100; prioritize the already delivered V12 iron and V7 time isolated candidates, whose platform scores remain unreported. Their frozen A35 parents are unchanged.",
+    "quota": {
+      "last_explicit_available": 5,
+      "newly_reported_submissions": 3,
+      "remaining_if_no_other_activity": 2,
+      "unreported_account_activity_unknown": true
+    },
+    "G0": "Three existing desktop ZIP hashes and archive integrity verified; no fits, package changes or uploads.",
+    "G1": "User-reported A60 gain +0.0099 vs A35; target 96.4 not reached.",
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "evidence": "docs/round2_v6/RESULTS.md section 13"
+  },
+  "round2_v15_task_experts_2026_09_27": {
+    "status": "confirmation_complete_failed_four_seed_gate",
+    "spec": "configs/round2_v15/SPEC.yaml",
+    "preregistration": "docs/round2_v15/PREREGISTRATION.md",
+    "mechanism_source": "https://research.google/pubs/modeling-task-relationships-in-multi-task-learning-with-multi-gate-mixture-of-experts/",
+    "new_evidence": "V12/V14 joint training improves iron standalone but worsens time; task-specific routing has not been evaluated in this repository. This motivates an experiment, not a proven negative-transfer mechanism.",
+    "platform_reference": {
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465,
+      "source": "user_reported_not_independently_verified"
+    },
+    "local_reference_by_target": {
+      "tap_iron": "V12_IRON_A50_original_A35_parent",
+      "tap_time_len": "V7_TIME_A50_original_A35_parent"
+    },
+    "G0": {
+      "locked_python312_tests": 1073,
+      "warnings": 23,
+      "test_log": "local/reports/v15-python312-tests-r1.log",
+      "reference_preflight": "local/reports/v15-reference-preflight-r1.json",
+      "reference_files": 83,
+      "parameter_count_both_recipes": 284870,
+      "uniform_trainable_parameters": 284770,
+      "learned_gate_trainable_parameters": 284870,
+      "control": "local/runs/round2-v15-task-experts/development-r1/control.json",
+      "control_max_absolute_difference": 0.0,
+      "control_outputs": 2,
+      "independent_development_audit": "local/runs/round2-v15-task-experts/development-r1/audit-r1.json",
+      "prediction_count_verified": 20,
+      "audit_status": "passed",
+      "fit_failures": 0,
+      "epoch_cap_hits": 0
+    },
+    "budget": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "conditional_confirmation_outer_fits_max": 10,
+      "full_data_fits": 0,
+      "workers": 8
+    },
+    "official_data_fits_complete": 31,
+    "run": "local/runs/round2-v15-task-experts/development-r1",
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false,
+    "historical_live_process_observation": {
+      "pid": 225772,
+      "exec_session": 18142,
+      "log": "local/reports/v15-development-r1.log",
+      "note": "Exact joint control passed. Revalidate process/session before treating the recorded candidate batch as live."
+    },
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "uniform_experts",
+          "tier": "not_shortlisted",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.017556277378877952,
+                "3407": 0.010984705317210047
+              },
+              "mean": 0.014270491348044,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.017556277378877952,
+                "3407": 0.010984705317210047
+              },
+              "mean": 0.014270491348044,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.017556277378877952,
+                "3407": 0.010984705317210047
+              },
+              "mean": 0.014270491348044,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0,
+                "3407": -0.0020923991240387463
+              },
+              "mean": -0.0010461995620193731,
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.2
+              },
+              "positive_folds": 1
+            }
+          },
+          "single_wmape": {
+            "42": 0.03765362282810868,
+            "3407": 0.03815888611974887
+          }
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "task_gated_experts",
+          "tier": "exploration",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.028032631327222158,
+                "3407": 0.019043376260838157
+              },
+              "mean": 0.023538003794030156,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.028032631327222158,
+                "3407": 0.019043376260838157
+              },
+              "mean": 0.023538003794030156,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.028032631327222158,
+                "3407": 0.019043376260838157
+              },
+              "mean": 0.023538003794030156,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.007199659528676766,
+                "3407": -0.0020793482743309416
+              },
+              "mean": 0.0025601556271729123,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.5
+              },
+              "positive_folds": 6
+            }
+          },
+          "single_wmape": {
+            "42": 0.037245308342619694,
+            "3407": 0.03775992848558579
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "uniform_experts",
+          "tier": "exploration",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.028562215654139855,
+                "3407": 0.02764571389453116
+              },
+              "mean": 0.028103964774335508,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 8
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.011801434346090378,
+                "3407": 0.00947411655196087
+              },
+              "mean": 0.010637775449025624,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 7
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.01267421666414588,
+                "3407": 0.0087193527636769
+              },
+              "mean": 0.01069678471391139,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 7
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.0007784153454439002,
+                "3407": -0.000168747944683037
+              },
+              "mean": 0.0003048337003804316,
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.1
+              },
+              "positive_folds": 5
+            }
+          },
+          "single_wmape": {
+            "42": 0.03860598019412031,
+            "3407": 0.03883112815408425
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "task_gated_experts",
+          "tier": "formal",
+          "comparisons": {
+            "A60": {
+              "seed_gains": {
+                "42": 0.02718895702492514,
+                "3407": 0.029883534828104158
+              },
+              "mean": 0.02853624592651465,
+              "alphas": {
+                "42": 0.5,
+                "3407": 0.5
+              },
+              "positive_folds": 9
+            },
+            "A35": {
+              "seed_gains": {
+                "42": 0.012224882018953623,
+                "3407": 0.011875332696395721
+              },
+              "mean": 0.012050107357674672,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 8
+            },
+            "Q20": {
+              "seed_gains": {
+                "42": 0.01303214025898447,
+                "3407": 0.010605439343171416
+              },
+              "mean": 0.011818789801077943,
+              "alphas": {
+                "42": 0.35,
+                "3407": 0.35
+              },
+              "positive_folds": 8
+            },
+            "CURRENT": {
+              "seed_gains": {
+                "42": 0.001061740088601007,
+                "3407": 0.0014132391500934482
+              },
+              "mean": 0.0012374896193472276,
+              "alphas": {
+                "42": 0.2,
+                "3407": 0.1
+              },
+              "positive_folds": 8
+            }
+          },
+          "single_wmape": {
+            "42": 0.038856071243540694,
+            "3407": 0.038836636925849426
+          }
+        }
+      ],
+      "selected_confirmation": {
+        "target": "tap_time_len",
+        "recipe": "task_gated_experts"
+      },
+      "development_package_score": 96.23082100184455,
+      "local_working_gate_met": false,
+      "platform_score": null
+    },
+    "results": "docs/round2_v15/RESULTS.md",
+    "confirmation": {
+      "status": "complete_not_promoted",
+      "spec": "configs/round2_v15/CONFIRMATION.yaml",
+      "selected": {
+        "target": "tap_time_len",
+        "recipe": "task_gated_experts"
+      },
+      "run": "local/runs/round2-v15-task-experts/confirmation-r1",
+      "split_seeds": [
+        7777,
+        12011
+      ],
+      "candidate_joint_outer_fits": 10,
+      "baseline_fits": 0,
+      "full_data_fits": 0,
+      "reference_preflight": "local/reports/v15-confirmation-reference-preflight-r1.json",
+      "reference_files": 105,
+      "locked_python312_tests": 1082,
+      "warnings": 23,
+      "test_log": "local/reports/v15-confirmation-python312-tests-r1.log",
+      "historical_live_process_observation": {
+        "pid": 230115,
+        "exec_session": 81832,
+        "log": "local/reports/v15-confirmation-r1.log",
+        "note": "Revalidate process/session before treating this observation as live."
+      },
+      "G0": {
+        "independent_audit": "local/runs/round2-v15-task-experts/confirmation-r1/audit-r1.json",
+        "audit_sha256": "95eb5c42758dfc2bc1798dfefc3a61a6c8e532f4605574aecbf9d2f8ceab5ea7",
+        "audit_status": "passed",
+        "prediction_count_verified": 20,
+        "fit_failures": 0,
+        "epoch_cap_hits": 0
+      },
+      "G1": {
+        "comparisons": {
+          "A60": {
+            "seed_gains": {
+              "42": 0.02718895702492514,
+              "3407": 0.029883534828104158,
+              "7777": -0.0003070267577963415,
+              "12011": 0.029504051597308706
+            },
+            "alphas": {
+              "42": 0.5,
+              "3407": 0.5,
+              "7777": 0.5,
+              "12011": 0.5
+            },
+            "mean": 0.021567379173135417,
+            "sd": 0.014631484162827509,
+            "lcb95": 0.004350779260295305,
+            "positive_seeds": 3,
+            "positive_folds": 15,
+            "four_seed_pass": false
+          },
+          "A35": {
+            "seed_gains": {
+              "42": 0.009525461218661685,
+              "3407": 0.009902286554442363,
+              "7777": -0.004388766694264773,
+              "12011": 0.009428077268595278
+            },
+            "alphas": {
+              "42": 0.2,
+              "3407": 0.2,
+              "7777": 0.35,
+              "12011": 0.2
+            },
+            "mean": 0.006116764586858638,
+            "sd": 0.007006672259820558,
+            "lcb95": -0.0021278585610923426,
+            "positive_seeds": 3,
+            "positive_folds": 14,
+            "four_seed_pass": false
+          },
+          "Q20": {
+            "seed_gains": {
+              "42": 0.010394977545604978,
+              "3407": 0.009128498443920496,
+              "7777": -0.004215502918513206,
+              "12011": 0.008372115499992588
+            },
+            "alphas": {
+              "42": 0.2,
+              "3407": 0.2,
+              "7777": 0.35,
+              "12011": 0.2
+            },
+            "mean": 0.005920022142751214,
+            "sd": 0.006808357024834538,
+            "lcb95": -0.002091247093909652,
+            "positive_seeds": 3,
+            "positive_folds": 13,
+            "four_seed_pass": false
+          },
+          "CURRENT": {
+            "seed_gains": {
+              "42": 0.001163924149703982,
+              "3407": 0.0014132391500934482,
+              "7777": -0.0016654380273634778,
+              "12011": 0.0019969879740390495
+            },
+            "alphas": {
+              "42": 0.1,
+              "3407": 0.1,
+              "7777": 0.2,
+              "12011": 0.1
+            },
+            "mean": 0.0007271783116182505,
+            "sd": 0.0016328355628082549,
+            "lcb95": -0.001194149442660251,
+            "positive_seeds": 3,
+            "positive_folds": 14,
+            "four_seed_pass": false
+          }
+        },
+        "decisions": {
+          "A60": {
+            "admitted": false,
+            "reasons": [
+              "initial_split_seed_not_positive"
+            ],
+            "fold_summary": {
+              "n": 20,
+              "mean": 0.021567379173135417,
+              "sd": 0.02631292287161149,
+              "se": 0.005883748422763226,
+              "lcb95": 0.011393596720598425,
+              "positive": 15
+            },
+            "fold_criteria": {
+              "met": false,
+              "reasons": [
+                "positive_cells_below_minimum",
+                "initial_split_seed_not_positive"
+              ],
+              "positive": 15,
+              "cells": 20,
+              "required_positive": 16,
+              "role": "descriptive_only"
+            },
+            "seed_summary": {
+              "n": 4,
+              "mean": 0.021567379173135417,
+              "sd": 0.014631484162827509,
+              "se": 0.007315742081413754,
+              "lcb95": 0.004350779260295305,
+              "positive": 3,
+              "positive_seeds": 3,
+              "seeds": [
+                42,
+                3407,
+                7777,
+                12011
+              ]
+            },
+            "seed_gains": {
+              "42": 0.02718895702492514,
+              "3407": 0.029883534828104158,
+              "7777": -0.0003070267577963415,
+              "12011": 0.029504051597308706
+            },
+            "required_split_seeds": 4
+          },
+          "CURRENT": {
+            "admitted": false,
+            "reasons": [
+              "seed_level_lcb_not_positive",
+              "initial_split_seed_not_positive"
+            ],
+            "fold_summary": {
+              "n": 20,
+              "mean": 0.0007271783116182505,
+              "sd": 0.003598905348083805,
+              "se": 0.000804739700290293,
+              "lcb95": -0.0006643235088875672,
+              "positive": 14
+            },
+            "fold_criteria": {
+              "met": false,
+              "reasons": [
+                "positive_cells_below_minimum",
+                "initial_split_seed_not_positive"
+              ],
+              "positive": 14,
+              "cells": 20,
+              "required_positive": 16,
+              "role": "descriptive_only"
+            },
+            "seed_summary": {
+              "n": 4,
+              "mean": 0.0007271783116182505,
+              "sd": 0.0016328355628082549,
+              "se": 0.0008164177814041274,
+              "lcb95": -0.001194149442660251,
+              "positive": 3,
+              "positive_seeds": 3,
+              "seeds": [
+                42,
+                3407,
+                7777,
+                12011
+              ]
+            },
+            "seed_gains": {
+              "42": 0.001163924149703982,
+              "3407": 0.0014132391500934482,
+              "7777": -0.0016654380273634778,
+              "12011": 0.0019969879740390495
+            },
+            "required_split_seeds": 4
+          }
+        },
+        "development_package_score": 96.23082100184455,
+        "local_working_gate_met": false,
+        "promoted": false,
+        "platform_score": null
+      },
+      "packages": 0,
+      "uploads": 0
+    },
+    "completed_fits": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "confirmation_joint_outer_fits": 10,
+      "full_data_fits": 0
+    }
+  },
+  "round2_v12_platform_feedback_2026_09_27": {
+    "date": "2026-09-27",
+    "user_message": "96.3526 v12",
+    "source": "user_reported_not_independently_verified",
+    "candidate": "V12_IRON_JOINT_PLR001_A50",
+    "score": 96.3526,
+    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+    "delta_vs_A35": 0.016,
+    "delta_vs_previous_best_A60": 0.0061,
+    "remaining_to_96_4": 0.0474,
+    "previous_current_platform_best": {
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V6_PORT_TIME_A35",
+        "score": 96.3366
+      },
+      "delta_vs_previous_best": 0.0099,
+      "target": 96.4,
+      "target_met": false,
+      "margin_to_target": -0.0535,
+      "recipe": "frozen V36 package with tap_time_len = 0.40 x V36 + 0.60 x v36-s1-N-0048 (same full-data refit); tap_iron byte-identical",
+      "zip_sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147",
+      "desktop": "round2-V6-alpha-line-search-20260926/V6_PORT_TIME_A60",
+      "note": "Best observed submitted alpha is 0.60; 0.72 is lower by 0.0040. The continuous optimum is unmeasured. See docs/round2_v6/RESULTS.md section 13.",
+      "reported_date": "2026-09-27"
+    },
+    "G0": {
+      "audit": "local/reports/v12-platform-feedback-20260927-r1.json",
+      "sha256": "f43ca255cf6c7d18f5504c0e117c87d04fa3511369397f9b999e88403dde2df9",
+      "status": "passed",
+      "packages_rechecked": 4,
+      "rows_each": 322,
+      "V12_time_string_mismatches_vs_A35": 0
+    },
+    "G1": "Positive platform iron effect relative to A35; no claim of platform >96.4 or new release authorization. V7 still unreported.",
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0
+  },
+  "round2_platform_line_boundaries_2026_09_27": {
+    "status": "conditional_bounds_verified",
+    "document": "docs/round2_v12/PLATFORM_BOUNDARIES.md",
+    "source": "documented_metric_and_user_reported_scores_not_independently_verified_receipts",
+    "score_error_allowance": 0.0001,
+    "score_source_current_best": "V12_IRON_JOINT_PLR001_A50=96.3526",
+    "assumptions": [
+      "documented equal-weight WMAPE score; unchanged hidden cohort and labels",
+      "same fixed prediction endpoints, unmodified other column, no nonlinear postprocessing",
+      "reported four-decimal scores within +/-0.0001 of true score; not independently verified receipts"
+    ],
+    "G0": {
+      "audit": "local/reports/platform-line-bounds-20260927-r2.json",
+      "audit_sha256": "fdd688f1f3ab703df940e972223090d1ab47a341514db2842691f630048ad054",
+      "affine_package_hashes_verified": 5,
+      "max_affine_residual": 5.684341886080802e-14,
+      "targeted_tests_passed": 10,
+      "initial_audit_failure_preserved": "local/reports/platform-line-bounds-20260927-failed-r1.json",
+      "locked_python312_tests_passed": 1092,
+      "warnings": 23,
+      "test_log": "local/reports/platform-line-bounds-python312-r1.log",
+      "test_log_sha256": "8f55d2aaf934ab0480136e0f4f0c325ecff1a685db5689ed5d75702bbd0579c2"
+    },
+    "G1": {
+      "V12_iron_A50_plus_A60_time_conditional_score": 96.3625,
+      "V12_iron_A50_plus_A60_time_score_error": 0.0003,
+      "V12_iron_A50_plus_any_N0048_time_upper_bound": 96.36549724770643,
+      "V12_iron_A50_to_A100_plus_A60_time_upper_bound": 96.379,
+      "V12_iron_A50_to_A100_plus_any_N0048_time_upper_bound": 96.38169724770641,
+      "V7_score_for_conditional_A50_V12_combination_to_exceed_96_4_central": 96.384,
+      "V7_score_for_conditional_A50_V12_combination_to_exceed_96_4_conservative_strict": 96.3843
+    },
+    "time_alpha_0_to_1_upper_bound": 96.34929724770642,
+    "iron_weight_below_0_5_not_bounded": true,
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "promotion_or_release_authorization": false,
+    "next_action": "V7 original package feedback; investigate new directions. Do not claim the two measured affine families reach >96.4 by increasing iron weight >=0.5 and time alpha in [0,1]. No dense alpha search or new package authorized."
+  },
+  "round2_v16_sequential_masks_2026_09_27": {
+    "status": "complete_no_confirmation_candidate_stop_requested",
+    "spec": "configs/round2_v16/SPEC.yaml",
+    "preregistration": "docs/round2_v16/PREREGISTRATION.md",
+    "platform_reference": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "recipes": [
+      "uniform_masks",
+      "sparse_masks"
+    ],
+    "G0": {
+      "targeted_tests_passed": 17,
+      "reference_preflight": "local/reports/v16-reference-preflight-r1.json",
+      "reference_preflight_sha256": "6297f23e6d2c600027592560c2859e83eb8e57f73cbf49205b39cf8c4a19ed6b",
+      "reference_files": 83,
+      "implementation": "pytorch-tabnet==4.1.0; source only, no pretrained weights or extra data",
+      "locked_python312_tests_passed": 1109,
+      "warnings": 23,
+      "test_log": "local/reports/v16-python312-tests-r1.log",
+      "test_log_sha256": "fdac93cd657ed4b3436555824582ab3aa5c0c0e0852b85ae5da2b05adb4368f5",
+      "control_max_absolute_difference": 0.0,
+      "four_seed_reference_preflight": {
+        "path": "local/reports/v16-four-seed-reference-preflight-r1.json",
+        "sha256": "c894c53730dc24e988f96d1a0bd1e49bdfb8a3bbf03223bdf385633f66a087ba",
+        "files": 145,
+        "model_fits": 0,
+        "status": "passed"
+      },
+      "independent_audit": "local/runs/round2-v16-sequential-masks/development-r1/audit-r1.json",
+      "audit_sha256": "a24ccedf66f728dd8727aa4215baf2102b6f7b9bc096b03f362823dedaedd656",
+      "audit_status": "passed",
+      "prediction_count_verified": 20,
+      "fit_failures": 0,
+      "epoch_cap_hits": 9
+    },
+    "budget": {
+      "development_joint_outer_fits": 20,
+      "control_joint_outer_fits": 1,
+      "conditional_confirmation_outer_fits_max": 10,
+      "full_data_fits": 0,
+      "workers": 8
+    },
+    "packages": 0,
+    "uploads": 0,
+    "goal_achieved": false,
+    "user_stop_instruction": {
+      "message": "v16完成后停止后续工作",
+      "action": "Finish the frozen V16 development, earned confirmation if any, audits and publication; then pause goal work without starting V17."
+    },
+    "run": "local/runs/round2-v16-sequential-masks/development-r1",
+    "historical_live_process_observation": {
+      "pid": 238829,
+      "exec_session": 81665,
+      "workers": 8,
+      "worker_threads": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "note": "Live process verified at this update; re-poll handle before claiming later liveness."
+    },
+    "terminal_process_observation": {
+      "exec_session": 81665,
+      "exit_code": 0,
+      "pid": 238829,
+      "pid_exists": false,
+      "audit_exec_session": 81340,
+      "audit_exit_code": 0
+    },
+    "official_data_fits_complete": 21,
+    "confirmation_fits": 0,
+    "selected_confirmation": null,
+    "results": "docs/round2_v16/RESULTS.md",
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "uniform_masks",
+          "single_wmape": {
+            "42": 0.05661589089049141,
+            "3407": 0.055906119910382884
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "sparse_masks",
+          "single_wmape": {
+            "42": 0.05284963108680013,
+            "3407": 0.05147419881302863
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": -0.0006167297535587118,
+              "seed_gains": {
+                "42": -0.0012334595071174237,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": -0.0006167297535587118,
+              "seed_gains": {
+                "42": -0.0012334595071174237,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": -0.0006167297535587118,
+              "seed_gains": {
+                "42": -0.0012334595071174237,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.05,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "uniform_masks",
+          "single_wmape": {
+            "42": 0.06349386546715369,
+            "3407": 0.06338880645026437
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "sparse_masks",
+          "single_wmape": {
+            "42": 0.05965719817368569,
+            "3407": 0.05991569155236746
+          },
+          "comparisons": {
+            "V12_PLATFORM": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A60": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "A35": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "Q20": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            },
+            "CURRENT": {
+              "mean": 0.0,
+              "seed_gains": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "alphas": {
+                "42": 0.0,
+                "3407": 0.0
+              }
+            }
+          }
+        }
+      ],
+      "all_primary_and_current_weights_zero": true,
+      "candidate_tiers": {
+        "policy": "candidate-tiers-v1",
+        "decisions": {
+          "tap_iron": {
+            "uniform_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03717938754875991,
+              "target": "tap_iron",
+              "candidate": "uniform_masks",
+              "reference": "V12_IRON_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            },
+            "sparse_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03717938754875991,
+              "target": "tap_iron",
+              "candidate": "sparse_masks",
+              "reference": "V12_IRON_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            }
+          },
+          "tap_time_len": {
+            "uniform_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03786582833681623,
+              "target": "tap_time_len",
+              "candidate": "uniform_masks",
+              "reference": "V7_TIME_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            },
+            "sparse_masks": {
+              "eligible": false,
+              "pooled_improvements": {
+                "3407": false,
+                "42": false
+              },
+              "improved_folds": 0,
+              "worst_spout_delta": 0.0,
+              "mean_wmape": 0.03786582833681623,
+              "target": "tap_time_len",
+              "candidate": "sparse_masks",
+              "reference": "V7_TIME_A50",
+              "tier": "not_shortlisted",
+              "failed_conditions": [
+                "both_splits_improve",
+                "minimum_improved_folds"
+              ],
+              "gains_by_split": {
+                "42": 0.0,
+                "3407": 0.0
+              },
+              "mean_gain": 0.0,
+              "minimum_gain": 0.0
+            }
+          }
+        },
+        "formal_selected": [],
+        "exploration_selected": [],
+        "submission_priority": [],
+        "release_authorized": false,
+        "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+      },
+      "interpretation": "Sparse masks improve standalone WMAPE but add zero to V12/V7 references. Nine sparse fits hit the epoch cap; result is limited to frozen recipe and budget."
+    },
+    "stop_disposition": "V16 complete; stop further optimization after publication as explicitly requested. Goal >96.4 remains unmet; pause, do not mark achieved."
+  },
+  "round2_optimization_stop_after_v16_2026_09_27": {
+    "user_message": "v16完成后停止后续工作",
+    "v16_complete": true,
+    "v17_started": false,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "goal_above_96_4_achieved": false,
+    "resume_requires_user_request": true
+  },
+  "round2_latest_submission_quota_2026_09_27": {
+    "remaining": 0,
+    "source": "accounted_from_explicit_one_remaining_and_subsequent_V7_feedback",
+    "previous_explicit_report": {
+      "remaining": 1,
+      "source": "explicit_user_report",
+      "user_message": "v7有必要测试吗，今天只剩一个名额了",
+      "recommended_existing_package": "V7_TIME_PLR001_A50",
+      "reason": "Four positive complete split seeds; pending isolated time direction. Compare score against A60=96.3465, which has the same iron column. No guarantee of >96.4.",
+      "package_hash_reverified": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+      "optimization_goal_remains_paused": true,
+      "uploads": 0,
+      "new_fits": 0,
+      "new_packages": 0
+    },
+    "newly_reported_submission": "V7_TIME_PLR001_A50",
+    "independent_account_verification": false,
+    "optimization_goal_remains_paused": true,
+    "agent_uploads": 0
+  },
+  "round2_v7_platform_feedback_2026_09_27": {
+    "date": "2026-09-27",
+    "user_message": "96.3519",
+    "candidate": "V7_TIME_PLR001_A50",
+    "attribution": "Reply to sole V7 upload recommendation",
+    "source": "user_reported_not_independently_verified",
+    "score": 96.3519,
+    "zip_sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299",
+    "delta_vs_A35": 0.0153,
+    "delta_vs_A60": 0.0054,
+    "delta_vs_current_best_V12": -0.0007,
+    "current_platform_best_changed": false,
+    "G0": {
+      "audit": "local/reports/v7-platform-feedback-20260927-r1.json",
+      "audit_sha256": "3641dc2128306eea1f82c717fd43ef5094fa7e54bc8481220438aa44bda7eb2a",
+      "status": "passed",
+      "packages_rechecked": 3,
+      "rows_each": 322
+    },
+    "G1": "Time direction positive against A35 and A60; V7 alone does not exceed V12 or96.4. Local gain magnitude here is close to the platform gain, not a general transfer rule.",
+    "conditional_combination": {
+      "iron": "original V12 A50 column",
+      "time": "original V7 A50 column",
+      "formula": "96.3526+96.3519-96.3366",
+      "score": 96.3679,
+      "score_error_allowance": 0.0003,
+      "actual_platform_result": false,
+      "assumptions": "Documented equal-weight WMAPE; same hidden cohort/labels; unchanged original columns; each reported score within +/-0.0001.",
+      "package_created": false,
+      "release_authorized": false
+    },
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "optimization_goal_remains_paused": true
   }
 }

@@ -22,6 +22,7 @@ dependencies = [
 dev = ["pytest==9.0.2"]
 round2 = [
     "interpret==0.6.10",
+    "pytorch-tabnet==4.1.0",
     "rtdl-num-embeddings==0.0.12",
     "rtdl-revisiting-models==0.0.2",
     "scikit-learn==1.8.0",
@@ -40,7 +41,7 @@ round2_v4_2 = [
     "sympy==1.14.0",
 ]
 
-# CPU-only tests use the same torch release as the frozen V7--V13 runtime.
+# CPU-only tests use the same torch release as the frozen V7--V16 runtime.
 # This installs libraries, not pretrained weights, and leaves experiment specs intact.
 [tool.uv.sources]
 torch = { index = "pytorch-cpu" }
