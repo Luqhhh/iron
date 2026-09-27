@@ -621,3 +621,23 @@ Current user-reported best remains V12=96.3526; >96.4 was not achieved.
 - Optimization remains paused after V16. Score recording does not resume
   experiments or authorize a new package. See docs/round2_v7/DELIVERY.md and
   EVIDENCE_STATUS.json -> round2_v7_platform_feedback_2026_09_27.
+
+### Explicit user resumption and combined release request (2026-09-27)
+
+- The latest user request, “深入研究或优化，给我提交包”, explicitly resumes
+  work after the historical stop-after-V16 instruction. Preserve those earlier
+  pause records; they no longer prevent scoped work under this request.
+- First prepare exact original-column composition: V12 A50 iron plus V7 A50
+  time, aligned by official sample ID with original numeric field strings.
+  Do not retune alpha, substitute older packages or silently waive model gates.
+- The user confirms that the two original scored ZIPs are not on this computer.
+  The actual competition release remains WAITING_ORIGINAL_SOURCE_PACKAGES.
+  Validated public builder code is not a delivered submission ZIP; neither
+  a V4.1 package nor newly trained predictions may be called the V12/V7 originals.
+- Use scripts/compose_v12_v7_release.py on the computer holding both pinned
+  originals, or after receiving them privately. Outputs remain in a new local/
+  directory; no desktop overwrite or platform upload is authorized here.
+- Real model experiments still require correct frozen references, preregistered
+  costs/candidates, train-only label/preprocessing contracts, complete coverage,
+  confirmation and unchanged release gates. Do not reset account quota by inference.
+- Evidence and handoff: docs/team_strategy_20260926/COMBINED_RELEASE_REQUEST_20260927.md.

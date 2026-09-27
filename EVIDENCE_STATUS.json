@@ -301,9 +301,9 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "V12_V7_SCORES_RECEIVED_OPTIMIZATION_PAUSED",
+    "status": "USER_RESUMED_COMBINED_RELEASE_WAITING_ORIGINAL_PACKAGES",
     "submission_priority": [],
-    "recommended": "Both V12 and V7 are scored. Optimization remains paused after V16. No new test, reparenting, combined package or alpha package is authorized by this feedback.",
+    "recommended": "Latest explicit user request resumes optimization and asks for a package. Prepare exact V12 original iron plus V7 original time; originals are absent on this computer, so run the pinned builder where they reside or receive them privately. No actual combined ZIP exists here; no alpha retuning, quota reset or automatic upload.",
     "risk_if_platform_keeps_latest": "Historical hypothetical only; user reports the platform keeps the best score.",
     "current_preferred": {
       "candidate": "V12_IRON_JOINT_PLR001_A50",
@@ -321,7 +321,7 @@
       "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
       "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
       "reported_date": "2026-09-27",
-      "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
+      "note": "V12 changes iron only against A35, gaining +0.0160. V7 is scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. User explicitly resumed work; requested combination awaits original source ZIPs."
     },
     "platform_ranking": [
       "V12_IRON_JOINT_PLR001_A50",
@@ -5994,7 +5994,7 @@
     "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
     "reported_date": "2026-09-27",
-    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
+    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. User explicitly resumed work; requested combination awaits original source ZIPs."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -10610,6 +10610,53 @@
     "historical_sources_specs_and_gates_unchanged": true,
     "packages": 0,
     "uploads": 0
+  },
+  "round2_user_resumed_combined_release_2026_09_27": {
+    "status": "resumed_requested_release_waiting_original_source_packages",
+    "user_request": "深入研究或优化，给我提交包",
+    "user_originals_location_reply": "不在我的电脑上",
+    "evidence": "docs/team_strategy_20260926/COMBINED_RELEASE_REQUEST_20260927.md",
+    "implementation": "scripts/compose_v12_v7_release.py",
+    "candidate": "V12_A50_IRON_V7_A50_TIME_COMBINED",
+    "source_original_zip_hashes": {
+      "V12_iron": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+      "V7_time": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299"
+    },
+    "source_originals_available_here": false,
+    "private_v36_reference_and_v7_v12_confirmation_available_here": false,
+    "old_local_v41_package_is_not_current_incumbent": true,
+    "official_target_model_fits": 0,
+    "full_data_fits": 0,
+    "actual_competition_packages_created": 0,
+    "desktop_writes": 0,
+    "platform_uploads": 0,
+    "G0": {
+      "status": "synthetic_engineering_verified_actual_original_release_pending",
+      "python312_targeted_passed": 23,
+      "python311_targeted_passed": 23,
+      "python312_full": {"passed": 1162, "skipped": 11, "warnings": 3, "seconds": 175.47},
+      "python311_full_this_followup": null,
+      "private_full_xml": "local/reports/v12-v7-composition-full-py312-r1.xml",
+      "private_targeted_xml": ["local/reports/v12-v7-composition-targeted-r2.xml", "local/reports/v12-v7-composition-targeted-py311-r1.xml"],
+      "remaining_skip_scope": "Optional pytabkit/RealMLP module and private OOF/parent-cache integration checks.",
+      "real_original_positive_composition_and_fresh_process_audit_verified": false,
+      "synthetic_deterministic_zip_and_failed_process_retention_verified": true,
+      "remote_status": "verify Actions after publication; local success is not remote success"
+    },
+    "G1": {
+      "current_best_user_reported": 96.3526,
+      "new_platform_score": null,
+      "conditional_original_column_score_arithmetic": 96.3679,
+      "conditional_score_error_allowance": 0.0003,
+      "not_measured_or_guaranteed": true,
+      "target_96_4_achieved": false
+    },
+    "historical_models_specs_gates_and_packages_unchanged": true,
+    "remaining": [
+      "Receive both original ZIPs privately or run pinned builder on their computer.",
+      "Verify actual new-process audit before delivering the real submission ZIP.",
+      "Restore correct frozen references and preregister real nested evaluation before any new model search."
+    ]
   },
   "round2_team_followup_after_v16_2026_09_27": {
     "status": "synchronized_feedback_and_paused_optimization",
