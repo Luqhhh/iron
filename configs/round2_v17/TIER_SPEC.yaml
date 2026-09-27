@@ -1,0 +1,11 @@
+version: round2-v17-candidate-tiers
+source_experiment: configs/round2_v17/SPEC.yaml
+split_seeds: [42, 3407]
+folds: 5
+reference_by_target: {tap_iron: B0_IRON, tap_time_len: B0_TIME}
+candidates:
+  tap_iron: [J1, J2, P_LL_I, P_LH_I]
+  tap_time_len: [P_LL_T, P_LH_T]
+tie_preference_by_target:
+  tap_iron: [J1, J2, P_LL_I, P_LH_I]
+  tap_time_len: [P_LL_T, P_LH_T]
