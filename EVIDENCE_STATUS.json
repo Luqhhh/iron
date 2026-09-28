@@ -13539,4 +13539,47 @@
     },
     "goal_above_96_4_achieved": false
   }
+,
+  "desktop_pending_five_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "desktop_consolidated_to_five_pending_packages",
+    "request": "user asked to delete the extra desktop submission packages and keep only the five pending ones, choosing the mixed set and deleting the already-scored r8 batch",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending",
+    "kept": [
+      {
+        "file": "1_INTERIOR_A60V7_50.zip",
+        "round": "V32",
+        "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7"
+      },
+      {
+        "file": "2_INTERIOR_A60V7_75.zip",
+        "round": "V32",
+        "zip_sha256": "8eb5ab2c81032217a0ba19a8280b8f8fc35f39a59b02411671b47634b8a097dc"
+      },
+      {
+        "file": "3_TIME_V100.zip",
+        "round": "V18",
+        "zip_sha256": "9845a604e697f6a51cfa8e8b502bf0393cdbc0857f884fbc6fe037daf4a763d1"
+      },
+      {
+        "file": "4_IRON_W100.zip",
+        "round": "V31 (built as V28)",
+        "zip_sha256": "c41e56d4d3b3482a6baaaee33f76725811168ea31a4eba8c6aee6ade9133c269"
+      },
+      {
+        "file": "5_INTERIOR_A60V7_25.zip",
+        "round": "V32",
+        "zip_sha256": "688e27f58cd5ee4a1e8ba01cf4fc05530236ab58001655a6071894b6ba36ff11"
+      }
+    ],
+    "deleted_from_desktop": [
+      "submission-96.4-r8 (three already-scored packages)",
+      "submission-96.4-r9",
+      "submission-96.4-r10",
+      "and the not-chosen pending packages r9/1_TIME_V75, r9/3_IRON_W75, r9/5_IRON_W100_TIME_V100"
+    ],
+    "preserved": "every deleted ZIP still exists under the private local/ tree and is registered in its round evidence; the desktop copy is reproducible at any time",
+    "verification": "all five kept packages re-read from the desktop: SHA-256 matches, exactly result.csv, 322 template-ordered unique IDs, finite non-negative predictions",
+    "agent_uploads": 0
+  }
 }
