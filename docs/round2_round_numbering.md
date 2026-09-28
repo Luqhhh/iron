@@ -86,8 +86,9 @@ pending upload. Read `V20` as branch-qualified until the package is scored.
 
 `V27` is the authorized deep-kernel experiment on branch
 `round2-v27-deep-kernel`, specification `configs/round2_v27/SPEC.yaml`.
-Development is running; the current target is 96.5. Its public preregistration
-and implementation are pushed. The next free local number is **V28**.
+Development completed with no confirmation finalist; the current target is
+96.5. See `docs/round2_v27/RESULTS.md`. Its public preregistration and
+implementation are pushed. The next free local number is **V28**.
 
 The earlier V20 pending-upload wording above is historical. The user has since
 reported `V20_B0_PLLT_A325 = 96.3676`; B0 remains preferred at 96.3679.

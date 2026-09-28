@@ -950,3 +950,23 @@ platform best is user-reported B0 **96.3679**; target gap **0.1321**.
   not the entire family. B0 matches one additive rectangle; restating its iron
   difference is not independent evidence. V21 changed multiple weights, so N's
   isolated causal contribution is not established by those package scores.
+
+### V27 completed: frozen deep-kernel recipes negative (2026-09-28)
+
+Results: `docs/round2_v27/RESULTS.md`. All 60 candidate outer fits (120 candidate
+optimizer runs) and 20 shared B0 factory calls (640 component pipeline fits)
+completed with zero failures. Both development seeds have nonpositive gains for
+all six recipe/target combinations; no confirmation finalist was selected.
+
+- Mean package-score gains: iron GP_ARD -0.002242, DKL_RAW -0.004032,
+  DKL_PLR -0.002572; time GP_ARD 0, DKL_RAW -0.001731, DKL_PLR -0.001181.
+- Matching B0 mean: 96.247670099. Learned representations improve standalone
+  accuracy over the GP control but do not add a positive outer-seed blend gain.
+- G0: locked Python 3.12 suite 1169 passed; fresh-process audit passed for 80
+  units and 120 saved models, maximum cold inference difference 3.013e-11.
+- Confirmation fits, full-data fits, packages, desktop writes and uploads: zero.
+  Confirmation seeds 271828/314159 were not consumed. Preserve the negative
+  evidence; do not rescue the round with post-hoc parameter scans. This closes
+  the frozen recipes, not every possible GP or deep-kernel design.
+- Current user-reported platform best remains B0 96.3679; target 96.5 is unmet
+  by 0.1321. V27 is occupied; the next free local number is V28.

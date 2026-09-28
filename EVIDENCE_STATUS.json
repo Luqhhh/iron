@@ -12849,7 +12849,7 @@
     "v27_reservation": {
       "branch": "round2-v27-deep-kernel",
       "spec": "configs/round2_v27/SPEC.yaml",
-      "status": "development_running"
+      "status": "completed_negative_no_confirmation_finalist"
     }
   },
   "r8_three_slot_delivery_2026_09_28": {
@@ -12953,7 +12953,7 @@
     "goal_above_96_4_achieved": false,
     "interpretation_correction_2026_09_28": {
       "source": "docs/round2_v27/PREREGISTRATION.md",
-      "status": "supersedes interpretations below without changing reported scores or historical package decisions",
+      "status": "supersedes the historical interpretations in this entry without changing reported scores or package decisions",
       "additive_identity": "one rectangle; the rearranged iron difference is not independent evidence",
       "v21_n_attribution": "V21 changed multiple weights; its score does not isolate the causal effect of N",
       "concavity_bound": "96.3992 nominal (96.3999 with declared score error) applies only when both weights are in [0.5,1], not the entire blend family",
@@ -12961,7 +12961,7 @@
     }
   },
   "round2_v27_2026_09_28": {
-    "status": "development_running",
+    "status": "completed_negative_no_confirmation_finalist",
     "platform_target": 96.5,
     "platform_reference": "V18_B0_V12IRON_V7TIME",
     "platform_reference_score": 96.3679,
@@ -12982,10 +12982,118 @@
       "test_log_sha256": "3d8fc6cd4a26c14f8d6ceb856cdf5a2926405732f4e5e3b98c5ecab3abbb183e",
       "runtime": "uv --locked --python 3.12 --no-sync; explicit frozen CPU package version checks",
       "baseline_component_count_verified": 32,
-      "source_and_reference_files_to_freeze": 1457
+      "source_and_reference_files_to_freeze": 1457,
+      "audit": {
+        "status": "passed",
+        "units": 80,
+        "cold_models": 120,
+        "max_inference_difference": 3.012701199622825e-11,
+        "maximum_score_difference": 2.40692882291782e-16,
+        "summary_sha256": "0c882d9e0cb1570ecf0ff8094305ff2a587ad098283c5997994356e90773f5d9",
+        "manifest_sha256": "d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc",
+        "reference_audit_scope": "fit/query identities and saved endpoint arithmetic; no extra baseline refits",
+        "new_fits": 0,
+        "packages": 0,
+        "agent_uploads": 0
+      },
+      "audit_sha256": "8e62fc1f374f23d719a67287fcc714d3b6e19d78741511f64c461c5a88ccb3fc"
     },
     "development_directory": "local/runs/round2-v27/development-r1",
     "execution_amendment": "docs/round2_v27/EXECUTION_AMENDMENT.md",
-    "development_manifest_sha256": "d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc"
+    "development_manifest_sha256": "d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc",
+    "results": "docs/round2_v27/RESULTS.md",
+    "development_candidate_outer_fits": 60,
+    "development_candidate_optimizer_runs": 120,
+    "development_b0_factory_calls": 20,
+    "development_b0_component_pipeline_fits": 640,
+    "failed_units": 0,
+    "confirmation_candidate_outer_fits": 0,
+    "confirmation_b0_factory_calls": 0,
+    "desktop_writes": 0,
+    "confirmation_seeds_consumed": [],
+    "reference_concurrency_max": 6,
+    "development_fit_wall_minutes": 70.44444111786666,
+    "G1": {
+      "status": "all_six_combinations_nonpositive_on_each_complete_development_seed",
+      "matching_b0_score_by_seed": {
+        "42": 96.24875084732841,
+        "3407": 96.24658935061254
+      },
+      "matching_b0_mean_score": 96.24767009897047,
+      "historical_b0_development_mean_descriptive_only": 96.247739,
+      "selected_for_confirmation": {
+        "tap_iron": null,
+        "tap_time_len": null
+      },
+      "formal_selected": [],
+      "exploration_selected": [],
+      "candidate_results": [
+        {
+          "target": "tap_iron",
+          "recipe": "GP_ARD",
+          "gain_by_seed": {
+            "42": -0.0003919349264077526,
+            "3407": -0.004092450959959637
+          },
+          "mean_gain": -0.002242192943183695,
+          "positive_seeds": 0
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "DKL_RAW",
+          "gain_by_seed": {
+            "42": -0.004924962797131852,
+            "3407": -0.0031384457036404134
+          },
+          "mean_gain": -0.0040317042503861325,
+          "positive_seeds": 0
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "DKL_PLR",
+          "gain_by_seed": {
+            "42": -0.002746113225434235,
+            "3407": -0.0023979472030168786
+          },
+          "mean_gain": -0.002572030214225557,
+          "positive_seeds": 0
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "GP_ARD",
+          "gain_by_seed": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean_gain": 0.0,
+          "positive_seeds": 0
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "DKL_RAW",
+          "gain_by_seed": {
+            "42": 0.0,
+            "3407": -0.0034610642955738152
+          },
+          "mean_gain": -0.0017305321477869076,
+          "positive_seeds": 0
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "DKL_PLR",
+          "gain_by_seed": {
+            "42": -0.002362657305043231,
+            "3407": 0.0
+          },
+          "mean_gain": -0.0011813286525216155,
+          "positive_seeds": 0
+        }
+      ],
+      "decision": "stop_frozen_recipes_no_platform_submission",
+      "scope_limit": "not evidence that every possible GP or deep-kernel design is ineffective",
+      "platform_best_unchanged": 96.3679,
+      "target_gap_remaining": 0.1321
+    },
+    "confirmation_decision_log": "local/reports/v27-confirmation-decision-r1.log"
   }
 }
