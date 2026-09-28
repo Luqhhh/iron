@@ -3,10 +3,10 @@ import unittest
 
 import yaml
 
-from bf_tap_r2.v23_capacity import base_trial, probe_trial
+from bf_tap_r2.v25_capacity import base_trial, probe_trial
 
 ROOT = Path("/home/lux1/iron")
-SPEC = yaml.safe_load((ROOT / "configs/round2_v23/SPEC.yaml").read_text())
+SPEC = yaml.safe_load((ROOT / "configs/round2_v25/SPEC.yaml").read_text())
 
 
 class TrialTests(unittest.TestCase):

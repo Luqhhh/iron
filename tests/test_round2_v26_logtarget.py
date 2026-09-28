@@ -3,7 +3,7 @@ import unittest
 
 import numpy as np
 
-from bf_tap_r2.v24_logtarget import inverse, screen, transform
+from bf_tap_r2.v26_logtarget import inverse, screen, transform
 
 
 class TransformTests(unittest.TestCase):
@@ -28,7 +28,7 @@ class TransformTests(unittest.TestCase):
 class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            screen(Path("/home/lux1/iron"), "configs/round2_v24/SPEC.yaml",
+            screen(Path("/home/lux1/iron"), "configs/round2_v26/SPEC.yaml",
                    "docs/should-not-write", ["L_TIME"])
 
 

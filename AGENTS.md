@@ -805,12 +805,13 @@ implementation `src/bf_tap_r2/v22_saturation.py`, private evidence
   genuinely new model family. Locked Python 3.12 suite: **1153 passed, 23
   warnings**. See `EVIDENCE_STATUS.json -> round2_v22_2026_09_28`.
 
-### V23: the time-family capacity axis is closed (2026-09-28)
+### V25: the time-family capacity axis is closed (2026-09-28; renumbered from V23)
 
-Pre-registration `docs/round2_v23/PREREGISTRATION.md`, spec
-`configs/round2_v23/SPEC.yaml`, results `docs/round2_v23/RESULTS.md`,
-implementation `src/bf_tap_r2/v23_capacity.py`, evidence
-`local/runs/round2-v23/dev-r1/screen-both-r1.json`.
+Pre-registration `docs/round2_v25/PREREGISTRATION.md`, spec
+`configs/round2_v25/SPEC.yaml`, results `docs/round2_v25/RESULTS.md`,
+implementation `src/bf_tap_r2/v25_capacity.py`, evidence
+`local/runs/round2-v23/dev-r1/screen-both-r1.json` (private directory keeps its
+historical name).
 
 - Two frozen probes changed only capacity relative to the `N-0048` recipe —
   `P_WIDE` (`k=32, n_blocks=3, d_block=768`) and `P_DEEP`
@@ -831,14 +832,15 @@ implementation `src/bf_tap_r2/v23_capacity.py`, evidence
   **1156 passed, 23 warnings**. Remaining routes: platform feedback on the
   pending portfolio (which resolves the N weight) and a genuinely different
   model class. The `>96.4` objective remains unmet.
-  See `EVIDENCE_STATUS.json -> round2_v23_2026_09_28`.
+  See `EVIDENCE_STATUS.json -> round2_v25_2026_09_28`.
 
-### V24: the target-representation axis is closed (2026-09-28)
+### V26: the target-representation axis is closed (2026-09-28; renumbered from V24)
 
-Pre-registration `docs/round2_v24/PREREGISTRATION.md`, spec
-`configs/round2_v24/SPEC.yaml`, results `docs/round2_v24/RESULTS.md`,
-implementation `src/bf_tap_r2/v24_logtarget.py`, evidence
-`local/runs/round2-v24/dev-r1/screen.json`.
+Pre-registration `docs/round2_v26/PREREGISTRATION.md`, spec
+`configs/round2_v26/SPEC.yaml`, results `docs/round2_v26/RESULTS.md`,
+implementation `src/bf_tap_r2/v26_logtarget.py`, evidence
+`local/runs/round2-v24/dev-r1/screen.json` (private directory keeps its historical
+name).
 
 - First target-representation experiment on the winning neural families: the
   frozen `N-0048` large raw-TabM time recipe fitted on `log(y)` and `sqrt(y)`
@@ -852,7 +854,7 @@ implementation `src/bf_tap_r2/v24_logtarget.py`, evidence
 - **Closed: the target-representation axis.** Every axis that changes members,
   weights, capacity, blends or target representation of the existing families is
   now closed against the strongest incumbent (V19 iron capacity, V22 whole
-  reproducible library, V23 time capacity, V24 target representation, V6 §7
+  reproducible library, V25 time capacity, V26 target representation, V6 §7
   stacking). The binding requirement is accuracy close to the incumbent
   (ratio near `1.0`); nothing tried gets an existing family below `1.07`.
 - Two incidents recorded: the first launch discarded 8 completed fits on an
@@ -864,4 +866,22 @@ implementation `src/bf_tap_r2/v24_logtarget.py`, evidence
   **1160 passed, 23 warnings**. Remaining routes: platform feedback on the
   pending portfolio and a genuinely different model class with new inputs or a
   new paradigm. The `>96.4` objective remains unmet.
-  See `EVIDENCE_STATUS.json -> round2_v24_2026_09_28`.
+  See `EVIDENCE_STATUS.json -> round2_v26_2026_09_28`.
+
+### Round numbering (2026-09-28)
+
+- The closed local rounds **V23 (time-family capacity)** and **V24 (target
+  representation)** are renumbered to **V25** and **V26**. The teammate's branch
+  `codex/round2-v23-histogram-target` owns `V23`; the move removes the duplicate
+  `configs/round2_v23/` and `docs/round2_v23/` paths at merge time.
+- Only public labels moved. Private evidence directories `local/runs/round2-v23`
+  and `local/runs/round2-v24` are frozen and were not renamed, rewritten or
+  deleted.
+- `V20` is still used by two rounds on two branches: the local
+  `round2-v20-pll-time-release-on-b0` (released package `V20_B0_PLLT_A325`,
+  pending upload) and the teammate's `round2-v20-masked-feature-reconstruction`
+  (closed negative, no package). It is **not** renamed because the package label
+  is frozen; read `V20` as branch-qualified.
+- Next free local number: **V27**. Full map:
+  `docs/round2_round_numbering.md` and
+  `EVIDENCE_STATUS.json -> round2_round_numbering_2026_09_28`.

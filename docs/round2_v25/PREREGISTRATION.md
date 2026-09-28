@@ -1,7 +1,15 @@
-# iron 96.4 — V23: capacity probe on the winning time family
+# iron 96.4 — V25: capacity probe on the winning time family
 
-Design date: 2026-09-28. Base commit `a566261`. Status at design time: no V23 fit
+Design date: 2026-09-28. Base commit `a566261`. Status at design time: no V25 fit
 has run, no package has been written, no upload has been made.
+
+> **Numbering note (2026-09-28):** this round was pre-registered and closed as
+> **V23**; it is renumbered to **V25** so the label `V23` stays free for the
+> teammate's histogram-target round on `codex/round2-v23-histogram-target`. Only
+> public labels moved (`configs/round2_v25`, `docs/round2_v25`,
+> `src/bf_tap_r2/v25_capacity.py`); the frozen private run directory keeps its
+> historical name `local/runs/round2-v23`. See
+> [round2_round_numbering.md](../round2_round_numbering.md).
 
 ## 1. Why this probe
 
@@ -70,9 +78,9 @@ are frozen (`v36_time 0.40`, `v7_member_time 0.25`, `pll_time 0.35`).
 
 Workers are capped so the widened TabM (`~57M` parameters for `P_WIDE`) fits the
 15 GiB host: at most 3 workers, with BLAS/OMP/MKL/NUMEXPR pinned to one thread.
-Private outputs under `local/runs/round2-v23`. If both probes fail, the
-capacity axis of the time family is closed with complete-coverage evidence and
-nothing is packaged.
+Private outputs under `local/runs/round2-v23` (historical name, kept frozen
+across the V23 -> V25 renumbering). If both probes fail, the capacity axis of the
+time family is closed with complete-coverage evidence and nothing is packaged.
 
 ## 5. Limits
 

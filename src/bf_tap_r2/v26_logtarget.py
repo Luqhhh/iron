@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""V24: target-representation probe on the frozen winning time recipe.
+"""V26: target-representation probe on the frozen winning time recipe.
 
 Fits the frozen ``N-0048`` large raw-TabM time recipe on a transformed target
 (``log`` / ``sqrt``) and inverts the prediction, then screens the result as an
 incremental nested blend on top of the V21 time incumbent.  Never uploads.
+
+Renumbered from V24 to V26 on 2026-09-28 (public label only).  The closed
+2026-09-28 private run directory keeps its historical name and is not moved; see
+`docs/round2_round_numbering.md`.
 """
 from __future__ import annotations
 
@@ -22,10 +26,12 @@ from .v5_resolution import wmape
 from .v5_spec import load_v5_spec
 from .v11_quantile import load_oof
 from .v16_sequential_masks import load_references
-from .v23_capacity import base_trial
+from .v25_capacity import base_trial
 
 ROOT_DEFAULT = Path("/home/lux1/iron")
-SPEC_DEFAULT = Path("configs/round2_v24/SPEC.yaml")
+SPEC_DEFAULT = Path("configs/round2_v26/SPEC.yaml")
+# Frozen 2026-09-28 private run directory.  The public round label moved to V26
+# but the evidence directory is deliberately neither renamed nor rewritten.
 OUTPUT_DEFAULT = Path("local/runs/round2-v24/dev-r1")
 TIME = "tap_time_len"
 IRON = "tap_iron"
@@ -38,7 +44,7 @@ def transform(y: np.ndarray, kind: str) -> np.ndarray:
         return np.log(y)
     if kind == "sqrt":
         return np.sqrt(y)
-    raise ValueError(f"Unknown V24 target transform: {kind}")
+    raise ValueError(f"Unknown V26 target transform: {kind}")
 
 
 def inverse(prediction: np.ndarray, kind: str) -> np.ndarray:
@@ -46,7 +52,7 @@ def inverse(prediction: np.ndarray, kind: str) -> np.ndarray:
         return np.exp(prediction)
     if kind in ("sqrt", "square_clip"):
         return np.clip(prediction, 0.0, None) ** 2
-    raise ValueError(f"Unknown V24 inverse transform: {kind}")
+    raise ValueError(f"Unknown V26 inverse transform: {kind}")
 
 
 def _init_worker(frame, folds) -> None:
@@ -58,7 +64,7 @@ def _worker(payload: Mapping[str, Any]) -> np.ndarray:
     from .v3_6_models import V36Regressor
 
     if _WORKER is None:
-        raise RuntimeError("V24 worker was not initialised")
+        raise RuntimeError("V26 worker was not initialised")
     frame, folds = _WORKER
     fold = int(payload["fold"])
     mask = folds == fold
@@ -69,7 +75,7 @@ def _worker(payload: Mapping[str, Any]) -> np.ndarray:
     model.fit(training, target)
     prediction = inverse(np.asarray(model.predict(query), dtype=float), payload["inverse"])
     if prediction.shape != (int(mask.sum()),) or not np.isfinite(prediction).all():
-        raise ValueError("Invalid V24 prediction")
+        raise ValueError("Invalid V26 prediction")
     return prediction
 
 
@@ -82,7 +88,7 @@ def fit(root: Path | str, spec_path: Path | str, output: Path | str, seed: int,
             raise ValueError(f"Set {name}=1")
     out = (root / output).resolve() / f"seed-{seed}"
     if not out.is_relative_to(root / "local/runs/round2-v24"):
-        raise ValueError("V24 outputs must stay under local/runs/round2-v24")
+        raise ValueError("V26 outputs must stay under local/runs/round2-v24")
     out.mkdir(parents=True, exist_ok=True)
     done = {path.name for path in out.glob("pred-*.npy")}
     base_spec = yaml.safe_load((root / spec["base_spec"]).read_text())
@@ -153,9 +159,9 @@ def screen(root: Path | str, spec_path: Path | str, output: Path | str,
     destination = (root / output).resolve()
     report_path = destination / screen_name
     if not report_path.parent.is_relative_to(root / "local/runs/round2-v24"):
-        raise ValueError("V24 evidence must stay private under local/runs/round2-v24")
+        raise ValueError("V26 evidence must stay private under local/runs/round2-v24")
     if report_path.exists():
-        raise FileExistsError("V24 screen already exists; refusing overwrite")
+        raise FileExistsError("V26 screen already exists; refusing overwrite")
     seeds = [int(seed) for seed in spec["split_seeds"]]
     frame = load_v5_training_frame(root)
     folds = {seed: fold_vector(root, frame, seed, load_v5_spec(root)) for seed in seeds}
@@ -172,10 +178,10 @@ def screen(root: Path | str, spec_path: Path | str, output: Path | str,
                 path = (root / output) / f"seed-{seed}" / f"pred-{probe}-f{fold}.npy"
                 values = np.load(path, allow_pickle=False)
                 if values.shape != (int(mask.sum()),):
-                    raise ValueError(f"Invalid V24 prediction shape: {path}")
+                    raise ValueError(f"Invalid V26 prediction shape: {path}")
                 column[mask] = values
             if not np.isfinite(column).all():
-                raise ValueError(f"Incomplete V24 coverage: {probe} seed {seed}")
+                raise ValueError(f"Incomplete V26 coverage: {probe} seed {seed}")
             member[seed] = column
         deltas, alphas = [], []
         for held in seeds:

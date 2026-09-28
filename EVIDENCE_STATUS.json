@@ -12625,12 +12625,13 @@
     "goal_above_96_4_achieved": false
   }
 ,
-  "round2_v23_2026_09_28": {
+  "round2_v25_2026_09_28": {
     "date": "2026-09-28",
     "status": "closed_time_capacity_axis_no_packages",
-    "source_plan": "docs/round2_v23/PREREGISTRATION.md",
-    "result": "docs/round2_v23/RESULTS.md",
-    "spec": "configs/round2_v23/SPEC.yaml",
+    "renumbered_from": "round2_v23_2026_09_28 on 2026-09-28 (public label only; private evidence directory unchanged)",
+    "source_plan": "docs/round2_v25/PREREGISTRATION.md",
+    "result": "docs/round2_v25/RESULTS.md",
+    "spec": "configs/round2_v25/SPEC.yaml",
     "platform_target": 96.4,
     "current_platform_best": {
       "candidate": "V12_IRON_JOINT_PLR001_A50",
@@ -12699,7 +12700,7 @@
         }
       },
       "conclusion": "Increasing capacity made the member 1.5-2% less accurate than its own large parent while leaving it equally correlated, so every nested weight is exactly 0.0. The time-family capacity axis is closed at complete coverage, mirroring V19 for iron.",
-      "closed_routes": "iron capacity (V19); whole reproducible library incl. the completed N family (V22); time capacity (V23); V6 section 7 stacking closure. Every route that only re-weights, re-scales or re-fits members of the existing families is closed against the strongest incumbent.",
+      "closed_routes": "iron capacity (V19); whole reproducible library incl. the completed N family (V22); time capacity (V25); V6 section 7 stacking closure. Every route that only re-weights, re-scales or re-fits members of the existing families is closed against the strongest incumbent.",
       "remaining_routes": [
         "platform feedback on the pending portfolio, which resolves the N weight",
         "a genuinely different model class, not another capacity/member/blend change"
@@ -12708,12 +12709,13 @@
     "goal_above_96_4_achieved": false
   }
 ,
-  "round2_v24_2026_09_28": {
+  "round2_v26_2026_09_28": {
     "date": "2026-09-28",
     "status": "closed_target_representation_axis_no_packages",
-    "source_plan": "docs/round2_v24/PREREGISTRATION.md",
-    "result": "docs/round2_v24/RESULTS.md",
-    "spec": "configs/round2_v24/SPEC.yaml",
+    "renumbered_from": "round2_v24_2026_09_28 on 2026-09-28 (public label only; private evidence directory unchanged)",
+    "source_plan": "docs/round2_v26/PREREGISTRATION.md",
+    "result": "docs/round2_v26/RESULTS.md",
+    "spec": "configs/round2_v26/SPEC.yaml",
     "platform_target": 96.4,
     "current_platform_best": {
       "candidate": "V12_IRON_JOINT_PLR001_A50",
@@ -12785,8 +12787,8 @@
       "closed_routes": [
         "iron capacity (V19)",
         "whole reproducible library incl. the completed N family (V22)",
-        "time capacity (V23)",
-        "target representation (V24)",
+        "time capacity (V25)",
+        "target representation (V26)",
         "V6 section 7 stacking closure"
       ],
       "remaining_routes": [
@@ -12795,5 +12797,43 @@
       ]
     },
     "goal_above_96_4_achieved": false
+  },
+  "round2_round_numbering_2026_09_28": {
+    "date": "2026-09-28",
+    "action": "renumbered_two_closed_local_rounds_so_each_V_number_has_one_meaning",
+    "reason": "The local line had used V23 (time-family capacity) and V24 (target representation) while the teammate branch codex/round2-v23-histogram-target owns V23 for the histogram-target round. The rename removes the duplicate configs/round2_v23/ and docs/round2_v23/ paths at merge time.",
+    "mapping": {
+      "round2_v23_2026_09_28": "round2_v25_2026_09_28",
+      "round2_v24_2026_09_28": "round2_v26_2026_09_28",
+      "public_paths": {
+        "configs/round2_v23": "configs/round2_v25",
+        "configs/round2_v24": "configs/round2_v26",
+        "docs/round2_v23": "docs/round2_v25",
+        "docs/round2_v24": "docs/round2_v26",
+        "src/bf_tap_r2/v23_capacity.py": "src/bf_tap_r2/v25_capacity.py",
+        "src/bf_tap_r2/v24_logtarget.py": "src/bf_tap_r2/v26_logtarget.py",
+        "tests/test_round2_v23_capacity.py": "tests/test_round2_v25_capacity.py",
+        "tests/test_round2_v24_logtarget.py": "tests/test_round2_v26_logtarget.py"
+      }
+    },
+    "frozen_identifiers": {
+      "private_run_directories": [
+        "local/runs/round2-v23/dev-r1",
+        "local/runs/round2-v24/dev-r1"
+      ],
+      "note": "Private evidence directories, fit ledgers and predictions keep their historical names; nothing under local/ was renamed, rewritten or deleted. Recorded digests such as test_log_sha256 still describe the same bytes.",
+      "training_statements_or_scores_changed": false
+    },
+    "v20_double_use": {
+      "our_line": "round2-v20-pll-time-release-on-b0; released package V20_B0_PLLT_A325, ZIP f14f39df5474c8904639c0768bf8fa678f645f46fb0f987fbb84690a983eef57, pending upload",
+      "teammate_branch": "round2-v20-masked-feature-reconstruction on codex/round2-v20-masked-recon (closed negative, no package)",
+      "decision": "not renamed: the released package label is frozen while it is pending upload; read V20 as branch-qualified",
+      "source": "docs/round2_v20/PREREGISTRATION.md and the teammate branch commit 3b31f2b"
+    },
+    "next_free_local_number": 27,
+    "new_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0
   }
 }

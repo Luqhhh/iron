@@ -1,7 +1,15 @@
-# iron 96.4 — V24: target-representation probe on the winning time recipe
+# iron 96.4 — V26: target-representation probe on the winning time recipe
 
-Design date: 2026-09-28. Base commit `b2ec1bb`. Status at design time: no V24 fit
+Design date: 2026-09-28. Base commit `b2ec1bb`. Status at design time: no V26 fit
 has run, no package has been written, no upload has been made.
+
+> **Numbering note (2026-09-28):** this round was pre-registered and closed as
+> **V24**; it is renumbered to **V26** together with the V23 -> V25 move so the
+> local sequence stays monotonic. Only public labels moved
+> (`configs/round2_v26`, `docs/round2_v26`, `src/bf_tap_r2/v26_logtarget.py`); the
+> frozen private run directory keeps its historical name
+> `local/runs/round2-v24`. See
+> [round2_round_numbering.md](../round2_round_numbering.md).
 
 ## 1. Why this probe
 
@@ -70,8 +78,9 @@ Fold-level counts are descriptive only. Incumbent weights are frozen
 | agent uploads | 0 |
 
 Three workers, BLAS/OMP/MKL/NUMEXPR pinned to one thread. Private outputs under
-`local/runs/round2-v24`. If both probes fail, the target-representation axis is
-closed and nothing is packaged.
+`local/runs/round2-v24` (historical name, kept frozen across the V24 -> V26
+renumbering). If both probes fail, the target-representation axis is closed and
+nothing is packaged.
 
 ## 5. Limits
 

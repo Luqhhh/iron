@@ -1,9 +1,15 @@
-# V23 results: the time-family capacity axis is closed
+# V25 results: the time-family capacity axis is closed
 
 Pre-registration: [PREREGISTRATION.md](PREREGISTRATION.md),
-`configs/round2_v23/SPEC.yaml`. Implementation:
-`src/bf_tap_r2/v23_capacity.py`. Private evidence:
-`local/runs/round2-v23/dev-r1` (`screen-both-r1.json`, per-seed fit ledgers).
+`configs/round2_v25/SPEC.yaml`. Implementation:
+`src/bf_tap_r2/v25_capacity.py`. Private evidence:
+`local/runs/round2-v23/dev-r1` (`screen-both-r1.json`, per-seed fit ledgers; the
+directory keeps its historical V23 name and was not moved).
+
+> **Numbering note (2026-09-28):** closed as **V23**, renumbered to **V25** to free
+> the `V23` label for the teammate's histogram-target round. Public paths moved;
+> private evidence paths are frozen. See
+> [round2_round_numbering.md](../round2_round_numbering.md).
 
 ## What was tested
 
@@ -73,7 +79,7 @@ One slow-process episode is recorded: the first launch fitted both probes with
 three workers and was killed when no fold completed inside the window; the
 runner was made resumable and re-launched per probe, so the 20 authoritative
 fits are complete and exactly the registered budget was spent. Targeted tests: 3
-in `tests/test_round2_v23_capacity.py`.
+in `tests/test_round2_v25_capacity.py`.
 
 ## Remaining routes
 

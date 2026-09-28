@@ -1,13 +1,18 @@
-# V24 results: the target-representation axis is closed
+# V26 results: the target-representation axis is closed
 
 Pre-registration: [PREREGISTRATION.md](PREREGISTRATION.md),
-`configs/round2_v24/SPEC.yaml`. Implementation:
-`src/bf_tap_r2/v24_logtarget.py`. Private evidence:
-`local/runs/round2-v24/dev-r1/screen.json` and the per-seed fit ledgers.
+`configs/round2_v26/SPEC.yaml`. Implementation:
+`src/bf_tap_r2/v26_logtarget.py`. Private evidence:
+`local/runs/round2-v24/dev-r1/screen.json` and the per-seed fit ledgers (the
+directory keeps its historical V24 name and was not moved).
+
+> **Numbering note (2026-09-28):** closed as **V24**, renumbered to **V26** together
+> with the V23 -> V25 move. Public paths moved; private evidence paths are frozen.
+> See [round2_round_numbering.md](../round2_round_numbering.md).
 
 ## What was tested
 
-Every previously closed route changed members, weights, capacity or blends. V24
+Every previously closed route changed members, weights, capacity or blends. V26
 changed the **target representation** of the frozen winning time recipe
 (`N-0048`, large `raw_tabm`, `target_transform: train_mean_std`), an axis never
 applied to the winning neural families:
@@ -41,7 +46,7 @@ The prediction accuracy, however, shows the hypothesis was **partly right**:
 
 The log target is the **most accurate standalone member of this family measured
 so far** — about 0.8 % / 0.3 % lower WMAPE than the raw-target parent — but the
-accuracy ratio against the incumbent is still `1.07-1.09`, and V19/V23 established
+accuracy ratio against the incumbent is still `1.07-1.09`, and V19/V25 established
 that a member in that regime earns no blend weight. The improvement is real but
 far too small to matter: it moves the member, not the column.
 
@@ -78,7 +83,7 @@ Two process facts are recorded:
 
 ## G0
 
-Targeted tests: 4 in `tests/test_round2_v24_logtarget.py` (transform round-trips,
+Targeted tests: 4 in `tests/test_round2_v26_logtarget.py` (transform round-trips,
 non-negative clipping, guard paths).
 
 ## Remaining routes

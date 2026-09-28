@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""V23: capacity probe on the winning raw-TabM time family.
+"""V25: capacity probe on the winning raw-TabM time family.
 
 Two frozen probes (`P_WIDE`, `P_DEEP`) are fitted with the frozen V3.6 evaluator
 on complete outer folds of the two development split seeds, then screened as an
 incremental nested blend on top of the V21 time incumbent.  Never uploads.
+
+Renumbered from V23 to V25 on 2026-09-28 (public label only).  The closed
+2026-09-28 private run directory keeps its historical name and is not moved; see
+`docs/round2_round_numbering.md`.
 """
 from __future__ import annotations
 
@@ -25,7 +29,9 @@ from .v11_quantile import load_oof
 from .v16_sequential_masks import load_references
 
 ROOT_DEFAULT = Path("/home/lux1/iron")
-SPEC_DEFAULT = Path("configs/round2_v23/SPEC.yaml")
+SPEC_DEFAULT = Path("configs/round2_v25/SPEC.yaml")
+# Frozen 2026-09-28 private run directory.  The public round label moved to V25
+# but the evidence directory is deliberately neither renamed nor rewritten.
 OUTPUT_DEFAULT = Path("local/runs/round2-v23/dev-r1")
 LEDGER = "local/runs/round2-v3.6-loss-training-and-numeric-encoding/fixed-r2-final/fit_ledger.jsonl"
 TIME = "tap_time_len"
@@ -47,15 +53,15 @@ def base_trial(root: Path, spec: Mapping[str, Any]) -> dict[str, Any]:
             if str(trial["target"]) != TIME or str(trial["structure"]) != str(spec["structure"]):
                 raise ValueError("Base recipe identity mismatch")
             return trial
-    raise FileNotFoundError(f"V23 base recipe not found in the ledger: {base_id}")
+    raise FileNotFoundError(f"V25 base recipe not found in the ledger: {base_id}")
 
 
 def probe_trial(root: Path, spec: Mapping[str, Any], probe: str) -> dict[str, Any]:
     if probe not in spec["probes"]:
-        raise KeyError(f"Unknown V23 probe: {probe}")
+        raise KeyError(f"Unknown V25 probe: {probe}")
     trial = base_trial(root, spec)
     capacity = dict(spec["probes"][probe])
-    trial["trial_id"] = f"v23-{probe}"
+    trial["trial_id"] = f"v25-{probe}"
     trial["capacity_name"] = probe.lower()
     trial["parameters"].update({k: v for k, v in capacity.items()})
     return trial
@@ -70,7 +76,7 @@ def _worker(payload: Mapping[str, Any]) -> np.ndarray:
     from .v3_6_models import evaluate_v36_outer_folds
 
     if _WORKER_TRAIN is None or _WORKER_FOLDS is None:
-        raise RuntimeError("V23 worker was not initialised")
+        raise RuntimeError("V25 worker was not initialised")
     result = evaluate_v36_outer_folds(_WORKER_TRAIN, _WORKER_FOLDS, payload["trial"],
                                       fold_ids=(int(payload["fold"]),))
     column = np.full(len(_WORKER_TRAIN), np.nan)
@@ -88,7 +94,7 @@ def fit(root: Path | str, spec_path: Path | str, output: Path | str, seed: int,
             raise ValueError(f"Set {name}=1")
     out = (root / output).resolve() / f"seed-{seed}"
     if not out.is_relative_to(root / "local/runs/round2-v23"):
-        raise ValueError("V23 outputs must stay under local/runs/round2-v23")
+        raise ValueError("V25 outputs must stay under local/runs/round2-v23")
     out.mkdir(parents=True, exist_ok=True)
     done = {path.name for path in out.glob("pred-*.npy")}
     frame = load_v5_training_frame(root)
@@ -173,10 +179,10 @@ def screen(root: Path | str, spec_path: Path | str, output: Path | str,
                 if values.shape == (len(frame),):
                     values = values[mask]
                 if values.shape != (int(mask.sum()),) or not np.isfinite(values).all():
-                    raise ValueError(f"Invalid V23 prediction shape: {path}")
+                    raise ValueError(f"Invalid V25 prediction shape: {path}")
                 column[mask] = values
             if not np.isfinite(column).all():
-                raise ValueError(f"Incomplete V23 coverage: {probe} seed {seed}")
+                raise ValueError(f"Incomplete V25 coverage: {probe} seed {seed}")
             member[seed] = column
         deltas, alphas = [], []
         for held in seeds:
@@ -199,7 +205,7 @@ def screen(root: Path | str, spec_path: Path | str, output: Path | str,
     destination = Path(output) if Path(output).is_absolute() else root / output
     report_path = destination / screen_name
     if report_path.exists():
-        raise FileExistsError("V23 screen already exists; refusing overwrite")
+        raise FileExistsError("V25 screen already exists; refusing overwrite")
     report_path.write_text(json.dumps({"probes": rows, "new_fits": 0}, indent=2, sort_keys=True) + "\n",
                            encoding="utf-8")
     print(json.dumps(rows, indent=2))
