@@ -166,3 +166,9 @@ V33 is reserved for continuous mixture-density regression on branch
 Fresh remote fetch and all-branch integer/suffixed SPEC scan found V33 occupied
 and V34 free. V34 is reserved for CRPS natural-gradient trees on
 `round2-v34-crps-boosting`. Next free local number: V35; scan again before use.
+
+## 11. V35 reservation (2026-09-28)
+
+Fresh remote/all-branch scan found V34 occupied and V35 free. V35 is the
+independent CRPS convergence study, branch `round2-v35-crps-convergence`.
+Next free number: V36; recheck all branch reservations before using it.

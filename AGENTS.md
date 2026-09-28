@@ -1160,3 +1160,13 @@ post-hoc cap increase within V34. Any later study needs a separate frozen
 budget and cannot overwrite this evidence. G0: 1201 tests passed; 80 saved
 models cold-audited with zero inference difference. Best remains B0 96.3679;
 platform 96.5 remains unmet.
+
+### V35 convergence study opened (2026-09-28)
+
+V34's measured cap limitation justifies one separately frozen convergence
+study, `configs/round2_v35/SPEC.yaml`. Only max_epochs changes 500 -> 3000;
+all other training and gate settings remain V34. Forty fresh outer fits,
+20 audited reference units reused, all 40 old calibration histories and
+80 old model-prediction prefixes must reproduce exactly. V34 stays failed.
+No new full-data fit, package or upload. Next free number V36 requires a
+fresh reservation scan. Goal remains platform 96.5.

@@ -14163,5 +14163,30 @@
       "target_gap_remaining": 0.1321,
       "decision": "stop_frozen_round_no_posthoc_tree_count_increase"
     }
+  },
+  "round2_v35_2026_09_28": {
+    "status": "preregistered_convergence_study",
+    "platform_target": 96.5,
+    "platform_reference": "V18_B0_V12IRON_V7TIME",
+    "platform_reference_score": 96.3679,
+    "spec": "configs/round2_v35/SPEC.yaml",
+    "source_plan": "docs/round2_v35/PREREGISTRATION.md",
+    "only_training_change": {
+      "max_epochs": [
+        500,
+        3000
+      ]
+    },
+    "development_candidate_outer_fits_budget": 40,
+    "development_training_runs_budget": 80,
+    "development_reference_units_reused": 20,
+    "required_prefixes": {
+      "calibration_histories": 40,
+      "prediction_vectors": 80,
+      "maximum_difference": 0
+    },
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
