@@ -1224,3 +1224,15 @@ development 7.607 hours still exceeds 6; peak RSS 935.25 MiB passes.
 1224 tests passed. Two resource optimizers, zero learnability or official
 fits, no packages/uploads. G1 remains unmeasured. Preserve both arms and
 failed evidence; do not drop INSTANCE or relax the gate inside V37.
+
+### V39 user-authorized hard-tree quality phase (2026-09-29)
+
+User explicitly accepted “7.61小时可接受”; retain V37's old 6-hour refusal
+but admit its 7.607-hour projected development under the new authorization.
+Use unchanged V37 model and original GLOBAL-control/INSTANCE-candidate roles.
+40 complete development units, then conditional four-seed validation only
+for eligible INSTANCE. Current reference is newly reported V32_TIME_A60V7_50
+96.3727, time weights .20 V36/.30 N/.50 V7; iron unchanged. Goal is 96.5.
+`configs/round2_v39/SPEC.yaml` / `docs/round2_v39/PREREGISTRATION.md`.
+This worktree is isolated from a concurrent V38 interior-feedback task.
+No full-data fits, packages, desktop writes or uploads.

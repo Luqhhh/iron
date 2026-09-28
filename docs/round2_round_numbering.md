@@ -183,3 +183,12 @@ V27's CPU refusal. Next free local number V37 requires a new reservation scan.
 
 Fresh fetch/all-branch integer and suffixed SPEC scan reserves V37 for exact
 hard-tree contraction; next V38 requires a fresh scan. V36 stays frozen.
+
+## 14. Concurrent V38 / isolated V39 reservation (2026-09-29)
+
+An uncommitted V38 interior-feedback task appeared in the shared checkout
+after the clean remote reservation scan. Its files were left untouched; the
+untested custom-routing sketch was retained privately without optimizer runs.
+User accepted V37 runtime, so V39 is reserved for its complete quality phase
+in /home/lux1/iron-v39-hard-tree-quality. V38 feedback records 96.3727 as the
+new best. Recheck every branch and local reservation before using V40.

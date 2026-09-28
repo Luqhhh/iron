@@ -5987,14 +5987,14 @@
       "score": 96.3679
     },
     "delta_vs_previous_best": 0.0048,
-    "target": 96.4,
+    "target": 96.5,
     "target_met": false,
-    "margin_to_target": -0.0273,
+    "margin_to_target": -0.1273,
     "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
     "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
     "reported_date": "2026-09-28",
-    "note": "The first interior-simplex probe, and the first package to beat the released B0 weights: the platform optimum lies toward more N at the released V7m weight. The V7m direction has already turned (pure V7m is now bounded at 96.3531)."
+    "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -14635,5 +14635,16 @@
       "targeted_tests_passed": 8
     },
     "goal_above_96_4_achieved": false
+  },
+  "round2_v39_hard_tree_quality": {
+    "status": "implementation_and_synthetic_preflight_pending",
+    "spec": "configs/round2_v39/SPEC.yaml",
+    "plan": "docs/round2_v39/PREREGISTRATION.md",
+    "platform_target": 96.5,
+    "platform_reference": 96.3727,
+    "user_resource_authorization": "7.61小时可接受",
+    "official_fits": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }
