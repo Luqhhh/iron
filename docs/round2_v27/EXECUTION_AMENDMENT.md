@@ -39,3 +39,13 @@ model workers is 28 (24 reference constituent workers plus four candidates),
 with numerical thread counts still one. The auxiliary scheduler and its exact
 unit list are hashed in an append-only execution record; atomic unit claiming
 and the original scientific identity checks are unchanged.
+
+An optional bridge scheduler (`scripts/run_v27_reference_bridge.py`) may fill
+two reference slots after at least six of the eight tail units have completed.
+It precomputes only seed-3407 fold 0, calibration and outer, while the primary
+queue still has at least four seed-42 reference units unfinished. If that queue
+buffer disappears before launch, it skips and leaves both units to the primary
+controller. At most two tail, two primary and two bridge calls then coexist:
+the six-call ceiling and all fit budgets remain unchanged. Its source hash and
+launch/skip outcome are recorded separately in the private run. This amendment
+uses only completion status and timing; it does not inspect validation scores.
