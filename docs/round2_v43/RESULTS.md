@@ -91,3 +91,13 @@ Private root: `local/runs/round2-v43/development-r1`.
   `e0a2f95d9f2a5fd8bfaee8b8e012fa180fbf75208c9e40ff3baae93371d8446d`.
 
 Models, predictions, local reports and monitoring logs remain outside Git.
+
+## Subsequent training-trace diagnostic (before V44)
+
+A separate zero-fit read of the existing training traces, without outer query
+labels, finds BART RSS lag-one correlation .5385–.9065 (median .7613), versus
+STUMP .2320–.6382 (median .4247). BART's retained-half RSS mean shift has median
+-.6051 within-chain standard deviations. Private append-only evidence:
+`trace-dependence-r1.json`. These are descriptive dependence/drift measurements,
+not a convergence test, a quality gate change or a V43 continuation. They
+motivate the separately frozen V44 length study; V43's decision stays failed.

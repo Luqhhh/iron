@@ -1,0 +1,214 @@
+version: round2-v44-bart-length-study
+source_plan: docs/round2_v44/PREREGISTRATION.md
+base_commit: d461920
+platform_target: 96.5
+platform_reference:
+  candidate: V32_TIME_A60V7_50
+  score: 96.3727
+  source: user_reported_not_independently_verified
+  zip_sha256: 54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+runtime_versions:
+  torch: 2.14.0+cpu
+  tabm: 0.0.3
+  rtdl-num-embeddings: 0.0.12
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+  scipy: 1.18.1
+split_seeds:
+- 42
+- 3407
+confirmation_seeds:
+- 271828
+- 314159
+folds: 5
+targets:
+- tap_iron
+- tap_time_len
+recipes:
+- STUMP
+- BART
+candidates:
+  tap_iron:
+  - STUMP
+  - BART
+  tap_time_len:
+  - STUMP
+  - BART
+tie_preference_by_target:
+  tap_iron:
+  - STUMP
+  - BART
+  tap_time_len:
+  - STUMP
+  - BART
+reference_by_target:
+  tap_iron: R44_CURRENT_REFIT
+  tap_time_len: R44_CURRENT_REFIT
+reference:
+  protocol: frozen_deployment_recipe_refitted_on_each_supplied_training_partition
+  v36_factory: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+  n_trial: v36-s1-N-0048
+  joint_spec: configs/round2_v12/SPEC.yaml
+  joint_recipe: joint_plr001
+  periodic_spec: configs/round2_v7/SPEC.yaml
+  periodic_recipe: tabm_plr001
+  iron_weights:
+    v36: 0.5
+    v12_joint: 0.5
+  time_weights:
+    v36: 0.2
+    n0048: 0.3
+    v7_periodic: 0.5
+calibration:
+  split_seed: 27001
+  n_splits: 5
+  held_fold: 0
+  epoch_selection: calibration_raw_mae
+  weight_selection: calibration_raw_mae_smallest_weight_on_ties
+  blend_grid:
+  - 0.0
+  - 0.05
+  - 0.1
+  - 0.2
+  - 0.35
+  - 0.5
+  - 0.75
+  - 1.0
+  query_labels: prohibited_in_fit_and_weight_selection
+training:
+  model: finite_chain_gaussian_bayesian_additive_trees
+  trees: 200
+  burn_sweeps: 2000
+  retained_draws: 100
+  thin: 20
+  chains: 1
+  seed: 42
+  max_depth:
+    STUMP: 1
+    BART: 4
+  tree_prior_alpha: 0.95
+  tree_prior_beta: 2.0
+  leaf_prior_k: 2.0
+  sigma_prior_df: 3.0
+  sigma_prior_upper_probability: 0.9
+  sigma_scale_estimator: training_scaled_target_sample_std_ddof1
+  target_scale: training_midrange_and_full_range_maps_to_minus_half_plus_half
+  preprocessing: training_mean_std_numeric_onehot_spout
+  knot_quantiles:
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
+  categorical_knot: 0.5
+  min_leaf_rows: 10
+  split_rule_prior: uniform_over_all_admissible_feature_cut_pairs
+  moves:
+  - grow
+  - prune
+  action_probabilities: equal_over_available_move_types
+  grow_leaf: uniform_over_growable_leaves
+  prune_node: uniform_over_internal_nodes_with_two_terminal_children
+  leaf_draw: exact_normal_conditional
+  noise_draw: exact_inverse_gamma_conditional
+  prediction: median_of_equal_weight_posterior_predictive_normal_mixture
+  median_bisection_steps: 60
+  node_cache_max: 4096
+  prediction_postprocessing: none
+  dtype: float64
+promotion:
+  confirmation_per_target_max: 1
+  two_development_seeds_positive: true
+  min_split_seeds: 4
+  all_seed_gains_positive: true
+  seed_level_paired_lcb95_gt: 0.0
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+  ranking: mean_gain_then_frozen_cost_order
+  eligible_recipes:
+  - BART
+  mechanism_mean_gain_over_control_gt: 0.0
+  development_mean_gain_ge: 0.01
+budget:
+  development_candidate_outer_fits: 40
+  confirmation_candidate_outer_fits_max: 20
+  development_b0_factory_calls: 0
+  confirmation_b0_factory_calls_max: 20
+  b0_pipeline_fit_calls_per_factory: 32
+  candidate_workers: 4
+  reference_workers: 4
+  concurrent_reference_calls: 2
+  full_data_fits: 0
+  packages: 0
+  verified_reference_units_reused: 20
+  candidate_solver_fits_per_outer_unit: 2
+  development_solver_fits: 80
+  synthetic_solver_fits: 2
+release:
+  automatic_packages: false
+  desktop_writes: 0
+  agent_uploads: 0
+reference_cache:
+  directory: local/runs/round2-v27/development-r1
+  original_commit: d07dc35
+  manifest_sha256: d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc
+  audit_sha256: 8e62fc1f374f23d719a67287fcc714d3b6e19d78741511f64c461c5a88ccb3fc
+  reuse: development references only after hash, fit/query ID, fold, data, recipe
+    and original source verification
+preflight:
+  cold_predict_atol: 1.0e-08
+  synthetic_fits: 2
+  max_projected_hours: 7.61
+  max_worker_rss_mib: 1536
+  required:
+  - integrated_leaf_density_against_dense_normal
+  - leaf_conditional_against_direct_gaussian
+  - grow_prune_detailed_balance
+  - mixture_median_against_independent_root
+  - synthetic_learnability_and_interactions
+  - train_only_cutpoints_scalers_categories
+  - query_label_rejection
+  - cold_order_chunk_invariance
+  - reference_cache_identity
+  - two_exact_full_shape_V43_prefixes
+  - frozen_core_and_settings_except_chain_schedule
+cache_original_reference:
+  protocol: frozen_deployment_recipe_refitted_on_each_supplied_training_partition
+  v36_factory: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+  n_trial: v36-s1-N-0048
+  joint_spec: configs/round2_v12/SPEC.yaml
+  joint_recipe: joint_plr001
+  periodic_spec: configs/round2_v7/SPEC.yaml
+  periodic_recipe: tabm_plr001
+  iron_weights:
+    v36: 0.5
+    v12_joint: 0.5
+  time_weights:
+    v36: 0.325
+    n0048: 0.175
+    v7_periodic: 0.5
+prefix_reference:
+  directory: local/runs/round2-v43/development-r1
+  manifest_sha256: 8d757b9b608e5b9d72498a245e027d82d7e5313914188edaec80bc885683d475
+  audit_sha256: 07756d9658812d3cf0223d8371b08d5c25e76e35b357e839f5b4981c76d9d281
+  spec: configs/round2_v43/SPEC.yaml
+  spec_sha256: ca27471b7ad7b3bc646cbb3f675c767688366f5807f2a5d863752615776680f4
+  first_sweeps: 400
+  burn_sweeps: 200
+  thin: 2
+  retained_draws: 100
+  strict_exact_state_and_prediction_match: true
+prefix_preflight:
+  directory: local/runs/round2-v43/preflight-r1
+  report_sha256: d378e83acfb589434a3742d1b60bce9c62124256d9dc49ae5a84f2d303111b33
+  model_sha256:
+    STUMP: b5118d7bc30c0e5c1b4664690384f5d841c456287b00b44dcb67275fd19fd0ab
+    BART: 6e9ad368b4eaed313fbb4c748bab352dc6fdc2b742af00393a04911012f4237f
