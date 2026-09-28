@@ -15119,14 +15119,14 @@
   },
   "round2_v42_adaptive_splines": {
     "date": "2026-09-29",
-    "status": "FROZEN_DEVELOPMENT_RUNNING",
+    "status": "COMPLETED_NO_FINALIST_WITH_PRESERVED_COLD_AUDIT_FAILURE",
     "branch": "round2-v42-adaptive-splines",
     "protocol_commit": "f17e3ce",
     "implementation_commit": "1ff53a1",
     "platform_target": 96.5,
     "current_best_user_reported": 96.3727,
-    "G0": "PASS_1240_TESTS_TWO_SYNTHETIC_FITS_ZERO_COLD_DIFF_RESOURCE_AND_REFERENCE_CHECKS",
-    "G1": "DEVELOPMENT_PENDING",
+    "G0": "1240_TESTS_AND_PREFLIGHT_PASS_FINAL_COLD_AUDIT_FAIL_ONE_CONTROL_MODEL",
+    "G1": "NO_RECIPE_HAS_TWO_POSITIVE_DEVELOPMENT_SEEDS",
     "synthetic_fits_budget": 2,
     "official_candidate_units_budget": 40,
     "service": "iron-v42-development-r1.service",
@@ -15141,8 +15141,38 @@
     "synthetic_fits_completed": 2,
     "preflight_projected_hours": 0.04110204252226847,
     "preflight_peak_rss_mib": 413.7734375,
-    "results": "docs/round2_v42/G0_RESULTS.md",
+    "results": "docs/round2_v42/RESULTS.md",
     "official_development_launched": true,
-    "run": "local/runs/round2-v42/development-r1"
+    "run": "local/runs/round2-v42/development-r1",
+    "candidate_units_completed": 40,
+    "candidate_solver_fits": 80,
+    "reference_units_reused": 20,
+    "candidate_fit_span_seconds": 67.990987045,
+    "peak_worker_rss_mib": 302.57421875,
+    "independent_diagnostic_status": "failed_cold_invariance",
+    "cold_models_checked": 80,
+    "cold_failures": [
+      {
+        "unit": "tap_iron-ADDITIVE-s3407-f4",
+        "model": "model.json",
+        "difference": 1.3719898106501205e-08,
+        "frozen_tolerance": 1e-08
+      }
+    ],
+    "maximum_score_difference": 2.706168622523819e-16,
+    "selection_verified": true,
+    "selected_for_confirmation": {
+      "tap_iron": null,
+      "tap_time_len": null
+    },
+    "confirmation_fits": 0,
+    "full_data_fits": 0,
+    "monitor_status": "COMPLETED_AND_TIMERS_STOPPED",
+    "summary_sha256": "a95e0b847954ddc332ef3cec93d073db0a071eb7fe368399dd3abb9079c43dea",
+    "diagnostic_audit_sha256": "3873102f5c0ac8ba9ca1189338f84c609daabce9c3470fbc09535382ccc15e9b",
+    "candidate_mean_gains": {
+      "tap_iron": -0.002949733751899525,
+      "tap_time_len": -0.05433975440667146
+    }
   }
 }

@@ -1336,3 +1336,24 @@ Run: `local/runs/round2-v42/development-r1`. Hourly timer:
 private records in `local/runs/round2-v42/development-hourly/checks.jsonl`.
 No intermediate progress polling; terminal state must be audited before any
 quality conclusion or confirmation allocation. No packages/uploads authorized.
+
+### V42 completed: negative quality with one preserved cold-audit failure (2026-09-29)
+
+`docs/round2_v42/RESULTS.md`: all 40 development units / 80 solver fits finished,
+20 references reused, candidate fit span 67.99 seconds. PAIR iron gains
++0.002125/-0.008024 (mean -0.002950); time -0.065441/-0.043239 (mean -0.054340).
+No arm has two positive seeds; no confirmation or full-data fits/packages/uploads.
+Do not rescue this frozen round with extra terms, knots, degrees or weight scans.
+Fourteen selectors choose the 63-term cap; retain that limitation, not a claim
+that all adaptive splines are impossible.
+
+G0 tests/preflight passed, but the original final audit FAILED on one ADDITIVE
+iron model: order/chunk difference 1.37199e-8 exceeds unchanged 1e-8 tolerance.
+The separate diagnostic auditor checks all 80 models / 60 units, retains that
+failure (`failed_cold_invariance`, never a passing audit.json), and verifies
+all other identity/selection checks and score arithmetic to 2.71e-16. Direct
+same-order cold prediction is exact for all models; cancellation from large
+coefficients explains the order sensitivity. No inference repair or tolerance
+relaxation was applied. Passing confirmation admission is intentionally absent.
+Both hourly timers observed normal terminal completion and stopped themselves;
+no training remains active. Current best 96.3727; goal 96.5 remains active.
