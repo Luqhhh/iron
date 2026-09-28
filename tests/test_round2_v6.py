@@ -156,11 +156,32 @@ def test_sampler_expands_the_frozen_iron_capacity_space() -> None:
     assert large_mlp["inner_validation_folds"] == 5 and large_mlp["max_epochs"] == 120
 
 
-def test_sampler_is_deterministic_and_collision_free() -> None:
+def test_sampler_is_deterministic_and_collision_free(monkeypatch: pytest.MonkeyPatch) -> None:
+    from bf_tap_r2 import v6_sampler
+    from bf_tap_r2.v3_6_sampler import build_N_trials, load_v36_config
+
     first = sample_v6_iron_capacity_trials(REPO_ROOT)
     second = sample_v6_iron_capacity_trials(REPO_ROOT)
     assert first == second
+    # The N space is public; full V3.6 sampling resolves private O/D ledgers.
+    old_trials = build_N_trials(load_v36_config(REPO_ROOT))
+    monkeypatch.setattr(v6_sampler, "sample_v36", lambda root: old_trials)
     verify_no_v36_collision(REPO_ROOT)
+    monkeypatch.setattr(v6_sampler, "sample_v36", lambda root: [first[0]])
+    with pytest.raises(ValueError, match="collide"):
+        verify_no_v36_collision(REPO_ROOT)
+
+
+@pytest.mark.skipif(
+    not all((REPO_ROOT / source).is_file() for source in (
+        "local/runs/round2-v3.4-ebm-and-constrained-composition/refine-r1/seed-42/fit_ledger.jsonl",
+        "local/runs/round2-v3.5-regularized-ebm-and-composition/refine-r1/seed-42/fit_ledger.jsonl",
+    )),
+    reason="private V3.6 parent ledgers are absent",
+)
+def test_sampler_collision_check_with_recorded_v36_pool() -> None:
+    verify_no_v36_collision(REPO_ROOT)
+
 
 # ---------------------------------------------------------------------------
 # Stage A screen
@@ -301,17 +322,29 @@ def test_probe_stage_refuses_unauthorised_trials_without_fitting() -> None:
     assert not (REPO_ROOT / guard).exists()
 
 
-def test_probe_evaluation_reports_missing_predictions(tmp_path: Path) -> None:
+def test_probe_evaluation_reports_missing_predictions(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """An unevaluated probe must be reported as missing, not as a pass."""
-    from bf_tap_r2.v6_screen import evaluate_probe
+    from types import SimpleNamespace
+
+    import numpy as np
+    import pandas as pd
+
+    from bf_tap_r2 import v6_sampler, v6_screen
 
     spec = load_v6_spec(REPO_ROOT)
-    payload = evaluate_probe(REPO_ROOT, spec=spec, probe_dir=tmp_path,
-                             output="local/runs/round2-v6-iron-capacity-networks/_probe_eval_test")
+    trials = sample_v6_iron_capacity_trials(REPO_ROOT)
+    train = pd.DataFrame({"tap_iron": [100.0, 110.0]})
+    reference = SimpleNamespace(base_for=lambda target, seed: np.array([101.0, 109.0]))
+    monkeypatch.setattr(v6_sampler, "sample_v6_iron_capacity_trials", lambda root: trials)
+    monkeypatch.setattr(v6_screen, "load_v5_training_frame", lambda root: train)
+    monkeypatch.setattr(v6_screen, "load_column_reference", lambda root, train, spec: reference)
+    monkeypatch.setattr(v6_screen, "fold_vector", lambda *args: np.array([0, 1]))
+    output = "local/runs/round2-v6-iron-capacity-networks/_probe_eval_test"
+    payload = v6_screen.evaluate_probe(tmp_path, spec=spec, probe_dir=tmp_path, output=output)
     assert payload["missing_predictions"] == ["v6-s1-N-0024", "v6-s1-N-0028"]
     assert payload["probe_gate_passed"] is False
     assert payload["stage_a2_full_screen_unlocked"] is False
     assert payload["records"] == []
-    for path in (REPO_ROOT / "local/runs/round2-v6-iron-capacity-networks/_probe_eval_test").glob("*"):
-        path.unlink()
-    (REPO_ROOT / "local/runs/round2-v6-iron-capacity-networks/_probe_eval_test").rmdir()
+    assert (tmp_path / output / "probe.json").is_file()
