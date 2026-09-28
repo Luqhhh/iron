@@ -5979,20 +5979,23 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
- "candidate": "V18_B0_V12IRON_V7TIME",
- "score": 96.3679,
- "source": "user_reported_not_independently_verified",
- "previous_best": {"candidate": "V12_IRON_JOINT_PLR001_A50", "score": 96.3526},
- "delta_vs_previous_best": 0.0153,
- "target": 96.4,
- "target_met": false,
- "margin_to_target": -0.0321,
- "recipe": "V12 iron column + V7 time column, both original CSV field strings",
- "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
- "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8/3_V18_B0_V12IRON_V7TIME.zip",
- "reported_date": "2026-09-28",
- "note": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles."
-},
+    "candidate": "V18_B0_V12IRON_V7TIME",
+    "score": 96.3679,
+    "source": "user_reported_not_independently_verified",
+    "previous_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526
+    },
+    "delta_vs_previous_best": 0.0153,
+    "target": 96.5,
+    "target_met": false,
+    "margin_to_target": -0.1321,
+    "recipe": "V12 iron column + V7 time column, both original CSV field strings",
+    "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8/3_V18_B0_V12IRON_V7TIME.zip",
+    "reported_date": "2026-09-28",
+    "note": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles."
+  },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
     "date": "2026-09-23",
@@ -12048,11 +12051,27 @@
       "agent_uploads": 0
     },
     "G1": {
-      "B0_development_package_scores": {"42": 96.24797438041294, "3407": 96.24750403102945},
-      "selected_for_confirmation": {"tap_iron": "J2", "tap_time_len": "P_LL_T"},
-      "J2_four_seed_gains": {"42": 0.0016130051527056821, "3407": 0.003279508641327311, "7777": -0.001212135336800202, "12011": -0.00026903156238233805},
+      "B0_development_package_scores": {
+        "42": 96.24797438041294,
+        "3407": 96.24750403102945
+      },
+      "selected_for_confirmation": {
+        "tap_iron": "J2",
+        "tap_time_len": "P_LL_T"
+      },
+      "J2_four_seed_gains": {
+        "42": 0.0016130051527056821,
+        "3407": 0.003279508641327311,
+        "7777": -0.001212135336800202,
+        "12011": -0.00026903156238233805
+      },
       "J2_seed_lcb95": -0.0014994763567244798,
-      "P_LL_T_four_seed_gains": {"42": 0.0024330783140555923, "3407": 0.0007055293926612194, "7777": 0.006455547712036491, "12011": 0.009330308934593745},
+      "P_LL_T_four_seed_gains": {
+        "42": 0.0024330783140555923,
+        "3407": 0.0007055293926612194,
+        "7777": 0.006455547712036491,
+        "12011": 0.009330308934593745
+      },
       "P_LL_T_seed_lcb95": 0.00014293419673824977,
       "P_LL_T_development_package_score": 96.24930850957455,
       "local_working_gate": 96.25,
@@ -12060,8 +12079,7 @@
       "platform_target_above_96_4_achieved": false
     },
     "disposition": "No V17 package or upload; preserve negative four-seed evidence and frozen gates."
-  }
-,
+  },
   "round2_v18_2026_09_28": {
     "date": "2026-09-28",
     "status": "built_zero_fit_candidates_no_upload",
@@ -12163,8 +12181,7 @@
       "note": "user uploads; agent uploads 0; platform keeps the best score; hedges are optional exploration"
     },
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "round2_v19_2026_09_28": {
     "date": "2026-09-28",
     "status": "complete_negative_no_promotion",
@@ -12335,8 +12352,7 @@
       ]
     },
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "round2_v20_2026_09_28": {
     "date": "2026-09-28",
     "status": "released_single_package_pending_user_upload",
@@ -12441,8 +12457,7 @@
       "note": "user uploads; agent uploads 0; platform keeps the best score"
     },
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "round2_v21_2026_09_28": {
     "date": "2026-09-28",
     "status": "released_three_zero_fit_time_mix_packages_pending_upload",
@@ -12556,8 +12571,7 @@
       "note": "user uploads; agent uploads 0; platform keeps the best score"
     },
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "round2_v22_2026_09_28": {
     "date": "2026-09-28",
     "status": "analysis_complete_member_search_closed_no_packages",
@@ -12606,13 +12620,13 @@
         ]
       },
       "n_family_addendum": {
-    "members_screened": 10,
-    "source": "local/runs/round2-v5-error-covariance/time-n-family-r1",
-    "best_gain": 0.0,
-    "all_weights_zero": true,
-    "note": "the base library holds only D/O v36_dev_experts for time; the completed N line was screened separately against the same V21 incumbent and adds nothing"
-   },
-   "endpoint_simplex": {
+        "members_screened": 10,
+        "source": "local/runs/round2-v5-error-covariance/time-n-family-r1",
+        "best_gain": 0.0,
+        "all_weights_zero": true,
+        "note": "the base library holds only D/O v36_dev_experts for time; the completed N line was screened separately against the same V21 incumbent and adds nothing"
+      },
+      "endpoint_simplex": {
         "seven_endpoints_gain": 0.013048,
         "fourteen_endpoints_gain": 0.011983,
         "note": "adding library members does not raise the attainable column; it only adds selection variance"
@@ -12620,8 +12634,7 @@
       "conclusion": "Member search against the strongest incumbent is closed: the time column gains nothing and the iron column at most +0.0018. The V21 portfolio already spans the only unresolved question (the platform N weight). What remains is platform feedback and a new model family."
     },
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "round2_v25_2026_09_28": {
     "date": "2026-09-28",
     "status": "closed_time_capacity_axis_no_packages",
@@ -12704,8 +12717,7 @@
       ]
     },
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "round2_v26_2026_09_28": {
     "date": "2026-09-28",
     "status": "closed_target_representation_axis_no_packages",
@@ -12832,8 +12844,7 @@
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0
-  }
-,
+  },
   "r8_three_slot_delivery_2026_09_28": {
     "date": "2026-09-28",
     "status": "three_slot_delivery_written_to_desktop",
@@ -12884,8 +12895,7 @@
     "agent_uploads": 0,
     "desktop_writes": 3,
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "r8_three_slot_feedback_2026_09_28": {
     "date": "2026-09-28",
     "status": "three_package_feedback_recorded_new_platform_best",
@@ -12934,5 +12944,20 @@
     },
     "agent_uploads": 0,
     "goal_above_96_4_achieved": false
+  },
+  "round2_v27_2026_09_28": {
+    "status": "preregistered_before_fitting",
+    "platform_target": 96.5,
+    "platform_reference": "V18_B0_V12IRON_V7TIME",
+    "platform_reference_score": 96.3679,
+    "source_plan": "docs/round2_v27/PREREGISTRATION.md",
+    "spec": "configs/round2_v27/SPEC.yaml",
+    "development_candidate_outer_fits_budget": 60,
+    "development_b0_factory_calls_budget": 20,
+    "confirmation_candidate_outer_fits_max": 20,
+    "confirmation_b0_factory_calls_max": 20,
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
