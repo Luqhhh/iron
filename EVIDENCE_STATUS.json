@@ -5979,22 +5979,24 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V12_IRON_JOINT_PLR001_A50",
-    "score": 96.3526,
+    "candidate": "V18_B0_V12IRON_V7TIME",
+    "score": 96.3679,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V6_PORT_TIME_A60",
-      "score": 96.3465
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526
     },
-    "delta_vs_previous_best": 0.0061,
+    "delta_vs_previous_best": 0.0153,
     "target": 96.4,
     "target_met": false,
-    "margin_to_target": -0.0474,
-    "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
-    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
-    "reported_date": "2026-09-27",
-    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
+    "margin_to_target": -0.0321,
+    "recipe": "V12 iron column + V7 time column, both original CSV field strings",
+    "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8/3_V18_B0_V12IRON_V7TIME.zip",
+    "reported_date": "2026-09-28",
+    "note": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles.",
+    "feedback_imported_from_commit": "1f1b426",
+    "ownership": "other_branch_user_reported_feedback_only_no_package_copy"
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -12543,7 +12545,7 @@
   },
   "round2_v28_edge_kan_2026_09_28": {
     "identity": "V28_EDGE_KAN",
-    "status": "reserved_awaiting_design_approval",
+    "status": "closed_negative_development_audited_no_confirmation",
     "branch": "codex/round2-v28-edge-spline-network",
     "spec": "configs/round2_v28_edge_kan/SPEC.yaml",
     "source_plan": "docs/round2_v28_edge_kan/PREREGISTRATION.md",
@@ -12590,21 +12592,251 @@
       "G0_synthetic_optimizer_runs_max": 4
     },
     "G0": {
-      "status": "not_started",
-      "official_fits": 0,
-      "synthetic_optimizer_runs": 0,
-      "packages": 0,
-      "agent_uploads": 0
+      "status": "passed",
+      "resource": {
+        "passed": true,
+        "checks": {
+          "worker_rss": true,
+          "available_ram": true,
+          "development_wall": true
+        },
+        "projected_development_seconds": 491.2302645872115,
+        "peak_worker_rss_mib": 423.34765625,
+        "available_ram_mib": 8815.52734375
+      },
+      "G0_optimizer_runs": 4,
+      "golden": {
+        "status": "passed",
+        "raw_initialization_max_difference": 0.0,
+        "fixtures": [
+          {
+            "fixture": "zero",
+            "output_max_difference": 0.0,
+            "gradient_max_difference": 0.0
+          },
+          {
+            "fixture": "nonzero",
+            "output_max_difference": 0.0,
+            "gradient_max_difference": 0.0
+          }
+        ],
+        "optimizer_runs": 0
+      },
+      "official_fits": 40,
+      "official_optimizer_runs": 80,
+      "cold_chunk_max_difference": 0.0,
+      "tests": {
+        "torch": {
+          "exit_code": 0,
+          "counts": {
+            "tests": 1152,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "xml_sha256": "a8a788264ccf3339f67cabf4728762d79ff8863bbb62d8a65024a3815ff6e14b"
+        },
+        "ci": {
+          "exit_code": 0,
+          "counts": {
+            "tests": 1030,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 67
+          },
+          "xml_sha256": "a04804d35b628b69564b010cb2623679fa8719abdc75dd6f4939c12f25ed79a5"
+        }
+      },
+      "review": "fresh_read_only_whole_branch_two_findings_fixed_RED_GREEN",
+      "preflight_sha256": "e42916adbf419b5bcd0c1668b1f1576ba489cb895525572a6e27cc240f7c115a",
+      "summary_sha256": "907858b099be8a5768fc7ca2e08b89ab3fdabaa866be815a064f0d050ace7055",
+      "cold_audit_sha256": "5dcc148796b87f7b432be6852c6b9203f29ad41495b772a46f0faee444b84590",
+      "independent_audit_sha256": "0253f8f10386a2de4027d012a11970edfb46bdee25fbfce3cbfce358979e8cba"
     },
     "G1": {
-      "status": "not_measured",
+      "status": "negative_under_single_frozen_specification",
+      "records": [
+        {
+          "target": "tap_iron",
+          "arm": "SHARED",
+          "seed_gains": {
+            "42": 0.0007742616683417049,
+            "3407": -0.004309876974080273
+          },
+          "candidate_scores": {
+            "42": 96.25917929248182,
+            "3407": 96.25714816278666
+          },
+          "historical_B0_column_gains": {
+            "42": 0.0007742616683417049,
+            "3407": -0.004309876974080273
+          },
+          "fold_gains_descriptive": {
+            "42": [
+              0.006189760066006114,
+              0.004287002677092666,
+              -0.007673919688525984,
+              -0.006011830111877611,
+              0.007054412058843128
+            ],
+            "3407": [
+              -0.004766092148270554,
+              -0.004062118172914921,
+              -0.002191467005159641,
+              -0.007673929856473065,
+              -0.0028249013903492463
+            ]
+          },
+          "mean_gain": -0.001767807652869284
+        },
+        {
+          "target": "tap_iron",
+          "arm": "EDGE",
+          "seed_gains": {
+            "42": -0.008620841489896822,
+            "3407": -0.0073631347134229174
+          },
+          "candidate_scores": {
+            "42": 96.24978418932359,
+            "3407": 96.25409490504731
+          },
+          "historical_B0_column_gains": {
+            "42": -0.008620841489896822,
+            "3407": -0.0073631347134229174
+          },
+          "fold_gains_descriptive": {
+            "42": [
+              -0.013047584547668451,
+              0.0010440735852762385,
+              -0.014596859266834707,
+              -0.010950951344278783,
+              -0.0056118601022167435
+            ],
+            "3407": [
+              -0.0022147409912811025,
+              -0.011284874106666766,
+              -0.007801094908006361,
+              -0.012582625308790021,
+              -0.0029649022656420693
+            ]
+          },
+          "mean_gain": -0.00799198810165987
+        },
+        {
+          "target": "tap_time_len",
+          "arm": "SHARED",
+          "seed_gains": {
+            "42": -0.0012936422236019005,
+            "3407": -0.003495392174899377
+          },
+          "candidate_scores": {
+            "42": 96.25711138858988,
+            "3407": 96.25796264758584
+          },
+          "historical_B0_column_gains": {
+            "42": 0.00913700817693885,
+            "3407": 0.010458616556395026
+          },
+          "fold_gains_descriptive": {
+            "42": [
+              0.000723343290512516,
+              -0.009785604688379327,
+              0.002449847402666933,
+              0.0017261698172574703,
+              -0.0016286877447343792
+            ],
+            "3407": [
+              -0.018393279072723916,
+              0.01368339144691613,
+              0.005217909881217264,
+              -0.013500135209674264,
+              -0.004103899796425939
+            ]
+          },
+          "mean_gain": -0.0023945171992506386
+        },
+        {
+          "target": "tap_time_len",
+          "arm": "EDGE",
+          "seed_gains": {
+            "42": -0.006378755574160683,
+            "3407": -0.005645384574249378
+          },
+          "candidate_scores": {
+            "42": 96.25202627523932,
+            "3407": 96.25581265518649
+          },
+          "historical_B0_column_gains": {
+            "42": 0.004051894826380067,
+            "3407": 0.008308624157045025
+          },
+          "fold_gains_descriptive": {
+            "42": [
+              -0.0006078930693484152,
+              -0.023618394289102715,
+              -0.0006805635164836025,
+              0.0006502348260330142,
+              -0.007707672760033622
+            ],
+            "3407": [
+              -0.017230664295281507,
+              0.004568531947848621,
+              0.001954842771657547,
+              -0.008191703297275563,
+              -0.009052097922149642
+            ]
+          },
+          "mean_gain": -0.006012070074205031
+        }
+      ],
+      "EDGE_minus_SHARED_mean": {
+        "tap_iron": -0.006224180448790586,
+        "tap_time_len": -0.003617552874954392
+      },
+      "selected_for_confirmation": null,
       "promoted_candidates": [],
+      "development_fits": 40,
+      "failed_fits": 0,
+      "confirmation_fits": 0,
+      "full_data_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "wall_seconds": 167.1406488418579,
+      "new_platform_score": null,
       "platform_target_achieved": false
     },
-    "design_approval": null,
+    "design_approval": "user_explicit_confirmed_2026_09_28",
     "publication_cadence": [
       "strategy_reservation",
       "final_results"
-    ]
+    ],
+    "reservation_commit": "92b0d71",
+    "results": "docs/round2_v28_edge_kan/RESULTS.md"
+  },
+  "round2_platform_best_previous_local_record_2026_09_28": {
+    "candidate": "V12_IRON_JOINT_PLR001_A50",
+    "score": 96.3526,
+    "source": "user_reported_not_independently_verified",
+    "previous_best": {
+      "candidate": "V6_PORT_TIME_A60",
+      "score": 96.3465
+    },
+    "delta_vs_previous_best": 0.0061,
+    "target": 96.4,
+    "target_met": false,
+    "margin_to_target": -0.0474,
+    "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
+    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+    "reported_date": "2026-09-27",
+    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
+  },
+  "round2_latest_submission_quota_2026_09_28": {
+    "remaining": 2,
+    "source": "explicit_user_report",
+    "scope": "this_strategy_line_only_teammates_manage_own_branches",
+    "recommendation": "no_current_qualified_new_package_preserve_slots",
+    "assistant_uploads": 0
   }
 }
