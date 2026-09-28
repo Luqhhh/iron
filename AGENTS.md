@@ -923,3 +923,30 @@ The user uploaded the three packages written to the desktop
   The iron side has `V18_IRON_W75` (`w=0.75`). The V18 two-line joint ceiling is
   `96.3992`. Evidence:
   `EVIDENCE_STATUS.json -> r8_three_slot_feedback_2026_09_28`.
+
+### V27: deep-kernel experiment authorized; current target 96.5 (2026-09-28)
+
+The user corrected 94.5 to **96.5**, then explicitly said to begin the proposed
+new experiment. Branch `round2-v27-deep-kernel`; controlling preregistration:
+`configs/round2_v27/SPEC.yaml`, `docs/round2_v27/PREREGISTRATION.md`. Current
+platform best is user-reported B0 **96.3679**; target gap **0.1321**.
+
+- Freeze GP_ARD / DKL_RAW / DKL_PLR, both targets, 60 complete-development
+  candidate outer fits. B0 is refitted on matching calibration/outer training
+  subsets: 20 factory calls (640 component pipeline fits), separately costed.
+- Epoch and blend-weight selection take place entirely inside outer training.
+  Another seed's full-data OOF vectors cannot select weights for outer-held rows.
+  At most one finalist per target earns confirmation on new split seeds
+  271828/314159; preserve the existing four-seed and 96.25 gates.
+- The four-seed lower bound measures split stability, not an independent-data
+  guarantee. V20/V21 demonstrated that local positive signs can invert on the
+  platform. No full-data model, package, desktop write or upload is budgeted.
+- Preserve the CPU torch 2.14.0+cpu environment with the locked Python 3.12
+  `--no-sync` path and explicit runtime checks; the generic torch extra resolves
+  to a different CUDA build. All BLAS/OMP/MKL/NUMEXPR and torch threads are pinned.
+- Corrections to older interpretations: WMAPE is normalized total absolute
+  error, so log-MSE is not automatically aligned; the V18 96.3992 nominal bound
+  covers only weights both in [.5,1] (96.3999 including declared score error),
+  not the entire family. B0 matches one additive rectangle; restating its iron
+  difference is not independent evidence. V21 changed multiple weights, so N's
+  isolated causal contribution is not established by those package scores.

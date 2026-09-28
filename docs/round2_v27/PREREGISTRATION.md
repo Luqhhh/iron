@@ -115,3 +115,28 @@ the declared score error yields 96.3999 for that quadrant. B0's observed additiv
 identity supports the metric assumption, not a second independent rectangle.
 The V21 packages changed several weights at once, so their results do not
 identify the causal effect of N alone. Historical decisions/packages are intact.
+
+## Execution
+
+The pre-existing CPU torch/tabm/embedding environment is version-checked against
+the spec. Use `uv run --locked --python 3.12 --no-sync`: synchronizing the general
+`round2_v4_2` extra selects a CUDA torch distribution and would change this frozen
+CPU environment. The first such sync attempt failed before downloading; no
+real-data fit was involved. Do not upgrade the environment to rescue a result.
+
+With `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
+NUMEXPR_NUM_THREADS=1 MPLCONFIGDIR=/tmp/iron-v27-mpl
+UV_CACHE_DIR=/tmp/iron-uv-cache` set for each command:
+
+```bash
+uv run --locked --python 3.12 --no-sync pytest -q
+uv run --locked --python 3.12 --no-sync python -u -m bf_tap_r2.v27_run --output local/runs/round2-v27/development-r1
+uv run --locked --python 3.12 --no-sync python -m bf_tap_r2.v27_audit --directory local/runs/round2-v27/development-r1
+```
+
+Only an audited positive development finalist permits:
+
+```bash
+uv run --locked --python 3.12 --no-sync python -u -m bf_tap_r2.v27_run --development local/runs/round2-v27/development-r1 --output local/runs/round2-v27/confirmation-r1
+uv run --locked --python 3.12 --no-sync python -m bf_tap_r2.v27_audit --directory local/runs/round2-v27/confirmation-r1
+```

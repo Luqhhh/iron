@@ -12946,7 +12946,7 @@
     "goal_above_96_4_achieved": false
   },
   "round2_v27_2026_09_28": {
-    "status": "preregistered_before_fitting",
+    "status": "implementation_verified_before_development_fits",
     "platform_target": 96.5,
     "platform_reference": "V18_B0_V12IRON_V7TIME",
     "platform_reference_score": 96.3679,
@@ -12958,6 +12958,16 @@
     "confirmation_b0_factory_calls_max": 20,
     "full_data_fits": 0,
     "packages": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "G0": {
+      "locked_python312_tests_passed": 1169,
+      "warnings": 23,
+      "targeted_tests_passed": 9,
+      "test_log": "local/reports/v27-python312-tests-r1.log",
+      "test_log_sha256": "3d8fc6cd4a26c14f8d6ceb856cdf5a2926405732f4e5e3b98c5ecab3abbb183e",
+      "runtime": "uv --locked --python 3.12 --no-sync; explicit frozen CPU package version checks",
+      "baseline_component_count_verified": 32,
+      "source_and_reference_files_to_freeze": 1457
+    }
   }
 }
