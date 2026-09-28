@@ -1236,3 +1236,14 @@ for eligible INSTANCE. Current reference is newly reported V32_TIME_A60V7_50
 `configs/round2_v39/SPEC.yaml` / `docs/round2_v39/PREREGISTRATION.md`.
 This worktree is isolated from a concurrent V38 interior-feedback task.
 No full-data fits, packages, desktop writes or uploads.
+
+### V39 G0 passed (2026-09-29)
+
+1228 locked tests pass. Two synthetic 80-epoch full-model fits learn the
+threshold target (GLOBAL MAE .23155; INSTANCE .22740; constant 1.50781).
+Fresh-process/order/chunk inference difference is zero. Full wrapper peak
+RSS 1140.43 MiB passes the original memory bound and four-worker RAM check.
+Original V37 numerical equivalence and user-accepted 7.61-hour projection
+verified. Current-reference component cache/ZIP identities verified.
+G1 remains pending; proceed with the frozen 40-unit development, no release.
+Details: `docs/round2_v39/G0_RESULTS.md`.

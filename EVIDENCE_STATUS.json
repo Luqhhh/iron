@@ -14637,7 +14637,7 @@
     "goal_above_96_4_achieved": false
   },
   "round2_v39_hard_tree_quality": {
-    "status": "implementation_and_synthetic_preflight_pending",
+    "status": "G0_passed_ready_for_development",
     "spec": "configs/round2_v39/SPEC.yaml",
     "plan": "docs/round2_v39/PREREGISTRATION.md",
     "platform_target": 96.5,
@@ -14645,6 +14645,44 @@
     "user_resource_authorization": "7.61小时可接受",
     "official_fits": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "implementation_commit": "0a96868",
+    "G0": {
+      "locked_tests_passed": 1228,
+      "synthetic_optimizer_runs": 2,
+      "results": [
+        {
+          "recipe": "GLOBAL",
+          "mae": 0.23154995609001844,
+          "constant_mae": 1.5078125,
+          "seconds": 91.10598644600395,
+          "peak_rss_mib": 1140.4296875
+        },
+        {
+          "recipe": "INSTANCE",
+          "mae": 0.22739907993862302,
+          "constant_mae": 1.5078125,
+          "seconds": 117.7402627449992,
+          "peak_rss_mib": 1140.4296875
+        }
+      ],
+      "cold_differences": {
+        "GLOBAL": 0.0,
+        "INSTANCE": 0.0
+      },
+      "preflight_sha256": "5309f50f8f77049800f41d2837aa883cd38185099de5f6a262da75e882729a44",
+      "admission_sha256": "e3a550b0cb2e9eaa74a9e1835cc2c278e4bc1ac254949b7dbe10514d08427f07",
+      "actual_memory_admission": {
+        "status": "passed",
+        "report_sha256": "5309f50f8f77049800f41d2837aa883cd38185099de5f6a262da75e882729a44",
+        "observed_wrapper_peak_rss_mib": 1140.4296875,
+        "available_ram_mib": 6763.26953125,
+        "required_four_workers_plus_margin_mib": 5585.71875,
+        "user_accepted_projection_hours": 7.61,
+        "original_time_refusal_preserved": true,
+        "new_resource_probes": 0
+      }
+    },
+    "results": "docs/round2_v39/G0_RESULTS.md"
   }
 }
