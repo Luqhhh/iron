@@ -172,3 +172,9 @@ and V34 free. V34 is reserved for CRPS natural-gradient trees on
 Fresh remote/all-branch scan found V34 occupied and V35 free. V35 is the
 independent CRPS convergence study, branch `round2-v35-crps-convergence`.
 Next free number: V36; recheck all branch reservations before using it.
+
+## 12. V36 reservation (2026-09-28)
+
+After a fresh remote fetch/all-branch scan, V36 is reserved for an equivalent
+hard-tree routing implementation and resource check. This does not modify
+V27's CPU refusal. Next free local number V37 requires a new reservation scan.

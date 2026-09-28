@@ -1184,3 +1184,13 @@ No confirmation/full-data fits, packages or uploads; confirmation seeds
 with zero inference difference. Best remains user-reported B0 96.3679;
 platform 96.5 remains unmet. The old cap explanation is resolved under the
 fixed stopping rule, not a proof of global convergence or family impossibility.
+
+### V36 hard-tree routing engineering opened (2026-09-28)
+
+V27 hard trees stopped at a CPU resource gate without official data fits.
+V36 preserves the full 1024-tree/depth-five model and optimizes the equivalent
+path computation only. `configs/round2_v36/SPEC.yaml` freezes equivalence
+checks and two resource optimizer runs; no official fits until a separate
+complete B0-relative scientific protocol is frozen. Preserve original
+resource limits and failed evidence. No packages, desktop writes or uploads.
+Goal remains 96.5; next V37 requires a fresh cross-branch reservation scan.

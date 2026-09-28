@@ -14435,5 +14435,15 @@
       "platform_best_unchanged": 96.3679,
       "target_gap_remaining": 0.1321
     }
+  },
+  "round2_v36_hard_tree_routing": {
+    "status": "engineering_preflight_pending",
+    "spec": "configs/round2_v36/SPEC.yaml",
+    "plan": "docs/round2_v36/PREREGISTRATION.md",
+    "platform_target": 96.5,
+    "platform_reference": 96.3679,
+    "official_fits": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }
