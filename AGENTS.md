@@ -1384,3 +1384,13 @@ because RemainAfterExit preserves status. Checker stops its timer on terminal
 state and never restarts/retrains. G0 resource/learning admission is pending;
 official fits remain zero until the successful report is verified. V43 is
 reserved; scan current reservations before V44. Goal remains platform 96.5.
+
+### V43 G0 passed (2026-09-29)
+
+`docs/round2_v43/G0_RESULTS.md`: two full-shape 200-tree/400-sweep synthetic
+fits passed. BART MAE .485595 versus STUMP 1.116267 and constant 1.875230;
+cold/order/chunk difference 0. Peak 463.77 MiB, conservative development
+projection .11032 hours. All 1246 tests, reference/source/runtime checks,
+saved chain shapes and current four-worker RAM check pass. The hourly
+preflight observation confirmed normal terminal state and stopped its timer.
+Official G1 remains pending; proceed with the frozen 40 development units.
