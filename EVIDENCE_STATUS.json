@@ -12540,5 +12540,71 @@
     "next_free_number": 28,
     "remote_version_scan": "passed_before_reservation",
     "status": "closed_G0_resource_infeasible"
+  },
+  "round2_v28_edge_kan_2026_09_28": {
+    "identity": "V28_EDGE_KAN",
+    "status": "reserved_awaiting_design_approval",
+    "branch": "codex/round2-v28-edge-spline-network",
+    "spec": "configs/round2_v28_edge_kan/SPEC.yaml",
+    "source_plan": "docs/round2_v28_edge_kan/PREREGISTRATION.md",
+    "starting_commit": "4f52392",
+    "other_remote_context_commit": "e0d38a9",
+    "author": {
+      "repository": "https://github.com/Blealtan/efficient-kan",
+      "commit": "7b6ce1c87f18c8bc90c208f6b494042344216b11",
+      "core": "src/efficient_kan/kan.py::KANLinear_and_KAN",
+      "source_sha256": "c2b984359fe483640fcc2313570bbbd2128eede99bdbf0fa586ec8e0e1a1ecb7",
+      "license": "MIT",
+      "license_sha256": "09c34a5fa51d62153d52c2870d0a4491a1d84b980000863a8b9d055adf7e45fc",
+      "mode": "adapt_core_only_no_package_install",
+      "paper_benchmark_reproduction": false
+    },
+    "platform_reference": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "platform_target_strict_gt": 96.4,
+    "local_reference": {
+      "local_primary": "R28_equals_R23_V12_iron_plus_V21_time",
+      "iron": "B0_V12_iron",
+      "time_weights": {
+        "V36": 0.4,
+        "V7_member": 0.25,
+        "P_LL_T": 0.35
+      },
+      "historical": "B0_V12_iron_plus_V7_time",
+      "cache_identity_required_before_fits": true
+    },
+    "mechanism": "compositional_edge_splines_vs_output_tied_input_curve_control",
+    "budget": {
+      "development_outer_fits": 40,
+      "confirmation_outer_fits_max": 20,
+      "official_outer_fits_max": 60,
+      "optimizer_runs_per_outer_fit": 2,
+      "official_optimizer_runs_max": 120,
+      "workers_max": 4,
+      "full_data_fits": 0,
+      "second_specifications": 0,
+      "failed_fits_consume_budget": true,
+      "G0_synthetic_optimizer_runs_max": 4
+    },
+    "G0": {
+      "status": "not_started",
+      "official_fits": 0,
+      "synthetic_optimizer_runs": 0,
+      "packages": 0,
+      "agent_uploads": 0
+    },
+    "G1": {
+      "status": "not_measured",
+      "promoted_candidates": [],
+      "platform_target_achieved": false
+    },
+    "design_approval": null,
+    "publication_cadence": [
+      "strategy_reservation",
+      "final_results"
+    ]
   }
 }

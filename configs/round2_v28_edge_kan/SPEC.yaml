@@ -1,0 +1,278 @@
+identity: V28_EDGE_KAN
+version: round2-v28-edge-spline-network
+date: '2026-09-28'
+status: reserved_awaiting_design_approval
+source_plan: docs/round2_v28_edge_kan/PREREGISTRATION.md
+starting_commit: 4f52392
+other_remote_context_commit: e0d38a9
+platform_target_strict_gt: 96.4
+platform_reference:
+  candidate: V12_IRON_JOINT_PLR001_A50
+  score: 96.3526
+  source: user_reported_not_independently_verified
+author:
+  repository: https://github.com/Blealtan/efficient-kan
+  commit: 7b6ce1c87f18c8bc90c208f6b494042344216b11
+  core: src/efficient_kan/kan.py::KANLinear_and_KAN
+  source_sha256: c2b984359fe483640fcc2313570bbbd2128eede99bdbf0fa586ec8e0e1a1ecb7
+  license: MIT
+  license_sha256: 09c34a5fa51d62153d52c2870d0a4491a1d84b980000863a8b9d055adf7e45fc
+  mode: adapt_core_only_no_package_install
+  paper_benchmark_reproduction: false
+runtime_versions:
+  torch: 2.14.0+cpu
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+  test_set_use: none
+  protected_november_labels: forbidden
+targets:
+- tap_iron
+- tap_time_len
+split_seeds:
+- 42
+- 3407
+folds:
+- 0
+- 1
+- 2
+- 3
+- 4
+confirmation_seeds:
+- 7777
+- 12011
+splits:
+  outer: existing_v5_fold_vector_per_seed
+  inner: group_safe_inner_folds_seed42_validation_fold0
+  fit_seed: 42
+  fresh_refit_at_selected_epoch: true
+  cross_seed_oof_averaging: forbidden
+preprocessing:
+  numeric_features: bf_tap_r2.data.FEATURES_in_declared_order
+  numeric_count: 21
+  nonfinite: reject
+  numeric_transform: sklearn_QuantileTransformer_uniform_train_only_then_2u_minus1
+  n_quantiles: min(1000,training_rows)
+  subsample: training_rows
+  random_state: 42
+  categorical: spout_no_training_vocabulary_one_hot_unknown_all_zero
+  category_order: ascending_numeric
+  dtype: float32
+  target: training_mean_and_population_std_zscore
+  std_floor: 1.0e-08
+  author_embeddings: false
+  target_encoding: false
+model:
+  objective: single_target_regression
+  device: cpu
+  layers:
+  - input_numeric21_plus_training_spout_vocabulary
+  - 64
+  - 64
+  - 1
+  grid_size: 5
+  spline_order: 3
+  grid_range:
+  - -1.0
+  - 1.0
+  base_activation: SiLU
+  scale_noise: 0.1
+  scale_base: 1.0
+  scale_spline: 1.0
+  enable_standalone_scale_spline: true
+  grid_eps: 0.02
+  initializer: author_initialization_in_original_rng_order_then_zero_all_spline_weight_arrays_after_whole_network_initialization
+  parameter_count_formula: 10_times(64_times_input_count_plus4096_plus64)
+  dropout: 0.0
+  grid_update: false
+  spline_regularization: 0.0
+  shared_curve_applies: all_layers_before_multiplying_output_specific_spline_scalers
+  extra_embeddings: false
+arms:
+  SHARED:
+    role: matched_shape_control_never_promoted
+    effective_spline_coefficients: mean_over_output_channels_of_full_spline_weight_tensor_broadcast_back_then_times_per_edge_scaler
+  EDGE:
+    role: only_candidate
+    effective_spline_coefficients: full_output_specific_spline_weight_tensor_times_per_edge_scaler
+training:
+  loss: MSE_standardized_target
+  optimizer: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  betas:
+  - 0.9
+  - 0.999
+  eps: 1.0e-08
+  batch_size: 256
+  max_epochs: 240
+  patience: 25
+  min_delta: 1.0e-05
+  epoch_selection: inner_validation_MAE_divided_by_training_target_std
+  scheduler: null
+  swa: false
+  gradient_clipping: null
+  shuffle: numpy_default_rng_seed42_per_epoch_permutation
+  prediction_chunk_rows: 256
+  prediction_postprocessing: none
+references:
+  local_primary: R28_equals_R23_V12_iron_plus_V21_time
+  iron: B0_V12_iron
+  time_weights:
+    V36: 0.4
+    V7_member: 0.25
+    P_LL_T: 0.35
+  historical: B0_V12_iron_plus_V7_time
+  cache_identity_required_before_fits: true
+blend:
+  member_weight: 0.2
+  recipe: 0.80_R28_plus_0.20_member_isolated_column
+  alpha_search: false
+scoring:
+  wmape: sum_abs_error_divided_by_sum_abs_target
+  package_score: 100_minus_50_times_sum_of_two_target_WMAPEs
+  seed_gain: candidate_package_score_minus_same_seed_R28
+  mean: equal_weight_seed_means
+gates:
+  engineering_preflight_required: true
+  candidate: EDGE
+  development_all_seed_gains_gt: 0.0
+  development_mean_gain_ge: 0.01
+  confirmation_finalists_max: 1
+  selection: highest_EDGE_mean_gain_among_eligible_targets
+  tie_order:
+  - tap_iron
+  - tap_time_len
+  EDGE_minus_SHARED_mean_gain_gt: 0.0
+promotion:
+  candidate: EDGE
+  min_split_seeds: 4
+  all_seed_gains_gt: 0.0
+  seed_level_paired_lcb95_gt: 0.0
+  lcb: mean_minus_one_sided_t95_df3_times_sample_sd_divided_by_sqrt4
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+  local_gate_score: mean_candidate_package_score_on_development_seeds
+G0:
+  before_official_fits: true
+  golden_core_check: EDGE_initialization_forward_and_gradients_against_pinned_author_core_zero_spline_initialization_and_nonzero_coefficient_fixture
+  golden_atol: 1.0e-06
+  golden_rtol: 1.0e-05
+  cold_predict_atol: 1.0e-06
+  cold_predict_rtol: 0.0
+  required_checks:
+  - finite_bspline_bases_outputs_and_gradients
+  - paired_initial_parameter_and_output_equality
+  - SHARED_curve_shape_tied_across_outputs
+  - EDGE_output_specific_curve_shapes
+  - nonzero_spline_training_gradients_and_learned_coefficients
+  - train_only_numeric_and_category_transform_and_target_scaling
+  - cold_persistence_and_chunk_invariance
+  synthetic:
+    seed: 28001
+    rows: 1024
+    train_rows: 768
+    validation_rows: 256
+    numeric_dimensions: 21
+    spout_categories:
+    - 1
+    - 2
+    - 3
+    generator: independent_uniform_minus1_to1_numeric_and_uniform_integer_spout
+    target: 10_plus3_times_sin(pi_times_x0)_plus2_times_x1_times_x2
+    max_epochs: 80
+    optimizer_runs_max: 2
+    arms:
+    - SHARED
+    - EDGE
+    pass: each_arm_validation_MAE_lt_training_median_constant_MAE_and_spline_coefficients_nonzero
+    early_stopping: false
+  resource_probe:
+    same_full_model_shape: true
+    full_preprocessor_model_optimizer_path: true
+    synthetic_training_rows: 2204
+    numeric_dimensions: 21
+    spout_categories:
+    - 1
+    - 2
+    - 3
+    batch_size: 256
+    warmup_steps: 3
+    timed_steps: 20
+    validation_forwards: 20
+    optimizer_runs_max: 2
+    measure_both_arms: true
+    peak_worker_rss_mib_max: 1024
+    available_ram_margin_mib: 1024
+    workers_max: 4
+    projection: 40_divided_by4_times1.5_times240_times(16_times_max_arm_p95_training_step_seconds_plus2_times_max_arm_p95_validation_forward_seconds)
+    development_projected_wall_seconds_max: 7200
+    failure_action: record_G0_infeasible_stop_no_shrink_second_spec_or_official_fits
+  optimizer_accounting: append_started_event_before_each_resource_or_learnability_optimizer_no_automatic_retry
+  all_checks_required_for_admission: true
+  resource_probe_first_for_cheap_refusal: true
+audit:
+  freeze_before_fits:
+  - all_transitive_source_hashes
+  - SPEC_yaml_hash
+  - runtime_versions
+  - author_source_and_license_hashes
+  - data_hash
+  - per_seed_fold_hashes
+  - reference_cache_hashes
+  persist_private:
+  - model
+  - OOF_predictions
+  - append_only_fit_ledger
+  - inner_and_outer_transform_parameters
+  - target_mean_std
+  - epoch_traces
+  - selected_epochs
+  - train_validation_ID_and_group_hashes
+  - parameter_counts
+  - routing_occupancy
+  - gating_entropy
+  - effective_tree_count
+  - gradient_norms
+  - runtime_and_RSS
+  - per_layer_spline_coefficient_norms
+  - per_layer_hidden_values_outside_grid_range_fraction
+  confirmation_requires:
+  - complete_development_coverage
+  - cold_inference_audit
+  - audit_bound_to_summary_sha256
+  - independent_recomputed_scores_and_eligibility
+  - same_preflight_and_source_spec_identity
+  final_promotion: independently_recompute_four_seed_gains_LCB_and_decision
+  reuse_v23_confirmation_runner: false
+  rewrite_failed_evidence: false
+  automatic_fit_retries: false
+  optimizer_started_events_required: true
+budget:
+  development_outer_fits: 40
+  confirmation_outer_fits_max: 20
+  official_outer_fits_max: 60
+  optimizer_runs_per_outer_fit: 2
+  official_optimizer_runs_max: 120
+  workers_max: 4
+  full_data_fits: 0
+  second_specifications: 0
+  failed_fits_consume_budget: true
+  G0_synthetic_optimizer_runs_max: 4
+monitor:
+  interval_minutes: 30
+  continuous_polling: false
+  notify: failure_stopped_completed_or_user_action_only
+release:
+  packages: 0
+  desktop_writes: 0
+  agent_uploads: 0
+publication:
+  pushes: 2
+  phases:
+  - strategy_reservation
+  - final_results
+training_source: configs/round2_v7/SPEC.yaml
