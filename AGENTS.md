@@ -1033,3 +1033,36 @@ The original V27 manifest/audit must be checked at frozen commit d07dc35 with
 its private evidence, not by bypassing hashes against renamed source. This
 repair changes no model parameters, training statements, scores or decisions.
 See docs/round2_round_numbering.md sections 6-7 for the controlling mapping.
+
+### V29: the last derivable-input avenues are closed (2026-09-28)
+
+Results `docs/round2_v29/RESULTS.md`, spec `configs/round2_v29/SPEC.yaml`,
+implementation `src/bf_tap_r2/v29_information_screen.py`, evidence
+`local/runs/round2-v29/information-screen-r1.json`. Zero fits, zero packages.
+
+Two zero-fit diagnostics against the strongest incumbent (V21 time column on the
+V12 iron column, platform `96.3679`):
+
+- **Derived-feature screen.** Every pairwise product and ratio of the 21 frozen
+  features (630 candidates) was correlated with the incumbent residual
+  (`n = 2754`; null scale `3/sqrt(n) = 0.0572`). Maximum absolute correlation is
+  **0.0286** (time, `furnace_throat_temp/humidity`) and **0.0333** (iron,
+  `air_volume*pig`); **zero** candidates exceed the null scale. There is no
+  pairwise interaction or ratio information left in the residual — sharper than,
+  and consistent with, the V4.5 residual-direction result and the V3 expression
+  screen.
+- **Covariate-shift screen.** The 322-row test set matches the 2754-row training
+  frame on every feature: maximum absolute standardised mean difference
+  **0.0915** (`upper_press_diff`), spout composition `1386/1368` vs `164/158`.
+  Transductive normalisation, pooled standardisation or test-time feature
+  calibration have **nothing to correct**.
+
+Every axis derivable from the given data and the current model family is now
+closed: members/blends/stacking (V22), iron capacity (V19), time capacity (V25),
+target representation (V26), iterated-model features (V30, teammate), derived
+features and covariate shift (V29), and weight re-selection on the measured lines
+(V18/V31, concave ceiling **96.3992**). **Since that ceiling is below 96.4, no
+weight choice can reach the target: a new measured direction is mandatory, and
+V29 shows it cannot come from pairwise feature engineering or covariate
+correction.** Locked Python 3.12 suite: **1176 passed, 23 warnings**.
+See `EVIDENCE_STATUS.json -> round2_v29_2026_09_28`.

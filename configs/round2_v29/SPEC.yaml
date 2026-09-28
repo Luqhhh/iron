@@ -1,0 +1,17 @@
+version: round2-v29-information-screen
+source_plan: docs/round2_v29/RESULTS.md
+platform_target: 96.4
+platform_reference:
+  candidate: V18_B0_V12IRON_V7TIME
+  score: 96.3679
+  source: user_reported_not_independently_verified
+data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden}
+split_seeds: [42, 3407]
+test_rows: 322
+reference_source: configs/round2_v16/SPEC.yaml
+v7_time_cache: local/runs/round2-v7-periodic-networks/development-r1
+n_member_template: local/runs/round2-v5-error-covariance/time-n-family-r1/seed-{seed}/pred-v36-s1-N-0048.npy
+pll_member_template: local/runs/round2-v17/development-r1/P_LL_T-s{seed}-f{fold}.npy
+incumbent_time_weights: {v36_time: 0.40, v7_member_time: 0.25, pll_time: 0.35}
+null_correlation_rule: 3/sqrt(rows)
+budget: {new_fits: 0, packages: 0, desktop_writes: 0, agent_uploads: 0}

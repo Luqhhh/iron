@@ -13318,5 +13318,85 @@
       "verification_log": "local/reports/round2-naming-v30-v31-verification-r1.json"
     },
     "G1": "unchanged; no models retrained and no scores recomputed"
+  },
+  "round2_v29_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "information_screen_closed_derived_features_and_covariate_shift",
+    "result": "docs/round2_v29/RESULTS.md",
+    "spec": "configs/round2_v29/SPEC.yaml",
+    "implementation": "src/bf_tap_r2/v29_information_screen.py",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V18_B0_V12IRON_V7TIME",
+      "score": 96.3679,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false,
+      "margin_to_target": -0.0321
+    },
+    "G1": {
+      "incumbent": "V21 time column on the V12 iron column",
+      "derived_feature_screen": {
+        "candidates": 630,
+        "rows": 2754,
+        "null_absolute_correlation_scale": 0.057166,
+        "construction": "every pairwise product and ratio of the 21 frozen features",
+        "tap_time_len": {
+          "max_absolute_correlation": 0.028585,
+          "top": "furnace_throat_temp/humidity",
+          "candidates_above_null_scale": 0
+        },
+        "tap_iron": {
+          "max_absolute_correlation": 0.033305,
+          "top": "air_volume*pig",
+          "candidates_above_null_scale": 0
+        },
+        "conclusion": "no pairwise interaction or ratio information is left in the incumbent residual"
+      },
+      "covariate_shift_screen": {
+        "test_rows": 322,
+        "maximum_absolute_standardised_mean_difference": 0.0915,
+        "top": "upper_press_diff (train 51.906, test 51.575, pooled sd 3.611)",
+        "spout_counts": {
+          "train": {
+            "1": 1386,
+            "2": 1368
+          },
+          "test": {
+            "1": 164,
+            "2": 158
+          }
+        },
+        "conclusion": "no covariate shift; transductive normalisation or pooled standardisation has nothing to correct"
+      },
+      "closed_axes": [
+        "members/blends/stacking (V22)",
+        "iron capacity (V19)",
+        "time capacity (V25)",
+        "target representation (V26)",
+        "iterated-model features (V27 teammate)",
+        "derived features (V29)",
+        "covariate shift (V29)",
+        "weight re-selection on measured lines (V18/V31, ceiling 96.3992)"
+      ],
+      "key_consequence": "the measured weight family {V36,N,V7m} time x {V36,V12m} iron has a concavity ceiling of 96.3992, so no weight choice can reach 96.4; a new measured direction is mandatory, and V29 shows it cannot come from pairwise feature engineering or covariate correction"
+    },
+    "budget": {
+      "new_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "goal_above_96_4_achieved": false,
+    "G0": {
+      "new_fits": 0,
+      "packages": 0,
+      "locked_python_3_12_tests_passed": 1176,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v29-python312-tests-r1.log",
+      "test_log_sha256": "975687558cbf5cccca76d517be80e7989ff9b4286972a61f2d58740c77e5a1d2",
+      "targeted_tests_passed": 3,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    }
   }
 }
