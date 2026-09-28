@@ -1357,3 +1357,30 @@ coefficients explains the order sensitivity. No inference repair or tolerance
 relaxation was applied. Passing confirmation admission is intentionally absent.
 Both hourly timers observed normal terminal completion and stopped themselves;
 no training remains active. Current best 96.3727; goal 96.5 remains active.
+
+### V43 Bayesian tree experiment opened (2026-09-29)
+
+Frozen plan `configs/round2_v43/SPEC.yaml` / `docs/round2_v43/PREREGISTRATION.md`,
+commit 4321331; implementation 5bd460f on `round2-v43-bayesian-trees`. This is
+a finite-grid, depth-capped BART variant trained from scratch, not a claimed
+paper reproduction or converged posterior. STUMP control and BART candidate
+each use 200 trees, 200 burn sweeps and 100 retained draws every two sweeps.
+Predict the fixed posterior-predictive Normal-mixture median. Preserve the
+40-unit development, current reference, four-seed/LCB/96.25 and candidate
+mean >=.01/control-advantage gates. No packages or uploads. No old failed
+neural loss/capacity, residual or fixed-library route is reopened.
+
+Locked Python 3.12 suite: 1246 passed, 23 existing warnings. Independent
+density, leaf-conditional and detailed-balance checks, mixture-root checks,
+tiny-chain reproducibility and cold/order/chunk equality pass. Runtime pins
+also record the already installed scipy 1.18.1; no dependency upgrade.
+Two full-shape synthetic fits started 2026-09-29 05:25:00 Asia/Shanghai,
+service `iron-v43-preflight-r1.service`, verified initial MainPID 166118 running.
+Hourly-only timer `iron-v43-preflight-hourly.timer`, first due approximately
+06:25:00. Private observations: `local/runs/round2-v43/preflight-hourly/checks.jsonl`.
+Do not poll progress or read model logs before a scheduled observation absent
+an actual completion/failure event or user request. `active/exited` is terminal
+because RemainAfterExit preserves status. Checker stops its timer on terminal
+state and never restarts/retrains. G0 resource/learning admission is pending;
+official fits remain zero until the successful report is verified. V43 is
+reserved; scan current reservations before V44. Goal remains platform 96.5.

@@ -15174,5 +15174,28 @@
       "tap_iron": -0.002949733751899525,
       "tap_time_len": -0.05433975440667146
     }
+  },
+  "round2_v43_bayesian_trees": {
+    "date": "2026-09-29",
+    "status": "SYNTHETIC_PREFLIGHT_RUNNING_OFFICIAL_FITS_NOT_STARTED",
+    "branch": "round2-v43-bayesian-trees",
+    "protocol_commit": "4321331",
+    "implementation_commit": "5bd460f",
+    "platform_target": 96.5,
+    "current_best_user_reported": 96.3727,
+    "G0": "1246_LOCKED_TESTS_PASS_FULL_SHAPE_SYNTHETIC_RESOURCE_CHECK_PENDING",
+    "G1": "UNMEASURED",
+    "synthetic_fits_budget": 2,
+    "official_candidate_units_budget": 40,
+    "official_candidate_fits_started": 0,
+    "service": "iron-v43-preflight-r1.service",
+    "initial_main_pid": 166118,
+    "started_at": "2026-09-29T05:25:00+08:00",
+    "monitor_interval_seconds": 3600,
+    "monitor_first_due": "2026-09-29T06:25:00+08:00",
+    "monitor_timer": "iron-v43-preflight-hourly.timer",
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0
   }
 }
