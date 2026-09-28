@@ -42,9 +42,9 @@ def transform(y: np.ndarray, kind: str) -> np.ndarray:
 
 
 def inverse(prediction: np.ndarray, kind: str) -> np.ndarray:
-    if kind == "log":
+    if kind in ("log", "exp"):
         return np.exp(prediction)
-    if kind == "sqrt":
+    if kind in ("sqrt", "square_clip"):
         return np.clip(prediction, 0.0, None) ** 2
     raise ValueError(f"Unknown V24 inverse transform: {kind}")
 
