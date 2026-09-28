@@ -12560,4 +12560,61 @@
     },
     "goal_above_96_4_achieved": false
   }
+,
+  "round2_v22_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "analysis_complete_member_search_closed_no_packages",
+    "result": "docs/round2_v22/RESULTS.md",
+    "spec": "configs/round2_v22/SPEC.yaml",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false
+    },
+    "G0": {
+      "new_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "locked_python_3_12_tests_passed": 1153,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v22-python312-tests-r1.log",
+      "test_log_sha256": "79b4b2f0ab2117484cab2ab6520814ecca242c8e50fa98c6bfda106a5fd5bb67",
+      "targeted_tests_passed": 5,
+      "evidence": "local/runs/round2-v22/saturation-r1.json"
+    },
+    "G1": {
+      "incumbent": "V21 time column (0.40 V36 + 0.25 V7m + 0.35 P-LL) on the B0/V12 iron column",
+      "library": {
+        "tap_time_len": 110,
+        "tap_iron": 114,
+        "two_seed_complete": true,
+        "families": "v2 + catboost + xgboost + lightgbm + kernel + expression + mlp + v36_dev_experts D/O/N"
+      },
+      "tap_time_len": {
+        "best_member": "v36_dev_experts:v36-s1-D-0048",
+        "best_gain": 0.000158,
+        "members_above_0_0005": 0
+      },
+      "tap_iron": {
+        "best_member": "v36_dev_experts:v36-s1-D-0029",
+        "best_gain": 0.001491,
+        "members_above_0_0005": 5,
+        "nested_simplex_with_DO_members": 0.0018,
+        "stable_under_v12m_floor": [
+          0.25,
+          0.5
+        ]
+      },
+      "endpoint_simplex": {
+        "seven_endpoints_gain": 0.013048,
+        "fourteen_endpoints_gain": 0.011983,
+        "note": "adding library members does not raise the attainable column; it only adds selection variance"
+      },
+      "conclusion": "Member search against the strongest incumbent is closed: the time column gains nothing and the iron column at most +0.0018. The V21 portfolio already spans the only unresolved question (the platform N weight). What remains is platform feedback and a new model family."
+    },
+    "goal_above_96_4_achieved": false
+  }
 }

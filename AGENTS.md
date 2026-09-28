@@ -777,3 +777,30 @@ run `local/runs/round2-v21/packages-r1`.
 - Upload priority: `V21_TIME_LOCAL`, `V20_B0_PLLT_A325`, `V21_TIME_N10`,
   `V21_TIME_A35`, `V18_B0_V12IRON_V7TIME`. No score is forecast; the objective
   remains unmet. See `EVIDENCE_STATUS.json -> round2_v21_2026_09_28`.
+
+### V22: the reproducible library is exhausted against the strongest incumbent (2026-09-28)
+
+Results `docs/round2_v22/RESULTS.md`, spec `configs/round2_v22/SPEC.yaml`,
+implementation `src/bf_tap_r2/v22_saturation.py`, private evidence
+`local/runs/round2-v22/saturation-r1.json`. Zero fits, zero packages.
+
+- Re-ran the incumbent-relative check against the **stronger V21 incumbent**
+  (time `0.40 V36 + 0.25 V7m + 0.35 P-LL`, iron V12) over the **whole
+  reproducible library** — 110 complete time columns and 114 complete iron
+  columns, including the CatBoost/XGBoost/LightGBM/kernel/expression and
+  `v36_dev_experts` D/O members the V18 screen never covered.
+- **Time is saturated**: best member `v36_dev_experts:v36-s1-D-0048` at
+  `+0.000158`, and **zero** members above `+0.0005`. **Iron** has a small
+  residual: `D-0029` at `+0.0015` (5 members above `+0.0005`); a nested simplex
+  with those members reaches only `+0.0018` and is stable under a `V12m` floor
+  of `0.25..0.50`.
+- A 14-endpoint simplex (`+0.011983`) does **not** beat the 7-endpoint simplex
+  (`+0.013048`): more members only add selection variance, because the
+  `v36_dev_experts` are already inside the `V36` endpoint. This is the V6 §7
+  stacking closure restated against the strongest incumbent.
+- **Member search against the incumbent is closed.** No fits were spent on the
+  `+0.0018` iron residual. The V21 portfolio already spans the only unresolved
+  question (the platform N weight) at N `0 / 0.10 / 0.1575` plus the earlier
+  `B0`/`A60V7` hedges at `0.175`/`0.30`. What remains is platform feedback and a
+  genuinely new model family. Locked Python 3.12 suite: **1153 passed, 23
+  warnings**. See `EVIDENCE_STATUS.json -> round2_v22_2026_09_28`.
