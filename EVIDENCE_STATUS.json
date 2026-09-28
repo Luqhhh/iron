@@ -12167,4 +12167,176 @@
     },
     "goal_above_96_4_achieved": false
   }
+,
+  "round2_v19_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "complete_negative_no_promotion",
+    "source_plan": "docs/round2_v19/PREREGISTRATION.md",
+    "result": "docs/round2_v19/RESULTS.md",
+    "spec": "configs/round2_v19/SPEC.yaml",
+    "amendment": {
+      "supersedes": "configs/round2_v6/SPEC.yaml stage_a2 probe gate",
+      "reason": "folds 0/1 screen declared unreliable by V6 section 2.2.2; V6 section 3 registered the resulting defect",
+      "scope_change_only": true,
+      "thresholds_changed": false
+    },
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false
+    },
+    "G0": {
+      "development_outer_fits_authoritative": 60,
+      "aborted_invalidated_fold_fits": 50,
+      "locked_python_3_12_tests_passed": 1136,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v19-python312-tests-r1.log",
+      "test_log_sha256": "7d1b17df77c48f156623f340f083fe377fd5d692e69a308d73690be5cbcc0225",
+      "trials": 6,
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "folds": 5,
+      "failures": 0,
+      "aborted_run": "local/runs/round2-v6-iron-capacity-networks/coverage-r1",
+      "authoritative_run": "local/runs/round2-v6-iron-capacity-networks/coverage-r2",
+      "aborted_reason": "HEAD change invalidated the frozen _code_version cache identity after a concurrent 8-worker batch was killed",
+      "screen": "local/runs/round2-v19/screen-r1.json",
+      "confirmation_fits": 0,
+      "full_data_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "G1": {
+      "incumbent_iron_wmape": {
+        "42": 0.037161,
+        "3407": 0.037198
+      },
+      "results": [
+        {
+          "trial_id": "v6-s1-N-0024",
+          "family": "raw_tabm|large",
+          "accuracy_ratio": 1.104,
+          "rho": 0.9165,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean_incremental_gain": 0.0,
+          "alphas": {
+            "42": 0.0,
+            "3407": 0.0
+          }
+        },
+        {
+          "trial_id": "v6-s1-N-0008",
+          "family": "raw_tabm|medium",
+          "accuracy_ratio": 1.137,
+          "rho": 0.887,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean_incremental_gain": 0.0,
+          "alphas": {
+            "42": 0.0,
+            "3407": 0.0
+          }
+        },
+        {
+          "trial_id": "v6-s1-N-0016",
+          "family": "raw_mlp|large",
+          "accuracy_ratio": 1.281,
+          "rho": 0.7984,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean_incremental_gain": 0.0,
+          "alphas": {
+            "42": 0.0,
+            "3407": 0.0
+          }
+        },
+        {
+          "trial_id": "v6-s1-N-0000",
+          "family": "raw_mlp|medium",
+          "accuracy_ratio": 1.281,
+          "rho": 0.8014,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean_incremental_gain": 0.0,
+          "alphas": {
+            "42": 0.0,
+            "3407": 0.0
+          }
+        },
+        {
+          "trial_id": "v6-s1-N-0020",
+          "family": "ple_mlp|large",
+          "accuracy_ratio": 1.112,
+          "rho": 0.9194,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean_incremental_gain": 0.0,
+          "alphas": {
+            "42": 0.0,
+            "3407": 0.0
+          }
+        },
+        {
+          "trial_id": "v6-s1-N-0004",
+          "family": "ple_mlp|medium",
+          "accuracy_ratio": 1.112,
+          "rho": 0.9152,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean_incremental_gain": 0.0,
+          "alphas": {
+            "42": 0.0,
+            "3407": 0.0
+          }
+        }
+      ],
+      "promoted": [],
+      "probe_comparison": "the V6 folds-0/1 probe read -0.0014 for N-0024; complete coverage reads exactly 0.0 with weight 0.0, so the probe mis-signed and overstated the candidate while the negative conclusion survives",
+      "conclusion": "Independence alone does not earn blend weight; a member must also be about as accurate as the incumbent. The iron capacity lever is closed at complete coverage.",
+      "surviving_positive_members_over_B0": [
+        {
+          "member": "v17/P_LL_T",
+          "target": "tap_time_len",
+          "incremental_gain": 0.00425,
+          "accuracy_ratio": 1.005
+        },
+        {
+          "member": "v15 joint-task_gated_experts",
+          "target": "tap_iron",
+          "incremental_gain": 0.002856,
+          "accuracy_ratio": 1.009
+        },
+        {
+          "member": "v11 tap_time_len-plr_quniform",
+          "target": "tap_time_len",
+          "incremental_gain": 0.002699,
+          "accuracy_ratio": 1.023
+        },
+        {
+          "member": "v9 tap_time_len-realmlp_td",
+          "target": "tap_time_len",
+          "incremental_gain": 0.002634,
+          "accuracy_ratio": 1.041
+        }
+      ]
+    },
+    "goal_above_96_4_achieved": false
+  }
 }

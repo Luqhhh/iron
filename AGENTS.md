@@ -681,3 +681,36 @@ results `docs/round2_v18/RESULTS.md`, private run
   platform keeping the best score. New fits 0, desktop writes 0, agent uploads
   0. The `>96.4` objective remains unmet and no gate is relaxed.
   See `EVIDENCE_STATUS.json -> round2_v18_2026_09_28`.
+
+### V19: the iron capacity lever is closed at complete coverage (2026-09-28)
+
+The V6 iron-capacity probe rejected the direct iron analogue of the biggest
+platform winner (`raw_tabm|large`, `v6-s1-N-0024`) using **folds 0/1 only** — the
+screen V6 section 2.2.2 later declared unable to rank candidates, after V6
+section 3 registered the probe gate as a pre-registration defect. V19 re-ran
+that screen where it belongs. Pre-registration `docs/round2_v19/PREREGISTRATION.md`
+(changes scope only, no threshold), spec `configs/round2_v19/SPEC.yaml`, results
+`docs/round2_v19/RESULTS.md`, screen `local/runs/round2-v19/screen-r1.json`.
+
+- Six structurally distinct iron medium/large families (`mse_adam` only, so no
+  loss/seed diversity inside a family) at **complete coverage**: 6 trials x 2
+  seeds x 5 folds = **60 authoritative outer fits**, zero failures.
+- Every candidate selects nested weight **exactly 0.0** on both seeds: mean
+  incremental gain `0.000000`, 0/10 positive cells. Accuracy ratios `1.10-1.28`,
+  residual `rho` `0.798-0.919`.
+- The folds-0/1 probe read `-0.0014` for `N-0024`; complete coverage reads
+  `0.0`. The probe mis-signed the candidate, but the negative conclusion
+  survives on proper evidence. **Closed: do not reopen without new evidence.**
+- Transferable rule: **independence alone does not earn blend weight — the
+  member must also be about as accurate as the incumbent** (same regime as the
+  `JM1` precedent). The surviving positive members over `B0` are all accurate
+  (ratio `1.00-1.04`): `v17/P_LL_T` (+0.00425, time), `v15 joint gated`
+  (+0.00286, iron), `v11 plr_quniform` (+0.00270, time),
+  `v9 realmlp_td` (+0.00263, time).
+- Two process facts are recorded: a first 8-worker two-seed batch was killed
+  after 50 folds and its cache was invalidated by a `HEAD` change
+  (`coverage-r1`, kept as failure evidence); the authoritative refit in
+  `coverage-r2` cost the registered 60 fits. Confirmation 0, full-data 0,
+  packages 0, agent uploads 0. Locked Python 3.12 suite: **1136 passed, 23
+  warnings**. The `>96.4` objective remains unmet.
+  See `EVIDENCE_STATUS.json -> round2_v19_2026_09_28`.
