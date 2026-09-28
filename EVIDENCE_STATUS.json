@@ -15089,5 +15089,32 @@
       "agent_uploads": 0
     },
     "audit_sha256": "ad3daf91cced60ea6c6e9db382517b9fdbf718716f11e5a6b62bcd4ed4231823"
+  },
+  "round2_v41_concavity_bound": {
+    "date": "2026-09-29",
+    "status": "CONDITIONAL_CONTINUOUS_FAMILY_BOUND_BELOW_96_5",
+    "branch": "round2-v41-concavity-bound",
+    "protocol_commit": "6a7b6bf",
+    "source_observations_commit": "c5afb9c4cc903ef31f1ad55c825e8f9b263666a0",
+    "platform_target": 96.5,
+    "current_best_user_reported": 96.3727,
+    "time_continuous_upper": 96.44535,
+    "iron_gain_upper": 0.0167,
+    "family_continuous_upper": 96.46205,
+    "conditions": [
+      "documented additive fixed-row WMAPE",
+      "correct reported score and package identities",
+      "four-place score rounding intervals",
+      "fixed endpoint convex mixtures only"
+    ],
+    "G0": "PASS_1233_LOCKED_TESTS_23_WARNINGS_AND_11_INDEPENDENT_RATIONAL_CERTIFICATES",
+    "G1": "NO_NEW_MODEL_OR_PLATFORM_MEASUREMENT",
+    "results": "docs/round2_v41/RESULTS.md",
+    "evidence_sha256": "b019ec4b84ec87ad76c39e6ac27fde4b28443ff4d7c55ae6baa234f16f240f36",
+    "new_fits": 0,
+    "label_reads": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0
   }
 }

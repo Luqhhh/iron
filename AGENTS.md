@@ -1276,3 +1276,22 @@ Current-reference time reweighting loses 0.01270/0.01526 points locally while
 its user-reported platform effect is +0.0048; do not claim universal local rank
 preservation or a fixed score-transfer offset. No quality gate changed.
 Best remains user-reported 96.3727; platform 96.5 remains unmet by 0.1273.
+
+### V41 conditional continuous-family bound (2026-09-29)
+
+`docs/round2_v41/RESULTS.md` supersedes pairwise-grid ceiling interpretations.
+Given correct reported scores/package identities and the documented additive
+WMAPE metric, all nonnegative mixtures of fixed V36/N0048/V7 time endpoints
+and the fixed V36/V12-joint iron interval have a conservative continuous upper
+bound **96.46205 < 96.5**, including score rounding and possible iron headroom.
+This is not an attainable score or a bound on new models/extrapolation.
+Equal measured values do not prove a plateau; iron w=.5 beating its two
+endpoints does not establish the continuous optimum. Multi-point rational
+certificates bound points that pairwise chord extrapolation left unresolved.
+Source observations are V40 commit c5afb9c4, user reports, not verified receipts.
+No fits, label reads, packages, desktop changes or uploads. Keep existing
+packages/evidence unchanged; useful progress toward 96.5 requires predictions
+outside the fixed-endpoint convex family. Do not fill slots for quota alone.
+V41 is reserved on round2-v41-concavity-bound; scan reservations before V42.
+The concurrent V39 interior and our V39 hard-tree branch identities remain
+distinct and frozen. User's hourly-only training monitoring rule remains active.
