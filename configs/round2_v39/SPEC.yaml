@@ -1,5 +1,5 @@
-version: round2-v38-interior-descent
-source_plan: docs/round2_v38/RESULTS.md
+version: round2-v39-interior-descent
+source_plan: docs/round2_v39/RESULTS.md
 platform_target: 96.4
 platform_reference:
   candidate: V32_TIME_A60V7_50

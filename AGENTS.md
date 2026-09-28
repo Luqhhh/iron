@@ -1225,11 +1225,13 @@ development 7.607 hours still exceeds 6; peak RSS 935.25 MiB passes.
 fits, no packages/uploads. G1 remains unmeasured. Preserve both arms and
 failed evidence; do not drop INSTANCE or relax the gate inside V37.
 
-### V38: the first interior probes — a new platform best (2026-09-28)
+### V39: the first interior probes — a new platform best (2026-09-28)
 
-Results `docs/round2_v38/RESULTS.md`, implementation
-`src/bf_tap_r2/v38_interior_descent.py`, evidence
-`EVIDENCE_STATUS.json -> round2_v38_2026_09_28`. Zero fits, zero packages.
+(First labelled V38; renumbered to V39 because the teammate branch `round2-v38-hard-tree-shared-routing` claims V38. Private evidence keeps its historical `local/runs/round2-v38` path.)
+
+Results `docs/round2_v39/RESULTS.md`, implementation
+`src/bf_tap_r2/v39_interior_descent.py`, evidence
+`EVIDENCE_STATUS.json -> round2_v39_2026_09_28`. Zero fits, zero packages.
 
 Two of the five pending interior packages were scored by the user:
 

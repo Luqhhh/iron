@@ -1,6 +1,6 @@
 import unittest
 
-from bf_tap_r2.v38_interior_descent import MEASURED, PENDING, analysis, design
+from bf_tap_r2.v39_interior_descent import MEASURED, PENDING, analysis, design
 from bf_tap_r2.v32_family_ceiling import secant_bound
 
 
@@ -55,8 +55,8 @@ class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
             from pathlib import Path
-            from bf_tap_r2.v38_interior_descent import run
-            run(Path("/home/lux1/iron"), "configs/round2_v38/SPEC.yaml", "docs/should-not-write")
+            from bf_tap_r2.v39_interior_descent import run
+            run(Path("/home/lux1/iron"), "configs/round2_v39/SPEC.yaml", "docs/should-not-write")
 
 
 if __name__ == "__main__":

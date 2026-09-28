@@ -14557,12 +14557,12 @@
       "resource_scope": "core_only_preprocessing_and_formal_runner_unmeasured"
     }
   },
-  "round2_v38_2026_09_28": {
+  "round2_v39_2026_09_28": {
     "date": "2026-09-28",
     "status": "interior_probes_new_platform_best_and_dead_v7m_endpoint",
-    "result": "docs/round2_v38/RESULTS.md",
-    "spec": "configs/round2_v38/SPEC.yaml",
-    "implementation": "src/bf_tap_r2/v38_interior_descent.py",
+    "result": "docs/round2_v39/RESULTS.md",
+    "spec": "configs/round2_v39/SPEC.yaml",
+    "implementation": "src/bf_tap_r2/v39_interior_descent.py",
     "platform_target": 96.4,
     "feedback": {
       "V32_TIME_A60V7_50": {
@@ -14638,6 +14638,7 @@
       "test_log": "local/reports/v38-python312-tests-r1.log",
       "test_log_sha256": "48d1803037618c352bed2e9ee5fed0492a1669c30fcd14320f6eeddd39b5ac5f"
     },
-    "goal_above_96_4_achieved": false
+    "goal_above_96_4_achieved": false,
+    "numbering": "this round was first labelled V38 and renumbered to V39 because the teammate branch round2-v38-hard-tree-shared-routing claims V38; private evidence keeps its historical local/runs/round2-v38 path"
   }
 }

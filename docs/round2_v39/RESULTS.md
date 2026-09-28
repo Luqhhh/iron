@@ -1,4 +1,4 @@
-# V38 results: the first interior probes — a new best and a dead V7m endpoint
+# V39 results: the first interior probes — a new best and a dead V7m endpoint
 
 The user reported two of the five pending packages:
 
@@ -60,5 +60,5 @@ With the iron endpoint the bounded ceiling is **96.3985**, still `0.0015` short 
 
 Budget: **0 fits, 0 packages, 0 uploads.** The two scores are user-reported, not
 independently verified; the platform is deterministic so their differences are
-exact. Implementation `src/bf_tap_r2/v38_interior_descent.py`, evidence
+exact. Implementation `src/bf_tap_r2/v39_interior_descent.py`, evidence
 `local/runs/round2-v38/interior-descent-r1.json`.

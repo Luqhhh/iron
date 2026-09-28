@@ -183,3 +183,13 @@ V27's CPU refusal. Next free local number V37 requires a new reservation scan.
 
 Fresh fetch/all-branch integer and suffixed SPEC scan reserves V37 for exact
 hard-tree contraction; next V38 requires a fresh scan. V36 stays frozen.
+
+## 8. V39 reservation (2026-09-28, local)
+
+The local **interior-descent** round (the first interior time-simplex probes and
+the platform feedback that made one of them the new best, `96.3727`) was first
+labelled `V38` and **renumbered to `V39`** because the teammate branch
+`round2-v38-hard-tree-shared-routing` claims `V38`. Public labels moved
+(`configs/`, `docs/`, the module, the tests and the EVIDENCE key); the private
+evidence keeps its historical `local/runs/round2-v38/interior-descent-r1.json`
+path, and the module pins that path on purpose. Next free local number: **V40**.

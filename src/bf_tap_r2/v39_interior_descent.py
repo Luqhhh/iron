@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V38: the interior descent after the first two interior probes.
+"""V39: the interior descent after the first two interior probes.
 
 Two interior time-simplex packages were scored: ``0.5*A60 + 0.5*V7m``
 (coordinates ``(0.20, 0.30, 0.50)``) at ``96.3727`` — a new platform best — and
@@ -22,7 +22,7 @@ import yaml
 from .v32_family_ceiling import secant_bound
 
 ROOT_DEFAULT = Path("/home/lux1/iron")
-SPEC_DEFAULT = Path("configs/round2_v38/SPEC.yaml")
+SPEC_DEFAULT = Path("configs/round2_v39/SPEC.yaml")
 OUTPUT_DEFAULT = Path("local/runs/round2-v38/interior-descent-r1.json")
 
 #: Recorded platform scores lifted to the V12-iron reference, with time-column
@@ -116,9 +116,9 @@ def run(root: Path | str = ROOT_DEFAULT, spec_path: Path | str = SPEC_DEFAULT,
     spec = yaml.safe_load((root / spec_path).read_text())
     destination = (root / output).resolve()
     if not destination.is_relative_to(root / "local/runs/round2-v38"):
-        raise ValueError("V38 evidence must stay private under local/runs/round2-v38")
+        raise ValueError("V39 evidence must stay private under the historical local/runs/round2-v38 directory")
     if destination.exists():
-        raise FileExistsError("V38 output already exists; refusing overwrite")
+        raise FileExistsError("V39 output already exists; refusing overwrite")
     report = analysis(float(spec.get("grid_step", 0.05)))
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
