@@ -12836,4 +12836,56 @@
     "desktop_writes": 0,
     "agent_uploads": 0
   }
+,
+  "r8_three_slot_delivery_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "three_slot_delivery_written_to_desktop",
+    "request": "user asked which three packages to submit if only three are possible, and to write the submission packages to the desktop",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8",
+    "packages": [
+      {
+        "file": "1_V21_TIME_LOCAL.zip",
+        "sha256": "32a74052899bd0b02d841d2e07e87645fdaf4b8030fcc69c7d7b12a654fc2016",
+        "recipe": "iron copy of V18_B0; time = 0.40 V36 + 0.25 V7m + 0.35 P-LL",
+        "local_development_mean": 96.259932,
+        "four_seed_gains": [
+          0.010431,
+          0.013954,
+          0.009948,
+          0.016577
+        ],
+        "four_seed_mean": 0.012728,
+        "paired_lcb95": 0.009048,
+        "role": "highest local evidence; the N=0 gamble"
+      },
+      {
+        "file": "2_V20_B0_PLLT_A325.zip",
+        "sha256": "f14f39df5474c8904639c0768bf8fa678f645f46fb0f987fbb84690a983eef57",
+        "recipe": "iron copy of V18_B0; time = 0.675 B0_time + 0.325 P-LL",
+        "local_development_mean": 96.252008,
+        "four_seed_gains": [
+          0.00506,
+          0.003478,
+          0.002114,
+          0.007776
+        ],
+        "four_seed_mean": 0.004607,
+        "paired_lcb95": 0.001746,
+        "role": "P-LL added at the B0 N level; gate cleared without exception"
+      },
+      {
+        "file": "3_V18_B0_V12IRON_V7TIME.zip",
+        "sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+        "recipe": "V12 iron column + V7 time column (both original strings)",
+        "local_development_mean": 96.247739,
+        "conditional_platform_arithmetic": 96.3679,
+        "role": "the only package with platform-side derivation (both columns measured); floor near +0.0153 over the current best"
+      }
+    ],
+    "selection_rationale": "one high-upside package (V21_TIME_LOCAL, N=0), one validated P-LL addition at the B0 N level (V20), and the only platform-derived floor (V18_B0). Local scores share one complete-coverage OOF and are not platform forecasts.",
+    "verification": "each ZIP holds exactly result.csv; 322 unique IDs in official template order; unchanged iron strings byte-identical to the parent (0 mismatches); time blend read-back difference 0.0; predictions finite and non-negative",
+    "agent_uploads": 0,
+    "desktop_writes": 3,
+    "goal_above_96_4_achieved": false
+  }
 }
