@@ -663,3 +663,24 @@ Current user-reported best remains V12=96.3526; >96.4 was not achieved.
   V20 masked reconstruction. Preserve both, never overwrite their files.
   V23 uses the remote V21 strongest local time equation as its primary offline
   reference; this does not assert a new platform score or merge remote history.
+
+## V23_HIST closure (2026-09-28)
+
+- The histogram-target branch `codex/round2-v23-histogram-target` is distinct
+  from the other branch's V23 time-capacity probe and V24 log/sqrt-target probe.
+  Frozen histogram specification and fitted source hashes are preserved.
+- All40 development fits completed,0 failed;40model cold inference maxdiff0.
+  Gaussian mean increments vs current R23 are iron -0.009783010 and time
+  -0.007035976, both split seeds negative. No finalist, no confirmation, no
+  full-data fit, no package/upload. Time's +0.005156354 vs historical B0 is
+  already captured by V21 and is not a new incumbent-relative gain.
+- Public closure: docs/round2_v23_histogram/RESULTS.md. Retain all private
+  models, predictions, per-epoch traces, audits and failed CI evidence.
+- Important unused confirmation integrity weakness remains in frozen
+  v23_run.py: it trusts the selected target without audit-summary hash binding
+  and does not independently compare confirmation promotion. Do not reuse or
+  automatically execute that path. A future use requires authorized repair,
+  tests and new preflight/source identity; current negative development has
+  been independently checked including settings, sigma, IDs and fold hashes.
+- No second histogram specification/budget after this frozen failure.
+  The30-minute v23-hist monitor is paused after final audit and publication.
