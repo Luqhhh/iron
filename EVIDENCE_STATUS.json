@@ -13522,7 +13522,7 @@
         }
       ],
       "why_interior": "the interior of the time simplex is unmeasured and unconstrained by any current bound, so it is the only part of the measured endpoint span that could exceed the 96.3992 beyond-chord ceiling",
-      "recommendation": "next five slots: V32_TIME_A60V7_50, V32_TIME_A60V7_75, r9 2_TIME_V100 (bound 96.3832), r9 4_IRON_W100 (bound 96.3839), then V32_TIME_A60V7_25; any package above 96.3679 opens its direction",
+      "recommendation": "Current target 96.5: first interior 50% and 75%; provisionally reserve three slots for qualified new candidates. Optional remaining old probes if none ready by daily deadline. Five negative points do not prove global mixture optimality.",
       "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r10"
     },
     "G0": {
@@ -13580,6 +13580,16 @@
     ],
     "preserved": "every deleted ZIP still exists under the private local/ tree and is registered in its round evidence; the desktop copy is reproducible at any time",
     "verification": "all five kept packages re-read from the desktop: SHA-256 matches, exactly result.csv, 322 template-ordered unique IDs, finite non-negative predictions",
+    "agent_uploads": 0
+  },
+  "round2_interpretation_correction_2026_09_28": {
+    "platform_target": 96.5,
+    "reference_score": 96.3679,
+    "five_negative_probes": "only rejects tested points, not continuous global optimality",
+    "v29_marginal_correlations": "do not exclude nonlinear conditional information",
+    "v29_marginal_shift": "does not exclude joint covariate shift",
+    "historical_artifacts_unchanged": true,
+    "new_packages": 0,
     "agent_uploads": 0
   }
 }

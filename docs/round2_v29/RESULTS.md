@@ -73,3 +73,12 @@ Targeted tests: 3 in `tests/test_round2_v29_information_screen.py`.
 curves, but bounded by `96.3992` — and (b) a genuinely different model class
 whose inputs or inductive bias are **not** a function of the 21 frozen features
 and their pairwise combinations.
+
+## Interpretation correction (2026-09-28)
+
+The measured low marginal correlations are a negative linear screening result,
+not a proof that every nonlinear combination carries no conditional information.
+Small marginal standardized mean differences and similar spout counts likewise
+do not exclude joint covariate shift. The measured numbers and stopped recipes
+remain unchanged. The later V32 bound covers only beyond-chord regions, not all
+mixtures. These limitations do not themselves establish a useful new candidate.

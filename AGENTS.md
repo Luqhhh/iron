@@ -1098,3 +1098,17 @@ implementations `src/bf_tap_r2/v32_family_ceiling.py` and
   finite non-negative). Recommended five slots: the two higher-`V7m` interior
   probes, the r9 `2_TIME_V100` and `4_IRON_W100` endpoints, then
   `V32_TIME_A60V7_25`. Locked Python 3.12 suite: **1183 passed, 23 warnings**.
+
+### Evidence wording and current scheduling correction (2026-09-28)
+
+- Current objective is platform **96.5**, incumbent user-reported B0 **96.3679**.
+- Five failed discrete weight probes cannot prove a continuous-mixture optimum.
+  The 96.3992 nominal ceiling applies only to the specified beyond-chord region;
+  it does not close the full simplex. Unbounded points are unresolved, not likely winners.
+- V29's maximum marginal residual correlations do not exclude nonlinear conditional
+  signal; small standardized feature means do not rule out joint covariate shift.
+  Preserve those diagnostics and negative experiments, but scope their conclusions
+  to the tested statistics and recipes. No previously failed recipe is reopened.
+- Provisional tomorrow schedule: interior 50%, then 75%; retain three slots for
+  qualified new candidates. If none is ready by the daily deadline, remaining old
+  probes are optional. No automatic package or upload and no lowered gates.

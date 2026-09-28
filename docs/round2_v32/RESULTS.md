@@ -89,8 +89,22 @@ The next five slots should mix the unbounded interior with the two most
 informative bounded endpoints: `V32_TIME_A60V7_50`, `V32_TIME_A60V7_75`, the
 r9 `2_TIME_V100` (pure `V7m`, bound `96.3832`) and `4_IRON_W100` (pure `V12m`,
 bound `96.3839`), then `V32_TIME_A60V7_25`. Reading: any package above `96.3679`
-opens its direction; all below `96.3679` means the released weights already sit
-at the platform optimum and no further weight work is justified.
+opens its direction; all below `96.3679` means these five tested points did not improve the incumbent.
+This does not prove optimality over the continuous mixture space. Further probes
+need a specific hypothesis and must compete with qualified new models for quota.
 
 Targeted tests: 7 in `tests/test_round2_v32_family_ceiling.py`. **96.4 remains
 unmet**; the registered best is `96.3679`.
+
+## 6. Scheduling correction for the current 96.5 target (2026-09-28)
+
+The original five-slot recommendation was an information-gathering plan, not
+evidence that five weight probes are the best route to 96.5. Current user-reported
+best remains B0 96.3679, gap 0.1321. Prioritize the 50% and 75% interior probes
+first, and provisionally retain three of tomorrow's five slots for qualified new
+candidates. If none is ready before the daily deadline, the remaining probes
+are optional information purchases. No new model is promised ready by then.
+The pure-time and pure-iron bounds are nominally 96.3832 and 96.3839 respectively
+under the stated additive WMAPE assumptions; reported-score rounding does not
+bridge their gap to 96.5. Unbounded interior points are unresolved, not evidence
+of a likely large gain. Packages and their historical release decisions are unchanged.
