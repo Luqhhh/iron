@@ -1,0 +1,54 @@
+version: round2-v20-pll-time-release-on-b0
+source_plan: docs/round2_v20/PREREGISTRATION.md
+platform_target: 96.4
+platform_reference:
+  candidate: V12_IRON_JOINT_PLR001_A50
+  score: 96.3526
+  source: user_reported_not_independently_verified
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+parent:
+  candidate: V18_B0_V12IRON_V7TIME
+  zip: local/runs/round2-v18/packages-r1/V18_B0_V12IRON_V7TIME/Luqhhh_bf_tap_predict_round2.zip
+  sha256: 532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017
+expert:
+  model: v17.V17TimeRegressor
+  recipe: {target: tap_time_len, kind: single, selection: standardized_mae, projection: false, dual_scales: [0.01, 0.01]}
+  training_source: configs/round2_v7/SPEC.yaml
+  development_cache: local/runs/round2-v17/development-r1
+  confirmation_cache: local/runs/round2-v17/confirmation-r1
+four_seed_references:
+  n_line: local/runs/round2-v5-error-covariance/replication-r1/seed-{seed}/fold-{fold}.npz
+  v7_member: local/runs/round2-v7-periodic-networks/confirmation-r1
+  v12_joint: local/runs/round2-v12-joint-tabm/confirmation-r1
+  derived_seeds: [7777, 12011]
+  recorded_b0_scores: {7777: 96.242873, 12011: 96.233951}
+  reconstruction_tolerance: 1.0e-09
+blend:
+  target: tap_time_len
+  alpha: 0.325
+  frozen_from: "lower of the two held-out-seed nested optima 0.325 / 0.35"
+  alpha_scan: false
+  unchanged_column: pred_tap_iron
+  unchanged_column_byte_identical: true
+gates:
+  replay_bit_identical: true
+  four_seed:
+    min_seeds: 4
+    require_all_positive: true
+    paired_lcb_level: 0.95
+    require_paired_lcb_gt_zero: true
+    fold_level_role: descriptive_only
+  local_working_gate: 96.25
+budget:
+  replay_fits: 1
+  reference_fits: 0
+  full_data_fits: 1
+  packages: 1
+  desktop_writes: 0
+  agent_uploads: 0
+release:
+  automatic_packages: false
+  upload_role: user
