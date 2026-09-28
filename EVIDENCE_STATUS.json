@@ -12063,5 +12063,79 @@
       "platform_target_above_96_4_achieved": false
     },
     "disposition": "No V17 package or upload; preserve negative four-seed evidence and frozen gates."
+  },
+  "round2_v20_2026_09_28": {
+    "resumption": "User explicitly requested the V20 masked-reconstruction strategy",
+    "source_plan": "docs/round2_v20/PREREGISTRATION.md",
+    "spec": "configs/round2_v20/SPEC.yaml",
+    "result": "docs/round2_v20/RESULTS.md",
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "mechanism": "masked numeric-feature reconstruction as an auxiliary task, tabm_plr001 control",
+    "single_specification": {
+      "mask_rate": 0.15,
+      "auxiliary_weight": 0.2,
+      "target": "tap_time_len"
+    },
+    "G0": {
+      "development_fits": 20,
+      "development_fits_budget": 20,
+      "failed_fits": 0,
+      "confirmation_fits": 0,
+      "full_data_fits": 0,
+      "wall_minutes": 18.0,
+      "code_sha256": "faec148aa1178fb61ec9f5ead0931c1d92a40ad62fa077642f2511e659ee044a",
+      "code_revision": "a6076af",
+      "spec_sha256": "d62aee091d0cee92201a91652c90acc70a03112b308c8de864320457b0dde502",
+      "summary_sha256": "87fd81829e212715bae4c2f4acbfda6f059a9200c53ac9d2000743c5c7389f39",
+      "gate_0a_synthetic_learnability": {
+        "reconstruction_mse": 0.13439227640628815,
+        "constant_baseline_mse": 2.7688910961151123,
+        "ratio": 0.04853649773183459,
+        "passed": true
+      },
+      "gate_0b_control_equivalence": {
+        "criterion": "same_interpreter_wrapper_at_lambda_0_vs_v7_periodic_PeriodicRegressor",
+        "max_abs_delta": 0.0,
+        "passed": true,
+        "note": "summary.json reports the superseded cache-replay criterion as false; that field is descriptive only, see docs/round2_v20/RESULTS.md section 2"
+      },
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "G1": {
+      "incumbent_local": {
+        "42": 96.24797438041294,
+        "3407": 96.24750403102945
+      },
+      "control_increment": {
+        "42": -0.0035658288647368863,
+        "3407": -0.005847987809232791
+      },
+      "candidate_increment": {
+        "42": -0.01898907424883589,
+        "3407": -0.006990354479668781
+      },
+      "control_two_seed_mean_increment": -0.004706908336984839,
+      "candidate_two_seed_mean_increment": -0.012989714364252336,
+      "candidate_minus_control_two_seed_mean": -0.008282806027267497,
+      "candidate_minus_control_per_fold_mean": -0.00825,
+      "candidate_minus_control_folds_negative": 7,
+      "gate_1_two_seeds_positive": false,
+      "gate_2_increment_over_incumbent_0.01": false,
+      "promoted_candidates": [],
+      "platform_target_above_96_4_achieved": false
+    },
+    "diagnostic_gaps": [
+      "reconstruction loss trajectory not recorded",
+      "masking statistics not recorded",
+      "target validation trajectory not recorded",
+      "model weights not persisted; development budget exhausted so not re-run"
+    ],
+    "disposition": "Negative result under the single frozen specification. No package, no upload, no second specification, no promotion. Evidence retained in private local/."
   }
 }
