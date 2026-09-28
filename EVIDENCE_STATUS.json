@@ -13881,7 +13881,7 @@
     }
   },
   "round2_v34_2026_09_28": {
-    "status": "preregistered_preflight_passed",
+    "status": "completed_no_finalist_cap_limited_recipe",
     "spec": "configs/round2_v34/SPEC.yaml",
     "source_plan": "docs/round2_v34/PREREGISTRATION.md",
     "platform_target": 96.5,
@@ -13909,7 +13909,38 @@
           "retained_tree_count": 240
         }
       ],
-      "reference_cache_verified": true
+      "reference_cache_verified": true,
+      "locked_python312_tests_passed": 1201,
+      "warnings": 23,
+      "test_log": "local/reports/v34-python312-tests-r1.log",
+      "test_log_sha256": "4b768b38d7c9285b92374308ba9a0bdde326740c0ad812d01561a270bd6acbcf",
+      "audit": {
+        "status": "passed",
+        "selection_verified": true,
+        "units": 60,
+        "cold_models": 80,
+        "max_inference_difference": 0.0,
+        "maximum_score_difference": 6.114900252818245e-17,
+        "summary_sha256": "8a65eb288ba587eb2cc00868763575df00ab3021b921f0a5158b95ea0b552b28",
+        "manifest_sha256": "d93193067764bf32f980af1c407b7ebcdbb84fabd749af204eec8cd0aa35c863",
+        "reference_audit_scope": "fit/query identities and saved endpoint arithmetic; no extra baseline refits",
+        "new_fits": 0,
+        "packages": 0,
+        "agent_uploads": 0
+      },
+      "audit_sha256": "e0c2cff6a94f91a7a425fe033a1097ae504688084def048187634247e11874cd",
+      "supplemental_audit": {
+        "status": "passed",
+        "models": 80,
+        "retained_trees_checked": 53388,
+        "calibration_cap_hits": 25,
+        "selected_iterations_at_least475": 22,
+        "cap_hit_last25_mean_MAE_better_than_previous25": 23,
+        "interpretation": "cap-limited frozen recipe rejected; no claim of convergence or family impossibility; no extension in this round",
+        "summary_sha256": "8a65eb288ba587eb2cc00868763575df00ab3021b921f0a5158b95ea0b552b28",
+        "new_fits": 0
+      },
+      "supplemental_audit_sha256": "b1a838c84dce913c7345dcdbfc2891a2cd4fb5597f4b259522c860b2780bffea"
     },
     "development_candidate_outer_fits_budget": 40,
     "development_training_runs_budget": 80,
@@ -13917,6 +13948,220 @@
     "confirmation_candidate_outer_fits_max": 20,
     "full_data_fits": 0,
     "packages": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "results": "docs/round2_v34/RESULTS.md",
+    "implementation_commit": "27010e6",
+    "development_directory": "local/runs/round2-v34/development-r1",
+    "development_candidate_outer_fits": 40,
+    "development_training_runs": 80,
+    "development_reference_fits": 0,
+    "actual_tree_fits": 54926,
+    "failed_units": 0,
+    "confirmation_candidate_outer_fits": 0,
+    "confirmation_seeds_consumed": [],
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "CRPS_FIXED",
+          "seed_results": {
+            "42": {
+              "gain": 0.0,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.24875084732841,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "standalone_wmape": 0.04374223760840116,
+              "blended_wmape": 0.03715192787062087,
+              "baseline_wmape": 0.03715192787062087,
+              "positive_folds_descriptive": 0
+            },
+            "3407": {
+              "gain": 0.0,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.24658935061254,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "standalone_wmape": 0.04444751681456499,
+              "blended_wmape": 0.037204306690089214,
+              "baseline_wmape": 0.037204306690089214,
+              "positive_folds_descriptive": 0
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": 0.0,
+            "sd": 0.0,
+            "se": 0.0,
+            "lcb95": 0.0,
+            "positive": 0
+          },
+          "both_seeds_positive": false
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "CRPS_SCALE",
+          "seed_results": {
+            "42": {
+              "gain": 0.0,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.24875084732841,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "standalone_wmape": 0.04423405460704594,
+              "blended_wmape": 0.03715192787062087,
+              "baseline_wmape": 0.03715192787062087,
+              "positive_folds_descriptive": 0
+            },
+            "3407": {
+              "gain": -0.001042184143819,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.24554716646873,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.05,
+                0.0,
+                0.05
+              ],
+              "standalone_wmape": 0.044442040121580935,
+              "blended_wmape": 0.037225150372965594,
+              "baseline_wmape": 0.037204306690089214,
+              "positive_folds_descriptive": 0
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": -0.0005210920719095,
+            "sd": 0.000736935475339511,
+            "se": 0.0005210920719095,
+            "lcb95": -0.0038111379302132584,
+            "positive": 0
+          },
+          "both_seeds_positive": false
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "CRPS_FIXED",
+          "seed_results": {
+            "42": {
+              "gain": -0.001700684660848814,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.24705016266756,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.0,
+                0.05,
+                0.0
+              ],
+              "standalone_wmape": 0.04952156011682105,
+              "blended_wmape": 0.03790706887602806,
+              "baseline_wmape": 0.03787305518281108,
+              "positive_folds_descriptive": 0
+            },
+            "3407": {
+              "gain": 0.0,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.24658935061254,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "standalone_wmape": 0.048766084682839134,
+              "blended_wmape": 0.03786390629766005,
+              "baseline_wmape": 0.03786390629766005,
+              "positive_folds_descriptive": 0
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": -0.000850342330424407,
+            "sd": 0.0012025656563461403,
+            "se": 0.000850342330424407,
+            "lcb95": -0.006219192507133807,
+            "positive": 0
+          },
+          "both_seeds_positive": false
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "CRPS_SCALE",
+          "seed_results": {
+            "42": {
+              "gain": 0.0,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.24875084732841,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "standalone_wmape": 0.05042230782773725,
+              "blended_wmape": 0.03787305518281108,
+              "baseline_wmape": 0.03787305518281108,
+              "positive_folds_descriptive": 0
+            },
+            "3407": {
+              "gain": 0.0,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.24658935061254,
+              "weights_by_fold": [
+                0.0,
+                0.0,
+                0.0,
+                0.0,
+                0.0
+              ],
+              "standalone_wmape": 0.049699290371288674,
+              "blended_wmape": 0.03786390629766005,
+              "baseline_wmape": 0.03786390629766005,
+              "positive_folds_descriptive": 0
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": 0.0,
+            "sd": 0.0,
+            "se": 0.0,
+            "lcb95": 0.0,
+            "positive": 0
+          },
+          "both_seeds_positive": false
+        }
+      ],
+      "selected_for_confirmation": {
+        "tap_iron": null,
+        "tap_time_len": null
+      },
+      "calibration_zero_weights": 37,
+      "calibration_weight_count": 40,
+      "calibration_cap_hits": 25,
+      "cap_hit_runs_last25_MAE_improving": 23,
+      "scope_limit": "frozen500iteration_recipes_failed_not_family_impossibility_or_convergence",
+      "platform_best_unchanged": 96.3679,
+      "target_gap_remaining": 0.1321,
+      "decision": "stop_frozen_round_no_posthoc_tree_count_increase"
+    }
   }
 }

@@ -1146,3 +1146,17 @@ reclassify V33's control. Forty complete-development outer fits, no new B0
 reference fits; at most one finalist per target after two positive complete
 seeds. Retain four-seed/LCB/96.25 gates, no automatic release or upload.
 V34 is reserved; next free local number V35 must be rechecked before use.
+
+### V34 completed: no finalist, with convergence limitation (2026-09-28)
+
+Results: `docs/round2_v34/RESULTS.md`. All 40 outer fits / 80 training runs
+completed; no candidate has two positive complete seeds. Mean gains:
+iron FIXED 0, SCALE -0.000521; time FIXED -0.000850, SCALE 0. Calibration
+weights are zero in 37/40 cells. No confirmation/full-data fits, packages or uploads.
+25/40 calibration runs hit the 500-iteration cap; 23/25 were still improving
+by the last-25 versus previous-25 mean calibration MAE diagnostic. Preserve that
+limitation: this does not prove convergence or family impossibility. No
+post-hoc cap increase within V34. Any later study needs a separate frozen
+budget and cannot overwrite this evidence. G0: 1201 tests passed; 80 saved
+models cold-audited with zero inference difference. Best remains B0 96.3679;
+platform 96.5 remains unmet.
