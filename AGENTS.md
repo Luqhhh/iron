@@ -1423,3 +1423,31 @@ Single-chain convergence is not established: retained-half training RSS changes
 not a universal rejection of Bayesian trees or authorization for extra sweeps.
 Both hourly timers observed normal terminal completion and stopped themselves.
 No training remains active. Best 96.3727; platform 96.5 remains unmet by .1273.
+
+### V44 separately frozen BART length study (2026-09-29)
+
+V43 stays failed and immutable. Its new training-only trace diagnostic shows
+BART RSS lag-one correlation median .7613 and retained-half mean movement
+median -.6051 within-chain sd. Under continued optimization, V44 separately
+freezes one tenfold schedule study: fresh fits with burn 2000, 100 retained
+draws every 20 sweeps, total 4000. No priors, trees, kernels, RNG seeds, inputs,
+targets, gates or retained sample counts change. No old run is resumed. This
+is not a convergence guarantee or permission to keep increasing the schedule.
+Plan `configs/round2_v44/SPEC.yaml` / `docs/round2_v44/PREREGISTRATION.md`,
+commit d2728e8; implementation e590cfc on `round2-v44-bart-length-study`.
+
+Mandatory exact first-400-sweep comparison against both old synthetic models
+and all 80 old development models: transforms, priors, scalar traces, sampled
+trees and saved predictions. Old prefix samples are audit-only. Any mismatch
+fails the round; preserve evidence, no automatic refit. Same 40 development
+units, current reference, four-seed/LCB/96.25 and +.01/control-advantage gates.
+
+Locked Python 3.12 suite: 1248 passed, 23 warnings. Tiny old-prefix equality
+tests pass for both arms; 60 original units verify. Two full-shape long-chain
+synthetic fits started 2026-09-29 07:42:54 Asia/Shanghai, initial verified
+MainPID 172355 on `iron-v44-preflight-r1.service`. Hourly-only timer
+`iron-v44-preflight-hourly.timer`, first due approximately 08:42:54. Private
+checks in `local/runs/round2-v44/preflight-hourly/checks.jsonl`. Do not poll
+training or read progress between scheduled checks absent an actual event or
+user request. G0 resource/learnability/full-prefix admission is pending;
+official fits remain zero. No packages, desktop changes or uploads. Goal96.5.

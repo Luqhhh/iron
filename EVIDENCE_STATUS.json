@@ -15228,5 +15228,29 @@
     },
     "time_tier": "exploration_diagnostic_only_failed_stability_and_frozen_minimum_gain",
     "convergence": "not_established_single_fixed_chain_no_extension"
+  },
+  "round2_v44_bart_length_study": {
+    "date": "2026-09-29",
+    "status": "SYNTHETIC_PREFLIGHT_RUNNING_OFFICIAL_FITS_NOT_STARTED",
+    "branch": "round2-v44-bart-length-study",
+    "protocol_commit": "d2728e8",
+    "implementation_commit": "e590cfc",
+    "platform_target": 96.5,
+    "current_best_user_reported": 96.3727,
+    "G0": "1248_LOCKED_TESTS_TINY_PREFIX_EQUALITY_AND_60_OLD_UNITS_PASS_FULL_PREFLIGHT_PENDING",
+    "G1": "UNMEASURED",
+    "synthetic_fits_budget": 2,
+    "official_candidate_units_budget": 40,
+    "official_candidate_fits_started": 0,
+    "service": "iron-v44-preflight-r1.service",
+    "initial_main_pid": 172355,
+    "started_at": "2026-09-29T07:42:54+08:00",
+    "monitor_interval_seconds": 3600,
+    "monitor_first_due": "2026-09-29T08:42:54+08:00",
+    "monitor_timer": "iron-v44-preflight-hourly.timer",
+    "change": "fresh_4000_sweep_fits_same_100_retained_draws_exact_old_400_sweep_prefix_required",
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0
   }
 }
