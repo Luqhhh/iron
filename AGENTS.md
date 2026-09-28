@@ -1123,3 +1123,16 @@ V30. Only positive MDN3 beating its control may consume confirmation seeds
 271828/314159. Preserve four-seed/LCB/96.25 gates. No full-data fit, package or
 upload is authorized by this round. Next free local number is V34; recheck
 remote reservations before using it.
+
+### V33 completed: no eligible finalist (2026-09-28)
+
+Results: `docs/round2_v33/RESULTS.md`. All 40 candidate outer fits (80 optimizer
+runs) completed; 20 matching B0 reference units reused after provenance checks.
+MDN3 iron gains +0.009044/-0.000739 (mean +0.004153); time gains
+-0.006211/-0.001693 (mean -0.003952). Neither passes the two-positive-seed
+prerequisite. GAUSS1 time control gains +0.001803/+0.004840 but was frozen as
+control-only; preserve the observation without retroactive promotion.
+No confirmation seeds consumed, no full-data fits, packages or uploads.
+G0: locked Python3.12 suite 1194 passed; 80 saved models cold-audited, max
+inference difference 4.55e-13; independent preprocessing/epoch audit passed.
+Platform best remains user-reported B0 96.3679; 96.5 remains unmet by 0.1321.

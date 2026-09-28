@@ -13590,10 +13590,13 @@
     "v29_marginal_shift": "does not exclude joint covariate shift",
     "historical_artifacts_unchanged": true,
     "new_packages": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "desktop_readme_updated": true,
+    "desktop_readme_sha256": "7305c0d36a102fed47943a59f994f7f9285d924e4e906f153b0b6f091864991e",
+    "five_original_zip_hashes_reverified": true
   },
   "round2_v33_2026_09_28": {
-    "status": "preregistered_synthetic_preflight_passed",
+    "status": "completed_no_eligible_confirmation_finalist",
     "spec": "configs/round2_v33/SPEC.yaml",
     "source_plan": "docs/round2_v33/PREREGISTRATION.md",
     "platform_target": 96.5,
@@ -13620,7 +13623,44 @@
           "parameter_count": 39845
         }
       ],
-      "reference_cache_verified": true
+      "reference_cache_verified": true,
+      "locked_python312_tests_passed": 1194,
+      "warnings": 23,
+      "targeted_tests_passed": 8,
+      "test_log": "local/reports/v33-python312-tests-r1.log",
+      "test_log_sha256": "69f13820c3b0d99a2b738af748b97cec9aeadb25300577eaf1a67ba34f2d335a",
+      "audit": {
+        "status": "passed",
+        "selection_verified": true,
+        "units": 60,
+        "cold_models": 80,
+        "max_inference_difference": 4.547473508864641e-13,
+        "maximum_score_difference": 1.8496489062602706e-16,
+        "summary_sha256": "0f7d79462d4cb8ee87e4b68eb478cf0e5811c9643e2a7075dd9310167a07a2d8",
+        "manifest_sha256": "b56b810e90008b10fea1c4b9e561a2229611eb45f9fd74af003aa1d611a24b96",
+        "reference_audit_scope": "fit/query identities and saved endpoint arithmetic; no extra baseline refits",
+        "new_fits": 0,
+        "packages": 0,
+        "agent_uploads": 0
+      },
+      "audit_sha256": "b15201bf2701c75bcc1503689814855af7e9e175843e3a7bfb2a434f44756c82",
+      "supplemental_audit": {
+        "status": "passed",
+        "model_payloads_checked": 80,
+        "reference_prediction_units_bit_identical": 20,
+        "checks": [
+          "training_only_numeric_means_and_stds",
+          "training_only_category_vocabulary",
+          "exact_spec_settings",
+          "independent_epoch_selection_from_trace",
+          "fresh_refit_epoch_count",
+          "finite_saved_parameters",
+          "original_reference_prediction_bytes_as_arrays"
+        ],
+        "summary_sha256": "0f7d79462d4cb8ee87e4b68eb478cf0e5811c9643e2a7075dd9310167a07a2d8",
+        "new_fits": 0
+      },
+      "supplemental_audit_sha256": "e7f4c8b303a2dfbd5283adf178baa4fb73b4a22d05e2da7bc6fb5422d894e684"
     },
     "development_candidate_outer_fits_budget": 40,
     "development_optimizer_runs_budget": 80,
@@ -13628,6 +13668,216 @@
     "confirmation_candidate_outer_fits_max": 20,
     "full_data_fits": 0,
     "packages": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "results": "docs/round2_v33/RESULTS.md",
+    "development_directory": "local/runs/round2-v33/development-r1",
+    "development_candidate_outer_fits": 40,
+    "development_optimizer_runs": 80,
+    "development_reference_fits": 0,
+    "failed_units": 0,
+    "confirmation_candidate_outer_fits": 0,
+    "confirmation_seeds_consumed": [],
+    "implementation_commit": "c23a008",
+    "G1": {
+      "records": [
+        {
+          "target": "tap_iron",
+          "recipe": "GAUSS1",
+          "seed_results": {
+            "42": {
+              "gain": -0.013900343335676926,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.23485050399273,
+              "weights_by_fold": [
+                0.5,
+                0.35,
+                0.35,
+                0.35,
+                0.35
+              ],
+              "standalone_wmape": 0.0388681668771762,
+              "blended_wmape": 0.03742993473733441,
+              "baseline_wmape": 0.03715192787062087,
+              "positive_folds_descriptive": 2
+            },
+            "3407": {
+              "gain": -0.0023073291495038367,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.24428202146304,
+              "weights_by_fold": [
+                0.35,
+                0.1,
+                0.2,
+                0.35,
+                0.5
+              ],
+              "standalone_wmape": 0.03858933778581035,
+              "blended_wmape": 0.03725045327307929,
+              "baseline_wmape": 0.037204306690089214,
+              "positive_folds_descriptive": 2
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": -0.008103836242590381,
+            "sd": 0.008197498945434837,
+            "se": 0.005796507093086545,
+            "lcb95": -0.04470154168139015,
+            "positive": 0
+          },
+          "both_seeds_positive": false
+        },
+        {
+          "target": "tap_iron",
+          "recipe": "MDN3",
+          "seed_results": {
+            "42": {
+              "gain": 0.009044315439939513,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.25779516276835,
+              "weights_by_fold": [
+                0.35,
+                0.35,
+                0.0,
+                0.0,
+                0.2
+              ],
+              "standalone_wmape": 0.03811021195307323,
+              "blended_wmape": 0.03697104156182208,
+              "baseline_wmape": 0.03715192787062087,
+              "positive_folds_descriptive": 3
+            },
+            "3407": {
+              "gain": -0.0007389214675024292,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.24585042914504,
+              "weights_by_fold": [
+                0.2,
+                0.2,
+                0.1,
+                0.1,
+                0.5
+              ],
+              "standalone_wmape": 0.03848828292179332,
+              "blended_wmape": 0.03721908511943926,
+              "baseline_wmape": 0.037204306690089214,
+              "positive_folds_descriptive": 2
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": 0.004152696986218542,
+            "sd": 0.006917793159206705,
+            "se": 0.004891618453720971,
+            "lcb95": -0.0267317664351746,
+            "positive": 1
+          },
+          "both_seeds_positive": false
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "GAUSS1",
+          "seed_results": {
+            "42": {
+              "gain": 0.0018026541096276272,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.25055350143803,
+              "weights_by_fold": [
+                0.35,
+                0.5,
+                0.2,
+                0.2,
+                0.5
+              ],
+              "standalone_wmape": 0.0391880620803275,
+              "blended_wmape": 0.03783700210061853,
+              "baseline_wmape": 0.03787305518281108,
+              "positive_folds_descriptive": 3
+            },
+            "3407": {
+              "gain": 0.004840223424381132,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.25142957403692,
+              "weights_by_fold": [
+                0.5,
+                0.5,
+                0.2,
+                0.1,
+                0.35
+              ],
+              "standalone_wmape": 0.03884853412150889,
+              "blended_wmape": 0.03776710182917243,
+              "baseline_wmape": 0.03786390629766005,
+              "positive_folds_descriptive": 4
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": 0.0033214387670043796,
+            "sd": 0.002147885860786378,
+            "se": 0.0015187846573767524,
+            "lcb95": -0.006267790163973297,
+            "positive": 2
+          },
+          "both_seeds_positive": true
+        },
+        {
+          "target": "tap_time_len",
+          "recipe": "MDN3",
+          "seed_results": {
+            "42": {
+              "gain": -0.006211461438982227,
+              "b0_score": 96.24875084732841,
+              "candidate_score": 96.24253938588943,
+              "weights_by_fold": [
+                0.5,
+                0.5,
+                0.2,
+                0.2,
+                0.5
+              ],
+              "standalone_wmape": 0.039431168067476804,
+              "blended_wmape": 0.037997284411590726,
+              "baseline_wmape": 0.03787305518281108,
+              "positive_folds_descriptive": 3
+            },
+            "3407": {
+              "gain": -0.0016930980398992962,
+              "b0_score": 96.24658935061254,
+              "candidate_score": 96.24489625257264,
+              "weights_by_fold": [
+                0.2,
+                0.5,
+                0.2,
+                0.5,
+                0.35
+              ],
+              "standalone_wmape": 0.03952260658585355,
+              "blended_wmape": 0.03789776825845804,
+              "baseline_wmape": 0.03786390629766005,
+              "positive_folds_descriptive": 3
+            }
+          },
+          "paired_seed_summary": {
+            "n": 2,
+            "mean": -0.003952279739440762,
+            "sd": 0.003194965399356639,
+            "se": 0.0022591816995414654,
+            "lcb95": -0.018216191616846813,
+            "positive": 0
+          },
+          "both_seeds_positive": false
+        }
+      ],
+      "selected_for_confirmation": {
+        "tap_iron": null,
+        "tap_time_len": null
+      },
+      "decision": "stop_frozen_MDN3_recipe_no_posthoc_control_promotion",
+      "control_time_observation": "GAUSS1 time positive on both development seeds; frozen control-only and not eligible for confirmation. No four-seed evidence.",
+      "platform_best_unchanged": 96.3679,
+      "target_gap_remaining": 0.1321,
+      "scope_limit": "rejects frozen MDN3 recipe, not all continuous conditional-distribution models"
+    }
   }
 }
