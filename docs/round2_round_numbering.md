@@ -153,3 +153,10 @@ map, verification and unchanged private-artifact snapshot.
 - All **1457** source/evidence hashes in the old deep-kernel manifest match
   the original Git objects at `2e28b83` or unchanged private files.
 - G1 is unchanged. This is a naming migration, not a new model reproduction.
+
+## 9. V33 reservation (2026-09-28)
+
+After fetching all remotes and scanning integer and suffixed SPEC paths across
+all local/remote branches, V32 is occupied by the mixture-bound diagnostic.
+V33 is reserved for continuous mixture-density regression on branch
+`round2-v33-mixture-density`. Next free local number: V34 (recheck before use).

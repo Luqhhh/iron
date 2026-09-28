@@ -1,0 +1,155 @@
+version: round2-v33-continuous-mixture-density
+source_plan: docs/round2_v33/PREREGISTRATION.md
+base_commit: e353227
+platform_target: 96.5
+platform_reference:
+  candidate: V18_B0_V12IRON_V7TIME
+  score: 96.3679
+  source: user_reported_not_independently_verified
+  zip_sha256: 532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+runtime_versions:
+  torch: 2.14.0+cpu
+  tabm: 0.0.3
+  rtdl-num-embeddings: 0.0.12
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+split_seeds:
+- 42
+- 3407
+confirmation_seeds:
+- 271828
+- 314159
+folds: 5
+targets:
+- tap_iron
+- tap_time_len
+recipes:
+- GAUSS1
+- MDN3
+candidates:
+  tap_iron:
+  - GAUSS1
+  - MDN3
+  tap_time_len:
+  - GAUSS1
+  - MDN3
+tie_preference_by_target:
+  tap_iron:
+  - GAUSS1
+  - MDN3
+  tap_time_len:
+  - GAUSS1
+  - MDN3
+reference_by_target:
+  tap_iron: B0_FIXED_REFIT
+  tap_time_len: B0_FIXED_REFIT
+reference:
+  protocol: frozen_deployment_recipe_refitted_on_each_supplied_training_partition
+  v36_factory: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+  n_trial: v36-s1-N-0048
+  joint_spec: configs/round2_v12/SPEC.yaml
+  joint_recipe: joint_plr001
+  periodic_spec: configs/round2_v7/SPEC.yaml
+  periodic_recipe: tabm_plr001
+  iron_weights:
+    v36: 0.5
+    v12_joint: 0.5
+  time_weights:
+    v36: 0.325
+    n0048: 0.175
+    v7_periodic: 0.5
+calibration:
+  split_seed: 27001
+  n_splits: 5
+  held_fold: 0
+  epoch_selection: calibration_raw_mae
+  weight_selection: calibration_raw_mae_smallest_weight_on_ties
+  blend_grid:
+  - 0.0
+  - 0.05
+  - 0.1
+  - 0.2
+  - 0.35
+  - 0.5
+  - 0.75
+  - 1.0
+  query_labels: prohibited_in_fit_and_weight_selection
+training:
+  random_seed: 42
+  dtype: float64
+  device: cpu
+  hidden_widths:
+  - 128
+  - 128
+  activation: silu
+  periodic_embedding_dim: 8
+  periodic_n_frequencies: 4
+  periodic_frequency_init_scale: 0.01
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 240
+  patience: 30
+  min_delta_standardized_mae: 1.0e-05
+  gradient_norm_clip: 10.0
+  scale_floor: 0.05
+  initial_scale: 0.5
+  initial_component_means:
+  - -0.5
+  - 0.0
+  - 0.5
+  median_bisection_steps: 48
+  objective: Gaussian mixture negative log likelihood
+  prediction: conditional mixture median
+  refit: fresh initialization at calibration MAE selected epoch
+promotion:
+  confirmation_per_target_max: 1
+  two_development_seeds_positive: true
+  min_split_seeds: 4
+  all_seed_gains_positive: true
+  seed_level_paired_lcb95_gt: 0.0
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+  ranking: mean_gain_then_frozen_cost_order
+  eligible_recipes:
+  - MDN3
+  mechanism_mean_gain_over_control_gt: 0.0
+budget:
+  development_candidate_outer_fits: 40
+  confirmation_candidate_outer_fits_max: 20
+  candidate_optimizer_runs_per_outer_fit: 2
+  development_b0_factory_calls: 0
+  confirmation_b0_factory_calls_max: 20
+  b0_pipeline_fit_calls_per_factory: 32
+  candidate_workers: 4
+  reference_workers: 4
+  concurrent_reference_calls: 2
+  full_data_fits: 0
+  packages: 0
+  verified_reference_units_reused: 20
+release:
+  automatic_packages: false
+  desktop_writes: 0
+  agent_uploads: 0
+reference_cache:
+  directory: local/runs/round2-v27/development-r1
+  original_commit: d07dc35
+  manifest_sha256: d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc
+  audit_sha256: 8e62fc1f374f23d719a67287fcc714d3b6e19d78741511f64c461c5a88ccb3fc
+  reuse: development references only after hash, fit/query ID, fold, data, recipe
+    and original source verification
+preflight:
+  cold_predict_atol: 1.0e-08
+  synthetic_optimizer_runs_max: 2
+  required:
+  - analytic_density_and_median
+  - finite_gradients
+  - train_only_preprocessing
+  - query_label_rejection
+  - synthetic_learnability
+  - persistence_and_order_invariance
+  - reference_cache_provenance

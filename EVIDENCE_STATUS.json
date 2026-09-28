@@ -13591,5 +13591,43 @@
     "historical_artifacts_unchanged": true,
     "new_packages": 0,
     "agent_uploads": 0
+  },
+  "round2_v33_2026_09_28": {
+    "status": "preregistered_synthetic_preflight_passed",
+    "spec": "configs/round2_v33/SPEC.yaml",
+    "source_plan": "docs/round2_v33/PREREGISTRATION.md",
+    "platform_target": 96.5,
+    "platform_reference": "V18_B0_V12IRON_V7TIME",
+    "platform_reference_score": 96.3679,
+    "G0": {
+      "preflight": "local/runs/round2-v33/preflight-r1/report.json",
+      "preflight_sha256": "ff3522415f1a01103a1c447413ec147ab414ab446f84a2df60e3f956d99858af",
+      "synthetic_results": [
+        {
+          "recipe": "GAUSS1",
+          "mae": 0.9286329635071695,
+          "constant_mae": 8.441737421388192,
+          "cold_difference": 1.4210854715202004e-14,
+          "seconds": 1.7612264139970648,
+          "parameter_count": 39071
+        },
+        {
+          "recipe": "MDN3",
+          "mae": 1.034290091281283,
+          "constant_mae": 8.441737421388192,
+          "cold_difference": 1.4210854715202004e-14,
+          "seconds": 0.6642474530017353,
+          "parameter_count": 39845
+        }
+      ],
+      "reference_cache_verified": true
+    },
+    "development_candidate_outer_fits_budget": 40,
+    "development_optimizer_runs_budget": 80,
+    "development_reference_units_reused": 20,
+    "confirmation_candidate_outer_fits_max": 20,
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }

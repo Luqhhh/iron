@@ -1112,3 +1112,14 @@ implementations `src/bf_tap_r2/v32_family_ceiling.py` and
 - Provisional tomorrow schedule: interior 50%, then 75%; retain three slots for
   qualified new candidates. If none is ready by the daily deadline, remaining old
   probes are optional. No automatic package or upload and no lowered gates.
+
+### V33 continuous mixtures opened (2026-09-28)
+
+User authorized continued optimization toward platform 96.5. Frozen design:
+`configs/round2_v33/SPEC.yaml`, `docs/round2_v33/PREREGISTRATION.md`.
+Two arms (GAUSS1 control, MDN3 candidate), both targets, complete seeds 42/3407.
+40 new candidate outer fits; reuse 20 audited matching B0 reference units from
+V30. Only positive MDN3 beating its control may consume confirmation seeds
+271828/314159. Preserve four-seed/LCB/96.25 gates. No full-data fit, package or
+upload is authorized by this round. Next free local number is V34; recheck
+remote reservations before using it.
