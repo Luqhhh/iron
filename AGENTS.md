@@ -1066,3 +1066,35 @@ weight choice can reach the target: a new measured direction is mandatory, and
 V29 shows it cannot come from pairwise feature engineering or covariate
 correction.** Locked Python 3.12 suite: **1176 passed, 23 warnings**.
 See `EVIDENCE_STATUS.json -> round2_v29_2026_09_28`.
+
+### V32: the concave bound covers only the beyond-chord region (2026-09-28)
+
+Results `docs/round2_v32/RESULTS.md`, spec `configs/round2_v32/SPEC.yaml`,
+implementations `src/bf_tap_r2/v32_family_ceiling.py` and
+`src/bf_tap_r2/v32_interior_probes.py`, evidence
+`EVIDENCE_STATUS.json -> round2_v32_2026_09_28`. Zero fits.
+
+- **Bound.** The score is concave in the mixture weights, so a secant extended
+  outside its chord bounds the function above it. Lifting every recorded score to
+  the V12-iron reference (`+0.0160`) and extending the `A35 -> B0` chord to
+  `lambda = 2` reaches the pure-`V7m` vertex at **96.3832**; the bounded iron
+  head-room adds at most `+0.0160`, giving a family ceiling of **96.3992**, i.e.
+  **0.0008 below the target**.
+- **Scope correction.** The bound is computable only for points *beyond* a
+  measured chord: on a `0.05` grid **22 of 231** simplex points are bounded and
+  **209 interior points are unbounded**. The ceiling covers the beyond-chord
+  region that contains the pure-`V7m` and iron-endpoint corner — **not** the whole
+  simplex. The earlier session statement that the bound closed the whole simplex
+  is corrected here; the interior (high N *and* high V7m) is unmeasured and
+  unconstrained, so it is the only part of the measured endpoint span that could
+  exceed `96.3992`.
+- **Three interior probes** composed zero-fit from the delivered ZIPs, iron the
+  V12 original string: `V32_TIME_A60V7_50` (`0.5*A60+0.5*V7m`,
+  `54864561…`, byte-identical to `V18_TIME_A60V7_50`), `V32_TIME_A60V7_75`
+  (`8eb5ab2c…`) and `V32_TIME_A60V7_25` (`688e27f5…`). All score below `B0`
+  locally; the platform value is the point of the probe.
+- Written to `/mnt/c/Users/lqh22/Desktop/submission-96.4-r10` with a README and
+  re-verified (SHA-256, exactly `result.csv`, 322 template-ordered unique IDs,
+  finite non-negative). Recommended five slots: the two higher-`V7m` interior
+  probes, the r9 `2_TIME_V100` and `4_IRON_W100` endpoints, then
+  `V32_TIME_A60V7_25`. Locked Python 3.12 suite: **1183 passed, 23 warnings**.

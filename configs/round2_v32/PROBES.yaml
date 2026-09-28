@@ -1,0 +1,21 @@
+version: round2-v32-interior-time-probes
+source_plan: docs/round2_v32/RESULTS.md
+sources_spec: configs/round2_v18/SPEC.yaml
+platform_target: 96.4
+data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden}
+# time coordinates are (V36, N, V7m) weights; A35 = 0.65 V36 + 0.35 N, A60 = 0.40 V36 + 0.60 N
+designs:
+  V32_TIME_A60V7_50:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.20, n_time: 0.30, v7_member_time: 0.50}}
+  V32_TIME_A60V7_75:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.10, n_time: 0.15, v7_member_time: 0.75}}
+  V32_TIME_A60V7_25:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.30, n_time: 0.45, v7_member_time: 0.25}}
+verification:
+  expected_rows: 322
+  blend_relative_tolerance: 1.0e-12
+  require_nonnegative_finite: true
+budget: {new_fits: 0, new_packages: 3, desktop_writes: 3, agent_uploads: 0}

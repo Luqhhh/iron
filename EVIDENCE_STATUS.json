@@ -13399,4 +13399,144 @@
       "agent_uploads": 0
     }
   }
+,
+  "round2_v32_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "bounded_beyond_chord_region_plus_three_interior_probes",
+    "source_plan": "docs/round2_v32/RESULTS.md",
+    "spec": "configs/round2_v32/SPEC.yaml",
+    "implementation": [
+      "src/bf_tap_r2/v32_family_ceiling.py",
+      "src/bf_tap_r2/v32_interior_probes.py"
+    ],
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V18_B0_V12IRON_V7TIME",
+      "score": 96.3679,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false,
+      "margin_to_target": -0.0321
+    },
+    "G1": {
+      "bound_method": "the score is concave in the mixture weights, so a secant extended outside its chord is an upper bound; every recorded score is lifted to the V12-iron reference with the measured +0.0160 iron effect",
+      "measured_design": {
+        "V36": {
+          "coordinates": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "score_with_V12_iron": 96.2894
+        },
+        "A35": {
+          "coordinates": [
+            0.65,
+            0.35,
+            0.0
+          ],
+          "score_with_V12_iron": 96.3526
+        },
+        "A45": {
+          "coordinates": [
+            0.55,
+            0.45,
+            0.0
+          ],
+          "score_with_V12_iron": 96.3598
+        },
+        "A60": {
+          "coordinates": [
+            0.4,
+            0.6,
+            0.0
+          ],
+          "score_with_V12_iron": 96.3625
+        },
+        "A72": {
+          "coordinates": [
+            0.28,
+            0.72,
+            0.0
+          ],
+          "score_with_V12_iron": 96.3585
+        },
+        "B0": {
+          "coordinates": [
+            0.325,
+            0.175,
+            0.5
+          ],
+          "score_with_V12_iron": 96.3679
+        }
+      },
+      "simplex_max_bound_with_V12_iron": 96.3832,
+      "simplex_argmax_coordinates": [
+        0.0,
+        0.0,
+        1.0
+      ],
+      "simplex_argmax_source": {
+        "from": "A35",
+        "to": "B0",
+        "lambda": 2.0
+      },
+      "iron_head_room_to_full_weight": 0.016,
+      "family_ceiling_with_iron_endpoint": 96.3992,
+      "ceiling_below_target": 0.0008,
+      "scope_correction": "the bound is computable only for points beyond a measured chord: on a 0.05 grid 22 of 231 simplex points are bounded and 209 interior points are unbounded. The ceiling bounds the beyond-chord region containing the pure-V7m and iron-endpoint corner, NOT the whole simplex. An earlier session statement that it closed the whole simplex is corrected here.",
+      "interior_probes": [
+        {
+          "id": "V32_TIME_A60V7_50",
+          "time": "0.5*A60+0.5*V7m",
+          "coordinates": [
+            0.2,
+            0.3,
+            0.5
+          ],
+          "local_development_mean": 96.23372,
+          "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+          "note": "byte-identical to V18_TIME_A60V7_50, an independent composition consistency check"
+        },
+        {
+          "id": "V32_TIME_A60V7_75",
+          "time": "0.25*A60+0.75*V7m",
+          "coordinates": [
+            0.1,
+            0.15,
+            0.75
+          ],
+          "local_development_mean": 96.237066,
+          "zip_sha256": "8eb5ab2c81032217a0ba19a8280b8f8fc35f39a59b02411671b47634b8a097dc"
+        },
+        {
+          "id": "V32_TIME_A60V7_25",
+          "time": "0.75*A60+0.25*V7m",
+          "coordinates": [
+            0.3,
+            0.45,
+            0.25
+          ],
+          "local_development_mean": 96.219096,
+          "zip_sha256": "688e27f58cd5ee4a1e8ba01cf4fc05530236ab58001655a6071894b6ba36ff11"
+        }
+      ],
+      "why_interior": "the interior of the time simplex is unmeasured and unconstrained by any current bound, so it is the only part of the measured endpoint span that could exceed the 96.3992 beyond-chord ceiling",
+      "recommendation": "next five slots: V32_TIME_A60V7_50, V32_TIME_A60V7_75, r9 2_TIME_V100 (bound 96.3832), r9 4_IRON_W100 (bound 96.3846), then V32_TIME_A60V7_25; any package above 96.3679 opens its direction",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r10"
+    },
+    "G0": {
+      "new_fits": 0,
+      "packages": 3,
+      "desktop_writes": 3,
+      "agent_uploads": 0,
+      "locked_python_3_12_tests_passed": 1183,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v32-python312-tests-r1.log",
+      "test_log_sha256": "dcb94b8d5c2cb0f3f8e6d2063022ca21050a3c9dc087f90c55f2a70648c2915a",
+      "targeted_tests_passed": 7,
+      "n_line_crosscheck_worst_absolute_difference": 1.14e-13,
+      "readback": "each ZIP holds exactly result.csv; 322 unique template-ordered IDs; iron strings byte-identical to the V12 source; blend relative difference 0.0"
+    },
+    "goal_above_96_4_achieved": false
+  }
 }
