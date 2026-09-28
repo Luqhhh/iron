@@ -1328,3 +1328,11 @@ prediction difference 0, peak 413.77 MiB, conservative development projection
 runtime, resource projection and current four-worker RAM checks all pass.
 Hourly-only observation confirmed successful terminal state and stopped the
 preflight timer. G1 is unmeasured; admit the frozen 40 development units.
+
+V42 official development launched at 2026-09-29 04:07:48 Asia/Shanghai via
+`iron-v42-development-r1.service`, verified initial MainPID 160796 running.
+Run: `local/runs/round2-v42/development-r1`. Hourly timer:
+`iron-v42-development-hourly.timer`, first observation approximately 05:07:48;
+private records in `local/runs/round2-v42/development-hourly/checks.jsonl`.
+No intermediate progress polling; terminal state must be audited before any
+quality conclusion or confirmation allocation. No packages/uploads authorized.
