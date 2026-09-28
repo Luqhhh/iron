@@ -643,3 +643,41 @@ Current user-reported best remains V12=96.3526; >96.4 was not achieved.
   best remains user-reported V12 `96.3526`; the `>96.4` objective is unmet.
   See `docs/round2_v17/RESULTS.md`, `docs/round2_v17/CANDIDATES.md`, and
   `EVIDENCE_STATUS.json -> round2_v17_2026_09_28`.
+
+### V18: combined-direction platform candidates and the reachable ceiling (2026-09-28)
+
+The user resumed optimization with the goal **platform 96.4**. V18 is a
+**zero-fit** platform-side line search on the two directions the platform has
+already scored positive (V12 iron, V7 time). Pre-registration
+`docs/round2_v18/PREREGISTRATION.md`, spec `configs/round2_v18/SPEC.yaml`,
+results `docs/round2_v18/RESULTS.md`, private run
+`local/runs/round2-v18/packages-r1` (`report.json`, `audit.json`).
+
+- Seven original ZIPs were SHA-256 verified and audited. The member endpoints
+  were recovered from the CSV field strings and re-derived the whole N line to
+  `1.14e-13`; both recovered members are strictly positive, so no clipping is
+  applied.
+- Five packages were built and independently re-read: `V18_B0_V12IRON_V7TIME`
+  (V12 iron copy + V7 time copy, ZIP
+  `532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017`), plus
+  `V18_TIME_V75`, `V18_TIME_A60V7_50`, `V18_IRON_W75`, `V18_TIME_V100`.
+  322 unique template-ordered IDs, 0 byte mismatches on copied columns, blend
+  read-back difference `0.0`. Locked Python 3.12 suite: **1130 passed, 23
+  warnings** (with BLAS/OMP/MKL/NUMEXPR pinned to one thread; an unpinned run
+  fails 18 cold-inference subprocess tests for that reason alone).
+- **`B0` is the strongest untested package: conditional arithmetic
+  `96.3526 + 96.3519 - 96.3366 = 96.3679`, `+0.0153` over the current best and
+  `0.0321` short of 96.4.** Under the documented additive metric and concavity,
+  the two-line family (V36/V12m iron x A35/V7m time) has an exact upper bound of
+  **96.3992**, i.e. `0.0008` below 96.4 — an upper bound, not a forecast.
+- **The existing library is exhausted on top of B0.** A nested two-column screen
+  of 31 reproducible members leaves only `v17/P_LL_T` at `+0.00425` (time),
+  `v15 joint-task_gated_experts` at `+0.00286` (iron),
+  `v11 plr_quniform` at `+0.00270` and `v9 realmlp_td` at `+0.00263` (time);
+  22 of 31 are `<= 0.000`. **Reaching 96.4 therefore needs a new model, not
+  another blend of the existing pool.**
+- Upload priority: `V18_B0_V12IRON_V7TIME` first; the four hedges are optional
+  exploration (lower local mean) whose only positive expectation is the
+  platform keeping the best score. New fits 0, desktop writes 0, agent uploads
+  0. The `>96.4` objective remains unmet and no gate is relaxed.
+  See `EVIDENCE_STATUS.json -> round2_v18_2026_09_28`.

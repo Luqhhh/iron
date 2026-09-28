@@ -1,0 +1,91 @@
+version: round2-v18-platform-combined-direction-line-search
+source_plan: docs/round2_v18/PREREGISTRATION.md
+platform_target: 96.4
+platform_reference:
+  candidate: V12_IRON_JOINT_PLR001_A50
+  score: 96.3526
+  source: user_reported_not_independently_verified
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+sources:
+  a35:
+    path: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35/Luqhhh_bf_tap_predict_round2.zip
+    sha256: b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06
+    n_alpha: 0.35
+    role: composition_parent
+  a60:
+    path: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60/Luqhhh_bf_tap_predict_round2.zip
+    sha256: d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147
+    n_alpha: 0.6
+    role: composition_parent
+  v7:
+    path: local/runs/round2-v7-periodic-networks/release-r3/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip
+    sha256: 4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299
+    role: composition_parent
+  v12:
+    path: local/runs/round2-v12-joint-tabm/release-r1/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip
+    sha256: a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669
+    role: composition_parent
+  a45:
+    path: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A45/Luqhhh_bf_tap_predict_round2.zip
+    sha256: 4c12bedae707c30628f6b74e404b63596dee4145883dd6d2c64c2a4553ae8cd7
+    n_alpha: 0.45
+    role: n_line_crosscheck
+  a72:
+    path: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A72/Luqhhh_bf_tap_predict_round2.zip
+    sha256: 808f00a9a3385b62447961badc73e92bf5d6dc845bc5802cea1ce623ccda40bf
+    n_alpha: 0.72
+    role: n_line_crosscheck
+  a85:
+    path: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A85/Luqhhh_bf_tap_predict_round2.zip
+    sha256: 2af4d68323ba2cf39f0840814880ac36ed545cd65ae637d307a25bb5e297f0b1
+    n_alpha: 0.85
+    role: n_line_crosscheck
+  a100:
+    path: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A100/Luqhhh_bf_tap_predict_round2.zip
+    sha256: 865f7290db001d419784a1107e84732a39efe6039c81162eb3a819309a4e0c23
+    n_alpha: 1.0
+    role: n_line_crosscheck
+composition:
+  # Recovered member endpoints (all zero-fit, float arithmetic on original CSV fields).
+  endpoints:
+    v36_iron: a35.pred_tap_iron
+    v12_member_iron: 2*v12.pred_tap_iron - v36_iron
+    v36_time: (a35.pred_tap_time_len - 0.35*n_time)/0.65
+    n_time: solve(a35.pred_tap_time_len, a60.pred_tap_time_len)
+    v7_member_time: 2*v7.pred_tap_time_len - a35.pred_tap_time_len
+  crosscheck_tolerance: 1.0e-09
+  nonzero_member_floor: 0.0
+designs:
+  V18_B0_V12IRON_V7TIME:
+    iron: {kind: copy, source: v12}
+    time: {kind: copy, source: v7}
+  V18_TIME_V75:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.1625, n_time: 0.0875, v7_member_time: 0.75}}
+  V18_TIME_V100:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v7_member_time: 1.0}}
+  V18_IRON_W75:
+    iron: {kind: convex, weights: {v36_iron: 0.25, v12_member_iron: 0.75}}
+    time: {kind: copy, source: v7}
+  V18_TIME_A60V7_50:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.2, n_time: 0.3, v7_member_time: 0.5}}
+verification:
+  expected_rows: 322
+  required_columns: [sample_id, pred_tap_iron, pred_tap_time_len]
+  blend_relative_tolerance: 1.0e-12
+  unchanged_column_byte_identical: true
+  require_nonnegative_finite: true
+  refuse_existing_destination: true
+budget:
+  new_fits: 0
+  new_packages: 5
+  desktop_writes: 0
+  agent_uploads: 0
+release:
+  automatic_uploads: false
+  upload_role: user

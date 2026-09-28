@@ -12064,4 +12064,107 @@
     },
     "disposition": "No V17 package or upload; preserve negative four-seed evidence and frozen gates."
   }
+,
+  "round2_v18_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "built_zero_fit_candidates_no_upload",
+    "source_plan": "docs/round2_v18/PREREGISTRATION.md",
+    "result": "docs/round2_v18/RESULTS.md",
+    "spec": "configs/round2_v18/SPEC.yaml",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false,
+      "margin_to_target": -0.0474
+    },
+    "G0": {
+      "targeted_tests_passed": 10,
+      "locked_python_3_12_tests_passed": 1130,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v18-python312-tests-r2.log",
+      "test_log_sha256": "750d5a6231bf2f0fdda01058d8e06fa8d45a566ab8ac675e92fb5e909ecde3b3",
+      "new_fits": 0,
+      "source_zips_audited": 7,
+      "source_zip_hashes_verified": 7,
+      "rows_each": 322,
+      "unique_ids": 322,
+      "template_order": true,
+      "n_line_crosscheck_worst_absolute_difference": 1.14e-13,
+      "recovered_negative_rows": 0,
+      "audit": "local/runs/round2-v18/packages-r1/audit.json",
+      "copied_column_byte_mismatches": 0,
+      "blend_relative_difference": 0.0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "G1": {
+      "conditional_combined_B0": 96.3679,
+      "B0_delta_vs_current_best": 0.0153,
+      "remaining_to_96_4_from_B0": 0.0321,
+      "two_line_joint_ceiling": 96.3992,
+      "two_line_joint_ceiling_below_96_4": 0.0008,
+      "two_line_family": "V36/V12m iron line x A35/V7m time line; concavity secant upper bounds only",
+      "library_screen_members": 31,
+      "library_screen_best_member": {
+        "member": "v17/P_LL_T",
+        "target": "tap_time_len",
+        "incremental_gain": 0.00425
+      },
+      "library_screen_nonpositive_members": 22,
+      "packages": [
+        {
+          "id": "V18_B0_V12IRON_V7TIME",
+          "iron": "V12 copy",
+          "time": "V7 copy",
+          "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+          "conditional_score": 96.3679,
+          "priority": 1
+        },
+        {
+          "id": "V18_TIME_V75",
+          "iron": "V12 copy",
+          "time": "0.25*A35_t+0.75*V7m",
+          "zip_sha256": "4188acbed0b6d7affde7a6778e49a6aec9236a982d3c93537fff801712516df7",
+          "priority": 2
+        },
+        {
+          "id": "V18_TIME_A60V7_50",
+          "iron": "V12 copy",
+          "time": "0.5*A60_t+0.5*V7m",
+          "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+          "priority": 3
+        },
+        {
+          "id": "V18_IRON_W75",
+          "iron": "0.25*V36_i+0.75*V12m",
+          "time": "V7 copy",
+          "zip_sha256": "dbd3b6b241190ec4bcc3143d30590dc134cdbe3acc76c3a9e0c1781874c585f2",
+          "priority": 4
+        },
+        {
+          "id": "V18_TIME_V100",
+          "iron": "V12 copy",
+          "time": "V7m",
+          "zip_sha256": "9845a604e697f6a51cfa8e8b502bf0393cdbc0857f884fbc6fe037daf4a763d1",
+          "priority": 5
+        }
+      ],
+      "local_surface_path": "local/runs/round2-v18/surface-r1.json",
+      "local_design_deltas_vs_A35": {
+        "V18_B0_V12IRON_V7TIME": 0.038976,
+        "V18_TIME_V75": 0.034683,
+        "V18_IRON_W75": 0.03158,
+        "V18_TIME_A60V7_50": 0.024957,
+        "V18_TIME_V100": 0.020739
+      },
+      "conclusion": "The two already-validated directions combine to a conditional +0.0153, but their concave two-line family ceiling is 96.3992 < 96.4 and the 31-member screen over B0 leaves at most +0.00425. Reaching 96.4 needs a new model."
+    },
+    "upload_recommendation": {
+      "first": "V18_B0_V12IRON_V7TIME",
+      "note": "user uploads; agent uploads 0; platform keeps the best score; hedges are optional exploration"
+    },
+    "goal_above_96_4_achieved": false
+  }
 }
