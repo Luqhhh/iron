@@ -34,3 +34,39 @@ Confirmation0fits, full-data0fits, packages0, desktop writes0 and uploads0. No g
 The reservation's platform reference96.3526 is historical. Other-branch commit1f1b426 later records user-reported B0=96.3679, V20_B0_PLLT_A325=96.3676 and V21_TIME_LOCAL=96.3567; these are not independently verified receipts. B0 is the latest registered platform best. R28 remained frozen despite this feedback. Target>96.4 remains unmet; local changes do not forecast platform magnitude.
 
 The user reports two available submissions today for this strategy line only; teammates own their branches and submissions. This line currently has no newly qualified submission from V17, V20 masked reconstruction, V23_HIST, V27_HARD_TREE or V28_EDGE_KAN. Recommendation: preserve both opportunities rather than fill them with failed candidates or repeat already scored V12/V7/B0. No platform action or package creation follows from this recommendation.
+
+## Subsequent user-authorized SHARED exploration release and feedback (2026-09-28)
+
+The user later approved two exploratory packages from today's own-chat strategy
+pool, superseding the initial preserve-slots recommendation above. This is a
+separate release exception; it does not revise the frozen EDGE/SHARED development
+specification or promote the SHARED control. The mistaken public release
+reservation was reverted by a721483; fitted artifacts and delivery records
+remain private.
+
+The V28 package is **TODAY_V28_SHARED_TIME_A20**, preserving original V12 iron
+field strings and replacing only time by
+`max(0,0.80*original V7 time+0.20*new full-fit SHARED member)`.
+Its parent is B0, rather than the original development's R28/V21 time anchor.
+The fixed-B0/A20 two-seed development mean is -0.000026889501 score points;
+the historical same-column B0 gains in the earlier table use a different
+resulting column and must not be substituted for this new composition.
+
+The user reports **96.3671**, **-0.0008** against registered B0 **96.3679**.
+Evidence is USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED; the platform best stays
+B0 and the >96.4 target remains unmet. ZIP SHA256:
+`1020e9dd36b09d7edc50180fb502e037a8d24cfc167d5c01a12a06825401a06a`.
+
+G0 release verification passed:2754 full training rows after inner epoch
+selection (selected73), zero iron field mismatches, exact blend recomputation
+and warm/cold identity,322 ordered test IDs and single-result.csv ZIP.
+This separate two-package release used exactly2 full wrapper fits /4 optimizer
+runs total (one V28 SHARED and one V23_HIST Gaussian); no CV or confirmation
+was repeated. Feedback registration adds no fits, packages or agent uploads.
+V23_HIST's separate exploratory package has no reported score yet.
+
+The earlier reported “missing sample_id” failure is resolved by the user's
+explicit clarification: **the user uploaded the wrong file**. It is not evidence
+that the generated V28 CSV lacked sample_id or that ZIP naming caused that
+failure. The formal-name handoff correction remains recorded separately.
+Original failed-incident records, ZIPs and model evidence are preserved.

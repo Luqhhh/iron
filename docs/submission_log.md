@@ -328,3 +328,15 @@ ZIP payload；桌面与 local ZIP 摘要一致。该动作不修改 V1 正式发
 0.0411 / 0.2265，均关闭；A 比 B 高 0.1854。预算已消费 2/2，agent 上传 0，
 不生成第三个组合或追加同铁口规则搜索，保留 V30A 原最高包。反馈记录：
 `local/runs/optimization-v0.32-same-spout-oob-responses-r2/platform_feedback_user_reported.json`。
+
+## 2026-09-28 · round2 / TODAY_V28_SHARED_TIME_A20
+
+- User-reported platform score: **96.3671**, USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED.
+- ZIP SHA256: `1020e9dd36b09d7edc50180fb502e037a8d24cfc167d5c01a12a06825401a06a`.
+- Original V12 iron fields; time=max(0,.80 original V7+.20 new full-fit V28 SHARED).
+- Delta vs current B0=96.3679: **-0.0008**. B0 remains best; exploration only.
+- Earlier missing-sample_id rejection: user confirms they uploaded the wrong file.
+  Generated package fields and G0 checks remain valid; naming was not established
+  as that rejection's cause. Preserve earlier failure records with this correction.
+- This feedback adds0fits/0packages/0agent uploads. V23_HIST score is unreported;
+  no remaining-quota assumption. See [V28 results](round2_v28_edge_kan/RESULTS.md).

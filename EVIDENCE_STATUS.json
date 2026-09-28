@@ -12812,7 +12812,15 @@
       "final_results"
     ],
     "reservation_commit": "92b0d71",
-    "results": "docs/round2_v28_edge_kan/RESULTS.md"
+    "results": "docs/round2_v28_edge_kan/RESULTS.md",
+    "subsequent_user_authorized_exploration_feedback": {
+      "candidate": "TODAY_V28_SHARED_TIME_A20",
+      "feedback_record": "round2_v28_shared_platform_feedback_2026_09_28",
+      "score": 96.3671,
+      "delta_vs_B0": -0.0008,
+      "phase_separate_from_frozen_development": true,
+      "formal_promotion": false
+    }
   },
   "round2_platform_best_previous_local_record_2026_09_28": {
     "candidate": "V12_IRON_JOINT_PLR001_A50",
@@ -12838,5 +12846,76 @@
     "scope": "this_strategy_line_only_teammates_manage_own_branches",
     "recommendation": "no_current_qualified_new_package_preserve_slots",
     "assistant_uploads": 0
+  },
+  "round2_v28_shared_platform_feedback_2026_09_28": {
+    "date": "2026-09-28",
+    "candidate": "TODAY_V28_SHARED_TIME_A20",
+    "strategy": "V28_EDGE_KAN",
+    "arm": "SHARED",
+    "source": "user_reported_not_independently_verified",
+    "score": 96.3671,
+    "user_message": "v28的平台分数为96.3671，之前失败是因为我交错文件了，把这个分数回填",
+    "zip_sha256": "1020e9dd36b09d7edc50180fb502e037a8d24cfc167d5c01a12a06825401a06a",
+    "result_csv_sha256": "bb336be5a031f1189d8c7ec1ce22de3327919ef9a5e86f54cccfbc7e0797061e",
+    "recipe": "tap_time_len=max(0,0.80*original_V7_time+0.20*full_fit_V28_SHARED); original_V12_iron_field_strings_unchanged",
+    "comparison": {
+      "candidate": "V18_B0_V12IRON_V7TIME",
+      "score": 96.3679,
+      "delta": -0.0008
+    },
+    "current_platform_best_changed": false,
+    "formal_promotion": false,
+    "original_development_decision_unchanged": true,
+    "local_B0_A20_development_mean_gain": -2.6889501216206583e-05,
+    "G0": {
+      "package_audit": "passed",
+      "rows": 322,
+      "iron_field_mismatches": 0,
+      "formula_max_difference": 0.0,
+      "cold_max_difference": 0.0,
+      "independent_audit_sha256": "d7b7321e44bfed2ce05335641ccdd5c52371833e68601605173f561e882b5360"
+    },
+    "G1": "Platform exploration score below B0 by0.0008; no promotion or platform>96.4 claim.",
+    "prior_format_failure": {
+      "status": "resolved_by_user_clarification",
+      "cause": "user_uploaded_wrong_file",
+      "source": "user_reported",
+      "generated_V28_package_missing_sample_id": false,
+      "filename_correction_was_not_confirmed_error_cause": true
+    },
+    "new_fits_for_feedback": 0,
+    "new_packages_for_feedback": 0,
+    "agent_uploads": 0
+  },
+  "round2_today_two_slot_release_2026_09_28": {
+    "status": "V28_scored_V23_no_feedback_reported",
+    "release_authorization": "explicit_user_approved_V28_SHARED_and_V23_HIST_Gaussian_B0_A20_exploration_pair",
+    "full_wrapper_fits_completed": 2,
+    "optimizer_runs_completed": 4,
+    "CV_fits": 0,
+    "confirmation_fits": 0,
+    "agent_uploads": 0,
+    "old_experiment_decisions_unchanged": true,
+    "public_reservation_reverted": "a721483",
+    "packages": [
+      {
+        "candidate": "TODAY_V28_SHARED_TIME_A20",
+        "source_strategy": "V28_EDGE_KAN",
+        "arm": "SHARED",
+        "zip_sha256": "1020e9dd36b09d7edc50180fb502e037a8d24cfc167d5c01a12a06825401a06a",
+        "platform_score": 96.3671,
+        "score_source": "user_reported_not_independently_verified",
+        "delta_vs_B0": -0.0008
+      },
+      {
+        "candidate": "TODAY_V23_HIST_GAUSSIAN_TIME_A20",
+        "source_strategy": "V23_HIST",
+        "arm": "gaussian",
+        "zip_sha256": "e4134c0357aea9b106f7422877856c49113cd4064fa1961ef6584cdcf6fbc117",
+        "platform_score": null,
+        "platform_status": "no_feedback_reported_upload_status_unknown"
+      }
+    ],
+    "quota": "not_inferred_from_scored_or_failed_uploads"
   }
 }
