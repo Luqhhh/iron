@@ -1318,3 +1318,13 @@ The service keeps terminal state with RemainAfterExit; `SubState=exited` is
 terminal, not still training. The one-shot checker stops its timer on terminal
 state and never retrains, restarts, kills, packages or uploads. Official fits
 must wait for successful complete G0 report and source/reference identity checks.
+
+### V42 G0 passed (2026-09-29)
+
+`docs/round2_v42/G0_RESULTS.md`: both full-shape synthetic fits completed,
+PAIR MAE .086315 versus ADDITIVE .985312 and constant 1.818132. Cold/order/chunk
+prediction difference 0, peak 413.77 MiB, conservative development projection
+.04110 hours. The 1240-test suite, original reference provenance, source hashes,
+runtime, resource projection and current four-worker RAM checks all pass.
+Hourly-only observation confirmed successful terminal state and stopped the
+preflight timer. G1 is unmeasured; admit the frozen 40 development units.

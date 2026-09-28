@@ -15119,13 +15119,13 @@
   },
   "round2_v42_adaptive_splines": {
     "date": "2026-09-29",
-    "status": "SYNTHETIC_PREFLIGHT_RUNNING_OFFICIAL_FITS_NOT_STARTED",
+    "status": "G0_PASSED_ADMITTED_FOR_FROZEN_DEVELOPMENT",
     "branch": "round2-v42-adaptive-splines",
     "protocol_commit": "f17e3ce",
     "implementation_commit": "1ff53a1",
     "platform_target": 96.5,
     "current_best_user_reported": 96.3727,
-    "G0": "1240_LOCKED_TESTS_PASS_FULL_SHAPE_SYNTHETIC_RESOURCE_CHECK_PENDING",
+    "G0": "PASS_1240_TESTS_TWO_SYNTHETIC_FITS_ZERO_COLD_DIFF_RESOURCE_AND_REFERENCE_CHECKS",
     "G1": "UNMEASURED",
     "synthetic_fits_budget": 2,
     "official_candidate_units_budget": 40,
@@ -15138,6 +15138,10 @@
     "monitor_timer": "iron-v42-preflight-hourly.timer",
     "packages": 0,
     "desktop_writes": 0,
-    "uploads": 0
+    "uploads": 0,
+    "synthetic_fits_completed": 2,
+    "preflight_projected_hours": 0.04110204252226847,
+    "preflight_peak_rss_mib": 413.7734375,
+    "results": "docs/round2_v42/G0_RESULTS.md"
   }
 }
