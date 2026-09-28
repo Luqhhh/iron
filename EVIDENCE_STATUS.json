@@ -12608,7 +12608,14 @@
           0.5
         ]
       },
-      "endpoint_simplex": {
+      "n_family_addendum": {
+    "members_screened": 10,
+    "source": "local/runs/round2-v5-error-covariance/time-n-family-r1",
+    "best_gain": 0.0,
+    "all_weights_zero": true,
+    "note": "the base library holds only D/O v36_dev_experts for time; the completed N line was screened separately against the same V21 incumbent and adds nothing"
+   },
+   "endpoint_simplex": {
         "seven_endpoints_gain": 0.013048,
         "fourteen_endpoints_gain": 0.011983,
         "note": "adding library members does not raise the attainable column; it only adds selection variance"

@@ -63,6 +63,18 @@ weak one.
   the N weight, and (b) a genuinely new model family, which is a different
   problem class with an unknown prior.
 
+## Addendum: the completed N family was screened separately
+
+The frozen base library's `v36_dev_experts` for the time target contains only the
+`D`/`O` experts; the **completed N line** (`v36-s1-N-0040..N-0051`) lives in a
+separate source (`local/runs/round2-v5-error-covariance/time-n-family-r1`) and is
+therefore not inside the 110 columns counted above. It was screened explicitly
+against the same V21 incumbent: **every one of the ten members gets nested
+weight exactly `0.0` and gain `0.000000`** (`N-0040/0041/0042/0044/0045/0046/`
+`0048/0049/0050/0051`). The V21 time column already contains the N information
+through the `V36` endpoint, so the N family adds nothing on top of it either.
+This closes the coverage gap and leaves the saturation conclusion unchanged.
+
 ## G0
 
 No fit, no package, no desktop write, no upload. The screen is a pure read of

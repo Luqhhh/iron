@@ -1,0 +1,31 @@
+version: round2-v23-time-family-capacity-probe
+source_plan: docs/round2_v23/PREREGISTRATION.md
+platform_target: 96.4
+platform_reference:
+  candidate: V12_IRON_JOINT_PLR001_A50
+  score: 96.3526
+  source: user_reported_not_independently_verified
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+base_recipe: v36-s1-N-0048
+target: tap_time_len
+structure: raw_tabm
+training_setting: mse_adam
+probes:
+  P_WIDE: {k: 32, n_blocks: 3, d_block: 768, dropout: 0.15, max_epochs: 120, early_stopping_patience: 15}
+  P_DEEP: {k: 32, n_blocks: 5, d_block: 512, dropout: 0.15, max_epochs: 120, early_stopping_patience: 15}
+split_seeds: [42, 3407]
+confirmation_seeds: [7777, 12011]
+folds: [0, 1, 2, 3, 4]
+incumbent_time_weights: {v36_time: 0.40, v7_member_time: 0.25, pll_time: 0.35}
+reference_source: configs/round2_v16/SPEC.yaml
+v7_time_cache: local/runs/round2-v7-periodic-networks/development-r1
+n_member_template: local/runs/round2-v5-error-covariance/time-n-family-r1/seed-{seed}/pred-v36-s1-N-0048.npy
+pll_member_template: local/runs/round2-v17/development-r1/P_LL_T-s{seed}-f{fold}.npy
+blend_grid: [0.0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975, 1.0]
+promotion: {min_development_mean_gain: 0.003, both_development_seeds_positive: true,
+  confirmation_min_seeds: 4, confirmation_paired_lcb_gt: 0.0, local_working_gate: 96.25}
+budget: {development_outer_fits: 20, confirmation_outer_fits_max: 10, full_data_fits: 1, packages: 1, workers: 3}
+release: {automatic_packages: false, agent_uploads: 0}
