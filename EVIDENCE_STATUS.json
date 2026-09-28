@@ -5979,23 +5979,22 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V18_B0_V12IRON_V7TIME",
-    "score": 96.3679,
+    "candidate": "V32_TIME_A60V7_50",
+    "score": 96.3727,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V12_IRON_JOINT_PLR001_A50",
-      "score": 96.3526
+      "candidate": "V18_B0_V12IRON_V7TIME",
+      "score": 96.3679
     },
-    "delta_vs_previous_best": 0.0153,
-    "target": 96.5,
+    "delta_vs_previous_best": 0.0048,
+    "target": 96.4,
     "target_met": false,
-    "margin_to_target": -0.1321,
-    "recipe": "V12 iron column + V7 time column, both original CSV field strings",
-    "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8/3_V18_B0_V12IRON_V7TIME.zip",
+    "margin_to_target": -0.0273,
+    "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
+    "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
     "reported_date": "2026-09-28",
-    "note": "B0 matches the single additive rectangle 96.3526 + 96.3519 - 96.3366 = 96.3679. Restating its iron-side difference is the same identity, not an independent second rectangle. Scores remain user-reported.",
-    "historical_note_before_v27_review": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles."
+    "note": "The first interior-simplex probe, and the first package to beat the released B0 weights: the platform optimum lies toward more N at the released V7m weight. The V7m direction has already turned (pure V7m is now bounded at 96.3531)."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -14498,13 +14497,143 @@
     }
   },
   "round2_v37_hard_tree_contraction": {
-    "status": "engineering_preflight_pending",
+    "status": "completed_G0_time_refusal_G1_not_evaluated",
     "spec": "configs/round2_v37/SPEC.yaml",
     "plan": "docs/round2_v37/PREREGISTRATION.md",
     "platform_target": 96.5,
     "platform_reference": 96.3679,
     "official_fits": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "implementation_commit": "28ba272",
+    "results": "docs/round2_v37/RESULTS.md",
+    "private_run": "local/runs/round2-v37/preflight-r1",
+    "audit_sha256": "770f7f365bea4d5035fefcf980f78891d8081779e501a121aed40668afc00c4f",
+    "locked_tests_passed": 1224,
+    "resource": {
+      "audit_status": "passed",
+      "resource_admitted": false,
+      "decision": "stop_G0_resource_refusal",
+      "checks": {
+        "time": false,
+        "worker_rss": true,
+        "available_ram": true
+      },
+      "projected_seconds": 27386.44315248894,
+      "projected_hours": 7.607345320135817,
+      "peak_worker_rss_mib": 935.25,
+      "available_ram_mib_at_audit": 7775.7890625,
+      "maximum_equivalence_difference": 5.820766091346741e-09,
+      "arms": [
+        {
+          "arm": "GLOBAL",
+          "training_p95_seconds": 0.2944415586971445,
+          "evaluation_p95_seconds": 0.09546078515013505,
+          "peak_rss_mib": 897.73828125
+        },
+        {
+          "arm": "INSTANCE",
+          "training_p95_seconds": 0.4397535175023223,
+          "evaluation_p95_seconds": 0.13349761364661392,
+          "peak_rss_mib": 935.25
+        }
+      ],
+      "evidence_sha256": {
+        "equivalence-GLOBAL.json": "52e52d9447143c99568b1dc280acbfe1d036d9b613b3e19b26441119c82db77d",
+        "equivalence-GLOBAL.started.json": "d8ece4ed9daefee347e1061a78c3848b45d87995a3c844aa01197c13f426367c",
+        "equivalence-INSTANCE.json": "e99bc25aab187f48a5bafd94eb31e0930718b1e2bffb76dc30cf5e2453ecb3ec",
+        "equivalence-INSTANCE.started.json": "d8ece4ed9daefee347e1061a78c3848b45d87995a3c844aa01197c13f426367c",
+        "resource-GLOBAL.json": "d315b3200ae7f248325bd52597a4ab60607bc32eae20ad426dc4f0f7c9694538",
+        "resource-GLOBAL.started.json": "7bb57f7d84677c67f0a19b002e2704124f96b32a8784b2fc24a3458796d8ed25",
+        "resource-INSTANCE.json": "0f6ada4297354cf866419e38e39fe225329d1c8324ebf839e04b37536131ab26",
+        "resource-INSTANCE.started.json": "7bb57f7d84677c67f0a19b002e2704124f96b32a8784b2fc24a3458796d8ed25"
+      },
+      "resource_optimizer_runs": 2,
+      "synthetic_learnability_runs": 0,
+      "official_fits": 0,
+      "packages": 0,
+      "uploads": 0,
+      "G1": "not_evaluated",
+      "resource_scope": "core_only_preprocessing_and_formal_runner_unmeasured"
+    }
+  },
+  "round2_v38_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "interior_probes_new_platform_best_and_dead_v7m_endpoint",
+    "result": "docs/round2_v38/RESULTS.md",
+    "spec": "configs/round2_v38/SPEC.yaml",
+    "implementation": "src/bf_tap_r2/v38_interior_descent.py",
+    "platform_target": 96.4,
+    "feedback": {
+      "V32_TIME_A60V7_50": {
+        "coordinates": [
+          0.2,
+          0.3,
+          0.5
+        ],
+        "score": 96.3727,
+        "delta_vs_B0": 0.0048,
+        "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7"
+      },
+      "V32_TIME_A60V7_75": {
+        "coordinates": [
+          0.1,
+          0.15,
+          0.75
+        ],
+        "score": 96.3629,
+        "delta_vs_B0": -0.005,
+        "zip_sha256": "8eb5ab2c81032217a0ba19a8280b8f8fc35f39a59b02411671b47634b8a097dc"
+      },
+      "source": "user_reported_not_independently_verified; the platform is deterministic so the differences are exact"
+    },
+    "findings": {
+      "new_platform_best": {
+        "candidate": "V32_TIME_A60V7_50",
+        "score": 96.3727,
+        "delta_vs_previous_best": 0.0048,
+        "margin_to_target": -0.0273
+      },
+      "interior_hypothesis_confirmed": "V32 warned that the 96.3992 ceiling covered only the beyond-chord region and that the convex-hull interior was unconstrained. The first interior probe is exactly such a point (the only measured V7m=0.5 point used to be B0) and it beat the previous best, so the released weights were not the platform optimum.",
+      "descent_direction": "at V7m=0.5, trading V36 for N gains +0.0384 per unit N (B0 -> I1), while raising V7m from 0.50 to 0.75 costs 0.0050. Descent: more N, same V7m.",
+      "tightened_bounds": {
+        "pure_V7m": {
+          "previous": 96.3832,
+          "now": 96.3531,
+          "source": "I1 -> I2 chord extended lambda=2",
+          "consequence": "below the current best 96.3727, so the V7m endpoint is provably non-competitive"
+        },
+        "interior_A60V7_25": {
+          "bound": 96.3825,
+          "source": "I1 -> I2 chord extended lambda=-1",
+          "note": "highest remaining bound; it is the still-pending 5_INTERIOR_A60V7_25"
+        },
+        "N_max_at_V7m_half": {
+          "bound": 96.3804,
+          "source": "B0 -> I1 chord extended"
+        },
+        "iron_endpoint": {
+          "bound": 96.3839,
+          "source": "measured iron line on the B0 time column"
+        }
+      },
+      "grid": {
+        "bounded": 33,
+        "unbounded": 198,
+        "total": 231,
+        "previous_bounded": 22
+      },
+      "family_ceiling_with_iron_endpoint": 96.3985,
+      "ceiling_below_target": 0.0015
+    },
+    "next": "no new package built: the highest remaining bound is already covered by the pending V38_TIME_A60V7_25 (desktop 5_INTERIOR_A60V7_25), and the next probe follows the N-direction descent once its score is known",
+    "G0": {
+      "new_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "targeted_tests_passed": 8
+    },
+    "goal_above_96_4_achieved": false
   }
 }

@@ -1214,3 +1214,13 @@ freezes bottom-up leaf-response/gate-logit contraction with all model
 parameters unchanged. Same equivalence checks and original resource limits;
 two one-shot resource optimizers, no official fits or packages. Details in
 `configs/round2_v37/SPEC.yaml` and `docs/round2_v37/PREREGISTRATION.md`.
+
+### V37 completed: contraction improves time, full experiment still refused (2026-09-29)
+
+`docs/round2_v37/RESULTS.md`: full-shape output difference <=5.83e-9, all
+input/parameter-gradient differences <=1.31e-10, within frozen tolerances.
+GLOBAL training p95 0.29444 seconds; INSTANCE 0.43975 seconds. Projected full
+development 7.607 hours still exceeds 6; peak RSS 935.25 MiB passes.
+1224 tests passed. Two resource optimizers, zero learnability or official
+fits, no packages/uploads. G1 remains unmeasured. Preserve both arms and
+failed evidence; do not drop INSTANCE or relax the gate inside V37.
