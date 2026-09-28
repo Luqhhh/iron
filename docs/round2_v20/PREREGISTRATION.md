@@ -120,11 +120,13 @@ stem(x_num, x_cat) → ensemble_view → backbone → ┬→ output   → 目标
 在合成数据上（已知特征间存在线性关系）验证重建头能学到超过"逐特征常数预测"的关系。
 不过 → 停止，机制在当前实现下不成立，不进真实数据。
 
-**门 0b — 对照臂复现身份**
-用**同一份新代码**、`λ = 0`、`p = 0` 跑对照臂，输出必须复现 V7 已缓存的
-`local/runs/round2-v7-periodic-networks/development-r1/tap_time_len-tabm_plr001-s{seed}-f{fold}.npy`。
-不复现 → **实现有误，停止**，不解释为机制效应。
-（这条同时证明"候选臂与对照臂的差别只是重建任务"。）
+**门 0b — 对照臂与 V7 代码路径逐位等价**（2026-09-28 修正，见 §9）
+用**同一份新代码**、`λ = 0`、`p = 0` 在同一折上跑对照臂，输出必须与
+`v7_periodic.PeriodicRegressor` **逐位相同**（max|Δ| = 0）。
+不等价 → **实现有误，停止**，不解释为机制效应。
+（这条证明"候选臂与对照臂的差别只是重建任务"。）
+
+原定写法是"复现 V7 的缓存预测文件"。**该判据在本机不可达，已作废**：见 §9。
 
 **门 1 — 候选 vs 配对对照**
 两个完整开发切分（seed 42 / 3407）上，候选臂的交付配方相对**对照臂**必须**同时为正**。
@@ -184,3 +186,35 @@ stem(x_num, x_cat) → ensemble_view → backbone → ┬→ output   → 目标
 方法参照（仅作机制类比，不表示这些论文已在本赛题验证）：VIME
 （Yoon 等，arXiv:2006.04768）用于掩码重建这一机制的一般性支持；
 Gorishniy 等，TabM，arXiv:2410.24210，为对照骨干来源。
+
+---
+
+## 9. 修正记录（2026-09-28，在跑开发阶段之前）
+
+**修正一：门 0b 的原判据不可达，已替换。**
+
+原定门 0b 要求对照臂复现
+`local/runs/round2-v7-periodic-networks/development-r1/tap_time_len-tabm_plr001-s42-f0.npy`。
+实测：**用 V7 自己的 `PeriodicRegressor`（未改一行）跑同一折，也复现不了**，
+max|Δ| = `0.8244741703877594`，选自 epoch 与缓存一致（111）。
+
+已排除的原因：
+- 缓存 manifest 的 `code_sha256` / `dependency_code_hashes['v7_periodic.py']` 与当前
+  `v7_periodic.py` **完全一致**；`spec_sha256` 也与当前 `configs/round2_v7/SPEC.yaml` 一致；
+- manifest 记录的 `runtime_versions`（torch 2.14.0+cpu、tabm 0.0.3、rtdl-num-embeddings 0.0.12、
+  numpy 2.2.6、scikit-learn 1.8.0）与当前解释器**逐项相同**。
+
+结论：**该缓存是在队友机器上产生的，跨机器不可逐位复现**；111 个 epoch 的训练会把极小的
+数值差异放大。这不是实现缺陷。
+
+替换后的判据（已实测通过）：同一折、同一种子下，V20 对照臂（`λ=0, p=0`）与
+`v7_periodic.PeriodicRegressor` 的输出 **max|Δ| = 0.0**（逐位相同）。
+两者对缓存的偏差是**同一个数**（`0.8244741703877594`），这本身是两者等价的旁证。
+
+**该修正只替换了"如何证明实现等价"，没有放宽任何与机制效果有关的门槛**：
+门 1（两 seed 同为正）、门 2（≥ +0.01）、门 3（四 seed）与预算均未改动。
+
+**修正二（实现细节，非预登记变更）：** 构造重建头会消耗全局 torch RNG，若不处理会让
+dropout 流相对 V7 整体错位。已在 `make_network_with_decoder` 中于构造解码器前后
+保存/恢复全局 RNG 状态，使"两臂只差重建任务"成立。这是使门 0b 成立的必要条件，
+不是对训练配方的改动。

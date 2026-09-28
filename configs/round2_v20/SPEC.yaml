@@ -12,6 +12,7 @@ target: tap_time_len
 training_source: configs/round2_v7/SPEC.yaml
 training_source_recipe: tabm_plr001
 control_replay: local/runs/round2-v7-periodic-networks/development-r1/tap_time_len-tabm_plr001-s{seed}-f{fold}.npy
+control_replay_status: not_reproducible_across_machines_see_gate_0b
 arms:
   control: {backbone: tabm, frequency: 0.01, mask_rate: 0.0, auxiliary_weight: 0.0}
   candidate: {backbone: tabm, frequency: 0.01, mask_rate: 0.15, auxiliary_weight: 0.2}
@@ -29,7 +30,7 @@ reference:
   incremental_bar: 0.01
 gates:
   gate_0a_synthetic_learnability: reconstruction_must_beat_per_feature_constant_baseline
-  gate_0b_control_replay_identity: control_arm_must_reproduce_cached_v7_tabm_plr001
+  gate_0b_control_equivalence: control_arm_must_match_v7_code_path_bitwise_same_machine
   gate_1_two_complete_development_seeds_positive: true
   gate_2_increment_over_incumbent: 0.01
 budget:
