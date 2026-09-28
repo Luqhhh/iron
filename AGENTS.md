@@ -1194,3 +1194,15 @@ checks and two resource optimizer runs; no official fits until a separate
 complete B0-relative scientific protocol is frozen. Preserve original
 resource limits and failed evidence. No packages, desktop writes or uploads.
 Goal remains 96.5; next V37 requires a fresh cross-branch reservation scan.
+
+### V36 completed: exact routing, memory passes, time still fails (2026-09-29)
+
+`docs/round2_v36/RESULTS.md`: full 1024-tree/depth-five output and all
+parameter/input gradients match V27 exactly in all eight checks. Peak worker
+RSS falls to 875.39 MiB; projected development time is 9.93 hours against the
+unchanged 6-hour limit, so the resource gate still refuses this implementation.
+1213 locked tests pass. Two resource optimizer runs; synthetic learnability,
+official fits, full-data fits, packages and uploads all zero. G1 is unmeasured,
+not a quality rejection of the family. Keep the fixed recipe and failed
+resource evidence; no threshold relaxation or smaller-model retry in V36.
+Best remains user-reported B0 96.3679; platform 96.5 is unmet.

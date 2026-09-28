@@ -14437,13 +14437,64 @@
     }
   },
   "round2_v36_hard_tree_routing": {
-    "status": "engineering_preflight_pending",
+    "status": "completed_G0_time_refusal_G1_not_evaluated",
     "spec": "configs/round2_v36/SPEC.yaml",
     "plan": "docs/round2_v36/PREREGISTRATION.md",
     "platform_target": 96.5,
     "platform_reference": 96.3679,
     "official_fits": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "implementation_commit": "5f3d2a2",
+    "results": "docs/round2_v36/RESULTS.md",
+    "private_run": "local/runs/round2-v36/preflight-r1",
+    "audit_sha256": "78e59f3776eecce72281eaa2d891a979eaab771c83d2c2355b4e4a150113b000",
+    "locked_tests_passed": 1213,
+    "resource": {
+      "audit_status": "passed",
+      "resource_admitted": false,
+      "decision": "stop_G0_resource_refusal",
+      "checks": {
+        "time": false,
+        "worker_rss": true,
+        "available_ram": true
+      },
+      "projected_seconds": 35753.67537496005,
+      "projected_hours": 9.931576493044457,
+      "peak_worker_rss_mib": 875.38671875,
+      "available_ram_mib_at_audit": 7763.35546875,
+      "maximum_equivalence_difference": 0.0,
+      "arms": [
+        {
+          "arm": "GLOBAL",
+          "training_p95_seconds": 0.5767632212013268,
+          "evaluation_p95_seconds": 0.13361938664857007,
+          "peak_rss_mib": 873.00390625
+        },
+        {
+          "arm": "INSTANCE",
+          "training_p95_seconds": 0.48683030105348735,
+          "evaluation_p95_seconds": 0.15305094705072406,
+          "peak_rss_mib": 875.38671875
+        }
+      ],
+      "evidence_sha256": {
+        "equivalence-GLOBAL.json": "66ea9a99196ea7f91294e1a61f8b3fcbcc019211df942dff8bddf7c6b605b062",
+        "equivalence-GLOBAL.started.json": "cbf8b91f3b462e4235df3e1edbb4288015f91f9d5017d86ace7069c9f7261871",
+        "equivalence-INSTANCE.json": "63b89f3706e41b1d5bcd2e8bd74aacf5bbfb470c76425d0cf7dcb74ebba59e27",
+        "equivalence-INSTANCE.started.json": "cbf8b91f3b462e4235df3e1edbb4288015f91f9d5017d86ace7069c9f7261871",
+        "resource-GLOBAL.json": "23adb76c0cbe930c294b67f844b89fe017588d1e1c260708a45805a50c9be06f",
+        "resource-GLOBAL.started.json": "92260212ddc6c58f9d04d70fd39b7e71f71a7ceb1683da611bf4049d26437701",
+        "resource-INSTANCE.json": "7ee2ae84ece5019231bb2097246709ee12e4ae9b661e4f8f52188e84394a45e7",
+        "resource-INSTANCE.started.json": "92260212ddc6c58f9d04d70fd39b7e71f71a7ceb1683da611bf4049d26437701"
+      },
+      "resource_optimizer_runs": 2,
+      "synthetic_learnability_runs": 0,
+      "official_fits": 0,
+      "packages": 0,
+      "uploads": 0,
+      "G1": "not_evaluated",
+      "resource_scope": "core_only_preprocessing_and_formal_runner_unmeasured"
+    }
   }
 }
