@@ -1402,3 +1402,24 @@ Run `local/runs/round2-v43/development-r1`; timer
 Private observations: `local/runs/round2-v43/development-hourly/checks.jsonl`.
 No intermediate progress polling; terminal output requires independent audit
 before a quality conclusion or confirmation allocation. No release authorized.
+
+### V43 completed: audited fixed-chain result, no finalist (2026-09-29)
+
+`docs/round2_v43/RESULTS.md`: 40 candidate units / 80 fixed-chain fits completed,
+20 references reused, candidate fit span 153.619 seconds. BART iron gains
+-0.002145/-0.000298 (mean -0.001222); time -0.000383/+0.005173 (mean +0.002395).
+Time retains a diagnostic exploration label with explicit stability failures;
+it has only one positive seed and misses the frozen +.01 prerequisite. No
+confirmation fits, full-data fits, packages or uploads. Seeds 271828/314159
+remain unconsumed. Do not extend this frozen chain or alter priors to rescue it.
+
+G0: 1246 locked tests passed before fitting; r2 independent audit checks all
+60 units / 80 models, cold/order/chunk difference 0, score discrepancy <=1.15e-16,
+selection verified. Original auditor shadowed the outer fold mask with a tree
+node mask; preserve its failure and source. `v43_audit_r2.py` fixes only that
+variable scope and report provenance; no model/prediction/threshold change.
+Single-chain convergence is not established: retained-half training RSS changes
+-4.764%..+1.958% for BART (mean -1.212%). Preserve this descriptive limitation,
+not a universal rejection of Bayesian trees or authorization for extra sweeps.
+Both hourly timers observed normal terminal completion and stopped themselves.
+No training remains active. Best 96.3727; platform 96.5 remains unmet by .1273.

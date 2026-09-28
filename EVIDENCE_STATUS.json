@@ -15177,14 +15177,14 @@
   },
   "round2_v43_bayesian_trees": {
     "date": "2026-09-29",
-    "status": "FROZEN_DEVELOPMENT_RUNNING",
+    "status": "COMPLETED_AUDITED_NO_FINALIST",
     "branch": "round2-v43-bayesian-trees",
     "protocol_commit": "4321331",
     "implementation_commit": "5bd460f",
     "platform_target": 96.5,
     "current_best_user_reported": 96.3727,
-    "G0": "PASS_1246_TESTS_TWO_SYNTHETIC_CHAINS_ZERO_COLD_DIFF_RESOURCE_AND_REFERENCE_CHECKS",
-    "G1": "DEVELOPMENT_PENDING",
+    "G0": "PASS_1246_TESTS_AND_R2_AUDIT_80_MODELS_ZERO_COLD_DIFF_ORIGINAL_CHECKER_FAILURE_PRESERVED",
+    "G1": "IRON_NEGATIVE_TIME_SMALL_MEAN_GAIN_ONLY_ONE_POSITIVE_SEED",
     "synthetic_fits_budget": 2,
     "official_candidate_units_budget": 40,
     "service": "iron-v43-development-r1.service",
@@ -15199,8 +15199,34 @@
     "synthetic_fits_completed": 2,
     "preflight_projected_hours": 0.11032207416671251,
     "preflight_peak_rss_mib": 463.7734375,
-    "results": "docs/round2_v43/G0_RESULTS.md",
+    "results": "docs/round2_v43/RESULTS.md",
     "official_development_launched": true,
-    "run": "local/runs/round2-v43/development-r1"
+    "run": "local/runs/round2-v43/development-r1",
+    "candidate_units_completed": 40,
+    "candidate_solver_fits": 80,
+    "reference_units_reused": 20,
+    "candidate_fit_span_seconds": 153.618999359,
+    "peak_worker_rss_mib": 356.3359375,
+    "audit_status": "passed",
+    "auditor_revision": "r2_node_mask_scope_only",
+    "cold_models_checked": 80,
+    "max_inference_difference": 0.0,
+    "maximum_score_difference": 1.1476279995759064e-16,
+    "selection_verified": true,
+    "selected_for_confirmation": {
+      "tap_iron": null,
+      "tap_time_len": null
+    },
+    "confirmation_fits": 0,
+    "full_data_fits": 0,
+    "monitor_status": "COMPLETED_AND_TIMERS_STOPPED",
+    "summary_sha256": "456653eac71f4e9559c44fc98787514e0eec906ecdba4b9a6bdefc57564e3a02",
+    "audit_sha256": "07756d9658812d3cf0223d8371b08d5c25e76e35b357e839f5b4981c76d9d281",
+    "candidate_mean_gains": {
+      "tap_iron": -0.0012218561480705284,
+      "tap_time_len": 0.002394868158726339
+    },
+    "time_tier": "exploration_diagnostic_only_failed_stability_and_frozen_minimum_gain",
+    "convergence": "not_established_single_fixed_chain_no_extension"
   }
 }
