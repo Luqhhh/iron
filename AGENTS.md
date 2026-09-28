@@ -1261,3 +1261,18 @@ The checker has no loop and never retrains, restarts, kills, packages or uploads
 It stops its timer on verified completion or verified process termination;
 an observation-access failure is recorded as unknown and does not stop it.
 The 96.5 goal remains active; monitoring frequency is not a request to pause it.
+
+### V39 completed: hard-tree quality negative, no finalist (2026-09-29)
+
+`docs/round2_v39/RESULTS.md`: all 40 outer units / 80 optimizer runs completed
+and 80 saved models independently cold-audited with zero inference difference.
+INSTANCE gains versus current reference: iron mean -0.001758, time -0.004287;
+both seeds negative on both targets and below GLOBAL control means. No arm
+has two positive complete seeds. Selected epochs 14–43, stops 64–93, zero
+250-epoch cap hits. Actual fit phase 1.3371 hours; 1228 locked tests pass.
+No confirmation/full-data fits, packages or uploads. Hourly-only timer observed
+31/40 then 40/40 with no failures and stopped itself. Preserve its logs.
+Current-reference time reweighting loses 0.01270/0.01526 points locally while
+its user-reported platform effect is +0.0048; do not claim universal local rank
+preservation or a fixed score-transfer offset. No quality gate changed.
+Best remains user-reported 96.3727; platform 96.5 remains unmet by 0.1273.
