@@ -1,0 +1,48 @@
+version: round2-v20-masked-feature-reconstruction
+date: 2026-09-28
+source_plan: docs/round2_v20/PREREGISTRATION.md
+platform_target: 96.4
+platform_reference: {candidate: V12_IRON_JOINT_PLR001_A50, score: 96.3526, source: user_reported}
+data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden}
+runtime_versions: {torch: 2.14.0+cpu, tabm: 0.0.3, rtdl-num-embeddings: 0.0.12, numpy: 2.2.6, scikit-learn: 1.8.0}
+split_seeds: [42, 3407]
+folds: 5
+confirmation_seeds: [7777, 12011]
+target: tap_time_len
+training_source: configs/round2_v7/SPEC.yaml
+training_source_recipe: tabm_plr001
+control_replay: local/runs/round2-v7-periodic-networks/development-r1/tap_time_len-tabm_plr001-s{seed}-f{fold}.npy
+arms:
+  control: {backbone: tabm, frequency: 0.01, mask_rate: 0.0, auxiliary_weight: 0.0}
+  candidate: {backbone: tabm, frequency: 0.01, mask_rate: 0.15, auxiliary_weight: 0.2}
+masking:
+  scope: numeric_features_only
+  fill: zero_after_standardization
+  draw: per_row_independent_bernoulli
+  reconstruction_target: standardized_numeric_value_at_masked_entries
+  loss_reduction: mean_over_masked_entries
+  decoder: {kind: linear_ensemble, out_features: 21, shared_with_output_head: false}
+blend_weight: 0.5
+blend_grid: [0.0, 0.05, 0.1, 0.2, 0.35, 0.5, 0.75, 1.0]
+reference:
+  incumbent: V12_iron_plus_V7_time
+  incremental_bar: 0.01
+gates:
+  gate_0a_synthetic_learnability: reconstruction_must_beat_per_feature_constant_baseline
+  gate_0b_control_replay_identity: control_arm_must_reproduce_cached_v7_tabm_plr001
+  gate_1_two_complete_development_seeds_positive: true
+  gate_2_increment_over_incumbent: 0.01
+budget:
+  development_outer_fits: 20
+  optimizer_runs_per_outer_fit: 2
+  workers: 8
+  second_specification_max: 1
+  confirmation_outer_fits_max: 20
+  full_data_fits: 0
+  new_split_seeds_max: 2
+promotion:
+  min_split_seeds: 4
+  seed_level_paired_lcb95_gt: 0.0
+  all_seed_gains_positive: true
+  fold_level: descriptive_only
+release: {automatic_packages: false, agent_uploads: 0}
