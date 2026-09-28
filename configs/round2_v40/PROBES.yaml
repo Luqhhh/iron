@@ -1,0 +1,22 @@
+version: round2-v40-ridge-descent-probes
+source_plan: docs/round2_v40/RESULTS.md
+sources_spec: configs/round2_v18/SPEC.yaml
+# time coordinates are (V36, N, V7m) weights; iron is the unchanged V12 column
+designs:
+  V40_TIME_SEG_625:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.250, n_time: 0.375, v7_member_time: 0.375}}
+  V40_TIME_H1:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.000, n_time: 0.450, v7_member_time: 0.550}}
+  V40_TIME_H2:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.100, n_time: 0.450, v7_member_time: 0.450}}
+  V40_TIME_N500:
+    iron: {kind: copy, source: v12}
+    time: {kind: convex, weights: {v36_time: 0.000, n_time: 0.500, v7_member_time: 0.500}}
+verification:
+  expected_rows: 322
+  blend_relative_tolerance: 1.0e-12
+  require_nonnegative_finite: true
+budget: {new_fits: 0, new_packages: 4, desktop_writes: 5, agent_uploads: 0}

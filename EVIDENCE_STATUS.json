@@ -14641,4 +14641,144 @@
     "goal_above_96_4_achieved": false,
     "numbering": "this round was first labelled V38 and renumbered to V39 because the teammate branch round2-v38-hard-tree-shared-routing claims V38; private evidence keeps its historical local/runs/round2-v38 path"
   }
+,
+  "round2_v40_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "ridge_plateau_and_withdrawn_unreachable_verdict",
+    "result": "docs/round2_v40/RESULTS.md",
+    "spec": "configs/round2_v40/SPEC.yaml",
+    "implementation": "src/bf_tap_r2/v40_segment_descent.py",
+    "platform_target": 96.4,
+    "feedback": {
+      "V32_TIME_A60V7_25": {
+        "coordinates": [
+          0.3,
+          0.45,
+          0.25
+        ],
+        "score": 96.3727,
+        "zip_sha256": "688e27f58cd5ee4a1e8ba01cf4fc05530236ab58001655a6071894b6ba36ff11",
+        "note": "ties V32_TIME_A60V7_50 exactly; both lie on the A60->V7m segment (lambda 0.75 and 0.50), so the tie is a plateau on a measured chord, not a duplicate (the ZIP hashes differ)"
+      },
+      "source": "user_reported_not_independently_verified; the platform is deterministic"
+    },
+    "current_platform_best": {
+      "candidate": "V32_TIME_A60V7_50",
+      "score": 96.3727,
+      "tied_by": "V32_TIME_A60V7_25",
+      "source": "user_reported_not_independently_verified",
+      "target_met": false,
+      "margin_to_target": -0.0273
+    },
+    "findings": {
+      "ridge": {
+        "segment": "lambda*A60 + (1-lambda)*V7m",
+        "observed": {
+          "lambda=0.25": 96.3629,
+          "lambda=0.50": 96.3727,
+          "lambda=0.75": 96.3727,
+          "lambda=1.00_A60": 96.3625
+        },
+        "plateau": "concavity makes every interior point of the flat I1->I5 chord at least 96.3727",
+        "lambda_0625_bracket": {
+          "lower": 96.3727,
+          "upper": 96.3776
+        }
+      },
+      "raised_bounds": {
+        "bounded_grid_points": {
+          "before": 33,
+          "now": 39,
+          "total": 231
+        },
+        "bounded_time_maximum": {
+          "before": 96.3825,
+          "now": 96.38818,
+          "argmax_coordinates": [
+            0.0,
+            0.45,
+            0.55
+          ],
+          "source": "A45->I5 chord extended lambda=2.2"
+        },
+        "bounded_ceiling_with_iron_endpoint": {
+          "before": 96.3985,
+          "now": 96.40418
+        }
+      },
+      "verdict_change": "the earlier statement that 96.4 is provably unreachable within the measured family is WITHDRAWN: the bounded ceiling is now 96.40418, i.e. +0.00418 above the target. It remains an upper bound, so this is a possibility rather than a forecast.",
+      "dropped_probe": "3_TIME_V100 (pure V7m) is provably non-competitive: its bound tightened to 96.3531, below the current best 96.3727"
+    },
+    "new_packages": [
+      {
+        "id": "V40_TIME_H1",
+        "time": "0.45 N + 0.55 V7m",
+        "coordinates": [
+          0.0,
+          0.45,
+          0.55
+        ],
+        "upper_bound": 96.38818,
+        "zip_sha256": "772057b95032f035ecdd1051133a7885925c51ee2aa611f55bc36744f19e44b8"
+      },
+      {
+        "id": "V40_TIME_H2",
+        "coordinates": [
+          0.1,
+          0.45,
+          0.45
+        ],
+        "upper_bound": 96.383,
+        "zip_sha256": "bbfd8f40c88aea60c24b43867ce649050bc956ec8a40e940c484b09c97510bc9"
+      },
+      {
+        "id": "V40_TIME_SEG_625",
+        "time": "0.625 A60 + 0.375 V7m",
+        "coordinates": [
+          0.25,
+          0.375,
+          0.375
+        ],
+        "bracket": [
+          96.3727,
+          96.3776
+        ],
+        "zip_sha256": "1e8671edae984a621280ed3df7a92fd08019aa35e0d18c58eea7d5aebcffdadf"
+      },
+      {
+        "id": "V40_TIME_N500",
+        "coordinates": [
+          0.0,
+          0.5,
+          0.5
+        ],
+        "upper_bound": 96.3804,
+        "zip_sha256": "2edd68f82d47d45425fbd0195a8be126013fc6d6fb69b59ce7e8472a34122137"
+      }
+    ],
+    "desktop_pending": {
+      "path": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending",
+      "files": [
+        "1_RIDGE_H1.zip",
+        "2_RIDGE_H2.zip",
+        "3_RIDGE_SEG625.zip",
+        "4_RIDGE_N500.zip",
+        "5_IRON_W100.zip"
+      ],
+      "note": "5_IRON_W100 (pure V12m iron) is the only package carrying the iron lever and it composes additively with any time column"
+    },
+    "G0": {
+      "new_fits": 0,
+      "packages": 4,
+      "desktop_writes": 5,
+      "agent_uploads": 0,
+      "locked_python_3_12_tests_passed": 1240,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v40-python312-tests-r1.log",
+      "test_log_sha256": "383813b43636fa7efec80b40af0ccc18cd7608830a9ad7001909180db14ca28d",
+      "targeted_tests_passed": 8,
+      "readback": "each ZIP holds exactly result.csv; 322 unique template-ordered IDs; blend relative difference 0.0"
+    },
+    "goal_above_96_4_achieved": false
+  }
 }

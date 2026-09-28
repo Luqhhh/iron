@@ -1261,3 +1261,33 @@ Two of the five pending interior packages were scored by the user:
   descent once its score is known. Remaining pending scores: `5_INTERIOR_A60V7_25`,
   `4_IRON_W100` (iron-line bound `96.3839`, composes additively with the time
   column) and `3_TIME_V100` (now non-competitive).
+
+### V40: the A60→V7m ridge, and the "96.4 unreachable" verdict is withdrawn (2026-09-28)
+
+Results `docs/round2_v40/RESULTS.md`, implementation
+`src/bf_tap_r2/v40_segment_descent.py`, evidence
+`EVIDENCE_STATUS.json -> round2_v40_2026_09_28`. Zero fits.
+
+- The third interior report (`0.75*A60 + 0.25*V7m`, `(0.30,0.45,0.25)`) scored
+  **`96.3727`**, exactly tying `0.5*A60 + 0.5*V7m`. All three interior packages
+  lie on the **`A60 -> V7m` segment** (`lambda` = 0.25 / 0.50 / 0.75), so the tie
+  is a **plateau on a measured chord** (`lambda ≈ 0.5-0.75`), not a duplicate; the
+  ZIP hashes differ (`54864561…` / `688e27f5…`). The tightest remaining bracket is
+  `lambda = 0.625` at `[96.3727, 96.3776]`.
+- **Adding `I5` reverses the feasibility verdict.** Bounded grid points `33 -> 39`
+  of 231; the bounded time maximum rises `96.3825 -> 96.38818` at
+  `(0.00, 0.45, 0.55)` (from the `A45 -> I5` chord extended); with the iron
+  head-room the bounded ceiling is **`96.40418`**, i.e. **+0.00418 above 96.4**.
+  The earlier "96.4 is provably unreachable within the measured family" statement
+  is **withdrawn**. The bounds are still upper bounds, so this is a possibility,
+  not a forecast.
+- **`3_TIME_V100` (pure `V7m`) is dropped as provably non-competitive**: its
+  bound tightened to `96.3531`, below the current best `96.3727`.
+- Four zero-fit ridge probes built and audited — `V40_TIME_H1` (`(0.00,0.45,0.55)`,
+  bound `96.3882`, ZIP `772057b9…`), `V40_TIME_H2` (`bbfd8f40…`),
+  `V40_TIME_SEG_625` (`1e8671ed…`, bracket `[96.3727, 96.3776]`) and
+  `V40_TIME_N500` (`2edd68f8…`) — and written to
+  `/mnt/c/Users/lqh22/Desktop/submission-96.4-pending` together with
+  `5_IRON_W100` (`c41e56d4…`), the only package carrying the iron lever, which
+  composes additively with any time column. Locked Python 3.12 suite:
+  **1240 passed, 23 warnings**. Fits 0, packages 4, desktop writes 5, uploads 0.

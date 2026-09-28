@@ -1,0 +1,15 @@
+version: round2-v40-ridge-descent
+source_plan: docs/round2_v40/RESULTS.md
+platform_target: 96.4
+platform_reference:
+  candidate: V32_TIME_A60V7_50
+  score: 96.3727
+  source: user_reported_not_independently_verified
+metric: "max(0, 100 - 50*WMAPE_iron - 50*WMAPE_time)"
+assumptions:
+  - documented additive equal-weight WMAPE metric
+  - recorded scores exact because the platform is deterministic
+  - concavity of the score in the column mixture weights
+grid_step: 0.05
+iron_head_room_rule: "w=1.0 capped at twice the observed w=0.5 effect of +0.0160"
+budget: {new_fits: 0, packages: 4, desktop_writes: 5, agent_uploads: 0}
