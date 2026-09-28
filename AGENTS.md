@@ -804,3 +804,31 @@ implementation `src/bf_tap_r2/v22_saturation.py`, private evidence
   `B0`/`A60V7` hedges at `0.175`/`0.30`. What remains is platform feedback and a
   genuinely new model family. Locked Python 3.12 suite: **1153 passed, 23
   warnings**. See `EVIDENCE_STATUS.json -> round2_v22_2026_09_28`.
+
+### V23: the time-family capacity axis is closed (2026-09-28)
+
+Pre-registration `docs/round2_v23/PREREGISTRATION.md`, spec
+`configs/round2_v23/SPEC.yaml`, results `docs/round2_v23/RESULTS.md`,
+implementation `src/bf_tap_r2/v23_capacity.py`, evidence
+`local/runs/round2-v23/dev-r1/screen-both-r1.json`.
+
+- Two frozen probes changed only capacity relative to the `N-0048` recipe —
+  `P_WIDE` (`k=32, n_blocks=3, d_block=768`) and `P_DEEP`
+  (`k=32, n_blocks=5, d_block=512`) — 20 authoritative development outer fits,
+  zero failures.
+- **Both select nested weight exactly `0.0` on both split seeds** against the V21
+  time incumbent (mean gain `0.000000`). Increasing capacity made the member
+  1.5-2 % *less* accurate than its own `large` parent (`P_DEEP` WMAPE
+  `0.040972/0.041565`, `P_WIDE` `0.041273/0.041683`, against `N-0048`
+  `0.040737/0.041091` and the incumbent `0.037671/0.037573`) while leaving it
+  equally correlated, so it earns no weight.
+- **Closed: the time-family capacity axis, at complete coverage.** Together with
+  V19 (iron capacity), V22 (the whole reproducible library including the
+  completed N family) and the V6 §7 stacking closure, every route that only
+  re-weights, re-scales or re-fits members of the existing families is closed
+  against the strongest incumbent.
+- No confirmation, full-data fit, package or upload. Locked Python 3.12 suite:
+  **1156 passed, 23 warnings**. Remaining routes: platform feedback on the
+  pending portfolio (which resolves the N weight) and a genuinely different
+  model class. The `>96.4` objective remains unmet.
+  See `EVIDENCE_STATUS.json -> round2_v23_2026_09_28`.

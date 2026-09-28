@@ -150,7 +150,8 @@ def _incumbent(root: Path, spec: Mapping[str, Any], seeds: Sequence[int], frame)
     return {TIME: time, IRON: {seed: current[seed][IRON] for seed in seeds}}
 
 
-def screen(root: Path | str, spec_path: Path | str, output: Path | str) -> dict[str, Any]:
+def screen(root: Path | str, spec_path: Path | str, output: Path | str,
+           probes: Sequence[str] | None = None, screen_name: str = "screen.json") -> dict[str, Any]:
     root = Path(root).resolve()
     spec = yaml.safe_load((root / spec_path).read_text())
     seeds = [int(seed) for seed in spec["split_seeds"]]
@@ -161,7 +162,7 @@ def screen(root: Path | str, spec_path: Path | str, output: Path | str) -> dict[
     grid = [float(value) for value in spec["blend_grid"]]
     y = frame[TIME].to_numpy()
     rows = {}
-    for probe in spec["probes"]:
+    for probe in (list(probes) if probes else list(spec["probes"])):
         member = {}
         for seed in seeds:
             column = np.full(len(frame), np.nan)
@@ -169,7 +170,9 @@ def screen(root: Path | str, spec_path: Path | str, output: Path | str) -> dict[
                 mask = folds[seed] == fold
                 path = (root / output) / f"seed-{seed}" / f"pred-{probe}-f{fold}.npy"
                 values = np.load(path, allow_pickle=False)
-                if values.shape != (int(mask.sum()),):
+                if values.shape == (len(frame),):
+                    values = values[mask]
+                if values.shape != (int(mask.sum()),) or not np.isfinite(values).all():
                     raise ValueError(f"Invalid V23 prediction shape: {path}")
                 column[mask] = values
             if not np.isfinite(column).all():
@@ -194,7 +197,7 @@ def screen(root: Path | str, spec_path: Path | str, output: Path | str) -> dict[
                        "promoted": bool(mean >= float(spec["promotion"]["min_development_mean_gain"])
                                         and all(gain > 0 for gain in deltas))}
     destination = Path(output) if Path(output).is_absolute() else root / output
-    report_path = destination / "screen.json"
+    report_path = destination / screen_name
     if report_path.exists():
         raise FileExistsError("V23 screen already exists; refusing overwrite")
     report_path.write_text(json.dumps({"probes": rows, "new_fits": 0}, indent=2, sort_keys=True) + "\n",
@@ -212,11 +215,12 @@ def main() -> int:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--workers", type=int, default=3)
     parser.add_argument("--probes", nargs="+", default=None)
+    parser.add_argument("--screen-name", default="screen.json")
     args = parser.parse_args()
     if args.mode == "fit":
         fit(args.root, args.spec, args.output, args.seed, args.workers, args.probes)
     else:
-        screen(args.root, args.spec, args.output)
+        screen(args.root, args.spec, args.output, args.probes, args.screen_name)
     return 0
 
 

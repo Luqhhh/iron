@@ -12624,4 +12624,87 @@
     },
     "goal_above_96_4_achieved": false
   }
+,
+  "round2_v23_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "closed_time_capacity_axis_no_packages",
+    "source_plan": "docs/round2_v23/PREREGISTRATION.md",
+    "result": "docs/round2_v23/RESULTS.md",
+    "spec": "configs/round2_v23/SPEC.yaml",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false
+    },
+    "G0": {
+      "development_outer_fits": 20,
+      "confirmation_fits": 0,
+      "full_data_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "failed_fits": 0,
+      "locked_python_3_12_tests_passed": 1156,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v23-python312-tests-r1.log",
+      "test_log_sha256": "644590d96d83ed3902b870bdc0550b85c276f80b714f47634db3aa52ff2933e1",
+      "targeted_tests_passed": 3,
+      "incident": "the first two-probe launch with three workers was killed when no fold completed in the window; the runner was made resumable and re-launched per probe; the registered 20 fits are complete",
+      "evidence": "local/runs/round2-v23/dev-r1/screen-both-r1.json"
+    },
+    "G1": {
+      "probes": {
+        "P_WIDE": {
+          "k": 32,
+          "n_blocks": 3,
+          "d_block": 768,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean": 0.0,
+          "promoted": false
+        },
+        "P_DEEP": {
+          "k": 32,
+          "n_blocks": 5,
+          "d_block": 512,
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean": 0.0,
+          "promoted": false
+        }
+      },
+      "incumbent": "V21 time column 0.40 V36 + 0.25 V7m + 0.35 P-LL",
+      "standalone_wmape": {
+        "V21_incumbent": {
+          "42": 0.037671,
+          "3407": 0.037573
+        },
+        "N_0048_large": {
+          "42": 0.040737,
+          "3407": 0.041091
+        },
+        "P_DEEP": {
+          "42": 0.040972,
+          "3407": 0.041565
+        },
+        "P_WIDE": {
+          "42": 0.041273,
+          "3407": 0.041683
+        }
+      },
+      "conclusion": "Increasing capacity made the member 1.5-2% less accurate than its own large parent while leaving it equally correlated, so every nested weight is exactly 0.0. The time-family capacity axis is closed at complete coverage, mirroring V19 for iron.",
+      "closed_routes": "iron capacity (V19); whole reproducible library incl. the completed N family (V22); time capacity (V23); V6 section 7 stacking closure. Every route that only re-weights, re-scales or re-fits members of the existing families is closed against the strongest incumbent.",
+      "remaining_routes": [
+        "platform feedback on the pending portfolio, which resolves the N weight",
+        "a genuinely different model class, not another capacity/member/blend change"
+      ]
+    },
+    "goal_above_96_4_achieved": false
+  }
 }
