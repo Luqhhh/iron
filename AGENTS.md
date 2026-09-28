@@ -1136,3 +1136,13 @@ No confirmation seeds consumed, no full-data fits, packages or uploads.
 G0: locked Python3.12 suite 1194 passed; 80 saved models cold-audited, max
 inference difference 4.55e-13; independent preprocessing/epoch audit passed.
 Platform best remains user-reported B0 96.3679; 96.5 remains unmet by 0.1321.
+
+### V34 CRPS tree experiment opened (2026-09-28)
+
+Frozen specification: `configs/round2_v34/SPEC.yaml`; plan:
+`docs/round2_v34/PREREGISTRATION.md`. User goal remains platform96.5.
+CRPS_FIXED and CRPS_SCALE are both prospectively eligible; this does not
+reclassify V33's control. Forty complete-development outer fits, no new B0
+reference fits; at most one finalist per target after two positive complete
+seeds. Retain four-seed/LCB/96.25 gates, no automatic release or upload.
+V34 is reserved; next free local number V35 must be rechecked before use.

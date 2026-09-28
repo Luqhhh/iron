@@ -160,3 +160,9 @@ After fetching all remotes and scanning integer and suffixed SPEC paths across
 all local/remote branches, V32 is occupied by the mixture-bound diagnostic.
 V33 is reserved for continuous mixture-density regression on branch
 `round2-v33-mixture-density`. Next free local number: V34 (recheck before use).
+
+## 10. V34 reservation (2026-09-28)
+
+Fresh remote fetch and all-branch integer/suffixed SPEC scan found V33 occupied
+and V34 free. V34 is reserved for CRPS natural-gradient trees on
+`round2-v34-crps-boosting`. Next free local number: V35; scan again before use.
