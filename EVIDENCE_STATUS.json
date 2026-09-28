@@ -12707,4 +12707,93 @@
     },
     "goal_above_96_4_achieved": false
   }
+,
+  "round2_v24_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "closed_target_representation_axis_no_packages",
+    "source_plan": "docs/round2_v24/PREREGISTRATION.md",
+    "result": "docs/round2_v24/RESULTS.md",
+    "spec": "configs/round2_v24/SPEC.yaml",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false
+    },
+    "G0": {
+      "development_outer_fits_authoritative": 20,
+      "discarded_fits_first_launch": 8,
+      "confirmation_fits": 0,
+      "full_data_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "locked_python_3_12_tests_passed": 1160,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v24-python312-tests-r1.log",
+      "test_log_sha256": "13d9f94ad2162320a7916778de01249da389bfc980d52aca96209a8439763e4b",
+      "targeted_tests_passed": 4,
+      "incidents": [
+        "the first launch fitted every fold then failed during inversion because the spec named exp/square_clip while the function recognised log/sqrt; 8 fits were discarded; fixed in ed0376f and re-launched; failure events preserved in local/reports/v24-fit-seed{42,3407}.log",
+        "the recreated run directory was prepared with rm -rf over the first launch's dev-r1, removing that run's append-only ledger; a deviation from the append-only rule; no authoritative evidence was affected"
+      ],
+      "evidence": "local/runs/round2-v24/dev-r1/screen.json"
+    },
+    "G1": {
+      "probes": {
+        "L_TIME": {
+          "fit": "log(y)",
+          "inverse": "exp",
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean": 0.0,
+          "promoted": false,
+          "standalone_wmape": {
+            "42": 0.040407,
+            "3407": 0.040976
+          }
+        },
+        "S_TIME": {
+          "fit": "sqrt(y)",
+          "inverse": "square_clip",
+          "seed_gains": {
+            "42": 0.0,
+            "3407": 0.0
+          },
+          "mean": 0.0,
+          "promoted": false,
+          "standalone_wmape": {
+            "42": 0.04054,
+            "3407": 0.040966
+          }
+        }
+      },
+      "reference": {
+        "raw_target_N_0048": {
+          "42": 0.040737,
+          "3407": 0.041091
+        },
+        "incumbent": {
+          "42": 0.037671,
+          "3407": 0.037573
+        }
+      },
+      "conclusion": "The log target is the most accurate standalone member of the winning time family measured so far (about 0.8%/0.3% lower WMAPE than its raw-target parent) but its accuracy ratio against the incumbent is still 1.07-1.09, so it earns weight exactly 0.0. The representation axis is closed and the V19 rule is reinforced: the binding requirement is accuracy close to the incumbent.",
+      "closed_routes": [
+        "iron capacity (V19)",
+        "whole reproducible library incl. the completed N family (V22)",
+        "time capacity (V23)",
+        "target representation (V24)",
+        "V6 section 7 stacking closure"
+      ],
+      "remaining_routes": [
+        "platform feedback on the pending portfolio, which resolves the N weight",
+        "a genuinely different model class with new inputs or a new paradigm"
+      ]
+    },
+    "goal_above_96_4_achieved": false
+  }
 }

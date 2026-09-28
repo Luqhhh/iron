@@ -832,3 +832,36 @@ implementation `src/bf_tap_r2/v23_capacity.py`, evidence
   pending portfolio (which resolves the N weight) and a genuinely different
   model class. The `>96.4` objective remains unmet.
   See `EVIDENCE_STATUS.json -> round2_v23_2026_09_28`.
+
+### V24: the target-representation axis is closed (2026-09-28)
+
+Pre-registration `docs/round2_v24/PREREGISTRATION.md`, spec
+`configs/round2_v24/SPEC.yaml`, results `docs/round2_v24/RESULTS.md`,
+implementation `src/bf_tap_r2/v24_logtarget.py`, evidence
+`local/runs/round2-v24/dev-r1/screen.json`.
+
+- First target-representation experiment on the winning neural families: the
+  frozen `N-0048` large raw-TabM time recipe fitted on `log(y)` and `sqrt(y)`
+  with the prediction inverted. 20 authoritative development outer fits.
+- **Both select nested weight exactly `0.0` on both split seeds** (mean
+  `0.000000`). The hypothesis was partly right: the log target is the **most
+  accurate standalone member of this family measured so far**
+  (`0.040407/0.040976` against the raw parent's `0.040737/0.041091`), but its
+  accuracy ratio against the incumbent is still `1.073/1.091`, so it earns no
+  weight.
+- **Closed: the target-representation axis.** Every axis that changes members,
+  weights, capacity, blends or target representation of the existing families is
+  now closed against the strongest incumbent (V19 iron capacity, V22 whole
+  reproducible library, V23 time capacity, V24 target representation, V6 §7
+  stacking). The binding requirement is accuracy close to the incumbent
+  (ratio near `1.0`); nothing tried gets an existing family below `1.07`.
+- Two incidents recorded: the first launch discarded 8 completed fits on an
+  inverse-transform naming bug (`ed0376f`, failure events kept in
+  `local/reports/`), and the recreated run directory was prepared with `rm -rf`
+  over the first launch's `dev-r1`, removing that run's append-only ledger — a
+  recorded deviation; no authoritative evidence was affected.
+- No confirmation, full-data fit, package or upload. Locked Python 3.12 suite:
+  **1160 passed, 23 warnings**. Remaining routes: platform feedback on the
+  pending portfolio and a genuinely different model class with new inputs or a
+  new paradigm. The `>96.4` objective remains unmet.
+  See `EVIDENCE_STATUS.json -> round2_v24_2026_09_28`.
