@@ -14496,5 +14496,15 @@
       "G1": "not_evaluated",
       "resource_scope": "core_only_preprocessing_and_formal_runner_unmeasured"
     }
+  },
+  "round2_v37_hard_tree_contraction": {
+    "status": "engineering_preflight_pending",
+    "spec": "configs/round2_v37/SPEC.yaml",
+    "plan": "docs/round2_v37/PREREGISTRATION.md",
+    "platform_target": 96.5,
+    "platform_reference": 96.3679,
+    "official_fits": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }

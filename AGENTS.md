@@ -1206,3 +1206,11 @@ official fits, full-data fits, packages and uploads all zero. G1 is unmeasured,
 not a quality rejection of the family. Keep the fixed recipe and failed
 resource evidence; no threshold relaxation or smaller-model retry in V36.
 Best remains user-reported B0 96.3679; platform 96.5 is unmet.
+
+### V37 hard-tree contraction engineering opened (2026-09-29)
+
+V36 resolved memory but left a 9.93-hour time projection. V37 separately
+freezes bottom-up leaf-response/gate-logit contraction with all model
+parameters unchanged. Same equivalence checks and original resource limits;
+two one-shot resource optimizers, no official fits or packages. Details in
+`configs/round2_v37/SPEC.yaml` and `docs/round2_v37/PREREGISTRATION.md`.

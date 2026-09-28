@@ -178,3 +178,8 @@ Next free number: V36; recheck all branch reservations before using it.
 After a fresh remote fetch/all-branch scan, V36 is reserved for an equivalent
 hard-tree routing implementation and resource check. This does not modify
 V27's CPU refusal. Next free local number V37 requires a new reservation scan.
+
+## 13. V37 reservation (2026-09-29)
+
+Fresh fetch/all-branch integer and suffixed SPEC scan reserves V37 for exact
+hard-tree contraction; next V38 requires a fresh scan. V36 stays frozen.

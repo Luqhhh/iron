@@ -1,0 +1,149 @@
+identity: V37_HARD_TREE_CONTRACTION
+version: round2-v37-hard-tree-contraction
+date: '2026-09-29'
+status: engineering_preflight_before_any_official_fit
+source_plan: docs/round2_v37/PREREGISTRATION.md
+platform_target: 96.5
+platform_reference:
+  candidate: V18_B0_V12IRON_V7TIME
+  score: 96.3679
+  source: user_reported_not_independently_verified
+author:
+  repository: https://github.com/s-marton/GRANDE
+  commit: 07f7278b30ab9ebbbdc544e5f9a91f1b5df7fecb
+  core: GRANDE/GRANDE.py::GRANDE_Module
+  source_sha256: 53f58a980b751aca88ef61615d9e4b1904525952afcbed2678396c877f998064
+  license: MIT
+  license_sha256: c433b2b805878f09d67ab901d67ee26168779f39ec192dabc414b5ccfc7ab99a
+  mode: adapt_core_only_no_full_package_or_native_wrapper
+  paper_benchmark_reproduction: false
+runtime_versions:
+  torch: 2.14.0+cpu
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+  test_set_use: none
+  protected_november_labels: forbidden
+model:
+  objective: regression
+  device: cpu
+  n_estimators: 1024
+  depth: 5
+  selected_variables: 0.8
+  feature_subset_count: min(input_count,max(10,min(50,floor(0.8*input_count))))
+  feature_subsets: author_np_random_choice_without_replacement
+  split_parameter_initializer: author_normal_mean0_std0.05_in_original_rng_order
+  leaf_initializer: author_normal_mean0_std0.05
+  routing: author_hard_axis_aligned_ST_feature_argmax_and_softsign_threshold_round
+  weight_initialization: author_draw_then_overwrite_all_estimator_weight_logits_zero_for_both_arms
+  dropout: 0.2
+  bootstrap: false
+  data_subset_fraction: 1.0
+  missing_values: false
+  use_multi_estimator_lr: false
+training:
+  loss: MSE_standardized_target
+  optimizer: Adam
+  betas:
+  - 0.9
+  - 0.95
+  eps: 1.0e-08
+  weight_decay: 0.0
+  learning_rates:
+    estimator_weights: 0.001
+    split_index_array: 0.01
+    split_values: 0.05
+    leaf_classes_array: 0.05
+  batch_size: 256
+  max_epochs: 250
+  patience: 50
+  min_delta: 1.0e-05
+  epoch_selection: inner_validation_MAE_divided_by_training_target_std
+  scheduler: null
+  swa: false
+  gradient_clipping: null
+  shuffle: numpy_default_rng_seed42_per_epoch_permutation
+  prediction_chunk_rows: 256
+  prediction_postprocessing: none
+G0:
+  before_official_fits: true
+  golden_core_check: INSTANCE_forward_and_gradients_against_pinned_author_core_with_same_zero_weight_initialization
+  golden_atol: 1.0e-06
+  golden_rtol: 1.0e-05
+  cold_predict_atol: 1.0e-06
+  cold_predict_rtol: 0.0
+  required_checks:
+  - one_hard_leaf_per_tree
+  - finite_gradients
+  - paired_initial_parameter_and_eval_output_equality
+  - GLOBAL_weights_query_invariant
+  - INSTANCE_leaf_specific_weights_vary
+  - train_only_transforms
+  - chunk_invariance
+  synthetic:
+    seed: 25001
+    rows: 1024
+    train_rows: 768
+    validation_rows: 256
+    numeric_dimensions: 21
+    spout_categories:
+    - 1
+    - 2
+    - 3
+    generator: independent_standard_normal_numeric_and_uniform_integer_spout
+    target: 10_plus_3_times_indicator_x0_gt0_plus_2_times_indicator_x1_gt0_minus_indicator_x2_gt0
+    max_epochs: 80
+    optimizer_runs_max: 2
+    arms:
+    - GLOBAL
+    - INSTANCE
+    pass: each_arm_validation_MAE_lt_training_median_constant_MAE
+    early_stopping: false
+  resource_probe:
+    same_full_model_shape: true
+    batch_size: 256
+    synthetic_input_columns: 24
+    warmup_steps: 3
+    timed_steps: 20
+    optimizer_runs_max: 2
+    measure_both_arms: true
+    peak_worker_rss_mib_max: 1536
+    available_ram_margin_mib: 1024
+    workers_max: 4
+    projection: 40_divided_by4_times_1.5_times250_times((ceil(2204/256)+ceil(1764/256))*max_arm_p95_training_step_seconds_plus_ceil(441/256)*max_arm_p95_validation_forward_seconds)
+    development_projected_wall_seconds_max: 21600
+    failure_action: record_G0_infeasible_stop_no_smaller_recipe_or_official_fits
+optimization:
+  only_change: contract_leaf_responses_and_gate_logits_bottom_up_before_tree_weight_normalization
+  reference_commit: 4f52392
+  reference_source_sha256: df700578f63114796f168a7f70121455100df586c78ccc23a495d25fef41faae
+  output_atol: 1.0e-06
+  gradient_atol: 1.0e-06
+  rtol: 1.0e-05
+  no_parameter_change: true
+  prior_v36_audit_sha256: 78e59f3776eecce72281eaa2d891a979eaab771c83d2c2355b4e4a150113b000
+engineering_budget:
+  equivalence_optimizer_runs: 0
+  resource_optimizer_runs: 2
+  learnability_optimizer_runs_if_resource_passes: 2
+  resource_max_seconds: 21600
+  peak_worker_rss_mib_max: 1536
+  synthetic_resource_rows: 256
+  synthetic_features: 24
+  warmup_steps: 3
+  timed_steps: 20
+  evaluation_steps: 20
+  threads: 1
+  workers_projection: 4
+  official_fits_before_full_protocol_frozen: 0
+  new_packages: 0
+  agent_uploads: 0
+release:
+  packages: 0
+  desktop_writes: 0
+  agent_uploads: 0
+starting_commit: 6da6b28c504d6ac6da57174e04c34c57d98b20e9
+scientific_protocol: not_yet_frozen_no_official_fits_authorized_by_this_spec
