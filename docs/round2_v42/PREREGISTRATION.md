@@ -27,6 +27,12 @@ Forward search ends at 63 total terms, exhaustion, or relative RSS reduction
 <=1e-8. Rank handling uses SVD tolerance 1e-10 and minimum-norm coefficients.
 The paired-gain computation is checked against independent least-squares fits.
 
+Numerical clarification before synthetic or official fits: the two-column
+Gram solve floors its relative eigenvalue cutoff at 1e-14 (absolute 1e-20),
+because squaring the SVD cutoff is below floating-point resolution; redundant
+column deletion uses null-space diagonal tolerance 1e-8. These are fixed
+linear-algebra safeguards, covered by full-rank and redundant-column tests.
+
 All numeric inputs use training mean/std; spout uses a training-only one-hot
 vocabulary, unseen categories all zero. Targets use training mean/std.
 No clipping, IDs as features, external data, pretrained models or temporal

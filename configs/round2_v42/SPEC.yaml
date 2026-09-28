@@ -129,7 +129,6 @@ promotion:
 budget:
   development_candidate_outer_fits: 40
   confirmation_candidate_outer_fits_max: 20
-  candidate_optimizer_runs_per_outer_fit: 2
   development_b0_factory_calls: 0
   confirmation_b0_factory_calls_max: 20
   b0_pipeline_fit_calls_per_factory: 32
