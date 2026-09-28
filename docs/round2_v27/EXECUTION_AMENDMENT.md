@@ -1,0 +1,29 @@
+# V27 execution-only concurrency amendment
+
+Recorded during the first two reference units, before any candidate evaluation.
+The first two B0 refits take more than ten minutes and each active parent uses
+one CPU core after its initial component pool. Read-only process inspection
+confirmed continuing computation, not a deadlock.
+
+Raise **reference concurrency only**, from two to at most six calls. Precompute
+the eight far-tail units (seed 3407, folds 1..4, calibration and outer) with four
+additional workers. The unchanged primary controller handles the other twelve
+reference units and verifies/reuses the tail when its queue reaches them. The
+candidate worker count stays four. Initial nested component pools can use at
+most 24 workers, below the machine's 32-core capacity; numerical thread counts
+remain one.
+
+This supersedes the execution-only `concurrent_reference_calls: 2` ceiling for
+the reference phase. It changes **zero** model parameters, epochs, folds,
+training rows, calibration rules, thresholds or fit budgets. There are still
+20 development B0 refits and 60 candidate outer fits. The original scientific
+specification/source hashes and every existing run directory remain unchanged.
+No in-progress unit is replaced, retried or overwritten. An ownership collision
+fails visibly at atomic directory creation instead of allowing a duplicate fit.
+
+Implementation: `scripts/run_v27_reference_tail.py`, whose hash and schedule are
+appended to the private run before execution. A dry run verifies source/data
+hashes, runtime versions and all eight unclaimed units before launch. Existing
+unit tests cover immutable/failed-unit rejection; the underlying fit function is
+the same implementation that passed 1169 tests. This is a scheduling amendment,
+not a new candidate or evidence obtained by changing the frozen recipe.
