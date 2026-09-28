@@ -1170,3 +1170,17 @@ all other training and gate settings remain V34. Forty fresh outer fits,
 80 old model-prediction prefixes must reproduce exactly. V34 stays failed.
 No new full-data fit, package or upload. Next free number V36 requires a
 fresh reservation scan. Goal remains platform 96.5.
+
+### V35 completed: old cap limitation removed, still no finalist (2026-09-28)
+
+Results: `docs/round2_v35/RESULTS.md`. All 40 outer fits / 80 training runs
+completed; all stopped before 3000 (selected 256–1084, latest stop 1144).
+All 40 V34 calibration histories and 80 prediction prefixes reproduced
+exactly. Time standalone errors improved, but no recipe had two positive
+complete seeds. Mean B0 gains: iron FIXED 0, SCALE -0.001036; time FIXED
+-0.000850, SCALE -0.001666. No further cap or capacity scan within this round.
+No confirmation/full-data fits, packages or uploads; confirmation seeds
+271828/314159 remain unconsumed. G0: 1204 tests passed; 80 models cold-audited
+with zero inference difference. Best remains user-reported B0 96.3679;
+platform 96.5 remains unmet. The old cap explanation is resolved under the
+fixed stopping rule, not a proof of global convergence or family impossibility.
