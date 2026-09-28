@@ -23,12 +23,21 @@ class AnalysisTests(unittest.TestCase):
     def setUp(self):
         self.report = analysis(step=0.05)
 
-    def test_raised_bounded_ceiling_breaks_the_unreachable_verdict(self):
+    def test_iron_endpoint_refutes_the_assumed_head_room(self):
+        self.assertAlmostEqual(self.report["iron_line"]["1.0"]["score"], 96.3514, places=4)
+        self.assertAlmostEqual(self.report["iron_slopes"]["w0_to_w05"], 0.0160, places=4)
+        self.assertAlmostEqual(self.report["iron_slopes"]["w05_to_w10"], -0.0165, places=4)
+        self.assertAlmostEqual(self.report["iron_head_room_measured"], -0.0165, places=4)
+        self.assertTrue(self.report["iron_head_room_refuted"])
+        self.assertAlmostEqual(self.report["bounded_ceiling_with_iron_endpoint_LOOSE_BOUND_REFUTED"],
+                               96.40418, places=4)
+
+    def test_practical_bounded_ceiling_is_the_time_bound_only(self):
         self.assertAlmostEqual(self.report["simplex_max_bound_with_V12_iron"], 96.38818, places=4)
         self.assertEqual(self.report["simplex_argmax_coordinates"], [0.0, 0.45, 0.55])
-        self.assertAlmostEqual(self.report["bounded_ceiling_with_iron_endpoint"], 96.40418, places=4)
-        self.assertGreater(self.report["ceiling_vs_target"], 0.0)
-        self.assertFalse(self.report["target_provably_unreachable"])
+        self.assertAlmostEqual(self.report["bounded_ceiling_practical_time_only"], 96.38818, places=4)
+        self.assertAlmostEqual(self.report["ceiling_vs_target"], -0.01182, places=4)
+        self.assertTrue(self.report["target_provably_unreachable"])
 
     def test_grid_growth(self):
         self.assertEqual(self.report["grid_points"], 231)

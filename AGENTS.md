@@ -1291,3 +1291,28 @@ Results `docs/round2_v40/RESULTS.md`, implementation
   `5_IRON_W100` (`c41e56d4…`), the only package carrying the iron lever, which
   composes additively with any time column. Locked Python 3.12 suite:
   **1240 passed, 23 warnings**. Fits 0, packages 4, desktop writes 5, uploads 0.
+
+### V40 addendum: the iron endpoint is measured, and its head-room is refuted (2026-09-28)
+
+The user reported `5_IRON_W100` (pure `V12m`, `w=1.0`, B0 time column) =
+**`96.3514`**, completing the iron axis on the B0 time column:
+
+| `w` | 0.0 | 0.5 | 1.0 |
+|---|---:|---:|---:|
+| score | 96.3519 (`V7` package) | **96.3679** (`B0`) | **96.3514** (`5_IRON_W100`) |
+
+- `w = 0 -> 0.5`: `+0.0160`; `w = 0.5 -> 1.0`: **`-0.0165`**. The iron axis **peaks
+  at `w = 0.5` and falls away**, so the `+0.0160` head-room used by the V40
+  ceiling is **refuted in practice** (it survives only as a loose concave bound
+  that the measurement contradicts).
+- **Corrected verdict: the practical bounded ceiling is the time bound alone,
+  `96.38818`** (argmax `(0.00, 0.45, 0.55)`), i.e. **`-0.0118` against 96.4**.
+  The "96.4 unreachable" verdict is **reinstated for the bounded region**.
+- What remains unbounded is the **hull interior** — 192 of the 231 grid points —
+  where concavity supplies only *lower* bounds; the measured maximum there is
+  `96.3727` and no offline ranking is available.
+- Desktop pending set reduced to the four ridge probes (`1_RIDGE_H1` at the
+  argmax bound `96.3882`, `2_RIDGE_H2`, `3_RIDGE_SEG625` bracket
+  `[96.3727, 96.3776]`, `4_RIDGE_N500`); `5_IRON_W100` removed after scoring.
+  Locked Python 3.12 suite: **1241 passed, 23 warnings**. No fits, no uploads.
+  See `EVIDENCE_STATUS.json -> round2_v40_2026_09_28.addendum_iron_endpoint_2026_09_28`.

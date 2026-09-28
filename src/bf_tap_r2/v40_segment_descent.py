@@ -44,6 +44,14 @@ PROBE_OUTPUT = Path("local/runs/round2-v40/probes-r1")
 REPORT_OUTPUT = Path("local/runs/round2-v40/ridge-r1.json")
 IRON_HEAD_ROOM = 0.0160
 
+#: The iron axis measured on the **B0 time column**, all three points read off
+#: the platform.  ``w`` is the V12-member weight.
+IRON_LINE = {
+    0.0: (96.3519, "V7 package (V36 iron)"),
+    0.5: (96.3679, "B0 (V12 iron)"),
+    1.0: (96.3514, "5_IRON_W100 (pure V12m)"),
+}
+
 
 def _segment(lam: float) -> tuple[float, float, float]:
     """``lambda*A60 + (1-lambda)*V7m`` in ``(V36, N, V7m)`` coordinates."""
@@ -103,9 +111,21 @@ def analysis(step: float = 0.05) -> dict[str, Any]:
         "simplex_argmax_bound_source": {"from": rows[0][2][0], "to": rows[0][2][1],
                                         "lambda": round(rows[0][2][2], 4)},
         "iron_head_room": IRON_HEAD_ROOM,
-        "bounded_ceiling_with_iron_endpoint": round(ceiling, 6),
-        "ceiling_vs_target": round(ceiling - 96.4, 6),
-        "target_provably_unreachable": bool(ceiling < 96.4),
+        "iron_line": {str(w): {"score": score, "source": source}
+                      for w, (score, source) in sorted(IRON_LINE.items())},
+        "iron_slopes": {"w0_to_w05": round(96.3679 - 96.3519, 6),
+                        "w05_to_w10": round(96.3514 - 96.3679, 6)},
+        "iron_head_room_measured": round(96.3514 - 96.3679, 6),
+        "iron_head_room_refuted": True,
+        "bounded_ceiling_with_iron_endpoint_LOOSE_BOUND_REFUTED": round(ceiling, 6),
+        "bounded_ceiling_practical_time_only": round(rows[0][0], 6),
+        "ceiling_vs_target": round(rows[0][0] - 96.4, 6),
+        "target_provably_unreachable": bool(rows[0][0] < 96.4),
+        "verdict": ("the iron endpoint measured 96.3514, i.e. -0.0165 against w=0.5, so the "
+                    "+0.0160 iron head-room used by the previous ceiling does not exist in practice. "
+                    "The practical bounded ceiling is the time bound 96.38818, which is 0.0118 below "
+                    "96.4, so the target is again out of reach inside the bounded region; only the "
+                    "192 unbounded interior grid points or a new model could exceed it."),
         "runner_up_bounds": [{"bound": round(row[0], 4), "coordinates": list(row[1]),
                               "source": {"from": row[2][0], "to": row[2][1]}}
                              for row in rows[1:8]],
@@ -205,8 +225,9 @@ def run(root: Path | str = ROOT_DEFAULT, spec_path: Path | str = SPEC_DEFAULT,
     destination.write_text(json.dumps(report, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps({k: report[k] for k in ("measured_best", "simplex_max_bound_with_V12_iron",
                                              "simplex_argmax_coordinates",
-                                             "bounded_ceiling_with_iron_endpoint",
-                                             "ceiling_vs_target", "target_provably_unreachable",
+                                             "bounded_ceiling_practical_time_only",
+                                             "iron_head_room_measured", "ceiling_vs_target",
+                                             "target_provably_unreachable",
                                              "bounded_grid_points", "unbounded_grid_points")}, indent=2))
     return report
 

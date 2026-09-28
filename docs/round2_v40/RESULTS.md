@@ -77,3 +77,43 @@ IDs, blend relative difference `0.0`, finite non-negative.
 Budget: **0 fits, 4 packages, 5 desktop writes, 0 uploads.** Implementation
 `src/bf_tap_r2/v40_segment_descent.py`, evidence
 `local/runs/round2-v40/ridge-r1.json`.
+
+## Addendum: the iron endpoint is measured, and the head-room is refuted
+
+The user then reported `5_IRON_W100` (pure `V12m` iron, `w = 1.0`, on the `B0`
+time column): **`96.3514`**. Together with the two already-measured points this
+completes the iron axis on that time column:
+
+| `w` | score | source |
+|---:|---:|---|
+| 0.0 | 96.3519 | `V7` package (V36 iron) |
+| 0.5 | **96.3679** | `B0` (V12 iron) |
+| 1.0 | **96.3514** | `5_IRON_W100` |
+
+* `w = 0 -> 0.5`: **+0.0160** (slope `+0.0320`/unit)
+* `w = 0.5 -> 1.0`: **-0.0165** (slope `-0.0330`/unit)
+
+The iron axis **peaks at `w = 0.5` and falls away**. The `+0.0160` head-room used
+by the previous ceiling is therefore **refuted in practice** — it survives only as
+a loose concave upper bound (`w=1.0 <= 96.3839` by extending the `0 -> 0.5`
+secant) that the measurement contradicts.
+
+**Corrected verdict.** The practical bounded ceiling is the time bound alone:
+
+| quantity | value |
+|---|---:|
+| bounded time maximum (argmax `(0.00, 0.45, 0.55)`) | 96.38818 |
+| iron head-room, measured | **-0.0165** (refuted) |
+| practical bounded ceiling | **96.38818** |
+| gap to target | **-0.0118** |
+
+So the "96.4 unreachable" verdict is **reinstated for the bounded region**: no
+beyond-chord point can reach the target. What remains genuinely unknown is the
+**hull interior** — 192 of the 231 grid points — where concavity supplies only
+*lower* bounds and the measured maximum is `96.3727`; an interior point could in
+principle exceed it, but there is no bound and no model to rank those points.
+
+The four ridge probes stay pending (they test the highest bounded points, `H1` at
+the argmax); `5_IRON_W100` is now scored and was removed from the desktop set. If
+the ridge probes cap near `96.388`, the weight route is exhausted and `96.4`
+requires a new model.

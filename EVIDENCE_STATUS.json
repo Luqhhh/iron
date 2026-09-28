@@ -14640,8 +14640,7 @@
     },
     "goal_above_96_4_achieved": false,
     "numbering": "this round was first labelled V38 and renumbered to V39 because the teammate branch round2-v38-hard-tree-shared-routing claims V38; private evidence keeps its historical local/runs/round2-v38 path"
-  }
-,
+  },
   "round2_v40_2026_09_28": {
     "date": "2026-09-28",
     "status": "ridge_plateau_and_withdrawn_unreachable_verdict",
@@ -14776,9 +14775,48 @@
       "locked_python_3_12_warnings": 23,
       "test_log": "local/reports/v40-python312-tests-r1.log",
       "test_log_sha256": "383813b43636fa7efec80b40af0ccc18cd7608830a9ad7001909180db14ca28d",
-      "targeted_tests_passed": 8,
+      "targeted_tests_passed": 9,
       "readback": "each ZIP holds exactly result.csv; 322 unique template-ordered IDs; blend relative difference 0.0"
     },
-    "goal_above_96_4_achieved": false
+    "goal_above_96_4_achieved": false,
+    "addendum_iron_endpoint_2026_09_28": {
+      "score": 96.3514,
+      "package": "5_IRON_W100",
+      "zip_sha256": "c41e56d4d3b3482a6baaaee33f76725811168ea31a4eba8c6aee6ade9133c269",
+      "iron_line_on_B0_time": {
+        "w0": 96.3519,
+        "w0.5": 96.3679,
+        "w1.0": 96.3514
+      },
+      "slopes": {
+        "w0_to_w05": 0.016,
+        "w05_to_w10": -0.0165
+      },
+      "finding": "the iron axis peaks at w=0.5 and falls away; the +0.0160 head-room used by the previous ceiling is refuted in practice",
+      "corrected_ceiling": {
+        "bounded_time_max": 96.38818,
+        "argmax": [
+          0.0,
+          0.45,
+          0.55
+        ],
+        "iron_head_room_measured": -0.0165,
+        "practical_bounded_ceiling": 96.38818,
+        "gap_to_target": -0.01182
+      },
+      "verdict": "the 96.4-unreachable verdict is reinstated for the bounded region; the hull interior (192 of 231 grid points) remains unbounded with only concavity lower bounds",
+      "desktop": "5_IRON_W100 removed from the pending set after scoring; the four ridge probes stay",
+      "source": "user_reported_not_independently_verified",
+      "G0": {
+        "locked_python_3_12_tests_passed": 1241,
+        "locked_python_3_12_warnings": 23,
+        "test_log": "local/reports/v40b-python312-tests-r1.log",
+        "test_log_sha256": "14b5b909fa40942055d254657f039b803087bab7a5f63dbacb6b74ac377a17ff",
+        "targeted_tests_passed": 9,
+        "new_fits": 0,
+        "desktop_writes": 0,
+        "agent_uploads": 0
+      }
+    }
   }
 }
