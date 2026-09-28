@@ -31,8 +31,9 @@ What moved (public, Git-tracked labels):
 | EVIDENCE key `round2_v24_2026_09_28` | `round2_v26_2026_09_28` |
 | spec versions `round2-v23-…` / `round2-v24-…` | `round2-v25-…` / `round2-v26-…` |
 
-Both rounds are zero-fit, zero-package, zero-upload closures, so the move changes
-no model, no prediction and no score. The recorded G1 numbers are identical
+The renumbering adds zero fits, packages or uploads, so the move changes
+no model, no prediction and no score. Both closed rounds retain their recorded
+20 development fits. The recorded G1 numbers are identical
 before and after; only the labels and paths differ.
 
 ## 2. What is frozen and must not be renamed
@@ -64,7 +65,8 @@ pending upload. Read `V20` as branch-qualified until the package is scored.
 
 - Live local numbers after the move: `V17`, `V19`, `V21`, `V22`, `V25`, `V26`;
   teammate-owned: `V20` (masked, closed) and `V23` (histogram target).
-- **Next free local number: `V27`.** Do not reuse `V18`/`V20`/`V23`/`V24`.
+- **Current next free local number: `V28`.** `V27` is now reserved below.
+  Do not reuse `V18`/`V20`/`V23`/`V24`.
 - Before pre-registering a new round, fetch all remotes and compare
   `configs/round2_v*/SPEC.yaml` version strings across `main` and every live
   branch; reserve here first if a collision is possible.
@@ -79,3 +81,14 @@ pending upload. Read `V20` as branch-qualified until the package is scored.
 - `EVIDENCE_STATUS.json -> round2_v25_2026_09_28` and
   `round2_v26_2026_09_28` (the renamed rounds).
 - `AGENTS.md -> Round numbering (2026-09-28)`.
+
+## 6. V27 reservation and later feedback (2026-09-28)
+
+`V27` is the authorized deep-kernel experiment on branch
+`round2-v27-deep-kernel`, specification `configs/round2_v27/SPEC.yaml`.
+Development is running; the current target is 96.5. Its public preregistration
+and implementation are pushed. The next free local number is **V28**.
+
+The earlier V20 pending-upload wording above is historical. The user has since
+reported `V20_B0_PLLT_A325 = 96.3676`; B0 remains preferred at 96.3679.
+The package identity and branch-qualified V20 naming remain frozen.

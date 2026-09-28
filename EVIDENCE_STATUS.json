@@ -5994,7 +5994,8 @@
     "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8/3_V18_B0_V12IRON_V7TIME.zip",
     "reported_date": "2026-09-28",
-    "note": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles."
+    "note": "B0 matches the single additive rectangle 96.3526 + 96.3519 - 96.3366 = 96.3679. Restating its iron-side difference is the same identity, not an independent second rectangle. Scores remain user-reported.",
+    "historical_note_before_v27_review": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -12839,11 +12840,17 @@
       "decision": "not renamed: the released package label is frozen while it is pending upload; read V20 as branch-qualified",
       "source": "docs/round2_v20/PREREGISTRATION.md and the teammate branch commit 3b31f2b"
     },
-    "next_free_local_number": 27,
+    "next_free_local_number": 28,
     "new_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "previous_next_free_local_number": 27,
+    "v27_reservation": {
+      "branch": "round2-v27-deep-kernel",
+      "spec": "configs/round2_v27/SPEC.yaml",
+      "status": "development_running"
+    }
   },
   "r8_three_slot_delivery_2026_09_28": {
     "date": "2026-09-28",
@@ -12943,10 +12950,18 @@
       "ceiling": "the V18 two-line joint ceiling is 96.3992, so this family cannot be guaranteed to reach 96.4"
     },
     "agent_uploads": 0,
-    "goal_above_96_4_achieved": false
+    "goal_above_96_4_achieved": false,
+    "interpretation_correction_2026_09_28": {
+      "source": "docs/round2_v27/PREREGISTRATION.md",
+      "status": "supersedes interpretations below without changing reported scores or historical package decisions",
+      "additive_identity": "one rectangle; the rearranged iron difference is not independent evidence",
+      "v21_n_attribution": "V21 changed multiple weights; its score does not isolate the causal effect of N",
+      "concavity_bound": "96.3992 nominal (96.3999 with declared score error) applies only when both weights are in [0.5,1], not the entire blend family",
+      "validation_limit": "Repeated split seeds reuse the same labels; four-seed stability does not guarantee platform sign, ordering or magnitude."
+    }
   },
   "round2_v27_2026_09_28": {
-    "status": "implementation_verified_before_development_fits",
+    "status": "development_running",
     "platform_target": 96.5,
     "platform_reference": "V18_B0_V12IRON_V7TIME",
     "platform_reference_score": 96.3679,
@@ -12968,6 +12983,9 @@
       "runtime": "uv --locked --python 3.12 --no-sync; explicit frozen CPU package version checks",
       "baseline_component_count_verified": 32,
       "source_and_reference_files_to_freeze": 1457
-    }
+    },
+    "development_directory": "local/runs/round2-v27/development-r1",
+    "execution_amendment": "docs/round2_v27/EXECUTION_AMENDMENT.md",
+    "development_manifest_sha256": "d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc"
   }
 }
