@@ -743,3 +743,37 @@ run `local/runs/round2-v20/release-r1`.
   (`96.3679`) is still `0.0321` below 96.4; the objective remains unmet.
   A platform-side line search on this direction follows only after it reports.
   See `EVIDENCE_STATUS.json -> round2_v20_2026_09_28`.
+
+### V21: zero-fit accurate-expert time mixes — the N question (2026-09-28)
+
+Pre-registration `docs/round2_v21/PREREGISTRATION.md`, spec
+`configs/round2_v21/SPEC.yaml`, delivery `docs/round2_v21/DELIVERY.md`, private
+run `local/runs/round2-v21/packages-r1`.
+
+- **Zero new fits.** The best time column buildable from members whose full-data
+  predictions already exist (`V36`, `N`, `V7m` recovered field-exactly from the
+  A35/A60/V7 ZIPs, plus the V20 `P_LL_T` full-data member) uses the nested convex
+  optimum `0.40 V36 + 0.25 V7m + 0.35 P-LL` — it **drops N entirely**.
+- Three packages on the verified `V18_B0_V12IRON_V7TIME` parent, iron
+  byte-identical, spanning the N level `0 / 0.10 / 0.1575`:
+  `V21_TIME_LOCAL` (ZIP `32a74052899bd0b02d841d2e07e87645fdaf4b8030fcc69c7d7b12a654fc2016`),
+  `V21_TIME_N10` (`a93a972f301d09b684153a24798c4739001267c5751e7b5c22082338b552cccc`),
+  `V21_TIME_A35` (`3d2bdcc19267ef1312e59c47a389abbd5d6b56d51c46d0727c1ca43b0ba40ca0`).
+- Four-seed check, frozen weights: `V21_TIME_LOCAL` mean **+0.012728**, paired
+  LCB95 **+0.009048**, 4/4 positive, dev mean score `96.259932` — the strongest
+  local evidence recorded, above the V5 winner's four-seed record
+  (`+0.00972` / `+0.00753`). `V21_TIME_N10` `+0.008694` / `+0.005749`;
+  `V21_TIME_A35` `+0.005858` / `+0.002481`. All clear the frozen `96.25` gate
+  with no exception.
+- **The open question is the N weight.** The platform rated N highly *in
+  isolation on its own line* (`V36 -> A35` `+0.0632`) while the local optimum
+  drops it. The three packages are a portfolio over that question; the platform
+  keeps the best score.
+- G0: endpoint recovery re-derives the whole N line to `1.14e-13`; independent
+  post-write audit gives 322 template-ordered rows, 0 iron string mismatches,
+  blend difference `0.0`, no negative predictions. Locked Python 3.12 suite:
+  **1148 passed, 23 warnings**. Fits 0, packages 3, desktop writes 0, agent
+  uploads 0.
+- Upload priority: `V21_TIME_LOCAL`, `V20_B0_PLLT_A325`, `V21_TIME_N10`,
+  `V21_TIME_A35`, `V18_B0_V12IRON_V7TIME`. No score is forecast; the objective
+  remains unmet. See `EVIDENCE_STATUS.json -> round2_v21_2026_09_28`.

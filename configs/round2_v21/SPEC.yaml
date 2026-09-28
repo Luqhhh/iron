@@ -1,0 +1,46 @@
+version: round2-v21-accurate-expert-time-mixes
+source_plan: docs/round2_v21/PREREGISTRATION.md
+parent_spec: configs/round2_v18/SPEC.yaml
+platform_target: 96.4
+platform_reference:
+  candidate: V12_IRON_JOINT_PLR001_A50
+  score: 96.3526
+  source: user_reported_not_independently_verified
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+parent:
+  candidate: V18_B0_V12IRON_V7TIME
+  zip: local/runs/round2-v18/packages-r1/V18_B0_V12IRON_V7TIME/Luqhhh_bf_tap_predict_round2.zip
+  sha256: 532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017
+pll_member:
+  path: local/runs/round2-v20/release-r1/full/cold.npy
+  sha256: e5a1c36543b120fc9290371874a5b7467015292dec173ec89a0c76fc59ef30ee
+  source_candidate: V20_B0_PLLT_A325
+designs:
+  V21_TIME_LOCAL:
+    time: {v36_time: 0.40, v7_member_time: 0.25, pll_time: 0.35}
+  V21_TIME_N10:
+    time: {v36_time: 0.30, n_time: 0.10, v7_member_time: 0.20, pll_time: 0.40}
+  V21_TIME_A35:
+    time: {a35_time: 0.45, v7_member_time: 0.15, pll_time: 0.40}
+source_zips:
+  a35: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35/Luqhhh_bf_tap_predict_round2.zip
+  a60: local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60/Luqhhh_bf_tap_predict_round2.zip
+  v7: local/runs/round2-v7-periodic-networks/release-r3/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip
+verification:
+  expected_rows: 322
+  required_columns: [sample_id, pred_tap_iron, pred_tap_time_len]
+  blend_relative_tolerance: 1.0e-12
+  unchanged_column_byte_identical: true
+  require_nonnegative_finite: true
+  refuse_existing_destination: true
+budget:
+  new_fits: 0
+  new_packages: 3
+  desktop_writes: 0
+  agent_uploads: 0
+release:
+  automatic_packages: false
+  upload_role: user

@@ -12445,4 +12445,119 @@
     },
     "goal_above_96_4_achieved": false
   }
+,
+  "round2_v21_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "released_three_zero_fit_time_mix_packages_pending_upload",
+    "source_plan": "docs/round2_v21/PREREGISTRATION.md",
+    "delivery": "docs/round2_v21/DELIVERY.md",
+    "spec": "configs/round2_v21/SPEC.yaml",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false
+    },
+    "parent": "V18_B0_V12IRON_V7TIME",
+    "parent_zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+    "pll_member_sha256": "e5a1c36543b120fc9290371874a5b7467015292dec173ec89a0c76fc59ef30ee",
+    "G0": {
+      "new_fits": 0,
+      "packages": 3,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "locked_python_3_12_tests_passed": 1148,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v21-python312-tests-r1.log",
+      "test_log_sha256": "20cb6d2048c5ac410171121a380e32a678b50de4d0f013bb8a8ce2f393584dc2",
+      "targeted_tests_passed": 6,
+      "n_line_crosscheck_worst_absolute_difference": 1.14e-13,
+      "iron_string_mismatches": 0,
+      "time_blend_relative_difference": 0.0,
+      "rows": 322,
+      "unique_ids": 322,
+      "template_order": true,
+      "audit": "local/runs/round2-v21/packages-r1/audit.json"
+    },
+    "G1": {
+      "designs": {
+        "V21_TIME_LOCAL": {
+          "time_weights": {
+            "v36_time": 0.4,
+            "v7_member_time": 0.25,
+            "pll_time": 0.35
+          },
+          "n_level": 0.0,
+          "gains": {
+            "42": 0.010431,
+            "3407": 0.013954,
+            "7777": 0.009948,
+            "12011": 0.016577
+          },
+          "mean": 0.012728,
+          "paired_lcb95": 0.009048,
+          "positive_seeds": 4,
+          "development_mean_candidate_score": 96.259932,
+          "promoted": true,
+          "zip_sha256": "32a74052899bd0b02d841d2e07e87645fdaf4b8030fcc69c7d7b12a654fc2016"
+        },
+        "V21_TIME_N10": {
+          "time_weights": {
+            "v36_time": 0.3,
+            "n_time": 0.1,
+            "v7_member_time": 0.2,
+            "pll_time": 0.4
+          },
+          "n_level": 0.1,
+          "gains": {
+            "42": 0.007523,
+            "3407": 0.007363,
+            "7777": 0.007442,
+            "12011": 0.012446
+          },
+          "mean": 0.008694,
+          "paired_lcb95": 0.005749,
+          "positive_seeds": 4,
+          "development_mean_candidate_score": 96.255183,
+          "promoted": true,
+          "zip_sha256": "a93a972f301d09b684153a24798c4739001267c5751e7b5c22082338b552cccc"
+        },
+        "V21_TIME_A35": {
+          "time_weights": {
+            "a35_time": 0.45,
+            "v7_member_time": 0.15,
+            "pll_time": 0.4
+          },
+          "n_level": 0.1575,
+          "gains": {
+            "42": 0.00449,
+            "3407": 0.003145,
+            "7777": 0.006008,
+            "12011": 0.00979
+          },
+          "mean": 0.005858,
+          "paired_lcb95": 0.002481,
+          "positive_seeds": 4,
+          "development_mean_candidate_score": 96.251557,
+          "promoted": true,
+          "zip_sha256": "3d2bdcc19267ef1312e59c47a389abbd5d6b56d51c46d0727c1ca43b0ba40ca0"
+        }
+      },
+      "question": "the nested convex optimum over the available endpoints drops N entirely; the platform rated N highly in isolation, so the three packages span N levels 0 / 0.10 / 0.1575",
+      "record": "V21_TIME_LOCAL mean +0.012728 and LCB95 +0.009048 exceed the V5 winner four-seed record (+0.00972 / +0.00753)",
+      "limits": "local magnitude does not forecast the platform; conditional B0 arithmetic 96.3679; V18 two-line ceiling 96.3992"
+    },
+    "upload_recommendation": {
+      "order": [
+        "V21_TIME_LOCAL",
+        "V20_B0_PLLT_A325",
+        "V21_TIME_N10",
+        "V21_TIME_A35",
+        "V18_B0_V12IRON_V7TIME"
+      ],
+      "note": "user uploads; agent uploads 0; platform keeps the best score"
+    },
+    "goal_above_96_4_achieved": false
+  }
 }
