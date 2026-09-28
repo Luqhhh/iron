@@ -641,3 +641,22 @@ Current user-reported best remains V12=96.3526; >96.4 was not achieved.
   costs/candidates, train-only label/preprocessing contracts, complete coverage,
   confirmation and unchanged release gates. Do not reset account quota by inference.
 - Evidence and handoff: docs/team_strategy_20260926/COMBINED_RELEASE_REQUEST_20260927.md.
+
+### Originals received; actual combined release built (2026-09-27)
+
+- The user supplied submission.zip containing the original V12 and V7 ZIPs.
+  Both match the exact historical SHA-256 pins. This resolves the original-
+  package blocker above; preserve that earlier missing-input snapshot.
+- V12_A50_IRON_V7_A50_TIME_COMBINED now exists at the private path
+  local/runs/round2-v12-v7-combined/release-r1/Luqhhh_bf_tap_predict_round2.zip,
+  SHA-256 769a9192e447712cc8d464d45facb090675d5903d97b7ea483bd47343a469956.
+- Windows fresh-process audit, locked Python3.12 cross-environment audit and
+  independent PowerShell field comparison all pass:322 rows, unique official
+  IDs, zero original-column string mismatches. No model refit or weight change.
+- New platform score is unknown. Conditional96.3679 is still not measured or
+  guaranteed; V12=96.3526 remains the highest user-reported result. Do not update
+  platform ranking, infer quota or upload on the user's behalf.
+- Keep all input ZIPs, prediction CSVs and local audit receipts outside Git.
+  Full reconstruction references/confirmation OOFs remain unavailable; receiving
+  these two submission ZIPs does not restore the complete research cache.
+- Current handoff: docs/team_strategy_20260926/COMBINED_RELEASE_DELIVERY_20260927.md.

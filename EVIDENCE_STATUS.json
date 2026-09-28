@@ -301,9 +301,16 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "status": "USER_RESUMED_COMBINED_RELEASE_WAITING_ORIGINAL_PACKAGES",
+    "status": "COMBINED_ORIGINAL_COLUMNS_READY_AWAITING_USER_FEEDBACK",
     "submission_priority": [],
-    "recommended": "Latest explicit user request resumes optimization and asks for a package. Prepare exact V12 original iron plus V7 original time; originals are absent on this computer, so run the pinned builder where they reside or receive them privately. No actual combined ZIP exists here; no alpha retuning, quota reset or automatic upload.",
+    "recommended": "User supplied both pinned originals. Exact V12 original iron plus V7 original time combined ZIP is built and audited in local/runs/round2-v12-v7-combined/release-r1. Deliver only that ZIP; no measured combined score yet, no alpha retuning, quota reset or automatic upload. Empty submission_priority does not schedule a slot without available quota.",
+    "ready_requested_combined_release": {
+      "candidate": "V12_A50_IRON_V7_A50_TIME_COMBINED",
+      "zip_sha256": "769a9192e447712cc8d464d45facb090675d5903d97b7ea483bd47343a469956",
+      "release_path": "local/runs/round2-v12-v7-combined/release-r1/Luqhhh_bf_tap_predict_round2.zip",
+      "platform_score": null,
+      "evidence": "docs/team_strategy_20260926/COMBINED_RELEASE_DELIVERY_20260927.md"
+    },
     "risk_if_platform_keeps_latest": "Historical hypothetical only; user reports the platform keeps the best score.",
     "current_preferred": {
       "candidate": "V12_IRON_JOINT_PLR001_A50",
@@ -321,7 +328,7 @@
       "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
       "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
       "reported_date": "2026-09-27",
-      "note": "V12 changes iron only against A35, gaining +0.0160. V7 is scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. User explicitly resumed work; requested combination awaits original source ZIPs."
+      "note": "V12 changes iron only against A35, gaining +0.0160. V7 is scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Requested original-column combination is now built and audited; no combined platform score yet."
     },
     "platform_ranking": [
       "V12_IRON_JOINT_PLR001_A50",
@@ -5994,7 +6001,7 @@
     "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
     "reported_date": "2026-09-27",
-    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. User explicitly resumed work; requested combination awaits original source ZIPs."
+    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Requested original-column combination is now built and audited; no combined platform score yet."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -10610,6 +10617,53 @@
     "historical_sources_specs_and_gates_unchanged": true,
     "packages": 0,
     "uploads": 0
+  },
+  "round2_v12_v7_original_column_release_2026_09_27": {
+    "status": "original_columns_composed_audited_pending_platform_feedback",
+    "evidence": "docs/team_strategy_20260926/COMBINED_RELEASE_DELIVERY_20260927.md",
+    "implementation_commit": "47554d573dd1a8e121a712bc09fce2e9f9ccf1f9",
+    "candidate": "V12_A50_IRON_V7_A50_TIME_COMBINED",
+    "user_supplied_outer_archive_sha256": "d654a8de631d2a31d1502d8df5da123c18cf254352597a542672a77e16a2e37b",
+    "source_original_zip_hashes": {
+      "V12_iron": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
+      "V7_time": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299"
+    },
+    "release_path": "local/runs/round2-v12-v7-combined/release-r1/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "769a9192e447712cc8d464d45facb090675d5903d97b7ea483bd47343a469956",
+    "csv_sha256": "741ba799c14c992fdd22702ec89a6f3d2dfff6aa00b686811c7a9dd84b28866e",
+    "source_originals_available_here": true,
+    "complete_private_research_references_available_here": false,
+    "official_target_model_fits": 0,
+    "full_data_fits": 0,
+    "new_competition_candidate_packages": 1,
+    "desktop_writes": 0,
+    "platform_uploads": 0,
+    "G0": {
+      "status": "actual_original_column_package_verified",
+      "rows": 322,
+      "unique_ids": 322,
+      "official_template_order_mismatches": 0,
+      "original_iron_field_string_mismatches": 0,
+      "original_time_field_string_mismatches": 0,
+      "windows_fresh_process_audit_passed": true,
+      "locked_python312_cross_environment_audit_passed": true,
+      "independent_powershell_field_comparison_passed": true,
+      "failed_marker_present": false,
+      "private_verification": "local/runs/round2-v12-v7-combined/release-r1/verification.json",
+      "private_crosscheck_receipt": "local/runs/round2-v12-v7-combined/release-r1/received_inputs_and_crosscheck.json",
+      "locked_python312_full_this_release": {"passed": 1162, "skipped": 11, "errors": 0, "failures": 0, "seconds": 191.922},
+      "private_full_xml": "local/reports/v12-v7-real-release-full-py312-r1.xml"
+    },
+    "G1": {
+      "current_best_user_reported": 96.3526,
+      "combined_platform_score": null,
+      "conditional_original_column_score_arithmetic": 96.3679,
+      "conditional_score_error_allowance": 0.0003,
+      "not_measured_or_guaranteed": true,
+      "target_96_4_achieved": false
+    },
+    "input_artifacts_and_historical_models_specs_gates_unchanged": true,
+    "remaining": "User decides whether to upload the single actual combined ZIP and returns its result; do not infer quota or claim a new platform score."
   },
   "round2_user_resumed_combined_release_2026_09_27": {
     "status": "resumed_requested_release_waiting_original_source_packages",
