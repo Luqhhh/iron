@@ -1,0 +1,53 @@
+version: round2-v19-complete-coverage-iron-capacity
+source_plan: docs/round2_v19/PREREGISTRATION.md
+parent_spec: configs/round2_v6/SPEC.yaml
+platform_target: 96.4
+platform_reference:
+  candidate: V12_IRON_JOINT_PLR001_A50
+  score: 96.3526
+  source: user_reported_not_independently_verified
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+amendment:
+  supersedes: "configs/round2_v6/SPEC.yaml stage_a2 probe gate"
+  reason:
+    - "V6 section 2.2.2: the folds 0/1 screen cannot rank candidates; the validated winner's single-fold alphas span 0.12-0.38"
+    - "V6 section 3: registered pre-registration defect; the probe gate stopped the only object the round existed to test"
+  scope_change_only: true
+  thresholds_changed: false
+trial_ids:
+  - v6-s1-N-0024
+  - v6-s1-N-0008
+  - v6-s1-N-0016
+  - v6-s1-N-0000
+  - v6-s1-N-0020
+  - v6-s1-N-0004
+training_setting: mse_adam
+split_seeds: [42, 3407]
+confirmation_seeds: [7777, 12011]
+folds: [0, 1, 2, 3, 4]
+incumbent_iron: "V12 iron = 0.5*A35_iron + 0.5*V12_member_iron"
+blend_grid: [0.0, 0.025, 0.05, 0.075, 0.1, 0.125, 0.15, 0.175, 0.2, 0.225, 0.25, 0.275, 0.3, 0.325, 0.35, 0.375, 0.4, 0.425, 0.45, 0.475, 0.5, 0.525, 0.55, 0.575, 0.6, 0.625, 0.65, 0.675, 0.7, 0.725, 0.75, 0.775, 0.8, 0.825, 0.85, 0.875, 0.9, 0.925, 0.95, 0.975, 1.0]
+gates:
+  development_promotion:
+    require_all_development_seeds_positive: true
+    statistic: mean_incremental_nested_blend_gain_over_incumbent
+  four_seed:
+    min_seeds: 4
+    paired_lcb_level: 0.95
+    require_paired_lcb_gt_zero: true
+    require_all_contributing_seeds_positive: true
+    fold_level_role: descriptive_only
+budget:
+  development_outer_fits: 60
+  confirmation_outer_fits_max: 10
+  full_data_fits: 0
+  packages: 0
+  workers: 8
+  wall_clock_cap_hours: 3
+release:
+  automatic_packages: false
+  agent_uploads: 0
+  upload_role: user
