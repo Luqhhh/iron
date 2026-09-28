@@ -1394,3 +1394,11 @@ projection .11032 hours. All 1246 tests, reference/source/runtime checks,
 saved chain shapes and current four-worker RAM check pass. The hourly
 preflight observation confirmed normal terminal state and stopped its timer.
 Official G1 remains pending; proceed with the frozen 40 development units.
+
+V43 official development launched 2026-09-29 06:25:16 Asia/Shanghai through
+`iron-v43-development-r1.service`, verified initial MainPID 167125 running.
+Run `local/runs/round2-v43/development-r1`; timer
+`iron-v43-development-hourly.timer`, first observation approximately 07:25:16.
+Private observations: `local/runs/round2-v43/development-hourly/checks.jsonl`.
+No intermediate progress polling; terminal output requires independent audit
+before a quality conclusion or confirmation allocation. No release authorized.
