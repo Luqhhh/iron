@@ -12381,5 +12381,75 @@
       "actual_development_gaps_closed_by_independent_verifier": true
     },
     "disposition": "Negative development evidence preserved. No new specification, confirmation, full-data fit, package or upload."
+  },
+  "round2_v27_hard_tree_2026_09_28": {
+    "identity": "V27_HARD_TREE",
+    "status": "reserved_awaiting_design_approval",
+    "branch": "codex/round2-v27-hard-tree-weights",
+    "source_plan": "docs/round2_v27_hard_tree/PREREGISTRATION.md",
+    "spec": "configs/round2_v27_hard_tree/SPEC.yaml",
+    "starting_commit": "20c0432d8a5e11a48ad5ab815247f3b5d5996e79",
+    "other_remote_context_commit": "1b00f30",
+    "platform_target_strict_gt": 96.4,
+    "platform_reference": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "local_reference": {
+      "local_primary": "R27_equals_R23_V12_iron_plus_V21_time",
+      "iron": "B0_V12_iron",
+      "time_weights": {
+        "V36": 0.4,
+        "V7_member": 0.25,
+        "P_LL_T": 0.35
+      },
+      "historical": "B0_V12_iron_plus_V7_time",
+      "cache_identity_required_before_fits": true
+    },
+    "mechanism": "pinned_GRANDE_hard_axis_aligned_ST_trees_INSTANCE_vs_GLOBAL_weights",
+    "source_commit": "07f7278b30ab9ebbbdc544e5f9a91f1b5df7fecb",
+    "source_sha256": "53f58a980b751aca88ef61615d9e4b1904525952afcbed2678396c877f998064",
+    "budget": {
+      "development_outer_fits": 40,
+      "confirmation_outer_fits_max": 20,
+      "official_outer_fits_max": 60,
+      "optimizer_runs_per_outer_fit": 2,
+      "official_optimizer_runs_max": 120,
+      "workers_max": 4,
+      "full_data_fits": 0,
+      "second_specifications": 0,
+      "failed_fits_consume_budget": true,
+      "G0_synthetic_optimizer_runs_max": 4
+    },
+    "G0": {
+      "status": "not_started",
+      "official_fits": 0,
+      "synthetic_optimizer_runs": 0,
+      "packages": 0,
+      "agent_uploads": 0
+    },
+    "G1": {
+      "status": "not_measured",
+      "promoted_candidates": [],
+      "platform_target_achieved": false
+    },
+    "publication_cadence": [
+      "strategy_reservation",
+      "final_results"
+    ],
+    "design_approval": null
+  },
+  "round2_v27_number_reservation_2026_09_28": {
+    "identity": "V27_HARD_TREE",
+    "branch": "codex/round2-v27-hard-tree-weights",
+    "other_remote_numbering_commit": "1b00f30",
+    "other_remote_closed_rounds": {
+      "V25": "capacity_formerly_V23",
+      "V26": "target_transform_formerly_V24"
+    },
+    "source": "docs/round2_round_numbering.md",
+    "next_free_number": 28,
+    "remote_version_scan": "passed_before_reservation"
   }
 }

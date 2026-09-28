@@ -684,3 +684,12 @@ Current user-reported best remains V12=96.3526; >96.4 was not achieved.
   been independently checked including settings, sigma, IDs and fold hashes.
 - No second histogram specification/budget after this frozen failure.
   The30-minute v23-hist monitor is paused after final audit and publication.
+
+
+## V27_HARD_TREE strategy reservation (2026-09-28)
+
+User reopened strategy research after the completed negative V23_HIST round. New branch codex/round2-v27-hard-tree-weights reserves the pinned GRANDE hard axis-aligned tree core with INSTANCE leaf-conditioned versus GLOBAL tree weights. Namespace docs/round2_v27_hard_tree and configs/round2_v27_hard_tree; other-remote capacity and target-transform probes were renumbered to V25/V26 at 1b00f30, so this new strategy reserves V27. See docs/round2_round_numbering.md; next free number V28.
+
+Controlling specification: configs/round2_v27_hard_tree/SPEC.yaml and docs/round2_v27_hard_tree/PREREGISTRATION.md. Reservation publication is authorized; implementation/fits await explicit design approval. G0 resource/equivalence/learnability first, then40 full-coverage development fits and at most20 earned confirmation fits. Primary R27 equals R23 (V12 iron, V21 local time), fixed .20 isolated-column member blend; no fallback control promotion or second specification. Preserve the four-seed and local96.25 gates. No package/upload/full-data fit.
+
+Do not reuse the unused V23 confirmation trust path: bind audit to summary/config/source hashes, independently reselect eligibility and independently verify final four-seed decisions. All models, OOF and diagnostic reports stay local. Future approved training uses the user's quiet30-minute monitor; public pushes only reservation and final validated results. GRANDE is an adapted-core feasibility experiment, not author benchmark reproduction; no full author-package install, optional supervised embeddings, external data or pretrained weights.

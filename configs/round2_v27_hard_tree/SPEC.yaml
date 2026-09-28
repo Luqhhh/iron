@@ -1,0 +1,260 @@
+identity: V27_HARD_TREE
+version: round2-v27-hard-tree-weights
+date: '2026-09-28'
+status: reserved_awaiting_design_approval
+source_plan: docs/round2_v27_hard_tree/PREREGISTRATION.md
+starting_commit: 20c0432d8a5e11a48ad5ab815247f3b5d5996e79
+other_remote_context_commit: 1b00f30
+platform_target_strict_gt: 96.4
+platform_reference:
+  candidate: V12_IRON_JOINT_PLR001_A50
+  score: 96.3526
+  source: user_reported_not_independently_verified
+author:
+  repository: https://github.com/s-marton/GRANDE
+  commit: 07f7278b30ab9ebbbdc544e5f9a91f1b5df7fecb
+  core: GRANDE/GRANDE.py::GRANDE_Module
+  source_sha256: 53f58a980b751aca88ef61615d9e4b1904525952afcbed2678396c877f998064
+  license: MIT
+  license_sha256: c433b2b805878f09d67ab901d67ee26168779f39ec192dabc414b5ccfc7ab99a
+  mode: adapt_core_only_no_full_package_or_native_wrapper
+  paper_benchmark_reproduction: false
+runtime_versions:
+  torch: 2.14.0+cpu
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+  test_set_use: none
+  protected_november_labels: forbidden
+targets:
+- tap_iron
+- tap_time_len
+split_seeds:
+- 42
+- 3407
+folds:
+- 0
+- 1
+- 2
+- 3
+- 4
+confirmation_seeds:
+- 7777
+- 12011
+splits:
+  outer: existing_v5_fold_vector_per_seed
+  inner: group_safe_inner_folds_seed42_validation_fold0
+  fit_seed: 42
+  fresh_refit_at_selected_epoch: true
+  cross_seed_oof_averaging: forbidden
+preprocessing:
+  numeric_features: bf_tap_r2.data.FEATURES_in_declared_order
+  numeric_count: 21
+  nonfinite: reject
+  numeric_transform: sklearn_QuantileTransformer_normal_train_only
+  n_quantiles: min(1000,training_rows)
+  subsample: training_rows
+  random_state: 42
+  categorical: spout_no_training_vocabulary_one_hot_unknown_all_zero
+  category_order: ascending_numeric
+  dtype: float32
+  target: training_mean_and_population_std_zscore
+  std_floor: 1.0e-08
+  author_embeddings: false
+  target_encoding: false
+model:
+  objective: regression
+  device: cpu
+  n_estimators: 1024
+  depth: 5
+  selected_variables: 0.8
+  feature_subset_count: min(input_count,max(10,min(50,floor(0.8*input_count))))
+  feature_subsets: author_np_random_choice_without_replacement
+  split_parameter_initializer: author_normal_mean0_std0.05_in_original_rng_order
+  leaf_initializer: author_normal_mean0_std0.05
+  routing: author_hard_axis_aligned_ST_feature_argmax_and_softsign_threshold_round
+  weight_initialization: author_draw_then_overwrite_all_estimator_weight_logits_zero_for_both_arms
+  dropout: 0.2
+  bootstrap: false
+  data_subset_fraction: 1.0
+  missing_values: false
+  use_multi_estimator_lr: false
+arms:
+  GLOBAL:
+    role: mechanism_control_never_promoted
+    effective_weight_logit: mean_over_leaf_weight_parameters_per_tree_broadcast_per_row
+  INSTANCE:
+    role: only_candidate
+    effective_weight_logit: sum_leaf_path_indicator_times_leaf_weight_parameter_per_tree_per_row
+weight_normalization: author_softmax_over_trees_dropout_train_only_then_renormalize_clamp1e-8
+training:
+  loss: MSE_standardized_target
+  optimizer: Adam
+  betas:
+  - 0.9
+  - 0.95
+  eps: 1.0e-08
+  weight_decay: 0.0
+  learning_rates:
+    estimator_weights: 0.001
+    split_index_array: 0.01
+    split_values: 0.05
+    leaf_classes_array: 0.05
+  batch_size: 256
+  max_epochs: 250
+  patience: 50
+  min_delta: 1.0e-05
+  epoch_selection: inner_validation_MAE_divided_by_training_target_std
+  scheduler: null
+  swa: false
+  gradient_clipping: null
+  shuffle: numpy_default_rng_seed42_per_epoch_permutation
+  prediction_chunk_rows: 256
+  prediction_postprocessing: none
+references:
+  local_primary: R27_equals_R23_V12_iron_plus_V21_time
+  iron: B0_V12_iron
+  time_weights:
+    V36: 0.4
+    V7_member: 0.25
+    P_LL_T: 0.35
+  historical: B0_V12_iron_plus_V7_time
+  cache_identity_required_before_fits: true
+blend:
+  member_weight: 0.2
+  recipe: 0.80_R27_plus_0.20_member_isolated_column
+  alpha_search: false
+scoring:
+  wmape: sum_abs_error_divided_by_sum_abs_target
+  package_score: 100_minus_50_times_sum_of_two_target_WMAPEs
+  seed_gain: candidate_package_score_minus_same_seed_R27
+  mean: equal_weight_seed_means
+gates:
+  engineering_preflight_required: true
+  candidate: INSTANCE
+  development_all_seed_gains_gt: 0.0
+  development_mean_gain_ge: 0.01
+  INSTANCE_minus_GLOBAL_mean_gain_gt: 0.0
+  confirmation_finalists_max: 1
+  selection: highest_INSTANCE_mean_gain_among_eligible_targets
+  tie_order:
+  - tap_iron
+  - tap_time_len
+promotion:
+  candidate: INSTANCE
+  min_split_seeds: 4
+  all_seed_gains_gt: 0.0
+  seed_level_paired_lcb95_gt: 0.0
+  lcb: mean_minus_one_sided_t95_df3_times_sample_sd_divided_by_sqrt4
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+  local_gate_score: mean_candidate_package_score_on_development_seeds
+G0:
+  before_official_fits: true
+  golden_core_check: INSTANCE_forward_and_gradients_against_pinned_author_core_with_same_zero_weight_initialization
+  golden_atol: 1.0e-06
+  golden_rtol: 1.0e-05
+  cold_predict_atol: 1.0e-06
+  cold_predict_rtol: 0.0
+  required_checks:
+  - one_hard_leaf_per_tree
+  - finite_gradients
+  - paired_initial_parameter_and_eval_output_equality
+  - GLOBAL_weights_query_invariant
+  - INSTANCE_leaf_specific_weights_vary
+  - train_only_transforms
+  - chunk_invariance
+  synthetic:
+    seed: 25001
+    rows: 1024
+    train_rows: 768
+    validation_rows: 256
+    numeric_dimensions: 21
+    spout_categories:
+    - 1
+    - 2
+    - 3
+    generator: independent_standard_normal_numeric_and_uniform_integer_spout
+    target: 10_plus_3_times_indicator_x0_gt0_plus_2_times_indicator_x1_gt0_minus_indicator_x2_gt0
+    max_epochs: 80
+    optimizer_runs_max: 2
+    arms:
+    - GLOBAL
+    - INSTANCE
+    pass: each_arm_validation_MAE_lt_training_median_constant_MAE
+    early_stopping: false
+  resource_probe:
+    same_full_model_shape: true
+    batch_size: 256
+    synthetic_input_columns: 24
+    warmup_steps: 3
+    timed_steps: 20
+    optimizer_runs_max: 2
+    measure_both_arms: true
+    peak_worker_rss_mib_max: 1536
+    available_ram_margin_mib: 1024
+    workers_max: 4
+    projection: 40_divided_by4_times_1.5_times250_times((ceil(2204/256)+ceil(1764/256))*max_arm_p95_training_step_seconds_plus_ceil(441/256)*max_arm_p95_validation_forward_seconds)
+    development_projected_wall_seconds_max: 21600
+    failure_action: record_G0_infeasible_stop_no_smaller_recipe_or_official_fits
+audit:
+  freeze_before_fits:
+  - all_transitive_source_hashes
+  - SPEC_yaml_hash
+  - runtime_versions
+  - author_source_and_license_hashes
+  - data_hash
+  - per_seed_fold_hashes
+  - reference_cache_hashes
+  persist_private:
+  - model
+  - OOF_predictions
+  - append_only_fit_ledger
+  - inner_and_outer_transform_parameters
+  - target_mean_std
+  - epoch_traces
+  - selected_epochs
+  - train_validation_ID_and_group_hashes
+  - parameter_counts
+  - routing_occupancy
+  - gating_entropy
+  - effective_tree_count
+  - gradient_norms
+  - runtime_and_RSS
+  confirmation_requires:
+  - complete_development_coverage
+  - cold_inference_audit
+  - audit_bound_to_summary_sha256
+  - independent_recomputed_scores_and_eligibility
+  - same_preflight_and_source_spec_identity
+  final_promotion: independently_recompute_four_seed_gains_LCB_and_decision
+  reuse_v23_confirmation_runner: false
+  rewrite_failed_evidence: false
+  automatic_fit_retries: false
+budget:
+  development_outer_fits: 40
+  confirmation_outer_fits_max: 20
+  official_outer_fits_max: 60
+  optimizer_runs_per_outer_fit: 2
+  official_optimizer_runs_max: 120
+  workers_max: 4
+  full_data_fits: 0
+  second_specifications: 0
+  failed_fits_consume_budget: true
+  G0_synthetic_optimizer_runs_max: 4
+monitor:
+  interval_minutes: 30
+  continuous_polling: false
+  notify: failure_stopped_completed_or_user_action_only
+release:
+  packages: 0
+  desktop_writes: 0
+  agent_uploads: 0
+publication:
+  pushes: 2
+  phases:
+  - strategy_reservation
+  - final_results
