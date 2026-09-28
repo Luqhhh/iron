@@ -885,3 +885,41 @@ name).
 - Next free local number: **V27**. Full map:
   `docs/round2_round_numbering.md` and
   `EVIDENCE_STATUS.json -> round2_round_numbering_2026_09_28`.
+
+### Three-slot platform feedback: the additive model is confirmed exactly (2026-09-28)
+
+The user uploaded the three packages written to the desktop
+(`/mnt/c/Users/lqh22/Desktop/submission-96.4-r8`) and returned:
+
+| package | local dev mean | four-seed local mean | platform score | vs B0 |
+|---|---:|---:|---:|---:|
+| `V21_TIME_LOCAL` | 96.259932 | +0.012728 | **96.3567** | **−0.0112** |
+| `V20_B0_PLLT_A325` | 96.252008 | +0.004607 | **96.3676** | **−0.0003** |
+| `V18_B0_V12IRON_V7TIME` | 96.247739 | — | **96.3679** | 0.0 |
+
+- **New platform best: `V18_B0_V12IRON_V7TIME = 96.3679`**, `+0.0153` over the
+  previous best V12 `96.3526`; target `96.4` still `0.0321` away. These are
+  user-reported, not independently verified.
+- **The additive equal-weight WMAPE model is confirmed exactly.** B0 was
+  predicted at `96.3526 + 96.3519 − 96.3366 = 96.3679` and measured `96.3679`.
+  It is confirmed again on a second, independent rectangle: V7 (V36 iron, time
+  `0.5*A35 + 0.5*V7m`) `96.3519` and B0 (V12 iron, identical time column)
+  `96.3679` differ by `+0.0160`, exactly the V12-vs-A35 iron effect. The
+  conditional arithmetic and the V18 concave line bounds are therefore a
+  validated tool, not a heuristic.
+- **The N question is settled: keep N.** Removing it (`V21_TIME_LOCAL`, N=0)
+  costs `0.0112`. The local OOF N=0 optimum is a local artifact, exactly as the
+  V18 local/platform conflict predicted.
+- **P-LL transfers nothing.** `V20` carries a four-seed local gain of `+0.004607`
+  with paired `LCB95 +0.001746` and measures `−0.0003`. This is the second
+  locally-positive four-seed candidate that does not transfer, and it extends the
+  V5 lesson: **the four-seed rule does not guarantee platform transfer either**.
+- **Local magnitude and ordering remain unusable**: local `+0.012728` → platform
+  `−0.0112`; local `+0.004607` → platform `−0.0003`.
+- **Next lever (prepared, unuploaded).** With the additive model validated, the
+  V7-member weight line is measurable: `H(A35)=96.3526` at `v=0` and
+  `H(B0)=96.3679` at `v=0.5` give a secant slope of `0.0306` per unit `v`, so
+  `V18_TIME_V75` (v=0.75) `<= 96.3755` and `V18_TIME_V100` (v=1.0) `<= 96.3832`.
+  The iron side has `V18_IRON_W75` (`w=0.75`). The V18 two-line joint ceiling is
+  `96.3992`. Evidence:
+  `EVIDENCE_STATUS.json -> r8_three_slot_feedback_2026_09_28`.

@@ -5979,23 +5979,20 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V12_IRON_JOINT_PLR001_A50",
-    "score": 96.3526,
-    "source": "user_reported_not_independently_verified",
-    "previous_best": {
-      "candidate": "V6_PORT_TIME_A60",
-      "score": 96.3465
-    },
-    "delta_vs_previous_best": 0.0061,
-    "target": 96.4,
-    "target_met": false,
-    "margin_to_target": -0.0474,
-    "recipe": "0.5*A35_iron+0.5*V12_joint_plr001_iron; A35 time field strings unchanged",
-    "zip_sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
-    "reported_date": "2026-09-27",
-    "note": "V12 changes iron only against A35, gaining +0.0160. V7 is now scored at96.3519, gaining +0.0153 over A35; V12 remains best by0.0007. Optimization stays paused after V16."
-  },
+ "candidate": "V18_B0_V12IRON_V7TIME",
+ "score": 96.3679,
+ "source": "user_reported_not_independently_verified",
+ "previous_best": {"candidate": "V12_IRON_JOINT_PLR001_A50", "score": 96.3526},
+ "delta_vs_previous_best": 0.0153,
+ "target": 96.4,
+ "target_met": false,
+ "margin_to_target": -0.0321,
+ "recipe": "V12 iron column + V7 time column, both original CSV field strings",
+ "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+ "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8/3_V18_B0_V12IRON_V7TIME.zip",
+ "reported_date": "2026-09-28",
+ "note": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles."
+},
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
     "date": "2026-09-23",
@@ -12886,6 +12883,56 @@
     "verification": "each ZIP holds exactly result.csv; 322 unique IDs in official template order; unchanged iron strings byte-identical to the parent (0 mismatches); time blend read-back difference 0.0; predictions finite and non-negative",
     "agent_uploads": 0,
     "desktop_writes": 3,
+    "goal_above_96_4_achieved": false
+  }
+,
+  "r8_three_slot_feedback_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "three_package_feedback_recorded_new_platform_best",
+    "scores": [
+      {
+        "file": "1_V21_TIME_LOCAL.zip",
+        "score": 96.3567,
+        "delta_vs_B0": -0.0112,
+        "local_development_mean": 96.259932,
+        "local_four_seed_mean": 0.012728,
+        "note": "dropping the N component cost 0.0112 on the platform; the local N=0 optimum does not transfer"
+      },
+      {
+        "file": "2_V20_B0_PLLT_A325.zip",
+        "score": 96.3676,
+        "delta_vs_B0": -0.0003,
+        "local_development_mean": 96.252008,
+        "local_four_seed_mean": 0.004607,
+        "note": "the P-LL expert adds nothing on the platform despite a four-seed-passing local gain with positive LCB95"
+      },
+      {
+        "file": "3_V18_B0_V12IRON_V7TIME.zip",
+        "score": 96.3679,
+        "delta_vs_B0": 0.0,
+        "note": "exactly the conditional additive arithmetic; new platform best"
+      }
+    ],
+    "new_platform_best": {
+      "candidate": "V18_B0_V12IRON_V7TIME",
+      "score": 96.3679,
+      "delta_vs_previous_best_V12": 0.0153,
+      "margin_to_target": -0.0321,
+      "source": "user_reported_not_independently_verified"
+    },
+    "findings": {
+      "additive_model_confirmed": "B0 was predicted at 96.3679 by exact additive arithmetic and measured 96.3679. Confirmed again on a second independent rectangle: V7 (V36 iron, time 0.5*A35+0.5*V7m) = 96.3519 and B0 (V12 iron, identical time column) = 96.3679 differ by +0.0160, exactly the V12-vs-A35 iron effect.",
+      "n_question_settled": "Removing N (V21_TIME_LOCAL, N=0) loses 0.0112 against B0. N must be kept; the local OOF N=0 optimum is a local artifact, exactly as the V18 local/platform conflict predicted.",
+      "p_ll_transfers_nothing": "V20 adds the P-LL expert with a four-seed local gain of +0.004607 and paired LCB95 +0.001746, yet measures -0.0003 against B0. This is the second locally-positive four-seed candidate that does not transfer, and it extends the V5 lesson: even the four-seed rule does not guarantee platform transfer.",
+      "local_magnitude_still_useless": "V21_TIME_LOCAL local +0.012728 -> platform -0.0112; V20 local +0.004607 -> platform -0.0003. Neither sign nor ordering survived.",
+      "scores_exact": "the three values 96.3567 / 96.3676 / 96.3679 are exact because the platform is deterministic; they are user-reported, not independently verified"
+    },
+    "next_lever": {
+      "platform_side_v7_line_search": "Measured H(A35)=96.3526 at v=0 and H(B0)=96.3679 at v=0.5 on the V7 line give a secant slope of 0.0306 per unit v, so by concavity V18_TIME_V75 (v=0.75) <= 96.3755 and V18_TIME_V100 (v=1.0) <= 96.3832. Both are prepared and unuploaded.",
+      "iron_side": "V18_IRON_W75 raises the V12-member iron weight from 0.5 to 0.75; the V18 iron secant bound is +0.0320 over A35 at full weight.",
+      "ceiling": "the V18 two-line joint ceiling is 96.3992, so this family cannot be guaranteed to reach 96.4"
+    },
+    "agent_uploads": 0,
     "goal_above_96_4_achieved": false
   }
 }
