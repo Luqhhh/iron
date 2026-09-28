@@ -49,3 +49,12 @@ fits, package, desktop write or upload is authorized by G0 admission.
 Private evidence: `local/runs/round2-v39/preflight-r1` in the isolated V39 worktree.
 Preflight SHA-256 `5309f50f8f77049800f41d2837aa883cd38185099de5f6a262da75e882729a44`;
 independent memory/start-ledger admission SHA-256 `e3a550b0cb2e9eaa74a9e1835cc2c278e4bc1ac254949b7dbe10514d08427f07`.
+
+## Development start snapshot
+
+At 2026-09-28T16:35:41.486056+00:00, the official development supervisor and four candidate worker
+processes were verified live in the isolated worktree. All 20 reference units
+completed by audited component reuse/current-weight recomputation; new
+reference fits zero. First four candidate units started; none completed at
+this snapshot. Planned 40 outer units remain frozen; no quality conclusion
+or release follows this start. Manifest SHA-256 `ff8920256d3b60876bffb0093eeb4bb17b040e5d85ccca10204b27b83d86b575`.

@@ -14637,7 +14637,7 @@
     "goal_above_96_4_achieved": false
   },
   "round2_v39_hard_tree_quality": {
-    "status": "G0_passed_ready_for_development",
+    "status": "development_running",
     "spec": "configs/round2_v39/SPEC.yaml",
     "plan": "docs/round2_v39/PREREGISTRATION.md",
     "platform_target": 96.5,
@@ -14683,6 +14683,18 @@
         "new_resource_probes": 0
       }
     },
-    "results": "docs/round2_v39/G0_RESULTS.md"
+    "results": "docs/round2_v39/G0_RESULTS.md",
+    "development": {
+      "directory": "local/runs/round2-v39/development-r1",
+      "manifest_sha256": "ff8920256d3b60876bffb0093eeb4bb17b040e5d85ccca10204b27b83d86b575",
+      "started_snapshot_utc": "2026-09-28T16:35:41.486056+00:00",
+      "reference_units_complete": 20,
+      "new_reference_fits": 0,
+      "candidate_units_planned": 40,
+      "candidate_units_started_at_snapshot": 4,
+      "candidate_units_complete_at_snapshot": 0,
+      "parallel_workers": 4,
+      "no_quality_conclusion_yet": true
+    }
   }
 }
