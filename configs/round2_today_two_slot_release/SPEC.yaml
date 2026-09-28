@@ -1,0 +1,121 @@
+{
+  "identity": "TODAY_TWO_SLOT_RELEASE_20260928",
+  "status": "user_authorized_exploration_release",
+  "date": "2026-09-28",
+  "starting_commit": "8d7e234",
+  "authorization": "User agreed to V28 SHARED time and V23_HIST Gaussian time packages; replaces V17 release proposal.",
+  "platform_reference": {
+    "candidate": "V18_B0_V12IRON_V7TIME",
+    "score": 96.3679,
+    "source": "user_reported_not_independently_verified"
+  },
+  "pool": [
+    "V20",
+    "V23_HIST",
+    "V27_HARD_TREE",
+    "V28_EDGE_KAN"
+  ],
+  "selected": [
+    {
+      "name": "TODAY_V28_SHARED_TIME_A20",
+      "source": "V28_EDGE_KAN",
+      "arm": "SHARED",
+      "target": "tap_time_len",
+      "role": "best_local_of_today_pool_at_fixed_B0_A20",
+      "mean_development_gain_vs_B0": -0.000026889501216206583
+    },
+    {
+      "name": "TODAY_V23_HIST_GAUSSIAN_TIME_A20",
+      "source": "V23_HIST",
+      "arm": "gaussian",
+      "target": "tap_time_len",
+      "role": "declared_distributional_transfer_probe",
+      "mean_development_gain_vs_B0": -0.005211791590241738
+    }
+  ],
+  "recipe": {
+    "target": "tap_time_len",
+    "parent_weight": 0.8,
+    "member_weight": 0.2,
+    "unchanged_iron": "original_V12_field_strings",
+    "base_time": "original_V7_time",
+    "postprocessing": "max_zero_after_blend",
+    "alpha_search": false
+  },
+  "training": {
+    "data": "official_round2_2754_rows",
+    "selection": "group_safe_inner_seed42_fold0",
+    "full_refit": "fresh_initialization_all_2754_at_selected_epoch",
+    "fit_seed": 42,
+    "source_settings": "unchanged_v28_KANRegressor_defaults_and_v23_HistogramRegressor_with_v7_training",
+    "source_specs": [
+      "configs/round2_v28_edge_kan/SPEC.yaml",
+      "configs/round2_v23/SPEC.yaml",
+      "configs/round2_v7/SPEC.yaml"
+    ]
+  },
+  "budget": {
+    "full_wrapper_fits": 2,
+    "optimizer_runs": 4,
+    "new_CV_fits": 0,
+    "new_confirmation_fits": 0,
+    "automatic_retries": 0,
+    "failed_fits_consume_budget": true,
+    "packages": 2,
+    "agent_uploads": 0,
+    "desktop_writes": 0
+  },
+  "runtime": {
+    "thread_caps": 1,
+    "workers": 1
+  },
+  "audit": {
+    "before_fit": "freeze_all_transitive_source_runtime_training_test_data_parent_ZIP_and_spec_hashes",
+    "ledger": "exclusive_fit_started_and_append_optimizer_started_before_optimizer_construction",
+    "required": [
+      "training_ID_and_inner_split_metadata",
+      "warm_cold_bit_identity",
+      "label_free_fresh_process_inference",
+      "reverse_and_chunk_prediction_invariance_relative_tolerance_1e-6",
+      "formula_readback",
+      "original_V12_iron_field_string_identity",
+      "322_test_ID_order_finite_nonnegative",
+      "ZIP_only_result_csv_and_SHA256",
+      "independent_no_fit_audit"
+    ],
+    "outputs": "ignored_local_only"
+  },
+  "decisions": {
+    "formal_promotion": false,
+    "old_negative_decisions_unchanged": true,
+    "SHARED_control_never_formally_promoted": true,
+    "gate_exception": "explicit_user_authorized_two_exploration_packages_only",
+    "platform_prediction": false
+  },
+  "sources": {
+    "v12": {
+      "path": "local/runs/round2-v12-joint-tabm/release-r1/V12_IRON_JOINT_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "a1c205a6722da3976a12e258458b649967c7c25130a2c55d840c5ecb2a1dc669"
+    },
+    "v7": {
+      "path": "local/runs/round2-v7-periodic-networks/release-r3/V7_TIME_PLR001_A50/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "4382523c7bd688974f87eab2f42502bf8f54b2b330008b36e797ae7672490299"
+    },
+    "a35": {
+      "path": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06"
+    },
+    "b0": {
+      "path": "local/runs/round2-v18/packages-r1/V18_B0_V12IRON_V7TIME/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+      "csv_sha256": "741ba799c14c992fdd22702ec89a6f3d2dfff6aa00b686811c7a9dd84b28866e"
+    }
+  },
+  "publication": {
+    "pushes": 2,
+    "phases": [
+      "reservation",
+      "final_implementation_tests_delivery"
+    ]
+  }
+}
