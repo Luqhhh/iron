@@ -1,0 +1,26 @@
+version: round2-v41-concavity-bound
+platform_target: 96.5
+source_commit: c5afb9c4cc903ef31f1ad55c825e8f9b263666a0
+source_path: docs/round2_v40/RESULTS.md
+source_status: user_reports_not_independently_verified
+metric_contract: configs/round2_v0_2/metric_contract.yaml
+rounding_half_width: 0.00005
+lift_half_width: 0.00015
+method: supporting_gradient_polytope_vertex_bound_over_continuous_simplex
+time_observations:
+  V36: [[1.0, 0.0], 96.2894, 0.00015]
+  A35: [[0.65, 0.35], 96.3526, 0.00015]
+  A45: [[0.55, 0.45], 96.3598, 0.00015]
+  A60: [[0.4, 0.6], 96.3625, 0.00015]
+  A72: [[0.28, 0.72], 96.3585, 0.00015]
+  B0: [[0.325, 0.175], 96.3679, 0.00005]
+  I1: [[0.2, 0.3], 96.3727, 0.00005]
+  I2: [[0.1, 0.15], 96.3629, 0.00005]
+  I5: [[0.3, 0.45], 96.3727, 0.00005]
+time_domain_vertices: [[0, 0], [1, 0], [0, 1]]
+iron_observations:
+  W0: [[0], 96.3519, 0.00005]
+  W05: [[0.5], 96.3679, 0.00005]
+  W1: [[1], 96.3514, 0.00005]
+iron_domain_vertices: [[0], [1]]
+budget: {training_fits: 0, label_reads: 0, packages: 0, desktop_writes: 0, uploads: 0}
