@@ -27,3 +27,15 @@ hashes, runtime versions and all eight unclaimed units before launch. Existing
 unit tests cover immutable/failed-unit rejection; the underlying fit function is
 the same implementation that passed 1169 tests. This is a scheduling amendment,
 not a new candidate or evidence obtained by changing the frozen recipe.
+
+The candidate stage may overlap reference work: `scripts/run_v27_candidate_head.py`
+runs only the first four seed-42 cells (24 of the same 60 candidate units), at
+the already declared four-worker limit, after each cell's verified calibration
+reference becomes available. These cells precede six further reference cells,
+leaving a scheduling buffer before the primary controller reaches candidates.
+The outer reference is required for scoring but not for candidate fitting.
+All other candidate units remain with the primary controller. Maximum combined
+model workers is 28 (24 reference constituent workers plus four candidates),
+with numerical thread counts still one. The auxiliary scheduler and its exact
+unit list are hashed in an append-only execution record; atomic unit claiming
+and the original scientific identity checks are unchanged.
