@@ -1295,3 +1295,26 @@ outside the fixed-endpoint convex family. Do not fill slots for quota alone.
 V41 is reserved on round2-v41-concavity-bound; scan reservations before V42.
 The concurrent V39 interior and our V39 hard-tree branch identities remain
 distinct and frozen. User's hourly-only training monitoring rule remains active.
+
+### V42 adaptive splines opened (2026-09-29)
+
+Goal remains platform 96.5; current user-reported best 96.3727. Frozen plan
+`configs/round2_v42/SPEC.yaml` / `docs/round2_v42/PREREGISTRATION.md`, commit
+f17e3ce; implementation 1ff53a1. ADDITIVE degree-one control and PAIR degree-two
+candidate use adaptive hinge pairs and backward term selection. This is a
+limited deterministic spline variant, not full MARS/SAS reproduction. No old
+neural loss/capacity or residual-corrector route is reopened. Preserve V39
+current-reference protocol, 40 outer units, four-seed/LCB/96.25 gates and the
+PAIR mean >=0.01/control advantage prerequisite. No automatic package/upload.
+
+G0 tests: 1240 passed, 23 existing warnings. Two full-shape synthetic fits
+started 2026-09-29 03:07:16 Asia/Shanghai through local systemd service
+`iron-v42-preflight-r1.service`; initial verified MainPID 159836, active/running.
+The hourly-only timer `iron-v42-preflight-hourly.timer` first observes at about
+04:07:16, then every 3600 seconds. Do not inspect training progress or service
+state between observations absent user request or an actual failure/completion
+event. Private observation configuration/logs: `local/runs/round2-v42/preflight-hourly`.
+The service keeps terminal state with RemainAfterExit; `SubState=exited` is
+terminal, not still training. The one-shot checker stops its timer on terminal
+state and never retrains, restarts, kills, packages or uploads. Official fits
+must wait for successful complete G0 report and source/reference identity checks.
