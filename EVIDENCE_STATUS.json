@@ -12384,7 +12384,7 @@
   },
   "round2_v27_hard_tree_2026_09_28": {
     "identity": "V27_HARD_TREE",
-    "status": "reserved_awaiting_design_approval",
+    "status": "closed_G0_resource_infeasible_no_official_fits",
     "branch": "codex/round2-v27-hard-tree-weights",
     "source_plan": "docs/round2_v27_hard_tree/PREREGISTRATION.md",
     "spec": "configs/round2_v27_hard_tree/SPEC.yaml",
@@ -12423,22 +12423,110 @@
       "G0_synthetic_optimizer_runs_max": 4
     },
     "G0": {
-      "status": "not_started",
+      "status": "refused_resource_gate",
+      "full_G0_passed": false,
+      "author_forward_and_gradient_max_abs_difference": 0.0,
+      "parameter_count": 1271808,
+      "measurements": {
+        "GLOBAL": {
+          "arm": "GLOBAL",
+          "optimizer_runs": 1,
+          "warmup_steps": 3,
+          "timed_steps": 20,
+          "train_step_p95_seconds": 2.4454988598507046,
+          "validation_forward_p95_seconds": 0.7876426042006642,
+          "peak_rss_mib": 1871.02734375,
+          "parameter_count": 1271808
+        },
+        "INSTANCE": {
+          "arm": "INSTANCE",
+          "optimizer_runs": 1,
+          "warmup_steps": 3,
+          "timed_steps": 20,
+          "train_step_p95_seconds": 2.9297508863019175,
+          "validation_forward_p95_seconds": 0.587924359650242,
+          "peak_rss_mib": 1837.2578125,
+          "parameter_count": 1271808
+        }
+      },
+      "resource": {
+        "passed": false,
+        "checks": {
+          "worker_rss": false,
+          "available_ram": true,
+          "development_wall": false
+        },
+        "projected_development_seconds": 181692.37270962002,
+        "peak_worker_rss_mib": 1871.02734375,
+        "available_ram_mib": 8820.703125
+      },
+      "resource_measurement_scope": "core_optimizer_and_intermediates_only_no_preprocessing_or_formal_runner",
+      "synthetic_optimizer_runs": 2,
+      "synthetic_learnability_optimizer_runs": 0,
       "official_fits": 0,
-      "synthetic_optimizer_runs": 0,
+      "development_fits": 0,
+      "confirmation_fits": 0,
+      "full_data_fits": 0,
       "packages": 0,
-      "agent_uploads": 0
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "source_hashes": {
+        "v27_hard_tree.py": "df700578f63114796f168a7f70121455100df586c78ccc23a495d25fef41faae",
+        "v27_protocol.py": "b6601422d6bb302077d718757f6ea8c9fa8c6e2acb6ba4e7773bec828f9b0676",
+        "g0_probe.py": "c99df137629263594af68fb80ae087c29f050527f2e98285228cdba53c18dffe"
+      },
+      "spec_sha256": "6d1a9fd0b37821b7b36402de1c3ccffd3ac885f6a00fb45335a7d0feebc5a59e",
+      "independent_closure_audit_sha256": "527ea0948e41f59ae08788627dd9cea49bc4e8820d73f7b0b9001422a36e4d60",
+      "tests": {
+        "torch": {
+          "exit_code": 0,
+          "counts": {
+            "tests": 1140,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "xml_sha256": "ff36fd7e341cd867f5c575d84fb8c2b128b8b47fb663b01997bd361eaabdcf6f"
+        },
+        "ci": {
+          "exit_code": 0,
+          "counts": {
+            "tests": 1018,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 63
+          },
+          "xml_sha256": "da233d725cbaa565729d000bd27a0254e1c9048e3a6e17d5dc9abed0c8b831c3"
+        }
+      },
+      "deferred_limitations": [
+        "one_shot_resource_probe_has_no_start_ledger_or_general_crash_recovery"
+      ],
+      "unexecuted": [
+        "train_only_preprocessing",
+        "synthetic_learnability",
+        "cold_persistence_and_chunk_invariance",
+        "inner_epoch_selection_outer_refit",
+        "reference_cache_audit",
+        "formal_development_confirmation_promotion"
+      ]
     },
     "G1": {
-      "status": "not_measured",
+      "status": "not_evaluated_resource_refusal",
       "promoted_candidates": [],
+      "current_reference_gains": null,
+      "historical_reference_gains": null,
+      "new_platform_score": null,
       "platform_target_achieved": false
     },
     "publication_cadence": [
       "strategy_reservation",
       "final_results"
     ],
-    "design_approval": null
+    "design_approval": "user_explicit_confirmed_2026_09_28",
+    "results": "docs/round2_v27_hard_tree/RESULTS.md",
+    "reservation_commit": "e455af2",
+    "disposition": "Stop this frozen CPU recipe at G0; no model-quality inference, official fits, shrink, second specification, package or upload."
   },
   "round2_v27_number_reservation_2026_09_28": {
     "identity": "V27_HARD_TREE",
@@ -12450,6 +12538,7 @@
     },
     "source": "docs/round2_round_numbering.md",
     "next_free_number": 28,
-    "remote_version_scan": "passed_before_reservation"
+    "remote_version_scan": "passed_before_reservation",
+    "status": "closed_G0_resource_infeasible"
   }
 }
