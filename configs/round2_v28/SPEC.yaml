@@ -1,0 +1,33 @@
+version: round2-v28-iron-time-axis-endpoints
+source_plan: docs/round2_v28/PREREGISTRATION.md
+platform_target: 96.4
+platform_reference:
+  candidate: V18_B0_V12IRON_V7TIME
+  score: 96.3679
+  source: user_reported_not_independently_verified
+data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden}
+source_spec: configs/round2_v18/SPEC.yaml
+platform_measured_axes:
+  time_v7_line: {v0_A35: 96.3526, v0.5_B0: 96.3679, secant_slope_per_unit: 0.0306,
+    bounds: {v0.75: 96.3755, v1.0: 96.3832}}
+  iron_v12_line: {w0_A35_iron: 96.3366, w0.5_V12: 96.3526, secant_slope_per_unit: 0.0320,
+    bounds: {w0.75: 96.3686, w1.0: 96.3846}}
+  two_line_joint_ceiling: 96.3992
+designs:
+  V28_IRON_W100:
+    iron: {kind: convex, weights: {v12_member_iron: 1.0}}
+    time: {kind: convex, weights: {v36_time: 0.325, n_time: 0.175, v7_member_time: 0.5}}
+  V28_IRON_W100_TIME_V75:
+    iron: {kind: convex, weights: {v12_member_iron: 1.0}}
+    time: {kind: convex, weights: {v36_time: 0.1625, n_time: 0.0875, v7_member_time: 0.75}}
+  V28_IRON_W100_TIME_V100:
+    iron: {kind: convex, weights: {v12_member_iron: 1.0}}
+    time: {kind: convex, weights: {v7_member_time: 1.0}}
+verification:
+  expected_rows: 322
+  required_columns: [sample_id, pred_tap_iron, pred_tap_time_len]
+  blend_relative_tolerance: 1.0e-12
+  require_nonnegative_finite: true
+  refuse_existing_destination: true
+budget: {new_fits: 0, new_packages: 3, desktop_writes: 3, agent_uploads: 0}
+release: {automatic_packages: false, upload_role: user}

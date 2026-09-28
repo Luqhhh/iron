@@ -13095,5 +13095,122 @@
       "target_gap_remaining": 0.1321
     },
     "confirmation_decision_log": "local/reports/v27-confirmation-decision-r1.log"
+  },
+  "round2_v28_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "built_three_axis_endpoint_packages_zero_fit",
+    "source_plan": "docs/round2_v28/PREREGISTRATION.md",
+    "spec": "configs/round2_v28/SPEC.yaml",
+    "implementation": "src/bf_tap_r2/v28_axis_endpoints.py",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V18_B0_V12IRON_V7TIME",
+      "score": 96.3679,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false,
+      "margin_to_target": -0.0321
+    },
+    "measured_axes": {
+      "time_v7_line": {
+        "v0_A35": 96.3526,
+        "v0.5_B0": 96.3679,
+        "secant_slope": 0.0306,
+        "upper_bounds": {
+          "v0.75": 96.3755,
+          "v1.0": 96.3832
+        }
+      },
+      "iron_v12_line": {
+        "w0_A35_iron": 96.3366,
+        "w0.5_V12": 96.3526,
+        "secant_slope": 0.032,
+        "upper_bounds": {
+          "w0.75": 96.3686,
+          "w1.0": 96.3846
+        }
+      },
+      "two_line_joint_ceiling": 96.3992
+    },
+    "packages": [
+      {
+        "id": "V28_IRON_W100",
+        "iron": "pure V12m (w=1.0)",
+        "time": "B0 time (v=0.5)",
+        "local_development_mean": 96.222734,
+        "upper_bound": 96.3846,
+        "zip_sha256": "c41e56d4d3b3482a6baaaee33f76725811168ea31a4eba8c6aee6ade9133c269"
+      },
+      {
+        "id": "V28_IRON_W100_TIME_V75",
+        "iron": "pure V12m",
+        "time": "0.25 A35 + 0.75 V7m",
+        "local_development_mean": 96.218441,
+        "upper_bound": 96.3916,
+        "zip_sha256": "6e7d212a5feccf206a4b8e68049abe9f6e702135cbd0c60585c769509d27081b"
+      },
+      {
+        "id": "V28_IRON_W100_TIME_V100",
+        "iron": "pure V12m",
+        "time": "pure V7m",
+        "local_development_mean": 96.204497,
+        "upper_bound": 96.3992,
+        "zip_sha256": "d530da43ca089a35bcb1072ddc15da5b51e861a1f7da9a3d5f4acf0a832f4256"
+      }
+    ],
+    "axis_probe_set": {
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r9",
+      "files": [
+        {
+          "file": "1_TIME_V75.zip",
+          "zip_sha256": "4188acbed0b6d7affde7a6778e49a6aec9236a982d3c93537fff801712516df7"
+        },
+        {
+          "file": "2_TIME_V100.zip",
+          "zip_sha256": "9845a604e697f6a51cfa8e8b502bf0393cdbc0857f884fbc6fe037daf4a763d1"
+        },
+        {
+          "file": "3_IRON_W75.zip",
+          "zip_sha256": "dbd3b6b241190ec4bcc3143d30590dc134cdbe3acc76c3a9e0c1781874c585f2"
+        },
+        {
+          "file": "4_IRON_W100.zip",
+          "zip_sha256": "c41e56d4d3b3482a6baaaee33f76725811168ea31a4eba8c6aee6ade9133c269"
+        },
+        {
+          "file": "5_IRON_W100_TIME_V100.zip",
+          "zip_sha256": "d530da43ca089a35bcb1072ddc15da5b51e861a1f7da9a3d5f4acf0a832f4256"
+        }
+      ],
+      "additivity_insight": "Because the two-target score is additive and the platform is deterministic, measuring the four axis endpoints determines every combination by arithmetic: score(w,v) = B0 + [I(w)-I(0.5)] + [T(v)-T(0.5)]. Files 1-4 are therefore the information set; file 5 only realises the joint corner if both axes are still rising.",
+      "verification": "all five desktop copies re-read: SHA-256 matches, exactly result.csv, 322 unique template-ordered IDs, finite non-negative predictions",
+      "agent_uploads": 0,
+      "desktop_writes": 5
+    },
+    "budget": {
+      "new_fits": 0,
+      "new_packages": 3,
+      "desktop_writes": 5,
+      "agent_uploads": 0
+    },
+    "limits": "The bounds are upper bounds; the slopes beyond v=0.5 and w=0.5 are unmeasured and may be negative (the N line already peaked inside its own range). All three new packages score below B0 locally, and local magnitude has failed twice, so no platform score is forecast.",
+    "goal_above_96_4_achieved": false,
+    "G0": {
+      "new_fits": 0,
+      "packages": 3,
+      "locked_python_3_12_tests_passed": 1173,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v28-python312-tests-r1.log",
+      "test_log_sha256": "41440413830be378d90212e615f07a9d4ee7d5ce3933c3b6b38a1db002319de2",
+      "targeted_tests_passed": 4,
+      "n_line_crosscheck_worst_absolute_difference": 1.14e-13,
+      "audit": "local/runs/round2-v28/packages-r1/audit.json",
+      "iron_blend_relative_difference": 0.0,
+      "time_blend_relative_difference": 0.0,
+      "rows": 322,
+      "unique_ids": 322,
+      "template_order": true,
+      "desktop_writes": 5,
+      "agent_uploads": 0
+    }
   }
 }

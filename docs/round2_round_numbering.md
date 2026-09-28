@@ -65,7 +65,7 @@ pending upload. Read `V20` as branch-qualified until the package is scored.
 
 - Live local numbers after the move: `V17`, `V19`, `V21`, `V22`, `V25`, `V26`;
   teammate-owned: `V20` (masked, closed) and `V23` (histogram target).
-- **Current next free local number: `V28`.** `V27` is now reserved below.
+- **Current next free local number: `V29`.** `V27` (teammate deep kernels) and `V28` (local iron x time axis endpoints, section 7) are reserved.
   Do not reuse `V18`/`V20`/`V23`/`V24`.
 - Before pre-registering a new round, fetch all remotes and compare
   `configs/round2_v*/SPEC.yaml` version strings across `main` and every live
@@ -88,8 +88,18 @@ pending upload. Read `V20` as branch-qualified until the package is scored.
 `round2-v27-deep-kernel`, specification `configs/round2_v27/SPEC.yaml`.
 Development completed with no confirmation finalist; the current target is
 96.5. See `docs/round2_v27/RESULTS.md`. Its public preregistration and
-implementation are pushed. The next free local number is **V28**.
+implementation are pushed. The next free local number was **V28**, now reserved by the local axis-endpoint round in section 7; current next free is **V29**.
 
 The earlier V20 pending-upload wording above is historical. The user has since
 reported `V20_B0_PLLT_A325 = 96.3676`; B0 remains preferred at 96.3679.
 The package identity and branch-qualified V20 naming remain frozen.
+
+## 7. V28 reservation (2026-09-28, local)
+
+`V28` is the local **iron x time axis endpoint** round: three zero-fit packages
+composed from the delivered A35/A60/V7/V12 ZIPs that extend the two
+platform-measured weight lines to their endpoints. Preregistration
+`docs/round2_v28/PREREGISTRATION.md`, spec `configs/round2_v28/SPEC.yaml`,
+implementation `src/bf_tap_r2/v28_axis_endpoints.py`. It replaces the V27 label
+that this note originally proposed, because `V27` belongs to the teammate
+deep-kernel round.

@@ -970,3 +970,47 @@ all six recipe/target combinations; no confirmation finalist was selected.
   the frozen recipes, not every possible GP or deep-kernel design.
 - Current user-reported platform best remains B0 96.3679; target 96.5 is unmet
   by 0.1321. V27 is occupied; the next free local number is V28.
+
+### V28: pricing the platform-measured iron x time axes (2026-09-28)
+
+Preregistration `docs/round2_v28/PREREGISTRATION.md`, spec
+`configs/round2_v28/SPEC.yaml`, implementation `src/bf_tap_r2/v28_axis_endpoints.py`,
+private run `local/runs/round2-v28/packages-r1`, evidence
+`EVIDENCE_STATUS.json -> round2_v28_2026_09_28`.
+
+The three delivered packages measured `96.3567 / 96.3676 / 96.3679` and confirmed
+the additive WMAPE model exactly (`B0` matched `96.3526 + 96.3519 - 96.3366` and
+a second independent rectangle reproduced the `+0.0160` iron effect). That turns
+the response along each **already-measured direction** into a priceable concave
+curve, which is what the "hedge/boundary probe" packages exploit:
+
+- **time V7 weight line** (iron fixed at w=0.5): `v=0` A35 `96.3526`, `v=0.5` B0
+  `96.3679`; secant `0.0306`/unit, so `v=0.75 <= 96.3755`, `v=1.0 <= 96.3832`.
+- **iron V12 weight line** (time fixed at v=0.5): `w=0` `96.3366`, `w=0.5`
+  `96.3526`; secant `0.0320`/unit, so `w=0.75 <= 96.3686`, `w=1.0 <= 96.3846`.
+- joint ceiling of the two lines `96.3992`.
+
+V28 builds the missing iron `w=1.0` endpoint and two combined corners, zero fit,
+field-exactly from the delivered ZIPs:
+
+| id | iron | time | local dev mean | upper bound | ZIP SHA-256 |
+|---|---|---|---:|---:|---|
+| `V28_IRON_W100` | pure V12m | B0 (v=0.5) | 96.222734 | 96.3846 | `c41e56d4d3b3482a…` |
+| `V28_IRON_W100_TIME_V75` | pure V12m | v=0.75 | 96.218441 | 96.3916 | `6e7d212a5feccf20…` |
+| `V28_IRON_W100_TIME_V100` | pure V12m | pure V7m | 96.204497 | **96.3992** | `d530da43ca089a35…` |
+
+**Additivity insight:** because the score is additive and the platform is
+deterministic, measuring the four axis endpoints determines **every** combination
+by arithmetic — `score(w,v) = B0 + [I(w)-I(0.5)] + [T(v)-T(0.5)]`. The
+combination package is therefore not needed for information; it only realises the
+joint corner. A five-slot boundary set was written to
+`/mnt/c/Users/lqh22/Desktop/submission-96.4-r9` (the four axis endpoints plus the
+combined corner); all five were re-read from disk and verified (SHA-256, exactly
+`result.csv`, 322 template-ordered unique IDs, finite non-negative).
+
+**Limits:** the bounds are upper bounds; the slopes beyond `v=0.5`/`w=0.5` are
+unmeasured and may be negative (the N line already peaked and turned). All three
+new packages score below `B0` locally and local magnitude has failed twice, so no
+platform score is forecast. Zero fits, three packages, five desktop writes, zero
+agent uploads; locked Python 3.12 suite **1173 passed, 23 warnings**. Round
+numbering updated: `V28` reserved, next free `V29`.
