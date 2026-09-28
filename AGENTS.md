@@ -882,7 +882,8 @@ name).
   pending upload) and the teammate's `round2-v20-masked-feature-reconstruction`
   (closed negative, no package). It is **not** renamed because the package label
   is frozen; read `V20` as branch-qualified.
-- Next free local number: **V27**. Full map:
+- At that historical renumbering, the next number was V27. Current next free
+  number is **V32** after the later reservations below. Full map:
   `docs/round2_round_numbering.md` and
   `EVIDENCE_STATUS.json -> round2_round_numbering_2026_09_28`.
 
@@ -924,11 +925,11 @@ The user uploaded the three packages written to the desktop
   `96.3992`. Evidence:
   `EVIDENCE_STATUS.json -> r8_three_slot_feedback_2026_09_28`.
 
-### V27: deep-kernel experiment authorized; current target 96.5 (2026-09-28)
+### V30 (formerly local V27): deep-kernel experiment authorized; current target 96.5 (2026-09-28)
 
 The user corrected 94.5 to **96.5**, then explicitly said to begin the proposed
 new experiment. Branch `round2-v27-deep-kernel`; controlling preregistration:
-`configs/round2_v27/SPEC.yaml`, `docs/round2_v27/PREREGISTRATION.md`. Current
+`configs/round2_v30/SPEC.yaml`, `docs/round2_v30/PREREGISTRATION.md`. Current
 platform best is user-reported B0 **96.3679**; target gap **0.1321**.
 
 - Freeze GP_ARD / DKL_RAW / DKL_PLR, both targets, 60 complete-development
@@ -951,9 +952,9 @@ platform best is user-reported B0 **96.3679**; target gap **0.1321**.
   difference is not independent evidence. V21 changed multiple weights, so N's
   isolated causal contribution is not established by those package scores.
 
-### V27 completed: frozen deep-kernel recipes negative (2026-09-28)
+### V30 completed (formerly local V27): frozen deep-kernel recipes negative (2026-09-28)
 
-Results: `docs/round2_v27/RESULTS.md`. All 60 candidate outer fits (120 candidate
+Results: `docs/round2_v30/RESULTS.md`. All 60 candidate outer fits (120 candidate
 optimizer runs) and 20 shared B0 factory calls (640 component pipeline fits)
 completed with zero failures. Both development seeds have nonpositive gains for
 all six recipe/target combinations; no confirmation finalist was selected.
@@ -969,14 +970,14 @@ all six recipe/target combinations; no confirmation finalist was selected.
   evidence; do not rescue the round with post-hoc parameter scans. This closes
   the frozen recipes, not every possible GP or deep-kernel design.
 - Current user-reported platform best remains B0 96.3679; target 96.5 is unmet
-  by 0.1321. V27 is occupied; the next free local number is V28.
+  by 0.1321. V30 is occupied; the current next free local number is V32.
 
-### V28: pricing the platform-measured iron x time axes (2026-09-28)
+### V31 (formerly local V28): pricing the platform-measured iron x time axes (2026-09-28)
 
-Preregistration `docs/round2_v28/PREREGISTRATION.md`, spec
-`configs/round2_v28/SPEC.yaml`, implementation `src/bf_tap_r2/v28_axis_endpoints.py`,
+Preregistration `docs/round2_v31/PREREGISTRATION.md`, spec
+`configs/round2_v31/SPEC.yaml`, implementation `src/bf_tap_r2/v31_axis_endpoints.py`,
 private run `local/runs/round2-v28/packages-r1`, evidence
-`EVIDENCE_STATUS.json -> round2_v28_2026_09_28`.
+`EVIDENCE_STATUS.json -> round2_v31_2026_09_28`.
 
 The three delivered packages measured `96.3567 / 96.3676 / 96.3679` and confirmed
 the additive WMAPE model exactly (`B0` matched `96.3526 + 96.3519 - 96.3366` and
@@ -990,7 +991,7 @@ curve, which is what the "hedge/boundary probe" packages exploit:
   `96.3526`; secant `0.0320`/unit, so `w=0.75 <= 96.3686`, `w=1.0 <= 96.3846`.
 - joint ceiling of the two lines `96.3992`.
 
-V28 builds the missing iron `w=1.0` endpoint and two combined corners, zero fit,
+V31 builds the missing iron `w=1.0` endpoint and two combined corners, zero fit,
 field-exactly from the delivered ZIPs:
 
 | id | iron | time | local dev mean | upper bound | ZIP SHA-256 |
@@ -1013,4 +1014,22 @@ unmeasured and may be negative (the N line already peaked and turned). All three
 new packages score below `B0` locally and local magnitude has failed twice, so no
 platform score is forecast. Zero fits, three packages, five desktop writes, zero
 agent uploads; locked Python 3.12 suite **1173 passed, 23 warnings**. Round
-numbering updated: `V28` reserved, next free `V29`.
+numbering at original delivery reserved local V28; current name V31, next free V32.
+
+
+### Current naming repair (2026-09-28): local V27 -> V30, local V28 -> V31
+
+The user requested local renaming to resolve remote collisions. V27 belongs to
+`codex/round2-v27-hard-tree-weights`; V28 to
+`codex/round2-v28-edge-spline-network`. Concurrent local V29 information-screen
+files were discovered and preserved, so our deep-kernel and axis-endpoint rounds
+are now V30 and V31. Next free number: V32. Scan suffixed config directories too.
+
+Public configurations, modules, scripts, tests, docs and evidence keys follow
+V30/V31. Private `local/runs/round2-v27`, `local/runs/round2-v28`, old logs,
+original branch history, and the delivered `V28_IRON_*` IDs/ZIPs remain frozen.
+Those ZIP IDs are legacy delivery IDs of V31; no desktop files are renamed.
+The original V27 manifest/audit must be checked at frozen commit d07dc35 with
+its private evidence, not by bypassing hashes against renamed source. This
+repair changes no model parameters, training statements, scores or decisions.
+See docs/round2_round_numbering.md sections 6-7 for the controlling mapping.

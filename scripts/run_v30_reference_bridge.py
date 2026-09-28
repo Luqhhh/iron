@@ -1,4 +1,4 @@
-"""Fill two idle reference slots without changing the frozen V27 experiment."""
+"""Fill two idle reference slots without changing the frozen V30 experiment."""
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import argparse
 import json
@@ -10,7 +10,7 @@ import yaml
 from bf_tap_r2.v5_library import fold_vector, load_v5_training_frame
 from bf_tap_r2.v5_spec import load_v5_spec
 from bf_tap_r2.v7_periodic import digest, file_hash, write_new
-from bf_tap_r2.v27_run import (
+from bf_tap_r2.v30_run import (
     SPEC, append_event, check_runtime, run_unit, unit_id, verified_unit, verify_hashes,
 )
 

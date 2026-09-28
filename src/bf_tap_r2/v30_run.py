@@ -1,4 +1,4 @@
-"""Frozen V27 development/conditional confirmation with append-only units."""
+"""Frozen V30 development/conditional confirmation with append-only units."""
 from __future__ import annotations
 
 import argparse
@@ -22,10 +22,11 @@ from .v5_library import fold_vector, load_v5_training_frame
 from .v5_resolution import paired_summary
 from .v5_spec import load_v5_spec
 from .v7_periodic import digest, file_hash, write_new
-from .v27_deep_kernel import fit_partition
-from .v27_reference import fit_b0
+from .v30_deep_kernel import fit_partition
+from .v30_reference import fit_b0
 
-SPEC = "configs/round2_v27/SPEC.yaml"
+# Public round renamed; private run roots retain their frozen legacy names.
+SPEC = "configs/round2_v30/SPEC.yaml"
 
 
 def append_event(path, event):
@@ -38,7 +39,7 @@ def append_event(path, event):
 def source_hashes(root):
     paths = list((root / "src/bf_tap_r2").glob("*.py"))
     paths += list((root / "configs").rglob("*.yaml"))
-    paths += [root / "uv.lock", root / "pyproject.toml", root / "docs/round2_v27/PREREGISTRATION.md"]
+    paths += [root / "uv.lock", root / "pyproject.toml", root / "docs/round2_v30/PREREGISTRATION.md"]
     directories = ["round2-v3-local-search", "round2-v3.1-directed-search",
                    "round2-v3.2-ensemble-and-target-search", "round2-v3.3-structure-search",
                    "round2-v3.4-ebm-and-constrained-composition",
@@ -59,7 +60,7 @@ def verify_hashes(root, hashes):
 def check_runtime(spec):
     versions = {name: importlib.metadata.version(name) for name in spec["runtime_versions"]}
     if versions != spec["runtime_versions"]:
-        raise ValueError(f"V27 runtime differs: {versions}")
+        raise ValueError(f"V30 runtime differs: {versions}")
     for name in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS", "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS"):
         if os.environ.get(name) != "1":
             raise ValueError(f"Set {name}=1")
@@ -213,7 +214,7 @@ def run(root, output, development=None):
     root = Path(root).resolve()
     out = (root / output).resolve()
     if not out.is_relative_to(root / "local/runs/round2-v27"):
-        raise ValueError("Private V27 run directory required")
+        raise ValueError("Private V30 run directory required")
     spec = yaml.safe_load((root / SPEC).read_text())
     versions = check_runtime(spec)
     candidates = spec["candidates"]

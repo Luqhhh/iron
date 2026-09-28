@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""V28: iron x time axis endpoint packages from the delivered ZIPs (zero fit).
+"""V31: iron x time axis endpoint packages from the delivered ZIPs (zero fit).
 
 Composes the missing iron ``w=1.0`` endpoint and two combined iron/time corners
 field-exactly from the hash-pinned A35/A60/V7/V12 packages, then verifies and
@@ -28,7 +28,8 @@ from .v18_compose import (
 )
 
 ROOT_DEFAULT = Path("/home/lux1/iron")
-SPEC_DEFAULT = Path("configs/round2_v28/SPEC.yaml")
+# Public round renamed; private run roots retain their frozen legacy names.
+SPEC_DEFAULT = Path("configs/round2_v31/SPEC.yaml")
 V18_SPEC = Path("configs/round2_v18/SPEC.yaml")
 OUTPUT_DEFAULT = Path("local/runs/round2-v28/packages-r1")
 IRON_COLUMN = "pred_tap_iron"
@@ -45,14 +46,14 @@ def run(root: Path | str = ROOT_DEFAULT, spec_path: Path | str = SPEC_DEFAULT,
         output: Path | str = OUTPUT_DEFAULT) -> dict[str, Any]:
     root = Path(root).resolve()
     spec_path = (root / spec_path).resolve()
-    if not spec_path.is_relative_to(root / "configs/round2_v28"):
-        raise ValueError("V28 specification required")
+    if not spec_path.is_relative_to(root / "configs/round2_v31"):
+        raise ValueError("V31 specification required")
     spec = yaml.safe_load(spec_path.read_text())
     out = (root / output).resolve()
     if not out.is_relative_to(root / "local/runs/round2-v28"):
-        raise ValueError("V28 packages are private and must stay under local/runs/round2-v28")
+        raise ValueError("V31 packages are private and must stay under local/runs/round2-v28")
     if out.exists():
-        raise FileExistsError("V28 output already exists; refusing overwrite")
+        raise FileExistsError("V31 output already exists; refusing overwrite")
     _, tables, endpoints, recovery = _context(root, spec)
     out.mkdir(parents=True)
     tolerance = float(spec["verification"]["blend_relative_tolerance"])
@@ -87,7 +88,7 @@ def audit(root: Path | str = ROOT_DEFAULT, spec_path: Path | str = SPEC_DEFAULT,
     spec = yaml.safe_load((root / spec_path).read_text())
     out = (root / output).resolve()
     if not out.is_relative_to(root / "local/runs/round2-v28"):
-        raise ValueError("V28 audit only covers private local output")
+        raise ValueError("V31 audit only covers private local output")
     _, tables, endpoints, recovery = _context(root, spec)
     template = (root / "复赛_test/result_template.csv").read_text(encoding="utf-8-sig")
     template_ids = [row["sample_id"] for row in csv.DictReader(io.StringIO(template, newline=""))]

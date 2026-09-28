@@ -1,4 +1,4 @@
-"""V27 matching frozen B0 refits; no query labels and no weight selection."""
+"""V30 matching frozen B0 refits; no query labels and no weight selection."""
 from __future__ import annotations
 
 from pathlib import Path

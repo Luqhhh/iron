@@ -1,4 +1,8 @@
-# V27 deep kernels: complete development, no finalist
+# V30 deep kernels: complete development, no finalist
+
+Naming update (2026-09-28): local V27 is now **V30**. This is a public-name
+change only; original run paths, hashes and delivery IDs remain frozen. See
+[the migration record](../round2_round_numbering.md#7-exact-public-migration-and-frozen-identities).
 
 2026-09-28, branch `round2-v27-deep-kernel`. The platform target is **96.5**.
 The user-reported incumbent remains **B0 = 96.3679**, a gap of **0.1321**.
@@ -35,7 +39,7 @@ five outer folds, seeds 42 and 3407.
 The same-protocol B0 package scores are **96.2487508473** and
 **96.2465893506**, mean **96.2476700990**. The older cached B0 development mean
 was 96.247739, a difference of approximately -0.000069. Their numerical proximity
-is descriptive; the matching refit remains the reference for every V27 delta.
+is descriptive; the matching refit remains the reference for every V30 delta.
 
 ### What the mechanism did
 
@@ -118,7 +122,7 @@ ledgers remain outside Git. Public summaries do not replace those artifacts.
 
 ## Next action
 
-Keep the original B0 package and its reported 96.3679 result. This V27 batch
+Keep the original B0 package and its reported 96.3679 result. This V30 batch
 provides no reason to use a platform slot. The gap to 96.5 remains 0.1321.
 Any later experiment needs a separately specified hypothesis; these results do
 not authorize a broader GP search or another scan of existing blend weights.

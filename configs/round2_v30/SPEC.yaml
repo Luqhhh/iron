@@ -1,5 +1,5 @@
-version: round2-v27-deep-kernel
-source_plan: docs/round2_v27/PREREGISTRATION.md
+version: round2-v30-deep-kernel
+source_plan: docs/round2_v30/PREREGISTRATION.md
 base_commit: 1f1b426
 platform_target: 96.5
 platform_reference:

@@ -1,6 +1,6 @@
 # Round2 round numbering and reservations
 
-Status: current as of 2026-09-28. This file is the single place that says what
+Status: current as of 2026-09-28 after the V30/V31 collision repair. This file is the single place that says what
 each `V<n>` label means across the live branches, so a merge does not silently
 join two different rounds under one number.
 
@@ -65,8 +65,9 @@ pending upload. Read `V20` as branch-qualified until the package is scored.
 
 - Live local numbers after the move: `V17`, `V19`, `V21`, `V22`, `V25`, `V26`;
   teammate-owned: `V20` (masked, closed) and `V23` (histogram target).
-- **Current next free local number: `V29`.** `V27` (teammate deep kernels) and `V28` (local iron x time axis endpoints, section 7) are reserved.
-  Do not reuse `V18`/`V20`/`V23`/`V24`.
+- **Current next free local number: `V32`.** V27/V28 belong to the remote
+  hard-tree/edge-spline rounds, V29 is the concurrent information screen,
+  V30 is our deep-kernel round, and V31 is our axis-endpoint round.
 - Before pre-registering a new round, fetch all remotes and compare
   `configs/round2_v*/SPEC.yaml` version strings across `main` and every live
   branch; reserve here first if a collision is possible.
@@ -82,24 +83,73 @@ pending upload. Read `V20` as branch-qualified until the package is scored.
   `round2_v26_2026_09_28` (the renamed rounds).
 - `AGENTS.md -> Round numbering (2026-09-28)`.
 
-## 6. V27 reservation and later feedback (2026-09-28)
+## 6. Current ownership after the naming collision repair
 
-`V27` is the authorized deep-kernel experiment on branch
-`round2-v27-deep-kernel`, specification `configs/round2_v27/SPEC.yaml`.
-Development completed with no confirmation finalist; the current target is
-96.5. See `docs/round2_v27/RESULTS.md`. Its public preregistration and
-implementation are pushed. The next free local number was **V28**, now reserved by the local axis-endpoint round in section 7; current next free is **V29**.
+The user requested that local names yield to the remote reservations. A fresh
+fetch found both integer and suffixed configuration directories; reservations
+must scan `configs/round2_v<N>*/SPEC.yaml`, not only `round2_v<N>/SPEC.yaml`.
 
-The earlier V20 pending-upload wording above is historical. The user has since
-reported `V20_B0_PLLT_A325 = 96.3676`; B0 remains preferred at 96.3679.
-The package identity and branch-qualified V20 naming remain frozen.
+| Number | Owner / experiment | Current specification |
+|---|---|---|
+| V27 | remote `codex/round2-v27-hard-tree-weights` | `configs/round2_v27_hard_tree/SPEC.yaml` |
+| V28 | remote `codex/round2-v28-edge-spline-network` | `configs/round2_v28_edge_kan/SPEC.yaml` |
+| V29 | concurrent local information screen; preserved | `configs/round2_v29/SPEC.yaml` |
+| V30 | local deep kernels, formerly local V27 | `configs/round2_v30/SPEC.yaml` |
+| V31 | local iron/time axis endpoints, formerly local V28 | `configs/round2_v31/SPEC.yaml` |
 
-## 7. V28 reservation (2026-09-28, local)
+Remote ownership was checked at hard-tree `4f52392`, edge-spline `92b0d71` and
+histogram-target `20c0432`. V29 appeared as untracked work in the shared checkout
+while this repair was being prepared. Its files were not changed or included in
+the naming commit. The initial V29/V30 proposal was abandoned before any file
+was moved; the atomic destination check prevented overwriting V29.
 
-`V28` is the local **iron x time axis endpoint** round: three zero-fit packages
-composed from the delivered A35/A60/V7/V12 ZIPs that extend the two
-platform-measured weight lines to their endpoints. Preregistration
-`docs/round2_v28/PREREGISTRATION.md`, spec `configs/round2_v28/SPEC.yaml`,
-implementation `src/bf_tap_r2/v28_axis_endpoints.py`. It replaces the V27 label
-that this note originally proposed, because `V27` belongs to the teammate
-deep-kernel round.
+The repair branch is `round2-v30-v31-naming-repair`. Published original branches
+`round2-v27-deep-kernel` and `round2-v28-axis-endpoints` remain historical snapshots;
+no branch history is rewritten or deleted. The new public names do not rename
+remote experiments. Next free local number: **V32**.
+
+## 7. Exact public migration and frozen identities
+
+| Public name before | Public name now |
+|---|---|
+| `configs/round2_v27/`, `docs/round2_v27/` | `configs/round2_v30/`, `docs/round2_v30/` |
+| `bf_tap_r2.v27_*`, `scripts/run_v27_*`, `tests/test_round2_v27_*` | `bf_tap_r2.v30_*`, `scripts/run_v30_*`, `tests/test_round2_v30_*` |
+| `round2_v27_2026_09_28` evidence key | `round2_v30_2026_09_28` |
+| `configs/round2_v28/`, `docs/round2_v28/` | `configs/round2_v31/`, `docs/round2_v31/` |
+| `bf_tap_r2.v28_axis_endpoints`, `tests/test_round2_v28_axis_endpoints` | `bf_tap_r2.v31_axis_endpoints`, `tests/test_round2_v31_axis_endpoints` |
+| `round2_v28_2026_09_28` evidence key | `round2_v31_2026_09_28` |
+
+Spec version strings, imports, public links and current headings follow the new
+names. Algorithms, parameters, scores, decisions and delivered bytes do not
+change. This repair performs zero fits, package builds, desktop writes or uploads.
+
+Frozen private paths stay `local/runs/round2-v27/` and
+`local/runs/round2-v28/`; all original `v27-*`/`v28-*` logs and ledgers stay in
+place. The three delivered package IDs remain `V28_IRON_W100`,
+`V28_IRON_W100_TIME_V75`, and `V28_IRON_W100_TIME_V100`, with the same ZIP hashes
+and desktop filenames. Interpret those IDs as the **legacy delivery IDs of V31**.
+The old V20 package-name exception in section 3 is likewise retained.
+
+V30's original source-bound manifest and audit describe the frozen V27 execution
+at commit `d07dc35` (and the unchanged scientific files at repair base `2e28b83`).
+A historical audit must use that frozen checkout with its private evidence made
+available; renamed current source is not byte-identical to the old source.
+Original digests are neither rewritten nor bypassed. V31's original delivery
+source is pinned by `2e28b83`. Read the original preregistrations from those
+commits when auditing their original hashes. The renamed documents are public
+navigation copies, not a new preregistration or permission to rerun a closed round.
+
+See `EVIDENCE_STATUS.json -> round2_naming_repair_2026_09_28` for the migration
+map, verification and unchanged private-artifact snapshot.
+
+
+## 8. Verification of this repair
+
+- Locked Python 3.12, existing affected tests: **13 passed**.
+- All **10** renamed Python files have identical syntax trees after reversing
+  the declared public-name substitutions. Both specifications are identical
+  after excluding their public `version` and `source_plan` fields.
+- **474** original private files and desktop ZIPs retain their hashes.
+- All **1457** source/evidence hashes in the old deep-kernel manifest match
+  the original Git objects at `2e28b83` or unchanged private files.
+- G1 is unchanged. This is a naming migration, not a new model reproduction.

@@ -4,14 +4,14 @@ import unittest
 import yaml
 
 from bf_tap_r2.v18_compose import END_NAMES
-from bf_tap_r2.v28_axis_endpoints import run
+from bf_tap_r2.v31_axis_endpoints import run
 
 ROOT = Path("/home/lux1/iron")
 
 
 class SpecTests(unittest.TestCase):
     def setUp(self):
-        self.spec = yaml.safe_load((ROOT / "configs/round2_v28/SPEC.yaml").read_text())
+        self.spec = yaml.safe_load((ROOT / "configs/round2_v31/SPEC.yaml").read_text())
 
     def test_designs_are_convex_and_bounded(self):
         endpoints = set(END_NAMES)
@@ -34,7 +34,7 @@ class SpecTests(unittest.TestCase):
 class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            run(ROOT, "configs/round2_v28/SPEC.yaml", "docs/should-not-write")
+            run(ROOT, "configs/round2_v31/SPEC.yaml", "docs/should-not-write")
 
     def test_refuses_other_spec_directory(self):
         with self.assertRaises(ValueError):

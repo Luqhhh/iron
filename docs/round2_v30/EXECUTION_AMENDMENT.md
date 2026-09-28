@@ -1,4 +1,8 @@
-# V27 execution-only concurrency amendment
+# V30 execution-only concurrency amendment
+
+Naming update (2026-09-28): local V27 is now **V30**. This is a public-name
+change only; original run paths, hashes and delivery IDs remain frozen. See
+[the migration record](../round2_round_numbering.md#7-exact-public-migration-and-frozen-identities).
 
 Recorded during the first two reference units, before any candidate evaluation.
 The first two B0 refits take more than ten minutes and each active parent uses
@@ -21,14 +25,14 @@ specification/source hashes and every existing run directory remain unchanged.
 No in-progress unit is replaced, retried or overwritten. An ownership collision
 fails visibly at atomic directory creation instead of allowing a duplicate fit.
 
-Implementation: `scripts/run_v27_reference_tail.py`, whose hash and schedule are
+Implementation: `scripts/run_v30_reference_tail.py`, whose hash and schedule are
 appended to the private run before execution. A dry run verifies source/data
 hashes, runtime versions and all eight unclaimed units before launch. Existing
 unit tests cover immutable/failed-unit rejection; the underlying fit function is
 the same implementation that passed 1169 tests. This is a scheduling amendment,
 not a new candidate or evidence obtained by changing the frozen recipe.
 
-The candidate stage may overlap reference work: `scripts/run_v27_candidate_head.py`
+The candidate stage may overlap reference work: `scripts/run_v30_candidate_head.py`
 runs only the first four seed-42 cells (24 of the same 60 candidate units), at
 the already declared four-worker limit, after each cell's verified calibration
 reference becomes available. These cells precede six further reference cells,
@@ -40,7 +44,7 @@ with numerical thread counts still one. The auxiliary scheduler and its exact
 unit list are hashed in an append-only execution record; atomic unit claiming
 and the original scientific identity checks are unchanged.
 
-An optional bridge scheduler (`scripts/run_v27_reference_bridge.py`) may fill
+An optional bridge scheduler (`scripts/run_v30_reference_bridge.py`) may fill
 two reference slots after at least six of the eight tail units have completed.
 It precomputes only seed-3407 fold 0, calibration and outer, while the primary
 queue still has at least four seed-42 reference units unfinished. If that queue

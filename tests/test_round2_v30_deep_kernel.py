@@ -8,14 +8,14 @@ import torch
 import yaml
 
 from bf_tap_r2.data import FEATURES, TARGETS
-from bf_tap_r2.v27_deep_kernel import (
+from bf_tap_r2.v30_deep_kernel import (
     DeepKernelRegressor, SparseKernel, collapsed_bound, farthest_rows, fit_partition, select_weight,
 )
-from bf_tap_r2.v27_run import partitions, verified_unit
+from bf_tap_r2.v30_run import partitions, verified_unit
 
 
 def settings():
-    result = yaml.safe_load(Path("configs/round2_v27/SPEC.yaml").read_text())["training"]
+    result = yaml.safe_load(Path("configs/round2_v30/SPEC.yaml").read_text())["training"]
     return dict(result, inducing_points=12, max_epochs=4, patience=3, hidden_widths=[8], latent_dim=3)
 
 
@@ -90,7 +90,7 @@ def test_exact_inducing_gp_limit_and_nonnegative_trace_penalty():
 def test_partition_leaves_query_labels_out_and_calibration_is_disjoint():
     data = frame(100)
     folds = np.arange(len(data)) % 5
-    spec = yaml.safe_load(Path("configs/round2_v27/SPEC.yaml").read_text())
+    spec = yaml.safe_load(Path("configs/round2_v30/SPEC.yaml").read_text())
     training, query, fitting, calibration = partitions(data, folds, 0, spec)
     assert not set(TARGETS) & set(query.columns)
     assert not set(fitting.sample_id) & set(calibration.sample_id)

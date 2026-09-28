@@ -1,4 +1,4 @@
-"""Execution-only V27 tail scheduling; calls the unchanged frozen unit fitter.
+"""Execution-only V30 tail scheduling; calls the unchanged frozen unit fitter.
 
 The original two-worker controller retains ownership of its queue. Precompute
 only seed-3407 folds 1..4, well behind the currently running head. Atomic unit
@@ -14,7 +14,7 @@ import yaml
 from bf_tap_r2.v5_library import fold_vector, load_v5_training_frame
 from bf_tap_r2.v5_spec import load_v5_spec
 from bf_tap_r2.v7_periodic import digest, file_hash, write_new
-from bf_tap_r2.v27_run import (
+from bf_tap_r2.v30_run import (
     SPEC, append_event, check_runtime, run_unit, unit_id, verified_unit, verify_hashes,
 )
 
@@ -31,7 +31,7 @@ def main():
     verify_hashes(root, manifest["data_hashes"])
     check_runtime(spec)
     if manifest["seeds"] != [42, 3407]:
-        raise ValueError("This execution amendment applies only to V27 development")
+        raise ValueError("This execution amendment applies only to V30 development")
     jobs = [(f"reference-{role}-s3407-f{fold}", fold, role)
             for fold in range(1, 5) for role in ("calibration", "outer")]
     if any((out / key).exists() for key, _, _ in jobs):

@@ -1,4 +1,4 @@
-"""Independent disk readback, calibration arithmetic and cold V27 inference."""
+"""Independent disk readback, calibration arithmetic and cold V30 inference."""
 from __future__ import annotations
 
 import argparse
@@ -12,15 +12,15 @@ from .data import FEATURES, TARGETS
 from .v5_library import fold_vector, load_v5_training_frame
 from .v5_spec import load_v5_spec
 from .v7_periodic import digest, file_hash, write_new
-from .v27_deep_kernel import DeepKernelRegressor
-from .v27_run import SPEC, partitions, unit_id, verified_unit, verify_hashes
+from .v30_deep_kernel import DeepKernelRegressor
+from .v30_run import SPEC, partitions, unit_id, verified_unit, verify_hashes
 
 
 def run(root, directory):
     root = Path(root).resolve()
     out = (root / directory).resolve()
     if not out.is_relative_to(root / "local/runs/round2-v27"):
-        raise ValueError("Private V27 audit required")
+        raise ValueError("Private V30 audit required")
     manifest = json.loads((out / "manifest.json").read_text())
     verify_hashes(root, manifest["source_hashes"])
     verify_hashes(root, manifest["data_hashes"])

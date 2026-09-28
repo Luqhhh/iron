@@ -12840,16 +12840,30 @@
       "decision": "not renamed: the released package label is frozen while it is pending upload; read V20 as branch-qualified",
       "source": "docs/round2_v20/PREREGISTRATION.md and the teammate branch commit 3b31f2b"
     },
-    "next_free_local_number": 28,
+    "next_free_local_number": 32,
     "new_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
     "previous_next_free_local_number": 27,
-    "v27_reservation": {
-      "branch": "round2-v27-deep-kernel",
-      "spec": "configs/round2_v27/SPEC.yaml",
-      "status": "completed_negative_no_confirmation_finalist"
+    "v30_reservation": {
+      "branch": "round2-v30-v31-naming-repair",
+      "spec": "configs/round2_v30/SPEC.yaml",
+      "status": "completed_negative_no_confirmation_finalist",
+      "former_local_number": 27,
+      "current_number": 30,
+      "historical_branch": "round2-v27-deep-kernel"
+    },
+    "v31_reservation": {
+      "former_local_number": 28,
+      "current_number": 31,
+      "spec": "configs/round2_v31/SPEC.yaml",
+      "historical_branch": "round2-v28-axis-endpoints"
+    },
+    "other_current_owners": {
+      "V27": "codex/round2-v27-hard-tree-weights",
+      "V28": "codex/round2-v28-edge-spline-network",
+      "V29": "concurrent_local_information_screen_not_modified"
     }
   },
   "r8_three_slot_delivery_2026_09_28": {
@@ -12952,7 +12966,7 @@
     "agent_uploads": 0,
     "goal_above_96_4_achieved": false,
     "interpretation_correction_2026_09_28": {
-      "source": "docs/round2_v27/PREREGISTRATION.md",
+      "source": "docs/round2_v30/PREREGISTRATION.md",
       "status": "supersedes the historical interpretations in this entry without changing reported scores or package decisions",
       "additive_identity": "one rectangle; the rearranged iron difference is not independent evidence",
       "v21_n_attribution": "V21 changed multiple weights; its score does not isolate the causal effect of N",
@@ -12960,13 +12974,13 @@
       "validation_limit": "Repeated split seeds reuse the same labels; four-seed stability does not guarantee platform sign, ordering or magnitude."
     }
   },
-  "round2_v27_2026_09_28": {
+  "round2_v30_2026_09_28": {
     "status": "completed_negative_no_confirmation_finalist",
     "platform_target": 96.5,
     "platform_reference": "V18_B0_V12IRON_V7TIME",
     "platform_reference_score": 96.3679,
-    "source_plan": "docs/round2_v27/PREREGISTRATION.md",
-    "spec": "configs/round2_v27/SPEC.yaml",
+    "source_plan": "docs/round2_v30/PREREGISTRATION.md",
+    "spec": "configs/round2_v30/SPEC.yaml",
     "development_candidate_outer_fits_budget": 60,
     "development_b0_factory_calls_budget": 20,
     "confirmation_candidate_outer_fits_max": 20,
@@ -12999,9 +13013,9 @@
       "audit_sha256": "8e62fc1f374f23d719a67287fcc714d3b6e19d78741511f64c461c5a88ccb3fc"
     },
     "development_directory": "local/runs/round2-v27/development-r1",
-    "execution_amendment": "docs/round2_v27/EXECUTION_AMENDMENT.md",
+    "execution_amendment": "docs/round2_v30/EXECUTION_AMENDMENT.md",
     "development_manifest_sha256": "d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc",
-    "results": "docs/round2_v27/RESULTS.md",
+    "results": "docs/round2_v30/RESULTS.md",
     "development_candidate_outer_fits": 60,
     "development_candidate_optimizer_runs": 120,
     "development_b0_factory_calls": 20,
@@ -13094,14 +13108,25 @@
       "platform_best_unchanged": 96.3679,
       "target_gap_remaining": 0.1321
     },
-    "confirmation_decision_log": "local/reports/v27-confirmation-decision-r1.log"
+    "confirmation_decision_log": "local/reports/v27-confirmation-decision-r1.log",
+    "naming_migration": {
+      "former_local_round": "V27",
+      "current_round": "V30",
+      "original_evidence_commit": "d07dc35",
+      "private_paths_and_hashes_preserved": true,
+      "legacy_delivery_ids_preserved": true,
+      "new_fits": 0,
+      "new_packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    }
   },
-  "round2_v28_2026_09_28": {
+  "round2_v31_2026_09_28": {
     "date": "2026-09-28",
     "status": "built_three_axis_endpoint_packages_zero_fit",
-    "source_plan": "docs/round2_v28/PREREGISTRATION.md",
-    "spec": "configs/round2_v28/SPEC.yaml",
-    "implementation": "src/bf_tap_r2/v28_axis_endpoints.py",
+    "source_plan": "docs/round2_v31/PREREGISTRATION.md",
+    "spec": "configs/round2_v31/SPEC.yaml",
+    "implementation": "src/bf_tap_r2/v31_axis_endpoints.py",
     "platform_target": 96.4,
     "current_platform_best": {
       "candidate": "V18_B0_V12IRON_V7TIME",
@@ -13211,6 +13236,87 @@
       "template_order": true,
       "desktop_writes": 5,
       "agent_uploads": 0
+    },
+    "naming_migration": {
+      "former_local_round": "V28",
+      "current_round": "V31",
+      "original_evidence_commit": "2e28b83",
+      "private_paths_and_hashes_preserved": true,
+      "legacy_delivery_ids_preserved": true,
+      "new_fits": 0,
+      "new_packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
     }
+  },
+  "round2_naming_repair_2026_09_28": {
+    "status": "verified_public_rename_only",
+    "branch": "round2-v30-v31-naming-repair",
+    "base_commit": "2e28b83",
+    "reason": "Remote V27 hard-tree and V28 edge-spline reservations conflict with local deep-kernel/axis rounds; concurrent V29 information screen is preserved.",
+    "round_mapping": {
+      "local_V27_deep_kernel": "V30",
+      "local_V28_axis_endpoints": "V31"
+    },
+    "public_path_mapping": {
+      "configs/round2_v27/SPEC.yaml": "configs/round2_v30/SPEC.yaml",
+      "configs/round2_v28/SPEC.yaml": "configs/round2_v31/SPEC.yaml",
+      "docs/round2_v27/EXECUTION_AMENDMENT.md": "docs/round2_v30/EXECUTION_AMENDMENT.md",
+      "docs/round2_v27/PREREGISTRATION.md": "docs/round2_v30/PREREGISTRATION.md",
+      "docs/round2_v27/RESULTS.md": "docs/round2_v30/RESULTS.md",
+      "docs/round2_v28/PREREGISTRATION.md": "docs/round2_v31/PREREGISTRATION.md",
+      "scripts/run_v27_candidate_head.py": "scripts/run_v30_candidate_head.py",
+      "scripts/run_v27_reference_bridge.py": "scripts/run_v30_reference_bridge.py",
+      "scripts/run_v27_reference_tail.py": "scripts/run_v30_reference_tail.py",
+      "src/bf_tap_r2/v27_audit.py": "src/bf_tap_r2/v30_audit.py",
+      "src/bf_tap_r2/v27_deep_kernel.py": "src/bf_tap_r2/v30_deep_kernel.py",
+      "src/bf_tap_r2/v27_reference.py": "src/bf_tap_r2/v30_reference.py",
+      "src/bf_tap_r2/v27_run.py": "src/bf_tap_r2/v30_run.py",
+      "src/bf_tap_r2/v28_axis_endpoints.py": "src/bf_tap_r2/v31_axis_endpoints.py",
+      "tests/test_round2_v27_deep_kernel.py": "tests/test_round2_v30_deep_kernel.py",
+      "tests/test_round2_v28_axis_endpoints.py": "tests/test_round2_v31_axis_endpoints.py"
+    },
+    "evidence_key_mapping": {
+      "round2_v27_2026_09_28": "round2_v30_2026_09_28",
+      "round2_v28_2026_09_28": "round2_v31_2026_09_28"
+    },
+    "next_free_local_number": 32,
+    "remote_refs_checked": {
+      "origin/codex/round2-v27-hard-tree-weights": "4f523920b9e42b4a0313d4c506d5717876b6afba",
+      "origin/codex/round2-v28-edge-spline-network": "92b0d71196388248b8c90a349f2eb88216d59a24",
+      "origin/codex/round2-v23-histogram-target": "20c0432d8a5e11a48ad5ab815247f3b5d5996e79"
+    },
+    "private_snapshot": "local/reports/round2-naming-v29-v30-before-r1.json",
+    "private_snapshot_note": "Name reflects the initial proposal; destination ownership check rejected it before edits. Final allocation is V30/V31.",
+    "legacy_delivery_ids": [
+      "V28_IRON_W100",
+      "V28_IRON_W100_TIME_V75",
+      "V28_IRON_W100_TIME_V100"
+    ],
+    "frozen_private_roots": [
+      "local/runs/round2-v27",
+      "local/runs/round2-v28"
+    ],
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "G0": {
+      "status": "passed",
+      "python_ast_equivalent_after_name_normalization": 10,
+      "specs_identical_except_public_version_and_source_plan": 2,
+      "private_files_unchanged": 474,
+      "original_frozen_source_hashes_verified": 1457,
+      "original_source_commit": "2e28b83",
+      "new_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "locked_python312_existing_targeted_tests_passed": 13,
+      "test_log": "local/reports/round2-naming-v30-v31-targeted-r1.log",
+      "test_log_sha256": "fbd646a58c9e0c9d283d42031a58205455db8d8fab2f952151c53770b7c41e69",
+      "verification_log": "local/reports/round2-naming-v30-v31-verification-r1.json"
+    },
+    "G1": "unchanged; no models retrained and no scores recomputed"
   }
 }

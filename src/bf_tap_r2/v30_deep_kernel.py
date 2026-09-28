@@ -1,4 +1,4 @@
-"""V27 sparse variational deep kernels, fitted only on supplied partitions."""
+"""V30 sparse variational deep kernels, fitted only on supplied partitions."""
 from __future__ import annotations
 
 from copy import deepcopy
@@ -71,7 +71,7 @@ class Encoder(nn.Module):
                 frequency_init_scale=settings["periodic_frequency_init_scale"], lite=True)
             dimension = len(FEATURES) * settings["periodic_embedding_dim"] + n_categories
         elif recipe != "DKL_RAW":
-            raise ValueError(f"Unknown V27 recipe: {recipe}")
+            raise ValueError(f"Unknown V30 recipe: {recipe}")
         layers = []
         for width in settings["hidden_widths"]:
             layers.extend([nn.Linear(dimension, width), nn.SiLU()])
@@ -122,7 +122,7 @@ class DeepKernelRegressor:
         numeric, cat = self.preprocessor_.transform_mlp(frame)
         values = np.concatenate([numeric, cat], axis=1).astype(np.float64)
         if not np.isfinite(values).all():
-            raise ValueError("Nonfinite V27 input")
+            raise ValueError("Nonfinite V30 input")
         return torch.as_tensor(values, dtype=torch.float64)
 
     def initialize(self, frame, y):
@@ -202,7 +202,7 @@ class DeepKernelRegressor:
             values = self.model_.kernel(x, self.encoded_inducing_) @ self.coefficient_
             result = values.numpy() * self.std_ + self.mean_
         if result.shape != (len(frame),) or not np.isfinite(result).all():
-            raise ValueError("Invalid V27 predictions")
+            raise ValueError("Invalid V30 predictions")
         return result
 
     def metadata(self):

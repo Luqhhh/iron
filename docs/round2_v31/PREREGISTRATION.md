@@ -1,8 +1,13 @@
-# iron 96.4 — V28: pricing the platform-measured iron × time axes
+# iron 96.4 — V31: pricing the platform-measured iron × time axes
 
-Design date: 2026-09-28. Next free local number is V28
-(`docs/round2_round_numbering.md`; V27 is the teammate's deep-kernel round).
-Status at design time: no V28 fit has run, no package has been written, no
+Naming update (2026-09-28): local V28 is now **V31**. This is a public-name
+change only; original run paths, hashes and delivery IDs remain frozen. See
+[the migration record](../round2_round_numbering.md#7-exact-public-migration-and-frozen-identities).
+This renamed copy preserves the original design; it is not a new preregistration.
+
+Design date: 2026-09-28; originally registered as local V28. The public
+round name is now V31; V30 is the renamed local deep-kernel round.
+Status at design time: no V31 fit has run, no package has been written, no
 upload has been made.
 
 ## 1. What the "hedge packages" are

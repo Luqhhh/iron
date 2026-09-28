@@ -1,6 +1,11 @@
-# V27: deep kernels against the measured B0 platform incumbent
+# V30: deep kernels against the measured B0 platform incumbent
 
-Frozen before V27 model evaluation, 2026-09-28; base `1f1b426`. The user
+Naming update (2026-09-28): local V27 is now **V30**. This is a public-name
+change only; original run paths, hashes and delivery IDs remain frozen. See
+[the migration record](../round2_round_numbering.md#7-exact-public-migration-and-frozen-identities).
+This renamed copy preserves the original design; it is not a new preregistration.
+
+Frozen before V30 model evaluation, 2026-09-28; base `1f1b426`. The user
 corrected the target to **96.5**, then explicitly instructed the new experiment
 to begin. B0 (`V18_B0_V12IRON_V7TIME`) is the user-reported platform best at
 96.3679, leaving 0.1321 points. This round does not promise that gap is attainable.
@@ -24,7 +29,7 @@ The implementation uses the collapsed sparse variational GP bound (128 inducing
 training rows; fixed input coordinates, shared learned encoder), rather than
 claiming exact full GP inference or reproducing every detail of the original DKL
 paper. Kernel/noise/encoder parameters are learned. All numerical choices and
-cost tie ordering are frozen in `configs/round2_v27/SPEC.yaml`.
+cost tie ordering are frozen in `configs/round2_v30/SPEC.yaml`.
 
 Method sources: [Wilson et al., Deep Kernel Learning](https://proceedings.mlr.press/v51/wilson16.html),
 [Titsias, Variational Learning of Inducing Variables](https://proceedings.mlr.press/v5/titsias09a.html).
@@ -123,6 +128,10 @@ the spec. Use `uv run --locked --python 3.12 --no-sync`: synchronizing the gener
 `round2_v4_2` extra selects a CUDA torch distribution and would change this frozen
 CPU environment. The first such sync attempt failed before downloading; no
 real-data fit was involved. Do not upgrade the environment to rescue a result.
+
+The commands below record the original execution at commit `d07dc35`; run
+them from that frozen checkout when auditing the original source hashes. The
+current `bf_tap_r2.v30_*` entry points intentionally do not bypass old identities.
 
 With `OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1
 NUMEXPR_NUM_THREADS=1 MPLCONFIGDIR=/tmp/iron-v27-mpl
