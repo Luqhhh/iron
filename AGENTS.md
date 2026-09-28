@@ -1224,3 +1224,38 @@ development 7.607 hours still exceeds 6; peak RSS 935.25 MiB passes.
 1224 tests passed. Two resource optimizers, zero learnability or official
 fits, no packages/uploads. G1 remains unmeasured. Preserve both arms and
 failed evidence; do not drop INSTANCE or relax the gate inside V37.
+
+### V38: the first interior probes — a new platform best (2026-09-28)
+
+Results `docs/round2_v38/RESULTS.md`, implementation
+`src/bf_tap_r2/v38_interior_descent.py`, evidence
+`EVIDENCE_STATUS.json -> round2_v38_2026_09_28`. Zero fits, zero packages.
+
+Two of the five pending interior packages were scored by the user:
+
+| package | `(V36, N, V7m)` | score | vs B0 |
+|---|---|---:|---:|
+| `V32_TIME_A60V7_50` | `(0.20, 0.30, 0.50)` | **96.3727** | **+0.0048** |
+| `V32_TIME_A60V7_75` | `(0.10, 0.15, 0.75)` | 96.3629 | −0.0050 |
+
+- **New platform best: `V32_TIME_A60V7_50 = 96.3727`**, `+0.0048` over
+  `V18_B0_V12IRON_V7TIME = 96.3679`; target margin `−0.0273`. User-reported, not
+  independently verified; the platform is deterministic so the difference is exact.
+- **The V32 scope correction was right and it paid.** The `96.3992` ceiling
+  covered only the beyond-chord region; the hull interior was unconstrained. The
+  first interior probe — the only measured `V7m = 0.5` point had been `B0` — beat
+  the released weights, so the platform optimum lies toward **more `N` at the
+  released `V7m` weight** (`+0.0384` per unit `N`), while raising `V7m` to `0.75`
+  **costs** `0.0050`.
+- **The `V7m` endpoint is now provably dead.** Adding `I1`/`I2` tightens the
+  concave bound on pure `V7m` from `96.3832` to **`96.3531`** (the `I1 -> I2`
+  chord extended), which is *below* the current best — `3_TIME_V100` can no longer
+  improve the score. The bounded-region maximum is **`96.3825`**, attained exactly
+  at the still-pending `5_INTERIOR_A60V7_25 = (0.30, 0.45, 0.25)`; with the iron
+  endpoint the bounded ceiling is `96.3985`, still `0.0015` short of `96.4`.
+  The grid is now 33 bounded / 198 unbounded points (was 22/209).
+- No new package was built: the highest remaining bound is already covered by the
+  pending `5_INTERIOR_A60V7_25`, and the next probe follows the `N`-direction
+  descent once its score is known. Remaining pending scores: `5_INTERIOR_A60V7_25`,
+  `4_IRON_W100` (iron-line bound `96.3839`, composes additively with the time
+  column) and `3_TIME_V100` (now non-competitive).

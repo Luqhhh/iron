@@ -14632,7 +14632,11 @@
       "packages": 0,
       "desktop_writes": 0,
       "agent_uploads": 0,
-      "targeted_tests_passed": 8
+      "targeted_tests_passed": 8,
+      "locked_python_3_12_tests_passed": 1232,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v38-python312-tests-r1.log",
+      "test_log_sha256": "48d1803037618c352bed2e9ee5fed0492a1669c30fcd14320f6eeddd39b5ac5f"
     },
     "goal_above_96_4_achieved": false
   }
