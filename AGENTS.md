@@ -1247,3 +1247,17 @@ Original V37 numerical equivalence and user-accepted 7.61-hour projection
 verified. Current-reference component cache/ZIP identities verified.
 G1 remains pending; proceed with the frozen 40-unit development, no release.
 Details: `docs/round2_v39/G0_RESULTS.md`.
+
+### V39 monitoring cadence — explicit user instruction (2026-09-29)
+
+User: “每小时监控一次是否正常运行，不要轮询”. The active development
+is checked by the local systemd user timer `iron-v39-hourly-monitor.timer`,
+once per 3600 seconds, first scheduled at 2026-09-29 01:39:29 Asia/Shanghai.
+Do not repeatedly query training PIDs, read progress, or drain the exec
+session between scheduled checks unless the user asks or a real completion/
+failure event arrives. Normal observations are appended privately under
+`local/runs/round2-v39/development-r1/hourly-monitor/checks.jsonl`.
+The checker has no loop and never retrains, restarts, kills, packages or uploads.
+It stops its timer on verified completion or verified process termination;
+an observation-access failure is recorded as unknown and does not stop it.
+The 96.5 goal remains active; monitoring frequency is not a request to pause it.

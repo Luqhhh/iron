@@ -14695,6 +14695,20 @@
       "candidate_units_complete_at_snapshot": 0,
       "parallel_workers": 4,
       "no_quality_conclusion_yet": true
+    },
+    "monitoring": {
+      "user_instruction": "每小时监控一次是否正常运行，不要轮询",
+      "scheduler": "systemd_user_timer",
+      "unit": "iron-v39-hourly-monitor.timer",
+      "interval_seconds": 3600,
+      "first_scheduled_local": "2026-09-29T01:39:29+08:00",
+      "status_at_registration": "active",
+      "log": "local/runs/round2-v39/development-r1/hourly-monitor/checks.jsonl",
+      "script_sha256": "09583780a4833d77a4a296dd3613261e70fef9e39b076adbf1ce3f1782d49d92",
+      "normal_action": "local_log_only",
+      "automatic_restarts": false,
+      "stop_on_verified_terminal": true,
+      "no_between_checks_polling": true
     }
   }
 }
