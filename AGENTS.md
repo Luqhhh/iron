@@ -714,3 +714,32 @@ that screen where it belongs. Pre-registration `docs/round2_v19/PREREGISTRATION.
   packages 0, agent uploads 0. Locked Python 3.12 suite: **1136 passed, 23
   warnings**. The `>96.4` objective remains unmet.
   See `EVIDENCE_STATUS.json -> round2_v19_2026_09_28`.
+
+### V20: released the P-LL time expert on the combined B0 parent (2026-09-28)
+
+Pre-registration `docs/round2_v20/PREREGISTRATION.md`, spec
+`configs/round2_v20/SPEC.yaml`, delivery `docs/round2_v20/DELIVERY.md`, private
+run `local/runs/round2-v20/release-r1`.
+
+- **Released `V20_B0_PLLT_A325`**, a single-target replacement on the verified
+  `V18_B0_V12IRON_V7TIME` parent: `pred_tap_time_len = 0.675*B0_time +
+  0.325*P_LL_T_full`, `pred_tap_iron` byte-identical. ZIP SHA-256
+  `f14f39df5474c8904639c0768bf8fa678f645f46fb0f987fbb84690a983eef57`.
+- **First candidate to clear the frozen local working gate with no exception**
+  since it was recorded as over-conservative: four-seed design check on the B0
+  parent, `alpha = 0.325`, gains `+0.005060 / +0.003478 / +0.002114 / +0.007776`,
+  mean `+0.004607`, paired seed-level `LCB95 +0.001746`, 4/4 positive,
+  development mean package score **96.252008 >= 96.25**.
+- Expert evidence: `v17/P_LL_T` is accurate (ratio `1.005`) and decorrelated
+  (`rho 0.982`) — the regime that earns weight, unlike the V19 capacity members.
+- G0: replay bit-identical (max `|diff| = 0.0`, epoch 100); one full-data fit
+  (epoch 75, 2754 rows); cold-process inference bit-identical with training
+  reads prohibited; independent readback 322 rows / 0 iron string mismatches /
+  blend difference `0.0` / 0 negative rows. Locked Python 3.12 suite:
+  **1142 passed, 23 warnings**. Fits 2, packages 1, desktop writes 0, agent
+  uploads 0.
+- Upload order: **`V20_B0_PLLT_A325` first**, then `V18_B0_V12IRON_V7TIME`.
+  Local effect is `+0.0035..+0.0051` over B0 and the conditional B0 arithmetic
+  (`96.3679`) is still `0.0321` below 96.4; the objective remains unmet.
+  A platform-side line search on this direction follows only after it reports.
+  See `EVIDENCE_STATUS.json -> round2_v20_2026_09_28`.

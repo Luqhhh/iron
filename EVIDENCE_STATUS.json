@@ -12339,4 +12339,110 @@
     },
     "goal_above_96_4_achieved": false
   }
+,
+  "round2_v20_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "released_single_package_pending_user_upload",
+    "source_plan": "docs/round2_v20/PREREGISTRATION.md",
+    "delivery": "docs/round2_v20/DELIVERY.md",
+    "spec": "configs/round2_v20/SPEC.yaml",
+    "candidate": "V20_B0_PLLT_A325",
+    "platform_target": 96.4,
+    "current_platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified",
+      "target_met": false
+    },
+    "recipe": "parent V18_B0_V12IRON_V7TIME; pred_tap_time_len = 0.675*B0_time + 0.325*P_LL_T_full; pred_tap_iron byte-identical",
+    "zip_sha256": "f14f39df5474c8904639c0768bf8fa678f645f46fb0f987fbb84690a983eef57",
+    "result_csv_sha256": "661b3c9fb56b489f6b21628fa57222f27597f1db9042f506693953f8e2228055",
+    "parent_zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
+    "private_run": "local/runs/round2-v20/release-r1",
+    "G0": {
+      "locked_python_3_12_tests_passed": 1142,
+      "locked_python_3_12_warnings": 23,
+      "test_log": "local/reports/v20-python312-tests-r1.log",
+      "test_log_sha256": "9b4fbceaf73c36e2b23fcd5dd465c46fde4f50daca985ab8a46946e18bb2e977",
+      "targeted_tests_passed": 6,
+      "replay_bit_identical": true,
+      "replay_max_absolute_difference": 0.0,
+      "replay_selected_epoch": 100,
+      "full_data_fit": 1,
+      "full_data_selected_epoch": 75,
+      "full_data_rows": 2754,
+      "cold_bit_identical": true,
+      "cold_max_absolute_difference": 0.0,
+      "readback_rows": 322,
+      "readback_unique_ids": 322,
+      "template_order": true,
+      "unchanged_iron_string_mismatches": 0,
+      "blend_maximum_absolute_difference": 0.0,
+      "negative_rows_clipped": 0,
+      "raw_minimum": 76.43646408575106,
+      "reference_fits": 0,
+      "packages": 1,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "G1": {
+      "four_seed_design_check": {
+        "alpha": 0.325,
+        "seed_results": {
+          "42": {
+            "b0_score": 96.247974,
+            "candidate_score": 96.253035,
+            "gain": 0.00506
+          },
+          "3407": {
+            "b0_score": 96.247504,
+            "candidate_score": 96.250982,
+            "gain": 0.003478
+          },
+          "7777": {
+            "b0_score": 96.242873,
+            "candidate_score": 96.244987,
+            "gain": 0.002114
+          },
+          "12011": {
+            "b0_score": 96.233951,
+            "candidate_score": 96.241727,
+            "gain": 0.007776
+          }
+        },
+        "paired_seed_summary": {
+          "n": 4,
+          "mean": 0.0046069688398375774,
+          "sd": 0.0024314653552480743,
+          "lcb95": 0.0017459080098234554,
+          "positive": 4
+        },
+        "development_mean_candidate_score": 96.25200805059444,
+        "local_working_gate": 96.25,
+        "local_working_gate_met": true,
+        "promoted": true
+      },
+      "expert_evidence": {
+        "member": "v17/P_LL_T",
+        "v18_incremental_gain_over_B0": 0.00425,
+        "accuracy_ratio": 1.005,
+        "residual_rho": 0.982,
+        "v17_four_seed_slot_gains": [
+          0.002433,
+          0.000706,
+          0.006456,
+          0.00933
+        ]
+      },
+      "limits": "local effect +0.0035..+0.0051 over B0; conditional B0 arithmetic 96.3679 is 0.0321 below target; V18 concave two-line ceiling 96.3992; alpha 0.325 is the local optimum and a platform-side line search follows only after this direction reports."
+    },
+    "upload_recommendation": {
+      "order": [
+        "V20_B0_PLLT_A325",
+        "V18_B0_V12IRON_V7TIME"
+      ],
+      "note": "user uploads; agent uploads 0; platform keeps the best score"
+    },
+    "goal_above_96_4_achieved": false
+  }
 }
