@@ -1,5 +1,7 @@
-import torch
+import pytest
 import yaml
+
+torch = pytest.importorskip('torch')
 
 from bf_tap_r2.v12_joint import make_network
 from bf_tap_r2.v17_models import dual_network, projected_task_grads

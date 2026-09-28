@@ -116,6 +116,8 @@ def test_inner_split_is_group_safe_and_covers_every_fold() -> None:
 
 
 def test_encoders_use_train_internal_coordinates() -> None:
+    pytest.importorskip('torch')
+    pytest.importorskip('rtdl_num_embeddings')
     frame = synthetic_frame(120)
     raw = build_encoder("raw")
     raw.fit(frame)
@@ -141,6 +143,7 @@ def test_encoders_use_train_internal_coordinates() -> None:
 
 @pytest.fixture(scope="module")
 def r_models():
+    pytest.importorskip('torch')
     from bf_tap_r2.v4_2_r_tabr import TabRRetrievalRegressor
 
     frame = synthetic_frame(200, seed=3, duplicates=2)
@@ -276,6 +279,7 @@ def test_r_support_serialisation_records_hashes(r_models, tmp_path: Path) -> Non
 # ---------------------------------------------------------------------------
 
 def test_entmax15_properties_and_gradient() -> None:
+    pytest.importorskip('torch')
     from bf_tap_r2.v4_2_n_node import entmax15
     import torch
 
@@ -318,6 +322,7 @@ def test_entmax15_properties_and_gradient() -> None:
 
 @pytest.fixture(scope="module")
 def n_models():
+    pytest.importorskip('torch')
     from bf_tap_r2.v4_2_n_node import NodeEnsembleRegressor
 
     frame = synthetic_frame(200, seed=4)
@@ -498,6 +503,7 @@ def test_symbolic_nonfinite_output_is_a_failure() -> None:
 
 
 def test_pysr_availability_and_equation_conversion() -> None:
+    pytest.importorskip('sympy')
     from bf_tap_r2.v4_2_s_pysr import (
         PysrSettings, UnsupportedSympyExpression, sympy_text_to_ast,
     )

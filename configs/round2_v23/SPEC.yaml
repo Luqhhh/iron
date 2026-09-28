@@ -1,0 +1,56 @@
+version: round2-v23-histogram-target-prediction
+status: preregistered_design_confirmed
+date: 2026-09-28
+source_plan: docs/round2_v23/PREREGISTRATION.md
+source_commit: 3b31f2b
+remote_context_commit: a566261
+platform_target: 96.4
+platform_reference: {candidate: V12_IRON_JOINT_PLR001_A50, score: 96.3526, source: user_reported_not_independently_verified}
+data: {snapshot: round2_v2, external_data: forbidden, pretrained_weights: forbidden}
+runtime_versions: {torch: 2.14.0+cpu, tabm: 0.0.3, rtdl-num-embeddings: 0.0.12, numpy: 2.2.6, scikit-learn: 1.8.0}
+training_source: configs/round2_v7/SPEC.yaml
+training_recipe: tabm_plr001
+targets: [tap_iron, tap_time_len]
+split_seeds: [42, 3407]
+folds: [0, 1, 2, 3, 4]
+confirmation_seeds: [7777, 12011]
+arms:
+  hard: {target_distribution: one_hot, role: matched_shape_control}
+  gaussian: {target_distribution: truncated_gaussian, sigma_in_bin_widths: 0.75, role: candidate}
+histogram:
+  bins: 64
+  support: training_minmax_with_5_percent_range_padding
+  target_probability_dtype: float64_then_float32
+  loss: per_head_cross_entropy_mean
+  decoder: interpolated_median_of_mean_head_probabilities
+  diagnostic_decoder_only: histogram_mean
+references:
+  local_primary: R23_V12_iron_plus_V21_TIME_LOCAL
+  local_historical: B0_V12_iron_plus_V7_time
+  v21_time_weights: {V36: 0.40, V7_member: 0.25, P_LL_T: 0.35}
+  cache_identity_required_before_fits: true
+blend_weight: 0.20
+blend_recipe: 0.80_R23_plus_0.20_new_member_isolated_column
+gates:
+  engineering_preflight_required: true
+  development_all_seeds_positive_vs_R23: true
+  development_mean_gain_ge: 0.01
+  gaussian_minus_hard_mean_gain_gt: 0.0
+  confirmation_finalists_max: 1
+  tie_order: [tap_iron, tap_time_len]
+promotion:
+  min_split_seeds: 4
+  all_seed_gains_positive: true
+  seed_level_paired_lcb95_gt: 0.0
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+budget:
+  development_outer_fits: 40
+  confirmation_outer_fits_max: 20
+  official_outer_fits_max: 60
+  optimizer_runs_per_outer_fit: 2
+  workers_max: 8
+  full_data_fits: 0
+  second_specifications: 0
+release: {automatic_packages: false, packages: 0, desktop_writes: 0, agent_uploads: 0}
+publication: {pushes: 2, phases: [strategy_reservation, final_results]}

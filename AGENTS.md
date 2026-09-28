@@ -643,3 +643,23 @@ Current user-reported best remains V12=96.3526; >96.4 was not achieved.
   best remains user-reported V12 `96.3526`; the `>96.4` objective is unmet.
   See `docs/round2_v17/RESULTS.md`, `docs/round2_v17/CANDIDATES.md`, and
   `EVIDENCE_STATUS.json -> round2_v17_2026_09_28`.
+
+
+### Session synchronization and V23 reservation (2026-09-28)
+
+- User explicitly requires pulling the current upstream at the start of every
+  conversation: use ordinary `git pull --ff-only` before repository work.
+  Preserve dirty changes on a conflict; never reset or force history.
+- User requires prompt new-strategy reservation publication. For each round,
+  push the strategy reservation and final completed results only; avoid
+  intermediate pushes that repeatedly trigger locked-tests CI.
+- V23 reserves histogram target prediction on
+  `codex/round2-v23-histogram-target`. Spec and design:
+  `configs/round2_v23/SPEC.yaml`, `docs/round2_v23/PREREGISTRATION.md`.
+  The user confirmed its frozen design, then prioritized the reservation push
+  before implementation. No V23 fits, package or upload exists at reservation.
+- Latest inspected other remote is `round2-v6-iron-capacity-networks` at
+  `a566261` (V22). Its V20 P-LL release is DIFFERENT from this lineage's
+  V20 masked reconstruction. Preserve both, never overwrite their files.
+  V23 uses the remote V21 strongest local time equation as its primary offline
+  reference; this does not assert a new platform score or merge remote history.

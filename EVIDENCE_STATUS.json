@@ -12137,5 +12137,58 @@
       "model weights not persisted; development budget exhausted so not re-run"
     ],
     "disposition": "Negative result under the single frozen specification. No package, no upload, no second specification, no promotion. Evidence retained in private local/."
+  },
+  "round2_v23_2026_09_28": {
+    "date": "2026-09-28",
+    "status": "strategy_reserved_design_confirmed_no_fits",
+    "branch": "codex/round2-v23-histogram-target",
+    "source_plan": "docs/round2_v23/PREREGISTRATION.md",
+    "spec": "configs/round2_v23/SPEC.yaml",
+    "design_confirmation": "按冻结规格实施（推荐）",
+    "latest_user_priority": "还是先push策略占位吧",
+    "starting_commit": "3b31f2b",
+    "other_remote_context_commit": "a566261",
+    "platform_target": 96.4,
+    "platform_best": {
+      "candidate": "V12_IRON_JOINT_PLR001_A50",
+      "score": 96.3526,
+      "source": "user_reported_not_independently_verified"
+    },
+    "local_reference": {
+      "iron": "B0_V12_iron",
+      "time": "0.40_V36_plus_0.25_V7_member_plus_0.35_P_LL_T",
+      "role": "V21_local_only_not_verified_platform_best"
+    },
+    "hypothesis": "Median-decoded 64-bin target distributions; Gaussian soft targets versus matched hard-label control.",
+    "budget": {
+      "development_outer_fits": 40,
+      "confirmation_outer_fits_max": 20,
+      "full_data_fits": 0
+    },
+    "G0": {
+      "v23_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "locked_python": "3.12.13",
+      "locked_without_torch_tests_passed": 952,
+      "locked_without_torch_tests_skipped": 46,
+      "warnings": 3,
+      "test_log": "local/v23-strategy-20260928/locked-ci-tests-r2.log",
+      "test_log_sha256": "4d196a3d6761950a19c65bb7bc039062ec4b3336c995b62fff78346737b0b0c5",
+      "initial_failed_test_log_retained": "local/v23-strategy-20260928/locked-ci-tests-r1.log",
+      "torch_guarded_modules_tests_passed": 26,
+      "full_training_dependency_suite": "running_result_not_yet_claimed"
+    },
+    "G1": {
+      "status": "not_evaluated",
+      "incremental_gains": null,
+      "promotion": false
+    },
+    "publication_cadence": [
+      "strategy_reservation",
+      "final_completed_results"
+    ],
+    "goal_above_96_4_achieved": false
   }
 }

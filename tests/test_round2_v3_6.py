@@ -184,6 +184,11 @@ def _network_trial(structure: str, target: str = "tap_iron") -> dict:
 
 @pytest.mark.parametrize("structure", ["raw_mlp", "ple_mlp", "raw_tabm", "ple_tabm"])
 def test_v36_network_structures_fit_and_predict(structure):
+    pytest.importorskip('torch')
+    if 'tabm' in structure:
+        pytest.importorskip('tabm')
+    if structure.startswith('ple_'):
+        pytest.importorskip('rtdl_num_embeddings')
     frame = _frame(80)
     model = V36NetworkRegressor(_network_trial(structure)).fit(frame, frame["tap_iron"].to_numpy(dtype=float))
     pred = model.predict(frame)
@@ -195,6 +200,7 @@ def test_v36_network_structures_fit_and_predict(structure):
 
 
 def test_v36_outer_fold_dispatch_and_network_no_label_leak_shape():
+    pytest.importorskip('torch')
     frame = _frame(90)
     folds = np.asarray([i % 5 for i in range(len(frame))], dtype=int)
     trial = _network_trial("raw_mlp")

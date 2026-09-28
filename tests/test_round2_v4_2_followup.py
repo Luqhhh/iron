@@ -93,6 +93,7 @@ def test_randomness_plan_is_explicit_and_uses_arithmetic_offsets() -> None:
 
 
 def test_initialisation_seed_reaches_the_first_randn_and_is_isolated() -> None:
+    pytest.importorskip('torch')
     import torch
 
     from bf_tap_r2.v4_2_n_node import NodeSpec, _make_network
@@ -121,6 +122,7 @@ def test_initialisation_seed_reaches_the_first_randn_and_is_isolated() -> None:
 
 
 def test_initialisation_hash_is_order_sensitive_and_repeatable() -> None:
+    pytest.importorskip('torch')
     import torch
 
     from bf_tap_r2.v4_2_n_node import NodeSpec, _make_network
@@ -138,6 +140,7 @@ def test_initialisation_hash_is_order_sensitive_and_repeatable() -> None:
 
 
 def test_full_fit_is_reproducible_in_process() -> None:
+    pytest.importorskip('torch')
     from bf_tap_r2.v4_2_n_node import NodeEnsembleRegressor
 
     frame = synthetic_frame(140, seed=3)
@@ -165,6 +168,7 @@ def test_full_fit_is_reproducible_in_process() -> None:
 
 
 def test_full_fit_is_reproducible_in_a_new_process(tmp_path: Path) -> None:
+    pytest.importorskip('torch')
     frame = synthetic_frame(110, seed=6)
     frame_path = tmp_path / "frame.pkl"
     frame.to_pickle(frame_path)
@@ -217,6 +221,7 @@ def test_model_source_digest_is_content_addressed() -> None:
 
 def test_inference_numeric_scope_is_documented_not_overclaimed() -> None:
     """The repair makes a fixed batch shape deterministic, not bitwise across shapes."""
+    pytest.importorskip('torch')
     from bf_tap_r2.v4_2_n_node import NodeEnsembleRegressor
     from bf_tap_r2.v4_2_train import NEURAL_INFERENCE_ATOL, NEURAL_INFERENCE_RTOL
 

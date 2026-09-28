@@ -4,6 +4,8 @@ from pathlib import Path
 import pytest
 import yaml
 
+pytest.importorskip('torch')  # v11_confirm imports v8_attention, which imports torch
+
 from bf_tap_r2.v11_confirm import selected_complete
 
 
