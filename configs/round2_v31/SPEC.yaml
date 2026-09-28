@@ -10,8 +10,10 @@ source_spec: configs/round2_v18/SPEC.yaml
 platform_measured_axes:
   time_v7_line: {v0_A35: 96.3526, v0.5_B0: 96.3679, secant_slope_per_unit: 0.0306,
     bounds: {v0.75: 96.3755, v1.0: 96.3832}}
-  iron_v12_line: {w0_A35_iron: 96.3366, w0.5_V12: 96.3526, secant_slope_per_unit: 0.0320,
-    bounds: {w0.75: 96.3686, w1.0: 96.3846}}
+  iron_v12_line_on_B0_time: {w0_V7_package: 96.3519, w0.5_B0: 96.3679, secant_slope_per_unit: 0.0320,
+    bounds: {w0.75: 96.3759, w1.0: 96.3839}}
+  iron_v12_line_on_A35_time: {w0_A35_iron: 96.3366, w0.5_V12: 96.3526, secant_slope_per_unit: 0.0320,
+    bounds: {w0.75: 96.3606, w1.0: 96.3686}}
   two_line_joint_ceiling: 96.3992
 designs:
   V28_IRON_W100:

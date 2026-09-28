@@ -13150,9 +13150,10 @@
         "w0.5_V12": 96.3526,
         "secant_slope": 0.032,
         "upper_bounds": {
-          "w0.75": 96.3686,
-          "w1.0": 96.3846
-        }
+          "w0.75": 96.3759,
+          "w1.0": 96.3839
+        },
+        "note": "the axis packages use the B0 time column (v=0.5), so the line is measured at w=0 -> 96.3519 (the V7 package) and w=0.5 -> 96.3679 (B0); slope 0.0320"
       },
       "two_line_joint_ceiling": 96.3992
     },
@@ -13162,7 +13163,7 @@
         "iron": "pure V12m (w=1.0)",
         "time": "B0 time (v=0.5)",
         "local_development_mean": 96.222734,
-        "upper_bound": 96.3846,
+        "upper_bound": 96.3839,
         "zip_sha256": "c41e56d4d3b3482a6baaaee33f76725811168ea31a4eba8c6aee6ade9133c269"
       },
       {
@@ -13247,7 +13248,8 @@
       "new_packages": 0,
       "desktop_writes": 0,
       "agent_uploads": 0
-    }
+    },
+    "bounds_correction": "the iron endpoint bound was previously written as 96.3846 by adding the full slope instead of the half-step from w=0.5; corrected to 96.3839 (and w=0.75 to 96.3759)"
   },
   "round2_naming_repair_2026_09_28": {
     "status": "verified_public_rename_only",
@@ -13398,8 +13400,7 @@
       "desktop_writes": 0,
       "agent_uploads": 0
     }
-  }
-,
+  },
   "round2_v32_2026_09_28": {
     "date": "2026-09-28",
     "status": "bounded_beyond_chord_region_plus_three_interior_probes",
@@ -13521,7 +13522,7 @@
         }
       ],
       "why_interior": "the interior of the time simplex is unmeasured and unconstrained by any current bound, so it is the only part of the measured endpoint span that could exceed the 96.3992 beyond-chord ceiling",
-      "recommendation": "next five slots: V32_TIME_A60V7_50, V32_TIME_A60V7_75, r9 2_TIME_V100 (bound 96.3832), r9 4_IRON_W100 (bound 96.3846), then V32_TIME_A60V7_25; any package above 96.3679 opens its direction",
+      "recommendation": "next five slots: V32_TIME_A60V7_50, V32_TIME_A60V7_75, r9 2_TIME_V100 (bound 96.3832), r9 4_IRON_W100 (bound 96.3839), then V32_TIME_A60V7_25; any package above 96.3679 opens its direction",
       "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r10"
     },
     "G0": {
@@ -13538,8 +13539,7 @@
       "readback": "each ZIP holds exactly result.csv; 322 unique template-ordered IDs; iron strings byte-identical to the V12 source; blend relative difference 0.0"
     },
     "goal_above_96_4_achieved": false
-  }
-,
+  },
   "desktop_pending_five_2026_09_28": {
     "date": "2026-09-28",
     "status": "desktop_consolidated_to_five_pending_packages",

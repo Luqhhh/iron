@@ -88,7 +88,7 @@ recomputation relative difference `0.0`; finite and non-negative. The
 The next five slots should mix the unbounded interior with the two most
 informative bounded endpoints: `V32_TIME_A60V7_50`, `V32_TIME_A60V7_75`, the
 r9 `2_TIME_V100` (pure `V7m`, bound `96.3832`) and `4_IRON_W100` (pure `V12m`,
-bound `96.3846`), then `V32_TIME_A60V7_25`. Reading: any package above `96.3679`
+bound `96.3839`), then `V32_TIME_A60V7_25`. Reading: any package above `96.3679`
 opens its direction; all below `96.3679` means the released weights already sit
 at the platform optimum and no further weight work is justified.
 

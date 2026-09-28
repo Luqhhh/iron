@@ -59,5 +59,26 @@ class CeilingTests(unittest.TestCase):
             self.assertLessEqual(row["bound"], self.report["simplex_max_bound_with_V12_iron"] + 1e-9)
 
 
+class AxisBoundRegressionTests(unittest.TestCase):
+    """Pin the corrected axis bounds so the factor-of-two error cannot return."""
+
+    def _bound(self, low, high, weight):
+        slope = (high - low) / 0.5
+        return high + slope * (weight - 0.5)
+
+    def test_iron_axis_on_the_b0_time_column(self):
+        # w=0 -> V7 package 96.3519, w=0.5 -> B0 96.3679
+        self.assertAlmostEqual(self._bound(96.3519, 96.3679, 0.75), 96.3759, places=4)
+        self.assertAlmostEqual(self._bound(96.3519, 96.3679, 1.0), 96.3839, places=4)
+
+    def test_iron_axis_on_the_a35_time_column(self):
+        self.assertAlmostEqual(self._bound(96.3366, 96.3526, 0.75), 96.3606, places=4)
+        self.assertAlmostEqual(self._bound(96.3366, 96.3526, 1.0), 96.3686, places=4)
+
+    def test_time_axis_on_the_v12_iron_column(self):
+        self.assertAlmostEqual(self._bound(96.3526, 96.3679, 0.75), 96.37555, places=5)
+        self.assertAlmostEqual(self._bound(96.3526, 96.3679, 1.0), 96.3832, places=4)
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

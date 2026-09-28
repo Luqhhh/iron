@@ -28,9 +28,11 @@ direction** is a one-dimensional concave curve whose neighbours can be priced:
 * **time axis** — V7-member weight on the `A35` base: `v=0` is `A35`
   (`96.3526`), `v=0.5` is `B0` (`96.3679`). Secant slope `0.0306` per unit `v`,
   so by concavity `v=0.75 <= 96.3755` and `v=1.0 <= 96.3832`.
-* **iron axis** — V12-member weight: `w=0` is A35 iron (`96.3366`), `w=0.5` is
-  `V12` (`96.3526`). Secant slope `0.0320` per unit `w`, so `w=0.75 <= 96.3686`
-  and `w=1.0 <= 96.3846` on the A35 time column.
+* **iron axis** — V12-member weight on the **B0 time column** (the one the axis
+  packages use): `w=0` is the `V7` package (`96.3519`), `w=0.5` is `B0`
+  (`96.3679`). Secant slope `0.0320` per unit `w`, so `w=0.75 <= 96.3759` and
+  `w=1.0 <= 96.3839`. On the `A35` time column the same line gives
+  `w=1.0 <= 96.3686`.
 
 A **hedge package** is therefore a boundary probe: it sits further along a
 measured curve than anything scored, so one upload tells us whether the platform
@@ -47,7 +49,7 @@ composed field-exactly from the delivered A35/A60/V7/V12 ZIPs:
 
 | id | iron column | time column | concavity upper bound |
 |---|---|---|---|
-| `V28_IRON_W100` | pure `V12m` (`w=1.0`) | V7 copy (`v=0.5`) | 96.3846 |
+| `V28_IRON_W100` | pure `V12m` (`w=1.0`) | V7 copy (`v=0.5`) | 96.3839 |
 | `V28_IRON_W100_TIME_V75` | pure `V12m` (`w=1.0`) | `0.25 A35 + 0.75 V7m` | 96.3916 |
 | `V28_IRON_W100_TIME_V100` | pure `V12m` (`w=1.0`) | pure `V7m` | **96.3992** (the V18 two-line ceiling) |
 
