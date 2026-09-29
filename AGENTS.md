@@ -1610,3 +1610,16 @@ rank uploads by these bounds; no new package recommended. Preserve V41.
 This zero-fit, zero-label/prediction-read analysis made no new model or
 platform measurement. Continue staged optimization toward new predictive
 increments; best stays user-reported 96.3727. Monitoring remains 600 seconds.
+
+
+### V47 reserved: low-rank spline ANOVA (2026-09-29)
+
+Branch round2-v47-factorized-spline; freeze configs/round2_v47/SPEC.yaml and
+docs/round2_v47/PREREGISTRATION.md before fits. AFM2 pair-only control versus
+AHOFM4 orders 2/3/4 with shared rank-16 distinct-original-feature factors.
+Piecewise-linear train-only quantile hats, MAE and fixed coefficient penalty;
+not a paper benchmark reproduction or reopening the same V42 hinge recipe.
+40 development units/80 fits; existing references and promotion gates unchanged.
+Synthetic/math/cold/resource/full Python 3.12 checks required before actual fits.
+No external data/pretrained weights, full-data fits, packages or uploads.
+Monitoring every 600 seconds; no between-check polling. Staged goal active.
