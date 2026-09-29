@@ -1940,3 +1940,12 @@ locked tests pass. It verifies original-row preprocessing, full saved state
 paths, fresh refit, independent kernel equations/AGOP and checkpoint selection,
 with external SHA256 anchors and zero solver calls. This is not a completed
 phase/reference/gate audit. Full-run admission and all G1 evidence remain pending.
+
+E-COMPOSE terminal success is now verified (MainPID0, exit0, no finalist).
+Audited E-COMPOSE mean gains: iron+.001488614, time-.000208378; no confirmation
+fit or release. Preserve its isolated worktree. RFM's four historical native
+reference seeds42/3407/7777/12011 pass a436-file zero-fit identity audit. These
+are the approved native OOF references, not bit-identical E-COMPOSE factory
+replays; never mix their predictions. RFM fixed20% scoring/development and
+confirmation gates are implemented;46 focused tests. Full runner, phase audit,
+controller, full locked suite and resource admission remain pending before G1.

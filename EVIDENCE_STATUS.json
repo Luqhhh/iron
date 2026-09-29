@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "PARTITION_MODEL_LEDGER_AND_INDEPENDENT_EQUATIONS_TESTED_FULL_EXPERIMENT_NOT_ADMITTED",
+    "status": "FOUR_SEED_REFERENCE_AND_SCORING_VERIFIED_PHASE_RUNNER_PENDING",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16056,7 +16056,7 @@
     ],
     "current_best_user_reported": 96.3727,
     "G0": {
-      "focused_locked_python312_tests_passed": 38,
+      "focused_locked_python312_tests_passed": 46,
       "full_suite_run": false,
       "full_size_resource_admission": false,
       "protected_source_files_verified": 633,
@@ -16067,12 +16067,12 @@
     "G1": "NO_NEW_QUALITY_MEASUREMENT",
     "formal_fits": 0,
     "full_size_synthetic_probes": 0,
-    "official_label_reads": 0,
+    "official_label_reads": true,
     "packages": 0,
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Bind verified local reference caches and frozen full-coverage tasks; implement independent score/gate and controller. Full-size probes/official training remain deferred until E-COMPOSE is terminal and independent admission passes.",
+    "next_action": "Implement phase runner/fresh-process audit/controller and complete locked tests/resource admission; E-COMPOSE is terminal but RFM G1 admission is still unproven.",
     "milestone2": {
       "modules": [
         "rfm_model.py",
@@ -16088,6 +16088,22 @@
       "single_partition_equation_audit": true,
       "phase_reference_gate_audit": false,
       "engineering_record_sha256": "22b88a4129f1f7c0c6e0f84da2d9d1280f3c8cf2160ddec0bd44131da679db1a"
+    },
+    "official_label_read_scope": "Authorized round2 training snapshot only for zero-fit historical reference validation; no protected preliminary or test targets",
+    "milestone4": {
+      "reference_files_verified": 436,
+      "reference_seeds": [
+        42,
+        3407,
+        7777,
+        12011
+      ],
+      "reference_rows": 2754,
+      "reference_report_sha256": "676f2644963537e9a961bf990140d8672942ee6f66774802391e8ee8132879a9",
+      "new_reference_fits": 0,
+      "E_COMPOSE_terminal": true,
+      "E_COMPOSE_summary_sha256": "49e6acab8accfd801958265fb074831a1406881c8c341b7fd359f1e7f544929c",
+      "E_COMPOSE_no_finalist": true
     }
   }
 }
