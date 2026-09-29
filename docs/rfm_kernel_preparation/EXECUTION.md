@@ -79,3 +79,18 @@ manifest SHA256：66761093ebf89e19693f1fc6035189b7d2588b13738b2c9c75730ab4f3602c
 独立新进程复核冻结源/引用/产物/账本/门算术通过，新增拟合0。
 本地根local/runs/rfm-metric-learning-r1，全部模型和账本留在local外于Git。
 G1尚无测量；本记录发布后启动原40单元开发，不改冻结源。
+
+
+## G1正式启动
+
+G0通过记录提交fb43f44已推送后，独立用户服务
+`iron-rfm-metric-learning-20260930.service`启动，初始MainPID346338，active/running。
+启动核验时间2026-09-30 02:08:04 Asia/Shanghai，已观察到40个真实外层开始事件；
+这是累计开始数，不是同时运行数或完成数。进程池仍最多4个工作进程。
+控制器随后按既定阶段执行冷审计、独立算术和条件确认；此次启动记录没有G1质量结论。
+
+`iron-rfm-metric-learning-20260930-monitor.timer`已启动，首次观察约02:18:04，
+之后每600秒；中间不轮询健康或质量指标。只读监控同时保存systemd状态，
+首次观察到completion-event后停止计时器。根服务Restart=no，不自动重跑失败拟合。
+本地服务定义/安装摘要、launch-verification.json、阶段日志均留在同一私有运行根。
+没有新增全数据拟合、包、桌面写入或平台上传。

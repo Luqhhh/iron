@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "G0_PASSED_G1_LAUNCH_AUTHORIZED",
+    "status": "G1_STARTED_AWAITING_INDEPENDENT_AUDITS",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16082,15 +16082,14 @@
         "update": 6
       }
     },
-    "G1": "NO_NEW_QUALITY_MEASUREMENT",
-    "formal_fits": 0,
+    "G1": "FORMAL_DEVELOPMENT_STARTED_NO_AUDITED_QUALITY_CONCLUSION",
     "full_size_synthetic_probes": 1,
     "official_label_reads": true,
     "packages": 0,
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Launch exactly one durable G1 controller with 600-second monitoring; retain frozen source and all original quality gates.",
+    "next_action": "Observe only scheduled 600-second or terminal events; independently audit development and any earned confirmation, preserving all frozen gates and no-release rule.",
     "milestone2": {
       "modules": [
         "rfm_model.py",
@@ -16162,6 +16161,19 @@
       "explicit_G1_launch_authorized": true,
       "original_cache_failure_retained": true,
       "exact_cache_copies": 45
+    },
+    "formal_fits_started": 40,
+    "launch": {
+      "service": "iron-rfm-metric-learning-20260930.service",
+      "main_pid_at_launch": 346338,
+      "observed_at": "2026-09-29T18:08:04.078205+00:00",
+      "genuine_outer_starts_observed": 40,
+      "workers_max": 4,
+      "timer": "iron-rfm-metric-learning-20260930-monitor.timer",
+      "monitor_interval_seconds": 600,
+      "approx_first_observation_local": "2026-09-30 02:18:04 Asia/Shanghai",
+      "local_root": "local/runs/rfm-metric-learning-r1",
+      "automatic_restart": false
     }
   }
 }

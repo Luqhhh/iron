@@ -1988,3 +1988,11 @@ RFM full-size G0 passed under frozen implementation9bb986c:4 procedures,
 references frozen. Independent fresh-process admission recheck passed,zero fits.
 Authorized next step is exactly one durable40-unit development with conditional
 confirmation after cold audit and independent arithmetic; no automatic release.
+
+RFM G1 launched under iron-rfm-metric-learning-20260930.service, initialPID346338,
+after G0 evidence publicationfb43f44. Launch verification2026-09-30 02:08:04 CST
+observed40 genuine cumulative outer starts (not40 concurrent/completed jobs).
+At most4 workers; frozen development->cold audit->independent arithmetic->earned
+confirmation only.600-second timer first observation approximately02:18:04 CST;
+no intervening polling. Keep all819 frozen source hashes unchanged. No G1 quality
+conclusion or release is established by this launch record.
