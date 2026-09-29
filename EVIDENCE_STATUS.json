@@ -15651,5 +15651,37 @@
     "planned_development_solver_fits": 80,
     "live_training_at_launch": true,
     "conditional_confirmation": "only if independently audited frozen development gates pass"
+  },
+  "strong_component_regularization_2026_09_29": {
+    "status": "implementation_and_g0_validation",
+    "user_authorized": true,
+    "branch": "codex/strong-component-regularization",
+    "preregistration": "docs/strong_component_regularization/PREREGISTRATION.md",
+    "spec": "configs/strong_component_regularization/SPEC.yaml",
+    "reference": "V32_TIME_A60V7_50",
+    "platform_reference_score": 96.3727,
+    "score_source": "user_reported_not_independently_verified",
+    "arms": [
+      "BASE",
+      "EMA",
+      "SAM"
+    ],
+    "estimand": "fixed_0.5_weight_replacement_of_native_V12_joint_iron_or_V7_periodic_time",
+    "development_outer_units": 60,
+    "development_optimizer_runs": 120,
+    "initialization_diagnostic_units": 6,
+    "baseline_replay_required_difference": 0.0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "v49_local_handoff": {
+      "status": "completed_no_finalist",
+      "audit_status": "passed",
+      "summary_sha256": "991f2b16712b9182983c72b90a964c64e2a8fa6ab2d746f840b2e9326e70a235",
+      "tangos_mean_gain": {
+        "tap_iron": -0.002789242466060514,
+        "tap_time_len": 0.000550881594284236
+      },
+      "historical_decisions_unchanged": true
+    }
   }
 }

@@ -1794,3 +1794,23 @@ candidates exist. No next round, full-data fit, release or upload. Pause after V
 Completion supervisor stops the timer and records terminal evidence. Private root
 local/runs/round2-v49; workflow-events.jsonl, completion-event.json and scheduled
 development-monitor/checks.jsonl retain progress/failure evidence. G1 unmeasured.
+
+### Strong-component regularization resumed (2026-09-29)
+
+User accepted the reviewed plan and said "好的，继续". This authorizes the
+BASE/EMA/SAM complete-development fixed-weight replacement batch on branch
+codex/strong-component-regularization; no numbered round is reserved.
+Controlling spec/docs: configs/strong_component_regularization/SPEC.yaml and
+docs/strong_component_regularization/PREREGISTRATION.md. Current reference
+remains user-reported V32_TIME_A60V7_50=96.3727. Replace .5 V12 joint iron or
+.5 V7 periodic time, other components/target unchanged. Native float32 BASE
+must replay each cached component exactly before candidate fits. No new blend
+weight search. Preserve prior gates and every-600-second monitoring.
+
+V49 local completion and audit finished with no finalist; verified summary
+991f2b16712b9182983c72b90a964c64e2a8fa6ab2d746f840b2e9326e70a235.
+TANGOS iron mean -.002789242466, time +.000550881594 with one negative seed.
+Keep the other worktree and V49 evidence untouched. No repeated TANGOS fits.
+BASE/EMA/SAM count: 60 development units/120 fits, plus 6 initialization
+diagnostic units/12 fits excluded from selection. Conditional confirmation
+only for eligible candidates. No full-data fit, package or upload authorized.

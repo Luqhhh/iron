@@ -139,10 +139,13 @@ budget:
   initialization_diagnostic_units: 6
   initialization_diagnostic_solver_fits: 12
   synthetic_refits: 6
+  synthetic_native_control_refits: 2
   candidate_workers: 4
   reference_workers: 4
   b0_pipeline_fit_calls_per_factory: 32
   confirmation_outer_units_max: 20
+  confirmation_base_replay_units: 20
+  confirmation_base_replay_solver_fits: 40
   confirmation_reference_factory_calls_max: 10
   full_data_fits: 0
   packages: 0

@@ -65,6 +65,9 @@ five folds, using same-recipe reference refits. These are additional splits
 of the same data, not fresh independent datasets. At most 20 candidate units
 /40 optimizer runs; 10 reference factory calls /320 component pipelines shared
 across targets (their internal neural selector/refits are separate work).
+Confirmation also costs 20 native BASE replay units /40 optimizer runs,
+separately from the candidate and factory costs; these enforce exact reference
+identity on the additional splits. Nonselected targets have no candidate arm.
 Require four positive split gains, paired seed LCB95>0, development package
 score >=96.25. Fold counts descriptive. No gate relaxation or platform forecast.
 
@@ -90,6 +93,8 @@ two spouts, target1=500+30*x0+20*sin(x1)+10*x2*x3+2*noise;
 target2=100+6*x0+4*sin(x1)+2*x2*x3+.4*noise, RNG seed52001.
 First2204 train, last550 query. Each target/arm trains a full 240-epoch
 refit: 6 synthetic fits. All must beat the training-median predictor;
+Two additional native 240-epoch synthetic BASE fits verify exact full-shape
+trajectory reproduction; total synthetic optimizer runs are therefore eight.
 there is no required synthetic advantage over BASE and no toy tuning.
 Fresh-process inference must match saved full-batch prediction exactly;
 reversed/chunked raw-output maximum difference <=5e-4 (native float32).
