@@ -1678,3 +1678,15 @@ Development and independent audit terminal events received through inotify,
 exit 0 at 03:36:30 /03:36:37 UTC; PID 0 terminal success verified. Timer stopped
 before first checkpoint; no intermediate health/metric polling. No live tasks.
 Staged goal remains active; platform best user-reported 96.3727 unchanged.
+
+
+### V48 reserved: separately frozen factorized-spline epoch study
+
+V47 cap traces justify testing max_epochs 400->2000, with no other change to
+model/training/protocol/gates. Freeze configs/round2_v48/SPEC.yaml and
+docs/round2_v48/PREREGISTRATION.md. Both AFM2/AHOFM4 extended, only AHOFM4
+eligible. Require exact old parameter/trace/prediction prefixes captured during
+new fits (never load/copy old states into training); independent prefix audit.
+Two full 2000-epoch synthetic fits and full locked suite before 40 real-data
+units/80 fits. Keep V47 immutable; no external weights/data or release.
+600-second monitoring; actual completion events may trigger audit.

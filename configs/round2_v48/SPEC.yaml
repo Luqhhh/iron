@@ -1,0 +1,194 @@
+version: round2-v48-factorized-spline-epochs
+source_plan: docs/round2_v48/PREREGISTRATION.md
+base_commit: 2803aca
+platform_target: 96.5
+platform_reference:
+  candidate: V32_TIME_A60V7_50
+  score: 96.3727
+  source: user_reported_not_independently_verified
+  zip_sha256: 54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+runtime_versions:
+  torch: 2.14.0+cpu
+  tabm: 0.0.3
+  rtdl-num-embeddings: 0.0.12
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+  scipy: 1.18.1
+split_seeds:
+- 42
+- 3407
+confirmation_seeds:
+- 271828
+- 314159
+folds: 5
+targets:
+- tap_iron
+- tap_time_len
+recipes:
+- AFM2
+- AHOFM4
+candidates:
+  tap_iron: &id001
+  - AFM2
+  - AHOFM4
+  tap_time_len: &id002
+  - AFM2
+  - AHOFM4
+tie_preference_by_target:
+  tap_iron: *id001
+  tap_time_len: *id002
+reference_by_target:
+  tap_iron: R48_CURRENT_REFIT
+  tap_time_len: R48_CURRENT_REFIT
+reference:
+  protocol: frozen_deployment_recipe_refitted_on_each_supplied_training_partition
+  v36_factory: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+  n_trial: v36-s1-N-0048
+  joint_spec: configs/round2_v12/SPEC.yaml
+  joint_recipe: joint_plr001
+  periodic_spec: configs/round2_v7/SPEC.yaml
+  periodic_recipe: tabm_plr001
+  iron_weights:
+    v36: 0.5
+    v12_joint: 0.5
+  time_weights:
+    v36: 0.2
+    n0048: 0.3
+    v7_periodic: 0.5
+calibration:
+  split_seed: 27001
+  n_splits: 5
+  held_fold: 0
+  epoch_selection: calibration_raw_mae
+  weight_selection: calibration_raw_mae_smallest_weight_on_ties
+  blend_grid:
+  - 0.0
+  - 0.05
+  - 0.1
+  - 0.2
+  - 0.35
+  - 0.5
+  - 0.75
+  - 1.0
+  query_labels: prohibited_in_fit_and_weight_selection
+training:
+  model: signed_low_rank_piecewise_linear_spline_anova
+  quantile_knots: 16
+  rank_per_order: 16
+  control_orders:
+  - 2
+  candidate_orders:
+  - 2
+  - 3
+  - 4
+  random_seed: 42
+  basis: train_quantile_linear_hats_clamped_centered_with_separate_standardized_numeric_linear_terms
+  categorical: one_centered_onehot_group_unknown_zero_before_centering
+  interaction_grouping: distinct_original_numeric_features_plus_one_spout_group
+  factor_initial_std: 0.25
+  rank_weight_initial: 0.25
+  optimizer: AdamW
+  learning_rate: 0.003
+  weight_decay: 0.0001
+  coefficient_second_difference_penalty: 0.001
+  loss: standardized_mae
+  max_epochs: 2000
+  patience: 50
+  min_delta_standardized_mae: 1.0e-05
+  batch_size: 256
+  gradient_norm_clip: 5.0
+  dtype: float64
+  prediction_postprocessing: none
+  recurrence: Newton_power_sums_with_order_specific_factors
+  epoch_selection: inner_calibration_mae_then_fresh_refit_same_epoch_count
+promotion:
+  confirmation_per_target_max: 1
+  two_development_seeds_positive: true
+  min_split_seeds: 4
+  all_seed_gains_positive: true
+  seed_level_paired_lcb95_gt: 0.0
+  fold_level: descriptive_only
+  local_working_gate: 96.25
+  ranking: mean_gain_then_frozen_cost_order
+  eligible_recipes:
+  - AHOFM4
+  mechanism_mean_gain_over_control_gt: 0.0
+  development_mean_gain_ge: 0.01
+budget:
+  development_candidate_outer_fits: 40
+  confirmation_candidate_outer_fits_max: 20
+  development_b0_factory_calls: 0
+  confirmation_b0_factory_calls_max: 20
+  b0_pipeline_fit_calls_per_factory: 32
+  candidate_workers: 4
+  reference_workers: 4
+  concurrent_reference_calls: 2
+  full_data_fits: 0
+  packages: 0
+  verified_reference_units_reused: 20
+  candidate_solver_fits_per_outer_unit: 2
+  development_solver_fits: 80
+  synthetic_solver_fits: 2
+release:
+  automatic_packages: false
+  desktop_writes: 0
+  agent_uploads: 0
+reference_cache:
+  directory: local/runs/round2-v27/development-r1
+  original_commit: d07dc35
+  manifest_sha256: d84817b95671bfa415269fdefb94eb4edd0f8a358e351b301885ee596c1adadc
+  audit_sha256: 8e62fc1f374f23d719a67287fcc714d3b6e19d78741511f64c461c5a88ccb3fc
+  reuse: development references only after hash, fit/query ID, fold, data, recipe
+    and original source verification
+preflight:
+  cold_predict_atol: 1.0e-08
+  synthetic_fits: 2
+  max_projected_hours: 7.61
+  max_worker_rss_mib: 1536
+  required:
+  - anova_recurrence_matches_distinct_group_enumeration_and_gradients
+  - order2_initialization_matched_between_arms
+  - training_only_knots_centering_and_scaling
+  - constant_duplicate_knots_unknown_category
+  - synthetic_four_way_learnability
+  - query_label_rejection_and_partition_ids
+  - cold_numpy_dp_order_chunk_invariance
+  - epoch_selection_and_refit_trace
+  - reference_cache_identity
+  - exact_v47_prefix_state_trace_prediction_for_all_models
+cache_original_reference:
+  protocol: frozen_deployment_recipe_refitted_on_each_supplied_training_partition
+  v36_factory: bf_tap_r2.v4_1_reference.V36FixedRecipeFactory
+  n_trial: v36-s1-N-0048
+  joint_spec: configs/round2_v12/SPEC.yaml
+  joint_recipe: joint_plr001
+  periodic_spec: configs/round2_v7/SPEC.yaml
+  periodic_recipe: tabm_plr001
+  iron_weights:
+    v36: 0.5
+    v12_joint: 0.5
+  time_weights:
+    v36: 0.325
+    n0048: 0.175
+    v7_periodic: 0.5
+platform_milestones:
+- 96.4
+- 96.45
+- 96.5
+monitoring:
+  interval_seconds: 600
+  between_check_polling: false
+  completion_event_audit: true
+prefix_reference:
+  directory: local/runs/round2-v47/development-r1
+  spec: configs/round2_v47/SPEC.yaml
+  spec_sha256: 5d2aa4bd0c7a166c6176313af106e61cc924117adb6658e70773b7c2f06416bd
+  manifest_sha256: 8e4b6ce49a5373d616364b8c7b8c042b3e8dbb337d65b171cd88353fdc9055db
+  audit_sha256: 3f37e371f1daa0de25af5eb763729eee728ce371f6ffeedf3f9b3e211f909137
+  synthetic_directory: local/runs/round2-v47/preflight-r1
+  synthetic_report_sha256: b8fb1185dd2140a4ca1f46f63f4a17d31818ec198262837298d9e0d23e9f2f39
+  exact_state_and_trace_required: true
