@@ -1,0 +1,64 @@
+version: rfm-metric-learning-v1
+approved_design_commit: 86ea6b3
+arms: [FIXED_KRR, FULL_RFM]
+eligible_arm: FULL_RFM
+targets: [tap_iron, tap_time_len]
+numeric_features: 21
+numeric_preprocessor: native_raw_tabm_float32_then_float64
+category_metric: fixed_one_hot_native_unknown_zero
+kernel: laplace
+bandwidth: positive_unordered_training_pair_median_at_identity
+bandwidth_fixed_within_path: true
+diagonal_regularizer: 0.01
+states: [0, 1, 2, 3]
+gradient_query_block: 128
+coincident_distance_threshold: 1.0e-12
+agop: uncentered_mean_gradient_outer_product
+negative_eigenvalue_limit: -1.0e-10
+metric_trace: 21
+identity_shrinkage: 0.01
+inner_seed: 42
+inner_calibration_fold: 0
+selection: minimum_mae_exact_ties_fewest_updates
+outer_refit: fresh_preprocessing_bandwidth_target_scales_identity_metric
+blend_weight: 0.2
+other_target: unchanged_current
+development_seeds: [42, 3407]
+confirmation_seeds: [7777, 12011]
+folds: 5
+development_limits: {outer_fit: 40, procedure: 80, solve: 200, update: 120}
+confirmation_limits_per_earned_target: {outer_fit: 20, procedure: 40, solve: 100, update: 60}
+development_gate:
+  each_seed_gain_positive: true
+  mean_gain_minimum: 0.01
+  control_advantage_positive: true
+  mean_package_score_minimum: 96.25
+confirmation_gate:
+  every_seed_gain_positive: true
+  seed_lcb95_positive: true
+  t_multiplier: 2.3533634348018264
+  sample_sd_ddof: 1
+  four_seed_control_advantage_positive: true
+fold_evidence: descriptive_only
+synthetic:
+  seed: 56001
+  rows: 2755
+  train_rows: 2204
+  query_rows: 551
+  formula: 10+2*sin(x0)+x1*x2+0.5*x3+0.1*epsilon
+  limits: {procedure: 4, solve: 10, update: 6}
+  full_refit_updates: 3
+  each_arm_must_beat_training_median: true
+  cold_tolerance: 1.0e-8
+resources:
+  workers: 4
+  numeric_threads: 1
+  maximum_worker_mib: 1536
+  free_memory_rule: 4*maximum_measured_peak+1024
+  projection_seconds: 20*(FULL_seconds+FIXED_seconds)/4*1.5+300
+  projection_maximum_seconds: 7200
+monitor_interval_seconds: 600
+runtime: exact_environment_versions_in_frozen_manifest
+retry: false
+automatic_release: false
+automatic_upload: false

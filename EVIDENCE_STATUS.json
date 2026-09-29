@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "RESOURCE_ADMISSION_IMPLEMENTED_CONTROLLER_AND_FULL_VERIFICATION_PENDING",
+    "status": "FULL_LOCKED_SUITE_PASSED_READY_FOR_FROZEN_RESOURCE_ADMISSION",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16057,12 +16057,17 @@
     "current_best_user_reported": 96.3727,
     "G0": {
       "focused_locked_python312_tests_passed": 63,
-      "full_suite_run": false,
+      "full_suite_run": true,
       "full_size_resource_admission": false,
       "protected_source_files_verified": 633,
       "protected_source_mismatches": 0,
       "tiny_synthetic_training_rows_max": 40,
-      "pure_kernel_query_rows_max": 259
+      "pure_kernel_query_rows_max": 259,
+      "full_suite_passed": 1372,
+      "full_suite_skipped": 8,
+      "full_suite_warnings": 23,
+      "rfm_tests_skipped": 0,
+      "full_suite_receipt_sha256": "08d73f421c13b85713822eee5773eed66fea046ac6547cc088ba1511672cbe91"
     },
     "G1": "NO_NEW_QUALITY_MEASUREMENT",
     "formal_fits": 0,
@@ -16072,7 +16077,7 @@
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Implement independent arithmetic, one-shot controller/600-second monitoring and full SPEC; run full locked suite before freezing sources and measuring the one-shot resource admission.",
+    "next_action": "Commit/push tested implementation, freeze source/runtime/reference manifest, execute one-shot resource admission, and launch durable G1 controller only if all gates pass.",
     "milestone2": {
       "modules": [
         "rfm_model.py",
@@ -16136,6 +16141,14 @@
       "forced_full_refit_updates": 3,
       "full_size_measured": false,
       "manifest_generated": false
+    },
+    "milestone8": {
+      "controller_implemented": true,
+      "independent_saved_prediction_arithmetic": true,
+      "monitor_interval_seconds": 600,
+      "explicit_G1_launch_authorized": true,
+      "original_cache_failure_retained": true,
+      "exact_cache_copies": 45
     }
   }
 }

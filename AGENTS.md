@@ -1971,3 +1971,13 @@ solves/updates, forced3-update FULL refit and unchanged memory/runtime gates.
 63 focused tests pass; all test fits remain tiny. No full-size resource probe
 or official fit has run. Independent arithmetic/controller/600-second monitor,
 complete SPEC and full locked suite must exist before manifest freeze/G0.
+
+
+User explicitly authorized G1 launch after E-COMPOSE completion and G0 admission.
+E terminal success and633 protected source hashes verified unchanged. Complete
+RFM controller, independent saved-prediction arithmetic,600-second monitor entry
+and SPEC now exist. Locked Python3.12 full suite1372 passed,8 historical-private-
+cache/package skips,23 warnings. Initial2 missing-cache failures retained;45
+byte-identical local cache copies repaired environment without source/gate edits.
+Freeze tested committed source before the one-shot full-size G0; only a passed
+admission may launch G1. Still no package, desktop write or upload authority.

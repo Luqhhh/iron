@@ -6,7 +6,7 @@ import pytest
 
 from bf_tap_r2.data import TARGETS
 from bf_tap_r2.rfm_execution import execute_unit, audit_unit, validate_partition, task_name, _expected_events, collect_audited_phase
-from bf_tap_r2.rfm_protocol import ReservationLedger, canonical, phase_limits, phase_tasks
+from bf_tap_r2.rfm_protocol import ReservationLedger, canonical, phase_limits, phase_tasks, write_new, file_hash
 from test_rfm_model import sample
 
 
@@ -48,7 +48,7 @@ def test_invalid_task_refused_before_any_fitting():
         with pytest.raises(ValueError):task_name(dict(target='tap_iron',arm='FULL_RFM',seed=42,fold=0,**{})|change)
 
 
-def test_complete_phase_rebuilds_all_columns_and_rejects_unbound_receipt(tmp_path):
+def test_complete_phase_rebuilds_all_columns_and_rejects_unbound_receipt(tmp_path,monkeypatch):
     # A complete tiny phase exercises real saved models, receipt accounting,
     # independent audits and tier integration without official labels.
     frame=sample(30)
@@ -75,6 +75,19 @@ def test_complete_phase_rebuilds_all_columns_and_rejects_unbound_receipt(tmp_pat
     assert report['release_authorized'] is False
     assert report['tiers']['release_authorized'] is False
     assert all(set(c)=={'FULL_RFM'} for c in report['tiers']['decisions'].values())
+    # A separate implementation rebuilds the arithmetic from the saved NPZs.
+    from bf_tap_r2 import rfm_arithmetic as arithmetic
+    control=tmp_path.parent
+    monkeypatch.setattr(arithmetic,'verify_manifest',lambda *args:{'workspace':str(workspace)})
+    monkeypatch.setattr(arithmetic,'reload_references',lambda m:(frame,folds,current,historical,{}))
+    # check_phase uses the fixed development directory beneath the manifest.
+    stage=control/'development'
+    stage.symlink_to(tmp_path,target_is_directory=True)
+    write_new(tmp_path/'complete.json',{'unit_anchors':anchors})
+    write_new(tmp_path/'audit.json',dict(report,manifest_sha256='synthetic',
+                                      phase_complete_sha256=file_hash(tmp_path/'complete.json')))
+    check=arithmetic.check_phase(control/'manifest.json','synthetic','development',file_hash(tmp_path/'audit.json'))
+    assert check['selected_targets']==report['decision']['eligible_targets']
     with pytest.raises(ValueError,match='anchors'):collect(dict(list(anchors.items())[:-1]))
     # Endpoints are not trusted merely because every model file passes audit.
     path=next((ledger.root/'events').glob('outer_fit-*.complete.json'))
