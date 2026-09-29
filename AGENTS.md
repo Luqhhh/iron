@@ -1949,3 +1949,11 @@ are the approved native OOF references, not bit-identical E-COMPOSE factory
 replays; never mix their predictions. RFM fixed20% scoring/development and
 confirmation gates are implemented;46 focused tests. Full runner, phase audit,
 controller, full locked suite and resource admission remain pending before G1.
+
+RFM outer-unit execution and complete-phase artifact collection are implemented;
+51 focused locked Python3.12 tests pass, including a full40-unit tiny synthetic
+phase. Query labels/overlapping IDs/feature groups are rejected, every selected
+path and outer receipt reconciles against frozen budget limits, and onlyFULL_RFM
+enters candidate tiers. Source/reference phase binding, bounded scheduler,
+fresh-process phase audit, controller, full suite and resource admission remain
+pending. No official model fit, full-size probe or release has started.

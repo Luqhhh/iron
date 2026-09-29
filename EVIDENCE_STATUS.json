@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "FOUR_SEED_REFERENCE_AND_SCORING_VERIFIED_PHASE_RUNNER_PENDING",
+    "status": "OUTER_UNITS_AND_PHASE_COLLECTION_VERIFIED_ADMISSION_PENDING",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16056,7 +16056,7 @@
     ],
     "current_best_user_reported": 96.3727,
     "G0": {
-      "focused_locked_python312_tests_passed": 46,
+      "focused_locked_python312_tests_passed": 51,
       "full_suite_run": false,
       "full_size_resource_admission": false,
       "protected_source_files_verified": 633,
@@ -16104,6 +16104,15 @@
       "E_COMPOSE_terminal": true,
       "E_COMPOSE_summary_sha256": "49e6acab8accfd801958265fb074831a1406881c8c341b7fd359f1e7f544929c",
       "E_COMPOSE_no_finalist": true
+    },
+    "milestone5": {
+      "module": "rfm_execution.py",
+      "synthetic_complete_phase_units": 40,
+      "synthetic_complete_phase_procedures": 80,
+      "query_label_isolation": true,
+      "exact_reservation_reconciliation": true,
+      "phase_source_reference_binding": false,
+      "formal_run_started": false
     }
   }
 }
