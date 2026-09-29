@@ -15407,7 +15407,7 @@
     "note": "V45 was already terminal at this user-authorized check. Old timer stopped; apply 600 seconds at the next launch, without an idle timer."
   },
   "round2_v46_refined_family_bound": {
-    "status": "IMPLEMENTED_TESTED_ANALYSIS_PENDING",
+    "status": "COMPLETED_INDEPENDENTLY_CERTIFIED",
     "branch": "round2-v46-refined-family-bound",
     "spec": "configs/round2_v46/SPEC.yaml",
     "plan": "docs/round2_v46/PREREGISTRATION.md",
@@ -15428,6 +15428,37 @@
       "locked_python312_tests_passed": 1264,
       "warnings": 23,
       "focused_tests_passed": 8
-    }
+    },
+    "implementation_commit": "7750ce6",
+    "results": "docs/round2_v46/RESULTS.md",
+    "time_fixed_iron_upper": 96.39683487654322,
+    "iron_upper": 96.38455000000002,
+    "family_upper": 96.41353487654322,
+    "family_exact_upper": "312379853/3240000",
+    "milestones": [
+      {
+        "target": 96.4,
+        "excluded_under_assumptions": false,
+        "exact_margin_upper_minus_target": "43853/3240000"
+      },
+      {
+        "target": 96.45,
+        "excluded_under_assumptions": true,
+        "exact_margin_upper_minus_target": "-118147/3240000"
+      },
+      {
+        "target": 96.5,
+        "excluded_under_assumptions": true,
+        "exact_margin_upper_minus_target": "-280147/3240000"
+      }
+    ],
+    "time_only_first_milestone_excluded": true,
+    "iron_headroom_is_unmeasured_upper_only": true,
+    "G1": "NO_NEW_MODEL_OR_PLATFORM_MEASUREMENT",
+    "audit_status": "passed",
+    "cell_vertex_certificates": 4880,
+    "coarse_vertex_certificates": 8,
+    "report_sha256": "08c7c3b5408e2bddb31959fedcb8813431cad6dbdf074ebd276bc36aa56c15ab",
+    "audit_sha256": "056086424e2490e1a1b9eadfd86ccae9f0d9d60c76bc792bd4cf3e87174b1898"
   }
 }

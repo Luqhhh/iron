@@ -1589,3 +1589,24 @@ V46 implementation and independent Fraction-only auditor are ready. Eight
 analytic/adversarial tests pass; locked Python 3.12 suite 1264 passed, 23
 existing warnings. Full fixed-partition observation calculation is pending.
 Protocol 651f1da. Do not claim feasibility or recommend a package from a bound.
+
+
+### V46 complete: first-stage time-only route excluded (2026-09-29)
+
+V46 bound and independent Fraction-only audit pass: 1600 time triangles,
+40 iron intervals, 4880 cell-vertex plus 8 coarse rational certificates.
+Locked suite 1264 passed. Source H1 feedback is 96.364 +/-0.0005, as only
+three decimals were reported. Full details: docs/round2_v46/RESULTS.md.
+
+Keeping incumbent iron fixed, every nonnegative convex mixture of the fixed
+V36/N0048/V7m time predictions is <=96.396835 (rounded upward), below 96.4.
+Allowing iron to mix V36/V12-joint too gives <=96.413535, exact
+312379853/3240000: excludes 96.45 and 96.5, but does NOT exclude or establish
+96.4. The .01670 iron headroom is an unmeasured bound, never a promised gain.
+Conditions: correct reported scores/ZIP identities, declared rounding and
+fixed-row additive WMAPE. No claim outside the fixed convex family. Never
+rank uploads by these bounds; no new package recommended. Preserve V41.
+
+This zero-fit, zero-label/prediction-read analysis made no new model or
+platform measurement. Continue staged optimization toward new predictive
+increments; best stays user-reported 96.3727. Monitoring remains 600 seconds.
