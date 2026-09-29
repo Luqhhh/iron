@@ -1758,3 +1758,12 @@ found. Fixed sampled auxiliary rule/weights; no grid or pretrained/external data
 Float64 matched arms, not exact historical V7 reproduction. Full locked tests,
 synthetic/cold/resource admission before 40 units/80 fits. Existing reference,
 promotion gates and 600-second monitoring unchanged. No automatic release.
+
+V49 resumed at explicit user request; pause after this round. Implementation
+validated: locked Python 3.12 suite 1289 passed (23 existing warnings), including
+10 V49 mechanism, saved-state/tamper, partition and runner tests. Runtime and
+20 reference cache units verified. Saved-model audit reconstructs train-only
+preprocessing, target scale, parameter shape/dtype, exact auxiliary update counts,
+selected epoch, calibration predictions/weights and complete OOF gates. Synthetic
+cold/resource admission pending; no actual-data fits yet. No external weights/data,
+full-data fits, packages or upload. Monitor every 600 seconds without extra polling.

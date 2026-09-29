@@ -15617,5 +15617,22 @@
     "audit_sha256": "ac74101bc3b4e335cf7faad5da123e1a20a9a891a7bad43630773fe4bd4ba6fd",
     "monitor_stopped": true,
     "live_training": false
+  },
+  "round2_v49_latent_gradient_regularization": {
+    "status": "IMPLEMENTATION_VALIDATED_SYNTHETIC_ADMISSION_PENDING",
+    "branch": "round2-v49-latent-gradient-regularization",
+    "protocol_commit": "5e2fb78",
+    "spec": "configs/round2_v49/SPEC.yaml",
+    "plan": "docs/round2_v49/PREREGISTRATION.md",
+    "g0": "1289 locked Python 3.12 tests passed; runtime and 20 reference cache units verified; synthetic admission pending",
+    "g1": "unmeasured",
+    "monitor_interval_seconds": 600,
+    "between_check_polling": false,
+    "pause_after_v49": true,
+    "real_data_fits": 0,
+    "synthetic_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "user_authorization": "Start V49; pause after this round"
   }
 }
