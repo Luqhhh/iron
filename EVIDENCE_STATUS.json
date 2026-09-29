@@ -15407,7 +15407,7 @@
     "note": "V45 was already terminal at this user-authorized check. Old timer stopped; apply 600 seconds at the next launch, without an idle timer."
   },
   "round2_v46_refined_family_bound": {
-    "status": "PREREGISTERED_ZERO_FIT_ANALYSIS",
+    "status": "IMPLEMENTED_TESTED_ANALYSIS_PENDING",
     "branch": "round2-v46-refined-family-bound",
     "spec": "configs/round2_v46/SPEC.yaml",
     "plan": "docs/round2_v46/PREREGISTRATION.md",
@@ -15422,6 +15422,12 @@
     "label_reads": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "uploads": 0
+    "uploads": 0,
+    "protocol_commit": "651f1da",
+    "G0": {
+      "locked_python312_tests_passed": 1264,
+      "warnings": 23,
+      "focused_tests_passed": 8
+    }
   }
 }

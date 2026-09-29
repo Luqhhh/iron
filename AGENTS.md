@@ -1583,3 +1583,9 @@ over measured/grid points or a forecast. Independent Fraction-only certificate
 and tiling verification required. No labels, fits, new packages or uploads.
 Do not rank or recommend uploads by upper bounds. Keep V41 and old decisions
 unchanged; explicitly compare exclusion of 96.4/96.45/96.5 under assumptions.
+
+
+V46 implementation and independent Fraction-only auditor are ready. Eight
+analytic/adversarial tests pass; locked Python 3.12 suite 1264 passed, 23
+existing warnings. Full fixed-partition observation calculation is pending.
+Protocol 651f1da. Do not claim feasibility or recommend a package from a bound.
