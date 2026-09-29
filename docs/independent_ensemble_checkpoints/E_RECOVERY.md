@@ -43,3 +43,16 @@ and targets, deterministic fixture reconstruction, queue/scope mismatches and
 frozen-source tampering rejection. Zero-fit original-evidence verification
 passes90 completed units. Private test log and initial corrected exception-text
 test failure are retained underengineering-r2/.
+
+## Recovery launch
+
+Implementation81c74cc was committed and ordinary-pushed to the configured
+upstream. After the old service terminal state was saved underengineering-r2/,
+the same named transient service was reused for the explicit new E-only
+workflow at23:06:20 CST. Initial verified MainPID303016 wasactive/running;
+E synthetic admission child303027 started23:06:22. The service writes a new
+E-recovery-r2-workflow-output.log and a fresh recovery-r2/ tree; every old
+workflow output, completion event and partial directory remains intact.
+Source/config are frozen again. Subsequent checks use actual600-second
+observations or completion/failure events. Synthetic admission remains pending
+at this launch checkpoint, and no E-COMPOSE G1 conclusion has been measured.

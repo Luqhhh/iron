@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "DE3_COMPLETE_AUDITED_E_COMPOSE_ENGINEERING_RECOVERY_READY",
+    "status": "E_COMPOSE_RECOVERY_SYNTHETIC_ADMISSION_IN_PROGRESS_DE3_CLOSED",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16092,7 +16092,10 @@
           "max_cold_difference": 8.15470241377625e-06
         },
         "E-COMPOSE": {
-          "status": "pending_serial_DE3_completion"
+          "original_status": "failed_synthetic_ratio_domain",
+          "recovery_status": "running_revalidation",
+          "recovery_directory": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2/preflight-E-COMPOSE",
+          "no_original_evidence_overwritten": true
         }
       },
       "note": "Full suite plus final focused protocol-bridge check; initial missing ignored worktree configs and old-calibration mismatch preserved as zero-fit engineering failures.",
@@ -16146,7 +16149,7 @@
         "confirmation_new_fits": 0
       },
       "E-COMPOSE": {
-        "status": "synthetic_preflight_failed_before_official_candidate_fits",
+        "status": "recovery_synthetic_admission_in_progress",
         "failure": "V3 ratio features require positive denominators",
         "failed_directory": "local/runs/independent-ensemble-checkpoints-20260929/preflight-E-COMPOSE",
         "failed_log": "local/runs/independent-ensemble-checkpoints-20260929/E-COMPOSE-preflight.log",
@@ -16157,7 +16160,7 @@
         "original_evidence_preserved": true,
         "official_candidate_fits": 0,
         "recovery": {
-          "status": "validated_ready_to_start",
+          "status": "service_started_synthetic_admission_pending",
           "directory": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2",
           "supervisor": "bf_tap_r2.independent_checkpoints_recovery",
           "only_synthetic_inputs_shifted": [
@@ -16171,7 +16174,13 @@
           "original_de3_complete_units_reverified": 90,
           "source_changes_bound_to_original_commit": "906d31b",
           "automatic_retry": false,
-          "monitor_seconds": 600
+          "monitor_seconds": 600,
+          "implementation_commit": "81c74cc",
+          "started_local": "2026-09-29 23:06:20 Asia/Shanghai",
+          "service": "iron-independent-ensemble-checkpoints-20260929.service",
+          "initial_main_pid": 303016,
+          "initial_state": "active/running",
+          "original_terminal_state_preserved": "local/runs/independent-ensemble-checkpoints-20260929/engineering-r2/original-service-terminal-r2.txt"
         }
       },
       "qualified_platform_candidates": 0
@@ -16216,6 +16225,12 @@
       "private_originals_preserved": true,
       "desktop_writes": 0,
       "agent_uploads": 0
+    },
+    "publication": {
+      "de3_results_commit": "908a5d2",
+      "recovery_implementation_commit": "81c74cc",
+      "ordinary_upstream_push_verified": true,
+      "temporary_ssh_authentication_block_resolved_with_existing_credential": true
     }
   }
 }
