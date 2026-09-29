@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "IMPLEMENTATION_VALIDATED_SYNTHETIC_ADMISSION_PENDING",
+    "status": "SERIAL_WORKFLOW_STARTED_SYNTHETIC_DE3_PENDING",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16100,6 +16100,10 @@
     "full_data_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "implementation_commit": "d4413f3",
+    "service": "iron-independent-ensemble-checkpoints-20260929.service",
+    "started_local": "2026-09-29 21:44:44 Asia/Shanghai",
+    "initial_main_pid": 288423
   }
 }

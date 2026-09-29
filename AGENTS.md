@@ -1936,3 +1936,8 @@ Implementation checks:1341 full locked Python3.12 tests/23 existing warnings,
 35 final focused tests,20 exact native cold replays. Synthetic admissions and
 new G1 fits remain pending at this checkpoint; current best remains user-reported
 V32_TIME_A60V7_50=96.3727, staged goals96.4/96.45/96.5.
+
+Serial next-phase service launched21:44:44 CST, initial verified MainPID288423
+active/running. Implementation d4413f3 is committed/pushed. Source/config frozen;
+observe only supervisor600-second scheduled records or actual terminal events.
+DE3 synthetic admission is the first stage; no G1 conclusion at launch.
