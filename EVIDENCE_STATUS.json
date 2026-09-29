@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "E_COMPOSE_RECOVERY_SYNTHETIC_ADMISSION_IN_PROGRESS_DE3_CLOSED",
+    "status": "E_COMPOSE_G0_PASSED_DEVELOPMENT_PATH_METADATA_FAILURE_BEFORE_FITS",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16093,9 +16093,14 @@
         },
         "E-COMPOSE": {
           "original_status": "failed_synthetic_ratio_domain",
-          "recovery_status": "running_revalidation",
+          "recovery_status": "passed",
           "recovery_directory": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2/preflight-E-COMPOSE",
-          "no_original_evidence_overwritten": true
+          "no_original_evidence_overwritten": true,
+          "report": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2/preflight-E-COMPOSE/report.json",
+          "report_sha256": "658558a43be2de51ae6125bddca87e1edd1fad116332fb2008c8c518b6e598d9",
+          "projected_hours": 3.901639998169372,
+          "peak_rss_mib": 1097.87890625,
+          "passed_local": "2026-09-29 23:23:55 Asia/Shanghai"
         }
       },
       "note": "Full suite plus final focused protocol-bridge check; initial missing ignored worktree configs and old-calibration mismatch preserved as zero-fit engineering failures.",
@@ -16149,7 +16154,7 @@
         "confirmation_new_fits": 0
       },
       "E-COMPOSE": {
-        "status": "recovery_synthetic_admission_in_progress",
+        "status": "development_start_metadata_path_failure_before_any_official_fit",
         "failure": "V3 ratio features require positive denominators",
         "failed_directory": "local/runs/independent-ensemble-checkpoints-20260929/preflight-E-COMPOSE",
         "failed_log": "local/runs/independent-ensemble-checkpoints-20260929/E-COMPOSE-preflight.log",
@@ -16160,7 +16165,7 @@
         "original_evidence_preserved": true,
         "official_candidate_fits": 0,
         "recovery": {
-          "status": "service_started_synthetic_admission_pending",
+          "status": "stopped_on_development_path_failure",
           "directory": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2",
           "supervisor": "bf_tap_r2.independent_checkpoints_recovery",
           "only_synthetic_inputs_shifted": [
@@ -16180,7 +16185,13 @@
           "service": "iron-independent-ensemble-checkpoints-20260929.service",
           "initial_main_pid": 303016,
           "initial_state": "active/running",
-          "original_terminal_state_preserved": "local/runs/independent-ensemble-checkpoints-20260929/engineering-r2/original-service-terminal-r2.txt"
+          "original_terminal_state_preserved": "local/runs/independent-ensemble-checkpoints-20260929/engineering-r2/original-service-terminal-r2.txt",
+          "stopped_local": "2026-09-29 23:24:01 Asia/Shanghai",
+          "failed_log": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2/E-COMPOSE-development.log",
+          "cause": "resolved shared local symlink path cannot be relative_to isolated worktree",
+          "development_directory_created": false,
+          "official_candidate_fits": 0,
+          "next_step": "scoped_path_metadata_fix_and_zero_fit_revalidation_of_successful_admission_in_fresh_r3_directory"
         }
       },
       "qualified_platform_candidates": 0

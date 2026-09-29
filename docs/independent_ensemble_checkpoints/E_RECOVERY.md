@@ -56,3 +56,26 @@ workflow output, completion event and partial directory remains intact.
 Source/config are frozen again. Subsequent checks use actual600-second
 observations or completion/failure events. Synthetic admission remains pending
 at this launch checkpoint, and no E-COMPOSE G1 conclusion has been measured.
+
+## Admission passed; metadata path failure before development fits
+
+The actual recovery admission ended23:23:55 CST with exit0. Learnability,
+native-cache, independent cold inference and resource checks all passed.
+Conservative projected time3.90164hours, peak RSS1097.88MiB. It used one
+30-pipeline synthetic reference factory,2 synthetic selectors,4 explicit
+refits and4 native-control trajectories. These are G0 costs, not official
+G1 candidate fits. The original synthetic failure remains preserved.
+
+The development launcher failed23:24:01, before creating its run directory or
+performing any official candidate/reference fit. Its new manifest field called
+preflight.relative_to(root) on a path resolved through the worktree's shared
+local/ symlink. The physical private directory is outside the worktree lexical
+path even though it is inside the authorized shared run root. This is a routing
+metadata bug in the new engineering recovery, not a failed model-quality test.
+
+Preserve recovery-r2's successful admission, terminal failure and development
+log. Repair the stored relative reference using the existing bounded private
+run root. A new r3 run may reuse the passed admission only after explicit
+source-delta verification, original artifact binding and zero-fit fresh-process
+cold revalidation; it must not claim the original models were trained with later
+code. No repeated synthetic fitting or relaxed admission/quality threshold.

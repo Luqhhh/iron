@@ -1983,3 +1983,11 @@ explicit E-only recovery at23:06:20 CST, initialMainPID303016 active/running.
 Fresh recovery-r2/ artifacts and E-recovery-r2-workflow-output.log preserve all
 old outputs. Synthetic admission pending; source/config frozen again. No
 between-check polling, automatic retry, DE3 refit, package or upload.
+
+E recovery-r2 synthetic admission passed23:23:55:3.90164hour projection,
+1097.88MiB peak RSS, all checks true. Development failed23:24:01 before any
+official fit/directory creation: preflight.relative_to(root) mishandles shared
+local symlink resolution. Preserve successful admission and failure. Repair
+only bounded path metadata, then use a fresh r3 directory with explicit source
+delta/artifact validation and zero-fit cold revalidation of the passed admission.
+No repeated synthetic fitting, recipe change or threshold relaxation.
