@@ -1877,3 +1877,17 @@ seeds negative. No confirmation/full-data fit/package/upload; derived seeds
 Terminal service MainPID0/Resultsuccess, no live worker. Other queue deferred.
 User-reported platform best96.3727 unchanged; local scores are not forecasts.
 Details: docs/strong_component_regularization/SERIAL_RECOVERY_RESULTS.md.
+
+### Serial queue handoff after regularization completion (2026-09-29)
+
+The user requested "继续另一条队列". Augmentation/representation now runs
+serially on codex/component-augmentation-representation, in its isolated
+worktree. Implementation b065c41 and launch record 0e40e27 are committed/pushed
+on that branch. User service iron-component-augmentation-recovery-r2.service
+started19:18:11 CST. Shared private run root:
+local/runs/component-augmentation-representation-budget8, development-r2 and
+recovery-r2. Four workers,60 new units,20 verified reused BASE controls;425
+frozen sources unchanged, locked Python3.12 tests1318 passed. Preserve the
+explicit8-hour admission,600-second monitoring, original gates and zero
+automatic package/upload rule. The old "other queue deferred" record describes
+the earlier first-queue run; it does not describe the current handoff.

@@ -15868,5 +15868,32 @@
       "preserved_partial_selector_checkpoints": 3
     },
     "results": "docs/strong_component_regularization/SERIAL_RECOVERY_RESULTS.md"
+  },
+  "component_augmentation_serial_handoff_2026_09_29": {
+    "status": "development_running_in_isolated_worktree",
+    "user_authorization": "继续另一条队列",
+    "branch": "codex/component-augmentation-representation",
+    "implementation_commit": "b065c41",
+    "launch_record_commit": "0e40e27",
+    "previous_queue": "BASE_EMA_SAM_completed_no_development_finalist",
+    "service": "iron-component-augmentation-recovery-r2.service",
+    "started_local": "2026-09-29T19:18:11+08:00",
+    "private_root": "local/runs/component-augmentation-representation-budget8",
+    "development": "development-r2",
+    "control": "recovery-r2",
+    "documentation_on_execution_branch": "docs/component_augmentation_representation/SERIAL_RECOVERY.md",
+    "new_units": 60,
+    "reused_BASE_units": 20,
+    "workers": 4,
+    "monitoring_interval_seconds": 600,
+    "runtime_admission_cap_hours": 8.0,
+    "frozen_sources_unchanged": 425,
+    "locked_tests_passed": 1318,
+    "g0": "passed_and_reverified",
+    "g1": "in_progress",
+    "automatic_restart": false,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }
