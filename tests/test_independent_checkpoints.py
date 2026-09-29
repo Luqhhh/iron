@@ -224,6 +224,39 @@ def test_recovery_admission_requires_matching_queue_scope_and_sources(tmp_path, 
         runner.matching_admission(root, spec, "E-COMPOSE", Path("runs/preflight"))
 
 
+@pytest.mark.parametrize("shared_local", [False, True])
+def test_manifest_private_reference_survives_shared_local_symlink(tmp_path, shared_local):
+    from bf_tap_r2.independent_checkpoints_run import RUN_ROOT, private_reference
+    root = tmp_path/"worktree"; root.mkdir()
+    if shared_local:
+        shared = tmp_path/"shared-local"; shared.mkdir()
+        (root/"local").symlink_to(shared, target_is_directory=True)
+    else:
+        (root/"local").mkdir()
+    logical = Path(RUN_ROOT)/"recovery/preflight/report.json"
+    artifact = root/logical; artifact.parent.mkdir(parents=True); artifact.write_text("passed")
+    resolved = artifact.resolve()
+    if shared_local:
+        with pytest.raises(ValueError): resolved.relative_to(root)
+    reference = private_reference(root, resolved)
+    assert reference == str(logical)
+    assert (root/reference).resolve() == resolved
+    with pytest.raises(ValueError, match="private"):
+        private_reference(root, tmp_path/"unrelated/report.json")
+
+
+def test_admission_source_bridge_rejects_changes_beyond_path_metadata():
+    from bf_tap_r2.independent_checkpoints_resume import verify_routing_only
+    original = 'def candidate_unit():\n return 42\ndef run():\n return {"preflight": str(preflight.relative_to(root)), "weight": 0.5}\n'
+    current = original.replace('str(preflight.relative_to(root))', 'private_reference(root, preflight)')
+    current += 'def private_reference(root, path):\n return "bounded"\n'
+    verify_routing_only(original, current)
+    with pytest.raises(ValueError, match="beyond routing metadata"):
+        verify_routing_only(original, current.replace('return 42', 'return 104729'))
+    with pytest.raises(ValueError, match="beyond routing metadata"):
+        verify_routing_only(original, current.replace('"weight": 0.5', '"weight": 0.6'))
+
+
 @pytest.mark.parametrize("queue,seeds", [("DE3", [42, 3407]), ("DE3", [271828, 314159]),
                                         ("E-COMPOSE", [42, 3407]), ("E-COMPOSE", [271828, 314159])])
 def test_full_coverage_summary_and_confirmation_scope(tmp_path, queue, seeds):

@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "E_COMPOSE_G0_PASSED_DEVELOPMENT_PATH_METADATA_FAILURE_BEFORE_FITS",
+    "status": "E_COMPOSE_PATH_METADATA_FIXED_R3_ZERO_FIT_RESUME_READY",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16109,6 +16109,16 @@
         "existing_warnings": 23,
         "log": "local/runs/independent-ensemble-checkpoints-20260929/engineering-r2/pytest-python312.log",
         "log_sha256": "261ad9322172595b36a284b14a92c80d3c10b975ccfc61e28ed114e2cb964da6"
+      },
+      "path_recovery_r3": {
+        "full_locked_python312_tests_passed": 1347,
+        "existing_warnings": 23,
+        "focused_tests_passed": 40,
+        "test_log": "local/runs/independent-ensemble-checkpoints-20260929/engineering-r3/pytest-python312.log",
+        "test_log_sha256": "e5c48e7c1ea488ab1f92f20094fa5e82d2c4687c7da201275366e065534d689c",
+        "original_admission_artifacts_verified": 28,
+        "training_algorithm_ast_unchanged_verified": true,
+        "new_synthetic_training_runs": 0
       }
     },
     "G1": {
@@ -16192,6 +16202,18 @@
           "development_directory_created": false,
           "official_candidate_fits": 0,
           "next_step": "scoped_path_metadata_fix_and_zero_fit_revalidation_of_successful_admission_in_fresh_r3_directory"
+        },
+        "recovery_r3": {
+          "status": "validated_ready_to_start",
+          "directory": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r3",
+          "supervisor": "bf_tap_r2.independent_checkpoints_resume",
+          "successful_admission_reused_from": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2/preflight-E-COMPOSE",
+          "original_admission_sha256": "658558a43be2de51ae6125bddca87e1edd1fad116332fb2008c8c518b6e598d9",
+          "new_synthetic_fits": 0,
+          "zero_fit_fresh_process_cold_revalidation_required": true,
+          "model_recipe_and_gate_changes": false,
+          "monitor_seconds": 600,
+          "automatic_retry": false
         }
       },
       "qualified_platform_candidates": 0

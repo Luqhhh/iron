@@ -1991,3 +1991,10 @@ local symlink resolution. Preserve successful admission and failure. Repair
 only bounded path metadata, then use a fresh r3 directory with explicit source
 delta/artifact validation and zero-fit cold revalidation of the passed admission.
 No repeated synthetic fitting, recipe change or threshold relaxation.
+
+R3 bounded metadata fix ready: docs/independent_ensemble_checkpoints/E_RESUME_R3.md.
+1347 full locked Python3.12 tests/23 warnings and40 focused tests pass. AST
+source comparison permits only the private reference helper and one manifest
+path expression; all training/seed/weight/scoring computations are unchanged.
+28 original successful admission artifacts verified. Resume only in fresh r3
+after zero-fit fresh-process cold revalidation; no new synthetic/DE3 fits.

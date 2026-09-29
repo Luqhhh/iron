@@ -59,6 +59,12 @@ def private_path(root, output):
     return out
 
 
+def private_reference(root, path):
+    """Keep a bounded logical reference when local/ points outside the worktree."""
+    resolved = private_path(root, path)
+    return str(Path(RUN_ROOT)/resolved.relative_to((root/RUN_ROOT).resolve()))
+
+
 def sources(root):
     paths = list((root/"src/bf_tap_r2").glob("*.py"))+list((root/"configs").rglob("*.yaml"))
     paths += [root/"uv.lock", root/"pyproject.toml", root/"docs/independent_ensemble_checkpoints/PREREGISTRATION.md",
@@ -439,7 +445,7 @@ def run(root, output, queue, development=None, preflight_output=None):
     if out.exists(): raise ValueError("Run exists; preserve failure evidence, no implicit restart")
     manifest = {"spec_sha256": file_hash(root/SPEC), "versions": check_runtime(spec), "queue": queue,
                 "output_directory": str(out),
-                "preflight": str(preflight.relative_to(root)), "preflight_sha256": file_hash(preflight),
+                "preflight": private_reference(root, preflight), "preflight_sha256": file_hash(preflight),
                 "source_hashes": sources(root), "data_hashes": {str(p.relative_to(root)): file_hash(p) for p in (root/"复赛_train").glob("*.csv")},
                 "fold_hashes": {str(s): digest(fv.tolist()) for s, fv in folds.items()}, "seeds": seeds,
                 "development": str(development) if development else None,
