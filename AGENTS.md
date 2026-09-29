@@ -1912,3 +1912,27 @@ No full-data fits, packages, desktop writes or uploads. Preserve all original
 partial directories, failed admissions and decisions; do not extend these
 frozen batches implicitly. Earlier "running" and "deferred" entries are
 historical observations.
+
+### Independent ensemble/checkpoint phase authorized (2026-09-29)
+
+The user requested full implementation of iron_next_phase_20260929.zip.
+New isolated branch codex/independent-ensemble-checkpoints; controlling spec
+configs/independent_ensemble_checkpoints/SPEC.yaml and preregistration
+docs/independent_ensemble_checkpoints/PREREGISTRATION.md. Execute DE3 then
+E-COMPOSE serially, including separate synthetic/resource admissions, independent
+audits and confirmation only for earned finalists. Fixed training seeds
+42/104729/130363 never alter native inner seed42 or outer seeds42/3407.
+Reuse20 native BASE units only after complete original identity verification.
+New checkpoint inner backgrounds train only on native A, never A+C when
+selecting on C. Old calibration cache identity is distinct and cannot substitute.
+E-TARGET and E-COMPOSE are both prospectively eligible; at most one per target
+earns confirmation. Native stopping/min_delta and all original promotion gates
+remain unchanged. Explain composition gain separately from target-only selection.
+No seed/epoch/weight grid extension or mechanism stacking; stop after these two
+bounded queues. No automatic full-data fit/package/desktop write/upload.
+Monitoring uses actual600-second scheduled observations and terminal events,
+no between-check polling. Preserve source/data/runtime hashes and failed evidence.
+Implementation checks:1341 full locked Python3.12 tests/23 existing warnings,
+35 final focused tests,20 exact native cold replays. Synthetic admissions and
+new G1 fits remain pending at this checkpoint; current best remains user-reported
+V32_TIME_A60V7_50=96.3727, staged goals96.4/96.45/96.5.

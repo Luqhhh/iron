@@ -16043,5 +16043,63 @@
     "full_data_fits": 0,
     "packages": 0,
     "uploads": 0
+  },
+  "independent_ensemble_checkpoints_2026_09_29": {
+    "status": "IMPLEMENTATION_VALIDATED_SYNTHETIC_ADMISSION_PENDING",
+    "branch": "codex/independent-ensemble-checkpoints",
+    "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
+    "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
+    "preregistration": "docs/independent_ensemble_checkpoints/PREREGISTRATION.md",
+    "run_root": "local/runs/independent-ensemble-checkpoints-20260929",
+    "queues": [
+      "DE3",
+      "E-COMPOSE"
+    ],
+    "serial": true,
+    "training_seeds": [
+      42,
+      104729,
+      130363
+    ],
+    "development_split_seeds": [
+      42,
+      3407
+    ],
+    "confirmation_split_seeds": [
+      271828,
+      314159
+    ],
+    "reference": {
+      "candidate": "V32_TIME_A60V7_50",
+      "score": 96.3727,
+      "source": "user_reported_not_independently_verified"
+    },
+    "G0": {
+      "full_locked_python312_suite_passed": 1341,
+      "existing_warnings": 23,
+      "final_focused_tests_passed": 35,
+      "native_full_units_verified": 20,
+      "original_reference_cache_verified": true,
+      "runtime_verified": true,
+      "synthetic_resource_admission": "pending_separate_per_queue",
+      "note": "Full suite plus final focused protocol-bridge check; initial missing ignored worktree configs and old-calibration mismatch preserved as zero-fit engineering failures."
+    },
+    "G1": "UNMEASURED_NO_NEW_OFFICIAL_FITS_YET",
+    "milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "promotion": "unchanged_two_positive_development_splits_mean_ge_0.01_then_four_positive_splits_positive_seed_lcb95_and_local_working_gate_96.25",
+    "monitoring": {
+      "interval_seconds": 600,
+      "between_check_polling": false,
+      "completion_event_audit": true
+    },
+    "release_authorized": false,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0
   }
 }

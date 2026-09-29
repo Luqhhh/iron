@@ -11,6 +11,7 @@ dist/
 # Official competition data and all recoverable real-data artifacts stay local.
 /初赛数据集/
 /local/
+/local
 /configs/*.local.yaml
 *.cbm
 result.csv
