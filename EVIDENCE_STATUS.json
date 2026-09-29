@@ -15328,7 +15328,7 @@
     }
   },
   "round2_v45_rotation_forest": {
-    "status": "G0_ADMITTED_DEVELOPMENT_NOT_YET_STARTED",
+    "status": "FROZEN_DEVELOPMENT_AND_COMPLETION_TRIGGERED_AUDIT_RUNNING",
     "branch": "round2-v45-rotation-forest",
     "plan": "docs/round2_v45/PREREGISTRATION.md",
     "spec": "configs/round2_v45/SPEC.yaml",
@@ -15359,11 +15359,23 @@
       },
       "report_sha256": "9c7bb291be6b749cdaad5c854fe48a08cb518e7596e119ad454f75f25277c731"
     },
-    "G1": "NOT_EVALUATED",
+    "G1": "DEVELOPMENT_AND_AUDIT_PENDING",
     "implementation_commit": "a2106ec",
     "synthetic_fits_completed": 2,
     "preflight_projected_hours": 0.0705752928222258,
     "preflight_peak_rss_mib": 459.0,
-    "results": "docs/round2_v45/G0_RESULTS.md"
+    "results": "docs/round2_v45/G0_RESULTS.md",
+    "service": "iron-v45-development-r1.service",
+    "initial_main_pid": 178909,
+    "started_at": "2026-09-29T10:29:36+08:00",
+    "run": "local/runs/round2-v45/development-r1",
+    "monitor_timer": "iron-v45-development-hourly.timer",
+    "monitor_interval_seconds": 3600,
+    "monitor_first_due_approx": "2026-09-29T11:29:36+08:00",
+    "monitor_due_monotonic_us": 81831361451,
+    "official_development_launched": true,
+    "planned_candidate_units": 40,
+    "planned_forest_fits": 80,
+    "planned_component_tree_fits": 20480
   }
 }

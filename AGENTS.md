@@ -1534,3 +1534,18 @@ Source/runtime/reference checks and current RAM admission pass. Admit the fixed
 remains unmeasured. See docs/round2_v45/G0_RESULTS.md. Independent final audit
 may run immediately as a completion-triggered sequential step; this is not
 periodic training polling. No automatic retraining, package or upload.
+
+
+V45 official development started 2026-09-29 10:29:36 Asia/Shanghai, service
+iron-v45-development-r1.service, initial verified MainPID 178909 running.
+Private local/runs/round2-v45/development_and_audit.py waits for the frozen
+runner's actual exit, then invokes the independent frozen auditor exactly
+once on success. No polling/retraining/restart/confirmation/package logic.
+Actual stage exits are appended to workflow-events.jsonl; terminal event in
+completion-event.json. Preserve all failures. Do not edit frozen source/config.
+Hourly-only timer iron-v45-development-hourly.timer first due approximately
+11:29:36, actual NextElapseUSecMonotonic=81831361451 microseconds. Checks file:
+local/runs/round2-v45/development-hourly/checks.jsonl. Read at the actual timer
+checkpoint or on a real completion event; no between-check log/PID polling.
+The private supervisor includes the independent audit, so terminal success
+requires audit.json. No quality conclusion until that evidence is verified.
