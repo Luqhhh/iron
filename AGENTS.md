@@ -1850,3 +1850,11 @@ Parallel G0 terminal 2026-09-29T07:29:38.410017+00:00: runtime-only admission fa
 source checks passed; actual-data fits0, G1 unmeasured. Keep failed evidence,
 no implicit restart or budget relaxation. Original regularization continues.
 See docs/component_augmentation_representation/G0_RESULTS.md.
+
+User explicitly raised the parallel runtime cap to8hours ("允许7.93，8小时上限").
+BUDGET8.yaml/BUDGET8.md freeze that sole budget amendment with a fresh private
+run root component-augmentation-representation-budget8. Original spec/report
+stay intact. Reuse6 synthetic fits after source/hash/cold/memory verification;
+no training/model/promotion changes. Resume module independently supervises
+existing development/audit/conditional confirmation with600-second observations.
+Focused locked Python3.12 component suites25 passed. No new synthetic fits.

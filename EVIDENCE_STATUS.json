@@ -15748,6 +15748,17 @@
     "frozen_max_hours": 7.61,
     "terminal_utc": "2026-09-29T07:29:38.410017+00:00",
     "preflight_report_sha256": "69656f20918a25127f9c0e308e55d6edc758b1942dfa6d91874ad81205b9a02d",
-    "no_automatic_restart": true
+    "no_automatic_restart": true,
+    "budget8_amendment": {
+      "user_authorization": "允许7.93，8小时上限",
+      "status": "implementation_validated_readmission_next",
+      "new_cap_hours": 8.0,
+      "projected_hours": 7.928570820616652,
+      "spec": "configs/component_augmentation_representation/BUDGET8.yaml",
+      "documentation": "docs/component_augmentation_representation/BUDGET8.md",
+      "private_root": "local/runs/component-augmentation-representation-budget8",
+      "repeated_synthetic_fits": 0,
+      "focused_tests_passed": 25
+    }
   }
 }
