@@ -15462,7 +15462,7 @@
     "audit_sha256": "056086424e2490e1a1b9eadfd86ccae9f0d9d60c76bc792bd4cf3e87174b1898"
   },
   "round2_v47_factorized_spline": {
-    "status": "IMPLEMENTATION_TESTED_SYNTHETIC_ADMISSION_PENDING",
+    "status": "SYNTHETIC_ADMISSION_RUNNING",
     "branch": "round2-v47-factorized-spline",
     "protocol_commit": "acb581c",
     "spec": "configs/round2_v47/SPEC.yaml",
@@ -15483,6 +15483,12 @@
       96.5
     ],
     "g0": "1272 locked Python 3.12 tests passed; source/runtime/reference identity verified; synthetic admission pending",
-    "g1": "unmeasured"
+    "g1": "unmeasured",
+    "implementation_commit": "a93da5c",
+    "preflight_service": "iron-v47-preflight-r1.service",
+    "monitor_timer": "iron-v47-preflight-monitor.timer",
+    "initial_main_pid": 189351,
+    "first_check_monotonic_seconds": 82087.674454,
+    "launched_at_utc": "2026-09-29T03:25:18.154530+00:00"
   }
 }

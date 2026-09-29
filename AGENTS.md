@@ -1630,3 +1630,12 @@ NumPy interpolation/ANOVA-DP plus epoch-trace auditor. Eight new analytic and
 adversarial tests; locked Python 3.12 suite 1272 passed, 23 existing warnings.
 Reference source/runtime/20 cache units verified. Protocol acb581c; synthetic
 resource/learnability admission pending; real-data fits and packages remain zero.
+
+V47 synthetic admission launched 2026-09-29 11:25:18 Asia/Shanghai, service
+iron-v47-preflight-r1.service, initial MainPID 189351 verified running.
+Implementation a93da5c. The 600-second timer iron-v47-preflight-monitor.timer
+first expires at monotonic 82087.674454 s (approximately 11:35:18 local;
+actual monotonic timer controls). No between-check polling. Private evidence:
+local/runs/round2-v47/preflight-r1, preflight-monitor/checks.jsonl and terminal
+preflight-completion-event.json. No actual-data fits have been authorized by
+G0 yet; verify report before launch. G1 unmeasured; platform best unchanged.
