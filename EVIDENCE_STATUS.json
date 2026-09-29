@@ -16043,5 +16043,33 @@
     "full_data_fits": 0,
     "packages": 0,
     "uploads": 0
+  },
+  "rfm_kernel_preparation_2026_09_30": {
+    "status": "NUMERICAL_CORE_TESTED_FULL_EXPERIMENT_NOT_ADMITTED",
+    "branch": "codex/rfm-kernel-preparation",
+    "source_design_commit": "86ea6b3",
+    "results": "docs/rfm_kernel_preparation/STATUS.md",
+    "milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "current_best_user_reported": 96.3727,
+    "G0": {
+      "focused_locked_python312_tests_passed": 12,
+      "full_suite_run": false,
+      "full_size_resource_admission": false,
+      "protected_source_files_verified": 633,
+      "protected_source_mismatches": 0
+    },
+    "G1": "NO_NEW_QUALITY_MEASUREMENT",
+    "formal_fits": 0,
+    "full_size_synthetic_probes": 0,
+    "official_label_reads": 0,
+    "packages": 0,
+    "uploads": 0,
+    "gates_changed": false,
+    "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
+    "next_action": "Implement partition-aware RFM and tiny synthetic tests in isolation; defer full-size probe and official training until E-COMPOSE workflow is terminal and independent admission passes."
   }
 }

@@ -1912,3 +1912,16 @@ No full-data fits, packages, desktop writes or uploads. Preserve all original
 partial directories, failed admissions and decisions; do not extend these
 frozen batches implicitly. Earlier "running" and "deferred" entries are
 historical observations.
+
+### Isolated RFM mathematical preparation (2026-09-30)
+
+User requested staged96.4/96.45/96.5 exploration without affecting live
+E-COMPOSE. Branch codex/rfm-kernel-preparation prepares only the pure numerical
+core of the separately approved RFM design at86ea6b3. See
+docs/rfm_kernel_preparation/STATUS.md. Twelve locked Python3.12 focused
+mathematical tests pass; full-suite/resource/model admission is not established.
+No official labels, full-size probes or formal fits have been consumed.
+E-COMPOSE's isolated sources/configuration and environment remain untouched.
+Keep600-second monitoring there; do not launch another full-size probe/training
+queue until its workflow including earned confirmation/audits is terminal.
+Preserve the remote RFM/PTaRL/DNNR/DANet priority and avoid duplicate execution.
