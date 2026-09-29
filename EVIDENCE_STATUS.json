@@ -15720,11 +15720,11 @@
     "development_started_utc": "2026-09-29T06:49:25Z"
   },
   "component_augmentation_representation_2026_09_29": {
-    "status": "budget8_development_running",
+    "status": "serial_recovery_prepared",
     "branch": "codex/component-augmentation-representation",
     "spec": "configs/component_augmentation_representation/SPEC.yaml",
     "documentation": "docs/component_augmentation_representation/EXECUTION.md",
-    "g0": "failed_runtime_budget_other_checks_passed",
+    "g0": "passed_explicit_eight_hour_admission_reverified",
     "g1": "unmeasured",
     "recipes": [
       "D-LMIX",
@@ -15735,7 +15735,7 @@
     "new_development_optimizer_runs": 120,
     "reused_BASE_units": 20,
     "workers": 4,
-    "total_candidate_workers_max": 8,
+    "total_candidate_workers_max": 4,
     "packages": 0,
     "uploads": 0,
     "started_utc": "2026-09-29T07:15:51.391090+00:00",
@@ -15765,6 +15765,37 @@
       "cold_full_batch_difference": 0.0,
       "implementation_commit": "49ff19b"
     },
-    "original_admission_status": "stopped_at_synthetic_runtime_admission"
+    "original_admission_status": "stopped_at_synthetic_runtime_admission",
+    "serial_recovery": {
+      "status": "prepared",
+      "user_authorization": "继续另一条队列 after BASE/EMA/SAM completed",
+      "script": "scripts/resume_augmentation_queue.py",
+      "documentation": "docs/component_augmentation_representation/SERIAL_RECOVERY.md",
+      "private_output": "local/runs/component-augmentation-representation-budget8/development-r2",
+      "private_control": "local/runs/component-augmentation-representation-budget8/recovery-r2",
+      "original_manifest_sha256": "33d7b5e143e887e9b3c6d9db579fcf358d3c566235b7b5bbb6524aa5c01bbbe8",
+      "original_admission_sha256": "77bd443c130f6eb5b3105d8d98899d98ac4751bfe5f4168037b37ae7e2829a8c",
+      "unchanged_frozen_sources": 425,
+      "reused_BASE_units": 20,
+      "reused_references": 10,
+      "pending_new_units": 60,
+      "new_optimizer_runs": 120,
+      "preserved_partial_directories": 4,
+      "preserved_partial_saved_models": 0,
+      "synthetic_new_fits": 0,
+      "workers": 4,
+      "monitoring_interval_seconds": 600,
+      "automatic_restart": false,
+      "previous_queue_completion_commit": "b420db3",
+      "locked_tests": {
+        "python": "3.12.12",
+        "passed": 1318,
+        "warnings": 23,
+        "no_sync": true
+      },
+      "full_data_fits": 0,
+      "packages": 0,
+      "uploads": 0
+    }
   }
 }

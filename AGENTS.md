@@ -1864,3 +1864,29 @@ Original source hashes verified and six cold predictions reproduced exactly;
 no new synthetic fits. Active private root now
 local/runs/component-augmentation-representation-budget8; original failed
 workflow preserved. Four-worker real-data queue, G1 unmeasured.
+
+### Serial augmentation recovery (2026-09-29)
+
+The user superseded parallel execution with two serial queues, BASE/EMA/SAM
+first, and now explicitly requested "继续另一条队列". The first queue completed
+60 development units plus six diagnostics, passed its 132-model saved-state
+audit and selected no development finalist; public completion commit b420db3
+on codex/strong-component-regularization. It has no running training process.
+
+The interrupted Budget8 augmentation run has 20 complete BASE controls and ten
+references, zero complete new units and four event-only partial directories.
+Preserve every original artifact. scripts/resume_augmentation_queue.py creates
+development-r2 exclusively and reuses the unchanged original manifest and
+verified complete units. Fit only 60 new units/120 optimizer runs, four workers,
+no repeated synthetic fits. Keep the explicit eight-hour admission cap and
+original gates. The 425 frozen sources/configs/tests remain byte-identical.
+Recovery files are outside that frozen inventory. Explicit PYTHONPATH selects
+this worktree's frozen modules in the shared environment. Locked Python 3.12
+full suite:1318 passed,23 existing warnings. See
+docs/component_augmentation_representation/SERIAL_RECOVERY.md.
+
+Use an independent user systemd supervisor, no automatic restart, 600-second
+observations and completion-triggered original audit. Derived confirmation
+seeds remain conditional on audited development success. No full-data fits,
+packages, desktop writes or uploads. Historical parallel entries above remain
+evidence and no longer describe the active execution policy.
