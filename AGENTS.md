@@ -1890,3 +1890,8 @@ observations and completion-triggered original audit. Derived confirmation
 seeds remain conditional on audited development success. No full-data fits,
 packages, desktop writes or uploads. Historical parallel entries above remain
 evidence and no longer describe the active execution policy.
+
+Serial recovery launched 2026-09-29T11:18:13.244791+00:00; implementation b065c41 committed/pushed.
+User service iron-component-augmentation-recovery-r2.service, supervisor PID
+257154. Frozen worktree module identity confirmed; original manifest
+and 20 BASE controls copied verbatim, 60 new units admitted. G1 in progress.

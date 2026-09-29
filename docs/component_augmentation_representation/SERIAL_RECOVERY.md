@@ -36,3 +36,8 @@ Validation before launch: the locked Python 3.12 full suite passed 1318 tests
 with 23 existing warnings. The original 425 source hashes, data hashes, runtime,
 readmission artifacts and 80-unit frozen inventory were independently verified
 with zero fits. The 60 new units exclude the 20 reused BASE controls.
+
+Serial recovery launched 2026-09-29T11:18:13.244791+00:00; implementation b065c41 committed/pushed.
+User service iron-component-augmentation-recovery-r2.service, supervisor PID
+257154. Frozen worktree module identity confirmed; original manifest
+and 20 BASE controls copied verbatim, 60 new units admitted. G1 in progress.

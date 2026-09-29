@@ -15720,7 +15720,7 @@
     "development_started_utc": "2026-09-29T06:49:25Z"
   },
   "component_augmentation_representation_2026_09_29": {
-    "status": "serial_recovery_prepared",
+    "status": "serial_development_running",
     "branch": "codex/component-augmentation-representation",
     "spec": "configs/component_augmentation_representation/SPEC.yaml",
     "documentation": "docs/component_augmentation_representation/EXECUTION.md",
@@ -15767,7 +15767,7 @@
     },
     "original_admission_status": "stopped_at_synthetic_runtime_admission",
     "serial_recovery": {
-      "status": "prepared",
+      "status": "development_running",
       "user_authorization": "继续另一条队列 after BASE/EMA/SAM completed",
       "script": "scripts/resume_augmentation_queue.py",
       "documentation": "docs/component_augmentation_representation/SERIAL_RECOVERY.md",
@@ -15795,7 +15795,14 @@
       },
       "full_data_fits": 0,
       "packages": 0,
-      "uploads": 0
+      "uploads": 0,
+      "started_utc": "2026-09-29T11:18:13.244791+00:00",
+      "implementation_commit": "b065c41",
+      "service": "iron-component-augmentation-recovery-r2.service",
+      "script_sha256": "cb995704fd429b7f5d9ff630b3b0b7da93413b0528ef459a43fb4f0c39f1bd2d",
+      "supervisor_pid": 257154,
+      "frozen_module": "/home/lux1/iron/local/worktrees/component-augmentation-representation/src/bf_tap_r2/component_regularization_run.py",
+      "completed_new_units_at_launch": 0
     }
   }
 }
