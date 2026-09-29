@@ -1746,3 +1746,15 @@ Scheduled 600-second checks recorded 20/40 then 38/40, no ledger failures.
 Actual completion/audit events exit 0 at 04:19:01 /04:19:13 UTC, PID 0 terminal
 success verified and timer stopped. Candidate span 1319.78 s, peak 430.75 MiB.
 No live work remains. Staged goal active; best user-reported 96.3727 unchanged.
+
+
+### V49 reserved: latent input-gradient regularization
+
+Freeze configs/round2_v49/SPEC.yaml and PREREGISTRATION.md before fits. BASE
+periodic TabM versus TANGOS-inspired numeric latent-gradient sparsity and
+orthogonality, preserving mean individual MSE. Output-disagreement training
+not selected due to published learner-collusion evidence. No local TANGOS trial
+found. Fixed sampled auxiliary rule/weights; no grid or pretrained/external data.
+Float64 matched arms, not exact historical V7 reproduction. Full locked tests,
+synthetic/cold/resource admission before 40 units/80 fits. Existing reference,
+promotion gates and 600-second monitoring unchanged. No automatic release.
