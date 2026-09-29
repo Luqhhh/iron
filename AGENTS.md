@@ -1462,3 +1462,11 @@ Peak 500.52 MiB, conservative development projection 1.06317 hours. All 1248
 tests, frozen source/runtime/reference checks, 60 old units and current RAM
 admission pass. Hourly preflight observation confirmed terminal success and
 stopped its timer. Admit the frozen 40 official units; G1 remains unmeasured.
+
+V44 official development launched 2026-09-29 08:43:37 Asia/Shanghai through
+`iron-v44-development-r1.service`, verified initial MainPID 173280 running.
+Run `local/runs/round2-v44/development-r1`; hourly timer
+`iron-v44-development-hourly.timer`, first due approximately 09:43:37.
+Private observations: `local/runs/round2-v44/development-hourly/checks.jsonl`.
+No intermediate training polling. Verify all 80 V43 prefixes and audit all
+new saved models before any quality conclusion or confirmation allocation.
