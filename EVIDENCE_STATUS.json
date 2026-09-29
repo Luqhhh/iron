@@ -12921,8 +12921,8 @@
   "round2_v46_beta_nll_2026_09_29": {
     "identity": "V46_TIME_BETA_NLL",
     "strategy_reservation_commit": "47436e6",
-    "status": "reference_cache_recovered_pending_resource_preflight",
-    "G0": "four_seed_cache_identity_passed_resource_and_learning_not_run",
+    "status": "G0_passed_ready_for_unique_development",
+    "G0": "cache_resource_learnability_cold_passed",
     "G1": "not_evaluated",
     "specification": "configs/round2_v46_beta_nll/SPEC.yaml",
     "specification_sha256": "8c0f733328cd69d60298de862144aad16088b8dd22d9d3f3b5cd5368da7d434a",
@@ -12940,13 +12940,13 @@
       "official_fits": 0,
       "optimizer_runs": 0,
       "new_reference_fits": 0,
-      "resource_probes": 0,
-      "learnability_runs": 0,
+      "resource_probes": 2,
+      "learnability_runs": 2,
       "confirmation_fits": 0,
       "packages": 0,
       "uploads": 0
     },
-    "implementation_scope": "paired_core_and_reference_only_verifier; formal_batch_runner_not_completed_after_G0_stop",
+    "implementation_scope": "paired_core_full_budgeted_runner_and_independent_cold_audit",
     "tests": {
       "targeted": {
         "passed": 8,
@@ -13028,6 +13028,41 @@
           "warnings": 3,
           "seconds": 72.5
         }
+      }
+    },
+    "final_preflight_sha256": "56a54e7c5d72ef8bd6639d01f9a36133b3a7eff0da16fe440983a09105001cf5",
+    "synthetic_optimizer_runs": 4,
+    "G0_resource": {
+      "passed": true,
+      "projected_development_seconds": 493.05656713342614,
+      "peak_worker_rss_mib": 422.30078125,
+      "available_ram_mib": 9028.1171875,
+      "synthetic_optimizer_starts": 2
+    },
+    "independent_runner_review": {
+      "critical": 0,
+      "important": 2,
+      "fixed": [
+        "experiment_wide_exclusive_phase_reservations",
+        "failure_group_check_before_refill"
+      ],
+      "deferred_minors": [],
+      "regression_tests": "RED_to_GREEN_without_optimizers"
+    },
+    "runner_tests": {
+      "targeted_passed": 15,
+      "neural_runtime": {
+        "python": "3.12.3",
+        "passed": 1167,
+        "warnings": 23,
+        "seconds": 141.27
+      },
+      "locked_uv_environment": {
+        "python": "3.12.13",
+        "passed": 984,
+        "skipped": 61,
+        "warnings": 3,
+        "seconds": 59.07
       }
     }
   }

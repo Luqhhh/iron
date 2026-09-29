@@ -105,3 +105,29 @@ reference fits are still0. No package or upload is authorized by this recovery.
 Recovery verification: neural-runtime full suite1161 passed,23 warnings in171.72s;
 uv.lock Python3.12.13 full suite978 passed,61 skipped,3 warnings in72.50s.
 Private-artifact guard passed. Restored private configurations stay outside Git.
+
+## G0 completed after recovery
+
+The four frozen synthetic optimizer starts passed. Resource probes used the
+2204/551-row path with preprocessing, optimizer, gradients and validation;
+peak worker RSS422.30MiB. The frozen projection is493.06s including both
+selector/refit worst-case epochs,1.5 multiplier and300s I/O/audit margin.
+This is a synthetic projection, not a measured formal-batch completion time.
+Saved models' cold/order/chunk maximum difference is0. Learnability MAE is
+0.51737(NLL)/0.55266(BETA05), below the training-median constant1.96581.
+
+The complete runner and saved-artifact cold auditor are now implemented.
+A fresh reviewer identified two Important issues before formal fits: missing
+experiment-wide budget reservations and worker refill before checking all
+simultaneous completions for failures. Both were fixed in one RED/GREEN pass.
+Exclusive phase reservations now reject repeated allocations even in new output
+directories or after failure; all completed futures are checked before refill.
+No Critical findings or deferred Minors. The15 targeted contracts pass without
+optimizer starts. Final neural-runtime suite1167 passed,23 warnings in141.27s;
+uv.lock Python3.12.13 suite984 passed,61 skipped,3 warnings in59.07s.
+
+The final new preflight freezes transitive sources, control scripts, runtime,
+specification, data/folds and reference/G0 evidence. Formal fits remain0 at this
+checkpoint. Development is the single frozen20 outer/40 optimizer batch;
+confirmation remains conditional on complete independently audited eligibility.
+All historical failure evidence is retained; no specification change or G0 retry.
