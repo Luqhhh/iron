@@ -15289,5 +15289,49 @@
     "pause_requested": true,
     "pause_instruction": "完成本轮后暂停",
     "next_round_authorized_to_start": false
+  },
+  "round2_optimization_milestones_2026_09_29": {
+    "instruction": "设置三级目标：96.4 96.45 96.5 继续优化",
+    "status": "RESUMED_OFFLINE_OPTIMIZATION",
+    "milestones": [
+      {
+        "target": 96.4,
+        "gap_to_user_reported_best": 0.0273,
+        "achieved": false
+      },
+      {
+        "target": 96.45,
+        "gap_to_user_reported_best": 0.0773,
+        "achieved": false
+      },
+      {
+        "target": 96.5,
+        "gap_to_user_reported_best": 0.1273,
+        "achieved": false
+      }
+    ],
+    "current_stage": 96.4,
+    "ultimate_target": 96.5,
+    "current_best_user_reported": 96.3727,
+    "local_gates_changed": false,
+    "automatic_packages": false,
+    "uploads": 0,
+    "monitor_interval_seconds": 3600,
+    "supersedes_pause_request_after_v44": true
+  },
+  "round2_v45_rotation_forest": {
+    "status": "PREREGISTERED_NO_FITS",
+    "branch": "round2-v45-rotation-forest",
+    "plan": "docs/round2_v45/PREREGISTRATION.md",
+    "spec": "configs/round2_v45/SPEC.yaml",
+    "platform_milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "official_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0
   }
 }

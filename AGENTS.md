@@ -1496,3 +1496,23 @@ The user explicitly requested “完成本轮后暂停”. Complete V44 evidence
 and pause the active goal; do not start another optimization round or scheduler.
 Platform target 96.5 remains unmet; current best is user-reported 96.3727.
 Resume only when the user asks. Leave the other thread/worktree untouched.
+
+
+### User resumed with three platform milestones (2026-09-29)
+
+Latest instruction: “设置三级目标：96.4 96.45 96.5 继续优化”. This supersedes
+the post-V44 pause. Current stage 96.4, then 96.45, ultimate objective 96.5;
+current user-reported best 96.3727, respective gaps .0273/.0773/.1273. This is
+not permission to relax frozen local gates or overwrite old failed evidence.
+Continue authorized offline optimization in this isolated worktree only.
+No automatic full-data fit, package, desktop write or upload. Hourly-only
+training monitoring remains mandatory; use timer events, not estimated wall
+clock times, for manual checks. Keep other thread/worktree unchanged.
+
+V45 reserved on round2-v45-rotation-forest: a matched AXIS/ROTATE bagged-tree
+geometry experiment. Earlier V4 leaf-estimator forests, V3.3 reduced global PCA
+features and V39 axis-selecting hard trees do not test per-tree full-rank block
+PCA rotation. Freeze configs/round2_v45/SPEC.yaml and PREREGISTRATION.md before
+fitting. 40 candidate units / 80 forest fits / 20480 component trees; no old
+forest recipe is retroactively promoted. Synthetic/resource and full locked
+Python 3.12 checks precede real fits. Current reference and gates unchanged.
