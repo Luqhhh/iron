@@ -1774,3 +1774,11 @@ iron-v49-preflight-r1.service, initial MainPID 202962 active/running. Implementa
 interval, first due monotonic 86990.523342 seconds (~12:59:14 local). Actual
 terminal event may trigger admission review; no between-check health polling.
 No actual-data fits until successful G0 admission. Pause after V49.
+
+V49 G0 admission passed; docs/round2_v49/G0_RESULTS.md. Both synthetic 240-epoch
+fits beat the constant; TANGOS auxiliary penalty active. Cold/order/chunk differences
+<= 1.78e-15; saved-state/preprocessing/trace audit passes.
+Conservative development projection 3.863190 h <7.61; peak 809.42 MiB.
+Source/runtime and independent synthetic arithmetic verified. Admit 40 development
+units/80 fits, conditional confirmation only through frozen gates. G1 unmeasured.
+No release or external weights/data; every-600-second monitoring, pause after V49.
