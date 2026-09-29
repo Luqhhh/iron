@@ -1844,3 +1844,9 @@ append-only evidence and no automatic release/upload.
 Parallel supervisor launched 2026-09-29T07:15:51.391090+00:00; implementation47ea6e4 committed/pushed.
 Initial preflight start confirmed. Six synthetic fits, G0 result pending;
 automatic real-data admission requires success and verified completed BASE cache.
+
+Parallel G0 terminal 2026-09-29T07:29:38.410017+00:00: runtime-only admission failure
+(projected7.92857h > frozen7.61h). All six synthetic fits, cold, memory and
+source checks passed; actual-data fits0, G1 unmeasured. Keep failed evidence,
+no implicit restart or budget relaxation. Original regularization continues.
+See docs/component_augmentation_representation/G0_RESULTS.md.

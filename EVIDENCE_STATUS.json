@@ -15720,11 +15720,11 @@
     "development_started_utc": "2026-09-29T06:49:25Z"
   },
   "component_augmentation_representation_2026_09_29": {
-    "status": "synthetic_admission_running",
+    "status": "stopped_at_synthetic_runtime_admission",
     "branch": "codex/component-augmentation-representation",
     "spec": "configs/component_augmentation_representation/SPEC.yaml",
     "documentation": "docs/component_augmentation_representation/EXECUTION.md",
-    "g0": "unit_and_native_cache_cold_checks_passed_synthetic_pending",
+    "g0": "failed_runtime_budget_other_checks_passed",
     "g1": "unmeasured",
     "recipes": [
       "D-LMIX",
@@ -15740,6 +15740,14 @@
     "uploads": 0,
     "started_utc": "2026-09-29T07:15:51.391090+00:00",
     "implementation_commit": "47ea6e48012be5d4e6bcc4aafeeef451b1981965",
-    "supervisor_private_root": "local/runs/component-augmentation-representation"
+    "supervisor_private_root": "local/runs/component-augmentation-representation",
+    "completed_synthetic_fits": 6,
+    "completed_development_units": 0,
+    "pending_development_units": 60,
+    "projected_hours": 7.928570820616652,
+    "frozen_max_hours": 7.61,
+    "terminal_utc": "2026-09-29T07:29:38.410017+00:00",
+    "preflight_report_sha256": "69656f20918a25127f9c0e308e55d6edc758b1942dfa6d91874ad81205b9a02d",
+    "no_automatic_restart": true
   }
 }

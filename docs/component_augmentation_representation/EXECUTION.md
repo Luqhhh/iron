@@ -48,3 +48,7 @@ Supervisor launched 2026-09-29T07:15:51.391090+00:00, implementation47ea6e4. Ini
 stream confirms preflight start. Six synthetic fits admitted to the four-worker
 queue; their final resource/cold result is pending. Session62002 retains the
 supervisor. Sources/config remain frozen.
+
+Terminal update 2026-09-29T07:29:38.410017+00:00: G0 runtime gate failed7.92857h >7.61h;
+all six synthetic fits and cold/memory/source checks passed. Supervisor stopped
+before actual-data development. See G0_RESULTS.md. No automatic restart.
