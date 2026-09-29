@@ -1639,3 +1639,11 @@ actual monotonic timer controls). No between-check polling. Private evidence:
 local/runs/round2-v47/preflight-r1, preflight-monitor/checks.jsonl and terminal
 preflight-completion-event.json. No actual-data fits have been authorized by
 G0 yet; verify report before launch. G1 unmeasured; platform best unchanged.
+
+V47 G0 passed; docs/round2_v47/G0_RESULTS.md. Two fixed full 400-epoch
+synthetic fits: AFM2 MAE 2.686039, AHOFM4 1.918427, constant 3.002376.
+Independent NumPy DP/cold/order/chunk differences <=1.25e-14; peak 507.22 MiB,
+conservative development projection .316255 hours. Source/runtime/reference
+identities and current RAM pass. Completion event exit 0 at 03:26:06 UTC
+consumed before first timer checkpoint; terminal PID 0 confirmed, timer stopped.
+Admit 40 real-data units/80 fits. G1 remains unmeasured; no release authorized.
