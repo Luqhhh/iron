@@ -12921,9 +12921,9 @@
   "round2_v46_beta_nll_2026_09_29": {
     "identity": "V46_TIME_BETA_NLL",
     "strategy_reservation_commit": "47436e6",
-    "status": "G0_passed_ready_for_unique_development",
-    "G0": "cache_resource_learnability_cold_passed",
-    "G1": "not_evaluated",
+    "status": "completed_development_no_finalist",
+    "G0": "passed",
+    "G1": "not_eligible_after_complete_paired_development",
     "specification": "configs/round2_v46_beta_nll/SPEC.yaml",
     "specification_sha256": "8c0f733328cd69d60298de862144aad16088b8dd22d9d3f3b5cd5368da7d434a",
     "results": "docs/round2_v46_beta_nll/RESULTS.md",
@@ -12937,14 +12937,17 @@
     "preflight_report_sha256": "956a0eaf373aa166d6cd27d9c2c0b24d70ecfe289d08304c4d75c1dc885c21f2",
     "missing_frozen_sources": [],
     "budget": {
-      "official_fits": 0,
-      "optimizer_runs": 0,
+      "official_fits": 20,
+      "optimizer_runs": 40,
       "new_reference_fits": 0,
       "resource_probes": 2,
       "learnability_runs": 2,
       "confirmation_fits": 0,
       "packages": 0,
-      "uploads": 0
+      "uploads": 0,
+      "full_data_fits": 0,
+      "desktop_writes": 0,
+      "failed_fits": 0
     },
     "implementation_scope": "paired_core_full_budgeted_runner_and_independent_cold_audit",
     "tests": {
@@ -12965,7 +12968,8 @@
         "warnings": 3,
         "seconds": 48.44,
         "optional_torch_installed": false
-      }
+      },
+      "stage": "historical_initial_cache_stop"
     },
     "independent_review": {
       "important_findings": 1,
@@ -12978,10 +12982,11 @@
         "convergence",
         "saved_model_cold_inference",
         "G1"
-      ]
+      ],
+      "stage": "historical_initial_cache_stop"
     },
     "release_authorized": false,
-    "monitor_started": false,
+    "monitor_started": true,
     "source_reconstruction_or_reference_refit": false,
     "historical_initial_stop": {
       "status": "stopped_cache_verification_failed",
@@ -13064,6 +13069,136 @@
         "warnings": 3,
         "seconds": 59.07
       }
+    },
+    "implementation_commit": "509bc9e",
+    "monitor_shutdown": "pause_after_final_publication",
+    "final_development": {
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "complete_folds_per_seed": 5,
+      "fixed_member_weight": 0.2,
+      "records": {
+        "NLL": {
+          "42": {
+            "folds": 5,
+            "gain": 0.00963049486513512,
+            "candidate_score": 96.24504919106356,
+            "reference_score": 96.23541869619842,
+            "B0_gain": -0.0029251893493835723,
+            "B0_score": 96.24797438041294,
+            "member_time_wmape": 0.03910584034981338,
+            "blend_time_wmape": 0.03793849198703045,
+            "fold_gains": [
+              0.002207112704857156,
+              0.0019248916383038384,
+              0.010973682551787892,
+              0.0207821809465044,
+              0.012282110617135508
+            ]
+          },
+          "3407": {
+            "folds": 5,
+            "gain": 0.011569106839459664,
+            "candidate_score": 96.24359008958277,
+            "reference_score": 96.23202098274331,
+            "B0_gain": -0.003913941446683111,
+            "B0_score": 96.24750403102945,
+            "member_time_wmape": 0.03872858282589786,
+            "blend_time_wmape": 0.0379299473025235,
+            "fold_gains": [
+              -0.011169779179669506,
+              0.019067158179118457,
+              0.014316492561679273,
+              0.02058120395052772,
+              0.015222810977581075
+            ]
+          }
+        },
+        "BETA05": {
+          "42": {
+            "folds": 5,
+            "gain": 0.005992330359745779,
+            "candidate_score": 96.24141102655817,
+            "reference_score": 96.23541869619842,
+            "B0_gain": -0.006563353854772913,
+            "B0_score": 96.24797438041294,
+            "member_time_wmape": 0.039423112813862835,
+            "blend_time_wmape": 0.038011255277137994,
+            "fold_gains": [
+              0.00611794508037708,
+              -0.000737612988224029,
+              0.003140271242785958,
+              0.006405988304087479,
+              0.014939624377362237
+            ]
+          },
+          "3407": {
+            "folds": 5,
+            "gain": 0.010778050094017999,
+            "candidate_score": 96.24279903283733,
+            "reference_score": 96.23202098274331,
+            "B0_gain": -0.004704998192124776,
+            "B0_score": 96.24750403102945,
+            "member_time_wmape": 0.03983428240788847,
+            "blend_time_wmape": 0.03794576843743217,
+            "fold_gains": [
+              -0.010882566177221331,
+              0.022088680580453074,
+              0.01074195667415713,
+              0.0180500509776714,
+              0.01398549579402393
+            ]
+          }
+        }
+      },
+      "summary": {
+        "NLL": {
+          "mean_gain": 0.010599800852297392,
+          "mean_candidate_score": 96.24431964032317,
+          "mean_reference_score": 96.23371983947087,
+          "mean_B0_gain": -0.003419565398033342,
+          "mean_B0_score": 96.24773920572119,
+          "positive_folds": 9
+        },
+        "BETA05": {
+          "mean_gain": 0.008385190226881889,
+          "mean_candidate_score": 96.24210502969774,
+          "mean_reference_score": 96.23371983947087,
+          "mean_B0_gain": -0.005634176023448845,
+          "mean_B0_score": 96.24773920572119,
+          "positive_folds": 8
+        }
+      },
+      "mechanism_seed_contrasts": [
+        -0.0036381645053893408,
+        -0.000791056745441665
+      ],
+      "mechanism_mean": -0.002214610625415503,
+      "selected_for_confirmation": [],
+      "failed_conditions": [
+        "candidate_mean_gain_below_0.01",
+        "candidate_mechanism_mean_not_positive",
+        "development_mean_local_score_below_96.25"
+      ],
+      "NLL_role": "matched_control_never_promoted",
+      "confirmation_not_started": true,
+      "quality_scope": "two_complete_development_split_seeds_only_no_four_seed_quality_claim",
+      "cold_max_difference": 2.842170943040401e-14,
+      "cold_tolerance": 1e-08,
+      "G0_synthetic_optimizer_starts": 4,
+      "development_and_independent_audits_wall_seconds": 53.796053886413574,
+      "preflight_projection_seconds": 493.05656713342614,
+      "evidence_hashes": {
+        "local/runs/round2-v46-beta-nll/preflight-recovery-r2.json": "56a54e7c5d72ef8bd6639d01f9a36133b3a7eff0da16fe440983a09105001cf5",
+        "local/runs/round2-v46-beta-nll/development-r1/audit-r1.json": "2a3c1f4521de2bb1db38288927f2e5b8b0ad1770af966d23fa418b486052be2a",
+        "local/v46-beta-nll-20260929/independent-development-decision-r1.json": "43eafe1f74b697e38c7ed8efd34bff078e47b288d821c02cf44820d87ce4b7ed",
+        "local/v46-beta-nll-20260929/orchestration-finished.json": "a74107cc79531b48f8d39adb123cb219b5866f2dc67ec0eb3fc62d333b994aaa",
+        "local/runs/round2-v46-beta-nll/phase-reservations/development.json": "f60bff29c64168297f89401ef80c3f4eb40cd1a4eb4b4aad6656fc6281096461"
+      },
+      "final_integrity_report_sha256": "c4bc0486f737cf591d5193b81db2b1e58b20d9e29090ad0400bc9e17f6d8309e",
+      "no_retry_no_new_spec": true
     }
   }
 }

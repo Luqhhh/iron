@@ -1,133 +1,113 @@
-# V46_TIME_BETA_NLL: stopped at the reference-cache prerequisite
+# V46_TIME_BETA_NLL: complete development, no finalist
 
-## G0: stopped before model training
+The frozen paired development batch and independent audits completed successfully.
+**G0 passed; G1 did not qualify.** BETA05 improves the latest frozen local reference
+on both development seeds, but its mean gain is below0.01, it loses to the matched
+NLL control on both seeds, and its mean local score is below96.25. Confirmation
+was not started. No promoted candidate, full-data model, package or upload.
 
-The approved strategy was reserved and pushed at `47436e6` before implementation.
-The reference-only preflight terminated with `stopped_cache_verification_failed`.
-The historical V8 confirmation manifest requires two missing private originals:
+## G1: incremental fixed-A20 results
 
-| Required source | Frozen SHA-256 |
-|---|---|
-| `configs/data.local.yaml` | `406a77ef04170f1963582d3bc617b3d429048e8517ff2fe2abf70ee0a77d6fee` |
-| `configs/predict.local.yaml` | `fa4051a4cea199d3dc67111326c03d92acce2ef5cf0aa60fc8729ec8e70dc870` |
+The frozen platform reference is V32_TIME_A60V7_50, user-reported96.3727 and not
+independently verified. Its native local components are iron0.5*V36+0.5*V12 joint;
+time0.2*V36+0.3*N0048+0.5*V7 periodic. Historical B0 uses the same iron and
+time0.325*V36+0.175*N0048+0.5*V7. Neither reference is changed after evaluation.
+The tested column is0.8*current time+0.2*member, retaining current iron.
 
-No matching original was found in native local evidence, root configurations or
-the archived `md/` configuration tree. Neither file was guessed or regenerated.
-The frozen all-four-seed identity check precedes official fits and permits zero
-new reference fits, so training does not proceed. This is a cache-provenance
-failure, not a resource measurement or a neural-model quality result.
+| Arm / split seed | Local package score | Gain vs current R32 | Gain vs historical B0 |
+|---|---:|---:|---:|
+| NLL /42 |96.245049 |+0.009630 |-0.002925 |
+| NLL /3407 |96.243590 |+0.011569 |-0.003914 |
+| **NLL mean (ineligible control)** |**96.244320** |**+0.010600** |**-0.003420** |
+| BETA05 /42 |96.241411 |+0.005992 |-0.006563 |
+| BETA05 /3407 |96.242799 |+0.010778 |-0.004705 |
+| **BETA05 mean (only candidate)** |**96.242105** |**+0.008385** |**-0.005634** |
 
-An earlier legacy loader rejection involved 62 Python files whose recorded LF
-hashes differed from Windows CRLF checkouts. All62 differences were proved to be
-newline-only with matching committed Git source blobs. V46 verifies exact frozen
-source byte variants; it never normalizes data, manifests, ledgers, models or
-predictions. Existing loaders, source specifications and historical evidence
-remain unchanged. This resolved format issue does not remedy the missing private
-configuration originals. Diagnostic failures are retained under `local/`.
+Current-reference local mean96.233720; historical-B0 local mean96.247739.
+A better platform reference need not be the highest local reference. Reporting
+both comparisons preserves the approved latest-platform-reference experiment;
+it does not authorize selecting a different reference after seeing results.
 
-## Implemented scope and checks
+Frozen development conditions:
 
-Retained public components: the matched single-Gaussian network, ordinary NLL
-and detached-variance beta0.5 objective, native inner selection/fresh-refit
-interface, fixed-gate decision helpers, resource projection, and reference-only
-cache verification CLI. The formal batch runner, resource/learnability execution,
-model cold-inference audit and confirmation execution were not completed after
-the prerequisite stop. No trained-model or complete-experiment reproduction
-claim is made.
+- Both BETA05 seed gains positive: pass.
+- Mean BETA05 gain>=0.01: fail,+0.0083851902.
+- BETA05 minus NLL mean gain>0: fail,-0.0022146106.
+- Mean development package score>=96.25: fail,96.2421050297.
 
-Eight synthetic unit contracts cover analytical objective values, detached
-variance gradients, paired initial parameters, training-only unknown-category
-handling, exact Git byte identity, complete paired eligibility, resource caps,
-four-seed decisions, and evidence-preserving failure behavior. They create no
-V46 optimizers. A fresh read-only reviewer found one Important partition-interface
-bug: the native inner helper returns a dict, requiring its `fold` vector. A
-no-optimizer regression reproduced it; the fix passed all8 tests. No remaining
-Critical/Important findings, no deferred Minor findings. Resource execution,
-convergence, saved-model invariance and G1 were explicitly not judged because
-they were not reached.
+Mechanism contrasts are-0.0036381645/-0.0007910567. In this frozen architecture,
+ordinary NLL outperformed beta0.5 on both complete development splits. The
+ordinary control remains ineligible by preregistration; its positive gain does
+not promote it retroactively. No second specification or beta search started.
+Fold signs are descriptive: BETA05 8/10 positive,NLL9/10. Model-quality evidence
+covers two complete split seeds only; no four-seed quality or LCB claim is made.
+The four-seed reference-cache verification is an engineering check.
 
-Final checks after the review fix: **1160 passed**,23 warnings in113.73s
-in the containing neural runtime (Python3.12.3); separate **uv.lock
-Python3.12.13:977 passed,61 skipped**,3 warnings in48.44s. The locked environment
-does not install optional torch; these checks do not certify a trained V46 model.
-Exact stop-report SHA-256: `956a0eaf373aa166d6cd27d9c2c0b24d70ecfe289d08304c4d75c1dc885c21f2`.
-The full commands and logs are retained privately; both suites were rerun after
-the review correction. No private cache files were removed for testing.
+These are local results, not platform predictions. The project objective remains
+>96.4; no new platform score was observed in this experiment.
 
-## G1: not evaluated
+## G0: complete budget and cold-artifact audit
 
-Development outer fits0, confirmation outer fits0, V46 optimizer starts0,
-synthetic resource/learnability optimizer starts0, new reference fits0,
-full-data fits0, packages0, desktop writes0, uploads0. Repository unit-test fits
-for historical mechanisms are separate from this experiment's budget.
-There is no V46 score, delta, tier, finalist or promotion decision.
+The single development phase completed20 outer fits/40 optimizer starts, with
+native inner seed42 fold0 MAE epoch selection followed by a fresh outer refit.
+Both arms used identical initialization and their frozen Gaussian architecture;
+query labels were removed. Inner/outer training identities, preprocessing,
+selected epochs/traces, query coverage, ledgers and prediction byte hashes passed.
+Both saved inner and outer models were reloaded in a separate audit process.
+Cold/order/chunk maximum difference was2.842170943040401e-14, below1e-8.
 
-Latest remote-registered platform reference remains V32_TIME_A60V7_50=96.3727,
-user-reported and not independently verified. Own V28_SHARED=96.3671 remains
-historical feedback. No result here changes these scores or predicts >96.4.
-V33's ineligible GAUSS1 observation remains an unpromoted control.
+A separately implemented arithmetic check reassembled predictions within each
+split seed, recomputed fixed-A20 scores and all three failed conditions, and
+agreed with the artifact auditor. A final read-only verification rechecked all
+frozen inputs and202 audited artifact identities. Confirmation directory and
+confirmation phase reservation are absent. No cross-seed OOF mixing.
 
-The frozen round stops here. No retry, second specification, hidden reference
-retraining, package or monitor is started. Recovering an exact historical source
-identity would need an explicit follow-up, with the failed evidence preserved.
+The four permitted synthetic optimizer starts were consumed once: two resource
+and two learnability probes, all passed. Peak worker RSS422.30MiB. Complete-path
+projection493.06s included worst-case selector/refit epochs,1.5 multiplier and
+300s I/O/audit margin. Actual one-shot controller wall time was53.80s for
+formal development plus cold and independent arithmetic audits; this is not
+train-fit summed CPU time or a future-runtime guarantee. Workers<=4, numerical
+threads1. Synthetic learnability MAE0.51737/0.55266 beat median constant1.96581.
 
-Private stop report: `local/runs/round2-v46-beta-nll/preflight-r1/report.json`.
-Reproduction command (always use a new private output directory):
+Failed formal fits0, confirmation fits0, new reference fits0, full-data fits0,
+packages0, desktop writes0, uploads0. Exclusive experiment-level phase allocation
+prevents repeat batches in another directory; failures do not free allocation.
+All completed futures are checked for failures before workers are refilled.
 
-```sh
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
-.venv/bin/python -m bf_tap_r2.v46_cache \
-  --output local/runs/round2-v46-beta-nll/cache-check-NEW
-```
+## Source recovery and implementation verification
 
-The command is reference-only. Exit2 records the failure and schedules no
-optimizer; existing output directories are rejected without overwriting evidence.
-## Exact-source recovery follow-up (2026-09-29)
+Reservation47436e6 preceded implementation. Initial preflight stopped before
+training because two private originals were missing. The user supplied both:
+`configs/data.local.yaml` and `configs/predict.local.yaml`, matching the frozen
+V8 hashes. A differing historical private script was recovered from an existing
+exact-hash local handoff backup; its previous bytes were saved separately.
+All original failed reports, models, predictions and ledgers are retained.
 
-The user supplied the two original private configurations; both SHA-256 values
-match the frozen manifest exactly. A further private historical source mismatch
-was resolved from an existing local handoff backup whose bytes match the frozen
-hash. The previous differing script was saved separately before recovery; all
-historical predictions, ledgers, manifests and failed reports are retained.
+Historical committed-source LF/CRLF variants were accepted only after exact
+Git-byte identity proof. Data/manifests/ledgers/models/predictions are never
+normalized. Recovery also exposed a V46 verifier count error: original V12 audit
+covers20 predictions across four seeds, not10 confirmation-only predictions.
+The regression fix requires exact20-file identity coverage. Recovery0ccd0d7 and
+full runner509bc9e were ordinary pushes on the configured current upstream.
 
-The resumed check exposed a V46 verifier error: V12's original audit records
-20 predictions across development and confirmation, rather than 10 confirmation
-predictions alone. The fix requires exact filename coverage for all four seeds
-for both V7 and V12, in addition to original passed statuses and byte hashes.
-A regression failed before implementation and all9 targeted tests then passed.
+A fresh whole-runner review found two Important issues before formal fits:
+experiment-wide phase allocation and failure-group refill ordering. Both received
+one RED/GREEN fix pass. No Critical findings or deferred Minors. Final15 targeted
+contracts passed without optimizer starts; neural Python3.12.3 full suite1167
+passed/23warnings in141.27s; uv.lock Python3.12.13 full suite984 passed/61skipped/
+3warnings in59.07s. The locked environment omits optional torch. These were rerun
+after the fixes. Only public evidence changed after formal completion, so no
+additional fitting tests were needed. Private-artifact checks remain mandatory.
 
-A new reference-only report passes all-four-seed cache verification, binding
-436 file identities. This supersedes the missing-source blocker, while the
-initial stop above remains historical evidence. The specification is unchanged.
-G0 resource/learnability and G1 remain unmeasured; V46 optimizer starts and new
-reference fits are still0. No package or upload is authorized by this recovery.
-
-Recovery verification: neural-runtime full suite1161 passed,23 warnings in171.72s;
-uv.lock Python3.12.13 full suite978 passed,61 skipped,3 warnings in72.50s.
-Private-artifact guard passed. Restored private configurations stay outside Git.
-
-## G0 completed after recovery
-
-The four frozen synthetic optimizer starts passed. Resource probes used the
-2204/551-row path with preprocessing, optimizer, gradients and validation;
-peak worker RSS422.30MiB. The frozen projection is493.06s including both
-selector/refit worst-case epochs,1.5 multiplier and300s I/O/audit margin.
-This is a synthetic projection, not a measured formal-batch completion time.
-Saved models' cold/order/chunk maximum difference is0. Learnability MAE is
-0.51737(NLL)/0.55266(BETA05), below the training-median constant1.96581.
-
-The complete runner and saved-artifact cold auditor are now implemented.
-A fresh reviewer identified two Important issues before formal fits: missing
-experiment-wide budget reservations and worker refill before checking all
-simultaneous completions for failures. Both were fixed in one RED/GREEN pass.
-Exclusive phase reservations now reject repeated allocations even in new output
-directories or after failure; all completed futures are checked before refill.
-No Critical findings or deferred Minors. The15 targeted contracts pass without
-optimizer starts. Final neural-runtime suite1167 passed,23 warnings in141.27s;
-uv.lock Python3.12.13 suite984 passed,61 skipped,3 warnings in59.07s.
-
-The final new preflight freezes transitive sources, control scripts, runtime,
-specification, data/folds and reference/G0 evidence. Formal fits remain0 at this
-checkpoint. Development is the single frozen20 outer/40 optimizer batch;
-confirmation remains conditional on complete independently audited eligibility.
-All historical failure evidence is retained; no specification change or G0 retry.
+Final specification SHA-256:
+`8c0f733328cd69d60298de862144aad16088b8dd22d9d3f3b5cd5368da7d434a`.
+Final preflight SHA-256:
+`56a54e7c5d72ef8bd6639d01f9a36133b3a7eff0da16fe440983a09105001cf5`.
+Development cold audit SHA-256:
+`2a3c1f4521de2bb1db38288927f2e5b8b0ad1770af966d23fa418b486052be2a`.
+Independent decision SHA-256:
+`43eafe1f74b697e38c7ed8efd34bff078e47b288d821c02cf44820d87ce4b7ed`.
+The complete integrity identities are in EVIDENCE_STATUS.json; artifacts stay
+under local/. The frozen experiment is complete without a finalist. The quiet
+30-minute monitor is paused after final evidence publication.
