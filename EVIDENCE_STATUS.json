@@ -5979,23 +5979,23 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V18_B0_V12IRON_V7TIME",
-    "score": 96.3679,
+    "candidate": "V32_TIME_A60V7_50",
+    "score": 96.3727,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V12_IRON_JOINT_PLR001_A50",
-      "score": 96.3526
+      "candidate": "V18_B0_V12IRON_V7TIME",
+      "score": 96.3679
     },
-    "delta_vs_previous_best": 0.0153,
+    "delta_vs_previous_best": 0.0048,
     "target": 96.4,
     "target_met": false,
-    "margin_to_target": -0.0321,
-    "recipe": "V12 iron column + V7 time column, both original CSV field strings",
-    "zip_sha256": "532118c9dd92467d16d5205073fee6b056ca7f60c0a59b053308e0ba9e073017",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-r8/3_V18_B0_V12IRON_V7TIME.zip",
+    "margin_to_target": -0.0273,
+    "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
+    "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
     "reported_date": "2026-09-28",
-    "note": "Measured 96.3679 exactly equals the conditional additive arithmetic 96.3526+96.3519-96.3366. The additive equal-weight WMAPE model is now confirmed on two independent rectangles.",
-    "feedback_imported_from_commit": "1f1b426",
+    "note": "User-reported improvement at a measured interior point. Imported feedback only; no independent receipt or package copy. This branch retains >96.4 and all historical frozen comparisons; no global mixture optimum is established.",
+    "feedback_imported_from_commit": "6e2c1ac",
     "ownership": "other_branch_user_reported_feedback_only_no_package_copy"
   },
   "round2_v3_local_search": {
@@ -12917,5 +12917,80 @@
       }
     ],
     "quota": "not_inferred_from_scored_or_failed_uploads"
+  },
+  "round2_v46_beta_nll_2026_09_29": {
+    "identity": "V46_TIME_BETA_NLL",
+    "strategy_reservation_commit": "47436e6",
+    "status": "stopped_cache_verification_failed",
+    "G0": "reference_cache_identity_failed",
+    "G1": "not_evaluated",
+    "specification": "configs/round2_v46_beta_nll/SPEC.yaml",
+    "specification_sha256": "8c0f733328cd69d60298de862144aad16088b8dd22d9d3f3b5cd5368da7d434a",
+    "results": "docs/round2_v46_beta_nll/RESULTS.md",
+    "platform_reference": {
+      "candidate": "V32_TIME_A60V7_50",
+      "score": 96.3727,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+      "feedback_imported_from_commit": "6e2c1ac"
+    },
+    "preflight_report_sha256": "956a0eaf373aa166d6cd27d9c2c0b24d70ecfe289d08304c4d75c1dc885c21f2",
+    "missing_frozen_sources": [
+      {
+        "path": "configs/data.local.yaml",
+        "required_sha256": "406a77ef04170f1963582d3bc617b3d429048e8517ff2fe2abf70ee0a77d6fee"
+      },
+      {
+        "path": "configs/predict.local.yaml",
+        "required_sha256": "fa4051a4cea199d3dc67111326c03d92acce2ef5cf0aa60fc8729ec8e70dc870"
+      }
+    ],
+    "budget": {
+      "official_fits": 0,
+      "optimizer_runs": 0,
+      "new_reference_fits": 0,
+      "resource_probes": 0,
+      "learnability_runs": 0,
+      "confirmation_fits": 0,
+      "packages": 0,
+      "uploads": 0
+    },
+    "implementation_scope": "paired_core_and_reference_only_verifier; formal_batch_runner_not_completed_after_G0_stop",
+    "tests": {
+      "targeted": {
+        "passed": 8,
+        "optimizer_runs": 0
+      },
+      "neural_runtime": {
+        "python": "3.12.3",
+        "passed": 1160,
+        "warnings": 23,
+        "seconds": 113.73
+      },
+      "locked_uv_environment": {
+        "python": "3.12.13",
+        "passed": 977,
+        "skipped": 61,
+        "warnings": 3,
+        "seconds": 48.44,
+        "optional_torch_installed": false
+      }
+    },
+    "independent_review": {
+      "important_findings": 1,
+      "fixed": "native_inner_fold_dict_vector_regression_RED_to_GREEN",
+      "remaining_critical_or_important": 0,
+      "deferred_minors": [],
+      "not_evaluated": [
+        "operational_resource_path",
+        "learnability",
+        "convergence",
+        "saved_model_cold_inference",
+        "G1"
+      ]
+    },
+    "release_authorized": false,
+    "monitor_started": false,
+    "source_reconstruction_or_reference_refit": false
   }
 }
