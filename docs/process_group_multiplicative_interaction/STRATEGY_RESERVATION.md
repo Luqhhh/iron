@@ -100,3 +100,9 @@ stage is a concrete frozen design and implementation plan, not a formal run.
 Public strategy documentation uses ordinary commit/push on the current branch.
 Models, predictions, local reports, ledgers, receipts and ZIPs remain private;
 platform submission packages are a separate user-controlled handoff.
+
+## Execution design follow-up
+
+The user requested starting training on 2026-09-29. A concrete
+[execution design](DESIGN.md) now specifies the time-only first batch,
+controls and cost admission. Written design review is pending; no fits started.
