@@ -15316,7 +15316,7 @@
     "local_gates_changed": false,
     "automatic_packages": false,
     "uploads": 0,
-    "monitor_interval_seconds": 3600,
+    "monitor_interval_seconds": 600,
     "supersedes_pause_request_after_v44": true,
     "latest_external_feedback_observed": {
       "candidate": "V40_TIME_H1",
@@ -15328,7 +15328,7 @@
     }
   },
   "round2_v45_rotation_forest": {
-    "status": "FROZEN_DEVELOPMENT_AND_COMPLETION_TRIGGERED_AUDIT_RUNNING",
+    "status": "COMPLETED_AUDITED_NO_FINALIST",
     "branch": "round2-v45-rotation-forest",
     "plan": "docs/round2_v45/PREREGISTRATION.md",
     "spec": "configs/round2_v45/SPEC.yaml",
@@ -15337,7 +15337,7 @@
       96.45,
       96.5
     ],
-    "official_fits": 0,
+    "official_fits": 40,
     "packages": 0,
     "desktop_writes": 0,
     "uploads": 0,
@@ -15359,12 +15359,12 @@
       },
       "report_sha256": "9c7bb291be6b749cdaad5c854fe48a08cb518e7596e119ad454f75f25277c731"
     },
-    "G1": "DEVELOPMENT_AND_AUDIT_PENDING",
+    "G1": "ALL_40_CALIBRATION_WEIGHTS_ZERO_NO_INCREMENT",
     "implementation_commit": "a2106ec",
     "synthetic_fits_completed": 2,
     "preflight_projected_hours": 0.0705752928222258,
     "preflight_peak_rss_mib": 459.0,
-    "results": "docs/round2_v45/G0_RESULTS.md",
+    "results": "docs/round2_v45/RESULTS.md",
     "service": "iron-v45-development-r1.service",
     "initial_main_pid": 178909,
     "started_at": "2026-09-29T10:29:36+08:00",
@@ -15376,6 +15376,34 @@
     "official_development_launched": true,
     "planned_candidate_units": 40,
     "planned_forest_fits": 80,
-    "planned_component_tree_fits": 20480
+    "planned_component_tree_fits": 20480,
+    "official_forest_fits": 80,
+    "official_component_tree_fits": 20480,
+    "reference_units_reused": 20,
+    "candidate_event_span_seconds": 120.119170073,
+    "peak_worker_rss_mib": 359.48046875,
+    "audit_status": "passed",
+    "cold_models_checked": 80,
+    "max_inference_difference": 0.0,
+    "maximum_score_difference": 0.0,
+    "selected_for_confirmation": {
+      "tap_iron": null,
+      "tap_time_len": null
+    },
+    "confirmation_fits": 0,
+    "full_data_fits": 0,
+    "monitor_status": "STOPPED_ON_USER_REQUESTED_TERMINAL_CHECK",
+    "audit_sha256": "978c07eeb8f02d08faaa3b8976709a4f36e26f1299f9c0ab55fcbba8d8cc7cd9",
+    "summary_sha256": "f45eefd734630c2f397658cad04384598320c8b3fe2c61449557eb0f3a98d393",
+    "manifest_sha256": "0cef4b2fa7620a44bdfbdedbf0180990e81bbb1363a492e343829a0b1a9a6eab"
+  },
+  "round2_monitoring_preference_2026_09_29": {
+    "user_instruction": "每十分钟检查一次",
+    "interval_seconds": 600,
+    "supersedes": "previous 3600-second monitoring preference",
+    "between_checks_polling": false,
+    "completion_triggered_audit_allowed": true,
+    "no_training_active_after_v45": true,
+    "note": "V45 was already terminal at this user-authorized check. Old timer stopped; apply 600 seconds at the next launch, without an idle timer."
   }
 }

@@ -1549,3 +1549,23 @@ local/runs/round2-v45/development-hourly/checks.jsonl. Read at the actual timer
 checkpoint or on a real completion event; no between-check log/PID polling.
 The private supervisor includes the independent audit, so terminal success
 requires audit.json. No quality conclusion until that evidence is verified.
+
+
+### V45 complete and monitoring preference updated (2026-09-29)
+
+V45 development and completion-triggered independent audit both exited 0.
+40 candidate units / 80 forests / 20480 component CART trees completed; all
+40 calibration weights are exactly 0. ROTATE standalone iron WMAPE improves
+slightly over AXIS (.05652-.05673 vs .05769-.05803), but time worsens
+(.07244-.07267 vs .06808-.06831). Both are well behind the incumbent; no
+increment and no finalist. Audit: 60 units, 80 forests, exact cold/order/chunk
+and pooled-score reproduction (0 difference). No confirmation/full-data fits,
+packages, desktop writes or uploads. Results: docs/round2_v45/RESULTS.md.
+
+Latest explicit user instruction: **“每十分钟检查一次”**. This supersedes the
+hourly cadence for subsequent execution: use **600-second scheduled checks**,
+no between-check polling. Actual completion/failure events may trigger audit.
+At the user-authorized check V45 was already completed, MainPID 0,
+active/exited with success; the old hourly timer was stopped. No idle timer is
+needed. Preserve its original logs and schedule as historical evidence.
+Continue the active milestones 96.4 -> 96.45 -> 96.5; the pause was revoked.
