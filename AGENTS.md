@@ -1934,3 +1934,9 @@ loading requires an externally held completion SHA256. Failed/duplicate ledger
 starts cannot be retried and consume their phase budget. Formal runner/reference
 binding, independent audit, controller and full-suite/resource admission remain
 pending. No official data fits or full-size probes while E-COMPOSE is live.
+
+RFM independent single-partition artifact audit is implemented;38 focused
+locked tests pass. It verifies original-row preprocessing, full saved state
+paths, fresh refit, independent kernel equations/AGOP and checkpoint selection,
+with external SHA256 anchors and zero solver calls. This is not a completed
+phase/reference/gate audit. Full-run admission and all G1 evidence remain pending.

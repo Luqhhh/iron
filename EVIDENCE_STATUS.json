@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "PARTITION_MODEL_AND_BUDGET_LEDGER_TESTED_FULL_EXPERIMENT_NOT_ADMITTED",
+    "status": "PARTITION_MODEL_LEDGER_AND_INDEPENDENT_EQUATIONS_TESTED_FULL_EXPERIMENT_NOT_ADMITTED",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16056,7 +16056,7 @@
     ],
     "current_best_user_reported": 96.3727,
     "G0": {
-      "focused_locked_python312_tests_passed": 32,
+      "focused_locked_python312_tests_passed": 38,
       "full_suite_run": false,
       "full_size_resource_admission": false,
       "protected_source_files_verified": 633,
@@ -16072,7 +16072,7 @@
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Implement independent artifact/decision audit and frozen task controller; keep full-size probes/official training deferred until E-COMPOSE is terminal and independent admission passes.",
+    "next_action": "Bind verified local reference caches and frozen full-coverage tasks; implement independent score/gate and controller. Full-size probes/official training remain deferred until E-COMPOSE is terminal and independent admission passes.",
     "milestone2": {
       "modules": [
         "rfm_model.py",
@@ -16082,6 +16082,12 @@
       "concurrent_duplicate_reservation_test": true,
       "engineering_record_sha256": "eebbee703c00543176da4d22f56b913ade837c4aab565dd3cc0abd0717483963",
       "formal_run_started": false
+    },
+    "milestone3": {
+      "module": "rfm_audit.py",
+      "single_partition_equation_audit": true,
+      "phase_reference_gate_audit": false,
+      "engineering_record_sha256": "22b88a4129f1f7c0c6e0f84da2d9d1280f3c8cf2160ddec0bd44131da679db1a"
     }
   }
 }

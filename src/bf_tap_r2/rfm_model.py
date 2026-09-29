@@ -258,6 +258,7 @@ class RFMRegressor:
                         update["metric_sha256"] = array_digest(metric)
                         update["gradient_sha256"] = array_digest(gradients)
             procedure.update(training_identity=identity, states=len(models), artifacts=artifacts)
+            self.last_artifacts_ = artifacts
             return models
 
 
@@ -289,6 +290,7 @@ def fit_partition(train, target, arm, reserve, *, directory=None):
     inner = model.fit_path(splitter_frame.loc[mask].reset_index(drop=True), y[mask],
                            3 if arm == "FULL_RFM" else 0, scoped("inner"),
                            directory=None if directory is None else directory / "inner")
+    inner_artifacts = model.last_artifacts_
     calibration = splitter_frame.loc[~mask].reset_index(drop=True)
     errors = [float(np.mean(np.abs(m.predict(calibration) - y[~mask]))) for m in inner]
     if not np.isfinite(errors).all():
@@ -309,5 +311,6 @@ def fit_partition(train, target, arm, reserve, *, directory=None):
                 "outer_target_mean": refit[0].target_mean, "outer_target_std": refit[0].target_std,
                 "inner_bandwidth": inner[0].bandwidth, "outer_bandwidth": refit[0].bandwidth}
     if directory is not None:
+        metadata["artifacts"] = {"inner": inner_artifacts, "refit": model.last_artifacts_}
         write_new(directory / "selection.json", metadata)
     return refit[-1], metadata
