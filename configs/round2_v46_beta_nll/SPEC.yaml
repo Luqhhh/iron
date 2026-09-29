@@ -1,0 +1,150 @@
+identity: V46_TIME_BETA_NLL
+version: round2-v46-time-beta-nll
+status: approved_reserved
+approval: user_confirmed_short_design_2026_09_29
+source_plan: docs/round2_v46_beta_nll/PREREGISTRATION.md
+starting_commit: bd26067
+method_source: https://github.com/martius-lab/beta-nll
+prior_evidence_commit: 6e2c1ac
+platform_target_strict_gt: 96.4
+platform_reference:
+  candidate: V32_TIME_A60V7_50
+  score: 96.3727
+  source: user_reported_not_independently_verified
+  zip_sha256: 54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7
+data:
+  snapshot: round2_v2
+  external_data: forbidden
+  pretrained_weights: forbidden
+  test_set_use: none
+  protected_november_labels: forbidden
+runtime_versions:
+  torch: 2.14.0+cpu
+  numpy: 2.2.6
+  scikit-learn: 1.8.0
+  rtdl-num-embeddings: 0.0.12
+  tabm: 0.0.3
+target: tap_time_len
+arms:
+  NLL: {beta: 0.0, role: matched_control_never_promoted}
+  BETA05: {beta: 0.5, role: only_candidate}
+split_seeds: [42, 3407]
+confirmation_seeds: [7777, 12011]
+folds: [0, 1, 2, 3, 4]
+splits:
+  outer: existing_v5_fold_vector_per_seed
+  inner: group_safe_inner_folds_seed42_validation_fold0
+  fit_seed: 42
+  fresh_refit_at_selected_epoch: true
+  cross_seed_oof_averaging: forbidden
+training:
+  dtype: float64
+  device: cpu
+  random_seed: 42
+  inner_seed: 42
+  hidden_widths: [128, 128]
+  activation: silu
+  periodic_embedding_dim: 8
+  periodic_n_frequencies: 4
+  periodic_frequency_init_scale: 0.01
+  unused_logit_output_retained: true
+  scale_floor: 0.05
+  initial_scale: 0.5
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 240
+  patience: 30
+  min_delta_standardized_mae: 0.00001
+  gradient_norm_clip: 10.0
+  optimizer: AdamW
+  betas: [0.9, 0.999]
+  eps: 0.00000001
+  prediction: conditional_gaussian_mean_equals_median
+  loss: per_row_Gaussian_NLL_including_normalizing_constant_times_detached_variance_power_beta
+  epoch_selection: calibration_MAE_divided_by_inner_training_target_std
+  target_transform: train_only_mean_population_std
+  numeric_transform: existing_NumericPreprocessor_raw_mlp_train_only
+  categorical: train_only_spout_vocabulary_one_hot_unknown_zero
+  scheduler: null
+  swa: false
+  prediction_postprocessing: none
+  parameter_scan: forbidden
+reference:
+  protocol: frozen_deployment_components_on_matching_native_outer_training_rows
+  iron_weights: {v36: 0.5, v12_joint: 0.5}
+  time_weights: {v36: 0.2, n0048: 0.3, v7_periodic: 0.5}
+  historical_B0_time_weights: {v36: 0.325, n0048: 0.175, v7_periodic: 0.5}
+  cache_missing_or_incompatible: stop_no_retraining
+  before_formal_fits: verify_source_spec_data_fold_fit_query_refit_epoch_hash_audit_all_four_seeds
+  teammate_private_cache_reuse: false
+blend: {member_weight: 0.2, alpha_search: false, isolated_target: true}
+gates:
+  development_all_seed_gains_gt: 0.0
+  development_mean_gain_ge: 0.01
+  BETA05_minus_NLL_mean_gain_gt: 0.0
+  confirmation_finalists_max: 1
+promotion:
+  candidate: BETA05
+  min_split_seeds: 4
+  all_seed_gains_gt: 0.0
+  seed_level_paired_lcb95_gt: 0.0
+  lcb: mean_minus_one_sided_t95_df3_times_sample_sd_divided_by_sqrt4
+  local_working_gate: 96.25
+  local_gate_score: mean_development_candidate_package_score
+  mechanism_mean_gain_over_NLL_gt: 0.0
+  mechanism_LCB: report_without_extra_gate
+  fold_level: descriptive_only
+G0:
+  cold_predict_atol: 0.00000001
+  all_four_seed_cache_verification_first: true
+  synthetic_optimizer_runs_max: 4
+  resource_probe:
+    arms: [NLL, BETA05]
+    synthetic_training_rows: 2204
+    synthetic_calibration_rows: 551
+    numeric_dimensions: 21
+    spout_categories: [1, 2, 3]
+    warmup_steps: 3
+    timed_steps: 20
+    validation_forwards: 20
+    projection_max_epochs_both_selector_and_refit: true
+    uncertainty_multiplier: 1.5
+    audit_and_IO_margin_seconds: 300
+    workers_max: 4
+    peak_worker_rss_mib_max: 1024
+    available_ram_margin_mib: 1024
+    projected_development_seconds_max: 7200
+  learnability:
+    seed: 46001
+    rows: 1024
+    training_rows: 768
+    max_epochs: 80
+    target: 10_plus3_times_sin(pi_times_x0)_plus2_times_x1_times_x2
+    pass: each_arm_validation_MAE_lt_training_median_constant_MAE
+  loss_checks: analytic_value_beta0_equivalence_and_detached_weight_gradients
+  paired_checks: exact_initial_parameters_outputs_and_initialization_rng_order
+  train_only_preprocessing: required
+  query_labels: reject
+  failure_action: preserve_evidence_stop_no_retry_no_second_spec_no_hidden_reference_fits
+budget:
+  development_outer_fits: 20
+  confirmation_outer_fits_max: 20
+  official_outer_fits_max: 40
+  optimizer_runs_per_outer_fit: 2
+  official_optimizer_runs_max: 80
+  G0_synthetic_optimizer_runs_max: 4
+  new_reference_fits: 0
+  workers_max: 4
+  full_data_fits: 0
+  failed_fits_consume_budget: true
+  automatic_retries: false
+audit:
+  freeze: [transitive_source, specification, runtime, official_training_data, fold_ids, references]
+  confirmation: independently_audited_development_summary_and_recomputed_eligibility_required
+  final: independently_recompute_four_seed_scores_LCB_mechanism_and_decision
+  saved_models: cold_order_chunk_prediction_and_training_identity_checks
+  ledger: append_started_before_each_optimizer
+monitor: {interval_minutes: 30, continuous_polling: false, notify: failure_stopped_completed_or_user_action_only}
+release: {packages: 0, desktop_writes: 0, agent_uploads: 0}
+publication: {phases: [strategy_reservation, final_results], ordinary_push_current_upstream_only: true}
