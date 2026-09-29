@@ -1657,3 +1657,24 @@ auditor exactly once on actual success, no restart/retraining/release logic.
 completion event may trigger result audit. Evidence root local/runs/round2-v47;
 development-r1/audit.json required before interpreting gains or allocating
 confirmation. Source/config frozen; goal and all gates unchanged.
+
+### V47 complete: no finalist; higher-order training cap unresolved
+
+40 units/80 fits complete; independent audit passes 60 units/80 saved models,
+max independent/cold/order/chunk error 5.68434e-13, score difference 1.82e-16.
+AHOFM4 iron gains -.000448959/0 (mean -.000224480); time 0/0. Standalone
+errors improve versus AFM2 but remain far behind incumbent. Nineteen of twenty
+candidate weights zero; no positive outer blended fold. No confirmation fits,
+full-data fits, package or upload; frozen confirmation command refuses no finalist.
+See docs/round2_v47/RESULTS.md. G0 tests 1272 passed. Candidate span 398.12 s.
+
+All 20 AHOFM4 selectors hit the 400-epoch cap; selected 385-400. Best inner
+calibration MAE improves in every unit from epochs 300 to 400, mean 3.5811%
+iron /4.2642% time. This is measured nonconvergence evidence for a separate
+prospectively frozen schedule study, not permission to alter V47 or a claim
+of future gain. AFM2 only 2/20 cap hits. Preserve all failed gates and traces.
+
+Development and independent audit terminal events received through inotify,
+exit 0 at 03:36:30 /03:36:37 UTC; PID 0 terminal success verified. Timer stopped
+before first checkpoint; no intermediate health/metric polling. No live tasks.
+Staged goal remains active; platform best user-reported 96.3727 unchanged.

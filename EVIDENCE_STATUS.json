@@ -15462,7 +15462,7 @@
     "audit_sha256": "056086424e2490e1a1b9eadfd86ccae9f0d9d60c76bc792bd4cf3e87174b1898"
   },
   "round2_v47_factorized_spline": {
-    "status": "DEVELOPMENT_AND_COMPLETION_AUDIT_RUNNING",
+    "status": "COMPLETE_AUDITED_NO_FINALIST_TRAINING_CAP_UNRESOLVED",
     "branch": "round2-v47-factorized-spline",
     "protocol_commit": "acb581c",
     "spec": "configs/round2_v47/SPEC.yaml",
@@ -15471,7 +15471,7 @@
     "candidate": "AHOFM4",
     "development_outer_units": 40,
     "development_solver_fits": 80,
-    "real_data_fits": "running_expected_80",
+    "real_data_fits": 80,
     "external_data": false,
     "pretrained_weights": false,
     "packages": 0,
@@ -15482,8 +15482,8 @@
       96.45,
       96.5
     ],
-    "g0": "1272 locked tests; synthetic four-way learnability, independent cold DP, resource and reference identity passed",
-    "g1": "unmeasured",
+    "g0": "1272 locked tests passed; independent audit 60 units / 80 cold models passed",
+    "g1": "No positive candidate split gains; no finalist",
     "implementation_commit": "a93da5c",
     "preflight_service": "iron-v47-preflight-r1.service",
     "monitor_timer": "iron-v47-development-monitor.timer",
@@ -15495,6 +15495,66 @@
     "projected_development_hours": 0.31625524157781104,
     "preflight_terminal_exit": 0,
     "development_service": "iron-v47-development-r1.service",
-    "development_launched_at_utc": "2026-09-29T03:29:48.897297+00:00"
+    "development_launched_at_utc": "2026-09-29T03:29:48.897297+00:00",
+    "results": "docs/round2_v47/RESULTS.md",
+    "completed_candidate_outer_units": 40,
+    "reused_reference_units": 20,
+    "confirmation_fits": 0,
+    "full_data_fits": 0,
+    "selected_for_confirmation": {
+      "tap_iron": null,
+      "tap_time_len": null
+    },
+    "candidate_mean_gain": {
+      "tap_iron": -0.00022447960045975102,
+      "tap_time_len": 0.0
+    },
+    "candidate_cap_hits": 20,
+    "cap_diagnostic": {
+      "tap_iron": {
+        "candidate_units": 10,
+        "cap_hits": 10,
+        "selected_epoch_min": 385,
+        "selected_epoch_max": 399,
+        "relative_best_calibration_mae_improvement_300_to_400": [
+          0.042769453164735086,
+          0.03008080404897863,
+          0.03955801403204033,
+          0.03899823164875744,
+          0.038406346918103844,
+          0.032745392692876074,
+          0.03067499984061897,
+          0.03522551255108582,
+          0.03635873824675645,
+          0.03329001310442258
+        ],
+        "mean_relative_improvement": 0.035810750624837524
+      },
+      "tap_time_len": {
+        "candidate_units": 10,
+        "cap_hits": 10,
+        "selected_epoch_min": 396,
+        "selected_epoch_max": 400,
+        "relative_best_calibration_mae_improvement_300_to_400": [
+          0.04005368177119992,
+          0.044657753028260756,
+          0.04147781044230623,
+          0.033756535978871356,
+          0.03992231497391882,
+          0.04240876477202395,
+          0.044509347326027925,
+          0.04675620690375855,
+          0.044761741731891846,
+          0.04811854613883132
+        ],
+        "mean_relative_improvement": 0.04264227030670907
+      }
+    },
+    "maximum_inference_difference": 5.684341886080801e-13,
+    "manifest_sha256": "8e4b6ce49a5373d616364b8c7b8c042b3e8dbb337d65b171cd88353fdc9055db",
+    "summary_sha256": "772da240a5d03108c273150430a2f51ef032a6a4c2cdf8c6189bd4c60b7b86ad",
+    "audit_sha256": "3f37e371f1daa0de25af5eb763729eee728ce371f6ffeedf3f9b3e211f909137",
+    "monitor_stopped": true,
+    "live_training": false
   }
 }
