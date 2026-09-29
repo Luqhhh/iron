@@ -1470,3 +1470,29 @@ Run `local/runs/round2-v44/development-r1`; hourly timer
 Private observations: `local/runs/round2-v44/development-hourly/checks.jsonl`.
 No intermediate training polling. Verify all 80 V43 prefixes and audit all
 new saved models before any quality conclusion or confirmation allocation.
+
+
+### V44 complete; pause after this round (2026-09-29)
+
+V44 long-chain BART completed 40 candidate units / 80 fits with 20 reference
+units reused. Independent audit passes all 60 units, 80 cold models and 80
+exact V43 prefixes; cold/order/chunk/prefix prediction differences are 0.
+Locked pre-run Python 3.12 tests: 1248 passed. Candidate event span 1409.95 s,
+peak worker RSS 404.93 MiB. See docs/round2_v44/RESULTS.md.
+
+G1 BART gains vs current reference: iron -0.002365/-0.002292 (mean -0.002329),
+time -0.001953/+0.003390 (mean +0.000719). Both means are worse than V43,
+even though standalone BART errors improve on all four target/seed pairs.
+No finalist, no confirmation fits, no full-data fits, packages or uploads.
+No further chain extension, weight scan or retroactive promotion. Single-chain
+convergence remains unproven. Preserve all V43/V44 evidence and failed gates.
+
+Hourly timer stopped after terminal-success record at 09:41:36 Asia/Shanghai.
+The manual terminal check at 09:39:52 was earlier than the advertised 09:43:37;
+this cadence deviation is recorded, not misrepresented as an hourly event.
+No live training remains in this V44 service (active/exited, PID 0).
+
+The user explicitly requested “完成本轮后暂停”. Complete V44 evidence publication
+and pause the active goal; do not start another optimization round or scheduler.
+Platform target 96.5 remains unmet; current best is user-reported 96.3727.
+Resume only when the user asks. Leave the other thread/worktree untouched.
