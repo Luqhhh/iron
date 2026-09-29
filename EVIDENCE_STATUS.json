@@ -15870,7 +15870,7 @@
     "results": "docs/strong_component_regularization/SERIAL_RECOVERY_RESULTS.md"
   },
   "component_augmentation_serial_handoff_2026_09_29": {
-    "status": "development_running_in_isolated_worktree",
+    "status": "completed_no_development_finalist",
     "user_authorization": "继续另一条队列",
     "branch": "codex/component-augmentation-representation",
     "implementation_commit": "b065c41",
@@ -15881,7 +15881,7 @@
     "private_root": "local/runs/component-augmentation-representation-budget8",
     "development": "development-r2",
     "control": "recovery-r2",
-    "documentation_on_execution_branch": "docs/component_augmentation_representation/SERIAL_RECOVERY.md",
+    "documentation_on_execution_branch": "docs/component_augmentation_representation/SERIAL_RECOVERY_RESULTS.md",
     "new_units": 60,
     "reused_BASE_units": 20,
     "workers": 4,
@@ -15889,9 +15889,157 @@
     "runtime_admission_cap_hours": 8.0,
     "frozen_sources_unchanged": 425,
     "locked_tests_passed": 1318,
-    "g0": "passed_and_reverified",
-    "g1": "in_progress",
+    "g0": "passed_160_model_saved_state_audit",
+    "g1": "completed_no_development_finalist",
     "automatic_restart": false,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "completed_local": "2026-09-29T20:33:47.502356+08:00",
+    "results_commit": "247be55",
+    "completed_new_units": 60,
+    "complete_units_including_BASE": 80,
+    "failed_units": 0,
+    "pending_new_units": 0,
+    "cold_models": 160,
+    "native_replays": 20,
+    "native_max_difference": 0.0,
+    "full_batch_cold_difference": 0.0,
+    "maximum_order_chunk_difference": 5.631260250993364e-05,
+    "summary_sha256": "3cbdbe05b20a96150c7f6c87b289e42f6c876966163bd3ea75474230b7cfa2c7",
+    "audit_sha256": "fc28b8d856e49855e566838cef6e09cc346acc4a082e46c03ccbacdea7d58e15",
+    "manifest_sha256": "33d7b5e143e887e9b3c6d9db579fcf358d3c566235b7b5bbb6524aa5c01bbbe8",
+    "copied_unit_byte_mismatches": 0,
+    "selected_for_confirmation": {
+      "tap_iron": null,
+      "tap_time_len": null
+    },
+    "confirmation_fits": 0,
+    "derived_seeds_consumed": false,
+    "service_terminal_main_pid": 0,
+    "service_terminal_result": "success",
+    "g1_records": [
+      {
+        "target": "tap_iron",
+        "arm": "D-LMIX",
+        "gains_by_seed": {
+          "42": 0.009755153610638972,
+          "3407": -0.012630199686623766
+        },
+        "mean_package_score_gain": -0.001437523037992397,
+        "positive_development_seeds": 1,
+        "positive_folds_descriptive": 5,
+        "candidate_tier": "not_shortlisted",
+        "mechanism_failed_conditions": [
+          "development_mean_gain_below_0.01",
+          "not_both_development_seeds_positive",
+          "no_positive_mean_gain_over_matched_BASE"
+        ]
+      },
+      {
+        "target": "tap_iron",
+        "arm": "R-FIXED",
+        "gains_by_seed": {
+          "42": -0.009262030975732902,
+          "3407": -0.01762981408396612
+        },
+        "mean_package_score_gain": -0.01344592252984951,
+        "positive_development_seeds": 0,
+        "positive_folds_descriptive": 2,
+        "candidate_tier": "not_shortlisted",
+        "mechanism_failed_conditions": [
+          "development_mean_gain_below_0.01",
+          "not_both_development_seeds_positive",
+          "no_positive_mean_gain_over_matched_BASE"
+        ]
+      },
+      {
+        "target": "tap_iron",
+        "arm": "R-LEARNED",
+        "gains_by_seed": {
+          "42": -0.004554203273825219,
+          "3407": -0.01477475567279278
+        },
+        "mean_package_score_gain": -0.009664479473309,
+        "positive_development_seeds": 0,
+        "positive_folds_descriptive": 1,
+        "candidate_tier": "not_shortlisted",
+        "mechanism_failed_conditions": [
+          "development_mean_gain_below_0.01",
+          "not_both_development_seeds_positive",
+          "no_positive_mean_gain_over_matched_BASE"
+        ]
+      },
+      {
+        "target": "tap_time_len",
+        "arm": "D-LMIX",
+        "gains_by_seed": {
+          "42": -0.012011199811015616,
+          "3407": -0.007206896974034857
+        },
+        "mean_package_score_gain": -0.009609048392525237,
+        "positive_development_seeds": 0,
+        "positive_folds_descriptive": 2,
+        "candidate_tier": "not_shortlisted",
+        "mechanism_failed_conditions": [
+          "development_mean_gain_below_0.01",
+          "not_both_development_seeds_positive",
+          "no_positive_mean_gain_over_matched_BASE"
+        ]
+      },
+      {
+        "target": "tap_time_len",
+        "arm": "R-FIXED",
+        "gains_by_seed": {
+          "42": -0.01707859736206352,
+          "3407": -0.02348863615508727
+        },
+        "mean_package_score_gain": -0.020283616758575394,
+        "positive_development_seeds": 0,
+        "positive_folds_descriptive": 0,
+        "candidate_tier": "not_shortlisted",
+        "mechanism_failed_conditions": [
+          "development_mean_gain_below_0.01",
+          "not_both_development_seeds_positive",
+          "no_positive_mean_gain_over_matched_BASE"
+        ]
+      },
+      {
+        "target": "tap_time_len",
+        "arm": "R-LEARNED",
+        "gains_by_seed": {
+          "42": -0.01786124033332573,
+          "3407": -0.018428221143655665
+        },
+        "mean_package_score_gain": -0.018144730738490697,
+        "positive_development_seeds": 0,
+        "positive_folds_descriptive": 2,
+        "candidate_tier": "not_shortlisted",
+        "mechanism_failed_conditions": [
+          "development_mean_gain_below_0.01",
+          "not_both_development_seeds_positive",
+          "no_positive_mean_gain_over_matched_BASE"
+        ]
+      }
+    ]
+  },
+  "component_serial_queues_2026_09_29": {
+    "status": "both_completed_no_development_finalist",
+    "execution": "serial",
+    "BASE_EMA_SAM": {
+      "formal_units_completed": 60,
+      "diagnostic_units_completed": 6,
+      "audit_status": "passed",
+      "results": "docs/strong_component_regularization/SERIAL_RECOVERY_RESULTS.md"
+    },
+    "augmentation_representation": {
+      "new_units_completed": 60,
+      "reused_BASE_units": 20,
+      "audit_status": "passed",
+      "execution_branch": "codex/component-augmentation-representation",
+      "results_commit": "247be55"
+    },
+    "confirmation_fits": 0,
     "full_data_fits": 0,
     "packages": 0,
     "uploads": 0

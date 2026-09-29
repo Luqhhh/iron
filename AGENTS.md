@@ -1891,3 +1891,24 @@ frozen sources unchanged, locked Python3.12 tests1318 passed. Preserve the
 explicit8-hour admission,600-second monitoring, original gates and zero
 automatic package/upload rule. The old "other queue deferred" record describes
 the earlier first-queue run; it does not describe the current handoff.
+
+### Both serial component queues completed (2026-09-29)
+
+Augmentation/representation ended20:33:47 CST with exit0 and no finalist.
+All60 new units completed plus20 reused BASE controls; independent unchanged
+auditor passed160 saved models and20 exact native replays, cold difference0.
+All425 frozen source hashes and original data hashes remain intact. Every new
+method has negative two-seed mean gain on both targets; D-LMIX iron has one
+positive and one negative seed. All six target/method candidates are
+not_shortlisted and fail the frozen development mechanism gate. No derived
+confirmation seeds or extra fits/releases were triggered.
+
+Both serial queues are complete; neither selected a development finalist.
+Augmentation results commit247be55 on codex/component-augmentation-representation;
+results document on that branch:
+docs/component_augmentation_representation/SERIAL_RECOVERY_RESULTS.md.
+Summary SHA256:3cbdbe05b20a96150c7f6c87b289e42f6c876966163bd3ea75474230b7cfa2c7.
+No full-data fits, packages, desktop writes or uploads. Preserve all original
+partial directories, failed admissions and decisions; do not extend these
+frozen batches implicitly. Earlier "running" and "deferred" entries are
+historical observations.
