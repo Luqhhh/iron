@@ -1451,3 +1451,14 @@ checks in `local/runs/round2-v44/preflight-hourly/checks.jsonl`. Do not poll
 training or read progress between scheduled checks absent an actual event or
 user request. G0 resource/learnability/full-prefix admission is pending;
 official fits remain zero. No packages, desktop changes or uploads. Goal96.5.
+
+### V44 G0 passed (2026-09-29)
+
+`docs/round2_v44/G0_RESULTS.md`: both 200-tree/4000-sweep full-shape fits pass
+learnability, exact old-prefix reproduction and cold/order/chunk equality (0).
+BART synthetic MAE .562954 is WORSE than V43 .485595, though better than STUMP
+1.116597 and constant 1.875230; do not claim expected quality improvement.
+Peak 500.52 MiB, conservative development projection 1.06317 hours. All 1248
+tests, frozen source/runtime/reference checks, 60 old units and current RAM
+admission pass. Hourly preflight observation confirmed terminal success and
+stopped its timer. Admit the frozen 40 official units; G1 remains unmeasured.

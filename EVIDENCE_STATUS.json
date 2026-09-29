@@ -15231,13 +15231,13 @@
   },
   "round2_v44_bart_length_study": {
     "date": "2026-09-29",
-    "status": "SYNTHETIC_PREFLIGHT_RUNNING_OFFICIAL_FITS_NOT_STARTED",
+    "status": "G0_PASSED_ADMITTED_FOR_FROZEN_DEVELOPMENT",
     "branch": "round2-v44-bart-length-study",
     "protocol_commit": "d2728e8",
     "implementation_commit": "e590cfc",
     "platform_target": 96.5,
     "current_best_user_reported": 96.3727,
-    "G0": "1248_LOCKED_TESTS_TINY_PREFIX_EQUALITY_AND_60_OLD_UNITS_PASS_FULL_PREFLIGHT_PENDING",
+    "G0": "PASS_1248_TESTS_FULL_SHAPE_EXACT_PREFIX_ZERO_COLD_DIFF_RESOURCE_AND_REFERENCE_CHECKS",
     "G1": "UNMEASURED",
     "synthetic_fits_budget": 2,
     "official_candidate_units_budget": 40,
@@ -15251,6 +15251,11 @@
     "change": "fresh_4000_sweep_fits_same_100_retained_draws_exact_old_400_sweep_prefix_required",
     "packages": 0,
     "desktop_writes": 0,
-    "uploads": 0
+    "uploads": 0,
+    "synthetic_fits_completed": 2,
+    "preflight_projected_hours": 1.0631676298000254,
+    "preflight_peak_rss_mib": 500.51953125,
+    "synthetic_quality_note": "LONG_BART_WORSE_THAN_SHORT_BUT_FROZEN_LEARNABILITY_AND_CONTROL_GATE_PASS",
+    "results": "docs/round2_v44/G0_RESULTS.md"
   }
 }
