@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "dcn_cross_preparation_2026_09_30": {
-    "status": "implementation_checked_small_synthetic_pending",
+    "status": "small_synthetic_audited_preparation_complete_no_official_admission",
     "branch": "codex/dcn-cross-preparation",
     "platform_milestones": [
       96.4,
@@ -16068,8 +16068,12 @@
       "full_locked_python312_tests": 1317,
       "focused_tests": 10,
       "existing_warnings": 23,
-      "small_synthetic": "pending",
-      "full_size_resource_admission": false
+      "small_synthetic": "passed_independent_audit",
+      "full_size_resource_admission": false,
+      "small_synthetic_rows": 512,
+      "optimizer_runs": 4,
+      "cold_models": 4,
+      "maximum_independent_order_chunk_difference": 7.105427357601002e-15
     },
     "g1": "unmeasured",
     "dedup": {
@@ -16089,6 +16093,35 @@
     },
     "private_evidence": "local/research/dcn-cross-preparation-evidence-r1",
     "queue_priority": "Preserve RFM completed then PTaRL/DNNR/DANet; no DCN official fit allocation",
-    "automatic_release": false
+    "automatic_release": false,
+    "implementation_commit": "97cc9dc",
+    "results": "docs/dcn_cross_preparation/RESULTS.md",
+    "small_synthetic_descriptive": [
+      {
+        "arm": "ADDITIVE",
+        "selected_epoch": 117,
+        "stopped_epoch": 142,
+        "parameter_count": 7440,
+        "query_mae": 2.422338686601894,
+        "constant_query_mae": 4.299773788890454,
+        "maximum_inference_difference": 5.329070518200751e-15
+      },
+      {
+        "arm": "CROSS",
+        "selected_epoch": 117,
+        "stopped_epoch": 142,
+        "parameter_count": 7440,
+        "query_mae": 2.6626044406243254,
+        "constant_query_mae": 4.299773788890454,
+        "maximum_inference_difference": 7.105427357601002e-15
+      }
+    ],
+    "small_synthetic_descriptive_note": "Both arms beat constant; CROSS query MAE exceeds ADDITIVE by0.240265754,about9.92%; no official-data inference or tuning",
+    "decision": "Retain low-priority prepared implementation; preserve existing PTaRL/DNNR/DANet order; no formal queue allocation",
+    "evidence_sha256": {
+      "manifest.json": "c7b367ee01afb0dcebe622e2385cc220ee0419ab10e20ac04e69052bc9c44de6",
+      "completion.json": "d7d1c634d517055b64aba8584af481c3b894e4f11ca6c59d61824c01c5090655",
+      "audit.json": "e0fff5157fbf84694b744de0231e54afb418baed20d0dbbd530792b07a7361b9"
+    }
   }
 }

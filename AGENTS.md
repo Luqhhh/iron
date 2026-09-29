@@ -1929,3 +1929,14 @@ This is partial G0 preparation,not admission or G1 gain. Retain old gates and
 600-second monitoring. Platform best user-reported96.3727 and all three staged
 goals remain unmet. Formal runner/cache/budget/audit/resource admission require
 a separate prospective stage; small synthetic audit cannot authorize G1.
+
+
+DCN small synthetic witness complete:2 procedures/4 optimizer runs; independent
+fresh-process audit passes4 saved models,train-only moments/target scales,
+selected epoch/trace and cold/order/chunk predictions. Max difference7.11e-15.
+Both beat constantMAE4.29977; ADDITIVE2.42234,CROSS2.66260. This single artificial
+negative comparison lowers priority; do not tune/repeat or call the whole family
+closed. No official labels/fits/full-size resource admission/confirmation/release.
+Keep original RFM->PTaRL->DNNR->DANet priority; DCN remains numerical preparation
+with no formal budget. Results:docs/dcn_cross_preparation/RESULTS.md. Sources and
+prior gates unchanged. Staged objective active; platform best96.3727 unchanged.
