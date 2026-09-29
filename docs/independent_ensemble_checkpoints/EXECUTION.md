@@ -63,3 +63,12 @@ checked on2026-09-29. All four private originals remain available underlocal/.
 No desktop copy was created, and no platform upload or account-quota inference
 was performed. An unrecorded score remains possible; absence from the ledger
 does not establish that the user has never tested a package.
+
+## First scheduled development observation
+
+The supervisor's actual600-second observation at21:59:40 CST recorded14 complete
+ledger entries and0 failed entries. Their types are10 reused outer references
+and4 of20 candidate units, each with two fresh selector/refit pairs and one
+reused native control. Thus completed new trajectories are8 selectors plus8
+refits;14 is not a candidate-unit count. Full development quality and independent
+audit remain pending. No between-check health/metric polling was used.

@@ -1952,3 +1952,8 @@ pure-time, pure-iron and25% probes lack recorded feedback. Their private ZIP
 identities/structure still pass; the old desktop pending directory is absent.
 Optional old75% probe retains priority; do not fill quota with the others.
 No desktop write/upload is authorized by this status request.
+
+Actual600-second DE3 development observation21:59:40 CST:14 complete ledger
+entries consist of10 reused outer references and4/20 candidate units;0 failures.
+The completed candidates account for8 new selectors/8 new refits/4 native copies.
+No whole-split quality conclusion or platform recommendation for the new phase.

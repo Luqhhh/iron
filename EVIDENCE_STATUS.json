@@ -16103,10 +16103,24 @@
       "development_units_planned": 20,
       "new_members_planned": 40,
       "new_solver_trajectories_planned": 80,
-      "reused_native_units": 20,
       "confirmation": "conditional_on_frozen_development_gate",
       "eligible_platform_candidates": 0,
-      "note": "Stage-start event establishes execution, not measured quality; no intermediate status polling."
+      "note": "Stage-start event establishes execution, not measured quality; no intermediate status polling.",
+      "reused_native_units_planned": 20,
+      "source_native_units_verified": 20,
+      "scheduled_checkpoint": {
+        "observed_local": "2026-09-29 21:59:40 Asia/Shanghai",
+        "source": "actual_600_second_supervisor_observation",
+        "raw_completed_ledger_records": 14,
+        "completed_candidate_units": 4,
+        "planned_candidate_units": 20,
+        "completed_reused_outer_references": 10,
+        "failed_units": 0,
+        "completed_new_selector_fits": 8,
+        "completed_new_refit_fits": 8,
+        "completed_native_controls_reused": 4,
+        "quality_conclusion": "pending_full_split_coverage_and_independent_audit"
+      }
     },
     "milestones": [
       96.4,
