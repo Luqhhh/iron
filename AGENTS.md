@@ -1524,3 +1524,13 @@ independent saved-tree/PCA audit. Eight focused tests are included in the
 locked Python 3.12 full suite: 1256 passed, 23 existing warnings. Runtime and
 20 source/row/fold-matched reference-cache units verify. Protocol e1de45f.
 Synthetic admission is still pending; no real V45 data fits or packages yet.
+
+
+V45 G0 admission passed: synthetic 256-tree AXIS MAE .645789 and ROTATE .363817
+against constant 3.961012; every saved synthetic forest and PCA basis verifies,
+cold/order/chunk difference 0. Peak 459 MiB; development projection .0705753 h.
+Source/runtime/reference checks and current RAM admission pass. Admit the fixed
+40 actual-data candidate units, 80 forest fits, without changing gates. G1
+remains unmeasured. See docs/round2_v45/G0_RESULTS.md. Independent final audit
+may run immediately as a completion-triggered sequential step; this is not
+periodic training polling. No automatic retraining, package or upload.

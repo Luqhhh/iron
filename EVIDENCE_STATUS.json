@@ -15328,7 +15328,7 @@
     }
   },
   "round2_v45_rotation_forest": {
-    "status": "IMPLEMENTED_TESTED_SYNTHETIC_ADMISSION_PENDING",
+    "status": "G0_ADMITTED_DEVELOPMENT_NOT_YET_STARTED",
     "branch": "round2-v45-rotation-forest",
     "plan": "docs/round2_v45/PREREGISTRATION.md",
     "spec": "configs/round2_v45/SPEC.yaml",
@@ -15345,8 +15345,25 @@
     "G0": {
       "locked_python312_tests_passed": 1256,
       "warnings": 23,
-      "reference_cache_units_verified": 20
+      "reference_cache_units_verified": 20,
+      "preflight_checks": {
+        "learnability": true,
+        "rotation_mechanism": true,
+        "runtime": true,
+        "worker_memory": true,
+        "available_memory": true
+      },
+      "cold_differences": {
+        "AXIS": 0.0,
+        "ROTATE": 0.0
+      },
+      "report_sha256": "9c7bb291be6b749cdaad5c854fe48a08cb518e7596e119ad454f75f25277c731"
     },
-    "G1": "NOT_EVALUATED"
+    "G1": "NOT_EVALUATED",
+    "implementation_commit": "a2106ec",
+    "synthetic_fits_completed": 2,
+    "preflight_projected_hours": 0.0705752928222258,
+    "preflight_peak_rss_mib": 459.0,
+    "results": "docs/round2_v45/G0_RESULTS.md"
   }
 }
