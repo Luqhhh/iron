@@ -1725,3 +1725,24 @@ Private root local/runs/round2-v48; completion-event.json is the terminal
 notification, development-monitor/checks.jsonl stores scheduled observations.
 Require development-r1/audit.json including all 80 exact old prefixes before
 quality decisions or conditional confirmation. Source/config frozen.
+
+### V48 complete: epoch-extension route closed for this recipe
+
+All 40 units/80 fits complete; audit passes 60 units, 80 new cold models and
+80 actual V47 prefixes (parameters/traces exact, old prediction difference 0).
+Max independent/cold/order/chunk difference 5.68434e-13. Locked suite 1279 passed.
+AHOFM4 iron gains -.001588775/-.001099920 (mean -.001344348); time 0/-.005298953
+(mean -.002649477). Both means worse than V47 despite better standalone errors
+in all four target/seed pairs. No positive blended outer fold. No finalist,
+confirmation/full-data fit, package or upload; derived seeds unconsumed.
+See docs/round2_v48/RESULTS.md; preserve V47 and V48 failures.
+
+All 40 selectors stop before 2000 (latest 1883); candidate selected 598-1833.
+The old cap concern is resolved under this patience rule, not a proof of global
+convergence. No further epoch extension or duration scan of this recipe without
+new evidence; do not promote AFM2 or substitute standalone gains for blend gains.
+
+Scheduled 600-second checks recorded 20/40 then 38/40, no ledger failures.
+Actual completion/audit events exit 0 at 04:19:01 /04:19:13 UTC, PID 0 terminal
+success verified and timer stopped. Candidate span 1319.78 s, peak 430.75 MiB.
+No live work remains. Staged goal active; best user-reported 96.3727 unchanged.

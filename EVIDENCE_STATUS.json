@@ -15558,16 +15558,16 @@
     "live_training": false
   },
   "round2_v48_factorized_spline_epochs": {
-    "status": "DEVELOPMENT_AND_COMPLETION_AUDIT_RUNNING",
+    "status": "COMPLETE_AUDITED_NO_FINALIST_EPOCH_ROUTE_CLOSED",
     "branch": "round2-v48-factorized-spline-epochs",
     "protocol_commit": "91c9eba",
     "spec": "configs/round2_v48/SPEC.yaml",
     "plan": "docs/round2_v48/PREREGISTRATION.md",
     "only_training_change": "max_epochs 400 -> 2000",
     "old_evidence": "round2_v47_factorized_spline",
-    "g0": "1279 locked tests; synthetic learnability/cold/old-prefix/resource checks passed",
-    "g1": "unmeasured",
-    "real_data_fits": "running_expected_80",
+    "g0": "1279 tests passed; audit 60 units /80 new models /80 exact old prefixes passed",
+    "g1": "No positive blended outer fold; no finalist; both target candidate means worse than V47",
+    "real_data_fits": 80,
     "synthetic_fits": 2,
     "packages": 0,
     "agent_uploads": 0,
@@ -15583,6 +15583,39 @@
     "projected_development_hours": 2.096409353077858,
     "preflight_terminal_exit": 0,
     "development_service": "iron-v48-development-r1.service",
-    "development_launched_at_utc": "2026-09-29T03:56:57.563481+00:00"
+    "development_launched_at_utc": "2026-09-29T03:56:57.563481+00:00",
+    "results": "docs/round2_v48/RESULTS.md",
+    "completed_candidate_outer_units": 40,
+    "reused_reference_units": 20,
+    "confirmation_fits": 0,
+    "full_data_fits": 0,
+    "selected_for_confirmation": {
+      "tap_iron": null,
+      "tap_time_len": null
+    },
+    "candidate_mean_gain": {
+      "tap_iron": -0.0013443475475716227,
+      "tap_time_len": -0.0026494765068798415
+    },
+    "candidate_mean_gain_change_vs_v47": {
+      "tap_iron": -0.0011198679471118717,
+      "tap_time_len": -0.0026494765068798415
+    },
+    "selector_cap_hits": 0,
+    "latest_stopping_epoch": 1883,
+    "candidate_selected_epoch_range": [
+      598,
+      1833
+    ],
+    "candidate_seconds": 1319.781200705,
+    "peak_worker_rss_mib": 430.75,
+    "maximum_inference_difference": 5.684341886080801e-13,
+    "exact_prefix_models": 80,
+    "maximum_prefix_prediction_difference": 0.0,
+    "manifest_sha256": "94b7eef51c1100c302405997f7591933c3d5938eb97e869a99fe650d54fd2aa8",
+    "summary_sha256": "7fc782208dc3b6dfc58ed639f6122b7ee294bc47c147881d8b554fe1ab86fc25",
+    "audit_sha256": "ac74101bc3b4e335cf7faad5da123e1a20a9a891a7bad43630773fe4bd4ba6fd",
+    "monitor_stopped": true,
+    "live_training": false
   }
 }
