@@ -15556,5 +15556,21 @@
     "audit_sha256": "3f37e371f1daa0de25af5eb763729eee728ce371f6ffeedf3f9b3e211f909137",
     "monitor_stopped": true,
     "live_training": false
+  },
+  "round2_v48_factorized_spline_epochs": {
+    "status": "IMPLEMENTATION_TESTED_SYNTHETIC_ADMISSION_PENDING",
+    "branch": "round2-v48-factorized-spline-epochs",
+    "protocol_commit": "91c9eba",
+    "spec": "configs/round2_v48/SPEC.yaml",
+    "plan": "docs/round2_v48/PREREGISTRATION.md",
+    "only_training_change": "max_epochs 400 -> 2000",
+    "old_evidence": "round2_v47_factorized_spline",
+    "g0": "1279 locked Python 3.12 tests passed; original 60 V47 units and reference identities verified; synthetic admission pending",
+    "g1": "unmeasured",
+    "real_data_fits": 0,
+    "synthetic_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "monitor_interval_seconds": 600
   }
 }

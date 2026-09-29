@@ -1690,3 +1690,10 @@ new fits (never load/copy old states into training); independent prefix audit.
 Two full 2000-epoch synthetic fits and full locked suite before 40 real-data
 units/80 fits. Keep V47 immutable; no external weights/data or release.
 600-second monitoring; actual completion events may trigger audit.
+
+V48 implementation ready: separate long-schedule subclass captures actual new
+training checkpoints at old selected epochs and full old trace prefixes; saved
+prefix artifacts are hash-bound and independently compared to V47. Seven new
+checkpoint/tamper/refit/protocol tests; locked Python 3.12 suite 1279 passed,
+23 existing warnings. Old V47 source/data/audit/60 units and 20 baseline cache
+units verified. Synthetic admission pending; no actual V48 data fits yet.
