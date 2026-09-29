@@ -16043,5 +16043,52 @@
     "full_data_fits": 0,
     "packages": 0,
     "uploads": 0
+  },
+  "dcn_cross_preparation_2026_09_30": {
+    "status": "implementation_checked_small_synthetic_pending",
+    "branch": "codex/dcn-cross-preparation",
+    "platform_milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "platform_reference": {
+      "candidate": "V32_TIME_A60V7_50",
+      "score": 96.3727,
+      "source": "user_reported_not_independently_verified"
+    },
+    "design": "docs/dcn_cross_preparation/DESIGN.md",
+    "spec": "configs/dcn_cross_preparation/SPEC.yaml",
+    "arms": [
+      "ADDITIVE",
+      "CROSS"
+    ],
+    "g0": {
+      "numerical_and_cold_tests": "passed",
+      "full_locked_python312_tests": 1317,
+      "focused_tests": 10,
+      "existing_warnings": 23,
+      "small_synthetic": "pending",
+      "full_size_resource_admission": false
+    },
+    "g1": "unmeasured",
+    "dedup": {
+      "visible_refs": 188,
+      "unique_commits": 101,
+      "keyword_hits": 0,
+      "scope": "finite available-ref keyword check, no universal novelty claim"
+    },
+    "budget": {
+      "small_synthetic_procedures": 2,
+      "small_synthetic_optimizer_runs": 4,
+      "full_size_synthetic_fits": 0,
+      "official_data_fits": 0,
+      "full_data_fits": 0,
+      "packages": 0,
+      "uploads": 0
+    },
+    "private_evidence": "local/research/dcn-cross-preparation-evidence-r1",
+    "queue_priority": "Preserve RFM completed then PTaRL/DNNR/DANet; no DCN official fit allocation",
+    "automatic_release": false
   }
 }

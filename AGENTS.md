@@ -1912,3 +1912,20 @@ No full-data fits, packages, desktop writes or uploads. Preserve all original
 partial directories, failed admissions and decisions; do not extend these
 frozen batches implicitly. Earlier "running" and "deferred" entries are
 historical observations.
+
+
+### DCN cross-operator preparation (2026-09-30)
+
+Branch codex/dcn-cross-preparation prepares an original full-matrix DCN-v2
+adaptation and parameter/init-matched ADDITIVE control. Finite available-ref
+check:188 refs/101 commits,no explicit DCN/CrossNet hit. Preserve existing
+RFM->PTaRL->DNNR->DANet priority and other worktrees; no numbered round or
+official fit budget is reserved. Core scalar/finite-difference/degree/fresh-refit/
+cold/tamper tests10 passed; locked Python3.12 suite1317 passed,23 old warnings.
+Source/design/spec:docs/dcn_cross_preparation/DESIGN.md and matching SPEC.
+Only one512-row synthetic witness is next:2 procedures/4 optimizer runs.
+No official labels/full-size probe/full-data fit/package/desktop write/upload.
+This is partial G0 preparation,not admission or G1 gain. Retain old gates and
+600-second monitoring. Platform best user-reported96.3727 and all three staged
+goals remain unmet. Formal runner/cache/budget/audit/resource admission require
+a separate prospective stage; small synthetic audit cannot authorize G1.
