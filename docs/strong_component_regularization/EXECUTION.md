@@ -21,3 +21,16 @@ G1 is unmeasured. No full-data fit, package, desktop write or upload.
 The seed1042 diagnostic changes the native training seed (initialization,
 dropout and minibatch order together). It measures training-seed sensitivity,
 not the isolated causal effect of initialization. It never selects candidates.
+
+## Admission and development start
+
+Preflight exited0 at06:49:25 UTC; G0_RESULTS.md records the successful six-arm
+synthetic audit and two native controls. The supervisor immediately launched
+the frozen development stage (20 exact BASE replay units before 40 EMA/SAM
+units, then six training-seed diagnostics). G1 results remain pending.
+
+An initial wall-clock-based observation just after600s preceded the supervisor's
+actual scheduled record by about13s. No intermediate training metrics were
+available in that observation; the subsequent actual scheduled record is the
+authoritative check (5/6 complete, zero failures). Subsequent checks should use
+scheduled events or actual stage-completion notifications, not an estimated due time.

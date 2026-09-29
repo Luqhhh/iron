@@ -1814,3 +1814,12 @@ Keep the other worktree and V49 evidence untouched. No repeated TANGOS fits.
 BASE/EMA/SAM count: 60 development units/120 fits, plus 6 initialization
 diagnostic units/12 fits excluded from selection. Conditional confirmation
 only for eligible candidates. No full-data fit, package or upload authorized.
+
+Implementation b0d372a: full locked Python3.12 suite1301 passed, 23 existing
+warnings; final focused suite14 passed. G0 synthetic admission passed at
+2026-09-29 06:49:25 UTC: 6 full-size fits and 2 native controls, exact BASE
+state/prediction replay, cold full-batch difference0, max order/chunk1.21e-5,
+peak593.78MiB, conservative development projection6.12918h <7.61h. Development
+started on the completion event, native replays first. Private supervisor
+records stages and observations under local/runs/strong-component-regularization;
+no polling between600-second events. Sources/config frozen during execution.

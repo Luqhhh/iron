@@ -15653,7 +15653,7 @@
     "conditional_confirmation": "only if independently audited frozen development gates pass"
   },
   "strong_component_regularization_2026_09_29": {
-    "status": "synthetic_admission_running_with_gated_development",
+    "status": "development_running_native_base_replay_first",
     "user_authorized": true,
     "branch": "codex/strong-component-regularization",
     "preregistration": "docs/strong_component_regularization/PREREGISTRATION.md",
@@ -15697,6 +15697,26 @@
     "launch_utc": "2026-09-29T06:33:55Z",
     "monitoring_interval_seconds": 600,
     "automatic_confirmation": "only_after_audited_frozen_development_gate",
-    "g1": "unmeasured"
+    "g1": "in_progress_no_quality_claim",
+    "g0": {
+      "status": "passed",
+      "checks": {
+        "learnability": true,
+        "native_replay": true,
+        "runtime": true,
+        "worker_memory": true,
+        "available_memory": true,
+        "sources_unchanged": true
+      },
+      "synthetic_new_refits": 6,
+      "synthetic_native_controls": 2,
+      "native_parameter_and_prediction_difference": 0.0,
+      "full_batch_cold_difference": 0.0,
+      "maximum_order_chunk_difference": 1.2100660512714967e-05,
+      "peak_worker_rss_mib": 593.7734375,
+      "conservative_development_projection_hours": 6.129179797876717,
+      "report_sha256": "9967cb133fc486ca4c8fe6ca602c94c88eb25305f1d0d39c31e8fd0821d29668"
+    },
+    "development_started_utc": "2026-09-29T06:49:25Z"
   }
 }
