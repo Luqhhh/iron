@@ -15720,7 +15720,7 @@
     "development_started_utc": "2026-09-29T06:49:25Z"
   },
   "component_augmentation_representation_2026_09_29": {
-    "status": "implementation_validated_synthetic_admission_next",
+    "status": "synthetic_admission_running",
     "branch": "codex/component-augmentation-representation",
     "spec": "configs/component_augmentation_representation/SPEC.yaml",
     "documentation": "docs/component_augmentation_representation/EXECUTION.md",
@@ -15737,6 +15737,9 @@
     "workers": 4,
     "total_candidate_workers_max": 8,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "started_utc": "2026-09-29T07:15:51.391090+00:00",
+    "implementation_commit": "47ea6e48012be5d4e6bcc4aafeeef451b1981965",
+    "supervisor_private_root": "local/runs/component-augmentation-representation"
   }
 }

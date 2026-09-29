@@ -43,3 +43,8 @@ stage transition and audit. No source edits during this workflow.
 G1 remains unmeasured. Current platform reference remains user-reported
 96.3727; neither unit tests nor synthetic fit quality predict platform gain.
 No full-data fits, packages, desktop writes or uploads.
+
+Supervisor launched 2026-09-29T07:15:51.391090+00:00, implementation47ea6e4. Initial terminal
+stream confirms preflight start. Six synthetic fits admitted to the four-worker
+queue; their final resource/cold result is pending. Session62002 retains the
+supervisor. Sources/config remain frozen.
