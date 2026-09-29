@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "FULL_LOCKED_SUITE_PASSED_READY_FOR_FROZEN_RESOURCE_ADMISSION",
+    "status": "G0_PASSED_G1_LAUNCH_AUTHORIZED",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16058,7 +16058,7 @@
     "G0": {
       "focused_locked_python312_tests_passed": 63,
       "full_suite_run": true,
-      "full_size_resource_admission": false,
+      "full_size_resource_admission": true,
       "protected_source_files_verified": 633,
       "protected_source_mismatches": 0,
       "tiny_synthetic_training_rows_max": 40,
@@ -16067,17 +16067,30 @@
       "full_suite_skipped": 8,
       "full_suite_warnings": 23,
       "rfm_tests_skipped": 0,
-      "full_suite_receipt_sha256": "08d73f421c13b85713822eee5773eed66fea046ac6547cc088ba1511672cbe91"
+      "full_suite_receipt_sha256": "08d73f421c13b85713822eee5773eed66fea046ac6547cc088ba1511672cbe91",
+      "maximum_worker_mib": 547.54296875,
+      "maximum_cold_difference": 8.171241461241152e-14,
+      "projected_development_seconds": 649.0249428826792,
+      "frozen_source_files": 819,
+      "reference_files": 436,
+      "source_commit": "9bb986c",
+      "manifest_sha256": "66761093ebf89e19693f1fc6035189b7d2588b13738b2c9c75730ab4f3602ccb",
+      "admission_sha256": "76e39a24d3ff254d9b9a4b59c91d9a96de90ed5e4040f7b1399d34cd3e8211f6",
+      "synthetic_completed": {
+        "procedure": 4,
+        "solve": 10,
+        "update": 6
+      }
     },
     "G1": "NO_NEW_QUALITY_MEASUREMENT",
     "formal_fits": 0,
-    "full_size_synthetic_probes": 0,
+    "full_size_synthetic_probes": 1,
     "official_label_reads": true,
     "packages": 0,
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Commit/push tested implementation, freeze source/runtime/reference manifest, execute one-shot resource admission, and launch durable G1 controller only if all gates pass.",
+    "next_action": "Launch exactly one durable G1 controller with 600-second monitoring; retain frozen source and all original quality gates.",
     "milestone2": {
       "modules": [
         "rfm_model.py",

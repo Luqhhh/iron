@@ -1981,3 +1981,10 @@ cache/package skips,23 warnings. Initial2 missing-cache failures retained;45
 byte-identical local cache copies repaired environment without source/gate edits.
 Freeze tested committed source before the one-shot full-size G0; only a passed
 admission may launch G1. Still no package, desktop write or upload authority.
+
+RFM full-size G0 passed under frozen implementation9bb986c:4 procedures,
+10 solves,6 updates,zero failed/incomplete. Maximum peak547.543MiB,cold difference
+8.17e-14,development cost projection649.025s<7200s.819 sources and436 native
+references frozen. Independent fresh-process admission recheck passed,zero fits.
+Authorized next step is exactly one durable40-unit development with conditional
+confirmation after cold audit and independent arithmetic; no automatic release.
