@@ -1957,3 +1957,14 @@ Actual600-second DE3 development observation21:59:40 CST:14 complete ledger
 entries consist of10 reused outer references and4/20 candidate units;0 failures.
 The completed candidates account for8 new selectors/8 new refits/4 native copies.
 No whole-split quality conclusion or platform recommendation for the new phase.
+
+DE3 completed22:28:39 CST and independent audit passed22:28:59.20 candidate
+units/40 fresh selectors/40 fresh refits/20 native controls;120 saved models,
+20 exact native replays, full-batch difference0. Iron mean gain+0.003480;
+time+0.001324 with one negative split. Neither passes the frozen0.01 gate;
+no confirmation/new package. Results: docs/independent_ensemble_checkpoints/DE3_RESULTS.md.
+E-COMPOSE synthetic admission failed22:30:04 before official candidate fits:
+normally distributed fixture violates the existing positive ratio-denominator
+contract. Original supervisor stopped without retry. Preserve all partial
+synthetic evidence; recover fixture/admission in a fresh versioned directory
+without changing any G1 recipe or threshold and without repeating DE3 fits.

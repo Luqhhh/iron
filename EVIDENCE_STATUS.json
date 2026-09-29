@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "DE3_G0_ADMITTED_G1_DEVELOPMENT_STARTED",
+    "status": "DE3_COMPLETE_AUDITED_NO_FINALIST_E_COMPOSE_SYNTHETIC_DOMAIN_FAILURE",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16098,29 +16098,61 @@
       "note": "Full suite plus final focused protocol-bridge check; initial missing ignored worktree configs and old-calibration mismatch preserved as zero-fit engineering failures."
     },
     "G1": {
-      "status": "DE3_COMPLETE_COVERAGE_DEVELOPMENT_IN_PROGRESS",
-      "started_local": "2026-09-29 21:49:40 Asia/Shanghai",
-      "development_units_planned": 20,
-      "new_members_planned": 40,
-      "new_solver_trajectories_planned": 80,
-      "confirmation": "conditional_on_frozen_development_gate",
-      "eligible_platform_candidates": 0,
-      "note": "Stage-start event establishes execution, not measured quality; no intermediate status polling.",
-      "reused_native_units_planned": 20,
-      "source_native_units_verified": 20,
-      "scheduled_checkpoint": {
-        "observed_local": "2026-09-29 21:59:40 Asia/Shanghai",
-        "source": "actual_600_second_supervisor_observation",
-        "raw_completed_ledger_records": 14,
-        "completed_candidate_units": 4,
-        "planned_candidate_units": 20,
-        "completed_reused_outer_references": 10,
-        "failed_units": 0,
-        "completed_new_selector_fits": 8,
-        "completed_new_refit_fits": 8,
-        "completed_native_controls_reused": 4,
-        "quality_conclusion": "pending_full_split_coverage_and_independent_audit"
-      }
+      "DE3": {
+        "status": "complete_audited_no_finalist",
+        "completed_candidate_units": 20,
+        "new_selector_fits": 40,
+        "new_refit_fits": 40,
+        "native_units_reused": 20,
+        "summary": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3/summary.json",
+        "summary_sha256": "cd1d4e7740b7e2799e66f29edc4dab60a4cc3801904e434151ef0e1c1d0bd7c8",
+        "audit": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3/audit.json",
+        "audit_sha256": "d2e590109c39ff94ca715b1710edc1805ec96f674f433d8c80a012c5ee00b81c",
+        "targets": {
+          "tap_iron": {
+            "gains_by_seed": {
+              "42": 0.004381694674258571,
+              "3407": 0.0025787151520625246
+            },
+            "mean_gain": 0.003480204913160548,
+            "selected_for_confirmation": null,
+            "failure_reasons": [
+              "mean_gain_below_0.01"
+            ]
+          },
+          "tap_time_len": {
+            "gains_by_seed": {
+              "42": -0.0004212998036937782,
+              "3407": 0.003068517334960802
+            },
+            "mean_gain": 0.0013236087656335119,
+            "selected_for_confirmation": null,
+            "failure_reasons": [
+              "mean_gain_below_0.01",
+              "not_both_development_seeds_positive"
+            ]
+          }
+        },
+        "cold_models": 120,
+        "native_replays": 20,
+        "full_batch_cold_difference": 0.0,
+        "maximum_order_chunk_difference": 5.616435714728141e-05,
+        "confirmation_new_fits": 0
+      },
+      "E-COMPOSE": {
+        "status": "synthetic_preflight_failed_before_official_candidate_fits",
+        "failure": "V3 ratio features require positive denominators",
+        "failed_directory": "local/runs/independent-ensemble-checkpoints-20260929/preflight-E-COMPOSE",
+        "failed_log": "local/runs/independent-ensemble-checkpoints-20260929/E-COMPOSE-preflight.log",
+        "partial_synthetic_solver_events": {
+          "solver_start": 24,
+          "solver_complete": 24
+        },
+        "original_evidence_preserved": true,
+        "official_candidate_fits": 0,
+        "recovery": "engineering_fixture_domain_repair_preparing_new_directory"
+      },
+      "qualified_platform_candidates": 0
     },
     "milestones": [
       96.4,
