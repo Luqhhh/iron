@@ -1,0 +1,102 @@
+version: round2-v46-refined-family-bound
+platform_target: 96.5
+source_commit: c5afb9c4cc903ef31f1ad55c825e8f9b263666a0
+source_path: docs/round2_v40/RESULTS.md
+source_status: user_reports_not_independently_verified
+metric_contract: configs/round2_v0_2/metric_contract.yaml
+rounding_half_width: 5.0e-05
+lift_half_width: 0.00015
+method: fixed_exact_triangular_partition_common_anchor_vertex_certificates
+time_observations:
+  V36:
+  - - 1.0
+    - 0.0
+  - 96.2894
+  - 0.00015
+  A35:
+  - - 0.65
+    - 0.35
+  - 96.3526
+  - 0.00015
+  A45:
+  - - 0.55
+    - 0.45
+  - 96.3598
+  - 0.00015
+  A60:
+  - - 0.4
+    - 0.6
+  - 96.3625
+  - 0.00015
+  A72:
+  - - 0.28
+    - 0.72
+  - 96.3585
+  - 0.00015
+  B0:
+  - - 0.325
+    - 0.175
+  - 96.3679
+  - 5.0e-05
+  I1:
+  - - 0.2
+    - 0.3
+  - 96.3727
+  - 5.0e-05
+  I2:
+  - - 0.1
+    - 0.15
+  - 96.3629
+  - 5.0e-05
+  I5:
+  - - 0.3
+    - 0.45
+  - 96.3727
+  - 5.0e-05
+  H1:
+  - - '0'
+    - '0.45'
+  - '96.364'
+  - '0.0005'
+time_domain_vertices:
+- - 0
+  - 0
+- - 1
+  - 0
+- - 0
+  - 1
+iron_observations:
+  W0:
+  - - 0
+  - 96.3519
+  - 5.0e-05
+  W05:
+  - - 0.5
+  - 96.3679
+  - 5.0e-05
+  W1:
+  - - 1
+  - 96.3514
+  - 5.0e-05
+iron_domain_vertices:
+- - 0
+- - 1
+budget:
+  training_fits: 0
+  label_reads: 0
+  packages: 0
+  desktop_writes: 0
+  uploads: 0
+platform_milestones:
+- 96.4
+- 96.45
+- 96.5
+grid_denominator: 40
+base_bound_spec: configs/round2_v41/SPEC.yaml
+base_bound_spec_sha256: ede88a1c954282ae0ceb4661dfa7b5086382ba50b3a0ab392bcb859e29344821
+new_feedback_commit: ef10deba58ad7259d984d869b5e95914d9204296
+new_feedback_path: EVIDENCE_STATUS.json
+new_feedback_key: ridge_failed_stop_uploads_2026_09_29
+new_feedback_zip_sha256: 772057b95032f035ecdd1051133a7885925c51ee2aa611f55bc36744f19e44b8
+new_feedback_half_width_reason: user report has three decimal places; conservatively
+  allow +/-0.0005

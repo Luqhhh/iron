@@ -1569,3 +1569,17 @@ At the user-authorized check V45 was already completed, MainPID 0,
 active/exited with success; the old hourly timer was stopped. No idle timer is
 needed. Preserve its original logs and schedule as historical evidence.
 Continue the active milestones 96.4 -> 96.45 -> 96.5; the pause was revoked.
+
+
+### V46: zero-fit continuous-family bound under the staged objective
+
+V46 reserved on round2-v46-refined-family-bound. Use the new, correctly
+identified H1 report 96.364 with conservative +/-0.0005 (three reported decimal
+places) plus frozen V41 observations. Source feedback commit ef10deba58ad7259d984d869b5e95914d9204296.
+Fixed 1/40 triangular partition of the whole time simplex and 40 iron
+intervals; each entire cell must have a common-anchor rational supporting
+certificate for every vertex. This is a continuous-domain bound, not a maximum
+over measured/grid points or a forecast. Independent Fraction-only certificate
+and tiling verification required. No labels, fits, new packages or uploads.
+Do not rank or recommend uploads by upper bounds. Keep V41 and old decisions
+unchanged; explicitly compare exclusion of 96.4/96.45/96.5 under assumptions.

@@ -15405,5 +15405,23 @@
     "completion_triggered_audit_allowed": true,
     "no_training_active_after_v45": true,
     "note": "V45 was already terminal at this user-authorized check. Old timer stopped; apply 600 seconds at the next launch, without an idle timer."
+  },
+  "round2_v46_refined_family_bound": {
+    "status": "PREREGISTERED_ZERO_FIT_ANALYSIS",
+    "branch": "round2-v46-refined-family-bound",
+    "spec": "configs/round2_v46/SPEC.yaml",
+    "plan": "docs/round2_v46/PREREGISTRATION.md",
+    "platform_milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "source_feedback_commit": "ef10deba58ad7259d984d869b5e95914d9204296",
+    "source_feedback": "V40_TIME_H1 user-reported 96.364 +/-0.0005",
+    "new_fits": 0,
+    "label_reads": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0
   }
 }
