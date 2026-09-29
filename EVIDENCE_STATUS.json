@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "E_COMPOSE_PATH_METADATA_FIXED_R3_ZERO_FIT_RESUME_READY",
+    "status": "E_COMPOSE_REAL_DATA_G1_DEVELOPMENT_STARTED_R3_DE3_CLOSED",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16118,7 +16118,11 @@
         "test_log_sha256": "e5c48e7c1ea488ab1f92f20094fa5e82d2c4687c7da201275366e065534d689c",
         "original_admission_artifacts_verified": 28,
         "training_algorithm_ast_unchanged_verified": true,
-        "new_synthetic_training_runs": 0
+        "new_synthetic_training_runs": 0,
+        "zero_fit_fresh_process_cold_revalidation": "passed",
+        "admission_bridge": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r3/admission-bridge/report.json",
+        "admission_bridge_sha256": "a1a3e9d7e43bca6b540a71cf780afd775b933213793369fb85d78405aa085308",
+        "original_admission_identity_preserved": true
       }
     },
     "G1": {
@@ -16164,7 +16168,7 @@
         "confirmation_new_fits": 0
       },
       "E-COMPOSE": {
-        "status": "development_start_metadata_path_failure_before_any_official_fit",
+        "status": "complete_coverage_development_inner_reference_fits_in_progress",
         "failure": "V3 ratio features require positive denominators",
         "failed_directory": "local/runs/independent-ensemble-checkpoints-20260929/preflight-E-COMPOSE",
         "failed_log": "local/runs/independent-ensemble-checkpoints-20260929/E-COMPOSE-preflight.log",
@@ -16204,7 +16208,7 @@
           "next_step": "scoped_path_metadata_fix_and_zero_fit_revalidation_of_successful_admission_in_fresh_r3_directory"
         },
         "recovery_r3": {
-          "status": "validated_ready_to_start",
+          "status": "real_data_development_started",
           "directory": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r3",
           "supervisor": "bf_tap_r2.independent_checkpoints_resume",
           "successful_admission_reused_from": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2/preflight-E-COMPOSE",
@@ -16213,7 +16217,18 @@
           "zero_fit_fresh_process_cold_revalidation_required": true,
           "model_recipe_and_gate_changes": false,
           "monitor_seconds": 600,
-          "automatic_retry": false
+          "automatic_retry": false,
+          "implementation_commit": "b88f6ca",
+          "service": "iron-independent-ensemble-checkpoints-20260929.service",
+          "started_local": "2026-09-29 23:57:40 Asia/Shanghai",
+          "development_started_local": "2026-09-29 23:57:47 Asia/Shanghai",
+          "first_official_inner_reference_fit_local": "2026-09-29 23:57:52 Asia/Shanghai",
+          "initial_main_pid": 313912,
+          "initial_completed_reused_outer_references": 10,
+          "initial_inner_reference_in_progress": "s42-f0",
+          "candidate_units_planned": 20,
+          "inner_reference_units_planned": 10,
+          "measured_quality": "pending_full_coverage_and_independent_audit"
         }
       },
       "qualified_platform_candidates": 0
@@ -16263,7 +16278,8 @@
       "de3_results_commit": "908a5d2",
       "recovery_implementation_commit": "81c74cc",
       "ordinary_upstream_push_verified": true,
-      "temporary_ssh_authentication_block_resolved_with_existing_credential": true
+      "temporary_ssh_authentication_block_resolved_with_existing_credential": true,
+      "r3_implementation_commit": "b88f6ca"
     }
   }
 }

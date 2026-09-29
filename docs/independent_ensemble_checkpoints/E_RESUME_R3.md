@@ -41,3 +41,19 @@ to the original artifact, and unrelated paths are rejected. Source-delta tests
 reject changed candidate computation or package weight. The zero-fit check
 verifies all28 original admission artifacts and source identity. Full log:
 local/runs/independent-ensemble-checkpoints-20260929/engineering-r3/pytest-python312.log.
+
+## Real-data development started
+
+Implementationb88f6ca was ordinary-pushed before launch. Original r2 service
+terminal state is retained underengineering-r3/. The named transient service
+started the explicit r3 workflow23:57:40 CST on2026-09-29, initialMainPID313912
+active/running, writing a new E-recovery-r3-workflow-output.log. The zero-fit
+source/artifact/cold admission bridge ended23:57:47 with exit0 and0 new fits.
+The original successful admission report and its provenance remain unchanged.
+
+E development started23:57:47, created its manifest, and completed the10 reused
+outer reference tasks. Actual official-data A-only inner-reference fitting
+started23:57:52 for split42/fold0. There are10 legal inner-reference units
+before the20 candidate units. This establishes real G1 execution, not a quality
+or promotion result. Source/config are frozen; subsequent observations occur
+only at actual600-second wait events or stage completion/failure events.
