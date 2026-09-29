@@ -1697,3 +1697,11 @@ prefix artifacts are hash-bound and independently compared to V47. Seven new
 checkpoint/tamper/refit/protocol tests; locked Python 3.12 suite 1279 passed,
 23 existing warnings. Old V47 source/data/audit/60 units and 20 baseline cache
 units verified. Synthetic admission pending; no actual V48 data fits yet.
+
+V48 synthetic admission launched 2026-09-29 11:50:27 Asia/Shanghai, service
+iron-v48-preflight-r1.service, initial MainPID 195054 verified running.
+Implementation 8e15245. 600-second timer iron-v48-preflight-monitor.timer first
+due monotonic 83554.645324 s (approximately 12:00:27 local); actual timer
+controls. No between-check health/metric polling. Completion event path
+local/runs/round2-v48/preflight-completion-event.json may trigger audit.
+No actual-data fits until successful G0 report is independently checked.

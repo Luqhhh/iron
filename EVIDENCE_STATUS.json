@@ -15558,7 +15558,7 @@
     "live_training": false
   },
   "round2_v48_factorized_spline_epochs": {
-    "status": "IMPLEMENTATION_TESTED_SYNTHETIC_ADMISSION_PENDING",
+    "status": "SYNTHETIC_ADMISSION_RUNNING",
     "branch": "round2-v48-factorized-spline-epochs",
     "protocol_commit": "91c9eba",
     "spec": "configs/round2_v48/SPEC.yaml",
@@ -15568,9 +15568,15 @@
     "g0": "1279 locked Python 3.12 tests passed; original 60 V47 units and reference identities verified; synthetic admission pending",
     "g1": "unmeasured",
     "real_data_fits": 0,
-    "synthetic_fits": 0,
+    "synthetic_fits": "running_expected_2",
     "packages": 0,
     "agent_uploads": 0,
-    "monitor_interval_seconds": 600
+    "monitor_interval_seconds": 600,
+    "implementation_commit": "8e15245",
+    "preflight_service": "iron-v48-preflight-r1.service",
+    "monitor_timer": "iron-v48-preflight-monitor.timer",
+    "initial_main_pid": 195054,
+    "first_check_monotonic_seconds": 83554.645324,
+    "preflight_launched_at_utc": "2026-09-29T03:50:27.539696+00:00"
   }
 }
