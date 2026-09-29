@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "SERIAL_WORKFLOW_STARTED_SYNTHETIC_DE3_PENDING",
+    "status": "DE3_G0_ADMITTED_G1_DEVELOPMENT_STARTED",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16081,10 +16081,33 @@
       "native_full_units_verified": 20,
       "original_reference_cache_verified": true,
       "runtime_verified": true,
-      "synthetic_resource_admission": "pending_separate_per_queue",
+      "synthetic_resource_admission": {
+        "DE3": {
+          "status": "passed",
+          "report": "local/runs/independent-ensemble-checkpoints-20260929/preflight-DE3/report.json",
+          "projected_hours": 3.0738327181222203,
+          "peak_rss_mib": 591.92578125,
+          "synthetic_refit_fits": 4,
+          "independent_initializations_verified": true,
+          "max_cold_difference": 8.15470241377625e-06
+        },
+        "E-COMPOSE": {
+          "status": "pending_serial_DE3_completion"
+        }
+      },
       "note": "Full suite plus final focused protocol-bridge check; initial missing ignored worktree configs and old-calibration mismatch preserved as zero-fit engineering failures."
     },
-    "G1": "UNMEASURED_NO_NEW_OFFICIAL_FITS_YET",
+    "G1": {
+      "status": "DE3_COMPLETE_COVERAGE_DEVELOPMENT_IN_PROGRESS",
+      "started_local": "2026-09-29 21:49:40 Asia/Shanghai",
+      "development_units_planned": 20,
+      "new_members_planned": 40,
+      "new_solver_trajectories_planned": 80,
+      "reused_native_units": 20,
+      "confirmation": "conditional_on_frozen_development_gate",
+      "eligible_platform_candidates": 0,
+      "note": "Stage-start event establishes execution, not measured quality; no intermediate status polling."
+    },
     "milestones": [
       96.4,
       96.45,
@@ -16104,6 +16127,27 @@
     "implementation_commit": "d4413f3",
     "service": "iron-independent-ensemble-checkpoints-20260929.service",
     "started_local": "2026-09-29 21:44:44 Asia/Shanghai",
-    "initial_main_pid": 288423
+    "initial_main_pid": 288423,
+    "platform_handoff_review": {
+      "reference_already_scored": {
+        "candidate": "V32_TIME_A60V7_50",
+        "score": 96.3727,
+        "source": "user_reported_not_independently_verified"
+      },
+      "new_phase_packages": 0,
+      "historical_unreported_candidates": [
+        "V32_TIME_A60V7_75",
+        "V18_TIME_V100",
+        "V31_IRON_W100",
+        "V32_TIME_A60V7_25"
+      ],
+      "historical_zip_hashes_and_structure_reverified": true,
+      "preferred_optional_old_probe": "V32_TIME_A60V7_75",
+      "remaining_old_probes": "optional_information_only; do not fill quota merely to spend it",
+      "historical_desktop_path_currently_exists": false,
+      "private_originals_preserved": true,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    }
   }
 }

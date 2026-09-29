@@ -29,3 +29,37 @@ alone is not a passing audit or quality conclusion. Both bounded queues stop
 before any additional seed, checkpoint trajectory, mechanism combination or
 weight search. A final user-facing result must distinguish implementation G0
 from measured model quality G1.
+
+## DE3 admission and G1 start
+
+The actual DE3 admission exit event was received at21:49:40 CST on2026-09-29
+with return code0. All resource/learnability/native-cache/cold checks passed.
+Four independent synthetic full240-epoch refits used the two new training seeds
+on both targets. Per-target initial state hashes differ. Peak worker RSS was
+591.93MiB, conservative projection3.074hours, and maximum cold/order/chunk
+difference8.155e-6 against the frozen5e-4 tolerance. No synthetic reference
+factory or official-data fit was used by this admission.
+
+The supervisor then started the complete20-unit DE3 development stage at
+21:49:40 CST:40 new independent members/80 selector and refit trajectories,
+with20 previously audited seed42 native controls retained. This is a G1 execution
+checkpoint; there is no measured quality or promotion conclusion yet. E-COMPOSE
+and earned confirmation remain serial and conditional as preregistered.
+
+## Platform handoff review
+
+The current best V32_TIME_A60V7_50 already has user-reported score96.3727 and
+does not need a repeated test. This new phase has generated no package.
+Four historical delivered probes have no score recorded in the current evidence:
+V32_TIME_A60V7_75, V18_TIME_V100, V31_IRON_W100 (legacy package idV28_IRON_W100),
+and V32_TIME_A60V7_25. Their private original ZIP hashes, single result.csv,
+322 unique ordered IDs and finite nonnegative outputs were reverified without
+new fits or package mutations. V32_TIME_A60V7_75 remains the next optional old
+interior probe under the existing recommendation. The other three are optional
+information purchases; qualified new mechanisms compete for priority.
+
+The historical desktop submission-96.4-pending directory was absent when
+checked on2026-09-29. All four private originals remain available underlocal/.
+No desktop copy was created, and no platform upload or account-quota inference
+was performed. An unrecorded score remains possible; absence from the ledger
+does not establish that the user has never tested a package.

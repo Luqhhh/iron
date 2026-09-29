@@ -1941,3 +1941,14 @@ Serial next-phase service launched21:44:44 CST, initial verified MainPID288423
 active/running. Implementation d4413f3 is committed/pushed. Source/config frozen;
 observe only supervisor600-second scheduled records or actual terminal events.
 DE3 synthetic admission is the first stage; no G1 conclusion at launch.
+
+DE3 admission completed21:49:40 CST with exit0: four synthetic full240-epoch
+refits, different new-seed initial states on each target,591.93MiB peak RSS,
+3.074hour conservative projection and max cold difference8.155e-6. The
+supervisor started complete20-unit G1 development immediately. No quality
+conclusion or new package yet; serial E-COMPOSE and earned confirmation unchanged.
+Platform handoff review: current96.3727 best already scored; historical75%,
+pure-time, pure-iron and25% probes lack recorded feedback. Their private ZIP
+identities/structure still pass; the old desktop pending directory is absent.
+Optional old75% probe retains priority; do not fill quota with the others.
+No desktop write/upload is authorized by this status request.
