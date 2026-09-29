@@ -79,3 +79,42 @@ GitHub repository search 使用比赛全称、`高炉铁次预测`、`高炉`＋
 研究完成；源码审查没有执行训练或目标评估，因此不能称模型 G0 已通过，也没有新的 G1 增益。新增模型 fits、完整重拟合、submission.zip、桌面写入及平台上传均为0。没有改变当前实验阈值、历史决定、参照或队友分支。
 
 这次检索支持把下一轮设计转向表示和目标结构，**没有找到可直接替换当前方案的同赛题高分代码**。在新假设和完整成本冻结前，不启动大批训练。外部代码、检索原始响应和本地检查记录保持在忽略目录；仅本研究摘要公开。
+
+## 7. 模糊检索补充：变量图、排液模拟与工业软测量
+
+用户随后要求略微扩大搜索词。本轮完成14组中英文宽查询，再补4组交叉词/近期更新时间查询。宽查询合并得到505个不同的首批仓库命中，**不是505个相关项目**；其中4组仅取前100条，不能据此宣称检索穷尽。选取18个新候选核对仓库说明，并对关键模型作静态源码阅读。部分网络 EOF 已保留原响应后有界重试；`wyw14/solo-006` 的目录树请求未成功，排除分类仅依据其 README。
+
+主要宽词包括 `出铁`、`铁水 预测`、`blast furnace prediction`、`furnace tapping`、`hot metal prediction`、`tapping time`、`tapping duration`、`iron tapping`、`ironmaking regression`。这些词会带来大量触屏操作、游戏、地铁等无关命中，不能仅凭搜索标题判断相关性。补充交叉查询 `高炉 出铁` 返回27条，`高炉 铁量` 返回1条；后者仍是已确认的 baseline。名称含 `blast-furnace` 且2026年9月以来更新的查询返回14条，也逐步筛查了名称不清楚的候选。
+
+### 7.1 新增可参考项目
+
+| 项目与实际任务 | 源码/说明提供的方法 | 对当前任务的判断 |
+|---|---|---|
+| [liuchb715/DMSGWNN-GUR](https://github.com/liuchb715/DMSGWNN-GUR)：高炉煤气利用率 | 工艺变量作图节点，相关性/MIC 邻接关系、多尺度图小波、可学习滤波；实际使用历史窗口预测 CO/CO2 | **最值得进入设计的新增结构参考**。可研究21个静态数值变量的图表示；不能照搬时间窗口或其煤气利用率成绩 |
+| [quinnreynolds/tappingsim](https://github.com/quinnreynolds/tappingsim)：冶金炉出液过程模拟 | 孔隙床/铁口压降、液层状态、流量积分得到排液质量和时长 | 解释铁量与时长共同生成的机理，但实现中的 `SubmergedArcFurnace` 是矿热炉。当前缺少液位、几何、黏度等关键输入，**不能直接运行成预测器** |
+| [ylkyc/ironmaking-zju](https://github.com/ylkyc/ironmaking-zju)：炼铁软测量综述及硅含量基线 | SVR、XGBoost、RFR、BPNN、AE、LSTM、GRU、TCN | 可作为领域方法目录；普通树/核/神经基线已有覆盖，时序模型当前无合法序列输入 |
+| [FIN-KAI/CL-MOEEL](https://github.com/FIN-KAI/CL-MOEEL)：铁水硅含量 | 多核 SVR、多目标进化选成员、线性/SVR/MLP 元模型、多样性目标 | 与已有核模型/旧库 stacking 路线重叠。静态读到元模型以基模型训练集预测拟合，不能当作无泄漏 OOF 实现照抄；README 论文信息仍有占位项 |
+| [zhangjc714/large-scale-PI-modeling](https://github.com/zhangjc714/large-scale-PI-modeling)：工业质量指标预测区间 | MATLAB ELM 与进化区间优化 | 优化覆盖率和区间宽度的目的不同于当前 WMAPE 点预测，低优先级 |
+| [haodong2000/KeyIndicatorPredictor](https://github.com/haodong2000/KeyIndicatorPredictor)：六种铁水化学指标时序预测 | 115维输入、LSTM/Transformer/持续学习 | 时序数据与目标均不同，不能迁移其数据、窗口或成绩 |
+
+前三个核心参考的检视版本分别为 DMSGWNN-GUR [`42045040007713e78eb218f107e63ee0c488c409`](https://github.com/liuchb715/DMSGWNN-GUR/tree/42045040007713e78eb218f107e63ee0c488c409)、tappingsim [`2ab30c4c176ea2def9838f59369103532d312876`](https://github.com/quinnreynolds/tappingsim/tree/2ab30c4c176ea2def9838f59369103532d312876)、ironmaking-zju [`16b976a7239b66a7bd4e4166a0a969026cf1c0cb`](https://github.com/ylkyc/ironmaking-zju/tree/16b976a7239b66a7bd4e4166a0a969026cf1c0cb)。关键源码下载件与对应 Git blob SHA 核对；外部代码只保留在忽略目录，没有执行或并入公开实现。
+
+### 7.2 优先新增假设：训练分区内构建的静态变量图
+
+DMSGWNN 的节点是**工艺变量**，不是样本。其原始流程使用变量历史窗口和预计算 Pearson/MIC 矩阵；公开数据说明也明确提供的是演示用假数据，而非真实工业数据。可迁移的是变量间关系和多尺度滤波的表示思路，不是数据集、结果或完整预测流程。
+
+下一次设计可比较“同容量主干＋变量图通道”与“同容量主干＋单位图/无边控制”，限定为当前21个数值输入，并单独处理铁口类别。每个内外层训练分区分别估计和冻结关系矩阵，验证/测试仅应用；不得用全部行来选边、把目标设为可见节点、按匿名 ID 连出伪时间边。没有额外观测信息，收益假设仍是更合适的函数表示。
+
+当前公开工作树的文档、配置和 `src/bf_tap_r2` 关键词检索未发现已登记的变量图/图小波实验；这不代表所有队友远端都未研究。V8 已有特征注意力，因此需明确检验“图关系与多尺度滤波”是否提供超出普通特征交互的增量，而不是将注意力换名再跑。
+
+原源码也不能直接当作冷推理合格实现：[GraphWavelet_RSR.py](https://github.com/liuchb715/DMSGWNN-GUR/blob/42045040007713e78eb218f107e63ee0c488c409/models/GraphWavelet_RSR.py) 在 forward 中使用 `F.dropout(x_features_SGWNN, self.dropout)`，没有传入 `training=self.training`。静态审查据此判断，非零 dropout 下仅调用 `eval()` 仍会执行随机丢弃；本轮未运行代码验证。新实现必须自行保证推理确定性与训练/验证一致性。
+
+因此该方向值得做独立设计，但尚无 G1 增益证据。先冻结具体模型、训练图生成、机制控制、成本和停止规则，再决定是否实施；本轮不启动拟合。
+
+### 7.3 排液模拟的可用边界与排除项
+
+`tappingsim` 的源码实际计算多孔床及铁口阻力、金属/渣界面变化，再对 `dt × 金属体积流率 × 密度` 积分得到质量。这比简单铁量/时长比例更具体，但关键液层状态和铁口参数在当前表中不可见。不能填造这些参数，也不能借此重新开放已经测负的 rate/逆 rate 路线；目前只记录为物理结构参考。
+
+其他新候选已按实际任务排除：`HuowangLee/meigang_model` 是转炉 C/P/温度；`taehyunan-99/blast_furnace_quality_prediction` 和 `beta591414/-Prediction-of-silicon-content-in-molten-iron` 是成分软测量；`TheStarSlayer/Prediction-and-Forecasting-Skin-Temperature-of-Blast-Furnace` 是炉皮温度，其 README 的“97.086% accuracy”没有当前赛题的评分含义，不能当作我们的97分方案。近期更新的 `Pandorahuapi/BlastFurnaceFiveFactor-Model` 实际是用高炉作比喻的手机注意力模型；两个 `jacktheripper2k5/blast-furnace-*` 是氧富集教科书计算器；监控仪表盘、温度报警、Go设备联锁也不是参赛预测实现。
+
+模糊检索**没有新增第二个经核实的同比赛项目**，也没有发现可核验的同赛题高分复现。新增最有价值的下一轮结构问题是静态变量图，目标级联和机理分组表示仍保留为独立假设。检索没有推翻旧负面结论，没有调整参照、晋级门槛或发布权限；新增 fits、模型包和平台上传仍为0。
