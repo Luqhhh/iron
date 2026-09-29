@@ -224,3 +224,4 @@ base_replay_cache:
   same_recipe_and_inner_split: true
   verify_original_committed_sources: true
   wait_interval_seconds: 600
+  source_spec: configs/strong_component_regularization/SPEC.yaml

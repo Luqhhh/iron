@@ -26,11 +26,19 @@ RUN_ROOT = "local/runs/strong-component-regularization"
 RECIPE = {"backbone":"tabm","frequency":.01}
 
 
-def sources(root):
+def sources(root, spec=None):
     paths=list((root/"src/bf_tap_r2").glob("*.py"))+list((root/"configs").rglob("*.yaml"))
-    paths += [root/"uv.lock",root/"pyproject.toml",root/"docs/strong_component_regularization/PREREGISTRATION.md"]
+    paths += [root/"uv.lock",root/"pyproject.toml",root/(spec["source_plan"] if spec else "docs/strong_component_regularization/PREREGISTRATION.md")]
     paths += [root/"tests/test_component_regularization.py"]
+    paths += list((root/"tests").glob("test_component_*.py"))
     return {str(p.relative_to(root)):file_hash(p) for p in paths}
+
+
+def model_class(arm, spec):
+    if arm != "BASE" and spec.get("model_adapter") == "augmentation_representation":
+        from .component_augmentation import AugmentedRegressor
+        return AugmentedRegressor
+    return ComponentRegressor
 
 
 def outputs(target):
@@ -42,11 +50,11 @@ def choose(records, spec):
     for target in TARGETS:
         rows=[r for r in records if r["target"]==target]
         base=next(r for r in rows if r["arm"]=="BASE")
-        eligible=[r for r in rows if r["arm"] in ("EMA","SAM")
+        eligible=[r for r in rows if r["arm"] in spec["promotion"]["eligible_recipes"]
             and min(v["gain"] for v in r["seeds"].values())>0
             and r["paired"]["mean"]>=spec["promotion"]["development_mean_gain_ge"]
             and r["paired"]["mean"]>base["paired"]["mean"]]
-        selected[target]=min(eligible,key=lambda r:(-r["paired"]["mean"],r["arm"]!="EMA"))["arm"] if eligible else None
+        selected[target]=min(eligible,key=lambda r:(-r["paired"]["mean"],spec["tie_preference_by_target"][target].index(r["arm"])))["arm"] if eligible else None
     return selected
 
 
@@ -63,7 +71,7 @@ def fit_unit(root, out, frame, fv, seed, fold, target, arm, spec, manifest, trai
         training=frame.loc[fv!=fold].reset_index(drop=True)
         query=frame.loc[fv==fold,["sample_id","spout_no",*FEATURES]].reset_index(drop=True)
         settings=dict(spec["training"][target],random_seed=train_seed)
-        model=ComponentRegressor(RECIPE,settings,arm,spec["mechanisms"],directory)
+        model=model_class(arm,spec)(RECIPE,settings,arm,spec["mechanisms"],directory)
         model.fit(training,training[outputs(target)].to_numpy())
         prediction=model.predict(query)
         with (directory/"predictions.npz").open("xb") as stream:
@@ -173,28 +181,30 @@ def summarize(out,frame,folds,spec,candidates):
     tiers=(classify_candidates(metrics,spec,yaml.safe_load(Path("configs/candidate_tiers.yaml").read_text()))
            if set(folds)==set(spec["split_seeds"]) and candidates==spec["candidates"] else None)
     overlap=[]
+    from itertools import combinations
     for target,arms in candidates.items():
-        if not {"EMA","SAM"}.issubset(arms):continue
         y=frame[target].to_numpy();old_key="v12_iron" if target=="tap_iron" else "v7_time"
-        for seed in folds:
-            effects=[]
-            for arm in ("EMA","SAM"):
-                pred=replacement(base[seed][target],base[seed][old_key],members[seed,target,arm])
-                effects.append(np.abs(y-base[seed][target])-np.abs(y-pred))
-            corr=float(np.corrcoef(effects)[0,1]) if all(np.std(v)>0 for v in effects) else None
-            overlap.append({"target":target,"seed":seed,"row_error_reduction_correlation":corr,
-                            "both_improve_row_fraction":float(np.mean((effects[0]>0)&(effects[1]>0)))})
+        for left,right in combinations([a for a in arms if a!="BASE"],2):
+            for seed in folds:
+                effects=[]
+                for arm in (left,right):
+                    pred=replacement(base[seed][target],base[seed][old_key],members[seed,target,arm])
+                    effects.append(np.abs(y-base[seed][target])-np.abs(y-pred))
+                corr=float(np.corrcoef(effects)[0,1]) if all(np.std(v)>0 for v in effects) else None
+                overlap.append({"target":target,"seed":seed,"arms":[left,right],"row_error_reduction_correlation":corr,
+                                "both_improve_row_fraction":float(np.mean((effects[0]>0)&(effects[1]>0)))})
     return {"records":records,"metrics":metrics,"selected_for_confirmation":selected,"tiers":tiers,
             "mechanism_row_overlap":overlap,
             "packages":0,"agent_uploads":0,"release_authorized":False}
 
 
-def run(root,out,development=None):
+def run(root,out,development=None,spec_path=SPEC):
     root=Path(root).resolve();out=(root/out).resolve()
-    if not out.is_relative_to(root/RUN_ROOT):raise ValueError("Private output required")
-    spec=yaml.safe_load((root/SPEC).read_text());versions=check_runtime(spec)
-    preflight=json.loads((root/RUN_ROOT/"preflight-r1/report.json").read_text())
-    if preflight["status"]!="passed" or preflight["spec_sha256"]!=file_hash(root/SPEC):
+    spec=yaml.safe_load((root/spec_path).read_text());run_root=spec.get("run_root",RUN_ROOT)
+    if not out.is_relative_to((root/run_root).resolve()):raise ValueError("Private output required")
+    versions=check_runtime(spec)
+    preflight=json.loads((root/run_root/"preflight-r1/report.json").read_text())
+    if preflight["status"]!="passed" or preflight["spec_sha256"]!=file_hash(root/spec_path):
         raise ValueError("Successful matching preflight required")
     verify_hashes(root,preflight["source_hashes"])
     seeds=spec["split_seeds"];candidates=spec["candidates"]
@@ -211,7 +221,7 @@ def run(root,out,development=None):
     else:verify_reference_cache(root,spec)
     frame=load_v5_training_frame(root)
     folds={s:fold_vector(root,frame,s,load_v5_spec(root)) for s in seeds}
-    manifest={"source_hashes":sources(root),"spec_sha256":file_hash(root/SPEC),"versions":versions,
+    manifest={"source_hashes":sources(root,spec),"spec_sha256":file_hash(root/spec_path),"versions":versions,
         "data_hashes":{str(p.relative_to(root)):file_hash(p) for p in (root/"复赛_train").glob("*.csv")},
         "fold_hashes":{str(s):digest(f.tolist()) for s,f in folds.items()},"seeds":seeds,"candidates":candidates,
         "development":str(development) if development else None,
@@ -221,10 +231,15 @@ def run(root,out,development=None):
     if out.exists():raise ValueError("Run exists; preserve evidence, no implicit restart")
     out.mkdir(parents=True,exist_ok=False);write_new(out/"manifest.json",manifest)
     references(root,out,frame,folds,spec,manifest,bool(development))
+    if not development and "base_replay_cache" in spec:
+        from .component_replay_cache import reuse_baselines
+        reuse_baselines(root,out,frame,folds,spec,manifest)
     phases=[[(s,f,t,"BASE",42) for s in seeds for f in range(5) for t in TARGETS],
             [(s,f,t,a,42) for s in seeds for f in range(5) for t,arms in candidates.items() for a in arms if a!="BASE"]]
-    if not development:
+    if not development and spec["diagnostics"].get("initialization_enabled",True):
         phases.append([(42,0,t,a,1042) for t in TARGETS for a in spec["recipes"]])
+    if not development and "base_replay_cache" in spec:
+        phases=phases[1:]
     for phase,tasks in enumerate(phases):
         failed=[]
         with ProcessPoolExecutor(max_workers=spec["budget"]["candidate_workers"]) as pool:
@@ -253,7 +268,7 @@ def run(root,out,development=None):
             if dev_score<spec["promotion"]["local_working_gate"]:failed.append("local_working_gate")
             result["four_seed_decisions"].append({"target":target,"arm":arm,"paired":paired,"seeds":rows,
                 "development_score":dev_score,"failed_conditions":failed,"promoted":not failed,"release_authorized":False})
-    else:
+    elif spec["diagnostics"].get("initialization_enabled",True):
         diagnostic=[]
         base,members=collect(out,frame,folds,candidates)
         for target in TARGETS:
@@ -274,5 +289,5 @@ def run(root,out,development=None):
 
 
 if __name__=="__main__":
-    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--development",type=Path)
-    a=p.parse_args();run(Path.cwd(),a.output,a.development)
+    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--development",type=Path);p.add_argument("--spec",default=SPEC)
+    a=p.parse_args();run(Path.cwd(),a.output,a.development,a.spec)

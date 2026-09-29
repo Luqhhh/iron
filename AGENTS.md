@@ -1823,3 +1823,20 @@ peak593.78MiB, conservative development projection6.12918h <7.61h. Development
 started on the completion event, native replays first. Private supervisor
 records stages and observations under local/runs/strong-component-regularization;
 no polling between600-second events. Sources/config frozen during execution.
+
+
+### Parallel augmentation and representation (2026-09-29)
+
+User requested parallel execution. Isolated branch/worktree
+codex/component-augmentation-representation adds D-LMIX/R-FIXED/R-LEARNED under
+configs/component_augmentation_representation/SPEC.yaml. Existing BASE/EMA/SAM
+source and runs remain untouched. Four new workers, total eight candidate workers.
+Reuse20 completed verified native BASE units;60 new development units/120 fits.
+Six synthetic admission fits first; G1 unmeasured. Full suite1312 passed plus
+one workspace-layout failure corrected; focused rerun25 passed. Cold auditing
+of both seed42/fold0 native BASE units gives exact predictions. The new auditor
+preserves native target-array slicing to avoid reduction-order rounding mismatch;
+see docs/component_augmentation_representation/EXECUTION.md. Original auditor
+remains frozen; any resulting terminal audit failure needs a recorded corrective
+audit with zero retraining. Preserve600-second monitoring, four-seed gates,
+append-only evidence and no automatic release/upload.

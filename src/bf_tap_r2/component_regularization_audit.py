@@ -9,7 +9,7 @@ import torch
 import yaml
 
 from .component_regularization import ComponentRegressor
-from .component_regularization_run import SPEC, RUN_ROOT, RECIPE, outputs
+from .component_regularization_run import SPEC, RUN_ROOT, RECIPE, outputs, model_class
 from .data import FEATURES, TARGETS
 from .v3_4_bags import group_safe_inner_folds
 from .v3_6_networks import NumericPreprocessor
@@ -19,8 +19,8 @@ from .v7_periodic import digest, file_hash, write_new
 from .v49_run import verify_hashes, verified_unit, unit_id, verify_reference_cache, read_reference
 
 
-def verify_saved(path, training, y, arm, settings, mechanisms, validation=None, expected_epoch=None):
-    model=ComponentRegressor.load(path);saved=model.saved;trace=saved["trace"]
+def verify_saved(path, training, y, arm, settings, mechanisms, validation=None, expected_epoch=None, model_type=ComponentRegressor):
+    model=model_type.load(path);saved=model.saved;trace=saved["trace"]
     if saved["arm"]!=arm or saved["settings"]!=settings or saved["mechanisms"]!=mechanisms or saved["recipe"]!=RECIPE:
         raise ValueError("Saved recipe identity mismatch")
     if trace["fit_ids_digest"]!=digest(training.sample_id.tolist()) or trace["fit_rows"]!=len(training):
@@ -65,15 +65,17 @@ def verify_saved(path, training, y, arm, settings, mechanisms, validation=None, 
     else:
         if trace["selected_epoch"]!=trace["stopped_epoch"] or (expected_epoch is not None and trace["selected_epoch"]!=expected_epoch):
             raise ValueError("Refit epoch differs from selection")
+    if hasattr(model,"audit_fit"):model.audit_fit(training)
     return model
 
 
-def run(root,out):
+def run(root,out,spec_path=SPEC):
     root=Path(root).resolve();out=(root/out).resolve()
-    if not out.is_relative_to(root/RUN_ROOT):raise ValueError("Private audit required")
-    spec=yaml.safe_load((root/SPEC).read_text());manifest=json.loads((out/"manifest.json").read_text())
+    spec=yaml.safe_load((root/spec_path).read_text())
+    if not out.is_relative_to((root/spec.get("run_root",RUN_ROOT)).resolve()):raise ValueError("Private audit required")
+    manifest=json.loads((out/"manifest.json").read_text())
     expected=dict(manifest);expected.pop("identity")
-    if digest(expected)!=manifest["identity"] or manifest["spec_sha256"]!=file_hash(root/SPEC):
+    if digest(expected)!=manifest["identity"] or manifest["spec_sha256"]!=file_hash(root/spec_path):
         raise ValueError("Manifest identity mismatch")
     verify_hashes(root,manifest["source_hashes"]);verify_hashes(root,manifest["data_hashes"])
     if not manifest["development"]:verify_reference_cache(root,spec)
@@ -100,16 +102,25 @@ def run(root,out):
             for target in TARGETS:base[seed][target][mask]=refs[target]
             for target,arms in manifest["candidates"].items():
                 for arm in arms:
-                    init_seeds=[42,1042] if seed==42 and fold==0 and not manifest["development"] else [42]
+                    init_seeds=[42,1042] if seed==42 and fold==0 and not manifest["development"] and spec["diagnostics"].get("initialization_enabled",True) else [42]
                     for init in init_seeds:
                         key=f"{target}-{arm}-s{seed}-f{fold}"+(f"-init{init}" if init!=42 else "")
                         verified_unit(out/key,unit_id(manifest,key))
                         meta=json.loads((out/key/"metadata.json").read_text())
                         settings=dict(spec["training"][target],random_seed=init)
+                        mechanisms=spec["mechanisms"]
+                        if arm=="BASE" and not manifest["development"] and "base_replay_cache" in spec:
+                            source_spec=spec["base_replay_cache"]["source_spec"]
+                            cached=json.loads((root/spec["base_replay_cache"]["directory"]/"manifest.json").read_text())
+                            if file_hash(root/source_spec)!=cached["source_hashes"][source_spec]:raise ValueError("BASE source spec mismatch")
+                            mechanisms=yaml.safe_load((root/source_spec).read_text())["mechanisms"]
                         inner=group_safe_inner_folds(training,seed=settings["inner_seed"])["fold"]
                         fitting=training.loc[inner!=0].reset_index(drop=True);validation=training.loc[inner==0]
-                        selector=verify_saved(out/key/"selection.pt",fitting,fitting[outputs(target)].to_numpy(),arm,settings,spec["mechanisms"],validation)
-                        model=verify_saved(out/key/"refit.pt",training,training[outputs(target)].to_numpy(),arm,settings,spec["mechanisms"],expected_epoch=selector.saved["trace"]["selected_epoch"])
+                        # Match native y[inner != 0] array layout: rebuilding a
+                        # DataFrame array changes NumPy reduction order.
+                        fitting_y=training[outputs(target)].to_numpy()[inner!=0]
+                        selector=verify_saved(out/key/"selection.pt",fitting,fitting_y,arm,settings,mechanisms,validation,model_type=model_class(arm,spec))
+                        model=verify_saved(out/key/"refit.pt",training,training[outputs(target)].to_numpy(),arm,settings,mechanisms,expected_epoch=selector.saved["trace"]["selected_epoch"],model_type=model_class(arm,spec))
                         for phase,m in [("selection",selector),("refit",model)]:
                             if m.saved["trace"]!=meta["model"]["traces"][phase]:raise ValueError("Metadata trace mismatch")
                         with np.load(out/key/"predictions.npz") as saved:
@@ -140,10 +151,10 @@ def run(root,out):
         gains[target,arm]=actual
     selected={}
     for target in TARGETS:
-        eligible=[a for a in manifest["candidates"][target] if a in ("EMA","SAM")
+        eligible=[a for a in manifest["candidates"][target] if a in spec["promotion"]["eligible_recipes"]
                   and min(gains[target,a])>0 and np.mean(gains[target,a])>=spec["promotion"]["development_mean_gain_ge"]
                   and np.mean(gains[target,a])>np.mean(gains[target,"BASE"])]
-        selected[target]=min(eligible,key=lambda a:(-np.mean(gains[target,a]),a!="EMA")) if eligible else None
+        selected[target]=min(eligible,key=lambda a:(-np.mean(gains[target,a]),spec["tie_preference_by_target"][target].index(a))) if eligible else None
     if selected!=summary["selected_for_confirmation"]:raise ValueError("Selection mismatch")
     if manifest["development"]:
         from .v5_resolution import paired_summary
@@ -167,4 +178,4 @@ def run(root,out):
 
 
 if __name__=="__main__":
-    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);a=p.parse_args();run(Path.cwd(),a.output)
+    p=argparse.ArgumentParser();p.add_argument("--output",type=Path,required=True);p.add_argument("--spec",default=SPEC);a=p.parse_args();run(Path.cwd(),a.output,a.spec)

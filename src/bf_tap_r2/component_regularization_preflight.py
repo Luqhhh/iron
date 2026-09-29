@@ -2,6 +2,7 @@
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 import json
+import argparse
 import subprocess
 import sys
 import time
@@ -13,7 +14,7 @@ import yaml
 
 from .component_regularization import ComponentRegressor
 from .component_regularization_audit import verify_saved
-from .component_regularization_run import SPEC, RUN_ROOT, RECIPE, sources, outputs
+from .component_regularization_run import SPEC, RUN_ROOT, RECIPE, sources, outputs, model_class
 from .data import FEATURES, TARGETS
 from .v12_joint import JointRegressor
 from .v7_periodic import PeriodicRegressor, file_hash, write_new
@@ -34,7 +35,7 @@ def fit(out,target,arm,spec):
     directory=out/f"{target}-{arm}";directory.mkdir(exist_ok=False)
     training,query=synthetic();y=training[outputs(target)].to_numpy();settings=spec["training"][target]
     start=time.monotonic()
-    m=ComponentRegressor(RECIPE,settings,arm,spec["mechanisms"],directory)
+    m=model_class(arm,spec)(RECIPE,settings,arm,spec["mechanisms"],directory)
     m._initialize(training,y);m._train(training,y,settings["max_epochs"])
     pred=m.predict(query.drop(columns=list(TARGETS)))
     seconds=time.monotonic()-start
@@ -60,12 +61,12 @@ def fit(out,target,arm,spec):
     return row
 
 
-def cold(root,out):
-    spec=yaml.safe_load((root/SPEC).read_text());training,query=synthetic();rows=[]
+def cold(root,out,spec_path=SPEC):
+    spec=yaml.safe_load((root/spec_path).read_text());training,query=synthetic();rows=[]
     for target in TARGETS:
         for arm in spec["recipes"]:
             d=out/f"{target}-{arm}"
-            m=verify_saved(d/"refit.pt",training,training[outputs(target)].to_numpy(),arm,spec["training"][target],spec["mechanisms"],expected_epoch=240)
+            m=verify_saved(d/"refit.pt",training,training[outputs(target)].to_numpy(),arm,spec["training"][target],spec["mechanisms"],expected_epoch=240,model_type=model_class(arm,spec))
             expected=np.load(d/"prediction.npy",allow_pickle=False)
             query_clean=query.drop(columns=list(TARGETS))
             np.testing.assert_array_equal(m.predict(query_clean),expected)
@@ -76,10 +77,10 @@ def cold(root,out):
     print(json.dumps(rows))
 
 
-def run(root):
-    spec=yaml.safe_load((root/SPEC).read_text());check_runtime(spec);verify_reference_cache(root,spec)
-    out=root/RUN_ROOT/"preflight-r1";out.mkdir(parents=True,exist_ok=False)
-    frozen=sources(root);write_new(out/"manifest.json",{"spec_sha256":file_hash(root/SPEC),"source_hashes":frozen})
+def run(root,spec_path=SPEC):
+    spec=yaml.safe_load((root/spec_path).read_text());check_runtime(spec);verify_reference_cache(root,spec)
+    out=root/spec.get("run_root",RUN_ROOT)/"preflight-r1";out.mkdir(parents=True,exist_ok=False)
+    frozen=sources(root,spec);write_new(out/"manifest.json",{"spec_sha256":file_hash(root/spec_path),"source_hashes":frozen})
     rows=[]
     with ProcessPoolExecutor(max_workers=spec["budget"]["candidate_workers"]) as pool:
         jobs={pool.submit(fit,out,t,a,spec):(t,a) for t in TARGETS for a in spec["recipes"]}
@@ -87,24 +88,25 @@ def run(root):
             try:row=job.result();rows.append(row);append_event(out/"events.jsonl",{"event":"complete",**row})
             except BaseException as exc:
                 append_event(out/"events.jsonl",{"event":"failed","unit":jobs[job],"error":repr(exc)});raise
-    completed=subprocess.run([sys.executable,"-m","bf_tap_r2.component_regularization_preflight","--cold",str(out)],cwd=root,check=True,text=True,capture_output=True)
+    completed=subprocess.run([sys.executable,"-m","bf_tap_r2.component_regularization_preflight","--cold",str(out),"--spec",spec_path],cwd=root,check=True,text=True,capture_output=True)
     differences=json.loads(completed.stdout)
     peak=max(r["peak_rss_mib"] for r in rows)
-    projection=2*sum(r["seconds"] for r in rows)*22/spec["budget"]["candidate_workers"]/3600
+    projection=2*sum(r["seconds"] for r in rows)*((spec["budget"]["development_solver_fits"]+spec["budget"]["initialization_diagnostic_solver_fits"])/len(rows))/spec["budget"]["candidate_workers"]/3600
     checks={"learnability":all(all(a<b for a,b in zip(r["mae"],r["constant_mae"])) for r in rows),
             "native_replay":all(r.get("native_replay_difference",0.)==0 for r in rows),
             "runtime":projection<=spec["preflight"]["max_projected_hours"],
             "worker_memory":peak<=spec["preflight"]["max_worker_rss_mib"],
             "available_memory":4*peak+1024<psutil.virtual_memory().available/1024**2,
-            "sources_unchanged":sources(root)==frozen}
+            "sources_unchanged":sources(root,spec)==frozen}
     report={"status":"passed" if all(checks.values()) else "failed","checks":checks,"results":rows,
             "projected_hours":projection,"cold_differences":differences,"source_hashes":frozen,
-            "spec_sha256":file_hash(root/SPEC),"synthetic_new_refits":6,"synthetic_native_controls":2,"official_fits":0}
+            "spec_sha256":file_hash(root/spec_path),"synthetic_new_refits":len(rows),"synthetic_native_controls":sum(r["arm"]=="BASE" for r in rows),"official_fits":0}
     write_new(out/"report.json",report)
     print(json.dumps({k:v for k,v in report.items() if k!="source_hashes"}),flush=True)
     if report["status"]!="passed":raise ValueError("Synthetic admission failed")
 
 
 if __name__=="__main__":
-    if len(sys.argv)==3 and sys.argv[1]=="--cold":cold(Path.cwd(),Path(sys.argv[2]))
-    else:run(Path.cwd())
+    parser=argparse.ArgumentParser();parser.add_argument("--cold",type=Path);parser.add_argument("--spec",default=SPEC);a=parser.parse_args()
+    if a.cold:cold(Path.cwd(),a.cold,a.spec)
+    else:run(Path.cwd(),a.spec)

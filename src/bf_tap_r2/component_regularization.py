@@ -100,9 +100,23 @@ class ComponentRegressor(JointRegressor):
         self.metadata_["traces"] = self.traces
         return result
 
+    def prepare_training(self, frame, x, cat, target):
+        pass
+
+    def training_loss(self, x, cat, target, idx):
+        return joint_loss(self.model_(x[idx], cat[idx]), target[idx])
+
+    def extra_saved_metadata(self):
+        return {}
+
+    @staticmethod
+    def network_for_load(recipe, settings, categories, outputs, arm, mechanisms):
+        return make_network(recipe, settings, categories, outputs)
+
     def _train(self, frame, y, epochs, validation=None):
         x, cat = self._inputs(frame)
         target = torch.as_tensor((y-self.mean_)/self.std_, dtype=torch.float32)
+        self.prepare_training(frame, x, cat, target)
         rng = np.random.default_rng(self.settings["random_seed"])
         ema = clone_state(self.model_) if self.arm == "EMA" else None
         best, best_epoch, stale = float("inf"), 0, 0
@@ -126,8 +140,7 @@ class ComponentRegressor(JointRegressor):
                     losses.append(a); perturb_losses.append(b); norms.append(c)
                 else:
                     self.optimizer_.zero_grad(set_to_none=True)
-                    pred = self.model_(x[idx], cat[idx])
-                    loss = joint_loss(pred, target[idx])
+                    loss = self.training_loss(x, cat, target, idx)
                     if not torch.isfinite(loss):
                         raise ValueError("Nonfinite training loss")
                     loss.backward()
@@ -187,7 +200,8 @@ class ComponentRegressor(JointRegressor):
         info = self.preprocessor_.metadata()
         payload = dict(recipe=self.recipe, settings=self.settings, arm=self.arm,
             mechanisms=self.mechanisms, preprocessing=info, mean=self.mean_.tolist(),
-            std=self.std_.tolist(), state=clone_state(self.model_), trace=copy.deepcopy(trace))
+            std=self.std_.tolist(), state=clone_state(self.model_), trace=copy.deepcopy(trace),
+            auxiliary=self.extra_saved_metadata())
         with Path(path).open("xb") as stream:
             torch.save(payload, stream)
 
@@ -204,7 +218,7 @@ class ComponentRegressor(JointRegressor):
         result.mean_,result.std_ = np.asarray(saved["mean"]),np.asarray(saved["std"])
         torch.set_num_threads(1)
         with torch.random.fork_rng(devices=[]):
-            result.model_ = make_network(result.recipe,result.settings,p.n_spout_categories_,len(result.mean_))
+            result.model_ = cls.network_for_load(result.recipe,result.settings,p.n_spout_categories_,len(result.mean_),result.arm,result.mechanisms)
         result.model_.load_state_dict(saved["state"])
         result.model_.eval()
         result.saved = saved
