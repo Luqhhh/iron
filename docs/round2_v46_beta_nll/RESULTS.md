@@ -82,3 +82,26 @@ OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
 
 The command is reference-only. Exit2 records the failure and schedules no
 optimizer; existing output directories are rejected without overwriting evidence.
+## Exact-source recovery follow-up (2026-09-29)
+
+The user supplied the two original private configurations; both SHA-256 values
+match the frozen manifest exactly. A further private historical source mismatch
+was resolved from an existing local handoff backup whose bytes match the frozen
+hash. The previous differing script was saved separately before recovery; all
+historical predictions, ledgers, manifests and failed reports are retained.
+
+The resumed check exposed a V46 verifier error: V12's original audit records
+20 predictions across development and confirmation, rather than 10 confirmation
+predictions alone. The fix requires exact filename coverage for all four seeds
+for both V7 and V12, in addition to original passed statuses and byte hashes.
+A regression failed before implementation and all9 targeted tests then passed.
+
+A new reference-only report passes all-four-seed cache verification, binding
+436 file identities. This supersedes the missing-source blocker, while the
+initial stop above remains historical evidence. The specification is unchanged.
+G0 resource/learnability and G1 remain unmeasured; V46 optimizer starts and new
+reference fits are still0. No package or upload is authorized by this recovery.
+
+Recovery verification: neural-runtime full suite1161 passed,23 warnings in171.72s;
+uv.lock Python3.12.13 full suite978 passed,61 skipped,3 warnings in72.50s.
+Private-artifact guard passed. Restored private configurations stay outside Git.

@@ -29,6 +29,26 @@ def unique_events(path,key):
     return result
 
 
+def validate_native_audits(a7, a12):
+    """Original audits bind development AND confirmation: four seeds, 20 files."""
+    expected7 = set()
+    expected12 = set()
+    for seed in [42, 3407, 7777, 12011]:
+        for fold in range(5):
+            if seed in [42, 3407]:
+                p7 = f'development-r1/tap_time_len-tabm_plr001-s{seed}-f{fold}.npy'
+                p12 = f'development-r1/joint-joint_plr001-s{seed}-f{fold}.npy'
+            else:
+                p7 = p12 = f'confirmation-r1/seed-{seed}-fold-{fold}.npy'
+            expected7.add('local/runs/round2-v7-periodic-networks/' + p7)
+            expected12.add('local/runs/round2-v12-joint-tabm/' + p12)
+    if (a7.get('status') != 'PASS' or a12.get('status') != 'passed'
+            or a12.get('prediction_count') != 20
+            or set(a7.get('prediction_hashes', {})) != expected7
+            or set(a12.get('hashes', {})) != expected12):
+        raise ValueError('Passed complete original confirmation audits required')
+
+
 def load_reference_cache(root):
     root=Path(root).resolve(); hashes={}; source_variants=[]
     def remember(path):
@@ -96,8 +116,7 @@ def load_reference_cache(root):
     if m12['selected']!={'target':'tap_iron','recipe':'joint_plr001'}: raise ValueError('V12 recipe mismatch')
     a7,a12=read_json(root/c7/'audit-r2.json'),read_json(root/c12/'audit-r1.json')
     for p in [root/c7/'audit-r2.json',root/c12/'audit-r1.json',root/c8/'audit-r1.json',root/c8/'control.json']: remember(p)
-    if a7['status']!='PASS' or a12['status']!='passed' or a12['prediction_count']!=10:
-        raise ValueError('Passed complete original confirmation audits required')
+    validate_native_audits(a7, a12)
     for name,sha in a7['prediction_hashes'].items(): verify(root/name,sha)
     for name,sha in a12['hashes'].items(): verify(root/name,sha)
     control=read_json(root/c8/'control.json')

@@ -12921,8 +12921,8 @@
   "round2_v46_beta_nll_2026_09_29": {
     "identity": "V46_TIME_BETA_NLL",
     "strategy_reservation_commit": "47436e6",
-    "status": "stopped_cache_verification_failed",
-    "G0": "reference_cache_identity_failed",
+    "status": "reference_cache_recovered_pending_resource_preflight",
+    "G0": "four_seed_cache_identity_passed_resource_and_learning_not_run",
     "G1": "not_evaluated",
     "specification": "configs/round2_v46_beta_nll/SPEC.yaml",
     "specification_sha256": "8c0f733328cd69d60298de862144aad16088b8dd22d9d3f3b5cd5368da7d434a",
@@ -12935,16 +12935,7 @@
       "feedback_imported_from_commit": "6e2c1ac"
     },
     "preflight_report_sha256": "956a0eaf373aa166d6cd27d9c2c0b24d70ecfe289d08304c4d75c1dc885c21f2",
-    "missing_frozen_sources": [
-      {
-        "path": "configs/data.local.yaml",
-        "required_sha256": "406a77ef04170f1963582d3bc617b3d429048e8517ff2fe2abf70ee0a77d6fee"
-      },
-      {
-        "path": "configs/predict.local.yaml",
-        "required_sha256": "fa4051a4cea199d3dc67111326c03d92acce2ef5cf0aa60fc8729ec8e70dc870"
-      }
-    ],
+    "missing_frozen_sources": [],
     "budget": {
       "official_fits": 0,
       "optimizer_runs": 0,
@@ -12991,6 +12982,53 @@
     },
     "release_authorized": false,
     "monitor_started": false,
-    "source_reconstruction_or_reference_refit": false
+    "source_reconstruction_or_reference_refit": false,
+    "historical_initial_stop": {
+      "status": "stopped_cache_verification_failed",
+      "G0": "reference_cache_identity_failed",
+      "preflight_report_sha256": "956a0eaf373aa166d6cd27d9c2c0b24d70ecfe289d08304c4d75c1dc885c21f2",
+      "missing_frozen_sources": [
+        {
+          "path": "configs/data.local.yaml",
+          "required_sha256": "406a77ef04170f1963582d3bc617b3d429048e8517ff2fe2abf70ee0a77d6fee"
+        },
+        {
+          "path": "configs/predict.local.yaml",
+          "required_sha256": "fa4051a4cea199d3dc67111326c03d92acce2ef5cf0aa60fc8729ec8e70dc870"
+        }
+      ]
+    },
+    "cache_recovery": {
+      "date": "2026-09-29",
+      "user_supplied_private_original_configs": true,
+      "private_original_config_hashes_match": true,
+      "local_script_restored_from_exact_existing_handoff_backup": true,
+      "previous_script_preserved": true,
+      "original_failed_evidence_preserved": true,
+      "reference_cache_report_sha256": "7b636f075b514b1ed6700ff77c7e3c1aa2348d1e721b57e78440c9ba26cc305b",
+      "verified_file_identities": 436,
+      "all_four_seeds_verified": true,
+      "new_reference_fits": 0,
+      "native_audit_count_fix": {
+        "original_V12_audit_prediction_count": 20,
+        "four_seed_exact_filename_coverage_required": true,
+        "targeted_tests_passed": 9
+      },
+      "verification": {
+        "neural_runtime": {
+          "python": "3.12.3",
+          "passed": 1161,
+          "warnings": 23,
+          "seconds": 171.72
+        },
+        "locked_uv_environment": {
+          "python": "3.12.13",
+          "passed": 978,
+          "skipped": 61,
+          "warnings": 3,
+          "seconds": 72.5
+        }
+      }
+    }
   }
 }

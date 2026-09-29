@@ -160,3 +160,19 @@ def test_partition_uses_group_safe_fold_vector_before_optimizer(monkeypatch):
     with pytest.raises(ValueError,match='Query labels'):
         m.fit_partition(train,query.assign(tap_time_len=0),'BETA05',m.default_settings(),lambda e: pytest.fail('unexpected optimizer'))
     assert len(captured)==1
+
+def test_original_reference_audit_requires_all_four_seeds():
+    from bf_tap_r2.v46_cache import validate_native_audits
+    seeds=[42,3407,7777,12011]
+    paths7={f"local/runs/round2-v7-periodic-networks/{'development-r1/tap_time_len-tabm_plr001-s'+str(s)+'-f'+str(f) if s in [42,3407] else 'confirmation-r1/seed-'+str(s)+'-fold-'+str(f)}.npy":'sha' for s in seeds for f in range(5)}
+    paths12={f"local/runs/round2-v12-joint-tabm/{'development-r1/joint-joint_plr001-s'+str(s)+'-f'+str(f) if s in [42,3407] else 'confirmation-r1/seed-'+str(s)+'-fold-'+str(f)}.npy":'sha' for s in seeds for f in range(5)}
+    a7={'status':'PASS','prediction_hashes':paths7}
+    a12={'status':'passed','prediction_count':20,'hashes':paths12}
+    validate_native_audits(a7,a12)
+    with pytest.raises(ValueError,match='complete original'):
+        validate_native_audits(a7,{**a12,'prediction_count':10})
+    incomplete=dict(paths12);incomplete.pop(next(iter(incomplete)))
+    with pytest.raises(ValueError,match='complete original'):
+        validate_native_audits(a7,{**a12,'hashes':incomplete})
+    with pytest.raises(ValueError,match='complete original'):
+        validate_native_audits({**a7,'status':'FAIL'},a12)
