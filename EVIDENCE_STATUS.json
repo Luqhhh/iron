@@ -15462,7 +15462,7 @@
     "audit_sha256": "056086424e2490e1a1b9eadfd86ccae9f0d9d60c76bc792bd4cf3e87174b1898"
   },
   "round2_v47_factorized_spline": {
-    "status": "G0_PASSED_DEVELOPMENT_ADMITTED",
+    "status": "DEVELOPMENT_AND_COMPLETION_AUDIT_RUNNING",
     "branch": "round2-v47-factorized-spline",
     "protocol_commit": "acb581c",
     "spec": "configs/round2_v47/SPEC.yaml",
@@ -15471,7 +15471,7 @@
     "candidate": "AHOFM4",
     "development_outer_units": 40,
     "development_solver_fits": 80,
-    "real_data_fits": 0,
+    "real_data_fits": "running_expected_80",
     "external_data": false,
     "pretrained_weights": false,
     "packages": 0,
@@ -15486,13 +15486,15 @@
     "g1": "unmeasured",
     "implementation_commit": "a93da5c",
     "preflight_service": "iron-v47-preflight-r1.service",
-    "monitor_timer": "iron-v47-preflight-monitor.timer",
-    "initial_main_pid": 189351,
-    "first_check_monotonic_seconds": 82087.674454,
+    "monitor_timer": "iron-v47-development-monitor.timer",
+    "initial_main_pid": 189715,
+    "first_check_monotonic_seconds": 82351.492911,
     "launched_at_utc": "2026-09-29T03:25:18.154530+00:00",
     "g0_results": "docs/round2_v47/G0_RESULTS.md",
     "preflight_report_sha256": "b8fb1185dd2140a4ca1f46f63f4a17d31818ec198262837298d9e0d23e9f2f39",
     "projected_development_hours": 0.31625524157781104,
-    "preflight_terminal_exit": 0
+    "preflight_terminal_exit": 0,
+    "development_service": "iron-v47-development-r1.service",
+    "development_launched_at_utc": "2026-09-29T03:29:48.897297+00:00"
   }
 }

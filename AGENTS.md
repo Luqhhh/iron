@@ -1647,3 +1647,13 @@ conservative development projection .316255 hours. Source/runtime/reference
 identities and current RAM pass. Completion event exit 0 at 03:26:06 UTC
 consumed before first timer checkpoint; terminal PID 0 confirmed, timer stopped.
 Admit 40 real-data units/80 fits. G1 remains unmeasured; no release authorized.
+
+V47 official development launched 2026-09-29 11:29:48 Asia/Shanghai, service
+iron-v47-development-r1.service; initial MainPID 189715 verified running.
+Private development_and_audit.py runs the frozen development then independent
+auditor exactly once on actual success, no restart/retraining/release logic.
+600-second iron-v47-development-monitor.timer first expires at monotonic
+82351.492911 s (approximately 11:39:48 local). No between-check polling; actual
+completion event may trigger result audit. Evidence root local/runs/round2-v47;
+development-r1/audit.json required before interpreting gains or allocating
+confirmation. Source/config frozen; goal and all gates unchanged.
