@@ -16,7 +16,7 @@ from .component_regularization_run import RECIPE, outputs
 from .data import FEATURES, TARGETS
 from .independent_checkpoints import EpochSelector, clean_query, native_parts, fit_background, fresh_refit
 from .independent_checkpoints_audit import cold_check, verify_epoch_unit
-from .independent_checkpoints_run import SPEC, RUN_ROOT, load_spec, sources, validate_native, verify_original_reference
+from .independent_checkpoints_run import SPEC, RUN_ROOT, load_spec, sources, validate_native, verify_original_reference, private_path
 from .v12_joint import JointRegressor
 from .v5_library import load_v5_training_frame, fold_vector
 from .v5_spec import load_v5_spec
@@ -24,19 +24,27 @@ from .v7_periodic import file_hash, write_new
 from .v49_run import append_event, check_runtime, verify_hashes, verify_reference_cache
 
 
-def synthetic():
+def synthetic(queue="DE3"):
+    if queue not in ("DE3", "E-COMPOSE"):
+        raise ValueError("Unknown synthetic queue")
     rng = np.random.default_rng(53001); x = rng.normal(size=(2754, len(FEATURES)))
     z = 3*x[:, 0]+2*np.sin(x[:, 1])+x[:, 2]*x[:, 3]+.2*rng.normal(size=len(x))
     frame = pd.DataFrame(x, columns=FEATURES)
     frame["sample_id"] = [f"synthetic-independent-{i}" for i in range(len(x))]
     frame["spout_no"] = rng.integers(1, 3, len(x))
     frame["tap_iron"] = 500+10*z; frame["tap_time_len"] = 100+2*z
+    if queue == "E-COMPOSE":
+        # The frozen reference contains ratio features. Shift only its two
+        # denominator inputs; keep the latent signal, targets and RNG unchanged.
+        frame.loc[:, ["air_volume", "total_press_diff"]] += 10.
+        from .v3_local_search import expression_frame
+        expression_frame(frame, "four")
     return frame.iloc[:2204].reset_index(drop=True), frame.iloc[2204:].reset_index(drop=True)
 
 
 def fit_synthetic(out, spec, target, train_seed, queue):
     directory = out/f"{target}-training-seed-{train_seed}"; directory.mkdir(exist_ok=False)
-    training, query = synthetic(); settings = dict(spec["training"][target], random_seed=train_seed)
+    training, query = synthetic(queue); settings = dict(spec["training"][target], random_seed=train_seed)
     y = training[outputs(target)].to_numpy(); started = time.monotonic()
     if queue == "E-COMPOSE":
         with np.load(out/"inner-background/predictions.npz", allow_pickle=False) as background:
@@ -75,7 +83,7 @@ def fit_synthetic(out, spec, target, train_seed, queue):
 
 
 def cold(root, out, queue):
-    spec = load_spec(root); training, query = synthetic(); rows = []
+    spec = load_spec(root); training, query = synthetic(queue); rows = []
     for directory in sorted(out.glob("tap_*-training-seed-*")):
         row = json.loads((directory/"result.json").read_text()); target = row["target"]
         path = directory/("full-refit/refit.pt" if queue == "E-COMPOSE" else "refit.pt")
@@ -92,19 +100,21 @@ def cold(root, out, queue):
     print(json.dumps(rows))
 
 
-def run(root, queue):
+def run(root, queue, output=None):
     root = Path(root).resolve(); spec = load_spec(root); check_runtime(spec); verify_original_reference(root, spec)
     if queue == "E-COMPOSE" and json.loads((root/RUN_ROOT/"development-DE3/audit.json").read_text())["status"] != "passed":
         raise ValueError("Serial DE3 completion required")
     frame = load_v5_training_frame(root)
     folds = {s: fold_vector(root, frame, s, load_v5_spec(root)) for s in spec["split_seeds"]}
     validate_native(root, spec, frame, folds)
-    out = root/RUN_ROOT/f"preflight-{queue}"; out.mkdir(parents=True, exist_ok=False)
+    out = private_path(root, output) if output is not None else root/RUN_ROOT/f"preflight-{queue}"
+    out.mkdir(parents=True, exist_ok=False)
     frozen = sources(root)
-    write_new(out/"manifest.json", {"spec_sha256": file_hash(root/SPEC), "source_hashes": frozen, "queue": queue})
+    write_new(out/"manifest.json", {"spec_sha256": file_hash(root/SPEC), "source_hashes": frozen, "queue": queue,
+        "synthetic_domain": "positive_ratio_denominators" if queue == "E-COMPOSE" else "original_normal_fixture"})
     reference_seconds = 0.; reference_peak = 0.
     if queue == "E-COMPOSE":
-        training, query = synthetic(); _, fitting, calibration = native_parts(training)
+        training, query = synthetic(queue); _, fitting, calibration = native_parts(training)
         directory = out/"inner-background"; directory.mkdir()
         values, meta = fit_background(root, fitting, calibration, spec, directory)
         reference_seconds = meta["seconds"]
@@ -149,6 +159,7 @@ def run(root, queue):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(); parser.add_argument("--queue", choices=["DE3", "E-COMPOSE"], required=True)
+    parser.add_argument("--output", type=Path)
     parser.add_argument("--cold", type=Path); args = parser.parse_args()
     if args.cold: cold(Path.cwd(), args.cold, args.queue)
-    else: run(Path.cwd(), args.queue)
+    else: run(Path.cwd(), args.queue, args.output)

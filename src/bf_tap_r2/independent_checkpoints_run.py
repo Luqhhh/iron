@@ -402,13 +402,21 @@ def summarize(out, frame, folds, spec, queue):
             "packages": 0, "agent_uploads": 0, "release_authorized": False}
 
 
-def run(root, output, queue, development=None):
-    root = Path(root).resolve(); spec = load_spec(root); out = private_path(root, output)
-    preflight = root/RUN_ROOT/f"preflight-{queue}/report.json"
+def matching_admission(root, spec, queue, preflight_output=None):
+    directory = private_path(root, preflight_output) if preflight_output is not None else root/RUN_ROOT/f"preflight-{queue}"
+    preflight = directory/"report.json"
     admission = json.loads(preflight.read_text())
-    if admission["status"] != "passed" or admission["spec_sha256"] != file_hash(root/SPEC):
+    if (admission["status"] != "passed" or admission["queue"] != queue
+            or admission["spec_sha256"] != file_hash(root/SPEC)):
         raise ValueError("Matching successful synthetic admission required")
-    verify_hashes(root, admission["source_hashes"]); check_runtime(spec)
+    verify_hashes(root, admission["source_hashes"])
+    return preflight, admission
+
+
+def run(root, output, queue, development=None, preflight_output=None):
+    root = Path(root).resolve(); spec = load_spec(root); out = private_path(root, output)
+    preflight, admission = matching_admission(root, spec, queue, preflight_output)
+    check_runtime(spec)
     seeds = spec["split_seeds"]; old = None
     if development:
         dev = private_path(root, development)
@@ -431,6 +439,7 @@ def run(root, output, queue, development=None):
     if out.exists(): raise ValueError("Run exists; preserve failure evidence, no implicit restart")
     manifest = {"spec_sha256": file_hash(root/SPEC), "versions": check_runtime(spec), "queue": queue,
                 "output_directory": str(out),
+                "preflight": str(preflight.relative_to(root)), "preflight_sha256": file_hash(preflight),
                 "source_hashes": sources(root), "data_hashes": {str(p.relative_to(root)): file_hash(p) for p in (root/"复赛_train").glob("*.csv")},
                 "fold_hashes": {str(s): digest(fv.tolist()) for s, fv in folds.items()}, "seeds": seeds,
                 "development": str(development) if development else None,
@@ -492,4 +501,5 @@ def run(root, output, queue, development=None):
 if __name__ == "__main__":
     p = argparse.ArgumentParser(); p.add_argument("--output", type=Path, required=True)
     p.add_argument("--queue", choices=["DE3", "E-COMPOSE"], required=True); p.add_argument("--development", type=Path)
-    a = p.parse_args(); run(Path.cwd(), a.output, a.queue, a.development)
+    p.add_argument("--preflight", type=Path)
+    a = p.parse_args(); run(Path.cwd(), a.output, a.queue, a.development, a.preflight)

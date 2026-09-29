@@ -186,6 +186,44 @@ def test_old_reference_audit_uses_old_partition_contract(monkeypatch):
     assert calls == [27001] and spec["calibration"]["split_seed"] == 42
 
 
+def test_e_synthetic_fixture_obeys_frozen_reference_input_contract():
+    from bf_tap_r2.independent_checkpoints_preflight import synthetic
+    from bf_tap_r2.v3_local_search import expression_frame
+    native = synthetic("DE3"); recovered = synthetic("E-COMPOSE")
+    for original, valid in zip(native, recovered):
+        assert np.isfinite(expression_frame(valid, "four").to_numpy()).all()
+        with pytest.raises(ValueError, match="positive denominators"):
+            expression_frame(original, "four")
+        fixed = ["air_volume", "total_press_diff"]
+        pd.testing.assert_frame_equal(original.drop(columns=fixed), valid.drop(columns=fixed))
+        np.testing.assert_array_equal(valid[fixed].to_numpy(), original[fixed].to_numpy()+10.)
+        assert len(valid) == len(original) and (valid[list(TARGETS)] > 0).all().all()
+    for a, b in zip(recovered, synthetic("E-COMPOSE")): pd.testing.assert_frame_equal(a, b)
+
+
+def test_recovery_admission_requires_matching_queue_scope_and_sources(tmp_path, monkeypatch):
+    import bf_tap_r2.independent_checkpoints_run as runner
+    spec = load_spec(Path.cwd())
+    # Redirect only the permitted private root into pytest's temporary directory.
+    monkeypatch.setattr(runner, "RUN_ROOT", "runs")
+    root = tmp_path; (root/runner.SPEC).parent.mkdir(parents=True)
+    (root/runner.SPEC).write_text("frozen spec")
+    directory = root/"runs/preflight"; directory.mkdir(parents=True)
+    from bf_tap_r2.v7_periodic import file_hash
+    source = root/"source.py"; source.write_text("frozen source")
+    report = dict(status="passed", queue="E-COMPOSE", spec_sha256=file_hash(root/runner.SPEC),
+                  source_hashes={"source.py": file_hash(source)})
+    path = directory/"report.json"; path.write_text(json.dumps(report))
+    assert runner.matching_admission(root, spec, "E-COMPOSE", Path("runs/preflight"))[0] == path
+    with pytest.raises(ValueError, match="Matching successful"):
+        runner.matching_admission(root, spec, "DE3", Path("runs/preflight"))
+    with pytest.raises(ValueError, match="private"):
+        runner.matching_admission(root, spec, "E-COMPOSE", Path("other/preflight"))
+    source.write_text("tampered source")
+    with pytest.raises(ValueError, match="Frozen source or evidence changed"):
+        runner.matching_admission(root, spec, "E-COMPOSE", Path("runs/preflight"))
+
+
 @pytest.mark.parametrize("queue,seeds", [("DE3", [42, 3407]), ("DE3", [271828, 314159]),
                                         ("E-COMPOSE", [42, 3407]), ("E-COMPOSE", [271828, 314159])])
 def test_full_coverage_summary_and_confirmation_scope(tmp_path, queue, seeds):

@@ -1968,3 +1968,11 @@ normally distributed fixture violates the existing positive ratio-denominator
 contract. Original supervisor stopped without retry. Preserve all partial
 synthetic evidence; recover fixture/admission in a fresh versioned directory
 without changing any G1 recipe or threshold and without repeating DE3 fits.
+
+E-only engineering recovery ready: docs/independent_ensemble_checkpoints/E_RECOVERY.md.
+Only synthetic ratio denominators are shifted+10; official data/model/preprocessing
+and all gates unchanged. Fresh output/admission paths underrecovery-r2/ preserve
+original failed evidence. Full locked Python3.12 suite1344 passed/23 warnings;
+zero-fit source-version/artifact bridge verifies90 old DE3 complete units.
+The recovery supervisor must never repeat DE3 fits or restart automatically;
+actual600-second observations and independent stage audits remain mandatory.

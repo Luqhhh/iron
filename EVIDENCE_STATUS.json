@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "independent_ensemble_checkpoints_2026_09_29": {
-    "status": "DE3_COMPLETE_AUDITED_NO_FINALIST_E_COMPOSE_SYNTHETIC_DOMAIN_FAILURE",
+    "status": "DE3_COMPLETE_AUDITED_E_COMPOSE_ENGINEERING_RECOVERY_READY",
     "branch": "codex/independent-ensemble-checkpoints",
     "source_zip_sha256": "c3cfdd16f1476f04b7fa843e191e377102913fcf757b5c341430d0df32c39da6",
     "spec": "configs/independent_ensemble_checkpoints/SPEC.yaml",
@@ -16095,7 +16095,13 @@
           "status": "pending_serial_DE3_completion"
         }
       },
-      "note": "Full suite plus final focused protocol-bridge check; initial missing ignored worktree configs and old-calibration mismatch preserved as zero-fit engineering failures."
+      "note": "Full suite plus final focused protocol-bridge check; initial missing ignored worktree configs and old-calibration mismatch preserved as zero-fit engineering failures.",
+      "recovery_locked_python312_suite": {
+        "passed": 1344,
+        "existing_warnings": 23,
+        "log": "local/runs/independent-ensemble-checkpoints-20260929/engineering-r2/pytest-python312.log",
+        "log_sha256": "261ad9322172595b36a284b14a92c80d3c10b975ccfc61e28ed114e2cb964da6"
+      }
     },
     "G1": {
       "DE3": {
@@ -16150,7 +16156,23 @@
         },
         "original_evidence_preserved": true,
         "official_candidate_fits": 0,
-        "recovery": "engineering_fixture_domain_repair_preparing_new_directory"
+        "recovery": {
+          "status": "validated_ready_to_start",
+          "directory": "local/runs/independent-ensemble-checkpoints-20260929/recovery-r2",
+          "supervisor": "bf_tap_r2.independent_checkpoints_recovery",
+          "only_synthetic_inputs_shifted": [
+            "air_volume",
+            "total_press_diff"
+          ],
+          "synthetic_input_shift": 10.0,
+          "official_model_recipe_changed": false,
+          "spec_and_gate_changed": false,
+          "original_de3_retrained": false,
+          "original_de3_complete_units_reverified": 90,
+          "source_changes_bound_to_original_commit": "906d31b",
+          "automatic_retry": false,
+          "monitor_seconds": 600
+        }
       },
       "qualified_platform_candidates": 0
     },
