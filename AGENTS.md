@@ -1782,3 +1782,15 @@ Conservative development projection 3.863190 h <7.61; peak 809.42 MiB.
 Source/runtime and independent synthetic arithmetic verified. Admit 40 development
 units/80 fits, conditional confirmation only through frozen gates. G1 unmeasured.
 No release or external weights/data; every-600-second monitoring, pause after V49.
+
+V49 official development launched 2026-09-29 13:00:38 Asia/Shanghai, service
+iron-v49-development-r1.service, initial MainPID 203637 active/running. G0
+admission commit 93e74b5. Frozen 40 outer units/80 fits with 20 verified reference
+units reused. Supervisor runs independent audit on actual completion, then the
+frozen conditional confirmation command; confirmation audit only if eligible
+candidates exist. No next round, full-data fit, release or upload. Pause after V49.
+600-second timer iron-v49-development-monitor.timer first due monotonic
+87660.540758 seconds (~13:10:38 local); no between-check health/metric polling.
+Completion supervisor stops the timer and records terminal evidence. Private root
+local/runs/round2-v49; workflow-events.jsonl, completion-event.json and scheduled
+development-monitor/checks.jsonl retain progress/failure evidence. G1 unmeasured.

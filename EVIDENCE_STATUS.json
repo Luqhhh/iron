@@ -15619,7 +15619,7 @@
     "live_training": false
   },
   "round2_v49_latent_gradient_regularization": {
-    "status": "G0_PASSED_DEVELOPMENT_ADMITTED",
+    "status": "DEVELOPMENT_RUNNING",
     "branch": "round2-v49-latent-gradient-regularization",
     "protocol_commit": "5e2fb78",
     "spec": "configs/round2_v49/SPEC.yaml",
@@ -15629,21 +15629,27 @@
     "monitor_interval_seconds": 600,
     "between_check_polling": false,
     "pause_after_v49": true,
-    "real_data_fits": 0,
+    "real_data_fits": null,
     "synthetic_fits": 2,
     "packages": 0,
     "agent_uploads": 0,
     "user_authorization": "Start V49; pause after this round",
     "implementation_commit": "392e7d0",
     "preflight_service": "iron-v49-preflight-r1.service",
-    "monitor_timer": "iron-v49-preflight-monitor.timer",
+    "monitor_timer": "iron-v49-development-monitor.timer",
     "preflight_launched_at_utc": "2026-09-29T04:49:14.644401+00:00",
-    "initial_main_pid": 202962,
-    "first_check_monotonic_seconds": 86990.523342,
+    "initial_main_pid": 203637,
+    "first_check_monotonic_seconds": 87660.540758,
     "g0_results": "docs/round2_v49/G0_RESULTS.md",
     "preflight_report_sha256": "3d07270cc28e46399045b5e7d7d16f9dbe8156fb5da0aa37dc93ab1169728fe8",
     "projected_development_hours": 3.8631900801333057,
     "peak_synthetic_rss_mib": 809.421875,
-    "preflight_terminal_exit": 0
+    "preflight_terminal_exit": 0,
+    "development_service": "iron-v49-development-r1.service",
+    "development_launched_at_utc": "2026-09-29T05:00:38.598440+00:00",
+    "planned_development_outer_units": 40,
+    "planned_development_solver_fits": 80,
+    "live_training_at_launch": true,
+    "conditional_confirmation": "only if independently audited frozen development gates pass"
   }
 }
