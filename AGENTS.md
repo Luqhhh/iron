@@ -1844,3 +1844,11 @@ See docs/strong_component_regularization/RECOVERY.md. Locked Python3.12 full
 suite1307 passed,23 existing warnings; focused18 passed. Initial unpinned
 test launch failed18 cold/runtime checks; setting the four required thread
 variables to1 resolves all failures without source/model changes. Launch pending.
+
+Serial recovery launched2026-09-29 17:09:43 Asia/Shanghai under durable user
+service iron-component-regularization-recovery-r2.service. Initial MainPID
+242465 active/running; supervisor242468/development242472. All37 complete
+units and10 references verified/copied verbatim; four fresh pending units
+started, zero BASE refits. First600-second observation approximately17:19:47
+local. No between-check polling. Original four partial directories preserved.
+Implementation7e7e3ea committed/pushed; other queue deferred.

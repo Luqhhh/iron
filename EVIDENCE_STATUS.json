@@ -15653,7 +15653,7 @@
     "conditional_confirmation": "only if independently audited frozen development gates pass"
   },
   "strong_component_regularization_2026_09_29": {
-    "status": "serial_recovery_validated_pending_launch",
+    "status": "serial_recovery_development_running",
     "user_authorized": true,
     "branch": "codex/strong-component-regularization",
     "preregistration": "docs/strong_component_regularization/PREREGISTRATION.md",
@@ -15763,7 +15763,17 @@
           "failed": 18,
           "reason": "test launcher omitted required thread environment; no model or source change"
         }
-      }
+      },
+      "service": "iron-component-regularization-recovery-r2.service",
+      "service_main_pid": 242465,
+      "supervisor_pid": 242468,
+      "development_pid": 242472,
+      "service_started_local": "2026-09-29T17:09:43+08:00",
+      "first_scheduled_observation_local": "2026-09-29T17:19:47+08:00",
+      "initial_completed_verified": 37,
+      "initial_active_units": 4,
+      "implementation_commit": "7e7e3ea",
+      "manifest_and_reused_artifacts_unchanged": true
     }
   }
 }
