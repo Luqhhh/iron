@@ -16045,10 +16045,10 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "G1_STARTED_AWAITING_INDEPENDENT_AUDITS",
+    "status": "COMPLETED_NO_DEVELOPMENT_FINALIST",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
-    "results": "docs/rfm_kernel_preparation/STATUS.md",
+    "results": "docs/rfm_kernel_preparation/RESULTS.md",
     "milestones": [
       96.4,
       96.45,
@@ -16082,14 +16082,14 @@
         "update": 6
       }
     },
-    "G1": "FORMAL_DEVELOPMENT_STARTED_NO_AUDITED_QUALITY_CONCLUSION",
+    "G1": "NEGATIVE_BOTH_TARGETS_NO_PROMOTION",
     "full_size_synthetic_probes": 1,
     "official_label_reads": true,
     "packages": 0,
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Observe only scheduled 600-second or terminal events; independently audit development and any earned confirmation, preserving all frozen gates and no-release rule.",
+    "next_action": "Preserve completed negative RFM evidence. Next priority PTaRL requires a concrete separate design and budget; no new fits or release allocated.",
     "milestone2": {
       "modules": [
         "rfm_model.py",
@@ -16174,6 +16174,133 @@
       "approx_first_observation_local": "2026-09-30 02:18:04 Asia/Shanghai",
       "local_root": "local/runs/rfm-metric-learning-r1",
       "automatic_restart": false
+    },
+    "formal_fits_completed": 40,
+    "confirmation_fits": 0,
+    "terminal": {
+      "local_time": "2026-09-30 02:15:55 Asia/Shanghai",
+      "counts": {
+        "completed": {
+          "outer_fit": 40,
+          "procedure": 80,
+          "solve": 157,
+          "update": 77
+        },
+        "failed": {
+          "outer_fit": 0,
+          "procedure": 0,
+          "solve": 0,
+          "update": 0
+        },
+        "incomplete": {
+          "outer_fit": 0,
+          "procedure": 0,
+          "solve": 0,
+          "update": 0
+        },
+        "started": {
+          "outer_fit": 40,
+          "procedure": 80,
+          "solve": 157,
+          "update": 77
+        }
+      },
+      "models_audited": 157,
+      "maximum_independent_difference": 3.1036506698001176e-11,
+      "outer_cold_difference": 0,
+      "audit_sha256": "a98da06d9f98877b861f85f629e490c76085876817f1600e26610563e9dd835d",
+      "arithmetic_sha256": "b386288af394d44b10541b101e8edb2f0b877439275ba68a53281bd9160869c3",
+      "completion_sha256": "bb4a6234b6aa2677cad95e574ed62f800cb281e3ec0d4c5a3dc0319760aa9821",
+      "timer_stopped": true,
+      "service_main_pid": 0,
+      "service_result": "success"
+    },
+    "quality": {
+      "tap_iron": {
+        "FIXED_KRR": {
+          "gain_by_seed": {
+            "42": -0.022106504005928174,
+            "3407": -0.023904814776134695
+          },
+          "mean_gain": -0.023005659391031434,
+          "mean_candidate_score": 96.21071418007983,
+          "mean_historical_target_gain": -0.023005659391031434,
+          "mean_historical_package_delta": -0.037025025641362674
+        },
+        "FULL_RFM": {
+          "gain_by_seed": {
+            "42": -0.02638590797851073,
+            "3407": -0.023904814776134695
+          },
+          "mean_gain": -0.025145361377322713,
+          "mean_candidate_score": 96.20857447809354,
+          "mean_historical_target_gain": -0.025145361377322713,
+          "mean_historical_package_delta": -0.03916472762765011
+        }
+      },
+      "tap_time_len": {
+        "FIXED_KRR": {
+          "gain_by_seed": {
+            "42": -0.08179425922045652,
+            "3407": -0.08217367790897788
+          },
+          "mean_gain": -0.08198396856471721,
+          "mean_candidate_score": 96.15173587090615,
+          "mean_historical_target_gain": -0.09600333481504675,
+          "mean_historical_package_delta": -0.09600333481505174
+        },
+        "FULL_RFM": {
+          "gain_by_seed": {
+            "42": -0.044249462414394994,
+            "3407": -0.05258949960453181
+          },
+          "mean_gain": -0.0484194810094634,
+          "mean_candidate_score": 96.1853003584614,
+          "mean_historical_target_gain": -0.06243884725979296,
+          "mean_historical_package_delta": -0.062438847259798536
+        }
+      }
+    },
+    "decisions": {
+      "decisions": {
+        "tap_iron": {
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "local_package_at_least_96_25": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": false
+          },
+          "eligible": false,
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "positive_control_advantage",
+            "local_package_at_least_96_25"
+          ],
+          "mean_control_advantage": -0.0021397019862912786,
+          "mean_gain": -0.025145361377322713
+        },
+        "tap_time_len": {
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "local_package_at_least_96_25": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true
+          },
+          "eligible": false,
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_control_advantage": 0.0335644875552538,
+          "mean_gain": -0.0484194810094634
+        }
+      },
+      "eligible_targets": [],
+      "phase": "development",
+      "release_authorized": false,
+      "requires_independent_artifact_audit": true
     }
   }
 }

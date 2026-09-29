@@ -1996,3 +1996,15 @@ At most4 workers; frozen development->cold audit->independent arithmetic->earned
 confirmation only.600-second timer first observation approximately02:18:04 CST;
 no intervening polling. Keep all819 frozen source hashes unchanged. No G1 quality
 conclusion or release is established by this launch record.
+
+
+RFM terminal2026-09-30 02:15:55 CST: success, no development finalist.
+40 outer units/80 procedures/157 solves/77 updates complete, no failed/incomplete.
+157 cold models pass, outer cold diff0;819 sources/436 references unchanged.
+FULL_RFM current-relative mean gains: iron-.025145361,time-.048419481,0/10
+positive folds each; both not_shortlisted. Time beats FIXED control+.033564488
+but still loses to incumbent; iron metric selection usually chooses state0.
+No confirmation fits, packages or uploads. Service exited successfully; scheduled
+monitor recorded completion and stopped. Preserve this bounded RFM negative;
+next priority PTaRL needs its own design/budget, none allocated here. Results:
+docs/rfm_kernel_preparation/RESULTS.md. Platform best96.3727 unchanged.
