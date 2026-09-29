@@ -15653,7 +15653,7 @@
     "conditional_confirmation": "only if independently audited frozen development gates pass"
   },
   "strong_component_regularization_2026_09_29": {
-    "status": "serial_recovery_development_running",
+    "status": "serial_recovery_completed_no_development_finalist",
     "user_authorized": true,
     "branch": "codex/strong-component-regularization",
     "preregistration": "docs/strong_component_regularization/PREREGISTRATION.md",
@@ -15697,7 +15697,7 @@
     "launch_utc": "2026-09-29T06:33:55Z",
     "monitoring_interval_seconds": 600,
     "automatic_confirmation": "only_after_audited_frozen_development_gate",
-    "g1": "in_progress_no_quality_claim",
+    "g1": "completed_no_development_finalist",
     "g0": {
       "status": "passed",
       "checks": {
@@ -15773,7 +15773,100 @@
       "initial_completed_verified": 37,
       "initial_active_units": 4,
       "implementation_commit": "7e7e3ea",
-      "manifest_and_reused_artifacts_unchanged": true
-    }
+      "manifest_and_reused_artifacts_unchanged": true,
+      "completed_local": "2026-09-29T17:53:47+08:00",
+      "workflow_elapsed_seconds": 2640.140585934,
+      "formal_units_completed": 60,
+      "diagnostic_units_completed": 6,
+      "completed_selection_refit_models": 132,
+      "new_selection_refit_runs": 58,
+      "reused_unit_byte_mismatches": 0,
+      "audit_status": "passed_after_recorded_target_array_layout_correction",
+      "native_replays": 20,
+      "native_max_difference": 0.0,
+      "full_batch_cold_difference": 0.0,
+      "maximum_order_chunk_difference": 5.62159220862668e-05,
+      "summary_sha256": "e223e4389950cd351a24bcaf70ac5236cb97882713a09b6e18de97efb38e4ace",
+      "audit_sha256": "bc14b82bb1442224d1a77b485a8f0ac0064d1387d797ec28a8fe13570369bcb2",
+      "manifest_sha256": "cc1f3a9bd141c7c4d20d6dcc7cb129baee0bf8db933462a3fc7081dd3463c933",
+      "original_audit_failure_preserved": true,
+      "corrective_audit_new_fits": 0,
+      "selected_for_confirmation": {
+        "tap_iron": null,
+        "tap_time_len": null
+      },
+      "confirmation_fits": 0,
+      "derived_seeds_consumed": false,
+      "service_terminal_main_pid": 0,
+      "service_terminal_result": "success",
+      "g1_records": [
+        {
+          "target": "tap_iron",
+          "arm": "EMA",
+          "gains_by_seed": {
+            "42": 0.002821451086888055,
+            "3407": 0.00259688615121198
+          },
+          "mean_package_score_gain": 0.0027091686190500175,
+          "positive_development_seeds": 2,
+          "positive_folds_descriptive": 7,
+          "candidate_tier": "formal",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01"
+          ]
+        },
+        {
+          "target": "tap_iron",
+          "arm": "SAM",
+          "gains_by_seed": {
+            "42": -0.006021182343936976,
+            "3407": -0.0005206896038837533
+          },
+          "mean_package_score_gain": -0.0032709359739103647,
+          "positive_development_seeds": 0,
+          "positive_folds_descriptive": 4,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "both_development_seeds_negative",
+            "development_mean_gain_below_0.01"
+          ]
+        },
+        {
+          "target": "tap_time_len",
+          "arm": "EMA",
+          "gains_by_seed": {
+            "42": 0.0019927163495803146,
+            "3407": 0.0023449078444096744
+          },
+          "mean_package_score_gain": 0.0021688120969949945,
+          "positive_development_seeds": 2,
+          "positive_folds_descriptive": 7,
+          "candidate_tier": "formal",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01"
+          ]
+        },
+        {
+          "target": "tap_time_len",
+          "arm": "SAM",
+          "gains_by_seed": {
+            "42": -0.012875986947841547,
+            "3407": -0.019983330822540696
+          },
+          "mean_package_score_gain": -0.01642965888519112,
+          "positive_development_seeds": 0,
+          "positive_folds_descriptive": 2,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "both_development_seeds_negative",
+            "development_mean_gain_below_0.01"
+          ]
+        }
+      ],
+      "private_artifacts_published": 0,
+      "preserved_partial_unit_directories": 4,
+      "preserved_partial_selector_checkpoints": 3
+    },
+    "results": "docs/strong_component_regularization/SERIAL_RECOVERY_RESULTS.md"
   }
 }

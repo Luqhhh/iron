@@ -1852,3 +1852,28 @@ units and10 references verified/copied verbatim; four fresh pending units
 started, zero BASE refits. First600-second observation approximately17:19:47
 local. No between-check polling. Original four partial directories preserved.
 Implementation7e7e3ea committed/pushed; other queue deferred.
+
+
+### BASE/EMA/SAM serial recovery complete: no finalist (2026-09-29)
+
+60 formal units plus6 initialization diagnostics complete;132 saved models
+pass independent corrective audit. Twenty native BASE replays exact, full-batch
+cold diff0, maximum reversed/chunked diff5.6215922e-5 within frozen5e-4.
+37 cached units and10 reference units copied byte-exact;418 frozen sources,
+data and original manifest unchanged. Original4 partial unit directories preserved (three selector checkpoints).
+No source, training, model, tolerance or gate change.
+
+Original auditor's selector target-array reduction layout mismatch (2.27e-13)
+is retained as failed evidence. Corrective audit restores native y[inner!=0]
+slicing, all other checks unchanged, zero training calls. Locked Python3.12
+suite1307 passed,23 existing warnings; initial unpinned test failure retained.
+
+EMA local mean gain iron+.002709169/time+.002168812, both development seeds
+positive but below frozen+.01 mechanism gate. Preserve both descriptive
+candidate-tier `formal` classifications; neither is a mechanism finalist or
+a four-seed promoted candidate. SAM iron-.003270936/time-.016429659, both
+seeds negative. No confirmation/full-data fit/package/upload; derived seeds
+271828/314159 unconsumed. Conditional command exits0/no_development_finalist.
+Terminal service MainPID0/Resultsuccess, no live worker. Other queue deferred.
+User-reported platform best96.3727 unchanged; local scores are not forecasts.
+Details: docs/strong_component_regularization/SERIAL_RECOVERY_RESULTS.md.
