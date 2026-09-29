@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "SOURCE_FREEZE_AND_BOUNDED_PHASE_ENTRY_IMPLEMENTED_RESOURCE_CONTROLLER_PENDING",
+    "status": "RESOURCE_ADMISSION_IMPLEMENTED_CONTROLLER_AND_FULL_VERIFICATION_PENDING",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16056,7 +16056,7 @@
     ],
     "current_best_user_reported": 96.3727,
     "G0": {
-      "focused_locked_python312_tests_passed": 59,
+      "focused_locked_python312_tests_passed": 63,
       "full_suite_run": false,
       "full_size_resource_admission": false,
       "protected_source_files_verified": 633,
@@ -16072,7 +16072,7 @@
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Implement frozen synthetic resource admission and one-shot controller; run full locked suite, freeze exact sources and verify resource admission before any official fits.",
+    "next_action": "Implement independent arithmetic, one-shot controller/600-second monitoring and full SPEC; run full locked suite before freezing sources and measuring the one-shot resource admission.",
     "milestone2": {
       "modules": [
         "rfm_model.py",
@@ -16125,6 +16125,17 @@
       "official_phase_cli_executed": false,
       "resource_module_pending": true,
       "controller_pending": true
+    },
+    "milestone7": {
+      "module": "rfm_preflight.py",
+      "frozen_synthetic_budget": {
+        "procedure": 4,
+        "solve": 10,
+        "update": 6
+      },
+      "forced_full_refit_updates": 3,
+      "full_size_measured": false,
+      "manifest_generated": false
     }
   }
 }

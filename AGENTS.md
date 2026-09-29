@@ -1965,3 +1965,9 @@ and record, which do not yet exist. No manifest/probe/formal launch has occurred
 Workers use spawn, at most4 in flight and no dispatch after observed failure;
 failed or audited phase directories cannot be silently re-entered. Full-size G0,
 controller and full-suite verification remain mandatory before any G1 fits.
+
+RFM resource admission is implemented with frozen4/10/6 synthetic procedures/
+solves/updates, forced3-update FULL refit and unchanged memory/runtime gates.
+63 focused tests pass; all test fits remain tiny. No full-size resource probe
+or official fit has run. Independent arithmetic/controller/600-second monitor,
+complete SPEC and full locked suite must exist before manifest freeze/G0.
