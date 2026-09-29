@@ -15653,7 +15653,7 @@
     "conditional_confirmation": "only if independently audited frozen development gates pass"
   },
   "strong_component_regularization_2026_09_29": {
-    "status": "implementation_and_g0_validation",
+    "status": "synthetic_admission_running_with_gated_development",
     "user_authorized": true,
     "branch": "codex/strong-component-regularization",
     "preregistration": "docs/strong_component_regularization/PREREGISTRATION.md",
@@ -15682,6 +15682,21 @@
         "tap_time_len": 0.000550881594284236
       },
       "historical_decisions_unchanged": true
-    }
+    },
+    "implementation_commit": "b0d372a",
+    "locked_tests": {
+      "full_suite_passed": 1301,
+      "warnings": 23,
+      "focused_after_final_summary_fix_passed": 14,
+      "python": "3.12.12",
+      "torch": "2.14.0+cpu",
+      "no_sync": true
+    },
+    "runtime_reference_verified": true,
+    "private_workflow": "local/runs/strong-component-regularization",
+    "launch_utc": "2026-09-29T06:33:55Z",
+    "monitoring_interval_seconds": 600,
+    "automatic_confirmation": "only_after_audited_frozen_development_gate",
+    "g1": "unmeasured"
   }
 }
