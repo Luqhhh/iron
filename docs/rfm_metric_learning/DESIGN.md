@@ -1,8 +1,8 @@
 # RFM_METRIC_LEARNING — proposed first execution design
 
 2026-09-29. User requested proceeding by priority: RFM/xRFM, PTaRL, DNNR,
-DANet. This first written design is awaiting review. No model fits or resource
-probes have started. The previously reserved process-group strategy remains
+DANet. The user approved this written design on2026-09-29. Implementation-plan
+review is next; no model fits or resource probes have started. The previously reserved process-group strategy remains
 on hold. No numbered V identity is allocated to avoid teammate collisions.
 
 ## Question, scope and sources
