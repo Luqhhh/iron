@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "NUMERICAL_CORE_TESTED_FULL_EXPERIMENT_NOT_ADMITTED",
+    "status": "PARTITION_MODEL_AND_BUDGET_LEDGER_TESTED_FULL_EXPERIMENT_NOT_ADMITTED",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16056,11 +16056,13 @@
     ],
     "current_best_user_reported": 96.3727,
     "G0": {
-      "focused_locked_python312_tests_passed": 12,
+      "focused_locked_python312_tests_passed": 32,
       "full_suite_run": false,
       "full_size_resource_admission": false,
       "protected_source_files_verified": 633,
-      "protected_source_mismatches": 0
+      "protected_source_mismatches": 0,
+      "tiny_synthetic_training_rows_max": 40,
+      "pure_kernel_query_rows_max": 259
     },
     "G1": "NO_NEW_QUALITY_MEASUREMENT",
     "formal_fits": 0,
@@ -16070,6 +16072,16 @@
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Implement partition-aware RFM and tiny synthetic tests in isolation; defer full-size probe and official training until E-COMPOSE workflow is terminal and independent admission passes."
+    "next_action": "Implement independent artifact/decision audit and frozen task controller; keep full-size probes/official training deferred until E-COMPOSE is terminal and independent admission passes.",
+    "milestone2": {
+      "modules": [
+        "rfm_model.py",
+        "rfm_protocol.py"
+      ],
+      "cold_fresh_process": true,
+      "concurrent_duplicate_reservation_test": true,
+      "engineering_record_sha256": "eebbee703c00543176da4d22f56b913ade837c4aab565dd3cc0abd0717483963",
+      "formal_run_started": false
+    }
   }
 }

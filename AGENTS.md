@@ -1925,3 +1925,12 @@ E-COMPOSE's isolated sources/configuration and environment remain untouched.
 Keep600-second monitoring there; do not launch another full-size probe/training
 queue until its workflow including earned confirmation/audits is terminal.
 Preserve the remote RFM/PTaRL/DNNR/DANet priority and avoid duplicate execution.
+
+RFM partition model and exclusive budget ledger are now implemented.32 focused
+locked Python3.12 tests pass on tiny synthetic data; see STATUS.md milestone2.
+State selection uses native innerseed42/fold0; refit recomputes preprocessing,
+bandwidth and target scales from full outer-training with freshM=I. Cold model
+loading requires an externally held completion SHA256. Failed/duplicate ledger
+starts cannot be retried and consume their phase budget. Formal runner/reference
+binding, independent audit, controller and full-suite/resource admission remain
+pending. No official data fits or full-size probes while E-COMPOSE is live.
