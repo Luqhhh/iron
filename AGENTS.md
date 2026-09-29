@@ -1823,3 +1823,24 @@ peak593.78MiB, conservative development projection6.12918h <7.61h. Development
 started on the completion event, native replays first. Private supervisor
 records stages and observations under local/runs/strong-component-regularization;
 no polling between600-second events. Sources/config frozen during execution.
+
+
+### Explicit serial recovery (2026-09-29)
+
+The user requested no parallel queues, BASE/EMA/SAM first. Both prior
+supervisors/workers disappeared without terminal evidence; cause unconfirmed.
+Preserve development-r1 and the interrupted parallel queue. Recovery script
+scripts/resume_component_regularization.py uses fresh development-r2, verifies
+all418 frozen sources, original manifest/data/runtime/G0/reference identities,
+and imports37 completed units verbatim. Only23 missing development units and
+6 predeclared initialization diagnostics may be fitted, four workers. No
+partial checkpoint reuse or new synthetic fits; frozen training/spec/gates stay
+unchanged. Preserve the original audit failure if encountered; recorded
+corrective audit fixes only native selector target-array slicing, zero fits.
+Conditional confirmation remains frozen and uses confirmation-r2. User-level
+systemd service provides durable supervision with600-second observations.
+Augmentation/representation is deferred. No full-data fit/package/upload.
+See docs/strong_component_regularization/RECOVERY.md. Locked Python3.12 full
+suite1307 passed,23 existing warnings; focused18 passed. Initial unpinned
+test launch failed18 cold/runtime checks; setting the four required thread
+variables to1 resolves all failures without source/model changes. Launch pending.

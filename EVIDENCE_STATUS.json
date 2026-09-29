@@ -15653,7 +15653,7 @@
     "conditional_confirmation": "only if independently audited frozen development gates pass"
   },
   "strong_component_regularization_2026_09_29": {
-    "status": "development_running_native_base_replay_first",
+    "status": "serial_recovery_validated_pending_launch",
     "user_authorized": true,
     "branch": "codex/strong-component-regularization",
     "preregistration": "docs/strong_component_regularization/PREREGISTRATION.md",
@@ -15717,6 +15717,53 @@
       "conservative_development_projection_hours": 6.129179797876717,
       "report_sha256": "9967cb133fc486ca4c8fe6ca602c94c88eb25305f1d0d39c31e8fd0821d29668"
     },
-    "development_started_utc": "2026-09-29T06:49:25Z"
+    "development_started_utc": "2026-09-29T06:49:25Z",
+    "execution_order": [
+      "BASE_EMA_SAM_first",
+      "augmentation_representation_deferred"
+    ],
+    "interrupted_development": {
+      "directory": "local/runs/strong-component-regularization/development-r1",
+      "completed_units": 37,
+      "by_arm": {
+        "BASE": 20,
+        "EMA": 9,
+        "SAM": 8
+      },
+      "terminal_event_present": false,
+      "processes_absent_verified": "2026-09-29T07:58:00Z",
+      "cause": "unconfirmed",
+      "preserve_all_artifacts": true
+    },
+    "recovery": {
+      "script": "scripts/resume_component_regularization.py",
+      "documentation": "docs/strong_component_regularization/RECOVERY.md",
+      "development": "local/runs/strong-component-regularization/development-r2",
+      "control": "local/runs/strong-component-regularization/recovery-r2",
+      "confirmation": "local/runs/strong-component-regularization/confirmation-r2",
+      "reused_development_units": 37,
+      "new_development_units": 23,
+      "new_initialization_diagnostic_units": 6,
+      "candidate_workers": 4,
+      "other_queue": "deferred",
+      "frozen_sources_unchanged": 418,
+      "automatic_retries": false,
+      "full_data_fits": 0,
+      "packages": 0,
+      "uploads": 0,
+      "locked_tests": {
+        "full_suite_passed": 1307,
+        "warnings": 23,
+        "focused_passed": 18,
+        "python": "3.12.12",
+        "no_sync": true,
+        "numeric_threads": 1,
+        "initial_unpinned_attempt": {
+          "passed": 1289,
+          "failed": 18,
+          "reason": "test launcher omitted required thread environment; no model or source change"
+        }
+      }
+    }
   }
 }
