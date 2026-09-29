@@ -1895,3 +1895,24 @@ Serial recovery launched 2026-09-29T11:18:13.244791+00:00; implementation b065c4
 User service iron-component-augmentation-recovery-r2.service, supervisor PID
 257154. Frozen worktree module identity confirmed; original manifest
 and 20 BASE controls copied verbatim, 60 new units admitted. G1 in progress.
+
+### Serial augmentation completion (2026-09-29)
+
+Recovery completed20:33:47 CST with exit0; service MainPID0, Resultsuccess.
+All60 new D-LMIX/R-FIXED/R-LEARNED units completed plus20 reused BASE controls.
+Independent unchanged audit passed160 saved models and20 exact native replays;
+cold full-batch difference0, max order/chunk difference5.63126e-5 <5e-4.
+All425 frozen sources and data hashes remain unchanged. Thirty copied complete
+directories match originals byte-for-byte; preserve four original event-only
+partial directories and both historical admission reports. No retries or new
+synthetic fits. G0 passed; locked prelaunch tests1318 passed,23 warnings.
+
+G1: every new method has a negative two-seed mean. Iron/time gains:
+D-LMIX -.00143752/-.00960905; R-FIXED -.01344592/-.02028362;
+R-LEARNED -.00966448/-.01814473. D-LMIX iron seed42 is positive but3407 is
+negative. All six target/method candidates are not_shortlisted and fail the
+unchanged mechanism gate. No development finalist, no derived confirmation
+seeds, no four-seed promotion, no full fit/package/upload. Both serial queues
+are complete. Do not silently extend the frozen candidate set or relax gates.
+Results:docs/component_augmentation_representation/SERIAL_RECOVERY_RESULTS.md.
+Summary SHA256:3cbdbe05b20a96150c7f6c87b289e42f6c876966163bd3ea75474230b7cfa2c7.

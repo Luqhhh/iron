@@ -15720,12 +15720,12 @@
     "development_started_utc": "2026-09-29T06:49:25Z"
   },
   "component_augmentation_representation_2026_09_29": {
-    "status": "serial_development_running",
+    "status": "serial_recovery_completed_no_development_finalist",
     "branch": "codex/component-augmentation-representation",
     "spec": "configs/component_augmentation_representation/SPEC.yaml",
     "documentation": "docs/component_augmentation_representation/EXECUTION.md",
-    "g0": "passed_explicit_eight_hour_admission_reverified",
-    "g1": "unmeasured",
+    "g0": "passed_development_saved_state_audit",
+    "g1": "completed_no_development_finalist",
     "recipes": [
       "D-LMIX",
       "R-FIXED",
@@ -15742,8 +15742,8 @@
     "implementation_commit": "47ea6e48012be5d4e6bcc4aafeeef451b1981965",
     "supervisor_private_root": "local/runs/component-augmentation-representation",
     "completed_synthetic_fits": 6,
-    "completed_development_units": 0,
-    "pending_development_units": 60,
+    "completed_development_units": 60,
+    "pending_development_units": 0,
     "projected_hours": 7.928570820616652,
     "frozen_max_hours": 7.61,
     "terminal_utc": "2026-09-29T07:29:38.410017+00:00",
@@ -15767,7 +15767,7 @@
     },
     "original_admission_status": "stopped_at_synthetic_runtime_admission",
     "serial_recovery": {
-      "status": "development_running",
+      "status": "completed_no_development_finalist",
       "user_authorization": "继续另一条队列 after BASE/EMA/SAM completed",
       "script": "scripts/resume_augmentation_queue.py",
       "documentation": "docs/component_augmentation_representation/SERIAL_RECOVERY.md",
@@ -15802,7 +15802,145 @@
       "script_sha256": "cb995704fd429b7f5d9ff630b3b0b7da93413b0528ef459a43fb4f0c39f1bd2d",
       "supervisor_pid": 257154,
       "frozen_module": "/home/lux1/iron/local/worktrees/component-augmentation-representation/src/bf_tap_r2/component_regularization_run.py",
-      "completed_new_units_at_launch": 0
-    }
+      "completed_new_units_at_launch": 0,
+      "completed_local": "2026-09-29T20:33:47.502356+08:00",
+      "elapsed_seconds": 4534.25756489,
+      "completed_new_units": 60,
+      "completed_units_including_BASE": 80,
+      "new_selection_refit_runs": 120,
+      "reused_unit_byte_mismatches": 0,
+      "preserved_partial_event_directories": 4,
+      "g0_audit": {
+        "status": "passed",
+        "cold_models": 160,
+        "native_replays": 20,
+        "native_max_difference": 0.0,
+        "full_batch_cold_difference": 0.0,
+        "maximum_order_chunk_difference": 5.631260250993364e-05,
+        "selection_verified": true,
+        "summary_sha256": "3cbdbe05b20a96150c7f6c87b289e42f6c876966163bd3ea75474230b7cfa2c7",
+        "manifest_sha256": "33d7b5e143e887e9b3c6d9db579fcf358d3c566235b7b5bbb6524aa5c01bbbe8",
+        "auditor_sha256": "b30a33d63cb3dc36b87dbd3bdd1811d83e58722f9740b59a6a40f6b715e98c33",
+        "new_fits": 0,
+        "packages": 0
+      },
+      "audit_sha256": "fc28b8d856e49855e566838cef6e09cc346acc4a082e46c03ccbacdea7d58e15",
+      "summary_sha256": "3cbdbe05b20a96150c7f6c87b289e42f6c876966163bd3ea75474230b7cfa2c7",
+      "results": "docs/component_augmentation_representation/SERIAL_RECOVERY_RESULTS.md",
+      "selected_for_confirmation": {
+        "tap_iron": null,
+        "tap_time_len": null
+      },
+      "confirmation_fits": 0,
+      "derived_seeds_consumed": false,
+      "service_terminal_main_pid": 0,
+      "service_terminal_result": "success",
+      "failed_units": 0,
+      "g1_records": [
+        {
+          "target": "tap_iron",
+          "arm": "D-LMIX",
+          "gains_by_seed": {
+            "42": 0.009755153610638972,
+            "3407": -0.012630199686623766
+          },
+          "mean_package_score_gain": -0.001437523037992397,
+          "positive_development_seeds": 1,
+          "positive_folds_descriptive": 5,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01",
+            "not_both_development_seeds_positive",
+            "no_positive_mean_gain_over_matched_BASE"
+          ]
+        },
+        {
+          "target": "tap_iron",
+          "arm": "R-FIXED",
+          "gains_by_seed": {
+            "42": -0.009262030975732902,
+            "3407": -0.01762981408396612
+          },
+          "mean_package_score_gain": -0.01344592252984951,
+          "positive_development_seeds": 0,
+          "positive_folds_descriptive": 2,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01",
+            "not_both_development_seeds_positive",
+            "no_positive_mean_gain_over_matched_BASE"
+          ]
+        },
+        {
+          "target": "tap_iron",
+          "arm": "R-LEARNED",
+          "gains_by_seed": {
+            "42": -0.004554203273825219,
+            "3407": -0.01477475567279278
+          },
+          "mean_package_score_gain": -0.009664479473309,
+          "positive_development_seeds": 0,
+          "positive_folds_descriptive": 1,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01",
+            "not_both_development_seeds_positive",
+            "no_positive_mean_gain_over_matched_BASE"
+          ]
+        },
+        {
+          "target": "tap_time_len",
+          "arm": "D-LMIX",
+          "gains_by_seed": {
+            "42": -0.012011199811015616,
+            "3407": -0.007206896974034857
+          },
+          "mean_package_score_gain": -0.009609048392525237,
+          "positive_development_seeds": 0,
+          "positive_folds_descriptive": 2,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01",
+            "not_both_development_seeds_positive",
+            "no_positive_mean_gain_over_matched_BASE"
+          ]
+        },
+        {
+          "target": "tap_time_len",
+          "arm": "R-FIXED",
+          "gains_by_seed": {
+            "42": -0.01707859736206352,
+            "3407": -0.02348863615508727
+          },
+          "mean_package_score_gain": -0.020283616758575394,
+          "positive_development_seeds": 0,
+          "positive_folds_descriptive": 0,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01",
+            "not_both_development_seeds_positive",
+            "no_positive_mean_gain_over_matched_BASE"
+          ]
+        },
+        {
+          "target": "tap_time_len",
+          "arm": "R-LEARNED",
+          "gains_by_seed": {
+            "42": -0.01786124033332573,
+            "3407": -0.018428221143655665
+          },
+          "mean_package_score_gain": -0.018144730738490697,
+          "positive_development_seeds": 0,
+          "positive_folds_descriptive": 2,
+          "candidate_tier": "not_shortlisted",
+          "mechanism_failed_conditions": [
+            "development_mean_gain_below_0.01",
+            "not_both_development_seeds_positive",
+            "no_positive_mean_gain_over_matched_BASE"
+          ]
+        }
+      ]
+    },
+    "results": "docs/component_augmentation_representation/SERIAL_RECOVERY_RESULTS.md"
   }
 }
