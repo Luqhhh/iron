@@ -16045,7 +16045,7 @@
     "uploads": 0
   },
   "rfm_kernel_preparation_2026_09_30": {
-    "status": "OUTER_UNITS_AND_PHASE_COLLECTION_VERIFIED_ADMISSION_PENDING",
+    "status": "SOURCE_FREEZE_AND_BOUNDED_PHASE_ENTRY_IMPLEMENTED_RESOURCE_CONTROLLER_PENDING",
     "branch": "codex/rfm-kernel-preparation",
     "source_design_commit": "86ea6b3",
     "results": "docs/rfm_kernel_preparation/STATUS.md",
@@ -16056,7 +16056,7 @@
     ],
     "current_best_user_reported": 96.3727,
     "G0": {
-      "focused_locked_python312_tests_passed": 51,
+      "focused_locked_python312_tests_passed": 59,
       "full_suite_run": false,
       "full_size_resource_admission": false,
       "protected_source_files_verified": 633,
@@ -16072,7 +16072,7 @@
     "uploads": 0,
     "gates_changed": false,
     "source_inventory_sha256": "cc794fd8da77c06063ce8422c34b2ea7884914695391e93a15ffccc7a75077ce",
-    "next_action": "Implement phase runner/fresh-process audit/controller and complete locked tests/resource admission; E-COMPOSE is terminal but RFM G1 admission is still unproven.",
+    "next_action": "Implement frozen synthetic resource admission and one-shot controller; run full locked suite, freeze exact sources and verify resource admission before any official fits.",
     "milestone2": {
       "modules": [
         "rfm_model.py",
@@ -16113,6 +16113,18 @@
       "exact_reservation_reconciliation": true,
       "phase_source_reference_binding": false,
       "formal_run_started": false
+    },
+    "milestone6": {
+      "modules": [
+        "rfm_freeze.py",
+        "rfm_run.py"
+      ],
+      "workers_max": 4,
+      "stop_dispatch_on_observed_failure": true,
+      "manifest_generated": false,
+      "official_phase_cli_executed": false,
+      "resource_module_pending": true,
+      "controller_pending": true
     }
   }
 }

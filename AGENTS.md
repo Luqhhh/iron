@@ -1957,3 +1957,11 @@ path and outer receipt reconciles against frozen budget limits, and onlyFULL_RFM
 enters candidate tiers. Source/reference phase binding, bounded scheduler,
 fresh-process phase audit, controller, full suite and resource admission remain
 pending. No official model fit, full-size probe or release has started.
+
+RFM manifest and bounded phase entrypoints now exist;59 focused tests pass.
+Freeze requires committed complete implementation and exact-source full locked
+suite receipt; formal entry additionally requires the resource admission module
+and record, which do not yet exist. No manifest/probe/formal launch has occurred.
+Workers use spawn, at most4 in flight and no dispatch after observed failure;
+failed or audited phase directories cannot be silently re-entered. Full-size G0,
+controller and full-suite verification remain mandatory before any G1 fits.
