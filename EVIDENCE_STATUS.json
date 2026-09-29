@@ -15317,10 +15317,18 @@
     "automatic_packages": false,
     "uploads": 0,
     "monitor_interval_seconds": 3600,
-    "supersedes_pause_request_after_v44": true
+    "supersedes_pause_request_after_v44": true,
+    "latest_external_feedback_observed": {
+      "candidate": "V40_TIME_H1",
+      "score": 96.364,
+      "delta_vs_best": -0.0087,
+      "source": "user_reported_not_independently_verified; read-only original-worktree EVIDENCE_STATUS.json ridge_failed_stop_uploads_2026_09_29",
+      "zip_sha256": "772057b95032f035ecdd1051133a7885925c51ee2aa611f55bc36744f19e44b8",
+      "decision": "do_not_recommend_remaining_weight_probes_from_upper_bounds"
+    }
   },
   "round2_v45_rotation_forest": {
-    "status": "PREREGISTERED_NO_FITS",
+    "status": "IMPLEMENTED_TESTED_SYNTHETIC_ADMISSION_PENDING",
     "branch": "round2-v45-rotation-forest",
     "plan": "docs/round2_v45/PREREGISTRATION.md",
     "spec": "configs/round2_v45/SPEC.yaml",
@@ -15332,6 +15340,13 @@
     "official_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "uploads": 0
+    "uploads": 0,
+    "protocol_commit": "e1de45f",
+    "G0": {
+      "locked_python312_tests_passed": 1256,
+      "warnings": 23,
+      "reference_cache_units_verified": 20
+    },
+    "G1": "NOT_EVALUATED"
   }
 }

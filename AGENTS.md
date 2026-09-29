@@ -1516,3 +1516,11 @@ PCA rotation. Freeze configs/round2_v45/SPEC.yaml and PREREGISTRATION.md before
 fitting. 40 candidate units / 80 forest fits / 20480 component trees; no old
 forest recipe is retroactively promoted. Synthetic/resource and full locked
 Python 3.12 checks precede real fits. Current reference and gates unchanged.
+
+
+V45 implementation ready: matched full-rank block-PCA/AXIS forests, fixed
+256 CART trees each, fresh calibration/refit, current-reference runner and
+independent saved-tree/PCA audit. Eight focused tests are included in the
+locked Python 3.12 full suite: 1256 passed, 23 existing warnings. Runtime and
+20 source/row/fold-matched reference-cache units verify. Protocol e1de45f.
+Synthetic admission is still pending; no real V45 data fits or packages yet.
