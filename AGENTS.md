@@ -1705,3 +1705,12 @@ due monotonic 83554.645324 s (approximately 12:00:27 local); actual timer
 controls. No between-check health/metric polling. Completion event path
 local/runs/round2-v48/preflight-completion-event.json may trigger audit.
 No actual-data fits until successful G0 report is independently checked.
+
+V48 G0 passed; docs/round2_v48/G0_RESULTS.md. Both synthetic 2000-epoch fits
+reproduce actual old 400-epoch parameter/trace/prediction prefixes exactly;
+independent DP/cold/order/chunk error <=1.25e-14. AFM2 MAE 2.479139, AHOFM4
+1.607712, constant 3.002376. Peak 510.69 MiB; conservative development projection
+2.096409 h <7.61. Source/runtime/60 old units/20 reference units/RAM pass.
+Actual completion event exit 0 received at 03:55:05 UTC; PID 0 verified and
+timer stopped. Admit 40 official units/80 fits, with 80 mandatory exact old
+prefix checks. G1 unmeasured; no release or external weights/data authorized.

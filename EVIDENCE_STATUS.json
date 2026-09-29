@@ -15558,17 +15558,17 @@
     "live_training": false
   },
   "round2_v48_factorized_spline_epochs": {
-    "status": "SYNTHETIC_ADMISSION_RUNNING",
+    "status": "G0_PASSED_DEVELOPMENT_ADMITTED",
     "branch": "round2-v48-factorized-spline-epochs",
     "protocol_commit": "91c9eba",
     "spec": "configs/round2_v48/SPEC.yaml",
     "plan": "docs/round2_v48/PREREGISTRATION.md",
     "only_training_change": "max_epochs 400 -> 2000",
     "old_evidence": "round2_v47_factorized_spline",
-    "g0": "1279 locked Python 3.12 tests passed; original 60 V47 units and reference identities verified; synthetic admission pending",
+    "g0": "1279 locked tests; synthetic learnability/cold/old-prefix/resource checks passed",
     "g1": "unmeasured",
     "real_data_fits": 0,
-    "synthetic_fits": "running_expected_2",
+    "synthetic_fits": 2,
     "packages": 0,
     "agent_uploads": 0,
     "monitor_interval_seconds": 600,
@@ -15577,6 +15577,10 @@
     "monitor_timer": "iron-v48-preflight-monitor.timer",
     "initial_main_pid": 195054,
     "first_check_monotonic_seconds": 83554.645324,
-    "preflight_launched_at_utc": "2026-09-29T03:50:27.539696+00:00"
+    "preflight_launched_at_utc": "2026-09-29T03:50:27.539696+00:00",
+    "g0_results": "docs/round2_v48/G0_RESULTS.md",
+    "preflight_report_sha256": "ae6f6b2f45838abc83a4b4058e7ba0df1b6dcf28ffc6d3d2c565596d49c7e245",
+    "projected_development_hours": 2.096409353077858,
+    "preflight_terminal_exit": 0
   }
 }
