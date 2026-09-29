@@ -52,3 +52,8 @@ supervisor. Sources/config remain frozen.
 Terminal update 2026-09-29T07:29:38.410017+00:00: G0 runtime gate failed7.92857h >7.61h;
 all six synthetic fits and cold/memory/source checks passed. Supervisor stopped
 before actual-data development. See G0_RESULTS.md. No automatic restart.
+
+Explicit eight-hour amendment admitted2026-09-29T07:45:28.186812+00:00; original source hashes and
+six independent cold predictions verified. Real-data development start confirmed
+under private root local/runs/component-augmentation-representation-budget8.
+Implementation49ff19b. Zero repeated synthetic fits, G1 unmeasured.

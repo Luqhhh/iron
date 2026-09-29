@@ -15720,7 +15720,7 @@
     "development_started_utc": "2026-09-29T06:49:25Z"
   },
   "component_augmentation_representation_2026_09_29": {
-    "status": "stopped_at_synthetic_runtime_admission",
+    "status": "budget8_development_running",
     "branch": "codex/component-augmentation-representation",
     "spec": "configs/component_augmentation_representation/SPEC.yaml",
     "documentation": "docs/component_augmentation_representation/EXECUTION.md",
@@ -15751,14 +15751,20 @@
     "no_automatic_restart": true,
     "budget8_amendment": {
       "user_authorization": "允许7.93，8小时上限",
-      "status": "implementation_validated_readmission_next",
+      "status": "admitted_development_started",
       "new_cap_hours": 8.0,
       "projected_hours": 7.928570820616652,
       "spec": "configs/component_augmentation_representation/BUDGET8.yaml",
       "documentation": "docs/component_augmentation_representation/BUDGET8.md",
       "private_root": "local/runs/component-augmentation-representation-budget8",
       "repeated_synthetic_fits": 0,
-      "focused_tests_passed": 25
-    }
+      "focused_tests_passed": 25,
+      "started_utc": "2026-09-29T07:45:28.186812+00:00",
+      "g0": "passed_under_explicit_eight_hour_cap",
+      "g1": "unmeasured",
+      "cold_full_batch_difference": 0.0,
+      "implementation_commit": "49ff19b"
+    },
+    "original_admission_status": "stopped_at_synthetic_runtime_admission"
   }
 }

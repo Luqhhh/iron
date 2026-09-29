@@ -1858,3 +1858,9 @@ stay intact. Reuse6 synthetic fits after source/hash/cold/memory verification;
 no training/model/promotion changes. Resume module independently supervises
 existing development/audit/conditional confirmation with600-second observations.
 Focused locked Python3.12 component suites25 passed. No new synthetic fits.
+
+Budget8 readmission passed and development started2026-09-29T07:45:28.186812+00:00, implementation49ff19b.
+Original source hashes verified and six cold predictions reproduced exactly;
+no new synthetic fits. Active private root now
+local/runs/component-augmentation-representation-budget8; original failed
+workflow preserved. Four-worker real-data queue, G1 unmeasured.
