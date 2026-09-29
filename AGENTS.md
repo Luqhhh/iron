@@ -1714,3 +1714,14 @@ independent DP/cold/order/chunk error <=1.25e-14. AFM2 MAE 2.479139, AHOFM4
 Actual completion event exit 0 received at 03:55:05 UTC; PID 0 verified and
 timer stopped. Admit 40 official units/80 fits, with 80 mandatory exact old
 prefix checks. G1 unmeasured; no release or external weights/data authorized.
+
+V48 official development launched 2026-09-29 11:56:57 Asia/Shanghai, service
+iron-v48-development-r1.service, initial MainPID 195530 verified running.
+Private supervisor runs development then independent audit on actual exit 0;
+no automatic confirmation/retraining/release. First 600-second checkpoint:
+monotonic 83935.021907 s, approximately 12:06:57 local, timer
+iron-v48-development-monitor.timer. No between-check health/metric polling.
+Private root local/runs/round2-v48; completion-event.json is the terminal
+notification, development-monitor/checks.jsonl stores scheduled observations.
+Require development-r1/audit.json including all 80 exact old prefixes before
+quality decisions or conditional confirmation. Source/config frozen.

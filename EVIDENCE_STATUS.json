@@ -15558,7 +15558,7 @@
     "live_training": false
   },
   "round2_v48_factorized_spline_epochs": {
-    "status": "G0_PASSED_DEVELOPMENT_ADMITTED",
+    "status": "DEVELOPMENT_AND_COMPLETION_AUDIT_RUNNING",
     "branch": "round2-v48-factorized-spline-epochs",
     "protocol_commit": "91c9eba",
     "spec": "configs/round2_v48/SPEC.yaml",
@@ -15567,20 +15567,22 @@
     "old_evidence": "round2_v47_factorized_spline",
     "g0": "1279 locked tests; synthetic learnability/cold/old-prefix/resource checks passed",
     "g1": "unmeasured",
-    "real_data_fits": 0,
+    "real_data_fits": "running_expected_80",
     "synthetic_fits": 2,
     "packages": 0,
     "agent_uploads": 0,
     "monitor_interval_seconds": 600,
     "implementation_commit": "8e15245",
     "preflight_service": "iron-v48-preflight-r1.service",
-    "monitor_timer": "iron-v48-preflight-monitor.timer",
-    "initial_main_pid": 195054,
-    "first_check_monotonic_seconds": 83554.645324,
+    "monitor_timer": "iron-v48-development-monitor.timer",
+    "initial_main_pid": 195530,
+    "first_check_monotonic_seconds": 83935.021907,
     "preflight_launched_at_utc": "2026-09-29T03:50:27.539696+00:00",
     "g0_results": "docs/round2_v48/G0_RESULTS.md",
     "preflight_report_sha256": "ae6f6b2f45838abc83a4b4058e7ba0df1b6dcf28ffc6d3d2c565596d49c7e245",
     "projected_development_hours": 2.096409353077858,
-    "preflight_terminal_exit": 0
+    "preflight_terminal_exit": 0,
+    "development_service": "iron-v48-development-r1.service",
+    "development_launched_at_utc": "2026-09-29T03:56:57.563481+00:00"
   }
 }
