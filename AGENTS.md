@@ -1623,3 +1623,10 @@ not a paper benchmark reproduction or reopening the same V42 hinge recipe.
 Synthetic/math/cold/resource/full Python 3.12 checks required before actual fits.
 No external data/pretrained weights, full-data fits, packages or uploads.
 Monitoring every 600 seconds; no between-check polling. Staged goal active.
+
+V47 implementation ready: train-only factor basis, per-order shared factors,
+inner epoch selection with fresh refit, current-reference runner and independent
+NumPy interpolation/ANOVA-DP plus epoch-trace auditor. Eight new analytic and
+adversarial tests; locked Python 3.12 suite 1272 passed, 23 existing warnings.
+Reference source/runtime/20 cache units verified. Protocol acb581c; synthetic
+resource/learnability admission pending; real-data fits and packages remain zero.

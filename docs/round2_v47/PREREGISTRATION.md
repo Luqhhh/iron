@@ -80,3 +80,10 @@ coverage, scores and decisions before any confirmation. Preserve any failure.
 600-second scheduled monitoring only; actual terminal events may trigger audit.
 No full-data fits, packages, desktop writes or agent uploads are authorized here.
 G0 correctness and G1 quality will be reported separately.
+
+Synthetic generator fixed before execution: seed 47001, 2754 independent
+standard-normal 21-feature rows, first 2204 train / last 550 query. Response
+10 + 3*x0 + 6*product(level(x1),...,level(x4)) + N(0,.1^2), where level is
+-1 below -.5, +1 above .5 and 0 otherwise; independent uniform spout 1/2/3.
+The synthetic evaluation labels never select parameters or epochs. Both arms
+run all 400 epochs. This tests known four-way learnability, not real-data gain.

@@ -15460,5 +15460,29 @@
     "coarse_vertex_certificates": 8,
     "report_sha256": "08c7c3b5408e2bddb31959fedcb8813431cad6dbdf074ebd276bc36aa56c15ab",
     "audit_sha256": "056086424e2490e1a1b9eadfd86ccae9f0d9d60c76bc792bd4cf3e87174b1898"
+  },
+  "round2_v47_factorized_spline": {
+    "status": "IMPLEMENTATION_TESTED_SYNTHETIC_ADMISSION_PENDING",
+    "branch": "round2-v47-factorized-spline",
+    "protocol_commit": "acb581c",
+    "spec": "configs/round2_v47/SPEC.yaml",
+    "plan": "docs/round2_v47/PREREGISTRATION.md",
+    "control": "AFM2",
+    "candidate": "AHOFM4",
+    "development_outer_units": 40,
+    "development_solver_fits": 80,
+    "real_data_fits": 0,
+    "external_data": false,
+    "pretrained_weights": false,
+    "packages": 0,
+    "agent_uploads": 0,
+    "monitor_interval_seconds": 600,
+    "platform_milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "g0": "1272 locked Python 3.12 tests passed; source/runtime/reference identity verified; synthetic admission pending",
+    "g1": "unmeasured"
   }
 }
