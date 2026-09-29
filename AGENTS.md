@@ -1767,3 +1767,10 @@ preprocessing, target scale, parameter shape/dtype, exact auxiliary update count
 selected epoch, calibration predictions/weights and complete OOF gates. Synthetic
 cold/resource admission pending; no actual-data fits yet. No external weights/data,
 full-data fits, packages or upload. Monitor every 600 seconds without extra polling.
+
+V49 synthetic admission launched 2026-09-29 12:49:14 Asia/Shanghai, service
+iron-v49-preflight-r1.service, initial MainPID 202962 active/running. Implementation
+392e7d0 committed/pushed. Timer iron-v49-preflight-monitor.timer: 600-second
+interval, first due monotonic 86990.523342 seconds (~12:59:14 local). Actual
+terminal event may trigger admission review; no between-check health polling.
+No actual-data fits until successful G0 admission. Pause after V49.

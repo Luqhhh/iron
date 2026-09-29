@@ -15619,7 +15619,7 @@
     "live_training": false
   },
   "round2_v49_latent_gradient_regularization": {
-    "status": "IMPLEMENTATION_VALIDATED_SYNTHETIC_ADMISSION_PENDING",
+    "status": "SYNTHETIC_PREFLIGHT_RUNNING",
     "branch": "round2-v49-latent-gradient-regularization",
     "protocol_commit": "5e2fb78",
     "spec": "configs/round2_v49/SPEC.yaml",
@@ -15633,6 +15633,12 @@
     "synthetic_fits": 0,
     "packages": 0,
     "agent_uploads": 0,
-    "user_authorization": "Start V49; pause after this round"
+    "user_authorization": "Start V49; pause after this round",
+    "implementation_commit": "392e7d0",
+    "preflight_service": "iron-v49-preflight-r1.service",
+    "monitor_timer": "iron-v49-preflight-monitor.timer",
+    "preflight_launched_at_utc": "2026-09-29T04:49:14.644401+00:00",
+    "initial_main_pid": 202962,
+    "first_check_monotonic_seconds": 86990.523342
   }
 }
