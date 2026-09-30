@@ -16143,5 +16143,34 @@
     "full_data_fits": 0,
     "packages": 0,
     "agent_uploads": 0
+  },
+  "dnnr_model_preparation": {
+    "date": "2026-09-30",
+    "branch": "codex/dnnr-taylor-preparation",
+    "G0": "MATCHED_PREDICTORS_CALIBRATION_AUDIT_LEDGER_PASSED_1347_LOCKED_TESTS",
+    "G1": "UNMEASURED_NO_OFFICIAL_CANDIDATE_FITS",
+    "arms": [
+      "KNN_FIXED",
+      "DNNR_FIXED",
+      "DNNR_LEARNED"
+    ],
+    "prospective_eligible_methods": [
+      "DNNR_FIXED",
+      "DNNR_LEARNED"
+    ],
+    "source_plan": "docs/dnnr_taylor/DESIGN.md",
+    "spec": "configs/dnnr_taylor/SPEC.yaml",
+    "receipt": "local/research/dnnr-model-engineering-receipt-r1.json",
+    "receipt_sha256": "b92eb4a36d96da05d5684b9a6f24a8e38078430f54be055113381664c7225f1f",
+    "source_files": 805,
+    "full_locked_tests": 1347,
+    "focused_tests": 37,
+    "author_fixed_control_max_difference": 3.552713678800501e-15,
+    "official_candidate_fits": 0,
+    "full_size_probes": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "next": "complete_size_synthetic_resource_freeze_and_probe_then_current_reference_bound_phase_preparation"
   }
 }

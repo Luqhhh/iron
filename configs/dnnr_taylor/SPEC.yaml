@@ -1,0 +1,99 @@
+version: dnnr-first-order-code-inspired-v1
+stage: matched_model_and_audit_preparation_no_formal_execution
+platform_milestones: [96.4, 96.45, 96.5]
+platform_reference:
+  candidate: DE3_IRON_USER_REQUESTED
+  score: 96.3749
+  source: user_reported_not_independently_verified
+  evidence_commit: d96d151
+  package_sha256: 81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0
+source:
+  upstream_commit: ca6070734a659a51cbbdfaf9b97e508e8843a1bd
+  interpretation: code_inspired_first_order_with_coherent_frozen_metric_graph
+  exact_paper_or_package_reproduction: false
+arms: [KNN_FIXED, DNNR_FIXED, DNNR_LEARNED]
+eligible_candidates: [DNNR_FIXED, DNNR_LEARNED]
+matched_controls: {DNNR_FIXED: KNN_FIXED, DNNR_LEARNED: DNNR_FIXED}
+training:
+  neighbors: 3
+  derivative_multiple: 3
+  metric_multiple: 8
+  learning_rate: 0.01
+  epsilon: 0.000001
+  random_seed: 42
+preprocessing:
+  numeric: training_only_float64_population_z_score
+  constant_numeric_std: 1
+  spout: training_only_sorted_unit_one_hot_reserved_unknown_zero
+  fit_scope: each_actual_inner_or_outer_fitting_partition
+mechanisms:
+  neighbors: exact_squared_Euclidean_ties_by_sample_id
+  derivative_neighborhood: min_training_rows_3_times_encoded_dimension_anchor_included
+  prediction_derivative: uniformly_weighted_anchored_lstsq_minimum_norm_no_free_intercept
+  derivative_coordinates: final_scaled
+  prediction: mean_of_three_anchor_first_order_votes
+  metric_graph: initial_unit_scale_frozen_for_entire_epoch
+  metric_neighborhood: min_training_rows_minus_one_8_times_dimension_minus_one
+  metric_anchor_exclusion: actual_row_identity_even_for_coincident_features
+  metric_errors: training_only_unscaled_normal_matrix_pseudoinverse_linearization_errors
+  metric_loss: negative_centered_cosine_error_vs_current_scaled_distance
+  metric_updates: one_per_training_anchor_python_Random42_shuffle_SGD
+  metric_scale_constraints: finite_nonzero_norm_negative_components_allowed_no_projection
+  nonfinite_result: engineering_failure_preserve_evidence_no_silent_fallback
+  postprocessing: none
+calibration:
+  split_seed: 42
+  n_splits: 5
+  held_fold: 0
+  group_safe: exact_feature_duplicates_same_fold_spout_stratification
+  endpoints: [0, 1]
+  selection: lower_raw_MAE_initial_wins_exact_ties
+  initial_endpoint: matched_DNNR_FIXED
+  learned_inner_endpoint: exactly_one_epoch
+  outer_refit: fresh_encoder_and_unit_scale_relearn_selected_epoch_count
+  incumbent_residuals_and_query_targets: forbidden
+saved_audit:
+  model: exclusive_float64_npz_allow_pickle_false
+  identity: externally_anchored_receipt_and_model_hashes
+  checks: [training_only_statistics, complete_training_arrays, initial_metric_graph,
+    metric_errors_and_update_trajectory, final_derivative_graph_and_coefficients,
+    calibration_predictions_and_selection, fresh_outer_refit, fit_reservations,
+    independent_cold_reverse_chunk_inference]
+  tolerance: 0.00000001
+  numerical_recomputation: reported_separately_zero_estimator_fits
+budget_this_preparation:
+  official_label_reads: 0
+  official_data_fits: 0
+  full_size_resource_probes: 0
+  full_data_fits: 0
+  packages: 0
+future_formal_stage:
+  status: not_admitted_requires_frozen_current_reference_and_resource_probe_and_phase_runner
+  reference: independently_verified_native_four_seed_plus_current_DE3_iron_overlay
+  legacy_reference_fallback: false
+  development_seeds: [42, 3407]
+  confirmation_seeds: [7777, 12011]
+  complete_folds: [0, 1, 2, 3, 4]
+  development_pair_units: 20
+  development_estimator_runs: 120
+  development_derivative_bank_runs: 80
+  development_metric_epoch_runs_maximum: 40
+  arithmetic: three_inner_plus_three_fresh_outer_estimators_four_Taylor_banks_one_or_two_metric_epochs_per_pair
+  fixed_candidate_blend: 0.8_current_plus_0.2_member_one_target_only
+  other_target: unchanged_current
+  development_gate:
+    both_complete_seeds_positive: true
+    mean_gain_minimum: 0.01
+    positive_mean_candidate_vs_matched_control: true
+    mean_package_score_minimum: 96.25
+  confirmation_gate:
+    all_four_seeds_positive: true
+    seed_level_paired_lcb95_positive: true
+    t_multiplier: 2.3533634348018264
+    sample_sd_ddof: 1
+    positive_four_seed_candidate_vs_matched_control: true
+  fold_level: descriptive_only
+  cross_seed_oof_averaging: forbidden
+  candidate_tiers: existing_frozen_policy_no_automatic_release
+monitoring: {interval_seconds: 600, between_check_polling: false}
+release: {automatic_packages: false, desktop_writes: 0, agent_uploads: 0}

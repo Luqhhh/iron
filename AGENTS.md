@@ -1950,3 +1950,21 @@ DANet order and all original gates. Full mechanism needs matching KNN/fixed
 Taylor/learned Taylor controls and explicit training-only graph/calibration,
 cold arrays, resource admission and frozen budget before evaluation.
 Details docs/dnnr_taylor/SOURCE_AUDIT.md; private receiptlocal/research.
+
+### DNNR full matched-model preparation (2026-09-30)
+
+KNN_FIXED, DNNR_FIXED and DNNR_LEARNED now implement training-only float64
+encoding, exact tied neighbors, anchored Taylor derivatives and supervised
+diagonal metric learning. Initial metric graph stays fixed throughout one
+SGD epoch; inner group-safe seed42/fold0 MAE selects epoch0/1, then fresh
+outer refits relearn from unit scale. No incumbent residual correction.
+Both Taylor methods are prospectively eligible against their declared controls.
+
+Six saved models per pair undergo independent cold/graph/gradient/selection
+and training-array audits; append-only estimator/metric/bank reservations
+consume failures and crashes. LockedPython3.12 full1347 passed,23 warnings;
+37 focused passed. Author lazy fixed-control prediction difference3.55271e-15.
+No official candidate fits, complete-size probe, full-data fits or release.
+Full-size resource admission and frozen current-reference phase runner remain
+required. Existing gates and serial DNNR-before-DANet order are unchanged.
+See docs/dnnr_taylor/DESIGN.md and G0_MODEL_RESULTS.md.
