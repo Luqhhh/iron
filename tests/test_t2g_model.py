@@ -80,3 +80,14 @@ def test_query_targets_and_existing_output_rejected(tmp_path,pair):
         fit_partition(f,f.iloc[:2],"tap_time_len","LEARNED_GRAPH",tmp_path/"bad",lambda s:None)
     with pytest.raises(FileExistsError):
         fit_partition(f,q,"tap_time_len","LEARNED_GRAPH",results[0].model_dir,lambda s:None)
+
+def test_finite_target_scale_before_preprocessing():
+    f=frame()
+    f.tap_time_len=np.tile([1e308,-1e308],20)
+    with np.errstate(over="ignore",invalid="ignore"):
+        with pytest.raises(ValueError):prepare(f,"tap_time_len")
+
+def test_saved_architecture_explicit(pair):
+    for r in pair[2]:
+        m=json.loads((r.model_dir/"metadata.json").read_text())
+        assert m["architecture"]=={"identity":"T2G_GRAPH_V1","numeric_features":21,"tokens":23,"width":64,"blocks":2,"heads":4,"head_width":16,"column_width":10,"ffn_width":128}

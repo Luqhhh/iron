@@ -51,7 +51,8 @@ def verify_hash_tree(root,hashes):
         if not p.is_file() or file_hash(p)!=sha: raise ValueError("Reference dependency changed: "+name)
 
 def anchored(path,sha):
-    if not Path(path).is_file() or file_hash(path)!=sha: raise ValueError("External reference anchor mismatch")
+    if not Path(path).is_file(): raise FileNotFoundError("Missing private reference: "+str(path))
+    if file_hash(path)!=sha: raise ValueError("External reference anchor mismatch")
     return json.loads(Path(path).read_text())
 
 def mapped_relative(path,original_root):

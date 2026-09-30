@@ -59,15 +59,18 @@ def validate_features(frame):
         raise ValueError("Nonfinite feature/category")
     if not (spout==np.floor(spout)).all(): raise ValueError("Noninteger category")
 
+ARCHITECTURE={"identity":"T2G_GRAPH_V1","numeric_features":21,"tokens":23,"width":64,"blocks":2,"heads":4,"head_width":16,"column_width":10,"ffn_width":128}
+
 def prepare(frame,target):
     if target not in TARGETS: raise ValueError("Invalid target")
     validate_features(frame)
     y=frame[target].to_numpy(dtype=float)
-    if not np.isfinite(y).all() or len(y)<2 or y.std()==0:
-        raise ValueError("Nonfinite or constant target")
+    mean,std=float(y.mean()),float(y.std())
+    if not np.isfinite(y).all() or len(y)<2 or not math.isfinite(mean) or not math.isfinite(std) or std<=0:
+        raise ValueError("Nonfinite or constant target scale")
     prep=NumericPreprocessor(structure="raw_tabm").fit(frame)
     x,c=prep.transform_tabm(frame)
-    return prep,x,c.reshape(-1),float(y.mean()),float(y.std())
+    return prep,x,c.reshape(-1),mean,std
 
 def configure_threads():
     import torch
@@ -162,7 +165,7 @@ def fit_partition(train,query,target,arm,output,before_optimizer,force_epochs=No
     prediction=session.predict(query)
     if not np.isfinite(prediction).all(): raise ValueError("Nonfinite prediction")
     torch.save(session.model.state_dict(),output/"weights.pt")
-    metadata={"schema":"t2g-weights-v1","target":target,"arm":arm,
+    metadata={"schema":"t2g-weights-v1","architecture":ARCHITECTURE,"target":target,"arm":arm,
         "selected_epoch":selected,"selector_rows":len(inner),"refit_rows":len(train),
         "refit_epochs":refit_epochs,"selector_init_digest":selector_init,
         "selector_final_digest":selector_final,"refit_init_digest":session.initial_digest,
@@ -187,6 +190,7 @@ def load_state(model_dir):
     for name,h in hashes.items():
         if file_hash(model_dir/name)!=h: raise ValueError("Saved state external hash mismatch")
     meta=json.loads((model_dir/"metadata.json").read_text())
+    if meta.get("architecture")!=ARCHITECTURE: raise ValueError("Saved architecture differs")
     if meta["schema"]!="t2g-weights-v1": raise ValueError("Unsupported saved schema")
     prep=NumericPreprocessor(structure="raw_tabm")
     p=meta["preprocessor"]

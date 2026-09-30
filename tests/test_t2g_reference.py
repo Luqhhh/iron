@@ -81,3 +81,7 @@ def test_reordered_ids_rejected(transfer,monkeypatch):
 
 def test_path_escape_rejected(tmp_path):
     with pytest.raises(ValueError): ref.verify_hash_tree(tmp_path,{"../foreign":"a"*64})
+
+def test_absent_overlay_is_missing_transfer(tmp_path):
+    with pytest.raises(FileNotFoundError):
+        ref.verify_reference(tmp_path/"native",tmp_path/"overlay")
