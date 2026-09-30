@@ -1993,3 +1993,34 @@ confirmation. Same DE3 current iron/V32 current time, unchanged quality gates.
 Latest-current-best identity rechecked before queued launch; no legacy time
 column fallback. G1unmeasured; no probe refit/full-data fit/package/upload.
 Public docs in that branch: docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md.
+
+
+DANet complete development ended0/no finalist, independently verified.
+20pairs/80estimators/80optimizers/11813epochs complete,0failed/incomplete;
+80cold saved states pass original float32 scale-aware bounds, source854
+unchanged, terminal receiptedd718b17d655de4748497bb38a44fd6572d73f82c22157efca600788ae0cfba
+binds566private artifacts. Local isolated20% mean gains iron-.059294111,
+time-.059850641,0/10positive folds both. Iron learned-minus-fixed-.014174729;
+time+.020641326 still loses to incumbent. No confirmation fits or release.
+Branch codex/danet-abstract-development published da9629a, docs/danet_abstract/FORMAL_RESULTS.md.
+Preserve exact-recipe negative; do not restart it or scan mask/alpha variants.
+
+Queued PTaRL actually started2026-09-30T15:45:51.390846+08:00 after matching
+DANet terminal and MainPID0, initialMainPID471155 active/running,600s timer
+active. Branch codex/ptarl-unbudgeted-development published3918d4c, unchanged
+manifest75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443.
+Activation receiptSHA6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec.
+Earlier queued/G1unstarted snapshots are historical. No time-based gate or
+runtime cap; no between-check training polling; earned confirmation only.
+G1pending, no full-data fit/package/agent upload.
+
+ModernNCA source qualification publishedb932855 on codex/modernnca-source-preparation;
+worktree local/worktrees/modernnca-source-preparation. This method was discussed
+in V27/V28;202-ref keyword inventory found discussion, no matched formal run,
+not proof of absence. Pinned author no-embedding float64 core passes independent
+NumPy, finite-difference gradient, sampled neighbor and own-label exclusions.
+G0partial only; PLR/train-adapter/saved-state/resource/G1unqualified,0official
+reads/fits/optimizers. Low priority after current PTaRL; no new training queue.
+No external weights downloaded; pretrained observation boundary unchanged.
+Public docs docs/modernnca_source_preparation/RESULTS.md in that branch.
+Current platform bestDE3=96.3749 unchanged; all96.4/96.45/96.5milestones unmet.

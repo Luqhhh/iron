@@ -16139,7 +16139,7 @@
     "agent_uploads": 0
   },
   "round2_danet_formal_execution_2026_09_30": {
-    "status": "frozen_complete_development_launched_G1_pending",
+    "status": "complete_development_negative_no_finalist",
     "started_local": "2026-09-30T14:52:57.370891+08:00",
     "implementation_commit": "7fd35ce",
     "manifest_sha256": "fa17063826dea7ac9c39b8fd24aabe6ead96d8144eaca91d0cc8c222516e205b",
@@ -16170,8 +16170,72 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "private_root": "local/danet-abstract-formal-r1",
-    "documentation": "docs/danet_abstract/FORMAL_EXECUTION.md",
-    "evidence_worktree": "/home/lux1/iron/local/worktrees/danet-abstract-development"
+    "documentation": "docs/danet_abstract/FORMAL_RESULTS.md",
+    "G0": "source_reference_closed_inventory_cold_and_independent_arithmetic_passed",
+    "G1": "both_targets_negative_all_ten_folds_negative",
+    "terminal_exit_code": 0,
+    "terminal_evidence_sha256": "edd718b17d655de4748497bb38a44fd6572d73f82c22157efca600788ae0cfba",
+    "bound_private_artifacts": 566,
+    "source_files_unchanged": 854,
+    "saved_models_independently_audited": 80,
+    "optimizer_epochs": 11813,
+    "cold_absolute_maximum": 0.00026833919775981485,
+    "cold_maximum_bound_fraction": 0.5498778424619803,
+    "cold_interpretation": "unchanged_preregistered_float32_scale_aware_bounds_not_a_1e_8_absolute_claim",
+    "maximum_independent_arithmetic_difference": 1.4210854715202004e-14,
+    "counts": {
+      "completed": {
+        "estimator": 80,
+        "optimizer": 80,
+        "pair_unit": 20
+      },
+      "failed": {
+        "estimator": 0,
+        "optimizer": 0,
+        "pair_unit": 0
+      },
+      "incomplete": {
+        "estimator": 0,
+        "optimizer": 0,
+        "pair_unit": 0
+      },
+      "started": {
+        "estimator": 80,
+        "optimizer": 80,
+        "pair_unit": 20
+      }
+    },
+    "summary": {
+      "tap_iron": {
+        "folds": 10,
+        "mean_control_advantage": -0.014174728542570673,
+        "mean_current_gain": -0.0592941114292176,
+        "mean_fixed_gain": -0.04511938288664693,
+        "mean_parent_package_difference": -0.05571506244933033,
+        "per_seed_current_gain": {
+          "3407": -0.060591109489133155,
+          "42": -0.05799711336930205
+        },
+        "positive_folds": 0
+      },
+      "tap_time_len": {
+        "folds": 10,
+        "mean_control_advantage": 0.02064132648920726,
+        "mean_current_gain": -0.05985064075531912,
+        "mean_fixed_gain": -0.08049196724452638,
+        "mean_parent_package_difference": -0.05627159177542751,
+        "per_seed_current_gain": {
+          "3407": -0.0605592396335005,
+          "42": -0.059142041877137744
+        },
+        "positive_folds": 0
+      }
+    },
+    "candidate_tiers": "both_not_shortlisted",
+    "confirmation_fits": 0,
+    "new_terminal_audit_fits": 0,
+    "evidence_worktree": "/home/lux1/iron/local/worktrees/danet-abstract-development",
+    "public_head": "da9629a"
   },
   "round2_danet_resource_execution_2026_09_30": {
     "status": "original_G0_cost_only_refusal_non_time_checks_passed_user_removed_time_budget",
@@ -16274,7 +16338,7 @@
     "public_head": "63d94c2"
   },
   "round2_ptarl_unbudgeted_formal_execution_2026_09_30": {
-    "status": "queued_waiting_for_DANet_actual_terminal_no_G1_result",
+    "status": "frozen_complete_development_started_G1_pending",
     "evidence_worktree": "/home/lux1/iron/local/worktrees/ptarl-unbudgeted-development",
     "branch": "codex/ptarl-unbudgeted-development",
     "implementation_commit": "b71beb4",
@@ -16308,6 +16372,49 @@
     "agent_uploads": 0,
     "G1": "unmeasured",
     "documentation": "docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md",
-    "public_head": "63d94c2"
+    "started_local": "2026-09-30T15:45:51.390846+08:00",
+    "preflight_sha256": "e0b26300ceee5e3b20946ec55756ddcdb5ea9afc33ef3d45d51d2b9f0c1e8380",
+    "actual_serial_dependency_terminal": {
+      "exit_code": 0,
+      "manifest_sha256": "fa17063826dea7ac9c39b8fd24aabe6ead96d8144eaca91d0cc8c222516e205b"
+    },
+    "dependency_ready_sha256": "fb87383b6cbbae44908bec1f45943d593bcbcc9eb79ae4f6bcaaf564daa3b17e",
+    "orchestration_started_sha256": "3f942d76cc36bb66fd854fa8c24b2306249094bc8c65de48b77f73de8f0bb8e1",
+    "initial_main_pid": 471155,
+    "initial_live_observation": "active/running",
+    "activation_receipt_sha256": "6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec",
+    "public_head": "3918d4c"
+  },
+  "round2_modernnca_source_qualification_2026_09_30": {
+    "status": "limited_author_core_passed_no_G1",
+    "branch": "codex/modernnca-source-preparation",
+    "documentation": "docs/modernnca_source_preparation/RESULTS.md",
+    "scope": "float64_no_embedding_core_only",
+    "upstream_commit": "1b973adffa4203c3f62c4949957b1ba3efbe60d3",
+    "upstream_model_sha256": "02fce6a107998ab7212774507998e77535f630fbf4ee328acf8519ad7c10632f",
+    "inventory_sha256": "744dbd810b4753324a111a57c88d61893b3d52ab7cc1fcf8d2c9c2822275412b",
+    "qualification_sha256": "43b05a4c9a6b6025ade08ca3b744794f96ab5d56ab2f02ed5839b8e1306c80e3",
+    "script_sha256": "0b79717d97070ad5da99291d305827b040a57029730d7884cd741b5cdc0a2bb0",
+    "maximum_independent_difference": 3.410605131648481e-13,
+    "prior": "previously_discussed_not_a_new_method_related_retrieval_negative_prior",
+    "priority": "below_current_DANet_and_queued_PTARL",
+    "G0": "partial_source_core_only",
+    "G1": "unmeasured",
+    "official_label_reads": 0,
+    "new_official_fits": 0,
+    "optimizer_calls": 0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "maximum_runtime_seconds": null,
+    "unqualified": [
+      "PLR embeddings",
+      "TALENT adapter",
+      "training protocol",
+      "cold saved model",
+      "resource admission",
+      "official G1"
+    ],
+    "evidence_worktree": "/home/lux1/iron/local/worktrees/modernnca-source-preparation",
+    "public_head": "b932855"
   }
 }
