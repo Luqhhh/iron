@@ -9,6 +9,8 @@ import numpy as np
 from bf_tap_r2.v18_compose import SourceTable
 from bf_tap_r2.v21_time_mix import _build_payload, _verify, load_member, run
 
+ROOT = Path(__file__).resolve().parents[1]
+
 
 def _table(ids, iron_text, time_text):
     return SourceTable(
@@ -67,11 +69,11 @@ class MemberTests(unittest.TestCase):
 class RunGuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            run(Path("/home/lux1/iron"), "configs/round2_v21/SPEC.yaml", "docs/should-not-write")
+            run(ROOT, "configs/round2_v21/SPEC.yaml", "docs/should-not-write")
 
     def test_refuses_wrong_spec_directory(self):
         with self.assertRaises(ValueError):
-            run(Path("/home/lux1/iron"), "configs/round2_v18/SPEC.yaml", "local/runs/round2-v21/x")
+            run(ROOT, "configs/round2_v18/SPEC.yaml", "local/runs/round2-v21/x")
 
 
 if __name__ == "__main__":

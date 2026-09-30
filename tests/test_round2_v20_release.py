@@ -13,6 +13,7 @@ SPEC20 = {"blend": {"alpha": 0.325}, "gates": {"local_working_gate": 96.25}}
 SPEC17 = {"split_seeds": [42, 3407], "confirmation_seeds": [7777, 12011]}
 THREAD_ENV = {name: "1" for name in ("OPENBLAS_NUM_THREADS", "OMP_NUM_THREADS",
                                     "MKL_NUM_THREADS", "NUMEXPR_NUM_THREADS")}
+ROOT = Path(__file__).resolve().parents[1]
 
 
 def _fixture(rows: int = 40):
@@ -92,12 +93,12 @@ class RunGuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with mock.patch.dict(os.environ, THREAD_ENV):
             with self.assertRaises(ValueError):
-                run(Path("/home/lux1/iron"), "configs/round2_v20/SPEC.yaml", "docs/should-not-write")
+                run(ROOT, "configs/round2_v20/SPEC.yaml", "docs/should-not-write")
 
     def test_refuses_non_v20_spec(self):
         with mock.patch.dict(os.environ, THREAD_ENV):
             with self.assertRaises(ValueError):
-                run(Path("/home/lux1/iron"), "configs/round2_v18/SPEC.yaml", "local/runs/round2-v20/x")
+                run(ROOT, "configs/round2_v18/SPEC.yaml", "local/runs/round2-v20/x")
 
 
 if __name__ == "__main__":

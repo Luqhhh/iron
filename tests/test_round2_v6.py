@@ -156,6 +156,9 @@ def test_sampler_expands_the_frozen_iron_capacity_space() -> None:
     assert large_mlp["inner_validation_folds"] == 5 and large_mlp["max_epochs"] == 120
 
 
+@pytest.mark.skipif(not (REPO_ROOT / "local/runs/round2-v3.6-loss-training-and-numeric-encoding/"
+                         "fixed-r2-final/fit_ledger.jsonl").is_file(),
+                    reason="private V3.6 fit ledger is absent")
 def test_sampler_is_deterministic_and_collision_free() -> None:
     first = sample_v6_iron_capacity_trials(REPO_ROOT)
     second = sample_v6_iron_capacity_trials(REPO_ROOT)
@@ -301,6 +304,9 @@ def test_probe_stage_refuses_unauthorised_trials_without_fitting() -> None:
     assert not (REPO_ROOT / guard).exists()
 
 
+@pytest.mark.skipif(not (REPO_ROOT / "local/runs/round2-v3.6-loss-training-and-numeric-encoding/"
+                         "v36-summary.json").is_file(),
+                    reason="private V3.6 reference summary is absent")
 def test_probe_evaluation_reports_missing_predictions(tmp_path: Path) -> None:
     """An unevaluated probe must be reported as missing, not as a pass."""
     from bf_tap_r2.v6_screen import evaluate_probe

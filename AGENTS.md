@@ -2024,3 +2024,20 @@ reads/fits/optimizers. Low priority after current PTaRL; no new training queue.
 No external weights downloaded; pretrained observation boundary unchanged.
 Public docs docs/modernnca_source_preparation/RESULTS.md in that branch.
 Current platform bestDE3=96.3749 unchanged; all96.4/96.45/96.5milestones unmet.
+
+### Competition retrospective decision protocol (2026-09-30)
+
+The user's four-page retrospective describes a different image-classification
+competition. Its transferable lesson is decision discipline, not copying LoRA,
+SWA, Mixup or multi-view image recipes into the 21-feature furnace task.
+`docs/research_decision_20260930/REVIEW_AND_PROTOCOL.md` records the source
+boundary, local/platform ranking inversions, scope-limited negative findings,
+and a conditional next step after PTaRL reaches its actual terminal state.
+Prospective research cards use `research-decision-v1`; the validator
+`python -m bf_tap_r2.research_decision <card.json>` checks structure and guards
+against unsupported family closure and future wall-clock rejection. It does
+not verify score receipts, pass model quality gates, or authorize fits,
+full-data models, packages or platform uploads. The DE3 example is
+retrospective, and the ModernNCA card is a question only, not a frozen recipe
+or launch. Keep all previously frozen gates, historical results, private
+artifact restrictions and the user's no-time-budget direction unchanged.

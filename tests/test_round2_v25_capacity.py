@@ -3,13 +3,14 @@ import unittest
 
 import yaml
 
-from bf_tap_r2.v25_capacity import base_trial, probe_trial
+from bf_tap_r2.v25_capacity import LEDGER, base_trial, probe_trial
 
-ROOT = Path("/home/lux1/iron")
+ROOT = Path(__file__).resolve().parents[1]
 SPEC = yaml.safe_load((ROOT / "configs/round2_v25/SPEC.yaml").read_text())
 
 
 class TrialTests(unittest.TestCase):
+    @unittest.skipUnless((ROOT / LEDGER).is_file(), "private V3.6 fit ledger is absent")
     def test_base_recipe_is_the_frozen_time_winner(self):
         trial = base_trial(ROOT, SPEC)
         self.assertEqual(trial["trial_id"], "v36-s1-N-0048")
@@ -19,6 +20,7 @@ class TrialTests(unittest.TestCase):
         self.assertEqual(trial["parameters"]["k"], 32)
         self.assertEqual(trial["parameters"]["d_block"], 512)
 
+    @unittest.skipUnless((ROOT / LEDGER).is_file(), "private V3.6 fit ledger is absent")
     def test_probe_only_changes_capacity(self):
         wide = probe_trial(ROOT, SPEC, "P_WIDE")
         base = base_trial(ROOT, SPEC)

@@ -1,0 +1,43 @@
+{
+  "schema": "research-decision-v1",
+  "record_id": "DE3_IRON_USER_REQUESTED_RETROSPECTIVE",
+  "phase": "discovery",
+  "status": "observed",
+  "time_policy": "no_wall_clock_rejection",
+  "context": {
+    "dataset": "Round2 V2 official tabular data, 21 instantaneous features",
+    "split": "five-fold development on seeds 42 and 3407; no four-seed confirmation",
+    "target": "tap_iron isolated replacement; original time strings retained",
+    "metric": "isolated package score increment, higher is better",
+    "reference": "V32_TIME_A60V7_50, user-reported platform 96.3727",
+    "source_revision": "8d6c7c2 implementation; docs/de3_user_release/DELIVERY.md",
+    "data_boundary": "no official test targets or outer labels used in fitting; private artifacts under local/"
+  },
+  "hypothesis": "Averaging three independently trained joint-PLR iron predictors reduces seed noise without changing the time component.",
+  "changed_factors": ["iron prediction: 0.5 V36 plus 0.5 mean of J42/J104729/J130363 instead of 0.5 V36 plus 0.5 J42"],
+  "held_constant": ["time strings from V32 parent", "21-feature input contract", "released CSV row order and formatting"],
+  "evidence": [
+    {
+      "kind": "local",
+      "source": "docs/de3_user_release/DELIVERY.md",
+      "effect": 0.003480204913,
+      "effect_metric": "mean isolated package score points across two development seeds",
+      "limitations": "Two development seeds only; does not meet original +0.01 mechanism gate or four-seed confirmation."
+    },
+    {
+      "kind": "platform",
+      "source": "docs/de3_user_release/DELIVERY.md, user feedback registered 2026-09-30",
+      "effect": 0.0022,
+      "effect_metric": "reported platform score points relative to V32 parent",
+      "verification": "user_reported",
+      "limitations": "No independent receipt; one package cannot estimate a general local-to-platform transfer factor."
+    }
+  ],
+  "decision": {
+    "action": "continue",
+    "scope": "exact_recipe",
+    "rationale": "The user-reported platform score improved, but the frozen no-finalist decision and missing confirmation remain unchanged.",
+    "reopen_condition": "A prospectively registered new recipe or genuinely new data/validation evidence, not a retroactive gate waiver.",
+    "next_check": "Use 96.3749 as reported platform reference; do not automatically release any neighbor candidate."
+  }
+}

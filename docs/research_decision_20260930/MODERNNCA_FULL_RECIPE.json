@@ -1,0 +1,27 @@
+{
+  "schema": "research-decision-v1",
+  "record_id": "MODERNNCA_FULL_RECIPE_QUESTION_20260930",
+  "phase": "discovery",
+  "status": "planned",
+  "time_policy": "no_wall_clock_rejection",
+  "context": {
+    "dataset": "Round2 V2 official tabular data, 21 instantaneous features",
+    "split": "to be frozen against the current paired outer-fold protocol before any official fit",
+    "target": "iron and time considered separately against their current incumbent components",
+    "metric": "same-fold isolated package score gain and existing quality gates",
+    "reference": "current reported best DE3 iron with V32 time; verify identity before preregistration",
+    "source_revision": "codex/modernnca-source-preparation, G0 partial source qualification only",
+    "data_boundary": "official test targets and outer validation labels unavailable to fitting and selection"
+  },
+  "hypothesis": "A fully source-qualified ModernNCA recipe may provide a new prediction direction beyond fixed-weight mixtures; this remains untested and may overlap prior retrieval negatives.",
+  "changed_factors": ["representation and neighbor-based prediction mechanism", "complete source-qualified training recipe, if engineering admission succeeds"],
+  "held_constant": ["official feature and target definitions", "current-reference identity and paired evaluation", "protected-label and cold-inference requirements"],
+  "evidence": [],
+  "decision": {
+    "action": "pending",
+    "scope": "unresolved",
+    "rationale": "Only the no-embedding author core has passed limited numerical checks; full recipe, cold state, data adapter and complete G0 have not been established.",
+    "reopen_condition": "PTaRL reaches a terminal decision and full source/adaptor, isolation, cold-inference and resource-safety checks pass.",
+    "next_check": "Compare mechanism with previously tested retrieval recipes, then separately freeze full development and quality criteria before any official fit."
+  }
+}

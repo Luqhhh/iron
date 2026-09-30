@@ -5,6 +5,8 @@ import numpy as np
 
 from bf_tap_r2.v22_saturation import nested_gain, run
 
+ROOT = Path(__file__).resolve().parents[1]
+
 
 class NestedGainTests(unittest.TestCase):
     def setUp(self):
@@ -35,11 +37,11 @@ class NestedGainTests(unittest.TestCase):
 class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            run(Path("/home/lux1/iron"), "configs/round2_v22/SPEC.yaml", "docs/should-not-write")
+            run(ROOT, "configs/round2_v22/SPEC.yaml", "docs/should-not-write")
 
     def test_refuses_missing_spec(self):
         with self.assertRaises(FileNotFoundError):
-            run(Path("/home/lux1/iron"), "configs/round2_v22/NOPE.yaml", "local/runs/round2-v22/x")
+            run(ROOT, "configs/round2_v22/NOPE.yaml", "local/runs/round2-v22/x")
 
 
 if __name__ == "__main__":

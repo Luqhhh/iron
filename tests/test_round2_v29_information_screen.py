@@ -7,6 +7,8 @@ import pandas as pd
 from bf_tap_r2.data import FEATURES
 from bf_tap_r2.v29_information_screen import residual_screen, run
 
+ROOT = Path(__file__).resolve().parents[1]
+
 
 def _frame(rows: int, seed: int) -> pd.DataFrame:
     rng = np.random.default_rng(seed)
@@ -51,7 +53,7 @@ class ResidualScreenTests(unittest.TestCase):
 class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            run(Path("/home/lux1/iron"), "configs/round2_v29/SPEC.yaml", "docs/should-not-write")
+            run(ROOT, "configs/round2_v29/SPEC.yaml", "docs/should-not-write")
 
 
 if __name__ == "__main__":

@@ -5,6 +5,8 @@ import numpy as np
 
 from bf_tap_r2.v26_logtarget import inverse, screen, transform
 
+ROOT = Path(__file__).resolve().parents[1]
+
 
 class TransformTests(unittest.TestCase):
     def test_log_round_trip(self):
@@ -28,7 +30,7 @@ class TransformTests(unittest.TestCase):
 class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            screen(Path("/home/lux1/iron"), "configs/round2_v26/SPEC.yaml",
+            screen(ROOT, "configs/round2_v26/SPEC.yaml",
                    "docs/should-not-write", ["L_TIME"])
 
 
