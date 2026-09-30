@@ -17035,11 +17035,11 @@
     "implementation_commit": "f4b0c9d"
   },
   "ptarl_resource_entry_retry_2026_09_30": {
-    "status": "user_authorized_retry_activated_after_96_model_reuse_admission_G1_pending",
+    "status": "completed_full_development_no_finalist",
     "branch": "codex/ptarl-resource-entry-recovery",
     "documentation": "docs/ptarl_space_calibration/ENTRY_REFUSAL_RETRY.md",
-    "G0": "retry_engineering_current_memory_and_96_model_reuse_admission_passed",
-    "G1": "pending_complete_coverage",
+    "G0": "complete_source_runtime_inventory_cold_inference_and_independent_arithmetic_passed",
+    "G1": "no_development_finalist_frozen_gates_unchanged",
     "user_instruction": "继续重试，刚才是别的任务在进行、现在结束了",
     "original_manifest_sha256": "75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443",
     "recovery_plan_sha256": "df54575fbc155d94a85b0fee85e9284754666b43b2c3a7acf81d061ad737d6b7",
@@ -17080,6 +17080,107 @@
     "initial_main_pid": 35043,
     "reuse_models": 96,
     "reuse_maximum_difference": 2.2737367544323206e-13,
-    "monitor_interval_seconds": 600
+    "monitor_interval_seconds": 600,
+    "audit_sha256": "98f2b02fb9230c5d97d4fb18f43d0eea6edf8cf7dc4403f795d82960f9cef8e5",
+    "arithmetic_sha256": "275c3d1c85a6b3f8d1c529aeaada62bc49110d95a4edd5f23b5b89ed573b8887",
+    "completion_sha256": "8941fe9303337526674e93e4a887dc24810f4461e5af8e3c34f6736775155595",
+    "terminal_verification_sha256": "d814875d83decfe6ac14a1d777b00bb88610515f60d79dfdf2bb04474da099cb",
+    "logical_counts": {
+      "completed": {
+        "kmeans": 40,
+        "optimizer": 120,
+        "pair_unit": 20
+      },
+      "failed": {
+        "kmeans": 0,
+        "optimizer": 0,
+        "pair_unit": 0
+      },
+      "incomplete": {
+        "kmeans": 0,
+        "optimizer": 0,
+        "pair_unit": 0
+      },
+      "started": {
+        "kmeans": 40,
+        "optimizer": 120,
+        "pair_unit": 20
+      }
+    },
+    "physical_counts": {
+      "kmeans": {
+        "completed": 44,
+        "incomplete": 0,
+        "started": 44
+      },
+      "optimizer": {
+        "completed": 127,
+        "incomplete": 4,
+        "started": 131
+      },
+      "pair_unit": {
+        "completed": 20,
+        "incomplete": 4,
+        "started": 24
+      }
+    },
+    "metrics": {
+      "tap_iron": {
+        "development_decision": {
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "local_package_at_least_96_25": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true
+          },
+          "eligible": false,
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_control_advantage": 0.0017152318717876189,
+          "mean_gain": -0.004270465762884132
+        },
+        "mean_gain": -0.004270465762884132,
+        "mean_package": 96.23302842268788,
+        "per_seed_gains": {
+          "3407": -0.005057273140620169,
+          "42": -0.0034836583851480946
+        },
+        "tier": "not_shortlisted"
+      },
+      "tap_time_len": {
+        "development_decision": {
+          "checks": {
+            "both_complete_seeds_positive": true,
+            "local_package_at_least_96_25": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true
+          },
+          "eligible": false,
+          "failure_reasons": [
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_control_advantage": 0.0011819122652358474,
+          "mean_gain": 0.007357565774373381
+        },
+        "mean_gain": 0.007357565774373381,
+        "mean_package": 96.24465645422512,
+        "per_seed_gains": {
+          "3407": 0.008446089261113232,
+          "42": 0.0062690422876335306
+        },
+        "tier": "formal"
+      }
+    },
+    "cold_models": 120,
+    "maximum_cold_difference": 2.2737367544323206e-13,
+    "confirmation_pairs": 0,
+    "monitor_state": "stopped_after_completed_service_MainPID_0_ExecMainStatus_0",
+    "reference_scope": "original_frozen_DE3_iron_V32_time_not_latest_LOC_DIAG_EMA_TIME",
+    "best_at_terminal_publication": "LOC_DIAG_EMA_TIME",
+    "results_commit": "9fb10c2"
   }
 }

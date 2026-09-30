@@ -2197,3 +2197,22 @@ activationSHAcacfd91d82f4b0a2f463d0fb523bf539645fefd7efd359cec78a4efa767407cb.60
 Actual completion-event.json watcher is terminal-only. Preserve all prior
 failed/interrupted runs and public source trees; no overlapping heavy checks
 during the retry. G1pending; bestDE3=96.3749, no package/upload.
+
+
+### PTaRL explicit entry retry completed (2026-10-01)
+
+All20development pairs/120optimizers/40KMeans are closed; source/runtime/native
+reference and all120saved models pass cold verification (max2.2737367544323206e-13),
+independent arithmetic and unchanged older evidence inventories. G0complete.
+G1no finalist: iron mean-.00427047, time+.00735757 score points against the
+original frozen DE3 iron/V32 time reference. Time is candidate-tier formal but
+fails prospective mean-gain>=.01 and mean-package>=96.25 (96.24465645), so0
+confirmation pairs,0full-data fits/packages/uploads. Do not override those
+frozen gates or claim comparison with new LOC_DIAG_EMA_TIME=96.3895.
+Actual serviceMainPID0/ExecMainStatus0; monitorstopped. Physical deduplicated
+formal optimizer starts131/completed127; original4interrupted attempts preserved.
+TerminalSHA d814875d83decfe6ac14a1d777b00bb88610515f60d79dfdf2bb04474da099cb.
+Details: codex/ptarl-resource-entry-recovery,
+docs/ptarl_space_calibration/ENTRY_REFUSAL_RETRY.md. ModernNCA engineering
+remains partial, with no official fit; any new current-reference freeze must
+use the latest registered EMA time incumbent, preserving DE3/V32 history.
