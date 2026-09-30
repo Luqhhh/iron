@@ -16503,6 +16503,31 @@
       "index": "5",
       "zip_sha256": "dd203aa9feafa90fefc322fc818f6ac26fdf61f7b3be28111f71ce0482245b26",
       "readback_verified": true
+    },
+    "iron_weight_fold_robustness": {
+      "source": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3/authorized-training-oof.csv",
+      "w_0_5": {
+        "seed42": {
+          "total": 0.003076,
+          "positive_folds": "4/5"
+        },
+        "seed3407": {
+          "total": 0.002003,
+          "positive_folds": "4/5"
+        }
+      },
+      "w_1_0": {
+        "seed42": {
+          "total": 0.004382,
+          "positive_folds": "4/5"
+        },
+        "seed3407": {
+          "total": 0.002579,
+          "positive_folds": "4/5"
+        },
+        "note": "the single negative fold per seed stays negative but the total is larger than w=0.5 on both seeds"
+      },
+      "conclusion": "w=1.0 dominates w=0.5 on both development split seeds with the same 4/5 positive-fold pattern, so package 5 (combined w=1.0 iron with the chord midpoint) keeps the recommendation 1,2,3,5"
     }
   },
   "environment_restart_2026_09_30": {
