@@ -133,7 +133,7 @@ def run(root):
         np.testing.assert_array_equal(old, np.load(paths["native_full_prediction"], allow_pickle=False))
         np.testing.assert_array_equal(old, np.load(paths["native_full_warm"], allow_pickle=False))
         models = [native]
-        mask = group_safe_inner_folds(train, seed=settings["inner_seed"])["fold"].to_numpy() != 0
+        mask = np.asarray(group_safe_inner_folds(train, seed=settings["inner_seed"])["fold"]) != 0
         y = train[list(TARGETS)].to_numpy()
         inner = train.loc[mask].reset_index(drop=True)
         selection_info = []

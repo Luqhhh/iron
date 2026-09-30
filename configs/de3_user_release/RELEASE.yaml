@@ -9,7 +9,7 @@ authorization:
   desktop_write: true
   uploads: false
 training_seeds: [42, 104729, 130363]
-output: local/runs/de3-user-requested-release-20260930/release-r1
+output: local/runs/de3-user-requested-release-20260930/release-r2
 desktop: /mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930
 artifacts:
   parent:
