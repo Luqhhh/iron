@@ -1971,3 +1971,22 @@ original906d31b commit and never executed; actual native model modules remain
 identical. Original shared private configs are hashed only, never executed.
 No official estimator fit, full-data fit, package or upload has started yet.
 Details: docs/incumbent_de3_reference/PHASE_EXECUTION.md.
+
+### Current-incumbent reference job launched (2026-09-30)
+
+User service iron-incumbent-de3-reference-r2.service started10:03:25 CST
+(MainPID417199, launch observation active/running). Tested implementation
+6a3bbc2,727 frozen sources,1358 locked tests; manifest SHA256
+fba318a03e76c7e2adc31bebaf376ab7b2550178b916cb3ba72a3c8924ca8a8c.
+Private output local/incumbent-de3-reference-four-seed-r2. Budget20 native
+estimators/40 optimizer starts,4 workers max; reference completion only.
+60 reused states and10 exact native J42 replays passed pre-fit cold audit.
+Resources admitted at8598.68MiB available; all original bounds unchanged.
+
+Correct native reference_root is /home/lux1/iron, as recorded in the original
+RFM manifest. The earlier RFM execution worktree had only a partial private
+cache; the first wrong-root freeze failed before any fit. Preserve that r1
+directory and failure. Monitor600s, no between-check polling; first launch
+check02:03:25 UTC, next no earlier than02:13:25 UTC. Automatic fresh-process
+audit follows execution, no automatic retry/release/upload. G1 unmeasured.
+Details docs/incumbent_de3_reference/LAUNCH.md.

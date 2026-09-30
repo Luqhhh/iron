@@ -16157,9 +16157,30 @@
     "planned_missing_estimators": 20,
     "planned_optimizer_runs": 40,
     "first_cost_observation": "FAILED_MEMORY_7075_55_MIB_LT_7168_CAPS_UNCHANGED",
-    "formal_freeze_and_execution": "pending",
+    "formal_freeze_and_execution": "RUNNING_R2_FROZEN_20_ESTIMATORS_40_OPTIMIZERS_NOT_DE3_PROMOTION",
     "packages": 0,
     "agent_uploads": 0,
-    "documentation": "docs/incumbent_de3_reference/PHASE_EXECUTION.md"
+    "documentation": "docs/incumbent_de3_reference/PHASE_EXECUTION.md",
+    "launch": {
+      "service": "iron-incumbent-de3-reference-r2.service",
+      "started_at": "2026-09-30 10:03:25 CST",
+      "manifest_sha256": "fba318a03e76c7e2adc31bebaf376ab7b2550178b916cb3ba72a3c8924ca8a8c",
+      "source_commit": "6a3bbc27c5d66c55bdec62688957be2d951a0739",
+      "run": "local/incumbent-de3-reference-four-seed-r2",
+      "receipt": "local/research/incumbent-reference-phase-r1/launch-receipt.json",
+      "receipt_sha256": "48b4c965ae57c2656696ad144df66bc662966eaec6b2e17fc47d045af14dfeed",
+      "resource_available_mib": 8598.68359375,
+      "pre_fit_reused_cold_models": 60,
+      "pre_fit_native_J42_replays": 10,
+      "maximum_estimators": 20,
+      "maximum_optimizer_runs": 40,
+      "consumed_counts": "not_polled_at_launch_600_second_cadence",
+      "reference_root": "/home/lux1/iron"
+    },
+    "failed_freeze_preserved": {
+      "run": "local/incumbent-de3-reference-four-seed-r1",
+      "reason": "wrong historical native root lacked primary reference audit; corrected to original RFM manifest reference_root",
+      "official_fits": 0
+    }
   }
 }

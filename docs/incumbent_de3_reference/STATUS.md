@@ -36,3 +36,13 @@ against7168MiB required and is preserved; projected cost4388.3064s and worker
 RSS1095.0117MiB met their bounds. Formal freeze/execution is still pending,
 with0 official reference estimators/optimizer starts and0 packages/uploads.
 Caps, DE3's historical decision and quality promotion gates are unchanged.
+
+## Frozen execution launched
+
+Service iron-incumbent-de3-reference-r2.service started10:03:25 CST with
+resource admission passed at8598.68MiB available. All60 reused development
+states passed pre-fit cold verification;10 native J42 replays are exact.
+The fixed20-estimator/40-optimizer execution is running, not a G1 result.
+The failed wrong-root r1 freeze is preserved with0 estimator starts.
+Use the original RFM manifest's reference_root=/home/lux1/iron.
+Full identity and monitoring cadence: [LAUNCH.md](LAUNCH.md).
