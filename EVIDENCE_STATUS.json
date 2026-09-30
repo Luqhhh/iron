@@ -16416,5 +16416,73 @@
     ],
     "evidence_worktree": "/home/lux1/iron/local/worktrees/modernnca-source-preparation",
     "public_head": "b932855"
+  },
+  "round2_slots_20260930": {
+    "date": "2026-09-30",
+    "status": "four_free_option_candidates_delivered_to_desktop_no_new_fits_no_uploads",
+    "user_request": "目标平台得分96.4，今天还有四个提交名额（24点前）",
+    "current_platform_best": {
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0"
+    },
+    "target": 96.4,
+    "target_gap": 0.0251,
+    "slots_available": 4,
+    "platform_scoring_rule": "platform_keeps_best_score_user_reported_2026_09_26; extra submissions are free options",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-slots-20260930",
+    "packages": [
+      {
+        "index": 1,
+        "name": "DE3_TIME_L0575",
+        "iron": "shipped DE3 iron, byte-identical to DE3 package",
+        "time": "A60-V7m chord interior lambda=0.575 (V36/N/V7m = 0.23/0.345/0.425)",
+        "zip_sha256": "5239cf54aaad52c887389afe4ca5bcabd8121f44ca4c28a5e7aaa96289cf5d14"
+      },
+      {
+        "index": 2,
+        "name": "DE3_TIME_L0625",
+        "iron": "shipped DE3 iron, byte-identical to DE3 package",
+        "time": "A60-V7m chord interior lambda=0.625 (V36/N/V7m = 0.25/0.375/0.375)",
+        "zip_sha256": "03a1d2f0568ff628a229155bae32527209760fb41020000bbbe9501ec5727fa0"
+      },
+      {
+        "index": 3,
+        "name": "DE3_TIME_L0675",
+        "iron": "shipped DE3 iron, byte-identical to DE3 package",
+        "time": "A60-V7m chord interior lambda=0.675 (V36/N/V7m = 0.27/0.405/0.325)",
+        "zip_sha256": "ece8def7cecfa2bb25aa273cc89853f2db40efcb065fa48ba0eca65cc195b502"
+      },
+      {
+        "index": 4,
+        "name": "DE3W100_IRON_TIME_A60V7_50",
+        "iron": "parent_iron + 1.0*(mean3_native_iron - native_iron), clamped at 0",
+        "time": "unchanged I1 (0.5*A60+0.5*V7m = 0.2/0.3/0.5)",
+        "zip_sha256": "cde783badb7cb6e799b3e1eb2c52bdb7537beebbacd213a420ab65b0179d6dd4"
+      }
+    ],
+    "basis": {
+      "concavity": "score=100-50*(WMAPE_iron+WMAPE_time); mixing two fixed time columns is convex in lambda inside the absolute loss, so the score is concave; measured I1(lambda=.5) and I5(lambda=.75) are both 96.3727 with the V12 iron, so every chord interior point is >=96.3727, and under the confirmed additive model the shipped DE3 iron keeps its +0.0022.",
+      "iron_weight_scan": "authorized-training-oof.csv (development-DE3): iron component replacement weight w=1.0 beats the delivered w=0.5 on both development split seeds (dscore +0.004382/+0.002579 vs +0.003076/+0.002003); time arm w=1.0 is negative on seed 42, so the time column was NOT ensembled.",
+      "shipped_iron_arithmetic_verified": "parent_iron+0.5*(mean3-native) reproduces the delivered DE3 zip iron column to <=2.3e-13"
+    },
+    "expected_platform_range": "about 96.375-96.380 under the additive/concave model; not a guarantee",
+    "target_certificate_note": "V46 fixed-endpoint time simplex upper 96.396835 with the incumbent iron; adding the measured +0.0022 DE3 iron effect gives about 96.399, i.e. 96.4 still needs a genuinely new column direction; PTaRL is running, DNNR cold audit failed.",
+    "verification": {
+      "zip_contains_only_result_csv": true,
+      "template_ordered_322_unique_ids": true,
+      "finite_nonnegative": true,
+      "packages_1_3_iron_field_byte_identical_to_DE3": true,
+      "package_4_iron_recomputed_from_same_formula": true,
+      "independent_desktop_readback": true
+    },
+    "new_fits": 0,
+    "new_full_data_fits": 0,
+    "new_CV_fits": 0,
+    "packages_delivered": 4,
+    "desktop_writes": 4,
+    "agent_uploads": 0,
+    "historical_decisions_unchanged": true
   }
 }

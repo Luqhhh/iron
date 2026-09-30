@@ -2024,3 +2024,30 @@ reads/fits/optimizers. Low priority after current PTaRL; no new training queue.
 No external weights downloaded; pretrained observation boundary unchanged.
 Public docs docs/modernnca_source_preparation/RESULTS.md in that branch.
 Current platform bestDE3=96.3749 unchanged; all96.4/96.45/96.5milestones unmet.
+
+
+### Four free-option candidates for the 2026-09-30 slots (2026-09-30)
+
+The user stated four submissions remain before midnight with platform target96.4.
+Current user-reported best stays DE3_IRON_USER_REQUESTED=96.3749; gap0.0251. This
+round performed zero new fits and delivered four zero-fit composition packages to
+`/mnt/c/Users/lqh22/Desktop/submission-96.4-slots-20260930`: DE3_TIME_L0575/L0625/
+L0675 (shipped DE3 iron byte-identical; time on the measured A60-V7m chord at
+lambda0.575/0.625/0.675) and DE3W100_IRON_TIME_A60V7_50 (iron at the audited
+ensemble weight w=1.0, parent time I1). ZIP SHA-256 5239cf54.../03a1d2f0.../
+ece8def7.../cde783ba.... Evidence EVIDENCE_STATUS.json->round2_slots_20260930 and
+docs/round2_slots_20260930/DELIVERY.md.
+
+Basis: the score is concave in a two-column time mixture, and the measured I1
+(lambda.5) and I5 (lambda.75) points are both96.3727 with the V12 iron, so the
+chord interior is not worse than the incumbent; the DE3 development OOF shows the
+iron ensemble weight w=1.0 beats the delivered w=0.5 on both development split
+seeds. The time arm was not ensembled (w=1.0 negative on seed42). Verification:
+each ZIP contains only result.csv, 322 template-ordered unique finite non-negative
+rows, packages1-3 iron fields byte-identical to DE3, the w=0.5 formula reproduces
+the DE3 zip to2.3e-13, desktop copies read back independently. Platforms keeps the
+best score, so these are free options, not a 96.4 guarantee: the V46 time-simplex
+upper96.396835 plus the measured +0.0022 DE3 iron effect is about96.399, so96.4
+still needs a new column direction. PTaRL remains the running lever; DNNR formal
+development stopped on a cold-audit tolerance failure. No new fits, full-data fits,
+CV fits or agent uploads; historical decisions unchanged.
