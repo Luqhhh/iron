@@ -8,13 +8,21 @@ not retrospective formal promotion; preserve all original no-finalist decisions,
 gates, derived-seed allocations and failed evidence. There is no elapsed-time
 budget, projected-time refusal or automatic numerical retry.
 
-Current user-reported comparison is LOC_DIAG_EMA_TIME=96.3895, original ZIP
-SHA256 da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836.
+Current user-reported comparison is EMA_TIME_Q75=96.3920, original ZIP
+SHA25641a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825.
+Q100 ties at the reported precision; Q75 is the registered representative.
 Freeze candidate names and formulas before training, no hyperparameter/weight
 scan. PTARL_TIME_Q20 retains the original `.8*V32_time+.2*PTARL_AUX` endpoint,
 with current incumbent iron field strings unchanged. EMA_IRON_EMA_TIME uses
 `current_iron+.5*(EMA_joint_iron-original_V12_iron)`, with the scored EMA time
-field strings unchanged. Do not generate a PTaRL+EMA-iron two-target combination.
+Q75 field strings unchanged. Do not generate a PTaRL+EMA-iron two-target combination.
+
+The initial pre-freeze attempt expected older Q50=96.3895 and refused the
+newer registered reference before creating a manifest or fitting. That refusal,
+old configuration and checked wrapper are preserved under private research.
+Only the scored parent/comparison binding is updated before the new freeze;
+all training recipes, two candidates and original replacement strengths stay
+unchanged. This applies the user's request to retain the current EMA time.
 
 All training imports the original PTaRL scientific worktree. Its component EMA,
 auditor, joint backbone and preprocessing bytes must match the original EMA

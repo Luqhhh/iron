@@ -103,7 +103,9 @@ def prepare(c, out):
     if best['candidate'] != c['comparison']['candidate'] or best['score'] != c['comparison']['score']:
         raise ValueError('Expected current EMA platform incumbent')
     artifacts = {key:prior['artifacts'][key] for key in ('parent','native_iron_model','native_iron_prediction','reg_manifest','reg_summary','reg_audit')}
-    artifacts['incumbent'] = dict(path='local/runs/local-platform-diagnostic-20260930/release-r1/LOC_DIAG_EMA_TIME/package/'+ZIP,sha256=best['zip_sha256'])
+    if best['zip_sha256']!=c['comparison']['zip_sha256']:
+        raise ValueError('Current scored package identity differs from release selection')
+    artifacts['incumbent'] = dict(path=c['comparison']['package'],sha256=best['zip_sha256'])
     files = {str(SPEC):sha(SPEC),str(Path(__file__).resolve()):sha(__file__)}
     for key, item in artifacts.items():
         p=ROOT/item['path']

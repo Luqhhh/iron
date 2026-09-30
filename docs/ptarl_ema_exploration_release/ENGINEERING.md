@@ -37,3 +37,18 @@ exact-source full-suite manifest, non-time resource requirements and scientific
 execution recipe remain immutable. Complete original development cold audit
 and independent arithmetic are checked again before a new full-training run.
 No official new fit/package has yet been executed at this engineering record.
+
+
+## Latest Q75 reference binding checked before fitting
+
+The original pre-freeze attempt correctly refused a stale Q50 incumbent after
+Q75/Q100 platform feedback registered96.3920. No manifest or official fitting
+was created. User requested current EMA time preservation; prospective config
+now pins Q75 package41a046... as current representative, with original Q50
+preparation/refusal preserved. No scientific training recipe changed.
+
+After this input-binding change a fresh complete locked Python3.12 invocation
+passed1337tests,0skips,23existing warnings; all public sources stayed unchanged
+through the invocation. This latest single-invocation full-suite receipt is
+06e84b5a74569a682a031a0f011cfcb2511090fa4bff943ab364075027d37f14.
+The earlier cumulative coverage and fixture failures remain historical.
