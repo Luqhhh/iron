@@ -34,6 +34,9 @@ round2 = [
 round2_v4_2 = [
     "torch>=2.4",
     "sympy==1.14.0",
+    "rtdl-revisiting-models==0.0.2",
+    "rtdl-num-embeddings==0.0.12",
+    "tabm==0.0.3",
 ]
 
 [project.scripts]
