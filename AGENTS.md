@@ -1974,3 +1974,22 @@ no between-check training polling. Preserve source/resource/reference and
 failed evidence; no restart/retry. G1pending, no full-data fit/package/upload.
 No time-based admission gate remains for future optimization, including
 previous cost-only refused routes; non-time/quality/release rules unchanged.
+
+
+PTaRL also resumes prospectively under the no-time-budget instruction.
+Separate worktree /home/lux1/iron/local/worktrees/ptarl-unbudgeted-development,
+branch codex/ptarl-unbudgeted-development, implementationb71beb4, queue63d94c2,
+committed/pushed. LockedPython3.12.12 full1468 tests passed,0skips; source849.
+Original841 sources, original cost-only failed report and models unchanged;
+fresh original-worktree zero-fit six-model audit passed all non-time gates.
+Formal manifestSHA75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443.
+One-shot iron-ptarl-unbudgeted-formal-r1.service queued2026-09-30 15:28:59CST,
+MainPID0/start-pre awaiting actual DANet terminal event and process exit.
+No PTaRL candidate fitting has started at queue registration. Runtime/start
+timeouts infinity, Restart=no; monitor600s starts after actual supervisor
+activation.20complete development pairs/120optimizer/40KMeans; both cold and
+independent-arithmetic anchors and unchanged closed model inventory precede
+confirmation. Same DE3 current iron/V32 current time, unchanged quality gates.
+Latest-current-best identity rechecked before queued launch; no legacy time
+column fallback. G1unmeasured; no probe refit/full-data fit/package/upload.
+Public docs in that branch: docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md.
