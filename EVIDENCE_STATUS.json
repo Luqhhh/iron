@@ -16309,5 +16309,35 @@
     "G1": "unmeasured",
     "documentation": "docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md",
     "public_head": "63d94c2"
+  },
+  "modernnca_source_qualification_2026_09_30": {
+    "status": "limited_author_core_passed_no_G1",
+    "branch": "codex/modernnca-source-preparation",
+    "documentation": "docs/modernnca_source_preparation/RESULTS.md",
+    "scope": "float64_no_embedding_core_only",
+    "upstream_commit": "1b973adffa4203c3f62c4949957b1ba3efbe60d3",
+    "upstream_model_sha256": "02fce6a107998ab7212774507998e77535f630fbf4ee328acf8519ad7c10632f",
+    "inventory_sha256": "744dbd810b4753324a111a57c88d61893b3d52ab7cc1fcf8d2c9c2822275412b",
+    "qualification_sha256": "43b05a4c9a6b6025ade08ca3b744794f96ab5d56ab2f02ed5839b8e1306c80e3",
+    "script_sha256": "0b79717d97070ad5da99291d305827b040a57029730d7884cd741b5cdc0a2bb0",
+    "maximum_independent_difference": 3.410605131648481e-13,
+    "prior": "previously_discussed_not_a_new_method_related_retrieval_negative_prior",
+    "priority": "below_current_DANet_and_queued_PTARL",
+    "G0": "partial_source_core_only",
+    "G1": "unmeasured",
+    "official_label_reads": 0,
+    "new_official_fits": 0,
+    "optimizer_calls": 0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "maximum_runtime_seconds": null,
+    "unqualified": [
+      "PLR embeddings",
+      "TALENT adapter",
+      "training protocol",
+      "cold saved model",
+      "resource admission",
+      "official G1"
+    ]
   }
 }

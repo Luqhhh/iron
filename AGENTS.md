@@ -1993,3 +1993,18 @@ confirmation. Same DE3 current iron/V32 current time, unchanged quality gates.
 Latest-current-best identity rechecked before queued launch; no legacy time
 column fallback. G1unmeasured; no probe refit/full-data fit/package/upload.
 Public docs in that branch: docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md.
+
+
+### ModernNCA limited source qualification (2026-09-30)
+
+Branch codex/modernnca-source-preparation checks pinned TALENT author core
+on fixed artificial arrays only, float64/no-embedding branch. Git blob
+identities verified; independent NumPy inference diff3.41e-13, gradient
+finite difference and sampled/self-label exclusions pass;0optimizer calls.
+PLR embeddings, train adapter, saved-state cold audit, full-size resource
+admission and G1 remain unqualified. No official fit or queue allocated.
+This method was already discussed in V27/V28, not a newly discovered model;
+related TabR/RFM failures keep low priority but do not directly test it.
+Preserve current DANet/queued PTaRL order and all frozen files/quality gates.
+No elapsed-time budgets, no external weights/data, no automatic release.
+See docs/modernnca_source_preparation/RESULTS.md. BestDE3=96.3749 unchanged.
