@@ -2237,3 +2237,23 @@ registration. User requested result commit/push first; no full fits, package
 generation, desktop rewrite or upload. Q25 is unreported; original fourth
 DE3+Q50 package remains deferred backup. Frozen gates/no-finalist decisions
 unchanged. Details: docs/ema_time_followup/DELIVERY.md.
+
+
+### Two user-requested full-training exploration releases (2026-10-01)
+
+User explicitly selected PTaRL time and EMA iron retaining current EMA time,
+then requested full fitting and continuation. Separate prospective release on
+codex/ptarl-ema-exploration-release, wrapper651da28,1337locked tests passed,
+0skips/23warnings. Freeze1837files, manifestb90a3ca64eaa050248c873ff5e86c436d333f43f4f992473079883e2e8a581a9.
+OldQ50expected-reference pre-freeze refusal preserved,0newfits before correction.
+Actual serial activation01:16:38CST initialPID66853,iron-ptarl-ema-exploration-r1.
+Current referenceQ75=96.3920; PTaRL uses original.8V32+.2AUX time and Q75iron
+strings; EMA iron replaces original V12component at.5 and keeps scoredQ75time
+strings. No PTaRL+EMA-iron combined third package. Exactly two full procedures,
+8optimizer runs (PTaRL teacher/CONTROL/AUX6,EMA2),2KMeans;0newCV/confirmation.
+Original scientific trainers/source/runtime/gates immutable. Exception is these
+explicit exploration releases only, not formal promotion. Original per-worker
+memory checks,1worker/1numerical thread,600smonitor, no time budget or automatic
+retry. Models/private receipts/ZIPs remain underlocal/runs; no desktop write
+or agent upload. Require independent state/cold/package audits before delivery.
+Details on release branch docs/ptarl_ema_exploration_release/PREREGISTRATION.md.

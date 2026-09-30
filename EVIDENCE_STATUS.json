@@ -17522,5 +17522,64 @@
       },
       "quota_inferred": false
     }
+  },
+  "ptarl_ema_user_exploration_release_20261001": {
+    "status": "full_training_serial_job_actually_active",
+    "service": "iron-ptarl-ema-exploration-r1.service",
+    "initial_main_pid": 66853,
+    "started_local": "2026-10-01T01:16:38+08:00",
+    "observed_ns": 1790788657732847582,
+    "implementation_commit": "651da28",
+    "manifest_sha256": "b90a3ca64eaa050248c873ff5e86c436d333f43f4f992473079883e2e8a581a9",
+    "engineering_receipt_sha256": "06e84b5a74569a682a031a0f011cfcb2511090fa4bff943ab364075027d37f14",
+    "frozen_files": 1837,
+    "comparison": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "execution_workers": 1,
+    "maximum_runtime_seconds": null,
+    "monitor_interval_seconds": 600,
+    "automatic_retries": false,
+    "packages": 0,
+    "uploads": 0,
+    "user_authorization": "用户选择PTaRL时间列、EMA铁水量并要求做全量拟合等工作，继续",
+    "branch": "codex/ptarl-ema-exploration-release",
+    "documentation": "docs/ptarl_ema_exploration_release/PREREGISTRATION.md",
+    "execution_document": "docs/ptarl_ema_exploration_release/EXECUTION.md",
+    "G0": "engineering_source_reference_and_full_training_execution_admitted_model_audits_pending",
+    "G1": "explicit_user_requested_exploration_not_four_seed_promoted",
+    "private_root": "local/runs/ptarl-ema-exploration-release-20261001/release-r1",
+    "activation_sha256": "2c9a0fb79ea0a12f2e0c14775d57f95e244156d4bbbc8243e44d52ee935b2ee8",
+    "locked_tests": {
+      "passed": 1337,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "original_scientific_manifest_sha256": "75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443",
+    "count_limits": {
+      "full_training_procedures": 2,
+      "optimizer": 8,
+      "kmeans": 2,
+      "new_CV_fits": 0,
+      "new_confirmation_seeds": 0
+    },
+    "candidates": [
+      {
+        "candidate": "PTARL_TIME_Q20",
+        "target": "tap_time_len",
+        "formula": ".8*V32_time+.2*PTARL_AUX",
+        "other_field": "current_Q75_iron_strings"
+      },
+      {
+        "candidate": "EMA_IRON_EMA_TIME",
+        "target": "tap_iron",
+        "formula": "current_iron+.5*(EMA_joint_iron-V12_joint_iron)",
+        "other_field": "current_Q75_time_strings"
+      }
+    ],
+    "historical_decisions_and_gates": "unchanged",
+    "desktop_writes": 0
   }
 }
