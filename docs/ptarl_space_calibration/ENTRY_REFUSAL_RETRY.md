@@ -49,3 +49,55 @@ The remaining4tasks execute under original4worker concurrency.600smonitor
 active, Restart=no/runtime infinity; terminal-only completion watcher active.
 Activation SHA-256:`cacfd91d82f4b0a2f463d0fb523bf539645fefd7efd359cec78a4efa767407cb`.G1 remains pending complete-phase verification.
 No heavy synthetic/full-suite jobs overlap the retry.
+
+
+## Terminal result: complete engineering, no development finalist (2026-10-01)
+
+The authoritative completion event is `completed`: all20logical paired units,
+120optimizer runs and40KMeans calls closed, with0failed/incomplete reservations.
+This explicit retry reused16pairs and fitted only4untouched pairs (24optimizers,
+8KMeans). The service exited successfully (MainPID0, ExecMainStatus0); its600s
+monitor timer is stopped. Runtime remained unlimited.
+
+The fresh complete-phase cold audit checked120saved models with maximum absolute
+difference2.2737367544323206e-13 and0newfits. Independent held-out arithmetic,
+closed artifact inventory, original source/runtime/native reference, and both
+older evidence inventories were reverified without fitting. G0complete.
+
+All gains below are score points from the frozen isolated endpoint
+`0.8*DE3/V32_reference + 0.2*PTARL_AUX`, with the other target unchanged.
+This is the originally frozen DE3 iron/V32 time reference, not the subsequently
+registered EMA time platform incumbent. Historical package fields retain B0.
+
+| Target | Seed42 gain | Seed3407 gain | Mean gain | Mean local package | Mean AUX minus CONTROL |
+|---|---:|---:|---:|---:|---:|
+| tap_iron | -0.00348366 | -0.00505727 | -0.00427047 | 96.23302842 | +0.00171523 |
+| tap_time_len | +0.00626904 | +0.00844609 | +0.00735757 | 96.24465645 | +0.00118191 |
+
+Iron fails positive-seed, mean-gain>=0.01 and local-package>=96.25 requirements.
+Time passes both positive complete seeds and mean AUX/control contrast, but
+fails the frozen0.01gain and96.25local-package requirements. Time meets the
+separate candidate-tier formal classification (9/10positive folds); that does
+not override the stricter prospective execution gate or authorize confirmation
+or release. G1: no development finalist. Confirmation seeds remain unconsumed;
+no full-data fit, package, desktop write or agent upload occurred. Preserve the
+small positive time evidence and all failures; do not relax gates retrospectively.
+
+Physical starts across all three evidence roots, deduplicated by exact started
+record hash rather than counting copied events as fits:24pairs/131optimizers/
+44KMeans, completed20/127/44. Four original reboot-interrupted pairs and four
+original incomplete optimizers remain preserved. Original resource fits are
+separate from these formal counts.
+
+Evidence SHA-256 anchors:
+
+- Complete-phase audit: `98f2b02fb9230c5d97d4fb18f43d0eea6edf8cf7dc4403f795d82960f9cef8e5`.
+- Independent arithmetic: `275c3d1c85a6b3f8d1c529aeaada62bc49110d95a4edd5f23b5b89ed573b8887`.
+- Completion event: `8941fe9303337526674e93e4a887dc24810f4461e5af8e3c34f6736775155595`.
+- Terminal verification: `d814875d83decfe6ac14a1d777b00bb88610515f60d79dfdf2bb04474da099cb`.
+
+These private artifacts remain under the original scientific worktree's
+`local/ptarl-unbudgeted-entry-retry-r1`; only this public summary is published.
+The wrapper's checked1481-test engineering receipt is unchanged; terminal
+verification added0fits and changed no implementation. No repeated model fits
+are needed to archive this measured route.
