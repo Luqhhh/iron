@@ -16334,5 +16334,54 @@
       96.45,
       96.5
     ]
+  },
+  "ptarl_paired_units_2026_09_30": {
+    "status": "paired_units_checked_formal_phase_pending",
+    "branch": "codex/ptarl-space-calibration",
+    "engineering_status": "docs/ptarl_space_calibration/STATUS.md",
+    "G0": "partial_paired_units_and_independent_audit_checked",
+    "G1": "unmeasured",
+    "focused_tests": 32,
+    "locked_python": "3.12.12",
+    "locked_suite": {
+      "passed": 1404,
+      "skipped": 8,
+      "warnings": 23,
+      "historical_private_artifacts_missing_skips": 8
+    },
+    "recorded_tiny_synthetic": {
+      "pair_units": 2,
+      "optimizer_runs": 12,
+      "kmeans_calls": 4,
+      "cold_models": 12,
+      "cold_audit": "passed",
+      "maximum_prediction_difference": 0.0,
+      "new_audit_optimizer_calls": 0,
+      "new_audit_kmeans_calls": 0,
+      "failed_or_incomplete": 0
+    },
+    "official_label_reads": 0,
+    "official_fits": 0,
+    "full_size_probes": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "future_budget_status": "proposed_not_allocated",
+    "future_development_optimizer_runs": 120,
+    "future_development_kmeans_calls": 40,
+    "inner_split": {
+      "seed": 42,
+      "n_splits": 5,
+      "held_fold": 0,
+      "native_reference_calibration_seed": 27001,
+      "native_calibration_cache_use": "forbidden"
+    },
+    "formal_manifest_generated": false,
+    "release_authorized": false,
+    "platform_milestones": [
+      96.4,
+      96.45,
+      96.5
+    ]
   }
 }

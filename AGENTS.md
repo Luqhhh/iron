@@ -2021,3 +2021,17 @@ admission pending. G1 unmeasured; official reads/fits/probes/packages0. Future
 120 optimizer/40 KMeans development budget is only a proposal, not allocated.
 Keep frozen2-development/4-confirmation seed gates and PTaRL->DNNR->DANet
 priority. Platform best96.3727 unchanged. See docs/ptarl_space_calibration/STATUS.md.
+
+
+PTaRL paired-unit preparation update (2026-09-30):32 focused tests; locked
+Python3.12.12 full suite1404 passed,8 historical private-cache/package skips,
+23 warnings. Two tiny synthetic paired units complete12 optimizers/4 KMeans;
+fresh-process zero-fit audit checks12 cold models,maximum prediction diff0.
+Unit audit reconciles six optimizer/two KMeans reservations, fresh teachers/
+prototypes, epoch decisions, and independent NumPy native/latent inference.
+Cluster witnesses verify nearest membership/inertia/centroid residual, not a
+KMeans initialization replay. Inner split42/5-fold/hold0 differs from native
+reference's27001; bind only native outer OOF, never old calibration cache.
+Formal phase/source/reference/gate audit/controller/resource admission pending;
+no official reads/fits/probes/packages/uploads. Future120/40 budget unallocated.
+G0 partial, G1 unmeasured, platform best96.3727 unchanged.

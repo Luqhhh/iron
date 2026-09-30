@@ -62,10 +62,15 @@ def prototype_bank(teacher, frame, count, random_seed):
         raise ValueError("Degenerate or nonfinite prototype initialization")
     if (np.linalg.norm(km.cluster_centers_, axis=1) <= 1e-12).any():
         raise ValueError("Zero prototype initialization")
+    # Persist witnesses for a zero-fit centroid/inertia audit. A tolerance-stop
+    # can leave a small final reassignment residual; preserve it, never hide it.
+    means = np.stack([matrix[km.labels_ == i].mean(0) for i in range(count)])
     return km.cluster_centers_.copy(), {"fit_ids_digest": digest(teacher.fit_ids_),
         "teacher_selected_epoch": teacher.selected_epoch_, "latent_rows": len(matrix),
         "latent_width": matrix.shape[1], "prototype_count": count,
-        "centers_digest": digest(km.cluster_centers_.tolist()), "kmeans_iterations": int(km.n_iter_)}
+        "centers_digest": digest(km.cluster_centers_.tolist()), "kmeans_iterations": int(km.n_iter_),
+        "cluster_labels": km.labels_.tolist(), "inertia": float(km.inertia_),
+        "centroid_mean_max_difference": float(np.abs(means-km.cluster_centers_).max())}
 
 
 def teacher_pair(fitting, calibration, outer_training, target, settings):

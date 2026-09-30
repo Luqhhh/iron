@@ -1,5 +1,5 @@
 version: ptarl-code-auxiliary-preparation-v1
-stage: core_and_partition_model_preparation
+stage: paired_unit_execution_and_audit_preparation
 base_commit: 326ea4f
 platform_milestones: [96.4, 96.45, 96.5]
 platform_reference:
@@ -50,6 +50,7 @@ mechanisms:
   diversity: global_all_pair_denominator_positive_pair_mean_diagonal_included
   orthogonalization: L1_over_Frobenius_squared_plus_0p5_abs_L1_minus_K
   zero_prototype: engineering_stop
+  saved_cluster_witnesses: nearest_memberships_inertia_and_final_reassignment_centroid_residual
   postprocessing: none
 budget_this_preparation:
   official_label_reads: 0
@@ -57,6 +58,13 @@ budget_this_preparation:
   full_size_resource_probes: 0
   full_data_fits: 0
   packages: 0
+recorded_tiny_synthetic_smoke:
+  pair_units: 2
+  optimizer_runs: 12
+  kmeans_calls: 4
+  cold_models: 12
+  audit_new_optimizer_or_kmeans_calls: 0
+  formal_admission: false
 future_formal_stage:
   status: not_admitted_requires_completed_runner_ledger_auditor_controller_and_G0
   proposed_development_pair_units: 20
