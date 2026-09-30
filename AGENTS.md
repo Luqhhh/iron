@@ -2089,3 +2089,16 @@ on codex/modernnca-source-preparation. Full locked r2 suite1326passed,0skips,
 23warnings,803sources unchanged during tests. ReceiptSHA
 95fb52911c62b8b74d243fef7b633609605e299f0fbf20e0bd3e53e4d23f2367.
 G0partial, G1unmeasured; no official ModernNCA fits. BestDE3=96.3749 unchanged.
+
+
+PTaRL explicit recovery now actually active 2026-09-30T23:08:25.825503+08:00;
+serviceiron-ptarl-reboot-recovery-r1.service initialMainPID12094 active/running.
+12reused pairs/72saved models cold-audited, maxdifference2.2737367544323206e-13;
+0new reuse fits. Eight missing pairs run fresh under exact original manifest
+75f676...; original841scientific sources and849formal sources unchanged.
+Recovery wrapper770e98d checked1475tests,0skips,23warnings. PlanSHA
+3cfb56204d0bbce2824f47a20afe7b10a246b058a29b7a439a321f3738ea6896;
+activationSHAf0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7.
+Monitor600s active, Restart=no/runtime infinity; completion-event.json watcher
+is terminal-only. All old interrupted evidence/reservations remain preserved.
+G0recovery admission passed; complete-phaseG1still pending. BestDE3=96.3749.
