@@ -17635,7 +17635,48 @@
         "arithmetic_max_difference": 0,
         "cold_maximum_difference": 2.842170943040401e-14,
         "original_cold_tolerance": 1e-08,
-        "peak_rss_mib": 959.99609375
+        "peak_rss_mib": 959.99609375,
+        "local_common_parent_score": {
+          "seeds": [
+            {
+              "seed": 42,
+              "rows": 2754,
+              "folds": 5,
+              "score": 96.24230155451103,
+              "gain_vs_Q75": 0.005721406000915863,
+              "fold_gains": [
+                0.005065256457044143,
+                0.009160907994996137,
+                0.0069263108423740505,
+                -0.0066513459153014765,
+                0.013946401734742153
+              ],
+              "positive_folds": 4
+            },
+            {
+              "seed": 3407,
+              "rows": 2754,
+              "folds": 5,
+              "score": 96.2398963501603,
+              "gain_vs_Q75": 0.010014920743046218,
+              "fold_gains": [
+                0.0073017693477055445,
+                0.01113189648818036,
+                -0.002345093153806488,
+                0.02476968828531767,
+                0.008789151371757953
+              ],
+              "positive_folds": 4
+            }
+          ],
+          "mean": 96.24109895233566,
+          "mean_gain_vs_Q75": 0.00786816337198104,
+          "positive_folds": 8,
+          "positive_seeds": 2,
+          "scope": "fixed delivered recipes on common EMA-development V32 parent; 2754 OOF rows per seed",
+          "unit_transfer_conditional_scenario": 96.39986816337198,
+          "scenario_is_not_forecast": true
+        }
       },
       {
         "candidate": "EMA_IRON_EMA_TIME",
@@ -17655,7 +17696,48 @@
         "arithmetic_max_difference": 0,
         "cold_maximum_difference": 2.808760359584994e-05,
         "original_cold_tolerance": 0.0005,
-        "peak_rss_mib": 721.61328125
+        "peak_rss_mib": 721.61328125,
+        "local_common_parent_score": {
+          "seeds": [
+            {
+              "seed": 42,
+              "rows": 2754,
+              "folds": 5,
+              "score": 96.239401599597,
+              "gain_vs_Q75": 0.002821451086887805,
+              "fold_gains": [
+                0.009431933258440495,
+                0.008029788770883783,
+                0.001558471248770843,
+                -0.004253175020807021,
+                -0.0005613679424101292
+              ],
+              "positive_folds": 3
+            },
+            {
+              "seed": 3407,
+              "rows": 2754,
+              "folds": 5,
+              "score": 96.23247831556846,
+              "gain_vs_Q75": 0.0025968861512097874,
+              "fold_gains": [
+                0.004175980645428012,
+                -0.004758873296353272,
+                0.00230191154730619,
+                0.004538154431926955,
+                0.006664847469821211
+              ],
+              "positive_folds": 4
+            }
+          ],
+          "mean": 96.23593995758273,
+          "mean_gain_vs_Q75": 0.0027091686190487962,
+          "positive_folds": 7,
+          "positive_seeds": 2,
+          "scope": "fixed delivered recipes on common EMA-development V32 parent; 2754 OOF rows per seed",
+          "unit_transfer_conditional_scenario": 96.39470916861904,
+          "scenario_is_not_forecast": true
+        }
       }
     ],
     "historical_decisions_and_gates": "unchanged",
@@ -17684,6 +17766,25 @@
       "Result": "success",
       "monitor_timer": "stopped",
       "runtime_limit": null
+    },
+    "local_score_readback": {
+      "report_sha256": "70d0835e1ff9400508280fba6b95f22c9964c43db7c10e9c13fb81ed995f97d1",
+      "private_root": "local/runs/ptarl-ema-exploration-release-20261001/local-score-readback-r1",
+      "reference": {
+        "candidate": "EMA_TIME_Q75",
+        "score": 96.392,
+        "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+      },
+      "current_Q75_local_mean_score": 96.23323078896368,
+      "scope": "fixed delivered recipes on common EMA-development V32 parent; 2754 OOF rows per seed",
+      "G0": "passed_existing_frozen_inputs_saved_OOF_and_independent_arithmetic_crosschecks",
+      "G1": "descriptive_two_complete_seeds_not_formal_promotion_or_platform_forecast",
+      "new_fits": 0,
+      "new_seeds": 0,
+      "new_packages": 0,
+      "uploads": 0,
+      "reliable_platform_forecast": null,
+      "unit_transfer_assumption": "platform score gain equals complete OOF mean score gain; uncalibrated scenario only"
     }
   },
   "ema_evaluation_diagnostics_20261001": {
