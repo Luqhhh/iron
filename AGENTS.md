@@ -2127,6 +2127,39 @@ identities: docs/local_platform_diagnostic_release/DELIVERY.md and
 EVIDENCE_STATUS.json->round2_local_platform_diagnostics_20260930.
 
 
+### Diagnostic platform feedback: EMA time wins; SAM time reverses local sign (2026-09-30)
+
+User-reported scores by numbered diagnostic candidate: EMA time96.3895,
+D-LMIX iron96.3668, SAM iron96.3678, SAM time96.3758. All four now scored;
+no diagnostic package remains pending. No additional account quota inferred.
+These are user reports, not independently verified platform receipts.
+
+New registered current best is LOC_DIAG_EMA_TIME=96.3895, +0.0168 against
+the common V32 parent96.3727 and +0.0146 over DE3. ZIP SHA256
+da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836.
+Iron retains V32 strings; time=.20*V36+.30*N0048+.50*EMA. Gaps to
+96.4/96.45/96.5 are .0105/.0605/.1105; all remain unmet. Preserve DE3 and
+the entire prior-best chain as history; future current-reference work reads
+EVIDENCE_STATUS.json rather than treating DE3 as still incumbent.
+
+Local EMA time+.002169 was below the frozen+.01 mechanism floor but yielded
+platform+.0168. Local SAM time-.016430, both complete development seeds
+negative, yielded platform+.0031: a measured training-method false negative,
+in addition to earlier mixture-weight reversals. D-LMIX iron and SAM iron
+remain platform-negative (-.0059/-.0049 vs V32). Do not generalize this selected
+four-candidate batch to a false-negative rate, sign accuracy, fixed transfer
+factor or family-wide win. EMA iron was untested. Prioritize EMA time's measured
+direction, retain SAM time exploration and exact iron negative evidence.
+Original no-finalist decisions, four-seed promotion and all global gates remain
+unchanged; feedback alone does not authorize fits, packages or weight scans.
+
+Feedback G0: four original desktop/local ZIP hashes, CSV bytes, CRC,322-row
+template order and isolated columns rechecked; all pass. Zero new fits/packages,
+desktop writes or agent uploads. Original desktop README and ZIPs untouched.
+Full identities/interpretation: docs/local_platform_diagnostic_release/DELIVERY.md;
+append-only private feedback under release-r1/platform-feedback-r1.
+
+
 Actual PTaRL reboot recovery r1 stopped at worker-entry current-memory
 check after16closed pairs,96optimizers/32KMeans; no failed/incomplete fit
 reservation, missing4time3407folds1..4 never reserved. G1unscored. Terminal

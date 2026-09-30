@@ -5,8 +5,8 @@ All four are delivered to `C:\Users\lqh22\Desktop\submission-local-platform-diag
 Each numbered subdirectory contains `Luqhhh_bf_tap_predict_round2.zip`; the root README lists identities and the interpretation reference.
 
 Compare method gains against **V32_TIME_A60V7_50 = 96.3727**, the exact common parent and local reference.
-Current user-reported best remains **DE3_IRON_USER_REQUESTED = 96.3749**; beating it is a separate comparison.
-Scores are user reports, not independently verified receipts. No diagnostic platform score has been returned.
+At delivery, the user-reported best was **DE3_IRON_USER_REQUESTED = 96.3749**; beating it is a separate comparison.
+Scores are user reports, not independently verified receipts. The delivery snapshot had no diagnostic platform feedback; the later results are recorded below.
 
 | # | Candidate | Target | Local mean gain | Selected epoch | ZIP SHA-256 |
 |---|---|---|---:|---:|---|
@@ -43,7 +43,7 @@ and failed before exercising replacement arithmetic; corrected synthetic fixture
 That initial test failure is retained under local/tmp/local-platform-diagnostic-20260930; no model or scientific
 recipe changed. Private-artifact guard passed before implementation commit and push.
 
-## G1: pending platform feedback
+## G1 at delivery: pending platform feedback
 
 These are explicitly requested diagnostic exploration releases, not four-seed promoted candidates.
 Original no-finalist decisions, tiers, +0.01 mechanism gates and release rules remain unchanged.
@@ -56,3 +56,59 @@ Implementation/preregistration commit: `e6a5e42`. Public machine status:
 Users upload and return scores by full candidate name; agent uploads **0**.
 Earlier chord-search packages and all old evidence remain preserved. This diagnostic batch takes the four
 user-selected slots; it is not the older score-seeking upload queue.
+
+## Platform feedback received (2026-09-30)
+
+The user returned `1.96.3895 2.96.3668 3.96.3678 4.96.3758`, mapped to
+the numbered folders above. These are user reports, not independently verified
+platform receipts. All four diagnostic packages now have feedback.
+
+| # | Candidate | Local gain vs V32 | Platform score | Platform gain vs V32 | Gain vs prior best DE3 |
+|---|---|---:|---:|---:|---:|
+| 1 | EMA time | +0.002169 | **96.3895** | **+0.0168** | **+0.0146** |
+| 2 | D-LMIX iron | -0.001438 | 96.3668 | -0.0059 | -0.0081 |
+| 3 | SAM iron | -0.003271 | 96.3678 | -0.0049 | -0.0071 |
+| 4 | SAM time | **-0.016430** | **96.3758** | **+0.0031** | +0.0009 |
+
+**New registered reported best: LOC_DIAG_EMA_TIME = 96.3895**, exact ZIP
+SHA-256 `da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836`.
+Its V32 iron strings remain unchanged; time is `0.20*V36 + 0.30*N0048 + 0.50*EMA`.
+The remaining gaps to 96.4/96.45/96.5 are 0.0105/0.0605/0.1105.
+The original DE3 package and prior best chain remain preserved.
+
+The experiment answers two different screening questions:
+
+- **The +0.01 local mechanism floor missed a platform winner.** EMA time
+  was positive on both complete development seeds but averaged only +0.002169;
+  the measured platform effect is +0.0168. This observation supports retaining
+  justified small-gain exploration; it does not automatically change the floor.
+- **A training-method false negative is now measured.** SAM time was negative
+  on both complete development seeds (-0.012876/-0.019983) yet gains +0.0031
+  on the fixed platform test set. This extends the previous mixture-weight
+  reversals: even consistent local negatives cannot prove platform uselessness.
+
+D-LMIX iron and SAM iron remain negative on this exact platform comparison.
+SAM's opposite target outcomes support target-specific decisions rather than
+declaring the whole training family positive or negative. EMA iron was not
+submitted and must not inherit EMA time's result. Prioritize the platform-verified
+EMA time direction; retain SAM time as exploration and the two iron negatives
+as negative evidence. No new fits, packages, combinations or weight scans are
+authorized by feedback alone; frozen decisions and global gates are unchanged.
+
+These were four purposively selected candidates on one fixed test set. Do not
+estimate a population false-negative rate, a global local/platform sign accuracy,
+a fixed amplification factor or statistical significance from this batch.
+
+**Feedback G0:** all four desktop/local ZIP hashes and CSV bytes match their
+original identities; valid CRC, exactly result.csv, 322 unique template-ordered
+IDs, finite nonnegative predictions and zero unchanged-column mismatches.
+This feedback registration performed zero new fits, packages, desktop writes
+or agent uploads. Original desktop README and package bytes remain untouched.
+The previously passed 1315-test locked suite remains the implementation check;
+this evidence-only update uses package readback, JSON and private-artifact checks.
+
+Private append-only feedback:
+`local/runs/local-platform-diagnostic-20260930/release-r1/platform-feedback-r1/feedback.json`.
+Machine status: `EVIDENCE_STATUS.json -> round2_local_platform_diagnostics_20260930`
+and `round2_current_platform_best`. The four-package batch is no longer pending;
+no additional account quota is inferred.

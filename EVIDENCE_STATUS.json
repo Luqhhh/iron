@@ -5979,38 +5979,60 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "DE3_IRON_USER_REQUESTED",
-    "score": 96.3749,
+    "candidate": "LOC_DIAG_EMA_TIME",
+    "score": 96.3895,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V32_TIME_A60V7_50",
-      "score": 96.3727,
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
       "source": "user_reported_not_independently_verified",
       "previous_best": {
-        "candidate": "V18_B0_V12IRON_V7TIME",
-        "score": 96.3679
+        "candidate": "V32_TIME_A60V7_50",
+        "score": 96.3727,
+        "source": "user_reported_not_independently_verified",
+        "previous_best": {
+          "candidate": "V18_B0_V12IRON_V7TIME",
+          "score": 96.3679
+        },
+        "delta_vs_previous_best": 0.0048,
+        "target": 96.5,
+        "target_met": false,
+        "margin_to_target": -0.1273,
+        "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
+        "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
+        "reported_date": "2026-09-28",
+        "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
       },
-      "delta_vs_previous_best": 0.0048,
+      "delta_vs_previous_best": 0.0022,
       "target": 96.5,
       "target_met": false,
-      "margin_to_target": -0.1273,
-      "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
-      "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
-      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
-      "reported_date": "2026-09-28",
-      "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
+      "margin_to_target": -0.1251,
+      "recipe": "V32_TIME_A60V7_50 parent; iron = parent_iron + 0.5*(mean(J42,J104729,J130363)-J42); parent time field strings unchanged",
+      "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930/Luqhhh_bf_tap_predict_round2.zip",
+      "reported_date": "2026-09-30",
+      "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
+      "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8",
+      "note": "Explicitly user-requested exploration scored +0.0022 over the former best. Historical no-finalist decision and all promotion gates remain unchanged."
     },
-    "delta_vs_previous_best": 0.0022,
+    "delta_vs_previous_best": 0.0146,
+    "delta_vs_V32_parent": 0.0168,
     "target": 96.5,
     "target_met": false,
-    "margin_to_target": -0.1251,
-    "recipe": "V32_TIME_A60V7_50 parent; iron = parent_iron + 0.5*(mean(J42,J104729,J130363)-J42); parent time field strings unchanged",
-    "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930/Luqhhh_bf_tap_predict_round2.zip",
+    "margin_to_target": -0.1105,
+    "platform_milestone_gaps": {
+      "96.4": 0.0105,
+      "96.45": 0.0605,
+      "96.5": 0.1105
+    },
+    "recipe": "V32 parent; iron field strings unchanged; time = parent_time + 0.5*(EMA_time - original_V7_time) = 0.20 V36_time + 0.30 N0048_time + 0.50 EMA_time",
+    "zip_sha256": "da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/01_LOC_DIAG_EMA_TIME/Luqhhh_bf_tap_predict_round2.zip",
     "reported_date": "2026-09-30",
-    "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
-    "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8",
-    "note": "Explicitly user-requested exploration scored +0.0022 over the former best. Historical no-finalist decision and all promotion gates remain unchanged."
+    "platform_feedback_record": "local/runs/local-platform-diagnostic-20260930/release-r1/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "5885ade2b9045c8fafbfd7feffaef4bc20061eb448112399124b09b5d90789ba",
+    "note": "Explicit diagnostic exploration, not four-seed promoted. Historical no-finalist decisions and all thresholds preserved. No new model/package or combined release authorized by feedback alone."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -16740,7 +16762,7 @@
     "retry_authorized_by_user": "继续重试，刚才是别的任务在进行、现在结束了"
   },
   "round2_local_platform_diagnostics_20260930": {
-    "status": "delivered_pending_user_platform_feedback",
+    "status": "completed_user_reported_platform_feedback",
     "authorization": {
       "user_request": "四项写桌面",
       "date": "2026-09-30",
@@ -16784,8 +16806,13 @@
       "desktop_hash_and_payload_readback": "passed"
     },
     "G1": {
-      "status": "explicit_user_diagnostic_exploration_not_promoted",
-      "platform_scores": null,
+      "status": "user_reported_platform_effects_registered_not_formally_promoted",
+      "platform_scores": {
+        "LOC_DIAG_EMA_TIME": 96.3895,
+        "LOC_DIAG_LMIX_IRON": 96.3668,
+        "LOC_DIAG_SAM_IRON": 96.3678,
+        "LOC_DIAG_SAM_TIME": 96.3758
+      },
       "local_gains_are_not_forecasts": true
     },
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930",
@@ -16803,8 +16830,12 @@
         "selected_epoch": 91,
         "zip_sha256": "da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836",
         "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/01_LOC_DIAG_EMA_TIME/Luqhhh_bf_tap_predict_round2.zip",
-        "platform_score": null,
-        "row_order_chunk_max_raw_difference": 6.4522849640979985e-06
+        "platform_score": 96.3895,
+        "row_order_chunk_max_raw_difference": 6.4522849640979985e-06,
+        "platform_score_source": "user_reported_not_independently_verified",
+        "platform_delta_vs_V32": 0.0168,
+        "platform_delta_vs_previous_best_DE3": 0.0146,
+        "platform_feedback_date": "2026-09-30"
       },
       {
         "name": "LOC_DIAG_LMIX_IRON",
@@ -16818,8 +16849,12 @@
         "selected_epoch": 74,
         "zip_sha256": "a167927ce315d0179b0fe8769282e44ee129737e8ab94af0188e3abb485e8926",
         "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/02_LOC_DIAG_LMIX_IRON/Luqhhh_bf_tap_predict_round2.zip",
-        "platform_score": null,
-        "row_order_chunk_max_raw_difference": 1.404380179792497e-05
+        "platform_score": 96.3668,
+        "row_order_chunk_max_raw_difference": 1.404380179792497e-05,
+        "platform_score_source": "user_reported_not_independently_verified",
+        "platform_delta_vs_V32": -0.0059,
+        "platform_delta_vs_previous_best_DE3": -0.0081,
+        "platform_feedback_date": "2026-09-30"
       },
       {
         "name": "LOC_DIAG_SAM_IRON",
@@ -16833,8 +16868,12 @@
         "selected_epoch": 90,
         "zip_sha256": "a39f245adf908a9091442f89a9f2406d1b2137092186a9fe2481422a4417fdc2",
         "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/03_LOC_DIAG_SAM_IRON/Luqhhh_bf_tap_predict_round2.zip",
-        "platform_score": null,
-        "row_order_chunk_max_raw_difference": 2.8087603482163104e-05
+        "platform_score": 96.3678,
+        "row_order_chunk_max_raw_difference": 2.8087603482163104e-05,
+        "platform_score_source": "user_reported_not_independently_verified",
+        "platform_delta_vs_V32": -0.0049,
+        "platform_delta_vs_previous_best_DE3": -0.0071,
+        "platform_feedback_date": "2026-09-30"
       },
       {
         "name": "LOC_DIAG_SAM_TIME",
@@ -16848,10 +16887,91 @@
         "selected_epoch": 109,
         "zip_sha256": "20557f4363377dfb693215baa86a8990cd126e0af3b30eaa33a08b5f3767efe2",
         "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/04_LOC_DIAG_SAM_TIME/Luqhhh_bf_tap_predict_round2.zip",
-        "platform_score": null,
-        "row_order_chunk_max_raw_difference": 3.226142496259854e-06
+        "platform_score": 96.3758,
+        "row_order_chunk_max_raw_difference": 3.226142496259854e-06,
+        "platform_score_source": "user_reported_not_independently_verified",
+        "platform_delta_vs_V32": 0.0031,
+        "platform_delta_vs_previous_best_DE3": 0.0009,
+        "platform_feedback_date": "2026-09-30"
       }
-    ]
+    ],
+    "history_before_platform_feedback": {
+      "status": "delivered_pending_user_platform_feedback",
+      "G1": {
+        "status": "explicit_user_diagnostic_exploration_not_promoted",
+        "platform_scores": null,
+        "local_gains_are_not_forecasts": true
+      },
+      "package_platform_scores": [
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "platform_feedback_record": "local/runs/local-platform-diagnostic-20260930/release-r1/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "5885ade2b9045c8fafbfd7feffaef4bc20061eb448112399124b09b5d90789ba",
+    "feedback_results": [
+      {
+        "name": "LOC_DIAG_EMA_TIME",
+        "score": 96.3895,
+        "source": "user_reported_not_independently_verified",
+        "local_gain_vs_V32": 0.0021688120969949945,
+        "platform_delta_vs_V32": 0.0168,
+        "platform_delta_vs_previous_best_DE3": 0.0146,
+        "local_platform_sign_match": true,
+        "zip_sha256": "da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836"
+      },
+      {
+        "name": "LOC_DIAG_LMIX_IRON",
+        "score": 96.3668,
+        "source": "user_reported_not_independently_verified",
+        "local_gain_vs_V32": -0.001437523037992397,
+        "platform_delta_vs_V32": -0.0059,
+        "platform_delta_vs_previous_best_DE3": -0.0081,
+        "local_platform_sign_match": true,
+        "zip_sha256": "a167927ce315d0179b0fe8769282e44ee129737e8ab94af0188e3abb485e8926"
+      },
+      {
+        "name": "LOC_DIAG_SAM_IRON",
+        "score": 96.3678,
+        "source": "user_reported_not_independently_verified",
+        "local_gain_vs_V32": -0.0032709359739103647,
+        "platform_delta_vs_V32": -0.0049,
+        "platform_delta_vs_previous_best_DE3": -0.0071,
+        "local_platform_sign_match": true,
+        "zip_sha256": "a39f245adf908a9091442f89a9f2406d1b2137092186a9fe2481422a4417fdc2"
+      },
+      {
+        "name": "LOC_DIAG_SAM_TIME",
+        "score": 96.3758,
+        "source": "user_reported_not_independently_verified",
+        "local_gain_vs_V32": -0.01642965888519112,
+        "platform_delta_vs_V32": 0.0031,
+        "platform_delta_vs_previous_best_DE3": 0.0009,
+        "local_platform_sign_match": false,
+        "zip_sha256": "20557f4363377dfb693215baa86a8990cd126e0af3b30eaa33a08b5f3767efe2"
+      }
+    ],
+    "interpretation": {
+      "EMA_TIME": "local +0.002168812 -> platform +0.0168; misses the frozen +0.01 mechanism gate but is the new reported best",
+      "LMIX_IRON": "local -0.001437523 -> platform -0.0059; no platform reversal for this exact recipe",
+      "SAM_IRON": "local -0.003270936 -> platform -0.0049; no platform reversal for this exact recipe",
+      "SAM_TIME": "local -0.016429659 at two negative complete seeds -> platform +0.0031; measured false negative for a training method, not merely a mixture-weight change",
+      "limits": "Purposively selected four candidates, one fixed test set; no population false-negative rate, significance claim, family-wide winner claim or automatic gate change",
+      "priority": "EMA time direction first; SAM time exploration second; retain exact-recipe iron negative evidence",
+      "quota": "All four diagnostic packages have feedback; no pending diagnostic package. No additional account quota inferred."
+    },
+    "feedback_G0": {
+      "status": "passed",
+      "verified_packages": 4,
+      "unchanged_column_mismatches": 0,
+      "desktop_hashes_unchanged": true,
+      "new_fits": 0,
+      "new_packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    }
   },
   "modernnca_phase_engineering_2026_09_30": {
     "status": "paired_execution_ledger_collector_and_current_reference_checked_no_official_scheduler",
