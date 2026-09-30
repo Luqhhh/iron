@@ -1935,3 +1935,18 @@ authorize another package or establish a general local/platform transfer ratio.
 The staged goals96.4/96.45/96.5 remain unmet, with gaps0.0251/0.0751/0.1251.
 Users upload and return scores; do not infer quota. Future comparisons use
 the latest registered current best while frozen historical evidence stays intact.
+
+### DNNR numerical preparation (2026-09-30)
+
+Branch codex/dnnr-taylor-preparation adds first-order local derivative/Taylor
+terms and the centered-cosine diagonal-scale gradient, with source audit of
+author commitca6070734a659a51cbbdfaf9b97e508e8843a1bd. LockedPython3.12
+checks1321 passed;11 numerical checks passed. Author lazy first-order
+predictions differ0; scale gradient difference1.10731e-11; costdifference0.
+The author's precomputed derivative path has a reproduced dimension error.
+This is numerical preparation only; no learned-metric predictor, official
+fit, quality evaluation, package or upload. Preserve PTaRL-before-DNNR-before
+DANet order and all original gates. Full mechanism needs matching KNN/fixed
+Taylor/learned Taylor controls and explicit training-only graph/calibration,
+cold arrays, resource admission and frozen budget before evaluation.
+Details docs/dnnr_taylor/SOURCE_AUDIT.md; private receiptlocal/research.

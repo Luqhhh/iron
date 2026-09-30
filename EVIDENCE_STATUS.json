@@ -16124,5 +16124,24 @@
     "platform_delta_vs_parent": 0.0022,
     "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
     "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8"
+  },
+  "dnnr_numerical_preparation": {
+    "date": "2026-09-30",
+    "branch": "codex/dnnr-taylor-preparation",
+    "G0": "NUMERICAL_CORE_PASSED_1321_LOCKED_TESTS_11_TARGETED_AUTHOR_PARITY",
+    "G1": "UNMEASURED_NO_LEARNED_METRIC_MODEL_OR_OFFICIAL_FIT",
+    "current_reference": "DE3_IRON_USER_REQUESTED",
+    "score_user_reported": 96.3749,
+    "author_commit": "ca6070734a659a51cbbdfaf9b97e508e8843a1bd",
+    "first_order_prediction_difference": 0.0,
+    "scale_gradient_difference": 1.1073073014067347e-11,
+    "receipt": "local/research/dnnr-numerical-receipt-r1.json",
+    "receipt_sha256": "325d88f08115316fbc75413762b0d37833c3a3ce7668fe174492343c4d23212a",
+    "source_plan": "docs/dnnr_taylor/SOURCE_AUDIT.md",
+    "queue_order": "incumbent_reference_then_PTARL_then_DNNR_then_DANet",
+    "official_fits": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
