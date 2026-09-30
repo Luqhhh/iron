@@ -16407,5 +16407,55 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "documentation": "docs/danet_abstract/SOURCE_AUDIT.md"
+  },
+  "round2_danet_full_model_preparation_2026_09_30": {
+    "status": "G0_full_model_engineering_checked_resource_pending_G1_unmeasured",
+    "branch": "codex/danet-abstract-layer-preparation",
+    "platform_reference": {
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
+      "source": "user_reported_not_independently_verified"
+    },
+    "architecture": {
+      "main_layers": 20,
+      "abstract_layers_including_shortcuts": 30,
+      "width": 64,
+      "groups": 5,
+      "encoded_dimensions": 26,
+      "parameters": 766487
+    },
+    "source_parity": {
+      "full_initial_forward_maximum_difference": 0.0,
+      "qhadam_twenty_equation_steps_maximum_difference": 0.0,
+      "receipt_sha256": "74d8b98c6d8d48fe3d3a70801310a13e3163dee8f147626a0b0c6e652f86632b",
+      "exact_paper_training_reproduction": false
+    },
+    "locked_python312_tests": {
+      "full_passed": 1454,
+      "focused_passed": 56,
+      "existing_warnings": 23,
+      "source_files": 841,
+      "receipt_sha256": "d41139cf367d0f3147e19d105b485be5805c836d8b33386dc983ef9559a9505b"
+    },
+    "resource_contract": {
+      "training_rows": 2204,
+      "query_rows": 551,
+      "encoded_dimensions": 26,
+      "estimator_runs": 4,
+      "optimizer_runs": 4,
+      "optimizer_epochs": 960,
+      "maximum_worker_mib": 1536,
+      "maximum_development_seconds": 7200,
+      "failed_probe": "preserve_no_retry_shrink_or_relaxation"
+    },
+    "official_label_reads": 0,
+    "official_estimator_fits": 0,
+    "full_size_probes": 0,
+    "new_full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "next_action": "freeze_exact_checked_source_then_one_shot_full_size_synthetic_probe_before_separate_formal_controller",
+    "documentation": "docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md"
   }
 }

@@ -1,0 +1,83 @@
+version: danet20-matched-mask-regression-v1
+stage: full_model_and_resource_preparation_no_official_execution
+platform_milestones: [96.4, 96.45, 96.5]
+platform_reference: {candidate: DE3_IRON_USER_REQUESTED, score: 96.3749, source: user_reported_not_independently_verified}
+arms: [DANET_FIXED, DANET_LEARNED]
+eligible_candidates: [DANET_LEARNED]
+matched_controls: {DANET_LEARNED: DANET_FIXED}
+source:
+  danet_commit: b007c57121ec9082f6ef19ec7465d9df70767c26
+  qhoptim_commit: e81dea3f2765780cf4fbb90b87b22ba7604b8625
+  exact_paper_training_reproduction: false
+training:
+  layers: 20
+  width: 64
+  groups: 5
+  ghost_size: 256
+  dropout: 0.1
+  max_epochs: 240
+  batch_size: 256
+  learning_rate: 0.008
+  weight_decay: 0.00001
+  beta1: 0.9
+  beta2: 0.999
+  nu1: 0.8
+  nu2: 1.0
+  epsilon: 0.00000001
+  learning_rate_gamma: 0.95
+  learning_rate_step_epochs: 20
+  clip_norm: 2.0
+  random_seed: 42
+  loss: mae
+  dtype: float32
+preprocessing:
+  numeric: actual_fitting_partition_float64_population_zscore_cast_float32
+  spout: actual_fitting_partition_sorted_unit_one_hot_reserved_unknown_zero
+  target: actual_fitting_partition_float64_mean_and_population_std_constant_scale_one
+control: identically_initialized_network_freeze_only_mask_logits
+architecture: ten_blocks_each_two_main_path_abstract_layers_plus_raw_feature_abstract_shortcut_final_256_512_1_head
+calibration:
+  seed: 42
+  folds: 5
+  hold: 0
+  group_safe: true
+  inner: all_240_epochs_store_raw_MAE_history_and_predictions_no_early_stop
+  selection: lowest_raw_MAE_first_epoch_wins_exact_ties
+  outer: fresh_initialization_encoder_target_scaling_and_optimizer_fit_selected_epochs_on_all_outer_training_rows
+  query_labels: forbidden
+postprocessing: none
+saved_audit:
+  format: exclusive_npz_no_pickle_external_hash
+  independent: numpy_row_local_entmax_bisection_affine_stored_BN_gating_raw_shortcuts_head
+  tolerances: {absolute: 0.0001, relative: 0.000001}
+  all_saved_states: inner_and_outer_per_arm
+  checks: [actual_training_stats_and_arrays, frozen_control_masks, endpoint_history_and_selected_state,
+    fresh_outer_refit, exact_saved_cold_replay, reverse_and_chunk_predictions, independent_numpy_inference, fit_reservations]
+future_formal_stage:
+  status: not_admitted_requires_complete_controller_and_frozen_current_reference_and_successful_resource_probe
+  development_seeds: [42, 3407]
+  confirmation_seeds: [7777, 12011]
+  folds: [0, 1, 2, 3, 4]
+  development_pair_units: 20
+  development_estimator_runs: 80
+  development_optimizer_runs: 80
+  workers: 4
+  candidate_endpoint: isolated_0_8_current_DE3_plus_0_2_member_other_target_unchanged
+  development_gate: {both_complete_seeds_positive: true, mean_gain_minimum: 0.01, positive_mean_candidate_vs_matched_control: true, mean_package_score_minimum: 96.25}
+  confirmation_gate: {all_four_seeds_positive: true, seed_level_paired_lcb95_positive: true, t_multiplier: 2.3533634348018264, sample_sd_ddof: 1, positive_four_seed_candidate_vs_matched_control: true}
+  fold_level: descriptive_only
+  cross_seed_oof_averaging: forbidden
+  candidate_tiers: existing_policy_frozen_pool_and_cost_tie_order_no_automatic_release
+resources:
+  full_size_probe_required: true
+  workers: 4
+  numeric_threads: 1
+  maximum_worker_mib: 1536
+  free_memory_rule: 4_times_measured_peak_plus_1024_MiB
+  probe_rows: {training: 2204, query: 551, dimensions: 26}
+  worst_case: both_inner_and_outer_per_arm_all_240_epochs
+  projection: 20_times_worst_case_pair_fit_save_and_independent_audit_divided_by_4_times_1_5_plus_300
+  maximum_development_seconds: 7200
+  failed_cost_probe: preserve_no_retry_shrink_or_gate_relaxation
+monitoring: {interval_seconds: 600, between_check_polling: false}
+release: {automatic_packages: false, full_data_fits: 0, desktop_writes: 0, agent_uploads: 0}

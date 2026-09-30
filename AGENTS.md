@@ -2106,3 +2106,38 @@ formal freeze remain mandatory. Existing complete-coverage/two-dev/four-seed
 LCB gates unchanged; no OOF cross-seed averaging or automatic release.
 Details docs/danet_abstract/SOURCE_AUDIT.md. BestDE3=96.3749 user-reported;
 96.4/96.45/96.5 unmet. No new G1 quality claim from numerical tests.
+
+
+### DANet complete matched model checked, resource pending (2026-09-30)
+
+The full20-main-layer/30-abstract-layer DANet, width64/groups5, has766487
+parameters at26 encoded inputs. Matched arms share initialization; FIXED
+freezes only mask logits and LEARNED is the only eligible candidate. Initial
+full-network author parity and20 QHAdam equation steps differ0. No dependency
+installation or shared frozen environment change occurred; both MIT licenses
+are preserved. This is MAE/batch256/240-epoch CPU adaptation, not reproduction
+of paper training. Train-only encoding and target scaling, group-safe inner
+first-minimum raw-MAE selection, fresh outer refits, exclusive saved states,
+independent NumPy four-state cold audit and append-only fit ledger are checked.
+
+LockedPython3.12 full1454 tests passed,23 existing warnings;56 focused checks
+passed. Exact frozen-source prospective inventory841 files. Full-suite receipt
+SHAd41139cf367d0f3147e19d105b485be5805c836d8b33386dc983ef9559a9505b.
+Prospectivefloat32 audit uses absolute1e-4+relative1e-6 before resource execution;
+this does not change or retry the preserved failed DNNR1e-8 contract.
+
+Next freeze the tested source and run exactly one synthetic2204/551/26dim
+probe: both inner and outer per arm all240 epochs,4estimators/4optimizers/
+960epochs. Require independent cold/quality/mask/memory/cost gates; four-worker
+20-pair conservative development projection<=7200s and peak<=1536MiB.
+Failed resource probes must remain preserved without retry, shrinking or
+relaxed gates. Durable supervisor and600s read-only monitor, actual terminal
+event, no between-check training polling. Official fits0 and G1 unmeasured.
+
+Successful resource admission still requires a separately checked frozen
+current-DE3-bound formal controller before official complete development;
+keep admitted source worktree intact to retain its exact verifier. Original
+two-development-seed/four-seed-LCB gates unchanged, folds descriptive, no OOF
+cross-seed mixing. No automatic full-data fit, package, desktop write or upload.
+BestDE3=96.3749 user-reported; milestones96.4/96.45/96.5 remain unmet.
+Details docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md.
