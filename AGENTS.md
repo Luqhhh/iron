@@ -2024,3 +2024,26 @@ root/home/lux1/iron with the completed DE3 overlay492c21150764c08e9714ab5321bade
 No V32-only fallback. Preserve negative PTaRL cost evidence; no new PTaRL
 fit is permitted by this transition. G1 and official candidate fits remain0;
 serial DNNR-before-DANet and all fixed gates/release rules unchanged.
+
+### DNNR formal complete-coverage wrapper checked (2026-09-30)
+
+On codex/dnnr-taylor-development the current-DE3-bound formal wrapper passed
+locked Python3.12 full1398 tests,23 existing warnings and40 new focused
+execution tests. Its822-file source snapshot includes the unchanged807-file
+admitted G0 source. All120 estimators in a complete synthetic20-unit phase
+reconcile with the append-only ledger; subsequent cold/arithmetic checks fit0.
+The current reference export is zero-fit and binds2754 rows and all4 seeds;
+completeSHA7b7409f4a0791eb11c0d90fb2c0479baf5166c5a48a165ef8c0f1520fbfeb7b3.
+V32 parent time is CURRENT time, never older historicalB0 time.
+
+Preserve existing source/resource/spec/model/gates. Freeze exact new source,
+checked runtime/test receipt, successful original G0 admission and current
+reference before20 official development pairs on42/3407. Only cold-verified
+and independently scored earned candidates plus necessary controls may fit
+7777/12011; omitted failed candidates consume0 fits. No finalist means no
+confirmation. External development audit/arithmetic anchors and unchanged
+closed artifacts are mandatory. Folds descriptive; never mix OOF split seeds.
+No automatic full-data fit, package, desktop write or upload. Monitor600s
+with actual supervisor-terminal event; no between-check training polling.
+G1 remains unmeasured before the official frozen run. Details
+docs/dnnr_taylor/FORMAL_EXECUTION.md. BestDE3=96.3749 remains user-reported.

@@ -16283,5 +16283,53 @@
     "full_data_fits": 0,
     "packages": 0,
     "agent_uploads": 0
+  },
+  "round2_dnnr_formal_preparation_2026_09_30": {
+    "status": "G0_formal_wrapper_checked_G1_unmeasured",
+    "branch": "codex/dnnr-taylor-development",
+    "platform_reference": {
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
+      "source": "user_reported_not_independently_verified"
+    },
+    "locked_python312_tests": {
+      "full_passed": 1398,
+      "new_focused_passed": 40,
+      "existing_warnings": 23,
+      "exact_source_files": 822,
+      "unchanged_admitted_source_files": 807,
+      "receipt_sha256": "dfd6a63f4916bfae3e4a365752e317a274c668940fe5ca7eb976ffeb565a3ffa"
+    },
+    "current_reference_export": {
+      "rows": 2754,
+      "split_seeds": [
+        42,
+        3407,
+        7777,
+        12011
+      ],
+      "new_fits": 0,
+      "complete_sha256": "7b7409f4a0791eb11c0d90fb2c0479baf5166c5a48a165ef8c0f1520fbfeb7b3"
+    },
+    "resource_admission_sha256": "af3868187156a8f7adcdaf953882f275b787434ef63e07fdfd01baa1ea7f716e",
+    "planned_development": {
+      "pair_units": 20,
+      "estimators": 120,
+      "derivative_banks": 80,
+      "metric_epochs_maximum": 40,
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "folds": 5,
+      "workers": 4
+    },
+    "confirmation": "only_cold_and_independent_arithmetic_earned_methods_plus_necessary_controls",
+    "official_candidate_fits": 0,
+    "new_full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "documentation": "docs/dnnr_taylor/FORMAL_EXECUTION.md"
   }
 }

@@ -1,0 +1,27 @@
+version: dnnr-complete-coverage-execution-v1
+model_spec: configs/dnnr_taylor/SPEC.yaml
+split_seeds: [42, 3407]
+confirmation_seeds: [7777, 12011]
+folds: 5
+reference_by_target: {tap_iron: CURRENT_DE3, tap_time_len: CURRENT_DE3}
+candidates:
+  tap_iron: [DNNR_FIXED, DNNR_LEARNED]
+  tap_time_len: [DNNR_FIXED, DNNR_LEARNED]
+tie_preference_by_target:
+  tap_iron: [DNNR_FIXED, DNNR_LEARNED]
+  tap_time_len: [DNNR_FIXED, DNNR_LEARNED]
+matched_controls: {DNNR_FIXED: KNN_FIXED, DNNR_LEARNED: DNNR_FIXED}
+blend_weight: 0.2
+other_target: unchanged_current
+workers: 4
+encoded_dimension_maximum: 26
+development_limits: {pair_unit: 20, estimator: 120, derivative_bank: 80, metric_epoch: 40}
+confirmation: only_earned_candidates_plus_necessary_controls_no_failed_candidate_fit
+candidate_tier_policy: configs/candidate_tiers.yaml
+candidate_tiers_are_descriptive_not_mechanism_or_release_admission: true
+audit_before_scoring_or_confirmation: true
+new_full_data_fits: 0
+automatic_packages: false
+desktop_writes: 0
+agent_uploads: 0
+monitoring: {interval_seconds: 600, between_check_polling: false}
