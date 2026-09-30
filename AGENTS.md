@@ -1991,3 +1991,20 @@ Timeriron-dnnr-preflight-r1-monitor.timer observes every600s, initial due
 monotonic1d22h25min20.165203s. No between-check polling. Only actual terminal
 event or scheduled observation may trigger audit. No automatic official fits,
 full-data fitting, package, desktop write or upload. Outcome pending.
+
+### DNNR G0 resource admission passed (2026-09-30)
+
+Actual completion event exit0 at03:38:49UTC; serviceMainPID0/Resultsuccess,
+inactive/dead and timerstopped before first600s checkpoint. One full-size
+pair completed6 estimators,4 derivative banks,2 metric epochs,0 failed or
+incomplete. Inner calibration selectedepoch1, so no optional extra fit.
+SyntheticMAEsKNN.968196/fixedTaylor.623803/learnedTaylor.329609 versus
+median1.415637; these are learnability results, not official ranking.
+Six saved models and all807 sources independently audited, maximum difference
+1.42109e-14. Peak217.601563MiB; four-worker conservative development projection
+539.899205s<7200s. All quality/cold/RAM/worker/cost resource checks passed.
+
+G1 remains unmeasured, official candidate fits0. Next prepare an exact-source
+current-DE3-reference-bound complete-coverage controller before development;
+retain all original gates. No auto confirmation, full-data fit, package,
+desktop write or upload. Details docs/dnnr_taylor/G0_RESOURCE_RESULTS.md.

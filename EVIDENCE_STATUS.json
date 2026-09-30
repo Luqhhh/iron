@@ -16197,17 +16197,71 @@
     "source_commit": "bd69cb4",
     "manifest": "local/dnnr-taylor-resource-r1/manifest.json",
     "manifest_sha256": "a9f30f90e2eccb5aeef85d025bc10b64dba3bbbea9c1526c27aa957aa0bf12dd",
-    "monitor_timer": "iron-dnnr-preflight-r1-monitor.timer",
+    "monitor_timer": "stopped_after_actual_completion_before_first_600s_checkpoint",
     "interval_seconds": 600,
     "initial_next_monotonic_us": "1d 22h 25min 20.165203s",
     "between_check_polling": false,
     "completion_event": "local/dnnr-taylor-resource-r1/completion-event.json",
     "private_supervisor_sha256": "0bdbd877360eaf0aafe5f50c9501de5c6931e5dcf60d7b181911da61ff21b2c4",
-    "status": "RUNNING_SYNTHETIC_ONLY",
+    "status": "PASSED_INDEPENDENTLY_AUDITED_SYNTHETIC_RESOURCE_ADMISSION",
     "official_fits": 0,
     "automatic_official_fits": false,
     "full_data_fits": 0,
     "packages": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "G0": "PASSED_1358_LOCKED_TESTS_SIX_SAVED_MODELS_FULL_SIZE_PROBE",
+    "G1": "UNMEASURED_NO_OFFICIAL_CANDIDATE_FITS",
+    "ended_ns": 1790739529202103839,
+    "terminal_service": "MainPID0_Resultsuccess_ExecMainStatus0_inactive_dead",
+    "admission_sha256": "af3868187156a8f7adcdaf953882f275b787434ef63e07fdfd01baa1ea7f716e",
+    "fresh_audit_receipt": "local/research/dnnr-probe-supervision-r1/fresh-admission-audit-r2.json",
+    "fresh_audit_receipt_sha256": "45bdb1ae92292ff4ca0b8d3e248a39229da1bcb5aba405ea4af0aef2cc6dbef5",
+    "source_hashes_verified": 807,
+    "artifact_hashes_verified": 42,
+    "checks": {
+      "available_memory": true,
+      "cold_inference": true,
+      "development_cost": true,
+      "synthetic_quality": true,
+      "worker_peak": true
+    },
+    "projected_development_seconds": 539.899204582689,
+    "peak_worker_mib": 217.6015625,
+    "synthetic_mae": {
+      "DNNR_FIXED": 0.6238032280898654,
+      "DNNR_LEARNED": 0.3296087444111034,
+      "KNN_FIXED": 0.9681959933746879
+    },
+    "training_median_query_mae": 1.415637357335875,
+    "maximum_audit_difference": 1.4210854715202004e-14,
+    "models_checked": 6,
+    "selected_metric_epochs": 1,
+    "operation_counts": {
+      "completed": {
+        "derivative_bank": 4,
+        "estimator": 6,
+        "metric_epoch": 2,
+        "pair_unit": 1
+      },
+      "failed": {
+        "derivative_bank": 0,
+        "estimator": 0,
+        "metric_epoch": 0,
+        "pair_unit": 0
+      },
+      "incomplete": {
+        "derivative_bank": 0,
+        "estimator": 0,
+        "metric_epoch": 0,
+        "pair_unit": 0
+      },
+      "started": {
+        "derivative_bank": 4,
+        "estimator": 6,
+        "metric_epoch": 2,
+        "pair_unit": 1
+      }
+    },
+    "next": "current_incumbent_bound_complete_coverage_phase_controller_before_official_fits"
   }
 }
