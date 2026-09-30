@@ -49,3 +49,14 @@ Recovery plan SHA-256:
 Private root is `local/ptarl-unbudgeted-reboot-r1` in the original
 `ptarl-unbudgeted-development` worktree. Preparation is checked and frozen;
 actual activation and reuse admission are recorded separately after launch.
+
+## Actual activation
+
+Recovery activated 2026-09-30T23:08:25.825503+08:00; service
+`iron-ptarl-reboot-recovery-r1.service`, initialMainPID12094 active/running.
+All12reused pairs/72saved models passed the original cold audit with maximum
+difference2.2737367544323206e-13;0new fits in reuse admission.
+The600-second monitor timer is active; Restart=no, runtime infinity.
+Activation receipt SHA-256:`f0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7`.
+The eight fresh missing pairs are executing; G1 remains pending until complete
+phase cold audit and independent arithmetic. No package or upload.

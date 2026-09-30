@@ -2136,3 +2136,9 @@ physical attempts remain reported separately across both append-only ledgers.
 No time cap, no quality relaxation; original cold+arithmetic gates precede
 confirmation. Launch still pending at this preparation registration.
 See docs/ptarl_space_calibration/REBOOT_RECOVERY.md.
+
+
+Actual PTaRL recovery activated 2026-09-30T23:08:25.825503+08:00, MainPID12094 active/running.
+12reused pairs/72saved models passed cold admission;0new reuse fits.
+600smonitor active, Restart=no/runtime infinity. ActivationSHAf0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7.
+G1pending,8missing pairs run fresh; original artifacts/ledger preserved.

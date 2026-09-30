@@ -16640,10 +16640,10 @@
     "activation_receipt_sha256": "6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec"
   },
   "ptarl_explicit_reboot_recovery_2026_09_30": {
-    "status": "checked_and_frozen_not_yet_launched",
+    "status": "explicit_recovery_activated_after_reuse_admission_G1_pending",
     "branch": "codex/ptarl-reboot-recovery",
     "documentation": "docs/ptarl_space_calibration/REBOOT_RECOVERY.md",
-    "G0": "recovery_engineering_checked_reuse_cold_admission_pending",
+    "G0": "recovery_engineering_and_72_model_reuse_admission_passed",
     "G1": "incomplete_unscored",
     "locked_suite": {
       "passed": 1475,
@@ -16667,6 +16667,14 @@
     "maximum_runtime_seconds": null,
     "failed_model_retries": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "implementation_commit": "770e98d",
+    "activation_receipt_sha256": "f0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7",
+    "started_local": "2026-09-30T23:08:25.825503+08:00",
+    "service": "iron-ptarl-reboot-recovery-r1.service",
+    "initial_main_pid": 12094,
+    "reuse_models": 72,
+    "reuse_maximum_difference": 2.2737367544323206e-13,
+    "monitor_interval_seconds": 600
   }
 }
