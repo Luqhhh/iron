@@ -5979,22 +5979,38 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V32_TIME_A60V7_50",
-    "score": 96.3727,
+    "candidate": "DE3_IRON_USER_REQUESTED",
+    "score": 96.3749,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V18_B0_V12IRON_V7TIME",
-      "score": 96.3679
+      "candidate": "V32_TIME_A60V7_50",
+      "score": 96.3727,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V18_B0_V12IRON_V7TIME",
+        "score": 96.3679
+      },
+      "delta_vs_previous_best": 0.0048,
+      "target": 96.5,
+      "target_met": false,
+      "margin_to_target": -0.1273,
+      "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
+      "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
+      "reported_date": "2026-09-28",
+      "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
     },
-    "delta_vs_previous_best": 0.0048,
+    "delta_vs_previous_best": 0.0022,
     "target": 96.5,
     "target_met": false,
-    "margin_to_target": -0.1273,
-    "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
-    "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
-    "reported_date": "2026-09-28",
-    "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
+    "margin_to_target": -0.1251,
+    "recipe": "V32_TIME_A60V7_50 parent; iron = parent_iron + 0.5*(mean(J42,J104729,J130363)-J42); parent time field strings unchanged",
+    "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930/Luqhhh_bf_tap_predict_round2.zip",
+    "reported_date": "2026-09-30",
+    "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8",
+    "note": "Explicitly user-requested exploration scored +0.0022 over the former best. Historical no-finalist decision and all promotion gates remain unchanged."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -16383,5 +16399,83 @@
       96.45,
       96.5
     ]
+  },
+  "ptarl_current_reference_sync_2026_09_30": {
+    "status": "latest_reported_best_synchronized_four_seed_reference_required",
+    "candidate": "DE3_IRON_USER_REQUESTED",
+    "score": 96.3749,
+    "source": "user_reported_not_independently_verified",
+    "source_workspace": "/home/lux1/iron",
+    "source_commit": "d96d151",
+    "source_status_sha256": "7ddc286447ddf1746cdfe012ea794c925d78ba4270ad8f6274f475db5636cdd8",
+    "package_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
+    "original_DE3_no_finalist_unchanged": true,
+    "original_DE3_four_seed_confirmation": false,
+    "existing_DE3_complete_development_seeds": [
+      42,
+      3407
+    ],
+    "missing_DE3_derived_reference_seeds": [
+      7777,
+      12011
+    ],
+    "legacy_V32_reference_fallback": false,
+    "formal_manifest_generated": false,
+    "new_official_fits": 0,
+    "new_full_size_probes": 0,
+    "new_packages": 0,
+    "new_uploads": 0,
+    "milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "gaps": [
+      0.0251,
+      0.0751,
+      0.1251
+    ]
+  },
+  "ptarl_complete_execution_preparation_2026_09_30": {
+    "status": "execution_checked_current_reference_and_resource_admission_pending",
+    "branch": "codex/ptarl-space-calibration",
+    "G0": "engineering_checked_resource_not_admitted",
+    "G1": "unmeasured",
+    "engineering_status": "docs/ptarl_space_calibration/STATUS.md",
+    "execution_design": "docs/ptarl_space_calibration/PHASE_EXECUTION.md",
+    "focused_tests": 56,
+    "locked_suite": {
+      "passed": 1428,
+      "skipped": 8,
+      "warnings": 23
+    },
+    "locked_python": "3.12.12",
+    "complete_tiny_phase": {
+      "pair_units": 20,
+      "optimizer_runs": 120,
+      "kmeans_calls": 40,
+      "cold_models": 120,
+      "new_audit_fits": 0
+    },
+    "official_label_reads": 0,
+    "official_fits": 0,
+    "full_size_probes": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "formal_manifest_generated": false,
+    "current_platform_best": {
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
+      "source": "user_reported_not_independently_verified"
+    },
+    "legacy_V32_fallback": false,
+    "next_requirement": "independently_audited_four_seed_current_DE3_reference",
+    "proposed_incumbent_reference_estimators": 20,
+    "proposed_incumbent_reference_optimizer_runs": 40,
+    "incumbent_reference_budget_allocated": false,
+    "original_DE3_no_finalist_unchanged": true,
+    "development_budget_allocated": false,
+    "release_authorized": false
   }
 }

@@ -2035,3 +2035,21 @@ reference's27001; bind only native outer OOF, never old calibration cache.
 Formal phase/source/reference/gate audit/controller/resource admission pending;
 no official reads/fits/probes/packages/uploads. Future120/40 budget unallocated.
 G0 partial, G1 unmeasured, platform best96.3727 unchanged.
+
+
+## PTaRL complete execution preparation and current-reference correction (2026-09-30)
+
+56 focused tests; locked Python3.12.12 full suite1428 passed,8 historical
+private-cache/package skips,23 warnings. Complete tiny20-pair phase checks120
+optimizers/40 KMeans/120 cold models plus independent saved-prediction arithmetic.
+Complete scheduler/controller/freeze/resource admission programs implemented;
+no formal manifest, full-size probe, official reads/fits or release performed.
+Main worktree d96d151 records user-reported DE3_IRON_USER_REQUESTED=96.3749
+as latest platform best. Synchronize that current reference; V32=96.3727 is
+historical. DE3 original no-finalist and lack of confirmation remain unchanged.
+Before PTaRL freeze, require externally anchored audited four-seed DE3 current
+iron overlay; existing two-seed development cannot substitute for7777/12011.
+No legacy V32 fallback. Next work is incumbent-reference completion, not DE3
+promotion; new20 reference estimators/40 optimizers are proposed, not allocated.
+Resource probe32 cap scales to formal240; unchanged1536MiB and7200s gates.
+See docs/ptarl_space_calibration/PHASE_EXECUTION.md; no upload/desktop authority.

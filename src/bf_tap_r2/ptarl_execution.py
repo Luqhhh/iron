@@ -3,6 +3,7 @@
 Complete formal phase/source/reference/resource admission remains separate.
 """
 import json
+import time
 from pathlib import Path
 
 import numpy as np
@@ -49,20 +50,24 @@ def execute_unit(task, training, query, settings, output, ledger_root, policy_sh
         validate_partition(training,query)
         fitting,calibration,info=inner_parts(training)
         target=task['target']
-        artifacts,metadata,teachers,banks={},{},{},{}
+        artifacts,metadata,teachers,banks,costs={},{},{},{},{}
         for role,part in [('teacher_inner',fitting),('teacher_outer',training)]:
             with ledger.event('optimizer',(name,role),dict(fit_ids_digest=digest(part.sample_id.tolist()))) as event:
                 with torch.random.fork_rng(devices=[]):
                     teacher=GradientRegressor('BASE',settings).initialize(part,part[target].to_numpy())
+                    started=time.perf_counter()
                     if role=='teacher_inner':
                         teacher.train(settings['max_epochs'],(clean(calibration),calibration[target].to_numpy()))
                     else:
                         teacher.train(teachers['teacher_inner'].selected_epoch_)
+                    seconds=time.perf_counter()-started
+                steps=teacher.stopped_epoch_*int(np.ceil(len(part)/settings['batch_size']))
+                costs[role]=dict(training_seconds=seconds,training_steps=steps)
                 teacher.save(output/f'{role}.pt')
                 artifacts[role]=file_hash(output/f'{role}.pt')
                 metadata[role]=teacher.metadata()
                 teachers[role]=teacher
-                event.update(model_sha256=artifacts[role],selected_epoch=teacher.selected_epoch_)
+                event.update(model_sha256=artifacts[role],selected_epoch=teacher.selected_epoch_,**costs[role])
             with ledger.event('kmeans',(name,role),dict(teacher_sha256=artifacts[role])) as event:
                 bank=prototype_bank(teacher,clean(part),settings['prototype_count'],settings['random_seed'])
                 banks[role]=bank
@@ -76,21 +81,26 @@ def execute_unit(task, training, query, settings, output, ledger_root, policy_sh
                 role=f'{arm}_{stage}'
                 with ledger.event('optimizer',(name,role),dict(fit_ids_digest=digest(part.sample_id.tolist()))) as event:
                     model=PrototypeRegressor(arm,settings).initialize(part,part[target].to_numpy(),*bank)
+                    started=time.perf_counter()
                     if stage=='selector':
                         selected=model.train(settings['max_epochs'],(clean(calibration),calibration[target].to_numpy()))
+                        seconds=time.perf_counter()-started
                         predictions[f'{arm}_calibration']=model.predict(clean(calibration))
                     else:
                         model.train(selected)
+                        seconds=time.perf_counter()-started
                         predictions[arm]=model.predict(query)
                     artifacts[role]=model.save(output/f'{role}.pt')
                     metadata[role]=model.metadata()
-                    event.update(model_sha256=artifacts[role],selected_epoch=model.selected_epoch_)
+                    steps=model.stopped_epoch_*int(np.ceil(len(part)/settings['batch_size']))
+                    costs[role]=dict(training_seconds=seconds,training_steps=steps)
+                    event.update(model_sha256=artifacts[role],selected_epoch=model.selected_epoch_,**costs[role])
         with (output/'predictions.npz').open('xb') as stream:np.savez(stream,**predictions)
         complete=dict(task=task,name=name,settings=settings,ledger_policy_sha256=policy_sha256,
             training_sha256=frame_digest(training),query_sha256=frame_digest(query),
             fitting_sha256=frame_digest(fitting),calibration_sha256=frame_digest(calibration),
             inner_fold_hash=info['inner_fold_hash'],group_hash=info['group_hash'],
-            artifacts=artifacts,metadata=metadata,prediction_sha256=file_hash(output/'predictions.npz'))
+            artifacts=artifacts,metadata=metadata,costs=costs,prediction_sha256=file_hash(output/'predictions.npz'))
         write_new(output/'complete.json',complete)
         anchor=file_hash(output/'complete.json')
         pair.update(unit_complete_sha256=anchor)
@@ -106,7 +116,7 @@ def audit_unit(directory, task, training, query, settings, *, expected_sha256, l
         raise ValueError('Paired completion identity mismatch')
     complete=json.loads((directory/'complete.json').read_text())
     roles={'teacher_inner','teacher_outer',*[f'{a}_{s}' for a in ARMS for s in ('selector','refit')]}
-    if (set(complete['artifacts']) != roles or set(complete['metadata']) != roles
+    if (set(complete['artifacts']) != roles or set(complete['metadata']) != roles or set(complete['costs']) != roles
             or {p.name for p in directory.iterdir()} != {'complete.json','predictions.npz',*[f'{r}.pt' for r in roles]}):
         raise ValueError('Unexpected/incomplete paired unit artifacts')
     fitting,calibration,info=inner_parts(training)
@@ -121,9 +131,14 @@ def audit_unit(directory, task, training, query, settings, *, expected_sha256, l
         result=dict(unit_complete_sha256=expected_sha256))}
     for role in roles:
         part=fitting if role.endswith('inner') or role.endswith('selector') else training
+        cost=complete['costs'][role]
+        if (set(cost)!={'training_seconds','training_steps'} or not np.isfinite(cost['training_seconds'])
+                or cost['training_seconds']<=0 or cost['training_steps'] !=
+                complete['metadata'][role]['stopped_epoch']*int(np.ceil(len(part)/settings['batch_size']))):
+            raise ValueError('Training cost trace mismatch')
         expected_events['optimizer',(name,role)]=dict(
             payload=dict(fit_ids_digest=digest(part.sample_id.tolist())),
-            result=dict(model_sha256=complete['artifacts'][role],selected_epoch=complete['metadata'][role]['selected_epoch']))
+            result=dict(model_sha256=complete['artifacts'][role],selected_epoch=complete['metadata'][role]['selected_epoch'],**cost))
     for role,arm_role in [('teacher_inner','CONTROL_selector'),('teacher_outer','CONTROL_refit')]:
         expected_events['kmeans',(name,role)]=dict(payload=dict(teacher_sha256=complete['artifacts'][role]),
             result=dict(prototype_receipt=complete['metadata'][arm_role]['prototype_initialization']))

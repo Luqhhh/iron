@@ -1,11 +1,13 @@
 version: ptarl-code-auxiliary-preparation-v1
-stage: paired_unit_execution_and_audit_preparation
+stage: complete_execution_preparation_pending_current_reference_and_resource_admission
 base_commit: 326ea4f
 platform_milestones: [96.4, 96.45, 96.5]
 platform_reference:
-  candidate: V32_TIME_A60V7_50
-  score: 96.3727
+  candidate: DE3_IRON_USER_REQUESTED
+  score: 96.3749
   source: user_reported_not_independently_verified
+  evidence_commit: d96d151
+  package_sha256: 81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0
 source:
   upstream_commit: 0c30b47d80e642c537feadf6e1542f0c5fc7bbc9
   models_sha256: aa2fc62de68bf554819f763f6b6dbda2cb0fb5ac37ca87d4e43f90284d987db7
@@ -13,6 +15,11 @@ source:
   interpretation: code_inspired_direct_native_head_auxiliary_geometry
   paper_projected_head: not_selected
 arms: [CONTROL, PTARL_AUX]
+calibration:
+  split_seed: 42
+  n_splits: 5
+  held_fold: 0
+  native_calibration_cache: forbidden
 training:
   random_seed: 42
   width: 256
@@ -66,7 +73,7 @@ recorded_tiny_synthetic_smoke:
   audit_new_optimizer_or_kmeans_calls: 0
   formal_admission: false
 future_formal_stage:
-  status: not_admitted_requires_completed_runner_ledger_auditor_controller_and_G0
+  status: not_admitted_requires_current_four_seed_incumbent_reference_and_G0
   proposed_development_pair_units: 20
   proposed_development_optimizer_runs: 120
   proposed_development_kmeans_calls: 40
@@ -75,7 +82,8 @@ future_formal_stage:
   confirmation_seeds: [7777, 12011]
   fixed_candidate_blend: 0.8_current_plus_0.2_member_one_target_only
   other_target: unchanged_current
-  reference: verified_same_seed_native_cache_never_E_COMPOSE_factory_mix
+  reference: verified_four_seed_native_plus_current_DE3_iron_overlay
+  legacy_reference_fallback: false
   development_gate:
     both_complete_seeds_positive: true
     mean_gain_minimum: 0.01
@@ -91,3 +99,21 @@ future_formal_stage:
   cross_seed_oof_averaging: forbidden
 monitoring: {interval_seconds: 600, between_check_polling: false}
 release: {automatic_packages: false, desktop_writes: 0, agent_uploads: 0}
+synthetic_resource_probe:
+  seed: 57001
+  rows: 2755
+  train_rows: 2204
+  query_rows: 551
+  max_epochs: 32
+  task: {target: tap_time_len, seed: 42, fold: 0}
+  limits: {pair_unit: 1, optimizer: 6, kmeans: 2}
+  formula: 10+2*sin(x0)+x1*x2+0.5*x3+0.1*epsilon
+  each_arm_must_beat_training_median: true
+  cold_tolerance: 1.0e-8
+resources:
+  workers: 4
+  numeric_threads: 1
+  maximum_worker_mib: 1536
+  free_memory_rule: 4*maximum_measured_peak+1024
+  projection_seconds: 20*(sum_role_training_seconds_per_step*9*240+kmeans_seconds)/4*1.5+300
+  projection_maximum_seconds: 7200
