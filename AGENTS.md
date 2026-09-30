@@ -2008,3 +2008,19 @@ G1 remains unmeasured, official candidate fits0. Next prepare an exact-source
 current-DE3-reference-bound complete-coverage controller before development;
 retain all original gates. No auto confirmation, full-data fit, package,
 desktop write or upload. Details docs/dnnr_taylor/G0_RESOURCE_RESULTS.md.
+
+### DNNR formal controller preparation isolated (2026-09-30)
+
+Create codex/dnnr-taylor-development from5ceea22 in its own worktree. Keep
+codex/dnnr-taylor-preparation source807-file freeze and complete successful
+probe intact. Do not add controller source to the preserved G0 worktree:
+its exact-source verifier must remain executable on the original snapshot.
+New controller must prove byte-identical checked core/model/audit/probe
+modules, bind old resource manifest/admission, and pass fresh locked checks
+for the new frozen execution wrapper before official data fits.
+
+Use the existing zero-fit PTaRL current-reference reader and original native
+root/home/lux1/iron with the completed DE3 overlay492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4.
+No V32-only fallback. Preserve negative PTaRL cost evidence; no new PTaRL
+fit is permitted by this transition. G1 and official candidate fits remain0;
+serial DNNR-before-DANet and all fixed gates/release rules unchanged.

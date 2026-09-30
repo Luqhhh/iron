@@ -16263,5 +16263,25 @@
       }
     },
     "next": "current_incumbent_bound_complete_coverage_phase_controller_before_official_fits"
+  },
+  "dnnr_formal_execution_preparation": {
+    "date": "2026-09-30",
+    "branch": "codex/dnnr-taylor-development",
+    "stage": "CURRENT_REFERENCE_BOUND_CONTROLLER_PREPARATION",
+    "base_commit": "5ceea22",
+    "G0_model_resource_result": "passed_in_original_preserved_preparation_worktree",
+    "G1": "UNMEASURED_NO_OFFICIAL_CANDIDATE_FITS",
+    "preserved_resource_workspace": "/home/lux1/iron/local/worktrees/dnnr-taylor-preparation",
+    "resource_manifest_sha256": "a9f30f90e2eccb5aeef85d025bc10b64dba3bbbea9c1526c27aa957aa0bf12dd",
+    "resource_admission_sha256": "af3868187156a8f7adcdaf953882f275b787434ef63e07fdfd01baa1ea7f716e",
+    "current_incumbent_overlay_workspace": "/home/lux1/iron/local/worktrees/incumbent-de3-reference/local/incumbent-de3-reference-four-seed-r2",
+    "current_incumbent_overlay_sha256": "492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4",
+    "existing_zero_fit_reference_reader_workspace": "/home/lux1/iron/local/worktrees/ptarl-space-calibration",
+    "existing_reader_commit": "15647b9",
+    "source_core_transfer": "require_byte_identical_checked_DNNR_mechanism_and_preflight_code_plus_fresh_controller_locked_tests",
+    "official_candidate_fits": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
