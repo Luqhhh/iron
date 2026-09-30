@@ -17184,7 +17184,7 @@
     "results_commit": "9fb10c2"
   },
   "round2_ema_time_followup_20261001": {
-    "status": "four_zero_fit_packages_ready_local_only_pending_user_feedback",
+    "status": "delivered_to_desktop_pending_user_feedback",
     "authorization": {
       "user_request": "推进ema时长方向",
       "scope": "reuse scored EMA endpoint for three sparse replacement probes and an independently scored-column combination; no new fitting",
@@ -17334,6 +17334,52 @@
       "private_receipt": "local/runs/ema-time-followup-20261001/probes-r2/score-analysis-r1/analysis.json",
       "private_receipt_sha256": "97ede407c7a8d9f88a854e9e4d8716631afaf026e72f5e3a6d836013ce39a4c8",
       "document": "docs/ema_time_followup/DELIVERY.md"
+    },
+    "status_before_desktop_handoff": "four_zero_fit_packages_ready_local_only_pending_user_feedback",
+    "desktop_handoff_20261001": {
+      "user_authorization": "写桌面",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-time-followup-20261001",
+      "packages": [
+        {
+          "number": 1,
+          "candidate": "EMA_TIME_Q25",
+          "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-EMA-time-followup-20261001/01_EMA_TIME_Q25/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "4182288193295b502d40ab6526d9650c17250c33dbd08ea9de0761364cb5530f",
+          "readback_passed": true
+        },
+        {
+          "number": 2,
+          "candidate": "EMA_TIME_Q75",
+          "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-EMA-time-followup-20261001/02_EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+          "readback_passed": true
+        },
+        {
+          "number": 3,
+          "candidate": "EMA_TIME_Q100",
+          "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-EMA-time-followup-20261001/03_EMA_TIME_Q100/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "a102cbf123981ca3103b5ba24f78b8b36203bee29810c6f0b68c6aad8ca139cb",
+          "readback_passed": true
+        },
+        {
+          "number": 4,
+          "candidate": "DE3_IRON_EMA_TIME_Q50",
+          "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-EMA-time-followup-20261001/04_DE3_IRON_EMA_TIME_Q50/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "136d752a663f0f0c924f992cfe57f0d9f32e6d9b0106b4e2c83472b808239b4a",
+          "readback_passed": true
+        }
+      ],
+      "G0": "passed",
+      "new_fits": 0,
+      "agent_uploads": 0,
+      "desktop_packages_written": 4,
+      "private_receipt": "local/runs/ema-time-followup-20261001/probes-r2/desktop-delivery-r1.json",
+      "private_receipt_sha256": "d0a8127064f3f118e6712f25352a85e069a384f6a81c00d6603be266c00c67ef",
+      "independent_audit": "local/runs/ema-time-followup-20261001/probes-r2/desktop-independent-audit-r1.json",
+      "independent_audit_sha256": "588a0d190f4028d13caaaa01b82bf8fbc8c5a29a5d4fd4b28b0348b50333b5c1",
+      "original_budget_preserved_as_pre_desktop_authorization_snapshot": true,
+      "all_four_platform_scores_pending": true,
+      "quota_inferred": false
     }
   }
 }

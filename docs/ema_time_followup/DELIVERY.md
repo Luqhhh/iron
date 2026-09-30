@@ -66,3 +66,18 @@
 - Q25 保留为中间峰值/减小替换强度的备选，尤其增大强度后下降时；不必四包一次全部测。
 
 本补充不改变冻结候选、权重、包字节、历史决定或当前平台最佳；没有新拟合、平台结果、桌面写入或助手上传。不从当前日期或这四个已准备包推断用户拥有四个新名额。
+
+## 用户授权桌面交付（2026-10-01）
+
+用户随后明确要求“写桌面”。四个原包已逐字节复制到 `C:\Users\lqh22\Desktop\submission-EMA-time-followup-20261001`：
+
+1. `01_EMA_TIME_Q25`
+2. `02_EMA_TIME_Q75`
+3. `03_EMA_TIME_Q100`
+4. `04_DE3_IRON_EMA_TIME_Q50`
+
+每个子目录包含 `Luqhhh_bf_tap_predict_round2.zip`，根目录 README.txt 说明分数边界、条件组合算术及测试用途；编号用于回传对应，不表示必须依次提交全部包。冲 96.4 优先 03，方向诊断优先 02。
+
+新进程独立核对四个桌面 ZIP：SHA-256 和 CSV 字节与原包一致，CRC/结构正确，各 322 行官方模板顺序，预测有限且非负。原冻结 1,442 个文件再次核验通过。原包、原模型和旧桌面目录未覆盖；新拟合 0、助手上传 0，四个新包仍待用户反馈，不推断账户额度。
+
+原配置、预算中的 desktop_writes=0 是此前未授权桌面阶段的冻结快照，保持不变；本次新增授权和四个桌面复制另行登记于 `EVIDENCE_STATUS.json -> round2_ema_time_followup_20261001 -> desktop_handoff_20261001`。私有凭证为 probes-r2 下 `desktop-delivery-r1.json` 和 `desktop-independent-audit-r1.json`，均不入 Git。
