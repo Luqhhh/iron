@@ -1,0 +1,20 @@
+{
+  "version": "ptarl-ema-exploration-release-20261001",
+  "authorization": "用户选择 PTaRL 时间列、EMA 铁水量并要求做全量拟合等工作，继续",
+  "candidates": ["PTARL_TIME_Q20", "EMA_IRON_EMA_TIME"],
+  "comparison": {"candidate": "LOC_DIAG_EMA_TIME", "score": 96.3895},
+  "ptarl_formula": "0.8*V32_time+0.2*PTARL_AUX; current EMA incumbent iron strings unchanged",
+  "ema_formula": "current_iron+0.5*(EMA_joint_iron-V12_joint_iron); current EMA incumbent time strings unchanged",
+  "scientific_source": "/home/lux1/iron/local/worktrees/ptarl-unbudgeted-development",
+  "ptarl_manifest_sha256": "75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443",
+  "ptarl_audit_sha256": "98f2b02fb9230c5d97d4fb18f43d0eea6edf8cf7dc4403f795d82960f9cef8e5",
+  "ptarl_arithmetic_sha256": "275c3d1c85a6b3f8d1c529aeaada62bc49110d95a4edd5f23b5b89ed573b8887",
+  "ptarl_terminal_sha256": "d814875d83decfe6ac14a1d777b00bb88610515f60d79dfdf2bb04474da099cb",
+  "output": "/home/lux1/iron/local/runs/ptarl-ema-exploration-release-20261001/release-r1",
+  "count_limits": {"full_training_procedures": 2, "optimizer_runs": 8, "kmeans_calls": 2, "new_CV_fits": 0, "new_confirmation_seeds": 0},
+  "ptarl_support": "unchanged paired executor: two teacher runs, CONTROL selector/refit and AUX selector/refit; CONTROL is audited support, not a third release",
+  "execution": {"workers": 1, "numeric_threads": 1, "maximum_runtime_seconds": null, "monitor_interval_seconds": 600, "automatic_retries": false},
+  "historical_no_finalist_and_formal_gates": "unchanged; explicit exploration release exception for these two packages only",
+  "desktop_writes": 0,
+  "agent_uploads": 0
+}
