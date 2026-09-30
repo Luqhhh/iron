@@ -17282,6 +17282,58 @@
     "correction": "DE3 exported OOF columns already contain the .5 replacement; average full deployment columns directly; no repeated replacement",
     "historical_decisions_unchanged": true,
     "current_best_unchanged": true,
-    "priority": "Q75 first to inspect stronger EMA replacement; decide Q100 versus Q25 after user feedback; DE3+EMA is a separate scored-column control; no quota inferred"
+    "priority": "Q75 first to inspect stronger EMA replacement; decide Q100 versus Q25 after user feedback; DE3+EMA is a separate scored-column control; no quota inferred",
+    "score_bounds_and_test_value_analysis": {
+      "source": "user_reported_frozen_package_scores_not_independently_verified",
+      "metric_assumption": "fixed-row additive equal-weight WMAPE; fixed iron for the three probes; predictions affine in q; no changed postprocessing",
+      "observations": {
+        "S_q0": 96.3727,
+        "S_q50": 96.3895,
+        "S_DE3": 96.3749
+      },
+      "Q25": {
+        "bound_kind": "lower_not_prediction",
+        "nominal": 96.3811,
+        "rounding_conservative": 96.38105,
+        "reliable_point_prediction": null,
+        "upper_bound_not_established": true
+      },
+      "Q75": {
+        "bound_kind": "upper_not_prediction",
+        "nominal": 96.3979,
+        "rounding_conservative": 96.398,
+        "reliable_point_prediction": null,
+        "cannot_reach_96_4_under_assumptions": true
+      },
+      "Q100": {
+        "bound_kind": "upper_not_prediction",
+        "nominal": 96.4063,
+        "rounding_conservative": 96.40645,
+        "reliable_point_prediction": null,
+        "upper_bound_allows_but_does_not_predict_96_4": true
+      },
+      "DE3_EMA": {
+        "conditional_additive_score": 96.3917,
+        "rounding_error_bound": 0.00015,
+        "measured": false,
+        "increment_vs_current_ema": 0.0022,
+        "independent_cross_target_interaction": false
+      },
+      "selection_guidance": {
+        "direction_diagnostic": "Q75 first",
+        "immediate_96_4_goal": "among the stronger extrapolation probes, Q100 before Q75; Q75 is bounded below the goal",
+        "combo": "optional score realization, low exploration information; no need to spend quota just to establish metric additivity",
+        "Q25": "optional interior-peak/decreased-replacement probe; not ruled out by its lower bound",
+        "all_four_mandatory": false,
+        "quota_inferred": false
+      },
+      "new_fits": 0,
+      "new_platform_results": 0,
+      "agent_uploads": 0,
+      "desktop_writes": 0,
+      "private_receipt": "local/runs/ema-time-followup-20261001/probes-r2/score-analysis-r1/analysis.json",
+      "private_receipt_sha256": "97ede407c7a8d9f88a854e9e4d8716631afaf026e72f5e3a6d836013ce39a4c8",
+      "document": "docs/ema_time_followup/DELIVERY.md"
+    }
   }
 }
