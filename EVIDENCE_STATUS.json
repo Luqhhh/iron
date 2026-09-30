@@ -17219,7 +17219,7 @@
     "results_commit": "9fb10c2"
   },
   "round2_ema_time_followup_20261001": {
-    "status": "Q75_Q100_user_feedback_registered_tied_best_Q25_unreported_Q50_combo_deferred",
+    "status": "Q75_Q100_scores_registered_DE3_Q75_reserve_ready_platform_test_deferred",
     "authorization": {
       "user_request": "推进ema时长方向",
       "scope": "reuse scored EMA endpoint for three sparse replacement probes and an independently scored-column combination; no new fitting",
@@ -17325,7 +17325,7 @@
     "correction": "DE3 exported OOF columns already contain the .5 replacement; average full deployment columns directly; no repeated replacement",
     "historical_decisions_unchanged": true,
     "current_best_unchanged": false,
-    "priority": "Use Q75 as preferred representative of tied Q75/Q100 reports; Q50 combo remains deferred; current user requested registration/push first and only asked combo arithmetic; no new package generated",
+    "priority": "DE3+Q75 is explicitly reserve only, not in current platform test queue; wait for more informative candidates with larger gains, do not fill submission slots with this package",
     "score_bounds_and_test_value_analysis": {
       "source": "user_reported_frozen_package_scores_not_independently_verified",
       "metric_assumption": "fixed-row additive equal-weight WMAPE; fixed iron for the three probes; predictions affine in q; no changed postprocessing",
@@ -17517,11 +17517,121 @@
         "conditional_score": 96.3942,
         "conditional_extra_gain": 0.0022,
         "measured": false,
+        "generated": true,
+        "margin_to_96_4": -0.0058,
+        "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
+        "package": "local/runs/ema-time-followup-20261001/reserve-DE3-Q75-r1/DE3_IRON_EMA_TIME_Q75_RESERVE/Luqhhh_bf_tap_predict_round2.zip",
+        "test_status": "explicitly_deferred_reserve_only",
+        "in_current_platform_test_queue": false
+      },
+      "quota_inferred": false
+    },
+    "reserve_combination_20261001": {
+      "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
+      "G0": "passed",
+      "G1": "unmeasured_combination_reserve_not_formal_promotion",
+      "role": "reserve_candidate",
+      "platform_testing": "temporarily_deferred_by_explicit_user_instruction",
+      "in_current_platform_test_queue": false,
+      "reason": "information value low; expected gain limited; wait for candidates more worthy of submission quota",
+      "package": "local/runs/ema-time-followup-20261001/reserve-DE3-Q75-r1/DE3_IRON_EMA_TIME_Q75_RESERVE/Luqhhh_bf_tap_predict_round2.zip",
+      "zip_sha256": "86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3",
+      "csv_sha256": "6446d0c4dd7a5b724fb574dccbfb38a46b0694ea47d43a7d6e766f808d6b8dde",
+      "manifest_sha256": "2bd6bc52e400243ce1b928364348b1ec767cad0562b4e760e477ff4371f7ba6e",
+      "release_sha256": "050928147d0174f90849b066b0f68b2ac369958bc646aed0c85cef3fadacf9c0",
+      "independent_cold_audit_sha256": "90d02a3462ba962cdc5ffc185a9f111b436d3eab179e2427435b75f3cfc9ed62",
+      "readme_sha256": "30774c14afbbbe57b516765b0d5aadf70ebf21a59ec88e2a75f9ef68e214e594",
+      "frozen_files": 1451,
+      "platform_score": null,
+      "conditional_score": 96.3942,
+      "conditional_extra_gain_vs_Q75": 0.0022,
+      "conditional_score_is_not_measured": true,
+      "new_fits": 0,
+      "new_packages": 1,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "focused_locked_python_3_12_tests_passed": 10,
+      "original_source_full_suite_passed": 1325,
+      "current_best_unchanged": true,
+      "user_request": "生成新包，标记为暂不平台测试、列为替补候选，等待后续更值得名额的候选，因为这个信息量很低而且提分有限",
+      "private_status_receipt": "local/runs/ema-time-followup-20261001/reserve-DE3-Q75-r1/reserve-status.json",
+      "private_status_receipt_sha256": "998874e68ed2f0328cf41cc9a8ec01e3883993bd68757c6c8cfa03d43d0eded8",
+      "independent_cold_audit": "local/runs/ema-time-followup-20261001/reserve-DE3-Q75-r1/independent-cold-audit.json",
+      "source_iron_package": "DE3_IRON_USER_REQUESTED",
+      "source_time_package": "EMA_TIME_Q75",
+      "source_columns_copied_as_original_strings": true,
+      "new_package_does_not_replace_old_fourth_Q50_combination": true
+    },
+    "history_before_reserve_generation": {
+      "combo": {
+        "conditional_score": 96.3942,
+        "conditional_extra_gain": 0.0022,
+        "measured": false,
         "generated": false,
         "margin_to_96_4": -0.0058
       },
-      "quota_inferred": false
+      "status": "Q75_Q100_user_feedback_registered_tied_best_Q25_unreported_Q50_combo_deferred",
+      "priority": "Use Q75 as preferred representative of tied Q75/Q100 reports; Q50 combo remains deferred; current user requested registration/push first and only asked combo arithmetic; no new package generated"
     }
+  },
+  "ptarl_ema_user_exploration_release_20261001": {
+    "status": "full_training_serial_job_actually_active",
+    "service": "iron-ptarl-ema-exploration-r1.service",
+    "initial_main_pid": 66853,
+    "started_local": "2026-10-01T01:16:38+08:00",
+    "observed_ns": 1790788657732847582,
+    "implementation_commit": "651da28",
+    "manifest_sha256": "b90a3ca64eaa050248c873ff5e86c436d333f43f4f992473079883e2e8a581a9",
+    "engineering_receipt_sha256": "06e84b5a74569a682a031a0f011cfcb2511090fa4bff943ab364075027d37f14",
+    "frozen_files": 1837,
+    "comparison": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "execution_workers": 1,
+    "maximum_runtime_seconds": null,
+    "monitor_interval_seconds": 600,
+    "automatic_retries": false,
+    "packages": 0,
+    "uploads": 0,
+    "user_authorization": "用户选择PTaRL时间列、EMA铁水量并要求做全量拟合等工作，继续",
+    "branch": "codex/ptarl-ema-exploration-release",
+    "documentation": "docs/ptarl_ema_exploration_release/PREREGISTRATION.md",
+    "execution_document": "docs/ptarl_ema_exploration_release/EXECUTION.md",
+    "G0": "engineering_source_reference_and_full_training_execution_admitted_model_audits_pending",
+    "G1": "explicit_user_requested_exploration_not_four_seed_promoted",
+    "private_root": "local/runs/ptarl-ema-exploration-release-20261001/release-r1",
+    "activation_sha256": "2c9a0fb79ea0a12f2e0c14775d57f95e244156d4bbbc8243e44d52ee935b2ee8",
+    "locked_tests": {
+      "passed": 1337,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "original_scientific_manifest_sha256": "75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443",
+    "count_limits": {
+      "full_training_procedures": 2,
+      "optimizer": 8,
+      "kmeans": 2,
+      "new_CV_fits": 0,
+      "new_confirmation_seeds": 0
+    },
+    "candidates": [
+      {
+        "candidate": "PTARL_TIME_Q20",
+        "target": "tap_time_len",
+        "formula": ".8*V32_time+.2*PTARL_AUX",
+        "other_field": "current_Q75_iron_strings"
+      },
+      {
+        "candidate": "EMA_IRON_EMA_TIME",
+        "target": "tap_iron",
+        "formula": "current_iron+.5*(EMA_joint_iron-V12_joint_iron)",
+        "other_field": "current_Q75_time_strings"
+      }
+    ],
+    "historical_decisions_and_gates": "unchanged",
+    "desktop_writes": 0
   },
   "ema_evaluation_diagnostics_20261001": {
     "status": "completed_zero_fit_current_Q75_pairing_and_sensitivity",
