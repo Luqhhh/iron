@@ -17522,5 +17522,44 @@
       },
       "quota_inferred": false
     }
+  },
+  "ema_evaluation_diagnostics_20261001": {
+    "status": "completed_zero_fit_current_Q75_pairing_and_sensitivity",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392
+    },
+    "G0": "passed_independent_identity_and_arithmetic",
+    "G1": "descriptive_two_complete_seeds_not_formal_promotion",
+    "private_root": "local/runs/ema-evaluation-diagnostics-20261001/zero-fit-r3",
+    "report_sha256": "23f588d2ece47bbae89fd5a80051c2c359c1c0e8baec1e07489b7ab6f4ec84b2",
+    "audit_sha256": "86bd8041e01bfe3e83fb0ae10f9cb9fff8ce53aed4830740c732410259964bcf",
+    "documentation": "docs/ema_evaluation_diagnostics/RESULTS.md",
+    "ptarl_common_parent_gains_vs_Q75": [
+      0.00572140600091861,
+      0.010014920743051804
+    ],
+    "ptarl_common_parent_mean_gain_vs_Q75": 0.007868163371985207,
+    "parent_prediction_identity_differences": {
+      "42": 0.23392923341023675,
+      "3407": 0.15114241766360692
+    },
+    "V45_recorded_zero_correction_MAE_uses_final_seed": true,
+    "V45_old_spout_indicator_constant": true,
+    "V45_corrected_sign_and_corrector_fits": 0,
+    "V29_conditional_net_utility_not_tested": true,
+    "training_scale": "prospectively_designed_not_fitted",
+    "new_fits": 0,
+    "new_split_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "historical_gates_and_decisions_unchanged": true,
+    "locked_tests": {
+      "passed": 1334,
+      "warnings": 23,
+      "final_focused_passed": 9
+    },
+    "independent_max_arithmetic_difference": 6.271025365656158e-16
   }
 }
