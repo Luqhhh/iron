@@ -16302,5 +16302,37 @@
       "release_authorized": false,
       "requires_independent_artifact_audit": true
     }
+  },
+  "ptarl_space_calibration_2026_09_30": {
+    "status": "partition_model_checked_formal_stage_pending",
+    "branch": "codex/ptarl-space-calibration",
+    "design": "docs/ptarl_space_calibration/DESIGN.md",
+    "engineering_status": "docs/ptarl_space_calibration/STATUS.md",
+    "spec": "configs/ptarl_space_calibration/SPEC.yaml",
+    "G0": "partial_terms_and_partition_model_checked",
+    "G1": "unmeasured",
+    "official_label_reads": 0,
+    "official_fits": 0,
+    "full_size_probes": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "focused_tests": 19,
+    "locked_python": "3.12.12",
+    "locked_suite": {
+      "passed": 1391,
+      "skipped": 8,
+      "warnings": 23,
+      "historical_private_artifacts_missing_skips": 8
+    },
+    "future_budget_status": "proposed_not_allocated",
+    "future_development_optimizer_runs": 120,
+    "future_development_kmeans_calls": 40,
+    "release_authorized": false,
+    "platform_milestones": [
+      96.4,
+      96.45,
+      96.5
+    ]
   }
 }

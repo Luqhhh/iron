@@ -1,0 +1,85 @@
+version: ptarl-code-auxiliary-preparation-v1
+stage: core_and_partition_model_preparation
+base_commit: 326ea4f
+platform_milestones: [96.4, 96.45, 96.5]
+platform_reference:
+  candidate: V32_TIME_A60V7_50
+  score: 96.3727
+  source: user_reported_not_independently_verified
+source:
+  upstream_commit: 0c30b47d80e642c537feadf6e1542f0c5fc7bbc9
+  models_sha256: aa2fc62de68bf554819f763f6b6dbda2cb0fb5ac37ca87d4e43f90284d987db7
+  training_sha256: 2088953b90efc201a9c5251b3f7e721fa6c2c513122c7584fbe4b298c09e29bd
+  interpretation: code_inspired_direct_native_head_auxiliary_geometry
+  paper_projected_head: not_selected
+arms: [CONTROL, PTARL_AUX]
+training:
+  random_seed: 42
+  width: 256
+  blocks: 2
+  tabm_k: 16
+  dropout: 0.1
+  embedding_dim: 16
+  n_frequencies: 16
+  lite: true
+  frequency_init_scale: 0.01
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  batch_size: 256
+  max_epochs: 240
+  patience: 25
+  min_delta_standardized_mae: 0.00001
+  gradient_norm_clip: 5.0
+  prototype_count: 5
+  norm_epsilon: 1.0e-12
+  auxiliary_weights: {projection: 0.25, diversity: 0.25, orthogonalization: 0.25}
+mechanisms:
+  backbone: from_scratch_periodic_TabM_float64_matched_arms_not_native_float32_replay
+  teacher: training_partition_only_supervised_BASE
+  teacher_epoch: calibration_mae_select_then_fresh_outer_teacher_same_epoch
+  prototype_initialization: KMeans_training_teacher_latent_ensemble_mean
+  kmeans: {init: k-means++, n_init: 1, max_iter: 100, tol: 0.0001, random_seed: 42, algorithm: lloyd}
+  stage2: freshly_initialized_native_backbone_not_teacher_checkpoint
+  task_loss: mean_individual_member_standardized_mse
+  head: native_direct_latent
+  coordinate_estimator: three_width256_GELU_dropout0p1_layers_then_width5_softmax
+  projection: single_atom_exact_coordinate_weighted_cosine_cost
+  diversity_bins: 1_plus_floor_log2_full_minibatch_count_equal_width
+  constant_batch_bins: all_zero
+  sampled_rows: seeded_half_floor_at_least_one_without_replacement
+  diversity: global_all_pair_denominator_positive_pair_mean_diagonal_included
+  orthogonalization: L1_over_Frobenius_squared_plus_0p5_abs_L1_minus_K
+  zero_prototype: engineering_stop
+  postprocessing: none
+budget_this_preparation:
+  official_label_reads: 0
+  official_data_fits: 0
+  full_size_resource_probes: 0
+  full_data_fits: 0
+  packages: 0
+future_formal_stage:
+  status: not_admitted_requires_completed_runner_ledger_auditor_controller_and_G0
+  proposed_development_pair_units: 20
+  proposed_development_optimizer_runs: 120
+  proposed_development_kmeans_calls: 40
+  arithmetic: each_target_seed_fold_has_two_shared_teacher_runs_and_four_stage2_runs
+  development_seeds: [42, 3407]
+  confirmation_seeds: [7777, 12011]
+  fixed_candidate_blend: 0.8_current_plus_0.2_member_one_target_only
+  other_target: unchanged_current
+  reference: verified_same_seed_native_cache_never_E_COMPOSE_factory_mix
+  development_gate:
+    both_complete_seeds_positive: true
+    mean_gain_minimum: 0.01
+    positive_mean_PTARL_vs_CONTROL: true
+    mean_package_score_minimum: 96.25
+  confirmation_gate:
+    all_four_seeds_positive: true
+    seed_level_paired_lcb95_positive: true
+    t_multiplier: 2.3533634348018264
+    sample_sd_ddof: 1
+    positive_four_seed_PTARL_vs_CONTROL: true
+  fold_level: descriptive_only
+  cross_seed_oof_averaging: forbidden
+monitoring: {interval_seconds: 600, between_check_polling: false}
+release: {automatic_packages: false, desktop_writes: 0, agent_uploads: 0}

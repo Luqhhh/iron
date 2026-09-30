@@ -2008,3 +2008,16 @@ No confirmation fits, packages or uploads. Service exited successfully; schedule
 monitor recorded completion and stopped. Preserve this bounded RFM negative;
 next priority PTaRL needs its own design/budget, none allocated here. Results:
 docs/rfm_kernel_preparation/RESULTS.md. Platform best96.3727 unchanged.
+
+
+## PTaRL partition model preparation (2026-09-30)
+
+Branch codex/ptarl-space-calibration implements pinned author-code-inspired
+direct-head prototype auxiliaries on strong periodic TabM, not paper projected-
+head reproduction. Terms/partition model19 focused tests; locked Python3.12.12
+full suite1391 passed,8 historical private-cache/package skips,23 warnings.
+G0 partial: formal runner/ledger/independent phase audit/controller/resource
+admission pending. G1 unmeasured; official reads/fits/probes/packages0. Future
+120 optimizer/40 KMeans development budget is only a proposal, not allocated.
+Keep frozen2-development/4-confirmation seed gates and PTaRL->DNNR->DANet
+priority. Platform best96.3727 unchanged. See docs/ptarl_space_calibration/STATUS.md.
