@@ -17673,11 +17673,11 @@
     "independent_max_arithmetic_difference": 6.271025365656158e-16
   },
   "ema_training_scale_2026_10_01": {
-    "status": "serial_development_active_final_audit_pending",
-    "G0": "locked_source_runtime_serial_and_saved_reuse_admission_passed",
+    "status": "completed_fixed_two_fold_scale_diagnostic_no_promotion",
+    "G0": "passed_48_saved_states_cold_identity_metadata_arithmetic_and_actual_terminal",
     "G1": "fixed_two_fold_mechanism_diagnostic_not_promotion",
     "preregistration": "docs/ema_training_scale/PREREGISTRATION.md",
-    "documentation": "docs/ema_training_scale/ENGINEERING.md",
+    "documentation": "docs/ema_training_scale/RESULTS.md",
     "source_commit": "1f715bedb353476ab65fb148d22ace95e62e3f2a",
     "private_run": "local/runs/ema-training-scale-20261001/development-r1",
     "manifest_sha256": "96ff94c639459fe9eacb5f06b4e22e8f2a237a4fa616bd78e101d1c594fc9554",
@@ -17717,6 +17717,52 @@
       "skips": 0,
       "receipt_sha256": "1c244bfa6b9f27329cce5343951166b2568e5e0ba4d158e8a8b28902f0e72572"
     },
-    "historical_gates_and_decisions_unchanged": true
+    "historical_gates_and_decisions_unchanged": true,
+    "completed_local": "2026-10-01T02:46:48+08:00",
+    "new_estimators": 18,
+    "new_optimizer_runs": 36,
+    "new_resource_probe_fits": 0,
+    "software_test_synthetic_fits": "existing_locked_tests_excluded_from_scientific_fit_count",
+    "saved_models_checked": 48,
+    "metadata_traces_checked": 48,
+    "summary_sha256": "5bcf7a4ff3320da68d9b28d8ff92d06642db5b6d91ea2469af39eeef2f9e53b6",
+    "audit_sha256": "281264884f4215b899b0af9414ef363f90d7f7139d429695d70e6bcdfa60f5d3",
+    "terminal_sha256": "1f85635ab24106ef217c148a5751b43f3f42857b54e389901fe14b9dc85b4b91",
+    "terminal_verification_sha256": "d494169e614a185afaff701538f9374b0b2d6f48e8c893cab6ec8d03acc12b38",
+    "service_terminal": {
+      "Restart": "no",
+      "RuntimeMaxUSec": "infinity",
+      "MainPID": "0",
+      "Result": "success",
+      "ExecMainStatus": "0",
+      "ActiveState": "inactive",
+      "SubState": "dead"
+    },
+    "full_batch_cold_difference": 0.0,
+    "maximum_order_chunk_difference": 1.0019909183256459e-05,
+    "independent_arithmetic_max_difference": 5.273559366969494e-16,
+    "maximum_new_worker_rss_mib": 824.4453125,
+    "mean_component_score_effect_vs_same_scale_BASE": {
+      "EMA": {
+        "0.25": 0.005162508435740953,
+        "0.5": 0.01300992789984197,
+        "0.75": 0.0030581620940875118,
+        "1.0": -0.001850634098071735
+      },
+      "SAM": {
+        "0.25": -0.07684212825537738,
+        "0.5": -0.011695514377709978,
+        "0.75": -0.022348683072349884,
+        "1.0": -0.03288169971070853
+      }
+    },
+    "effect_is_not_current_Q75_package_gain": true,
+    "query_overlap_rows": 120,
+    "unique_evaluation_rows": 982,
+    "EMA_full_minus_small_response": "positive_seed42_negative_seed3407_for_all_three_smaller_sizes",
+    "SAM_full_pool_both_negative": true,
+    "pure_training_size_causal_explanation": "not_established_beta_updates_epoch_selection_and_small_scale_cap_covary",
+    "new_formal_promotions": 0,
+    "presentation": "local/runs/ema-training-scale-20261001/presentation-r3/training-scale.png"
   }
 }
