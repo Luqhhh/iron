@@ -2216,3 +2216,24 @@ Details: codex/ptarl-resource-entry-recovery,
 docs/ptarl_space_calibration/ENTRY_REFUSAL_RETRY.md. ModernNCA engineering
 remains partial, with no official fit; any new current-reference freeze must
 use the latest registered EMA time incumbent, preserving DE3/V32 history.
+
+### EMA weight probe feedback (2026-10-01, latest)
+
+User-reported Q75=96.3920 and Q100=96.3920, both +0.0025 versus Q50
+96.3895 and +0.0193 versus the common V32 parent96.3727. Register them as
+tied reported best; prefer Q75 as the representative because its component
+extrapolation is smaller, not because a unique statistical winner was shown.
+Read EVIDENCE_STATUS.json for the current reference. Preserve Q100, Q50 and
+all historical packages and decisions.
+
+Their complete two-seed local gains versus Q50 were negative at both seeds
+(mean Q75-.002626, Q100-.007349), so do not use local gain or local weight
+optimality as the sole veto. The tie at four reported decimals proves neither
+equality of unrounded scores nor a flat or optimal continuous weight interval.
+
+DE3 iron + Q75 time has conditional additive arithmetic96.3942, extra+.0022
+versus Q75, but no measured combination score or new package exists in this
+registration. User requested result commit/push first; no full fits, package
+generation, desktop rewrite or upload. Q25 is unreported; original fourth
+DE3+Q50 package remains deferred backup. Frozen gates/no-finalist decisions
+unchanged. Details: docs/ema_time_followup/DELIVERY.md.
