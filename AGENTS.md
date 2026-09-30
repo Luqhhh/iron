@@ -2175,3 +2175,15 @@ passed/0skips/23warnings,811source files.20artificial pairs/80saved states/
 DE3/V32 reference2754rows/4seeds revalidated with0newfits. G0partial only:
 full-size resource admission and official scheduler/freeze remain pending.
 No official ModernNCA fit/package/upload. BestDE3=96.3749 unchanged.
+
+
+User-authorized PTaRL retry actually activated 2026-09-30T23:55:29.367874+08:00, MainPID35043
+active/running viairon-ptarl-entry-retry-r1.service. Wrapper55318a4 checked
+1481locked tests/0skips/23warnings.16pairs/96models passed no-fit reuse cold
+audit, max2.2737367544323206e-13;4remainingtime3407folds1..4 execute with
+original4workers. Original manifest75f676... and resource/quality rules unchanged.
+PlanSHAdf54575fbc155d94a85b0fee85e9284754666b43b2c3a7acf81d061ad737d6b7;
+activationSHAcacfd91d82f4b0a2f463d0fb523bf539645fefd7efd359cec78a4efa767407cb.600smonitor active, Restart=no/runtime infinity.
+Actual completion-event.json watcher is terminal-only. Preserve all prior
+failed/interrupted runs and public source trees; no overlapping heavy checks
+during the retry. G1pending; bestDE3=96.3749, no package/upload.

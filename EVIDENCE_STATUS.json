@@ -17033,5 +17033,53 @@
       "exact_source_freeze"
     ],
     "implementation_commit": "f4b0c9d"
+  },
+  "ptarl_resource_entry_retry_2026_09_30": {
+    "status": "user_authorized_retry_activated_after_96_model_reuse_admission_G1_pending",
+    "branch": "codex/ptarl-resource-entry-recovery",
+    "documentation": "docs/ptarl_space_calibration/ENTRY_REFUSAL_RETRY.md",
+    "G0": "retry_engineering_current_memory_and_96_model_reuse_admission_passed",
+    "G1": "pending_complete_coverage",
+    "user_instruction": "继续重试，刚才是别的任务在进行、现在结束了",
+    "original_manifest_sha256": "75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443",
+    "recovery_plan_sha256": "df54575fbc155d94a85b0fee85e9284754666b43b2c3a7acf81d061ad737d6b7",
+    "prior_terminal_verification_sha256": "a663318718d0961607ab6cfb3411c03650fbd1ba714f1945ddd69905a2138eeb",
+    "locked_suite": {
+      "passed": 1481,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "source_files": 852,
+    "engineering_receipt_sha256": "efedb870fc4083ba5c0fb5474aab1accc47597336b5fcb1db3e1c43d06b684e2",
+    "reused_pairs": 16,
+    "fresh_untouched_pairs": 4,
+    "missing_target": "tap_time_len",
+    "missing_seed": 3407,
+    "missing_folds": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "maximum_new_optimizer_calls": 24,
+    "maximum_new_kmeans_calls": 8,
+    "execution_workers": 4,
+    "scientific_recipe": "unchanged",
+    "resource_and_quality_gates": "unchanged",
+    "old_failed_evidence": "preserved",
+    "failed_model_retries": 0,
+    "source_workspace": "/home/lux1/iron/local/worktrees/ptarl-unbudgeted-development",
+    "private_root": "local/ptarl-unbudgeted-entry-retry-r1",
+    "maximum_runtime_seconds": null,
+    "packages": 0,
+    "uploads": 0,
+    "implementation_commit": "55318a4",
+    "activation_receipt_sha256": "cacfd91d82f4b0a2f463d0fb523bf539645fefd7efd359cec78a4efa767407cb",
+    "started_local": "2026-09-30T23:55:29.367874+08:00",
+    "service": "iron-ptarl-entry-retry-r1.service",
+    "initial_main_pid": 35043,
+    "reuse_models": 96,
+    "reuse_maximum_difference": 2.2737367544323206e-13,
+    "monitor_interval_seconds": 600
   }
 }
