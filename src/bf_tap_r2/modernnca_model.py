@@ -149,6 +149,7 @@ class NeighborRegressor:
         self.x_ = self.inputs(frame);self.y_ = torch.as_tensor((y-self.mean_)/self.std_,dtype=torch.float64)
         self.groups_ = feature_groups(frame)
         self.actual_epochs_ = 0;self.optimizer_steps_ = 0;self.history_ = [];self.calibration_predictions_ = []
+        self.training_attempted_ = False;self.training_completed_ = False;self.selected_epoch_ = 0
         return self
 
     def inputs(self, frame):
@@ -166,7 +167,7 @@ class NeighborRegressor:
         return values
 
     def train(self, epochs, calibration=None):
-        if self.actual_epochs_ or self.history_:
+        if self.training_attempted_:
             raise ValueError('Partition training is one-shot')
         if type(epochs) is not int or not 1 <= epochs <= self.settings.max_epochs:
             raise ValueError('Epochs exceed fixed recipe')
@@ -176,6 +177,7 @@ class NeighborRegressor:
             if truth.shape != (len(query),) or not np.isfinite(truth).all():
                 raise ValueError('Invalid calibration response')
         best, selected, stale = float('inf'), 0, 0
+        self.training_attempted_ = True
         with torch.random.fork_rng(devices=[]):
             torch.set_rng_state(self.training_rng_)
             for epoch in range(1,epochs+1):
@@ -205,11 +207,12 @@ class NeighborRegressor:
             raise ValueError('No finite selected epoch')
         if calibration is not None:
             self.model_.load_state_dict({k:torch.as_tensor(v) for k,v in self.selected_state_.items()})
+        self.training_completed_ = True
         return self.selected_epoch_
 
     def save(self, path):
         path = Path(path)
-        if not self.actual_epochs_ or not self.selected_epoch_:
+        if not self.training_completed_ or not self.actual_epochs_ or not self.selected_epoch_:
             raise ValueError('Only completed partition states may be saved')
         metadata = dict(format='modernnca-partition-v1',arm=self.arm,settings=asdict(self.settings),
             preprocessor=self.preprocessor_.metadata(),fit_ids=self.fit_ids_,mean=self.mean_,std=self.std_,

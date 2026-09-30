@@ -16355,7 +16355,7 @@
       "warnings": 23
     },
     "focused_tests": 16,
-    "engineering_receipt_sha256": "5cae6cde97de7f70cd2b2afb6082a075f84cdb11d48e99c002348ef673232717",
+    "engineering_receipt_sha256": "95fb52911c62b8b74d243fef7b633609605e299f0fbf20e0bd3e53e4d23f2367",
     "source_equivalence_receipt_sha256": "22f149a0a857a83d2c036ffa83a6f4327c8b90537b803f887f43267facccb17d",
     "initialization_prediction_gradient_one_step_difference": 0.0,
     "numpy_full_encoder_difference": 2.220446049250313e-16,
@@ -16388,6 +16388,9 @@
       "current_reference_binding",
       "full_size_non_time_resource_admission",
       "frozen_candidate_pool"
-    ]
+    ],
+    "previous_engineering_receipt_sha256": "5cae6cde97de7f70cd2b2afb6082a075f84cdb11d48e99c002348ef673232717",
+    "failed_first_epoch_guard": "failed_attempt_cannot_retry_or_save",
+    "small_partition_witness_scope": "pre_guard_fix_scientific_core_unchanged"
   }
 }

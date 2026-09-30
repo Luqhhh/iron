@@ -135,9 +135,12 @@ def test_reanchored_saved_corruption_is_rejected_by_semantic_audit(fitted,tmp_pa
     with pytest.raises(ValueError):audit_partition(bad,file_hash(bad),clean(fit),fit.tap_time_len.to_numpy(),query,(clean(cal),cal.tap_time_len.to_numpy()))
 
 
-def test_empty_pool_and_one_shot_training_refuse_instead_of_falling_back(fitted):
+def test_empty_pool_and_one_shot_training_refuse_instead_of_falling_back(fitted,tmp_path):
     f=frame().iloc[:8];m=NeighborRegressor('LEARNED_ENCODER',replace(settings(),batch_size=8)).initialize(clean(f),f.tap_time_len.to_numpy())
     with pytest.raises(ValueError,match='neighbor pool'):m.train(1)
+    with pytest.raises(ValueError,match='one-shot'):m.train(1)
+    with pytest.raises(ValueError,match='completed'):m.save(tmp_path/'failed.npz')
+    assert not (tmp_path/'failed.npz').exists()
     _,_,_,_,_,_,_,outer,_=fitted
     with pytest.raises(ValueError,match='one-shot'):outer['LEARNED_ENCODER'].train(1)
 

@@ -2023,3 +2023,10 @@ phase runner/ledger/current reference/full-size resource/freeze still pending;
 no official reads/fits/probes or release. Preserve current PTaRL priority,
 no formal ModernNCA queue, no time budgets or changes to quality gates.
 Details docs/modernnca_source_preparation/PARTITION_MODEL.md.
+
+
+ModernNCA failed-first-epoch one-shot guard fixed prospectively: failed training
+cannot retry or save. No scientific recipe or tolerance change. Full locked
+r2 suite1326passed,0skips,23warnings,803sources unchanged while testing;
+receiptSHA95fb52911c62b8b74d243fef7b633609605e299f0fbf20e0bd3e53e4d23f2367.
+Original r1 receipts retained. G0partial, G1unmeasured; no official fits.

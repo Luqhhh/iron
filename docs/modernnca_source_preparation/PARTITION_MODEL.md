@@ -96,3 +96,17 @@ Only earned targets proceed7777/12011, with all4positive split gains and
 positive seed-level pairedLCB95; folds are descriptive. Quality gates are
 unchanged. The user instruction “不要再设置时间预算” remains controlling:
 no elapsed-time cap or projected-time rejection; timings are descriptive.
+
+## Failed first-epoch guard correction
+
+A direct artificial failure witness found that a first-epoch empty-pool error
+left zero completed epochs, allowing a second training attempt. The partition
+now records attempted/completed states: a failed attempt cannot train again or
+save a checkpoint. This changes no architecture, loss, hyperparameter or
+numerical tolerance. The original witness and r1 receipts remain preserved.
+The extended refusal test and full locked suite again pass1326 tests,0skips,
+23existing warnings, with the803-file source snapshot unchanged during testing.
+Current r2 receipt SHA-256:
+`95fb52911c62b8b74d243fef7b633609605e299f0fbf20e0bd3e53e4d23f2367`.
+The earlier fresh-process partition witness covers the pre-guard source; its
+scientific core is unchanged, and current full-suite tests audit four states.
