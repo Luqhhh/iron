@@ -16638,5 +16638,35 @@
     "initial_main_pid": 471155,
     "initial_live_observation": "active/running",
     "activation_receipt_sha256": "6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec"
+  },
+  "ptarl_explicit_reboot_recovery_2026_09_30": {
+    "status": "checked_and_frozen_not_yet_launched",
+    "branch": "codex/ptarl-reboot-recovery",
+    "documentation": "docs/ptarl_space_calibration/REBOOT_RECOVERY.md",
+    "G0": "recovery_engineering_checked_reuse_cold_admission_pending",
+    "G1": "incomplete_unscored",
+    "locked_suite": {
+      "passed": 1475,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "focused_tests": 7,
+    "source_files": 852,
+    "engineering_receipt_sha256": "a93d4d4eb72ae4202387d0a7e60f62fd3cdf84d1a6dd8262b6e60bead85872d7",
+    "interruption_receipt_sha256": "14cfb661e69436c1c5776ab1db9e2ca5c4770316716ab85fa197d03820d9480b",
+    "recovery_plan_sha256": "3cfb56204d0bbce2824f47a20afe7b10a246b058a29b7a439a321f3738ea6896",
+    "original_manifest_sha256": "75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443",
+    "reused_pairs": 12,
+    "fresh_missing_pairs": 8,
+    "maximum_new_optimizer_calls": 48,
+    "maximum_new_kmeans_calls": 16,
+    "original_evidence_files": 361,
+    "source_workspace": "/home/lux1/iron/local/worktrees/ptarl-unbudgeted-development",
+    "recovery_root": "local/ptarl-unbudgeted-reboot-r1",
+    "model_and_quality_gates": "unchanged",
+    "maximum_runtime_seconds": null,
+    "failed_model_retries": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }

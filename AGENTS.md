@@ -2120,3 +2120,19 @@ development. Manifest unchanged75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e034
 Actual activation receiptSHA6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec; queue status above is historical.
 600s monitor now active, no between-check training polling; runtime infinity,
 Restart=no, earned confirmation only. G1pending, no full-data fit or release.
+
+
+### Explicit PTaRL host-reboot recovery preparation (2026-09-30)
+
+Checked1475full locked tests,0skips,23warnings;7recovery cases,852sources.
+ReceiptSHAa93d4d4eb72ae4202387d0a7e60f62fd3cdf84d1a6dd8262b6e60bead85872d7.
+PlanSHA3cfb56204d0bbce2824f47a20afe7b10a246b058a29b7a439a321f3738ea6896
+retains original manifest75f676... and all original scientific sources.
+12completed units must cold-audit before copying exact artifacts/closed events.
+8missing units run fresh in original-worktree local/ptarl-unbudgeted-reboot-r1,
+never overwrite old units or retry numerical/model failures. Old interrupted
+reservations remain consumed; the new closed logical phase is20units. All
+physical attempts remain reported separately across both append-only ledgers.
+No time cap, no quality relaxation; original cold+arithmetic gates precede
+confirmation. Launch still pending at this preparation registration.
+See docs/ptarl_space_calibration/REBOOT_RECOVERY.md.
