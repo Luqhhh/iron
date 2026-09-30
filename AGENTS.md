@@ -1968,3 +1968,17 @@ No official candidate fits, complete-size probe, full-data fits or release.
 Full-size resource admission and frozen current-reference phase runner remain
 required. Existing gates and serial DNNR-before-DANet order are unchanged.
 See docs/dnnr_taylor/DESIGN.md and G0_MODEL_RESULTS.md.
+
+### DNNR synthetic resource execution prepared (2026-09-30)
+
+LockedPython3.12 exact-source807-file suite1358 passed,23 existing warnings;
+48 focused passed. The one-shot synthetic probe uses2204 training/551 query
+rows,26 encoded dimensions and a complete six-model pair plus an optional
+whole-training epoch1 cost witness when epoch0 was selected. It measures
+actual fitting/saving/cold-audit cost; four-worker projection includes1.5x
+and300s buffer and must stay<=7200s. Peak<=1536MiB and RAM>=4*peak+1024.
+All synthetic arms must beat the median and cold witnesses stay<=1e-8.
+No official fit controller or automatic release exists. Freeze exact source
+and checked runtime before the single full-size probe; never retry a failed
+probe or shrink the mechanism/relax gates to pass. Resource outcome pending.
+See docs/dnnr_taylor/RESOURCE_PREREGISTRATION.md.

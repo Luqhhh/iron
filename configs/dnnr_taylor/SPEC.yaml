@@ -97,3 +97,23 @@ future_formal_stage:
   candidate_tiers: existing_frozen_policy_no_automatic_release
 monitoring: {interval_seconds: 600, between_check_polling: false}
 release: {automatic_packages: false, desktop_writes: 0, agent_uploads: 0}
+synthetic_resource_probe:
+  seed: 57331
+  rows: 2755
+  train_rows: 2204
+  query_rows: 551
+  spout_count: 4
+  encoded_dimension: 26
+  formula: 30+2*sin(x0)+x1*x2+0.5*x3+0.1*epsilon
+  all_arms_must_beat_training_median: true
+  cold_tolerance: 0.00000001
+  optional_upper_bound: if_outer_epoch0_selected_fit_and_audit_one_extra_epoch1_model
+  limits: {pair_unit: 1, estimator: 7, metric_epoch: 3, derivative_bank: 5}
+resources:
+  workers: 4
+  numeric_threads: 1
+  maximum_worker_mib: 1536
+  free_memory_rule: 4*maximum_measured_peak+1024
+  projection_seconds: 20*upper_pair_execution_and_cold_audit_seconds/4*1.5+300
+  projection_maximum_seconds: 7200
+  formal_encoded_dimension_must_not_exceed_probe: true

@@ -16172,5 +16172,21 @@
     "packages": 0,
     "agent_uploads": 0,
     "next": "complete_size_synthetic_resource_freeze_and_probe_then_current_reference_bound_phase_preparation"
+  },
+  "dnnr_resource_preparation": {
+    "date": "2026-09-30",
+    "branch": "codex/dnnr-taylor-preparation",
+    "G0": "PROBE_EXECUTION_PREPARATION_PASSED_1358_LOCKED_TESTS_48_FOCUSED",
+    "G1": "UNMEASURED_NO_OFFICIAL_CANDIDATE_FITS",
+    "source_files": 807,
+    "receipt": "local/research/dnnr-probe-engineering-receipt-r1.json",
+    "receipt_sha256": "614e044cbf95927f46771699ce273871ec72d6f87548e2685466e6b9045afcec",
+    "spec": "configs/dnnr_taylor/SPEC.yaml",
+    "source_plan": "docs/dnnr_taylor/RESOURCE_PREREGISTRATION.md",
+    "full_size_probes": 0,
+    "official_candidate_fits": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
