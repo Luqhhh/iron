@@ -1,0 +1,72 @@
+{
+  "identity": "T2G_GRAPH_V1",
+  "arms": [
+    "LEARNED_GRAPH",
+    "DENSE_CONTROL"
+  ],
+  "targets": [
+    "tap_iron",
+    "tap_time_len"
+  ],
+  "network": {
+    "numeric_features": 21,
+    "tokens": 23,
+    "width": 64,
+    "blocks": 2,
+    "heads": 4,
+    "head_width": 16,
+    "column_width": 10,
+    "ffn_width": 128,
+    "layernorm_eps": 0.00001,
+    "attention_dropout": 0.1,
+    "ffn_dropout": 0.1,
+    "residual_dropout": 0,
+    "mask_penalty": 10000
+  },
+  "training": {
+    "seed": 42,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-8,
+    "batch": 256,
+    "max_epochs": 240,
+    "patience": 25,
+    "min_delta": 0.00001
+  },
+  "phases": {
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "confirmation_seeds": [
+      7777,
+      12011
+    ],
+    "folds": 5,
+    "development_fits": 40,
+    "development_optimizers": 80,
+    "confirmation_max_fits": 40,
+    "confirmation_max_optimizers": 80
+  },
+  "endpoint_alpha": 0.2,
+  "resource": {
+    "seed": 57001,
+    "train_rows": 2204,
+    "query_rows": 551,
+    "inner_train_rows": 1763,
+    "inner_cal_rows": 441,
+    "workers": 4,
+    "max_worker_mib": 1536,
+    "ram_margin_mib": 1024,
+    "max_development_seconds": 7200
+  },
+  "gates": {
+    "development_mean_gain": 0.01,
+    "development_mean_score": 96.25,
+    "seed_lcb_t": 2.3533634348018264
+  }
+}
