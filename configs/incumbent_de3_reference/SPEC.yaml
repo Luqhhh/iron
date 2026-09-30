@@ -1,5 +1,5 @@
 version: incumbent-de3-reference-core
-stage: synthetic_core_only_pending_frozen_phase_and_resource_admission
+stage: complete_phase_implementation_pending_locked_tests_freeze_and_admission
 base_commit: d96d151
 purpose: incumbent_reference_only_not_DE3_promotion
 platform_reference:
@@ -50,7 +50,15 @@ phase_admission:
   frozen_source_data_fold_manifest_required: true
   external_artifact_anchors_required: true
   resource_admission_required: true
-  implemented: false
+  implemented: true
+resources:
+  workers: 4
+  max_projected_seconds: 7200
+  max_worker_rss_mib: 1536
+  step_safety_multiplier: 1.5
+  peak_safety_multiplier: 1.5
+  fixed_overhead_seconds: 300
+  free_memory_margin_mib: 1024
 monitoring:
   future_interval_seconds: 600
   between_check_polling: false

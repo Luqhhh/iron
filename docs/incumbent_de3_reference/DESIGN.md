@@ -60,10 +60,12 @@ audit every member first.
 
 ## Required before official fits
 
-The phase runner, metadata/source/artifact cache freeze, resource admission,
-bounded execution, complete-coverage audit and PTaRL-compatible overlay writer
-are not implemented in this core commit. No official reference fit may be
-started merely because core tests pass. Native J42 and old DE3 member reuse
+At core commit 6e285fa the phase runner, metadata/source/artifact cache freeze,
+resource admission, bounded execution, complete-coverage audit and
+PTaRL-compatible overlay writer were pending. They are now implemented as a
+separate phase; execution still requires its own exact-source full-suite
+receipt, frozen manifest and successful resource admission. No official
+reference fit may be started merely because core tests pass. Native J42 and old DE3 member reuse
 must first verify their original source/data/fold/fit/query identities and
 external hashes; the new budget must then be frozen before execution.
 
@@ -74,3 +76,5 @@ platform upload is part of this completion.
 
 G0 here is synthetic engineering verification. G1 remains unmeasured; a new
 reference by itself does not provide a model-quality gain.
+
+Phase details and resource contract: [PHASE_EXECUTION.md](PHASE_EXECUTION.md).

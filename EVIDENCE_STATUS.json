@@ -16142,5 +16142,24 @@
     "packages": 0,
     "agent_uploads": 0,
     "documentation": "docs/incumbent_de3_reference/DESIGN.md"
+  },
+  "incumbent_de3_reference_phase": {
+    "date": "2026-09-30",
+    "branch": "codex/incumbent-de3-reference",
+    "G0": "PHASE_ENGINEERING_PASSED_1358_LOCKED_TESTS_20_SYNTHETIC_ESTIMATORS_40_OPTIMIZERS_AUDITED",
+    "G1": "REFERENCE_COMPLETION_ONLY_UNMEASURED",
+    "current_reference": "DE3_IRON_USER_REQUESTED",
+    "user_reported_platform_score": 96.3749,
+    "receipt": "local/research/incumbent-reference-phase-r1/receipt.json",
+    "receipt_sha256": "f415901c178b180d92b08595cfcdae15cff80b9d4349c7b213ee48ecda43e886",
+    "official_estimators": 0,
+    "official_optimizer_runs": 0,
+    "planned_missing_estimators": 20,
+    "planned_optimizer_runs": 40,
+    "first_cost_observation": "FAILED_MEMORY_7075_55_MIB_LT_7168_CAPS_UNCHANGED",
+    "formal_freeze_and_execution": "pending",
+    "packages": 0,
+    "agent_uploads": 0,
+    "documentation": "docs/incumbent_de3_reference/PHASE_EXECUTION.md"
   }
 }

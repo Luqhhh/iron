@@ -1952,3 +1952,22 @@ auditor are still pending; no official budget is yet reserved. Preserve the
 DE3 historical no-finalist/0.01-gate failure and original package. This is
 incumbent reference completion only, not retrospective DE3 confirmation.
 Details: docs/incumbent_de3_reference/DESIGN.md and STATUS.md.
+
+### Current-incumbent reference complete phase (2026-09-30)
+
+On codex/incumbent-de3-reference, the freeze, fixed20-estimator/40-optimizer
+runner, historical-source/private-cache bridge, complete cold auditor and
+PTaRL-compatible four-seed overlay writer are implemented. Final locked
+Python3.12 tests1358 passed; a complete synthetic spawn execution reconciles
+20/40 actual reservations and audits40 states with no audit optimizer call.
+The exact-source runtime receipt lives privately under
+local/research/incumbent-reference-phase-r1. G1 remains unmeasured.
+
+Formal freezing requires that committed tested tree plus successful resource
+admission: four workers, projected7200s max, worker1536MiB max and current
+available7168MiB minimum. First7075.55MiB observation failed and is preserved;
+do not relax these caps. Historical orchestration files are verified at their
+original906d31b commit and never executed; actual native model modules remain
+identical. Original shared private configs are hashed only, never executed.
+No official estimator fit, full-data fit, package or upload has started yet.
+Details: docs/incumbent_de3_reference/PHASE_EXECUTION.md.
