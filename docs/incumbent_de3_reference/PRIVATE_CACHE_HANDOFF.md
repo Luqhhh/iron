@@ -57,3 +57,16 @@ configs/independent_ensemble_checkpoints/SPEC.yaml。
 此补齐服务于当前incumbent参照，不改变DE3旧晋级决定。
 该正式预算仍待完整阶段规格/计划与准入，不因本交接清单而自动开始。
 无全数据拟合、包、桌面写入、上传或新候选选择。
+
+## 2026-09-30 后续远端更新：优先共享完成的四seed overlay
+
+远端6761240已报告参照补齐成功，不再请求本机补训20估计器。
+请优先共享队友原始根下完整 `local/incumbent-de3-reference-four-seed-r2/`，
+保持全部被audit引用的子目录及依赖文件；不要仅提供四个预测向量。
+complete.json SHA-256：492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4。
+audit.json SHA-256：ed03cd99e17c6514053eb62494a00cbe40ad7d6600a83de991a98c9b801b9f06。
+该阶段引用的原生参考根为队友 `/home/lux1/iron`（来自其公开执行记录），
+不是本机 `/home/clairvoyant/code/iron`；传输后须按内容和相对身份核验，不能只改路径骗过校验。
+本机尚未收到文件，远端通过不等于本机验证通过。
+若完整overlay已含上文开发/BASE证明依赖，按其完整artifact_hashes闭包传输，避免重复传输相同文件。
+原开发缓存交接要求保持历史记录；发布到Git的模型/预测仍为0。
