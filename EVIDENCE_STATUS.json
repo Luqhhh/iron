@@ -16124,5 +16124,18 @@
     "platform_delta_vs_parent": 0.0022,
     "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
     "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8"
+  },
+  "optimization_runtime_policy_2026_09_30": {
+    "user_instruction": "不要再设置时间预算",
+    "status": "active",
+    "scope": "all_future_optimization_work",
+    "wall_clock_budget": null,
+    "reject_by_projected_seconds": false,
+    "descriptive_timing_allowed": true,
+    "other_gates": "unchanged_data_protection_memory_numerical_quality_complete_coverage_four_seed_release_rules",
+    "history": "preserve_prior_time_budget_refusals_original_source_and_artifacts; new_authority_removes_only_time_based_admission",
+    "danet": "original_cost_only_refusal_preserved; proceed_after_independent_non_time_checks_and_new_exact_source_formal_freeze",
+    "automatic_packages": false,
+    "agent_uploads": 0
   }
 }

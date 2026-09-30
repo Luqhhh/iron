@@ -1935,3 +1935,24 @@ authorize another package or establish a general local/platform transfer ratio.
 The staged goals96.4/96.45/96.5 remain unmet, with gaps0.0251/0.0751/0.1251.
 Users upload and return scores; do not infer quota. Future comparisons use
 the latest registered current best while frozen historical evidence stays intact.
+
+
+### User removes optimization time budgets (2026-09-30, controlling)
+
+Latest explicit instruction: “不要再设置时间预算”. All future optimization
+work has no wall-clock budget and no rejection gate based on projected time.
+Timing may be measured and reported descriptively; it must not be used to
+stop a route, shrink a recipe or cap runtime. This supersedes earlier2-hour,
+8-hour or other time-budget admission rules prospectively. Preserve original
+failed admissions, frozen source and decisions as historical evidence.
+
+DANet's original full-size probe completed4estimators/4optimizers/960epochs;
+only its old cost gate failed (9598.877s projected vs7200s), while numerical,
+learnability, masks and memory passed. Preserve that failed report exactly;
+under the new authority, independently verify the non-time requirements and
+prepare a fresh formal execution freeze without refitting the resource probe.
+Do not relabel the original admission as passed or alter its frozen files.
+Data protection, exact-source/runtime verification, numerical and memory
+requirements, complete coverage, original model-quality gates, four-seed
+pairedLCB rule and release restrictions remain binding. No implicit full-data
+fit, package, desktop write or agent upload is authorized by this instruction.
