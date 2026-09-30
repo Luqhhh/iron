@@ -16480,8 +16480,8 @@
   },
   "ptarl_current_reference_resource_probe": {
     "date": "2026-09-30",
-    "G0": "CURRENT_REFERENCE_READER_PASSED_SYNTHETIC_RESOURCE_PROBE_RUNNING",
-    "G1": "UNMEASURED_NO_OFFICIAL_CANDIDATE_FIT",
+    "G0": "RESOURCE_DECLINED_COST_15949_54S_GT_7200_NO_OFFICIAL_CANDIDATE_FITS",
+    "G1": "UNMEASURED_SYNTHETIC_PROBE_ONLY",
     "manifest_sha256": "5722fd914c6239c4dfa9228a58f9b376e4d1593dcee40ab105107217dd93aa3c",
     "overlay_sha256": "492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4",
     "service": "iron-ptarl-preflight-r1.service",
@@ -16490,6 +16490,54 @@
     "launch_receipt_sha256": "e8182ab9cf01d6e94a48d7067a3abf0ccf42af963f50ba8a6833c7517d675972",
     "official_fits": 0,
     "packages": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "result": {
+      "receipt": "local/research/ptarl-current-reference-r1/resource-result.json",
+      "receipt_sha256": "7ce7cb6977dfc34a4547ae9ff576b3f6e461cffa47d8ea27ff772a2cfb5ea328",
+      "admission_sha256": "e0b26300ceee5e3b20946ec55756ddcdb5ea9afc33ef3d45d51d2b9f0c1e8380",
+      "checks": {
+        "available_memory": true,
+        "cold_inference": true,
+        "development_cost": false,
+        "synthetic_quality": true,
+        "worker_peak": true
+      },
+      "projected_hours": 4.4304287208396405,
+      "allowed_hours": 2,
+      "maximum_worker_mib": 961.890625,
+      "cold_difference": 1.7763568394002505e-15,
+      "synthetic_mae": {
+        "CONTROL": 0.34453594603993926,
+        "PTARL_AUX": 0.6611899062191533
+      },
+      "training_median_mae": 1.4501943246130815,
+      "counts": {
+        "completed": {
+          "kmeans": 2,
+          "optimizer": 6,
+          "pair_unit": 1
+        },
+        "failed": {
+          "kmeans": 0,
+          "optimizer": 0,
+          "pair_unit": 0
+        },
+        "incomplete": {
+          "kmeans": 0,
+          "optimizer": 0,
+          "pair_unit": 0
+        },
+        "started": {
+          "kmeans": 2,
+          "optimizer": 6,
+          "pair_unit": 1
+        }
+      },
+      "service_terminal": "failed_as_expected_on_cost_gate",
+      "official_candidate_fits": 0,
+      "confirmation_fits": 0,
+      "packages": 0,
+      "agent_uploads": 0
+    }
   }
 }

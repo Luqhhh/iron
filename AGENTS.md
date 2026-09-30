@@ -2069,3 +2069,16 @@ between-check polling; next no earlier02:43:21 UTC. Preserve7200s and1536MiB
 caps plus learning/cold gates; no shrinking or repeat after failure.
 Only passed admission and fresh recheck allow full paired development.
 No package/upload, no G1 score. Details docs/ptarl_space_calibration/STATUS.md.
+
+### PTaRL resource probe declined (2026-09-30)
+
+Scheduled02:44:26UTC monitor confirmed preflight terminalexit1/MainPID0.
+All1 pair/6 optimizers/2KMeans completed; no failed/incomplete reservations.
+Learning, cold and memory pass; cost15949.54s exceeds frozen7200s. Worker
+peak961.89MiB and cold1.77636e-15 meet bounds. Source841 unchanged.
+Resource admission failed deliberately; formal PTaRL fits/confirmation0.
+Do not run its controller, shrink architecture/epochs, widen caps or repeat
+the probe. Preserve private full-size models/measurements/ledgers/failed
+record. G1 unmeasured, no package/upload. Current four-seed DE3 reference
+complete and reusable. Next familyDNNR, thenDANet, with unchanged quality
+gates. Details docs/ptarl_space_calibration/RESOURCE_RESULT.md.
