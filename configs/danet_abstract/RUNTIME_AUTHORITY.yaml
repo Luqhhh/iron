@@ -1,0 +1,10 @@
+version: user-no-time-budget-v1
+user_instruction: 不要再设置时间预算
+scope: all_future_optimization_work
+maximum_runtime_seconds: null
+reject_by_projected_seconds: false
+timing: descriptive_only
+historical_time_gate_decisions: preserve_unchanged
+danet_original_probe: preserve_cost_only_refusal_no_refit
+required_non_time_checks: [available_memory, fixed_mask_unchanged, learnability, learned_mask_active, numerical, worker_memory]
+other_requirements: unchanged_data_protection_source_runtime_memory_numerical_complete_coverage_quality_four_seed_release_rules

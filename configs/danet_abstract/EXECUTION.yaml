@@ -1,5 +1,6 @@
 version: danet-complete-coverage-execution-v1
 model_spec: configs/danet_abstract/SPEC.yaml
+runtime_authority: configs/danet_abstract/RUNTIME_AUTHORITY.yaml
 split_seeds: [42, 3407]
 confirmation_seeds: [7777, 12011]
 folds: 5

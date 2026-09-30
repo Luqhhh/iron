@@ -16459,7 +16459,7 @@
     "documentation": "docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md"
   },
   "round2_danet_resource_execution_2026_09_30": {
-    "status": "launched_G0_synthetic_resource_running_G1_unmeasured",
+    "status": "original_G0_cost_only_refusal_non_time_checks_passed_user_removed_time_budget",
     "started_local": "2026-09-30T14:11:49.455483+08:00",
     "implementation_commit": "d4c791a",
     "manifest_sha256": "60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2",
@@ -16480,22 +16480,52 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "private_root": "local/danet-full-resource-r1",
-    "documentation": "docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md"
+    "documentation": "docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md",
+    "terminal_exit_code": 1,
+    "checks": {
+      "available_memory": true,
+      "cost": false,
+      "fixed_mask_unchanged": true,
+      "learnability": true,
+      "learned_mask_active": true,
+      "numerical": true,
+      "worker_memory": true
+    },
+    "completed_fitting_counts": {
+      "estimator": 4,
+      "optimizer": 4,
+      "pair_unit": 1
+    },
+    "maximum_worker_mib": 570.90625,
+    "pair_fit_save_seconds": 1234.2672846289934,
+    "pair_audit_seconds": 5.583010255009867,
+    "projected_development_seconds_descriptive_only": 9598.877211630024,
+    "original_admission_sha256": "f80d134253f2d8751c695ea6b11737a0c4141f077b0f854f45e3e5d995acd3e2",
+    "terminal_evidence_sha256": "dde149e3c25dab203cacc6a18bc95f172661a3858bce31095008671946cc291c",
+    "bound_private_artifacts": 38,
+    "independently_audited_saved_models": 4,
+    "independent_terminal_audit_new_fits": 0,
+    "unchanged_original_source_files": 841,
+    "original_report_unchanged": true,
+    "user_instruction": "不要再设置时间预算",
+    "future_time_budget": null,
+    "next_action": "new_authority_non_time_checks_and_fresh_formal_controller_freeze_without_resource_refit",
+    "G1": "unmeasured"
   },
   "round2_danet_formal_controller_preparation_2026_09_30": {
-    "status": "G0_controller_checked_original_resource_pending_G1_unmeasured",
+    "status": "G0_current_controller_checked_non_time_admission_verified_ready_to_freeze_G1_unmeasured",
     "branch": "codex/danet-abstract-development",
     "locked_python312_tests": {
-      "full_passed": 1480,
-      "focused_passed": 26,
+      "full_passed": 1487,
+      "focused_passed": 33,
       "existing_warnings": 23,
-      "source_files": 853,
-      "receipt_sha256": "83d38681406a6e064008f5b25cb7e00c20970535179c474f884739f551f1435f"
+      "source_files": 854,
+      "receipt_sha256": "3d5a8fc2fdef1ba74ed05aa3996da0a6d99ced134b06fb8d284eca3253e89412"
     },
     "original_resource_manifest_sha256": "60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2",
     "original_resource_source_files": 841,
     "byte_identical_core_required": true,
-    "passed_original_resource_admission": "pending_required_before_freeze_or_official_fit",
+    "passed_original_resource_admission": "historical_failed_report_unchanged_new_non_time_admission_verified",
     "development": {
       "pair_units": 20,
       "estimator_runs": 80,
@@ -16514,6 +16544,26 @@
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "documentation": "docs/danet_abstract/FORMAL_EXECUTION.md"
+    "documentation": "docs/danet_abstract/FORMAL_EXECUTION.md",
+    "original_resource_admission": "cost_only_refusal_preserved_non_time_checks_passed_under_explicit_user_authority",
+    "original_resource_admission_sha256": "f80d134253f2d8751c695ea6b11737a0c4141f077b0f854f45e3e5d995acd3e2",
+    "non_time_verification_sha256": "3b32b79b9ba02f4d810fcd1cda3f6f98fe65a063da71e933259d041ec9e1cb36",
+    "user_instruction": "不要再设置时间预算",
+    "maximum_runtime_seconds": null,
+    "reject_by_projected_seconds": false,
+    "resource_refits": 0
+  },
+  "optimization_runtime_policy_2026_09_30": {
+    "user_instruction": "不要再设置时间预算",
+    "status": "active",
+    "scope": "all_future_optimization_work",
+    "wall_clock_budget": null,
+    "reject_by_projected_seconds": false,
+    "descriptive_timing_allowed": true,
+    "other_gates": "unchanged_data_protection_memory_numerical_quality_complete_coverage_four_seed_release_rules",
+    "history": "preserve_prior_time_budget_refusals_original_source_and_artifacts; new_authority_removes_only_time_based_admission",
+    "danet": "original_cost_only_refusal_preserved; proceed_after_independent_non_time_checks_and_new_exact_source_formal_freeze",
+    "automatic_packages": false,
+    "agent_uploads": 0
   }
 }

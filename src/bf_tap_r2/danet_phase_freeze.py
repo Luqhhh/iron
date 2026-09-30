@@ -9,14 +9,16 @@ import psutil
 import yaml
 
 from .data import FEATURES,TARGETS
-from .danet_preflight import anchored,private_path,source_hashes,runtime,checked_receipt,validate_spec as model_spec
+from .danet_preflight import anchored,private_path,source_hashes,runtime,checked_receipt,resource_decision,validate_spec as model_spec
 from .danet_ledger import file_hash,write_new
 from .dnnr_reference_bridge import load_reference,INCUMBENT,SCORE
 from .danet_phase_protocol import phase_limits,CONTROLS
 
 EXECUTION='configs/danet_abstract/EXECUTION.yaml'
+AUTHORITY='configs/danet_abstract/RUNTIME_AUTHORITY.yaml'
+NON_TIME=('available_memory','fixed_mask_unchanged','learnability','learned_mask_active','numerical','worker_memory')
 RESOURCE_MANIFEST_SHA='60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2'
-REQUIRED=(EXECUTION,'src/bf_tap_r2/danet_phase_run.py','src/bf_tap_r2/danet_phase_controller.py',
+REQUIRED=(EXECUTION,AUTHORITY,'src/bf_tap_r2/danet_phase_run.py','src/bf_tap_r2/danet_phase_controller.py',
     'src/bf_tap_r2/danet_phase_arithmetic.py','src/bf_tap_r2/danet_phase_protocol.py','src/bf_tap_r2/danet_scoring.py',
     'scripts/run_danet_frozen.py','scripts/monitor_danet_once.py')
 
@@ -24,8 +26,16 @@ REQUIRED=(EXECUTION,'src/bf_tap_r2/danet_phase_run.py','src/bf_tap_r2/danet_phas
 def validate_spec(workspace):
     workspace=Path(workspace);model=model_spec(workspace)
     spec=yaml.safe_load((workspace/EXECUTION).read_text())
+    authority=yaml.safe_load((workspace/AUTHORITY).read_text())
+    if authority!=dict(version='user-no-time-budget-v1',user_instruction='不要再设置时间预算',scope='all_future_optimization_work',
+            maximum_runtime_seconds=None,reject_by_projected_seconds=False,timing='descriptive_only',
+            historical_time_gate_decisions='preserve_unchanged',danet_original_probe='preserve_cost_only_refusal_no_refit',
+            required_non_time_checks=list(NON_TIME),
+            other_requirements='unchanged_data_protection_source_runtime_memory_numerical_complete_coverage_quality_four_seed_release_rules'):
+        raise ValueError('Explicit no-time-budget authority or unchanged non-time requirements differ')
     if (model['platform_reference']['candidate']!=INCUMBENT or model['platform_reference']['score']!=SCORE
             or spec['version']!='danet-complete-coverage-execution-v1' or spec['model_spec']!='configs/danet_abstract/SPEC.yaml'
+            or spec['runtime_authority']!=AUTHORITY
             or spec['split_seeds']!=[42,3407] or spec['confirmation_seeds']!=[7777,12011] or spec['folds']!=5
             or spec['reference_by_target']!={t:'CURRENT_DE3' for t in TARGETS}
             or spec['candidates']!={t:['DANET_LEARNED'] for t in TARGETS}
@@ -50,11 +60,22 @@ def verify_transfer(workspace,resource_workspace,admission_sha256,*,cold=False):
     for name,sha in manifest['source_hashes'].items():
         if file_hash(old/name)!=sha or file_hash(workspace/name)!=sha:raise ValueError('Admitted source/core transfer changed: '+name)
     path=manifest_path.parent/'preflight/admission.json';report=anchored(path,admission_sha256);root=path.parent
-    if (report['status']!='passed' or report['manifest_sha256']!=RESOURCE_MANIFEST_SHA or (root/'failed.json').exists()
+    if (report['status'] not in ('passed','failed') or report['manifest_sha256']!=RESOURCE_MANIFEST_SHA
             or report['official_label_reads']!=0 or report['official_estimator_fits']!=0
             or report['automatic_formal_execution'] or report['release_authorized']):
-        raise ValueError('Passed original synthetic resource envelope required')
-    if {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()}!=set(report['artifact_hashes'])|{'admission.json'}:
+        raise ValueError('Original synthetic non-time resource envelope required')
+    decision=resource_decision(report['measurement'],report['available_mib'])
+    if (any(report[k]!=v for k,v in decision.items()) or set(report['checks'])!=set(NON_TIME)|{'cost'}
+            or any(report['checks'][key] is not True for key in NON_TIME)):
+        raise ValueError('Numerical/quality/mask/memory resource checks remain binding')
+    expected={'admission.json'}
+    if report['status']=='failed':
+        if report['checks']['cost'] is not False:raise ValueError('Only original time-based refusal may proceed under new authority')
+        failure=json.loads((root/'failed.json').read_text())
+        if failure!=dict(type='ValueError',message='Frozen full-size DANet resource gate failed'):
+            raise ValueError('Failure other than original cost-only admission refusal')
+        expected.add('failed.json')
+    if {str(p.relative_to(root)) for p in root.rglob('*') if p.is_file()}!=set(report['artifact_hashes'])|expected:
         raise ValueError('Original resource closed artifact schema differs')
     for name,sha in report['artifact_hashes'].items():
         item=root/name
@@ -64,13 +85,41 @@ def verify_transfer(workspace,resource_workspace,admission_sha256,*,cold=False):
         # its module-location guard must never be bypassed in the new wrapper.
         code='''import sys,json
 from pathlib import Path
-from bf_tap_r2.danet_preflight import verify_admission
-report=verify_admission(Path(sys.argv[1]),sys.argv[2],Path(sys.argv[3]),sys.argv[4])
-print(json.dumps({"status":report["status"],"new_fits":0}))
+from bf_tap_r2.danet_preflight import verify_manifest,anchored,synthetic_data,Settings,TASK,resource_decision
+from bf_tap_r2.danet_execution import audit_unit
+from bf_tap_r2.danet_model import Regressor
+from bf_tap_r2.danet_ledger import ReservationLedger
+manifest=verify_manifest(Path(sys.argv[3]),sys.argv[4]);path=Path(sys.argv[1]);root=path.parent
+report=anchored(path,sys.argv[2]);measurement=report['measurement']
+def no_fit(*args,**kwargs):raise AssertionError('Independent transition attempted fitting')
+Regressor.fit=no_fit
+training,y,query,truth=synthetic_data()
+predictions,audit=audit_unit(root/'unit',measurement['unit_complete_sha256'],TASK,training,y,query,
+    settings=Settings(),resource_upper_bound=True,ledger_root=root/'ledger')
+if audit!=measurement['audit']:raise ValueError('Fresh four-model independent audit differs')
+for arm,prediction in predictions.items():
+    if float(abs(prediction-truth).mean())!=measurement['mae'][arm]:raise ValueError('Synthetic arithmetic differs')
+fresh=dict(training_rows=len(training),query_rows=len(query),saved_models=audit['saved_models'],optimizer_epochs=audit['optimizer_epochs'],
+    median_mae=float(abs(truth-__import__('numpy').median(y)).mean()),
+    maximum_bound_fraction=max(value['maximum_bound_fraction'] for model in audit['models'].values() for value in model['checks'].values()))
+for arm,key in (('DANET_LEARNED','learned_mask_l1_change'),('DANET_FIXED','fixed_mask_l1_change')):
+    model=Regressor.load(root/f'unit/models/outer-{arm}.npz',report['artifact_hashes'][f'unit/models/outer-{arm}.npz'])
+    fresh[key]=float(model.trace_['mask_change'][-1]);fresh['encoded_dimensions']=model.x_.shape[1]
+if any(measurement[key]!=value for key,value in fresh.items()):raise ValueError('Fresh resource witness differs')
+ledger=ReservationLedger.open(root/'ledger',report['policy_sha256']);limits=dict(pair_unit=1,estimator=4,optimizer=4)
+counts=ledger.inspect()
+if ledger.limits!=limits or counts!=report['counts'] or counts['started']!=limits or counts['completed']!=limits:
+    raise ValueError('Completed full-size fitting reservations differ')
+if any(v for status in ('failed','incomplete') for v in counts[status].values()):raise ValueError('Resource fitting failure')
+decision=resource_decision(measurement,report['available_mib'])
+if any(report[key]!=value for key,value in decision.items()):raise ValueError('Original descriptive resource arithmetic differs')
+if any(value is not True for key,value in report['checks'].items() if key!='cost'):
+    raise ValueError('Non-time resource requirement failed')
+print(json.dumps({"status":"passed_non_time_checks","new_fits":0}))
 '''
         result=subprocess.run([sys.executable,'-c',code,str(path),admission_sha256,str(manifest_path),RESOURCE_MANIFEST_SHA],
             cwd=old,env=dict(os.environ,PYTHONPATH=str(old/'src')),text=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=True)
-        if json.loads(result.stdout.splitlines()[-1])!=dict(status='passed',new_fits=0):raise ValueError('Original independent admission verifier refused')
+        if json.loads(result.stdout.splitlines()[-1])!=dict(status='passed_non_time_checks',new_fits=0):raise ValueError('Original independent non-time verifier refused')
     if psutil.virtual_memory().available/1024**2<report['required_available_mib']:raise ValueError('Current RAM below admitted requirement')
     return report
 

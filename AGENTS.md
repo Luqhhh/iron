@@ -2176,3 +2176,26 @@ folds descriptive, no cross-seed OOF mixing. No automatic full-data fit,
 package, desktop write or upload. Preserve original resource worktree intact.
 BestDE3=96.3749 remains user-reported. Details
 docs/danet_abstract/FORMAL_EXECUTION.md.
+
+
+### User removes time budget; DANet formal wrapper rechecked (2026-09-30)
+
+Explicit instruction “不要再设置时间预算” controls future optimization:
+no wall-clock cap or time-based candidate rejection. Preserve the original
+DANet cost-only failed report and unchanged841 sources. All4models and
+960epochs completed; non-time numerical/mask/learnability/memory checks pass.
+A fresh independent original-worktree cold audit fits0. Admission original
+SHAf80d134253f2d8751c695ea6b11737a0c4141f077b0f854f45e3e5d995acd3e2;
+new non-time verificationSHA3b32b79b9ba02f4d810fcd1cda3f6f98fe65a063da71e933259d041ec9e1cb36.
+Only the prospective formal wrapper changes its time-admission rule, under
+configs/danet_abstract/RUNTIME_AUTHORITY.yaml. No resource refit, smaller
+model, altered epochs or relaxed numerical/memory/quality/release rules.
+
+New lockedPython3.12 full1487 tests passed,23 existing warnings;33 focused
+checks,854-file source/license snapshot. Full-suite receiptSHA
+3d5a8fc2fdef1ba74ed05aa3996da0a6d99ced134b06fb8d284eca3253e89412.
+Formal20pair/80estimator/80optimizer counts and current-DE3 reference remain
+frozen; two-development/four-seed-LCB gates unchanged. Timing descriptive
+only. Next exact-source formal freeze and durable complete development;
+o official fit yet, G1 unmeasured. No implicit full-data fit/package/desktop
+write/upload. User-reported bestDE3=96.3749, milestones96.4/96.45/96.5 unmet.

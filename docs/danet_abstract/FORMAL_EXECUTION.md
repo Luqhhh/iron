@@ -1,25 +1,34 @@
 # DANet complete-coverage execution preparation
 
-This separate worktree prepares official evaluation while the original
-one-shot synthetic resource experiment is pending. It does not change the
-admitted candidate recipe or original source. No official DANet fits may run
-until the original resource admission passes, independent cold verification
-succeeds, and this complete controller passes an exact-source locked suite.
-The unchanged resource worktree remains independently executable.
+The user's latest instruction is **“不要再设置时间预算”**. Official evaluation
+now has no wall-clock limit or time-based admission condition. This separate
+worktree preserves the original model recipe and resource source. Before
+official fits, the original synthetic experiment's numerical, memory,
+learnability and mask requirements must pass a fresh independent audit and
+the new controller must pass an exact-source locked suite. The unchanged
+resource worktree remains independently executable.
 
 ## Binding and resource prerequisite
 
 The original resource manifest SHA-256 is
 `60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2`.
 The wrapper checks every one of its841 source/license hashes in both
-worktrees. Failed, extra or modified resource artifacts refuse transition.
-At freeze, a fresh subprocess runs the original independent four-model
-admission verifier using the original worktree and unchanged runtime; it
-does not bypass the verifier's module-location guard or refit models.
-The passed admission must also satisfy the original memory requirement.
-Its admission hash is an external required argument, never fabricated from
-a pending or failed run. No smaller model, epoch count or relaxed gate is
-permitted after a failed resource experiment.
+worktrees. Extra or modified resource artifacts, numerical failures, memory
+failures and fitting failures refuse transition. The original experiment
+completed all four models and960 optimizer epochs; only its old cost gate
+failed, at9598.877 projected seconds against the historical7200-second limit.
+That original failed report remains unchanged. Under the new user authority,
+the same completed models are admitted on their non-time requirements.
+
+At freeze, a fresh subprocess invokes the unchanged original four-model
+independent saved-state auditor in the original source worktree and runtime,
+checks resource arithmetic and every fitting reservation, and refits nothing.
+The original manifest verifier's module-location guard remains binding.
+The admission hash is an external required argument:
+`f80d134253f2d8751c695ea6b11737a0c4141f077b0f854f45e3e5d995acd3e2`.
+`RUNTIME_AUTHORITY.yaml` freezes the explicit no-time-budget instruction.
+Timing is descriptive only; numerical, memory and model-quality gates remain
+unchanged. No resource refit or smaller model is needed for this transition.
 
 The current reference is the previously audited zero-fit DE3 export,
 completion SHA-256
@@ -73,9 +82,26 @@ is authorized. Users upload and return platform scores themselves.
 G0 controller preparation and G1 quality must be reported separately. Even
 formal local promotion is not a platform forecast or release authorization.
 The milestones96.4/96.45/96.5 remain unmet until appropriate measured evidence.
+The no-time-budget instruction applies to future optimization work, including
+earlier routes that were refused only for time. Their historical refusals stay
+preserved; any resumed execution still requires fresh source/reference audits.
 
 
-LockedPython3.12 final-source checks: **1480 passed,23 existing warnings**;
+Historical controller preparation before the latest user instruction:
+LockedPython3.12 checks: **1480 passed,23 existing warnings**;
 26 focused checks passed; exact853-file source/license snapshot.
 Private full-suite receipt SHA-256:`83d38681406a6e064008f5b25cb7e00c20970535179c474f884739f551f1435f`.
-Original resource outcome remains pending; no formal freeze or official fit.
+At that historical checkpoint the resource outcome was pending and no
+formal freeze or official fit existed. The completed cost-only refusal and
+new no-time-budget authority are recorded above; the new wrapper requires
+a fresh checked source freeze before official fits.
+
+
+The latest user-authorized wrapper passed **1487 lockedPython3.12 tests**,
+23 existing warnings;33 focused checks,854 source/license files.
+Full-suite receipt SHA-256:
+`3d5a8fc2fdef1ba74ed05aa3996da0a6d99ced134b06fb8d284eca3253e89412`.
+Fresh original-worktree non-time verification, zero fits, receipt SHA-256:
+`3b32b79b9ba02f4d810fcd1cda3f6f98fe65a063da71e933259d041ec9e1cb36`.
+This wrapper has no time-based admission condition or wall-clock cap.
+Official execution still requires its new exact-source manifest freeze.

@@ -57,7 +57,7 @@ def test_failed_stage_stops_without_retry_or_confirmation(failed_stage):
 
 def test_execution_spec_does_not_relax_the_preparation_model_or_gates(tmp_path):
     original=Path.cwd();folder=tmp_path/'configs/danet_abstract';folder.mkdir(parents=True)
-    for name in ('SPEC.yaml','EXECUTION.yaml'):(folder/name).write_bytes((original/'configs/danet_abstract'/name).read_bytes())
+    for name in ('SPEC.yaml','EXECUTION.yaml','RUNTIME_AUTHORITY.yaml'):(folder/name).write_bytes((original/'configs/danet_abstract'/name).read_bytes())
     validate_spec(tmp_path)
     model=yaml.safe_load((folder/'SPEC.yaml').read_text())
     model['future_formal_stage']['development_gate']['mean_gain_minimum']=.001
@@ -104,4 +104,3 @@ def test_complete_synthetic_phase_reconciles80_estimators_and_scores_without_new
     artifact.write_bytes(b'corrupted')
     with pytest.raises(ValueError,match='artifact changed'):
         run.earned_context(tmp_path,'confirmation',audited['audit_sha256'],checked['arithmetic_sha256'])
-
