@@ -16481,5 +16481,39 @@
     "agent_uploads": 0,
     "private_root": "local/danet-full-resource-r1",
     "documentation": "docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md"
+  },
+  "round2_danet_formal_controller_preparation_2026_09_30": {
+    "status": "G0_controller_checked_original_resource_pending_G1_unmeasured",
+    "branch": "codex/danet-abstract-development",
+    "locked_python312_tests": {
+      "full_passed": 1480,
+      "focused_passed": 26,
+      "existing_warnings": 23,
+      "source_files": 853,
+      "receipt_sha256": "83d38681406a6e064008f5b25cb7e00c20970535179c474f884739f551f1435f"
+    },
+    "original_resource_manifest_sha256": "60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2",
+    "original_resource_source_files": 841,
+    "byte_identical_core_required": true,
+    "passed_original_resource_admission": "pending_required_before_freeze_or_official_fit",
+    "development": {
+      "pair_units": 20,
+      "estimator_runs": 80,
+      "optimizer_runs": 80,
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "folds": 5,
+      "workers": 4
+    },
+    "confirmation": "only_independently_earned_targets_plus_matched_fixed_control",
+    "current_reference_export_sha256": "7b7409f4a0791eb11c0d90fb2c0479baf5166c5a48a165ef8c0f1520fbfeb7b3",
+    "official_candidate_fits": 0,
+    "new_full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "documentation": "docs/danet_abstract/FORMAL_EXECUTION.md"
   }
 }

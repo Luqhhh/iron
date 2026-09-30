@@ -2152,3 +2152,27 @@ iron-danet-resource-r1-monitor.timer; actual terminal supervisor-terminal.json.
 No between-check training polling. Planned4estimators/4optimizers/960epochs;
 resource resultpending, G1 unmeasured, official fits0. No restart/shrink/gate
 relaxation, automatic formal training, full-data fit, package or upload.
+
+
+### DANet separate formal controller checked, original resource pending (2026-09-30)
+
+codex/danet-abstract-development preserves all841 original resource sources
+byte-identically and adds only checked execution wrappers. LockedPython3.12
+full1480 tests passed,23 existing warnings;26 focused protocol/execution
+checks passed. Exact853-file source/license snapshot, receiptSHA
+83d38681406a6e064008f5b25cb7e00c20970535179c474f884739f551f1435f.
+Synthetic complete20-unit phase closes80estimators/80optimizers; fresh cold
+and independent score/gate arithmetic fit0. No development finalist means
+no confirmation directory or fit; failed targets never reach derived seeds.
+
+This is preparation only: original resource probe resultpending, official
+DANet fits0, G1 unmeasured. A successful original resource admission with its
+external hash and fresh original-worktree cold audit is mandatory before
+formal freeze or training. Any failed probe stops transition with no retry,
+shrink or relaxed gate. Current-DE3 export7b7409f4a0791eb11c0d90fb2c0479baf5166c5a48a165ef8c0f1520fbfeb7b3,
+unchanged exact-source/runtime/80-fit budgets/two-dev/four-seed-LCB gates.
+Only learned-mask candidate and matched fixed control; complete coverage,
+folds descriptive, no cross-seed OOF mixing. No automatic full-data fit,
+package, desktop write or upload. Preserve original resource worktree intact.
+BestDE3=96.3749 remains user-reported. Details
+docs/danet_abstract/FORMAL_EXECUTION.md.

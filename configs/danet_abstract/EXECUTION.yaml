@@ -1,0 +1,27 @@
+version: danet-complete-coverage-execution-v1
+model_spec: configs/danet_abstract/SPEC.yaml
+split_seeds: [42, 3407]
+confirmation_seeds: [7777, 12011]
+folds: 5
+reference_by_target: {tap_iron: CURRENT_DE3, tap_time_len: CURRENT_DE3}
+candidates:
+  tap_iron: [DANET_LEARNED]
+  tap_time_len: [DANET_LEARNED]
+tie_preference_by_target:
+  tap_iron: [DANET_LEARNED]
+  tap_time_len: [DANET_LEARNED]
+matched_controls: {DANET_LEARNED: DANET_FIXED}
+blend_weight: 0.2
+other_target: unchanged_current
+workers: 4
+encoded_dimension_maximum: 26
+development_limits: {pair_unit: 20, estimator: 80, optimizer: 80}
+confirmation: only_earned_targets_plus_matched_fixed_control_no_failed_target_fit
+candidate_tier_policy: configs/candidate_tiers.yaml
+candidate_tiers_are_descriptive_not_mechanism_or_release_admission: true
+audit_before_scoring_or_confirmation: true
+new_full_data_fits: 0
+automatic_packages: false
+desktop_writes: 0
+agent_uploads: 0
+monitoring: {interval_seconds: 600, between_check_polling: false}
