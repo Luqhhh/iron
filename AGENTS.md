@@ -2082,3 +2082,27 @@ as all120-state validation, or retry these fits. Serial queue proceeds to
 DANet. Terminal evidence binds781 artifacts, SHA
 2d909cf2fc8ab9abe4deabaf93ee90e694308c27741429a20cf21f3ecb07f8a9.
 Details docs/dnnr_taylor/FORMAL_RESULTS.md. BestDE3=96.3749 unchanged.
+
+### DANet numerical-component preparation checked (2026-09-30)
+
+After DNNR's preserved cold-audit refusal, codex/danet-abstract-layer-preparation
+adds only abstract-layer equations: globalentmax1.5 masks, support-aware
+gradient, ghost normalization, gated branch sum and eval-only folding.
+Author sourceb007c57121ec9082f6ef19ec7465d9df70767c26; MIT license preserved.
+Single-layer initial/entmax/normalization state exact, trainingmax4.44089e-16,
+evalmax1.11022e-16, foldedmax2.22045e-16. Author eval is row-local; measured
+batch/single/permutation differences0. A singleton final ghost batch fails
+in author code; our guard refuses before any running-statistic change.
+Private diagnostic's running_statistic_updates field denotes BN forward
+attempt counter, not completed updates; separate interpretation preserves it.
+
+LockedPython3.12 full1409 passed,23 existing warnings;11 component tests
+passed, exact825-file source snapshot. This is G0 numerical-component
+preparation only, not full model/training reproduction. Official label reads,
+estimator fits, optimizer runs, full-size probes, packages and uploads0.
+Complete network/optimizer, train-only encoding/calibration, saved-state
+independent audit, fit ledger, full-size resource gate and current-DE3-bound
+formal freeze remain mandatory. Existing complete-coverage/two-dev/four-seed
+LCB gates unchanged; no OOF cross-seed averaging or automatic release.
+Details docs/danet_abstract/SOURCE_AUDIT.md. BestDE3=96.3749 user-reported;
+96.4/96.45/96.5 unmet. No new G1 quality claim from numerical tests.

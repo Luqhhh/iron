@@ -16372,5 +16372,40 @@
     "bound_private_artifacts": 781,
     "next_route": "DANet",
     "documentation": "docs/dnnr_taylor/FORMAL_RESULTS.md"
+  },
+  "round2_danet_numerical_preparation_2026_09_30": {
+    "status": "G0_component_numerical_checked_G1_unmeasured",
+    "branch": "codex/danet-abstract-layer-preparation",
+    "source_commit": "b007c57121ec9082f6ef19ec7465d9df70767c26",
+    "platform_reference": {
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
+      "source": "user_reported_not_independently_verified"
+    },
+    "locked_python312_tests": {
+      "full_passed": 1409,
+      "focused_passed": 11,
+      "existing_warnings": 23,
+      "exact_source_files": 825,
+      "receipt_sha256": "4867b4a51588306b107927d4fcb27527eecb760dd3c570b1069be54f70ce3ea5"
+    },
+    "component_parity": {
+      "compressed": 2.220446049250313e-16,
+      "entmax": 0.0,
+      "evaluation": 1.1102230246251565e-16,
+      "initial": 0.0,
+      "normalization_state": 0.0,
+      "training": 4.440892098500626e-16
+    },
+    "component_parity_sha256": "3899714cb3675ecc1eac783f951653bd6d6baa1276cb737e15e3248161b74d32",
+    "scope": "single_abstract_layer_not_full_model_or_optimizer",
+    "official_label_reads": 0,
+    "official_estimator_fits": 0,
+    "optimizer_runs": 0,
+    "full_size_probes": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "documentation": "docs/danet_abstract/SOURCE_AUDIT.md"
   }
 }

@@ -1,0 +1,37 @@
+version: danet-abstract-layer-numerical-preparation-v1
+stage: equations_only_no_estimator_or_formal_run
+platform_milestones: [96.4, 96.45, 96.5]
+platform_reference:
+  candidate: DE3_IRON_USER_REQUESTED
+  score: 96.3749
+  source: user_reported_not_independently_verified
+source:
+  upstream_commit: b007c57121ec9082f6ef19ec7465d9df70767c26
+  paper: https://ojs.aaai.org/index.php/AAAI/article/view/20309
+  repository: https://github.com/WhatAShot/DANet
+  license: licenses/DANet-MIT.txt
+  full_paper_or_training_reproduction: false
+terms:
+  mask: entmax_alpha_1_5_global_groups_same_for_every_row
+  gradient: support_aware_simplex_jacobian
+  projection: independent_grouped_affine_two_channels_per_output
+  normalization: sequential_training_ghost_batches_stored_eval_statistics
+  singleton_training_batch: refuse_before_any_running_statistic_update
+  activation: ReLU_sigmoid_gate_times_value
+  group_fusion: elementwise_sum
+  folding: merge_mask_affine_and_stored_normalization_eval_only
+control: identical_initial_masks_and_projection_freeze_only_mask_logits
+checks:
+  numerical_dtype: float64
+  maximum_component_difference: 0.000000000001
+  independent_oracles: [simplex_constraint_bisection, finite_difference_gradient, numpy_folded_gating]
+  invariants: [row_order, singleton_query, training_only_statistics, fixed_control_initial_state]
+formal_stage:
+  status: not_admitted
+  required: [full_network_and_optimizer, train_only_encoder_and_calibration, exclusive_saved_states,
+    independent_full_model_audit, append_only_fit_ledger, full_size_resource_probe,
+    current_DE3_four_seed_reference, frozen_candidate_pool_and_same_protocol_controller]
+  development_gate: unchanged_existing_two_complete_seed_rule
+  confirmation_gate: unchanged_existing_four_positive_seed_and_paired_LCB95_rule
+  split_seed_oof_averaging: forbidden
+budget: {official_label_reads: 0, official_estimator_fits: 0, optimizer_runs: 0, full_size_probes: 0, packages: 0, desktop_writes: 0, uploads: 0}
