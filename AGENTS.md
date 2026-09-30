@@ -2112,3 +2112,11 @@ starts only after formal supervisor start. Queue receiptSHAdf57889fbbaf5239fc2d8
 Complete20 development pairs/120optimizers/40KMeans, conditional earned
 confirmation only. Preserve source849 and current DE3/V32-time references.
 Original resource fits not repeated; no full-data fit/package/upload.
+
+PTaRL queued dependency satisfied by actual DANet terminalexit0, no finalist.
+Formal controller started2026-09-30T15:45:51.390846+08:00; initialMainPID471155 active/running.
+Original cost-only refusal preserved; fresh cold admission0fits before actual
+development. Manifest unchanged75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443.
+Actual activation receiptSHA6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec; queue status above is historical.
+600s monitor now active, no between-check training polling; runtime infinity,
+Restart=no, earned confirmation only. G1pending, no full-data fit or release.

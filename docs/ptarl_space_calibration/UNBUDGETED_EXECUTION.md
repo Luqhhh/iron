@@ -69,3 +69,10 @@ the exact frozen source/runtime/reference and latest current-best identity,
 then starts the formal supervisor once. Restart is disabled; start and
 runtime timeouts are infinite. The read-only 600-second monitor starts after
 actual supervisor activation. Queue receipt SHA-256 `df57889fbbaf5239fc2d82d7a08a22ca1fdb14b11073d11fcff9021fa6282640`.
+
+The queued job **actually activated** after DANet ended successfully with no
+finalist. PTaRL orchestration started`2026-09-30T15:45:51.390846+08:00`, initialMainPID471155
+active/running; development started.json exists. Activation receipt SHA-256
+`6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec`. Monitor timer is active and first training observation is
+scheduled600seconds after actual supervisor start. Earlier queued/MainPID0
+statements are historical. G1 is pending; no optimization gain is asserted.

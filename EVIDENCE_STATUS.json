@@ -16593,7 +16593,7 @@
     "formal_manifest_generated": true
   },
   "ptarl_unbudgeted_formal_execution_2026_09_30": {
-    "status": "queued_waiting_for_DANet_actual_terminal_no_G1_result",
+    "status": "frozen_complete_development_started_G1_pending",
     "evidence_worktree": "/home/lux1/iron/local/worktrees/ptarl-unbudgeted-development",
     "branch": "codex/ptarl-unbudgeted-development",
     "implementation_commit": "b71beb4",
@@ -16626,6 +16626,17 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "G1": "unmeasured",
-    "documentation": "docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md"
+    "documentation": "docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md",
+    "started_local": "2026-09-30T15:45:51.390846+08:00",
+    "preflight_sha256": "e0b26300ceee5e3b20946ec55756ddcdb5ea9afc33ef3d45d51d2b9f0c1e8380",
+    "actual_serial_dependency_terminal": {
+      "exit_code": 0,
+      "manifest_sha256": "fa17063826dea7ac9c39b8fd24aabe6ead96d8144eaca91d0cc8c222516e205b"
+    },
+    "dependency_ready_sha256": "fb87383b6cbbae44908bec1f45943d593bcbcc9eb79ae4f6bcaaf564daa3b17e",
+    "orchestration_started_sha256": "3f942d76cc36bb66fd854fa8c24b2306249094bc8c65de48b77f73de8f0bb8e1",
+    "initial_main_pid": 471155,
+    "initial_live_observation": "active/running",
+    "activation_receipt_sha256": "6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec"
   }
 }
