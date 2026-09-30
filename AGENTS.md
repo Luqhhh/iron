@@ -2142,3 +2142,20 @@ Actual PTaRL recovery activated 2026-09-30T23:08:25.825503+08:00, MainPID12094 a
 12reused pairs/72saved models passed cold admission;0new reuse fits.
 600smonitor active, Restart=no/runtime infinity. ActivationSHAf0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7.
 G1pending,8missing pairs run fresh; original artifacts/ledger preserved.
+
+
+### Explicit user-authorized resource-entry retry (2026-09-30)
+
+User: “继续重试，刚才是别的任务在进行、现在结束了”. New wrapper only
+accepts externally anchored worker-entry memory refusal with all existing
+reservations fully closed and missing tasks never reserved/no artifacts.
+Failed/incomplete model reservations, other terminals or changed anchors are
+refused. Preserve original wrapper/source and r1 failed evidence unchanged.
+Original4workers/scientific manifest/memory/quality gates retained.16pairs
+are cold-audited/reused;4time3407folds1..4 execute fresh,24optimizers/8KMeans
+maximum. Full1481locked tests passed,0skips,23warnings;852sources unchanged.
+ReceiptSHAefedb870fc4083ba5c0fb5474aab1accc47597336b5fcb1db3e1c43d06b684e2.
+PlanSHAdf54575fbc155d94a85b0fee85e9284754666b43b2c3a7acf81d061ad737d6b7.
+Current-memory admission rechecked unchanged; actual launch pending here.
+No time budget, automatic retry, full-data fit/package/desktop write/upload.
+See docs/ptarl_space_calibration/ENTRY_REFUSAL_RETRY.md.

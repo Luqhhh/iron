@@ -75,6 +75,85 @@ def partition_tasks(phase):
     return reusable, missing
 
 
+def entry_refusal_scope(root, terminal_sha256):
+    """Refuse every failed/incomplete fit; allow only untouched missing tasks."""
+    root = Path(root)
+    terminal = json.loads((root/'completion-event.json').read_text())
+    if (file_hash(root/'completion-event.json') != terminal_sha256
+            or terminal.get('status') != 'failed' or terminal.get('type') != 'ValueError'
+            or terminal.get('message') != 'Current memory below original admitted requirement'
+            or terminal.get('packages') != 0 or terminal.get('uploads') != 0):
+        raise ValueError('Externally anchored worker-entry memory refusal required')
+    phase = root/'development'
+    if any((phase/n).exists() for n in ('complete.json', 'failed.json', 'audit-started.json')):
+        raise ValueError('Failed/completed/audited phase cannot use entry-refusal retry')
+    reusable, missing = partition_tasks(phase)
+    if not reusable or not missing:
+        raise ValueError('Partial closed coverage and untouched missing tasks required')
+    names = {task_name(t) for t in reusable}
+    if {p.name for p in (phase/'units').iterdir()} != names:
+        raise ValueError('Missing tasks have model artifacts or consumed reservations')
+    policy_sha = file_hash(phase/'ledger/policy.json')
+    ledger = ReservationLedger.open(phase/'ledger', policy_sha); counts = ledger.inspect()
+    required = dict(pair_unit=len(reusable), optimizer=6*len(reusable), kmeans=2*len(reusable))
+    if (ledger.limits != phase_limits('development') or counts['started'] != required
+            or counts['completed'] != required
+            or any(counts[s][k] for s in ('failed', 'incomplete') for k in required)):
+        raise ValueError('Failed/incomplete fit reservations cannot be retried')
+    for task in reusable:
+        closed_events(phase, task_name(task), policy_sha)
+    return reusable, missing, policy_sha, counts
+
+
+def prepare_entry_refusal(manifest_path, manifest_sha256, proof_path, proof_sha256,
+                          tests_path, tests_sha256, output):
+    manifest_path, proof_path, tests_path = map(Path, (manifest_path, proof_path, tests_path))
+    if file_hash(proof_path) != proof_sha256 or file_hash(tests_path) != tests_sha256:
+        raise ValueError('External terminal/test proof anchors required')
+    proof = json.loads(proof_path.read_text())
+    if (proof['status'] != 'resource_gate_refusal_at_worker_entry_before_any_missing_task_reservation'
+            or not proof['original_evidence_unchanged'] or proof['new_audit_fits'] != 0
+            or proof['phase_complete'] or proof['missing_task_directories'] != 0):
+        raise ValueError('Verified pre-reservation resource refusal required')
+    wrapper = Path(__file__).resolve(); workspace = wrapper.parent.parent
+    tests = json.loads(tests_path.read_text())
+    if (tests['status'] != 'passed' or tests['exit_code'] != 0 or not tests['full_suite']
+            or tests['source_changed'] or tests['source_hashes'].get('scripts/'+wrapper.name) != file_hash(wrapper)
+            or file_hash(tests['log']) != tests['log_sha256']):
+        raise ValueError('Checked exact-source full-suite retry wrapper required')
+    for name, sha in tests['source_hashes'].items():
+        if file_hash(workspace/name) != sha:
+            raise ValueError('Checked retry source changed')
+    manifest = verify_manifest(manifest_path, manifest_sha256)
+    old = manifest_path.resolve().parent
+    if proof_path.resolve() != old/'terminal-verification.json':
+        raise ValueError('Original terminal verification location required')
+    original = dict(proof['artifact_hashes'], **{'terminal-verification.json': proof_sha256})
+    verify_inventory(old, original)
+    reusable, missing, policy_sha, counts = entry_refusal_scope(old, proof['terminal_sha256'])
+    started = json.loads((old/'development/started.json').read_text())
+    if (started['manifest_sha256'] != manifest_sha256 or started['tasks'] != phase_tasks('development')
+            or counts != proof['closed_counts'] or missing != proof['remaining_tasks']):
+        raise ValueError('Verified phase/remaining task identities changed')
+    output = private_path(manifest['workspace'], output); output.mkdir(parents=True, exist_ok=False)
+    with (output/'manifest.json').open('xb') as f:
+        f.write(manifest_path.read_bytes())
+    plan = dict(version=2, original_root=str(old), original_artifacts=original,
+        manifest_sha256=manifest_sha256, output=str(output),
+        boot_id=Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+        terminal_verification_path=str(proof_path.resolve()), terminal_verification_sha256=proof_sha256,
+        recovery_wrapper=str(wrapper), recovery_wrapper_sha256=file_hash(wrapper),
+        tests_path=str(tests_path.resolve()), tests_sha256=tests_sha256,
+        source_workspace=manifest['workspace'], original_counts=counts,
+        reused_tasks=reusable, fresh_tasks=missing, original_policy_sha256=policy_sha,
+        retry_authority='继续重试，刚才是别的任务在进行、现在结束了',
+        predecessor_service='iron-ptarl-reboot-recovery-r1.service', execution_workers=4,
+        scientific_recipe='unchanged', maximum_runtime_seconds=None,
+        failed_model_retries=0, automatic_packages=False, uploads=0)
+    write_new(output/'recovery-plan.json', plan)
+    return dict(plan=str(output/'recovery-plan.json'), sha256=file_hash(output/'recovery-plan.json'))
+
+
 def prepare(manifest_path, manifest_sha256, interruption_path, interruption_sha256,
             tests_path, tests_sha256, output):
     manifest_path, interruption_path, tests_path = map(Path, (manifest_path, interruption_path, tests_path))
@@ -158,6 +237,11 @@ def run(plan_path, plan_sha256):
         '-p', 'MainPID', '-p', 'ActiveState'], text=True)
     if 'MainPID=0\n' not in status or not any(s in status for s in ('ActiveState=inactive', 'ActiveState=failed')):
         raise ValueError('Original PTaRL process must be absent before explicit recovery')
+    if 'predecessor_service' in plan:
+        previous = subprocess.check_output(['systemctl', '--user', 'show', plan['predecessor_service'],
+            '-p', 'MainPID', '-p', 'ActiveState'], text=True)
+        if 'MainPID=0\n' not in previous or not any(s in previous for s in ('ActiveState=inactive', 'ActiveState=failed')):
+            raise ValueError('Predecessor recovery must actually be terminal')
     write_new(root/'orchestration-started.json', dict(recovery_plan_sha256=plan_sha256, time_ns=time.time_ns()))
     try:
         fit = recover_development(plan, manifest_path, mh, ph)
@@ -245,14 +329,17 @@ def continue_sequence(root, manifest, mh, ph, development_fit):
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action', choices=['prepare', 'run'])
-    for name in ('manifest', 'interruption', 'tests', 'output', 'plan'):
+    p.add_argument('action', choices=['prepare', 'prepare-entry-refusal', 'run'])
+    for name in ('manifest', 'interruption', 'tests', 'output', 'plan', 'proof'):
         p.add_argument('--'+name, type=Path)
-    for name in ('manifest', 'interruption', 'tests', 'plan'):
+    for name in ('manifest', 'interruption', 'tests', 'plan', 'proof'):
         p.add_argument('--'+name+'-sha256')
     a = p.parse_args()
     if a.action == 'prepare':
         result = prepare(a.manifest, a.manifest_sha256, a.interruption, a.interruption_sha256, a.tests, a.tests_sha256, a.output)
+    elif a.action == 'prepare-entry-refusal':
+        result = prepare_entry_refusal(a.manifest, a.manifest_sha256, a.proof, a.proof_sha256,
+            a.tests, a.tests_sha256, a.output)
     else:
         result = run(a.plan, a.plan_sha256)
     print(json.dumps(result, sort_keys=True))

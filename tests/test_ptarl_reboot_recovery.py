@@ -77,3 +77,32 @@ def test_frozen_controller_gate_prevents_confirmation_after_failed_audit(monkeyp
     with pytest.raises(recovery.subprocess.CalledProcessError):
         recovery.continue_sequence(tmp_path, {'workspace': str(tmp_path)}, 'manifest', 'resource', {'complete_sha256': 'complete'})
     assert len(calls) == 1 and 'audit' in calls[0] and 'confirmation' not in calls[0]
+
+
+def terminal(root, message='Current memory below original admitted requirement'):
+    recovery.write_new(root/'completion-event.json',dict(status='failed',type='ValueError',message=message,
+        packages=0,uploads=0))
+    return recovery.file_hash(root/'completion-event.json')
+
+
+def test_entry_refusal_reuses_closed_units_and_does_not_refit_them(tmp_path):
+    phase,ledger,name=make_phase(tmp_path);sha=terminal(tmp_path)
+    reused,missing,policy,counts=recovery.entry_refusal_scope(tmp_path,sha)
+    assert [recovery.task_name(t) for t in reused]==[name] and len(missing)==19
+    assert counts['started']==counts['completed']==dict(pair_unit=1,optimizer=6,kmeans=2)
+    assert policy==ledger.policy_sha256
+
+
+@pytest.mark.parametrize('defect',['partial_model','consumed_start','failed_model','other_terminal','stale_anchor'])
+def test_user_retry_never_retries_failed_models_or_consumed_missing_reservations(tmp_path,defect):
+    phase,ledger,name=make_phase(tmp_path)
+    sha=terminal(tmp_path,'numerical failure' if defect=='other_terminal' else 'Current memory below original admitted requirement')
+    if defect=='partial_model':
+        missing=phase/'units/tap_time_len-s42-f0';missing.mkdir();(missing/'model.pt').write_bytes(b'artificial partial model')
+    elif defect in ('consumed_start','failed_model'):
+        with pytest.raises(ValueError):
+            with ledger.event('pair_unit',('tap_time_len-s42-f0',),{}):raise ValueError('artificial failure')
+        if defect=='consumed_start':
+            next((ledger.root/'events').glob('pair_unit-*.failed.json')).unlink()  # disposable artificial fixture only
+    elif defect=='stale_anchor':sha='0'*64
+    with pytest.raises(ValueError):recovery.entry_refusal_scope(tmp_path,sha)
