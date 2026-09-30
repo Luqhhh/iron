@@ -1990,3 +1990,12 @@ directory and failure. Monitor600s, no between-check polling; first launch
 check02:03:25 UTC, next no earlier than02:13:25 UTC. Automatic fresh-process
 audit follows execution, no automatic retry/release/upload. G1 unmeasured.
 Details docs/incumbent_de3_reference/LAUNCH.md.
+
+### Reference job first monitor (2026-09-30)
+
+At 2026-09-30T02:14:14.950113+00:00, iron-incumbent-de3-reference-r2.service was confirmed
+active/running, MainPID417199. 8/20 estimators complete,12 starts total;
+20/40 optimizer completions,24 starts total. Four estimator/optimizer starts
+are in-flight,0 failed receipts. Next monitor no earlier than
+2026-09-30T02:24:14.950113+00:00, preserving600s/no-between-check cadence.
+No terminal outcome or G1 gain yet; do not restart or alter frozen source.

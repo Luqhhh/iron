@@ -16181,6 +16181,33 @@
       "run": "local/incumbent-de3-reference-four-seed-r1",
       "reason": "wrong historical native root lacked primary reference audit; corrected to original RFM manifest reference_root",
       "official_fits": 0
+    },
+    "latest_monitor": {
+      "receipt": "local/research/incumbent-reference-phase-r1/monitor-001.json",
+      "receipt_sha256": "5468ea89561d08c98a627ac2eff4b2b7a971808cc2965934c3e36389426fa592",
+      "checked_utc": "2026-09-30T02:14:14.950113+00:00",
+      "service_active_at_check": true,
+      "main_pid": 417199,
+      "counts": {
+        "completed": {
+          "estimator": 8,
+          "optimizer": 20
+        },
+        "failed": {
+          "estimator": 0,
+          "optimizer": 0
+        },
+        "incomplete": {
+          "estimator": 4,
+          "optimizer": 4
+        },
+        "started": {
+          "estimator": 12,
+          "optimizer": 24
+        }
+      },
+      "next_not_before_utc": "2026-09-30T02:24:14.950113+00:00",
+      "terminal_result": false
     }
   }
 }

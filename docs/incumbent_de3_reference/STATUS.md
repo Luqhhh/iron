@@ -46,3 +46,12 @@ The fixed20-estimator/40-optimizer execution is running, not a G1 result.
 The failed wrong-root r1 freeze is preserved with0 estimator starts.
 Use the original RFM manifest's reference_root=/home/lux1/iron.
 Full identity and monitoring cadence: [LAUNCH.md](LAUNCH.md).
+
+## First scheduled monitor
+
+At `2026-09-30T02:14:14.950113+00:00`, service iron-incumbent-de3-reference-r2 remained
+active/running, MainPID417199. Estimators:12 started,8 completed,4 active;
+optimizers:24 started,20 completed,4 active. No failed estimator/optimizer
+receipt or terminal failure artifact. Budget remains20 estimators/40
+optimizers. No between-check polling; next observation no earlier than
+`2026-09-30T02:24:14.950113+00:00`. G1 remains unmeasured.
