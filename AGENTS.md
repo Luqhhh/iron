@@ -2212,3 +2212,18 @@ no between-check training polling.20pair/80estimator/80optimizer complete
 coverage on42/3407. Only independently earned targets plus fixed controls
 may consume7777/12011; original gates unchanged. Resource refits0. G1pending,
 no full-data fit/package/desktop write/upload. BestDE3=96.3749 unchanged.
+
+
+DANet formal terminal2026-09-30: exit0,20pairs/80estimators/80optimizers,
+11813actual epochs; all complete, no failed/incomplete.854sources unchanged,
+80saved states pass original float32 scale-aware cold bounds (max fraction
+.549877842462, max absolute.000268339198; not absolute1e-8). Independent
+score arithmetic max1.42109e-14, terminal recheck0fits,566closed artifacts.
+Learned mean current gains: iron-.059294111,time-.059850641;0/10positive
+folds each. Iron mask-control difference-.014174729; time+.020641326 but
+still negative against incumbent. Both not_shortlisted, no finalist or
+confirmation; no full-data fit/package/upload. Preserve this exact-recipe
+negative and original cost-only refusal; do not repeat it or scan variants.
+Terminal receiptSHAedd718b17d655de4748497bb38a44fd6572d73f82c22157efca600788ae0cfba.
+Monitor stopped, actual terminal event released queued PTaRL serial start.
+Details docs/danet_abstract/FORMAL_RESULTS.md. BestDE3=96.3749 unchanged.
