@@ -5978,7 +5978,52 @@
     "historical_round2_results_apply_to": "R2S legacy data only",
     "agent_platform_uploads": 0
   },
+  "round2_today_five_20261001": {
+    "status": "awaiting_original_artifacts",
+    "plan": "docs/today_five_20261001/PLAN.md",
+    "builder": "scripts/build_today_five.py",
+    "source_remote_commit": "6d6df2e",
+    "scientific_release_source_commit": "2c67896",
+    "platform_reference": "EMA_TIME_Q75",
+    "platform_reference_score_user_reported": 96.3920,
+    "candidate_names": [
+      "01_PTARL_TIME_Q20",
+      "02_EMA_IRON_EMA_Q75",
+      "03_DE3_IRON_EMA_PTARL_T50_50",
+      "04_DE3_IRON_EMA_Q875",
+      "05_DE3_IRON_EMA_Q75_RESERVE"
+    ],
+    "candidate_05_role": "existing_reserve_not_in_current_upload_queue",
+    "real_new_fits": 0,
+    "real_submission_packages_generated": 0,
+    "agent_uploads": 0,
+    "blocker": "Original scored ZIPs and scientific release evidence are on the teammate host, not this machine. Git carries source and public aggregate evidence only."
+  },
   "round2_current_platform_best": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.3920,
+    "source": "user_reported_not_independently_verified",
+    "reported_date": "2026-10-01",
+    "source_remote_commit": "6d6df2e",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+    "co_best_candidates": [
+      {"candidate": "EMA_TIME_Q75", "score": 96.3920, "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"},
+      {"candidate": "EMA_TIME_Q100", "score": 96.3920, "zip_sha256": "a102cbf123981ca3103b5ba24f78b8b36203bee29810c6f0b68c6aad8ca139cb"}
+    ],
+    "previous_best": {
+      "candidate": "LOC_DIAG_EMA_TIME", "score": 96.3895,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836",
+      "previous_best": {"candidate": "DE3_IRON_USER_REQUESTED", "score": 96.3749,
+        "archived_full_record": "round2_current_platform_best_before_20261001"}
+    },
+    "platform_milestone_gaps": {"96.4": 0.0080, "96.45": 0.0580, "96.5": 0.1080},
+    "target": 96.5,
+    "target_met": false,
+    "margin_to_target": -0.1080,
+    "note": "Synced public reported scores, not local platform verification. Q75 represents the reported tie by smaller extrapolation. The five-pack plan does not change old frozen references or authorize uploads."
+  },
+  "round2_current_platform_best_before_20261001": {
     "candidate": "DE3_IRON_USER_REQUESTED",
     "score": 96.3749,
     "source": "user_reported_not_independently_verified",
