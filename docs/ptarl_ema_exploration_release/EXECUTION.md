@@ -24,3 +24,11 @@ and package audits pending. G1explicit platform exploration, not formal
 promotion or a platform forecast. No package/upload/desktop write at activation.
 Private root:local/runs/ptarl-ema-exploration-release-20261001/release-r1.
 Activation receipt2c9a0fb79ea0a12f2e0c14775d57f95e244156d4bbbc8243e44d52ee935b2ee8.
+
+
+## Terminal completion
+
+Actual terminal completed `2026-10-01T01:32:45.725579+08:00`. Both isolated releases passed independent
+saved-state/cold/package checks; service MainPID=0, ExecMainStatus=0, monitor stopped.
+Full identities and G0/G1 distinction: [DELIVERY.md](DELIVERY.md).
+Zero-fit terminal receipt `ec9613fe4e990c445209d8d337af657945076409d25373efd87d0f61fe6f27da`.
