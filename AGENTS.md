@@ -2069,3 +2069,23 @@ artifacts. Evidence EVIDENCE_STATUS.json->environment_restart_2026_09_30.
 DNNR formal development remains stopped on a cold-audit tolerance failure.
 No new fits, full-data fits, CV fits or agent uploads; historical decisions
 unchanged.
+
+
+### Actual host reboot and continued preparation (2026-09-30)
+
+Host reboot confirmed by current boot epoch after the last scheduled PTaRL
+observation; originalMainPID0/inactive and no supervisor terminal. Do not
+report PTaRL as live or as a model-quality failure.12saved complete pairs,
+4interrupted and4unstarted.361original artifacts anchored/preserved;
+interruptionSHA14cfb661e69436c1c5776ab1db9e2ca5c4770316716ab85fa197d03820d9480b.
+Explicit recovery prepared on codex/ptarl-reboot-recovery: reuse only fully
+closed/audited pairs, fresh missing pairs under the exact original scientific
+freeze, new append-only root/ledger, preserve old incomplete reservations.
+No automatic restart, tolerance change, quality relaxation or time budget.
+Recovery is not yet launched at this registration.
+
+ModernNCA partition prep46f4b2b and first-epoch refusal guard93d6973 pushed
+on codex/modernnca-source-preparation. Full locked r2 suite1326passed,0skips,
+23warnings,803sources unchanged during tests. ReceiptSHA
+95fb52911c62b8b74d243fef7b633609605e299f0fbf20e0bd3e53e4d23f2367.
+G0partial, G1unmeasured; no official ModernNCA fits. BestDE3=96.3749 unchanged.
