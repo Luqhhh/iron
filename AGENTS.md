@@ -2125,3 +2125,20 @@ four explicitly selected diagnostic slots; older score-seeking chord packages
 remain historical and preserved, not the current four recommendations. Exact
 identities: docs/local_platform_diagnostic_release/DELIVERY.md and
 EVIDENCE_STATUS.json->round2_local_platform_diagnostics_20260930.
+
+
+Actual PTaRL reboot recovery r1 stopped at worker-entry current-memory
+check after16closed pairs,96optimizers/32KMeans; no failed/incomplete fit
+reservation, missing4time3407folds1..4 never reserved. G1unscored. Terminal
+SHAa663318718d0961607ab6cfb3411c03650fbd1ba714f1945ddd69905a2138eeb;
+serviceMainPID0/failed, monitorstopped. User explicitly says retry because
+the other task has ended. A fresh source-exact retry is prepared separately
+on codex/ptarl-resource-entry-recovery; old code/failed evidence preserved.
+Original4workers, model/memory/quality gates and no-time-budget rule retained.
+
+ModernNCA phase-engineering f4b0c9d committed/pushed: full1349locked tests
+passed/0skips/23warnings,811source files.20artificial pairs/80saved states/
+40optimizers passed fresh no-fit audit, diff1.1368683772161603e-13. Original
+DE3/V32 reference2754rows/4seeds revalidated with0newfits. G0partial only:
+full-size resource admission and official scheduler/freeze remain pending.
+No official ModernNCA fit/package/upload. BestDE3=96.3749 unchanged.

@@ -16692,11 +16692,11 @@
     "recovery_activation_sha256": "f0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7"
   },
   "ptarl_explicit_reboot_recovery_2026_09_30": {
-    "status": "explicit_recovery_activated_after_reuse_admission_G1_pending",
+    "status": "terminal_worker_entry_memory_refusal_after_16_closed_pairs",
     "branch": "codex/ptarl-reboot-recovery",
     "documentation": "docs/ptarl_space_calibration/REBOOT_RECOVERY.md",
     "G0": "recovery_engineering_and_72_model_reuse_admission_passed",
-    "G1": "incomplete_unscored",
+    "G1": "unscored_incomplete_phase",
     "locked_suite": {
       "passed": 1475,
       "skipped": 0,
@@ -16727,7 +16727,17 @@
     "initial_main_pid": 12094,
     "reuse_models": 72,
     "reuse_maximum_difference": 2.2737367544323206e-13,
-    "monitor_interval_seconds": 600
+    "monitor_interval_seconds": 600,
+    "terminal_verification_sha256": "a663318718d0961607ab6cfb3411c03650fbd1ba714f1945ddd69905a2138eeb",
+    "complete_pairs": 16,
+    "new_completed_pairs": 4,
+    "new_optimizer_runs": 24,
+    "new_kmeans_calls": 8,
+    "remaining_pairs": 4,
+    "failed_model_reservations": 0,
+    "incomplete_model_reservations": 0,
+    "monitor_stopped": true,
+    "retry_authorized_by_user": "继续重试，刚才是别的任务在进行、现在结束了"
   },
   "round2_local_platform_diagnostics_20260930": {
     "status": "delivered_pending_user_platform_feedback",
@@ -16842,5 +16852,66 @@
         "row_order_chunk_max_raw_difference": 3.226142496259854e-06
       }
     ]
+  },
+  "modernnca_phase_engineering_2026_09_30": {
+    "status": "paired_execution_ledger_collector_and_current_reference_checked_no_official_scheduler",
+    "branch": "codex/modernnca-source-preparation",
+    "documentation": "docs/modernnca_source_preparation/PHASE_ENGINEERING.md",
+    "G0": "partial_complete_synthetic_phase_and_reference_binding_checked",
+    "G1": "unmeasured",
+    "source_files": 811,
+    "locked_suite": {
+      "passed": 1349,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "focused_new_tests": 23,
+    "engineering_receipt_sha256": "532b41e08ab2cd5398c01a02b675c276ea4a1f1186d2eff1195cb03aba2f4460",
+    "prior_harness_failure_receipt_sha256": "a7c75c6d908d1ccd0cbfb5b50912c5f90cf3bf87d39a4c5e2051331f5624ff5b",
+    "prior_harness_failure": "two_existing_path_tests_require_tmp_path_outside_local_fixed_private_runner_only",
+    "synthetic_phase": {
+      "complete_pairs": 20,
+      "saved_models": 80,
+      "optimizer_runs": 40,
+      "small_unit_test_dimensions_only": true,
+      "fresh_process_cold_receipt_sha256": "fee7c0b7bd0a6c6897ae3e842e948827c1375a8cf3e9737500d8a13939b9b493",
+      "cold_maximum_difference": 1.1368683772161603e-13,
+      "new_cold_fits": 0
+    },
+    "reference_binding": {
+      "receipt_sha256": "015ebfef4d693d3d9f48e7af34ef0dba3a7fb003b6038b38e7793dca89109c55",
+      "cache_complete_sha256": "7b7409f4a0791eb11c0d90fb2c0479baf5166c5a48a165ef8c0f1520fbfeb7b3",
+      "rows": 2754,
+      "reader_source_files": 841,
+      "native_artifact_files": 436,
+      "overlay_artifact_files": 218,
+      "seeds": [
+        42,
+        3407,
+        7777,
+        12011
+      ],
+      "incumbent": "DE3_IRON_USER_REQUESTED",
+      "parent": "V32_TIME_A60V7_50",
+      "current_time_column_exact": true,
+      "new_reference_fits": 0,
+      "existing_official_reference_rows_read": 2754
+    },
+    "official_candidate_fits": 0,
+    "full_size_resource_probes": 0,
+    "official_scheduler": false,
+    "formal_manifest": false,
+    "formal_queue": false,
+    "maximum_runtime_seconds": null,
+    "quality_gates": "unchanged",
+    "packages": 0,
+    "uploads": 0,
+    "next_required": [
+      "admitted_official_scheduler",
+      "independent_formal_score_reconstruction",
+      "full_size_non_time_resource_admission",
+      "exact_source_freeze"
+    ],
+    "implementation_commit": "f4b0c9d"
   }
 }
