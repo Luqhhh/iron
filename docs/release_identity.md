@@ -1,5 +1,23 @@
 # 发布与运行身份
 
+更新日期：2026-10-01。当前复赛平台代表与两项探索包如下；仅引用已登记身份，未在本次维护重训或改包。分数是用户回传，未独立平台核验；动态状态读取 `round2_current_platform_best` 与 `round2_current_candidate_queue`。
+
+| 身份 | 状态 / ZIP SHA-256 |
+| --- | --- |
+| EMA_TIME_Q75 | 96.3920，同分最佳的代表；`41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825` |
+| EMA_TIME_Q100 | 96.3920，同分最佳；`a102cbf123981ca3103b5ba24f78b8b36203bee29810c6f0b68c6aad8ca139cb` |
+| PTARL_TIME_Q20 | 已审计、平台待反馈；`a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d` |
+| EMA_IRON_EMA_TIME | 已审计、平台待反馈；`88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0` |
+| DE3_IRON_EMA_TIME_Q75_RESERVE | 替补、暂不平台测试；`86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3` |
+
+准确路径、公式与保留列见 [EMA 交付](ema_time_followup/DELIVERY.md) 和 [PTaRL/EMA 交付](ptarl_ema_exploration_release/DELIVERY.md)。初赛 `active_release.yaml` 指针与基线标签仍保留原身份，不代表当前复赛平台最佳；不能用旧初赛推理脚本导出这些复赛包。
+
+每次执行记录当时源码/配置/数据/模型/运行环境和预测身份，目录追加、不覆盖。推送分支不等于 CI 或平台质量验证；参考工程与模型质量分别报告。
+
+## 历史初赛发布与基线身份（2026-09-09）
+
+以下提交、活动指针、回退与检查仅适用于原阶段，保持历史含义。
+
 截至 2026-09-09，最近已推送的实验结果提交为 `optimization-v0.10@fcda5e0`。
 实验分支最新版与当前活动模型是两个不同身份：v0.10 失败，发布继续使用 v0.8 的 V1。
 

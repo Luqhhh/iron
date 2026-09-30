@@ -1,5 +1,7 @@
 # V37: faster contraction, time admission still fails
 
+> Historical execution contract (reading update 2026-10-01): keep all measured failures, counts, frozen gates and source identities below. Subsequent user instructions resumed optimization, set milestones 96.4/96.45/96.5, changed monitoring to 600 seconds and removed future wall-clock budgets. Earlier pause/hourly/time-admission statements are not current instructions, and old failures are not relabeled as passes. See [current rules and status](../INDEX.md).
+
 Platform goal **96.5** remains unachieved. Current user-reported best is
 **B0 96.3679**, gap **0.1321**. Frozen implementation: `28ba272`.
 

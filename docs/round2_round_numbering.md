@@ -1,8 +1,10 @@
 # Round2 round numbering and reservations
 
-Status: current as of 2026-09-28 after the V30/V31 collision repair. This file is the single place that says what
-each `V<n>` label means across the live branches, so a merge does not silently
-join two different rounds under one number.
+Scope: historical naming repairs and reservations through the V38/V39 entry
+(2026-09-29). This is a record of label ownership, not the current execution
+queue or an inventory of all later rounds. Later mechanism experiments use
+explicit names and branch/run identities in EVIDENCE_STATUS.json. Current
+platform references and release status are in [the documentation index](INDEX.md).
 
 ## 1. Renumbering applied on 2026-09-28
 

@@ -1,5 +1,7 @@
 # Four free-option candidates for the 2026-09-30 submission slots
 
+> Historical handoff, superseded on 2026-09-30 by the four user-selected local/platform screening diagnostics. The 1/2/3/5 upload recommendation, four-slot count, estimated score range and reboot-time process state below are snapshots, not the current queue or runtime. Preserve these original packages; no feedback for them is inferred. Current Q75/Q100 scores, the two audited PTaRL/EMA releases and the reserve-only DE3+Q75 instruction are in [the current index](../INDEX.md).
+
 Current user-reported platform best is **DE3_IRON_USER_REQUESTED = 96.3749**
 (parent `V32_TIME_A60V7_50` 96.3727, +0.0022). Target **96.4**; gap **0.0251**.
 The user stated four submissions remain before midnight. This round performs

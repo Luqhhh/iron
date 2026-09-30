@@ -1,5 +1,7 @@
 # DE3 iron exploration delivered (2026-09-30)
 
+> 状态范围更新（2026-10-01）：DE3 铁量已回传 96.3749，相对 V32 +0.0022；它是历史最佳，不是当前参照。当前同分最佳 Q75/Q100 为 96.3920；DE3＋Q75 已准备但仅作替补、暂不平台测试。下方交付/回传时的“current best”和剩余差值只限当时；最新状态见 [文档索引](../INDEX.md)。
+
 The user requested the highest recent isolated local-gain candidate among EMA
 and independent three-model averaging, with a submission package on the desktop.
 DE3 iron is the largest of these completed candidates: +0.004381694674 on

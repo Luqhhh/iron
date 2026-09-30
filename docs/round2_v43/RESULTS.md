@@ -1,5 +1,7 @@
 # V43: fixed-chain BART does not pass development eligibility
 
+> Historical execution contract (reading update 2026-10-01): keep all measured failures, counts, frozen gates and source identities below. Subsequent user instructions resumed optimization, set milestones 96.4/96.45/96.5, changed monitoring to 600 seconds and removed future wall-clock budgets. Earlier pause/hourly/time-admission statements are not current instructions, and old failures are not relabeled as passes. See [current rules and status](../INDEX.md).
+
 Goal **platform 96.5** remains unmet. The latest registered user-reported
 platform best is still **V32_TIME_A60V7_50 = 96.3727**, gap **0.1273**.
 No new platform measurement was obtained. Protocol `4321331`, implementation

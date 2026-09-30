@@ -1,5 +1,7 @@
 # Round2 下一阶段：批次 0 与批次 2 增量检验结果
 
+> 历史阶段记录（2026-10-01 阅读更新）：本文的“当前最佳”、目标、队列和下一步限于原记录时点，不作为当前执行指令。实验数字、原参照与冻结决定保留；新阶段参照及有效约束见 [当前索引](../INDEX.md) 和根目录 AGENTS.md。
+
 日期：2026-09-24
 分支：`codex/round2-next-phase-search`
 代码：`src/bf_tap_r2/next_phase_probe.py`、`tests/test_round2_next_phase_probe.py`

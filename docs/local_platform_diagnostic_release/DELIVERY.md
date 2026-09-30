@@ -1,5 +1,7 @@
 # Four screening diagnostics delivered
 
+> 状态范围更新（2026-10-01）：四项诊断均已回传，本批不再待测；EMA 时间 96.3895 是当时最佳，后续 Q75/Q100 已同分达到 96.3920。保留下方同一 V32 的比较与原包身份；动态参照和当前队列见 [文档索引](../INDEX.md)，不沿用本文旧剩余目标差值。
+
 The user explicitly requested the four selected diagnostic releases on 2026-09-30.
 All four are delivered to `C:\Users\lqh22\Desktop\submission-local-platform-diagnostic-20260930`.
 Each numbered subdirectory contains `Luqhhh_bf_tap_predict_round2.zip`; the root README lists identities and the interpretation reference.

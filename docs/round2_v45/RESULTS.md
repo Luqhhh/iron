@@ -1,5 +1,7 @@
 # V45: rotation forests add no increment to the incumbent
 
+> Historical execution contract (reading update 2026-10-01): keep all measured failures, counts, frozen gates and source identities below. Subsequent user instructions resumed optimization, set milestones 96.4/96.45/96.5, changed monitoring to 600 seconds and removed future wall-clock budgets. Earlier pause/hourly/time-admission statements are not current instructions, and old failures are not relabeled as passes. See [current rules and status](../INDEX.md).
+
 The 96.4 / 96.45 / 96.5 platform milestones remain unmet. Current best is
 user-reported **V32_TIME_A60V7_50 = 96.3727**; gaps .0273/.0773/.1273.
 No platform result or submission was produced. Protocol e1de45f, implementation

@@ -1,46 +1,53 @@
-# 文档索引与历史口径
+# 项目文档索引
 
-当前最高 test_a 用户回传为 **V30A_OOB_BOTH_TARGETS = 83.3175**，与预登记加性推算 `83.2970 + 83.3141 - 83.2936` 四位小数一致；同轮 V30B_OOB_TIME_1024 = 83.2654，比 A 低 0.0521，固定 1024 棵扩容关闭，V29T=83.3141 保留为后备。分数未由账号回执独立核验，账号当前有效条目仍未知。
+更新日期：2026-10-01。执行规则见 [AGENTS.md](../AGENTS.md)；机器状态见 [EVIDENCE_STATUS.json](../EVIDENCE_STATUS.json)。本文的分数和交付状态是该日期的登记快照，后续以状态文件为准。README 按用户要求保持不变，不作为最新队列入口。
 
-V11_V6I_IRON_QRF_MEAN_TIME 历史用户回传为 **83.1806**，均值探针已关闭。随后 v0.18–v0.21 完成不读取 test target 的时间门控实验；旧 G1 与正式发布登记保持历史含义。[独立 V11 反馈](../local/runs/platform-probes-r2-v11-feedback-r1/platform_feedback.json)、[V11 交付回执](../local/runs/platform-probes-r2-publication-r1/publication_receipt.json)。
+## 当前复赛状态
 
-截至 2026-09-16，v0.22 已完成开发，G0/G1 均 PASS，状态为 `DEV_ACCEPTED_PENDING_OFFICIAL_IDENTITY`；H2 平均 ΔE -0.00216654、5/5 origins 改善，J Δ -0.00118555。其当时的 V21 原 ZIP waiver 保留原历史含义；v0.23 随后恢复原包，并发现 v0.22 的 test_a P0 存档回放有 12 行时区差异，正确重放与原 payload 字节一致。六个历史 outer replay 另行复验后均逐字节一致。V22 test_a 用户回传 83.1166，比 V21 低 0.1209，候选已关闭。正式活动模型仍为 V1（用户回传 83.0319），正式发布指针未改变。
-当前初赛最高用户回传为 **V21/T_GATE_SPOUT1_ONLY 83.2375**，比 V10 高 0.0424、比 V1 高 0.2056 分；提交前的 TGATE/TGATE_SPOUT2 差分推算与回传在四位小数上一致。[V21 反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)
-V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三条回收实验另记 2 CatBoost＋3 LAD，回传 V6I 83.0634、V6T 82.9852、D1 82.9993。证据与原包仅存 local，v0.16 状态自适应候选的失败结论保留；不由初赛反馈外推复赛。v0.15 代码已按用户指令推送 6d19a29。
-已按用户指令删除桌面五份提交 ZIP，local 原包与旧证据保留。[清理与平台测试复核](../local/runs/optimization-v0.15-feedback-push-cleanup-r1/cleanup_receipt.json)：无必须追加测试，D2 为零新增训练的第一可选对照，V2 为需单独注册拟合的第二梯队。
-阅读当前状态时按以下入口；各阶段冻结计划和结果保留运行当时的含义。
+| 项目 | 最新登记 |
+| --- | --- |
+| 平台回传同分最佳 | **EMA_TIME_Q75 / EMA_TIME_Q100 = 96.3920**；用户回传，未独立平台核验 |
+| 当前代表 | Q75，组件外推较小；未证明统计上独胜 |
+| 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
+| 已准备的两项探索 | PTARL_TIME_Q20、EMA_IRON_EMA_TIME，独立全量训练与包审计完成，均待用户平台反馈 |
+| 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
+| 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
+| 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
 
-## 当前复赛 V3 本地搜索（2026-09-23）
+两项新探索的公式、包身份及 G0/G1 见 [PTaRL/EMA 交付](ptarl_ema_exploration_release/DELIVERY.md)。它们不是新增四切分正式晋级；不生成第三个双目标组合，用户自行上传。本文不推断剩余额度或规定新的上传顺序。
 
-- [V3 搜索计划](round2_v3/PLAN.md)
-- [V3 首轮结果](round2_v3/RESULTS.md)
-- 当前平台参照为 `AJ3_IRON` 用户回传 **96.1259**；对应本地完整包参照 **96.0123883047359**。
-- V3 首轮 400/400 项粗筛已完成；`xgboost==2.1.4` 作为 `round2` 可选依赖安装并完成 40 项 XGBoost 搜索。
-- 嵌套跨 seed 融合首轮本地完整包约 **96.1000–96.1007**，相对 AJ3 本地参照约 **+0.088**；XGBoost 未进入最优融合。
-- 在 seeds 42/3407 上冻结外层成员与权重后，seed 2026 独立复验完整包 **96.116174**，相对同 seed AJ3 参照 **+0.088335**，原始收益保留；进入 `candidate_pool`，尚未封包、未上传。
+## 后续筛选与验证
 
-## 当前 Round2 V3.5 实现批次（2026-09-24）
+**本地收益不能作为唯一指标。** 本地和平台的符号、排序、幅度、最佳权重可能不同；切分稳定性不等于独立数据泛化保证。SAM 时长本地 −0.01643、平台 +0.0031；EMA 时长本地 +0.00217、平台 +0.0168。Q75/Q100 相对 Q50 的本地两切分均负，平台均 +0.0025。
 
-- [V3.5 结果](round2_v3_5/RESULTS.md)
-- 固定 256 槽位、每目标 12 项完整开发精筛和 S0 cap 检查已执行；无 N/A、无 duplicate、无 failed。
-- 开发组合候选包分 **96.2017**（seeds 42/3407 选权，非最终 outer），同开发覆盖 L1 为 **96.1510**；低于本地工作门槛 96.25。
-- S0 cap 放宽无实质增益，保留原 `cap=0.50`；条件追加未触发，最终 outer seed 23003 未消费；新平台包 0、上传 0。
-- 当前平台最佳仍为 V34_A=96.2684（用户回传，未独立账号核验）；平台 >96.3 未完成。
+保留完整同协议评估、当前目标参照、增量融合收益和冻结门槛；正式晋级仍要求至少四个完整 split seed、各 seed 正收益及 seed 层配对 LCB95 > 0。平台探索另行登记理由与授权，不追溯改写失败决定。不用固定偏移、放大倍数或条件列加法冒充平台预测。
 
-## 当前维护文档
+优化不设时间预算，运行任务按 600 秒定时观察。数据保护、无泄漏、资源/数值门槛、追加式证据、独立冷推理与未修改列字符串检查仍有效。旧暂停、小时监控、时间拒绝和队列仅是历史记录。
 
-- [README](../README.md)：状态、环境、当前 V1 推理入口与数据权限。
-- [实施报告](report.md)、[实施范围](task_contract.md)：最新 G0/G1、已消费状态和关闭决策。
-- [当前 V1 发布](optimization_v0_8/CURRENT_RELEASE.md)、[R2 回退](optimization_v0_4/CURRENT_RELEASE.md)。
-- [用户指定 V8 实验包平台反馈](../local/runs/optimization-v0.15-v8-user-test-a-r1/platform_feedback_r1.json)：包摘要、用户成绩、与 V1 差值及未核验回执状态。
-- [V10 最高用户回传包反馈](../local/runs/optimization-v0.15-v10-platform-feedback-r1/platform_feedback.json)：83.1951、原包身份、相对 V8/V1 的增益和四位显示分数加法一致。
-- [V21 当前最高用户回传包反馈](../local/runs/optimization-v0.21-time-gate-spout1-r1/platform_feedback.json)：83.2375、1 号铁口 32 行门控、ZIP/result 哈希与差分推算记录。
-- [V6I 更正成绩与 V10 零拟合组合](../local/runs/optimization-v0.15-v10-target-composition-r1/completion.json)：V6I 83.0634、原列精确组合、桌面包与理论分数；[三包回收记录](../local/runs/optimization-v0.15-platform-recovery-r1/completion.json) 的 2 CatBoost＋3 LAD 单独记账。
-- [桌面副本核查补充](optimization_v0_13/DESKTOP_COPY_STATUS.md)。
-- [发布身份](release_identity.md)、[平台记录](submission_log.md)、[数据契约](data_contract.md)。
-- [机器状态](../EVIDENCE_STATUS.json)：`current_status` 是当前摘要；其余旧顶层 baseline 字段和版本字段是阶段证据。
+## 当前维护入口
 
-## 阶段结果
+- [实施报告](report.md)、[任务范围](task_contract.md)、[发布身份](release_identity.md)、[提交与反馈记录](submission_log.md)。
+- [候选分类及正式晋级边界](candidate_tiers.md)、[数据契约范围](data_contract.md)、[待确认语义与平台口径](rule_questions.md)。
+- [四项本地/平台诊断反馈](local_platform_diagnostic_release/DELIVERY.md)：四项均已回传，SAM 时长反转，EMA 时长获益。
+- [EMA 稀疏权重反馈与替补安排](ema_time_followup/DELIVERY.md)：Q75/Q100 已回传，DE3＋Q75 仅作替补。
+- [PTaRL 相对 Q75 的零拟合诊断](ema_evaluation_diagnostics/RESULTS.md)：两切分描述性证据，不预测平台分数。
+- [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：两包待反馈。
+- [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
+
+`current_status` 是项目摘要，`round2_current_platform_best` 是平台最佳，`round2_current_candidate_queue` 是当前候选安排。旧初赛摘要和旧队列完整保存在各自的 `history_before_documentation_refresh_20261001`；其他阶段条目保持原运行时含义。
+
+## 历史文档阅读范围
+
+`optimization_v*/`、编号 `round2_v*/`、`round2_next_phase/`、`round2_final_top5/`、`round2_slots_20260930/`、`review/` 及 `md/` 记录阶段当时的计划、参照、结果或交付，不是实时队列。预登记、实验配置、模型配方和失败门槛保持原样；不要照旧文恢复暂停、提交顺序、旧预算或旧“当前最佳”。原始历史内容和身份保留，不以文档更新重新授予拟合或发布资格。
+
+- [Top5 历史反馈](round2_final_top5/FEEDBACK.md)：AJ3 的首选身份限于 2026-09-23 批次。
+- [V3.4 历史得分转移与门槛](round2_v3_4/SCORE_TRANSFER_AND_NEXT_TARGET.md)：96.25 是原阶段门槛，不是所有探索的统一否决线。
+- [V5 结果及判读更正](round2_v5/RESULTS.md)：0.0005 是单次扰动效应，不是平台分辨率；方向/排序保证已撤回。
+- [V6 历史线搜索及更正](round2_v6/RESULTS.md)：固定放大推出的“96.35 不可达”已作废；旧五包顺序不再作为当前队列。
+- [初赛 V1 发布入口](optimization_v0_8/CURRENT_RELEASE.md)、[R2 历史回退](optimization_v0_4/CURRENT_RELEASE.md)、[编号与身份修复](round2_round_numbering.md)。
+
+## 初赛及基线阶段归档
+
 
 | 阶段 | 冻结结果 | 阅读口径 |
 | --- | --- | --- |
@@ -71,15 +78,3 @@ V8 用户实验曾独立完成 1 forest＋1 preprocessor，回传 83.1636；三�
 | v0.3 | [研究汇总](optimization_v0_3/RESULTS_SUMMARY.md) | 当时的候选、未完成项和平台状态 |
 | v0.2 | [OPT-01–06](optimization_v0_2/RESULTS_SUMMARY.md) | E09/E12/E16 的“incumbent”按当时解释 |
 | baseline | [冻结报告](review/FREEZE_REPORT.md) | 历史测试数、DEV_LONG 失败和当时未消费状态 |
-
-## 不回写的历史证据
-
-`optimization_v*/PLAN.md`、冻结结果、决策记录、`docs/review/` 和 `md/` 是按阶段
-保留的历史。部分文件摘要已经绑定本地 manifest 或完成回执；不能为了更新“当前”
-而改写旧实验身份。本轮通过当前入口、阶段说明及回退页消除歧义，保留它们原文。
-`AGENTS.md` 的旧 baseline 起点也按其“除非用户明确开启独立优化阶段”条件解释，
-不表示项目尚未进入后续优化阶段。`md/` 是原始实施包，不作为执行权威来源。
-
-v0.22 的 V21 原 ZIP waiver 是该阶段当时的历史事实；v0.23 已用原 ZIP 和正确规则
-重放补齐恢复证据，同时保留旧回放差异而不改写旧结果。后续 test_a 封包来自单独
-明确授权，不构成额外参数扫描或平台上传授权。

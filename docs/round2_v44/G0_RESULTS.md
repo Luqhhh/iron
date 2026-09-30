@@ -1,5 +1,7 @@
 # V44 long-chain engineering admission
 
+> Historical execution contract (reading update 2026-10-01): keep all measured failures, counts, frozen gates and source identities below. Subsequent user instructions resumed optimization, set milestones 96.4/96.45/96.5, changed monitoring to 600 seconds and removed future wall-clock budgets. Earlier pause/hourly/time-admission statements are not current instructions, and old failures are not relabeled as passes. See [current rules and status](../INDEX.md).
+
 Locked Python 3.12 suite: **1248 passed**, 23 existing warnings.
 Implementation `e590cfc`, initial execution record `45581b3`.
 

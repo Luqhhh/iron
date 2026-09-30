@@ -1,5 +1,7 @@
 # V44: longer BART chains do not improve the incumbent blend
 
+> Historical execution contract (reading update 2026-10-01): keep all measured failures, counts, frozen gates and source identities below. Subsequent user instructions resumed optimization, set milestones 96.4/96.45/96.5, changed monitoring to 600 seconds and removed future wall-clock budgets. Earlier pause/hourly/time-admission statements are not current instructions, and old failures are not relabeled as passes. See [current rules and status](../INDEX.md).
+
 The platform **96.5** goal remains unmet. The latest registered user-reported
 best is **V32_TIME_A60V7_50 = 96.3727**, a gap of **0.1273**. No platform score
 was obtained in this experiment. Protocol `d2728e8`, implementation `e590cfc`,
