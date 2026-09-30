@@ -2103,3 +2103,12 @@ source849 files,32new-wrapper focused tests. Private engineering receipt
 SHA22e3fe5ea8dcde4eea073e02314413eb1a879fdc4f3c7526ffdd0d6d428ab1eb.
 Complete tiny20pair phase checks120optimizers/40KMeans/120cold models;
 no audit fits. Official PTaRL fits0, formal freeze pending, no new G1gain.
+
+PTaRL new formal manifest75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443 is frozen and
+serial serviceiron-ptarl-unbudgeted-formal-r1.service is queued, initialMainPID0/start-pre,
+waiting for actual DANet terminal event; this is not candidate fitting.
+Restart=no, RuntimeMaxSec=infinity, TimeoutStartSec=infinity. Monitor600s
+starts only after formal supervisor start. Queue receiptSHAdf57889fbbaf5239fc2d82d7a08a22ca1fdb14b11073d11fcff9021fa6282640.
+Complete20 development pairs/120optimizers/40KMeans, conditional earned
+confirmation only. Preserve source849 and current DE3/V32-time references.
+Original resource fits not repeated; no full-data fit/package/upload.

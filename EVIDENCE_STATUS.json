@@ -16550,7 +16550,7 @@
     "release_authorized": false
   },
   "ptarl_unbudgeted_preparation_2026_09_30": {
-    "status": "exact_source_locked_suite_passed_ready_for_fresh_formal_freeze",
+    "status": "frozen_serial_formal_job_queued_after_DANet_terminal",
     "branch": "codex/ptarl-unbudgeted-development",
     "documentation": "docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md",
     "G0": "execution_checked_non_time_resource_requirements_passed",
@@ -16590,6 +16590,42 @@
       "cold_models": 120,
       "new_audit_fits": 0
     },
-    "formal_manifest_generated": false
+    "formal_manifest_generated": true
+  },
+  "ptarl_unbudgeted_formal_execution_2026_09_30": {
+    "status": "queued_waiting_for_DANet_actual_terminal_no_G1_result",
+    "evidence_worktree": "/home/lux1/iron/local/worktrees/ptarl-unbudgeted-development",
+    "branch": "codex/ptarl-unbudgeted-development",
+    "implementation_commit": "b71beb4",
+    "manifest_sha256": "75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443",
+    "private_root": "local/ptarl-unbudgeted-formal-r1",
+    "queued_receipt_sha256": "df57889fbbaf5239fc2d82d7a08a22ca1fdb14b11073d11fcff9021fa6282640",
+    "queued_local": "2026-09-30T15:28:59.738960+08:00",
+    "service": "iron-ptarl-unbudgeted-formal-r1.service",
+    "monitor_timer": "iron-ptarl-unbudgeted-formal-r1-monitor.timer",
+    "initial_status": "Restart=no\nTimeoutStartUSec=infinity\nRuntimeMaxUSec=infinity\nMainPID=0\nControlPID=466405\nActiveState=activating\nSubState=start-pre\n",
+    "monitor_seconds": 600,
+    "between_check_training_polling": false,
+    "dependency": "matching_DANet_terminal_event_and_actual_MainPID_0",
+    "maximum_runtime_seconds": null,
+    "reject_by_projected_seconds": false,
+    "restart": false,
+    "development_pair_units": 20,
+    "development_optimizer_calls": 120,
+    "development_kmeans_calls": 40,
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "confirmation": "independently_earned_targets_plus_control_only",
+    "original_resource_refits": 0,
+    "new_official_fits_at_queue": 0,
+    "new_full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "G1": "unmeasured",
+    "documentation": "docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md"
   }
 }

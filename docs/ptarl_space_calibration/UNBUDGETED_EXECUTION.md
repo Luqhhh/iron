@@ -58,3 +58,14 @@ The complete tiny development fixture completes 20 pairs, 120 optimizers,
 40 KMeans calls and 120 independently audited cold models. It verifies that
 missing independent arithmetic, changed models and extra inventory refuse
 confirmation before any new fit. Official PTaRL fits remain zero here.
+
+The separate formal freeze is ready: SHA-256
+`75f676741217dd4cd2555eea7ac4149ae1d2cf11726e3e0343dc51b0f8c45443` under private
+`local/ptarl-unbudgeted-formal-r1`. One-shot service
+`iron-ptarl-unbudgeted-formal-r1.service` is queued in dependency wait; initial
+MainPID 0/activating/start-pre means **no candidate training has started**.
+It waits for the actual DANet terminal-file event and process exit, checks
+the exact frozen source/runtime/reference and latest current-best identity,
+then starts the formal supervisor once. Restart is disabled; start and
+runtime timeouts are infinite. The read-only 600-second monitor starts after
+actual supervisor activation. Queue receipt SHA-256 `df57889fbbaf5239fc2d82d7a08a22ca1fdb14b11073d11fcff9021fa6282640`.
