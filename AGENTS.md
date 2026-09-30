@@ -2238,6 +2238,20 @@ generation, desktop rewrite or upload. Q25 is unreported; original fourth
 DE3+Q50 package remains deferred backup. Frozen gates/no-finalist decisions
 unchanged. Details: docs/ema_time_followup/DELIVERY.md.
 
+### DE3+Q75 reserve only (2026-10-01, latest user scheduling instruction)
+
+User explicitly authorized generation of DE3_IRON_EMA_TIME_Q75_RESERVE, but
+ordered **temporarily no platform testing; reserve candidate only**, awaiting
+more informative candidates with larger gains. The package is ready under
+local/runs/ema-time-followup-20261001/reserve-DE3-Q75-r1, SHA256
+86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3.
+Do not place it in the current test queue or spend a slot merely to fill quota.
+Its96.3942 / extra+.0022 is conditional arithmetic, not measured feedback.
+Current reported best remains Q75/Q10096.3920. Original columns and cold
+replays verified;0newfits/desktopwrites/uploads. Keep old Q50 combination and
+all original packages. Details: docs/ema_time_followup/DELIVERY.md and the
+reserve_combination_20261001 record in EVIDENCE_STATUS.json.
+
 
 ### Two user-requested full-training exploration releases (2026-10-01)
 

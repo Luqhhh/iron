@@ -114,3 +114,20 @@ DE3 只改铁量，相对共同 V32 父包已回传增益为 `96.3749-96.3727=+0
 反馈 G0：两个桌面/本地 ZIP 哈希与原身份一致，CSV 字节一致、CRC/结构正确，322 个唯一模板顺序 ID，有限非负预测，铁量字段字符串与 V32 完全相同；原冻结 1,442 个文件再次核验通过。此次没有新科学拟合或代码变更，沿用已有发布实现的 1325-test 锁定 Python 3.12 检查；仅执行反馈身份、JSON、diff 和私有产物检查。
 
 Q25 尚无反馈，不推断已经提交；旧第 4 项 DE3＋Q50 继续作为暂缓备用。所有原包、桌面说明、冻结决定和旧证据保留；不推断账户额度。私有追加反馈：`local/runs/ema-time-followup-20261001/probes-r2/platform-feedback-r1/feedback.json`。当前状态见 EVIDENCE_STATUS.json，历史段落的“待测”“当前最佳”均为当时快照。
+
+## DE3＋Q75 新包：替补候选，暂不平台测试（2026-10-01）
+
+用户明确授权生成新组合包，并要求标记为暂不平台测试、列为替补，等待后续更值得名额的候选，理由是信息量低且提分有限。
+
+已生成 **DE3_IRON_EMA_TIME_Q75_RESERVE**：直接复制已测 DE3 的铁量字段字符串及已测 Q75 的时长字段字符串，无新权重拟合、训练或裁剪。两列分别与原包逐字段一致，旧 Q50 组合及所有桌面文件保留。
+
+- 私有包：`local/runs/ema-time-followup-20261001/reserve-DE3-Q75-r1/DE3_IRON_EMA_TIME_Q75_RESERVE/Luqhhh_bf_tap_predict_round2.zip`。
+- ZIP SHA-256：`86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3`。
+- **角色：替补候选；暂不平台测试；不在当前测试队列。** 不因还有名额就默认安排此包，等待更有信息量或更大增益的候选。候选目录 README.txt、私有 reserve-status.json 和公开状态都记录此安排。
+- 条件预计分数 **96.3942**、相对 Q75 **+0.0022**；组合仍未实测，不能取代当前平台最佳 Q75/Q100=96.3920。
+
+G0 通过：身份清单冻结 1,451 个文件；独立新进程禁止训练输入读取，重新加载原 native iron、DE3 两个 refit、EMA refit 和 V7 模型。DE3 三成员均值及 EMA/V7 原冷预测逐位复现，Q75 原 CSV 精确重建；组合铁量冷算术最大差异小于 1e-10、时长差异为 0，两列原字段字符串差异均为 0。322 行唯一官方模板顺序、有限非负值、唯一 result.csv 和 ZIP CRC 均通过。
+
+使用锁定 Python 3.12 路径完成生成及独立核验，相关组合/字段保持专项测试 10 passed；科学源码未改，沿用先前同源码完整测试 1325 passed。此次新拟合 0、新包 1、桌面写入 0、助手上传 0。G1 为未测组合替补，不是正式四 seed 晋级，历史门槛与失败决定不变。
+
+公开登记：`EVIDENCE_STATUS.json -> round2_ema_time_followup_20261001 -> reserve_combination_20261001`。私有目录保留 manifest.json、release.json、independent-cold-audit.json、reserve-status.json 与一次性生成脚本；所有模型、包及凭证不入 Git。
