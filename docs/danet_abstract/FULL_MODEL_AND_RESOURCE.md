@@ -124,3 +124,27 @@ iron-danet-resource-r1-monitor.timer; actual terminal supervisor-terminal.json.
 No between-check training polling. Planned4estimators/4optimizers/960epochs;
 resource resultpending, G1 unmeasured, official fits0. No restart/shrink/gate
 relaxation, automatic formal training, full-data fit, package or upload.
+
+
+### DANet original probe complete; user removes time budgets (2026-09-30)
+
+Original resource run finished4estimators/4optimizers/960epochs, no failed or
+incomplete fitting starts. All4saved states passed a fresh independent zero-fit
+cold audit; original841 sources unchanged. Peak570.90625MiB; synthetic
+MAEsFIXED.305385/LEARNED.248658 versus median1.415637; learned mask movement
+939.6584, fixed0; maximum numerical bound fraction.0262905. All non-time
+checks passed. Original projection9598.87721163s exceeded frozen7200s;
+original admission statusfailed, serviceexit1/MainPID0, timerinactive. Preserve
+this original cost-only refusal and all artifacts, never relabel it passed.
+AdmissionSHAf80d134253f2d8751c695ea6b11737a0c4141f077b0f854f45e3e5d995acd3e2;
+terminal evidence binds38artifacts, SHAdde149e3c25dab203cacc6a18bc95f172661a3858bce31095008671946cc291c.
+
+The latest explicit user instruction “不要再设置时间预算” supersedes time
+admission rules for future work. No wall-clock budget or time-based rejection;
+measure timing descriptively only. This authorizes continuing the same full
+DANet recipe after independent non-time checks and a new exact-source formal
+freeze. Do not rerun the resource fits, shrink the model, or relax numerical,
+memory, complete-coverage, quality, four-seed or release rules. Original
+worktree/code/spec/evidence remain frozen; implement the new authority only
+in the separate formal worktree. OfficialDANet fits0, G1 unmeasured, no
+full-data fit/package/desktop write/upload. BestDE3=96.3749 user-reported.
