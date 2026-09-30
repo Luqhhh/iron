@@ -11,6 +11,16 @@ This repository implements the frozen `baseline-v0.1`. Unless the user explicitl
 - run the locked Python 3.12 test path before claiming authoritative reproduction;
 - report G0 engineering status separately from G1 model quality.
 
+## 本地收益与平台筛选（2026-10-01 用户指令，后续工作必须遵守）
+
+- **不要把本地收益当作唯一指标。** 本地均值、正收益切分数、LCB 和本地最佳权重是筛选证据，不能保证平台的符号、排序、幅度或最佳权重。多个 split seed 重复使用同一批数据，衡量切分稳定性，不是多份独立数据上的泛化保证。
+- 实测反例：`LOC_DIAG_SAM_TIME` 本地两完整切分都负、均值 **-0.016430**，平台相对同一 V32 父包却 **+0.0031**；`LOC_DIAG_EMA_TIME` 本地仅 **+0.002169**、未过冻结 **+0.01** 机制门槛，平台却 **+0.0168**，成为用户回传最佳 **96.3895**。不能因本地微小、为零或负收益就断言平台没有价值。
+- 同时保留反方向证据：V20/V21 四 seed 本地正收益仍在平台下降；D-LMIX 铁量和 SAM 铁量本次平台仍为负。不得因此反过来认定所有负收益候选值得提交、所有时长方法会获益，或估计整体误筛率、固定转移倍数。
+- 后续选择综合：同协议、同目标参照的完整本地评估；已经获得的平台反馈；方法机制及目标差异；拟验证问题的信息量；G0 可复现性、隔离替换和冷审计。明确区分“本地未通过正式晋级”和“有理由保留的平台探索”，记录失败条件与探索理由。
+- **历史冻结门槛、候选分类和失败决定不追溯修改。** 新阶段在评估前登记候选、参照、固定权重或稀疏权重探针、选择规则与授权范围。局部探索例外不能被悄悄写成全局放松；新科学拟合仍保留既有四 seed 正式晋级规则。平台已验证为正的方向可以在用户授权范围内作预登记、稀疏平台权重实验，本地权重最优不能单独否决探针。
+- 工程与数据保护不是可放宽指标：数据/源码/模型身份、无泄漏、同一 as-of 构造、追加式证据、独立冷推理与未改动列检查继续强制执行。用户上传并回传分数；不自动上传、不推断新日期的账号额度，也不因本条指令自动获得桌面写入授权。
+- 当前参照始终读取 `EVIDENCE_STATUS.json -> round2_current_platform_best`，不使用历史段落中的“当前最佳”。本条生效时为 **LOC_DIAG_EMA_TIME = 96.3895**（用户回传，非独立平台凭证）；目标 96.4/96.45/96.5 尚未达到。证据：`docs/local_platform_diagnostic_release/DELIVERY.md`。旧文中“本地仅能可靠预测符号与排序”“本地无收益所以平台不可能改善”等表述已被反例推翻，不能继续作为结论或唯一淘汰理由。
+
 ## Commit and publication cadence
 
 - After an authorized implementation or evidence update is complete and its required checks pass, promptly commit all in-scope public repository changes and push the current working branch to its configured upstream. Do not leave validated public changes uncommitted or unpushed while continuing the same task.
