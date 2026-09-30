@@ -17671,5 +17671,52 @@
       "final_focused_passed": 9
     },
     "independent_max_arithmetic_difference": 6.271025365656158e-16
+  },
+  "ema_training_scale_2026_10_01": {
+    "status": "serial_development_active_final_audit_pending",
+    "G0": "locked_source_runtime_serial_and_saved_reuse_admission_passed",
+    "G1": "fixed_two_fold_mechanism_diagnostic_not_promotion",
+    "preregistration": "docs/ema_training_scale/PREREGISTRATION.md",
+    "documentation": "docs/ema_training_scale/ENGINEERING.md",
+    "source_commit": "1f715bedb353476ab65fb148d22ace95e62e3f2a",
+    "private_run": "local/runs/ema-training-scale-20261001/development-r1",
+    "manifest_sha256": "96ff94c639459fe9eacb5f06b4e22e8f2a237a4fa616bd78e101d1c594fc9554",
+    "activation_sha256": "6c623fc2625d77cdcc20df60008c4b2214151c6669208122b252fb752735eb57",
+    "reused_saved_models_checked": 12,
+    "reused_full_size_units": 6,
+    "new_estimators_planned": 18,
+    "new_optimizer_runs_planned": 36,
+    "fixed_evaluation_rows_per_seed": 551,
+    "training_rows": [
+      551,
+      1102,
+      1653,
+      2203
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "held_fold": 0,
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "monitor_seconds": 600,
+    "workers": 1,
+    "numerical_threads": 1,
+    "runtime_limit": null,
+    "automatic_restarts": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_tests": {
+      "passed": 1341,
+      "skips": 0,
+      "receipt_sha256": "1c244bfa6b9f27329cce5343951166b2568e5e0ba4d158e8a8b28902f0e72572"
+    },
+    "historical_gates_and_decisions_unchanged": true
   }
 }
