@@ -16457,5 +16457,29 @@
     "agent_uploads": 0,
     "next_action": "freeze_exact_checked_source_then_one_shot_full_size_synthetic_probe_before_separate_formal_controller",
     "documentation": "docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md"
+  },
+  "round2_danet_resource_execution_2026_09_30": {
+    "status": "launched_G0_synthetic_resource_running_G1_unmeasured",
+    "started_local": "2026-09-30T14:11:49.455483+08:00",
+    "implementation_commit": "d4c791a",
+    "manifest_sha256": "60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2",
+    "service": "iron-danet-resource-r1.service",
+    "monitor_timer": "iron-danet-resource-r1-monitor.timer",
+    "initial_status": "MainPID=450875\nResult=success\nExecMainStatus=0\nActiveState=active\nSubState=running\n",
+    "initial_next_due": "NextElapseUSecMonotonic=2d 1h 2min 49.380091s",
+    "terminal_event": "supervisor-terminal.json",
+    "interval_seconds": 600,
+    "between_check_polling": false,
+    "planned_synthetic_estimators": 4,
+    "planned_synthetic_optimizer_runs": 4,
+    "planned_optimizer_epochs": 960,
+    "official_label_reads": 0,
+    "official_estimator_fits": 0,
+    "new_full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "private_root": "local/danet-full-resource-r1",
+    "documentation": "docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md"
   }
 }

@@ -2141,3 +2141,14 @@ two-development-seed/four-seed-LCB gates unchanged, folds descriptive, no OOF
 cross-seed mixing. No automatic full-data fit, package, desktop write or upload.
 BestDE3=96.3749 user-reported; milestones96.4/96.45/96.5 remain unmet.
 Details docs/danet_abstract/FULL_MODEL_AND_RESOURCE.md.
+
+
+DANet one-shot full-size synthetic resource probe launched2026-09-30T14:11:49.455483+08:00.
+Implementationd4c791a committed/pushed; manifestSHA
+60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2.
+Private rootlocal/danet-full-resource-r1; serviceiron-danet-resource-r1.service
+initialMainPID450875 active/running. Read-only600s timer
+iron-danet-resource-r1-monitor.timer; actual terminal supervisor-terminal.json.
+No between-check training polling. Planned4estimators/4optimizers/960epochs;
+resource resultpending, G1 unmeasured, official fits0. No restart/shrink/gate
+relaxation, automatic formal training, full-data fit, package or upload.

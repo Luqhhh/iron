@@ -113,3 +113,14 @@ LockedPython3.12 final-source checks: **1454 passed,23 existing warnings**;
 Private full-suite receipt SHA-256:
 `d41139cf367d0f3147e19d105b485be5805c836d8b33386dc983ef9559a9505b`.
 The full-size synthetic admission is pending execution; official model fits0.
+
+
+DANet one-shot full-size synthetic resource probe launched2026-09-30T14:11:49.455483+08:00.
+Implementationd4c791a committed/pushed; manifestSHA
+60a1c14b8c0d663110bb5c122912af67ed3869003fcb08ef31aae07e3d6940a2.
+Private rootlocal/danet-full-resource-r1; serviceiron-danet-resource-r1.service
+initialMainPID450875 active/running. Read-only600s timer
+iron-danet-resource-r1-monitor.timer; actual terminal supervisor-terminal.json.
+No between-check training polling. Planned4estimators/4optimizers/960epochs;
+resource resultpending, G1 unmeasured, official fits0. No restart/shrink/gate
+relaxation, automatic formal training, full-data fit, package or upload.
