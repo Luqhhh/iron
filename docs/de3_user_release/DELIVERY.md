@@ -39,7 +39,7 @@ array was mistakenly treated as a pandas Series. Its manifest and failure
 remain underrelease-r1. The correction handles the existing ndarray return;
 native model/training code was unchanged. Successful fitting usedrelease-r2.
 
-## G1: user-requested exploration; platform feedback pending
+## G1 at delivery: user-requested exploration; platform feedback pending
 
 This candidate still fails the frozen +0.01 mechanism gate and has no derived
 four-split-seed confirmation. Preserve its historical no-finalist decision and
@@ -64,3 +64,28 @@ Private artifacts stay under
 
 Implementation8d6c7c2; bounded interface recovery5e0608e. All original
 development/cache/package bytes and negative decisions remain preserved.
+
+## Platform feedback received (2026-09-30)
+
+The user reported **DE3_IRON_USER_REQUESTED = 96.3749**, a **+0.0022** gain
+over its V32 parent at 96.3727. This is now the registered current reported
+platform best. The feedback is user-reported, not an independently verified
+platform receipt; the candidate association follows the immediately preceding
+DE3 package handoff. Original ZIP bytes, release evidence and desktop README
+remain unchanged.
+
+The local gain was +0.003480204913 and the reported platform gain is +0.0022:
+both have the same sign for this package. One result does not establish a
+general transfer ratio or validate EMA or other unsubmitted candidates.
+The original +0.01 mechanism failure, lack of four-seed confirmation and
+exploration release identity remain unchanged. G0 release validation still
+passes; G1 now has a small positive reported platform result. No additional
+fit, package, desktop write or agent upload was performed for the feedback.
+
+Remaining gaps are **0.0251 to 96.4**, **0.0751 to 96.45** and **0.1251 to
+96.5**. None of the three milestones has been reached. New comparisons use
+this latest registered best; historical frozen experiments retain their own
+original references.
+
+Private feedback:
+`local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json`.

@@ -5979,22 +5979,38 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "V32_TIME_A60V7_50",
-    "score": 96.3727,
+    "candidate": "DE3_IRON_USER_REQUESTED",
+    "score": 96.3749,
     "source": "user_reported_not_independently_verified",
     "previous_best": {
-      "candidate": "V18_B0_V12IRON_V7TIME",
-      "score": 96.3679
+      "candidate": "V32_TIME_A60V7_50",
+      "score": 96.3727,
+      "source": "user_reported_not_independently_verified",
+      "previous_best": {
+        "candidate": "V18_B0_V12IRON_V7TIME",
+        "score": 96.3679
+      },
+      "delta_vs_previous_best": 0.0048,
+      "target": 96.5,
+      "target_met": false,
+      "margin_to_target": -0.1273,
+      "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
+      "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
+      "reported_date": "2026-09-28",
+      "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
     },
-    "delta_vs_previous_best": 0.0048,
+    "delta_vs_previous_best": 0.0022,
     "target": 96.5,
     "target_met": false,
-    "margin_to_target": -0.1273,
-    "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
-    "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
-    "reported_date": "2026-09-28",
-    "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
+    "margin_to_target": -0.1251,
+    "recipe": "V32_TIME_A60V7_50 parent; iron = parent_iron + 0.5*(mean(J42,J104729,J130363)-J42); parent time field strings unchanged",
+    "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930/Luqhhh_bf_tap_predict_round2.zip",
+    "reported_date": "2026-09-30",
+    "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8",
+    "note": "Explicitly user-requested exploration scored +0.0022 over the former best. Historical no-finalist decision and all promotion gates remain unchanged."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -15296,35 +15312,43 @@
     "milestones": [
       {
         "target": 96.4,
-        "gap_to_user_reported_best": 0.0273,
+        "gap_to_user_reported_best": 0.0251,
         "achieved": false
       },
       {
         "target": 96.45,
-        "gap_to_user_reported_best": 0.0773,
+        "gap_to_user_reported_best": 0.0751,
         "achieved": false
       },
       {
         "target": 96.5,
-        "gap_to_user_reported_best": 0.1273,
+        "gap_to_user_reported_best": 0.1251,
         "achieved": false
       }
     ],
     "current_stage": 96.4,
     "ultimate_target": 96.5,
-    "current_best_user_reported": 96.3727,
+    "current_best_user_reported": 96.3749,
     "local_gates_changed": false,
     "automatic_packages": false,
     "uploads": 0,
     "monitor_interval_seconds": 600,
     "supersedes_pause_request_after_v44": true,
     "latest_external_feedback_observed": {
-      "candidate": "V40_TIME_H1",
-      "score": 96.364,
-      "delta_vs_best": -0.0087,
-      "source": "user_reported_not_independently_verified; read-only original-worktree EVIDENCE_STATUS.json ridge_failed_stop_uploads_2026_09_29",
-      "zip_sha256": "772057b95032f035ecdd1051133a7885925c51ee2aa611f55bc36744f19e44b8",
-      "decision": "do_not_recommend_remaining_weight_probes_from_upper_bounds"
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
+      "delta_vs_previous_best": 0.0022,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
+      "reported_date": "2026-09-30",
+      "historical_previous_external_feedback": {
+        "candidate": "V40_TIME_H1",
+        "score": 96.364,
+        "delta_vs_best": -0.0087,
+        "source": "user_reported_not_independently_verified; read-only original-worktree EVIDENCE_STATUS.json ridge_failed_stop_uploads_2026_09_29",
+        "zip_sha256": "772057b95032f035ecdd1051133a7885925c51ee2aa611f55bc36744f19e44b8",
+        "decision": "do_not_recommend_remaining_weight_probes_from_upper_bounds"
+      }
     }
   },
   "round2_v45_rotation_forest": {
@@ -16045,7 +16069,7 @@
     "uploads": 0
   },
   "de3_user_requested_release_2026_09_30": {
-    "status": "delivered_pending_user_platform_feedback",
+    "status": "platform_scored_user_reported_current_best",
     "user_authorization": "EMA、独立三模型集成的本地增益仅约 +0.002～+0.0035 这是不是收益最大的了，生成提交包写桌面",
     "candidate": "DE3_IRON_USER_REQUESTED",
     "parent": "V32_TIME_A60V7_50",
@@ -16053,7 +16077,7 @@
     "release_config": "configs/de3_user_release/RELEASE.yaml",
     "delivery": "docs/de3_user_release/DELIVERY.md",
     "G0": "passed_independent_release_and_desktop_readback_audits",
-    "G1": "user_requested_exploration_not_four_seed_promoted",
+    "G1": "positive_platform_gain_user_reported_exploration_not_four_seed_promoted",
     "historical_no_finalist_preserved": true,
     "local_development_gain_by_seed": {
       "42": 0.004381694674258571,
@@ -16084,7 +16108,7 @@
     "private_run": "local/runs/de3-user-requested-release-20260930/release-r2",
     "preserved_failed_run": "local/runs/de3-user-requested-release-20260930/release-r1",
     "first_attempt_new_fits": 0,
-    "platform_score": null,
+    "platform_score": 96.3749,
     "agent_uploads": 0,
     "locked_python312_tests": {
       "full_suite_passed": 1310,
@@ -16093,6 +16117,12 @@
     },
     "implementation_commit": "8d6c7c2",
     "interface_recovery_commit": "5e0608e",
-    "score_interpretation": "Local development gain is not a platform forecast; the current platform best and all frozen gates are unchanged."
+    "score_interpretation": "User-reported platform gain +0.0022 establishes this package as current reported best; original mechanism failure and lack of four-seed confirmation remain unchanged. No general transfer ratio or new release is implied.",
+    "G1_at_delivery": "user_requested_exploration_not_four_seed_promoted",
+    "platform_score_source": "user_reported_not_independently_verified",
+    "platform_reported_date": "2026-09-30",
+    "platform_delta_vs_parent": 0.0022,
+    "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8"
   }
 }

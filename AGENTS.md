@@ -1912,3 +1912,26 @@ No full-data fits, packages, desktop writes or uploads. Preserve all original
 partial directories, failed admissions and decisions; do not extend these
 frozen batches implicitly. Earlier "running" and "deferred" entries are
 historical observations.
+
+### DE3 user-requested exploration scored (2026-09-30)
+
+The user explicitly requested a desktop package for the strongest recent
+isolated candidate. DE3 iron was delivered with only the iron component
+replaced by three equal-weight training seeds42/104729/130363; the current
+V32 parent time strings remain unchanged. Two new full-data estimators were
+fitted and the original native seed42 model was reused; no new CV fits.
+Release/cold/independent/desktop audits passed. Details and exact identity:
+docs/de3_user_release/DELIVERY.md; ZIP SHA-256
+81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0.
+
+Latest user-reported platform best is now **DE3_IRON_USER_REQUESTED=96.3749**,
+**+0.0022** over V32_TIME_A60V7_50=96.3727. This is not an independently
+verified receipt. EVIDENCE_STATUS.json records the feedback and current best;
+the DE3 batch is no longer pending feedback. Preserve original ZIP bytes,
+all frozen experiments and their references, and the historical +0.01
+mechanism failure/no-finalist decision. This explicit exploration did not
+receive four-split-seed confirmation; its live gain does not relax gates,
+authorize another package or establish a general local/platform transfer ratio.
+The staged goals96.4/96.45/96.5 remain unmet, with gaps0.0251/0.0751/0.1251.
+Users upload and return scores; do not infer quota. Future comparisons use
+the latest registered current best while frozen historical evidence stays intact.
