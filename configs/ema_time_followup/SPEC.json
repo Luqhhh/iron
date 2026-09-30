@@ -100,5 +100,7 @@
     "desktop_writes": 0
   },
   "selection_rule": "report every frozen probe; no local gain veto; no quota inferred; user-reported platform feedback decides next sparse line",
-  "output": "local/runs/ema-time-followup-20261001/probes-r1"
+  "output": "local/runs/ema-time-followup-20261001/probes-r2",
+  "de3_oof_semantics": "full deployment columns after .5 replacement; mean directly, do not reweight",
+  "prior_failed_attempt": "local/runs/ema-time-followup-20261001/probes-r1/failed-local-evaluation.json"
 }

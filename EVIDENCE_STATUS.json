@@ -17182,5 +17182,106 @@
     "reference_scope": "original_frozen_DE3_iron_V32_time_not_latest_LOC_DIAG_EMA_TIME",
     "best_at_terminal_publication": "LOC_DIAG_EMA_TIME",
     "results_commit": "9fb10c2"
+  },
+  "round2_ema_time_followup_20261001": {
+    "status": "four_zero_fit_packages_ready_local_only_pending_user_feedback",
+    "authorization": {
+      "user_request": "推进ema时长方向",
+      "scope": "reuse scored EMA endpoint for three sparse replacement probes and an independently scored-column combination; no new fitting",
+      "historical_gate_exception": "this sparse platform line only; no formal promotion"
+    },
+    "reference": {
+      "candidate": "LOC_DIAG_EMA_TIME",
+      "score": 96.3895,
+      "source": "user_reported_not_independently_verified",
+      "q": 0.5
+    },
+    "spec": "configs/ema_time_followup/SPEC.json",
+    "preregistration": "docs/ema_time_followup/PREREGISTRATION.md",
+    "delivery_document": "docs/ema_time_followup/DELIVERY.md",
+    "output": "local/runs/ema-time-followup-20261001/probes-r2",
+    "G0": "passed",
+    "G1": "sparse_platform_exploration_not_formal_four_seed_promotion",
+    "equation": "V32_time + q*(EMA_time - V7_time)",
+    "weight_semantics": "q>0.5 is affine component extrapolation with negative V7 coefficient; not a convex component blend",
+    "packages": [
+      {
+        "candidate": "EMA_TIME_Q25",
+        "q": 0.25,
+        "kind": "time_probe",
+        "package": "local/runs/ema-time-followup-20261001/probes-r2/EMA_TIME_Q25/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "4182288193295b502d40ab6526d9650c17250c33dbd08ea9de0761364cb5530f",
+        "mean_local_gain_vs_current_ema": 1.9645716633931443e-05,
+        "platform_score": null
+      },
+      {
+        "candidate": "EMA_TIME_Q75",
+        "q": 0.75,
+        "kind": "time_probe",
+        "package": "local/runs/ema-time-followup-20261001/probes-r2/EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+        "mean_local_gain_vs_current_ema": -0.002626268210185856,
+        "platform_score": null
+      },
+      {
+        "candidate": "EMA_TIME_Q100",
+        "q": 1.0,
+        "kind": "time_probe",
+        "package": "local/runs/ema-time-followup-20261001/probes-r2/EMA_TIME_Q100/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "a102cbf123981ca3103b5ba24f78b8b36203bee29810c6f0b68c6aad8ca139cb",
+        "mean_local_gain_vs_current_ema": -0.007348688145974336,
+        "platform_score": null
+      },
+      {
+        "candidate": "DE3_IRON_EMA_TIME_Q50",
+        "q": 0.5,
+        "kind": "column_control",
+        "package": "local/runs/ema-time-followup-20261001/probes-r2/DE3_IRON_EMA_TIME_Q50/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "136d752a663f0f0c924f992cfe57f0d9f32e6d9b0106b4e2c83472b808239b4a",
+        "mean_local_gain_vs_current_ema": 0.0034802049131599233,
+        "platform_score": null
+      }
+    ],
+    "local_protocol": {
+      "rows_per_seed": 2754,
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "folds_per_seed": 5,
+      "cross_split_seed_prediction_averaging": false,
+      "local_veto": false,
+      "original_ema_gain_reproduced": 0.0021688120969951307
+    },
+    "conditional_combination_arithmetic": {
+      "score": 96.3917,
+      "measured": false,
+      "independently_verified_receipts": false,
+      "equation": "96.3895+(96.3749-96.3727)"
+    },
+    "budget": {
+      "new_fits": 0,
+      "new_split_seeds": 0,
+      "agent_uploads": 0,
+      "desktop_writes": 0
+    },
+    "checks": {
+      "locked_python_3_12_full_suite_passed": 1325,
+      "existing_warnings": 23,
+      "focused_tests_passed": 10,
+      "frozen_files": 1442,
+      "rows_per_package": 322,
+      "original_ema_csv_exact_reconstruction": true,
+      "cold_full_batch_max_difference": 0.0,
+      "cold_order_chunk_max_difference": 6.4522849640979985e-06,
+      "unchanged_target_string_mismatches": 0
+    },
+    "private_receipt": "local/runs/ema-time-followup-20261001/probes-r2/delivery.json",
+    "private_receipt_sha256": "616c21be5755d5647082f387a99a01e12d9201c553330a8af156eca54eb1d7bb",
+    "preserved_failed_attempt": "local/runs/ema-time-followup-20261001/probes-r1/failed-local-evaluation.json",
+    "correction": "DE3 exported OOF columns already contain the .5 replacement; average full deployment columns directly; no repeated replacement",
+    "historical_decisions_unchanged": true,
+    "current_best_unchanged": true,
+    "priority": "Q75 first to inspect stronger EMA replacement; decide Q100 versus Q25 after user feedback; DE3+EMA is a separate scored-column control; no quota inferred"
   }
 }

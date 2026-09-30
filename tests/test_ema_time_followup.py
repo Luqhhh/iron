@@ -62,3 +62,14 @@ def test_frozen_budget_and_affine_semantics():
     assert cfg["budget"]["new_fits"] == 0
     assert "negative V7" in cfg["weight_semantics"]
     assert [r["q"] for r in cfg["candidates"]] == [.25, .75, 1., .5]
+
+
+def test_de3_exported_full_columns_are_not_weighted_twice():
+    import pandas as pd
+    # The raw component values could be 8/12/16; parent 10, raw old 8.
+    # Export already contains 10+.5*(component-8): 10/12/14.
+    selected = pd.DataFrame({"current_prediction": [10.], "seed_42_prediction": [10.],
+        "seed_104729_prediction": [12.], "seed_130363_prediction": [14.]})
+    np.testing.assert_array_equal(module.de3_full_column(selected, np.array([10.])), [12.])
+    with pytest.raises(AssertionError):
+        module.de3_full_column(selected, np.array([8.]))

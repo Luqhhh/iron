@@ -59,6 +59,17 @@ def combined_payload(iron_parent, time_parent, ids):
     return payload
 
 
+def de3_full_column(selected, original):
+    """Exported DE3 members already contain the shipped .5 replacement."""
+    import numpy as np
+    np.testing.assert_allclose(selected.current_prediction.to_numpy(), original, atol=1e-10, rtol=0)
+    np.testing.assert_allclose(selected.seed_42_prediction.to_numpy(), original, atol=1e-10, rtol=0)
+    columns = selected[["seed_42_prediction", "seed_104729_prediction", "seed_130363_prediction"]].to_numpy()
+    if not np.isfinite(columns).all():
+        raise ValueError("Nonfinite DE3 full deployment columns")
+    return columns.mean(axis=1)
+
+
 def config():
     cfg = json.loads(SPEC.read_text())
     if ([(r["name"], r["q"]) for r in cfg["candidates"]] != [
@@ -145,10 +156,9 @@ def descriptive_local(cfg, out):
                 selected = selected.set_index("sample_id").loc[frame.sample_id]
                 np.testing.assert_array_equal(selected.fold.to_numpy(), fv)
                 np.testing.assert_array_equal(selected.actual.to_numpy(), frame.tap_iron.to_numpy())
-                np.testing.assert_allclose(selected.current_prediction.to_numpy(), base[seed]["v12_iron"], atol=1e-10, rtol=0)
-                ensemble = selected[["seed_42_prediction", "seed_104729_prediction", "seed_130363_prediction"]].to_numpy().mean(axis=1)
-                # DE3's shipped replacement is .5, not its unweighted component gain.
-                iron_candidate = iron_original + .5 * (ensemble - base[seed]["v12_iron"])
+                # These exported columns already use parent+.5*(component-old).
+                # Mean of these FULL deployment columns equals the shipped DE3.
+                iron_candidate = de3_full_column(selected, iron_original)
             iron_y = frame.tap_iron.to_numpy()
             if not np.isfinite(iron_candidate).all() or (iron_candidate < 0).any():
                 raise ValueError("Invalid DE3 local replacement")
