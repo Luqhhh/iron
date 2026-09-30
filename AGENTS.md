@@ -2048,6 +2048,24 @@ rows, packages1-3 iron fields byte-identical to DE3, the w=0.5 formula reproduce
 the DE3 zip to2.3e-13, desktop copies read back independently. Platforms keeps the
 best score, so these are free options, not a 96.4 guarantee: the V46 time-simplex
 upper96.396835 plus the measured +0.0022 DE3 iron effect is about96.399, so96.4
-still needs a new column direction. PTaRL remains the running lever; DNNR formal
-development stopped on a cold-audit tolerance failure. No new fits, full-data fits,
-CV fits or agent uploads; historical decisions unchanged.
+still needs a new column direction.
+
+Round2 update22:56: a fifth package DE3W100_TIME_L0625 (ZIP SHA-256
+dd203aa9feafa90fefc322fc818f6ac26fdf61f7b3be28111f71ce0482245b26) was added to the
+same desktop folder; it combines the full-weight three-seed iron with the chord
+midpoint lambda0.625 and supersedes package4, so the four recommended uploads are
+1,2,3,5. Independent desktop read-back passed.
+
+Host restart correction: the machine restarted about22:45CST (uptime11 minutes at
+22:56). Every iron-* user service and timer is gone, no training process exists,
+and no offline training is live. The PTaRL unbudgeted formal run is inactive(dead)
+with no terminal event, stopped after12/20 pair units and79/120 optimizers, its
+partial artifacts preserved; no OOM and ample memory/disk were available, so the
+host restart killed the process group. The units are static with no [Install] and
+linger is off, so they do not auto-start. The earlier "PTaRL remains the running
+lever" statement is corrected; resuming PTaRL needs a frozen recovery admission.
+Tonight's candidates are unaffected because they are composed from already-fitted
+artifacts. Evidence EVIDENCE_STATUS.json->environment_restart_2026_09_30.
+DNNR formal development remains stopped on a cold-audit tolerance failure.
+No new fits, full-data fits, CV fits or agent uploads; historical decisions
+unchanged.

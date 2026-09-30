@@ -16460,6 +16460,14 @@
         "iron": "parent_iron + 1.0*(mean3_native_iron - native_iron), clamped at 0",
         "time": "unchanged I1 (0.5*A60+0.5*V7m = 0.2/0.3/0.5)",
         "zip_sha256": "cde783badb7cb6e799b3e1eb2c52bdb7537beebbacd213a420ab65b0179d6dd4"
+      },
+      {
+        "index": 5,
+        "name": "DE3W100_TIME_L0625",
+        "iron": "parent_iron + 1.0*(mean3_native_iron - native_iron), clamped at 0",
+        "time": "A60-V7m chord lambda=0.625 (V36/N/V7m = 0.25/0.375/0.375)",
+        "zip_sha256": "dd203aa9feafa90fefc322fc818f6ac26fdf61f7b3be28111f71ce0482245b26",
+        "note": "combines the two positive directions; supersedes index 4 for the four uploads"
       }
     ],
     "basis": {
@@ -16483,6 +16491,46 @@
     "packages_delivered": 4,
     "desktop_writes": 4,
     "agent_uploads": 0,
-    "historical_decisions_unchanged": true
+    "historical_decisions_unchanged": true,
+    "recommended_upload_indices": [
+      1,
+      2,
+      3,
+      5
+    ],
+    "superseded_index": 4,
+    "desktop_second_delivery": {
+      "index": "5",
+      "zip_sha256": "dd203aa9feafa90fefc322fc818f6ac26fdf61f7b3be28111f71ce0482245b26",
+      "readback_verified": true
+    }
+  },
+  "environment_restart_2026_09_30": {
+    "date": "2026-09-30",
+    "observed_local": "2026-09-30 22:56 Asia/Shanghai",
+    "event": "host/WSL restart at about 22:45 CST (uptime 11 minutes at observation)",
+    "impact": [
+      "every iron-* systemd --user service and timer is gone; list-timers is empty",
+      "the PTaRL unbudgeted formal development run is inactive(dead) with no terminal event",
+      "all training processes absent (no python/torch workers)",
+      "DANet, E-COMPOSE, DNNR and the component queues were already terminal before the restart"
+    ],
+    "ptarl_state": {
+      "service": "iron-ptarl-unbudgeted-formal-r1.service",
+      "state": "inactive_dead",
+      "last_monitor_local": "2026-09-30 16:43",
+      "completed_pair_units": 12,
+      "planned_pair_units": 20,
+      "completed_optimizers": 79,
+      "planned_optimizers": 120,
+      "terminal_event_present": false,
+      "working_tree": "local/worktrees/ptarl-unbudgeted-development/local/ptarl-unbudgeted-formal-r1",
+      "preserved": true
+    },
+    "root_cause": "not an OOM or code failure: no OOM in the kernel log, 12.6 GiB available and 655 GiB free after the restart; the process group was killed by the host restart",
+    "linger": "no; the frozen units are static with no [Install] section, so they do not auto-start after a host restart",
+    "consequence": "the only live path to a genuinely new model was terminated at 60% of development and the monitoring timers are gone; a frozen recovery workflow (new admission, preserved partial artifacts) is required before any resumption, and future long runs need an explicit restart/linger policy",
+    "agent_uploads": 0,
+    "new_fits": 0
   }
 }
