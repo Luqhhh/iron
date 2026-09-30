@@ -1,5 +1,5 @@
 version: modernnca-partition-preparation-v1
-stage: partition_only_no_official_runner
+stage: complete_pair_ledger_collector_and_reference_reader_no_official_scheduler
 platform_milestones: [96.4, 96.45, 96.5]
 incumbent: {candidate: DE3_IRON_USER_REQUESTED, score: 96.3749, source: user_reported_not_independently_verified}
 source:
@@ -39,11 +39,19 @@ partition:
   group_columns: native_21_FEATURES_only
   prediction_postprocessing: none
 saved_state: {format: NPZ_nonpickle, caller_SHA256: required, independent_numpy_absolute_tolerance: 0.00000001}
+phase_engineering:
+  paired_partition: four_fresh_states_two_learned_optimizer_runs_zero_fixed_optimizer_calls
+  ledger: append_only_count_limits_crashed_start_permanently_consumed
+  development_counts: {pair_unit: 20, estimator: 80, optimizer: 40}
+  confirmation_counts_per_earned_target: {pair_unit: 10, estimator: 40, optimizer: 20}
+  phase_collection: exact_closed_inventory_complete_five_fold_OOF_within_each_seed
+  reference_reader: reuse_anchored_dnnr_current_reference_v1_format_original_DE3_and_current_V32_time
+  official_scheduler: absent_until_resource_and_freeze_admission
 runtime: {wall_clock_limit_seconds: null, reject_projected_time: false, timing: descriptive_only, dependencies: unchanged_locked_environment}
 future_formal_stage:
   status: not_admitted
   serial_after: current_PTARL_terminal
-  required: [complete_phase_execution, closed_fit_ledger, zero_fit_current_reference_verification, full_size_non_time_resource_admission, exact_source_locked_tests, frozen_candidate_pool]
+  required: [admitted_official_scheduler, independent_formal_score_reconstruction, full_size_non_time_resource_admission, exact_source_locked_tests, frozen_candidate_pool]
   development_seeds: [42, 3407]
   confirmation_seeds: [7777, 12011]
   folds: 5

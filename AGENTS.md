@@ -2030,3 +2030,18 @@ cannot retry or save. No scientific recipe or tolerance change. Full locked
 r2 suite1326passed,0skips,23warnings,803sources unchanged while testing;
 receiptSHA95fb52911c62b8b74d243fef7b633609605e299f0fbf20e0bd3e53e4d23f2367.
 Original r1 receipts retained. G0partial, G1unmeasured; no official fits.
+
+
+ModernNCA complete paired execution, count ledger, phase collector and current
+reference reader checked prospectively. Full locked1349passed/0skips/23warnings;
+811sources unchanged during tests. ReceiptSHA532b41e08ab2cd5398c01a02b675c276ea4a1f1186d2eff1195cb03aba2f4460.
+Artificial20pairs/80saved states/40optimizer runs; fresh independent no-fit
+audit max1.1368683772161603e-13, receiptfee7c0b7bd0a6c6897ae3e842e948827c1375a8cf3e9737500d8a13939b9b493.
+Zero-fit existing reference binding2754rows/4seeds, original841reader sources
+and436native+218overlay artifacts; currentDE3iron and currentV32time retained.
+BindingSHA015ebfef4d693d3d9f48e7af34ef0dba3a7fb003b6038b38e7793dca89109c55.
+Two r1 full-suite failures were temporary-directory precondition failures of
+old path tests; private harness corrected to fresh /tmp, no public source or
+model change, failed evidence preserved. No official ModernNCA fits, resource
+probe or formal scheduler/queue. Quality gates and no-time-budget rule unchanged.
+See docs/modernnca_source_preparation/PHASE_ENGINEERING.md.

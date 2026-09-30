@@ -16392,5 +16392,65 @@
     "previous_engineering_receipt_sha256": "5cae6cde97de7f70cd2b2afb6082a075f84cdb11d48e99c002348ef673232717",
     "failed_first_epoch_guard": "failed_attempt_cannot_retry_or_save",
     "small_partition_witness_scope": "pre_guard_fix_scientific_core_unchanged"
+  },
+  "modernnca_phase_engineering_2026_09_30": {
+    "status": "paired_execution_ledger_collector_and_current_reference_checked_no_official_scheduler",
+    "branch": "codex/modernnca-source-preparation",
+    "documentation": "docs/modernnca_source_preparation/PHASE_ENGINEERING.md",
+    "G0": "partial_complete_synthetic_phase_and_reference_binding_checked",
+    "G1": "unmeasured",
+    "source_files": 811,
+    "locked_suite": {
+      "passed": 1349,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "focused_new_tests": 23,
+    "engineering_receipt_sha256": "532b41e08ab2cd5398c01a02b675c276ea4a1f1186d2eff1195cb03aba2f4460",
+    "prior_harness_failure_receipt_sha256": "a7c75c6d908d1ccd0cbfb5b50912c5f90cf3bf87d39a4c5e2051331f5624ff5b",
+    "prior_harness_failure": "two_existing_path_tests_require_tmp_path_outside_local_fixed_private_runner_only",
+    "synthetic_phase": {
+      "complete_pairs": 20,
+      "saved_models": 80,
+      "optimizer_runs": 40,
+      "small_unit_test_dimensions_only": true,
+      "fresh_process_cold_receipt_sha256": "fee7c0b7bd0a6c6897ae3e842e948827c1375a8cf3e9737500d8a13939b9b493",
+      "cold_maximum_difference": 1.1368683772161603e-13,
+      "new_cold_fits": 0
+    },
+    "reference_binding": {
+      "receipt_sha256": "015ebfef4d693d3d9f48e7af34ef0dba3a7fb003b6038b38e7793dca89109c55",
+      "cache_complete_sha256": "7b7409f4a0791eb11c0d90fb2c0479baf5166c5a48a165ef8c0f1520fbfeb7b3",
+      "rows": 2754,
+      "reader_source_files": 841,
+      "native_artifact_files": 436,
+      "overlay_artifact_files": 218,
+      "seeds": [
+        42,
+        3407,
+        7777,
+        12011
+      ],
+      "incumbent": "DE3_IRON_USER_REQUESTED",
+      "parent": "V32_TIME_A60V7_50",
+      "current_time_column_exact": true,
+      "new_reference_fits": 0,
+      "existing_official_reference_rows_read": 2754
+    },
+    "official_candidate_fits": 0,
+    "full_size_resource_probes": 0,
+    "official_scheduler": false,
+    "formal_manifest": false,
+    "formal_queue": false,
+    "maximum_runtime_seconds": null,
+    "quality_gates": "unchanged",
+    "packages": 0,
+    "uploads": 0,
+    "next_required": [
+      "admitted_official_scheduler",
+      "independent_formal_score_reconstruction",
+      "full_size_non_time_resource_admission",
+      "exact_source_freeze"
+    ]
   }
 }
