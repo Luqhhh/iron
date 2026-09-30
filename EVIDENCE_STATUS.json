@@ -16339,5 +16339,55 @@
       "resource admission",
       "official G1"
     ]
+  },
+  "modernnca_partition_model_preparation_2026_09_30": {
+    "status": "default_encoder_partition_model_and_independent_audit_checked_no_formal_G1",
+    "branch": "codex/modernnca-source-preparation",
+    "documentation": "docs/modernnca_source_preparation/PARTITION_MODEL.md",
+    "G0": "partial_model_and_partition_audit_checked",
+    "G1": "unmeasured",
+    "spec": "configs/modernnca/SPEC.yaml",
+    "source_files": 803,
+    "locked_python": "3.12.12",
+    "locked_suite": {
+      "passed": 1326,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "focused_tests": 16,
+    "engineering_receipt_sha256": "5cae6cde97de7f70cd2b2afb6082a075f84cdb11d48e99c002348ef673232717",
+    "source_equivalence_receipt_sha256": "22f149a0a857a83d2c036ffa83a6f4327c8b90537b803f887f43267facccb17d",
+    "initialization_prediction_gradient_one_step_difference": 0.0,
+    "numpy_full_encoder_difference": 2.220446049250313e-16,
+    "small_partition_receipt_sha256": "97ff3789ce3bfa254f119570ba0d6ba936ac31c1ed424024fbde9afa818951f4",
+    "small_cold_models": 4,
+    "small_cold_difference": 0.0,
+    "small_optimizer_runs": 2,
+    "source_equivalence_optimizer_steps": 2,
+    "original_author_default_core": "zero_post_blocks_PLR_lite",
+    "project_adaptations": [
+      "native_preprocessing",
+      "inner_MAE_selection_and_fresh_refit",
+      "exclude_duplicate_feature_group_responses",
+      "fixed_encoder_matched_control"
+    ],
+    "official_label_reads": 0,
+    "official_fits": 0,
+    "full_size_resource_probes": 0,
+    "new_full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "formal_runner": false,
+    "formal_manifest": false,
+    "formal_queue": false,
+    "maximum_runtime_seconds": null,
+    "quality_gates": "unchanged",
+    "next_required": [
+      "complete_phase_execution",
+      "closed_fit_ledger",
+      "current_reference_binding",
+      "full_size_non_time_resource_admission",
+      "frozen_candidate_pool"
+    ]
   }
 }

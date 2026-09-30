@@ -75,3 +75,10 @@ downloaded and no competition rows transmitted. Metadata availability neither
 authorizes a change to that boundary nor proves local resource compatibility.
 Current platform best remains user-reported DE3=96.3749; milestones96.4,
 96.45 and96.5 remain unmet. No platform gain follows from this source audit.
+
+## Subsequent default-encoder/partition milestone
+
+The earlier no-embedding result above is historical. The default PLR encoder,
+partition model and saved-state independent auditor are now checked; see
+[PARTITION_MODEL.md](PARTITION_MODEL.md). Full-phase execution/resource/G1
+remain unmeasured; this milestone does not establish optimization gain.

@@ -2008,3 +2008,18 @@ related TabR/RFM failures keep low priority but do not directly test it.
 Preserve current DANet/queued PTaRL order and all frozen files/quality gates.
 No elapsed-time budgets, no external weights/data, no automatic release.
 See docs/modernnca_source_preparation/RESULTS.md. BestDE3=96.3749 unchanged.
+
+
+ModernNCA default PLR encoder and partition model now checked. Locked
+Python3.12.12 full1326passed/0skips/23existing warnings; source803,16focused
+tests. Complete author default core initialization/prediction/gradient/one
+AdamW update diff0; independent full encoder2.22e-16. Both arms have identical
+initial states: FIXED frozen/no optimizer, LEARNED normalizedMSE/AdamW.
+Native training-only transforms, calibrationMAE, fresh outer refit; group
+exclusions extend author self mask deliberately. Small synthetic4saved states,
+2optimizer runs, independent fresh-process audit0difference/0fits.
+These are partial G0 witnesses, not resource admission or G1gain. Complete
+phase runner/ledger/current reference/full-size resource/freeze still pending;
+no official reads/fits/probes or release. Preserve current PTaRL priority,
+no formal ModernNCA queue, no time budgets or changes to quality gates.
+Details docs/modernnca_source_preparation/PARTITION_MODEL.md.

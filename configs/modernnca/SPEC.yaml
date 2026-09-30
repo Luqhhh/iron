@@ -1,0 +1,56 @@
+version: modernnca-partition-preparation-v1
+stage: partition_only_no_official_runner
+platform_milestones: [96.4, 96.45, 96.5]
+incumbent: {candidate: DE3_IRON_USER_REQUESTED, score: 96.3749, source: user_reported_not_independently_verified}
+source:
+  author_commit: 1b973adffa4203c3f62c4949957b1ba3efbe60d3
+  model_sha256: 02fce6a107998ab7212774507998e77535f630fbf4ee328acf8519ad7c10632f
+  utils_sha256: 46f26474f559cdda4eda92c5d28d504905c3180ad0ead1bc3f296af72c74230b
+  license: licenses/TALENT-MIT.txt
+  full_paper_reproduction: false
+architecture: {PLR_lite: true, post_encoder_blocks: 0, distance: unsquared_Euclidean, regression_head: softmax_weighted_training_labels}
+settings:
+  dim: 128
+  frequencies: 77
+  embedding: 34
+  frequency_scale: 0.04431360576139521
+  temperature: 1.0
+  sample_rate: 0.5
+  learning_rate: 0.01
+  weight_decay: 0.0002
+  random_seed: 42
+  batch_size: 256
+  max_epochs: 240
+  patience: 25
+  min_delta: 0.0
+arms:
+  FIXED_ENCODER: same_initial_parameters_frozen_no_optimizer_steps
+  LEARNED_ENCODER: optimize_full_encoder_and_frequencies
+partition:
+  numeric: native_raw_NumericPreprocessor_training_only_float32_output_cast_float64
+  category: training_spout_vocabulary_unknown_index_0
+  response: training_mean_and_population_std
+  training_loss: normalized_MSE
+  selection: inner_calibration_MAE_first_strict_best
+  refit: fresh_initialization_and_preprocessing_on_outer_train_at_inner_selected_epoch
+  calibration_in_neighbor_bank: forbidden
+  external_training_pool: exclude_all_feature_groups_of_current_batch
+  training_prefix: mask_self_and_all_same_feature_group_responses
+  group_columns: native_21_FEATURES_only
+  prediction_postprocessing: none
+saved_state: {format: NPZ_nonpickle, caller_SHA256: required, independent_numpy_absolute_tolerance: 0.00000001}
+runtime: {wall_clock_limit_seconds: null, reject_projected_time: false, timing: descriptive_only, dependencies: unchanged_locked_environment}
+future_formal_stage:
+  status: not_admitted
+  serial_after: current_PTARL_terminal
+  required: [complete_phase_execution, closed_fit_ledger, zero_fit_current_reference_verification, full_size_non_time_resource_admission, exact_source_locked_tests, frozen_candidate_pool]
+  development_seeds: [42, 3407]
+  confirmation_seeds: [7777, 12011]
+  folds: 5
+  isolated_weight: 0.2
+  development_gate: two_positive_complete_seeds_mean_gain_ge_0_01_control_advantage_gt_0_local_package_ge_96_25
+  confirmation_gate: four_positive_seeds_seed_LCB95_gt_0_mean_control_advantage_gt_0
+  fold_evidence: descriptive_only
+  OOF_cross_seed_averaging: forbidden
+  automatic_full_data_fit_or_release: false
+  official_fits_allocated: 0
