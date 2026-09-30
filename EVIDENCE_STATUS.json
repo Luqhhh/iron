@@ -16539,5 +16539,57 @@
       "packages": 0,
       "agent_uploads": 0
     }
+  },
+  "optimization_no_time_budget_2026_09_30": {
+    "user_instruction": "不要再设置时间预算",
+    "maximum_runtime_seconds": null,
+    "reject_by_projected_seconds": false,
+    "timing": "descriptive_only",
+    "original_evidence_preserved": true,
+    "quality_gates": "unchanged",
+    "release_authorized": false
+  },
+  "ptarl_unbudgeted_preparation_2026_09_30": {
+    "status": "exact_source_locked_suite_passed_ready_for_fresh_formal_freeze",
+    "branch": "codex/ptarl-unbudgeted-development",
+    "documentation": "docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md",
+    "G0": "execution_checked_non_time_resource_requirements_passed",
+    "G1": "unmeasured",
+    "original_source_files_unchanged": 841,
+    "original_manifest_sha256": "5722fd914c6239c4dfa9228a58f9b376e4d1593dcee40ab105107217dd93aa3c",
+    "original_admission_sha256": "e0b26300ceee5e3b20946ec55756ddcdb5ea9afc33ef3d45d51d2b9f0c1e8380",
+    "original_admission_status": "failed_preserved_cost_only",
+    "non_time_receipt_sha256": "f125097e9114cc61584077f850fce51acc5e6cea2dd69a1274bf602fc78cae65",
+    "new_resource_probe_fits": 0,
+    "new_official_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0,
+    "maximum_runtime_seconds": null,
+    "reject_by_projected_seconds": false,
+    "serial_dependency": "current_DANet_actual_terminal_and_MainPID_0",
+    "confirmation_requires": [
+      "passed_complete_development_cold_audit",
+      "passed_independent_development_arithmetic",
+      "unchanged_complete_model_ledger_inventory"
+    ],
+    "quality_gates": "unchanged",
+    "release_authorized": false,
+    "source_files": 849,
+    "focused_tests": 32,
+    "locked_python": "3.12.12",
+    "locked_suite": {
+      "passed": 1468,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "engineering_receipt_sha256": "22e3fe5ea8dcde4eea073e02314413eb1a879fdc4f3c7526ffdd0d6d428ab1eb",
+    "complete_tiny_phase": {
+      "pair_units": 20,
+      "optimizers": 120,
+      "kmeans": 40,
+      "cold_models": 120,
+      "new_audit_fits": 0
+    },
+    "formal_manifest_generated": false
   }
 }

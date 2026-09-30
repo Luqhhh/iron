@@ -2082,3 +2082,24 @@ the probe. Preserve private full-size models/measurements/ledgers/failed
 record. G1 unmeasured, no package/upload. Current four-seed DE3 reference
 complete and reusable. Next familyDNNR, thenDANet, with unchanged quality
 gates. Details docs/ptarl_space_calibration/RESOURCE_RESULT.md.
+
+
+### PTaRL prospective no-time-budget continuation (2026-09-30, controlling)
+
+Latest user instruction “不要再设置时间预算” supersedes every earlier
+time-based gate prospectively, including the original PTaRL7200s refusal.
+No wall-clock cap, projected-time rejection or time-driven recipe shrinking.
+Keep the original failed report/source/models unchanged; reuse its passed
+non-time measurements after a fresh original-worktree zero-fit audit.
+Branch codex/ptarl-unbudgeted-development preserves all841 original source
+files, exact architecture and quality gates, and prepares serial formal
+execution only after the current DANet actual terminal event/MainPID0.
+Both cold and independent arithmetic anchors plus unchanged complete model
+inventory are required before any confirmation fit. No automatic release.
+See docs/ptarl_space_calibration/UNBUDGETED_EXECUTION.md. G1unmeasured.
+
+Exact-source locked Python3.12.12 suite1468 passed,0skips,23existing warnings;
+source849 files,32new-wrapper focused tests. Private engineering receipt
+SHA22e3fe5ea8dcde4eea073e02314413eb1a879fdc4f3c7526ffdd0d6d428ab1eb.
+Complete tiny20pair phase checks120optimizers/40KMeans/120cold models;
+no audit fits. Official PTaRL fits0, formal freeze pending, no new G1gain.

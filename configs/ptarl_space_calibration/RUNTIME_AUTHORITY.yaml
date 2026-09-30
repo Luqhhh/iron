@@ -1,0 +1,10 @@
+version: ptarl-no-time-budget-v1
+user_instruction: 不要再设置时间预算
+maximum_runtime_seconds: null
+reject_by_projected_seconds: false
+timing: descriptive_only
+original_probe: preserve_cost_only_refusal_no_refit
+model_and_quality_gates: unchanged
+formal_training: serial_after_current_DANet_terminal
+automatic_packages: false
+agent_uploads: 0
