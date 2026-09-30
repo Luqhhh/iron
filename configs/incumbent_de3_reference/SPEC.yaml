@@ -1,0 +1,56 @@
+version: incumbent-de3-reference-core
+stage: synthetic_core_only_pending_frozen_phase_and_resource_admission
+base_commit: d96d151
+purpose: incumbent_reference_only_not_DE3_promotion
+platform_reference:
+  candidate: DE3_IRON_USER_REQUESTED
+  score: 96.3749
+  source: user_reported_not_independently_verified
+  zip_sha256: 81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0
+platform_milestones: [96.4, 96.45, 96.5]
+parent: V32_TIME_A60V7_50
+endpoint: maximum(parent_iron+0.5*(mean(J42,J104729,J130363)-J42),0)
+training_seeds: [42, 104729, 130363]
+split_seeds: [42, 3407, 7777, 12011]
+folds: 5
+missing_members:
+  split_seeds: [7777, 12011]
+  training_seeds: [104729, 130363]
+  target_output: tap_iron
+  estimator_outputs: [tap_iron, tap_time_len]
+  optimization: false
+planned_budget_not_yet_reserved:
+  estimators: 20
+  optimizer_runs: 40
+  reference_factory_fits: 0
+  full_data_fits: 0
+  packages: 0
+  desktop_writes: 0
+  agent_uploads: 0
+native_recipe:
+  original_spec: configs/strong_component_regularization/SPEC.yaml
+  settings_key: training.tap_iron
+  permitted_difference: training_random_seed_only
+  arm: BASE
+  mechanisms: {}
+  recipe: {backbone: tabm, frequency: 0.01}
+  inner_seed: 42
+  epoch_selection: mean_standardized_mae_both_outputs
+development_cache:
+  directory: local/runs/independent-ensemble-checkpoints-20260929/development-DE3
+  manifest_sha256: 25713e219cd2da36afedfaa41f5ffa453334353f2ff08aace94f2303618b33c9
+  summary_sha256: cd1d4e7740b7e2799e66f29edc4dab60a4cc3801904e434151ef0e1c1d0bd7c8
+  audit_sha256: d2e590109c39ff94ca715b1710edc1805ec96f674f433d8c80a012c5ee00b81c
+core_audit:
+  full_batch_atol: 0
+  order_chunk_absolute_atol: 0.0005
+  order_chunk_relative_atol: 0.000001
+  zero_optimizer_calls: true
+phase_admission:
+  frozen_source_data_fold_manifest_required: true
+  external_artifact_anchors_required: true
+  resource_admission_required: true
+  implemented: false
+monitoring:
+  future_interval_seconds: 600
+  between_check_polling: false

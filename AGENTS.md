@@ -1935,3 +1935,20 @@ authorize another package or establish a general local/platform transfer ratio.
 The staged goals96.4/96.45/96.5 remain unmet, with gaps0.0251/0.0751/0.1251.
 Users upload and return scores; do not infer quota. Future comparisons use
 the latest registered current best while frozen historical evidence stays intact.
+
+### Current-incumbent reference core (2026-09-30)
+
+Branch codex/incumbent-de3-reference implements synthetic-only reserved native
+BASE fits, cold saved-state/ledger audits and same-held-out-partition DE3
+arithmetic. Locked Python3.12 checks:1327 passed; targeted17 passed; fresh
+process cold differences0 with no audit optimizer creation. G0 core passed;
+G1 unmeasured. No official reference/full-data fit, package or upload.
+
+Current reference remains user-reported DE3_IRON_USER_REQUESTED=96.3749.
+Before PTaRL/DNNR/DANet evaluation, the proposed completion needs20 native
+reference estimators/40 optimizers at split7777/12011 and training104729/130363.
+The phase runner, cache/source freeze, resource admission and complete overlay
+auditor are still pending; no official budget is yet reserved. Preserve the
+DE3 historical no-finalist/0.01-gate failure and original package. This is
+incumbent reference completion only, not retrospective DE3 confirmation.
+Details: docs/incumbent_de3_reference/DESIGN.md and STATUS.md.

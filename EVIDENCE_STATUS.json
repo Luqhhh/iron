@@ -16124,5 +16124,23 @@
     "platform_delta_vs_parent": 0.0022,
     "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
     "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8"
+  },
+  "incumbent_de3_reference_core": {
+    "date": "2026-09-30",
+    "branch": "codex/incumbent-de3-reference",
+    "G0": "SYNTHETIC_CORE_PASSED_1327_LOCKED_TESTS_FRESH_PROCESS_COLD_DIFF_ZERO",
+    "G1": "UNMEASURED_REFERENCE_COMPLETION_NOT_PROMOTION",
+    "current_reference": "DE3_IRON_USER_REQUESTED",
+    "user_reported_platform_score": 96.3749,
+    "receipt": "local/research/incumbent-reference-core-r1/receipt.json",
+    "receipt_sha256": "cc7b33dbc66bf3028e0a6a880cee29af491530c0daacbba31683df65a69858c2",
+    "official_estimators": 0,
+    "official_optimizer_runs": 0,
+    "planned_missing_estimators_not_yet_reserved": 20,
+    "planned_optimizer_runs_not_yet_reserved": 40,
+    "phase_runner_and_resource_admission": "pending",
+    "packages": 0,
+    "agent_uploads": 0,
+    "documentation": "docs/incumbent_de3_reference/DESIGN.md"
   }
 }
