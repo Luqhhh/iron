@@ -1956,3 +1956,21 @@ Data protection, exact-source/runtime verification, numerical and memory
 requirements, complete coverage, original model-quality gates, four-seed
 pairedLCB rule and release restrictions remain binding. No implicit full-data
 fit, package, desktop write or agent upload is authorized by this instruction.
+
+
+DANet has now resumed under the explicit no-time-budget instruction. Actual
+formal launch2026-09-30 14:52:57 Asia/Shanghai; separate worktree
+/home/lux1/iron/local/worktrees/danet-abstract-development,
+branchcodex/danet-abstract-development. Implementation7fd35ce, launch5bb4b20
+committed/pushed; lockedPython3.12 full1487 tests passed, source854 files.
+ManifestSHAfa17063826dea7ac9c39b8fd24aabe6ead96d8144eaca91d0cc8c222516e205b;
+private rootlocal/danet-abstract-formal-r1 in that worktree. Service
+iron-danet-formal-r1.service initialMainPID460728 active/running,
+RuntimeMaxUSec=infinity, Restart=no.20complete matched development pairs on
+42/3407,80estimator/80optimizer runs,4single-threaded workers. Only cold+
+independent-arithmetic-earned targets may proceed7777/12011. Monitor600s via
+iron-danet-formal-r1-monitor.timer; actual supervisor-terminal.json event,
+no between-check training polling. Preserve source/resource/reference and
+failed evidence; no restart/retry. G1pending, no full-data fit/package/upload.
+No time-based admission gate remains for future optimization, including
+previous cost-only refused routes; non-time/quality/release rules unchanged.
