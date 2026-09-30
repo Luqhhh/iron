@@ -16152,12 +16152,12 @@
     "user_reported_platform_score": 96.3749,
     "receipt": "local/research/incumbent-reference-phase-r1/receipt.json",
     "receipt_sha256": "f415901c178b180d92b08595cfcdae15cff80b9d4349c7b213ee48ecda43e886",
-    "official_estimators": 0,
-    "official_optimizer_runs": 0,
+    "official_estimators": 20,
+    "official_optimizer_runs": 40,
     "planned_missing_estimators": 20,
     "planned_optimizer_runs": 40,
     "first_cost_observation": "FAILED_MEMORY_7075_55_MIB_LT_7168_CAPS_UNCHANGED",
-    "formal_freeze_and_execution": "RUNNING_R2_FROZEN_20_ESTIMATORS_40_OPTIMIZERS_NOT_DE3_PROMOTION",
+    "formal_freeze_and_execution": "COMPLETE_COLD_AUDITED_20_ESTIMATORS_40_OPTIMIZERS_CURRENT_REFERENCE_ONLY",
     "packages": 0,
     "agent_uploads": 0,
     "documentation": "docs/incumbent_de3_reference/PHASE_EXECUTION.md",
@@ -16183,31 +16183,54 @@
       "official_fits": 0
     },
     "latest_monitor": {
-      "receipt": "local/research/incumbent-reference-phase-r1/monitor-001.json",
-      "receipt_sha256": "5468ea89561d08c98a627ac2eff4b2b7a971808cc2965934c3e36389426fa592",
-      "checked_utc": "2026-09-30T02:14:14.950113+00:00",
-      "service_active_at_check": true,
-      "main_pid": 417199,
+      "receipt": "local/research/incumbent-reference-phase-r1/monitor-002.json",
+      "receipt_sha256": "2653a43938c1e3d362658b288adfd5f68d9eb02533337a35e24912f990f8704e",
+      "checked_utc": "2026-09-30T02:26:17.706271+00:00",
+      "service_active_at_check": false,
+      "main_pid": 0,
       "counts": {
         "completed": {
-          "estimator": 8,
-          "optimizer": 20
+          "estimator": 20,
+          "optimizer": 40
         },
         "failed": {
           "estimator": 0,
           "optimizer": 0
         },
         "incomplete": {
-          "estimator": 4,
-          "optimizer": 4
+          "estimator": 0,
+          "optimizer": 0
         },
         "started": {
-          "estimator": 12,
-          "optimizer": 24
+          "estimator": 20,
+          "optimizer": 40
         }
       },
-      "next_not_before_utc": "2026-09-30T02:24:14.950113+00:00",
-      "terminal_result": false
+      "next_not_before_utc": null,
+      "terminal_result": true
+    },
+    "completion": {
+      "complete_sha256": "492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4",
+      "audit_sha256": "ed03cd99e17c6514053eb62494a00cbe40ad7d6600a83de991a98c9b801b9f06",
+      "service_terminal_result": "success",
+      "main_pid": 0,
+      "verified_split_seeds": [
+        42,
+        3407,
+        7777,
+        12011
+      ],
+      "new_cold_models": 40,
+      "reused_development_cold_models": 60,
+      "full_batch_difference": 0.0,
+      "new_order_chunk_absolute_difference": 4.2825790956158016e-05,
+      "new_order_chunk_relative_difference": 5.233122060154635e-08,
+      "observed_peak_worker_mib": 803.38671875,
+      "source_hashes_unchanged": 727,
+      "new_audit_fits": 0,
+      "unchanged_parent_time": true,
+      "PTaRL_reader": "passed_fresh_process_2754_rows_436_native_files_218_overlay_artifacts",
+      "G1": "REFERENCE_ONLY_NO_NEW_QUALITY_DECISION"
     }
   }
 }

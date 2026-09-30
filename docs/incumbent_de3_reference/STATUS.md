@@ -55,3 +55,11 @@ optimizers:24 started,20 completed,4 active. No failed estimator/optimizer
 receipt or terminal failure artifact. Budget remains20 estimators/40
 optimizers. No between-check polling; next observation no earlier than
 `2026-09-30T02:24:14.950113+00:00`. G1 remains unmeasured.
+
+## Reference completion terminal result
+
+Second scheduled monitor confirmsuccess/MainPID0;20/20 estimators and40/40
+optimizers completed,0 failed/incomplete. Fresh-process audit passes40 new
+and60 reused states, source727 unchanged, full-batch difference0.
+PTaRL's reader independently accepted all four current-reference columns.
+G0 reference passed;G1 remains unmeasured. Details: [RESULTS.md](RESULTS.md).

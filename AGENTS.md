@@ -1999,3 +1999,20 @@ active/running, MainPID417199. 8/20 estimators complete,12 starts total;
 are in-flight,0 failed receipts. Next monitor no earlier than
 2026-09-30T02:24:14.950113+00:00, preserving600s/no-between-check cadence.
 No terminal outcome or G1 gain yet; do not restart or alter frozen source.
+
+### Current-incumbent four-seed reference complete (2026-09-30)
+
+Reference r2 terminal success confirmed02:26:17UTC, MainPID0. Exactly20
+estimators/40 optimizers complete;0 failed/incomplete. Fresh audit40 new
+and60 reused states,10 development J42 replays and10 derived J42 audit-reuse
+units; full-batch diff0, new maxchunk4.28258e-5,727 sources unchanged.
+Four-seed current DE3 overlay complete SHA256
+492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4.
+Private output local/incumbent-de3-reference-four-seed-r2; PTaRL reader
+passes2754 rows/436 native files/218 overlay artifacts in a fresh process.
+
+This is incumbent reference completion only, no DE3 promotion or new G1 score.
+Preserve old no-finalist/0.01-gate failure, failed wrong-root r1, original
+packages and all evidence. No full-data fit/package/upload. Next: frozen
+PTaRL resource probe then complete paired development only if admitted.
+Details docs/incumbent_de3_reference/RESULTS.md.
