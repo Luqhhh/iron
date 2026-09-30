@@ -39,3 +39,13 @@ Retry plan SHA-256:
 G0 retry engineering is checked; G1 remains pending complete coverage. Actual
 activation and96-model reuse admission are recorded separately after launch.
 No full-data fit, package, desktop write or agent upload is authorized here.
+
+## Actual activation and reuse admission
+
+Activated 2026-09-30T23:55:29.367874+08:00; service`iron-ptarl-entry-retry-r1.service`,
+initialMainPID35043 active/running.16reused pairs/96saved models passed the
+original cold audit with maximum difference2.2737367544323206e-13 and0newfits.
+The remaining4tasks execute under original4worker concurrency.600smonitor
+active, Restart=no/runtime infinity; terminal-only completion watcher active.
+Activation SHA-256:`cacfd91d82f4b0a2f463d0fb523bf539645fefd7efd359cec78a4efa767407cb`.G1 remains pending complete-phase verification.
+No heavy synthetic/full-suite jobs overlap the retry.

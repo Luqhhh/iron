@@ -2159,3 +2159,12 @@ PlanSHAdf54575fbc155d94a85b0fee85e9284754666b43b2c3a7acf81d061ad737d6b7.
 Current-memory admission rechecked unchanged; actual launch pending here.
 No time budget, automatic retry, full-data fit/package/desktop write/upload.
 See docs/ptarl_space_calibration/ENTRY_REFUSAL_RETRY.md.
+
+
+Actual user-authorized PTaRL entry retry activated 2026-09-30T23:55:29.367874+08:00; service
+iron-ptarl-entry-retry-r1.service initialMainPID35043 active/running.16reused
+pairs/96saved models passed original no-fit cold audit, maxdifference
+2.2737367544323206e-13. Remaining4time3407folds1..4 use original4workers.
+ActivationSHAcacfd91d82f4b0a2f463d0fb523bf539645fefd7efd359cec78a4efa767407cb.600smonitor active; Restart=no/runtime infinity.
+Old failed/interrupted evidence preserved; G1pending complete cold/arithmetic.
+No heavy synthetic/full-suite jobs overlap this retry; no package/upload.
