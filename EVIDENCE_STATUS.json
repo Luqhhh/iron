@@ -16640,11 +16640,11 @@
     "activation_receipt_sha256": "6cb9b7bbb6de768febe0bbb7a35d6b21cd9c3e7e90735c74926b6b0661e30fec"
   },
   "ptarl_explicit_reboot_recovery_2026_09_30": {
-    "status": "explicit_recovery_activated_after_reuse_admission_G1_pending",
+    "status": "terminal_worker_entry_memory_refusal_after_16_closed_pairs",
     "branch": "codex/ptarl-reboot-recovery",
     "documentation": "docs/ptarl_space_calibration/REBOOT_RECOVERY.md",
     "G0": "recovery_engineering_and_72_model_reuse_admission_passed",
-    "G1": "incomplete_unscored",
+    "G1": "unscored_incomplete_phase",
     "locked_suite": {
       "passed": 1475,
       "skipped": 0,
@@ -16675,6 +16675,16 @@
     "initial_main_pid": 12094,
     "reuse_models": 72,
     "reuse_maximum_difference": 2.2737367544323206e-13,
-    "monitor_interval_seconds": 600
+    "monitor_interval_seconds": 600,
+    "terminal_verification_sha256": "a663318718d0961607ab6cfb3411c03650fbd1ba714f1945ddd69905a2138eeb",
+    "complete_pairs": 16,
+    "new_completed_pairs": 4,
+    "new_optimizer_runs": 24,
+    "new_kmeans_calls": 8,
+    "remaining_pairs": 4,
+    "failed_model_reservations": 0,
+    "incomplete_model_reservations": 0,
+    "monitor_stopped": true,
+    "retry_authorized_by_user": "继续重试，刚才是别的任务在进行、现在结束了"
   }
 }

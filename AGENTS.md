@@ -2142,3 +2142,14 @@ Actual PTaRL recovery activated 2026-09-30T23:08:25.825503+08:00, MainPID12094 a
 12reused pairs/72saved models passed cold admission;0new reuse fits.
 600smonitor active, Restart=no/runtime infinity. ActivationSHAf0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7.
 G1pending,8missing pairs run fresh; original artifacts/ledger preserved.
+
+
+Recovery r1 terminal: worker-entry memory gate refusal after16closed pairs.
+Servicefailed/MainPID0; no complete20pair phase or G1 score. All16pair/96optimizer/
+32KMeans reservations closed; missing4time3407folds1..4 have no directory or
+consumed reservation. Original reboot artifacts unchanged. TerminalSHA
+a663318718d0961607ab6cfb3411c03650fbd1ba714f1945ddd69905a2138eeb.
+Monitor stopped. User explicitly authorizes retry after the other task ended;
+prospective source-exact retry prepared on codex/ptarl-resource-entry-recovery.
+Original source/wrapper/failed artifacts remain immutable; no failed model
+retry, reduced model, tolerance/gate change, time budget, package or upload.

@@ -60,3 +60,18 @@ The600-second monitor timer is active; Restart=no, runtime infinity.
 Activation receipt SHA-256:`f0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7`.
 The eight fresh missing pairs are executing; G1 remains pending until complete
 phase cold audit and independent arithmetic. No package or upload.
+
+## Actual terminal and explicit retry instruction
+
+The r1 recovery stopped at the unchanged current-memory admission check in
+worker entry, before reserving the four missing tasks.16pairs/96optimizer/
+32KMeans calls are closed; there are no failed or incomplete fit reservations
+in this recovery root. The four absent tasks are time seed3407 folds1..4.
+All original reboot artifacts remain unchanged. G1 is unscored because full
+coverage is absent. Terminal verification SHA-256:
+`a663318718d0961607ab6cfb3411c03650fbd1ba714f1945ddd69905a2138eeb`.
+The user then instructed: “继续重试，刚才是别的任务在进行、现在结束了”.
+A separate prospective wrapper can reuse16closed pairs and execute only the
+four untouched tasks, with original4workers/scientific sources/memory gates.
+The old wrapper and failed run are preserved exactly; this is an explicitly
+authorized retry after external contention, not automatic failure relabeling.
