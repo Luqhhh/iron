@@ -16728,5 +16728,119 @@
     "reuse_models": 72,
     "reuse_maximum_difference": 2.2737367544323206e-13,
     "monitor_interval_seconds": 600
+  },
+  "round2_local_platform_diagnostics_20260930": {
+    "status": "delivered_pending_user_platform_feedback",
+    "authorization": {
+      "user_request": "四项写桌面",
+      "date": "2026-09-30",
+      "scope": "four predeclared isolated experiments; full-data fits, audits and desktop delivery",
+      "gate_exception": "these_four_diagnostic_releases_only",
+      "agent_uploads": 0
+    },
+    "user_reported_remaining_slots_at_request": 4,
+    "purpose": "test whether complete-development small, zero or negative gains hide positive platform effects",
+    "parent": {
+      "candidate": "V32_TIME_A60V7_50",
+      "score": 96.3727,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7"
+    },
+    "current_best_at_delivery": {
+      "candidate": "DE3_IRON_USER_REQUESTED",
+      "score": 96.3749,
+      "source": "user_reported_not_independently_verified"
+    },
+    "replacement": "parent + 0.5*(candidate_component - original_component); preserve other target field strings",
+    "four_seed_promoted": false,
+    "historical_gates_and_decisions_unchanged": true,
+    "implementation_commit": "e6a5e42bb2f7ceeeb3dcfab29ed728796d0dcf1f",
+    "private_root": "local/runs/local-platform-diagnostic-20260930/release-r1",
+    "manifest_sha256": "ab6ee8cb302461e1be1496a27c2db9d8bf95cab18241e58302debec572df7d93",
+    "frozen_files": 1427,
+    "G0": {
+      "status": "passed",
+      "locked_python312_tests": 1315,
+      "existing_warnings": 23,
+      "full_data_estimators": 4,
+      "optimizer_runs": 8,
+      "saved_models_audited": 8,
+      "new_CV_fits": 0,
+      "new_confirmation_seeds": 0,
+      "warm_cold_max_difference": 0.0,
+      "native_full_model_replay_max_difference": 0.0,
+      "independent_arithmetic_atol": 1e-10,
+      "unchanged_column_mismatches": 0,
+      "desktop_hash_and_payload_readback": "passed"
+    },
+    "G1": {
+      "status": "explicit_user_diagnostic_exploration_not_promoted",
+      "platform_scores": null,
+      "local_gains_are_not_forecasts": true
+    },
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930",
+    "agent_uploads": 0,
+    "packages": [
+      {
+        "name": "LOC_DIAG_EMA_TIME",
+        "target": "tap_time_len",
+        "arm": "EMA",
+        "local_mean_gain_vs_V32": 0.0021688120969949945,
+        "local_seed_gains": {
+          "42": 0.0019927163495803146,
+          "3407": 0.0023449078444096744
+        },
+        "selected_epoch": 91,
+        "zip_sha256": "da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836",
+        "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/01_LOC_DIAG_EMA_TIME/Luqhhh_bf_tap_predict_round2.zip",
+        "platform_score": null,
+        "row_order_chunk_max_raw_difference": 6.4522849640979985e-06
+      },
+      {
+        "name": "LOC_DIAG_LMIX_IRON",
+        "target": "tap_iron",
+        "arm": "D-LMIX",
+        "local_mean_gain_vs_V32": -0.001437523037992397,
+        "local_seed_gains": {
+          "42": 0.009755153610638972,
+          "3407": -0.012630199686623766
+        },
+        "selected_epoch": 74,
+        "zip_sha256": "a167927ce315d0179b0fe8769282e44ee129737e8ab94af0188e3abb485e8926",
+        "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/02_LOC_DIAG_LMIX_IRON/Luqhhh_bf_tap_predict_round2.zip",
+        "platform_score": null,
+        "row_order_chunk_max_raw_difference": 1.404380179792497e-05
+      },
+      {
+        "name": "LOC_DIAG_SAM_IRON",
+        "target": "tap_iron",
+        "arm": "SAM",
+        "local_mean_gain_vs_V32": -0.0032709359739103647,
+        "local_seed_gains": {
+          "42": -0.006021182343936976,
+          "3407": -0.0005206896038837533
+        },
+        "selected_epoch": 90,
+        "zip_sha256": "a39f245adf908a9091442f89a9f2406d1b2137092186a9fe2481422a4417fdc2",
+        "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/03_LOC_DIAG_SAM_IRON/Luqhhh_bf_tap_predict_round2.zip",
+        "platform_score": null,
+        "row_order_chunk_max_raw_difference": 2.8087603482163104e-05
+      },
+      {
+        "name": "LOC_DIAG_SAM_TIME",
+        "target": "tap_time_len",
+        "arm": "SAM",
+        "local_mean_gain_vs_V32": -0.01642965888519112,
+        "local_seed_gains": {
+          "42": -0.012875986947841547,
+          "3407": -0.019983330822540696
+        },
+        "selected_epoch": 109,
+        "zip_sha256": "20557f4363377dfb693215baa86a8990cd126e0af3b30eaa33a08b5f3767efe2",
+        "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/04_LOC_DIAG_SAM_TIME/Luqhhh_bf_tap_predict_round2.zip",
+        "platform_score": null,
+        "row_order_chunk_max_raw_difference": 3.226142496259854e-06
+      }
+    ]
   }
 }

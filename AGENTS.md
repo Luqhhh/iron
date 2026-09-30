@@ -2102,3 +2102,26 @@ activationSHAf0b124ca1c450a9638c18538f4e5b75f1133ff7f0c9b3829236d0979fa6f36d7.
 Monitor600s active, Restart=no/runtime infinity; completion-event.json watcher
 is terminal-only. All old interrupted evidence/reservations remain preserved.
 G0recovery admission passed; complete-phaseG1still pending. BestDE3=96.3749.
+
+
+### Four local/platform screening diagnostics delivered (2026-09-30)
+
+The user explicitly selected and requested desktop delivery of EMA time, D-LMIX
+iron, SAM iron and SAM time to inspect local false negatives. Four full-data
+estimators/eight optimizer runs, zero new CV/confirmation fits. All eight saved
+models pass independent audits; exact cold/native replays, isolated replacement
+readback and desktop hash/payload verification pass. Locked Python3.12 full
+suite1315 passed,23 existing warnings. Frozen1427 files unchanged.
+
+Desktop submission-local-platform-diagnostic-20260930 contains numbered
+LOC_DIAG_EMA_TIME, LOC_DIAG_LMIX_IRON, LOC_DIAG_SAM_IRON, LOC_DIAG_SAM_TIME.
+These are user-authorized diagnostic releases only, not promoted candidates;
+preserve historical no-finalist decisions and global gates. Common parent/local
+reference is V32_TIME_A60V7_50=96.3727; only the designated component is replaced
+at its original weight0.5, other target strings unchanged. Judge method gain
+against V32, then separately compare latest current best DE3=96.3749. All four
+platform scores are pending user feedback; agent uploads0. This batch uses the
+four explicitly selected diagnostic slots; older score-seeking chord packages
+remain historical and preserved, not the current four recommendations. Exact
+identities: docs/local_platform_diagnostic_release/DELIVERY.md and
+EVIDENCE_STATUS.json->round2_local_platform_diagnostics_20260930.
