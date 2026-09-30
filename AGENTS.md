@@ -2053,3 +2053,19 @@ No legacy V32 fallback. Next work is incumbent-reference completion, not DE3
 promotion; new20 reference estimators/40 optimizers are proposed, not allocated.
 Resource probe32 cap scales to formal240; unchanged1536MiB and7200s gates.
 See docs/ptarl_space_calibration/PHASE_EXECUTION.md; no upload/desktop authority.
+
+### PTaRL current reference and resource probe (2026-09-30)
+
+Four-seed DE3 reference complete; PTaRL reader passes2754 rows/436 native
+files/218 overlay artifacts in a fresh process. Overlay SHA256
+492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4.
+841 source/runtime hashes and1428 locked tests remain the same frozen tree.
+Manifest SHA2565722fd914c6239c4dfa9228a58f9b376e4d1593dcee40ab105107217dd93aa3c.
+
+Synthetic full-size resource probe launched10:33:21 CST, user service
+iron-ptarl-preflight-r1.service, MainPID422134, initialactive/running.
+Fixed1 pair/6 optimizers/2KMeans; official candidate fits0. Monitor600s/no
+between-check polling; next no earlier02:43:21 UTC. Preserve7200s and1536MiB
+caps plus learning/cold gates; no shrinking or repeat after failure.
+Only passed admission and fresh recheck allow full paired development.
+No package/upload, no G1 score. Details docs/ptarl_space_calibration/STATUS.md.

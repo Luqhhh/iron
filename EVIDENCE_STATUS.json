@@ -16477,5 +16477,19 @@
     "original_DE3_no_finalist_unchanged": true,
     "development_budget_allocated": false,
     "release_authorized": false
+  },
+  "ptarl_current_reference_resource_probe": {
+    "date": "2026-09-30",
+    "G0": "CURRENT_REFERENCE_READER_PASSED_SYNTHETIC_RESOURCE_PROBE_RUNNING",
+    "G1": "UNMEASURED_NO_OFFICIAL_CANDIDATE_FIT",
+    "manifest_sha256": "5722fd914c6239c4dfa9228a58f9b376e4d1593dcee40ab105107217dd93aa3c",
+    "overlay_sha256": "492c21150764c08e9714ab5321badeb2827459e23f9480126155f830021c2ab4",
+    "service": "iron-ptarl-preflight-r1.service",
+    "started_at": "2026-09-30 10:33:21 CST",
+    "launch_receipt": "local/research/ptarl-current-reference-r1/preflight-launch.json",
+    "launch_receipt_sha256": "e8182ab9cf01d6e94a48d7067a3abf0ccf42af963f50ba8a6833c7517d675972",
+    "official_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
