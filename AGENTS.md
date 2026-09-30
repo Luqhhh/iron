@@ -1982,3 +1982,12 @@ No official fit controller or automatic release exists. Freeze exact source
 and checked runtime before the single full-size probe; never retry a failed
 probe or shrink the mechanism/relax gates to pass. Resource outcome pending.
 See docs/dnnr_taylor/RESOURCE_PREREGISTRATION.md.
+
+DNNR synthetic resource probe launched2026-09-30 11:38:15 Asia/Shanghai,
+serviceiron-dnnr-preflight-r1.service, initialMainPID432410 active/running.
+Implementationbd69cb4 committed/pushed; manifesta9f30f90e2eccb5aeef85d025bc10b64dba3bbbea9c1526c27aa957aa0bf12dd.
+Private rootlocal/dnnr-taylor-resource-r1; terminal eventcompletion-event.json.
+Timeriron-dnnr-preflight-r1-monitor.timer observes every600s, initial due
+monotonic1d22h25min20.165203s. No between-check polling. Only actual terminal
+event or scheduled observation may trigger audit. No automatic official fits,
+full-data fitting, package, desktop write or upload. Outcome pending.

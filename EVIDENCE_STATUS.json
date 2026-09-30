@@ -16188,5 +16188,26 @@
     "full_data_fits": 0,
     "packages": 0,
     "agent_uploads": 0
+  },
+  "dnnr_resource_probe": {
+    "started_local": "2026-09-30 11:38:15 Asia/Shanghai",
+    "service": "iron-dnnr-preflight-r1.service",
+    "initial_main_pid": 432410,
+    "initial_status": "active/running",
+    "source_commit": "bd69cb4",
+    "manifest": "local/dnnr-taylor-resource-r1/manifest.json",
+    "manifest_sha256": "a9f30f90e2eccb5aeef85d025bc10b64dba3bbbea9c1526c27aa957aa0bf12dd",
+    "monitor_timer": "iron-dnnr-preflight-r1-monitor.timer",
+    "interval_seconds": 600,
+    "initial_next_monotonic_us": "1d 22h 25min 20.165203s",
+    "between_check_polling": false,
+    "completion_event": "local/dnnr-taylor-resource-r1/completion-event.json",
+    "private_supervisor_sha256": "0bdbd877360eaf0aafe5f50c9501de5c6931e5dcf60d7b181911da61ff21b2c4",
+    "status": "RUNNING_SYNTHETIC_ONLY",
+    "official_fits": 0,
+    "automatic_official_fits": false,
+    "full_data_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
