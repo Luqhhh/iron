@@ -2059,3 +2059,26 @@ initial due1d23h34min3.277757s monotonic. No between-check training polling.
 methods after independent cold and arithmetic gates. No full-data fit,
 package, desktop write or upload. G1 outcome pending; never infer success
 from a live service or fitting completion alone.
+
+### DNNR formal fitting complete, original cold audit failed (2026-09-30)
+
+All20 devpairs completed120estimators/80banks/40metricepochs, zero failed or
+incomplete fitting starts,70.0094s, peak250.492188MiB. Original independent
+cold audit stopped at first tap_iron/42/fold0 Taylor state: frozen1e-8
+absolute tolerance exceeded by2.7362830224e-8 inference reduction difference.
+Actual supervisor exit1, serviceMainPID0/Resultexit-code, monitor stopped
+before first600s check. All822 source hashes and references unchanged.
+
+Zero-fit diagnosis of the first unit's six states: coefficients exact, metric
+trajectorymax5.68434e-14, production saved/cold/reverse/chunk exact, but all
+four Taylor dot-versus-sum comparisons exceed1e-8. Maximum derivative3.59e8
+and retained neighborhood conditioning~5e7 explain cancellation. Long-double
+checks are diagnostic only, not a replacement passing audit.
+
+G0 formal audit failed, G1 unverified; no quality scoring, confirmation,
+full-data fit, package, desktop write or upload. Preserve entire failed run,
+models and diagnostics; never relax tolerance, reuse first-unit diagnostics
+as all120-state validation, or retry these fits. Serial queue proceeds to
+DANet. Terminal evidence binds781 artifacts, SHA
+2d909cf2fc8ab9abe4deabaf93ee90e694308c27741429a20cf21f3ecb07f8a9.
+Details docs/dnnr_taylor/FORMAL_RESULTS.md. BestDE3=96.3749 unchanged.

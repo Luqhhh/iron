@@ -16333,7 +16333,7 @@
     "documentation": "docs/dnnr_taylor/FORMAL_EXECUTION.md"
   },
   "round2_dnnr_formal_execution_2026_09_30": {
-    "status": "RUNNING_DEVELOPMENT_G1_PENDING",
+    "status": "G0_frozen_cold_audit_failed_G1_unverified",
     "private_root": "local/dnnr-taylor-formal-r1",
     "started_local": "2026-09-30T12:44:47.492800+08:00",
     "source_commit": "9166b49",
@@ -16351,6 +16351,26 @@
     "new_full_data_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "agent_uploads": 0
+    "agent_uploads": 0,
+    "failure_stage": "development-audit",
+    "terminal_exit_code": 1,
+    "completed_fitting_counts": {
+      "derivative_bank": 80,
+      "estimator": 120,
+      "metric_epoch": 40,
+      "pair_unit": 20
+    },
+    "development_fitting_seconds": 70.00941559800413,
+    "maximum_worker_mib": 250.4921875,
+    "unchanged_source_files": 822,
+    "quality_scoring": 0,
+    "confirmation_fits": 0,
+    "first_unit_inference_difference": 2.7362830223864876e-08,
+    "frozen_absolute_tolerance": 1e-08,
+    "zero_fit_diagnostic_models": 6,
+    "terminal_evidence_sha256": "2d909cf2fc8ab9abe4deabaf93ee90e694308c27741429a20cf21f3ecb07f8a9",
+    "bound_private_artifacts": 781,
+    "next_route": "DANet",
+    "documentation": "docs/dnnr_taylor/FORMAL_RESULTS.md"
   }
 }
