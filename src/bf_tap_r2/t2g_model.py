@@ -206,12 +206,18 @@ def load_state(model_dir):
     model.load_state_dict(state,strict=True); model.eval()
     return model,prep,meta
 
-def load_predict(model_dir,query):
+def predict_loaded(model,prep,meta,query):
     import torch
     if any(t in query for t in TARGETS): raise ValueError("Query must not contain targets")
     validate_features(query); configure_threads()
-    model,prep,meta=load_state(model_dir)
+    model.eval()
     x,c=prep.transform_tabm(query)
     with torch.no_grad():
         prediction=model(torch.from_numpy(x),torch.from_numpy(c.reshape(-1))).numpy().astype(float)
-    return prediction*meta["target_std"]+meta["target_mean"]
+    result=prediction*meta["target_std"]+meta["target_mean"]
+    if not np.isfinite(result).all(): raise ValueError("Nonfinite cold prediction")
+    return result
+
+def load_predict(model_dir,query):
+    model,prep,meta=load_state(model_dir)
+    return predict_loaded(model,prep,meta,query)
