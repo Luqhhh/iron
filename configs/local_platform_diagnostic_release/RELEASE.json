@@ -1,0 +1,120 @@
+{
+  "version": "local-platform-diagnostic-user-release-20260930",
+  "authorization": {
+    "user_request": "四项写桌面",
+    "date": "2026-09-30",
+    "scope": "four predeclared isolated experiments; full-data fits, audits and desktop delivery",
+    "gate_exception": "these_four_diagnostic_releases_only",
+    "agent_uploads": 0
+  },
+  "replacement_weight": 0.5,
+  "candidates": [
+    {
+      "name": "LOC_DIAG_EMA_TIME",
+      "target": "tap_time_len",
+      "arm": "EMA",
+      "local_mean_gain": 0.0021688120969949945,
+      "source_root": ".",
+      "model_spec": "configs/strong_component_regularization/SPEC.yaml",
+      "development": "local/runs/strong-component-regularization/development-r2",
+      "local_seed_gains": {
+        "42": 0.0019927163495803146,
+        "3407": 0.0023449078444096744
+      }
+    },
+    {
+      "name": "LOC_DIAG_LMIX_IRON",
+      "target": "tap_iron",
+      "arm": "D-LMIX",
+      "local_mean_gain": -0.001437523037992397,
+      "source_root": "local/worktrees/component-augmentation-representation",
+      "model_spec": "configs/component_augmentation_representation/BUDGET8.yaml",
+      "development": "local/runs/component-augmentation-representation-budget8/development-r2",
+      "local_seed_gains": {
+        "42": 0.009755153610638972,
+        "3407": -0.012630199686623766
+      }
+    },
+    {
+      "name": "LOC_DIAG_SAM_IRON",
+      "target": "tap_iron",
+      "arm": "SAM",
+      "local_mean_gain": -0.0032709359739103647,
+      "source_root": ".",
+      "model_spec": "configs/strong_component_regularization/SPEC.yaml",
+      "development": "local/runs/strong-component-regularization/development-r2",
+      "local_seed_gains": {
+        "42": -0.006021182343936976,
+        "3407": -0.0005206896038837533
+      }
+    },
+    {
+      "name": "LOC_DIAG_SAM_TIME",
+      "target": "tap_time_len",
+      "arm": "SAM",
+      "local_mean_gain": -0.01642965888519112,
+      "source_root": ".",
+      "model_spec": "configs/strong_component_regularization/SPEC.yaml",
+      "development": "local/runs/strong-component-regularization/development-r2",
+      "local_seed_gains": {
+        "42": -0.012875986947841547,
+        "3407": -0.019983330822540696
+      }
+    }
+  ],
+  "artifacts": {
+    "parent": {
+      "path": "local/runs/round2-v32/interior-probes-r1/V32_TIME_A60V7_50/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7"
+    },
+    "native_iron_model": {
+      "path": "local/runs/round2-v12-joint-tabm/release-r1/full/model.pkl",
+      "sha256": "039bd2414d14c0c63e150e75ae3b2c02d157ca1bce57bd3c8872d6d5e0080a18"
+    },
+    "native_iron_prediction": {
+      "path": "local/runs/round2-v12-joint-tabm/release-r1/full/cold.npy",
+      "sha256": "141b3dc41d32db3810584f29cdaeba2a8453f6de9b15ab7cfb3c34a2a9fc0946"
+    },
+    "native_time_model": {
+      "path": "local/runs/round2-v7-periodic-networks/release-r3/full/model.pkl",
+      "sha256": "1b02d86ef875983d6a2de4da9cc81a1d2e157939dc294ad6ca47c93b6a76a9d2"
+    },
+    "native_time_prediction": {
+      "path": "local/runs/round2-v7-periodic-networks/release-r3/full/cold.npy",
+      "sha256": "332fbab5337f3dbfc654dd9879b3a50debaf08ca3a3110604a6caa82d6da2af9"
+    },
+    "reg_manifest": {
+      "path": "local/runs/strong-component-regularization/development-r2/manifest.json",
+      "sha256": "cc1f3a9bd141c7c4d20d6dcc7cb129baee0bf8db933462a3fc7081dd3463c933"
+    },
+    "reg_summary": {
+      "path": "local/runs/strong-component-regularization/development-r2/summary.json",
+      "sha256": "e223e4389950cd351a24bcaf70ac5236cb97882713a09b6e18de97efb38e4ace"
+    },
+    "reg_audit": {
+      "path": "local/runs/strong-component-regularization/development-r2/audit.json",
+      "sha256": "bc14b82bb1442224d1a77b485a8f0ac0064d1387d797ec28a8fe13570369bcb2"
+    },
+    "aug_manifest": {
+      "path": "local/runs/component-augmentation-representation-budget8/development-r2/manifest.json",
+      "sha256": "33d7b5e143e887e9b3c6d9db579fcf358d3c566235b7b5bbb6524aa5c01bbbe8"
+    },
+    "aug_summary": {
+      "path": "local/runs/component-augmentation-representation-budget8/development-r2/summary.json",
+      "sha256": "3cbdbe05b20a96150c7f6c87b289e42f6c876966163bd3ea75474230b7cfa2c7"
+    },
+    "aug_audit": {
+      "path": "local/runs/component-augmentation-representation-budget8/development-r2/audit.json",
+      "sha256": "fc28b8d856e49855e566838cef6e09cc346acc4a082e46c03ccbacdea7d58e15"
+    }
+  },
+  "output": "local/runs/local-platform-diagnostic-20260930/release-r1",
+  "desktop": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930",
+  "budget": {
+    "full_data_fits": 4,
+    "optimizer_runs": 8,
+    "new_CV_fits": 0,
+    "new_confirmation_seeds": 0
+  },
+  "historical_gates_unchanged": true
+}
