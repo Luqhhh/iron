@@ -2047,3 +2047,15 @@ No automatic full-data fit, package, desktop write or upload. Monitor600s
 with actual supervisor-terminal event; no between-check training polling.
 G1 remains unmeasured before the official frozen run. Details
 docs/dnnr_taylor/FORMAL_EXECUTION.md. BestDE3=96.3749 remains user-reported.
+
+DNNR frozen official development launched2026-09-30 12:44:47 Asia/Shanghai.
+Serviceiron-dnnr-formal-r1.service initialMainPID439176 active/running;
+implementation9166b49 committed/pushed. FormalmanifestSHA
+0bd65812c6263997f9996aef69094d64a584ddc4e57f06a790a28d97612dc1df.
+Private rootlocal/dnnr-taylor-formal-r1; actual terminal event
+supervisor-terminal.json. Read-only600s timeriron-dnnr-formal-r1-monitor.timer
+initial due1d23h34min3.277757s monotonic. No between-check training polling.
+20 full-coverage development pairs/120 estimators;7777/12011 only earned
+methods after independent cold and arithmetic gates. No full-data fit,
+package, desktop write or upload. G1 outcome pending; never infer success
+from a live service or fitting completion alone.

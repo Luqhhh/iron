@@ -66,3 +66,15 @@ Private full-suite receipt SHA-256:
 `dfd6a63f4916bfae3e4a365752e317a274c668940fe5ca7eb976ffeb565a3ffa`.
 These checks establish G0 execution readiness; G1 remains unmeasured before
 the frozen official-label development run.
+
+## Frozen run launched
+
+Started 2026-09-30 12:44:47 Asia/Shanghai, initial service MainPID439176
+active/running. Source commit9166b49 is committed and pushed. Formal manifest
+SHA-256: `0bd65812c6263997f9996aef69094d64a584ddc4e57f06a790a28d97612dc1df`.
+Private root: `local/dnnr-taylor-formal-r1`. Service:
+`iron-dnnr-formal-r1.service`; read-only600s timer:
+`iron-dnnr-formal-r1-monitor.timer`; initial next monotonic due:
+`1d 23h 34min 3.277757s`. Supervisor terminal event:
+`supervisor-terminal.json`. G1 outcome is pending; successful fitting alone
+will not establish verified candidate quality.

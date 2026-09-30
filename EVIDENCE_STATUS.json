@@ -16331,5 +16331,26 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "documentation": "docs/dnnr_taylor/FORMAL_EXECUTION.md"
+  },
+  "round2_dnnr_formal_execution_2026_09_30": {
+    "status": "RUNNING_DEVELOPMENT_G1_PENDING",
+    "private_root": "local/dnnr-taylor-formal-r1",
+    "started_local": "2026-09-30T12:44:47.492800+08:00",
+    "source_commit": "9166b49",
+    "manifest_sha256": "0bd65812c6263997f9996aef69094d64a584ddc4e57f06a790a28d97612dc1df",
+    "service": "iron-dnnr-formal-r1.service",
+    "monitor_timer": "iron-dnnr-formal-r1-monitor.timer",
+    "initial_status": "MainPID=439176\nResult=success\nExecMainStatus=0\nActiveState=active\nSubState=running\n",
+    "initial_next_due": "NextElapseUSecMonotonic=1d 23h 34min 3.277757s",
+    "terminal_event": "supervisor-terminal.json",
+    "interval_seconds": 600,
+    "between_check_polling": false,
+    "development_pair_units": 20,
+    "development_estimators": 120,
+    "conditional_confirmation": true,
+    "new_full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0
   }
 }
