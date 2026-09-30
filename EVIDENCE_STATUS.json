@@ -17380,6 +17380,29 @@
       "original_budget_preserved_as_pre_desktop_authorization_snapshot": true,
       "all_four_platform_scores_pending": true,
       "quota_inferred": false
+    },
+    "latest_selection_update_wait_for_time_winner": {
+      "user_steering": "4是什么，不应该在75/100中选胜者吗",
+      "fourth_package_identity": "DE3_IRON_EMA_TIME_Q50",
+      "fourth_package_status": "deferred_backup_preserve_bytes_not_first_wave_test",
+      "fourth_package_time_reference": {
+        "candidate": "LOC_DIAG_EMA_TIME",
+        "q": 0.5,
+        "reported_score": 96.3895
+      },
+      "selection": "obtain Q75/Q100 platform feedback and compare with measured Q50; include Q25 if measured; select highest reported score among same-parent time packages; do not force Q75/Q100 if both lose",
+      "final_combination": "copy DE3 iron strings and selected winner time strings only after measured winner is determined",
+      "conditional_combined_score": "winner_reported_score + (96.3749 - 96.3727) = winner_reported_score + 0.0022",
+      "conditional_score_is_not_new_platform_feedback": true,
+      "reuse_existing_fourth_if_Q50_remains_winner": true,
+      "new_fits": 0,
+      "new_packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0,
+      "quota_inferred": false,
+      "frozen_pool_and_original_handoff_preserved": true,
+      "private_receipt": "local/runs/ema-time-followup-20261001/probes-r2/handoff-selection-update-r1.json",
+      "private_receipt_sha256": "9becf2473edac654a1d6ced01d3f2dafb1a543f9d2839fcb7e9eefc966a010fc"
     }
   }
 }
