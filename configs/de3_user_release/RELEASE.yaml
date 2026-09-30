@@ -1,0 +1,35 @@
+version: de3-iron-user-requested-exploration-20260930
+candidate: DE3_IRON_USER_REQUESTED
+authorization:
+  user_requested_release: true
+  date: '2026-09-30'
+  user_request: EMA、独立三模型集成的本地增益仅约 +0.002～+0.0035 这是不是收益最大的了，生成提交包写桌面
+  scope: largest recent isolated gain; DE3 iron only on current V32 parent
+  gate_exception: this user-requested exploration release only; historical decisions unchanged
+  desktop_write: true
+  uploads: false
+training_seeds: [42, 104729, 130363]
+output: local/runs/de3-user-requested-release-20260930/release-r1
+desktop: /mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930
+artifacts:
+  parent:
+    path: local/runs/round2-v32/interior-probes-r1/V32_TIME_A60V7_50/Luqhhh_bf_tap_predict_round2.zip
+    sha256: 54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7
+  development_summary:
+    path: local/runs/independent-ensemble-checkpoints-20260929/development-DE3/summary.json
+    sha256: cd1d4e7740b7e2799e66f29edc4dab60a4cc3801904e434151ef0e1c1d0bd7c8
+  development_audit:
+    path: local/runs/independent-ensemble-checkpoints-20260929/development-DE3/audit.json
+    sha256: d2e590109c39ff94ca715b1710edc1805ec96f674f433d8c80a012c5ee00b81c
+  development_manifest:
+    path: local/runs/independent-ensemble-checkpoints-20260929/development-DE3/manifest.json
+    sha256: 25713e219cd2da36afedfaa41f5ffa453334353f2ff08aace94f2303618b33c9
+  native_full_model:
+    path: local/runs/round2-v12-joint-tabm/release-r1/full/model.pkl
+    sha256: 039bd2414d14c0c63e150e75ae3b2c02d157ca1bce57bd3c8872d6d5e0080a18
+  native_full_prediction:
+    path: local/runs/round2-v12-joint-tabm/release-r1/full/cold.npy
+    sha256: 141b3dc41d32db3810584f29cdaeba2a8453f6de9b15ab7cfb3c34a2a9fc0946
+  native_full_warm:
+    path: local/runs/round2-v12-joint-tabm/release-r1/full/warm.npy
+    sha256: 141b3dc41d32db3810584f29cdaeba2a8453f6de9b15ab7cfb3c34a2a9fc0946
