@@ -16532,5 +16532,62 @@
     "consequence": "the only live path to a genuinely new model was terminated at 60% of development and the monitoring timers are gone; a frozen recovery workflow (new admission, preserved partial artifacts) is required before any resumption, and future long runs need an explicit restart/linger policy",
     "agent_uploads": 0,
     "new_fits": 0
+  },
+  "round2_unmeasured_time_probes_2026_09_30": {
+    "date": "2026-09-30",
+    "status": "analyzed_not_added_to_the_top4_portfolio_zero_fit",
+    "context": "the V40 round built four time probes but stopped uploads after the ridge analysis; only V40_TIME_H1 was scored",
+    "probes": {
+      "V40_TIME_H2": {
+        "coords_v36_n_v7m": [
+          0.1,
+          0.45,
+          0.45
+        ],
+        "v12_iron": true,
+        "v41_upper": 96.379434,
+        "scored": false,
+        "zip_sha256": "bbfd8f40c88aea60c24b43867ce649050bc956ec8a40e940c484b09c97510bc9"
+      },
+      "V40_TIME_N500": {
+        "coords_v36_n_v7m": [
+          0.0,
+          0.5,
+          0.5
+        ],
+        "v12_iron": true,
+        "v41_upper": 96.38059,
+        "scored": false,
+        "zip_sha256": "2edd68f82d47d45425fbd0195a8be126013fc6d6fb69b59ce7e8472a34122137"
+      },
+      "V40_TIME_SEG_625": {
+        "coords_v36_n_v7m": [
+          0.25,
+          0.375,
+          0.375
+        ],
+        "v12_iron": true,
+        "v41_upper": 96.3777,
+        "scored": false,
+        "zip_sha256": "1e8671edae984a621280ed3df7a92fd08019aa35e0d18c58eea7d5aebcffdadf"
+      }
+    },
+    "measured_sibling": {
+      "V40_TIME_H1": {
+        "coords_v36_n_v7m": [
+          0.0,
+          0.45,
+          0.55
+        ],
+        "score": 96.364,
+        "note": "actual sits about 0.016 below its own 96.3798 upper bound, so the V41 bounds for this family are loose"
+      }
+    },
+    "conclusion": "H2 and N500 lie in the same V36=0..0.1, N=0.45..0.5 family as the measured H1=96.364, so their expectation is below the incumbent 96.3749 even with the +0.0022 DE3 iron; they are not added to the top-4, which stays 1,2,3,5. SEG625 equals the delivered DE3_TIME_L0625 time column, so it is already covered with the better DE3 iron.",
+    "independent_reconstruction_check": "the independently built V40_TIME_SEG_625 time column equals the DE3_TIME_L0625 time column to 8.5e-14 over 322 rows, confirming the A60/V7m algebra",
+    "unmeasured_options_preserved": true,
+    "new_fits": 0,
+    "packages": 0,
+    "agent_uploads": 0
   }
 }
