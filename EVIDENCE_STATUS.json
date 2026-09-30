@@ -16043,5 +16043,56 @@
     "full_data_fits": 0,
     "packages": 0,
     "uploads": 0
+  },
+  "de3_user_requested_release_2026_09_30": {
+    "status": "delivered_pending_user_platform_feedback",
+    "user_authorization": "EMA、独立三模型集成的本地增益仅约 +0.002～+0.0035 这是不是收益最大的了，生成提交包写桌面",
+    "candidate": "DE3_IRON_USER_REQUESTED",
+    "parent": "V32_TIME_A60V7_50",
+    "parent_platform_score_user_reported": 96.3727,
+    "release_config": "configs/de3_user_release/RELEASE.yaml",
+    "delivery": "docs/de3_user_release/DELIVERY.md",
+    "G0": "passed_independent_release_and_desktop_readback_audits",
+    "G1": "user_requested_exploration_not_four_seed_promoted",
+    "historical_no_finalist_preserved": true,
+    "local_development_gain_by_seed": {
+      "42": 0.004381694674258571,
+      "3407": 0.0025787151520625246
+    },
+    "local_mean_gain": 0.003480204913160548,
+    "frozen_mechanism_gate_failed": "development_mean_gain_below_0.01",
+    "four_seed_confirmation": false,
+    "training_seeds": [
+      42,
+      104729,
+      130363
+    ],
+    "new_full_data_estimators": 2,
+    "new_optimizer_runs": 4,
+    "reused_native_full_models": 1,
+    "new_CV_fits": 0,
+    "selected_full_epochs": {
+      "42": 85,
+      "104729": 75,
+      "130363": 88
+    },
+    "time_string_mismatches": 0,
+    "component_replacement_readback_difference": 0.0,
+    "cold_inference_difference": 0.0,
+    "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930",
+    "private_run": "local/runs/de3-user-requested-release-20260930/release-r2",
+    "preserved_failed_run": "local/runs/de3-user-requested-release-20260930/release-r1",
+    "first_attempt_new_fits": 0,
+    "platform_score": null,
+    "agent_uploads": 0,
+    "locked_python312_tests": {
+      "full_suite_passed": 1310,
+      "existing_warnings": 23,
+      "focused_after_interface_correction_passed": 17
+    },
+    "implementation_commit": "8d6c7c2",
+    "interface_recovery_commit": "5e0608e",
+    "score_interpretation": "Local development gain is not a platform forecast; the current platform best and all frozen gates are unchanged."
   }
 }
