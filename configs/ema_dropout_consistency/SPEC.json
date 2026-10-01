@@ -1,0 +1,105 @@
+{
+  "version": "ema-dropout-consistency-20261002",
+  "main_root": "/home/lux1/iron",
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+  },
+  "thread_target": 96.45,
+  "target": "tap_time_len",
+  "split_seeds": [
+    42,
+    3407
+  ],
+  "folds": 5,
+  "training_seeds": [
+    42
+  ],
+  "arms": [
+    "PAIR_CONTROL",
+    "CONSISTENCY"
+  ],
+  "dropout_consistency_lambda": {
+    "PAIR_CONTROL": 0.0,
+    "CONSISTENCY": 0.5
+  },
+  "training": {
+    "random_seed": 42,
+    "inner_seed": 42,
+    "width": 256,
+    "blocks": 2,
+    "tabm_k": 16,
+    "dropout": 0.1,
+    "embedding_dim": 16,
+    "n_frequencies": 16,
+    "lite": true,
+    "loss": "mse",
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "max_epochs": 240,
+    "patience": 25,
+    "min_delta": 1e-05,
+    "early_stop_metric": "standardized_mae_of_ensemble_prediction",
+    "preprocessing": "inner_training_only_then_refit_outer_training",
+    "refit": "fresh_initialization_full_outer_training_at_selected_epoch"
+  },
+  "mechanisms": {
+    "ema_beta": 0.99,
+    "sam_rho": 0.05,
+    "sam_epsilon": 1e-12,
+    "sam_same_dropout": true,
+    "gradient_clip": null
+  },
+  "old_development": "local/runs/strong-component-regularization/development-r2",
+  "replacement_weight": 0.75,
+  "new_estimators": 20,
+  "new_optimizer_runs": 40,
+  "new_saved_states": 40,
+  "new_confirmation_seeds": 0,
+  "full_data_fits": 0,
+  "packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "workers": 1,
+  "numerical_threads": 1,
+  "torch_interop_threads": 1,
+  "monitor_seconds": 600,
+  "max_worker_rss_mib": 1536,
+  "cold_predict_atol": 0.0005,
+  "maximum_runtime_seconds": null,
+  "automatic_scientific_retries": false,
+  "runtime_versions": {
+    "torch": "2.14.0+cpu",
+    "tabm": "0.0.3",
+    "rtdl-num-embeddings": "0.0.12",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.18.1"
+  },
+  "standing_grant": "local/authorizations/optimization-standing-20261002-r1.json",
+  "standing_grant_sha256": "b8dd196e568f2dcd2a6ab801890b12783aa1b81fed0153ace4ddd5308a3a6be7",
+  "previous_terminal": "local/runs/ema-component-calibration-matching-20261002/report-recovery-r1/terminal-verification.json",
+  "confirmation_gate": {
+    "only_candidate": "CONSISTENCY",
+    "both_complete_seeds_positive_vs_Q75": true,
+    "both_complete_seeds_positive_vs_PAIR_CONTROL": true,
+    "formal_complete_split_seeds_at_least": 4,
+    "formal_all_seeds_positive": true,
+    "formal_paired_seed_LCB95_positive": true
+  },
+  "engineering_admission": {
+    "seed": 961052,
+    "rows": 2754,
+    "training_rows": 2204,
+    "query_rows": 550,
+    "refit_epochs": 240,
+    "optimizer_runs": 2,
+    "loss_coefficient_grid": false,
+    "must_beat_training_median": true,
+    "candidate_advantage_required": false
+  }
+}
