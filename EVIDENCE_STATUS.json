@@ -17699,7 +17699,7 @@
     }
   },
   "ptarl_ema_user_exploration_release_20261001": {
-    "status": "PTARL_TIME_Q20_scored_EMA_IRON_EMA_TIME_pending",
+    "status": "PTARL_TIME_Q20_scored_EMA_IRON_EMA_TIME_user_reported_not_tested",
     "service": "iron-ptarl-ema-exploration-r1.service",
     "initial_main_pid": 66853,
     "started_local": "2026-10-01T01:16:38+08:00",
@@ -17869,14 +17869,15 @@
           "scope": "fixed delivered recipes on common EMA-development V32 parent; 2754 OOF rows per seed",
           "unit_transfer_conditional_scenario": 96.39470916861904,
           "scenario_is_not_forecast": true
-        }
+        },
+        "platform_test_status": "user_reported_not_tested"
       }
     ],
     "historical_decisions_and_gates": "unchanged",
     "desktop_writes": 0,
     "activation_status": "full_training_serial_job_actually_active",
     "completed_local": "2026-10-01T01:32:45.725579+08:00",
-    "platform_feedback": "PTARL_TIME_Q20_received_EMA_IRON_EMA_TIME_pending",
+    "platform_feedback": "PTARL_TIME_Q20_received_EMA_IRON_EMA_TIME_user_reported_not_tested",
     "terminal_sha256": "7e6b72ab885cb05107933c3a8b5675f0dc8404fcd8d83603c5d56d2ea567ed30",
     "release_summary_sha256": "7477867a28230f53ac0821791609ccd556dc453f4b161d230106b44f52622c4e",
     "terminal_verification_sha256": "ec9613fe4e990c445209d8d337af657945076409d25373efd87d0f61fe6f27da",
@@ -17963,6 +17964,19 @@
         "delta_vs_V32": 0.0053,
         "feedback_record": "local/runs/ptarl-ema-exploration-release-20261001/platform-feedback-r1/feedback.json",
         "feedback_sha256": "b7ed1507a42e28b81d4ebeb259601765da9f7e0740e4f37124853fa93de0653e"
+      }
+    ],
+    "platform_status_updates": [
+      {
+        "candidate": "EMA_IRON_EMA_TIME",
+        "status": "user_reported_not_tested",
+        "confirmation": {
+          "path": "local/runs/ema-short-full-release-20261001/platform-not-tested-status-r1/status.json",
+          "sha256": "e8e62316a11e92ad05ef9f8cb207fe1d0c47b6ab3b70ed71bdef60bc31b5664a",
+          "source": "explicit_user_report",
+          "user_message": "未测",
+          "reported_date": "2026-10-01"
+        }
       }
     ]
   },
@@ -19031,6 +19045,14 @@
         "path": "local/runs/ema-short-full-release-20261001/release-r1/terminal-verification-r1.json",
         "sha256": "965d4deab72960d5a12b043327b81a3d7c6511a06d3de7ac88277410ffa68dae"
       }
+    },
+    "platform_test_status": "user_reported_not_tested",
+    "user_platform_status_confirmation": {
+      "path": "local/runs/ema-short-full-release-20261001/platform-not-tested-status-r1/status.json",
+      "sha256": "e8e62316a11e92ad05ef9f8cb207fe1d0c47b6ab3b70ed71bdef60bc31b5664a",
+      "source": "explicit_user_report",
+      "user_message": "未测",
+      "reported_date": "2026-10-01"
     }
   }
 }
