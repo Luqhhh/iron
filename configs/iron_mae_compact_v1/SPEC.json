@@ -1,0 +1,66 @@
+{
+  "identity": "IRON_MAE_COMPACT_V1",
+  "version": 1,
+  "authorized_by_user": "2026-10-01 analyze prior two negatives and start next round directly",
+  "target": "tap_iron",
+  "supervision_targets": [
+    "tap_iron"
+  ],
+  "arms": [
+    "MSE_CONTROL",
+    "COMPACT_MAE"
+  ],
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    7777,
+    12011
+  ],
+  "folds": 5,
+  "alpha": 0.2,
+  "width": 64,
+  "encoder_layers": 2,
+  "head_hidden_layers": 1,
+  "selector_epochs": 240,
+  "batch_size": 128,
+  "learning_rate": 0.001,
+  "training_seed": 42,
+  "inner_seed": 42,
+  "inner_calibration_fold": 0,
+  "ssl_epochs": 0,
+  "early_termination": false,
+  "single_worker": true,
+  "numeric_threads": 1,
+  "max_rss_mib": 1024,
+  "cold_atol_raw": 0.0005,
+  "budgets": {
+    "engineering": {
+      "state": 4,
+      "optimizer": 4
+    },
+    "development": {
+      "state": 40,
+      "optimizer": 40
+    },
+    "confirmation": {
+      "state": 40,
+      "optimizer": 40
+    }
+  },
+  "prior_research_synthetic_optimizers": 0,
+  "control_reuse": false,
+  "development_gate": "both complete seed A20 gains positive and mean advantage over paired MSE control positive",
+  "confirmation_gate": "all four complete seed gains positive, seed paired one-sided LCB95 positive, mechanism mean positive",
+  "local_absolute_score_gate": null,
+  "fold_gate": "descriptive_only",
+  "release_authorized": false,
+  "reference_refits": 0,
+  "monitor_interval_seconds": 600,
+  "training_loss": "fit-standardized iron L1 candidate, fit-standardized iron MSE control",
+  "selection_loss": "inner calibration iron MAE only; first strict minimum",
+  "preprocessing": "fit-only numeric mean/std and spout one-hot; unseen spout all zero",
+  "architecture_comparison": "old shared 4x256 joint network descriptive only; new paired control isolates loss within compact single-target architecture",
+  "failure_policy": "no retry, failure consumes reservation, preserve all evidence"
+}
