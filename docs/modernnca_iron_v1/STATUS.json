@@ -1,0 +1,22 @@
+{
+  "strategy": "ModernNCA_IRON_V1",
+  "date": "2026-10-01",
+  "status": "strategy_reservation_only",
+  "public_base": "de593e712f13081e173d7d66b4e9a0f012f9e2a5",
+  "current_platform_reference": "EMA_TIME_Q75",
+  "score": 96.392,
+  "score_source": "user_reported_not_independently_verified",
+  "implementation_reuse_source": "origin/codex/modernnca-source-preparation",
+  "G0": "zero_fit_target_reference_binding_checked_full_size_resource_admission_unmeasured",
+  "G1": "unmeasured",
+  "official_fits": 0,
+  "official_optimizer_runs": 0,
+  "new_reference_fits": 0,
+  "new_model_full_size_resource_probes": 0,
+  "packages": 0,
+  "uploads": 0,
+  "formal_queue_authorized": false,
+  "formal_manifest_frozen": false,
+  "new_worktree": false,
+  "specification_is_proposal_not_retroactive_change": true
+}
