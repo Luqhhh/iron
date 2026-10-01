@@ -1,3 +1,6 @@
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 import os
 from pathlib import Path
 import tempfile
@@ -92,12 +95,12 @@ class RunGuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with mock.patch.dict(os.environ, THREAD_ENV):
             with self.assertRaises(ValueError):
-                run(Path("/home/lux1/iron"), "configs/round2_v20/SPEC.yaml", "docs/should-not-write")
+                run(Path(__file__).resolve().parents[1], "configs/round2_v20/SPEC.yaml", "docs/should-not-write")
 
     def test_refuses_non_v20_spec(self):
         with mock.patch.dict(os.environ, THREAD_ENV):
             with self.assertRaises(ValueError):
-                run(Path("/home/lux1/iron"), "configs/round2_v18/SPEC.yaml", "local/runs/round2-v20/x")
+                run(Path(__file__).resolve().parents[1], "configs/round2_v18/SPEC.yaml", "local/runs/round2-v20/x")
 
 
 if __name__ == "__main__":

@@ -15,6 +15,9 @@ The three properties this file exists to protect:
    source or data change can never hit the pre-repair cache.
 """
 from __future__ import annotations
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 
 import json
 import subprocess

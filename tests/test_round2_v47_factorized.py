@@ -1,3 +1,6 @@
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 from copy import deepcopy
 import itertools
 import json

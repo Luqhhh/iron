@@ -1,4 +1,7 @@
 from __future__ import annotations
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 
 import json
 from pathlib import Path

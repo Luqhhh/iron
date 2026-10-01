@@ -1,3 +1,6 @@
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 import csv
 import io
 from pathlib import Path
@@ -67,11 +70,11 @@ class MemberTests(unittest.TestCase):
 class RunGuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            run(Path("/home/lux1/iron"), "configs/round2_v21/SPEC.yaml", "docs/should-not-write")
+            run(Path(__file__).resolve().parents[1], "configs/round2_v21/SPEC.yaml", "docs/should-not-write")
 
     def test_refuses_wrong_spec_directory(self):
         with self.assertRaises(ValueError):
-            run(Path("/home/lux1/iron"), "configs/round2_v18/SPEC.yaml", "local/runs/round2-v21/x")
+            run(Path(__file__).resolve().parents[1], "configs/round2_v18/SPEC.yaml", "local/runs/round2-v21/x")
 
 
 if __name__ == "__main__":

@@ -1,3 +1,6 @@
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 from pathlib import Path
 import unittest
 
@@ -5,7 +8,7 @@ import yaml
 
 from bf_tap_r2.v25_capacity import base_trial, probe_trial
 
-ROOT = Path("/home/lux1/iron")
+ROOT = Path(__file__).resolve().parents[1]
 SPEC = yaml.safe_load((ROOT / "configs/round2_v25/SPEC.yaml").read_text())
 
 

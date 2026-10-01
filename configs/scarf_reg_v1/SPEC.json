@@ -1,0 +1,15 @@
+{
+ "identity":"SCARF_REG_V1", "version":1, "authorized_by_user":"2026-10-01 run directly without additional reviewed plans",
+ "target":"tap_iron", "supervision_targets":["tap_iron","tap_time_len"],
+ "arms":["SUPERVISED_CONTROL","SCARF_REG"], "development_seeds":[42,3407], "confirmation_seeds":[7777,12011],
+ "folds":5, "alpha":0.2, "width":256, "encoder_layers":4, "head_layers":2,
+ "ssl_epochs":100, "selector_epochs":240, "batch_size":128, "learning_rate":0.001,
+ "training_seed":42, "ssl_rng_seed":54191, "temperature":1, "corrupted_numeric_columns":12,
+ "inner_seed":42, "inner_calibration_fold":0, "early_termination":false,
+ "single_worker":true, "numeric_threads":1, "max_rss_mib":1024, "cold_atol_raw":0.0005,
+ "budgets":{"engineering":{"state":4,"optimizer":6},"development":{"state":40,"optimizer":60},"confirmation":{"state":40,"optimizer":60}},
+ "prior_research_synthetic_optimizers":6, "prior_research_probe_is_formal_G0":false,
+ "development_gate":"both complete seed endpoint gains positive and mean advantage over paired control positive",
+ "confirmation_gate":"all four complete seed gains positive, seed paired one-sided LCB95 positive, mechanism mean positive",
+ "local_absolute_score_gate":null, "fold_gate":"descriptive_only", "release_authorized":false, "reference_refits":0
+}

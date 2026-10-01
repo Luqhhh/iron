@@ -1,3 +1,6 @@
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 from pathlib import Path
 import unittest
 
@@ -51,7 +54,7 @@ class ResidualScreenTests(unittest.TestCase):
 class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            run(Path("/home/lux1/iron"), "configs/round2_v29/SPEC.yaml", "docs/should-not-write")
+            run(Path(__file__).resolve().parents[1], "configs/round2_v29/SPEC.yaml", "docs/should-not-write")
 
 
 if __name__ == "__main__":

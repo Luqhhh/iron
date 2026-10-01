@@ -1,3 +1,6 @@
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 from pathlib import Path
 import unittest
 
@@ -28,7 +31,7 @@ class TransformTests(unittest.TestCase):
 class GuardTests(unittest.TestCase):
     def test_refuses_public_output(self):
         with self.assertRaises(ValueError):
-            screen(Path("/home/lux1/iron"), "configs/round2_v26/SPEC.yaml",
+            screen(Path(__file__).resolve().parents[1], "configs/round2_v26/SPEC.yaml",
                    "docs/should-not-write", ["L_TIME"])
 
 

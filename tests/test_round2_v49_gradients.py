@@ -1,3 +1,6 @@
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 from pathlib import Path
 from copy import deepcopy
 import numpy as np

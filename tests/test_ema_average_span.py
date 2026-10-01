@@ -96,6 +96,7 @@ def test_held_labels_never_enter_training_or_inference_query():
 
 
 def test_worker_passes_only_outer_training_to_backend_and_keeps_original_settings(tmp_path, monkeypatch):
+    pytest.importorskip("torch", reason="This backend path imports the optional neural trainer")
     import bf_tap_r2.ema_average_span as module
     spec = configuration(); f = frame(); fv = np.arange(len(f))%5
     plan = {'s42-f0': dict(training='synthetic', query='synthetic')}
@@ -139,6 +140,7 @@ def test_worker_passes_only_outer_training_to_backend_and_keeps_original_setting
 
 
 def test_summary_closes_each_seed_independently_and_requires_every_unit(tmp_path, monkeypatch):
+    pytest.importorskip("torch", reason="This backend path imports the optional neural trainer")
     import bf_tap_r2.ema_average_span as module
     spec = configuration(); spec['main_root'] = str(REPO)
     f = frame(); folds = {42: np.arange(len(f))%5, 3407: (np.arange(len(f))+1)%5}

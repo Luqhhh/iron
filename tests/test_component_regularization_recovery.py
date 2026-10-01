@@ -1,4 +1,7 @@
 """Recovery must preserve cache identity and every original failed artifact."""
+import pytest
+pytest.importorskip("torch", reason="Optional neural dependency is absent from the locked baseline environment")
+
 import importlib.util
 import json
 from pathlib import Path

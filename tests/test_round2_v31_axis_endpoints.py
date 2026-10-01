@@ -6,7 +6,7 @@ import yaml
 from bf_tap_r2.v18_compose import END_NAMES
 from bf_tap_r2.v31_axis_endpoints import run
 
-ROOT = Path("/home/lux1/iron")
+ROOT = Path(__file__).resolve().parents[1]
 
 
 class SpecTests(unittest.TestCase):
