@@ -1,0 +1,48 @@
+{
+  "strategy": "TABM_TARGET_METRIC_V1",
+  "status": "development_complete_negative_no_confirmation",
+  "G0": "production_and_40_state_independent_cold_audit_passed",
+  "G1": "two_seed_endpoint_gains_negative_and_mechanism_negative",
+  "seed_gains": [
+    -0.00307736719205559,
+    -0.0019688627912431774
+  ],
+  "control_gains": [
+    -0.0021747792589926944,
+    -0.0009504441101801423
+  ],
+  "mean_gain": -0.0025231149916493836,
+  "mechanism_mean": -0.0009605033070629653,
+  "selected_for_confirmation": [],
+  "formal_promoted": false,
+  "reference": "EMA_TIME_Q75_native_iron_equals_historical_B0",
+  "platform_reference_user_reported": 96.392,
+  "DE3_seed_gains": [
+    -0.007658421111972704,
+    -0.004545906831110281
+  ],
+  "complete_Q75_local_package_score_available": false,
+  "new_G0_states": 4,
+  "new_G0_optimizer_runs": 4,
+  "new_development_states": 40,
+  "new_development_optimizer_runs": 40,
+  "confirmation_states": 0,
+  "confirmation_optimizer_runs": 0,
+  "reference_fits": 0,
+  "packages": 0,
+  "uploads": 0,
+  "implementation_commit": "d7ba76aaf66f4117907043880d7c487b2843a3f3",
+  "audit_sha256": "0e4600eb0292f4c4787229913541cedc8a68046dc49390986c512572d94b2635",
+  "preflight_sha256": "5e24838e8c92316e9ec53ca1ce456d36a5957c7fd5b6be4a367c11861a921e27",
+  "final_verification_sha256": "e8bcb05cc821089b4ee676234f1b8dc1e7c211df11eb79f10eea91117e7006e3",
+  "tests": {
+    "neural_passed": 1383,
+    "neural_warnings": 23,
+    "locked_passed": 1003,
+    "locked_skipped": 57,
+    "locked_warnings": 3
+  },
+  "cold_max_difference": 5.684063364697067e-05,
+  "cold_peak_rss_mib": 694.19140625,
+  "results": "docs/tabm_target_metric_v1/RESULTS.md"
+}
