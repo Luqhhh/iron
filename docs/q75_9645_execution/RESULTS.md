@@ -17,3 +17,5 @@
 后续条件残差准备核查（2026-10-02）：逐项回读两个开发split的10套旧校准缓存，完整清单和哈希一致。这些基础模型缓存仅保留预测与metadata，没有可用于外层query重放的拟合模型；旧校准EMA的selector/refit状态仍保留。因此，现有缓存不能支持零拟合的完整Q75同模型校准/应用对照。后续需先冻结匹配的预测器设计及实际拟合预算，不能把已保存的校准预测视为已保存的预测器。
 
 本次核查没有计算新的OOF残差关系、选择权重或新增拟合，不改原校准失败决定、当前EMA批次或平台队列。私有证据为 `local/runs/q75-conditional-matching-readiness-20261002/review-r1.json`（SHA256 `036b0a3990bdc66d734db6ce500bc7b0e24ae031504313b295d25d232baa532e`）。
+
+EMA组件缓存的补充核查：10套旧校准EMA的20个selector/refit状态、原配置、metadata轨迹和拟合ID一致；其中10个refit明确只在F训练，原EMA训练器源码身份保持。这提供了另一条待预登记的组件试验路径：同一个F训练EMA预测器同时用于未见C校准池和外层query，并与未校正的同F模型比较。它不能替代缺失的完整Q75预测器，也没有验证校正后的融合收益；F与完整外层训练池之间的差异仍须由完整OOF衡量。本次没有新拟合、校正系数拟合、预测调用或CSV读取，尚未取得质量或发布资格。私有状态身份核查为 `local/runs/q75-conditional-matching-readiness-20261002/EMA-component-state-review-r1.json`（SHA256 `62f65682509e1765f0406932843720ae89a09bd8bfa1ffdd0d85e607f2179a53`）。

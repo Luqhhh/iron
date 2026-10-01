@@ -20294,7 +20294,7 @@
     "source_commit": "5faffd3"
   },
   "q75_conditional_matching_readiness_20261002": {
-    "status": "read_only_review_complete_full_Q75_same_predictor_zero_fit_replay_unavailable",
+    "status": "read_only_review_complete_full_parent_replay_unavailable_component_identity_path_available",
     "documentation": "docs/q75_9645_execution/RESULTS.md",
     "private_evidence": "local/runs/q75-conditional-matching-readiness-20261002/review-r1.json",
     "evidence_sha256": "036b0a3990bdc66d734db6ce500bc7b0e24ae031504313b295d25d232baa532e",
@@ -20310,6 +20310,18 @@
     "uploads": 0,
     "original_failure_decisions_unchanged": true,
     "current_EMA_phase_unchanged": true,
-    "platform_queue_changed": false
+    "platform_queue_changed": false,
+    "EMA_component_identity_review": {
+      "evidence": "local/runs/q75-conditional-matching-readiness-20261002/EMA-component-state-review-r1.json",
+      "sha256": "62f65682509e1765f0406932843720ae89a09bd8bfa1ffdd0d85e607f2179a53",
+      "reviewed_states": 20,
+      "matched_F_trained_refit_models": 10,
+      "new_model_fits": 0,
+      "new_correction_fits": 0,
+      "new_prediction_calls": 0,
+      "official_CSV_reads": 0,
+      "quality_or_release_admission": false,
+      "next_requirement": "preregister_component_correction_and_same_F_uncorrected_control_before_evaluation"
+    }
   }
 }
