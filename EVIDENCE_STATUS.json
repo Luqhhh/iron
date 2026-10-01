@@ -20662,5 +20662,73 @@
       "engineering_recorder_failure_preserved": "local/runs/ema-component-calibration-matching-20261002/engineering-r2/recorder-failure.json",
       "scientific_retries": 0
     }
+  },
+  "ema_dropout_consistency_preparation_20261002": {
+    "status": "paired_trainer_scoped_tests_passed_full_shape_synthetic_admission_started",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "target": 96.45,
+    "source_worktree": "local/worktrees/ema-dropout-consistency",
+    "source_commit": "12c04560075a8bab4f3541ee7b4362399f806a21",
+    "protocol": "docs/ema_dropout_consistency/PREREGISTRATION.md",
+    "configuration": "configs/ema_dropout_consistency/SPEC.json",
+    "arms": [
+      "PAIR_CONTROL",
+      "CONSISTENCY"
+    ],
+    "dropout_consistency_lambda": {
+      "PAIR_CONTROL": 0.0,
+      "CONSISTENCY": 0.5
+    },
+    "G0": "18_locked_Python312_scoped_tests_passed_full_shape_admission_pending",
+    "G1": "unmeasured_no_official_data_evaluation_started",
+    "focused_tests_passed": 18,
+    "focused_tests_skipped": 0,
+    "full_test_suite": false,
+    "scientific_model_fits": 0,
+    "scientific_optimizer_runs": 0,
+    "planned_scientific_estimators": 20,
+    "planned_scientific_optimizer_runs": 40,
+    "planned_cold_states": 40,
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "training_seeds": [
+      42
+    ],
+    "engineering_admission_run": "local/runs/ema-dropout-consistency-20261002/admission-r1",
+    "engineering_optimizer_budget": 2,
+    "actual_admission_controller_pid": 275185,
+    "actual_admission_proc_start_ticks": 11354398,
+    "started_ns": 1790889811964262259,
+    "next_scheduled_observation_ns": 1790890411964262259,
+    "engineering_manifest": {
+      "path": "local/runs/ema-dropout-consistency-20261002/admission-r1/manifest.json",
+      "sha256": "ef331f96d5bebdb1209578edd338569e21b81b6466aba3ffd86732744098d756"
+    },
+    "process_launch": {
+      "path": "local/runs/ema-dropout-consistency-20261002/admission-r1/process-launch.json",
+      "sha256": "44572c40f7b416c8e69aded0d7034fd9c5d59022e0959d59e3a7a5c1d0a93643"
+    },
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "platform_queue_changed": false,
+    "remaining_before_scientific_launch": [
+      "full_shape_learnability_and_independent_cold_admission",
+      "tested_complete_development_controller_and_independent_auditor",
+      "fresh_current_reference_data_source_runtime_and_partition_freeze"
+    ]
   }
 }
