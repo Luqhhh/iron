@@ -23,10 +23,26 @@ def verify_window(payload,witness):
    for a in arrays:np.testing.assert_array_equal(a,v)
  return maximum
 
-def audit(directory):
- d=Path(directory);manifest=json.loads((d/"manifest.json").read_text());x=np.load(d/"inputs.npz",allow_pickle=False)
- verify_tree(root,manifest["source_hashes"])
- frame=pd.DataFrame(x["x"],columns=FEATURES);frame["spout_no"]=x["spouts"];frame["sample_id"]=x["ids"];y=x["y"];groups=pd.util.hash_pandas_object(frame[list(FEATURES)],index=False).to_numpy();diffs=[];models=0;window_diffs=[];root=d.parents[3]
+def verify_recovered_sources(root,manifest,manifest_path,bridge_path):
+ root=Path(root).resolve();b=json.loads(Path(bridge_path).read_text());changes=b.get("changes",{})
+ allowed={"src/bf_tap_r2/tabm_swa_audit.py","tests/test_tabm_swa_integration.py"}
+ if b.get("status")!="user_authorized_zero_fit_auditor_repair" or b.get("original_manifest_sha256")!=sha(manifest_path) or not changes or not set(changes)<=allowed:raise ValueError("Unapproved auditor repair bridge")
+ mismatch={rel for rel,h in manifest["source_hashes"].items() if sha(child(root,rel))!=h}
+ if mismatch!=set(changes):raise ValueError("Changed sources differ from auditor repair")
+ for rel,h in manifest["source_hashes"].items():
+  if rel not in changes:continue
+  c=changes[rel]
+  if c["original_sha256"]!=h or not c["original_archive"].startswith("local/") or sha(child(root,c["original_archive"]))!=h:raise ValueError("Original source archive identity changed")
+  if sha(child(root,rel))!=c["current_sha256"]:raise ValueError("Auditor repair source changed")
+ return {"original_manifest_sha256":sha(manifest_path),"source_repair_bridge_sha256":sha(bridge_path),"changed_source_paths":sorted(changes),"new_optimizer_runs":0}
+
+def audit(directory,source_recovery=None):
+ d=Path(directory).resolve();root=d.parents[3]
+ manifest_path=d/"manifest.json";manifest=json.loads(manifest_path.read_text());x=np.load(d/"inputs.npz",allow_pickle=False)
+ if source_recovery is None:
+  verify_tree(root,manifest["source_hashes"]);recovery=None
+ else:recovery=verify_recovered_sources(root,manifest,manifest_path,source_recovery)
+ frame=pd.DataFrame(x["x"],columns=FEATURES);frame["spout_no"]=x["spouts"];frame["sample_id"]=x["ids"];y=x["y"];groups=pd.util.hash_pandas_object(frame[list(FEATURES)],index=False).to_numpy();diffs=[];models=0;window_diffs=[]
  def forbidden(*a,**k):raise RuntimeError("Fit/optimizer forbidden in independent audit")
  torch.optim.AdamW=forbidden;torch.optim.Adam=forbidden;ComponentRegressor.fit=forbidden
  for unit in manifest["units"]:
@@ -70,7 +86,8 @@ def audit(directory):
  if counts["reserved"]!=BUDGETS[manifest["phase"]] or counts["completed"]!=counts["reserved"]:raise ValueError("Budget incomplete")
  rss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024
  if max(diffs)>5e-4 or rss>1024:raise ValueError("Cold/resource admission failed")
- write_new(d/"audit.json",dict(status="passed",cold_models=models,max_difference=max(diffs),max_window_parameter_difference=max(window_diffs),reused_control_models=models//2 if manifest["phase"] in ("engineering","development") else 0,peak_rss_mib=rss,counts=counts,new_fits=0,input_sha256=sha(d/"inputs.npz"),manifest_sha256=sha(d/"manifest.json"),units_sha256={u:sha(d/u/"complete.json") for u in manifest["units"]}))
+ write_new(d/"audit.json",dict(status="passed",source_recovery=recovery,cold_models=models,max_difference=max(diffs),max_window_parameter_difference=max(window_diffs),reused_control_models=models//2 if manifest["phase"] in ("engineering","development") else 0,peak_rss_mib=rss,counts=counts,new_fits=0,input_sha256=sha(d/"inputs.npz"),manifest_sha256=sha(d/"manifest.json"),units_sha256={u:sha(d/u/"complete.json") for u in manifest["units"]}))
 if __name__=="__main__":
- import sys
- torch.set_num_threads(1);torch.set_num_interop_threads(1);audit(sys.argv[1])
+ import argparse
+ p=argparse.ArgumentParser();p.add_argument("directory");p.add_argument("--source-recovery");args=p.parse_args()
+ torch.set_num_threads(1);torch.set_num_interop_threads(1);audit(args.directory,args.source_recovery)

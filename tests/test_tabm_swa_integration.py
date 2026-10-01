@@ -82,3 +82,37 @@ def test_qualified_development_waits_without_reserving_confirmation(tmp_path,mon
  assert finished["status"]=="completed_development_waiting_confirmation_reference"
  assert finished["phase_counts"]["confirmation"]["reserved"]=={"state":0,"optimizer":0}
  assert not (run/"confirmation-r1").exists()
+
+
+def test_actual_cold_audit_entry_initializes_repository_root(tmp_path,monkeypatch):
+ torch=pytest.importorskip("torch")
+ import json,numpy as np
+ m=importlib.import_module("bf_tap_r2.tabm_swa_audit")
+ directory=tmp_path/"local/runs/unit/engineering-r1";directory.mkdir(parents=True)
+ (directory/"manifest.json").write_text(json.dumps({"source_hashes":{}}))
+ np.savez(directory/"inputs.npz",x=np.zeros((0,21)))
+ called=[]
+ def verified(root,hashes):
+  called.append(root);raise RuntimeError("snapshot verification reached")
+ monkeypatch.setattr(m,"verify_tree",verified)
+ with pytest.raises(RuntimeError,match="snapshot verification reached"):
+  m.audit(directory)
+ assert called==[tmp_path]
+
+def test_recovery_source_bridge_rejects_unapproved_or_changed_history(tmp_path):
+ pytest.importorskip("torch")
+ import json
+ m=importlib.import_module("bf_tap_r2.tabm_swa_audit")
+ from bf_tap_r2.tabm_swa_protocol import sha
+ rel="src/bf_tap_r2/tabm_swa_audit.py";actual=tmp_path/rel;actual.parent.mkdir(parents=True);actual.write_text("new auditor")
+ old=tmp_path/"local/old-auditor.py";old.parent.mkdir();old.write_text("old auditor")
+ manifest={"source_hashes":{rel:sha(old)}};mp=tmp_path/"manifest.json";mp.write_text(json.dumps(manifest))
+ bridge={"status":"user_authorized_zero_fit_auditor_repair","original_manifest_sha256":sha(mp),"changes":{rel:{"original_sha256":sha(old),"current_sha256":sha(actual),"original_archive":"local/old-auditor.py"}}}
+ bp=tmp_path/"bridge.json";bp.write_text(json.dumps(bridge))
+ m.verify_recovered_sources(tmp_path,manifest,mp,bp)
+ old.write_text("altered old source")
+ with pytest.raises(ValueError,match="archive"):
+  m.verify_recovered_sources(tmp_path,manifest,mp,bp)
+ old.write_text("old auditor");actual.write_text("unapproved next edit")
+ with pytest.raises(ValueError,match="repair"):
+  m.verify_recovered_sources(tmp_path,manifest,mp,bp)
