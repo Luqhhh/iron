@@ -18625,5 +18625,42 @@
     "cold_max_difference": 5.684063364697067e-05,
     "cold_peak_rss_mib": 694.19140625,
     "results": "docs/tabm_target_metric_v1/RESULTS.md"
+  },
+  "tabm_time_swa_v1_20261001": {
+    "strategy": "TABM_TIME_SWA_V1",
+    "status": "stopped_G0_cold_auditor_code_error_before_development",
+    "G0": "not_admitted_UnboundLocalError_before_cold_model_checks",
+    "G1": "not_observed_zero_development_fits",
+    "engineering_new_states": 2,
+    "engineering_new_optimizer_runs": 2,
+    "engineering_saved_states_completed": 2,
+    "engineering_training_peak_rss_mib": 682.0703125,
+    "independent_model_cold_audit": "not_completed",
+    "development_states": 0,
+    "development_optimizer_runs": 0,
+    "confirmation_states": 0,
+    "confirmation_optimizer_runs": 0,
+    "reference_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "formal_promoted": false,
+    "reference_available_seeds": [
+      42,
+      3407
+    ],
+    "reference_missing_seeds": [
+      7777,
+      12011
+    ],
+    "recipe_retry": false,
+    "frozen_source_unchanged": true,
+    "tests": {
+      "neural_passed": 1392,
+      "neural_warnings": 23,
+      "locked_passed": 1008,
+      "locked_skipped": 61,
+      "locked_warnings": 3
+    },
+    "results": "docs/tabm_time_swa_v1/RESULTS.md"
   }
 }
