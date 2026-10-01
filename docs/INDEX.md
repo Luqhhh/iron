@@ -34,7 +34,7 @@
 - [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：PTaRL时长用户回传96.378，EMA铁量待反馈。
 - [Q75误差地图](q75_error_relocation/RESULTS.md)及[压差时长校准完整开发](q75_error_relocation/CALIBRATION_RESULTS.md)：G0通过，压差两切分均负、全局一负一正，无确认候选及新平台包。
 - [EMA时长平均跨度完整结果](ema_average_span/RESULTS.md)：20估计器/40optimizer和独立终态审计通过；短跨度两seed均正、平均+.001788，按冻结规则进入确认准备，自动分类仍exploration；长跨度两seed均负，没有新平台包。
-- [EMA短跨度确认工程准备](ema_span_confirmation/PREPARATION.md)：匹配参照目录、17项保存审计定向检查及一个既有TabM独立冷回读通过；原工厂回收集成和内部预算待补齐，科学预算未冻结，新增确认拟合0。
+- [EMA短跨度确认工程准备](ema_span_confirmation/PREPARATION.md)：匹配参照目录、原生账本/预算草案、原选择器观察层、42项定向与1400项全库回归通过；原工厂捕获集成及控制器待补齐，科学预算未冻结，新增确认拟合0。
 - [Q75后续特征支持描述](q75_feature_support/RESULTS.md)：零拟合、无目标读取；未见大范围单列外推，不证明条件同分布或平台排序。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
 

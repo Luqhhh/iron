@@ -18483,7 +18483,7 @@
     "decision": "no drift correction or new candidate/weight/threshold/queue; do not infer conditional equivalence or platform score transfer"
   },
   "ema_span_confirmation_preparation_20261001": {
-    "status": "engineering_preparation_only_no_frozen_scientific_budget",
+    "status": "engineering_primitives_native_budget_proposal_and_regression_verified_capture_integration_controller_not_admitted",
     "branch": "codex/ema-span-confirmation",
     "worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
     "base_commit": "3b6c280",
@@ -18507,12 +18507,12 @@
     "old_beta_control_estimators_if_frozen": 10,
     "short_span_estimators_if_frozen": 10,
     "control_and_short_optimizer_runs_if_frozen": 40,
-    "reference_internal_solver_optimizer_budget": "pending_actual_call_capture_and_source_audit",
-    "G0": "constructor_catalogue_CPU_runtime_17_targeted_artifact_checks_and_one_existing_native_TabM_cold_passed_reference_capture_integration_internal_budget_controller_and_full_checks_pending",
+    "reference_internal_solver_optimizer_budget": "constructor_only_proposal_verified_not_scientifically_frozen",
+    "G0": "artifact_native_ledger_selector_observer_and_constructor_budget_proposal_verified_1400_locked_CPU_regression_passed_original_factory_capture_integration_controller_and_scientific_freeze_pending",
     "G1": "no_new_confirmation_observations_not_four_seed_promoted",
     "private_catalogue_receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-catalog-r1/catalogue.json",
     "catalogue_sha256": "c1da70f011c2dcd5b1815eeacf22f184e56bf36740551250692a5e67e09176ad",
-    "save_cold_gap": "original_reference_factory_discards_model_objects_capture_required_before_execution",
+    "save_cold_gap": "artifact_and_original_selector_observer_primitives_verified_original_32_pipeline_factory_capture_integration_pending",
     "new_fits": 0,
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
@@ -18535,6 +18535,69 @@
       "row_chunk_max_difference": 6.495963418728934e-06,
       "original_fit_source_directory": "/home/lux1/iron/local/runs/strong-component-regularization/development-r2",
       "new_fits": 0
+    },
+    "native_budget_proposal": {
+      "scientifically_frozen": false,
+      "reference_calls_per_factory": {
+        "catboost_fit": 29,
+        "ebm_fit_api": 6,
+        "ebm_boost": 48,
+        "sklearn_mlp_fit": 1,
+        "torch_optimizer": 6
+      },
+      "proposed_reference_calls_10_factories": {
+        "catboost_fit": 290,
+        "ebm_fit_api": 60,
+        "ebm_boost": 480,
+        "sklearn_mlp_fit": 10,
+        "torch_optimizer": 60
+      },
+      "proposed_control_short_torch_optimizers": 40,
+      "proposed_all_torch_optimizers": 100,
+      "private_receipt": "local/worktrees/ema-span-confirmation/local/research/native-budget-proposal-r1/receipt.json",
+      "receipt_sha256": "bf8a0db19757701675ed2de01b9c0790a40ff9cb46e9da837ab2017740c6aa5a",
+      "plan_sha256": "4469d7096768c69f3b8e60522f0febc832fa65991ed1a7288ed367f4bed257a1",
+      "feature_only_partition_audit": {
+        "seeds_proposed_not_frozen": [
+          271828,
+          314159
+        ],
+        "folds_per_seed": 5,
+        "eligible_spouts": [
+          1,
+          2
+        ],
+        "minimum_spout_training_rows": 1094,
+        "training_targets_loaded": false
+      },
+      "actual_new_scientific_fits": 0
+    },
+    "original_selector_observer": {
+      "module": "src/bf_tap_r2/ema_reference_selector.py",
+      "scope": "unaltered_original_train_return_validation_tensor_and_terminal_state",
+      "returned_best_epoch_preserved": true,
+      "extra_warm_prediction_calls": 0,
+      "synthetic_original_method_checks": 2,
+      "real_quality_checked_by_synthetic_fixture": false,
+      "private_receipt": "local/worktrees/ema-span-confirmation/local/research/native-selector-fixture-r1/receipt.json",
+      "receipt_sha256": "e9027f7b3719a82861923f86a6291c272194d24aa93ee0058e4332effd8ab02b",
+      "actual_optimizer_steps_in_fixture": 0
+    },
+    "regression_checks": {
+      "targeted_passed": 42,
+      "full_passed": 1400,
+      "full_skipped": 0,
+      "existing_warnings": 23,
+      "python": "locked_3.12_CPU_no_sync",
+      "historical_test_input_root": "/home/lux1/iron",
+      "package_source_worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
+      "existing_common_python_files_byte_compared": 540,
+      "private_final_receipt": "local/worktrees/ema-span-confirmation/local/research/reference-engineering-checks-r2/receipt.json",
+      "receipt_sha256": "b9dc56560e3f35b412ee6dbe771d0201e128dc589cedda4e439af047b933ced8",
+      "preserved_first_environment_failure": "local/worktrees/ema-span-confirmation/local/research/reference-engineering-checks-r1/receipt.json",
+      "first_run_passed": 1389,
+      "first_run_missing_private_input_failures": 2,
+      "first_run_skipped": 9
     }
   }
 }
