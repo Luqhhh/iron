@@ -20292,5 +20292,24 @@
     "tests_passed": 1481,
     "tests_skipped": 0,
     "source_commit": "5faffd3"
+  },
+  "q75_conditional_matching_readiness_20261002": {
+    "status": "read_only_review_complete_full_Q75_same_predictor_zero_fit_replay_unavailable",
+    "documentation": "docs/q75_9645_execution/RESULTS.md",
+    "private_evidence": "local/runs/q75-conditional-matching-readiness-20261002/review-r1.json",
+    "evidence_sha256": "036b0a3990bdc66d734db6ce500bc7b0e24ae031504313b295d25d232baa532e",
+    "reviewed_calibration_caches": 10,
+    "whole_Q75_calibration_fitted_states_available": false,
+    "calibration_EMA_selector_refit_states_preserved": true,
+    "next_requirement": "freeze_matching_training_application_predictor_and_actual_fit_budget",
+    "new_fits": 0,
+    "new_optimizers": 0,
+    "new_confirmation_seeds": 0,
+    "OOF_residual_analysis": 0,
+    "packages": 0,
+    "uploads": 0,
+    "original_failure_decisions_unchanged": true,
+    "current_EMA_phase_unchanged": true,
+    "platform_queue_changed": false
   }
 }
