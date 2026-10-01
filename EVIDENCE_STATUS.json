@@ -19714,16 +19714,18 @@
     "release_G0": "passed_independent_package_replay",
     "platform_test_status": "unmeasured_user_upload_only",
     "fixed_iron_string_mismatches": 0,
-    "maximum_decimal_arithmetic_difference": 2.8e-14
+    "maximum_decimal_arithmetic_difference": 2.8e-14,
+    "automatic_development_tier": "formal_candidate_shortlist_not_platform_validation",
+    "tier_evidence": "local/runs/q75-combination-review-20261002/review-r1/candidate-tiers.json"
   },
   "ema_fusion_selection_20261002": {
-    "status": "actually_started_serial_paired_development",
+    "status": "engineering_repaired_new_serial_development_r2_started",
     "protocol": "docs/ema_fusion_selection/PREREGISTRATION.md",
-    "private_run": "local/runs/ema-fusion-selection-20261002/development-r1",
+    "private_run": "local/runs/ema-fusion-selection-20261002/development-r2",
     "source_worktree": "/home/lux1/iron/local/worktrees/q75-combination-selector",
-    "source_commit": "8628de7",
-    "manifest_sha256": "24a9bc39ff20d19712bc0af718f948088de4666edf5de2a650c0279c3ec77101",
-    "activation_sha256": "7717a03821c55f535b87c1e25ffdaca87da5249a3527da247683224d82fcb05a",
+    "source_commit": "215d8df",
+    "manifest_sha256": "c4be763604150f20058adfddc768682e7fdd8614a38a74525b6fe2e422658cdc",
+    "activation_sha256": "bfc32322dca68656e8512e920eb86afbf17d16f5bd349f19828530e00038a2a5",
     "reference": "EMA_TIME_Q75",
     "calibration_seed": 27001,
     "original_calibration_seed": 42,
@@ -19742,11 +19744,28 @@
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": false,
-    "G0": "source_cache_partition_runtime_and_locked_tests_passed_complete_cold_pending",
+    "G0": "CLI_runpy_regression_and_synthetic_native_cold_passed_scientific_phase_pending",
     "G1": "unmeasured_until_complete_development_seeds",
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "earlier_run": {
+      "private_run": "local/runs/ema-fusion-selection-20261002/development-r1",
+      "source_commit": "8628de7",
+      "manifest_sha256": "24a9bc39ff20d19712bc0af718f948088de4666edf5de2a650c0279c3ec77101",
+      "activation_sha256": "7717a03821c55f535b87c1e25ffdaca87da5249a3527da247683224d82fcb05a",
+      "status": "controller_dispatch_failed_before_first_fit",
+      "actual_optimizer_runs": 0,
+      "actual_native_calls": 0,
+      "actual_exit_code": 1,
+      "reason": "module dispatched __main__ under python -m",
+      "terminal_evidence": "local/runs/ema-fusion-selection-20261002/development-r1/terminal-verification.json",
+      "original_failure_preserved": true
+    },
+    "scientific_retries": 0,
+    "engineering_launch_corrections": 1,
+    "current_source_focused_tests": 46,
+    "previous_source_full_suite_passed": 1471
   }
 }
