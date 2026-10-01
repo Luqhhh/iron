@@ -363,7 +363,7 @@ def execute(out):
     for seed in manifest['spec']['split_seeds']:
         for fold in range(5):
             for phase in ('worker', 'cold'):
-                subprocess.run([sys.executable, '-m', __name__, '--'+phase, '--output', str(out),
+                subprocess.run([sys.executable, '-m', 'bf_tap_r2.ema_fusion_selection', '--'+phase, '--output', str(out),
                     '--seed', str(seed), '--fold', str(fold)], check=True)
     evaluate(out)
     write_new(Path(out)/'completion-event.json', dict(status='completed', new_optimizer_runs=30, packages=0, uploads=0))

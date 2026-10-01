@@ -7,6 +7,7 @@ from pathlib import Path
 import subprocess
 import sys
 import yaml
+import runpy
 
 from test_round2_v12 import sample
 from bf_tap_r2.component_regularization import ComponentRegressor
@@ -139,3 +140,26 @@ def test_synthetic_paired_worker_native_budget_and_independent_cold(tmp_path, mo
     assert child.returncode == 0, child.stdout+child.stderr
     checked = json.loads((tmp_path/'s42-f0/cold-complete.json').read_text())
     assert checked['retained_states'] == 4 and checked['native_counts']['torch_optimizer'] == 3
+
+
+def test_real_module_cli_dispatches_importable_workers_before_data_evaluation(tmp_path, monkeypatch):
+    import bf_tap_r2.v5_library as library
+    from importlib.util import find_spec
+    class EvaluationReached(Exception):
+        pass
+    manifest = dict(files={}, main_root=str(tmp_path), spec=dict(runtime_versions={}, split_seeds=[42]))
+    (tmp_path/'manifest.json').write_text(json.dumps(manifest))
+    commands = []
+    monkeypatch.setattr(subprocess, 'run', lambda command, **kw: commands.append(command))
+    def stop_evaluation(*args):
+        raise EvaluationReached
+    monkeypatch.setattr(library, 'load_v5_training_frame', stop_evaluation)
+    monkeypatch.setattr(sys, 'argv', ['ema_fusion_selection', '--run', '--output', str(tmp_path)])
+    for name in ('OPENBLAS_NUM_THREADS', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS'):
+        monkeypatch.setenv(name, '1')
+    with pytest.raises(EvaluationReached):
+        runpy.run_module('bf_tap_r2.ema_fusion_selection', run_name='__main__')
+    assert len(commands) == 10
+    assert all(command[1] == '-m' and command[2] != '__main__' and find_spec(command[2]) is not None for command in commands)
+    assert sum('--worker' in command for command in commands) == 5
+    assert sum('--cold' in command for command in commands) == 5
