@@ -18396,5 +18396,36 @@
     },
     "frozen_source_files": 735,
     "frozen_original_private_dependencies": 2
+  },
+  "q75_feature_support_20261001": {
+    "status": "completed_label_free_feature_support_description",
+    "documentation": "docs/q75_feature_support/RESULTS.md",
+    "private_root": "local/runs/q75-feature-support-20261001/diagnostic-r2",
+    "scope": "frozen official round2 V2 train/test feature tables only; no sample tables, targets, predictions or model states",
+    "rows": {
+      "train": 2754,
+      "test": 322
+    },
+    "numeric_features": 21,
+    "G0": "independent_arithmetic_and_input_source_report_identity_passed",
+    "G1": "descriptive_feature_support_only_no_model_quality_or_promotion",
+    "test_feature_cells_outside_train_minmax": 0,
+    "maximum_absolute_standardized_mean_difference": 0.09313189346935973,
+    "maximum_descriptive_KS": 0.07095946269006803,
+    "test_nearest_distance_above_train_leave_one_out_q95_count": 21,
+    "test_nearest_distance_above_train_leave_one_out_q99_count": 4,
+    "exact_test_feature_vector_overlap_with_train": 0,
+    "scientific_estimator_fits": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "preregistration_sha256": "dafa9d446b87da347833e33830b046f0021ebc4bec3b161cf598c6035dc87970",
+    "source_sha256": "dd2002ef3f42ff9f61461f6490baa2fb2d0c5cb8f8807bcb918a512614838d6c",
+    "report_sha256": "7f03a1ef97d7f01b73605e526748a81c1311b7775d6f554110e2211d50c65e69",
+    "readback_sha256": "74a6e12f02894aa43cffcb660e32841d4fb82db77e70e5155cc782cf09a834de",
+    "first_identity_rejection_preserved": true,
+    "original_scientific_loader_and_live_EMA_scope": "unchanged",
+    "decision": "no drift correction or new candidate/weight/threshold/queue; do not infer conditional equivalence or platform score transfer"
   }
 }
