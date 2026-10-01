@@ -33,7 +33,7 @@
 - [PTaRL 相对 Q75 的零拟合诊断](ema_evaluation_diagnostics/RESULTS.md)：两切分描述性证据，不预测平台分数。
 - [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：PTaRL时长用户回传96.378，EMA铁量待反馈。
 - [Q75误差地图](q75_error_relocation/RESULTS.md)及[压差时长校准完整开发](q75_error_relocation/CALIBRATION_RESULTS.md)：G0通过，压差两切分均负、全局一负一正，无确认候选及新平台包。
-- [EMA时长平均跨度预登记](ema_average_span/PREREGISTRATION.md)及[执行记录](ema_average_span/EXECUTION.md)：1358项锁定检查通过，两个完整切分串行开发已启动，G1及新保存状态审计待完成。
+- [EMA时长平均跨度完整结果](ema_average_span/RESULTS.md)：20估计器/40optimizer和独立终态审计通过；短跨度两seed均正、平均+.001788，按冻结规则进入确认准备，自动分类仍exploration；长跨度两seed均负，没有新平台包。
 - [Q75后续特征支持描述](q75_feature_support/RESULTS.md)：零拟合、无目标读取；未见大范围单列外推，不证明条件同分布或平台排序。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
 

@@ -18325,7 +18325,7 @@
     }
   },
   "ema_average_span_20261001": {
-    "status": "active_serial_two_complete_seed_development",
+    "status": "completed_SHORT_SPAN_selected_for_matching_reference_confirmation_preparation",
     "branch": "codex/ema-average-span",
     "worktree": "/home/lux1/iron/local/worktrees/ema-average-span",
     "reference": {
@@ -18335,8 +18335,8 @@
       "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
     },
     "thread_target": 96.45,
-    "G0": "passed_exact_source_1358_locked_tests_20_old_controls_cold_new_state_audit_pending",
-    "G1": "unmeasured",
+    "G0": "passed_40_new_20_old_saved_states_independent_arithmetic_frozen_identity_actual_exit0",
+    "G1": "SHORT_SPAN_two_complete_seeds_positive_exploration_not_formal_four_seed_promotion",
     "preregistration": "docs/ema_average_span/PREREGISTRATION.md",
     "specification": "configs/ema_average_span/SPEC.json",
     "specification_sha256": "f73af561dfc2b907d026b0fba65434652293c4112bdd98c8a7a0b70ababc523e",
@@ -18354,8 +18354,8 @@
     ],
     "new_estimators_planned": 20,
     "new_optimizer_runs_planned": 40,
-    "new_estimators_actual": null,
-    "new_optimizer_runs_actual": null,
+    "new_estimators_actual": 20,
+    "new_optimizer_runs_actual": 40,
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "packages": 0,
@@ -18395,7 +18395,61 @@
       "scientific_retries": 0
     },
     "frozen_source_files": 735,
-    "frozen_original_private_dependencies": 2
+    "frozen_original_private_dependencies": 2,
+    "completed_local": "2026-10-01T14:19:42.019433+08:00",
+    "controller_exit_code": 0,
+    "observer_status": "actually_exited_no_empty_monitoring",
+    "actual_closed_counts": {
+      "unit_started": 20,
+      "unit_completed": 20,
+      "optimizer_started": 40,
+      "optimizer_completed": 40
+    },
+    "results": "docs/ema_average_span/RESULTS.md",
+    "summary_sha256": "8fd584e383569eee346c1bb0df65e4b958d0c8455021058dbc2bd0fb95f439da",
+    "audit_sha256": "1c2594ac7f99ac8d54c2dddc3cb61243bd598f0f32bee523e9eb228bf63b6127",
+    "completion_sha256": "b35f30b122de46efc2cb85eaaa6e07edc4d038393dd4e309881056756279658e",
+    "process_terminal_sha256": "5eec6f760dcb4b976555f38abc6c56993228fb50829fe44f6cabb5989cbdda40",
+    "terminal_verification_sha256": "3058a63cae16e4259041996a482a3a4b57997be1cecb8f8b52c758941cbbfb57",
+    "closure_readback_sha256": "f06abcfb02c3d75c12d420ac155ba1d386866c95692fcf2b134a05813966f7ae",
+    "new_saved_models_checked": 40,
+    "full_batch_cold_difference": 0,
+    "maximum_order_chunk_difference": 1.297700021041237e-05,
+    "maximum_worker_rss_mib": 815.45703125,
+    "independent_arithmetic_cells": 55338,
+    "maximum_arithmetic_difference": 8.881784197001252e-16,
+    "complete_seed_gains": {
+      "SHORT_SPAN": {
+        "42": 0.0021899322201757543,
+        "3407": 0.0013855401783149184
+      },
+      "LONG_SPAN": {
+        "42": -0.007126432561985142,
+        "3407": -0.006127692661463549
+      }
+    },
+    "selected_for_confirmation": "SHORT_SPAN",
+    "automatic_tiers": {
+      "SHORT_SPAN": "exploration",
+      "LONG_SPAN": "not_shortlisted"
+    },
+    "short_span_tier_failed_conditions": [
+      "minimum_improved_folds"
+    ],
+    "next_action": "freeze_matching_Q75_reference_and_confirmation_budget_for_two_additional_complete_seeds_before_execution",
+    "platform_forecast": null,
+    "platform_queue_additions": 0,
+    "release_authorized": false,
+    "mean_gains": {
+      "SHORT_SPAN": 0.0017877361992453362,
+      "LONG_SPAN": -0.006627062611724346
+    },
+    "old_control_initial_mass_description": {
+      "private_report": "local/runs/ema-average-span-20261001/old-control-initial-mass-r1/report.json",
+      "sha256": "b8961bf19acb6f81d557efc054579cc1d3d528cf9c6b2a1cb777672bc18d0622",
+      "scope": "algebraic coefficient only; no score or total initialization-dependence claim",
+      "new_fits": 0
+    }
   },
   "q75_feature_support_20261001": {
     "status": "completed_label_free_feature_support_description",

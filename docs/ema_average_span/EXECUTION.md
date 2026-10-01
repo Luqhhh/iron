@@ -8,6 +8,6 @@ manifest固定735份科学源/配置/测试依赖、103份直接输入和2份主
 
 实际独立观察器PID141630、controller PID141636，启动事件与实际进程存活已核验。观察器每600秒读取单位完成/失败事件，controller真实退出立即记录process-terminal.json；没有时间预算、自动重试或对其他会话运行的操作。其输出由持久执行handle保留，具体handle见状态文件。
 
-当前为科学开发在执行，G1未测，新增模型冷审计待全部20单位闭合后由原controller执行。不能将原控制的G0通过提前扩展为新40份保存状态通过。期间不读取部分fold结果进行选择；只在每seed完整OOF闭合后按原冻结规则比较相对Q75净收益。新增确认seed、全2754行拟合、包、桌面写入和助手上传均0。
+批次已于2026-10-01 14:19:42 Asia/Shanghai实际正常退出，controller exit0；20单位和40optimizer全部闭合，无失败。原controller在完整OOF汇总后执行独立新进程审计，40份新状态和20份原控制通过；随后单独复核真实终态、全部账本和冻结身份。完整结果及证据摘要见[RESULTS.md](RESULTS.md)。期间没有读取部分fold结果进行选择。新增确认seed、全2754行拟合、包、桌面写入和助手上传均0。
 
-私有根目录local/runs/ema-average-span-20261001/development-r1保留manifest、activation、各单位状态/预测/metadata及events.jsonl；最终summary、独立audit和真实终态将在实际完成后追加。模型、预测、账本、收据及日志均不入Git。当前平台代表仍为用户回传Q75=96.3920，目标96.45尚未达到；待回传EMA铁量包及DE3替补安排保持。
+私有根目录local/runs/ema-average-span-20261001/development-r1保留manifest、activation、各单位状态/预测/metadata及events.jsonl，已追加summary、独立audit、completion、process-terminal、终态复核和结束后读取收据。模型、预测、账本、收据及日志均不入Git。SHORT_SPAN两个完整seed均正，按冻结规则选为确认准备对象；自动分类仍为exploration，没有四seed正式晋级或发布许可。当前平台代表仍为用户回传Q75=96.3920，目标96.45尚未达到；待回传EMA铁量包及DE3替补安排保持。controller和observer均已退出，无运行任务时不继续空转观察。
