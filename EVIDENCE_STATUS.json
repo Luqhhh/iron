@@ -709,7 +709,7 @@
         "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
       }
     ],
-    "active_development_key": "modernnca_mae_q75_development_20261002"
+    "modernnca_result_key": "modernnca_mae_q75_development_20261002"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2994,10 +2994,10 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "modernnca_q75_development_20261002",
+    "latest_completed_quality_experiment": "modernnca_mae_q75_development_20261002",
     "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
-    "current_running_quality_experiment": "modernnca_mae_q75_development_20261002"
+    "latest_completed_modernnca_quality_experiment": "modernnca_mae_q75_development_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -19551,7 +19551,7 @@
     }
   },
   "modernnca_mae_q75_development_20261002": {
-    "status": "running_frozen_MAE_two_complete_development_seeds",
+    "status": "completed_MAE_two_negative_seeds_per_target_no_confirmation_finalist",
     "authorization_key": "optimization_standing_authorization_20261002",
     "protocol": "docs/modernnca_mae/PREREGISTRATION.md",
     "execution_document": "docs/modernnca_mae/EXECUTION.md",
@@ -19635,8 +19635,47 @@
       "official_data_reads": 0,
       "optimizer_steps": 0
     },
-    "g0": "initial_admission_passed_complete_cold_and_scalar_and_MSE_contrast_pending",
-    "g1": "unmeasured_requires_complete_two_seed_OOF",
+    "g0": "passed_native_cold_full_OOF_scalar_MSE_comparison_and_actual_terminal",
+    "g1": {
+      "phase": "development",
+      "decisions": {
+        "tap_iron": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true,
+            "local_package_at_least_96_25": false
+          },
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_gain": -0.006586431563851934,
+          "mean_control_advantage": 0.6799476067549894
+        },
+        "tap_time_len": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true,
+            "local_package_at_least_96_25": false
+          },
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_gain": -0.005028219698198326,
+          "mean_control_advantage": 0.6398221170429366
+        }
+      },
+      "eligible_targets": [],
+      "release_authorized": false,
+      "requires_independent_artifact_audit": true
+    },
     "development_gate": [
       "two_complete_seeds_positive",
       "mean_gain_at_least_0_01",
@@ -19653,7 +19692,185 @@
     "full_data_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "agent_platform_uploads": 0
+    "agent_platform_uploads": 0,
+    "results_document": "docs/modernnca_mae/RESULTS.md",
+    "tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_iron": {
+          "LEARNED_ENCODER": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 3,
+            "worst_spout_delta": 0.000309679384680496,
+            "mean_wmape": 0.037309845911632084,
+            "target": "tap_iron",
+            "candidate": "LEARNED_ENCODER",
+            "reference": "CURRENT",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -0.00019797007226451252,
+              "3407": -6.548719028956485e-05
+            },
+            "mean_gain": -0.00013172863127703868,
+            "minimum_gain": -0.00019797007226451252
+          }
+        },
+        "tap_time_len": {
+          "LEARNED_ENCODER": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 4,
+            "worst_spout_delta": 0.0002042290405422434,
+            "mean_wmape": 0.03825783133433542,
+            "target": "tap_time_len",
+            "candidate": "LEARNED_ENCODER",
+            "reference": "CURRENT",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -0.0001927628672026352,
+              "3407": -8.365920725297848e-06
+            },
+            "mean_gain": -0.00010056439396396652,
+            "minimum_gain": -0.0001927628672026352
+          }
+        }
+      },
+      "formal_selected": [],
+      "exploration_selected": [],
+      "submission_priority": [],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "actual_counts": {
+      "started": {
+        "pair_unit": 20,
+        "estimator": 80,
+        "optimizer": 40
+      },
+      "completed": {
+        "pair_unit": 20,
+        "estimator": 80,
+        "optimizer": 40
+      },
+      "failed": {
+        "pair_unit": 0,
+        "estimator": 0,
+        "optimizer": 0
+      },
+      "incomplete": {
+        "pair_unit": 0,
+        "estimator": 0,
+        "optimizer": 0
+      }
+    },
+    "actual_exit_codes": [
+      0,
+      0
+    ],
+    "peak_rss_mib": 796.6328125,
+    "native_prediction_maximum_difference": 3.1377567211166024e-11,
+    "scalar_maximum_difference": 3.469446951953614e-16,
+    "mse_comparison_result": {
+      "status": "passed",
+      "fixed_prediction_maximum_difference": 0.0,
+      "original_mse_scalar_difference": 3.469446951953614e-16,
+      "records": [
+        {
+          "target": "tap_iron",
+          "seed": 42,
+          "mae_gain": -0.009898503613225626,
+          "mse_gain": -0.010541300907067341,
+          "mae_minus_mse": 0.0006427972938417154
+        },
+        {
+          "target": "tap_iron",
+          "seed": 3407,
+          "mae_gain": -0.0032743595144782423,
+          "mse_gain": -0.010959546613513796,
+          "mae_minus_mse": 0.007685187099035554
+        },
+        {
+          "target": "tap_time_len",
+          "seed": 42,
+          "mae_gain": -0.00963814336013176,
+          "mse_gain": 0.0006693807072483821,
+          "mae_minus_mse": -0.010307524067380142
+        },
+        {
+          "target": "tap_time_len",
+          "seed": 3407,
+          "mae_gain": -0.0004182960362645455,
+          "mse_gain": 0.0013165083632211277,
+          "mae_minus_mse": -0.0017348043994856732
+        }
+      ],
+      "mean_mae_minus_mse": {
+        "tap_iron": 0.0041639921964386345,
+        "tap_time_len": -0.006021164233432907
+      }
+    },
+    "terminal_sha256": "2c36c0240905b03c7884323ad2f4ee2d24cb4b4739152a72b14025a1da9d5fcb",
+    "artifacts": {
+      "warm-complete.json": "37b70e17e8b9dc9f29f52e8d1547ad3e2d836a529d945c1fe5b943014c868d0d",
+      "cold-complete.json": "57e75c3924ed934aadb71773159839ecd4e8d86de0ba452663007bccfbb19f9c",
+      "complete.json": "01b6cd42e3e076375da8cf13a1feccf6bfb64972c613b060daa321dbc4191da1",
+      "independent-score.json": "204f22823470a06a4830b86b8ee9e7c21a697a35929cf08aa76b6e4d6dada06e"
+    },
+    "post_terminal_readback_sha256": "12987ef53ca0d863334a292d0b817437e7832d98c5b117d71362825ba9fa9377",
+    "summary_readback_failure_record": "local/runs/modernnca-mae-development-20261002/launch-r1/post-terminal-readback-failure-r1.json",
+    "processes_running": false,
+    "completed_ns": 1790876624871131159,
+    "seconds_descriptive": 898.642844256,
+    "learned_score_records": [
+      {
+        "target": "tap_iron",
+        "seed": 42,
+        "candidate_score": 96.22668164489689,
+        "gain": -0.009898503613225626,
+        "target_wmape": 0.03734989794288538,
+        "standalone_wmape": 0.042875584307813984
+      },
+      {
+        "target": "tap_iron",
+        "seed": 3407,
+        "candidate_score": 96.22660706990277,
+        "gain": -0.0032743595144782423,
+        "target_wmape": 0.03726979388037878,
+        "standalone_wmape": 0.04183246667441758
+      },
+      {
+        "target": "tap_time_len",
+        "seed": 42,
+        "candidate_score": 96.22694200514998,
+        "gain": -0.00963814336013176,
+        "target_wmape": 0.0383092320263796,
+        "standalone_wmape": 0.04394496401388556
+      },
+      {
+        "target": "tap_time_len",
+        "seed": 3407,
+        "candidate_score": 96.22946313338097,
+        "gain": -0.0004182960362648924,
+        "target_wmape": 0.03820643064229124,
+        "standalone_wmape": 0.04242499816951883
+      }
+    ],
+    "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
     "status": "user_requested_implementation_in_progress",
