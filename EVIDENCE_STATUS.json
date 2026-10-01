@@ -18396,5 +18396,56 @@
     },
     "frozen_source_files": 735,
     "frozen_original_private_dependencies": 2
-  }
+  },
+  "scarf_reg_v1_20261001": {
+    "strategy": "SCARF_REG_V1",
+    "status": "development_complete_original_audit_failed_supplemental_zero_fit_passed_negative",
+    "platform_goal": ">96.4",
+    "current_reference": "EMA_TIME_Q75",
+    "registered_score": 96.392,
+    "score_source": "user_reported_not_independently_verified",
+    "formal_G0_admitted": true,
+    "G1": "complete_two_seed_descriptive_negative_no_confirmation",
+    "synthetic_optimizer_runs_completed": 6,
+    "synthetic_estimator_states": 4,
+    "probe_seconds": 62.387720062999506,
+    "probe_peak_per_process_rss_mib": 323.640625,
+    "cold_saved_difference": 0,
+    "order_chunk_singleton_maximum_difference": 6.103515625e-05,
+    "independent_numpy_maximum_difference": 6.103515625e-05,
+    "official_fits": 0,
+    "reference_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "new_worktree": false,
+    "formal_run_authorized": true,
+    "probe_source_sha256": "1d925385c935a073b4a1753c4fe829b4a290fc0de81cfbda217cf056618fc9ff",
+    "probe_spec_sha256": "6cbf8534d45a298dd93291fb34e88b53c3d9823288a9fa08d5e9c00500815ead",
+    "public_base": "c76db369ac3360d1d6f08ee650eb87126969764c",
+    "local_negative_is_not_automatic_platform_exploration_veto": true,
+    "historical_frozen_gates_unchanged": true,
+    "official_outer_arm_models": 20,
+    "official_estimator_states": 40,
+    "official_optimizer_runs": 60,
+    "confirmation_optimizer_runs": 0,
+    "supplemental_audit_new_fits": 0,
+    "supplemental_cold_models": 40,
+    "seed_gains": [
+      -0.03331530050086365,
+      -0.036660299143670014
+    ],
+    "control_seed_gains": [
+      -0.023321756648476633,
+      -0.033275255007817306
+    ],
+    "mechanism_mean": -0.006689293994119862,
+    "formal_promoted": false,
+    "original_frozen_audit_failed": true,
+    "original_failure_preserved": true,
+    "original_audit_reclassified": false,
+    "supplemental_audit_sha256": "470616a0780d260d00760f635366669122c874089641dc246fe01426f5079f05",
+    "results": "docs/scarf_reg_v1/RESULTS.md"
+  },
+  "official_fits": 20,
+  "production_G0_optimizer_runs": 6
 }
