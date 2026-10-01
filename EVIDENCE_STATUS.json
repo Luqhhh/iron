@@ -20950,7 +20950,7 @@
     "results_document": "docs/ema_dropout_consistency/RESULTS.md"
   },
   "ema_width512_preparation_20261002": {
-    "status": "registered_engineering_preparation_scientific_not_started",
+    "status": "full_shape_width512_engineering_running_scientific_not_started",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -20970,7 +20970,7 @@
     "G0": "width512_full_shape_learnability_independent_cold_and_complete_scientific_controller_pending",
     "G1": "unmeasured_no_scientific_fit",
     "engineering_optimizer_budget": 1,
-    "engineering_optimizer_runs": 0,
+    "engineering_optimizer_runs": null,
     "scientific_model_fits": 0,
     "scientific_optimizer_runs": 0,
     "planned_scientific_estimators": 10,
@@ -20990,6 +20990,25 @@
       "full_shape_width512_engineering_and_independent_cold",
       "tested_exact_source_complete_controller_and_independent_auditor",
       "fresh_current_reference_data_source_cache_partition_freeze"
-    ]
+    ],
+    "source_worktree": "local/worktrees/ema-width512",
+    "source_commit": "e8d396e9c4790e7f01931bc75bcb04c103273bb2",
+    "focused_tests_passed": 14,
+    "focused_tests_skipped": 0,
+    "full_test_suite": false,
+    "actual_engineering_counts_pending_terminal": true,
+    "engineering_run": "local/runs/ema-width512-20261002/admission-r1",
+    "engineering_process_identity": {
+      "path": "local/runs/ema-width512-20261002/admission-r1/initial-process-identity.json",
+      "sha256": "2d138412e00de3e277415ac71de57df6827732a821293a8a5db3df40c207496a"
+    },
+    "actual_admission_supervisor_pid": 282413,
+    "actual_admission_controller_pid": 282414,
+    "started_ns": 1790898833878941855,
+    "next_scheduled_observation_ns": 1790899433878941855,
+    "controller_tests_receipt": {
+      "path": "local/runs/ema-width512-20261002/admission-r1/tests-receipt.json",
+      "sha256": "3fed193f6ff1a74323fd5cb2f8d117c19a01f7b06948c39e8b58afaaf8965214"
+    }
   }
 }
