@@ -17901,7 +17901,23 @@
       "uploads": 0,
       "reliable_platform_forecast": null,
       "unit_transfer_assumption": "platform score gain equals complete OOF mean score gain; uncalibrated scenario only"
-    }
+    },
+    "desktop_handoffs": [
+      {
+        "candidate": "PTARL_TIME_Q20",
+        "status": "copied_verified",
+        "authorization": "用户明确指令：写桌面",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-PTARL-TIME-Q20-20261001/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d",
+        "source_package": "/home/lux1/iron/local/runs/ptarl-ema-exploration-release-20261001/release-r1/PTARL_TIME_Q20/package/Luqhhh_bf_tap_predict_round2.zip",
+        "receipt": "local/runs/ptarl-ema-exploration-release-20261001/desktop-handoff-r1/receipt.json",
+        "receipt_sha256": "05fae1e5d34a6b4ee84bc13c65ec3f56286eff53aaa236016861cc5358ba94d5",
+        "desktop_copies": 1,
+        "new_fits": 0,
+        "new_packages": 0,
+        "agent_uploads": 0
+      }
+    ]
   },
   "ema_evaluation_diagnostics_20261001": {
     "status": "completed_zero_fit_current_Q75_pairing_and_sensitivity",

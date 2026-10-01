@@ -99,3 +99,12 @@ G0：原发布清单 1837 个文件和两 ZIP 身份复核；对应 Q75 绝对�
 未新增四 seed 正式晋级。新增拟合/确认 seed/包/上传均为 0。
 零拟合回读回执：`70d0835e1ff9400508280fba6b95f22c9964c43db7c10e9c13fb81ed995f97d1`，
 私有目录 `local/runs/ptarl-ema-exploration-release-20261001/local-score-readback-r1`。
+
+
+## 用户授权桌面交付（2026-10-01）
+
+用户明确要求“写桌面”，原始 `PTARL_TIME_Q20` ZIP 已复制到
+`C:\Users\lqh22\Desktop\submission-PTARL-TIME-Q20-20261001\Luqhhh_bf_tap_predict_round2.zip`。
+复制后 SHA-256 为 `a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d`，与原发布包精确一致；CRC、322个唯一ID检查通过。
+本次桌面复制1份，新增拟合/包/助手上传均0；原发布阶段的桌面写入0仍是历史记录，平台分数仍待用户反馈。
+私有复制收据 `local/runs/ptarl-ema-exploration-release-20261001/desktop-handoff-r1/receipt.json`，追加交付记录在状态文件 `desktop_handoffs`，收据与ZIP均不入Git。
