@@ -18323,5 +18323,50 @@
       "G0": "passed_exact_source_1351_locked_tests_partitions_20_saved_states_cold_prediction_independent_arithmetic",
       "G1": "GLOBAL_mixed_PRESSURE_both_negative_no_confirmation_no_formal_promotion"
     }
+  },
+  "ema_average_span_20261001": {
+    "status": "frozen_protocol_implementation_and_execution_pending",
+    "branch": "codex/ema-average-span",
+    "worktree": "/home/lux1/iron/local/worktrees/ema-average-span",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "thread_target": 96.45,
+    "G0": "engineering_pending_no_new_scientific_fits",
+    "G1": "unmeasured",
+    "preregistration": "docs/ema_average_span/PREREGISTRATION.md",
+    "specification": "configs/ema_average_span/SPEC.json",
+    "specification_sha256": "f73af561dfc2b907d026b0fba65434652293c4112bdd98c8a7a0b70ababc523e",
+    "candidate_beta": {
+      "SHORT_SPAN": 0.9801,
+      "LONG_SPAN": 0.99498743710662
+    },
+    "candidate_order": [
+      "SHORT_SPAN",
+      "LONG_SPAN"
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "new_estimators_planned": 20,
+    "new_optimizer_runs_planned": 40,
+    "new_estimators_actual": 0,
+    "new_optimizer_runs_actual": 0,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "workers": 1,
+    "numerical_threads": 1,
+    "monitor_interval_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "private_run": "/home/lux1/iron/local/runs/ema-average-span-20261001/development-r1",
+    "prior_calibration_status": "completed_no_confirmation_finalist",
+    "prior_failure_decisions_preserved": true
   }
 }
