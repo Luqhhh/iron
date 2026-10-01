@@ -19884,12 +19884,11 @@
     "gap_to_target": 0.058,
     "documentation": "docs/q75_9645_execution/PLAN.md",
     "priority": [
-      "zero_fit_EMA_inclusive_combinations",
-      "finish_existing_ModernNCA",
-      "paired_final_fusion_epoch_selection"
+      "one_fixed_weight_transfer_probe_pending_user_platform_feedback",
+      "paired_EMA_time_initialization_stability",
+      "selector_refit_update_matching_separate_phase"
     ],
     "reserve": [
-      "training_initialization_seed_stability_and_program_matching",
       "honest_low_complexity_conditional_residual_after_matching"
     ],
     "deprioritized": [
@@ -19906,7 +19905,8 @@
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "target_met": false,
-    "remaining_work": "user_platform_feedback_on_single_combo_probe; future_seed_stability_and_program_matching_separately_preregistered"
+    "remaining_work": "user_platform_feedback_on_single_combo_probe; future_seed_stability_and_program_matching_separately_preregistered",
+    "next_execution_documentation": "docs/ema_retraining_validation/STATUS.md"
   },
   "q75_combination_review_20261002": {
     "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
@@ -20215,5 +20215,65 @@
     "public_source_review": "root_configured_upstream_patch_only",
     "time_budget_seconds": null,
     "completed_ns": 1790878380190095903
+  },
+  "ema_retraining_initialization_20261002": {
+    "status": "locked_tests_passed_before_frozen_serial_launch",
+    "reference": "EMA_TIME_Q75",
+    "reference_score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "target": 96.45,
+    "preregistration": "docs/ema_retraining_validation/initialization/PREREGISTRATION.md",
+    "source_worktree": "/home/lux1/iron/local/worktrees/ema-initialization-step-matching",
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "folds": 5,
+    "planned_optimizer_runs": 80,
+    "planned_cold_states": 120,
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "G0": "1481_locked_tests_no_skips_and_synthetic_native_new_process_cold_passed_scientific_phase_pending",
+    "G1": "unmeasured_before_complete_OOF",
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0
+  },
+  "ema_retraining_step_matching_20261002": {
+    "status": "queued_after_initialization_actual_successful_terminal",
+    "reference": "EMA_TIME_Q75",
+    "reference_score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "target": 96.45,
+    "preregistration": "docs/ema_retraining_validation/steps/PREREGISTRATION.md",
+    "source_worktree": "/home/lux1/iron/local/worktrees/ema-initialization-step-matching",
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "training_seeds": [
+      42
+    ],
+    "folds": 5,
+    "planned_optimizer_runs": 10,
+    "planned_cold_states": 30,
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "G0": "1481_locked_tests_no_skips_and_synthetic_native_new_process_cold_passed_scientific_phase_pending",
+    "G1": "unmeasured_before_complete_OOF",
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0
   }
 }

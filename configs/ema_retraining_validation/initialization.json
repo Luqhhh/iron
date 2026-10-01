@@ -1,0 +1,81 @@
+{
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+  },
+  "thread_target": 96.45,
+  "old_development": "local/runs/strong-component-regularization/development-r2",
+  "runtime_versions": {
+    "torch": "2.14.0+cpu",
+    "tabm": "0.0.3",
+    "rtdl-num-embeddings": "0.0.12",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.18.1"
+  },
+  "workers": 1,
+  "monitor_seconds": 600,
+  "maximum_runtime_seconds": null,
+  "automatic_retries": false,
+  "max_worker_rss_mib": 1536,
+  "cold_predict_atol": 0.0005,
+  "split_seeds": [
+    42,
+    3407
+  ],
+  "folds": 5,
+  "replacement_weight": 0.75,
+  "training": {
+    "random_seed": 42,
+    "inner_seed": 42,
+    "width": 256,
+    "blocks": 2,
+    "tabm_k": 16,
+    "dropout": 0.1,
+    "embedding_dim": 16,
+    "n_frequencies": 16,
+    "lite": true,
+    "loss": "mse",
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "max_epochs": 240,
+    "patience": 25,
+    "min_delta": 1e-05,
+    "early_stop_metric": "standardized_mae_of_ensemble_prediction",
+    "preprocessing": "inner_training_only_then_refit_outer_training",
+    "refit": "fresh_initialization_full_outer_training_at_selected_epoch"
+  },
+  "mechanisms": {
+    "ema_beta": 0.99,
+    "sam_rho": 0.05,
+    "sam_epsilon": 1e-12,
+    "sam_same_dropout": true,
+    "gradient_clip": null
+  },
+  "new_confirmation_seeds": 0,
+  "full_data_fits": 0,
+  "packages": 0,
+  "desktop_writes": 0,
+  "uploads": 0,
+  "version": "ema-retraining-initialization-20261002",
+  "phase": "initialization",
+  "numerical_threads": 1,
+  "training_seeds": [
+    42,
+    1042,
+    2042
+  ],
+  "new_estimators": 40,
+  "optimizer_runs": 80,
+  "reused_estimators": 20,
+  "retained_states": 120,
+  "arms": [
+    "BASE",
+    "EMA"
+  ],
+  "previous_terminal": "/home/lux1/iron/local/runs/ema-fusion-selection-20261002/development-r2/terminal-verification.json"
+}
