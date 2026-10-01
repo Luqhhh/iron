@@ -18483,7 +18483,7 @@
     "decision": "no drift correction or new candidate/weight/threshold/queue; do not infer conditional equivalence or platform score transfer"
   },
   "ema_span_confirmation_preparation_20261001": {
-    "status": "confirmation_controller_and_protocol_locked_tests_passed_runtime_manifest_pending",
+    "status": "engineering_complete_entered_separately_frozen_confirmation_phase",
     "branch": "codex/ema-span-confirmation",
     "worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
     "base_commit": "3b6c280",
@@ -18656,7 +18656,7 @@
     }
   },
   "ema_span_confirmation_20261001": {
-    "status": "protocol_and_controller_tested_runtime_admission_pending",
+    "status": "runtime_admitted_controller_launched_confirmation_running",
     "branch": "codex/ema-span-confirmation",
     "worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
     "protocol": "docs/ema_span_confirmation/PREREGISTRATION.md",
@@ -18691,8 +18691,8 @@
     },
     "new_retained_states_planned": 440,
     "private_run": "/home/lux1/iron/local/runs/ema-span-confirmation-20261001/confirmation-r1",
-    "G0": "locked_controller_checks_passed_actual_runtime_manifest_and_scientific_execution_pending",
-    "G1": "two_positive_development_seeds_reused_no_confirmation_observations",
+    "G0": "exact_source_tests_runtime_manifest_partitions_and_initial_process_identity_passed_scientific_saved_state_audit_pending",
+    "G1": "confirmation_running_no_new_complete_seed_results",
     "tests": {
       "targeted_passed": 81,
       "full_passed": 1439,
@@ -18706,15 +18706,29 @@
     "constructor_input_probe_receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-constructor-inputs-r1/receipt.json",
     "constructor_input_probe_sha256": "91fc21c42aad736810dd8ea552a20637e240996c85a50fd44a73970b63b7525a",
     "constructor_official_csv_reads": 0,
-    "scientific_execution_admitted": false,
-    "new_confirmation_seeds_started": 0,
-    "new_scientific_fits": 0,
+    "scientific_execution_admitted": true,
+    "new_confirmation_seeds_started": null,
+    "new_scientific_fits": null,
     "full_data_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
     "platform_queue_additions": 0,
     "maximum_runtime_seconds": null,
-    "automatic_scientific_retries": false
+    "automatic_scientific_retries": false,
+    "source_commit": "0f593434b5e8d5dda4e69c4e7ef7a94cdd6864f4",
+    "manifest_sha256": "7a81ac382bfd09fde2ff625a86f9a9e7fa5326adda6b9cdc23df62c628571120",
+    "source_files": 751,
+    "model_source_files": 1234,
+    "frozen_inputs": 182,
+    "frozen_partitions": 10,
+    "controller_pid": 180731,
+    "observer_pid": 180730,
+    "observer_exec_session_id": 44194,
+    "monitor_interval_seconds": 600,
+    "started_local": "2026-10-01T18:39:33.892596+08:00",
+    "preactivation_audit_sha256": "b0a0db2c1bb1db9e4103929f09aecc217fb664a83fe833989a9fe8871defa6d2",
+    "initial_launch_verification_sha256": "d97e0510cd3b0662d038a8f1690f75970267ee0869d5706f68585e4810b5ff05",
+    "actual_counts_status": "running_not_yet_observed_next_scheduled_check"
   }
 }

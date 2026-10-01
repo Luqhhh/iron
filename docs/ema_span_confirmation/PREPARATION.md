@@ -95,3 +95,9 @@
 81项定向及1439项锁定Python3.12全库回归通过、0跳过，保留24条既有测试警告；751份源码/配置与694份两树公共Python文件前后摘要一致。最终收据为`local/research/confirmation-controller-full-r1/receipt.json`，SHA `03f45fcb8b4813c932c9ae81abe9acfc374d336d859dde175631cd17fe5807a5`。构造器还核查20份原参照输入身份和37个输出列的固定组合图，拟合与CSV读取均0；私有收据SHA `91fc21c42aad736810dd8ea552a20637e240996c85a50fd44a73970b63b7525a`。配置现绑定182份直接输入身份，包括原物理缓存和回收脚本。
 
 本轮代码及静态协议已闭合，实际运行manifest、fresh单Python线程/单worker资源准入和activation尚待完成；新增科学拟合、确认seed启动、全量拟合和包仍0。真实320条异构参照管线及440个状态只有运行后实际审计通过才能计为完成。动态状态入口为`ema_span_confirmation_20261001`。
+
+## 实际运行准入与启动
+
+运行清单已冻结，manifest SHA为`7a81ac382bfd09fde2ff625a86f9a9e7fa5326adda6b9cdc23df62c628571120`，科学源码commit为`0f593434b5e8d5dda4e69c4e7ef7a94cdd6864f4`；751份源码/配置、1234份模型相关源码、182份输入和十个新增分区核验通过。启动前禁止fit/optimizer的独立审计记录尝试0，Python/torch/interop线程均1，原V31内层seed7771及四seed折向量一致。
+
+确认controller/observer已启动，并以真实PID、create_time和命令核验初始活性；运行状态读取`ema_span_confirmation_20261001`。此处仅登记初始启动，不在600秒观察间隙轮询进度。科学完成次数、完整额外seed收益和440份状态审计尚未登记；平台最高仍为用户回传96.3920，没有新提交包。
