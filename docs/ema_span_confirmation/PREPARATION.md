@@ -101,3 +101,11 @@
 运行清单已冻结，manifest SHA为`7a81ac382bfd09fde2ff625a86f9a9e7fa5326adda6b9cdc23df62c628571120`，科学源码commit为`0f593434b5e8d5dda4e69c4e7ef7a94cdd6864f4`；751份源码/配置、1234份模型相关源码、182份输入和十个新增分区核验通过。启动前禁止fit/optimizer的独立审计记录尝试0，Python/torch/interop线程均1，原V31内层seed7771及四seed折向量一致。
 
 确认controller/observer已启动，并以真实PID、create_time和命令核验初始活性；运行状态读取`ema_span_confirmation_20261001`。此处仅登记初始启动，不在600秒观察间隙轮询进度。科学完成次数、完整额外seed收益和440份状态审计尚未登记；平台最高仍为用户回传96.3920，没有新提交包。
+
+## 第二次定时观察：首个真实单位闭合
+
+1200秒观察记录1/10单位完成、0失败。已完成的seed271828/fold0绑定32条原参照管线、原EMA控制及SHORT；独立冷进程检查40份参照与4份EMA状态。只核查闭合单位，不计正在执行单位的部分调用，也不计算早期fold或完整seed收益。
+
+独立收据链回读核验原运行目录/seed/fold/trial、manifest及分区、原生调用和外部保存状态摘要。闭合次数为CatBoost29、EBM fit6、EBM boost48、sklearn MLP1、torch Optimizer10；warm/cold最大RSS分别1266.35/626.75MiB，均低于1536MiB，固定组合差异2.27e-13低于1e-9。751份源/配置与1234份模型源码前后摘要一致。整批440份状态、原生.pt终态审计和四seed判定仍待完成。
+
+追加式私有回读收据为`local/worktrees/ema-short-release-preparation/local/research/confirmation-observation-r1/receipt.json`，SHA `133bdbb3d8cf728abcf7507c9818b1395bbb6feca1874e01927372546ec1a87a`。此检查新增拟合/包0，没有中断、重启或改动确认训练及冻结协议。

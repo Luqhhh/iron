@@ -34,8 +34,9 @@
 - [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：PTaRL时长用户回传96.378，EMA铁量待反馈。
 - [Q75误差地图](q75_error_relocation/RESULTS.md)及[压差时长校准完整开发](q75_error_relocation/CALIBRATION_RESULTS.md)：G0通过，压差两切分均负、全局一负一正，无确认候选及新平台包。
 - [EMA时长平均跨度完整结果](ema_average_span/RESULTS.md)：20估计器/40optimizer和独立终态审计通过；短跨度两seed均正、平均+.001788，按冻结规则进入确认准备，自动分类仍exploration；长跨度两seed均负，没有新平台包。
-- [EMA短跨度确认工程准备](ema_span_confirmation/PREPARATION.md)：匹配参照目录、原生账本/预算草案、原选择器观察、原工厂捕获与批次冷审计已实现；合成接线路径、62项定向及1420项全库回归通过。真实运行身份、确认控制器及科学预算冻结待补齐，新增确认拟合0。
+- [EMA短跨度确认工程准备](ema_span_confirmation/PREPARATION.md)：控制器、原参照捕获、独立冷审计及预算冻结已完成；81项定向、1439项全库回归与实际启动准入通过，确认批次运行中。
 - [SHORT_SPAN四切分确认协议](ema_span_confirmation/PREREGISTRATION.md)：控制器、原EMA状态桥、独立原参照组合与seed算术通过81项定向及1439项全库检查；静态协议已声明两个额外seed，实际运行准入及初始进程身份已通过，确认批次运行中；完整额外seed收益待审计，无新提交包。
+- [SHORT_SPAN全量发布准备](ema_short_release/PREPARATION.md)：独立零拟合检查绑定22份输入，原EMA全量状态冷回放及Q75重建通过；条件发布只需一个新训练程序/2次Optimizer，执行器与具体发布准入仍待完成，未生成新包。
 - [Q75后续特征支持描述](q75_feature_support/RESULTS.md)：零拟合、无目标读取；未见大范围单列外推，不证明条件同分布或平台排序。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
 

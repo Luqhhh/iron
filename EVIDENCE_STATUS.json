@@ -18691,7 +18691,7 @@
     },
     "new_retained_states_planned": 440,
     "private_run": "/home/lux1/iron/local/runs/ema-span-confirmation-20261001/confirmation-r1",
-    "G0": "exact_source_tests_runtime_manifest_partitions_and_initial_process_identity_passed_scientific_saved_state_audit_pending",
+    "G0": "first_real_44_state_unit_cold_identity_native_budget_and_frozen_sources_passed_batch_final_native_pt_audit_pending",
     "G1": "confirmation_running_no_new_complete_seed_results",
     "tests": {
       "targeted_passed": 81,
@@ -18729,6 +18729,80 @@
     "started_local": "2026-10-01T18:39:33.892596+08:00",
     "preactivation_audit_sha256": "b0a0db2c1bb1db9e4103929f09aecc217fb664a83fe833989a9fe8871defa6d2",
     "initial_launch_verification_sha256": "d97e0510cd3b0662d038a8f1690f75970267ee0869d5706f68585e4810b5ff05",
-    "actual_counts_status": "running_not_yet_observed_next_scheduled_check"
+    "actual_counts_status": "closed_units_from_second_600_second_observation_active_partial_calls_not_counted",
+    "last_scheduled_observation": {
+      "event": "scheduled_600_second_check",
+      "controller_pid": 180731,
+      "elapsed_seconds": 1200.002021747001,
+      "completed_units": 1,
+      "failed_units": 0
+    },
+    "closed_units_verified": 1,
+    "closed_reference_pipeline_instances": 32,
+    "closed_component_estimators": 2,
+    "closed_retained_states": 44,
+    "closed_native_counts": {
+      "catboost_fit": 29,
+      "ebm_fit": 6,
+      "ebm_boost": 48,
+      "sklearn_mlp_fit": 1,
+      "torch_optimizer": 10
+    },
+    "closed_warm_peak_rss_mib": 1266.34765625,
+    "closed_cold_peak_rss_mib": 626.75390625,
+    "closed_maximum_composition_difference": 2.2737367544323206e-13,
+    "closed_unit_readback_receipt": "local/worktrees/ema-short-release-preparation/local/research/confirmation-observation-r1/receipt.json",
+    "closed_unit_readback_receipt_sha256": "133bdbb3d8cf728abcf7507c9818b1395bbb6feca1874e01927372546ec1a87a"
+  },
+  "ema_short_release_preparation_20261001": {
+    "status": "original_full_ema_inputs_cold_and_Q75_reconstruction_verified_release_executor_not_implemented",
+    "branch": "codex/ema-short-release-preparation",
+    "worktree": "/home/lux1/iron/local/worktrees/ema-short-release-preparation",
+    "documentation": "docs/ema_short_release/PREPARATION.md",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified"
+    },
+    "thread_target": 96.45,
+    "candidate": "SHORT_SPAN",
+    "confirmation_state_key": "ema_span_confirmation_20261001",
+    "G0": "old_full_EMA_checkpoints_original_source_and_cold_prediction_Q75_arithmetic_verified_only",
+    "G1": "no_new_SHORT_full_model_or_platform_result_confirmation_running",
+    "private_receipt": "local/worktrees/ema-short-release-preparation/local/research/release-input-probe-r1/receipt.json",
+    "receipt_sha256": "c5e9dd6711012536b54aa6be6444b268733240d8acc430c4273c4e20e7632770",
+    "manifest_sha256": "bf11e8a1296336277ff6461bcb50b77e4a0b109ceaa607bb4bc5ee6f8a6a0d31",
+    "cold_receipt_sha256": "941406f9604e39755beb69adf17fb83cfd2226d99229ccbbc6422cce6db8ed92",
+    "bound_files": 22,
+    "rows": 322,
+    "full_batch_difference": 0,
+    "row_chunk_single_differences": [
+      8.065356382758182e-07,
+      6.4522849640979985e-06,
+      0.0
+    ],
+    "old_selected_epoch": 91,
+    "old_full_fit_rows": 2754,
+    "old_fit_identity_preserved": true,
+    "Q75_time_reconstruction_difference": 0,
+    "Q75_iron_string_mismatches": 0,
+    "conditional_proposed_equation": "Q75_time + .75*(SHORT_full_time - old_EMA_full_time)",
+    "conditional_proposed_budget": {
+      "full_training_procedures": 1,
+      "torch_optimizer": 2,
+      "new_CV": 0,
+      "new_confirmation_seeds": 0,
+      "packages": 1
+    },
+    "scientific_execution_admitted": false,
+    "new_fits": 0,
+    "full_data_fits": 0,
+    "optimizer_runs": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "platform_queue_additions": 0,
+    "existing_confirmation_task_interrupted": false
   }
 }
