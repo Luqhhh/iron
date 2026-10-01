@@ -18097,5 +18097,98 @@
     "pure_training_size_causal_explanation": "not_established_beta_updates_epoch_selection_and_small_scale_cap_covary",
     "new_formal_promotions": 0,
     "presentation": "local/runs/ema-training-scale-20261001/presentation-r3/training-scale.png"
+  },
+  "q75_error_relocation_20261001": {
+    "status": "complete_zero_fit_error_map_calibration_frozen_before_development",
+    "branch": "codex/q75-error-relocation",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "private_root": "local/runs/q75-error-relocation-20261001/diagnostic-r1",
+    "documentation": "docs/q75_error_relocation/RESULTS.md",
+    "preregistration": "docs/q75_error_relocation/PREREGISTRATION.md",
+    "G0": "passed_original_identities_and_independent_per_row_arithmetic",
+    "G1": "descriptive_two_complete_seeds_not_promotion",
+    "report_sha256": "7ff60089f224148c1e0f3ef8afcf9401340679d128598788644e371aad144a4d",
+    "audit_sha256": "b470dc21ae08faaf970a244fc6d88917f7a05a8eec7cec44a5c65280b58d9165",
+    "numerical_cells": 481758,
+    "maximum_arithmetic_difference": 5.684341886080802e-14,
+    "rows_per_seed": 2754,
+    "complete_split_seeds": [
+      42,
+      3407
+    ],
+    "top20_single_target_error_share_range": [
+      0.029373488307229984,
+      0.03157988698800919
+    ],
+    "time_pressure_quartile_residual_medians": {
+      "42": [
+        -0.33704409132229074,
+        -0.2792002275231482,
+        0.061862609116019485,
+        0.5016229925975537
+      ],
+      "3407": [
+        -0.19799365791346446,
+        -0.14964115900704655,
+        0.10346354612548225,
+        0.4520305089096155
+      ]
+    },
+    "new_fits": 0,
+    "new_split_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "presentation": "local/runs/q75-error-relocation-20261001/presentation-r1/q75-error-relocation.png",
+    "locked_tests": {
+      "passed": 1351,
+      "skipped": 0,
+      "warnings": 23
+    }
+  },
+  "q75_pressure_calibration_20261001": {
+    "status": "active_serial_honest_pressure_calibration_development",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "G0": "exact_source_1351_locked_tests_and_cache_partitions_passed_saved_state_audit_pending",
+    "G1": "unmeasured",
+    "branch": "codex/q75-error-relocation",
+    "preregistration": "docs/q75_error_relocation/CALIBRATION_PREREGISTRATION.md",
+    "private_root": "local/runs/q75-error-relocation-20261001/calibration-development-r1",
+    "new_estimators_planned": 10,
+    "new_optimizer_runs_planned": 20,
+    "new_estimators_actual": null,
+    "new_optimizer_runs_actual": null,
+    "monitor_interval_seconds": 600,
+    "workers": 1,
+    "numerical_threads": 1,
+    "maximum_runtime_seconds": null,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "historical_gates_and_decisions_unchanged": true,
+    "source_commit": "aafe6d7",
+    "controller_pid": 127036,
+    "observer_pid": 127034,
+    "locked_tests": {
+      "passed": 1351,
+      "skipped": 0,
+      "warnings": 23
+    },
+    "manifest_sha256": "79f58f56a17c24cb5280fbda19c9c00c6fd7d0ccfdcc3a5b70a34de46d12902f",
+    "test_receipt_sha256": "6d4cf99c642e2654e457f6d4998db7779226efff38bc72163151dbf363f1fd73",
+    "execution_document": "docs/q75_error_relocation/EXECUTION.md",
+    "execution_backend": "independent_observed_process_after_zero_fit_systemd_launch_failure",
+    "automatic_scientific_retries": false
   }
 }
