@@ -18738,5 +18738,86 @@
     "independent_final_verification": "passed_zero_fit_full_coverage_hashes_counts_and_gain_recalculation",
     "confirmation_start_authorized_only_with_new_phase_admission_and_required_Q75_reference": true,
     "results": "docs/tabm_time_swa_v1/RESULTS.md"
+  },
+  "tabm_time_swa_continuation_20261001": {
+    "status": "reference_export_preparation_passed_waiting_original_SWA_artifacts_and_confirmation_phase_admission",
+    "updated_local": "2026-10-01T23:02:43.304935+08:00",
+    "authorization": "用户明确指令：继续队友的swa",
+    "branch": "codex/tabm-time-swa-continuation",
+    "worktree": "/home/lux1/iron/local/worktrees/tabm-time-swa-continuation",
+    "source_branch": "origin/codex/tabm-time-swa-v1",
+    "source_commit": "15afe0ab125934e2a100416a99e34b15964779c8",
+    "scientific_source_and_original_SPEC": "byte_identical_to_published_teammate_head",
+    "G0": "existing_Q75_reference_source_identity_and_zero_fit_export_readback_passed_original_SWA_private_artifacts_not_present",
+    "G1": "teammate_published_two_positive_complete_development_seeds_no_local_confirmation_or_platform_score",
+    "teammate_development": {
+      "seed_gains": [
+        0.00433976311089045,
+        0.004547392986334328
+      ],
+      "mean_gain": 0.004443578048612389,
+      "mechanism_mean": 0.002661679254886914,
+      "scope": "published_result_only_not_independent_private_original_reproduction"
+    },
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "available_Q75_split_seeds": [
+      42,
+      3407,
+      271828,
+      314159
+    ],
+    "rows_per_seed": 2754,
+    "original_SWA_confirmation_seeds": [
+      7777,
+      12011
+    ],
+    "original_SWA_confirmation_reference_present": false,
+    "usable_by_original_SWA_confirmation": false,
+    "original_confirmation_wait_record_and_development_freeze": "preserved",
+    "private_reference_export": "local/research/q75-existing-reference-export-r1/binding.json",
+    "reference_export_sha256": "823c3bb68d4bcaf01e35bca34314da1175c69f405e0afe06fc665d7b4a3bae09",
+    "original_direct_evidence_files": 98,
+    "tests": {
+      "passed": 18,
+      "skipped": 0,
+      "receipt": "local/research/swa-continuation-checks-r1/receipt.json",
+      "receipt_sha256": "de5ffe435d8b32d3c36d1b1bb261efca45cb1f47a6e4da21f82701b88a8291f3"
+    },
+    "artifact_location_requested_from_user": true,
+    "required_original_artifacts": [
+      "SWA_freeze_preflight_recovery_and_runtime",
+      "SWA_engineering_and_development_models_windows_OOF_cold_audits",
+      "original_complete_append_only_ledger_and_actual_terminal",
+      "referenced_BASE_controls_Q75_import_dependencies_original_source_archives"
+    ],
+    "next_action": "zero_fit_verify_original_SWA_handoff_then_freeze_confirmation_reference_and_seed_scope_before_scientific_execution",
+    "scientific_execution_admitted": false,
+    "new_scientific_fits": 0,
+    "new_reference_fits": 0,
+    "new_optimizer_calls": 0,
+    "parsed_label_values": 0,
+    "new_confirmation_seeds_started": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "no_scientific_retry_or_overwrite": true,
+    "documentation": "docs/tabm_time_swa_continuation/PREPARATION.md",
+    "previous_user_desktop_request_completed": {
+      "receipt": "/home/lux1/iron/local/runs/round2-two-slot-selection-20261001/desktop-handoff-r1/receipt.json",
+      "receipt_sha256": "b7d09e72d8fd7768fceffd9e05e1400db84b59cc7e33d16f5895116da0764597",
+      "desktop_root": "/mnt/c/Users/lqh22/Desktop/submission-two-slots-20261001",
+      "copied_packages": [
+        "SHORT_SPAN_FULL_Q75",
+        "EMA_IRON_EMA_TIME"
+      ],
+      "copies": 2,
+      "source_byte_identity_crc_template_order_and_preserved_columns": "passed"
+    }
   }
 }
