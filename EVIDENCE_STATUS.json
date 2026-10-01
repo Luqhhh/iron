@@ -18149,7 +18149,14 @@
       "passed": 1351,
       "skipped": 0,
       "warnings": 23
-    }
+    },
+    "history_before_calibration_completion": {
+      "status": "complete_zero_fit_error_map_calibration_frozen_before_development"
+    },
+    "calibration_results": "docs/q75_error_relocation/CALIBRATION_RESULTS.md",
+    "presentation_receipt": "local/runs/q75-error-relocation-20261001/presentation-r1/receipt.json",
+    "presentation_receipt_sha256": "e3dbf9aa9b106fdf7c341d4613759f83bca9bb3b2f0cbc4a097fd5268e00c2cb",
+    "followup_calibration_status": "completed_honest_calibration_no_confirmation_finalist"
   },
   "q75_pressure_calibration_20261001": {
     "status": "completed_honest_calibration_no_confirmation_finalist",
@@ -18228,6 +18235,93 @@
     "completion_event_sha256": "63354304b8ecb56f32c582f0ddb109a16cefaa12c1ff68d67bb5fd8419ecca69",
     "process_terminal_r2_sha256": "3fb118f1676725c2d7f4d27d520596ba91ecca6a7d3a989c8569b7c1bdd1dd58",
     "terminal_verification_r1_sha256": "046035c323fdf2ca21233f257f59bdb6b8f168f9d76cd63962b72242f23e7405",
-    "summary_G0_notice": "Original summary was written before saved-state audit and retains its audit-pending phase snapshot. audit.json and terminal-verification-r1.json prove the final G0 result."
+    "summary_G0_notice": "Original summary was written before saved-state audit and retains its audit-pending phase snapshot. audit.json and terminal-verification-r1.json prove the final G0 result.",
+    "history_before_completion": {
+      "status": "active_serial_honest_pressure_calibration_development",
+      "G0": "exact_source_1351_locked_tests_and_cache_partitions_passed_saved_state_audit_pending",
+      "G1": "unmeasured",
+      "new_estimators_actual": null,
+      "new_optimizer_runs_actual": null
+    },
+    "actual_counts": {
+      "unit_started": 10,
+      "unit_completed": 10,
+      "optimizer_started": 20,
+      "optimizer_completed": 20
+    },
+    "process_terminal_sha256": "3fb118f1676725c2d7f4d27d520596ba91ecca6a7d3a989c8569b7c1bdd1dd58",
+    "final_receipt": "local/runs/q75-error-relocation-20261001/calibration-development-r1/final-receipt.json",
+    "final_receipt_sha256": "034aa8af9f5ca2ed56ca395254b17c54fd31682d782637c272594917a6b88f79",
+    "gains_joint_score_points": {
+      "GLOBAL": {
+        "42": -0.00011997465801556329,
+        "3407": 0.0004429114132874833
+      },
+      "PRESSURE": {
+        "42": -0.0006405409747685173,
+        "3407": -0.011267885491535406
+      }
+    },
+    "mean_gain_joint_score_points": {
+      "GLOBAL": 0.00016146837763596003,
+      "PRESSURE": -0.005954213233151962
+    },
+    "gamma_by_split": {
+      "GLOBAL": {
+        "42": [
+          0,
+          0,
+          0,
+          0.25,
+          0
+        ],
+        "3407": [
+          0,
+          0,
+          0.5,
+          0,
+          0
+        ]
+      },
+      "PRESSURE": {
+        "42": [
+          0.5,
+          0,
+          0,
+          0,
+          0.5
+        ],
+        "3407": [
+          1,
+          0,
+          0.5,
+          0,
+          0.25
+        ]
+      }
+    },
+    "peak_worker_rss_mib": 793.3515625,
+    "cold_full_batch_difference": 0,
+    "cold_order_chunk_max_difference": 6.5375443512039055e-06,
+    "candidate_failed_conditions": {
+      "GLOBAL": [
+        "both_splits_improve",
+        "minimum_improved_folds"
+      ],
+      "PRESSURE": [
+        "both_splits_improve",
+        "minimum_improved_folds"
+      ]
+    },
+    "platform_queue_changed": false,
+    "current_best_changed": false,
+    "exploration_queue_decision": "GLOBAL exploration flag retained; near-zero mixed gains and eight zero corrections add insufficient new information for current queue; no general local-loss platform veto",
+    "elapsed_seconds_descriptive": 1861.0325672180043,
+    "scientific_retries": 0,
+    "execution_closure_snapshot": {
+      "status": "completed_honest_calibration_development_no_confirmation_or_release",
+      "G0": "passed_exact_source_1351_locked_tests_partitions_20_saved_states_cold_prediction_independent_arithmetic",
+      "G1": "GLOBAL_mixed_PRESSURE_both_negative_no_confirmation_no_formal_promotion"
+    }
   }
 }
