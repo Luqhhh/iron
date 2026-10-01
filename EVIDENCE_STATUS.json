@@ -18483,7 +18483,7 @@
     "decision": "no drift correction or new candidate/weight/threshold/queue; do not infer conditional equivalence or platform score transfer"
   },
   "ema_span_confirmation_preparation_20261001": {
-    "status": "factory_capture_and_cold_batch_audit_synthetic_path_verified_controller_and_scientific_freeze_pending",
+    "status": "confirmation_controller_and_protocol_locked_tests_passed_runtime_manifest_pending",
     "branch": "codex/ema-span-confirmation",
     "worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
     "base_commit": "3b6c280",
@@ -18508,7 +18508,7 @@
     "short_span_estimators_if_frozen": 10,
     "control_and_short_optimizer_runs_if_frozen": 40,
     "reference_internal_solver_optimizer_budget": "constructor_only_proposal_verified_not_scientifically_frozen",
-    "G0": "original_method_capture_and_cold_batch_audit_synthetic_path_verified_62_targeted_1420_locked_CPU_regression_passed_real_heterogeneous_factory_run_controller_and_scientific_freeze_pending",
+    "G0": "controller_component_bridge_composition_native_budgets_and_independent_gate_tested_81_targeted_1439_full_runtime_manifest_pending",
     "G1": "no_new_confirmation_observations_not_four_seed_promoted",
     "private_catalogue_receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-catalog-r1/catalogue.json",
     "catalogue_sha256": "c1da70f011c2dcd5b1815eeacf22f184e56bf36740551250692a5e67e09176ad",
@@ -18642,6 +18642,79 @@
       "checks_receipt_sha256": "18e7bf4bcd7a91e9741db62ef53dcbae4531811af6773419ce5292361868168a",
       "actual_official_new_fits": 0,
       "actual_optimizer_updates_in_capture_fixture": 0
+    },
+    "next_phase_state_key": "ema_span_confirmation_20261001",
+    "new_controller_tests": {
+      "targeted_passed": 81,
+      "full_passed": 1439,
+      "warnings": 24,
+      "skipped": 0,
+      "source_files": 751,
+      "common_existing_python_files": 694,
+      "receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-controller-full-r1/receipt.json",
+      "receipt_sha256": "03f45fcb8b4813c932c9ae81abe9acfc374d336d859dde175631cd17fe5807a5"
     }
+  },
+  "ema_span_confirmation_20261001": {
+    "status": "protocol_and_controller_tested_runtime_admission_pending",
+    "branch": "codex/ema-span-confirmation",
+    "worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
+    "protocol": "docs/ema_span_confirmation/PREREGISTRATION.md",
+    "specification": "configs/ema_span_confirmation/SPEC.json",
+    "specification_sha256": "cb7ff2d78e1b70f5219c778304b9a77a8048e9142db8497c425214984d985c24",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "thread_target": 96.45,
+    "candidate": "SHORT_SPAN",
+    "development_seeds_reused": [
+      42,
+      3407
+    ],
+    "confirmation_seeds_declared": [
+      271828,
+      314159
+    ],
+    "folds_per_seed": 5,
+    "reference_factory_calls_planned": 10,
+    "reference_pipeline_instances_planned": 320,
+    "new_component_estimators_planned": 20,
+    "native_budget_planned": {
+      "catboost_fit": 290,
+      "ebm_fit": 60,
+      "ebm_boost": 480,
+      "sklearn_mlp_fit": 10,
+      "torch_optimizer": 100
+    },
+    "new_retained_states_planned": 440,
+    "private_run": "/home/lux1/iron/local/runs/ema-span-confirmation-20261001/confirmation-r1",
+    "G0": "locked_controller_checks_passed_actual_runtime_manifest_and_scientific_execution_pending",
+    "G1": "two_positive_development_seeds_reused_no_confirmation_observations",
+    "tests": {
+      "targeted_passed": 81,
+      "full_passed": 1439,
+      "warnings": 24,
+      "skipped": 0,
+      "source_files": 751,
+      "common_existing_python_files": 694,
+      "receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-controller-full-r1/receipt.json",
+      "receipt_sha256": "03f45fcb8b4813c932c9ae81abe9acfc374d336d859dde175631cd17fe5807a5"
+    },
+    "constructor_input_probe_receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-constructor-inputs-r1/receipt.json",
+    "constructor_input_probe_sha256": "91fc21c42aad736810dd8ea552a20637e240996c85a50fd44a73970b63b7525a",
+    "constructor_official_csv_reads": 0,
+    "scientific_execution_admitted": false,
+    "new_confirmation_seeds_started": 0,
+    "new_scientific_fits": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "platform_queue_additions": 0,
+    "maximum_runtime_seconds": null,
+    "automatic_scientific_retries": false
   }
 }
