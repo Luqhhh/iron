@@ -5982,8 +5982,8 @@
     "status": "awaiting_original_artifacts",
     "plan": "docs/today_five_20261001/PLAN.md",
     "builder": "scripts/build_today_five.py",
-    "source_remote_commit": "6d6df2e",
-    "scientific_release_source_commit": "2c67896",
+    "source_remote_commit": "68b8c47",
+    "scientific_release_source_commit": "1666fd7",
     "platform_reference": "EMA_TIME_Q75",
     "platform_reference_score_user_reported": 96.3920,
     "candidate_names": [
@@ -5994,6 +5994,32 @@
       "05_DE3_IRON_EMA_Q75_RESERVE"
     ],
     "candidate_05_role": "existing_reserve_not_in_current_upload_queue",
+    "quota_snapshot": {
+      "date": "2026-10-01",
+      "remaining": 3,
+      "source": "explicit_user_statement",
+      "statement": "今天只有三次额度了",
+      "automatic_daily_reset_assumed": false
+    },
+    "initial_upload_order": ["01_PTARL_TIME_Q20", "02_EMA_IRON_EMA_Q75"],
+    "third_slot": {
+      "status": "held_until_first_two_platform_results",
+      "candidate_to_reassess": "03_DE3_IRON_EMA_PTARL_T50_50",
+      "must_use_slot": false,
+      "new_ptarl_plus_ema_iron_package_authorized": false
+    },
+    "deferred_today": ["04_DE3_IRON_EMA_Q875", "05_DE3_IRON_EMA_Q75_RESERVE"],
+    "teammate_original_release": {
+      "status": "completed_per_public_delivery_local_bytes_not_received",
+      "completed_local": "2026-10-01T01:32:45.725579+08:00",
+      "source_commit": "1666fd7",
+      "summary_sha256": "7477867a28230f53ac0821791609ccd556dc453f4b161d230106b44f52622c4e",
+      "packages": {
+        "PTARL_TIME_Q20": "a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d",
+        "EMA_IRON_EMA_TIME": "88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0"
+      },
+      "platform_scores": null
+    },
     "real_new_fits": 0,
     "real_submission_packages_generated": 0,
     "agent_uploads": 0,
