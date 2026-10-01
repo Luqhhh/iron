@@ -18325,7 +18325,7 @@
     }
   },
   "ema_average_span_20261001": {
-    "status": "frozen_protocol_implementation_and_execution_pending",
+    "status": "engineering_ready_exact_source_tests_passed_not_started",
     "branch": "codex/ema-average-span",
     "worktree": "/home/lux1/iron/local/worktrees/ema-average-span",
     "reference": {
@@ -18335,7 +18335,7 @@
       "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
     },
     "thread_target": 96.45,
-    "G0": "engineering_pending_no_new_scientific_fits",
+    "G0": "passed_1358_exact_source_locked_tests_20_old_controls_cold_and_original_cache_identities",
     "G1": "unmeasured",
     "preregistration": "docs/ema_average_span/PREREGISTRATION.md",
     "specification": "configs/ema_average_span/SPEC.json",
@@ -18367,6 +18367,19 @@
     "maximum_runtime_seconds": null,
     "private_run": "/home/lux1/iron/local/runs/ema-average-span-20261001/development-r1",
     "prior_calibration_status": "completed_no_confirmation_finalist",
-    "prior_failure_decisions_preserved": true
+    "prior_failure_decisions_preserved": true,
+    "implementation": "src/bf_tap_r2/ema_average_span.py",
+    "engineering": "docs/ema_average_span/ENGINEERING.md",
+    "locked_tests": {
+      "passed": 1358,
+      "skips": 0,
+      "warnings": 23,
+      "receipt": "local/runs/ema-average-span-20261001/tests-final-r2/receipt.json",
+      "receipt_sha256": "06529b55fead7b6c04d100cb3f0ba555cbf98b190352fc73231d0f73efcbac06"
+    },
+    "original_control_saved_models_checked": 20,
+    "original_control_full_batch_difference": 0,
+    "old_control_cold_receipt": "local/runs/ema-average-span-20261001/engineering-r1/old-controls-cold-r1.json",
+    "old_control_cold_sha256": "1393cab1857051c860f75547448cad09ee91c1affd4b58bc890ac7cf3ca9c1c0"
   }
 }
