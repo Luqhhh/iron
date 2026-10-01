@@ -1,0 +1,56 @@
+{
+  "strategy": "IRON_MAE_COMPACT_V1",
+  "status": "development_complete_negative_no_confirmation",
+  "G0": "passed",
+  "G1": "both_development_seed_endpoint_gains_negative_mechanism_mean_positive_but_mixed_sign",
+  "current_reference": "EMA_TIME_Q75_native_iron",
+  "platform_reference_score": 96.392,
+  "platform_reference_source": "user_reported_not_independently_verified",
+  "seed_gains": [
+    -0.03218905175600541,
+    -0.025960447539979285
+  ],
+  "control_gains": [
+    -0.02730185666376251,
+    -0.034407135976892676
+  ],
+  "mean_gain": -0.029074749647992344,
+  "mechanism_mean": 0.001779746672335247,
+  "mechanism_seed_gains": [
+    -0.004887195092242898,
+    0.008446688436913392
+  ],
+  "DE3_seed_gains": [
+    -0.03677010567592108,
+    -0.028537491579842485
+  ],
+  "historical_B0_equals_current_iron": true,
+  "complete_Q75_local_package_score_available": false,
+  "formal_promoted": false,
+  "selected_for_confirmation": [],
+  "release_authorized": false,
+  "platform_test_recommended": false,
+  "new_G0_states": 4,
+  "new_G0_optimizer_runs": 4,
+  "new_development_outer_arm_models": 20,
+  "new_development_states": 40,
+  "new_development_optimizer_runs": 40,
+  "reused_states": 0,
+  "confirmation_states": 0,
+  "confirmation_optimizer_runs": 0,
+  "reference_fits": 0,
+  "packages": 0,
+  "uploads": 0,
+  "implementation_commit": "a2a3ab9d7c1e936250c526e99dd4cbde251b87ff",
+  "preflight_sha256": "1039d056282be2a56d21969d2d1fb47ef07bae9e29f20ef1f413e40554b30a98",
+  "audit_sha256": "4fb08b24a85a471dd3e886b5e50424e43f541c76548bfe072becabe86110b46c",
+  "final_verification_sha256": "f7cbb48ba5917bc949c2eecdd1ca1cc88eecc5ca019c087cd85138f0cb888281",
+  "tests": {
+    "neural_python3123_passed": 1380,
+    "neural_warnings": 23,
+    "locked_python31213_passed": 1002,
+    "locked_skipped": 55,
+    "locked_warnings": 3
+  },
+  "results": "docs/iron_mae_compact_v1/RESULTS.md"
+}
