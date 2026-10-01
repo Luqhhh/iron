@@ -18481,5 +18481,45 @@
     "first_identity_rejection_preserved": true,
     "original_scientific_loader_and_live_EMA_scope": "unchanged",
     "decision": "no drift correction or new candidate/weight/threshold/queue; do not infer conditional equivalence or platform score transfer"
+  },
+  "ema_span_confirmation_preparation_20261001": {
+    "status": "engineering_preparation_only_no_frozen_scientific_budget",
+    "branch": "codex/ema-span-confirmation",
+    "worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
+    "base_commit": "3b6c280",
+    "documentation": "docs/ema_span_confirmation/PREPARATION.md",
+    "qualified_candidate": "SHORT_SPAN",
+    "qualification_source": "completed_audited_ema_average_span_20261001",
+    "candidate_development_tier": "exploration",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified"
+    },
+    "thread_target": 96.45,
+    "additional_seeds_proposed_not_frozen": [
+      271828,
+      314159
+    ],
+    "reference_factory_calls_if_frozen": 10,
+    "reference_pipeline_instances_per_factory": 32,
+    "reference_pipeline_instances_if_frozen": 320,
+    "old_beta_control_estimators_if_frozen": 10,
+    "short_span_estimators_if_frozen": 10,
+    "control_and_short_optimizer_runs_if_frozen": 40,
+    "reference_internal_solver_optimizer_budget": "pending_actual_call_capture_and_source_audit",
+    "G0": "constructor_only_catalogue_and_CPU_environment_verified_saved_state_adapter_controller_and_full_checks_pending",
+    "G1": "no_new_confirmation_observations_not_four_seed_promoted",
+    "private_catalogue_receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-catalog-r1/catalogue.json",
+    "catalogue_sha256": "c1da70f011c2dcd5b1815eeacf22f184e56bf36740551250692a5e67e09176ad",
+    "save_cold_gap": "original_reference_factory_discards_model_objects_capture_required_before_execution",
+    "new_fits": 0,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "platform_queue_additions": 0,
+    "scientific_execution_admitted": false
   }
 }
