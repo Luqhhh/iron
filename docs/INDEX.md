@@ -1,6 +1,6 @@
 # 项目文档索引
 
-更新日期：2026-10-01。执行规则见 [AGENTS.md](../AGENTS.md)；机器状态见 [EVIDENCE_STATUS.json](../EVIDENCE_STATUS.json)。本文的分数和交付状态是该日期的登记快照，后续以状态文件为准。README 按用户要求保持不变，不作为最新队列入口。
+更新日期：2026-10-02。执行规则见 [AGENTS.md](../AGENTS.md)；机器状态见 [EVIDENCE_STATUS.json](../EVIDENCE_STATUS.json)。本文的分数和交付状态是该日期的登记快照，后续以状态文件为准。README 按用户要求保持不变，不作为最新队列入口。
 
 ## 当前复赛状态
 
@@ -9,7 +9,7 @@
 | 平台回传同分最佳 | **EMA_TIME_Q75 / EMA_TIME_Q100 = 96.3920**；用户回传，未独立平台核验 |
 | 当前代表 | Q75，组件外推较小；未证明统计上独胜 |
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
-| 已完成的两项全量探索 | PTARL_TIME_Q20用户回传96.378，低于Q75；EMA_IRON_EMA_TIME已桌面交付，仍待用户反馈 |
+| 最新全量反馈 | PTARL_TIME_Q20=96.378、SHORT_SPAN_FULL_Q75=96.3911、EMA_IRON_EMA_TIME=96.3816；均为用户回传，低于Q75，无当前待反馈包 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
@@ -36,9 +36,10 @@
 - [EMA时长平均跨度完整结果](ema_average_span/RESULTS.md)：20估计器/40optimizer和独立终态审计通过；短跨度两seed均正、平均+.001788，按冻结规则进入确认准备，自动分类仍exploration；长跨度两seed均负，没有新平台包。
 - [EMA短跨度确认工程准备](ema_span_confirmation/PREPARATION.md)：控制器、原参照捕获、独立冷审计及预算冻结已完成；81项定向、1439项全库回归与实际启动准入通过，批次已完成，四切分及终态结果见下文。
 - [SHORT_SPAN四切分确认协议](ema_span_confirmation/PREREGISTRATION.md)：控制器、原EMA状态桥、独立原参照组合与seed算术通过81项定向及1439项全库检查；静态协议已声明两个额外seed，实际运行准入及初始进程身份已通过；完整额外seed及独立终态已通过审计，无新提交包。
-- [SHORT_SPAN四切分确认结果](ema_span_confirmation/RESULTS.md)：10单位/440状态及实际exit0通过；四个完整seed均正，平均+.001567、LCB95+.001047，原开发exploration保持；具体全量发布待授权，无新包。
+- [SHORT_SPAN四切分确认结果](ema_span_confirmation/RESULTS.md)：10单位/440状态及实际exit0通过；四个完整seed均正，平均+.001567、LCB95+.001047，原开发exploration保持；后续另获具体全量授权并已交付，平台反馈见下文。
 - [SHORT_SPAN全量本地交付](ema_short_release/DELIVERY.md)：明确授权的1全量程序/2Optimizer/1本地ZIP及独立冷推理、包回读、实际exit0全部通过；用户回传96.3911，低于Q75；桌面写入/助手上传0。
 - [SHORT_SPAN全量发布准备](ema_short_release/PREPARATION.md)：复用原训练/审计接口的单候选脚本通过39项定向及1464项全库检查，原EMA冷回放与Q75重建通过；原准备清单保持未准入；用户确认后的独立全量运行已完成，见上述交付，不继续扩展工程代码。
+- [ModernNCA相对Q75的固定开发准备](modernnca_q75_preparation/PREREGISTRATION.md)：Q75两完整开发切分参照零重训、一步全尺寸人工资源探针579MiB、39项原实现定向测试和独立评分算术通过；20配对/80状态/40optimizer预算已登记，正式拟合与队列仍未授权、G1未测。
 - [Q75后续特征支持描述](q75_feature_support/RESULTS.md)：零拟合、无目标读取；未见大范围单列外推，不证明条件同分布或平台排序。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
 

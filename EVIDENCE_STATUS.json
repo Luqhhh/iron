@@ -301,8 +301,8 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "as_of": "2026-10-01",
-    "status": "PTARL_TIME_Q20_SCORED_EMA_IRON_PENDING_RESERVE_DEFERRED",
+    "as_of": "2026-10-02",
+    "status": "LATEST_THREE_EXPLORATIONS_SCORED_BELOW_Q75_NO_PENDING_TEST_RESERVE_DEFERRED",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -324,18 +324,8 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [],
-    "submission_priority_note": "No new upload ordering or quota is inferred from documentation maintenance; these two packages were explicitly selected by the user.",
-    "ready_for_user_platform_testing": [
-      {
-        "candidate": "EMA_IRON_EMA_TIME",
-        "target": "tap_iron",
-        "package": "local/runs/ptarl-ema-exploration-release-20261001/release-r1/EMA_IRON_EMA_TIME/package/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0",
-        "platform_score": null,
-        "status": "audited_local_package_pending_user_platform_feedback",
-        "evidence_key": "ptarl_ema_user_exploration_release_20261001"
-      }
-    ],
+    "submission_priority_note": "Latest explicitly selected packages have received feedback; no new upload ordering or remaining quota is inferred, and the reserve remains deferred.",
+    "ready_for_user_platform_testing": [],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -354,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "Q75 remains the representative best at user-reported96.3920. PTARL_TIME_Q20 scored96.378, below Q75 by0.0140 and above its V32 reference by0.0053; it is no longer pending. EMA_IRON_EMA_TIME remains the only explicitly selected package pending feedback. Keep DE3+Q75 reserve deferred; no new package, upload order or quota inferred.",
+    "recommended": "Q75/Q100 remain co-best at user-reported96.3920. PTARL_TIME_Q20=96.378, SHORT_SPAN_FULL_Q75=96.3911, EMA_IRON_EMA_TIME=96.3816 are below Q75 and no longer pending. Seek independent representation evidence; ModernNCA is engineering-only. Keep DE3+Q75 reserve deferred; do not infer quota.",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -665,8 +655,49 @@
         "delta_vs_V32": 0.0053,
         "feedback_record": "local/runs/ptarl-ema-exploration-release-20261001/platform-feedback-r1/feedback.json",
         "feedback_sha256": "b7ed1507a42e28b81d4ebeb259601765da9f7e0740e4f37124853fa93de0653e"
+      },
+      {
+        "candidate": "SHORT_SPAN_FULL_Q75",
+        "list_index": 1,
+        "score": 96.3911,
+        "raw_reported_score": "96.3911",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "zip_sha256": "c42847af646202b66de615566f04a51c5e50ef3c1d19b664366f02d012370a93",
+        "package": "local/runs/ema-short-full-release-20261001/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0009,
+        "G0": "passed_bound_zip_crc_322_official_order_and_unchanged_other_column",
+        "G1": "this_fixed_recipe_below_current_incumbent",
+        "fixed_column": "pred_tap_iron",
+        "fixed_string_mismatches": 0,
+        "reported_date": "2026-10-01",
+        "feedback_record": "local/runs/ema-short-full-release-20261001/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
+      },
+      {
+        "candidate": "EMA_IRON_EMA_TIME",
+        "list_index": 2,
+        "score": 96.3816,
+        "raw_reported_score": "96.3816",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "zip_sha256": "88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0",
+        "package": "local/runs/ptarl-ema-exploration-release-20261001/release-r1/EMA_IRON_EMA_TIME/package/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0104,
+        "G0": "passed_bound_zip_crc_322_official_order_and_unchanged_other_column",
+        "G1": "this_fixed_recipe_below_current_incumbent",
+        "fixed_column": "pred_tap_time_len",
+        "fixed_string_mismatches": 0,
+        "reported_date": "2026-10-01",
+        "feedback_record": "local/runs/ema-short-full-release-20261001/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
       }
-    ]
+    ],
+    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2545,7 +2576,7 @@
     "results_document": "docs/optimization_v0_10/RESULTS.md"
   },
   "current_status": {
-    "as_of": "2026-10-01",
+    "as_of": "2026-10-02",
     "scope": "round2_current_overview",
     "documentation_index": "docs/INDEX.md",
     "rules_document": "AGENTS.md",
@@ -2569,12 +2600,10 @@
       "96.45": 0.058,
       "96.5": 0.108
     },
-    "latest_completed_release": "ptarl_ema_user_exploration_release_20261001",
-    "latest_G0": "saved_state_cold_and_isolated_release_verified",
-    "latest_G1": "PTARL_TIME_Q20_scored_below_Q75_EMA_IRON_EMA_TIME_pending_not_four_seed_promoted",
-    "ready_exploration_candidates": [
-      "EMA_IRON_EMA_TIME"
-    ],
+    "latest_completed_release": "ema_short_full_release_20261001",
+    "latest_G0": "passed_original_native_checkpoints_independent_cold_package_arithmetic_crc_template_and_actual_terminal",
+    "latest_G1": "SHORT_four_seed_local_gate_passed_user_reported_platform_below_Q75_EMA_iron_and_PTARL_also_below_Q75",
+    "ready_exploration_candidates": [],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_paused": false,
@@ -2953,7 +2982,9 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "q75_pressure_calibration_20261001"
+    "latest_completed_quality_experiment": "ema_span_confirmation_20261001",
+    "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
+    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -17191,7 +17222,8 @@
       "full_size_non_time_resource_admission",
       "exact_source_freeze"
     ],
-    "implementation_commit": "f4b0c9d"
+    "implementation_commit": "f4b0c9d",
+    "subsequent_current_Q75_preparation_key": "modernnca_q75_development_preparation_20261002"
   },
   "ptarl_resource_entry_retry_2026_09_30": {
     "status": "completed_full_development_no_finalist",
@@ -19168,5 +19200,72 @@
     "new_fits": 0,
     "new_packages": 0,
     "uploads": 0
+  },
+  "modernnca_q75_development_preparation_20261002": {
+    "status": "engineering_prepared_scientific_authorization_missing",
+    "documentation": "docs/modernnca_q75_preparation/PREREGISTRATION.md",
+    "private_preparation": "local/runs/modernnca-q75-readiness-20261001/preparation-r1",
+    "readiness_sha256": "94e0df58f1f946a61c35deb41d3f8822bba5b083250da7c9de55ee6e5abf0ae6",
+    "source_worktree": "/home/lux1/iron/local/worktrees/modernnca-source-preparation",
+    "original_source_commit": "f4b0c9d209e6a2d8285cd49314ec01e8f7cde3f7",
+    "source_files": 372,
+    "manifest_sha256": "7f9655625666153a44fdcf127e93949b2d40aee784feeb60ba61b129df5e851e",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "rows_per_seed": 2754,
+      "seeds": [
+        42,
+        3407
+      ],
+      "folds": 5,
+      "array_sha256": "717c8421a890374a22698c33e46ca702e407c08cf852035aa6d45283a5e52232",
+      "new_reference_fits": 0
+    },
+    "thread_target": 96.45,
+    "candidate": "LEARNED_ENCODER",
+    "control": "FIXED_ENCODER",
+    "isolated_weight": 0.2,
+    "declared_development_counts": {
+      "pair_unit": 20,
+      "estimator": 80,
+      "optimizer": 40
+    },
+    "official_candidate_fits": 0,
+    "confirmation_seeds_allocated": 0,
+    "G0": "preparation_checks_passed_not_a_completed_official_model_or_phase",
+    "G1": "unmeasured",
+    "full_size_resource_probe": {
+      "scope": "artificial_full_size_one_backward_and_inference_not_formal_training_admission",
+      "peak_rss_mib": 579.28515625,
+      "max_rss_mib": 1536,
+      "optimizer_steps": 0,
+      "official_data_reads": 0,
+      "one_backward_only": true,
+      "maximum_inference_difference": 9.71445146547012e-17
+    },
+    "locked_focused_tests": {
+      "passed": 39,
+      "full_suite": false,
+      "synthetic_training_fixtures": true
+    },
+    "independent_score_arithmetic_maximum_difference": 3.469446951953614e-16,
+    "source_model_and_original_protocol_changed": false,
+    "scientific_execution_admitted": false,
+    "formal_queue_started": false,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "remaining_quota_inferred": false,
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_scientific_retries": false,
+    "original_preparation_failures_preserved": [
+      "reference_field_mapping",
+      "test_filename_selection",
+      "isolated_import_path"
+    ]
   }
 }
