@@ -2629,7 +2629,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "recorded release completion only; no global live-process polling in this documentation update",
+    "runtime_observation": "owned_dropout_training_and_independent_audit_actual_exit0_complete_specific_processes_absent_no_global_polling",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3010,7 +3010,10 @@
     "latest_local_G0": "report_only_recovery_exit0_independent_audit_passed_original_exit1_preserved",
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
-    "latest_registered_scientific_route": "ema_dropout_consistency_preparation_20261002"
+    "latest_registered_scientific_route": "ema_dropout_consistency_preparation_20261002",
+    "latest_completed_scientific_route": "ema_dropout_consistency_preparation_20261002",
+    "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
+    "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_and_matched_pair_control_confirmation_gate_failed"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -19886,7 +19889,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "first_actions_and_matching_followups_completed_one_platform_exploration_untested_no_new_finalists",
+    "status": "registered_dropout_followup_closed_no_new_finalist_one_existing_platform_probe_untested",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -19906,12 +19909,12 @@
     "de3_q75_reserve_deferred": true,
     "uploads": 0,
     "results": "docs/q75_9645_execution/RESULTS.md",
-    "new_scientific_optimizer_runs": 120,
+    "new_scientific_optimizer_runs": 160,
     "new_packages": 1,
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "target_met": false,
-    "remaining_work": "user_platform_feedback_on_existing_combo_probe; target_unmet_further_independent_routes_require_new_phase_freeze",
+    "remaining_work": "existing_combo_probe_user_platform_feedback; target_unmet_next_distinct_route_requires_history_review_and_fresh_phase_freeze",
     "next_execution_documentation": "docs/ema_retraining_validation/STATUS.md",
     "history_before_matching_followup_closure_20261002": {
       "status": "first_three_actions_completed_one_platform_exploration_ready_reserves_registered",
@@ -19935,9 +19938,13 @@
       "ema_retraining_step_matching_20261002",
       "ema_component_calibration_preparation_20261002"
     ],
-    "latest_followup_results": "docs/ema_component_calibration/RESULTS.md",
-    "active_preregistered_followup": "ema_dropout_consistency_preparation_20261002",
-    "active_followup_optimizer_budget": 40
+    "latest_followup_results": "docs/ema_dropout_consistency/RESULTS.md",
+    "active_preregistered_followup": null,
+    "active_followup_optimizer_budget": 0,
+    "dropout_followup_optimizer_runs": 40,
+    "dropout_followup_engineering_optimizer_runs": 2,
+    "dropout_followup_result_key": "ema_dropout_consistency_preparation_20261002",
+    "latest_completed_followup": "ema_dropout_consistency_preparation_20261002"
   },
   "q75_combination_review_20261002": {
     "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
@@ -20667,7 +20674,7 @@
     }
   },
   "ema_dropout_consistency_preparation_20261002": {
-    "status": "scientific_development_running_full_two_split_paired_scope",
+    "status": "completed_fixed_consistency_recipe_not_shortlisted",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -20687,13 +20694,13 @@
       "PAIR_CONTROL": 0.0,
       "CONSISTENCY": 0.5
     },
-    "G0": "24_locked_scoped_tests_full_shape_synthetic_learnability_independent_cold_and_actual_exit0_passed_scientific_cold_pending",
-    "G1": "unmeasured_until_complete_two_split_OOF_and_independent_audit",
+    "G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
+    "G1": "two_complete_seeds_negative_vs_Q75_and_matched_pair_control_confirmation_gate_failed",
     "focused_tests_passed": 24,
     "focused_tests_skipped": 0,
     "full_test_suite": false,
-    "scientific_model_fits": null,
-    "scientific_optimizer_runs": null,
+    "scientific_model_fits": 20,
+    "scientific_optimizer_runs": 40,
     "planned_scientific_estimators": 20,
     "planned_scientific_optimizer_runs": 40,
     "planned_cold_states": 40,
@@ -20710,7 +20717,7 @@
     "actual_admission_controller_pid": 275185,
     "actual_admission_proc_start_ticks": 11354398,
     "started_ns": 1790889811964262259,
-    "next_scheduled_observation_ns": 1790892262550568073,
+    "next_scheduled_observation_ns": null,
     "engineering_manifest": {
       "path": "local/runs/ema-dropout-consistency-20261002/admission-r1/manifest.json",
       "sha256": "ef331f96d5bebdb1209578edd338569e21b81b6466aba3ffd86732744098d756"
@@ -20798,7 +20805,7 @@
       ]
     },
     "source_hashes_in_tests": 386,
-    "actual_counts_pending_terminal": true,
+    "actual_counts_pending_terminal": false,
     "scientific_run": "local/runs/ema-dropout-consistency-20261002/development-r1",
     "scientific_manifest": {
       "path": "local/runs/ema-dropout-consistency-20261002/development-r1/manifest.json",
@@ -20859,6 +20866,87 @@
         "path": "local/runs/ema-dropout-consistency-20261002/admission-r1/actual-main-exit.json",
         "sha256": "02d5f15591a15807009f02a5fd3fba0e134872378c5d6bde9dca56072d306c63"
       }
-    }
+    },
+    "actual_new_cold_states": 40,
+    "actual_reused_cold_states": 20,
+    "actual_scientific_child_exit_codes": [
+      0,
+      0
+    ],
+    "actual_scientific_supervisor_exit_code": 0,
+    "development_controller_running": false,
+    "scientific_observer_running": false,
+    "scientific_completed_ns": 1790897562748627788,
+    "scientific_peak_rss_mib": {
+      "development": 854.52734375,
+      "independent_audit": 544.83984375
+    },
+    "full_batch_cold_difference": 0,
+    "maximum_order_chunk_difference": 1.295262751455084e-05,
+    "maximum_scalar_difference": 1.4210854715202004e-14,
+    "scientific_terminal_evidence": {
+      "manifest.json": {
+        "path": "local/runs/ema-dropout-consistency-20261002/development-r1/manifest.json",
+        "sha256": "6a58c9feedfe09826cd91d0b23e86c537430996c5943bda68926bea152c0b72f"
+      },
+      "report.json": {
+        "path": "local/runs/ema-dropout-consistency-20261002/development-r1/report.json",
+        "sha256": "5a85c6a3653fccfbbe67304790e45deaa501d07264cba11a7c2ac7277cf54240"
+      },
+      "independent-score.json": {
+        "path": "local/runs/ema-dropout-consistency-20261002/development-r1/independent-score.json",
+        "sha256": "541f9a637d60eefbc3fcca2c42648999fcabc7e623df69514ac8e64c3141a67a"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/ema-dropout-consistency-20261002/development-r1/terminal-verification.json",
+        "sha256": "ab77ebf3297f8118fe70f3d3fa39a78993f9d67d0d2c0b4b2ea11437695c7341"
+      },
+      "actual-main-exit.json": {
+        "path": "local/runs/ema-dropout-consistency-20261002/development-r1/actual-main-exit.json",
+        "sha256": "58a97717c09203780cfdb945be3e6d4be06a1c26add5839227dd95fef11d3885"
+      }
+    },
+    "complete_OOF_rows_per_seed": {
+      "42": 2754,
+      "3407": 2754
+    },
+    "package_score_records": {
+      "42": {
+        "scores": {
+          "Q75": 96.23658014851011,
+          "PAIR_CONTROL": 96.23754008174532,
+          "CONSISTENCY": 96.23348004592306
+        },
+        "gains": {
+          "PAIR_CONTROL": 0.0009599332352081547,
+          "CONSISTENCY": -0.0031001025870551757
+        },
+        "matched_consistency_gain": -0.00406003582226333
+      },
+      "3407": {
+        "scores": {
+          "Q75": 96.22988142941723,
+          "PAIR_CONTROL": 96.2253184566327,
+          "CONSISTENCY": 96.22106184091814
+        },
+        "gains": {
+          "PAIR_CONTROL": -0.004562972784526664,
+          "CONSISTENCY": -0.008819588499093811
+        },
+        "matched_consistency_gain": -0.004256615714567147
+      }
+    },
+    "mean_package_gain": {
+      "PAIR_CONTROL": -0.0018015197746592548,
+      "CONSISTENCY": -0.0059598455430744934
+    },
+    "mean_matched_consistency_gain": -0.004158325768415239,
+    "automatic_tier": "not_shortlisted",
+    "confirmation_eligible": false,
+    "formal_promotion": false,
+    "selected_for_confirmation": null,
+    "platform_exploration": "not_scheduled_for_this_fixed_recipe_consistently_negative_vs_both_comparators_no_demonstrated_mechanism_advantage_existing_transfer_probe_pending",
+    "local_gain_is_sole_platform_selection_criterion": false,
+    "results_document": "docs/ema_dropout_consistency/RESULTS.md"
   }
 }
