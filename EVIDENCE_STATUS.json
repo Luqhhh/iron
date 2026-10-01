@@ -17932,6 +17932,20 @@
         "new_fits": 0,
         "new_packages": 0,
         "agent_uploads": 0
+      },
+      {
+        "candidate": "EMA_IRON_EMA_TIME",
+        "status": "copied_verified",
+        "authorization": "用户明确指令：写桌面（承接EMA_IRON_EMA_TIME推荐）",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-IRON-EMA-TIME-20261001/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0",
+        "source_package": "/home/lux1/iron/local/runs/ptarl-ema-exploration-release-20261001/release-r1/EMA_IRON_EMA_TIME/package/Luqhhh_bf_tap_predict_round2.zip",
+        "receipt": "local/runs/ptarl-ema-exploration-release-20261001/desktop-handoff-r2/receipt.json",
+        "receipt_sha256": "9a325735f4cfba9b16586ee4e1439576a8a8d58a6e598e7fd598478f1367e9af",
+        "desktop_copies": 1,
+        "new_fits": 0,
+        "new_packages": 0,
+        "agent_uploads": 0
       }
     ],
     "platform_feedback_history": [

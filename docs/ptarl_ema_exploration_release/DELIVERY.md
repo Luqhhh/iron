@@ -119,3 +119,13 @@ G0：原发布清单 1837 个文件和两 ZIP 身份复核；对应 Q75 绝对�
 本地同背景Q75增益均值+0.007868，与本次平台−0.0140符号相反；上文等幅迁移仅是条件情景，本次实测与该假设不一致，不由此拟合固定转移偏移或推算整体误筛率。上文“两个待反馈”和桌面交付时“待反馈”均为历史阶段；当前PTARL_TIME_Q20从待测列表移出，EMA_IRON_EMA_TIME仍待用户反馈，DE3+Q75仍仅替补。
 
 G0：原包与桌面字节身份、隔离列及ZIP结构通过；G1：用户指定探索低于当前incumbent，未形成新的正式晋级。反馈登记新增拟合/包/桌面写入/助手上传均0，不推断账号剩余额度。私有追加反馈 `local/runs/ptarl-ema-exploration-release-20261001/platform-feedback-r1/feedback.json`，SHA-256 `b7ed1507a42e28b81d4ebeb259601765da9f7e0740e4f37124853fa93de0653e`；原模型、预测、提交包和失败证据全部保留。
+
+
+## EMA_IRON_EMA_TIME 用户授权桌面交付（2026-10-01）
+
+用户在EMA铁量包推荐后明确要求“写桌面”，原始 `EMA_IRON_EMA_TIME` ZIP 已复制到
+`C:\Users\lqh22\Desktop\submission-EMA-IRON-EMA-TIME-20261001\Luqhhh_bf_tap_predict_round2.zip`。
+复制后 SHA-256 为 `88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0`，与原发布包字节精确一致；ZIP仅含 `result.csv`，CRC、322个唯一ID及预测有限非负检查通过。
+
+G0：本次桌面复制通过；G1：仍为用户指定探索，等待用户平台反馈，当前最佳保持Q75/Q100的96.3920。本次复制1份，新增拟合/包/助手上传均0；原发布阶段的桌面写入0和先前PTaRL交付记录保持。
+私有收据 `local/runs/ptarl-ema-exploration-release-20261001/desktop-handoff-r2/receipt.json`，SHA-256 `9a325735f4cfba9b16586ee4e1439576a8a8d58a6e598e7fd598478f1367e9af`；状态文件仅追加 `desktop_handoffs` 记录，收据和ZIP不入Git。
