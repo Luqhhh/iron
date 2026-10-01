@@ -1,0 +1,54 @@
+{
+  "strategy": "VIME_REG_IRON_V1",
+  "status": "development_complete_negative_no_confirmation",
+  "G0": "passed",
+  "G1": "two_complete_development_seeds_negative",
+  "current_reference": "EMA_TIME_Q75_native_iron",
+  "registered_score": 96.392,
+  "score_source": "user_reported_not_independently_verified",
+  "seed_gains": [
+    -0.042866388112861926,
+    -0.035490794010776025
+  ],
+  "control_seed_gains": [
+    -0.023321756648476633,
+    -0.033275255007817306
+  ],
+  "mean_gain": -0.03917859106181898,
+  "mechanism_mean": -0.010880085233672007,
+  "DE3_seed_gains": [
+    -0.04744744203277904,
+    -0.03806783805064313
+  ],
+  "historical_B0_gain_equals_current_iron_gain": true,
+  "formal_promoted": false,
+  "selected_for_confirmation": [],
+  "release_authorized": false,
+  "platform_test_recommended": false,
+  "local_negative_is_not_platform_forecast": true,
+  "new_engineering_states": 2,
+  "new_engineering_optimizer_runs": 4,
+  "reused_engineering_control_states": 2,
+  "new_development_outer_models": 10,
+  "new_development_states": 20,
+  "new_development_optimizer_runs": 40,
+  "reused_development_control_states": 20,
+  "development_cold_models": 40,
+  "confirmation_states": 0,
+  "confirmation_optimizer_runs": 0,
+  "reference_fits": 0,
+  "packages": 0,
+  "uploads": 0,
+  "complete_Q75_package_local_score_available": false,
+  "implementation_commit": "c89487c49f0001f82596cecc7d19a66b8d14e534",
+  "preflight_sha256": "55ef6afab7bd85ae53f4bab91a82a2ee6f6626e5c4303776396e734533b42f3f",
+  "development_audit_sha256": "c6841a0a12b68f60c78281d8237d426e6f88601e03eeea26971af6cab9a7066b",
+  "independent_decision_sha256": "d25bd2687440b1674896699347acc1f68a8b3530304010dd59bdb0634464617a",
+  "final_verification_sha256": "396d27ead2103c10f02fe6be65662e7fa392f061bc1a9d53cf052415af0b4bd8",
+  "tests": {
+    "neural_python3123_passed": 1375,
+    "locked_python31213_passed": 1001,
+    "locked_skipped": 54
+  },
+  "results": "docs/vime_reg_iron_v1/RESULTS.md"
+}
