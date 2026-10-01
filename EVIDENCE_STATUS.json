@@ -18821,7 +18821,7 @@
     }
   },
   "tabm_time_swa_confirmation_handoff_20261001": {
-    "status": "prospective_confirmation_scope_frozen_handoff_packaging_pending",
+    "status": "frozen_private_handoff_delivered_to_authorized_desktop_no_scientific_execution",
     "authorization": "user_explicit_new_confirmation_using_existing_271828_314159_and_private_package_to_desktop",
     "identity": "TABM_TIME_SWA_CONFIRM_CONTINUATION_20261001",
     "branch": "codex/tabm-time-swa-continuation",
@@ -18869,7 +18869,7 @@
       "explicit_worktree_PYTHONPATH": "src",
       "initial_import_path_failure_preserved": true
     },
-    "G0": "prospective_scope_and_zero_fit_reference_import_checks_passed_portable_package_audit_pending",
+    "G0": "producer_30_tests_and_independent_portable_process_ZIP_CRC_desktop_byte_identity_passed_receiver_original_development_admission_pending",
     "G1": "only_teammate_reported_two_positive_development_seeds_not_four_seed_promoted",
     "new_scientific_fits_here": 0,
     "label_values_read_here": 0,
@@ -18878,6 +18878,30 @@
     "full_data_fits": 0,
     "platform_submission_packages": 0,
     "uploads": 0,
-    "original_scientific_sources_protocol_development_classification_and_wait_record_changed": false
+    "original_scientific_sources_protocol_development_classification_and_wait_record_changed": false,
+    "delivery_date": "2026-10-02",
+    "delivery_doc": "docs/tabm_time_swa_continuation/DELIVERY.md",
+    "private_handoff": {
+      "source_commit": "91a47f80b9baa5629e253f1390a978c7fb1aaea8",
+      "archive": "local/handoffs/swa-confirmation-271828-314159-20261001-r1/SWA_confirmation_271828_314159_handoff_20261001.zip",
+      "archive_sha256": "b778428f0857d695bcce45799a1f51004c171c5bf1aa63fd3ef76b140adf7217",
+      "archive_bytes": 16511014,
+      "manifest_sha256": "4f7f04e00f8f5d79dad26e3b66c5e5f6d5789c9993dca250ce6482393d015e9f",
+      "payload_files": 521,
+      "direct_original_evidence_files": 98,
+      "packaging_receipt": "local/handoffs/swa-confirmation-271828-314159-20261001-r1/packaging-receipt.json",
+      "packaging_receipt_sha256": "8eff771a0c8531a2c4bf3641cd2120d72ed59935bdec6f189230fbb4edf34e31",
+      "cold_portable_process_verification": "passed",
+      "zip_crc": "passed"
+    },
+    "desktop": {
+      "directory": "/mnt/c/Users/lqh22/Desktop/SWA-confirmation-handoff-20261001",
+      "zip": "/mnt/c/Users/lqh22/Desktop/SWA-confirmation-handoff-20261001/SWA_confirmation_271828_314159_handoff_20261001.zip",
+      "copied_files": 4,
+      "all_source_byte_identities": "passed",
+      "zip_crc": "passed",
+      "receipt": "local/handoffs/swa-confirmation-271828-314159-20261001-r1/desktop-receipt.json",
+      "receipt_sha256": "9cc5dbfec485426caad2e1c986ef90f7e0988adfda0b7e59a2dab43f569a8235"
+    }
   }
 }
