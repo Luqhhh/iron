@@ -18819,5 +18819,65 @@
       "copies": 2,
       "source_byte_identity_crc_template_order_and_preserved_columns": "passed"
     }
+  },
+  "tabm_time_swa_confirmation_handoff_20261001": {
+    "status": "prospective_confirmation_scope_frozen_handoff_packaging_pending",
+    "authorization": "user_explicit_new_confirmation_using_existing_271828_314159_and_private_package_to_desktop",
+    "identity": "TABM_TIME_SWA_CONFIRM_CONTINUATION_20261001",
+    "branch": "codex/tabm-time-swa-continuation",
+    "original_source_commit": "15afe0ab125934e2a100416a99e34b15964779c8",
+    "original_SWA_spec_sha256": "319026d527166ca94b952b06d182a45ad14a92d81636e3b6b204b040deb2ff84",
+    "confirmation_spec": "configs/tabm_time_swa_continuation/CONFIRMATION_SPEC.json",
+    "confirmation_spec_sha256": "adc184d4f8f48affb84f6a68c4d5ffa6b286a5007adb02998039650cfa542c24",
+    "preregistration": "docs/tabm_time_swa_continuation/PREREGISTRATION.md",
+    "handoff_instructions": "docs/tabm_time_swa_continuation/HANDOFF.md",
+    "retained_development_seeds": [
+      42,
+      3407
+    ],
+    "new_confirmation_seeds": [
+      271828,
+      314159
+    ],
+    "original_confirmation_seeds_unchanged": [
+      7777,
+      12011
+    ],
+    "reference_export_binding_sha256": "823c3bb68d4bcaf01e35bca34314da1175c69f405e0afe06fc665d7b4a3bae09",
+    "reference_coverage": {
+      "seeds": [
+        42,
+        3407,
+        271828,
+        314159
+      ],
+      "rows_each": 2754,
+      "folds_each": 5,
+      "direct_frozen_evidence_files": 98,
+      "row_order": "sample_id_lexicographic_reindex_required"
+    },
+    "confirmation_optimizer_budget": 40,
+    "budget_replaces_original_unconsumed_confirmation": true,
+    "original_confirmations_must_have_zero_started_or_reserved": true,
+    "receiver_must_verify_original_development_and_close_execution_manifest": true,
+    "producer_checks": {
+      "receipt": "local/research/swa-handoff-checks-r1/receipt.json",
+      "sha256": "c3811b8d46a12328eff12fa7a504516ba5065e0ba660eb007fb95752b6009a3d",
+      "python_series": "3.12",
+      "pytest_passed": 30,
+      "pytest_skipped": 0,
+      "explicit_worktree_PYTHONPATH": "src",
+      "initial_import_path_failure_preserved": true
+    },
+    "G0": "prospective_scope_and_zero_fit_reference_import_checks_passed_portable_package_audit_pending",
+    "G1": "only_teammate_reported_two_positive_development_seeds_not_four_seed_promoted",
+    "new_scientific_fits_here": 0,
+    "label_values_read_here": 0,
+    "new_reference_fits": 0,
+    "scientific_execution_started_here": false,
+    "full_data_fits": 0,
+    "platform_submission_packages": 0,
+    "uploads": 0,
+    "original_scientific_sources_protocol_development_classification_and_wait_record_changed": false
   }
 }

@@ -67,3 +67,10 @@ SHA256 与各原包精确一致；CRC、322 个唯一 ID、原模板次序、有
 `local/runs/round2-two-slot-selection-20261001/desktop-handoff-r1/receipt.json`，
 SHA256 `b7d09e72d8fd7768fceffd9e05e1400db84b59cc7e33d16f5895116da0764597`。
 这些文件仍由用户上传；本次新增拟合/包/助手上传0，没有推断后续剩余额度。
+
+## 后续明确授权：独立接续确认交接
+
+用户随后授权另行冻结271828/314159接续确认，并要求打包写桌面。
+前面的准备与等待记录保留；新阶段见 [PREREGISTRATION.md](PREREGISTRATION.md)，
+队友执行说明见 [HANDOFF.md](HANDOFF.md)。本机不再等待队友把开发原件搬来；
+接收方在原件所在机器核验准入并继续。确认拟合尚未在本机启动。
