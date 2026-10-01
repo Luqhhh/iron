@@ -27,10 +27,10 @@
 
 ## 当前维护入口
 
-- [96.45本轮实施顺序](q75_9645_execution/PLAN.md)与[完整结果](q75_9645_execution/RESULTS.md)：三项首批工作闭合，只有一个组合探索包待测；训练seed及程序匹配、条件残差依次作储备。
+- [96.45本轮实施顺序](q75_9645_execution/PLAN.md)与[完整结果](q75_9645_execution/RESULTS.md)：首批工作及初始化、更新步数、组件校准均已闭合；后续配对门未过，仍只有原组合探索包待测。
 - [含EMA零拟合组合结果](q75_combination_review/RESULTS.md)：六项、四个完整已有seed；开发首选N_TO_V36005均值+.006667、LCB95+.005809，[单一探索探针](q75_combination_review/DELIVERY.md)已通过独立回读，平台未测。
 - [按最终融合效果选轮协议](ema_fusion_selection/PREREGISTRATION.md)与[完整配对结果](ema_fusion_selection/RESULTS.md)：30optimizer/40状态及独立终态G0通过；选轮独立收益一正一负，不进入确认。
-- [EMA组件同模型校准准备](ema_component_calibration/PREREGISTRATION.md)：复用已保存的F模型，30项锁定Python3.12相关检查通过；等待训练随机性与更新步数两阶段真实终态，尚未正式评估或加入平台队列。
+- [EMA组件同模型校准结果](ema_component_calibration/RESULTS.md)：80次校正估计、20个冷query见证及两个完整OOF已闭合；原报告错误exit 1保留，另目录零拟合恢复及独立计分exit 0通过。全局/压差相对Q75均两切分负、相对同F模型均一正一负，无确认或新包；前序初始化、更新步数匹配亦未过各自冻结配对门。
 - [实施报告](report.md)、[任务范围](task_contract.md)、[发布身份](release_identity.md)、[提交与反馈记录](submission_log.md)。
 - [候选分类及正式晋级边界](candidate_tiers.md)、[数据契约范围](data_contract.md)、[待确认语义与平台口径](rule_questions.md)。
 - [四项本地/平台诊断反馈](local_platform_diagnostic_release/DELIVERY.md)：四项均已回传，SAM 时长反转，EMA 时长获益。

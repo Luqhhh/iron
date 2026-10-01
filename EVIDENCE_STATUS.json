@@ -359,7 +359,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "One EMA-inclusive N-to-V36 probe is ready after four-seed review and independent package replay; platform gain is unmeasured. Q75/Q100=96.3920 remain user-reported co-best. Original ModernNCA MSE development and the paired EMA selector are complete without confirmation finalists; selector-specific gain is one positive/one negative against its matched control. Preserve seed stability/program matching as later work and DE3+Q75 as deferred reserve. Other isolated ModernNCA stages retain their own status.",
+    "recommended": "Existing EMA_Q75_N_TO_V36_P05 remains user-reported untested; user uploads and no remaining quota inferred. Q75/Q100=96.3920 stay user-reported co-best. EMA initialization mean, exact update matching and matched-component GLOBAL/PRESSURE calibration completed without frozen-gate confirmation finalists; original failed calibration report is preserved with zero-fit report-only recovery. DE3+Q75 stays deferred reserve; no new package from these diagnostics.",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -712,7 +712,10 @@
         "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
       }
     ],
-    "modernnca_result_key": "modernnca_median_head_20261002"
+    "modernnca_result_key": "modernnca_median_head_20261002",
+    "history_before_matching_followup_closure_20261002": {
+      "recommended": "One EMA-inclusive N-to-V36 probe is ready after four-seed review and independent package replay; platform gain is unmeasured. Q75/Q100=96.3920 remain user-reported co-best. Original ModernNCA MSE development and the paired EMA selector are complete without confirmation finalists; selector-specific gain is one positive/one negative against its matched control. Preserve seed stability/program matching as later work and DE3+Q75 as deferred reserve. Other isolated ModernNCA stages retain their own status."
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2618,7 +2621,9 @@
     "latest_completed_release": "ema_short_full_release_20261001",
     "latest_G0": "passed_original_native_checkpoints_independent_cold_package_arithmetic_crc_template_and_actual_terminal",
     "latest_G1": "SHORT_four_seed_local_gate_passed_user_reported_platform_below_Q75_EMA_iron_and_PTARL_also_below_Q75",
-    "ready_exploration_candidates": [],
+    "ready_exploration_candidates": [
+      "EMA_Q75_N_TO_V36_P05"
+    ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_paused": false,
@@ -3000,7 +3005,11 @@
     "latest_completed_quality_experiment": "modernnca_mae_q75_development_20261002",
     "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
-    "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002"
+    "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
+    "latest_local_diagnostic": "ema_component_calibration_preparation_20261002",
+    "latest_local_G0": "report_only_recovery_exit0_independent_audit_passed_original_exit1_preserved",
+    "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
+    "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -19876,7 +19885,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "first_three_actions_completed_one_platform_exploration_ready_reserves_registered",
+    "status": "first_actions_and_matching_followups_completed_one_platform_exploration_untested_no_new_finalists",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -19884,13 +19893,9 @@
     "gap_to_target": 0.058,
     "documentation": "docs/q75_9645_execution/PLAN.md",
     "priority": [
-      "one_fixed_weight_transfer_probe_pending_user_platform_feedback",
-      "paired_EMA_time_initialization_stability",
-      "selector_refit_update_matching_separate_phase"
+      "one_fixed_weight_transfer_probe_pending_user_platform_feedback"
     ],
-    "reserve": [
-      "honest_low_complexity_conditional_residual_after_matching"
-    ],
+    "reserve": [],
     "deprioritized": [
       "ordinary_tree_expansion",
       "repeated_generic_MAE_Huber",
@@ -19900,13 +19905,36 @@
     "de3_q75_reserve_deferred": true,
     "uploads": 0,
     "results": "docs/q75_9645_execution/RESULTS.md",
-    "new_scientific_optimizer_runs": 30,
+    "new_scientific_optimizer_runs": 120,
     "new_packages": 1,
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "target_met": false,
-    "remaining_work": "user_platform_feedback_on_single_combo_probe; future_seed_stability_and_program_matching_separately_preregistered",
-    "next_execution_documentation": "docs/ema_retraining_validation/STATUS.md"
+    "remaining_work": "user_platform_feedback_on_existing_combo_probe; target_unmet_further_independent_routes_require_new_phase_freeze",
+    "next_execution_documentation": "docs/ema_retraining_validation/STATUS.md",
+    "history_before_matching_followup_closure_20261002": {
+      "status": "first_three_actions_completed_one_platform_exploration_ready_reserves_registered",
+      "priority": [
+        "one_fixed_weight_transfer_probe_pending_user_platform_feedback",
+        "paired_EMA_time_initialization_stability",
+        "selector_refit_update_matching_separate_phase"
+      ],
+      "reserve": [
+        "honest_low_complexity_conditional_residual_after_matching"
+      ],
+      "new_scientific_optimizer_runs": 30,
+      "remaining_work": "user_platform_feedback_on_single_combo_probe; future_seed_stability_and_program_matching_separately_preregistered"
+    },
+    "first_actions_optimizer_runs": 30,
+    "matching_followup_optimizer_runs": 90,
+    "matching_followup_correction_fit_calls": 80,
+    "matching_followup_new_packages": 0,
+    "matching_followup_result_keys": [
+      "ema_retraining_initialization_20261002",
+      "ema_retraining_step_matching_20261002",
+      "ema_component_calibration_preparation_20261002"
+    ],
+    "latest_followup_results": "docs/ema_component_calibration/RESULTS.md"
   },
   "q75_combination_review_20261002": {
     "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
@@ -20312,7 +20340,7 @@
     }
   },
   "ema_retraining_step_matching_20261002": {
-    "status": "implemented_tested_serial_queue_after_initialization_audit",
+    "status": "completed_paired_development_one_negative_split_no_confirmation",
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
     "source": "user_reported_not_independently_verified",
@@ -20332,8 +20360,8 @@
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": false,
-    "G0": "1481_locked_tests_no_skips_and_synthetic_native_new_process_cold_passed_scientific_phase_pending",
-    "G1": "unmeasured_before_complete_OOF",
+    "G0": "10_native_optimizer_30_cold_states_complete_independent_scalar_and_actual_terminal_passed",
+    "G1": "EMA_UPDATES_one_positive_one_negative_vs_Q75_failed_frozen_two_split_gate",
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "packages": 0,
@@ -20344,7 +20372,87 @@
     "start_condition": "initialization_terminal_passed_then_new_phase_freeze_and_latest_reference_check",
     "tests_passed": 1481,
     "tests_skipped": 0,
-    "source_commit": "5faffd3"
+    "source_commit": "5faffd3",
+    "actual_optimizer_runs": 10,
+    "actual_cold_states": 30,
+    "actual_exit_codes": [
+      0,
+      0
+    ],
+    "peak_rss_mib": 708.328125,
+    "manifest_sha256": "35bf852dd0a3de1dbbfb28831523ef434b1c455351e0645f06fa5b9f08fef24a",
+    "gains_vs_Q75": {
+      "42": 0.003033027002473432,
+      "3407": -0.0023909321154178542
+    },
+    "paired_vs_Q75": {
+      "n": 2,
+      "mean": 0.0003210474435277888,
+      "sd": 0.003835318273139533,
+      "se": 0.002711979558945643,
+      "lcb95": -0.016801717604533004,
+      "positive": 1
+    },
+    "confirmation_eligible": false,
+    "formal_promotion": false,
+    "automatic_development_tier": "exploration_not_frozen_phase_pass",
+    "independent_scalar_maximum_difference": 1.4210854715202004e-14,
+    "controller_running": false,
+    "observer_running": false,
+    "monitoring_stopped_after_actual_terminal": true,
+    "terminal_evidence": {
+      "manifest.json": {
+        "path": "local/runs/ema-retraining-step-matching-20261002/development-r1/manifest.json",
+        "sha256": "35bf852dd0a3de1dbbfb28831523ef434b1c455351e0645f06fa5b9f08fef24a"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/ema-retraining-step-matching-20261002/development-r1/terminal-verification.json",
+        "sha256": "d3e45a3efb99281587ae6a7c6918f1259fcf8eaa5e9ddce1f18f50ccbfe96d27"
+      },
+      "report.json": {
+        "path": "local/runs/ema-retraining-step-matching-20261002/development-r1/report.json",
+        "sha256": "c98a8377a3c1f9492b2689f478f199bc757d46171185b3ae9ddd4534bac74ae8"
+      },
+      "independent-score.json": {
+        "path": "local/runs/ema-retraining-step-matching-20261002/development-r1/independent-score.json",
+        "sha256": "fc0f8681f0f3ec4a6ecd7bc44f443090a517565dda402da114131008310177a0"
+      }
+    },
+    "history_before_terminal_registration": {
+      "status": "implemented_tested_serial_queue_after_initialization_audit",
+      "reference": "EMA_TIME_Q75",
+      "reference_score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "target": 96.45,
+      "preregistration": "docs/ema_retraining_validation/steps/PREREGISTRATION.md",
+      "source_worktree": "/home/lux1/iron/local/worktrees/ema-initialization-step-matching",
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "training_seeds": [
+        42
+      ],
+      "folds": 5,
+      "planned_optimizer_runs": 10,
+      "planned_cold_states": 30,
+      "monitor_seconds": 600,
+      "maximum_runtime_seconds": null,
+      "automatic_retries": false,
+      "G0": "1481_locked_tests_no_skips_and_synthetic_native_new_process_cold_passed_scientific_phase_pending",
+      "G1": "unmeasured_before_complete_OOF",
+      "new_confirmation_seeds": 0,
+      "full_data_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "uploads": 0,
+      "private_run": "local/runs/ema-retraining-step-matching-20261002/development-r1",
+      "sequence_private_root": "local/runs/ema-retraining-validation-20261002/sequence-r1",
+      "start_condition": "initialization_terminal_passed_then_new_phase_freeze_and_latest_reference_check",
+      "tests_passed": 1481,
+      "tests_skipped": 0,
+      "source_commit": "5faffd3"
+    }
   },
   "q75_conditional_matching_readiness_20261002": {
     "status": "read_only_review_complete_full_parent_replay_unavailable_component_identity_path_available",
@@ -20378,7 +20486,7 @@
     }
   },
   "ema_component_calibration_preparation_20261002": {
-    "status": "engineering_prepared_waiting_step_matching_terminal_no_official_evaluation",
+    "status": "completed_development_original_report_failed_zero_fit_recovery_passed_no_confirmation",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -20391,8 +20499,8 @@
     "configuration": "configs/ema_component_calibration/SPEC.json",
     "engineering_receipt": "local/runs/ema-component-calibration-matching-20261002/engineering-r3/tests-receipt.json",
     "engineering_receipt_sha256": "65f1c4cc9cb9aa1375f3d5a868db56ceab4c9df6102a15926a33e7692f65a314",
-    "G0": "30_locked_Python312_scoped_tests_and_real_synthetic_new_process_cold_passed_official_phase_pending",
-    "G1": "unmeasured_no_official_evaluation",
+    "G0": "original_exit1_preserved_complete_retained_heads_cold_OOF_report_only_recovery_exit0_and_independent_scalar_passed",
+    "G1": "GLOBAL_PRESSURE_two_negative_splits_vs_Q75_each_mixed_vs_same_F_control_failed_frozen_gate",
     "focused_tests_passed": 30,
     "focused_tests_skipped": 0,
     "full_test_suite": false,
@@ -20409,7 +20517,7 @@
     "planned_optimizer_runs": 0,
     "planned_correction_fit_calls": 80,
     "actual_scientific_model_fits": 0,
-    "actual_scientific_correction_fits": 0,
+    "actual_scientific_correction_fits": 80,
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "packages": 0,
@@ -20421,6 +20529,138 @@
     "automatic_retries": false,
     "start_condition": "both_prior_actual_successful_terminals_and_independent_audits_then_latest_reference_freeze",
     "engineering_recorder_failure_preserved": "local/runs/ema-component-calibration-matching-20261002/engineering-r2/recorder-failure.json",
-    "scientific_retries": 0
+    "scientific_retries": 0,
+    "private_run": "local/runs/ema-component-calibration-matching-20261002/development-r1",
+    "manifest_sha256": "e0980d7664df5a1af55ddb193679b0f11d558657604e160fc39dc4ab101fcba7",
+    "frozen_file_count": 803,
+    "actual_optimizer_runs": 0,
+    "actual_cold_query_witnesses": 20,
+    "original_actual_exit_codes": [
+      1
+    ],
+    "recovery_actual_exit_codes": [
+      0
+    ],
+    "report_recovery_worktree": "local/worktrees/ema-component-calibration-report-recovery",
+    "report_recovery_source_commit": "fea46c5bdb0d88eabaca8018f6241edd6fdcc9c1",
+    "report_recovery_run": "local/runs/ema-component-calibration-matching-20261002/report-recovery-r1",
+    "report_recovery_tests_passed": 5,
+    "report_recovery_tests_skipped": 0,
+    "recovery_new_model_fits": 0,
+    "recovery_optimizer_runs": 0,
+    "recovery_correction_fit_calls": 0,
+    "recovery_prediction_calls": 0,
+    "original_failed_terminal_unchanged": true,
+    "original_frozen_source_unchanged": true,
+    "peak_rss_mib": 523.2265625,
+    "gains_vs_Q75": {
+      "42": {
+        "GLOBAL": -0.029145990508524733,
+        "PRESSURE": -0.027280527578099623
+      },
+      "3407": {
+        "GLOBAL": -0.027221042172783427,
+        "PRESSURE": -0.029076064873507335
+      }
+    },
+    "gains_vs_same_F_control": {
+      "42": {
+        "GLOBAL": -0.0007133053506720444,
+        "PRESSURE": 0.0011521575797530659
+      },
+      "3407": {
+        "GLOBAL": 0.0008667834387097173,
+        "PRESSURE": -0.00098823926201419
+      }
+    },
+    "control_gains_vs_Q75": {
+      "42": -0.02843268515785269,
+      "3407": -0.028087825611493145
+    },
+    "automatic_development_tiers": {
+      "GLOBAL": "not_shortlisted",
+      "PRESSURE": "not_shortlisted"
+    },
+    "confirmation_eligible": false,
+    "selected_for_confirmation": null,
+    "formal_promotion": false,
+    "independent_scalar_maximum_difference": 1.4210854715202004e-14,
+    "original_failure": "classify_candidates_first_two_arguments_reversed_KeyError_split_seeds_after_complete_OOF",
+    "controller_running": false,
+    "observer_running": false,
+    "monitoring_stopped_after_actual_terminal": true,
+    "results": "docs/ema_component_calibration/RESULTS.md",
+    "terminal_evidence": {
+      "original_manifest": {
+        "path": "local/runs/ema-component-calibration-matching-20261002/development-r1/manifest.json",
+        "sha256": "e0980d7664df5a1af55ddb193679b0f11d558657604e160fc39dc4ab101fcba7"
+      },
+      "original_failed_terminal": {
+        "path": "local/runs/ema-component-calibration-matching-20261002/development-r1/terminal-verification.json",
+        "sha256": "3383b430e06a36f50c2b27b896387c43ae93da234aa193d7dddd7b4aacb18f5a"
+      },
+      "recovery-manifest.json": {
+        "path": "local/runs/ema-component-calibration-matching-20261002/report-recovery-r1/recovery-manifest.json",
+        "sha256": "ecd81a93dc7429d838a1c335df9bc4b01ff275a2ca0827932c16da994ef1a5f5"
+      },
+      "report.json": {
+        "path": "local/runs/ema-component-calibration-matching-20261002/report-recovery-r1/report.json",
+        "sha256": "318593281b6cae9fd0200b3aa1a898a7fbc704e29aef25acd8ad7897d4904d12"
+      },
+      "independent-score.json": {
+        "path": "local/runs/ema-component-calibration-matching-20261002/report-recovery-r1/independent-score.json",
+        "sha256": "729a62919ea83061ea44a41dc9790f5021b0447b1e5117136f1db9d56b5447a7"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/ema-component-calibration-matching-20261002/report-recovery-r1/terminal-verification.json",
+        "sha256": "5ed6c049dde7e5810e14b26b8234d8368708e450c7a7b49a80c102aefb2f4737"
+      }
+    },
+    "history_before_scientific_terminal_registration": {
+      "status": "engineering_prepared_waiting_step_matching_terminal_no_official_evaluation",
+      "reference": {
+        "candidate": "EMA_TIME_Q75",
+        "score": 96.392,
+        "source": "user_reported_not_independently_verified"
+      },
+      "target": 96.45,
+      "source_worktree": "local/worktrees/ema-component-calibration-matching",
+      "source_commit": "06b4dea5b808fa696c40e6c0f26f062f65862af8",
+      "protocol": "docs/ema_component_calibration/PREREGISTRATION.md",
+      "configuration": "configs/ema_component_calibration/SPEC.json",
+      "engineering_receipt": "local/runs/ema-component-calibration-matching-20261002/engineering-r3/tests-receipt.json",
+      "engineering_receipt_sha256": "65f1c4cc9cb9aa1375f3d5a868db56ceab4c9df6102a15926a33e7692f65a314",
+      "G0": "30_locked_Python312_scoped_tests_and_real_synthetic_new_process_cold_passed_official_phase_pending",
+      "G1": "unmeasured_no_official_evaluation",
+      "focused_tests_passed": 30,
+      "focused_tests_skipped": 0,
+      "full_test_suite": false,
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "folds": 5,
+      "candidates": [
+        "GLOBAL",
+        "PRESSURE"
+      ],
+      "planned_new_model_fits": 0,
+      "planned_optimizer_runs": 0,
+      "planned_correction_fit_calls": 80,
+      "actual_scientific_model_fits": 0,
+      "actual_scientific_correction_fits": 0,
+      "new_confirmation_seeds": 0,
+      "full_data_fits": 0,
+      "packages": 0,
+      "desktop_writes": 0,
+      "uploads": 0,
+      "platform_queue_changed": false,
+      "monitor_seconds": 600,
+      "maximum_runtime_seconds": null,
+      "automatic_retries": false,
+      "start_condition": "both_prior_actual_successful_terminals_and_independent_audits_then_latest_reference_freeze",
+      "engineering_recorder_failure_preserved": "local/runs/ema-component-calibration-matching-20261002/engineering-r2/recorder-failure.json",
+      "scientific_retries": 0
+    }
   }
 }

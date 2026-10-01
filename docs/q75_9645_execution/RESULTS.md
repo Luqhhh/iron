@@ -19,3 +19,5 @@
 本次核查没有计算新的OOF残差关系、选择权重或新增拟合，不改原校准失败决定、当前EMA批次或平台队列。私有证据为 `local/runs/q75-conditional-matching-readiness-20261002/review-r1.json`（SHA256 `036b0a3990bdc66d734db6ce500bc7b0e24ae031504313b295d25d232baa532e`）。
 
 EMA组件缓存的补充核查：10套旧校准EMA的20个selector/refit状态、原配置、metadata轨迹和拟合ID一致；其中10个refit明确只在F训练，原EMA训练器源码身份保持。这提供了另一条待预登记的组件试验路径：同一个F训练EMA预测器同时用于未见C校准池和外层query，并与未校正的同F模型比较。它不能替代缺失的完整Q75预测器，也没有验证校正后的融合收益；F与完整外层训练池之间的差异仍须由完整OOF衡量。本次没有新拟合、校正系数拟合、预测调用或CSV读取，尚未取得质量或发布资格。私有状态身份核查为 `local/runs/q75-conditional-matching-readiness-20261002/EMA-component-state-review-r1.json`（SHA256 `62f65682509e1765f0406932843720ae89a09bd8bfa1ffdd0d85e607f2179a53`）。
+
+后续储备工作已另行冻结并闭合：EMA三初始化均值、精确更新步数、同F模型全局/压差校正均未通过各自配对门。前两阶段实际80/10次optimizer及120/30个冷状态通过；组件阶段复用旧模型，80次校正估计和20个冷query见证完成，原报告调用错误保留为exit 1，再以0新增拟合的独立报告恢复exit 0闭合。[完整数字及G0/G1](../ema_component_calibration/RESULTS.md)保留具体失败条件。首批30optimizer与后续90optimizer分开记录，总计120；后续没有新确认seed、全量拟合或提交包。当前仍只有原组合探针待测，平台最佳未变。
