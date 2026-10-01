@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-01",
-    "status": "TWO_AUDITED_EXPLORATION_RELEASES_PENDING_FEEDBACK_RESERVE_DEFERRED",
+    "status": "PTARL_TIME_Q20_SCORED_EMA_IRON_PENDING_RESERVE_DEFERRED",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -326,15 +326,6 @@
     "submission_priority": [],
     "submission_priority_note": "No new upload ordering or quota is inferred from documentation maintenance; these two packages were explicitly selected by the user.",
     "ready_for_user_platform_testing": [
-      {
-        "candidate": "PTARL_TIME_Q20",
-        "target": "tap_time_len",
-        "package": "local/runs/ptarl-ema-exploration-release-20261001/release-r1/PTARL_TIME_Q20/package/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d",
-        "platform_score": null,
-        "status": "audited_local_package_pending_user_platform_feedback",
-        "evidence_key": "ptarl_ema_user_exploration_release_20261001"
-      },
       {
         "candidate": "EMA_IRON_EMA_TIME",
         "target": "tap_iron",
@@ -363,7 +354,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "Use the recorded Q75 representative; the two explicitly selected PTaRL/EMA exploration packages are audited and awaiting user feedback. Keep DE3+Q75 as reserve only; do not revive historical queues or fill quota.",
+    "recommended": "Q75 remains the representative best at user-reported96.3920. PTARL_TIME_Q20 scored96.378, below Q75 by0.0140 and above its V32 reference by0.0053; it is no longer pending. EMA_IRON_EMA_TIME remains the only explicitly selected package pending feedback. Keep DE3+Q75 reserve deferred; no new package, upload order or quota inferred.",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -658,7 +649,24 @@
           "V34_B"
         ]
       }
-    }
+    },
+    "completed_platform_tests": [
+      {
+        "candidate": "PTARL_TIME_Q20",
+        "score": 96.378,
+        "raw_reported_score": "96.378",
+        "reported_decimal_places": 3,
+        "source": "user_reported_not_independently_verified",
+        "reported_date": "2026-10-01",
+        "zip_sha256": "a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.014,
+        "delta_vs_V32": 0.0053,
+        "feedback_record": "local/runs/ptarl-ema-exploration-release-20261001/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "b7ed1507a42e28b81d4ebeb259601765da9f7e0740e4f37124853fa93de0653e"
+      }
+    ]
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -17691,7 +17699,7 @@
     }
   },
   "ptarl_ema_user_exploration_release_20261001": {
-    "status": "full_training_audited_two_isolated_packages_ready_for_user",
+    "status": "PTARL_TIME_Q20_scored_EMA_IRON_EMA_TIME_pending",
     "service": "iron-ptarl-ema-exploration-r1.service",
     "initial_main_pid": 66853,
     "started_local": "2026-10-01T01:16:38+08:00",
@@ -17716,7 +17724,7 @@
     "documentation": "docs/ptarl_ema_exploration_release/PREREGISTRATION.md",
     "execution_document": "docs/ptarl_ema_exploration_release/EXECUTION.md",
     "G0": "saved_state_cold_and_isolated_release_verified",
-    "G1": "explicit_user_requested_exploration_not_four_seed_promoted_platform_feedback_pending",
+    "G1": "explicit_exploration_PTARL_below_Q75_above_V32_EMA_iron_feedback_pending_not_four_seed_promoted",
     "private_root": "local/runs/ptarl-ema-exploration-release-20261001/release-r1",
     "activation_sha256": "2c9a0fb79ea0a12f2e0c14775d57f95e244156d4bbbc8243e44d52ee935b2ee8",
     "locked_tests": {
@@ -17738,7 +17746,7 @@
         "target": "tap_time_len",
         "formula": ".8*V32_time+.2*PTARL_AUX",
         "other_field": "current_Q75_iron_strings",
-        "platform_score": null,
+        "platform_score": 96.378,
         "package": "local/runs/ptarl-ema-exploration-release-20261001/release-r1/PTARL_TIME_Q20/package/Luqhhh_bf_tap_predict_round2.zip",
         "zip_sha256": "a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d",
         "csv_sha256": "e7d0ccd295858a3d2c4d51521b14baf06ef8421bb9e3ab81b8549ea979be381d",
@@ -17792,7 +17800,15 @@
           "scope": "fixed delivered recipes on common EMA-development V32 parent; 2754 OOF rows per seed",
           "unit_transfer_conditional_scenario": 96.39986816337198,
           "scenario_is_not_forecast": true
-        }
+        },
+        "platform_feedback_source": "user_reported_not_independently_verified",
+        "platform_feedback_date": "2026-10-01",
+        "raw_reported_score": "96.378",
+        "platform_delta_vs_Q75": -0.014,
+        "platform_delta_vs_V32": 0.0053,
+        "platform_feedback_record": "local/runs/ptarl-ema-exploration-release-20261001/platform-feedback-r1/feedback.json",
+        "platform_feedback_sha256": "b7ed1507a42e28b81d4ebeb259601765da9f7e0740e4f37124853fa93de0653e",
+        "platform_status": "user_reported_scored_below_current_best"
       },
       {
         "candidate": "EMA_IRON_EMA_TIME",
@@ -17860,7 +17876,7 @@
     "desktop_writes": 0,
     "activation_status": "full_training_serial_job_actually_active",
     "completed_local": "2026-10-01T01:32:45.725579+08:00",
-    "platform_feedback": "pending_for_both_new_packages",
+    "platform_feedback": "PTARL_TIME_Q20_received_EMA_IRON_EMA_TIME_pending",
     "terminal_sha256": "7e6b72ab885cb05107933c3a8b5675f0dc8404fcd8d83603c5d56d2ea567ed30",
     "release_summary_sha256": "7477867a28230f53ac0821791609ccd556dc453f4b161d230106b44f52622c4e",
     "terminal_verification_sha256": "ec9613fe4e990c445209d8d337af657945076409d25373efd87d0f61fe6f27da",
@@ -17916,6 +17932,23 @@
         "new_fits": 0,
         "new_packages": 0,
         "agent_uploads": 0
+      }
+    ],
+    "platform_feedback_history": [
+      {
+        "candidate": "PTARL_TIME_Q20",
+        "score": 96.378,
+        "raw_reported_score": "96.378",
+        "reported_decimal_places": 3,
+        "source": "user_reported_not_independently_verified",
+        "reported_date": "2026-10-01",
+        "zip_sha256": "a6305ef143b81e19dc57f8422e360d751e0aa27280b4b955075b52b7083c4c6d",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.014,
+        "delta_vs_V32": 0.0053,
+        "feedback_record": "local/runs/ptarl-ema-exploration-release-20261001/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "b7ed1507a42e28b81d4ebeb259601765da9f7e0740e4f37124853fa93de0653e"
       }
     ]
   },
