@@ -9,7 +9,7 @@
 | 平台回传同分最佳 | **EMA_TIME_Q75 / EMA_TIME_Q100 = 96.3920**；用户回传，未独立平台核验 |
 | 当前代表 | Q75，组件外推较小；未证明统计上独胜 |
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
-| 已准备的两项探索 | PTARL_TIME_Q20、EMA_IRON_EMA_TIME，独立全量训练与包审计完成，均待用户平台反馈 |
+| 已完成的两项全量探索 | PTARL_TIME_Q20已回传96.3780，低于Q75；EMA_IRON_EMA_TIME已桌面交付，仍待用户反馈 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
@@ -31,7 +31,8 @@
 - [四项本地/平台诊断反馈](local_platform_diagnostic_release/DELIVERY.md)：四项均已回传，SAM 时长反转，EMA 时长获益。
 - [EMA 稀疏权重反馈与替补安排](ema_time_followup/DELIVERY.md)：Q75/Q100 已回传，DE3＋Q75 仅作替补。
 - [PTaRL 相对 Q75 的零拟合诊断](ema_evaluation_diagnostics/RESULTS.md)：两切分描述性证据，不预测平台分数。
-- [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：两包待反馈。
+- [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：PTaRL时长96.3780，EMA铁量待反馈。
+- [Q75压差时长校准完整开发](q75_error_relocation/CALIBRATION_RESULTS.md)：G0通过，压差两切分均负、全局一负一正，无确认候选及新平台包。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
 
 `current_status` 是项目摘要，`round2_current_platform_best` 是平台最佳，`round2_current_candidate_queue` 是当前候选安排。旧初赛摘要和旧队列完整保存在各自的 `history_before_documentation_refresh_20261001`；其他阶段条目保持原运行时含义。

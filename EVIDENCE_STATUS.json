@@ -2571,9 +2571,8 @@
     },
     "latest_completed_release": "ptarl_ema_user_exploration_release_20261001",
     "latest_G0": "saved_state_cold_and_isolated_release_verified",
-    "latest_G1": "explicit_user_requested_exploration_not_four_seed_promoted_platform_feedback_pending",
+    "latest_G1": "PTARL_TIME_Q20_scored_below_Q75_EMA_IRON_EMA_TIME_pending_not_four_seed_promoted",
     "ready_exploration_candidates": [
-      "PTARL_TIME_Q20",
       "EMA_IRON_EMA_TIME"
     ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -2953,7 +2952,8 @@
       },
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
-    }
+    },
+    "latest_completed_quality_experiment": "q75_pressure_calibration_20261001"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -18152,22 +18152,22 @@
     }
   },
   "q75_pressure_calibration_20261001": {
-    "status": "active_serial_honest_pressure_calibration_development",
+    "status": "completed_honest_calibration_no_confirmation_finalist",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
       "source": "user_reported_not_independently_verified",
       "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
     },
-    "G0": "exact_source_1351_locked_tests_and_cache_partitions_passed_saved_state_audit_pending",
-    "G1": "unmeasured",
+    "G0": "passed_20_saved_states_cold_independent_arithmetic_and_actual_terminal",
+    "G1": "pressure_both_development_seeds_negative_global_mixed_no_confirmation_finalist",
     "branch": "codex/q75-error-relocation",
     "preregistration": "docs/q75_error_relocation/CALIBRATION_PREREGISTRATION.md",
     "private_root": "local/runs/q75-error-relocation-20261001/calibration-development-r1",
     "new_estimators_planned": 10,
     "new_optimizer_runs_planned": 20,
-    "new_estimators_actual": null,
-    "new_optimizer_runs_actual": null,
+    "new_estimators_actual": 10,
+    "new_optimizer_runs_actual": 20,
     "monitor_interval_seconds": 600,
     "workers": 1,
     "numerical_threads": 1,
@@ -18189,6 +18189,45 @@
     "test_receipt_sha256": "6d4cf99c642e2654e457f6d4998db7779226efff38bc72163151dbf363f1fd73",
     "execution_document": "docs/q75_error_relocation/EXECUTION.md",
     "execution_backend": "independent_observed_process_after_zero_fit_systemd_launch_failure",
-    "automatic_scientific_retries": false
+    "automatic_scientific_retries": false,
+    "completed_local": "2026-10-01T12:17:39.708251+08:00",
+    "gains_by_split": {
+      "GLOBAL": {
+        "42": -0.00011997465801556329,
+        "3407": 0.0004429114132874833
+      },
+      "PRESSURE": {
+        "42": -0.0006405409747685173,
+        "3407": -0.011267885491535406
+      }
+    },
+    "mean_gains": {
+      "GLOBAL": 0.00016146837763596003,
+      "PRESSURE": -0.005954213233151962
+    },
+    "selected_for_confirmation": null,
+    "new_confirmation_seeds": 0,
+    "documentation": "docs/q75_error_relocation/CALIBRATION_RESULTS.md",
+    "candidate_tiers": {
+      "GLOBAL": "exploration",
+      "PRESSURE": "not_shortlisted"
+    },
+    "automated_exploration_classification": "GLOBAL",
+    "platform_exploration_recommended": false,
+    "platform_exploration_reason": "GLOBAL has mixed full-seed signs and near-zero effect; PRESSURE loses on both seeds with unstable calibration offsets. Retain evidence; no package or platform slot assigned.",
+    "saved_models_checked": 20,
+    "independent_arithmetic_cells": 30026,
+    "maximum_arithmetic_difference": 9.094947017729282e-13,
+    "full_batch_cold_difference": 0,
+    "maximum_order_chunk_difference": 6.5375443512039055e-06,
+    "maximum_worker_rss_mib": 793.3515625,
+    "controller_exit_code": 0,
+    "monitoring_stopped_after_actual_completion": true,
+    "summary_sha256": "c63f1ae203a3d279818851172c1d267eaba9d644a94e36bc4239abe211ecb8f7",
+    "audit_sha256": "c1e4825840b895c450c66c6a954404142fd1a312bede87e8f335de390969f892",
+    "completion_event_sha256": "63354304b8ecb56f32c582f0ddb109a16cefaa12c1ff68d67bb5fd8419ecca69",
+    "process_terminal_r2_sha256": "3fb118f1676725c2d7f4d27d520596ba91ecca6a7d3a989c8569b7c1bdd1dd58",
+    "terminal_verification_r1_sha256": "046035c323fdf2ca21233f257f59bdb6b8f168f9d76cd63962b72242f23e7405",
+    "summary_G0_notice": "Original summary was written before saved-state audit and retains its audit-pending phase snapshot. audit.json and terminal-verification-r1.json prove the final G0 result."
   }
 }
