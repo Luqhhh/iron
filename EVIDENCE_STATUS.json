@@ -18628,22 +18628,45 @@
   },
   "tabm_time_swa_v1_20261001": {
     "strategy": "TABM_TIME_SWA_V1",
-    "status": "stopped_G0_cold_auditor_code_error_before_development",
-    "G0": "not_admitted_UnboundLocalError_before_cold_model_checks",
-    "G1": "not_observed_zero_development_fits",
+    "status": "completed_development_waiting_confirmation_reference",
+    "updated_at": "2026-10-01T12:39:44.943574+00:00",
+    "G0": "passed_after_user_authorized_zero_fit_auditor_repair",
+    "G1": "complete_two_seed_development_positive_selected_for_confirmation_not_formally_promoted",
     "engineering_new_states": 2,
     "engineering_new_optimizer_runs": 2,
     "engineering_saved_states_completed": 2,
     "engineering_training_peak_rss_mib": 682.0703125,
-    "independent_model_cold_audit": "not_completed",
-    "development_states": 0,
-    "development_optimizer_runs": 0,
+    "engineering_recovery_new_optimizer_runs": 0,
+    "independent_model_cold_audit": "passed_G0_and_complete_development",
+    "development_states": 20,
+    "development_optimizer_runs": 20,
+    "development_reused_BASE_states": 20,
+    "development_completed_units": 10,
+    "development_cold_models": 40,
+    "development_peak_training_rss_mib": 679.421875,
+    "development_peak_cold_rss_mib": 679.421875,
+    "development_controller_seconds_descriptive": 1476.707088470459,
     "confirmation_states": 0,
     "confirmation_optimizer_runs": 0,
     "reference_fits": 0,
     "packages": 0,
     "uploads": 0,
+    "full_data_fits": 0,
     "formal_promoted": false,
+    "selected_for_confirmation": [
+      "SWA_WINDOW10"
+    ],
+    "seed_gains": [
+      0.00433976311089045,
+      0.004547392986334328
+    ],
+    "mean_gain": 0.004443578048612389,
+    "control_gains": [
+      0.00022689938021361203,
+      0.003336898207237339
+    ],
+    "mechanism_mean": 0.002661679254886914,
+    "seed_lcb95": null,
     "reference_available_seeds": [
       42,
       3407
@@ -18652,15 +18675,68 @@
       7777,
       12011
     ],
-    "recipe_retry": false,
-    "frozen_source_unchanged": true,
+    "reference_platform_score_user_reported": 96.392,
+    "complete_Q75_package_local_score_available": false,
+    "scientific_recipe_unchanged": true,
+    "scientific_training_repeat": false,
+    "original_frozen_source_preserved": true,
+    "auditor_and_test_changed_under_explicit_user_authorization": true,
+    "original_stop": {
+      "commit": "794bf78ce057688579058771bf0598c1c23e3027",
+      "report": "docs/tabm_time_swa_v1/G0_STOP_ORIGINAL.md",
+      "status_snapshot": {
+        "strategy": "TABM_TIME_SWA_V1",
+        "status": "stopped_G0_cold_auditor_code_error_before_development",
+        "G0": "not_admitted_UnboundLocalError_before_cold_model_checks",
+        "G1": "not_observed_zero_development_fits",
+        "engineering_new_states": 2,
+        "engineering_new_optimizer_runs": 2,
+        "engineering_saved_states_completed": 2,
+        "engineering_training_peak_rss_mib": 682.0703125,
+        "independent_model_cold_audit": "not_completed",
+        "development_states": 0,
+        "development_optimizer_runs": 0,
+        "confirmation_states": 0,
+        "confirmation_optimizer_runs": 0,
+        "reference_fits": 0,
+        "packages": 0,
+        "uploads": 0,
+        "formal_promoted": false,
+        "reference_available_seeds": [
+          42,
+          3407
+        ],
+        "reference_missing_seeds": [
+          7777,
+          12011
+        ],
+        "recipe_retry": false,
+        "frozen_source_unchanged": true,
+        "tests": {
+          "neural_passed": 1392,
+          "neural_warnings": 23,
+          "locked_passed": 1008,
+          "locked_skipped": 61,
+          "locked_warnings": 3
+        },
+        "results": "docs/tabm_time_swa_v1/RESULTS.md"
+      }
+    },
+    "auditor_recovery": {
+      "local_implementation_commit": "74cb473d8868e064b38e3ff073436d8ac094ca25",
+      "new_G0_optimizer_runs": 0,
+      "original_failure_log_preserved": true,
+      "strict_original_and_repaired_source_identity_verified": true
+    },
     "tests": {
-      "neural_passed": 1392,
+      "neural_passed": 1394,
       "neural_warnings": 23,
       "locked_passed": 1008,
-      "locked_skipped": 61,
+      "locked_skipped": 63,
       "locked_warnings": 3
     },
+    "independent_final_verification": "passed_zero_fit_full_coverage_hashes_counts_and_gain_recalculation",
+    "confirmation_start_authorized_only_with_new_phase_admission_and_required_Q75_reference": true,
     "results": "docs/tabm_time_swa_v1/RESULTS.md"
   }
 }
