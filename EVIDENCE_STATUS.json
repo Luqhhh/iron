@@ -19642,5 +19642,92 @@
     "packages": 0,
     "desktop_writes": 0,
     "agent_platform_uploads": 0
+  },
+  "q75_9645_strategy_20261002": {
+    "status": "user_requested_implementation_in_progress",
+    "target": 96.45,
+    "reference": "EMA_TIME_Q75",
+    "reference_score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "gap_to_target": 0.058,
+    "documentation": "docs/q75_9645_execution/PLAN.md",
+    "priority": [
+      "zero_fit_EMA_inclusive_combinations",
+      "finish_existing_ModernNCA",
+      "paired_final_fusion_epoch_selection"
+    ],
+    "reserve": [
+      "training_initialization_seed_stability_and_program_matching",
+      "honest_low_complexity_conditional_residual_after_matching"
+    ],
+    "deprioritized": [
+      "ordinary_tree_expansion",
+      "repeated_generic_MAE_Huber",
+      "SHORT_single_column_weights",
+      "dense_EMA_single_axis_weights"
+    ],
+    "de3_q75_reserve_deferred": true,
+    "uploads": 0
+  },
+  "q75_combination_review_20261002": {
+    "status": "completed_zero_fit_review_one_probe_release_preparation",
+    "documentation": "docs/q75_combination_review/RESULTS.md",
+    "private_run": "local/runs/q75-combination-review-20261002/review-r1",
+    "G0": "passed_independent_scalar_complete_same_seed_designs",
+    "G1": "four_seed_stability_not_platform_gain_or_retroactive_promotion",
+    "probes": 6,
+    "selected": "N_TO_V36005",
+    "seed_gains": {
+      "42": 0.006085116969104584,
+      "3407": 0.007408234811719287,
+      "271828": 0.005998109137202661,
+      "314159": 0.007178402106441423
+    },
+    "paired": {
+      "n": 4,
+      "mean": 0.0066674657561169885,
+      "sd": 0.0007296033490511616,
+      "se": 0.0003648016745255808,
+      "lcb95": 0.005808954834334011,
+      "positive": 4
+    },
+    "new_fits": 0,
+    "new_split_seeds": 0,
+    "packages": 0,
+    "uploads": 0,
+    "platform_score": null
+  },
+  "ema_fusion_selection_20261002": {
+    "status": "actually_started_serial_paired_development",
+    "protocol": "docs/ema_fusion_selection/PREREGISTRATION.md",
+    "private_run": "local/runs/ema-fusion-selection-20261002/development-r1",
+    "source_worktree": "/home/lux1/iron/local/worktrees/q75-combination-selector",
+    "source_commit": "8628de7",
+    "manifest_sha256": "24a9bc39ff20d19712bc0af718f948088de4666edf5de2a650c0279c3ec77101",
+    "activation_sha256": "7717a03821c55f535b87c1e25ffdaca87da5249a3527da247683224d82fcb05a",
+    "reference": "EMA_TIME_Q75",
+    "calibration_seed": 27001,
+    "original_calibration_seed": 42,
+    "arms": [
+      "COMPONENT_MAE",
+      "FUSION_MAE"
+    ],
+    "paired_units": 10,
+    "planned_optimizer_runs": 30,
+    "planned_retained_states": 40,
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "G0": "source_cache_partition_runtime_and_locked_tests_passed_complete_cold_pending",
+    "G1": "unmeasured_until_complete_development_seeds",
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }

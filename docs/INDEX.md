@@ -26,6 +26,9 @@
 
 ## 当前维护入口
 
+- [96.45本轮实施顺序](q75_9645_execution/PLAN.md)：含EMA的组合复查、完成现有ModernNCA、最终融合选轮配对；训练seed及程序匹配、条件残差依次作储备。
+- [含EMA零拟合组合结果](q75_combination_review/RESULTS.md)：六项、四个完整已有seed；开发首选N_TO_V36005均值+.006667、LCB95+.005809，准备一个独立回读的探索探针。
+- [按最终融合效果选轮](ema_fusion_selection/PREREGISTRATION.md)：诚实27001内层父缓存、相同轨迹及两个fresh refit，30optimizer串行开发已启动，完整G1待测。
 - [实施报告](report.md)、[任务范围](task_contract.md)、[发布身份](release_identity.md)、[提交与反馈记录](submission_log.md)。
 - [候选分类及正式晋级边界](candidate_tiers.md)、[数据契约范围](data_contract.md)、[待确认语义与平台口径](rule_questions.md)。
 - [四项本地/平台诊断反馈](local_platform_diagnostic_release/DELIVERY.md)：四项均已回传，SAM 时长反转，EMA 时长获益。
