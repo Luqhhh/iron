@@ -1,0 +1,87 @@
+From 78a965890a71ee08b01ce22f539d7f048d320a99 Mon Sep 17 00:00:00 2001
+From: Luqhhh <lqh2284@qq.com>
+Date: Fri, 2 Oct 2026 01:23:53 +0800
+Subject: [PATCH] Support explicit MAE ModernNCA loss while preserving MSE
+ default
+
+---
+ src/bf_tap_r2/modernnca_model.py |  6 ++++-
+ tests/test_modernnca_mae.py      | 40 ++++++++++++++++++++++++++++++++
+ 2 files changed, 45 insertions(+), 1 deletion(-)
+ create mode 100644 tests/test_modernnca_mae.py
+
+diff --git a/src/bf_tap_r2/modernnca_model.py b/src/bf_tap_r2/modernnca_model.py
+index c88dd45..b824cf7 100644
+--- a/src/bf_tap_r2/modernnca_model.py
++++ b/src/bf_tap_r2/modernnca_model.py
+@@ -36,8 +36,11 @@ class Settings:
+     max_epochs: int = 240
+     patience: int = 25
+     min_delta: float = 0.
++    loss: str = 'mse'
+ 
+     def __post_init__(self):
++        if self.loss not in ('mse', 'mae'):
++            raise ValueError('Training loss must be mse or mae')
+         for key in ('dim', 'frequencies', 'embedding', 'batch_size', 'max_epochs', 'patience'):
+             if type(getattr(self, key)) is not int or getattr(self, key) < 1:
+                 raise ValueError('Positive integer model/training settings required')
+@@ -188,7 +191,8 @@ class NeighborRegressor:
+                         self.optimizer_.zero_grad(set_to_none=True)
+                         pred = self.model_(self.x_[batch],self.y_[batch],self.x_[pool],self.y_[pool],training=True,
+                             groups=torch.as_tensor(self.groups_[batch]))
+-                        loss = (pred-self.y_[batch]).square().mean()
++                        residual = pred-self.y_[batch]
++                        loss = residual.abs().mean() if self.settings.loss == 'mae' else residual.square().mean()
+                         if not torch.isfinite(loss):
+                             raise ValueError('Nonfinite neighbor training loss')
+                         loss.backward();self.optimizer_.step();self.optimizer_steps_ += 1
+diff --git a/tests/test_modernnca_mae.py b/tests/test_modernnca_mae.py
+new file mode 100644
+index 0000000..e551eeb
+--- /dev/null
++++ b/tests/test_modernnca_mae.py
+@@ -0,0 +1,40 @@
++"""Actual loss dispatch, preserved defaults, and cold MAE-state reconstruction."""
++from dataclasses import replace
++import json
++import numpy as np
++import pytest
++import torch
++from bf_tap_r2.modernnca_model import NeighborRegressor,Settings,clean
++from bf_tap_r2.modernnca_audit import audit_partition
++from test_modernnca_model import frame,settings
++
++def test_default_is_unchanged_and_invalid_loss_is_refused():
++    assert Settings().loss=='mse'
++    with pytest.raises(ValueError):Settings(loss='unsupported')
++
++@pytest.mark.parametrize('loss',['mae','mse'])
++def test_training_uses_requested_residual_objective_and_saved_state_is_cold_auditable(loss,monkeypatch,tmp_path):
++    f=frame();training=f.iloc[:42].reset_index(drop=True);query=clean(f.iloc[42:].reset_index(drop=True))
++    s=replace(settings(),loss=loss,max_epochs=1)
++    model=NeighborRegressor('LEARNED_ENCODER',s).initialize(clean(training),training.tap_time_len.to_numpy())
++    traces={'abs':[],'square':[]}
++    for name in traces:
++        original=getattr(torch.Tensor,name)
++        def capture(value,*args,_name=name,_original=original,**kwargs):
++            if value.requires_grad and value.ndim==1:
++                traces[_name].append(value.detach().numpy().copy())
++            return _original(value,*args,**kwargs)
++        monkeypatch.setattr(torch.Tensor,name,capture)
++    model.train(1)
++    assert len(traces['abs' if loss=='mae' else 'square'])==model.optimizer_steps_
++    assert not traces['square' if loss=='mae' else 'abs']
++    path=tmp_path/'model.npz';sha=model.save(path)
++    with np.load(path,allow_pickle=False) as a:
++        assert json.loads(str(a['metadata']))['settings']['loss']==loss
++    def forbidden(*a,**kw):raise AssertionError('Cold audit attempted fit')
++    monkeypatch.setattr(NeighborRegressor,'initialize',forbidden)
++    monkeypatch.setattr(NeighborRegressor,'train',forbidden)
++    monkeypatch.setattr(torch.optim.AdamW,'step',forbidden)
++    values,report=audit_partition(path,sha,clean(training),training.tap_time_len.to_numpy(),query)
++    assert np.max(np.abs(values-model.predict(query)))<1e-8
++    assert report['new_estimator_fits']==report['new_optimizer_calls']==0
+-- 
+2.34.1
+

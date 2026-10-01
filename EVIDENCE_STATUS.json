@@ -344,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "Q75/Q100 remain co-best at user-reported96.3920. PTARL_TIME_Q20=96.378, SHORT_SPAN_FULL_Q75=96.3911, EMA_IRON_EMA_TIME=96.3816 are below Q75 and no longer pending. Seek independent representation evidence; ModernNCA is engineering-only. Keep DE3+Q75 reserve deferred; do not infer quota.",
+    "recommended": "Q75/Q100 remain user-reported co-best 96.3920. ModernNCA MSE completed without confirmation finalist; a separately frozen MAE development batch is running under standing authorization. No new platform package or inferred quota; DE3+Q75 reserve remains deferred.",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -697,7 +697,7 @@
         "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
       }
     ],
-    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002"
+    "active_development_key": "modernnca_mae_q75_development_20261002"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2984,8 +2984,8 @@
     },
     "latest_completed_quality_experiment": "modernnca_q75_development_20261002",
     "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
-    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002",
-    "optimization_authorization_key": "optimization_standing_authorization_20261002"
+    "optimization_authorization_key": "optimization_standing_authorization_20261002",
+    "current_running_quality_experiment": "modernnca_mae_q75_development_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -19537,5 +19537,110 @@
         "3407": 0.0013165083632211277
       }
     }
+  },
+  "modernnca_mae_q75_development_20261002": {
+    "status": "running_frozen_MAE_two_complete_development_seeds",
+    "authorization_key": "optimization_standing_authorization_20261002",
+    "protocol": "docs/modernnca_mae/PREREGISTRATION.md",
+    "execution_document": "docs/modernnca_mae/EXECUTION.md",
+    "source_change_review": "docs/modernnca_mae/source-change.patch",
+    "source_worktree": "/home/lux1/iron/local/worktrees/modernnca-mae-development",
+    "source_commit": "78a965890a71ee08b01ce22f539d7f048d320a99",
+    "source_branch": "codex/modernnca-mae-development",
+    "source_branch_upstream": null,
+    "source_publication": "reviewable_patch_in_root_configured_upstream_source_worktree_commit_retained_local",
+    "preparation_directory": "local/runs/modernnca-mae-readiness-20261002/preparation-r1",
+    "run_directory": "local/runs/modernnca-mae-development-20261002/development-r1",
+    "launch_directory": "local/runs/modernnca-mae-development-20261002/launch-r1",
+    "manifest_sha256": "bda079bd9113ee934b67e7fe059bbf8a98e39ab67924ac0772834997784f8158",
+    "readiness_sha256": "7c0f270c90e45aa6491b5cca3283416457a70300fe8390a7d5ea59fd31961526",
+    "grant_sha256": "ad481957d4cc701ec52521da0e24785a9da4dc5da208a07714cb9829144340c9",
+    "activation": {
+      "supervisor_pid": 254022,
+      "controller_pid": 254023,
+      "started_ns": 1790875726089675383,
+      "manifest_sha256": "bda079bd9113ee934b67e7fe059bbf8a98e39ab67924ac0772834997784f8158",
+      "grant_sha256": "ad481957d4cc701ec52521da0e24785a9da4dc5da208a07714cb9829144340c9",
+      "preactivation_sha256": "98e0fe8c7a726374e161c87deaf75358593f3032d0e932c6737e039583ee6978",
+      "source_sha256": "df7638725592a0dfb752bfe2e29a656464e5ee2f2b91ccf6a47936c015eade9a",
+      "monitor_seconds": 600,
+      "maximum_runtime_seconds": null,
+      "automatic_retries": false
+    },
+    "initial_identity_sha256": "77b79ec2a4c438a849b660c33c5bbb37ac0dab8a8e5dc5eb1471314af4621b62",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+      "array_sha256": "717c8421a890374a22698c33e46ca702e407c08cf852035aa6d45283a5e52232",
+      "seeds": [
+        42,
+        3407
+      ],
+      "rows_per_seed": 2754,
+      "new_fits": 0
+    },
+    "recipe": {
+      "dim": 128,
+      "frequencies": 77,
+      "embedding": 34,
+      "frequency_scale": 0.04431360576139521,
+      "temperature": 1.0,
+      "sample_rate": 0.5,
+      "learning_rate": 0.01,
+      "weight_decay": 0.0002,
+      "random_seed": 42,
+      "batch_size": 256,
+      "max_epochs": 240,
+      "patience": 25,
+      "min_delta": 0.0,
+      "loss": "mae"
+    },
+    "scientific_change": "MSE_to_MAE_training_loss_only",
+    "blend_weight": 0.2,
+    "mse_comparison": {
+      "previous_state_key": "modernnca_q75_development_20261002",
+      "inputs_sha256": "b50d1907a5edff23602e10061c05877faeb89a9172ef656d737b30b72e903456",
+      "role": "extra_complete_same_fold_loss_control_fixed_prediction_equality_tolerance_1e-8",
+      "previous_failure_decision_unchanged": true
+    },
+    "expected_counts": {
+      "pair_unit": 20,
+      "estimator": 80,
+      "optimizer": 40
+    },
+    "focused_tests": {
+      "passed": 42,
+      "seconds_descriptive": 11.19,
+      "python": "3.12.12",
+      "source_sha256": "53008fdf6648d84bc30443dd3413a11765efd8de9c02cba6f739b19198985c17"
+    },
+    "resource_probe": {
+      "status": "passed",
+      "peak_rss_mib": 614.140625,
+      "max_rss_mib": 1536,
+      "official_data_reads": 0,
+      "optimizer_steps": 0
+    },
+    "g0": "initial_admission_passed_complete_cold_and_scalar_and_MSE_contrast_pending",
+    "g1": "unmeasured_requires_complete_two_seed_OOF",
+    "development_gate": [
+      "two_complete_seeds_positive",
+      "mean_gain_at_least_0_01",
+      "positive_fixed_control_advantage",
+      "local_package_at_least_96_25"
+    ],
+    "formal_promotion_gate": "four_complete_seeds_all_positive_seed_LCB95_positive",
+    "monitor_seconds": 600,
+    "workers": 1,
+    "numerical_threads": 1,
+    "time_budget_seconds": null,
+    "automatic_retries": false,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_platform_uploads": 0
   }
 }
