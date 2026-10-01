@@ -36,7 +36,7 @@ def assert_threads():
 def source_hashes(root):
     paths=list((root/"src/bf_tap_r2").glob("*.py"))+list((root/"tests").glob("*.py"))
     paths+=[root/"configs/tabm_time_swa_v1/SPEC.json",root/"uv.lock",root/"pyproject.toml",root/"configs/round2_v12/SPEC.yaml",root/"docs/tabm_time_swa_v1/STRATEGY.md"]
-    paths += [root/"local/tabm-swa-20261001"/name for name in ("run_tests.py","start_once.py","activate_once.py","launch.py","monitor_once.py","catalogue_controls.py")]
+    paths += [root/"local/tabm-swa-20261001"/name for name in ("run_tests.py","start_once.py","activate_once.py","launch.py","monitor_once.py","catalogue_controls.py","run_tests_admission_r2.py","admission_start_r2.py")]
     return {str(p.relative_to(root)):sha(p) for p in paths}
 
 def feature_frame(frame): return frame.drop(columns=[c for c in ("tap_iron","tap_time_len") if c in frame]).copy()
@@ -143,7 +143,7 @@ def preflight(root,runroot):
     if runroot.exists():raise ValueError("Existing run cannot be restarted")
     spec=json.loads((root/"configs/tabm_time_swa_v1/SPEC.json").read_text())
     if spec["budgets"]!=BUDGETS or spec["release_authorized"] is not False: raise ValueError("Frozen spec changed")
-    checks=root/"local/tabm-swa-20261001/tests-complete.json"; test=json.loads(checks.read_text())
+    checks=root/"local/tabm-swa-20261001/tests-complete-admission-r2.json"; test=json.loads(checks.read_text())
     if test["status"]!="passed" or test["source_hashes"]!=source_hashes(root): raise ValueError("Required complete tests missing or stale")
     for path,h in test["logs"].items():
         if sha(root/path)!=h: raise ValueError("Test evidence changed")
@@ -172,11 +172,17 @@ def execute(root,runroot):
         verify_frozen(root,frozen)
         dev=run_phase(root,runroot,"development",frame,partitions(frame,folds,[42,3407]),frozen)
         d=evaluate(runroot,"development",frame,folds,parents,de3,[42,3407])
+        status="completed"
         if d["selected_for_confirmation"]:
-            run_phase(root,runroot,"confirmation",frame,partitions(frame,folds,[7777,12011]),frozen)
-            d=evaluate(runroot,"confirmation",frame,folds,parents,de3,[7777,12011],development=dev)
+            if all(s in parents for s in (42,3407,7777,12011)):
+                run_phase(root,runroot,"confirmation",frame,partitions(frame,folds,[7777,12011]),frozen)
+                d=evaluate(runroot,"confirmation",frame,folds,parents,de3,[7777,12011],development=dev)
+            else:
+                status="completed_development_waiting_confirmation_reference"
+                write_new(runroot/"confirmation-waiting-reference.json",dict(missing_split_seeds=[s for s in (7777,12011) if s not in parents],
+                    development_evaluation_sha256=sha(dev/"evaluation.json"),reference_fits=0,confirmation_started=False))
         verify_frozen(root,frozen)
-        write_new(runroot/"controller-finished.json",dict(status="completed",time=time.time(),decision=d,
+        write_new(runroot/"controller-finished.json",dict(status=status,time=time.time(),decision=d,
             phase_counts={p:Ledger(runroot/"ledger").counts(p) for p in BUDGETS},reference_fits=0,packages=0,uploads=0))
     except BaseException as e:
         write_new(runroot/"controller-failed.json",dict(status="failed_no_retry",time=time.time(),error=repr(e),traceback=traceback.format_exc(),

@@ -23,3 +23,62 @@ def test_cold_witness_recalculation_rejects_wrong_epoch_or_average():
  with pytest.raises(ValueError):m.verify_window(payload,witness)
  witness["epochs"][0]=3;payload["state"]["w"]+=.01
  with pytest.raises(AssertionError):m.verify_window(payload,witness)
+
+
+def _two_seed_binding(root):
+ import json
+ from bf_tap_r2.tabm_swa_protocol import sha
+ prefix="local/imported-test"
+ directory=root/prefix;directory.mkdir(parents=True)
+ manifest=directory/"manifest.json";report=directory/"report.json";audit=directory/"audit.json"
+ manifest.write_text("{}")
+ report.write_text("{}")
+ audit.write_text(json.dumps({"G0":"passed","manifest_sha256":sha(manifest),"report_sha256":sha(report)}))
+ return {"status":"passed_independent_import_available_seeds","candidate":"EMA_TIME_Q75","verified_split_seeds":[42,3407],"missing_split_seeds":[7777,12011],"new_fits":0,
+  "frozen_files":{str(p.relative_to(root)):sha(p) for p in [manifest,report,audit]},
+  "original_evidence":{"manifest":str(manifest.relative_to(root)),"report":str(report.relative_to(root)),"audit":str(audit.relative_to(root))},
+  "source_audit_claims":{"candidate_identity_verified":True,"available_seed_complete_coverage":True,"zero_new_fits_on_import":True,"source_data_partition_and_prediction_hashes_verified":True}}
+
+def test_two_seed_admission_is_honest_and_does_not_imply_confirmation(tmp_path):
+ m=importlib.import_module("bf_tap_r2.tabm_swa_reference")
+ b=_two_seed_binding(tmp_path)
+ assert m.validate_import(tmp_path,b)==(42,3407)
+ with pytest.raises(ValueError,match="required"):
+  m.validate_import(tmp_path,b,required_seeds=(42,3407,7777,12011))
+ b["missing_split_seeds"]=[]
+ with pytest.raises(ValueError,match="coverage"):
+  m.validate_import(tmp_path,b)
+
+def test_import_refuses_original_audit_identity_tampering(tmp_path):
+ import json
+ m=importlib.import_module("bf_tap_r2.tabm_swa_reference")
+ from bf_tap_r2.tabm_swa_protocol import sha
+ b=_two_seed_binding(tmp_path);p=tmp_path/b["original_evidence"]["audit"]
+ a=json.loads(p.read_text());a["report_sha256"]="0"*64;p.write_text(json.dumps(a));b["frozen_files"][str(p.relative_to(tmp_path))]=sha(p)
+ with pytest.raises(ValueError,match="audit"):
+  m.validate_import(tmp_path,b)
+
+def test_qualified_development_waits_without_reserving_confirmation(tmp_path,monkeypatch):
+ import json
+ m=importlib.import_module("bf_tap_r2.tabm_swa_run")
+ r=importlib.import_module("bf_tap_r2.tabm_swa_reference")
+ from bf_tap_r2.tabm_swa_protocol import sha
+ run=tmp_path/"local/runs/tabm-time-swa-v1";engineering=run/"engineering-r1";engineering.mkdir(parents=True)
+ frozen={"reference":{}}
+ for filename,key in [("audit.json","engineering_audit_sha256"),("finished.json","engineering_finished_sha256"),("inputs.npz","engineering_inputs_sha256")]:
+  p=engineering/filename;p.write_bytes(b"test");frozen[key]=sha(p)
+ (run/"preflight.json").write_text(json.dumps(frozen))
+ monkeypatch.setattr(m,"verify_frozen",lambda *args:None)
+ monkeypatch.setattr(r,"load",lambda *args:(None,None,{42:[],3407:[]},None,{}))
+ monkeypatch.setattr(m,"partitions",lambda frame,folds,seeds:seeds)
+ called=[]
+ def phase(root,runroot,name,frame,units,frozen):
+  called.append((name,units));p=runroot/(name+"-r1");p.mkdir();(p/"evaluation.json").write_text("{}");return p
+ monkeypatch.setattr(m,"run_phase",phase)
+ monkeypatch.setattr(m,"evaluate",lambda *args,**kw:{"selected_for_confirmation":["SWA_WINDOW10"],"formal_promoted":False})
+ m.execute(tmp_path,run)
+ assert called==[("development",[42,3407])]
+ finished=json.loads((run/"controller-finished.json").read_text())
+ assert finished["status"]=="completed_development_waiting_confirmation_reference"
+ assert finished["phase_counts"]["confirmation"]["reserved"]=={"state":0,"optimizer":0}
+ assert not (run/"confirmation-r1").exists()

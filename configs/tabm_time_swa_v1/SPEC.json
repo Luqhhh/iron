@@ -68,7 +68,7 @@
     "candidate": "EMA_TIME_Q75",
     "platform_score": 96.392,
     "source": "user_reported_not_independently_verified",
-    "four_seed_time_OOF": "missing; required before formal development admission"
+    "four_seed_time_OOF": "42/3407 imported and independently checked; 7777/12011 absent, required before confirmation"
   },
   "development_gate": "both complete seeds SWA A20 incremental gain against Q75 positive and mean mechanism against BASE positive",
   "confirmation_gate": "four complete seeds positive, seedLCB95 positive and mean mechanism positive",
@@ -77,5 +77,21 @@
   "packages": 0,
   "uploads": 0,
   "monitor_seconds": 600,
-  "failure_policy": "no repeated completed fits; no retry/overwrite"
+  "failure_policy": "no repeated completed fits; no retry/overwrite",
+  "reference_admission": {
+    "revision": "user_approved_two_seed_development_20261001",
+    "development_required_seeds": [
+      42,
+      3407
+    ],
+    "confirmation_required_seeds": [
+      42,
+      3407,
+      7777,
+      12011
+    ],
+    "missing_confirmation_policy": "finish development and wait without confirmation fits or formal promotion",
+    "new_reference_fits": 0,
+    "quality_gates_unchanged": true
+  }
 }
