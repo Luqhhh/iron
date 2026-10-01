@@ -1,0 +1,77 @@
+{
+  "identity": "TABM_TIME_SWA_V1",
+  "target": "tap_time_len",
+  "arms": [
+    "BASE",
+    "SWA_WINDOW10"
+  ],
+  "expert": {
+    "backbone": "tabm",
+    "frequency": 0.01,
+    "settings_source": "configs/round2_v12/SPEC.yaml::training",
+    "two_outputs": [
+      "tap_iron",
+      "tap_time_len"
+    ]
+  },
+  "averaging": {
+    "window_epochs": 10,
+    "weighting": "uniform arithmetic mean of last min(epoch,10) completed epoch states",
+    "initialization_excluded": true,
+    "selector_metric": "original mean standardized two-target MAE on average state",
+    "refit": "fresh refit to selected epoch; predict same window average",
+    "optimizer": "unchanged original AdamW and constant learning rate; no cyclic LR",
+    "checkpoint_witness": "save each retained raw epoch state and independently recompute average"
+  },
+  "alpha": 0.2,
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    7777,
+    12011
+  ],
+  "folds": 5,
+  "budgets": {
+    "engineering": {
+      "state": 2,
+      "optimizer": 2
+    },
+    "development": {
+      "state": 20,
+      "optimizer": 20
+    },
+    "confirmation": {
+      "state": 40,
+      "optimizer": 40
+    }
+  },
+  "reused_controls": {
+    "engineering_states": 2,
+    "development_states": 20,
+    "confirmation_states": 0,
+    "source": "local/runs/tabm-target-metric-v1; completed cold-audited BASE only; original fit identity retained"
+  },
+  "limits": {
+    "workers": 1,
+    "numeric_threads": 1,
+    "torch_threads": 1,
+    "max_rss_mib": 1024,
+    "maximum_seconds": null
+  },
+  "current_reference": {
+    "candidate": "EMA_TIME_Q75",
+    "platform_score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "four_seed_time_OOF": "missing; required before formal development admission"
+  },
+  "development_gate": "both complete seeds SWA A20 incremental gain against Q75 positive and mean mechanism against BASE positive",
+  "confirmation_gate": "four complete seeds positive, seedLCB95 positive and mean mechanism positive",
+  "release_authorized": false,
+  "full_data_fits": 0,
+  "packages": 0,
+  "uploads": 0,
+  "monitor_seconds": 600,
+  "failure_policy": "no repeated completed fits; no retry/overwrite"
+}
