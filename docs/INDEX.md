@@ -45,6 +45,7 @@
 - [SHORT_SPAN全量发布准备](ema_short_release/PREPARATION.md)：复用原训练/审计接口的单候选脚本通过39项定向及1464项全库检查，原EMA冷回放与Q75重建通过；原准备清单保持未准入；用户确认后的独立全量运行已完成，见上述交付，不继续扩展工程代码。
 - [ModernNCA默认MSE完整结果](modernnca_q75_preparation/RESULTS.md)：20配对/80状态/40optimizer及终态审计通过，峰值823MiB；铁量两seed均负，时长平均+.000993、两seed均正但原门未过，无确认/新包。后续常规优化按用户持续授权执行。
 - [ModernNCA MAE完整结果](modernnca_mae/RESULTS.md)：20配对/80状态/40optimizer及独立冷/标量/MSE对照闭合，峰值797MiB；铁量平均−.006586、时长−.005028，两目标两seed均负，无确认/新包，原开发门及MSE决定保持。
+- [ModernNCA零拟合中位数头](modernnca_median/RESULTS.md)：40个原MSE refit状态复用，NumPy/Torch及标量闭合，0新拟合；两目标两seed均负，无确认/新包，保留该具体聚合方式失败。
 - [Q75后续特征支持描述](q75_feature_support/RESULTS.md)：零拟合、无目标读取；未见大范围单列外推，不证明条件同分布或平台排序。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
 

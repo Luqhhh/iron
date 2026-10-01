@@ -1,0 +1,156 @@
+From 5d272b9ecf3b7b31816382ddf7c1ca87c7b70b7c Mon Sep 17 00:00:00 2001
+From: Luqhhh <lqh2284@qq.com>
+Date: Fri, 2 Oct 2026 02:12:34 +0800
+Subject: [PATCH] Add one zero-fit audited median-head comparison for ModernNCA
+
+---
+ scripts/modernnca_median_diagnostic.py | 137 +++++++++++++++++++++++++
+ 1 file changed, 137 insertions(+)
+ create mode 100644 scripts/modernnca_median_diagnostic.py
+
+diff --git a/scripts/modernnca_median_diagnostic.py b/scripts/modernnca_median_diagnostic.py
+new file mode 100644
+index 0000000..8ee86bb
+--- /dev/null
++++ b/scripts/modernnca_median_diagnostic.py
+@@ -0,0 +1,137 @@
++"""One frozen, zero-fit median-head comparison using audited MSE refits."""
++from pathlib import Path
++import argparse
++import hashlib
++import json
++import math
++import os
++import resource
++import sys
++import time
++
++ROOT=Path('/home/lux1/iron')
++WORK=ROOT/'local/worktrees/modernnca-source-preparation'
++BASE=ROOT/'local/runs/modernnca-q75-development-20261002/development-r1'
++PREP=ROOT/'local/runs/modernnca-q75-readiness-20261001/preparation-r1'
++REFERENCE=PREP/'reference-r2/q75-development-reference.npz'
++OUT=ROOT/'local/runs/modernnca-median-head-20261002/development-r1'
++sys.path.insert(0,str(WORK/'src'))
++import numpy as np
++import pandas as pd
++import torch
++import yaml
++from bf_tap_r2.data import FEATURES,TARGETS
++from bf_tap_r2.modernnca_audit import read_state,independent_inputs,encode_numpy
++from bf_tap_r2.modernnca_model import NeighborRegressor
++from bf_tap_r2.modernnca_scoring import score_seed,decide_development
++from bf_tap_r2.candidate_tiers import classify_candidates
++from bf_tap_r2.v49_run import metric_detail
++
++ARMS=('FIXED_ENCODER','LEARNED_ENCODER')
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def write(p,v):
++    with Path(p).open('x') as f:json.dump(v,f,ensure_ascii=False,indent=2,allow_nan=False);f.write('\n')
++def forbidden(*a,**kw):raise AssertionError('Zero-fit diagnostic attempted fitting')
++def runtime():
++    assert sys.version_info[:2]==(3,12) and torch.__version__=='2.14.0+cpu'
++    assert all(os.environ.get(k)=='1' for k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS'))
++    torch.set_num_threads(1);torch.set_num_interop_threads(1)
++    NeighborRegressor.initialize=NeighborRegressor.train=forbidden
++    torch.optim.AdamW.step=torch.nn.Linear.reset_parameters=forbidden
++    from bf_tap_r2.v3_6_networks import NumericPreprocessor
++    NumericPreprocessor.fit=forbidden
++def numpy_head(weights,labels):
++    order=np.argsort(labels,kind='stable')
++    indices=(np.cumsum(weights[:,order],axis=1)>=.5).argmax(1)
++    return labels[order[indices]]
++def torch_head(weights,labels):
++    order=torch.argsort(labels,stable=True)
++    indices=(torch.cumsum(weights[:,order],dim=1)>=.5).to(torch.int64).argmax(1)
++    return labels[order[indices]]
++def encode_torch(x,state):
++    t=lambda v:torch.as_tensor(v,dtype=torch.float64)
++    angles=2*torch.pi*t(state['num_embeddings.0.frequencies'])[None]*x[:,:len(FEATURES),None]
++    periodic=torch.cat((angles.cos(),angles.sin()),dim=2)
++    embedded=torch.relu(torch.nn.functional.linear(periodic,t(state['num_embeddings.1.weight']),t(state['num_embeddings.1.bias'])))
++    columns=torch.cat((embedded.flatten(1),x[:,len(FEATURES):]),dim=1)
++    return torch.nn.functional.linear(columns,t(state['encoder.weight']),t(state['encoder.bias']))
++def predict(query,path,expected):
++    metadata,state,initial,arrays=read_state(path,expected)
++    assert metadata['settings'].get('loss','mse')=='mse'
++    x=independent_inputs(query,metadata['preprocessor']);bank_x=arrays['bank_x'];labels=arrays['bank_y']
++    q=encode_numpy(x,state);bank=encode_numpy(bank_x,state)
++    tq=encode_torch(torch.as_tensor(x),state);tb=encode_torch(torch.as_tensor(bank_x),state);ty=torch.as_tensor(labels)
++    mean,median=[],[];difference=0.
++    with torch.no_grad():
++        for start in range(0,len(query),16):
++            distance=np.sqrt(np.sum((q[start:start+16,None]-bank[None])**2,axis=2))
++            logits=-distance/metadata['settings']['temperature'];weights=np.exp(logits-logits.max(1,keepdims=True));weights/=weights.sum(1,keepdims=True)
++            tw=(-torch.cdist(tq[start:start+16],tb)/metadata['settings']['temperature']).softmax(1)
++            nm=weights@labels;nd=numpy_head(weights,labels)
++            difference=max(difference,float(np.max(np.abs(nm-(tw@ty).numpy())))*metadata['std'],float(np.max(np.abs(nd-torch_head(tw,ty).numpy())))*metadata['std'])
++            mean.extend(nm*metadata['std']+metadata['mean']);median.extend(nd*metadata['std']+metadata['mean'])
++    assert difference<=1e-8
++    values=np.asarray(median);assert np.isfinite(values).all() and (values>=0).all()
++    return np.asarray(mean),values,difference
++def prepare():
++    runtime()
++    for weights,labels,expected in (([.4,.4,.2],[0.,1.,100.],1.),([.5,.5],[1.,2.],1.)):
++        w=np.asarray([weights]);y=np.asarray(labels)
++        assert numpy_head(w,y)[0]==expected and torch_head(torch.tensor(w),torch.tensor(y))[0].item()==expected
++    original=json.loads((PREP/'development-manifest.json').read_text());cold=json.loads((BASE/'cold-complete.json').read_text())
++    assert cold['status']=='passed'
++    best=json.loads((ROOT/'EVIDENCE_STATUS.json').read_text())['round2_current_platform_best']
++    assert best['candidate']=='EMA_TIME_Q75' and best['score']==96.392
++    files=dict(original['sources'])
++    paths=[Path(__file__),ROOT/'docs/modernnca_median/PREREGISTRATION.md',PREP/'development-manifest.json',BASE/'cold-complete.json',BASE/'complete.json',REFERENCE,ROOT/'local/authorizations/optimization-standing-20261002-r1.json']
++    for t in TARGETS:
++        for s in (42,3407):
++            for f in range(5):
++                unit=BASE/'units'/f'{t}-s{s}-f{f}'
++                paths.extend([unit/'complete.json',unit/'predictions.npz',*[unit/(a+'_refit.npz') for a in ARMS]])
++    files.update({str(p):sha(p) for p in paths})
++    for p,h in files.items():assert sha(p)==h
++    assert not OUT.exists();OUT.mkdir(parents=True)
++    write(OUT/'manifest.json',dict(experiment='MSE_MEDIAN_HEAD',reference='EMA_TIME_Q75',score_user_reported=96.392,source_directory=str(BASE),model_source=str(WORK),files=files,arms=list(ARMS),seeds=[42,3407],folds=5,blend_weight=.2,quantile=.5,tie_rule='lower_first_cumulative_ge_half',new_fits=0,optimizer_runs=0,confirm_seeds=0,packages=0,max_rss_mib=1536,scientific_retries=0,time_budget_seconds=None,created_ns=time.time_ns()))
++    print(json.dumps(dict(status='frozen_zero_fit_ready',manifest_sha256=sha(OUT/'manifest.json'),files=len(files))))
++def run():
++    runtime();manifest=json.loads((OUT/'manifest.json').read_text())
++    for p,h in manifest['files'].items():assert sha(p)==h
++    with np.load(REFERENCE,allow_pickle=False) as a:
++        ids=a['ids'].copy();frame=pd.DataFrame(a['numeric'],columns=FEATURES);frame['sample_id']=ids;frame['spout_no']=a['spout'];folds={s:a[f'fold-{s}'].copy() for s in (42,3407)};current={s:a[f'current-{s}'].copy() for s in folds}
++    vectors={};maximum=0.;warm_difference=0.
++    for t in TARGETS:
++        for s in folds:
++            for f in range(5):
++                mask=folds[s]==f;query=frame.loc[mask,['sample_id','spout_no',*FEATURES]].reset_index(drop=True);unit=BASE/'units'/f'{t}-s{s}-f{f}'
++                complete=json.loads((unit/'complete.json').read_text());values={'query_ids':ids[mask]}
++                with np.load(unit/'predictions.npz',allow_pickle=False) as old:
++                    assert np.array_equal(old['query_ids'],ids[mask])
++                    for arm in ARMS:
++                        mean,median,difference=predict(query,unit/(arm+'_refit.npz'),complete['artifacts'][arm+'_refit'])
++                        warm_difference=max(warm_difference,float(np.max(np.abs(mean-old[arm]))));maximum=max(maximum,difference)
++                        vector=vectors.setdefault((t,s,arm),np.full(len(frame),np.nan));assert not np.isfinite(vector[mask]).any();vector[mask]=median;values[arm]=median
++                assert warm_difference<=1e-8
++                with (OUT/f'{t}-s{s}-f{f}.npz').open('xb') as stream:np.savez(stream,**values)
++    assert all(np.isfinite(v).all() for v in vectors.values())
++    with np.load(REFERENCE,allow_pickle=False) as a:truth=a['targets'].copy()
++    y={t:truth[:,j] for j,t in enumerate(TARGETS)};records=[];metrics={};scalar_difference=0.
++    for j,t in enumerate(TARGETS):
++        metrics[t]={k:{} for k in ('CURRENT','MSE_MEDIAN')}
++        for s in folds:
++            parent={t:current[s][:,k] for k,t in enumerate(TARGETS)}
++            rows=score_seed(y,folds[s],parent,parent,{a:vectors[t,s,a] for a in ARMS},target=t,seed=s);records.extend(rows)
++            for row in rows:
++                base_error=math.fsum(abs(float(a)-float(b)) for a,b in zip(y[t],parent[t]));changed=.8*parent[t]+.2*vectors[t,s,row['arm']]
++                changed_error=math.fsum(abs(float(a)-float(b)) for a,b in zip(y[t],changed));denominator=math.fsum(abs(float(a)) for a in y[t])
++                scalar_difference=max(scalar_difference,abs(row['gain']-50*(base_error-changed_error)/denominator))
++            for name,prediction in [('CURRENT',parent[t]),('MSE_MEDIAN',.8*parent[t]+.2*vectors[t,s,'LEARNED_ENCODER'])]:metrics[t][name][str(s)]=metric_detail(y[t],prediction,folds[s],frame.spout_no.to_numpy())
++    assert scalar_difference<=1e-10
++    policy=yaml.safe_load((WORK/'configs/candidate_tiers.yaml').read_text());tier_spec=dict(split_seeds=list(folds),folds=5,candidates={t:['MSE_MEDIAN'] for t in TARGETS},tie_preference_by_target={t:['MSE_MEDIAN'] for t in TARGETS},reference_by_target={t:'CURRENT' for t in TARGETS})
++    peak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024;assert peak<=1536
++    for p,h in manifest['files'].items():assert sha(p)==h
++    report=dict(status='passed_complete_zero_fit_cold_head_comparison',G0='original_cache_closed_numpy_torch_heads_and_mean_replay_scalar_score',new_fits=0,optimizer_runs=0,peak_rss_mib=peak,independent_prediction_maximum_difference=maximum,original_mean_prediction_maximum_difference=warm_difference,scalar_difference=scalar_difference,records=records,decision=decide_development(records),tiers=classify_candidates(metrics,tier_spec,policy),manifest_sha256=sha(OUT/'manifest.json'),metrics=metrics,confirmed_seeds=0,packages=0,completed_ns=time.time_ns())
++    write(OUT/'complete.json',report)
++    print(json.dumps({k:report[k] for k in ('status','new_fits','peak_rss_mib','independent_prediction_maximum_difference','decision','tiers')}))
++if __name__=='__main__':
++    p=argparse.ArgumentParser();p.add_argument('mode',choices=('prepare','run'));args=p.parse_args();{'prepare':prepare,'run':run}[args.mode]()
+-- 
+2.34.1
+

@@ -335,7 +335,10 @@
         "G0": "passed",
         "G1": "platform_unmeasured_exploration",
         "reference": "EMA_TIME_Q75",
-        "evidence_key": "q75_combination_review_20261002"
+        "evidence_key": "q75_combination_review_20261002",
+        "feedback_status": "user_reported_not_tested",
+        "feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
+        "feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334"
       }
     ],
     "reserve_candidates": [
@@ -709,7 +712,7 @@
         "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
       }
     ],
-    "modernnca_result_key": "modernnca_mae_q75_development_20261002"
+    "modernnca_result_key": "modernnca_median_head_20261002"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2997,7 +3000,7 @@
     "latest_completed_quality_experiment": "modernnca_mae_q75_development_20261002",
     "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
-    "latest_completed_modernnca_quality_experiment": "modernnca_mae_q75_development_20261002"
+    "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -19933,7 +19936,10 @@
     "fixed_iron_string_mismatches": 0,
     "maximum_decimal_arithmetic_difference": 2.8e-14,
     "automatic_development_tier": "formal_candidate_shortlist_not_platform_validation",
-    "tier_evidence": "local/runs/q75-combination-review-20261002/review-r1/candidate-tiers.json"
+    "tier_evidence": "local/runs/q75-combination-review-20261002/review-r1/candidate-tiers.json",
+    "platform_feedback_status": "user_reported_not_tested",
+    "platform_feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
+    "platform_feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334"
   },
   "ema_fusion_selection_20261002": {
     "status": "engineering_repaired_new_serial_development_r2_started",
@@ -19984,5 +19990,173 @@
     "engineering_launch_corrections": 1,
     "current_source_focused_tests": 46,
     "previous_source_full_suite_passed": 1471
+  },
+  "modernnca_median_head_20261002": {
+    "status": "completed_zero_fit_median_head_both_targets_two_seed_negative",
+    "protocol": "docs/modernnca_median/PREREGISTRATION.md",
+    "results_document": "docs/modernnca_median/RESULTS.md",
+    "source_change_review": "docs/modernnca_median/source-change.patch",
+    "evaluator_source_worktree": "local/worktrees/modernnca-mae-development",
+    "evaluator_commit": "5d272b9",
+    "model_cache_directory": "/home/lux1/iron/local/runs/modernnca-q75-development-20261002/development-r1",
+    "model_source_worktree": "/home/lux1/iron/local/worktrees/modernnca-source-preparation",
+    "model_source_commit": "f4b0c9d209e6a2d8285cd49314ec01e8f7cde3f7",
+    "physical_cached_fit_identity_preserved": true,
+    "private_run": "local/runs/modernnca-median-head-20261002/development-r1",
+    "manifest_sha256": "63d83d3ae8c9aa34c8bb96f496354cadb9904aff4d581fae81b5c5fcaf616e21",
+    "complete_sha256": "25cf2d53f52b411cf60c98ce6e541005f4c7b77d4f504a22683979d441bee8fe",
+    "terminal_readback_sha256": "4b2f0bf2aecca7eeee8f3cde3d7effa3f657174f55ebf8a6cbab1217832ee97a",
+    "actual_exit_code": 0,
+    "reference": "EMA_TIME_Q75",
+    "score_user_reported": 96.392,
+    "G0": "original_cache_closed_numpy_torch_heads_and_mean_replay_scalar_score",
+    "G1": {
+      "phase": "development",
+      "decisions": {
+        "tap_iron": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true,
+            "local_package_at_least_96_25": false
+          },
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_gain": -0.017899435573752974,
+          "mean_control_advantage": 0.6417044813891168
+        },
+        "tap_time_len": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true,
+            "local_package_at_least_96_25": false
+          },
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_gain": -0.001787000734211272,
+          "mean_control_advantage": 0.6288769159780846
+        }
+      },
+      "eligible_targets": [],
+      "release_authorized": false,
+      "requires_independent_artifact_audit": true
+    },
+    "tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_iron": {
+          "MSE_MEDIAN": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 0,
+            "worst_spout_delta": 0.00047795075073932963,
+            "mean_wmape": 0.037536105991830104,
+            "target": "tap_iron",
+            "candidate": "MSE_MEDIAN",
+            "reference": "CURRENT",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -0.0003490694762878846,
+              "3407": -0.00036690794666223436
+            },
+            "mean_gain": -0.0003579887114750595,
+            "minimum_gain": -0.00036690794666223436
+          }
+        },
+        "tap_time_len": {
+          "MSE_MEDIAN": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 5,
+            "worst_spout_delta": 8.438385550073313e-05,
+            "mean_wmape": 0.038193006955055675,
+            "target": "tap_time_len",
+            "candidate": "MSE_MEDIAN",
+            "reference": "CURRENT",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -4.918017334738095e-05,
+              "3407": -2.229985602106993e-05
+            },
+            "mean_gain": -3.574001468422544e-05,
+            "minimum_gain": -4.918017334738095e-05
+          }
+        }
+      },
+      "formal_selected": [],
+      "exploration_selected": [],
+      "submission_priority": [],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "records": [
+      {
+        "target": "tap_iron",
+        "seed": 42,
+        "candidate_score": 96.21912667469572,
+        "gain": -0.01745347381439423,
+        "standalone_wmape": 0.04418262232639917
+      },
+      {
+        "target": "tap_iron",
+        "seed": 3407,
+        "candidate_score": 96.21153603208413,
+        "gain": -0.018345397333111718,
+        "standalone_wmape": 0.044723554833046984
+      },
+      {
+        "target": "tap_time_len",
+        "seed": 42,
+        "candidate_score": 96.23412113984274,
+        "gain": -0.0024590086673690476,
+        "standalone_wmape": 0.04349374485106261
+      },
+      {
+        "target": "tap_time_len",
+        "seed": 3407,
+        "candidate_score": 96.22876643661618,
+        "gain": -0.0011149928010534965,
+        "standalone_wmape": 0.043950031286388136
+      }
+    ],
+    "peak_rss_mib": 620.65625,
+    "independent_prediction_maximum_difference": 1.1780988844902483e-11,
+    "original_mean_prediction_maximum_difference": 1.1709744285326451e-11,
+    "independent_scalar_difference": 4.440892098500626e-16,
+    "new_fits": 0,
+    "optimizer_runs": 0,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "original_MSE_MAE_decisions_unchanged": true,
+    "source_branch_no_upstream": true,
+    "public_source_review": "root_configured_upstream_patch_only",
+    "time_budget_seconds": null,
+    "completed_ns": 1790878380190095903
   }
 }
