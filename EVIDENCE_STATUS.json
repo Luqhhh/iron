@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "LATEST_THREE_EXPLORATIONS_SCORED_BELOW_Q75_NO_PENDING_TEST_RESERVE_DEFERRED",
+    "status": "ONE_EMA_INCLUSIVE_COMBINATION_EXPLORATION_READY_Q75_CO_BEST_UNCHANGED",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -323,9 +323,21 @@
       "representative_tie_choice": "smaller_component_extrapolation, not a unique-score winner"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [],
-    "submission_priority_note": "Latest explicitly selected packages have received feedback; no new upload ordering or remaining quota is inferred, and the reserve remains deferred.",
-    "ready_for_user_platform_testing": [],
+    "submission_priority": [
+      "EMA_Q75_N_TO_V36_P05"
+    ],
+    "submission_priority_note": "One preregistered zero-fit weight-transfer question; user uploads. No remaining quota inferred. DE3+Q75 reserve stays deferred.",
+    "ready_for_user_platform_testing": [
+      {
+        "candidate": "EMA_Q75_N_TO_V36_P05",
+        "package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
+        "G0": "passed",
+        "G1": "platform_unmeasured_exploration",
+        "reference": "EMA_TIME_Q75",
+        "evidence_key": "q75_combination_review_20261002"
+      }
+    ],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -344,7 +356,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "Q75/Q100 remain user-reported co-best 96.3920. ModernNCA MSE completed without confirmation finalist; a separately frozen MAE development batch is running under standing authorization. No new platform package or inferred quota; DE3+Q75 reserve remains deferred.",
+    "recommended": "One EMA-inclusive N-to-V36 sparse probe is ready after four-seed review and independent package replay; it is an exploration, not a promised platform gain. Keep Q75/Q100=96.3920 as user-reported co-best. ModernNCA original MSE development closed without a finalist; paired fusion selector is in progress. DE3+Q75 reserve remains deferred.",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -19670,7 +19682,7 @@
     "uploads": 0
   },
   "q75_combination_review_20261002": {
-    "status": "completed_zero_fit_review_one_probe_release_preparation",
+    "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
     "documentation": "docs/q75_combination_review/RESULTS.md",
     "private_run": "local/runs/q75-combination-review-20261002/review-r1",
     "G0": "passed_independent_scalar_complete_same_seed_designs",
@@ -19693,9 +19705,16 @@
     },
     "new_fits": 0,
     "new_split_seeds": 0,
-    "packages": 0,
+    "packages": 1,
     "uploads": 0,
-    "platform_score": null
+    "platform_score": null,
+    "release_candidate": "EMA_Q75_N_TO_V36_P05",
+    "release_package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
+    "release_G0": "passed_independent_package_replay",
+    "platform_test_status": "unmeasured_user_upload_only",
+    "fixed_iron_string_mismatches": 0,
+    "maximum_decimal_arithmetic_difference": 2.8e-14
   },
   "ema_fusion_selection_20261002": {
     "status": "actually_started_serial_paired_development",

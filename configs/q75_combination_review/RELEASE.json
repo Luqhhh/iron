@@ -1,0 +1,41 @@
+{
+  "candidate": "EMA_Q75_N_TO_V36_P05",
+  "source_candidate": "N_TO_V36005",
+  "weight_transfer": 0.05,
+  "equation": "Q75_time + .2*(A35_time-A60_time)",
+  "component_equation": ".25V36+.25N0048-.25V7+.75EMA",
+  "sources": {
+    "a35": {
+      "path": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A35/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "b4e1fc2d1287a213e9d88d1c30a7420ecc222235fcc6b7191e341dfd16924b06"
+    },
+    "a60": {
+      "path": "local/runs/round2-v6-portfolio-r1/packages/V6_PORT_TIME_A60/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "d5092d400fb5cc62c2ff61f529a4dc32d9d3493a6d82cad2f2a591a3d4bc2147"
+    },
+    "q75": {
+      "path": "local/runs/ema-time-followup-20261001/probes-r2/EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    }
+  },
+  "template": {
+    "path": "\u590d\u8d5b_test/result_template.csv",
+    "sha256": "3e89d55c7bef71b122311bff2d404878a2c535082cb33b3f43bf4552ed6296a2"
+  },
+  "review": {
+    "path": "local/runs/q75-combination-review-20261002/review-r1/combination-report.json",
+    "sha256": "741ed42e68051be3ec68d3affe2a7302502e6f3da2a802ca9841f4d340d1e11c"
+  },
+  "review_audit": {
+    "path": "local/runs/q75-combination-review-20261002/review-r1/independent-score.json",
+    "sha256": "446ab9de392c48fc8db3ed8d649f5307e09896203d761731d4c02467171b4481"
+  },
+  "protocol": "docs/q75_combination_review/RELEASE_PREREGISTRATION.md",
+  "budget": {
+    "new_fits": 0,
+    "new_seed": 0,
+    "packages": 1,
+    "desktop_writes": 0,
+    "uploads": 0
+  }
+}

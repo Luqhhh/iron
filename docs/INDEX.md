@@ -10,6 +10,7 @@
 | 当前代表 | Q75，组件外推较小；未证明统计上独胜 |
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
 | 最新全量反馈 | PTARL_TIME_Q20=96.378、SHORT_SPAN_FULL_Q75=96.3911、EMA_IRON_EMA_TIME=96.3816；均为用户回传，低于Q75，无当前待反馈包 |
+| 新增待测探索 | **EMA_Q75_N_TO_V36_P05**，零拟合；四seed均正、平均+.006667；包回读G0通过，平台未测 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
@@ -27,7 +28,7 @@
 ## 当前维护入口
 
 - [96.45本轮实施顺序](q75_9645_execution/PLAN.md)：含EMA的组合复查、完成现有ModernNCA、最终融合选轮配对；训练seed及程序匹配、条件残差依次作储备。
-- [含EMA零拟合组合结果](q75_combination_review/RESULTS.md)：六项、四个完整已有seed；开发首选N_TO_V36005均值+.006667、LCB95+.005809，准备一个独立回读的探索探针。
+- [含EMA零拟合组合结果](q75_combination_review/RESULTS.md)：六项、四个完整已有seed；开发首选N_TO_V36005均值+.006667、LCB95+.005809，[单一探索探针](q75_combination_review/DELIVERY.md)已通过独立回读，平台未测。
 - [按最终融合效果选轮](ema_fusion_selection/PREREGISTRATION.md)：诚实27001内层父缓存、相同轨迹及两个fresh refit，30optimizer串行开发已启动，完整G1待测。
 - [实施报告](report.md)、[任务范围](task_contract.md)、[发布身份](release_identity.md)、[提交与反馈记录](submission_log.md)。
 - [候选分类及正式晋级边界](candidate_tiers.md)、[数据契约范围](data_contract.md)、[待确认语义与平台口径](rule_questions.md)。
