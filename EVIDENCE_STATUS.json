@@ -18508,7 +18508,7 @@
     "short_span_estimators_if_frozen": 10,
     "control_and_short_optimizer_runs_if_frozen": 40,
     "reference_internal_solver_optimizer_budget": "pending_actual_call_capture_and_source_audit",
-    "G0": "constructor_only_catalogue_and_CPU_environment_verified_saved_state_adapter_controller_and_full_checks_pending",
+    "G0": "constructor_catalogue_CPU_runtime_17_targeted_artifact_checks_and_one_existing_native_TabM_cold_passed_reference_capture_integration_internal_budget_controller_and_full_checks_pending",
     "G1": "no_new_confirmation_observations_not_four_seed_promoted",
     "private_catalogue_receipt": "local/worktrees/ema-span-confirmation/local/research/confirmation-catalog-r1/catalogue.json",
     "catalogue_sha256": "c1da70f011c2dcd5b1815eeacf22f184e56bf36740551250692a5e67e09176ad",
@@ -18520,6 +18520,21 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "platform_queue_additions": 0,
-    "scientific_execution_admitted": false
+    "scientific_execution_admitted": false,
+    "artifact_infrastructure": {
+      "module": "src/bf_tap_r2/ema_reference_artifacts.py",
+      "targeted_tests": 17,
+      "tests_status": "passed_locked_Python_3_12_CPU",
+      "private_tests_receipt": "local/worktrees/ema-span-confirmation/local/research/artifacts-engineering-r1/receipt.json",
+      "native_probe_scope": "one_existing_control_only_no_new_fitting",
+      "native_probe_first_attempt": "preserved_failed_training_id_order_guard_before_model_load",
+      "native_probe_passed_receipt": "local/worktrees/ema-span-confirmation/local/research/native-artifact-smoke-r2/receipt.json",
+      "native_probe_receipt_sha256": "9935c895db4faad053fd6863aa162add4be98c895f8fb9f2ca28cf3d24f8b17d",
+      "native_witness_receipt_sha256": "eb664763877db8e9bde42e03c462a08c37022b5e6ca4309470abc04d71e40889",
+      "full_batch_max_difference": 0.0,
+      "row_chunk_max_difference": 6.495963418728934e-06,
+      "original_fit_source_directory": "/home/lux1/iron/local/runs/strong-component-regularization/development-r2",
+      "new_fits": 0
+    }
   }
 }
