@@ -20217,7 +20217,7 @@
     "completed_ns": 1790878380190095903
   },
   "ema_retraining_initialization_20261002": {
-    "status": "locked_tests_passed_before_frozen_serial_launch",
+    "status": "frozen_serial_development_started",
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
     "source": "user_reported_not_independently_verified",
@@ -20245,10 +20245,21 @@
     "full_data_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "uploads": 0
+    "uploads": 0,
+    "private_run": "local/runs/ema-retraining-initialization-20261002/development-r1",
+    "source_commit": "5faffd3",
+    "manifest_sha256": "5dd1baee3cfce70cfad9bdda4e0aa050847856d05b00d1588ff99d998374708f",
+    "activation_sha256": "62d0eaa69fff7b3c50100b5a5c5979b8a998c06c49b5b3782024d608f8131364",
+    "controller_pid": 267009,
+    "tests_passed": 1481,
+    "tests_skipped": 0,
+    "sequence_private_root": "local/runs/ema-retraining-validation-20261002/sequence-r1",
+    "service": "iron-ema-retraining-validation-r1.service",
+    "service_restart": "no",
+    "service_runtime_limit": null
   },
   "ema_retraining_step_matching_20261002": {
-    "status": "queued_after_initialization_actual_successful_terminal",
+    "status": "implemented_tested_serial_queue_after_initialization_audit",
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
     "source": "user_reported_not_independently_verified",
@@ -20274,6 +20285,12 @@
     "full_data_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "uploads": 0
+    "uploads": 0,
+    "private_run": "local/runs/ema-retraining-step-matching-20261002/development-r1",
+    "sequence_private_root": "local/runs/ema-retraining-validation-20261002/sequence-r1",
+    "start_condition": "initialization_terminal_passed_then_new_phase_freeze_and_latest_reference_check",
+    "tests_passed": 1481,
+    "tests_skipped": 0,
+    "source_commit": "5faffd3"
   }
 }

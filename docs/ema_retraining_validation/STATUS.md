@@ -24,3 +24,5 @@ G1：融合准则对配对控制未在两split均正，因此不符合预登记�
 初始化阶段新增40估计器/80optimizer并复用20估计器，共120状态；更新阶段新增10fresh refit/10optimizer并复用10估计器，共30状态。分别闭合G0/G1和真实终态，再按预登记条件决定确认准备；本批没有预授权的新增确认seed、全量拟合或平台包预算，后续符合门槛时仍先另行冻结，不需常规逐项申请。
 
 任务状态以本阶段EVIDENCE_STATUS键 `ema_retraining_initialization_20261002`、`ema_retraining_step_matching_20261002` 和私有terminal为准。运行期间G1未测，不能把启动、冷回读工程成功、多个初始化或两split结果称为四split正式晋级。所有本地收益不外加到96.3920，平台由用户上传并回传。
+
+初始化批次已于2026-10-02冻结并串行启动，源码commit `5faffd3`，manifest `5dd1baee3cfce70cfad9bdda4e0aa050847856d05b00d1588ff99d998374708f`。锁定Python3.12完整测试1481 passed、0 skipped；第一次缺少历史缓存别名的工程测试失败保存在私有engineering目录，0科学拟合。独立service `iron-ema-retraining-validation-r1.service` 固定Restart=no、RuntimeMax=infinity、全部数值线程1，600秒观察并响应真实退出。初始化真实终态和独立审计通过后自动调用步骤阶段的独立冻结与串行程序；任何阶段失败则保留证据并停止后续，不自动科学重试。两个阶段G1仍待完整OOF，0确认/全量/包/上传。
