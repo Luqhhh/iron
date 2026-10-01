@@ -697,8 +697,7 @@
         "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
       }
     ],
-    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002",
-    "active_development_key": "modernnca_q75_development_20261002"
+    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2983,10 +2982,9 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "ema_span_confirmation_20261001",
+    "latest_completed_quality_experiment": "modernnca_q75_development_20261002",
     "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
     "next_development_preparation_key": "modernnca_q75_development_preparation_20261002",
-    "current_running_quality_experiment": "modernnca_q75_development_20261002",
     "optimization_authorization_key": "optimization_standing_authorization_20261002"
   },
   "optimization_v0_11": {
@@ -19283,7 +19281,7 @@
     "desktop_write_requested_now": false
   },
   "modernnca_q75_development_20261002": {
-    "status": "authorized_serial_development_actually_started",
+    "status": "completed_default_MSE_no_confirmation_finalist",
     "private_run": "local/runs/modernnca-q75-development-20261002/development-r1",
     "launch_root": "local/runs/modernnca-q75-development-20261002/launch-r1",
     "protocol": "docs/modernnca_q75_preparation/PREREGISTRATION.md",
@@ -19329,9 +19327,9 @@
       "estimator": 80,
       "optimizer": 40
     },
-    "actual_counts_status": "unmeasured_until_scheduled_checkpoint_or_actual_completion",
-    "G0": "launch_identity_and_runtime_passed_full_phase_cold_and_score_closure_pending",
-    "G1": "complete_development_seeds_unmeasured",
+    "actual_counts_status": "closed_exact_full_inventory",
+    "G0": "closed_native_independent_cold_scalar_score_and_actual_terminal",
+    "G1": "iron_both_negative_time_both_small_positive_original_development_gates_not_met",
     "scientific_execution_admitted": true,
     "confirmation_seeds": 0,
     "full_data_fits": 0,
@@ -19339,6 +19337,205 @@
     "desktop_writes": 0,
     "uploads": 0,
     "maximum_runtime_seconds": null,
-    "automatic_retries": false
+    "automatic_retries": false,
+    "actual_counts": {
+      "started": {
+        "pair_unit": 20,
+        "estimator": 80,
+        "optimizer": 40
+      },
+      "completed": {
+        "pair_unit": 20,
+        "estimator": 80,
+        "optimizer": 40
+      },
+      "failed": {
+        "pair_unit": 0,
+        "estimator": 0,
+        "optimizer": 0
+      },
+      "incomplete": {
+        "pair_unit": 0,
+        "estimator": 0,
+        "optimizer": 0
+      }
+    },
+    "actual_exit_codes": [
+      0,
+      0
+    ],
+    "controller_running": false,
+    "supervisor_running": false,
+    "completed_ns": 1790873984011484300,
+    "peak_rss_mib": 823.3203125,
+    "cold_maximum_difference": 1.9099388737231493e-11,
+    "scalar_maximum_difference": 3.469446951953614e-16,
+    "decision": {
+      "phase": "development",
+      "decisions": {
+        "tap_iron": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true,
+            "local_package_at_least_96_25": false
+          },
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_gain": -0.010750423760290569,
+          "mean_control_advantage": 0.6757836145585507
+        },
+        "tap_time_len": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": true,
+            "mean_gain_at_least_0_01": false,
+            "positive_control_advantage": true,
+            "local_package_at_least_96_25": false
+          },
+          "failure_reasons": [
+            "mean_gain_at_least_0_01",
+            "local_package_at_least_96_25"
+          ],
+          "mean_gain": 0.000992944535234755,
+          "mean_control_advantage": 0.6458432812763697
+        }
+      },
+      "eligible_targets": [],
+      "release_authorized": false,
+      "requires_independent_artifact_audit": true
+    },
+    "tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_iron": {
+          "LEARNED_ENCODER": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 0,
+            "worst_spout_delta": 0.0002866135780293447,
+            "mean_wmape": 0.03739312575556085,
+            "target": "tap_iron",
+            "candidate": "LEARNED_ENCODER",
+            "reference": "CURRENT",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -0.00021082601814134683,
+              "3407": -0.00021919093227027592
+            },
+            "mean_gain": -0.00021500847520581137,
+            "minimum_gain": -0.00021919093227027592
+          }
+        },
+        "tap_time_len": {
+          "LEARNED_ENCODER": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": true,
+              "42": true
+            },
+            "improved_folds": 6,
+            "worst_spout_delta": 8.104494569953491e-05,
+            "mean_wmape": 0.038137408049666754,
+            "target": "tap_time_len",
+            "candidate": "LEARNED_ENCODER",
+            "reference": "CURRENT",
+            "tier": "exploration",
+            "failed_conditions": [
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": 1.3387614144967641e-05,
+              "3407": 2.6330167264422555e-05
+            },
+            "mean_gain": 1.9858890704695098e-05,
+            "minimum_gain": 1.3387614144967641e-05
+          }
+        }
+      },
+      "formal_selected": [],
+      "exploration_selected": [
+        {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 6,
+          "worst_spout_delta": 8.104494569953491e-05,
+          "mean_wmape": 0.038137408049666754,
+          "target": "tap_time_len",
+          "candidate": "LEARNED_ENCODER",
+          "reference": "CURRENT",
+          "tier": "exploration",
+          "failed_conditions": [
+            "minimum_improved_folds"
+          ],
+          "gains_by_split": {
+            "42": 1.3387614144967641e-05,
+            "3407": 2.6330167264422555e-05
+          },
+          "mean_gain": 1.9858890704695098e-05,
+          "minimum_gain": 1.3387614144967641e-05
+        }
+      ],
+      "submission_priority": [
+        {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 6,
+          "worst_spout_delta": 8.104494569953491e-05,
+          "mean_wmape": 0.038137408049666754,
+          "target": "tap_time_len",
+          "candidate": "LEARNED_ENCODER",
+          "reference": "CURRENT",
+          "tier": "exploration",
+          "failed_conditions": [
+            "minimum_improved_folds"
+          ],
+          "gains_by_split": {
+            "42": 1.3387614144967641e-05,
+            "3407": 2.6330167264422555e-05
+          },
+          "mean_gain": 1.9858890704695098e-05,
+          "minimum_gain": 1.3387614144967641e-05
+        }
+      ],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "results_document": "docs/modernnca_q75_preparation/RESULTS.md",
+    "terminal_verification_sha256": "366cba921c33102ee0f3dbacdc771fd38962a5ed1b8523864039f17766a12250",
+    "post_terminal_readback_sha256": "1ef3f6e986072bcf9ace0ea7815d0e01df0eda715b4f61dddad27880356b65e8",
+    "artifacts": {
+      "warm-complete.json": "7d1b5d376abd33ea7d1b984d537d9f155891e9f95657b1a5680a3ae5f8de2412",
+      "cold-complete.json": "c5228e41bf756140889a7d923dca1a04407370ca1fae122203fc83cdb060cba8",
+      "complete.json": "adc3e396dc6d1cda3de97234974941776203b110f9a1f0093a88315c2b7f9063",
+      "independent-score.json": "bb44c8e9438f46699dee391d7b4cba61f1689059ba48b05cfe04e62882f5351d"
+    },
+    "seed_gains": {
+      "tap_iron": {
+        "42": -0.010541300907067341,
+        "3407": -0.010959546613513796
+      },
+      "tap_time_len": {
+        "42": 0.0006693807072483821,
+        "3407": 0.0013165083632211277
+      }
+    }
   }
 }
