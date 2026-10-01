@@ -1,0 +1,76 @@
+{
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+  },
+  "thread_target": 96.45,
+  "old_development": "local/runs/strong-component-regularization/development-r2",
+  "runtime_versions": {
+    "torch": "2.14.0+cpu",
+    "tabm": "0.0.3",
+    "rtdl-num-embeddings": "0.0.12",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.18.1"
+  },
+  "workers": 1,
+  "monitor_seconds": 600,
+  "maximum_runtime_seconds": null,
+  "automatic_retries": false,
+  "max_worker_rss_mib": 1536,
+  "cold_predict_atol": 0.0005,
+  "version": "q75-combination-review-20261002",
+  "split_seeds": [
+    42,
+    3407,
+    271828,
+    314159
+  ],
+  "folds": 5,
+  "confirmation_cache": "local/runs/ema-span-confirmation-20261001/confirmation-r1",
+  "combination_probes": {
+    "V36_TO_N005": [
+      0.15,
+      0.35,
+      -0.25,
+      0.75
+    ],
+    "N_TO_V36005": [
+      0.25,
+      0.25,
+      -0.25,
+      0.75
+    ],
+    "V36_TO_V7005": [
+      0.15,
+      0.3,
+      -0.2,
+      0.75
+    ],
+    "V7_TO_V36005": [
+      0.25,
+      0.3,
+      -0.3,
+      0.75
+    ],
+    "N_TO_V7005": [
+      0.2,
+      0.25,
+      -0.2,
+      0.75
+    ],
+    "V7_TO_N005": [
+      0.2,
+      0.35,
+      -0.3,
+      0.75
+    ]
+  },
+  "new_fits": 0,
+  "new_split_seeds": 0,
+  "packages": 0,
+  "desktop_writes": 0,
+  "uploads": 0
+}
