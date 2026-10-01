@@ -21,7 +21,11 @@
     "selector_metric": "original mean standardized two-target MAE on average state",
     "refit": "fresh refit to selected epoch; predict same window average",
     "optimizer": "unchanged original AdamW and constant learning rate; no cyclic LR",
-    "checkpoint_witness": "save each retained raw epoch state and independently recompute average"
+    "checkpoint_witness": "save each retained raw epoch state and independently recompute average",
+    "independent_parameter_tolerance": {
+      "rtol": 1e-06,
+      "atol": 5e-07
+    }
   },
   "alpha": 0.2,
   "development_seeds": [

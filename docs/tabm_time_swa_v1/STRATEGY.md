@@ -7,3 +7,5 @@ BASE工程2states与开发20states复用已完成TABM_TARGET_METRIC_V1原生BASE
 固定时长端点0.8×当前Q75+0.2×member，唯一alpha0.2；两开发seed都正且机制平均正才确认，四seed各正、seedLCB95正及机制平均正才正式晋级。参照Q75=96.3920用户报告、非独立核验。当前缺Q75四seed完整OOF时长/ID/折号/冻结与审计，必须验证后才能正式开发准入；不以历史V32或新BASE冒充当前参照，不补拟合当前包。等待期间进行实现和零优化器工程检查。
 
 单worker单数值线程Torch1、1024MiB、无时间预算；数据/源码/环境/模型/参照/预算冻结，失败保留证据、无重试/覆盖/删证据。冷审计新进程零fit，原预测atol5e-4，统计rtol1e-14/atol1e-12，选checkpointMAEatol1e-6。只占位及完整终态push，不fullfit/封包/上传/桌面写入。模型、预测、标签和账本始终local。
+
+工程预冻结：窗口原始参数以独立float64均值再回原dtype核对，rtol1e-6/atol5e-7；当前参照导入绑定必须含Q75身份、四seed预测/ID/folds逐文件哈希、原manifest与passed audit、数据/行/切分摘要及独立导入声明，缺绑定禁止创建正式运行目录。
