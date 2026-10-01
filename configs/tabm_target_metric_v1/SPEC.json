@@ -1,0 +1,66 @@
+{
+  "identity": "TABM_TARGET_METRIC_V1",
+  "target": "tap_iron",
+  "arms": [
+    "BASE",
+    "TARGET_METRIC"
+  ],
+  "expert": {
+    "backbone": "tabm",
+    "frequency": 0.01,
+    "settings_source": "configs/round2_v12/SPEC.yaml::training",
+    "two_outputs": [
+      "tap_iron",
+      "tap_time_len"
+    ]
+  },
+  "auxiliary": {
+    "weight": 0.02,
+    "representation": "mean across16 heads of final output input; L2normalize epsilon1e-8",
+    "feature_distance": "(1-cosine)/2",
+    "target_distance": "1-exp(-abs(fit-only standardized iron difference))",
+    "loss": "offdiagonal pairwise MSE within current fitting batch",
+    "no_projection": true,
+    "no_pretraining": true
+  },
+  "alpha": 0.2,
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    7777,
+    12011
+  ],
+  "folds": 5,
+  "budgets": {
+    "engineering": {
+      "state": 4,
+      "optimizer": 4
+    },
+    "development": {
+      "state": 40,
+      "optimizer": 40
+    },
+    "confirmation": {
+      "state": 40,
+      "optimizer": 40
+    }
+  },
+  "limits": {
+    "workers": 1,
+    "numeric_threads": 1,
+    "torch_threads": 1,
+    "max_rss_mib": 1024,
+    "maximum_seconds": null
+  },
+  "reference": "EMA_TIME_Q75 native iron=B0; DE3 auxiliary",
+  "development_gate": "both full seeds TARGET_METRIC A20 gain>0 and mean TARGET_METRIC-BASE gain>0",
+  "confirmation_gate": "four full seeds positive, one-sided seed LCB95 positive and mean mechanism positive",
+  "release_authorized": false,
+  "full_data_fits": 0,
+  "packages": 0,
+  "uploads": 0,
+  "failure_policy": "preserve failed evidence, no repeat consumed fits or scientific recipe",
+  "monitor_seconds": 600
+}
