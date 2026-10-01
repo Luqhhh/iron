@@ -1,0 +1,20 @@
+{
+  "strategy": "STRONG_EXPERT_GATE_V1",
+  "status": "engineering_tests_failed_before_G0",
+  "G0": "not_admitted_three_full_test_solver_failures",
+  "G1": "not_observed_no_scientific_fits",
+  "tests": {
+    "neural_passed": 1384,
+    "neural_failed": 3,
+    "locked": "not_started"
+  },
+  "formal_started": false,
+  "production_G0_states": 0,
+  "development_states": 0,
+  "confirmation_states": 0,
+  "reference_fits": 0,
+  "packages": 0,
+  "uploads": 0,
+  "retry": false,
+  "results": "docs/strong_expert_gate_v1/RESULTS.md"
+}

@@ -11,3 +11,5 @@
 冻结参照 EMA_TIME_Q75 平台96.3920（用户报告，未经独立核验）；其铁量=B0已四seed核验，DE3辅助。本机缺完整Q75时长缓存，不能报告完整包本地分。保护清单、重复组隔离、单worker/单数值线程/Torch1、1024MiB；无外部数据或预训练权重。独立新进程冷推理、预算和每partition身份审计；失败不重试、不改冻结源、不覆盖或删除证据。只占位和完整结果push当前upstream。
 
 新目录local/runs/strong-expert-gate-v1。后续监督表征与SWA在此轮终态审计发布后另行冻结，不提前启动；不重复队友EMA短跨度。所有模型/预测/labels/账本留local；无fullfit、封包、上传、桌面写入。
+
+工程预冻结容差：原始冷预测绝对5e−4；独立统计重算rtol1e−14/atol1e−12，选择checkpoint标准化MAE复算atol1e−6；LP原始/对偶可行性与最优间隙在代码中冻结，独立审计不调用solver。
