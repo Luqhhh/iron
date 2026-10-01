@@ -17699,7 +17699,7 @@
     }
   },
   "ptarl_ema_user_exploration_release_20261001": {
-    "status": "PTARL_TIME_Q20_scored_EMA_IRON_EMA_TIME_user_reported_not_tested",
+    "status": "PTARL_TIME_Q20_and_EMA_IRON_EMA_TIME_scored_both_below_Q75",
     "service": "iron-ptarl-ema-exploration-r1.service",
     "initial_main_pid": 66853,
     "started_local": "2026-10-01T01:16:38+08:00",
@@ -17724,7 +17724,7 @@
     "documentation": "docs/ptarl_ema_exploration_release/PREREGISTRATION.md",
     "execution_document": "docs/ptarl_ema_exploration_release/EXECUTION.md",
     "G0": "saved_state_cold_and_isolated_release_verified",
-    "G1": "explicit_exploration_PTARL_below_Q75_above_V32_EMA_iron_feedback_pending_not_four_seed_promoted",
+    "G1": "PTARL_and_fixed_EMA_iron_platform_gains_negative_user_reported_not_four_seed_promoted",
     "private_root": "local/runs/ptarl-ema-exploration-release-20261001/release-r1",
     "activation_sha256": "2c9a0fb79ea0a12f2e0c14775d57f95e244156d4bbbc8243e44d52ee935b2ee8",
     "locked_tests": {
@@ -17815,7 +17815,7 @@
         "target": "tap_iron",
         "formula": "current_iron+.5*(EMA_joint_iron-V12_joint_iron)",
         "other_field": "current_Q75_time_strings",
-        "platform_score": null,
+        "platform_score": 96.3816,
         "package": "local/runs/ptarl-ema-exploration-release-20261001/release-r1/EMA_IRON_EMA_TIME/package/Luqhhh_bf_tap_predict_round2.zip",
         "zip_sha256": "88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0",
         "csv_sha256": "a43fdc539e95a61e53c5849125caaf939f13913a394916eb91260f26ebd90635",
@@ -17870,14 +17870,16 @@
           "unit_transfer_conditional_scenario": 96.39470916861904,
           "scenario_is_not_forecast": true
         },
-        "platform_test_status": "user_reported_not_tested"
+        "platform_test_status": "scored_user_reported",
+        "platform_score_source": "user_reported_not_independently_verified",
+        "platform_delta_vs_current_best": -0.0104
       }
     ],
     "historical_decisions_and_gates": "unchanged",
     "desktop_writes": 0,
     "activation_status": "full_training_serial_job_actually_active",
     "completed_local": "2026-10-01T01:32:45.725579+08:00",
-    "platform_feedback": "PTARL_TIME_Q20_received_EMA_IRON_EMA_TIME_user_reported_not_tested",
+    "platform_feedback": "both_user_requested_independent_explorations_received_below_current_incumbent",
     "terminal_sha256": "7e6b72ab885cb05107933c3a8b5675f0dc8404fcd8d83603c5d56d2ea567ed30",
     "release_summary_sha256": "7477867a28230f53ac0821791609ccd556dc453f4b161d230106b44f52622c4e",
     "terminal_verification_sha256": "ec9613fe4e990c445209d8d337af657945076409d25373efd87d0f61fe6f27da",
@@ -17964,6 +17966,27 @@
         "delta_vs_V32": 0.0053,
         "feedback_record": "local/runs/ptarl-ema-exploration-release-20261001/platform-feedback-r1/feedback.json",
         "feedback_sha256": "b7ed1507a42e28b81d4ebeb259601765da9f7e0740e4f37124853fa93de0653e"
+      },
+      {
+        "candidate": "EMA_IRON_EMA_TIME",
+        "list_index": 2,
+        "score": 96.3816,
+        "raw_reported_score": "96.3816",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "zip_sha256": "88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0",
+        "package": "local/runs/ptarl-ema-exploration-release-20261001/release-r1/EMA_IRON_EMA_TIME/package/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0104,
+        "G0": "passed_bound_zip_crc_322_official_order_and_unchanged_other_column",
+        "G1": "this_fixed_recipe_below_current_incumbent",
+        "fixed_column": "pred_tap_time_len",
+        "fixed_string_mismatches": 0,
+        "receipt": {
+          "path": "local/runs/ema-short-full-release-20261001/platform-feedback-r1/feedback.json",
+          "sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
+        }
       }
     ],
     "platform_status_updates": [
@@ -18827,6 +18850,12 @@
       "reverse": 6.103515625e-05,
       "chunk": 6.103515625e-05,
       "singleton": 4.205987329441996e-05
+    },
+    "subsequent_full_release_platform_result": {
+      "score": 96.3911,
+      "delta_vs_Q75": -0.0009,
+      "source": "user_reported_not_independently_verified",
+      "four_seed_local_gate_unchanged": true
     }
   },
   "ema_short_release_preparation_20261001": {
@@ -18843,7 +18872,7 @@
     "candidate": "SHORT_SPAN",
     "confirmation_state_key": "ema_span_confirmation_20261001",
     "G0": "old_full_EMA_replay_Q75_reconstruction_39_targeted_1464_full_and_zero_fit_preparation_passed_actual_release_pending",
-    "G1": "four_seed_local_gate_passed_new_full_model_ready_platform_untested_see_full_run_state_key",
+    "G1": "four_seed_local_gate_passed_full_SHORT_user_reported_platform_gain_negative",
     "private_receipt": "local/worktrees/ema-short-release-preparation/local/research/release-input-probe-r1/receipt.json",
     "receipt_sha256": "c5e9dd6711012536b54aa6be6444b268733240d8acc430c4273c4e20e7632770",
     "manifest_sha256": "bf11e8a1296336277ff6461bcb50b77e4a0b109ceaa607bb4bc5ee6f8a6a0d31",
@@ -18925,7 +18954,7 @@
     "authorized_full_run_state_key": "ema_short_full_release_20261001"
   },
   "ema_short_full_release_20261001": {
-    "status": "completed_authorized_fixed_full_release_audits_passed_local_package_ready_platform_untested",
+    "status": "completed_full_release_user_reported_platform_below_Q75",
     "candidate": "SHORT_SPAN_FULL_Q75",
     "target": "tap_time_len",
     "worktree": "/home/lux1/iron/local/worktrees/ema-short-release-preparation",
@@ -18966,7 +18995,7 @@
     "parent_score_source": "user_reported_not_independently_verified",
     "iron_fields": "copy_original_parent_Q75_strings",
     "G0": "passed_original_native_checkpoints_independent_cold_package_arithmetic_crc_template_and_actual_terminal",
-    "G1": "four_seed_local_evidence_gate_passed_platform_score_unmeasured",
+    "G1": "four_seed_local_gate_passed_user_reported_platform_gain_negative_for_this_fixed_recipe",
     "scientific_execution_admitted": true,
     "controller_pid": 218237,
     "observer_pid": 218236,
@@ -18988,7 +19017,7 @@
     "source_files": 377,
     "model_source_files": 382,
     "input_files": 34,
-    "platform_score": null,
+    "platform_score": 96.3911,
     "additional_engineering_expansion_stopped": true,
     "controller_running": false,
     "observer_running": false,
@@ -19046,13 +19075,98 @@
         "sha256": "965d4deab72960d5a12b043327b81a3d7c6511a06d3de7ac88277410ffa68dae"
       }
     },
-    "platform_test_status": "user_reported_not_tested",
+    "platform_test_status": "scored_user_reported",
     "user_platform_status_confirmation": {
       "path": "local/runs/ema-short-full-release-20261001/platform-not-tested-status-r1/status.json",
       "sha256": "e8e62316a11e92ad05ef9f8cb207fe1d0c47b6ab3b70ed71bdef60bc31b5664a",
       "source": "explicit_user_report",
       "user_message": "未测",
       "reported_date": "2026-10-01"
-    }
+    },
+    "platform_score_source": "user_reported_not_independently_verified",
+    "platform_delta_vs_current_best": -0.0009,
+    "platform_feedback_history": [
+      {
+        "candidate": "SHORT_SPAN_FULL_Q75",
+        "list_index": 1,
+        "score": 96.3911,
+        "raw_reported_score": "96.3911",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "zip_sha256": "c42847af646202b66de615566f04a51c5e50ef3c1d19b664366f02d012370a93",
+        "package": "local/runs/ema-short-full-release-20261001/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0009,
+        "G0": "passed_bound_zip_crc_322_official_order_and_unchanged_other_column",
+        "G1": "this_fixed_recipe_below_current_incumbent",
+        "fixed_column": "pred_tap_iron",
+        "fixed_string_mismatches": 0,
+        "receipt": {
+          "path": "local/runs/ema-short-full-release-20261001/platform-feedback-r1/feedback.json",
+          "sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
+        }
+      }
+    ]
+  },
+  "platform_feedback_short_ema_iron_20261001": {
+    "status": "both_reported_scores_registered_best_unchanged",
+    "feedback": {
+      "path": "local/runs/ema-short-full-release-20261001/platform-feedback-r1/feedback.json",
+      "sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
+    },
+    "weight_bound_analysis": {
+      "path": "local/runs/ema-short-full-release-20261001/platform-feedback-r1/weight-bound-analysis.json",
+      "sha256": "0aa6d59655a057470cb53bb0071079378e7ff7dc52d62863ac29e40296ccca7e"
+    },
+    "results": [
+      {
+        "candidate": "SHORT_SPAN_FULL_Q75",
+        "list_index": 1,
+        "score": 96.3911,
+        "raw_reported_score": "96.3911",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "zip_sha256": "c42847af646202b66de615566f04a51c5e50ef3c1d19b664366f02d012370a93",
+        "package": "local/runs/ema-short-full-release-20261001/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0009,
+        "G0": "passed_bound_zip_crc_322_official_order_and_unchanged_other_column",
+        "G1": "this_fixed_recipe_below_current_incumbent",
+        "fixed_column": "pred_tap_iron",
+        "fixed_string_mismatches": 0
+      },
+      {
+        "candidate": "EMA_IRON_EMA_TIME",
+        "list_index": 2,
+        "score": 96.3816,
+        "raw_reported_score": "96.3816",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "zip_sha256": "88a3602efe5145428693155896e2ce1ec029f5241e56f2ca1a90b942c177c4a0",
+        "package": "local/runs/ptarl-ema-exploration-release-20261001/release-r1/EMA_IRON_EMA_TIME/package/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0104,
+        "G0": "passed_bound_zip_crc_322_official_order_and_unchanged_other_column",
+        "G1": "this_fixed_recipe_below_current_incumbent",
+        "fixed_column": "pred_tap_time_len",
+        "fixed_string_mismatches": 0
+      }
+    ],
+    "thread_target": 96.45,
+    "target_met": false,
+    "best_score": 96.392,
+    "gap_to_target": 0.058,
+    "single_column_convex_mix_conditional_upper_bounds": {
+      "SHORT_SPAN_FULL_Q75": 96.4057,
+      "EMA_IRON_EMA_TIME": 96.4432
+    },
+    "next_direction": "independent_representation_evidence; ModernNCA remains engineering_only_not_admitted_for_official_fits",
+    "remaining_quota_inferred": false,
+    "new_fits": 0,
+    "new_packages": 0,
+    "uploads": 0
   }
 }

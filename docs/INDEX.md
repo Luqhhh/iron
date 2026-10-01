@@ -31,13 +31,13 @@
 - [四项本地/平台诊断反馈](local_platform_diagnostic_release/DELIVERY.md)：四项均已回传，SAM 时长反转，EMA 时长获益。
 - [EMA 稀疏权重反馈与替补安排](ema_time_followup/DELIVERY.md)：Q75/Q100 已回传，DE3＋Q75 仅作替补。
 - [PTaRL 相对 Q75 的零拟合诊断](ema_evaluation_diagnostics/RESULTS.md)：两切分描述性证据，不预测平台分数。
-- [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：PTaRL时长用户回传96.378，EMA铁量待反馈。
+- [PTaRL 时长 / EMA 铁量全量交付](ptarl_ema_exploration_release/DELIVERY.md)：PTaRL时长用户回传96.378，EMA铁量96.3816，均低于Q75=96.3920。
 - [Q75误差地图](q75_error_relocation/RESULTS.md)及[压差时长校准完整开发](q75_error_relocation/CALIBRATION_RESULTS.md)：G0通过，压差两切分均负、全局一负一正，无确认候选及新平台包。
 - [EMA时长平均跨度完整结果](ema_average_span/RESULTS.md)：20估计器/40optimizer和独立终态审计通过；短跨度两seed均正、平均+.001788，按冻结规则进入确认准备，自动分类仍exploration；长跨度两seed均负，没有新平台包。
 - [EMA短跨度确认工程准备](ema_span_confirmation/PREPARATION.md)：控制器、原参照捕获、独立冷审计及预算冻结已完成；81项定向、1439项全库回归与实际启动准入通过，批次已完成，四切分及终态结果见下文。
 - [SHORT_SPAN四切分确认协议](ema_span_confirmation/PREREGISTRATION.md)：控制器、原EMA状态桥、独立原参照组合与seed算术通过81项定向及1439项全库检查；静态协议已声明两个额外seed，实际运行准入及初始进程身份已通过；完整额外seed及独立终态已通过审计，无新提交包。
 - [SHORT_SPAN四切分确认结果](ema_span_confirmation/RESULTS.md)：10单位/440状态及实际exit0通过；四个完整seed均正，平均+.001567、LCB95+.001047，原开发exploration保持；具体全量发布待授权，无新包。
-- [SHORT_SPAN全量本地交付](ema_short_release/DELIVERY.md)：明确授权的1全量程序/2Optimizer/1本地ZIP及独立冷推理、包回读、实际exit0全部通过，平台未测；桌面写入/助手上传0。
+- [SHORT_SPAN全量本地交付](ema_short_release/DELIVERY.md)：明确授权的1全量程序/2Optimizer/1本地ZIP及独立冷推理、包回读、实际exit0全部通过；用户回传96.3911，低于Q75；桌面写入/助手上传0。
 - [SHORT_SPAN全量发布准备](ema_short_release/PREPARATION.md)：复用原训练/审计接口的单候选脚本通过39项定向及1464项全库检查，原EMA冷回放与Q75重建通过；原准备清单保持未准入；用户确认后的独立全量运行已完成，见上述交付，不继续扩展工程代码。
 - [Q75后续特征支持描述](q75_feature_support/RESULTS.md)：零拟合、无目标读取；未见大范围单列外推，不证明条件同分布或平台排序。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
