@@ -1,0 +1,85 @@
+{
+  "identity": "STRONG_EXPERT_GATE_V1",
+  "target": "tap_iron",
+  "arms": [
+    "GLOBAL",
+    "LINEAR_GATE"
+  ],
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    7777,
+    12011
+  ],
+  "folds": 5,
+  "alpha": 0.2,
+  "expert_a": {
+    "family": "CatBoost",
+    "loss_function": "MAE",
+    "iterations": 600,
+    "depth": 6,
+    "learning_rate": 0.04,
+    "l2_leaf_reg": 10,
+    "random_seed": 42,
+    "thread_count": 1
+  },
+  "expert_b": {
+    "backbone": "tabm",
+    "frequency": 0.01,
+    "source_settings": "configs/round2_v12/SPEC.yaml::training",
+    "joint_outputs": [
+      "tap_iron",
+      "tap_time_len"
+    ]
+  },
+  "gate": {
+    "features": "intercept plus 21 fit-only standardized numeric clipped [-3,3]/3 plus spout onehot",
+    "weight_a": "0.5+features@beta",
+    "coefficient_l1_cap": 0.25,
+    "objective": "sum(abs(y-mix))/sum(y)+0.01*sum(abs(beta))",
+    "l1_penalty": 0.01,
+    "solver": "scipy.linprog highs",
+    "global": "intercept only, same penalty and coefficient cap",
+    "selector_gate_fit": "inner calibration fold0 only, selector experts trained inner fit; TabM checkpoint selected via same calibration as native",
+    "refit_gate": "reuse calibration-fitted coefficient on fresh outer expert refits; no gate fit on outer labels",
+    "no_hyperparameter_search": true
+  },
+  "limits": {
+    "workers": 1,
+    "numeric_threads": 1,
+    "torch_threads": 1,
+    "max_rss_mib": 1024,
+    "maximum_seconds": null
+  },
+  "budgets": {
+    "engineering": {
+      "state": 6,
+      "optimizer": 2,
+      "tree_fit": 2,
+      "solver": 2
+    },
+    "development": {
+      "state": 60,
+      "optimizer": 20,
+      "tree_fit": 20,
+      "solver": 20
+    },
+    "confirmation": {
+      "state": 60,
+      "optimizer": 20,
+      "tree_fit": 20,
+      "solver": 20
+    }
+  },
+  "development_gate": "both full seeds LINEAR_GATE incumbent endpoint gain>0 and mean LINEAR_GATE-GLOBAL>0",
+  "confirmation_gate": "all four full seeds positive, seed one-sided LCB95>0 and mean mechanism>0",
+  "reference": "latest EMA_TIME_Q75 native iron; B0 equal; DE3 auxiliary",
+  "release_authorized": false,
+  "full_data_fits": 0,
+  "packages": 0,
+  "uploads": 0,
+  "monitor_seconds": 600,
+  "failure_policy": "failed reservation consumed, no retry/overwrite"
+}
