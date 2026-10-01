@@ -7,7 +7,7 @@
 - 当前平台最佳、队列和实验状态读取 `EVIDENCE_STATUS.json`；配置与冻结协议在 `configs/`，证据在 `docs/`，`md/` 是原实现归档。历史文档中的“当前”“待测”不是实时状态。
 - 优化目标依次为 **96.4 → 96.45 → 96.5**。新阶段冻结时采用最新登记的目标参照；已冻结实验保留原参照、协议、门槛和决定。
 - `baseline-v0.1-reproducible` 是不可变工程基线。未获独立优化授权，不改 CatBoost 参数、迭代数、目标、损失、特征窗口、后处理或验收门槛；模型优化在独立分支/worktree 开展并保留基线比较。
-- 全量拟合、封包和桌面写入按具体任务授权执行；分类通过、反馈登记和 Git 发布规则不自动扩大授权。保持其他会话/worktree 的源码、冻结协议和运行任务隔离。
+- 用户已于2026-10-02授权本批ModernNCA，并明确“授权，以及之后不需要申请”。本优化目标内的常规开发、确认、全量拟合和封包按持续授权执行，不再逐项申请；每阶段仍先冻结具体范围、协议与预算，遵守数据、资源和质量门。桌面写入按用户具体交付要求执行。保持其他会话/worktree 的源码、冻结协议和运行任务隔离。
 
 ## 数据与证据保护
 
@@ -51,4 +51,4 @@
 - **`DE3_IRON_EMA_TIME_Q75_RESERVE` 暂不平台测试，仅列为替补**，等待更值得名额的候选，不放入当前测试队列。详情见 `docs/ema_time_followup/DELIVERY.md` 及状态文件 `round2_ema_time_followup_20261001.reserve_combination_20261001`。Q75/Q100 为用户回传同分最佳；Q75 因外推较小作为代表，不是统计上独胜。动态参照仍读取状态文件。
 - 另一会话已获授权的 PTaRL/EMA 发布只限 **两项独立全量探索**：`PTARL_TIME_Q20` 使用 `0.8*V32_time+0.2*PTARL_AUX` 并保留 Q75 铁量原字符串；`EMA_IRON_EMA_TIME` 使用 `current_iron+0.5*(EMA_joint_iron-V12_joint_iron)` 并保留 Q75 时长原字符串。**不生成第三个 PTaRL＋EMA 铁量组合包**，不改原科学训练器/协议，不追溯正式晋级。
 - 上述发布限两项全量程序、8 次 optimizer、2 次 KMeans，0 新 CV/确认 seed；串行单 worker/单数值线程，原内存门槛、600 秒监控，无时间预算/自动重试。独立状态、冷推理和包审计通过后才交付；未授权桌面写入或助手上传。状态键 `ptarl_ema_user_exploration_release_20261001`；冻结协议在 `local/worktrees/ptarl-ema-exploration-release/docs/ptarl_ema_exploration_release/PREREGISTRATION.md`。
-- ModernNCA 授权仍限工程准备，未授权正式拟合、队列启动或发布；具体进展读取 `modernnca_phase_engineering_2026_09_30`。不要将准备状态或旧参照当作新阶段已通过的资格。
+- ModernNCA相对Q75的开发批次已获正式授权，读取 `modernnca_q75_development_20261002`；后续本目标内的优化按上述持续授权执行。原工程准备和旧阶段参照保留为历史，不作为新阶段已通过的资格；本地正式晋级仍须完整四seed门，助手仍不上传平台。

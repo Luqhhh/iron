@@ -697,7 +697,8 @@
         "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
       }
     ],
-    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002"
+    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002",
+    "active_development_key": "modernnca_q75_development_20261002"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2984,7 +2985,9 @@
     },
     "latest_completed_quality_experiment": "ema_span_confirmation_20261001",
     "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
-    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002"
+    "next_development_preparation_key": "modernnca_q75_development_preparation_20261002",
+    "current_running_quality_experiment": "modernnca_q75_development_20261002",
+    "optimization_authorization_key": "optimization_standing_authorization_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -19266,6 +19269,76 @@
       "reference_field_mapping",
       "test_filename_selection",
       "isolated_import_path"
-    ]
+    ],
+    "subsequent_authorized_run_key": "modernnca_q75_development_20261002"
+  },
+  "optimization_standing_authorization_20261002": {
+    "status": "authorized_without_further_routine_permission_requests",
+    "user_message": "授权，以及之后不需要申请",
+    "scope": "current_optimization_goal_development_confirmation_full_fit_and_packaging",
+    "private_record": "local/authorizations/optimization-standing-20261002-r1.json",
+    "sha256": "b8dd196e568f2dcd2a6ab801890b12783aa1b81fed0153ace4ddd5308a3a6be7",
+    "data_quality_resource_and_baseline_rules_unchanged": true,
+    "platform_upload_actor": "user",
+    "desktop_write_requested_now": false
+  },
+  "modernnca_q75_development_20261002": {
+    "status": "authorized_serial_development_actually_started",
+    "private_run": "local/runs/modernnca-q75-development-20261002/development-r1",
+    "launch_root": "local/runs/modernnca-q75-development-20261002/launch-r1",
+    "protocol": "docs/modernnca_q75_preparation/PREREGISTRATION.md",
+    "execution_document": "docs/modernnca_q75_preparation/EXECUTION.md",
+    "source_worktree": "/home/lux1/iron/local/worktrees/modernnca-source-preparation",
+    "model_source_commit": "f4b0c9d209e6a2d8285cd49314ec01e8f7cde3f7",
+    "manifest_sha256": "7f9655625666153a44fdcf127e93949b2d40aee784feeb60ba61b129df5e851e",
+    "grant_sha256": "7532176ddc04a3930dcce8dc7c9b6e6e599d8d81a0971b2a3395850bb65826a3",
+    "preactivation_sha256": "cf2a682dd2dcc028cf46a44a687edbcba9efa2d23061b359bbb3aa8f21b14296",
+    "activation_sha256": "a09afb1f7c662e7b17e8779d505ce5968e35d3c46f36f784dc9ccb8e942ffca6",
+    "initial_launch_verification_sha256": "71563d202a7e044e85103d8744328d2efd7f4d78723ad480742880cdcd15b7d9",
+    "source_files": 372,
+    "controller_pid": 239189,
+    "supervisor_pid": 239188,
+    "exec_session_id": 1424,
+    "started_ns": 1790873185601078976,
+    "next_scheduled_observation_ns": 1790873785601078976,
+    "monitor_interval_seconds": 600,
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "rows_per_seed": 2754,
+      "seeds": [
+        42,
+        3407
+      ],
+      "folds": 5,
+      "array_sha256": "717c8421a890374a22698c33e46ca702e407c08cf852035aa6d45283a5e52232",
+      "new_reference_fits": 0
+    },
+    "thread_target": 96.45,
+    "candidate": "LEARNED_ENCODER",
+    "control": "FIXED_ENCODER",
+    "isolated_weight": 0.2,
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "planned_counts": {
+      "pair_unit": 20,
+      "estimator": 80,
+      "optimizer": 40
+    },
+    "actual_counts_status": "unmeasured_until_scheduled_checkpoint_or_actual_completion",
+    "G0": "launch_identity_and_runtime_passed_full_phase_cold_and_score_closure_pending",
+    "G1": "complete_development_seeds_unmeasured",
+    "scientific_execution_admitted": true,
+    "confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false
   }
 }
