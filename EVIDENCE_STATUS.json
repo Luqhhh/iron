@@ -359,7 +359,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "One EMA-inclusive N-to-V36 sparse probe is ready after four-seed review and independent package replay; it is an exploration, not a promised platform gain. Keep Q75/Q100=96.3920 as user-reported co-best. ModernNCA original MSE development closed without a finalist; paired fusion selector is in progress. DE3+Q75 reserve remains deferred.",
+    "recommended": "One EMA-inclusive N-to-V36 probe is ready after four-seed review and independent package replay; platform gain is unmeasured. Q75/Q100=96.3920 remain user-reported co-best. Original ModernNCA MSE development and the paired EMA selector are complete without confirmation finalists; selector-specific gain is one positive/one negative against its matched control. Preserve seed stability/program matching as later work and DE3+Q75 as deferred reserve. Other isolated ModernNCA stages retain their own status.",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -19876,7 +19876,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "user_requested_implementation_in_progress",
+    "status": "first_three_actions_completed_one_platform_exploration_ready_reserves_registered",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -19899,7 +19899,14 @@
       "dense_EMA_single_axis_weights"
     ],
     "de3_q75_reserve_deferred": true,
-    "uploads": 0
+    "uploads": 0,
+    "results": "docs/q75_9645_execution/RESULTS.md",
+    "new_scientific_optimizer_runs": 30,
+    "new_packages": 1,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "target_met": false,
+    "remaining_work": "user_platform_feedback_on_single_combo_probe; future_seed_stability_and_program_matching_separately_preregistered"
   },
   "q75_combination_review_20261002": {
     "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
@@ -19942,7 +19949,7 @@
     "platform_feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334"
   },
   "ema_fusion_selection_20261002": {
-    "status": "engineering_repaired_new_serial_development_r2_started",
+    "status": "completed_paired_development_no_stable_criterion_gain_no_confirmation",
     "protocol": "docs/ema_fusion_selection/PREREGISTRATION.md",
     "private_run": "local/runs/ema-fusion-selection-20261002/development-r2",
     "source_worktree": "/home/lux1/iron/local/worktrees/q75-combination-selector",
@@ -19967,8 +19974,8 @@
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": false,
-    "G0": "CLI_runpy_regression_and_synthetic_native_cold_passed_scientific_phase_pending",
-    "G1": "unmeasured_until_complete_development_seeds",
+    "G0": "passed_native_30_optimizer_40_state_independent_cold_scalar_and_actual_terminal",
+    "G1": "fusion_minus_matched_control_one_positive_one_negative_frozen_gate_failed",
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "packages": 0,
@@ -19989,7 +19996,57 @@
     "scientific_retries": 0,
     "engineering_launch_corrections": 1,
     "current_source_focused_tests": 46,
-    "previous_source_full_suite_passed": 1471
+    "previous_source_full_suite_passed": 1471,
+    "documentation": "docs/ema_fusion_selection/RESULTS.md",
+    "actual_optimizer_runs": 30,
+    "actual_retained_states": 40,
+    "actual_completed_pair_units": 10,
+    "actual_exit_codes": [
+      0,
+      0
+    ],
+    "peak_rss_mib": 742.51171875,
+    "gains_vs_original_q75": {
+      "42": {
+        "COMPONENT_MAE": 0.0015953010747580265,
+        "FUSION_MAE": 0.002496809180343007
+      },
+      "3407": {
+        "COMPONENT_MAE": 0.0020243528820174106,
+        "FUSION_MAE": 0.0012752610517594576
+      }
+    },
+    "fusion_minus_matched_control": {
+      "42": 0.0009015081055849805,
+      "3407": -0.000749091830257953
+    },
+    "paired_vs_control": {
+      "n": 2,
+      "mean": 7.620813766351375e-05,
+      "sd": 0.0011671504076606186,
+      "se": 0.0008252999679214668,
+      "lcb95": -0.005134530784861906,
+      "positive": 1
+    },
+    "confirmation_eligible": false,
+    "automatic_development_tier": "formal_relative_to_Q75_shortlist_but_paired_phase_gate_failed",
+    "controller_running": false,
+    "observer_running": false,
+    "monitoring_stopped_after_actual_terminal": true,
+    "terminal_evidence": {
+      "report.json": {
+        "path": "local/runs/ema-fusion-selection-20261002/development-r2/report.json",
+        "sha256": "c0d84ce0946145092e2fdade380ea7f69e88f8a1136c1acfcda557ad37e0e3d1"
+      },
+      "independent-score.json": {
+        "path": "local/runs/ema-fusion-selection-20261002/development-r2/independent-score.json",
+        "sha256": "593b6b997101178a6c7ff6b895b3c6ca2851c5c0eddff80959ec7345b1dcf8e3"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/ema-fusion-selection-20261002/development-r2/terminal-verification.json",
+        "sha256": "6febe66a0c7ad629f11bd002baebad9b3efe8c49b9df8243baf2d495bded82cb"
+      }
+    }
   },
   "modernnca_median_head_20261002": {
     "status": "completed_zero_fit_median_head_both_targets_two_seed_negative",
