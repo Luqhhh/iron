@@ -36,7 +36,7 @@
 - [EMA时长平均跨度完整结果](ema_average_span/RESULTS.md)：20估计器/40optimizer和独立终态审计通过；短跨度两seed均正、平均+.001788，按冻结规则进入确认准备，自动分类仍exploration；长跨度两seed均负，没有新平台包。
 - [EMA短跨度确认工程准备](ema_span_confirmation/PREPARATION.md)：控制器、原参照捕获、独立冷审计及预算冻结已完成；81项定向、1439项全库回归与实际启动准入通过，确认批次运行中。
 - [SHORT_SPAN四切分确认协议](ema_span_confirmation/PREREGISTRATION.md)：控制器、原EMA状态桥、独立原参照组合与seed算术通过81项定向及1439项全库检查；静态协议已声明两个额外seed，实际运行准入及初始进程身份已通过，确认批次运行中；完整额外seed收益待审计，无新提交包。
-- [SHORT_SPAN全量发布准备](ema_short_release/PREPARATION.md)：独立零拟合检查绑定22份输入，原EMA全量状态冷回放及Q75重建通过；条件发布只需一个新训练程序/2次Optimizer，执行器与具体发布准入仍待完成，未生成新包。
+- [SHORT_SPAN全量发布准备](ema_short_release/PREPARATION.md)：复用原训练/审计接口的单候选脚本通过39项定向及1464项全库检查，原EMA冷回放与Q75重建通过；实际准备清单未准入，新增全量拟合及包0，按用户要求停止额外工程扩展。
 - [Q75后续特征支持描述](q75_feature_support/RESULTS.md)：零拟合、无目标读取；未见大范围单列外推，不证明条件同分布或平台排序。
 - [DE3 铁量历史交付与回传](de3_user_release/DELIVERY.md)：96.3749，相对 V32 +0.0022。
 

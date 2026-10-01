@@ -109,3 +109,7 @@
 独立收据链回读核验原运行目录/seed/fold/trial、manifest及分区、原生调用和外部保存状态摘要。闭合次数为CatBoost29、EBM fit6、EBM boost48、sklearn MLP1、torch Optimizer10；warm/cold最大RSS分别1266.35/626.75MiB，均低于1536MiB，固定组合差异2.27e-13低于1e-9。751份源/配置与1234份模型源码前后摘要一致。整批440份状态、原生.pt终态审计和四seed判定仍待完成。
 
 追加式私有回读收据为`local/worktrees/ema-short-release-preparation/local/research/confirmation-observation-r1/receipt.json`，SHA `133bdbb3d8cf728abcf7507c9818b1395bbb6feca1874e01927372546ec1a87a`。此检查新增拟合/包0，没有中断、重启或改动确认训练及冻结协议。
+
+4800秒定时观察为4/10单位完成、0失败。seed271828/fold0–3的闭合收据链及冻结源码回读通过，合计128条参照管线、8个EMA估计器、176份冷审计状态；闭合CatBoost116、EBM fit24/boost192、MLP4、torch Optimizer40。warm/cold峰值1283.45/641.17MiB，组合最大差仍2.27e-13。没有查看部分fold或seed质量，也不计未闭合单位的调用；整批G0及G1仍待完成。追加收据`local/research/confirmation-observation-r2/receipt.json`位于上述发布准备工作树，SHA `4144aee44059397a3e826b53a9c9243d1a133296cc8533527874bba4f8dd7918`。
+
+5400秒定时观察为5/10单位完成、0失败；上述独立回读仍仅覆盖此前4个闭合单位。按冻结协议等待全部10个单位完成后再查看新seed收益，没有读取部分质量或新增拟合/封包。

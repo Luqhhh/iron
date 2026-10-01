@@ -18691,7 +18691,7 @@
     },
     "new_retained_states_planned": 440,
     "private_run": "/home/lux1/iron/local/runs/ema-span-confirmation-20261001/confirmation-r1",
-    "G0": "first_real_44_state_unit_cold_identity_native_budget_and_frozen_sources_passed_batch_final_native_pt_audit_pending",
+    "G0": "four_real_44_state_units_cold_identity_native_budget_and_frozen_sources_passed_batch_final_native_pt_audit_pending",
     "G1": "confirmation_running_no_new_complete_seed_results",
     "tests": {
       "targeted_passed": 81,
@@ -18729,33 +18729,33 @@
     "started_local": "2026-10-01T18:39:33.892596+08:00",
     "preactivation_audit_sha256": "b0a0db2c1bb1db9e4103929f09aecc217fb664a83fe833989a9fe8871defa6d2",
     "initial_launch_verification_sha256": "d97e0510cd3b0662d038a8f1690f75970267ee0869d5706f68585e4810b5ff05",
-    "actual_counts_status": "closed_units_from_second_600_second_observation_active_partial_calls_not_counted",
+    "actual_counts_status": "four_closed_units_from_4800_second_observation_active_partial_calls_not_counted",
     "last_scheduled_observation": {
       "event": "scheduled_600_second_check",
       "controller_pid": 180731,
-      "elapsed_seconds": 1200.002021747001,
-      "completed_units": 1,
+      "elapsed_seconds": 5400.000735075009,
+      "completed_units": 5,
       "failed_units": 0
     },
-    "closed_units_verified": 1,
-    "closed_reference_pipeline_instances": 32,
-    "closed_component_estimators": 2,
-    "closed_retained_states": 44,
+    "closed_units_verified": 4,
+    "closed_reference_pipeline_instances": 128,
+    "closed_component_estimators": 8,
+    "closed_retained_states": 176,
     "closed_native_counts": {
-      "catboost_fit": 29,
-      "ebm_fit": 6,
-      "ebm_boost": 48,
-      "sklearn_mlp_fit": 1,
-      "torch_optimizer": 10
+      "catboost_fit": 116,
+      "ebm_fit": 24,
+      "ebm_boost": 192,
+      "sklearn_mlp_fit": 4,
+      "torch_optimizer": 40
     },
-    "closed_warm_peak_rss_mib": 1266.34765625,
-    "closed_cold_peak_rss_mib": 626.75390625,
+    "closed_warm_peak_rss_mib": 1283.44921875,
+    "closed_cold_peak_rss_mib": 641.16796875,
     "closed_maximum_composition_difference": 2.2737367544323206e-13,
-    "closed_unit_readback_receipt": "local/worktrees/ema-short-release-preparation/local/research/confirmation-observation-r1/receipt.json",
-    "closed_unit_readback_receipt_sha256": "133bdbb3d8cf728abcf7507c9818b1395bbb6feca1874e01927372546ec1a87a"
+    "closed_unit_readback_receipt": "local/worktrees/ema-short-release-preparation/local/research/confirmation-observation-r2/receipt.json",
+    "closed_unit_readback_receipt_sha256": "4144aee44059397a3e826b53a9c9243d1a133296cc8533527874bba4f8dd7918"
   },
   "ema_short_release_preparation_20261001": {
-    "status": "original_full_ema_inputs_cold_and_Q75_reconstruction_verified_release_executor_not_implemented",
+    "status": "single_candidate_release_controller_checked_preparation_manifest_not_admitted_engineering_expansion_stopped",
     "branch": "codex/ema-short-release-preparation",
     "worktree": "/home/lux1/iron/local/worktrees/ema-short-release-preparation",
     "documentation": "docs/ema_short_release/PREPARATION.md",
@@ -18767,7 +18767,7 @@
     "thread_target": 96.45,
     "candidate": "SHORT_SPAN",
     "confirmation_state_key": "ema_span_confirmation_20261001",
-    "G0": "old_full_EMA_checkpoints_original_source_and_cold_prediction_Q75_arithmetic_verified_only",
+    "G0": "old_full_EMA_replay_Q75_reconstruction_39_targeted_1464_full_and_zero_fit_preparation_passed_actual_release_pending",
     "G1": "no_new_SHORT_full_model_or_platform_result_confirmation_running",
     "private_receipt": "local/worktrees/ema-short-release-preparation/local/research/release-input-probe-r1/receipt.json",
     "receipt_sha256": "c5e9dd6711012536b54aa6be6444b268733240d8acc430c4273c4e20e7632770",
@@ -18803,6 +18803,28 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "platform_queue_additions": 0,
-    "existing_confirmation_task_interrupted": false
+    "existing_confirmation_task_interrupted": false,
+    "controller": "scripts/ema_short_release.py",
+    "proposal": "configs/ema_short_release/PREPARATION.json",
+    "proposal_sha256": "af18371459cb45ec35032abb53857de4ae1195fe293eccc664c569fb23f1ae5a",
+    "checks": {
+      "targeted_passed": 39,
+      "full_passed": 1464,
+      "warnings": 24,
+      "skipped": 0,
+      "common_existing_python_files": 702,
+      "source_unchanged": true,
+      "full_receipt": "local/worktrees/ema-short-release-preparation/local/research/release-controller-full-r2/receipt.json",
+      "full_receipt_sha256": "91565fe7197a7333e8167be2ae6072673aa67632b20898ff5fede2b069211a80"
+    },
+    "preparation_output": "local/runs/ema-short-release-preparation-20261001/preparation-r1",
+    "preparation_manifest_sha256": "471f07c25b8228c1bdc23f53dead614b3901f1f4c31b5f84d670ca0c0b4e082d",
+    "runtime_preparation_receipt": "local/worktrees/ema-short-release-preparation/local/research/release-runtime-preparation-r1/receipt.json",
+    "runtime_preparation_receipt_sha256": "094edd44e3f3d6a9c3092d4ca25276f94f2af90d06cc4ecf8502274ce5885285",
+    "preparation_sources": 377,
+    "preparation_model_sources": 382,
+    "preparation_inputs": 27,
+    "user_steering": "不要过分工程化",
+    "additional_engineering_expansion_stopped": true
   }
 }
