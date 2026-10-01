@@ -29,3 +29,7 @@
 截图对应的[SCARF工作流36819803261](https://github.com/Luqhhh/iron/actions/runs/36819803261)两任务是在pytest收集阶段失败，并非Git push失败。下载原Python3.12 JUnit确认23个collection error；[后续同类工作流36825495707](https://github.com/Luqhhh/iron/actions/runs/36825495707)日志明确为ModuleNotFoundError: torch。工作流只安装dev与round2，不含可选Torch；新增神经测试缺少可选依赖guard，造成两个Python版本一起失败。当前分支已加入guard与路径修复，本次结果推送包含这些实现修复。不能在新CI完成前宣称远端已通过。
 
 没有重训、重复G0、扩大预算、启动确认、全量拟合、封包、桌面写入或助手上传。原自动检查已删除，无任务不空转监控。
+
+## 发布后CI补充修复
+
+结果推送171dc3f的[工作流36827026114](https://github.com/Luqhhh/iron/actions/runs/36827026114)确认Torch收集错误已消除，两个Python任务分别剩2 failed、988 passed、61 skipped。两个失败都在test_round2_v6.py，分别依赖未公开的V3.6历史台账和V36汇总。本机存在缓存，因此本地此前通过不能代表干净GitHub checkout通过。现改用合成fixture测试trial ID碰撞与缺失预测拒绝逻辑，并新增显式碰撞拒绝断言；不上传缓存、不改变原训练器或协议。

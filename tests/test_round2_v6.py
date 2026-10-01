@@ -156,11 +156,19 @@ def test_sampler_expands_the_frozen_iron_capacity_space() -> None:
     assert large_mlp["inner_validation_folds"] == 5 and large_mlp["max_epochs"] == 120
 
 
-def test_sampler_is_deterministic_and_collision_free() -> None:
+def test_sampler_is_deterministic_and_collision_free(monkeypatch) -> None:
     first = sample_v6_iron_capacity_trials(REPO_ROOT)
     second = sample_v6_iron_capacity_trials(REPO_ROOT)
     assert first == second
+    # Collision detection needs identities, not private fit ledgers.
+    monkeypatch.setattr("bf_tap_r2.v6_sampler.sample_v36", lambda root: [
+        {"trial_id": f"v36-s1-{line}-{index:04d}"}
+        for line in ("A", "D", "N", "O") for index in range(100)
+    ])
     verify_no_v36_collision(REPO_ROOT)
+    monkeypatch.setattr("bf_tap_r2.v6_sampler.sample_v36", lambda root: [{"trial_id": first[0]["trial_id"]}])
+    with pytest.raises(ValueError, match="collide"):
+        verify_no_v36_collision(REPO_ROOT)
 
 # ---------------------------------------------------------------------------
 # Stage A screen
@@ -301,17 +309,21 @@ def test_probe_stage_refuses_unauthorised_trials_without_fitting() -> None:
     assert not (REPO_ROOT / guard).exists()
 
 
-def test_probe_evaluation_reports_missing_predictions(tmp_path: Path) -> None:
-    """An unevaluated probe must be reported as missing, not as a pass."""
-    from bf_tap_r2.v6_screen import evaluate_probe
-
+def test_probe_evaluation_reports_missing_predictions(tmp_path: Path, monkeypatch) -> None:
+    """Missing probe columns remain a failure in a clean checkout without caches."""
+    from types import SimpleNamespace
+    import pandas as pd
+    import bf_tap_r2.v6_screen as module
     spec = load_v6_spec(REPO_ROOT)
-    payload = evaluate_probe(REPO_ROOT, spec=spec, probe_dir=tmp_path,
-                             output="local/runs/round2-v6-iron-capacity-networks/_probe_eval_test")
+    actual, base, folds, _, _, _, _ = _synthetic_screen_inputs()
+    trials = sample_v6_iron_capacity_trials(REPO_ROOT)
+    monkeypatch.setattr("bf_tap_r2.v6_sampler.sample_v6_iron_capacity_trials", lambda root: trials)
+    monkeypatch.setattr(module, "load_v5_training_frame", lambda root: pd.DataFrame({"tap_iron": actual}))
+    monkeypatch.setattr(module, "load_column_reference", lambda *args: SimpleNamespace(base_for=lambda *args: base))
+    monkeypatch.setattr(module, "fold_vector", lambda *args: folds)
+    payload = module.evaluate_probe(tmp_path, spec=spec, probe_dir=tmp_path / "missing",
+        output="local/runs/round2-v6-iron-capacity-networks/probe-test")
     assert payload["missing_predictions"] == ["v6-s1-N-0024", "v6-s1-N-0028"]
     assert payload["probe_gate_passed"] is False
     assert payload["stage_a2_full_screen_unlocked"] is False
     assert payload["records"] == []
-    for path in (REPO_ROOT / "local/runs/round2-v6-iron-capacity-networks/_probe_eval_test").glob("*"):
-        path.unlink()
-    (REPO_ROOT / "local/runs/round2-v6-iron-capacity-networks/_probe_eval_test").rmdir()
