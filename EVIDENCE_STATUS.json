@@ -18656,7 +18656,7 @@
     }
   },
   "ema_span_confirmation_20261001": {
-    "status": "runtime_admitted_controller_launched_confirmation_running",
+    "status": "completed_four_seed_evidence_gate_passed_original_development_exploration_unchanged",
     "branch": "codex/ema-span-confirmation",
     "worktree": "/home/lux1/iron/local/worktrees/ema-span-confirmation",
     "protocol": "docs/ema_span_confirmation/PREREGISTRATION.md",
@@ -18691,8 +18691,8 @@
     },
     "new_retained_states_planned": 440,
     "private_run": "/home/lux1/iron/local/runs/ema-span-confirmation-20261001/confirmation-r1",
-    "G0": "four_real_44_state_units_cold_identity_native_budget_and_frozen_sources_passed_batch_final_native_pt_audit_pending",
-    "G1": "confirmation_running_no_new_complete_seed_results",
+    "G0": "passed_saved_state_identity_cold_inference_partition_native_budget_and_arithmetic",
+    "G1": "four_complete_seed_gains_positive_seed_paired_LCB95_positive_no_platform_result",
     "tests": {
       "targeted_passed": 81,
       "full_passed": 1439,
@@ -18707,8 +18707,8 @@
     "constructor_input_probe_sha256": "91fc21c42aad736810dd8ea552a20637e240996c85a50fd44a73970b63b7525a",
     "constructor_official_csv_reads": 0,
     "scientific_execution_admitted": true,
-    "new_confirmation_seeds_started": null,
-    "new_scientific_fits": null,
+    "new_confirmation_seeds_started": 2,
+    "new_scientific_fits": 340,
     "full_data_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
@@ -18729,33 +18729,94 @@
     "started_local": "2026-10-01T18:39:33.892596+08:00",
     "preactivation_audit_sha256": "b0a0db2c1bb1db9e4103929f09aecc217fb664a83fe833989a9fe8871defa6d2",
     "initial_launch_verification_sha256": "d97e0510cd3b0662d038a8f1690f75970267ee0869d5706f68585e4810b5ff05",
-    "actual_counts_status": "four_closed_units_from_4800_second_observation_active_partial_calls_not_counted",
+    "actual_counts_status": "terminal_all_ten_units_and_native_budgets_verified",
     "last_scheduled_observation": {
       "event": "scheduled_600_second_check",
       "controller_pid": 180731,
-      "elapsed_seconds": 5400.000735075009,
-      "completed_units": 5,
+      "elapsed_seconds": 10200.001469634008,
+      "completed_units": 9,
       "failed_units": 0
     },
-    "closed_units_verified": 4,
-    "closed_reference_pipeline_instances": 128,
-    "closed_component_estimators": 8,
-    "closed_retained_states": 176,
+    "closed_units_verified": 10,
+    "closed_reference_pipeline_instances": 320,
+    "closed_component_estimators": 20,
+    "closed_retained_states": 440,
     "closed_native_counts": {
-      "catboost_fit": 116,
-      "ebm_fit": 24,
-      "ebm_boost": 192,
-      "sklearn_mlp_fit": 4,
-      "torch_optimizer": 40
+      "catboost_fit": 290,
+      "ebm_fit": 60,
+      "ebm_boost": 480,
+      "sklearn_mlp_fit": 10,
+      "torch_optimizer": 100
     },
     "closed_warm_peak_rss_mib": 1283.44921875,
     "closed_cold_peak_rss_mib": 641.16796875,
     "closed_maximum_composition_difference": 2.2737367544323206e-13,
-    "closed_unit_readback_receipt": "local/worktrees/ema-short-release-preparation/local/research/confirmation-observation-r2/receipt.json",
-    "closed_unit_readback_receipt_sha256": "4144aee44059397a3e826b53a9c9243d1a133296cc8533527874bba4f8dd7918"
+    "closed_unit_readback_receipt": "local/runs/ema-span-confirmation-20261001/confirmation-r1/terminal-verification-r1.json",
+    "closed_unit_readback_receipt_sha256": "14c123392e7c18222f62da8bc1211618efb88b93f94cd3ee16d085dea35719b9",
+    "new_scientific_fits_unit": "declared_reference_pipeline_and_EMA_estimator_instances_not_native_solver_calls",
+    "actual_controller_exit_code": 0,
+    "controller_running": false,
+    "observer_running": false,
+    "completed_local": "2026-10-01T21:30:55.859541+08:00",
+    "four_seed_gate_passed": true,
+    "seed_gains": {
+      "42": 0.0021899322201757543,
+      "3407": 0.0013855401783149184,
+      "271828": 0.0011644180925761615,
+      "314159": 0.0015276206465225906
+    },
+    "seed_paired": {
+      "n": 4,
+      "mean": 0.001566877784397356,
+      "sd": 0.0004414351910672644,
+      "se": 0.0002207175955336322,
+      "lcb95": 0.0010474490656511278,
+      "positive": 4
+    },
+    "full_seed_rows": {
+      "42": 2754,
+      "3407": 2754,
+      "271828": 2754,
+      "314159": 2754
+    },
+    "development_classification": "exploration_minimum_improved_folds_failed_unchanged",
+    "confirmation_classification": "formal_on_two_confirmation_seeds_descriptive_only",
+    "original_summary_G0_snapshot": "independent_final_audit_pending_preserved_original_bytes",
+    "results_document": "docs/ema_span_confirmation/RESULTS.md",
+    "release_authorized": false,
+    "platform_forecast": null,
+    "monitoring_stopped_after_actual_terminal": true,
+    "terminal_evidence": {
+      "summary": {
+        "path": "local/runs/ema-span-confirmation-20261001/confirmation-r1/summary.json",
+        "sha256": "e54aa79ab3a51464e21731538e4068439cccdf7bbf51f26bb07455d502290c94"
+      },
+      "audit": {
+        "path": "local/runs/ema-span-confirmation-20261001/confirmation-r1/audit.json",
+        "sha256": "7c19aa5711b666107772a1f37461f497509e79bf8b4849fb3f4533f6ff529b8a"
+      },
+      "completion": {
+        "path": "local/runs/ema-span-confirmation-20261001/confirmation-r1/completion-event.json",
+        "sha256": "2f8c67373a01132e5929346acb9c76261951fdd0fde1a8f315967a6f813ed401"
+      },
+      "process_terminal": {
+        "path": "local/runs/ema-span-confirmation-20261001/confirmation-r1/process-terminal.json",
+        "sha256": "f6491d22e5713d4950ab66a84530a42ba54c2982a6f56dc504d24d2a9e4a6521"
+      },
+      "terminal_verification": {
+        "path": "local/runs/ema-span-confirmation-20261001/confirmation-r1/terminal-verification-r1.json",
+        "sha256": "14c123392e7c18222f62da8bc1211618efb88b93f94cd3ee16d085dea35719b9"
+      }
+    },
+    "terminal_cold_differences": {
+      "full": 0.0,
+      "reverse": 6.103515625e-05,
+      "chunk": 6.103515625e-05,
+      "singleton": 4.205987329441996e-05
+    }
   },
   "ema_short_release_preparation_20261001": {
-    "status": "single_candidate_release_controller_checked_preparation_manifest_not_admitted_engineering_expansion_stopped",
+    "status": "controller_checked_four_seed_confirmation_passed_specific_full_release_authorization_pending",
     "branch": "codex/ema-short-release-preparation",
     "worktree": "/home/lux1/iron/local/worktrees/ema-short-release-preparation",
     "documentation": "docs/ema_short_release/PREPARATION.md",
@@ -18768,7 +18829,7 @@
     "candidate": "SHORT_SPAN",
     "confirmation_state_key": "ema_span_confirmation_20261001",
     "G0": "old_full_EMA_replay_Q75_reconstruction_39_targeted_1464_full_and_zero_fit_preparation_passed_actual_release_pending",
-    "G1": "no_new_SHORT_full_model_or_platform_result_confirmation_running",
+    "G1": "four_seed_SHORT_local_increment_positive_no_full_SHORT_model_or_platform_result",
     "private_receipt": "local/worktrees/ema-short-release-preparation/local/research/release-input-probe-r1/receipt.json",
     "receipt_sha256": "c5e9dd6711012536b54aa6be6444b268733240d8acc430c4273c4e20e7632770",
     "manifest_sha256": "bf11e8a1296336277ff6461bcb50b77e4a0b109ceaa607bb4bc5ee6f8a6a0d31",
@@ -18825,6 +18886,10 @@
     "preparation_model_sources": 382,
     "preparation_inputs": 27,
     "user_steering": "不要过分工程化",
-    "additional_engineering_expansion_stopped": true
+    "additional_engineering_expansion_stopped": true,
+    "confirmation_four_seed_gate_passed": true,
+    "confirmation_terminal_verification": "local/runs/ema-span-confirmation-20261001/confirmation-r1/terminal-verification-r1.json",
+    "confirmation_terminal_verification_sha256": "14c123392e7c18222f62da8bc1211618efb88b93f94cd3ee16d085dea35719b9",
+    "specific_release_authorization": null
   }
 }
