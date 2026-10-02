@@ -15,3 +15,13 @@
 公开状态见EVIDENCE_STATUS.json的 `sam_ema_time_manual_exploration_release_20261002`。原N→V36探针保留未测；DE3＋Q75仍暂不平台测试。最佳仍为用户回传、未独立核验的Q75/Q100=96.3920，距96.45为0.0580，目标未达到。暂停后不空转监控。
 
 发布源提交 `93922b76b45a73a1721213e68b4d7e3b14558707`；manifest SHA256 `5fb0dc594921639f3b43e31acfea28dac65c4bc5e21a453f932d2fc11aa4305b`；actual-main-exit SHA256 `022265e760cc762bb18bd946b05c41aa48ca62955a6aec88fc9508fa723a9487`。模型、预测、原始包、审计及失败记录保留于私有local目录。
+
+## 用户授权桌面交付（2026-10-02）
+
+用户在两个待测包推荐后明确要求“写桌面”。原包已逐字节复制到 `C:\Users\lqh22\Desktop\submission-platform-candidates-20261002\02_SAM_EMA_TIME_Q75_EXPLORATION\Luqhhh_bf_tap_predict_round2.zip`，与N→V36探针同批交付；编号02对应次优先测试建议。
+
+G0：锁定Python3.12独立新进程核对原包和桌面包，ZIP SHA-256保持 `407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5`，CSV字节一致，ZIP仅含result.csv、CRC正确、322个唯一ID按官方模板顺序、预测有限非负，铁量与Q75原字段字符串差异0。G1仍为平台未测人工探索，原确认失败及未正式晋级决定保持。
+
+本次该候选桌面复制1份；批次共复制2份，新增拟合/包/助手上传均0，优化暂停保持。原发布阶段桌面写入0保留为历史快照，原包和其他桌面目录未覆盖，DE3继续仅替补。
+
+追加登记在状态键 `sam_ema_time_manual_exploration_release_20261002.desktop_handoffs`。私有批次收据和独立审计位于 `local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json`、`independent-audit.json`，均不入Git；收据SHA-256 `fd0a4b2a3709c19b35863ee235b92c823cbb6697461a5ae369ca6529658675a5`，独立审计SHA-256 `52ee10968731157df19203833fa04f285b29166a4e2a07c0734e7dbd610ba07f`。

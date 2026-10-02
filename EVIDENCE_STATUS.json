@@ -339,7 +339,9 @@
         "evidence_key": "q75_combination_review_20261002",
         "feedback_status": "user_reported_not_tested",
         "feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
-        "feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334"
+        "feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/01_EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop_handoff_receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json"
       },
       {
         "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
@@ -350,7 +352,9 @@
         "reference": "EMA_TIME_Q75",
         "evidence_key": "sam_ema_time_manual_exploration_release_20261002",
         "feedback_status": "not_measured",
-        "formal_promotion": false
+        "formal_promotion": false,
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/02_SAM_EMA_TIME_Q75_EXPLORATION/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop_handoff_receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json"
       }
     ],
     "reserve_candidates": [
@@ -20012,7 +20016,25 @@
     "tier_evidence": "local/runs/q75-combination-review-20261002/review-r1/candidate-tiers.json",
     "platform_feedback_status": "user_reported_not_tested",
     "platform_feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
-    "platform_feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334"
+    "platform_feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334",
+    "desktop_handoffs": [
+      {
+        "candidate": "EMA_Q75_N_TO_V36_P05",
+        "status": "copied_verified_independent_audit_passed",
+        "authorization": "用户明确指令：写桌面（承接两个待测包推荐）",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/01_EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
+        "source_package": "/home/lux1/iron/local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json",
+        "receipt_sha256": "fd0a4b2a3709c19b35863ee235b92c823cbb6697461a5ae369ca6529658675a5",
+        "independent_audit": "local/runs/platform-candidates-desktop-20261002/handoff-r1/independent-audit.json",
+        "independent_audit_sha256": "52ee10968731157df19203833fa04f285b29166a4e2a07c0734e7dbd610ba07f",
+        "desktop_copies": 1,
+        "new_fits": 0,
+        "new_packages": 0,
+        "agent_uploads": 0
+      }
+    ]
   },
   "ema_fusion_selection_20261002": {
     "status": "completed_paired_development_no_stable_criterion_gain_no_confirmation",
@@ -21467,6 +21489,24 @@
       291038,
       291333
     ],
-    "optimization_paused_after_delivery": true
+    "optimization_paused_after_delivery": true,
+    "desktop_handoffs": [
+      {
+        "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
+        "status": "copied_verified_independent_audit_passed",
+        "authorization": "用户明确指令：写桌面（承接两个待测包推荐）",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/02_SAM_EMA_TIME_Q75_EXPLORATION/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5",
+        "source_package": "/home/lux1/iron/local/runs/sam-ema-time-exploration-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json",
+        "receipt_sha256": "fd0a4b2a3709c19b35863ee235b92c823cbb6697461a5ae369ca6529658675a5",
+        "independent_audit": "local/runs/platform-candidates-desktop-20261002/handoff-r1/independent-audit.json",
+        "independent_audit_sha256": "52ee10968731157df19203833fa04f285b29166a4e2a07c0734e7dbd610ba07f",
+        "desktop_copies": 1,
+        "new_fits": 0,
+        "new_packages": 0,
+        "agent_uploads": 0
+      }
+    ]
   }
 }
