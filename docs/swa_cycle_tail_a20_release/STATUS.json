@@ -1,0 +1,52 @@
+{
+  "candidate": "SWA_CYCLE_TAIL_V1_A20",
+  "status": "audited_submission_zip_ready_for_user_platform_upload",
+  "authorization": "2026-10-02用户明确按推荐生成单个提交包",
+  "G0": "passed_fullfit_partitions_scalers_cycle_selection_windows_independent_cold_and_package_readback",
+  "G1": "user_selected_platform_exploration_not_formally_promoted",
+  "platform_score": null,
+  "platform_reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified"
+  },
+  "recipe": "time=.8*Q75_time+.2*cycle_tail_fullfit_member; Q75 iron original field strings",
+  "full_wrapper_fits": 1,
+  "states": 2,
+  "optimizer_runs": 2,
+  "new_CV_fits": 0,
+  "new_confirmation_fits": 0,
+  "new_reference_fits": 0,
+  "packages": 1,
+  "assistant_uploads": 0,
+  "desktop_writes": 0,
+  "selected_epoch": 100,
+  "selection_completed_epochs": 240,
+  "refit_completed_epochs": 100,
+  "averaged_cycle_ends": [
+    100
+  ],
+  "available_raw_cycle_states": 1,
+  "window_policy": "latest min(5,available) completed cycle ends, no initialization",
+  "formal_promotion": false,
+  "historical_decisions_unchanged": true,
+  "package": "local/runs/swa-cycle-tail-a20-release-20261002/SWA_CYCLE_TAIL_V1_A20/submission.zip",
+  "zip_sha256": "f423159bd2bae74999230f7c9556389690be704b9bfcad34bd2550177961ab9a",
+  "result_sha256": "5e0934975c716c1b35fc26b3134df2e9d2d1bd61288b8f7c2fec488b293aa231",
+  "parent_zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+  "private_final_receipt": "local/swa-cycle-tail-a20-release-20261002/delivery-final-verification-r1.json",
+  "audit_summary": {
+    "rows": 322,
+    "unique_ids": 322,
+    "sample_id_present": true,
+    "template_order": true,
+    "only_result_csv": true,
+    "CRC_passed": true,
+    "finite_nonnegative": true,
+    "iron_string_mismatches": 0,
+    "cold_endpoint_max_difference": 0.0,
+    "cold_prediction_max_difference": 3.226142496259854e-06,
+    "window_max_difference": 0.0,
+    "peak_rss_mib": 548.859375
+  }
+}
