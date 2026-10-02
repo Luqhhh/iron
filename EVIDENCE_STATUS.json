@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "PAUSED_BY_USER_ONE_EXPLICIT_EMA_MEAN3_EXPLORATION_DESKTOP_READY_PLATFORM_UNMEASURED",
+    "status": "EMA_MEAN3_READY_GAUSSIAN_TIME_CONFIRMATION_PREPARING",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -326,7 +326,7 @@
     "submission_priority": [
       "EMA_MEAN3_FULL_Q75"
     ],
-    "submission_priority_note": "Only the explicitly selected EMA_MEAN3 fixed three-training-seed mean is ready for user testing; previous scored probes remain closed; optimization stays paused and DE3 reserve deferred; no quota inferred.",
+    "submission_priority_note": "EMA_MEAN3 remains the sole ready user testing package; GAUSS1_A20 is a newly frozen confirmation study, not a released package; DE3 reserve stays deferred and quota is not inferred.",
     "ready_for_user_platform_testing": [
       {
         "candidate": "EMA_MEAN3_FULL_Q75",
@@ -360,8 +360,8 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "用户指定EMA_MEAN3已完成单一固定全量发布并写入桌面，G0通过；G1为平台未测人工探索，原配对确认门失败和未正式晋级保持。仅此包进入当前待测队列；前两项低于Q75的回传结论、当前同分最佳及DE3替补安排保持，优化继续暂停。",
-    "optimization_paused": true,
+    "recommended": "EMA_MEAN3用户指定探索包继续待测；本线程按继续96.45目标指令推进GAUSS1时长确认，尚无新包或正式四seed晋级，DE3仍仅替补。",
+    "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "historical_decisions_unchanged": true,
@@ -2714,10 +2714,10 @@
     ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
-    "optimization_paused": true,
+    "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "EMA_MEAN3_requested_desktop_delivery_completed_owned_processes_exited_broader_optimization_paused_no_active_task",
+    "runtime_observation": "GAUSS1_A20_two_positive_development_seeds_engineering_passed_confirmation_frozen_ready_to_launch",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3115,7 +3115,8 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。"
+    "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。",
+    "active_research": "q75_gaussian_time_confirmation_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -22064,5 +22065,53 @@
     "report_sha256": "e1e4a3075af8c96ce1b12ef151ce5af25a411107defc26d8c01d269e362cac09",
     "independent_score_sha256": "a1fc34879b67d98307e473c84b300f0cabc8e6268b14e50aa49a03e7134eaca5",
     "terminal_sha256": "e5754c0397658387ebc83ca7fcb050fda57fc3350867037d87f948710418c136"
+  },
+  "q75_gaussian_time_confirmation_20261002": {
+    "status": "engineering_passed_confirmation_frozen_ready_to_launch",
+    "reference": "EMA_TIME_Q75",
+    "thread_target": 96.45,
+    "source_worktree": "local/worktrees/q75-gaussian-time-confirmation",
+    "source_commit": "4fb6f6c",
+    "specification": "configs/q75_gaussian_confirmation/SPEC.json",
+    "protocol": "docs/q75_gaussian_confirmation/PREREGISTRATION.md",
+    "execution": "docs/q75_gaussian_confirmation/EXECUTION.md",
+    "private_root": "local/runs/q75-gaussian-confirmation-20261002",
+    "G0": "20_targeted_checks_2_synthetic_optimizers_2_cold_states_actual_exit0_frozen_native_Q75_reference",
+    "G1": "awaiting_complete_four_seed_confirmation",
+    "confirmation_seeds": [
+      271828,
+      314159
+    ],
+    "planned_scientific_estimators": 10,
+    "planned_scientific_optimizers": 20,
+    "planned_scientific_states": 20,
+    "engineering_optimizer_runs": 2,
+    "engineering_cold_states": 2,
+    "engineering_max_cold_difference": 2.842170943040401e-14,
+    "engineering_OS_peak_RSS_mib": 496.08203125,
+    "new_reference_fits": 0,
+    "repeated_development_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "frozen_dependency_files": 1614,
+    "confirmation_manifest_sha256": "087b4b117e0f82e8a5e319fe3f023b49bd89e44772db889a3512e06cc8068409",
+    "engineering_terminal_sha256": "282cb85b0b1292fde3cf8053d6614463d938bd193441461d9f6146e28f201646",
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "formal_promoted": false,
+    "prior_overview_before_user_continued_goal": {
+      "optimization_paused": true,
+      "runtime_observation": "EMA_MEAN3_requested_desktop_delivery_completed_owned_processes_exited_broader_optimization_paused_no_active_task",
+      "active_research": null
+    },
+    "prior_queue_overview": {
+      "status": "PAUSED_BY_USER_ONE_EXPLICIT_EMA_MEAN3_EXPLORATION_DESKTOP_READY_PLATFORM_UNMEASURED",
+      "submission_priority_note": "Only the explicitly selected EMA_MEAN3 fixed three-training-seed mean is ready for user testing; previous scored probes remain closed; optimization stays paused and DE3 reserve deferred; no quota inferred.",
+      "recommended": "用户指定EMA_MEAN3已完成单一固定全量发布并写入桌面，G0通过；G1为平台未测人工探索，原配对确认门失败和未正式晋级保持。仅此包进入当前待测队列；前两项低于Q75的回传结论、当前同分最佳及DE3替补安排保持，优化继续暂停。",
+      "optimization_paused": true
+    }
   }
 }
