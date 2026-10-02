@@ -830,7 +830,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Laplace mean3 20 new estimators running; two platform slots reserved",
+    "research_status": "Laplace mean3 separate confirmation running; two platform slots remain unallocated",
     "platform_slots_user_reported": 2,
     "platform_slots_source": "user_current_turn_not_inferred",
     "submission_allocation": "deferred_until_critical_exploration_complete_then_sequential_feedback"
@@ -2746,7 +2746,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Laplace_mean3_development_completed_all_owned_workers_terminal_no_monitor",
+    "runtime_observation": "Verified_Laplace_mean3_confirmation_worker_supervisor_live_threads1_600_second_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3127,7 +3127,7 @@
     "latest_local_G0": "report_only_recovery_exit0_independent_audit_passed_original_exit1_preserved",
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
-    "latest_registered_scientific_route": "q75_laplace_mean3_development_20261002",
+    "latest_registered_scientific_route": "q75_laplace_mean3_confirmation_20261002",
     "latest_completed_scientific_route": "q75_laplace_mean3_development_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_positive_vs_matched_SAM_confirmation_gate_failed",
@@ -3140,12 +3140,12 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "q75_laplace_mean3_confirmation_20261002",
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Separately_freeze_confirmation271828_314159_two_new_training_seeds_40optimizers",
+    "next_action": "Audit_all_four_split_gates_before_any_new_full_release",
     "optimization_paused": false,
     "pause_after_this_round_requested": false
   },
@@ -23237,5 +23237,102 @@
     "independent_score_sha256": "56c69d6a0a4ba3cb57a57e887a3e71b5b0cfbf7842b514862cc7760d23588d7f",
     "terminal_sha256": "1e59684130786efcc3b8e32abb41496118d1df6c3cdb293d4b420bc48abf28e5",
     "status_document": "docs/q75_laplace_mean3/RESULTS.md"
+  },
+  "q75_laplace_mean3_confirmation_20261002": {
+    "status": "running_complete_confirmation",
+    "source_worktree": "local/worktrees/q75-laplace-mean3-confirmation",
+    "source_commit": "c20d1a0dad6bad4b57030bf67fa4f772b0620945",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "candidate": "LAPLACE_MEAN3_A20",
+    "protocol": "docs/q75_laplace_mean3_confirmation/PREREGISTRATION.md",
+    "specification": "configs/q75_laplace_mean3_confirmation/SPEC.json",
+    "run_directory": "local/runs/q75-laplace-mean3-confirmation-20261002/confirmation-r1",
+    "confirmation_seeds": [
+      271828,
+      314159
+    ],
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "new_training_seeds": [
+      1042,
+      2042
+    ],
+    "planned_new_estimators": 20,
+    "planned_new_optimizers": 40,
+    "planned_new_states": 40,
+    "reused_states": 20,
+    "engineering_optimizers": 0,
+    "reference_fits": 0,
+    "repeated_development_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 9,
+      "optimizer_constructor_attempts": 0,
+      "receipt_sha256": "d7b839c7cbdaddac1e549f37142c2b3d1b1fab7a68dcb76118b956ed6dcd7660"
+    },
+    "manifest_sha256": "2876f74b5713e25f08c1e0d40c017f81b47d1f187b0efa16c63a803dd84d8bac",
+    "frozen_dependency_files": 3560,
+    "maximum_runtime_seconds": null,
+    "monitor_seconds": 600,
+    "automatic_retries": false,
+    "G0": "running",
+    "G1": "unmeasured",
+    "formal_promoted": false,
+    "release_eligible": false,
+    "initial_process_verification": {
+      "observed_ns": 1790933007442896635,
+      "next_periodic_observation_ns": 1790933607442896635,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "kind": "supervisor_pid",
+          "pid": 6095,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-mean3-confirmation",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-mean3-confirmation/.venv/bin/python3",
+            "scripts/q75_laplace_mean3_confirmation.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-mean3-confirmation-20261002/confirmation-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "kind": "worker_pid",
+          "pid": 6096,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-mean3-confirmation",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-mean3-confirmation/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_laplace_mean3_confirmation",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-mean3-confirmation-20261002/confirmation-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "manifest_sha256": "2876f74b5713e25f08c1e0d40c017f81b47d1f187b0efa16c63a803dd84d8bac"
+    },
+    "next_periodic_observation_ns": 1790933607442896635,
+    "tool_session_id": 60466
   }
 }
