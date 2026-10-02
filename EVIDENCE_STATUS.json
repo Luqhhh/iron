@@ -19889,7 +19889,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "registered_dropout_followup_closed_no_new_finalist_one_existing_platform_probe_untested",
+    "status": "width512_followup_running_previous_dropout_closed_one_existing_platform_probe_untested",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -20950,7 +20950,7 @@
     "results_document": "docs/ema_dropout_consistency/RESULTS.md"
   },
   "ema_width512_preparation_20261002": {
-    "status": "full_shape_width512_engineering_running_scientific_not_started",
+    "status": "scientific_development_running_full_two_split_single_width_scope",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -20967,12 +20967,12 @@
         "new": 512
       }
     },
-    "G0": "width512_full_shape_learnability_independent_cold_and_complete_scientific_controller_pending",
-    "G1": "unmeasured_no_scientific_fit",
+    "G0": "20_locked_scoped_tests_full_shape_width512_learnability_cold_and_actual_exit0_passed_scientific_audit_pending",
+    "G1": "unmeasured_until_complete_two_split_OOF_and_independent_audit",
     "engineering_optimizer_budget": 1,
-    "engineering_optimizer_runs": null,
-    "scientific_model_fits": 0,
-    "scientific_optimizer_runs": 0,
+    "engineering_optimizer_runs": 1,
+    "scientific_model_fits": null,
+    "scientific_optimizer_runs": null,
     "planned_scientific_estimators": 10,
     "planned_scientific_optimizer_runs": 20,
     "planned_new_cold_states": 20,
@@ -20986,17 +20986,13 @@
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": false,
-    "remaining_before_scientific_launch": [
-      "full_shape_width512_engineering_and_independent_cold",
-      "tested_exact_source_complete_controller_and_independent_auditor",
-      "fresh_current_reference_data_source_cache_partition_freeze"
-    ],
-    "source_worktree": "local/worktrees/ema-width512",
-    "source_commit": "e8d396e9c4790e7f01931bc75bcb04c103273bb2",
-    "focused_tests_passed": 14,
+    "remaining_before_scientific_launch": [],
+    "source_worktree": "local/worktrees/ema-width512-development",
+    "source_commit": "98e54afaa96c09be8951f6bddfad7229aab420f8",
+    "focused_tests_passed": 20,
     "focused_tests_skipped": 0,
     "full_test_suite": false,
-    "actual_engineering_counts_pending_terminal": true,
+    "actual_engineering_counts_pending_terminal": false,
     "engineering_run": "local/runs/ema-width512-20261002/admission-r1",
     "engineering_process_identity": {
       "path": "local/runs/ema-width512-20261002/admission-r1/initial-process-identity.json",
@@ -21004,11 +21000,72 @@
     },
     "actual_admission_supervisor_pid": 282413,
     "actual_admission_controller_pid": 282414,
-    "started_ns": 1790898833878941855,
-    "next_scheduled_observation_ns": 1790899433878941855,
+    "started_ns": 1790899957296373366,
+    "next_scheduled_observation_ns": 1790900557296373366,
     "controller_tests_receipt": {
-      "path": "local/runs/ema-width512-20261002/admission-r1/tests-receipt.json",
-      "sha256": "3fed193f6ff1a74323fd5cb2f8d117c19a01f7b06948c39e8b58afaaf8965214"
-    }
+      "path": "local/runs/ema-width512-20261002/controller-tests-r1/tests-receipt.json",
+      "sha256": "5360137f18e369b8c6d741cd8db254b5a880cfc8157d688f41ba8b8cc79640ec"
+    },
+    "engineering_source_worktree": "local/worktrees/ema-width512",
+    "engineering_source_commit": "e8d396e9c4790e7f01931bc75bcb04c103273bb2",
+    "engineering_started_ns": 1790898833878941855,
+    "engineering_actual_main_exit_code": 0,
+    "engineering_actual_cold_exit_codes": [
+      0
+    ],
+    "engineering_actual_supervisor_exit_code": 0,
+    "engineering_query_MAE": 0.36525732116889115,
+    "engineering_median_constant_MAE": 5.469946309415109,
+    "engineering_peak_rss_mib": 858.8671875,
+    "engineering_maximum_cold_difference": 3.3611075167527815e-06,
+    "engineering_controller_running": false,
+    "engineering_observer_running": false,
+    "engineering_terminal_evidence": {
+      "manifest.json": {
+        "path": "local/runs/ema-width512-20261002/admission-r1/manifest.json",
+        "sha256": "88e1d3ca63f2826cbe6cb9e4f4b8924f7a5fc25c2b65bb15caf2c425859c68aa"
+      },
+      "warm-receipt.json": {
+        "path": "local/runs/ema-width512-20261002/admission-r1/warm-receipt.json",
+        "sha256": "5a348c5c483c2c1d86b009efaee2f353da59d743a254ea2c3504e195516ea906"
+      },
+      "cold-receipt.json": {
+        "path": "local/runs/ema-width512-20261002/admission-r1/cold-receipt.json",
+        "sha256": "00b497e367855b09f4a98ca97d02f88d1cb042be8870d1e095bf3350653db952"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/ema-width512-20261002/admission-r1/terminal-verification.json",
+        "sha256": "027db364254b3a9772e988fab9b788c30985c82a66269d53c1722198cb891eca"
+      },
+      "observer-terminal-verification.json": {
+        "path": "local/runs/ema-width512-20261002/admission-r1/observer-terminal-verification.json",
+        "sha256": "7704cebf494df47d6d9d4bbad858003291437bcf1014c3ba30fa0d31326a39c7"
+      },
+      "actual-main-exit.json": {
+        "path": "local/runs/ema-width512-20261002/admission-r1/actual-main-exit.json",
+        "sha256": "2863483179f8481cda86dfec5f63becf3ec3a8787739add3b344b93e68789c77"
+      }
+    },
+    "actual_counts_pending_terminal": true,
+    "scientific_run": "local/runs/ema-width512-20261002/development-r1",
+    "scientific_manifest": {
+      "path": "local/runs/ema-width512-20261002/development-r1/manifest.json",
+      "sha256": "9c1cc3b09076a8ca619c4e731075310ae4424bb34703d1e010f082f823301fad"
+    },
+    "scientific_frozen_files": 490,
+    "frozen_partition_units": 10,
+    "actual_development_supervisor_pid": 283561,
+    "actual_development_controller_pid": 283562,
+    "scientific_process_identity": {
+      "path": "local/runs/ema-width512-20261002/development-r1/initial-process-identity.json",
+      "sha256": "6728695029cb4b86c1e7416e4f95867a5aa3ab53f2fcb2709ae3fed7c52ff40e"
+    },
+    "scientific_started_ns": 1790899957296373366,
+    "source_hashes_in_tests": 388,
+    "controller_test_failures_preserved": {
+      "path": "local/runs/ema-width512-20261002/controller-tests-failed-r1/failure-receipt.json",
+      "sha256": "fc7bc9427f423d36bf711d17660b4db925e3559b9afde44bc787c39d272ac694"
+    },
+    "preparation_document": "docs/ema_width512/PREPARATION.md"
   }
 }
