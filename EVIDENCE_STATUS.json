@@ -817,7 +817,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Laplace development complete; FIXED selected for separate four-seed confirmation, no new package"
+    "research_status": "Fixed Laplace formally promoted versus Q75; independent full release preparation next; not yet packaged"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2731,7 +2731,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Laplace_complete_development_terminal_FIXED_confirmation_eligible_no_running_worker",
+    "runtime_observation": "Fixed_Laplace_confirmation_complete_no_running_worker",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3134,7 +3134,7 @@
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "Freeze fixed-scale Laplace confirmation; GAUSS1 and EMA_MEAN3 remain pending platform feedback"
+    "next_action": "Freeze one fixed Laplace full-data release; platform feedback remains pending"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -22533,5 +22533,141 @@
     "terminal_sha256": "68f7ad7d337613cde815247f4487b6066cad3ed21d002d3f532ee48a0d317ab0",
     "report_sha256": "db31109d75679a713a0141b39cddaa511af02ef8b39773150287a20328d31e45",
     "independent_score_sha256": "2335856f2f0477b73ee3947df2cc949dbc40b9c6b4f5e2ffea55762d55768530"
+  },
+  "q75_laplace_fixed_confirmation_20261002": {
+    "status": "completed_formally_promoted_vs_Q75_platform_unmeasured",
+    "candidate": "LAPLACE_FIXED_A20",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "thread_target": 96.45,
+    "source_worktree": "local/worktrees/q75-laplace-fixed-confirmation",
+    "source_commit": "4994656c5fbb4b1c31a9953749c9710a81da09a6",
+    "specification": "configs/q75_laplace_confirmation/SPEC.json",
+    "protocol": "docs/q75_laplace_confirmation/PREREGISTRATION.md",
+    "run_directory": "local/runs/q75-laplace-confirmation-20261002/confirmation-r1",
+    "confirmation_seeds": [
+      271828,
+      314159
+    ],
+    "planned_scientific_estimators": 10,
+    "planned_scientific_optimizers": 20,
+    "planned_new_states": 20,
+    "new_engineering_optimizers": 0,
+    "new_reference_fits": 0,
+    "repeated_development_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_python": "3.12",
+    "locked_checks_passed": 6,
+    "test_optimizer_constructor_attempts": 0,
+    "manifest_sha256": "2cbc9cef460d7a51807ddecfcbe642c6ed1b49ba5efd134d886d4be08ad02f6d",
+    "frozen_dependency_files": 2473,
+    "G0": "passed_native20_optimizers_20_states_cold_independent_scores_and_actual_exit0",
+    "G1": "formal_four_seed_Q75_gate_passed_Gaussian_comparison_not_all_positive_and_LCB_negative",
+    "formal_promoted": true,
+    "initial_process_verification": {
+      "observed_ns": 1790922941805578136,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "pid": 323737,
+          "status": "sleeping",
+          "created": 1790922940.5,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-fixed-confirmation",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-fixed-confirmation/.venv/bin/python3",
+            "scripts/q75_laplace_confirmation.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-confirmation-20261002/confirmation-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "pid": 323738,
+          "status": "running",
+          "created": 1790922940.58,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-fixed-confirmation",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-fixed-confirmation/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_laplace_confirmation",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-confirmation-20261002/confirmation-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "next_periodic_observation_ns": 1790923541805578136,
+      "manifest_sha256": "2cbc9cef460d7a51807ddecfcbe642c6ed1b49ba5efd134d886d4be08ad02f6d"
+    },
+    "tool_session_id": 5913,
+    "maximum_runtime_seconds": null,
+    "monitor_seconds": 600,
+    "automatic_retries": false,
+    "next_periodic_observation_ns": null,
+    "gains": {
+      "42": 0.00895255757196703,
+      "3407": 0.012171228684768162,
+      "271828": 0.008908561701568302,
+      "314159": 0.016872094481032485
+    },
+    "gains_over_gaussian": {
+      "42": -0.000489536303222873,
+      "3407": 0.0020240185459790387,
+      "271828": 0.00479244397383851,
+      "314159": 0.006957793056791373
+    },
+    "paired": {
+      "n": 4,
+      "mean": 0.011726110609833994,
+      "sd": 0.003755460842009423,
+      "se": 0.0018777304210047115,
+      "lcb95": 0.007307128496626472,
+      "positive": 4
+    },
+    "paired_over_gaussian": {
+      "n": 4,
+      "mean": 0.0033211798183465126,
+      "sd": 0.0032451891977195424,
+      "se": 0.0016225945988597712,
+      "lcb95": -0.0004973749801170054,
+      "positive": 3
+    },
+    "failed_conditions": [],
+    "actual_scientific_optimizers": 20,
+    "actual_new_states": 20,
+    "actual_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_tool_exit_code": 0,
+    "cold_max_difference": 2.842170943040401e-14,
+    "independent_scalar_checks": 11124,
+    "independent_max_difference": 6.938893903907228e-18,
+    "peak_os_rss_mib": 507.5625,
+    "owned_pids_verified_absent": true,
+    "terminal_sha256": "3688f9fb63ea93a41fb931f126b86f6f71b5d1a656c617abe8770c80d27dacbf",
+    "report_sha256": "47ae9334f5bf8511dce06c89cbbdc1856648b062f5b4e55c21ec3aaa8166c627",
+    "independent_score_sha256": "5b842011857091f08344327e0cd8470bebebebd38ccaf070df8d5b18bccf04e8",
+    "status_document": "docs/q75_laplace_confirmation/RESULTS.md"
   }
 }
