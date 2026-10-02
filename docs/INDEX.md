@@ -40,6 +40,9 @@
 - [残差可学习性判定](q75_residual_learnability/RESULTS.md)：四 seed × 两目标 × Ridge/LightGBM 修正器，诚实内层选收缩系数**16/16 全部选 0**，增量为 0 → 残差无可利用结构，关闭残差修正与条件校准家族。
 - [GRANDE 硬树试点](q75_hard_tree_pilot/RESULTS.md)：仓库内最后一个未训练过的模型类。残差相关仅 0.93–0.96（明显比 TabML 家族的 0.98–0.99 分散），但精度比 incumbent 差 3.3%–8.6%，诚实留一权重 3/4 组选 0、唯一非零组在留出折损失 0.0065 分 → 关闭 GLOBAL 臂。
 - [特征增强与 mixup 筛选](q75_feature_augmentation/PREREGISTRATION.md)：显式对数/对数比/乘积特征与 mixup 在两折两目标上**全部变差**（时长 +0.0010/+0.0121）→ 筛选即关闭，未消耗确认预算。
+- [TabM 超参筛选](q75_hpo_screen/RESULTS.md)：16 个单因素配置中**只有 `K32`（tabm_k 16→32）在两个目标、两个折上同向改善**；叠加余弦/L1/PLR 频率无复利，k=48/64/96 也不更好。
+- [K32 四 seed 确认](q75_k32_confirmation/PREREGISTRATION.md)：K32 与 Q75 时长列残差相关仅 0.973–0.979，融合权重 0.40–0.50，四 seed 增益 +0.0045/+0.0070/+0.0021/+0.0047（LCB95 +0.0022）→ **时长向过门**；铁量向未过。
+- [K32 时长探针交付](q75_k32_release/DELIVERY.md)：`K32_TIME_A45`（时长 = 0.55×父包 + 0.45×K32，铁量列原字符串），ZIP `834adec1…`；独立回读审计通过（322 行、模板序、铁量差异 0、算术差 0）。**未写桌面、未上传**。
 
 - [独立MAE铁量三训练seed均值结果](q75_separate_mae_iron_mean3/RESULTS.md)：40新optimizer/60新旧状态审计通过；两seed对Q75均正却均低于就绪单seed，不确认或新增包。
 - [原V10 MAE零训练复核](q75_retained_v10_mae/RESULTS.md)：相对Q75两seed为正，但均弱于就绪Laplace和同骨干MSE；0新optimizer，不追加候选。仅保留预测来源/算术审计，原checkpoint缺失不冒称模型冷复现。

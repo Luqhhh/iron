@@ -24901,5 +24901,169 @@
     "formal_promoted": false,
     "G0": "passed_control_bit_exact",
     "G1": "both_arms_worse_on_every_unit"
+  },
+  "q75_hpo_screen_20261002": {
+    "status": "completed_K32_is_the_only_two_fold_two_target_improvement",
+    "kind": "hyperparameter_screen",
+    "documentation": "docs/q75_hpo_screen/RESULTS.md",
+    "protocol": "docs/q75_hpo_screen/PREREGISTRATION.md",
+    "source_module": "src/bf_tap_r2/q75_hpo_screen.py",
+    "private_root": "local/runs/q75-hpo-screen-20261002",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "stage1": {
+      "units": [
+        "s42-f0",
+        "s42-f1"
+      ],
+      "configs": 16,
+      "fits": 32,
+      "control_max_absolute_difference": 0.0,
+      "K32": {
+        "tap_iron_delta": -0.000436,
+        "tap_time_len_delta": -0.000669,
+        "both_folds_and_targets_improved": true
+      },
+      "runner_up": "COS_L1_LR3_DROP0 iron -0.000428 with time +0.000866"
+    },
+    "stage2": {
+      "units": "split seeds 42 and 3407, five folds",
+      "fits": 10,
+      "K32_time_vs_single_recipe": {
+        "42": 0.000666,
+        "3407": 0.000588
+      },
+      "K32_iron_vs_single_recipe": {
+        "42": 0.000327,
+        "3407": -5e-06
+      },
+      "K32_time_vs_incumbent_column": {
+        "42": -5.9e-05,
+        "3407": 4.2e-05
+      },
+      "K32_iron_vs_incumbent_column": {
+        "42": -0.000211,
+        "3407": -0.00047
+      }
+    },
+    "stage1b": {
+      "fits": 8,
+      "outcome": "no_compounding_on_top_of_K32"
+    },
+    "stage1c": {
+      "fits": 8,
+      "outcome": "k=48/64/96_no_better_than_k=32"
+    },
+    "interpretation": "increasing TabM internal ensemble count from 16 to 32 is the only configuration in this session that improves both targets on both folds; it matches the incumbent four-component time blend with a single model and is the best point on the width axis",
+    "new_fits": 58,
+    "new_optimizers": 116,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": true,
+    "G0": "passed_control_bit_exact_thread_pinning_and_budget_amendments_recorded",
+    "G1": "K32_promoted_to_four_seed_confirmation_on_time_only"
+  },
+  "q75_k32_confirmation_20261002": {
+    "status": "completed_time_four_seed_gate_passed_iron_failed",
+    "kind": "four_seed_confirmation",
+    "protocol": "docs/q75_k32_confirmation/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-k32-confirmation-20261002/development-r1",
+    "candidate": "K32",
+    "reference": "EMA_TIME_Q75",
+    "thread_target": 96.45,
+    "split_seeds": [
+      42,
+      3407,
+      271828,
+      314159
+    ],
+    "new_fits": 20,
+    "new_optimizers": 40,
+    "time": {
+      "residual_correlation_vs_Q75": [
+        0.9789,
+        0.9743,
+        0.9745,
+        0.9729
+      ],
+      "weights_by_held_out_seed": {
+        "42": 0.45,
+        "3407": 0.4,
+        "271828": 0.5,
+        "314159": 0.45
+      },
+      "gains": {
+        "42": 0.0045,
+        "3407": 0.007,
+        "271828": 0.0021,
+        "314159": 0.0047
+      },
+      "mean": 0.0046,
+      "min": 0.0021,
+      "lcb95": 0.0022,
+      "all_positive": true,
+      "gate": "passed"
+    },
+    "iron": {
+      "gains": {
+        "42": 0.0009,
+        "3407": -0.0003,
+        "271828": -0.0012,
+        "314159": 0.0014
+      },
+      "mean": 0.0002,
+      "lcb95": -0.0012,
+      "all_positive": false,
+      "gate": "failed"
+    },
+    "interpretation": "the k=32 joint model is a genuinely decorrelated and accurate time component: its residual correlation with the Q75 time column is 0.973-0.979 and it earns a 0.40-0.50 blend weight, giving a four-seed-positive +0.0046 score increment; the iron column does not pass",
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": true,
+    "G0": "passed_predictions_persisted_thread_pinning_no_retries",
+    "G1": "time_gate_passed_iron_gate_failed"
+  },
+  "q75_k32_release_20261002": {
+    "status": "completed_local_package_built_audited_not_uploaded_not_on_desktop",
+    "kind": "release",
+    "documentation": "docs/q75_k32_release/DELIVERY.md",
+    "protocol": "docs/q75_k32_release/PREREGISTRATION.md",
+    "candidate": "K32_TIME_A45",
+    "package": "local/runs/q75-k32-release-20261002/release-r1/K32_TIME_A45/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "834adec1a024c22d4864c13e9cc9c464dc96896c8fdbee16be3de0b3d09482de",
+    "result_sha256": "879178ec103ec7c461eb2f70a8ac03f84f55f4397d40bff217bec9785bb95d7e",
+    "parent": "EMA_TIME_Q75",
+    "parent_zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+    "change": "pred_tap_time_len = 0.55*parent + 0.45*K32 full-data prediction; iron column copied verbatim",
+    "expected_local_gain_vs_parent": 0.0046,
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "full_fits": 1,
+    "new_optimizers": 2,
+    "new_split_seeds": 0,
+    "audit": {
+      "path": "local/runs/q75-k32-release-20261002/release-r1/audit.json",
+      "members": [
+        "result.csv"
+      ],
+      "rows": 322,
+      "unique_ids": 322,
+      "template_order": true,
+      "iron_string_mismatches": 0,
+      "time_max_relative_difference": 0.0,
+      "finite_nonnegative": true,
+      "passed": true
+    },
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "platform_measured": false,
+    "G0": "passed_independent_readback_audit_and_parent_identity",
+    "G1": "four_seed_time_gate_passed_expected_gain_0.0046_platform_unmeasured"
   }
 }
