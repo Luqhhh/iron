@@ -56,3 +56,12 @@
 公开V2完整两seed开发已启动，40科学模型是计划数，实际终态未在本启动记录冒充完成。
 固定20%融合、原Q75材料、600秒观察、完成自动冷审计，确认/全量/包/上传仍0。
 查看[冻结实验](../laplace_leaf_median/PREREGISTRATION.md)、[实际状态](../laplace_leaf_median/STATUS.md)，机器键`xjn_laplace_leaf_median_20261002`。
+
+## 叶校正终态与新的受控迭代
+
+本次40科学模型/119334树完整结束，40模型冷重构差异0。
+D3/D6固定20%融合平均−0.02163101/−0.03228224，各seed/fold/spout均负，不封本批包。
+零拟合复核20selector每轮训练mu改变且L1下降，选点接近3000末端；深树训练更好但OOF更差。
+据此另冻浅树3000→12000完整前缀对照，而非继续加容量或重复队友SWA/神经时长方向。
+[完整结果](../laplace_leaf_median/RESULTS.md)、[新阶段协议](../laplace_leaf_long/PREREGISTRATION.md)。
+新阶段科学20模型是计划，启动/终态及实际计数以独立状态为准；原负结果与正式四seed门不变。
