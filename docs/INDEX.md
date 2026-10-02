@@ -47,7 +47,7 @@
 - [固定点损失完整结果](q75_fixed_point_losses/RESULTS.md)：30估计器/60科学optimizer/60冷状态和四真实exit0通过；时长固定Gaussian弱于就绪Laplace，铁量两臂各一负，没有新确认候选。
 - [两名额无标签预测比较](platform_slot_review/RESULTS.md)：三包预测均有差别，不能据同架构视为重复或据差异大小推断收益；名额继续保留，原表头检查失败及独立恢复均记录。
 
-- [固定尺度Laplace全量交付](q75_laplace_release/DELIVERY.md)：单一20%时长融合包，2正式optimizer/2状态、无标签新进程冷推理、322行回读与5个真实exit0通过；9项零optimizer发布检查通过，0桌面/上传。
+- [固定尺度Laplace全量交付](q75_laplace_release/DELIVERY.md)：单一20%时长融合包，2正式optimizer/2状态、无标签新进程冷推理、322行回读与5个真实exit0通过；9项零optimizer发布检查通过，发布当时0桌面/上传；随后按用户指令复制到桌面`submission-LAPLACE-FIXED-A20-20261002`并独立回读通过，仍未上传、无平台分数。
 
 - [固定尺度Laplace四seed确认](q75_laplace_confirmation/RESULTS.md)：相对Q75四seed均正、均值+.011726/LCB95+.007307；相对Gaussian均值+.003321但LCB95为负，不称统计独胜。20次新optimizer/20状态及真实终态闭合，后续独立全量包已完成。
 

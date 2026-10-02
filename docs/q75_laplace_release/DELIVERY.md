@@ -19,3 +19,11 @@ ZIP仅含`result.csv`，322唯一ID按官方模板顺序、有限非负、CRC、
 本Laplace批次分阶段预算：合成工程4、完整开发40、接续确认20、全量2次optimizer，总计66；额外测试optimizer0，自动重试0，1个新提交包。锁定Python3.12检查分别15/6/9项通过，均拦截optimizer构造且实际尝试0；不声称全仓测试。原Gaussian阶段的准备/恢复记录保持独立，不混入本批成功次数。队友SWA确认未重复，原始结果包仍待接收。
 
 用户随后明确“本轮结束后暂停”。本轮已完成，后续优化暂停，无运行任务或后台监控；现有交付包和证据保留，等待用户恢复指令。
+
+## 2026-10-02 桌面交付（用户后续具体指令）
+
+用户在本交付完成后明确要求“LAPLACE_FIXED_A20 写桌面”。按该指令把已审计通过的同一ZIP复制到 `C:\Users\lqh22\Desktop\submission-LAPLACE-FIXED-A20-20261002\`，并附 `README.txt`；本文上半部分记录的“0桌面写入”保持为当时发布快照，不回改历史。
+
+桌面ZIP与原包逐字节相同，SHA256仍为 `8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c`。独立新进程（锁定Python 3.12.12）回读通过：仅 `result.csv`、CRC正确、322唯一ID按官方模板顺序、预测有限非负、铁量原字段与Q75差异0、时长322行均为融合后值。0新拟合、0新提交包、0助手上传、0标签读取。收据：`local/runs/q75-laplace-release-20261002/desktop-delivery-r1/desktop-delivery.json`（SHA256 `a1a35db0e8767cb179f9147901ffcaf9fd3e20cf25794d9761471ce167f44b4c`）与 `desktop-independent-audit.json`（SHA256 `0e3cd5445008877040ece608a6c271ab2bbbe8f214745765d10fee2f15e847ef`），审计脚本 `audit_desktop.py` 同目录，均在私有 `local/`。
+
+平台分数仍未测得，96.45未达；上传与回传由用户执行，两个名额安排见[名额评审](../platform_slot_review/ALLOCATION.md)。
