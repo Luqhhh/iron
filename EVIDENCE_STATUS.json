@@ -830,7 +830,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Critical fixed-loss controls and matched Laplace mean3 four-seed confirmation complete; no stronger release candidate",
+    "research_status": "Shared joint MAE failed paired admission; independent iron control positive on two complete development seeds, future prospective verification not current candidate pool",
     "platform_slots_user_reported": 2,
     "platform_slots_source": "user_current_turn_not_inferred",
     "submission_allocation": "deferred_by_user_preference_first_nomination_LAPLACE_FIXED_A20_second_after_first_feedback",
@@ -2739,8 +2739,8 @@
       "96.5": 0.108
     },
     "latest_completed_release": "q75_laplace_fixed_release_20261002",
-    "latest_G0": "passed_native40_optimizers_60_new_reused_cold_states_independent_scalars_actual_exit0",
-    "latest_G1": "formal_four_seed_vs_Q75_but_single_seed_comparison_one_negative_and_LCB_negative_no_new_release",
+    "latest_G0": "passed_40_optimizer_states_independent_cold_numpy_forward_scalar_audit_actual_exit0",
+    "latest_G1": "shared_iron_Q75_one_negative_shared_time_below_ready_Laplace_mechanism_gate_failed",
     "ready_exploration_candidates": [
       "EMA_MEAN3_FULL_Q75"
     ],
@@ -2748,7 +2748,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "One_serial_joint_MAE_development_worker_running_600_second_observations",
+    "runtime_observation": "All_joint_MAE_workers_terminal_no_background_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3142,14 +3142,15 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": "q75_joint_mae_development_20261002",
+    "active_research": null,
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Complete_shared_vs_separate_joint_MAE_two_full_development_seeds_keep_two_platform_slots_deferred",
+    "next_action": "Freeze_prospective_verification_of_positive_independent_control_iron_signal_keep_two_slots_deferred",
     "optimization_paused": false,
-    "pause_after_this_round_requested": false
+    "pause_after_this_round_requested": false,
+    "latest_completed_research": "q75_joint_mae_development_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -23402,7 +23403,7 @@
     "status_document": "docs/q75_laplace_mean3_confirmation/RESULTS.md"
   },
   "q75_joint_mae_development_20261002": {
-    "status": "development_running_engineering_passed",
+    "status": "completed_no_shared_MAE_confirmation_finalist",
     "source_worktree": "local/worktrees/q75-joint-mae-development",
     "source_commit": "374331ab696fdc4fc24525d5367246b3b990df3f",
     "reference": "EMA_TIME_Q75",
@@ -23486,9 +23487,78 @@
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": false,
-    "G0": "engineering_passed_development_running",
-    "G1": "not_evaluated",
+    "G0": "passed_40_optimizer_states_independent_cold_numpy_forward_scalar_audit_actual_exit0",
+    "G1": "shared_iron_Q75_one_negative_shared_time_below_ready_Laplace_mechanism_gate_failed",
     "formal_promoted": false,
-    "tool_session_id": 92024
+    "tool_session_id": 92024,
+    "gains": {
+      "SHARED_MAE_IRON_A20": {
+        "42": 0.006077056804380865,
+        "3407": -0.0008864094793137586
+      },
+      "SHARED_MAE_TIME_A20": {
+        "42": 0.007560711980302921,
+        "3407": 0.00915680260104814
+      }
+    },
+    "gains_over_ready": {
+      "SHARED_MAE_IRON_A20": {
+        "42": 0.006077056804380865,
+        "3407": -0.0008864094793137586
+      },
+      "SHARED_MAE_TIME_A20": {
+        "42": -0.0013918455916641082,
+        "3407": -0.003014426083720019
+      }
+    },
+    "gains_over_separate": {
+      "SHARED_MAE_IRON_A20": {
+        "42": -0.0031158160046123973,
+        "3407": -0.005067808130675342
+      },
+      "SHARED_MAE_TIME_A20": {
+        "42": 0.001009739380928683,
+        "3407": -0.0018617779543099262
+      }
+    },
+    "confirmation_finalist": null,
+    "failed_conditions": {
+      "SHARED_MAE_IRON_A20": [
+        "not_both_positive_vs_Q75",
+        "not_both_positive_vs_SEPARATE_MAE"
+      ],
+      "SHARED_MAE_TIME_A20": [
+        "not_both_positive_vs_SEPARATE_MAE",
+        "not_both_positive_vs_ready_LAPLACE_FIXED_A20"
+      ]
+    },
+    "actual_scientific_optimizers": 40,
+    "actual_new_states": 40,
+    "actual_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_tool_exit_code": 0,
+    "cold_max_difference": 4.547473508864641e-13,
+    "independent_scalar_checks": 22172,
+    "independent_max_difference": 1.3877787807814457e-17,
+    "peak_os_rss_mib": 511.75390625,
+    "owned_pids_verified_absent": true,
+    "report_sha256": "c5b06daf26fe38bd2a86cf211c6abfbb67a6fd05392c4099808fb958ee675c74",
+    "independent_score_sha256": "d3d5f16fc06ac1d1eee1ba71becdedfac22c578e60cf4ee2bddd3a6934711360",
+    "terminal_sha256": "fd12f391b601736b30170dc580ee9db8c83ba2bb4589110bf3061b8bd8ea8ebd",
+    "status_document": "docs/q75_joint_mae/RESULTS.md",
+    "next_periodic_observation_ns": null,
+    "posthoc_control_lead": {
+      "candidate": "SEPARATE_MAE_IRON_A20",
+      "original_role": "mechanism_control_not_in_candidate_pool",
+      "gains": {
+        "42": 0.009192872808993363,
+        "3407": 0.004181398651361551
+      },
+      "decision": "prospective_separate_verification_needed_no_retroactive_promotion"
+    }
   }
 }
