@@ -1,0 +1,40 @@
+{
+  "identity": "SWA_CYCLE_MEAN2_V1",
+  "status": "strategy_reserved_before_engineering",
+  "G0": "not_started",
+  "G1": "not_started",
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified"
+  },
+  "budget": {
+    "engineering": {
+      "state": 2,
+      "optimizer": 2
+    },
+    "development": {
+      "state": 20,
+      "optimizer": 20
+    },
+    "confirmation": {
+      "state": 20,
+      "optimizer": 20
+    }
+  },
+  "new_control_fits": 0,
+  "new_reference_fits": 0,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "formal_promoted": false,
+  "release_authorized": false,
+  "strategy": "docs/swa_cycle_mean2_v1/STRATEGY.md",
+  "min3_diagnostic": {
+    "new_fits": 0,
+    "new_inferences": 0,
+    "development_selection_changes": 0,
+    "confirmation_selection_changes": 3,
+    "not_a_new_confirmatory_result": true
+  }
+}
