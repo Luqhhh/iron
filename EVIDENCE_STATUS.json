@@ -830,7 +830,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Shared joint MAE failed paired admission; independent iron control positive on two complete development seeds, future prospective verification not current candidate pool",
+    "research_status": "Independent MAE iron control lead prospectively registered for paired confirmation; original shared-study failure preserved; two slots deferred",
     "platform_slots_user_reported": 2,
     "platform_slots_source": "user_current_turn_not_inferred",
     "submission_allocation": "deferred_by_user_preference_first_nomination_LAPLACE_FIXED_A20_second_after_first_feedback",
@@ -2748,7 +2748,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "All_joint_MAE_workers_terminal_no_background_monitor",
+    "runtime_observation": "One_serial_independent_MAE_iron_confirmation_worker_running_600_second_observations",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3142,12 +3142,12 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "q75_separate_mae_iron_confirmation_20261002",
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Freeze_prospective_verification_of_positive_independent_control_iron_signal_keep_two_slots_deferred",
+    "next_action": "Complete_prospectively_registered_independent_MAE_iron_confirmation_keep_two_slots_deferred",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "q75_joint_mae_development_20261002"
@@ -23560,5 +23560,89 @@
       },
       "decision": "prospective_separate_verification_needed_no_retroactive_promotion"
     }
+  },
+  "q75_separate_mae_iron_confirmation_20261002": {
+    "status": "confirmation_running_original_control_lead",
+    "source_worktree": "local/worktrees/q75-separate-mae-iron-confirmation",
+    "source_commit": "32ae16fe247b2d1cc940ee6b766587c5e28f273e",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "candidate": "SEPARATE_MAE_IRON_A20",
+    "selection_origin": "posthoc lead from originally noncandidate mechanism control; original shared-study decision unchanged; prospective confirmation frozen before new fits",
+    "protocol": "docs/q75_separate_mae_iron/PREREGISTRATION.md",
+    "specification": "configs/q75_separate_mae_iron/SPEC.json",
+    "run_directory": "local/runs/q75-separate-mae-iron-20261002/confirmation-r1",
+    "confirmation_seeds": [
+      271828,
+      314159
+    ],
+    "planned_scientific_optimizers": 40,
+    "new_engineering_optimizers": 0,
+    "reference_fits": 0,
+    "repeated_development_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 34,
+      "optimizer_constructor_attempts": 0,
+      "receipt_sha256": "a28683deccd860ffb61af42bb77f1b5f9577074e8293477bec81f72e8ea880a4"
+    },
+    "manifest_sha256": "e92419c43f7cd6c53d4269d2a215bd4b38a64a407a042e69e2fc84393d3faad4",
+    "frozen_dependency_files": 3177,
+    "initial_process_verification": {
+      "observed_ns": 1790935674903437095,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "kind": "supervisor_pid",
+          "pid": 9234,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-confirmation",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-confirmation/.venv/bin/python3",
+            "scripts/q75_separate_mae_iron.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-separate-mae-iron-20261002/confirmation-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "kind": "worker_pid",
+          "pid": 9235,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-confirmation",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-confirmation/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_separate_mae_iron",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-separate-mae-iron-20261002/confirmation-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "manifest_sha256": "e92419c43f7cd6c53d4269d2a215bd4b38a64a407a042e69e2fc84393d3faad4",
+      "next_periodic_observation_ns": 1790936274903437095
+    },
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "G0": "existing_full_shape_engineering_reused_confirmation_running",
+    "G1": "two_development_control_gains_positive_confirmation_not_evaluated",
+    "formal_promoted": false,
+    "tool_session_id": 97174
   }
 }
