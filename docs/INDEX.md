@@ -32,12 +32,13 @@
 
 ## 当前维护入口
 
+- [独立MAE铁量三训练seed均值开发](q75_separate_mae_iron_mean3/PREREGISTRATION.md)：固定42/1042/2042等权，新增40optimizer，配对已就绪单seed；两个完整切分对Q75和单seed均正才另冻确认，平台名额保持。
 - [原V10 MAE零训练复核](q75_retained_v10_mae/RESULTS.md)：相对Q75两seed为正，但均弱于就绪Laplace和同骨干MSE；0新optimizer，不追加候选。仅保留预测来源/算术审计，原checkpoint缺失不冒称模型冷复现。
 
 - [独立MAE铁量全量交付](q75_separate_mae_iron_release/DELIVERY.md)：2optimizer/2状态、117轮全量重训，独立冷/NumPy/无标签预测/322行包回读及五个真实exit0通过；只改铁量，时长原字符串保持。
 - [独立MAE铁量四seed确认](q75_separate_mae_iron/RESULTS.md)：对Q75均值+.006061/LCB+.003411，对单目标MAE均值+.004275/LCB+.001841，两项四seed均正；观察后控制线索的单独前瞻确认。
 - [共享MAE完整开发](q75_joint_mae/RESULTS.md)：共享铁量一个负seed、共享时长弱于原Laplace，原准入门失败；不追溯更换候选。
-- [两个名额暂定安排](platform_slot_review/ALLOCATION.md)：首项Laplace时长，第二项优先考虑新铁量方向但未锁定；队友MAE预热后续待核对，不重复启动。
+- [两个名额暂定安排](platform_slot_review/ALLOCATION.md)：首项Laplace时长，第二项优先考虑新铁量方向但未锁定；队友MAE预热完整开发已核对公开报告，平均机制近零偏负、未进确认，本机不重复启动。
 
 - [Laplace三seed四切分确认](q75_laplace_mean3_confirmation/RESULTS.md)：对Q75均值+.012413/LCB+.008464，正式门过；对原单seed均值+.000687但LCB−.000347、一个负seed，新包门失败，0全量/包。40optimizer及60新旧状态、四真实exit0闭合。
 

@@ -23913,7 +23913,7 @@
     "automatic_retries": false
   },
   "q75_separate_mae_iron_mean3_development_20261002": {
-    "status": "frozen_checked_awaiting_serial_development_launch",
+    "status": "running_serial_frozen_development",
     "source_worktree": "local/worktrees/q75-separate-mae-iron-mean3",
     "source_commit": "79271824e4253bc0dc53cf72d234880bf308ce83",
     "reference": "EMA_TIME_Q75",
@@ -23961,7 +23961,53 @@
     "automatic_retries": false,
     "formal_promoted": false,
     "G0": "locked_23_zero_optimizer_checks_and_original_engineering_source_identity_passed_new_cold_pending",
-    "G1": "pending_two_complete_split_paired_development"
+    "G1": "pending_two_complete_split_paired_development",
+    "tool_session_id": 68857,
+    "initial_process_verification": {
+      "observed_ns": 1790938632673849291,
+      "next_periodic_observation_ns": 1790939232673849291,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "kind": "supervisor_pid",
+          "pid": 12619,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-mean3",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-mean3/.venv/bin/python3",
+            "scripts/q75_separate_mae_iron_mean3.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-separate-mae-iron-mean3-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "kind": "worker_pid",
+          "pid": 12620,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-mean3",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-mean3/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_separate_mae_iron_mean3",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-separate-mae-iron-mean3-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "manifest_sha256": "9ea937ed1a1f711afbe7334467aea50fef4206dc8d73e53471def20c8e5e790f"
+    },
+    "next_periodic_observation_ns": 1790939232673849291
   },
   "teammate_swa_time_mae_warmup_review_20261002": {
     "evidence_level": "public_report_only_not_independent_raw_artifact_reproduction",
