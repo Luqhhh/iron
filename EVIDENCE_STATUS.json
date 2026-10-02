@@ -816,7 +816,8 @@
       "status": "PAUSED_BY_USER_TWO_EXPLORATIONS_SCORED_BELOW_Q75_NO_PRIORITIZED_PENDING_PACKAGES",
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
-    }
+    },
+    "research_status": "Laplace fixed/learned-scale neural development running; no new submission candidate yet"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2730,7 +2731,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Gaussian_time_release_completed_owned_processes_exited_no_active_training_or_periodic_monitor",
+    "runtime_observation": "Matched_Laplace_time_two_arm_development_controller_and_worker_verified_live",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3129,11 +3130,11 @@
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
     "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。",
-    "active_research": null,
+    "active_research": "q75_laplace_time_development_20261002",
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "User platform test of GAUSS1_A20 and await teammate original SWA confirmation evidence; no assistant upload"
+    "next_action": "Complete fixed two-seed Laplace development; existing GAUSS1 and EMA_MEAN3 packages await user platform feedback"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -22352,5 +22353,123 @@
       "next_periodic_observation_ns": 1790921482905650142,
       "manifest_sha256": "8e416777ba7b1a707ac673084dc8e9e8ba8cb8908d827e1da57091bf0d989499"
     }
+  },
+  "q75_laplace_time_development_20261002": {
+    "status": "running_complete_two_arm_two_seed_development",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "thread_target": 96.45,
+    "source_worktree": "local/worktrees/q75-laplace-time-development",
+    "source_commit": "24b82a461227332a3b95c87fc4c2054cf060a7d3",
+    "specification": "configs/q75_laplace_time/SPEC.json",
+    "protocol": "docs/q75_laplace_time/PREREGISTRATION.md",
+    "status_document": "docs/q75_laplace_time/EXECUTION.md",
+    "private_root": "local/runs/q75-laplace-time-20261002",
+    "candidate_arms": [
+      "LAPLACE_FIXED",
+      "LAPLACE_SCALE"
+    ],
+    "fixed_weight": 0.2,
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "planned_scientific_estimators": 20,
+    "planned_scientific_optimizers": 40,
+    "planned_scientific_states": 40,
+    "engineering_optimizer_runs": 4,
+    "engineering_cold_states": 4,
+    "engineering_learnability": {
+      "LAPLACE_FIXED": {
+        "model_mae": 0.558412081497563,
+        "median_constant_mae": 17.998104608608184
+      },
+      "LAPLACE_SCALE": {
+        "model_mae": 0.7485167356702582,
+        "median_constant_mae": 17.998104608608184
+      }
+    },
+    "engineering_max_cold_difference": 2.842170943040401e-14,
+    "engineering_max_os_rss_mib": 502.99609375,
+    "engineering_actual_exit_codes": [
+      0,
+      0
+    ],
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 15,
+      "optimizer_constructor_attempts": 0,
+      "receipt": "local/runs/q75-laplace-time-20261002/checks-r1/receipt.json",
+      "receipt_sha256": "80cfd555b91167f3c850b30b1cc504505a6d8aa3e4961c561b7281d8f9cbae87"
+    },
+    "G0": "engineering_passed_formal_development_pending",
+    "G1": "unmeasured_complete_development_running",
+    "formal_promoted": false,
+    "development_manifest_sha256": "e8f7a9ea69ac7a497fa9f4352aa8492247d240981467b72894f2166bb3740863",
+    "engineering_manifest_sha256": "2b3d1651cbadd0290d3aedff78d8f127583d67e6d63abfef285f690d3870baa7",
+    "engineering_terminal_sha256": "94e0f9a4a325be97659f0a7e62db331ff39b4a9dba8049deee7310e4781756d7",
+    "frozen_dependency_files": 1527,
+    "reference_fits": 0,
+    "confirmation_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "initial_process_verification": {
+      "observed_ns": 1790922099566714682,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "pid": 322376,
+          "status": "sleeping",
+          "created": 1790922097.93,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-time-development",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-time-development/.venv/bin/python3",
+            "scripts/q75_laplace_time.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-time-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "pid": 322377,
+          "status": "disk-sleep",
+          "created": 1790922098.09,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-time-development",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-time-development/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_laplace_time",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-time-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "next_periodic_observation_ns": 1790922699566714682,
+      "manifest_sha256": "e8f7a9ea69ac7a497fa9f4352aa8492247d240981467b72894f2166bb3740863"
+    },
+    "tool_session_id": 2352,
+    "maximum_runtime_seconds": null,
+    "monitor_seconds": 600,
+    "automatic_retries": false,
+    "next_periodic_observation_ns": 1790922699566714682,
+    "source_distinction": "matched neural Laplace heads; does not repeat teammate Laplace trees or SWA"
   }
 }
