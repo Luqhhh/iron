@@ -1,0 +1,8 @@
+split_seeds: [42, 3407]
+folds: 5
+reference_by_target:
+  tap_iron: EMA_TIME_Q75
+candidates:
+  tap_iron: [MEDIAN_D3_A20, MEDIAN_D6_A20]
+tie_preference_by_target:
+  tap_iron: [MEDIAN_D3_A20, MEDIAN_D6_A20]
