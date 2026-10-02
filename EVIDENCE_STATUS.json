@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "EMA_MEAN3_READY_GAUSSIAN_TIME_CONFIRMATION_PREPARING",
+    "status": "EMA_MEAN3_READY_GAUSSIAN_TIME_CONFIRMATION_RUNNING",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -2717,7 +2717,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "GAUSS1_A20_two_positive_development_seeds_engineering_passed_confirmation_frozen_ready_to_launch",
+    "runtime_observation": "GAUSS1_A20_confirmation_controller_and_worker_verified_live_600_second_observation_no_retries",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -22067,7 +22067,7 @@
     "terminal_sha256": "e5754c0397658387ebc83ca7fcb050fda57fc3350867037d87f948710418c136"
   },
   "q75_gaussian_time_confirmation_20261002": {
-    "status": "engineering_passed_confirmation_frozen_ready_to_launch",
+    "status": "running_two_seed_confirmation",
     "reference": "EMA_TIME_Q75",
     "thread_target": 96.45,
     "source_worktree": "local/worktrees/q75-gaussian-time-confirmation",
@@ -22112,6 +22112,52 @@
       "submission_priority_note": "Only the explicitly selected EMA_MEAN3 fixed three-training-seed mean is ready for user testing; previous scored probes remain closed; optimization stays paused and DE3 reserve deferred; no quota inferred.",
       "recommended": "用户指定EMA_MEAN3已完成单一固定全量发布并写入桌面，G0通过；G1为平台未测人工探索，原配对确认门失败和未正式晋级保持。仅此包进入当前待测队列；前两项低于Q75的回传结论、当前同分最佳及DE3替补安排保持，优化继续暂停。",
       "optimization_paused": true
-    }
+    },
+    "actual_processes": [
+      {
+        "role": "supervisor_pid",
+        "pid": 317801,
+        "created": 1790919487.07,
+        "status": "sleeping",
+        "cwd": "/home/lux1/iron/local/worktrees/q75-gaussian-time-confirmation",
+        "command": [
+          ".venv/bin/python",
+          "scripts/q75_gaussian_confirmation.py",
+          "--output",
+          "/home/lux1/iron/local/runs/q75-gaussian-confirmation-20261002/confirmation-r1"
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1"
+        }
+      },
+      {
+        "role": "worker_pid",
+        "pid": 317807,
+        "created": 1790919487.21,
+        "status": "running",
+        "cwd": "/home/lux1/iron/local/worktrees/q75-gaussian-time-confirmation",
+        "command": [
+          "/home/lux1/iron/local/worktrees/q75-gaussian-time-confirmation/.venv/bin/python",
+          "-m",
+          "bf_tap_r2.q75_gaussian_confirmation",
+          "train",
+          "--output",
+          "/home/lux1/iron/local/runs/q75-gaussian-confirmation-20261002/confirmation-r1"
+        ],
+        "threads": {
+          "OPENBLAS_NUM_THREADS": "1",
+          "OMP_NUM_THREADS": "1",
+          "MKL_NUM_THREADS": "1",
+          "NUMEXPR_NUM_THREADS": "1"
+        }
+      }
+    ],
+    "tool_session_id": 28314,
+    "initial_process_verification": "local/runs/q75-gaussian-confirmation-20261002/confirmation-r1/initial-process-verification.json",
+    "next_periodic_observation_ns": 1790920128948614570,
+    "actual_counts_pending_terminal": true
   }
 }
