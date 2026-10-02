@@ -33,7 +33,7 @@
 - [EMA组件同模型校准结果](ema_component_calibration/RESULTS.md)：80次校正估计、20个冷query见证及两个完整OOF已闭合；原报告错误exit 1保留，另目录零拟合恢复及独立计分exit 0通过。全局/压差相对Q75均两切分负、相对同F模型均一正一负，无确认或新包；前序初始化、更新步数匹配亦未过各自冻结配对门。
 - [EMA双dropout一致性完整配对结果](ema_dropout_consistency/RESULTS.md)：20估计器/40optimizer、60个新旧冷状态与实际exit 0闭合；固定lambda=.5对Q75及双前向控制的两个完整切分均负，未过确认门。24项定向检查与合成工程拟合另计，原旁路监控失败证据保留；无新包或平台排程。
 - [EMA时长width512完整结果](ema_width512/RESULTS.md)：10估计器/20optimizer、40个新旧冷状态、490份冻结文件与实际exit0闭合，G0通过；对Q75两完整切分−.009800118/−.011806141，固定配方未过确认门，0新平台包。20项定向检查与1次合成工程optimizer另计。
-- [SAM训练轨迹叠加EMA时长](sam_ema_time/PREREGISTRATION.md)：新阶段固定rho=.05/beta=.99及原width256配方；26项定向检查通过，1次完整规模合成工程验证已启动。科学预算10估计器/20optimizer，复用40个旧SAM/EMA状态；科学拟合尚未启动，既有平台队列保持。
+- [SAM训练轨迹叠加EMA时长](sam_ema_time/PREREGISTRATION.md)及[工程准入](sam_ema_time/PREPARATION.md)：26项定向检查、1次完整规模合成及独立冷回放/实际exit0通过；正式10估计器/20optimizer已启动，复用40个旧SAM/EMA状态。G1待完整两切分OOF及独立审计，既有平台队列保持。
 - [实施报告](report.md)、[任务范围](task_contract.md)、[发布身份](release_identity.md)、[提交与反馈记录](submission_log.md)。
 - [候选分类及正式晋级边界](candidate_tiers.md)、[数据契约范围](data_contract.md)、[待确认语义与平台口径](rule_questions.md)。
 - [四项本地/平台诊断反馈](local_platform_diagnostic_release/DELIVERY.md)：四项均已回传，SAM 时长反转，EMA 时长获益。

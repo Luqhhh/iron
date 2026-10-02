@@ -2629,7 +2629,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "owned_SAM_EMA_engineering_started_600_second_observer_actual_completion_triggers_cold_audit",
+    "runtime_observation": "owned_SAM_EMA_full_development_600_second_observer_actual_completion_triggers_independent_saved_state_and_score_audit",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -19889,7 +19889,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "SAM_EMA_composition_engineering_running_width512_closed_one_existing_platform_probe_untested",
+    "status": "SAM_EMA_full_two_split_development_running_width512_closed_one_existing_platform_probe_untested",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -21145,7 +21145,7 @@
     }
   },
   "sam_ema_time_preparation_20261002": {
-    "status": "engineering_full_shape_composed_SAM_EMA_running_science_not_started",
+    "status": "scientific_development_running_full_two_split_single_SAM_EMA_scope",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -21156,8 +21156,8 @@
     "configuration": "configs/sam_ema_time/SPEC.json",
     "protocol": "docs/sam_ema_time/PREREGISTRATION.md",
     "candidate": "SAM_EMA_TIME",
-    "G0": "26_locked_scoped_tests_passed_full_shape_composition_and_independent_cold_pending",
-    "G1": "unmeasured_no_scientific_fits_yet",
+    "G0": "26_locked_scoped_tests_full_shape_composed_SAM_EMA_learnability_cold_and_actual_exit0_passed_scientific_audit_pending",
+    "G1": "unmeasured_until_complete_two_split_OOF_and_independent_audit",
     "source_worktree": "local/worktrees/sam-ema-time-development",
     "source_commit": "90350c9404d0dc33166802e4b88af97a824efcc3",
     "focused_tests_passed": 26,
@@ -21165,10 +21165,10 @@
     "full_test_suite": false,
     "engineering_run": "local/runs/sam-ema-time-20261002/admission-r1",
     "engineering_optimizer_budget": 1,
-    "engineering_optimizer_runs": null,
-    "actual_engineering_counts_pending_terminal": true,
-    "scientific_model_fits": 0,
-    "scientific_optimizer_runs": 0,
+    "engineering_optimizer_runs": 1,
+    "actual_engineering_counts_pending_terminal": false,
+    "scientific_model_fits": null,
+    "scientific_optimizer_runs": null,
     "planned_scientific_estimators": 10,
     "planned_scientific_optimizer_runs": 20,
     "planned_new_cold_states": 20,
@@ -21185,9 +21185,9 @@
     "actual_admission_supervisor_pid": 286881,
     "actual_admission_controller_pid": 286882,
     "engineering_started_ns": 1790904350586973698,
-    "next_scheduled_observation_ns": 1790904950586973698,
-    "engineering_controller_running": true,
-    "engineering_observer_running": true,
+    "next_scheduled_observation_ns": 1790905600307146647,
+    "engineering_controller_running": false,
+    "engineering_observer_running": false,
     "controller_tests_receipt": {
       "path": "local/runs/sam-ema-time-20261002/controller-tests-r2/tests-receipt.json",
       "sha256": "bb9343facd10d898d3892c571455e9487b2f0a5cd44e4c1531bc59555a92dda1"
@@ -21204,6 +21204,59 @@
     "engineering_process_identity": {
       "path": "local/runs/sam-ema-time-20261002/admission-r1/initial-process-identity.json",
       "sha256": "41c05b120b21012108ed777cd6856359dc18d3beb999d5e2c556eef2d2b30d40"
-    }
+    },
+    "engineering_actual_main_exit_code": 0,
+    "engineering_actual_cold_exit_codes": [
+      0
+    ],
+    "engineering_actual_supervisor_exit_code": 0,
+    "engineering_query_MAE": 0.3610782518159403,
+    "engineering_median_constant_MAE": 5.41817717949931,
+    "engineering_peak_rss_mib": 673.4921875,
+    "engineering_maximum_cold_difference": 1.6263000901517444e-06,
+    "engineering_terminal_evidence": {
+      "manifest.json": {
+        "path": "local/runs/sam-ema-time-20261002/admission-r1/manifest.json",
+        "sha256": "61101d70be2dd5a14567d252adbeae80cf78bfde767eb7c314efb9f9d5bde465"
+      },
+      "warm-receipt.json": {
+        "path": "local/runs/sam-ema-time-20261002/admission-r1/warm-receipt.json",
+        "sha256": "9f07d227c2da40532f196ba2f4cacd615941d53eb2fd7c5d3d1492ebb17e2e22"
+      },
+      "cold-receipt.json": {
+        "path": "local/runs/sam-ema-time-20261002/admission-r1/cold-receipt.json",
+        "sha256": "e928b84c1b87947aa64d7d5f144b43ac0178becf1444769fae8653833ea33412"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/sam-ema-time-20261002/admission-r1/terminal-verification.json",
+        "sha256": "98872aa340c69b1e2a0f85e212eeefaba22dd20d4249b9783c07585d797f9b74"
+      },
+      "observer-terminal-verification.json": {
+        "path": "local/runs/sam-ema-time-20261002/admission-r1/observer-terminal-verification.json",
+        "sha256": "6cbf7f67f2355116715b927915092b0786a3c695dbf7fac0877e916bd2890f93"
+      },
+      "actual-main-exit.json": {
+        "path": "local/runs/sam-ema-time-20261002/admission-r1/actual-main-exit.json",
+        "sha256": "5235971b4caf6868862932cbcbd1a00724cc617912d7156529742cdfc8d5e869"
+      }
+    },
+    "actual_counts_pending_terminal": true,
+    "scientific_run": "local/runs/sam-ema-time-20261002/development-r1",
+    "scientific_manifest": {
+      "path": "local/runs/sam-ema-time-20261002/development-r1/manifest.json",
+      "sha256": "1229e9be9cf51332a5db8e5629a6c561fbf4be564b0e7702d2d460721983acb7"
+    },
+    "scientific_frozen_files": 545,
+    "frozen_partition_units": 10,
+    "actual_development_supervisor_pid": 287361,
+    "actual_development_controller_pid": 287362,
+    "scientific_started_ns": 1790905000307146647,
+    "scientific_process_identity": {
+      "path": "local/runs/sam-ema-time-20261002/development-r1/initial-process-identity.json",
+      "sha256": "c298702599f2a201715db307b27e678ca1d610c60f2d514056c364d86c4294c1"
+    },
+    "development_controller_running": true,
+    "scientific_observer_running": true,
+    "preparation_document": "docs/sam_ema_time/PREPARATION.md"
   }
 }
