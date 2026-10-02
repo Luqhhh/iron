@@ -19534,9 +19534,9 @@
   },
   "swa_cycle_mean2_v1_20261002": {
     "identity": "SWA_CYCLE_MEAN2_V1",
-    "status": "strategy_reserved_before_engineering",
-    "G0": "not_started",
-    "G1": "not_started",
+    "status": "completed_development_no_confirmation_nonpositive_mechanism",
+    "G0": "passed_synthetic_fit_and_independent_cold_audit",
+    "G1": "complete_two_seed_parent_gains_positive_mechanism_vs_cycle_control_negative_not_promoted",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -19570,6 +19570,54 @@
       "development_selection_changes": 0,
       "confirmation_selection_changes": 3,
       "not_a_new_confirmatory_result": true
-    }
+    },
+    "development_outer_fits": 10,
+    "development_saved_states": 20,
+    "development_optimizer_runs": 20,
+    "engineering_saved_states": 2,
+    "engineering_optimizer_runs": 2,
+    "confirmation_outer_fits": 0,
+    "confirmation_saved_states": 0,
+    "confirmation_optimizer_runs": 0,
+    "seed_gains": [
+      0.0027275067247587636,
+      0.005771711061996346
+    ],
+    "control_gains": [
+      0.00394888219493393,
+      0.005025859653867665
+    ],
+    "mean_gain": 0.004249608893377554,
+    "mechanism_mean": -0.00023776203102324244,
+    "seed_lcb95": null,
+    "selected_for_confirmation": [],
+    "failure_reasons": [
+      "nonpositive_mechanism_advantage"
+    ],
+    "platform_score": null,
+    "platform_status": "not_tested",
+    "development_cold_models": 40,
+    "development_reused_control_states": 20,
+    "cold_max_prediction_difference": 1.295262751455084e-05,
+    "window_max_difference": 4.76837158203125e-07,
+    "cold_peak_rss_mib": 440.34375,
+    "full_tests": {
+      "neural": {
+        "passed": 1449,
+        "warnings": 23
+      },
+      "locked_python3_12": {
+        "passed": 1039,
+        "skipped": 87,
+        "warnings": 3
+      }
+    },
+    "private_preflight": "local/runs/swa-cycle-mean2-v1/preflight.json",
+    "preflight_sha256": "1a1e620de1b5c9dc67eacd9683c736b020a3d253155d7afda25929948f7119ac",
+    "private_final_verification": "local/swa-cycle-mean2-20261002/final-verification-r1.json",
+    "private_final_verification_sha256": "fb7c61827f623f390adeefb3204dfd9815d557920e27a66ae87a26e184ce2ff0",
+    "results": "docs/swa_cycle_mean2_v1/RESULTS.md",
+    "local_platform_mapping": false,
+    "controller_terminal": "completed_inactive_bound_PID_no_waitpid_exit_code_receipt"
   }
 }
