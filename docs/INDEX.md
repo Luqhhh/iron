@@ -11,7 +11,7 @@
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
 | 最新平台反馈 | **EMA_Q75_N_TO_V36_P05=96.3896**、**SAM_EMA_TIME_Q75_EXPLORATION=96.3796**；用户回传，相对Q75分别−0.0024、−0.0124 |
 | 优先待测包 | **GAUSS1_A20**：四seed正式晋级、全量G0通过；**EMA_MEAN3_FULL_Q75**用户指定探索继续待测。二者平台均未测 |
-| 优化执行 | 单高斯时长确认及全量包已完成；Laplace网络固定/学习尺度两臂完整开发正在运行；队友SWA原始确认包仍待接收 |
+| 优化执行 | 单高斯时长确认及全量包已完成；Laplace网络两臂完整开发已完成，固定尺度入选接续确认；队友SWA原始确认包仍待接收 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
@@ -32,7 +32,7 @@
 
 ## 当前维护入口
 
-- [Laplace时长网络完整开发](q75_laplace_time/EXECUTION.md)：15项零optimizer检查及两臂4次合成optimizer/4状态G0通过；两开发seed共40次正式optimizer已冻结启动，平台队列不变。
+- [Laplace时长网络完整开发](q75_laplace_time/RESULTS.md)：两臂共40正式optimizer/40状态闭合；FIXED相对Q75两seed+.008953/+.012171，平均略优于Gaussian，进入单独确认；SCALE两次弱于FIXED，未通过额外Gaussian比较门。平台队列不变。
 
 - [单高斯时长全量交付](q75_gaussian_release/DELIVERY.md)：一个固定20%融合包，2正式optimizer/2状态、独立无标签冷推理、322行包回读与5个实际exit0通过；22项最终零optimizer检查通过。准备测试超额及首轮账本准入失败完整保留，未桌面复制或上传。
 - [单高斯时长四seed确认](q75_gaussian_confirmation/RESULTS.md)：四seed均正，均值+.008405、LCB95+.005023，正式晋级；新增20optimizer/20状态冷审计和独立评分通过。平台未测。
