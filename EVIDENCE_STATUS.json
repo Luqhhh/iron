@@ -24374,5 +24374,265 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "remaining_quota_inferred": false
+  },
+  "q75_stack_review_20261002": {
+    "status": "completed_zero_fit_library_saturated_no_large_harvest_available",
+    "kind": "zero_fit_recorded_prediction_review",
+    "documentation": "docs/q75_stack_review/RESULTS.md",
+    "private_root": "local/runs/q75-stack-review-20261002",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "library_columns_two_seed": {
+      "tap_iron": 199,
+      "tap_time_len": 209
+    },
+    "q75_local_oof_four_seed": {
+      "tap_iron": 0.037298,
+      "tap_time_len": 0.038227,
+      "score": 96.2237,
+      "seeds": [
+        42,
+        3407,
+        271828,
+        314159
+      ]
+    },
+    "nested_level_two": {
+      "nnls_time_mean_gain": 0.0088,
+      "nnls_time_min_gain": 0.0016,
+      "nnls_time_positive_seeds": 4,
+      "ridge10_time_mean_gain": 0.0123,
+      "nnls_iron_mean_gain": 0.0031,
+      "nonlinear_lightgbm_stack": "negative_on_both_targets",
+      "features_only_lightgbm": "much_weaker_than_tabm"
+    },
+    "nested_calibration": {
+      "global": "negative",
+      "bucket": "negative",
+      "spout": "negative",
+      "range_score": [
+        -0.0041,
+        -0.0005
+      ]
+    },
+    "in_sample_oracle_ceiling": {
+      "tap_iron": [
+        0.03687,
+        0.03706
+      ],
+      "tap_time_len": [
+        0.03744,
+        0.03728
+      ],
+      "note": "optimistic hindsight linear ceiling over the whole library; not a forecast"
+    },
+    "cross_model_residual_correlation": "0.96-0.99",
+    "residual_shape": {
+      "iron_mean_abs_over_std": [
+        0.7746,
+        0.7763
+      ],
+      "time_mean_abs_over_std": [
+        0.7873,
+        0.7888
+      ],
+      "gaussian_reference": 0.798,
+      "cross_seed_residual_correlation": [
+        0.9866,
+        0.9804
+      ]
+    },
+    "interpretation": "no honest combination, calibration or stack over the recorded library yields more than about +0.01 score; the library shares one training set and one error direction",
+    "new_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_zero_fit_identity_and_alignment_checks",
+    "G1": "no_new_candidate; measured saturation of the recorded library"
+  },
+  "q75_headroom_20261002": {
+    "status": "completed_iron_saturated_time_mildly_data_limited",
+    "kind": "sample_size_learning_curve",
+    "documentation": "docs/q75_headroom_20261002/RESULTS.md",
+    "protocol": "docs/q75_headroom_20261002/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-headroom-20261002/development-r1",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "units": [
+      "s42-f0",
+      "s42-f1",
+      "s3407-f0"
+    ],
+    "fractions": [
+      0.5,
+      0.75,
+      1.0
+    ],
+    "results": {
+      "f_0.5": {
+        "tap_iron": 0.037962,
+        "tap_time_len": 0.040869,
+        "score": 96.0584
+      },
+      "f_0.75": {
+        "tap_iron": 0.037387,
+        "tap_time_len": 0.038828,
+        "score": 96.1892
+      },
+      "f_1.0": {
+        "tap_iron": 0.037294,
+        "tap_time_len": 0.038538,
+        "score": 96.2084
+      }
+    },
+    "control": {
+      "arm": "fraction_1.0_reproduces_recorded_v12_joint_plr001",
+      "max_absolute_difference": 0.0,
+      "gate": "passed"
+    },
+    "interpretation": "iron error is essentially flat with training-set size (halving costs 1.8 percent relative); time is still mildly data limited (halving costs 6.0 percent) but marginal returns decay quickly, so more data or capacity of the same recipe cannot deliver the +0.058 still needed",
+    "new_fits": 9,
+    "new_optimizers": 18,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_control_bit_exact_and_thread_pinning",
+    "G1": "descriptive_learning_curve_only"
+  },
+  "q75_schedule_screen_20261002": {
+    "status": "completed_cosine_plus_l1_improves_iron_only_time_degrades",
+    "kind": "protocol_screen_training_schedule_and_loss",
+    "documentation": "docs/q75_schedule_screen/RESULTS.md",
+    "protocol": "docs/q75_schedule_screen/PREREGISTRATION.md",
+    "source_module": "src/bf_tap_r2/q75_schedule_screen.py",
+    "private_root": "local/runs/q75-schedule-screen-20261002",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "stage1": {
+      "units": [
+        "s42-f0",
+        "s42-f1"
+      ],
+      "configs": 11,
+      "fits": 22,
+      "control_max_absolute_difference": 0.0,
+      "iron_best": "COS_MAE -0.000528 two-fold mean, both folds better",
+      "time_best": "COS_MAE -0.000221 two-fold mean, folds not same-direction"
+    },
+    "stage2": {
+      "units": "split seeds 42 and 3407, five folds each",
+      "configs": [
+        "COS_MAE",
+        "COS_LR3"
+      ],
+      "fits": 20,
+      "COS_MAE_iron": {
+        "seed42": 0.000337,
+        "seed3407": 0.000241,
+        "mean": 0.000289,
+        "positive_folds": "7/10",
+        "score_equivalent": 0.0072
+      },
+      "COS_MAE_time": {
+        "seed42": -0.000426,
+        "seed3407": -0.000253,
+        "mean": -0.00034
+      },
+      "COS_LR3_iron": {
+        "mean": 5e-05,
+        "all_seed_positive": false
+      },
+      "COS_LR3_time": {
+        "mean": -0.000994
+      }
+    },
+    "aborted_launch": {
+      "path": "local/runs/q75-schedule-screen-20261002/stage2-r1/ABORTED.json",
+      "reason": "first stage-2 launch used 30 arms instead of the frozen 20",
+      "completed_fits": 0,
+      "resolution": "stopped before any unit completed and rerun as stage2-r2 with the frozen arm set"
+    },
+    "interpretation": "the time head does not benefit from any tested schedule or loss change; the iron head improves consistently under cosine scheduling with an L1 training loss, which is the first protocol-level (not weighting-level) gain of this phase",
+    "new_fits": 42,
+    "new_optimizers": 84,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_control_bit_exact_thread_pinning_and_protocol_deviation_recorded",
+    "G1": "iron_signal_only_no_joint_candidate"
+  },
+  "q75_cosine_iron_confirmation_20261002": {
+    "status": "completed_four_seed_blend_positive_single_column_replacement_failed",
+    "kind": "confirmation_extension",
+    "protocol": "docs/q75_cosine_iron_confirmation/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-cosine-iron-confirmation-20261002/development-r1",
+    "candidate": "COS_MAE_IRON",
+    "reference": "EMA_TIME_Q75",
+    "thread_target": 96.45,
+    "split_seeds": [
+      42,
+      3407,
+      271828,
+      314159
+    ],
+    "planned_fits": 20,
+    "planned_optimizers": 40,
+    "budget_amendment": "preregistration amended before any fit: seeds 42/3407 are re-fit to persist prediction vectors because the stage-2 run stored metrics only; the re-fit doubles as a determinism gate",
+    "gate": "four complete split seeds, every seed gain positive, seed-level paired LCB95 > 0",
+    "new_fits": 20,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "new_optimizers": 40,
+    "control": {
+      "stage2_max_abs_wmape_difference": 0.0,
+      "gate": "passed"
+    },
+    "single_column_replacement": {
+      "tap_iron": {
+        "seed42": -0.000199,
+        "seed3407": -0.000222,
+        "seed271828": -0.000142,
+        "seed314159": -2e-06,
+        "mean": -0.000141,
+        "lcb95": -0.000258,
+        "positive_seeds": 0
+      }
+    },
+    "incremental_blend": {
+      "reference": "EMA_TIME_Q75 iron column",
+      "weights_by_held_out_seed": {
+        "42": 0.4,
+        "3407": 0.4,
+        "271828": 0.4,
+        "314159": 0.35
+      },
+      "gains": {
+        "42": 0.0012,
+        "3407": 0.0013,
+        "271828": 0.0025,
+        "314159": 0.0041
+      },
+      "mean": 0.0023,
+      "min": 0.0012,
+      "all_positive": true,
+      "seed_level_lcb95": 0.0008,
+      "gate": "passed"
+    },
+    "documentation": "docs/q75_cosine_iron_confirmation/RESULTS.md",
+    "interpretation": "the cosine+L1 iron model is complementary to the incumbent iron column rather than a replacement; the four-seed blend gain is real but only +0.0023 score, far below the +0.0580 still needed",
+    "clarification": "stage-2 iron comparison was against the recorded single-recipe V12 joint_plr001 column (0.037675 pooled), not against the incumbent package iron column; the schedule-screen document records this correction",
+    "full_fits": 0,
+    "G0": "passed_determinism_gate_and_thread_pinning",
+    "G1": "blend_form_passes_four_seed_gate_with_small_magnitude"
   }
 }
