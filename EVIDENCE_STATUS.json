@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "GAUSS1_A20_FORMALLY_PROMOTED_AND_EMA_MEAN3_EXPLORATION_READY",
+    "status": "PAUSED_BY_USER_AFTER_FIXED_LAPLACE_RELEASE",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -324,11 +324,24 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [
+      "LAPLACE_FIXED_A20",
       "GAUSS1_A20",
       "EMA_MEAN3_FULL_Q75"
     ],
-    "submission_priority_note": "GAUSS1_A20 tests a previously unselected Gaussian-likelihood control as a distinct Q75 time component, with complete four-seed positive evidence and closed full-data G0; EMA_MEAN3 remains the user-selected variance-reduction exploration. This is a testing recommendation, not a platform gain prediction; no quota inferred.",
+    "submission_priority_note": "Next recommended test is fixed-scale Laplace: MAE-aligned location head, matched complete development contrast and four-seed Q75 gains; Gaussian comparison has one negative seed and negative LCB, so this is not a proven ranking. Preserve Gaussian/EMA_MEAN3 and use the next platform feedback to reassess later tests; do not infer quota or require all three now.",
     "ready_for_user_platform_testing": [
+      {
+        "candidate": "LAPLACE_FIXED_A20",
+        "package": "local/runs/q75-laplace-release-20261002/release-r1/LAPLACE_FIXED_A20/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c",
+        "G0": "passed_native_budget_partitions_epochs_Laplace_identity_independent_label_free_cold_and_package_actual_exit0",
+        "G1": "formal_four_seed_Q75_promoted_platform_unmeasured_Gaussian_comparison_not_statistically_resolved",
+        "reference": "EMA_TIME_Q75",
+        "evidence_key": "q75_laplace_fixed_release_20261002",
+        "feedback_status": "not_measured",
+        "formal_promotion": true,
+        "desktop": null
+      },
       {
         "candidate": "GAUSS1_A20",
         "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
@@ -373,8 +386,8 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "优先测试GAUSS1_A20单高斯时长固定20%融合：四seed正式门和全量工程审计通过，验证旧对照项对当前Q75的独立增量；EMA_MEAN3用户指定探索继续待测。平台最佳仍Q75/Q100=96.3920，尚未达到96.45，不据本地增量预测平台分。DE3仍仅替补，不推断剩余额度。",
-    "optimization_paused": false,
+    "recommended": "下一次优先测试LAPLACE_FIXED_A20：固定MAE臂在匹配开发中胜过学习尺度臂，对Q75四seed正式门通过，全量工程闭合。相对Gaussian的优势尚不稳定，不承诺平台排序；Gaussian和EMA_MEAN3保留，后续顺序结合下一次回传调整，不要求现在测完全部。DE3仍仅替补，不推断额度。",
+    "optimization_paused": true,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "historical_decisions_unchanged": true,
@@ -817,7 +830,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Fixed Laplace formally promoted versus Q75; independent full release preparation next; not yet packaged"
+    "research_status": "Current Laplace round completed; further optimization paused by explicit user request; no active worker or monitor"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2720,18 +2733,18 @@
       "96.45": 0.058,
       "96.5": 0.108
     },
-    "latest_completed_release": "q75_gaussian_time_release_20261002",
-    "latest_G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
-    "latest_G1": "formal_four_seed_promoted_platform_unmeasured",
+    "latest_completed_release": "q75_laplace_fixed_release_20261002",
+    "latest_G0": "passed_native_budget_partitions_epochs_Laplace_identity_independent_label_free_cold_and_package_actual_exit0",
+    "latest_G1": "formal_four_seed_Q75_promoted_platform_unmeasured_Gaussian_comparison_not_statistically_resolved",
     "ready_exploration_candidates": [
       "EMA_MEAN3_FULL_Q75"
     ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
-    "optimization_paused": false,
+    "optimization_paused": true,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Fixed_Laplace_confirmation_complete_no_running_worker",
+    "runtime_observation": "Fixed_Laplace_round_completed_all_owned_workers_terminal_paused_by_user_no_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3132,9 +3145,10 @@
     "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。",
     "active_research": null,
     "ready_formal_candidates": [
+      "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Freeze one fixed Laplace full-data release; platform feedback remains pending"
+    "next_action": "Await user resume; delivered candidates retained and user may return platform feedback"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -22669,5 +22683,141 @@
     "report_sha256": "47ae9334f5bf8511dce06c89cbbdc1856648b062f5b4e55c21ec3aaa8166c627",
     "independent_score_sha256": "5b842011857091f08344327e0cd8470bebebebd38ccaf070df8d5b18bccf04e8",
     "status_document": "docs/q75_laplace_confirmation/RESULTS.md"
+  },
+  "q75_laplace_fixed_release_20261002": {
+    "status": "completed_one_fixed_Laplace_release_platform_unmeasured",
+    "candidate": "LAPLACE_FIXED_A20",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "thread_target": 96.45,
+    "source_worktree": "local/worktrees/q75-laplace-fixed-release",
+    "source_commit": "a59554bca2a2e601c14c62f07866749713ad3f3e",
+    "specification": "configs/q75_laplace_release/SPEC.json",
+    "protocol": "docs/q75_laplace_release/PREREGISTRATION.md",
+    "status_document": "docs/q75_laplace_release/DELIVERY.md",
+    "run_directory": "local/runs/q75-laplace-release-20261002/release-r1",
+    "G0": "passed_native_budget_partitions_epochs_Laplace_identity_independent_label_free_cold_and_package_actual_exit0",
+    "G1": "formal_four_seed_Q75_promoted_platform_unmeasured_Gaussian_comparison_not_statistically_resolved",
+    "formal_promoted": true,
+    "platform_score": null,
+    "actual": {
+      "full_data_procedures": 1,
+      "optimizer_runs": 2,
+      "new_states": 2,
+      "new_cv_fits": 0,
+      "reference_fits": 0,
+      "packages": 1,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 9,
+      "actual_exit_code": 0,
+      "optimizer_constructor_attempts": 0,
+      "receipt": "local/runs/q75-laplace-release-20261002/checks-r1/receipt.json",
+      "receipt_sha256": "5583e2fa7d83b431f1f117f9909b55e31387f656fa7847acba1dc25df87ad92d"
+    },
+    "manifest_sha256": "6ae9aba3330d98d177942e040cbe0433660d79084684f8a3764192a6d0a3f5eb",
+    "terminal_sha256": "c8d1b96c7d292e33c3010f73d5bea8c700a88a797fdf3190b2b319e4ca105ed2",
+    "package_audit_sha256": "3d8bafe40d409ff11570ce4c316947161e56617458b942d8b158a37ebdb9a791",
+    "reconciliation_sha256": "fd764d7a3ad18fa85cdbf76942e6afe2fea55e01702ae8439bd6d82f7015e98d",
+    "actual_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_tool_exit_code": 0,
+    "selected_epoch": 93,
+    "selector_stopped_epoch": 123,
+    "training_rows": 2754,
+    "selector_fitting_rows": 2203,
+    "query_rows": 322,
+    "cold_max_difference": 2.842170943040401e-14,
+    "label_free_cold_difference": 0.0,
+    "maximum_os_rss_mib": 503.05859375,
+    "owned_pids_verified_absent": true,
+    "initial_process_verification": {
+      "observed_ns": 1790923541471979426,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "pid": 324387,
+          "status": "sleeping",
+          "created": 1790923539.9,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-fixed-release",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-fixed-release/.venv/bin/python3",
+            "scripts/q75_laplace_release.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-release-20261002/release-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "pid": 324388,
+          "status": "running",
+          "created": 1790923539.98,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-laplace-fixed-release",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-laplace-fixed-release/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_laplace_release",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-laplace-release-20261002/release-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "next_periodic_observation_ns": 1790924141471979426,
+      "manifest_sha256": "6ae9aba3330d98d177942e040cbe0433660d79084684f8a3764192a6d0a3f5eb"
+    },
+    "tool_session_id": 24620,
+    "maximum_runtime_seconds": null,
+    "monitor_seconds": 600,
+    "next_periodic_observation_ns": null,
+    "automatic_retries": false,
+    "package": "local/runs/q75-laplace-release-20261002/release-r1/LAPLACE_FIXED_A20/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c",
+    "result_sha256": "ecb71e035c7e6f6b7a6fd48fb9d8f10c573d8423b623e6c5a10cebb28b70af5e",
+    "unchanged_iron_string_mismatches": 0,
+    "platform_test_status": "not_measured_ready_formally_promoted_candidate",
+    "laplace_batch_counts": {
+      "engineering_optimizers": 4,
+      "development_optimizers": 40,
+      "confirmation_optimizers": 20,
+      "full_data_optimizers": 2,
+      "extra_test_optimizers": 0,
+      "automatic_retries": 0
+    },
+    "pause_after_round": true,
+    "optimization_paused_after_delivery": true,
+    "pause_instruction": "本轮结束后暂停"
+  },
+  "optimization_pause_after_laplace_round_20261002": {
+    "date": "2026-10-02",
+    "instruction": "本轮结束后暂停",
+    "scope": "After completion of fixed Laplace development, confirmation and one full-data release",
+    "current_round_completed": true,
+    "new_experiments_enabled": false,
+    "background_monitoring": false,
+    "resume_requires_user_instruction": true
   }
 }
