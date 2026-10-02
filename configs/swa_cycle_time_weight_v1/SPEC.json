@@ -1,8 +1,8 @@
 {
   "identity": "SWA_CYCLE_TIME_WEIGHT_V1",
   "arms": [
-    "SWA_JOINT_SELECT_CONTROL",
-    "SWA_CYCLE_TAIL"
+    "SWA_CYCLE_WEIGHT_CONTROL",
+    "SWA_CYCLE_TIME_WEIGHT"
   ],
   "reference": {
     "candidate": "EMA_TIME_Q75",
@@ -12,7 +12,7 @@
   "target": "tap_time_len",
   "alpha": 0.2,
   "endpoint": "0.8*Q75+0.2*member",
-  "backbone": "original V12 random initialized joint periodic TabM frequency0.01; original architecture, preprocessing and joint two-target standardized MSE",
+  "backbone": "original V12 random initialized joint periodic TabM frequency0.01; original architecture and preprocessing; weighted two-target standardized MSE .25 iron/.75 time",
   "optimizer": "original AdamW weight_decay and batch_size, no extra optimizer; epoch LR modified by frozen deterministic schedule",
   "warmup_epochs": 80,
   "warmup_lr": 0.001,
@@ -47,9 +47,9 @@
       "optimizer": 20
     }
   },
-  "control_reuse": "original cold-audited joint-selector SWA_WINDOW10 engineering2/development20/confirmation20 states; preserve source directory/split/unit/cache identity; 0 new control/reference fitting",
+  "control_reuse": "original cold-audited SWA_CYCLE_TAIL engineering2/development20/confirmation20 states, same source directory/split/unit/cache; 0 new control/reference fitting",
   "gates": {
-    "development": "two complete fixedA20 gains vsQ75 each strictly positive and mean mechanism vsoriginalSWA strictly positive before confirmation",
+    "development": "two complete fixedA20 gains vsQ75 each strictly positive and mean mechanism vsSWA_CYCLE_TAIL strictly positive before confirmation",
     "confirmation": "four complete gains each>0, one-sided seed t-LCB95(df3)>0 and mechanism mean>0",
     "folds": "descriptive only"
   },
