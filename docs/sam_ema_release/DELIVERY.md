@@ -1,5 +1,7 @@
 # SAM＋EMA固定人工探索：交付与暂停
 
+> 最新平台反馈：用户按桌面编号02回传 **96.3796**，相对Q75/Q100=96.3920为 **−0.0124**；未独立核验平台凭证。该包已移出待测队列，当前最佳及优化暂停保持。下方“平台未测”是原交付快照。
+
 2026-10-02。本轮一个全量程序、两次真实AdamW初始化、两个新原生状态和一个ZIP已完成。**G0通过；G1为平台未测的人工探索，未正式晋级。用户明确“本轮结束后暂停”，本轮交付后暂停优化，不启动下一轮。**
 
 候选 `SAM_EMA_TIME_Q75_EXPLORATION`；本地包 `local/runs/sam-ema-time-exploration-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip`，ZIP SHA256 `407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5`。固定公式为 `Q75_time+.75*(full_SAM_EMA_time-old_full_EMA_time)`，铁量字段直接复制Q75父CSV原字符串。没有新权重扫描、CV、确认seed、桌面写入或助手上传。用户自行上传；不推断剩余额度。
@@ -25,3 +27,13 @@ G0：锁定Python3.12独立新进程核对原包和桌面包，ZIP SHA-256保持
 本次该候选桌面复制1份；批次共复制2份，新增拟合/包/助手上传均0，优化暂停保持。原发布阶段桌面写入0保留为历史快照，原包和其他桌面目录未覆盖，DE3继续仅替补。
 
 追加登记在状态键 `sam_ema_time_manual_exploration_release_20261002.desktop_handoffs`。私有批次收据和独立审计位于 `local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json`、`independent-audit.json`，均不入Git；收据SHA-256 `fd0a4b2a3709c19b35863ee235b92c823cbb6697461a5ae369ca6529658675a5`，独立审计SHA-256 `52ee10968731157df19203833fa04f285b29166a4e2a07c0734e7dbd610ba07f`。
+
+## 平台反馈（2026-10-02）
+
+用户回传原文 `1.96.3896 2.96.3796`，第2项按最近桌面交付绑定 **SAM_EMA_TIME_Q75_EXPLORATION=96.3796**。相对Q75=96.3920为 **−0.0124**；来源为用户回传，未独立核验平台凭证。
+
+该固定SAM＋EMA轨迹、原选轮/refit与.75替换配方未超过Q75。原SAM和EMA单独获得平台正收益，以及本次对匹配SAM两切分本地均改善，均不能保证该组合优于现有EMA时长。原开发相对Q75两切分为负、not_shortlisted、确认失败及未正式晋级决定保留；不推广为所有SAM＋EMA配方无效，不自动启动新权重或训练。
+
+G0：锁定Python3.12新进程再次核对原包/桌面包SHA-256及CSV字节、ZIP仅result.csv、CRC、322个唯一ID的官方顺序、有限非负值、Q75铁量原字段字符串保持，全部通过。G1：该固定人工探索包低于当前最佳，移出待测列表。Q75/Q100=96.3920继续同分最佳，优化保持暂停，DE3＋Q75仍仅替补。
+
+与第1项共用私有追加反馈 `local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json`，SHA-256 `8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d`；公开状态键 `platform_feedback_q75_probe_sam_ema_20261002`。本次新增拟合/包/桌面写入/助手上传均0，不推断剩余额度，原包、模型与失败证据保留。

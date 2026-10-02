@@ -9,18 +9,20 @@
 | 平台回传同分最佳 | **EMA_TIME_Q75 / EMA_TIME_Q100 = 96.3920**；用户回传，未独立平台核验 |
 | 当前代表 | Q75，组件外推较小；未证明统计上独胜 |
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
-| 最新全量反馈 | PTARL_TIME_Q20=96.378、SHORT_SPAN_FULL_Q75=96.3911、EMA_IRON_EMA_TIME=96.3816；均为用户回传，低于Q75，无当前待反馈包 |
-| 已交付未测探索 | **EMA_Q75_N_TO_V36_P05**与**SAM_EMA_TIME_Q75_EXPLORATION**；G0均通过，新SAM＋EMA为人工探索，未正式晋级 |
+| 最新平台反馈 | **EMA_Q75_N_TO_V36_P05=96.3896**、**SAM_EMA_TIME_Q75_EXPLORATION=96.3796**；用户回传，相对Q75分别−0.0024、−0.0124 |
+| 优先待测包 | **无**；两项已回传探索均移出待测队列，G0通过，G1该固定配方低于Q75 |
 | 优化执行 | **本轮已结束，按用户要求暂停**；无运行任务，不启动下一轮 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
 
-两项新探索的公式、包身份及 G0/G1 见 [PTaRL/EMA 交付](ptarl_ema_exploration_release/DELIVERY.md)。它们不是新增四切分正式晋级；不生成第三个双目标组合，用户自行上传。本文不推断剩余额度或规定新的上传顺序。
+最新两项的公式、包身份与反馈见 [N→V36探针交付](q75_combination_review/DELIVERY.md)和[SAM＋EMA人工探索交付](sam_ema_release/DELIVERY.md)。历史[PTaRL/EMA交付](ptarl_ema_exploration_release/DELIVERY.md)保留原两项独立探索范围及反馈，不生成第三个双目标组合。分数均为用户回传，未独立核验平台凭证；本文不推断剩余额度。
 
 ## 后续筛选与验证
 
 **本地收益不能作为唯一指标。** 本地和平台的符号、排序、幅度、最佳权重可能不同；切分稳定性不等于独立数据泛化保证。SAM 时长本地 −0.01643、平台 +0.0031；EMA 时长本地 +0.00217、平台 +0.0168。Q75/Q100 相对 Q50 的本地两切分均负，平台均 +0.0025。
+
+最新N→V36固定探针本地四seed均正、平均+0.006667、LCB95+0.005809，平台回传却相对Q75下降0.0024；SAM＋EMA固定人工探索平台下降0.0124。保留具体配方的反例与原门槛，不推广到整个模型家族，也不据此建立通用本地/平台转移规则。
 
 保留完整同协议评估、当前目标参照、增量融合收益和冻结门槛；正式晋级仍要求至少四个完整 split seed、各 seed 正收益及 seed 层配对 LCB95 > 0。平台探索另行登记理由与授权，不追溯改写失败决定。不用固定偏移、放大倍数或条件列加法冒充平台预测。
 
@@ -28,14 +30,14 @@
 
 ## 当前维护入口
 
-- [SAM＋EMA固定人工探索交付](sam_ema_release/DELIVERY.md)：一个全量程序/两次optimizer/一个ZIP、原生与独立冷审计、包回读及实际exit0通过；平台未测、未正式晋级。本轮结束后已按用户要求暂停。
+- [SAM＋EMA固定人工探索交付](sam_ema_release/DELIVERY.md)：一个全量程序/两次optimizer/一个ZIP、原生与独立冷审计、包回读及实际exit0通过；用户回传96.3796，相对Q75−0.0124，未正式晋级。优化保持暂停。
 - [96.45本轮实施顺序](q75_9645_execution/PLAN.md)与[完整结果](q75_9645_execution/RESULTS.md)：首批工作及初始化、更新步数、组件校准均已闭合；后续正式配对门未过；另行冻结的SAM＋EMA人工探索已交付，现按用户要求暂停。
-- [含EMA零拟合组合结果](q75_combination_review/RESULTS.md)：六项、四个完整已有seed；开发首选N_TO_V36005均值+.006667、LCB95+.005809，[单一探索探针](q75_combination_review/DELIVERY.md)已通过独立回读，平台未测。
+- [含EMA零拟合组合结果](q75_combination_review/RESULTS.md)：六项、四个完整已有seed；开发首选N_TO_V36005均值+.006667、LCB95+.005809，[单一探索探针](q75_combination_review/DELIVERY.md)已通过独立回读，用户回传96.3896，相对Q75−0.0024。
 - [按最终融合效果选轮协议](ema_fusion_selection/PREREGISTRATION.md)与[完整配对结果](ema_fusion_selection/RESULTS.md)：30optimizer/40状态及独立终态G0通过；选轮独立收益一正一负，不进入确认。
 - [EMA组件同模型校准结果](ema_component_calibration/RESULTS.md)：80次校正估计、20个冷query见证及两个完整OOF已闭合；原报告错误exit 1保留，另目录零拟合恢复及独立计分exit 0通过。全局/压差相对Q75均两切分负、相对同F模型均一正一负，无确认或新包；前序初始化、更新步数匹配亦未过各自冻结配对门。
 - [EMA双dropout一致性完整配对结果](ema_dropout_consistency/RESULTS.md)：20估计器/40optimizer、60个新旧冷状态与实际exit 0闭合；固定lambda=.5对Q75及双前向控制的两个完整切分均负，未过确认门。24项定向检查与合成工程拟合另计，原旁路监控失败证据保留；无新包或平台排程。
 - [EMA时长width512完整结果](ema_width512/RESULTS.md)：10估计器/20optimizer、40个新旧冷状态、490份冻结文件与实际exit0闭合，G0通过；对Q75两完整切分−.009800118/−.011806141，固定配方未过确认门，0新平台包。20项定向检查与1次合成工程optimizer另计。
-- [SAM＋EMA完整开发结果](sam_ema_time/RESULTS.md)：10估计器/20optimizer、60个新旧冷状态、545份冻结文件与实际exit0闭合。G0通过；对Q75两切分−.024537241/−.021519181，确认门失败；对匹配SAM均改善，保留另行冻结的人工平台交互探索，原分类与既有队列保持。
+- [SAM＋EMA完整开发结果](sam_ema_time/RESULTS.md)：10估计器/20optimizer、60个新旧冷状态、545份冻结文件与实际exit0闭合。G0通过；对Q75两切分−.024537241/−.021519181，确认门失败；对匹配SAM均改善。另行冻结的人工探索已回传96.3796，原科学分类与失败决定保持。
 - [实施报告](report.md)、[任务范围](task_contract.md)、[发布身份](release_identity.md)、[提交与反馈记录](submission_log.md)。
 - [候选分类及正式晋级边界](candidate_tiers.md)、[数据契约范围](data_contract.md)、[待确认语义与平台口径](rule_questions.md)。
 - [四项本地/平台诊断反馈](local_platform_diagnostic_release/DELIVERY.md)：四项均已回传，SAM 时长反转，EMA 时长获益。

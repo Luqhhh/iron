@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "PAUSED_BY_USER_TWO_AUDITED_EXPLORATIONS_UNMEASURED_Q75_CO_BEST_UNCHANGED",
+    "status": "PAUSED_BY_USER_TWO_EXPLORATIONS_SCORED_BELOW_Q75_NO_PRIORITIZED_PENDING_PACKAGES",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -323,40 +323,9 @@
       "representative_tie_choice": "smaller_component_extrapolation, not a unique-score winner"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [
-      "EMA_Q75_N_TO_V36_P05",
-      "SAM_EMA_TIME_Q75_EXPLORATION"
-    ],
-    "submission_priority_note": "Audited delivery inventory retained during explicit user pause; user uploads, no remaining quota inferred; DE3 reserve stays deferred.",
-    "ready_for_user_platform_testing": [
-      {
-        "candidate": "EMA_Q75_N_TO_V36_P05",
-        "package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
-        "G0": "passed",
-        "G1": "platform_unmeasured_exploration",
-        "reference": "EMA_TIME_Q75",
-        "evidence_key": "q75_combination_review_20261002",
-        "feedback_status": "user_reported_not_tested",
-        "feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
-        "feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334",
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/01_EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
-        "desktop_handoff_receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json"
-      },
-      {
-        "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
-        "package": "local/runs/sam-ema-time-exploration-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5",
-        "G0": "passed",
-        "G1": "manual_platform_unmeasured_exploration_no_formal_promotion",
-        "reference": "EMA_TIME_Q75",
-        "evidence_key": "sam_ema_time_manual_exploration_release_20261002",
-        "feedback_status": "not_measured",
-        "formal_promotion": false,
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/02_SAM_EMA_TIME_Q75_EXPLORATION/Luqhhh_bf_tap_predict_round2.zip",
-        "desktop_handoff_receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json"
-      }
-    ],
+    "submission_priority": [],
+    "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
+    "ready_for_user_platform_testing": [],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -375,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "本轮SAM＋EMA固定探索已交付，按用户要求暂停优化。N→V36原探针与新SAM＋EMA人工探索平台均未测，用户自行决定测试；Q75/Q100=96.3920仍为用户回传同分最佳。新包未正式晋级，原科学失败决定不变，DE3继续仅作替补。",
+    "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。",
     "optimization_paused": true,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -726,11 +695,93 @@
         "reported_date": "2026-10-01",
         "feedback_record": "local/runs/ema-short-full-release-20261001/platform-feedback-r1/feedback.json",
         "feedback_sha256": "65ccbd22b3e59836e4383361a076ef05ae5ca018677b8f0506d3853a753ab2de"
+      },
+      {
+        "candidate": "EMA_Q75_N_TO_V36_P05",
+        "list_index": 1,
+        "score": 96.3896,
+        "raw_reported_score": "96.3896",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-02",
+        "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
+        "package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/01_EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0024,
+        "G0": "passed_bound_source_desktop_zip_csv_crc_322_official_order_finite_nonnegative_and_unchanged_iron",
+        "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
+        "fixed_column": "pred_tap_iron",
+        "fixed_string_mismatches": 0,
+        "feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
+      },
+      {
+        "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
+        "list_index": 2,
+        "score": 96.3796,
+        "raw_reported_score": "96.3796",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-02",
+        "zip_sha256": "407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5",
+        "package": "local/runs/sam-ema-time-exploration-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/02_SAM_EMA_TIME_Q75_EXPLORATION/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0124,
+        "G0": "passed_bound_source_desktop_zip_csv_crc_322_official_order_finite_nonnegative_and_unchanged_iron",
+        "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
+        "fixed_column": "pred_tap_iron",
+        "fixed_string_mismatches": 0,
+        "feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
       }
     ],
     "modernnca_result_key": "modernnca_median_head_20261002",
     "history_before_matching_followup_closure_20261002": {
       "recommended": "One EMA-inclusive N-to-V36 probe is ready after four-seed review and independent package replay; platform gain is unmeasured. Q75/Q100=96.3920 remain user-reported co-best. Original ModernNCA MSE development and the paired EMA selector are complete without confirmation finalists; selector-specific gain is one positive/one negative against its matched control. Preserve seed stability/program matching as later work and DE3+Q75 as deferred reserve. Other isolated ModernNCA stages retain their own status."
+    },
+    "history_before_platform_feedback_20261002": {
+      "status": "PAUSED_BY_USER_TWO_AUDITED_EXPLORATIONS_UNMEASURED_Q75_CO_BEST_UNCHANGED",
+      "submission_priority": [
+        "EMA_Q75_N_TO_V36_P05",
+        "SAM_EMA_TIME_Q75_EXPLORATION"
+      ],
+      "submission_priority_note": "Audited delivery inventory retained during explicit user pause; user uploads, no remaining quota inferred; DE3 reserve stays deferred.",
+      "ready_for_user_platform_testing": [
+        {
+          "candidate": "EMA_Q75_N_TO_V36_P05",
+          "package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
+          "G0": "passed",
+          "G1": "platform_unmeasured_exploration",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "q75_combination_review_20261002",
+          "feedback_status": "user_reported_not_tested",
+          "feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
+          "feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/01_EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+          "desktop_handoff_receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json"
+        },
+        {
+          "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
+          "package": "local/runs/sam-ema-time-exploration-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5",
+          "G0": "passed",
+          "G1": "manual_platform_unmeasured_exploration_no_formal_promotion",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "sam_ema_time_manual_exploration_release_20261002",
+          "feedback_status": "not_measured",
+          "formal_promotion": false,
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/02_SAM_EMA_TIME_Q75_EXPLORATION/Luqhhh_bf_tap_predict_round2.zip",
+          "desktop_handoff_receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json"
+        }
+      ],
+      "recommended": "本轮SAM＋EMA固定探索已交付，按用户要求暂停优化。N→V36原探针与新SAM＋EMA人工探索平台均未测，用户自行决定测试；Q75/Q100=96.3920仍为用户回传同分最佳。新包未正式晋级，原科学失败决定不变，DE3继续仅作替补。"
     }
   },
   "round2_v2_3_candidate_release": {
@@ -2636,11 +2687,8 @@
     },
     "latest_completed_release": "sam_ema_time_manual_exploration_release_20261002",
     "latest_G0": "passed_native_partitions_epoch_independent_cold_scalar_package_crc_template_raw_iron_fields_and_actual_exit0",
-    "latest_G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
-    "ready_exploration_candidates": [
-      "EMA_Q75_N_TO_V36_P05",
-      "SAM_EMA_TIME_Q75_EXPLORATION"
-    ],
+    "latest_G1": "two_fixed_explorations_user_reported_platform_below_Q75_formal_decisions_preserved",
+    "ready_exploration_candidates": [],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_paused": true,
@@ -3020,7 +3068,7 @@
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
     "latest_completed_quality_experiment": "modernnca_mae_q75_development_20261002",
-    "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001",
+    "latest_platform_feedback_key": "platform_feedback_q75_probe_sam_ema_20261002",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
     "latest_local_diagnostic": "ema_component_calibration_preparation_20261002",
@@ -3035,7 +3083,15 @@
     "pause_after_this_round_requested": true,
     "pause_user_instruction": "本轮结束后暂停",
     "pause_reason": "explicit_user_instruction_本轮结束后暂停",
-    "pause_effective_after_release_key": "sam_ema_time_manual_exploration_release_20261002"
+    "pause_effective_after_release_key": "sam_ema_time_manual_exploration_release_20261002",
+    "history_before_platform_feedback_20261002": {
+      "latest_G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
+      "ready_exploration_candidates": [
+        "EMA_Q75_N_TO_V36_P05",
+        "SAM_EMA_TIME_Q75_EXPLORATION"
+      ],
+      "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
+    }
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -19979,11 +20035,11 @@
     "manual_full_release_optimizer_runs": 2
   },
   "q75_combination_review_20261002": {
-    "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
+    "status": "completed_zero_fit_probe_user_reported_platform_below_Q75",
     "documentation": "docs/q75_combination_review/RESULTS.md",
     "private_run": "local/runs/q75-combination-review-20261002/review-r1",
     "G0": "passed_independent_scalar_complete_same_seed_designs",
-    "G1": "four_seed_stability_not_platform_gain_or_retroactive_promotion",
+    "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
     "probes": 6,
     "selected": "N_TO_V36005",
     "seed_gains": {
@@ -20004,19 +20060,19 @@
     "new_split_seeds": 0,
     "packages": 1,
     "uploads": 0,
-    "platform_score": null,
+    "platform_score": 96.3896,
     "release_candidate": "EMA_Q75_N_TO_V36_P05",
     "release_package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
     "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
     "release_G0": "passed_independent_package_replay",
-    "platform_test_status": "unmeasured_user_upload_only",
+    "platform_test_status": "scored_user_reported",
     "fixed_iron_string_mismatches": 0,
     "maximum_decimal_arithmetic_difference": 2.8e-14,
     "automatic_development_tier": "formal_candidate_shortlist_not_platform_validation",
     "tier_evidence": "local/runs/q75-combination-review-20261002/review-r1/candidate-tiers.json",
-    "platform_feedback_status": "user_reported_not_tested",
-    "platform_feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
-    "platform_feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334",
+    "platform_feedback_status": "scored_user_reported",
+    "platform_feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d",
     "desktop_handoffs": [
       {
         "candidate": "EMA_Q75_N_TO_V36_P05",
@@ -20034,7 +20090,38 @@
         "new_packages": 0,
         "agent_uploads": 0
       }
-    ]
+    ],
+    "history_before_platform_feedback_20261002": {
+      "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
+      "G1": "four_seed_stability_not_platform_gain_or_retroactive_promotion",
+      "platform_score": null,
+      "platform_test_status": "unmeasured_user_upload_only",
+      "platform_feedback_status": "user_reported_not_tested",
+      "platform_feedback_record": "local/runs/q75-combination-review-20261002/platform-feedback-not-tested-r1.json",
+      "platform_feedback_sha256": "4a34600c5a846404aeeb49335e16dcc02ea795e793064fc91c24c8d253f11334"
+    },
+    "platform_feedback": {
+      "candidate": "EMA_Q75_N_TO_V36_P05",
+      "list_index": 1,
+      "score": 96.3896,
+      "raw_reported_score": "96.3896",
+      "reported_decimal_places": 4,
+      "source": "user_reported_not_independently_verified",
+      "platform_verified": false,
+      "reported_date": "2026-10-02",
+      "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
+      "package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/01_EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+      "comparison_candidate": "EMA_TIME_Q75",
+      "comparison_score": 96.392,
+      "delta_vs_current_best": -0.0024,
+      "G0": "passed_bound_source_desktop_zip_csv_crc_322_official_order_finite_nonnegative_and_unchanged_iron",
+      "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
+      "fixed_column": "pred_tap_iron",
+      "fixed_string_mismatches": 0,
+      "feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+      "feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
+    }
   },
   "ema_fusion_selection_20261002": {
     "status": "completed_paired_development_no_stable_criterion_gain_no_confirmation",
@@ -21383,7 +21470,7 @@
     }
   },
   "sam_ema_time_manual_exploration_release_20261002": {
-    "status": "completed_audited_delivered_user_requested_pause",
+    "status": "completed_audited_release_user_reported_platform_below_Q75_optimization_paused",
     "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
     "reference": {
       "candidate": "EMA_TIME_Q75",
@@ -21431,8 +21518,8 @@
       "agent_uploads": 0
     },
     "G0": "passed_native_partitions_epoch_independent_cold_scalar_package_crc_template_raw_iron_fields_and_actual_exit0",
-    "G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
-    "platform_score": null,
+    "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
+    "platform_score": 96.3796,
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": 0,
@@ -21507,6 +21594,103 @@
         "new_packages": 0,
         "agent_uploads": 0
       }
-    ]
+    ],
+    "history_before_platform_feedback_20261002": {
+      "status": "completed_audited_delivered_user_requested_pause",
+      "G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
+      "platform_score": null
+    },
+    "platform_test_status": "scored_user_reported",
+    "platform_feedback_status": "scored_user_reported",
+    "platform_feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d",
+    "platform_feedback": {
+      "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
+      "list_index": 2,
+      "score": 96.3796,
+      "raw_reported_score": "96.3796",
+      "reported_decimal_places": 4,
+      "source": "user_reported_not_independently_verified",
+      "platform_verified": false,
+      "reported_date": "2026-10-02",
+      "zip_sha256": "407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5",
+      "package": "local/runs/sam-ema-time-exploration-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/02_SAM_EMA_TIME_Q75_EXPLORATION/Luqhhh_bf_tap_predict_round2.zip",
+      "comparison_candidate": "EMA_TIME_Q75",
+      "comparison_score": 96.392,
+      "delta_vs_current_best": -0.0124,
+      "G0": "passed_bound_source_desktop_zip_csv_crc_322_official_order_finite_nonnegative_and_unchanged_iron",
+      "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
+      "fixed_column": "pred_tap_iron",
+      "fixed_string_mismatches": 0,
+      "feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+      "feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
+    }
+  },
+  "platform_feedback_q75_probe_sam_ema_20261002": {
+    "status": "both_user_reported_scores_registered_best_unchanged",
+    "feedback": {
+      "path": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+      "sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
+    },
+    "desktop_handoff_receipt": "local/runs/platform-candidates-desktop-20261002/handoff-r1/receipt.json",
+    "results": [
+      {
+        "candidate": "EMA_Q75_N_TO_V36_P05",
+        "list_index": 1,
+        "score": 96.3896,
+        "raw_reported_score": "96.3896",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-02",
+        "zip_sha256": "ef3ad6f8a90d31722bb3b4f75d497e620c96af81d3785bd550e255fe22e7a8bf",
+        "package": "local/runs/q75-combination-review-20261002/release-r1/EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/01_EMA_Q75_N_TO_V36_P05/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0024,
+        "G0": "passed_bound_source_desktop_zip_csv_crc_322_official_order_finite_nonnegative_and_unchanged_iron",
+        "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
+        "fixed_column": "pred_tap_iron",
+        "fixed_string_mismatches": 0,
+        "feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
+      },
+      {
+        "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
+        "list_index": 2,
+        "score": 96.3796,
+        "raw_reported_score": "96.3796",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-02",
+        "zip_sha256": "407cf7f7ff3902856435134896a728c4a1707cc0943a328954e6a818db29c3d5",
+        "package": "local/runs/sam-ema-time-exploration-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-platform-candidates-20261002/02_SAM_EMA_TIME_Q75_EXPLORATION/Luqhhh_bf_tap_predict_round2.zip",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0124,
+        "G0": "passed_bound_source_desktop_zip_csv_crc_322_official_order_finite_nonnegative_and_unchanged_iron",
+        "G1": "this_fixed_recipe_user_reported_platform_below_Q75",
+        "fixed_column": "pred_tap_iron",
+        "fixed_string_mismatches": 0,
+        "feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
+      }
+    ],
+    "best_candidate": "EMA_TIME_Q75",
+    "co_best_candidates": [
+      "EMA_TIME_Q75",
+      "EMA_TIME_Q100"
+    ],
+    "best_score": 96.392,
+    "optimization_paused": true,
+    "remaining_quota_inferred": false,
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0
   }
 }
