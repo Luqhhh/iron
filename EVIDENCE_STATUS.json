@@ -843,7 +843,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Independent MAE iron four-seed paired gates and full release complete; teammate direct SWA MAE mechanism mean negative, warmup40 registered without published result; no owned running jobs",
+    "research_status": "Independent MAE iron full release ready; retained V10 MAE current-reference review below ready Laplace and matched MSE, no new fits or queue entry; teammate warmup result pending",
     "platform_slots_user_reported": 2,
     "platform_slots_source": "user_current_turn_not_inferred",
     "submission_allocation": "deferred_by_user_preference_first_nomination_LAPLACE_FIXED_A20_second_after_first_feedback",
@@ -2754,8 +2754,8 @@
       "96.5": 0.108
     },
     "latest_completed_release": "q75_separate_mae_iron_release_20261002",
-    "latest_G0": "passed_native2_states_partitions_joint_selection_cold_numpy_label_free_and_package_actual_exit0",
-    "latest_G1": "four_seed_Q75_and_single_MAE_paired_gates_passed_platform_unmeasured",
+    "latest_G0": "retained_prediction_provenance_and_scalar_audit_passed_no_scientific_model_cold_replay",
+    "latest_G1": "both_positive_Q75_but_both_below_ready_Laplace_and_matched_MSE",
     "ready_exploration_candidates": [
       "EMA_MEAN3_FULL_Q75"
     ],
@@ -2763,7 +2763,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "All_owned_joint_MAE_and_iron_confirmation_release_processes_terminal_no_background_monitor",
+    "runtime_observation": "Retained_V10_zero_fit_review_terminal_no_owned_running_tasks",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3163,10 +3163,10 @@
       "SEPARATE_MAE_IRON_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Await_teammate_registered_MSE_warmup_to_MAE_evidence_before_platform_allocation_first_Laplace_provisional_second_iron_direction_after_first_feedback",
+    "next_action": "Await_teammate_registered_warmup_MAE_result_keep_two_slots_deferred_and_current_ready_candidates",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
-    "latest_completed_research": "q75_separate_mae_iron_confirmation_20261002"
+    "latest_completed_research": "q75_retained_v10_mae_review_20261002"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -23840,5 +23840,75 @@
     "next_registered_candidate": "SWA_TIME_MAE_WARMUP40",
     "next_status": "strategy_registered_no_result_seen",
     "repeat_teammate_fits": false
+  },
+  "q75_retained_v10_mae_review_20261002": {
+    "status": "completed_zero_fit_not_prioritized_for_fresh_engineering",
+    "source_worktree": "local/worktrees/q75-retained-v10-mae-review",
+    "source_commit": "05c3dea18f8713291885e3915971a9f7a54725a2",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "candidate": "V10_MAE_Q75_A20",
+    "control": "V7_MSE_Q75_A20",
+    "protocol": "docs/q75_retained_v10_mae/PREREGISTRATION.md",
+    "specification": "configs/q75_retained_v10_mae/SPEC.json",
+    "status_document": "docs/q75_retained_v10_mae/RESULTS.md",
+    "run_directory": "local/runs/q75-retained-v10-mae-20261002/review-r1",
+    "G0": "retained_prediction_provenance_and_scalar_audit_passed_no_scientific_model_cold_replay",
+    "G1": "both_positive_Q75_but_both_below_ready_Laplace_and_matched_MSE",
+    "gains": {
+      "42": 0.003989254223638984,
+      "3407": 0.00781652162837408
+    },
+    "gains_over_ready": {
+      "42": -0.004963303348328046,
+      "3407": -0.00435470705639408
+    },
+    "gains_over_mse": {
+      "42": -0.0008867961648480046,
+      "3407": -0.0010078442182956632
+    },
+    "fresh_engineered_development_worth_registering": false,
+    "failed_conditions": [
+      "not_both_positive_vs_ready_Laplace",
+      "nonpositive_mean_vs_matched_MSE"
+    ],
+    "confirmation_eligible": false,
+    "formal_promoted": false,
+    "release_eligible": false,
+    "evidence_limit": "retained_predictions_only_no_scientific_checkpoint_replay",
+    "old_prediction_vectors_verified": 20,
+    "new_fits": 0,
+    "optimizer_runs": 0,
+    "new_states": 0,
+    "cold_states": 0,
+    "confirmation_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 8,
+      "optimizer_constructor_attempts": 0,
+      "receipt_sha256": "aa0f23ac500dadcde3e488316daf0e79b571353d9db43ef7f824bc5fadcfb7c9"
+    },
+    "manifest_sha256": "8ab794298584a78e173db583c128b7aecca61a9d92553a9310c72d324dc971fb",
+    "frozen_dependency_files": 1974,
+    "report_sha256": "0964162ee97682f98d004d308ebb446f5dbff265376f9188b44b7f5591f03a1f",
+    "independent_score_sha256": "038cb15476b97f294888c7a69e2c3892086e0d4c7bb3e64587c77ffbcf07f17d",
+    "terminal_sha256": "1a12edea131be6f20996b8a011d3dee1a3b68d15533a4e0410bcb962742a7b94",
+    "actual_exit_codes": [
+      0,
+      0
+    ],
+    "actual_supervisor_tool_exit_code": 0,
+    "owned_execution_terminal": true,
+    "independent_scalar_checks": 11086,
+    "independent_max_difference": 6.938893903907228e-18,
+    "peak_os_rss_mib": 407.68359375,
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false
   }
 }

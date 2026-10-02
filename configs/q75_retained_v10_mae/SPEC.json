@@ -1,0 +1,67 @@
+{
+  "main_root": "/home/lux1/iron",
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+  },
+  "thread_target": 96.45,
+  "workers": 1,
+  "numerical_threads": 1,
+  "torch_interop_threads": 1,
+  "runtime_versions": {
+    "torch": "2.14.0+cpu",
+    "tabm": "0.0.3",
+    "rtdl-num-embeddings": "0.0.12",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.18.1"
+  },
+  "max_worker_rss_mib": 1024,
+  "monitor_seconds": 600,
+  "maximum_runtime_seconds": null,
+  "automatic_retries": false,
+  "version": "q75-retained-v10-mae-review-20261002",
+  "candidate": "V10_MAE_Q75_A20",
+  "control": "V7_MSE_Q75_A20",
+  "split_seeds": [
+    42,
+    3407
+  ],
+  "folds": 5,
+  "weight": 0.2,
+  "scalar_atol": 1e-10,
+  "new_fits": 0,
+  "optimizer_runs": 0,
+  "new_states": 0,
+  "cold_states": 0,
+  "engineering_optimizer_runs": 0,
+  "confirmation_fits": 0,
+  "full_data_fits": 0,
+  "packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "candidates": {
+    "tap_time_len": [
+      "V10_MAE_Q75_A20"
+    ]
+  },
+  "reference_by_target": {
+    "tap_time_len": "Q75"
+  },
+  "tie_preference_by_target": {
+    "tap_time_len": [
+      "V10_MAE_Q75_A20"
+    ]
+  },
+  "old_mae": "local/runs/round2-v10-periodic-loss/development-r1",
+  "old_mse": "local/runs/round2-v7-periodic-networks/development-r1",
+  "reference_run": "local/runs/q75-laplace-time-20261002/development-r1",
+  "original_specification": "configs/round2_v10/SPEC.yaml",
+  "original_mse_specification": "configs/round2_v7/SPEC.yaml",
+  "next_research_gate": "Both complete Q75 gains positive, both gains over ready Laplace positive, mean gain over matched MSE positive; retained predictions alone never grant confirmation/release",
+  "evidence_limit": "Original V10/V7 prediction arrays and fit metadata retained, model checkpoints/selector traces not retained: zero new cold reproduction, not authoritative model replay",
+  "formula": ".8*Q75_time+.2*original_V10_MAE_member; unchanged Q75 iron",
+  "automatic_confirmation": false
+}

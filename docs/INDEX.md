@@ -32,6 +32,8 @@
 
 ## 当前维护入口
 
+- [原V10 MAE零训练复核](q75_retained_v10_mae/RESULTS.md)：相对Q75两seed为正，但均弱于就绪Laplace和同骨干MSE；0新optimizer，不追加候选。仅保留预测来源/算术审计，原checkpoint缺失不冒称模型冷复现。
+
 - [独立MAE铁量全量交付](q75_separate_mae_iron_release/DELIVERY.md)：2optimizer/2状态、117轮全量重训，独立冷/NumPy/无标签预测/322行包回读及五个真实exit0通过；只改铁量，时长原字符串保持。
 - [独立MAE铁量四seed确认](q75_separate_mae_iron/RESULTS.md)：对Q75均值+.006061/LCB+.003411，对单目标MAE均值+.004275/LCB+.001841，两项四seed均正；观察后控制线索的单独前瞻确认。
 - [共享MAE完整开发](q75_joint_mae/RESULTS.md)：共享铁量一个负seed、共享时长弱于原Laplace，原准入门失败；不追溯更换候选。
