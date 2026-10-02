@@ -19,3 +19,9 @@ CSV SHA256：5e0934975c716c1b35fc26b3134df2e9d2d1bd61288b8f7c2fec488b293aa231
 Q75父ZIP SHA256：41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825
 
 独立最终复核零拟合、零新推理，原科学源/runtime/data/control/旧fit账本哈希未变。全部模型、预测、标签、ledger、原父包与最终ZIP留local；不写桌面、不由助手上传。
+
+## 2026-10-02 平台反馈
+
+用户回传 **96.3899**，未经独立核验；绑定上述SHA的SWA_CYCLE_TAIL_V1_A20提交包。相对父包EMA_TIME_Q75=96.3920为 **−0.0021**，Q75参照保持。G0工程通过和历史未正式晋级决定不变；本地四seed均值正与本次平台下降并存，不推算转移比例，也不将单配方反馈推广为整个SWA家族失败。
+
+本次仅核对既有ZIP/CSV哈希及CRC、读取已存窗口身份并登记反馈，0标签读取、0新拟合/推理/封包/助手上传。后续分析见[FOLLOWUP_ANALYSIS.md](FOLLOWUP_ANALYSIS.md)。私有反馈收据：local/runs/swa-cycle-tail-a20-release-20261002/platform-feedback-r1/feedback.json，SHA256 8d06683a13d1807da58ff22114195103fca139fdb3874fa9a7bc62664c2c6d42。

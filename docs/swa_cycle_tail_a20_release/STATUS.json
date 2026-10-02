@@ -1,10 +1,10 @@
 {
   "candidate": "SWA_CYCLE_TAIL_V1_A20",
-  "status": "audited_submission_zip_ready_for_user_platform_upload",
+  "status": "platform_feedback_received_below_Q75",
   "authorization": "2026-10-02用户明确按推荐生成单个提交包",
   "G0": "passed_fullfit_partitions_scalers_cycle_selection_windows_independent_cold_and_package_readback",
   "G1": "user_selected_platform_exploration_not_formally_promoted",
-  "platform_score": null,
+  "platform_score": 96.3899,
   "platform_reference": {
     "candidate": "EMA_TIME_Q75",
     "score": 96.392,
@@ -48,5 +48,11 @@
     "cold_prediction_max_difference": 3.226142496259854e-06,
     "window_max_difference": 0.0,
     "peak_rss_mib": 548.859375
-  }
+  },
+  "platform_score_source": "user_reported_not_independently_verified",
+  "platform_feedback_date": "2026-10-02",
+  "platform_delta_vs_Q75": -0.0021,
+  "private_platform_feedback": "local/runs/swa-cycle-tail-a20-release-20261002/platform-feedback-r1/feedback.json",
+  "private_platform_feedback_sha256": "8d06683a13d1807da58ff22114195103fca139fdb3874fa9a7bc62664c2c6d42",
+  "followup_analysis": "docs/swa_cycle_tail_a20_release/FOLLOWUP_ANALYSIS.md"
 }
