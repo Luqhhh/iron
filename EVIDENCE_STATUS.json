@@ -24634,5 +24634,147 @@
     "full_fits": 0,
     "G0": "passed_determinism_gate_and_thread_pinning",
     "G1": "blend_form_passes_four_seed_gate_with_small_magnitude"
+  },
+  "q75_selection_screen_20261002": {
+    "status": "completed_INNER5_closed_SNAP5_two_seed_only",
+    "kind": "protocol_screen_selection_noise_and_trajectory_averaging",
+    "documentation": "docs/q75_selection_screen/RESULTS.md",
+    "protocol": "docs/q75_selection_screen/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-selection-screen-20261002",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "stage1": {
+      "units": [
+        "s42-f0",
+        "s42-f1"
+      ],
+      "fits_r1": 8,
+      "fits_r2": 6,
+      "control_max_abs_difference": 0.0,
+      "INNER5_iron_delta": -0.000634,
+      "INNER5_time_delta": 0.00046,
+      "HEADLOSS_iron_delta": -0.000218,
+      "HEADLOSS_time_delta": -1.5e-05,
+      "SNAP5_iron_delta": -0.000251,
+      "SNAP5_time_delta": -1.8e-05,
+      "COS_MAE_INNER5_iron_delta": -0.000264,
+      "COS_MAE_INNER5_time_delta": 0.000353
+    },
+    "stage2": {
+      "units": "split seeds 42 and 3407, five folds each",
+      "fits": 20,
+      "INNER5_iron": {
+        "seed42": 0.000375,
+        "seed3407": -2.5e-05,
+        "status": "closed"
+      },
+      "INNER5_time": {
+        "seed42": -6e-05,
+        "seed3407": -7.5e-05,
+        "status": "closed"
+      },
+      "SNAP5_iron": {
+        "seed42": 0.000213,
+        "seed3407": 0.000182,
+        "positive_folds": "8/10"
+      },
+      "SNAP5_time": {
+        "seed42": 0.000428,
+        "seed3407": 0.000371,
+        "positive_folds": "8/10"
+      }
+    },
+    "harness_defect": {
+      "path": "local/runs/q75-selection-screen-20261002/stage1-r1/HARNESS_FIX.json",
+      "detail": "SNAP5 was inert in the first stage-1 launch because the query frame was not passed to fit; fixed and rerun as stage1-r2",
+      "affected_arms": [
+        "SNAP5"
+      ],
+      "unaffected_arms": [
+        "CONTROL",
+        "INNER5",
+        "HEADLOSS"
+      ]
+    },
+    "interpretation": "iron responds consistently to lower training-selection noise (multi-fold selection, cosine schedule, L1 loss) but the effects do not compound and do not survive incremental blending; the time head is neutral-to-worse under every tested protocol change",
+    "new_fits": 34,
+    "new_optimizers": 68,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_control_bit_exact_and_defect_recorded",
+    "G1": "no_candidate_after_stage2_selection"
+  },
+  "q75_snap5_confirmation_20261002": {
+    "status": "completed_four_seed_gate_failed_recipe_closed",
+    "kind": "confirmation",
+    "documentation": "docs/q75_snap5_confirmation/RESULTS.md",
+    "protocol": "docs/q75_snap5_confirmation/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-snap5-confirmation-20261002/development-r1",
+    "candidate": "SNAP5",
+    "recipe": "incumbent single-fold epoch selection, refit to selected epoch +-20/+-10/0, prediction average of five checkpoints",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "split_seeds": [
+      42,
+      3407,
+      271828,
+      314159
+    ],
+    "new_fits": 20,
+    "new_optimizers": 40,
+    "prediction_vectors_persisted": true,
+    "single_column_vs_incumbent": {
+      "tap_iron": {
+        "42": -0.00033,
+        "3407": -0.000286,
+        "271828": -0.000411,
+        "314159": -0.000208
+      },
+      "tap_time_len": {
+        "42": -0.000298,
+        "3407": -0.000178,
+        "271828": -0.000603,
+        "314159": -0.000278
+      }
+    },
+    "incremental_blend": {
+      "tap_iron": {
+        "gains": [
+          -0.0001,
+          0.0002,
+          -0.0002,
+          0.0002
+        ],
+        "mean": 2e-05,
+        "lcb95": -0.0002,
+        "all_positive": false,
+        "gate": "failed"
+      },
+      "tap_time_len": {
+        "gains": [
+          0.0019,
+          0.0027,
+          -0.0003,
+          0.0016
+        ],
+        "mean": 0.0015,
+        "lcb95": -6e-05,
+        "all_positive": false,
+        "gate": "failed"
+      }
+    },
+    "interpretation": "the two-seed gain over the single-recipe column does not survive as an incremental gain over the incumbent blended columns; the recipe is closed and no package follows",
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_predictions_persisted_thread_pinning_and_no_retries",
+    "G1": "four_seed_gate_failed_on_both_targets"
   }
 }

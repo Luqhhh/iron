@@ -35,7 +35,8 @@
 - [记录库组合复核](q75_stack_review/RESULTS.md)：零拟合。199 铁量列 / 209 时长列；诚实嵌套叠加时长 +0.0088 分（4/4 seed 为正）、铁量 +0.0031 分；非线性叠加与残差校准均负；事后上限合计约 +0.05 分。结论：库内无可收割的大收益，需要新模型而不是更好的加权。
 - [样本量学习曲线](q75_headroom_20261002/RESULTS.md)：控制臂与已记录 V12 预测逐位一致。铁量已饱和（训练行减半仅 +0.00067 WMAPE）；时长轻度数据受限（减半 +0.00233），但边际收益快速衰减。
 - [训练日程与损失筛选](q75_schedule_screen/RESULTS.md)：22+20 次拟合、控制臂逐位一致。余弦日程一致改善铁量（`COS_MAE` 两 seed 均正、均值 +0.000289、7/10 折为正），时长在各日程/损失下均未改善。首次出现协议层（非加权层）正向信号。
-- [余弦+L1 铁量四 seed 确认](q75_cosine_iron_confirmation/PREREGISTRATION.md)：预登记已冻结（含一次预算更正说明），四 seed × 五折共 20 次拟合，门槛为四 seed 全正且 seed 层 LCB95 > 0。
+- [余弦+L1 铁量四 seed 确认](q75_cosine_iron_confirmation/RESULTS.md)：单列替换四 seed 均负（均值 −0.00014），但作为增量融合成分四 seed 全正（均值 +0.0023、LCB95 +0.0008）→ 通过项目四 seed 门槛，幅度远小于目标差额。
+- [选轮噪声与轨迹平均筛选](q75_selection_screen/RESULTS.md)：`INNER5`（铁量两折同向 −0.000634，时长变差）阶段 2 不成立已关闭；`SNAP5`（五个检查点预测平均）两 seed 两目标同向改善，但[四 seed 增量融合](q75_snap5_confirmation/RESULTS.md)不满足全正/LCB 门槛，配方关闭。harness 缺陷与两次预算更正均已登记。
 
 - [独立MAE铁量三训练seed均值结果](q75_separate_mae_iron_mean3/RESULTS.md)：40新optimizer/60新旧状态审计通过；两seed对Q75均正却均低于就绪单seed，不确认或新增包。
 - [原V10 MAE零训练复核](q75_retained_v10_mae/RESULTS.md)：相对Q75两seed为正，但均弱于就绪Laplace和同骨干MSE；0新optimizer，不追加候选。仅保留预测来源/算术审计，原checkpoint缺失不冒称模型冷复现。

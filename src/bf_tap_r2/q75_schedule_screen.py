@@ -34,9 +34,15 @@ class ScheduledJointRegressor(JointRegressor):
         progress = min(1.0, max(0.0, progress))
         return 0.5 * (1.0 + math.cos(math.pi * progress))
 
+    def _is_plain(self) -> bool:
+        return (self.settings.get("lr_schedule", "constant") == "constant"
+                and self.settings.get("loss", "mse") == "mse"
+                and int(self.settings.get("inner_folds", 1)) <= 1
+                and not self.settings.get("head_loss")
+                and not self.settings.get("snapshot_radius"))
+
     def _train(self, frame, y, epochs, validation=None):
-        if (self.settings.get("lr_schedule", "constant") == "constant"
-                and self.settings.get("loss", "mse") == "mse"):
+        if self._is_plain():
             return super()._train(frame, y, epochs, validation)
         import torch
 
@@ -61,7 +67,14 @@ class ScheduledJointRegressor(JointRegressor):
                 idx = order[start:start + self.settings["batch_size"]]
                 self.optimizer_.zero_grad(set_to_none=True)
                 pred = self.model_(x[idx], cat[idx])
-                if loss_name == "mse":
+                head_loss = self.settings.get("head_loss")
+                if head_loss:
+                    error = pred - target[idx][:, None, :]
+                    terms = [(error[..., index].square().mean() if str(kind) == "mse"
+                              else error[..., index].abs().mean())
+                             for index, kind in enumerate(head_loss)]
+                    loss = sum(terms) / len(terms)
+                elif loss_name == "mse":
                     loss = joint_loss(pred, target[idx])
                 else:
                     loss = (pred - target[idx][:, None, :]).abs().mean()
@@ -74,6 +87,8 @@ class ScheduledJointRegressor(JointRegressor):
                 with torch.no_grad():
                     pred = self.model_(vx, vc).mean(1)
                     value = float((pred - vy).abs().mean())
+                if getattr(self, "track_curve_", False):
+                    self.validation_curve_.append(value)
                 if value < best - self.settings["min_delta"]:
                     best, best_epoch, stale = value, epoch, 0
                 else:
@@ -83,6 +98,127 @@ class ScheduledJointRegressor(JointRegressor):
         if validation is not None:
             self.selection_stopped_epoch_ = epoch
         return best_epoch if validation is not None else epochs
+
+
+    # ---------------------------------------------------------------- selection
+    def fit(self, frame, y, query=None):
+        """Fit with optional multi-fold inner selection and snapshot averaging."""
+        import numpy as np
+
+        from .v3_4_bags import group_safe_inner_folds
+
+        if self._is_plain():
+            return super().fit(frame, y)
+        y = np.asarray(y, dtype=float)
+        if y.ndim != 2 or y.shape[0] != len(frame) or not np.isfinite(y).all():
+            raise ValueError("Invalid training targets")
+        inner_folds = int(self.settings.get("inner_folds", 1))
+        folds = group_safe_inner_folds(frame, seed=self.settings["inner_seed"])["fold"]
+        if inner_folds <= 1:
+            mask = folds != 0
+            inner = frame.loc[mask].reset_index(drop=True)
+            self._initialize(inner, y[mask])
+            inner_mean, inner_std = self.mean_.copy(), self.std_.copy()
+            epoch = self._train(inner, y[mask], self.settings["max_epochs"],
+                                (frame.loc[~mask].reset_index(drop=True), y[~mask]))
+            if epoch < 1:
+                raise ValueError("No finite inner-validation epoch")
+        else:
+            curves = []
+            for fold in range(inner_folds):
+                mask = folds != fold
+                probe = type(self)(self.recipe, self.settings)
+                probe.track_curve_ = True
+                probe.validation_curve_ = []
+                probe._initialize(frame.loc[mask].reset_index(drop=True), y[mask])
+                probe._train(frame.loc[mask].reset_index(drop=True), y[mask],
+                             self.settings["max_epochs"],
+                             (frame.loc[~mask].reset_index(drop=True), y[~mask]))
+                curves.append(list(probe.validation_curve_))
+                inner_mean, inner_std = probe.mean_.copy(), probe.std_.copy()
+            length = min(len(curve) for curve in curves)
+            if length < 1:
+                raise ValueError("No finite inner-validation epoch")
+            means = [float(np.mean([curve[index] for curve in curves])) for index in range(length)]
+            epoch = int(np.argmin(means)) + 1
+        radius = int(self.settings.get("snapshot_radius", 0) or 0)
+        self._initialize(frame, y)
+        if radius and query is not None:
+            offsets = sorted({-radius, -(radius // 2), 0, radius // 2, radius})
+            checkpoints = {max(1, epoch + offset) for offset in offsets}
+            total = max(checkpoints)
+            snapshots = self._refit_with_snapshots(frame, y, total, checkpoints, query)
+            self.snapshot_predictions_ = np.mean(snapshots, axis=0)
+            self.snapshot_checkpoints_ = sorted(checkpoints)
+        else:
+            self._train(frame, y, epoch)
+        self.metadata_ = {
+            "selected_epoch": int(epoch),
+            "selection_stopped_epoch": int(getattr(self, "selection_stopped_epoch_", epoch)),
+            "budget_limited": bool(getattr(self, "selection_stopped_epoch_", epoch) >= self.settings["max_epochs"]),
+            "n_outputs": int(y.shape[1]),
+            "inner_target_mean": np.asarray(inner_mean).tolist(),
+            "inner_target_std": np.asarray(inner_std).tolist(),
+            "outer_target_mean": self.mean_.tolist(),
+            "outer_target_std": self.std_.tolist(),
+            "fit_rows": int(len(frame)),
+            "inner_fold_count": int(inner_folds),
+            "snapshot_radius": int(radius),
+            "optimizer_runs": 2 if radius else 2,
+        }
+        return self
+
+    def _refit_with_snapshots(self, frame, y, total, checkpoints, query):
+        """Refit exactly like the parent and average predictions at checkpoints."""
+        import torch
+
+        loss_name = self.settings.get("loss", "mse")
+        head_loss = self.settings.get("head_loss")
+        x, cat = self._inputs(frame)
+        target = torch.as_tensor((y - self.mean_) / self.std_, dtype=torch.float32)
+        qx, qc = self._inputs(query)
+        rng = np.random.default_rng(self.settings["random_seed"])
+        base_lr = float(self.settings["learning_rate"])
+        snapshots = []
+        for epoch in range(1, total + 1):
+            factor = self._lr_factor(epoch, total)
+            for group in self.optimizer_.param_groups:
+                group["lr"] = base_lr * factor
+            self.model_.train()
+            order = rng.permutation(len(frame))
+            for start in range(0, len(order), self.settings["batch_size"]):
+                idx = order[start:start + self.settings["batch_size"]]
+                self.optimizer_.zero_grad(set_to_none=True)
+                pred = self.model_(x[idx], cat[idx])
+                if head_loss:
+                    error = pred - target[idx][:, None, :]
+                    terms = [(error[..., index].square().mean() if str(kind) == "mse"
+                              else error[..., index].abs().mean())
+                             for index, kind in enumerate(head_loss)]
+                    loss = sum(terms) / len(terms)
+                elif loss_name == "mse":
+                    loss = joint_loss(pred, target[idx])
+                else:
+                    loss = (pred - target[idx][:, None, :]).abs().mean()
+                if not torch.isfinite(loss):
+                    raise ValueError("Nonfinite training loss")
+                loss.backward()
+                self.optimizer_.step()
+            if epoch in checkpoints:
+                self.model_.eval()
+                with torch.no_grad():
+                    value = self.model_(qx, qc).mean(1).numpy().astype(float)
+                snapshots.append(value * self.std_ + self.mean_)
+        self.model_.eval()
+        return snapshots
+
+    def predict(self, frame):
+        stored = getattr(self, "snapshot_predictions_", None)
+        if stored is not None:
+            if len(frame) != stored.shape[0]:
+                raise ValueError("Snapshot predictions are bound to the fit-time query frame")
+            return stored
+        return super().predict(frame)
 
 
 CONFIGS = {
@@ -97,6 +233,12 @@ CONFIGS = {
     "COS_LONG": {"lr_schedule": "cosine", "max_epochs": 600},
     "MAE": {"loss": "mae"},
     "COS_MAE": {"lr_schedule": "cosine", "loss": "mae"},
+    # selection-noise and trajectory-averaging arms (docs/q75_selection_screen)
+    "INNER5": {"inner_folds": 5},
+    "SNAP5": {"snapshot_radius": 20},
+    "HEADLOSS": {"head_loss": ["mae", "mse"]},
+    # combined iron-focused protocol (cosine + L1 + multi-fold selection)
+    "COS_MAE_INNER5": {"lr_schedule": "cosine", "loss": "mae", "inner_folds": 5},
 }
 TARGETS = ("tap_iron", "tap_time_len")
 RECORDED = "local/runs/round2-v12-joint-tabm/development-r1"
@@ -119,7 +261,7 @@ def _run_unit(root, frame, folds, settings, recipe, seed, fold, configs):
         unit = dict(settings)
         unit.update(CONFIGS[name])
         model = ScheduledJointRegressor(recipe, unit).fit(
-            training, training[list(TARGETS)].to_numpy())
+            training, training[list(TARGETS)].to_numpy(), query=query)
         prediction = model.predict(query)
         record = {"config": name, "seed": seed, "fold": fold,
                   "selected_epoch": int(model.metadata_["selected_epoch"]),
