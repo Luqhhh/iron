@@ -30,14 +30,25 @@ def test_config_table_is_single_factor_except_named_combinations():
     assert "CONTROL" in CONFIGS and "K32" in CONFIGS
     assert CONFIGS["K32"][0] == {"tabm_k": 32} and CONFIGS["K32"][1] == {}
     combination_names = {"COS_L1_LR3", "COS_L1_DROP0", "COS_L1_LR3_DROP0",
-                          "K32_COS_MAE", "K32_COS_MAE_FREQ001", "K32_FREQ001"}
+                          "K32_COS_MAE", "K32_COS_MAE_FREQ001", "K32_FREQ001",
+                          "K32_LR3_COS_MAE", "K32_DROP0_COS_MAE", "K32_LR3_DROP0_COS_MAE"}
     for name, (overrides, recipe) in CONFIGS.items():
         assert set(overrides) <= {"dropout", "learning_rate", "weight_decay", "batch_size",
                                   "n_frequencies", "embedding_dim", "tabm_k", "blocks",
                                   "width", "lr_schedule", "loss", "inner_folds",
-                                  "snapshot_radius", "head_loss", "mixup_alpha"}, name
+                                  "snapshot_radius", "head_loss", "mixup_alpha",
+                                  "max_epochs", "patience"}, name
         assert set(recipe) <= {"frequency"}, name
-        if name not in combination_names and name != "CONTROL":
+        if name in combination_names or name == "CONTROL":
+            continue
+        if name == "K32":
+            assert overrides == {"tabm_k": 32} and recipe == {}
+        elif name.startswith("K32"):
+            # neighbourhood arms keep tabm_k=32 and change one further factor
+            # (K32_LONG bundles the epoch cap with its patience)
+            assert overrides.get("tabm_k") == 32, name
+            assert len(overrides) + len(recipe) in (2, 3), name
+        else:
             assert len(overrides) + len(recipe) == 1, name
 
 

@@ -225,3 +225,81 @@ def run_stage2(root, output, configs, units=None, workers=6):
             report["per_seed"].setdefault(name, {})[target] = per_seed
     (out / "stage2.json").write_text(json.dumps(report, indent=1), encoding="utf-8")
     return 0
+
+
+#: k=32 neighbourhood arms: name -> settings overrides on top of K32
+NEIGHBOURHOOD: dict[str, dict] = {
+    "K32": {},
+    "K32_DROP0": {"dropout": 0.0},
+    "K32_DROP2": {"dropout": 0.2},
+    "K32_DROP3": {"dropout": 0.3},
+    "K32_WD0": {"weight_decay": 0.0},
+    "K32_WD1E3": {"weight_decay": 0.001},
+    "K32_BATCH128": {"batch_size": 128},
+    "K32_BATCH512": {"batch_size": 512},
+    "K32_W128": {"width": 128},
+    "K32_W384": {"width": 384},
+    "K32_B1": {"blocks": 1},
+    "K32_B3": {"blocks": 3},
+    "K32_NFREQ32": {"n_frequencies": 32},
+    "K32_EMB32": {"embedding_dim": 32},
+    "K32_LONG": {"max_epochs": 400, "patience": 60},
+    "K32_LR3": {"learning_rate": 0.003},
+}
+for _name, _overrides in NEIGHBOURHOOD.items():
+    CONFIGS.setdefault(_name, ({"tabm_k": 32, **_overrides}, {}))
+
+
+def run_parallel(root, output, arms=None, units=((42, 0), (42, 1)), workers=6):
+    """One job per (unit, arm) so long arms do not serialise inside a worker."""
+    root = Path(root).resolve()
+    out = (root / output).resolve()
+    out.mkdir(parents=True, exist_ok=False)
+    arms = list(arms or NEIGHBOURHOOD)
+    spec = yaml.safe_load((root / "configs/round2_v12/SPEC.yaml").read_text())
+    settings = dict(spec["training"])
+    results, failures = {}, []
+    with ProcessPoolExecutor(max_workers=workers) as executor:
+        jobs = {executor.submit(run_unit, str(root), settings, seed, fold, [arm]): (seed, fold, arm)
+                for seed, fold in units for arm in arms}
+        for future in as_completed(jobs):
+            seed, fold, arm = jobs[future]
+            key = f"s{seed}-f{fold}"
+            try:
+                _, _, records = future.result()
+                results.setdefault(key, {}).update(records)
+                print(json.dumps({"unit": key, "arm": arm, "wmape": records[arm]["wmape"]}),
+                      flush=True)
+            except Exception as exc:
+                failures.append({"unit": key, "arm": arm, "error": repr(exc)})
+                print(json.dumps({"unit": key, "arm": arm, "error": repr(exc)}), flush=True)
+    payload = {"stage": "neighbourhood", "units": results, "failures": failures, "arms": arms}
+    (out / "stage.json").write_text(json.dumps(payload, indent=1), encoding="utf-8")
+    if failures:
+        return 1
+    ordered = sorted(results)
+    for target in TARGETS:
+        base = {unit: results[unit]["K32"]["wmape"][target] for unit in ordered}
+        print(f"== {target} K32 baseline {np.mean(list(base.values())):.6f}")
+        ranked = []
+        for arm in arms:
+            values = np.array([results[unit][arm]["wmape"][target] for unit in ordered])
+            reference = np.array([base[unit] for unit in ordered])
+            ranked.append((values.mean() - reference.mean(), arm, bool((values < reference).all()),
+                           values.mean()))
+        for delta, arm, same, mean in sorted(ranked):
+            print(f"   {arm:16s} mean {mean:.6f} delta {delta:+.6f} both {same}")
+    return 0
+
+
+#: stage 2b: combinations of the same-direction iron winners at k=32
+IRON_COMBINATIONS: dict[str, dict] = {
+    "K32": {},
+    "K32_LR3_DROP0": {"learning_rate": 0.003, "dropout": 0.0},
+    "K32_LR3_COS_MAE": {"learning_rate": 0.003, "lr_schedule": "cosine", "loss": "mae"},
+    "K32_DROP0_COS_MAE": {"dropout": 0.0, "lr_schedule": "cosine", "loss": "mae"},
+    "K32_LR3_DROP0_COS_MAE": {"learning_rate": 0.003, "dropout": 0.0,
+                              "lr_schedule": "cosine", "loss": "mae"},
+}
+for _name, _overrides in IRON_COMBINATIONS.items():
+    CONFIGS.setdefault(_name, ({"tabm_k": 32, **_overrides}, {}))

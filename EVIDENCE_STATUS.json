@@ -25065,5 +25065,175 @@
     "platform_measured": false,
     "G0": "passed_independent_readback_audit_and_parent_identity",
     "G1": "four_seed_time_gate_passed_expected_gain_0.0046_platform_unmeasured"
+  },
+  "q75_hpo_neighborhood_20261003": {
+    "status": "completed_no_arm_beats_K32_time_iron_combinations_do_not_compound",
+    "kind": "second_round_single_factor_screen_at_k32",
+    "documentation": "docs/q75_hpo_neighborhood/RESULTS.md",
+    "protocol": "docs/q75_hpo_neighborhood/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-hpo-neighborhood-20261002",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "stage2a": {
+      "arms": 16,
+      "fits": 32,
+      "units": [
+        "s42-f0",
+        "s42-f1"
+      ],
+      "time": "no arm better than K32 (all deltas >= 0)",
+      "iron_same_direction_winners": {
+        "K32_LR3": -0.000431,
+        "K32_DROP0": -0.000329
+      }
+    },
+    "stage2b": {
+      "arms": 5,
+      "fits": 10,
+      "outcome": "no combination reproduces the iron effect on both folds"
+    },
+    "interpretation": "the k=32 neighbourhood is closed: no time improvement exists above K32 and the two iron-side single-factor winners do not compound, indicating they reorder the same noise direction",
+    "new_fits": 42,
+    "new_optimizers": 84,
+    "stage2c_fits_consumed": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_active_control_consistent_with_stage1_thread_pinning",
+    "G1": "no_candidate"
+  },
+  "q75_ema_k32_confirmation_20261003": {
+    "status": "completed_EMA32_time_four_seed_gate_passed_best_time_increment_this_session",
+    "kind": "four_seed_confirmation",
+    "documentation": "docs/q75_ema_k32/RESULTS.md",
+    "protocol": "docs/q75_ema_k32/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-ema-k32-confirmation-20261003/development-r1",
+    "candidate": "EMA32 (tabm_k=32 with EMA beta=0.99 weight averaging)",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "split_seeds": [
+      42,
+      3407,
+      271828,
+      314159
+    ],
+    "new_fits": 20,
+    "new_optimizers": 40,
+    "standalone": {
+      "vs_q75": [
+        3.9e-05,
+        0.000233,
+        0.000128,
+        8.5e-05
+      ],
+      "residual_correlation_vs_q75": [
+        0.9814,
+        0.9793,
+        0.9833,
+        0.9814
+      ]
+    },
+    "blend_ema32": {
+      "weights": [
+        0.6,
+        0.6,
+        0.6,
+        0.6
+      ],
+      "gains": [
+        0.0054,
+        0.0084,
+        0.0058,
+        0.0062
+      ],
+      "mean": 0.0064,
+      "min": 0.0054,
+      "lcb95": 0.0049,
+      "all_positive": true,
+      "gate": "passed"
+    },
+    "blend_k32_reference": {
+      "gains": [
+        0.0045,
+        0.007,
+        0.0021,
+        0.0047
+      ],
+      "mean": 0.0046,
+      "lcb95": 0.0022,
+      "all_positive": true
+    },
+    "blend_two_component": {
+      "gains": [
+        0.0053,
+        0.0084,
+        0.0055,
+        0.0062
+      ],
+      "mean": 0.0064,
+      "lcb95": 0.0047,
+      "all_positive": true,
+      "note": "K32 weight driven to zero on two of four seeds, so the single EMA32 component is preferred"
+    },
+    "protocol_deviation": {
+      "preliminary_screen_before_preregistration": true,
+      "detail": "the 4-fit EMA16 vs EMA32 two-fold screen ran before the preregistration document was written; recorded in the preregistration and not used as promotion evidence"
+    },
+    "interpretation": "EMA weight averaging and the wider internal ensemble compound: EMA32 is the largest local time increment of this session (+0.0064, LCB95 +0.0049, four of four seeds positive) and it is the released candidate",
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": true,
+    "G0": "passed_predictions_persisted_thread_pinning_no_retries",
+    "G1": "four_seed_time_gate_passed"
+  },
+  "q75_ema32_release_20261003": {
+    "status": "completed_local_package_built_audited_not_uploaded_not_on_desktop",
+    "kind": "release",
+    "documentation": "docs/q75_ema32_release/DELIVERY.md",
+    "protocol": "docs/q75_ema32_release/PREREGISTRATION.md",
+    "candidate": "EMA32_TIME_A60",
+    "package": "local/runs/q75-ema32-release-20261003/release-r1/EMA32_TIME_A60/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "97868fd370ff303e7eabed63a396c2419468eef4ed24d5ed1f7a46a848ce908d",
+    "result_sha256": "b07dbe6c186e4becf5c9adc7f4fb409384959f9cc86f12701a6e89da12d24786",
+    "parent": "EMA_TIME_Q75",
+    "parent_zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+    "change": "pred_tap_time_len = 0.40*parent + 0.60*EMA32 full-data prediction; iron column copied verbatim",
+    "expected_local_gain_vs_parent": 0.0064,
+    "supersedes": {
+      "candidate": "K32_TIME_A45",
+      "zip_sha256": "834adec1a024c22d4864c13e9cc9c464dc96896c8fdbee16be3de0b3d09482de",
+      "expected_local_gain": 0.0046,
+      "disposition": "retained as historical delivery, not deleted, not uploaded"
+    },
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "full_fits": 1,
+    "new_optimizers": 2,
+    "new_split_seeds": 0,
+    "audit": {
+      "path": "local/runs/q75-ema32-release-20261003/release-r1/audit.json",
+      "members": [
+        "result.csv"
+      ],
+      "rows": 322,
+      "unique_ids": 322,
+      "template_order": true,
+      "iron_string_mismatches": 0,
+      "time_max_relative_difference": 0.0,
+      "finite_nonnegative": true,
+      "passed": true
+    },
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "platform_measured": false,
+    "G0": "passed_independent_readback_audit_and_parent_identity",
+    "G1": "four_seed_time_gate_passed_expected_gain_0.0064_platform_unmeasured"
   }
 }
