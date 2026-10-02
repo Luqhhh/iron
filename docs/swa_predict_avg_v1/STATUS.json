@@ -1,0 +1,37 @@
+{
+  "identity": "SWA_PREDICT_AVG_V1",
+  "status": "completed_post_selection_exploration",
+  "G0": "20_windows_200_raw_states_independent_cold_passed",
+  "G1": "near_equivalent_to_parameter_mean_not_formally_promoted",
+  "decision": {
+    "classification": "post_selection_exploration_only_not_release_authorized",
+    "control_gains": [
+      0.004339763110890709,
+      0.004547392986334328,
+      -0.000758008738966929,
+      0.0019530761211210264
+    ],
+    "exploration_selected": [
+      "PREDICT_MEAN10"
+    ],
+    "formal_promoted": false,
+    "mean_gain": 0.002522413420782505,
+    "mechanism_mean": 1.8575509377214891e-06,
+    "release_authorized": false,
+    "seed_gains": [
+      0.004331283017203779,
+      0.0045363625922523925,
+      -0.0007563284344342785,
+      0.0019783365081081274
+    ],
+    "seed_lcb95_descriptive": -0.00038965935062035446
+  },
+  "new_fits": 0,
+  "new_optimizers": 0,
+  "new_reference_fits": 0,
+  "new_control_inferences": 0,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "release_authorized": false
+}
