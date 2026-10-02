@@ -2629,7 +2629,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "owned_SAM_EMA_full_development_600_second_observer_actual_completion_triggers_independent_saved_state_and_score_audit",
+    "runtime_observation": "owned_SAM_EMA_training_and_independent_audit_actual_exit0_complete_specific_processes_absent_no_empty_monitoring",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3011,7 +3011,7 @@
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
     "latest_registered_scientific_route": "sam_ema_time_preparation_20261002",
-    "latest_completed_scientific_route": "ema_width512_preparation_20261002",
+    "latest_completed_scientific_route": "sam_ema_time_preparation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_and_matched_pair_control_confirmation_gate_failed"
   },
@@ -19889,7 +19889,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "SAM_EMA_full_two_split_development_running_width512_closed_one_existing_platform_probe_untested",
+    "status": "SAM_EMA_science_closed_formal_gate_failed_manual_interaction_exploration_retained_for_fresh_release_freeze",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -19909,12 +19909,12 @@
     "de3_q75_reserve_deferred": true,
     "uploads": 0,
     "results": "docs/q75_9645_execution/RESULTS.md",
-    "new_scientific_optimizer_runs": 180,
+    "new_scientific_optimizer_runs": 200,
     "new_packages": 1,
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
     "target_met": false,
-    "remaining_work": "existing_combo_probe_user_platform_feedback; target_unmet_next_distinct_route_requires_history_review_and_fresh_phase_freeze",
+    "remaining_work": "existing_combo_probe_user_platform_feedback; fresh_freeze_G0_qualified_manual_SAM_EMA_interaction_full_release; platform_96_45_unmet",
     "next_execution_documentation": "docs/ema_retraining_validation/STATUS.md",
     "history_before_matching_followup_closure_20261002": {
       "status": "first_three_actions_completed_one_platform_exploration_ready_reserves_registered",
@@ -19938,16 +19938,19 @@
       "ema_retraining_step_matching_20261002",
       "ema_component_calibration_preparation_20261002"
     ],
-    "latest_followup_results": "docs/ema_width512/RESULTS.md",
-    "active_preregistered_followup": "sam_ema_time_preparation_20261002",
-    "active_followup_optimizer_budget": 20,
+    "latest_followup_results": "docs/sam_ema_time/RESULTS.md",
+    "active_preregistered_followup": null,
+    "active_followup_optimizer_budget": 0,
     "dropout_followup_optimizer_runs": 40,
     "dropout_followup_engineering_optimizer_runs": 2,
     "dropout_followup_result_key": "ema_dropout_consistency_preparation_20261002",
-    "latest_completed_followup": "ema_width512_preparation_20261002",
+    "latest_completed_followup": "sam_ema_time_preparation_20261002",
     "width512_followup_optimizer_runs": 20,
     "width512_followup_engineering_optimizer_runs": 1,
-    "width512_followup_result_key": "ema_width512_preparation_20261002"
+    "width512_followup_result_key": "ema_width512_preparation_20261002",
+    "sam_ema_followup_optimizer_runs": 20,
+    "sam_ema_followup_engineering_optimizer_runs": 1,
+    "sam_ema_followup_result_key": "sam_ema_time_preparation_20261002"
   },
   "q75_combination_review_20261002": {
     "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
@@ -21145,7 +21148,7 @@
     }
   },
   "sam_ema_time_preparation_20261002": {
-    "status": "scientific_development_running_full_two_split_single_SAM_EMA_scope",
+    "status": "closed_full_two_split_G0_passed_formal_gate_failed_platform_interaction_exploration_retained",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -21156,8 +21159,8 @@
     "configuration": "configs/sam_ema_time/SPEC.json",
     "protocol": "docs/sam_ema_time/PREREGISTRATION.md",
     "candidate": "SAM_EMA_TIME",
-    "G0": "26_locked_scoped_tests_full_shape_composed_SAM_EMA_learnability_cold_and_actual_exit0_passed_scientific_audit_pending",
-    "G1": "unmeasured_until_complete_two_split_OOF_and_independent_audit",
+    "G0": "passed_native_SAM_EMA_state_training_partition_epoch_preprocessing_independent_cold_scalar_and_actual_exit0",
+    "G1": "both_complete_development_seeds_negative_vs_Q75_positive_vs_matched_SAM_no_confirmation_or_formal_promotion",
     "source_worktree": "local/worktrees/sam-ema-time-development",
     "source_commit": "90350c9404d0dc33166802e4b88af97a824efcc3",
     "focused_tests_passed": 26,
@@ -21167,8 +21170,8 @@
     "engineering_optimizer_budget": 1,
     "engineering_optimizer_runs": 1,
     "actual_engineering_counts_pending_terminal": false,
-    "scientific_model_fits": null,
-    "scientific_optimizer_runs": null,
+    "scientific_model_fits": 10,
+    "scientific_optimizer_runs": 20,
     "planned_scientific_estimators": 10,
     "planned_scientific_optimizer_runs": 20,
     "planned_new_cold_states": 20,
@@ -21185,7 +21188,7 @@
     "actual_admission_supervisor_pid": 286881,
     "actual_admission_controller_pid": 286882,
     "engineering_started_ns": 1790904350586973698,
-    "next_scheduled_observation_ns": 1790905600307146647,
+    "next_scheduled_observation_ns": null,
     "engineering_controller_running": false,
     "engineering_observer_running": false,
     "controller_tests_receipt": {
@@ -21240,7 +21243,7 @@
         "sha256": "5235971b4caf6868862932cbcbd1a00724cc617912d7156529742cdfc8d5e869"
       }
     },
-    "actual_counts_pending_terminal": true,
+    "actual_counts_pending_terminal": false,
     "scientific_run": "local/runs/sam-ema-time-20261002/development-r1",
     "scientific_manifest": {
       "path": "local/runs/sam-ema-time-20261002/development-r1/manifest.json",
@@ -21255,8 +21258,84 @@
       "path": "local/runs/sam-ema-time-20261002/development-r1/initial-process-identity.json",
       "sha256": "c298702599f2a201715db307b27e678ca1d610c60f2d514056c364d86c4294c1"
     },
-    "development_controller_running": true,
-    "scientific_observer_running": true,
-    "preparation_document": "docs/sam_ema_time/PREPARATION.md"
+    "development_controller_running": false,
+    "scientific_observer_running": false,
+    "preparation_document": "docs/sam_ema_time/PREPARATION.md",
+    "actual_new_cold_states": 20,
+    "actual_reused_cold_states": 40,
+    "actual_scientific_child_exit_codes": [
+      0,
+      0
+    ],
+    "actual_scientific_supervisor_exit_code": 0,
+    "scientific_completed_ns": 1790908492095158314,
+    "scientific_peak_rss_mib": {
+      "development": 818.046875,
+      "independent_audit": 540.0390625
+    },
+    "full_batch_cold_difference": 0,
+    "maximum_order_chunk_difference": 1.297700021041237e-05,
+    "maximum_scalar_difference": 1.4210854715202004e-14,
+    "complete_OOF_rows_per_seed": {
+      "42": 2754,
+      "3407": 2754
+    },
+    "package_score_records": {
+      "42": {
+        "scores": {
+          "Q75": 96.23658014851011,
+          "SAM_MATCHED": 96.20595050318555,
+          "SAM_EMA_TIME": 96.21204290724063
+        },
+        "gains": {
+          "SAM_EMA_TIME": -0.024537241269484866
+        },
+        "matched_sam_gain": 0.006092404055081602
+      },
+      "3407": {
+        "scores": {
+          "Q75": 96.22988142941723,
+          "SAM_MATCHED": 96.18940979360808,
+          "SAM_EMA_TIME": 96.20836224844311
+        },
+        "gains": {
+          "SAM_EMA_TIME": -0.021519180974124197
+        },
+        "matched_sam_gain": 0.018952454835030608
+      }
+    },
+    "mean_package_gain": {
+      "SAM_EMA_TIME": -0.02302821112180453
+    },
+    "mean_matched_sam_gain": 0.012522429445056105,
+    "automatic_tier": "not_shortlisted",
+    "confirmation_eligible": false,
+    "formal_promotion": false,
+    "selected_for_confirmation": null,
+    "platform_exploration": "manual_interaction_exploration_retained_two_platform_positive_parent_methods_and_two_local_matched_SAM_improvements_separate_full_release_freeze_required_not_yet_queued",
+    "local_gain_is_sole_platform_selection_criterion": false,
+    "results_document": "docs/sam_ema_time/RESULTS.md",
+    "scientific_terminal_evidence": {
+      "manifest.json": {
+        "path": "local/runs/sam-ema-time-20261002/development-r1/manifest.json",
+        "sha256": "1229e9be9cf51332a5db8e5629a6c561fbf4be564b0e7702d2d460721983acb7"
+      },
+      "report.json": {
+        "path": "local/runs/sam-ema-time-20261002/development-r1/report.json",
+        "sha256": "4edd6dce0a551eee1a393798a047cb1570fdd8b5e254d35d521422553f974ebb"
+      },
+      "independent-score.json": {
+        "path": "local/runs/sam-ema-time-20261002/development-r1/independent-score.json",
+        "sha256": "17af5f3d60aafc3850b01c92556cad48d7f7b42906b862f10c8d40f2bb10a8d9"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/sam-ema-time-20261002/development-r1/terminal-verification.json",
+        "sha256": "ac652debb1ea3bbb81d917cfed8d3f5216080b443ced04a004d68511af65a552"
+      },
+      "actual-main-exit.json": {
+        "path": "local/runs/sam-ema-time-20261002/development-r1/actual-main-exit.json",
+        "sha256": "1dceaf3041bbc5087db0af7c86f47796369f1c457dd33b85069f3bfcfa422bca"
+      }
+    }
   }
 }
