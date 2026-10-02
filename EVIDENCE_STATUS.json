@@ -21510,15 +21510,54 @@
     ]
   },
   "local_ridge_neighborhood_q75_20261002": {
-    "status": "preregistered_independent_worktree_engineering_pending",
+    "status": "completed_G0_passed_both_targets_two_seed_negative_no_confirmation",
     "branch": "codex/local-ridge-neighborhood-q75",
     "reference": "EMA_TIME_Q75",
     "reference_score_user_reported": 96.392,
     "preregistration": "docs/local_ridge_neighborhood/PREREGISTRATION.md",
     "spec": "configs/local_ridge_neighborhood/SPEC.json",
     "SWA": "user_explicitly_excluded_local_work_teammate_other_machine",
-    "G0": "pending_complete_size_synthetic_cold_admission",
-    "G1": "unmeasured",
+    "G0": "passed_complete_models_math_cold_coverage_scalar_arithmetic_and_actual_exit",
+    "G1": {
+      "records": {
+        "tap_iron": {
+          "42": {
+            "gain": -0.07531561745277164,
+            "control_gain": -0.15069167062757,
+            "mechanism_gain": 0.07537605317479837
+          },
+          "3407": {
+            "gain": -0.06879796225865573,
+            "control_gain": -0.1448862155367754,
+            "mechanism_gain": 0.07608825327811966
+          }
+        },
+        "tap_time_len": {
+          "42": {
+            "gain": -0.15537564928414707,
+            "control_gain": -0.2842679335953274,
+            "mechanism_gain": 0.12889228431118036
+          },
+          "3407": {
+            "gain": -0.15339043376033393,
+            "control_gain": -0.2830829552731499,
+            "mechanism_gain": 0.12969252151281596
+          }
+        }
+      },
+      "decisions": {
+        "tap_iron": {
+          "eligible": false,
+          "mean_gain": -0.07205678985571368,
+          "mean_mechanism_gain": 0.07573215322645901
+        },
+        "tap_time_len": {
+          "eligible": false,
+          "mean_gain": -0.1543830415222405,
+          "mean_mechanism_gain": 0.12929240291199817
+        }
+      }
+    },
     "development_seeds": [
       42,
       3407
@@ -21526,6 +21565,23 @@
     "new_optimizer_runs": 0,
     "full_data_fits": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "private_run": "/home/lux1/iron/local/runs/local-ridge-neighborhood-q75-20261002/development-r1",
+    "new_preprocessing_states": 10,
+    "new_local_systems": 5508,
+    "new_target_rhs": 11016,
+    "new_confirmation_seeds": 0,
+    "tests": {
+      "passed": 31,
+      "skipped": 0,
+      "python_series": "3.12"
+    },
+    "results_document": "docs/local_ridge_neighborhood/RESULTS.md",
+    "terminal_readback_sha256": "e9e248635fc70f48be9835b2e95d9a11af651cb059adcb4186098ee8a1f6c9df",
+    "actual_exit_code": 0,
+    "formal_promoted": false,
+    "platform_exploration_recommended": false,
+    "old_DNNR_decision_unchanged": true,
+    "next": "independent_DCN_cross_with_matched_additive_control"
   }
 }
