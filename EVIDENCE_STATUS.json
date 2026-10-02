@@ -2629,7 +2629,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "owned_width512_training_and_independent_audit_actual_exit0_complete_specific_processes_absent_no_empty_monitoring",
+    "runtime_observation": "owned_SAM_EMA_engineering_started_600_second_observer_actual_completion_triggers_cold_audit",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3010,7 +3010,7 @@
     "latest_local_G0": "report_only_recovery_exit0_independent_audit_passed_original_exit1_preserved",
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
-    "latest_registered_scientific_route": "ema_width512_preparation_20261002",
+    "latest_registered_scientific_route": "sam_ema_time_preparation_20261002",
     "latest_completed_scientific_route": "ema_width512_preparation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_and_matched_pair_control_confirmation_gate_failed"
@@ -19889,7 +19889,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "width512_and_dropout_fixed_recipes_closed_one_existing_platform_probe_untested_next_distinct_route_review",
+    "status": "SAM_EMA_composition_engineering_running_width512_closed_one_existing_platform_probe_untested",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -19939,8 +19939,8 @@
       "ema_component_calibration_preparation_20261002"
     ],
     "latest_followup_results": "docs/ema_width512/RESULTS.md",
-    "active_preregistered_followup": null,
-    "active_followup_optimizer_budget": 0,
+    "active_preregistered_followup": "sam_ema_time_preparation_20261002",
+    "active_followup_optimizer_budget": 20,
     "dropout_followup_optimizer_runs": 40,
     "dropout_followup_engineering_optimizer_runs": 2,
     "dropout_followup_result_key": "ema_dropout_consistency_preparation_20261002",
@@ -21142,6 +21142,68 @@
         "path": "local/runs/ema-width512-20261002/development-r1/actual-main-exit.json",
         "sha256": "f01c5e0fb7e01d1a4e2bd0f2711fa9c548caa4e38287e44b6afb0993257dd9c7"
       }
+    }
+  },
+  "sam_ema_time_preparation_20261002": {
+    "status": "engineering_full_shape_composed_SAM_EMA_running_science_not_started",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "target": 96.45,
+    "configuration": "configs/sam_ema_time/SPEC.json",
+    "protocol": "docs/sam_ema_time/PREREGISTRATION.md",
+    "candidate": "SAM_EMA_TIME",
+    "G0": "26_locked_scoped_tests_passed_full_shape_composition_and_independent_cold_pending",
+    "G1": "unmeasured_no_scientific_fits_yet",
+    "source_worktree": "local/worktrees/sam-ema-time-development",
+    "source_commit": "90350c9404d0dc33166802e4b88af97a824efcc3",
+    "focused_tests_passed": 26,
+    "focused_tests_skipped": 0,
+    "full_test_suite": false,
+    "engineering_run": "local/runs/sam-ema-time-20261002/admission-r1",
+    "engineering_optimizer_budget": 1,
+    "engineering_optimizer_runs": null,
+    "actual_engineering_counts_pending_terminal": true,
+    "scientific_model_fits": 0,
+    "scientific_optimizer_runs": 0,
+    "planned_scientific_estimators": 10,
+    "planned_scientific_optimizer_runs": 20,
+    "planned_new_cold_states": 20,
+    "planned_reused_cold_states": 40,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "platform_queue_changed": false,
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "actual_admission_supervisor_pid": 286881,
+    "actual_admission_controller_pid": 286882,
+    "engineering_started_ns": 1790904350586973698,
+    "next_scheduled_observation_ns": 1790904950586973698,
+    "engineering_controller_running": true,
+    "engineering_observer_running": true,
+    "controller_tests_receipt": {
+      "path": "local/runs/sam-ema-time-20261002/controller-tests-r2/tests-receipt.json",
+      "sha256": "bb9343facd10d898d3892c571455e9487b2f0a5cd44e4c1531bc59555a92dda1"
+    },
+    "controller_test_failures_preserved": {
+      "path": "local/runs/sam-ema-time-20261002/controller-tests-r1/failure-receipt.json",
+      "sha256": "e23b11e65b830a467be97102b857b813a52fcb5a1dda62fd330b5e10624e2e88"
+    },
+    "engineering_manifest": {
+      "path": "local/runs/sam-ema-time-20261002/admission-r1/manifest.json",
+      "sha256": "61101d70be2dd5a14567d252adbeae80cf78bfde767eb7c314efb9f9d5bde465"
+    },
+    "engineering_frozen_files": 397,
+    "engineering_process_identity": {
+      "path": "local/runs/sam-ema-time-20261002/admission-r1/initial-process-identity.json",
+      "sha256": "41c05b120b21012108ed777cd6856359dc18d3beb999d5e2c556eef2d2b30d40"
     }
   }
 }
