@@ -1,0 +1,50 @@
+{
+  "identity": "SWA_DELTA_V1",
+  "target": "tap_time_len",
+  "reference": "EMA_TIME_Q75",
+  "reference_score": 96.392,
+  "score_source": "user_reported_not_independently_verified",
+  "formula": "Q75 + lambda * (SWA_WINDOW10 - paired_BASE)",
+  "weights": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "candidate_order": [
+    "DELTA10",
+    "DELTA20",
+    "DELTA30"
+  ],
+  "split_seeds": [
+    42,
+    3407,
+    271828,
+    314159
+  ],
+  "folds": 5,
+  "rows_per_seed": 2754,
+  "evidence": "post_selection_exploration_all_four_seeds_previously_seen",
+  "formal_promotion_allowed": false,
+  "selection": "candidate_tiers on 42/3407 descriptive; at most one exploration selected by complete four-seed mean gain, then minimum gain, then smaller lambda; mean must exceed zero",
+  "gate": "no fresh validation; four-seed positive/LCB95 statistics descriptive only, no retroactive promotion",
+  "policy": "configs/candidate_tiers.yaml",
+  "clipping": false,
+  "cross_split_prediction_averaging": false,
+  "new_fits": 0,
+  "new_optimizers": 0,
+  "new_inferences": 0,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "resource": {
+    "workers": 1,
+    "numeric_threads": 1,
+    "max_rss_mib": 1024,
+    "time_budget": null
+  },
+  "sources": [
+    "local/runs/tabm-time-swa-v1/development-r1",
+    "local/runs/tabm-time-swa-confirm-271828-314159-20261001/confirmation-r1"
+  ],
+  "source_reference_bundle": "local/incoming/swa-confirmation-271828-314159-20261002-r1"
+}
