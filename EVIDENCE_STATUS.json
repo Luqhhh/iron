@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "KEY_RESEARCH_COMPLETE_FIRST_PLATFORM_TEST_RECOMMENDED_SECOND_DEFERRED",
+    "status": "EMA32_TIME_A60_user_reported_below_Q75_no_pending_platform_candidate",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -329,7 +329,7 @@
       "GAUSS1_A20",
       "EMA_MEAN3_FULL_Q75"
     ],
-    "submission_priority_note": "Key paired research reviewed. Recommend first Laplace time; independent MAE iron remains preferred second direction after first platform feedback. No new platform score, quota inference or combined package.",
+    "submission_priority_note": "EMA32_TIME_A60 (k=32 + EMA time) was delivered to the desktop on 2026-10-03 and the user reported 96.3857, i.e. -0.0063 versus Q75, despite a four-seed local gain of +0.0064. Best remains EMA_TIME_Q75=96.3920. K32_TIME_A45 shares the same k=32 mechanism and is deprioritised, not deleted. No new candidate is queued and no quota is inferred.",
     "ready_for_user_platform_testing": [
       {
         "candidate": "LAPLACE_FIXED_A20",
@@ -850,7 +850,16 @@
     "first_slot_provisional_nomination": "LAPLACE_FIXED_A20",
     "second_slot_provisional_nomination": null,
     "second_slot_preferred_direction": "independent_MAE_iron_pending_first_platform_feedback",
-    "allocation_document": "docs/platform_slot_review/ALLOCATION.md"
+    "allocation_document": "docs/platform_slot_review/ALLOCATION.md",
+    "ema32_time_a60": {
+      "candidate": "EMA32_TIME_A60",
+      "package": "local/runs/q75-ema32-release-20261003/release-r1/EMA32_TIME_A60/Luqhhh_bf_tap_predict_round2.zip",
+      "zip_sha256": "97868fd370ff303e7eabed63a396c2419468eef4ed24d5ed1f7a46a848ce908d",
+      "platform_score": 96.3857,
+      "delta_vs_Q75": -0.0063,
+      "local_four_seed_gain": 0.0064,
+      "feedback_status": "user_reported_below_Q75"
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -25251,5 +25260,39 @@
       "finite_nonnegative": true,
       "passed": true
     }
+  },
+  "platform_feedback_ema32_time_a60_20261003": {
+    "status": "user_reported_platform_below_Q75_best_unchanged",
+    "candidate": "EMA32_TIME_A60",
+    "raw_reported_score": "96.3857",
+    "score": 96.3857,
+    "source": "user_reported_not_independently_verified",
+    "platform_verified": false,
+    "reported_date": "2026-10-03",
+    "candidate_association": "user_feedback_immediately_after_explicit_EMA32_TIME_A60_desktop_delivery; binding by delivery order, correctable by user",
+    "comparison_candidate": "EMA_TIME_Q75",
+    "comparison_score": 96.392,
+    "delta_vs_current_best": -0.0063,
+    "thread_target": 96.45,
+    "delta_vs_target": -0.0643,
+    "zip_sha256": "97868fd370ff303e7eabed63a396c2419468eef4ed24d5ed1f7a46a848ce908d",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA32-TIME-A60-20261003/Luqhhh_bf_tap_predict_round2.zip",
+    "local_four_seed_gain_mean": 0.006439437075823982,
+    "local_four_seed_lcb95": 0.0048672130054301325,
+    "transfer_gap": -0.0127,
+    "G0": "release_and_desktop_readback_audits_passed",
+    "G1": "this_fixed_recipe_user_reported_platform_below_Q75_local_four_seed_gate_did_not_transfer",
+    "feedback_record": "local/runs/q75-ema32-release-20261003/platform-feedback-r1/feedback.json",
+    "feedback_sha256": "6fff1f9039be56c8f657b9b4b7990c4bea7b3aa4ea901eb0361da5f54db61c85",
+    "best_candidate": "EMA_TIME_Q75",
+    "best_score": 96.392,
+    "best_unchanged": true,
+    "same_mechanism_note": "K32_TIME_A45 shares the k=32 mechanism, was never uploaded, and is deprioritised rather than deleted",
+    "batch_observation": "since Q75, every locally positive candidate measured on the platform has landed slightly below it (LAPLACE -0.0029, LAPLACE mean-gate failed, SEPARATE_MAE -0.0053, N_TO_V36 -0.0024, EMA32 -0.0063); recorded as specific recipe results, with no transfer rule, offset or family-wide conclusion",
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "remaining_quota_inferred": false
   }
 }
