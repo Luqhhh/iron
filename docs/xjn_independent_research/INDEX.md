@@ -74,3 +74,8 @@ D3/D6固定20%融合平均−0.02163101/−0.03228224，各seed/fold/spout均负
 多数选点仍靠末端，保留截断不确定性，不宣称训尽或自动再加epoch。
 另冻当前有符号残差L1分区的完整配方，浅树/12000轮/20%融合不变，改变分区机制而非新增深度。
 [完整长轮数结果](../laplace_leaf_long/RESULTS.md)、[新机制协议](../laplace_leaf_partition/PREREGISTRATION.md)。
+
+新机制冻结be28245，2026-10-03凌晨实际G0 4模型/1722树及4模型独立冷回读通过。
+科学完整两seed的20模型已启动，计划不冒充终态；当前尚无新收益、确认、全量或包。
+[实际状态](../laplace_leaf_partition/STATUS.md)，机器键`xjn_laplace_leaf_partition_20261002`；
+团队评估需显式拉本独立分支，不把这条树铁量配方当队友神经时长Laplace或SWA。
