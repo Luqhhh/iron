@@ -1,0 +1,102 @@
+{
+  "version": "q75-joint-mae-20261002",
+  "main_root": "/home/lux1/iron",
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+  },
+  "thread_target": 96.45,
+  "weight": 0.2,
+  "folds": 5,
+  "original_specification": "configs/round2_v33/SPEC.yaml",
+  "training_changes": [
+    "Two standardized MAE targets; shared vs duplicated independent V33 trunks",
+    "Both arms use same joint stdMAE selector, summed fixed Laplace loss, initial per-target outputs and batches"
+  ],
+  "optimizer_runs": 40,
+  "reference_fits": 0,
+  "workers": 1,
+  "numerical_threads": 1,
+  "torch_interop_threads": 1,
+  "max_worker_rss_mib": 1024,
+  "cold_predict_atol": 1e-08,
+  "scalar_atol": 1e-10,
+  "monitor_seconds": 600,
+  "maximum_runtime_seconds": null,
+  "automatic_retries": false,
+  "runtime_versions": {
+    "torch": "2.14.0+cpu",
+    "tabm": "0.0.3",
+    "rtdl-num-embeddings": "0.0.12",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.18.1"
+  },
+  "formal_gate": {
+    "complete_split_seeds": 4,
+    "all_seed_gains_strictly_positive": true,
+    "one_sided_seed_t_lcb95_strictly_positive": true
+  },
+  "packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "candidate_arms": [
+    "SHARED_MAE",
+    "SEPARATE_MAE"
+  ],
+  "split_seeds": [
+    42,
+    3407
+  ],
+  "candidates": {
+    "tap_iron": [
+      "SHARED_MAE_IRON_A20"
+    ],
+    "tap_time_len": [
+      "SHARED_MAE_TIME_A20"
+    ]
+  },
+  "reference_by_target": {
+    "tap_time_len": "Q75",
+    "tap_iron": "Q75"
+  },
+  "tie_preference_by_target": {
+    "tap_iron": [
+      "SHARED_MAE_IRON_A20"
+    ],
+    "tap_time_len": [
+      "SHARED_MAE_TIME_A20"
+    ]
+  },
+  "gaussian_development": "local/runs/q75-gaussian-time-20261002/development-r1",
+  "fixed_scale": 0.5,
+  "formula": "Each target separately: .8*Q75_target+.2*SHARED_MAE_target; other target unchanged",
+  "outer_estimators": 20,
+  "new_states": 40,
+  "engineering_estimators": 2,
+  "engineering_optimizer_runs": 4,
+  "engineering_rows": 2754,
+  "engineering_seed": 96104536,
+  "confirmation_fits": 0,
+  "full_data_fits": 0,
+  "confirmation_admission": {
+    "both_complete_development_gains_vs_Q75_positive": true,
+    "both_shared_over_separate_gains_positive": true,
+    "both_time_gains_over_ready_LAPLACE_FIXED_A20_positive": true,
+    "max_finalists_across_targets": 1,
+    "ranking": "largest_mean_Q75_gain_then_iron_then_time"
+  },
+  "mechanism_comparison": "Shared versus separate trunks under identical joint stopping and summed objective; parameter count and global gradient clipping coupling are part of the recipe",
+  "source_links": [
+    "https://doi.org/10.1023/A:1007379606734"
+  ],
+  "automatic_release": false,
+  "laplace_development": "local/runs/q75-laplace-time-20261002/development-r1",
+  "target_order": [
+    "tap_iron",
+    "tap_time_len"
+  ],
+  "future_release_gate": "Four Q75 gains and one-sided seed tLCB95 positive; shared-over-separate four gains and LCB95 positive; time additionally four gains and LCB95 over original LAPLACE_FIXED_A20 positive. Separate confirmation/release protocol required."
+}
