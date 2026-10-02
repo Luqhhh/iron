@@ -37,6 +37,9 @@
 - [训练日程与损失筛选](q75_schedule_screen/RESULTS.md)：22+20 次拟合、控制臂逐位一致。余弦日程一致改善铁量（`COS_MAE` 两 seed 均正、均值 +0.000289、7/10 折为正），时长在各日程/损失下均未改善。首次出现协议层（非加权层）正向信号。
 - [余弦+L1 铁量四 seed 确认](q75_cosine_iron_confirmation/RESULTS.md)：单列替换四 seed 均负（均值 −0.00014），但作为增量融合成分四 seed 全正（均值 +0.0023、LCB95 +0.0008）→ 通过项目四 seed 门槛，幅度远小于目标差额。
 - [选轮噪声与轨迹平均筛选](q75_selection_screen/RESULTS.md)：`INNER5`（铁量两折同向 −0.000634，时长变差）阶段 2 不成立已关闭；`SNAP5`（五个检查点预测平均）两 seed 两目标同向改善，但[四 seed 增量融合](q75_snap5_confirmation/RESULTS.md)不满足全正/LCB 门槛，配方关闭。harness 缺陷与两次预算更正均已登记。
+- [残差可学习性判定](q75_residual_learnability/RESULTS.md)：四 seed × 两目标 × Ridge/LightGBM 修正器，诚实内层选收缩系数**16/16 全部选 0**，增量为 0 → 残差无可利用结构，关闭残差修正与条件校准家族。
+- [GRANDE 硬树试点](q75_hard_tree_pilot/RESULTS.md)：仓库内最后一个未训练过的模型类。残差相关仅 0.93–0.96（明显比 TabML 家族的 0.98–0.99 分散），但精度比 incumbent 差 3.3%–8.6%，诚实留一权重 3/4 组选 0、唯一非零组在留出折损失 0.0065 分 → 关闭 GLOBAL 臂。
+- [特征增强与 mixup 筛选](q75_feature_augmentation/PREREGISTRATION.md)：显式对数/对数比/乘积特征与 mixup 在两折两目标上**全部变差**（时长 +0.0010/+0.0121）→ 筛选即关闭，未消耗确认预算。
 
 - [独立MAE铁量三训练seed均值结果](q75_separate_mae_iron_mean3/RESULTS.md)：40新optimizer/60新旧状态审计通过；两seed对Q75均正却均低于就绪单seed，不确认或新增包。
 - [原V10 MAE零训练复核](q75_retained_v10_mae/RESULTS.md)：相对Q75两seed为正，但均弱于就绪Laplace和同骨干MSE；0新optimizer，不追加候选。仅保留预测来源/算术审计，原checkpoint缺失不冒称模型冷复现。

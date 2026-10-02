@@ -24776,5 +24776,130 @@
     "formal_promoted": false,
     "G0": "passed_predictions_persisted_thread_pinning_and_no_retries",
     "G1": "four_seed_gate_failed_on_both_targets"
+  },
+  "q75_residual_learnability_20261002": {
+    "status": "completed_no_learnable_structure_in_incumbent_residual",
+    "kind": "diagnostic_nested_residual_correction",
+    "documentation": "docs/q75_residual_learnability/RESULTS.md",
+    "protocol": "docs/q75_residual_learnability/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-residual-learnability-20261002",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "design": "per outer fold: inner 4-fold out-of-fold correction on the training folds, shrinkage gamma chosen on those folds only, refit, applied to the held-out fold",
+    "corrector_families": [
+      "ridge",
+      "lightgbm"
+    ],
+    "result": {
+      "selected_gamma_all_zero": true,
+      "combinations": 16,
+      "outer_folds_per_combination": 5,
+      "applied_corrections": 0,
+      "score_delta": 0.0
+    },
+    "interpretation": "the incumbent residual carries no exploitable structure given the 21 features, spout and the base prediction; this closes the residual-correction, feature-stacked and conditional-calibration families and supports the irreducible-noise reading",
+    "corrector_fits": 320,
+    "neural_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_nested_protocol_and_train_only_label_use",
+    "G1": "no_learnable_residual_structure"
+  },
+  "q75_hard_tree_pilot_20261002": {
+    "status": "completed_decorrelated_but_too_inaccurate_zero_blend_weight_family_closed",
+    "kind": "new_model_class_pilot",
+    "documentation": "docs/q75_hard_tree_pilot/RESULTS.md",
+    "protocol": "docs/q75_hard_tree_pilot/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-hard-tree-pilot-20261002/development-r1",
+    "model": "GRANDE-derived hard-tree ensemble (MIT core), 1024 estimators, depth 5, GLOBAL arm",
+    "source_settings": "configs/round2_v37/SPEC.yaml",
+    "reference": "EMA_TIME_Q75",
+    "thread_target": 96.45,
+    "new_fits": 4,
+    "new_optimizers": 8,
+    "accuracy_ratio_vs_incumbent": {
+      "tap_iron": [
+        1.033,
+        1.078
+      ],
+      "tap_time_len": [
+        1.086,
+        1.067
+      ]
+    },
+    "residual_correlation": {
+      "tap_iron": [
+        0.9452,
+        0.9592
+      ],
+      "tap_time_len": [
+        0.9288,
+        0.937
+      ]
+    },
+    "incremental_blend": {
+      "tap_iron": [
+        0.0,
+        -0.0065
+      ],
+      "tap_time_len": [
+        0.0,
+        0.0
+      ],
+      "weights": {
+        "tap_iron": [
+          0.0,
+          0.25
+        ],
+        "tap_time_len": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "interpretation": "the hard tree is markedly more decorrelated than the TabM family (residual correlation 0.93-0.96 versus 0.98-0.99) but 3-9 percent less accurate, so it earns zero blend weight in three of four honest hold-outs and loses in the fourth; the family is closed at this frozen configuration",
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_frozen_v37_settings_train_only_scaling_and_cold_prediction",
+    "G1": "upgrade_criterion_failed_on_incremental_blend"
+  },
+  "q75_feature_augmentation_20261002": {
+    "status": "completed_both_arms_closed_at_screen",
+    "kind": "input_representation_and_regularisation_screen",
+    "documentation": "docs/q75_feature_augmentation/PREREGISTRATION.md",
+    "private_root": "local/runs/q75-feature-augmentation-20261002/screen-r1",
+    "source_module": "src/bf_tap_r2/q75_feature_augmentation.py",
+    "reference": "EMA_TIME_Q75",
+    "thread_target": 96.45,
+    "engineered_columns": 23,
+    "new_fits": 6,
+    "new_optimizers": 12,
+    "results": {
+      "ENG": {
+        "tap_iron_delta": 0.000331,
+        "tap_time_len_delta": 0.000979
+      },
+      "MIXUP": {
+        "tap_iron_delta": 0.00952,
+        "tap_time_len_delta": 0.012092
+      }
+    },
+    "control_max_absolute_difference": 0.0,
+    "interpretation": "explicit log, log-ratio and product features and sample-interpolation mixup both degrade both targets on both folds; the stage closed at the screen and consumed no confirmation budget",
+    "confirmation_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "passed_control_bit_exact",
+    "G1": "both_arms_worse_on_every_unit"
   }
 }
