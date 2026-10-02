@@ -1,0 +1,13 @@
+{
+  "identity": "XJN_LAPLACE_Q75_DIRECTIONAL_GEOMETRY_V1",
+  "question": "Does the right derivative at alpha zero exclude improvement for every positive convex mixing weight on each fixed full OOF?",
+  "candidate_recipes": ["FIXED", "ADAPTIVE"],
+  "candidate_horizon": 3000,
+  "seeds": [42, 3407],
+  "alpha_search": false,
+  "weight_selected": null,
+  "new_fits": 0,
+  "confirmation_seeds_consumed": 0,
+  "packages": 0,
+  "platform_claim": false
+}
