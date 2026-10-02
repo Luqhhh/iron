@@ -79,3 +79,7 @@ D3/D6固定20%融合平均−0.02163101/−0.03228224，各seed/fold/spout均负
 科学完整两seed的20模型已启动，计划不冒充终态；当前尚无新收益、确认、全量或包。
 [实际状态](../laplace_leaf_partition/STATUS.md)，机器键`xjn_laplace_leaf_partition_20261002`；
 团队评估需显式拉本独立分支，不把这条树铁量配方当队友神经时长Laplace或SWA。
+
+完整开发仍进行中时另冻[结果分类回读](../laplace_leaf_partition/TRIAGE.md)，75项零真实拟合检查通过。
+预定单臂、固定20%和强参照不变，完整cold完成后才重组OOF并分类；不是现在已有新科学分数或包。
+原分类formal只作开发shortlist，科学四seed/发布门与队友队列保持不变。

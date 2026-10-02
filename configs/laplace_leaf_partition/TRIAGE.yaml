@@ -1,0 +1,23 @@
+identity: XJN_L1_PARTITION_DEVELOPMENT_TIERS_V1
+native_identity: XJN_LAD_RESIDUAL_L1_PARTITION_D3_V1
+native_source_commit: be282454cbb213aff84df3df13ce2d00367e0841
+native_spec_semantic_sha256: ffebb61dfe595f935946588f63ba1fc612119eabcc5db5f414b9f907a0740c7d
+policy_sha256: b74106356cc4965088ef350d9c0ef5740f20a970840d49e8c98f57f9cc48a18f
+split_seeds: [42, 3407]
+folds: 5
+reference_by_target:
+  tap_iron: EMA_TIME_Q75
+candidates:
+  tap_iron: [RESIDUAL_L1_PARTITION_D3_A20]
+tie_preference_by_target:
+  tap_iron: [RESIDUAL_L1_PARTITION_D3_A20]
+fixed_weight: 0.2
+new_fits: 0
+model_deserializations: 0
+new_official_sample_label_parses: 0
+official_file_hash_reads_permitted: true
+formal_scientific_promotion: false
+confirmation_seeds_consumed: 0
+full_fits: 0
+packages: 0
+agent_uploads: 0
