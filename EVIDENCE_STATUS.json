@@ -2629,7 +2629,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "one_fixed_manual_SAM_EMA_release_prepared_not_started_then_pause",
+    "runtime_observation": "owned_single_SAM_EMA_full_release_running_monitor_600_then_pause_no_next_experiment",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -21343,7 +21343,7 @@
     }
   },
   "sam_ema_time_manual_exploration_release_20261002": {
-    "status": "prepared_frozen_one_full_procedure_not_started_pause_after_this_round",
+    "status": "running_one_fixed_full_procedure_then_user_requested_pause",
     "candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
     "reference": {
       "candidate": "EMA_TIME_Q75",
@@ -21395,6 +21395,24 @@
     "maximum_runtime_seconds": null,
     "automatic_retries": 0,
     "pause_after_this_round_requested": true,
-    "pause_user_instruction": "本轮结束后暂停"
+    "pause_user_instruction": "本轮结束后暂停",
+    "process_identity": {
+      "supervisor_pid": {
+        "pid": 291033,
+        "start_ticks": 13502720,
+        "state": "S",
+        "cwd": "/home/lux1/iron/local/worktrees/sam-ema-time-exploration-release",
+        "command": "/home/lux1/iron/.venv/bin/python3 scripts/sam_ema_release.py observe --output /home/lux1/iron/local/runs/sam-ema-time-exploration-20261002/release-r1 "
+      },
+      "controller_pid": {
+        "pid": 291036,
+        "start_ticks": 13503091,
+        "state": "S",
+        "cwd": "/home/lux1/iron/local/worktrees/sam-ema-time-exploration-release",
+        "command": "/home/lux1/iron/.venv/bin/python3 /home/lux1/iron/local/worktrees/sam-ema-time-exploration-release/scripts/sam_ema_release.py execute --output /home/lux1/iron/local/runs/sam-ema-time-exploration-20261002/release-r1 "
+      }
+    },
+    "tool_session_id": 25337,
+    "startup_binding_sha256": "854f8a12875eae406c634784c1cb1b0ca0e5f5de7728c1489260f7f088000a7f"
   }
 }
