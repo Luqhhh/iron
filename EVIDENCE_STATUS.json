@@ -25193,7 +25193,7 @@
     "G1": "four_seed_time_gate_passed"
   },
   "q75_ema32_release_20261003": {
-    "status": "completed_local_package_built_audited_not_uploaded_not_on_desktop",
+    "status": "completed_desktop_copy_verified_not_uploaded_by_agent",
     "kind": "release",
     "documentation": "docs/q75_ema32_release/DELIVERY.md",
     "protocol": "docs/q75_ema32_release/PREREGISTRATION.md",
@@ -25230,10 +25230,26 @@
       "finite_nonnegative": true,
       "passed": true
     },
-    "desktop_writes": 0,
+    "desktop_writes": 1,
     "agent_uploads": 0,
     "platform_measured": false,
     "G0": "passed_independent_readback_audit_and_parent_identity",
-    "G1": "four_seed_time_gate_passed_expected_gain_0.0064_platform_unmeasured"
+    "G1": "four_seed_time_gate_passed_expected_gain_0.0064_platform_unmeasured",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA32-TIME-A60-20261003/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop_sha256": "97868fd370ff303e7eabed63a396c2419468eef4ed24d5ed1f7a46a848ce908d",
+    "desktop_byte_identical_to_local": true,
+    "desktop_handoff_receipt": "local/runs/q75-ema32-release-20261003/desktop-handoff-r1/receipt.json",
+    "desktop_readback": {
+      "members": [
+        "result.csv"
+      ],
+      "rows": 322,
+      "unique_ids": 322,
+      "template_order": true,
+      "iron_string_mismatches": 0,
+      "time_max_relative_difference": 0.0,
+      "finite_nonnegative": true,
+      "passed": true
+    }
   }
 }
