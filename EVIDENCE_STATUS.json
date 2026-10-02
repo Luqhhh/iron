@@ -2737,8 +2737,8 @@
       "96.5": 0.108
     },
     "latest_completed_release": "q75_laplace_fixed_release_20261002",
-    "latest_G0": "passed_native60_optimizers_60_cold_states_independent_scalar_actual_exit0",
-    "latest_G1": "time_fixed_Gaussian_both_positive_but_weaker_than_ready_Laplace_iron_arms_one_negative_seed_each",
+    "latest_G0": "passed_native40_optimizers_60_new_reused_cold_states_independent_scalars_actual_exit0",
+    "latest_G1": "both_development_seeds_positive_vs_Q75_and_single_Laplace_no_four_seed_promotion",
     "ready_exploration_candidates": [
       "EMA_MEAN3_FULL_Q75"
     ],
@@ -2746,7 +2746,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Verified_Laplace_mean3_worker_supervisor_live_threads1_600_second_monitor",
+    "runtime_observation": "Laplace_mean3_development_completed_all_owned_workers_terminal_no_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3128,7 +3128,7 @@
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
     "latest_registered_scientific_route": "q75_laplace_mean3_development_20261002",
-    "latest_completed_scientific_route": "q75_fixed_point_losses_development_20261002",
+    "latest_completed_scientific_route": "q75_laplace_mean3_development_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_positive_vs_matched_SAM_confirmation_gate_failed",
     "active_release_key": null,
@@ -3140,12 +3140,12 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": "q75_laplace_mean3_development_20261002",
+    "active_research": null,
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Finish_complete_two_seed_paired_mean3_comparison_before_confirmation",
+    "next_action": "Separately_freeze_confirmation271828_314159_two_new_training_seeds_40optimizers",
     "optimization_paused": false,
     "pause_after_this_round_requested": false
   },
@@ -23102,7 +23102,7 @@
     "user_reported_slots": 2
   },
   "q75_laplace_mean3_development_20261002": {
-    "status": "running_complete_two_seed_development",
+    "status": "completed_eligible_for_separately_frozen_confirmation",
     "source_worktree": "local/worktrees/q75-laplace-mean3-development",
     "source_commit": "d1c5116ecc2e30f9a4b971845f7f68675d75c638",
     "reference": "EMA_TIME_Q75",
@@ -23192,7 +23192,50 @@
       ],
       "manifest_sha256": "b0aab1ce371161cda4b6c7b73572687aae21d0a8c10b075caf95f190368b3fbd"
     },
-    "next_periodic_observation_ns": 1790932925941259411,
-    "tool_session_id": 99097
+    "next_periodic_observation_ns": null,
+    "tool_session_id": 99097,
+    "G0": "passed_native40_optimizers_60_new_reused_cold_states_independent_scalars_actual_exit0",
+    "G1": "both_development_seeds_positive_vs_Q75_and_single_Laplace_no_four_seed_promotion",
+    "gains": {
+      "42": 0.010262820251003632,
+      "3407": 0.013690805082496281
+    },
+    "gains_over_single": {
+      "42": 0.0013102626790366019,
+      "3407": 0.0015195763977281216
+    },
+    "member_gains_descriptive": {
+      "42": {
+        "42": 0.00895255757196703,
+        "1042": 0.0030545511949205033,
+        "2042": 0.011261327419594376
+      },
+      "3407": {
+        "42": 0.012171228684768162,
+        "1042": 0.01695362509215389,
+        "2042": 0.005947733598380235
+      }
+    },
+    "confirmation_finalist": "LAPLACE_MEAN3_A20",
+    "failed_conditions": [],
+    "actual_scientific_optimizers": 40,
+    "actual_new_states": 40,
+    "actual_reused_states": 20,
+    "actual_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_tool_exit_code": 0,
+    "cold_max_difference": 5.684341886080802e-14,
+    "independent_scalar_checks": 11074,
+    "independent_max_difference": 5.684341886080802e-14,
+    "peak_os_rss_mib": 509.77734375,
+    "owned_pids_verified_absent": true,
+    "report_sha256": "8fce2bacfb5fd4614f59205782181828ad530143ad206b7c1c5a597fcea97d41",
+    "independent_score_sha256": "56c69d6a0a4ba3cb57a57e887a3e71b5b0cfbf7842b514862cc7760d23588d7f",
+    "terminal_sha256": "1e59684130786efcc3b8e32abb41496118d1df6c3cdb293d4b420bc48abf28e5",
+    "status_document": "docs/q75_laplace_mean3/RESULTS.md"
   }
 }
