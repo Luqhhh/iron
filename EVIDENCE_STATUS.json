@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "EMA_MEAN3_READY_GAUSSIAN_TIME_CONFIRMATION_RUNNING",
+    "status": "GAUSS1_A20_FORMALLY_PROMOTED_AND_EMA_MEAN3_EXPLORATION_READY",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -324,10 +324,23 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [
+      "GAUSS1_A20",
       "EMA_MEAN3_FULL_Q75"
     ],
-    "submission_priority_note": "EMA_MEAN3 remains the sole ready user testing package; GAUSS1_A20 is a newly frozen confirmation study, not a released package; DE3 reserve stays deferred and quota is not inferred.",
+    "submission_priority_note": "GAUSS1_A20 tests a previously unselected Gaussian-likelihood control as a distinct Q75 time component, with complete four-seed positive evidence and closed full-data G0; EMA_MEAN3 remains the user-selected variance-reduction exploration. This is a testing recommendation, not a platform gain prediction; no quota inferred.",
     "ready_for_user_platform_testing": [
+      {
+        "candidate": "GAUSS1_A20",
+        "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+        "G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
+        "G1": "formal_four_seed_promoted_platform_unmeasured",
+        "reference": "EMA_TIME_Q75",
+        "evidence_key": "q75_gaussian_time_release_20261002",
+        "feedback_status": "not_measured",
+        "formal_promotion": true,
+        "desktop": null
+      },
       {
         "candidate": "EMA_MEAN3_FULL_Q75",
         "package": "local/runs/ema-mean3-exploration-release-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
@@ -360,7 +373,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "EMA_MEAN3用户指定探索包继续待测；本线程按继续96.45目标指令推进GAUSS1时长确认，尚无新包或正式四seed晋级，DE3仍仅替补。",
+    "recommended": "优先测试GAUSS1_A20单高斯时长固定20%融合：四seed正式门和全量工程审计通过，验证旧对照项对当前Q75的独立增量；EMA_MEAN3用户指定探索继续待测。平台最佳仍Q75/Q100=96.3920，尚未达到96.45，不据本地增量预测平台分。DE3仍仅替补，不推断剩余额度。",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -2706,9 +2719,9 @@
       "96.45": 0.058,
       "96.5": 0.108
     },
-    "latest_completed_release": "ema_mean3_manual_exploration_release_20261002",
-    "latest_G0": "passed_native_partitions_epochs_4_new_2_reused_states_independent_cold_scalar_package_CRC_template_raw_iron_fields_desktop_and_actual_exit0",
-    "latest_G1": "user_selected_manual_exploration_platform_unmeasured_original_paired_gate_failed_preserved_no_formal_promotion",
+    "latest_completed_release": "q75_gaussian_time_release_20261002",
+    "latest_G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
+    "latest_G1": "formal_four_seed_promoted_platform_unmeasured",
     "ready_exploration_candidates": [
       "EMA_MEAN3_FULL_Q75"
     ],
@@ -2717,7 +2730,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "GAUSS1_A20_confirmation_controller_and_worker_verified_live_600_second_observation_no_retries",
+    "runtime_observation": "Gaussian_time_release_completed_owned_processes_exited_no_active_training_or_periodic_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3116,7 +3129,11 @@
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
     "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。",
-    "active_research": "q75_gaussian_time_confirmation_20261002"
+    "active_research": null,
+    "ready_formal_candidates": [
+      "GAUSS1_A20"
+    ],
+    "next_action": "User platform test of GAUSS1_A20 and await teammate original SWA confirmation evidence; no assistant upload"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -22067,7 +22084,7 @@
     "terminal_sha256": "e5754c0397658387ebc83ca7fcb050fda57fc3350867037d87f948710418c136"
   },
   "q75_gaussian_time_confirmation_20261002": {
-    "status": "running_two_seed_confirmation",
+    "status": "completed_four_seed_formal_promotion_platform_unmeasured",
     "reference": "EMA_TIME_Q75",
     "thread_target": 96.45,
     "source_worktree": "local/worktrees/q75-gaussian-time-confirmation",
@@ -22076,8 +22093,8 @@
     "protocol": "docs/q75_gaussian_confirmation/PREREGISTRATION.md",
     "execution": "docs/q75_gaussian_confirmation/EXECUTION.md",
     "private_root": "local/runs/q75-gaussian-confirmation-20261002",
-    "G0": "20_targeted_checks_2_synthetic_optimizers_2_cold_states_actual_exit0_frozen_native_Q75_reference",
-    "G1": "awaiting_complete_four_seed_confirmation",
+    "G0": "passed_locked_tests_native_budget_partitions_epochs_20_states_cold_independent_scores_and_actual_exit0",
+    "G1": "formal_four_split_seed_gate_passed_platform_unmeasured",
     "confirmation_seeds": [
       271828,
       314159
@@ -22101,7 +22118,7 @@
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": false,
-    "formal_promoted": false,
+    "formal_promoted": true,
     "prior_overview_before_user_continued_goal": {
       "optimization_paused": true,
       "runtime_observation": "EMA_MEAN3_requested_desktop_delivery_completed_owned_processes_exited_broader_optimization_paused_no_active_task",
@@ -22157,7 +22174,183 @@
     ],
     "tool_session_id": 28314,
     "initial_process_verification": "local/runs/q75-gaussian-confirmation-20261002/confirmation-r1/initial-process-verification.json",
-    "next_periodic_observation_ns": 1790920128948614570,
-    "actual_counts_pending_terminal": true
+    "next_periodic_observation_ns": null,
+    "actual_counts_pending_terminal": false,
+    "gains": {
+      "42": 0.009442093875189902,
+      "3407": 0.010147210138789121,
+      "271828": 0.004116117727729791,
+      "314159": 0.009914301424241111
+    },
+    "paired": {
+      "n": 4,
+      "mean": 0.008404930791487481,
+      "sd": 0.0028742165187001633,
+      "se": 0.0014371082593500817,
+      "lcb95": 0.005022892762081304,
+      "positive": 4
+    },
+    "failed_conditions": [],
+    "actual_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_exit_code": 0,
+    "actual_optimizer_runs": 20,
+    "actual_cold_states": 20,
+    "owned_training_processes_terminal": true,
+    "terminal_sha256": "772b9d7e042d15d00e81176e35e76b440df20da692f1b8e06f6d3301231c0d39",
+    "report_sha256": "2145a71dd1deed7f116bb819c782343b7031132a0164ff9bbeac8b6d44338e62",
+    "independent_score_sha256": "d29dce7d92192b1ecfdc73ca7f1ab0b1e584432bb49977ad5fe254bc44d0f5ac",
+    "cold_max_difference": 2.842170943040401e-14,
+    "peak_os_rss_mib": 506.546875,
+    "status_document": "docs/q75_gaussian_confirmation/RESULTS.md",
+    "independent_scalar_checks": 11086,
+    "independent_max_difference": 6.938893903907228e-18,
+    "process_status_scope": "initial_launch_snapshot_only_all_owned_training_processes_terminal"
+  },
+  "q75_gaussian_time_release_20261002": {
+    "status": "completed_one_formally_promoted_release_platform_unmeasured",
+    "candidate": "GAUSS1_A20",
+    "source_directory": "/home/lux1/iron/local/worktrees/q75-gaussian-time-release-r2",
+    "source_commit": "0eff4e1eac0ab662e5f7574a81de4305e7051511",
+    "spec": "configs/q75_gaussian_release/SPEC.json",
+    "protocol": "docs/q75_gaussian_release/PREREGISTRATION.md",
+    "status_document": "docs/q75_gaussian_release/DELIVERY.md",
+    "run_directory": "local/runs/q75-gaussian-release-20261002/release-r2",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "thread_target": 96.45,
+    "G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
+    "G1": "formal_four_seed_promoted_platform_unmeasured",
+    "formal_promoted": true,
+    "platform_score": null,
+    "actual": {
+      "full_data_procedures": 1,
+      "optimizer_runs": 2,
+      "new_states": 2,
+      "new_cv_fits": 0,
+      "reference_fits": 0,
+      "packages": 1,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "preparation_failure": {
+      "record": "local/runs/q75-gaussian-release-20261002/checks-r1/failure.json",
+      "original_tests_passed": 23,
+      "budget_failed": true,
+      "unplanned_synthetic_optimizers": 2,
+      "native_constructor_counter_available": false,
+      "official_label_reads": 0,
+      "retained_synthetic_states": 2,
+      "zero_optimizer_recovery_tests": 21,
+      "recovery_optimizer_attempts": 0,
+      "latest_recovery_zero_optimizer_tests": 22,
+      "latest_recovery_optimizer_attempts": 0
+    },
+    "preserved_failed_release": {
+      "run_directory": "local/runs/q75-gaussian-release-20261002/release-r1",
+      "source_directory": "/home/lux1/iron/local/worktrees/q75-gaussian-time-release",
+      "source_commit": "17addcbd203635aa80de355591bad084b0e46b5b",
+      "manifest_sha256": "a560f06ef457a88222b112207434dcf769e49d87c9a6f953db4f3954753fbdec",
+      "actual_worker_exit_code": 1,
+      "actual_supervisor_exit_code": 1,
+      "reason": "NativeLedger missing fold and nonintegral split_seed; constructor failed before any optimizer",
+      "official_optimizer_runs": 0,
+      "new_states": 0,
+      "packages": 0,
+      "terminal_sha256": "682190885ff531465822796db73ffc0d3a0ea06abee7e3c32c5c39c2f537ca41"
+    },
+    "locked_checks": {
+      "passed": 22,
+      "deselected_training_cases": 2,
+      "python": "3.12",
+      "actual_exit_code": 0,
+      "optimizer_constructor_attempts": 0,
+      "receipt": "local/runs/q75-gaussian-release-20261002/checks-r3/receipt.json",
+      "receipt_sha256": "fd96257c4667c3e1ca9d1fd7e7237723a89954ec8f3ba77045cdb1037448bd80"
+    },
+    "manifest_sha256": "8e416777ba7b1a707ac673084dc8e9e8ba8cb8908d827e1da57091bf0d989499",
+    "terminal_sha256": "9f418d1757949e4e5a47a4019ae9c5ad6497002b34df95ac7e8453517ca47a8c",
+    "reconciliation_sha256": "6e59882a541b74de8813edcc37321e733a13f413019b7b3c0c29ad941d45b786",
+    "actual_process_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_tool_exit_code": 0,
+    "selected_epoch": 102,
+    "selector_stopped_epoch": 132,
+    "training_rows": 2754,
+    "selector_fitting_rows": 2203,
+    "query_rows": 322,
+    "cold_max_difference": 2.842170943040401e-14,
+    "label_free_cold_difference": 0.0,
+    "maximum_os_rss_mib": 503.05078125,
+    "owned_pids_verified_absent": true,
+    "maximum_runtime_seconds": null,
+    "monitor_seconds": 600,
+    "next_periodic_observation_ns": null,
+    "automatic_retries": false,
+    "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+    "result_sha256": "1ad5e5439c4a0f7fb12cf353b3e42a2c74d024f2968ec9c68c0a5ce500819310",
+    "unchanged_iron_string_mismatches": 0,
+    "tool_session_id": 14950,
+    "platform_test_status": "not_measured_ready_formally_promoted_candidate",
+    "recovery_launch": {
+      "observed_ns": 1790920882905650142,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "pid": 320472,
+          "status": "sleeping",
+          "created": 1790920880.8,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-gaussian-time-release-r2",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-gaussian-time-release-r2/.venv/bin/python3",
+            "scripts/q75_gaussian_release.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-gaussian-release-20261002/release-r2"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "pid": 320473,
+          "status": "running",
+          "created": 1790920880.87,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-gaussian-time-release-r2",
+          "command": [
+            "/home/lux1/iron/local/worktrees/q75-gaussian-time-release-r2/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_gaussian_release",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-gaussian-release-20261002/release-r2"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "next_periodic_observation_ns": 1790921482905650142,
+      "manifest_sha256": "8e416777ba7b1a707ac673084dc8e9e8ba8cb8908d827e1da57091bf0d989499"
+    }
   }
 }
