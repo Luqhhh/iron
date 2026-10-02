@@ -21585,13 +21585,94 @@
     "next": "independent_DCN_cross_with_matched_additive_control"
   },
   "dcn_q75_development_20261002": {
-    "status": "running_complete_two_seed_development_after_full_size_engineering",
+    "status": "completed_G0_passed_both_targets_two_seed_negative_and_negative_matched_mechanism_no_confirmation",
     "branch": "codex/dcn-q75-development",
     "reference": "EMA_TIME_Q75",
     "score_user_reported": 96.392,
     "source": "user_reported_not_independently_verified",
-    "G0": "full_size_synthetic_four_models_independent_cold_and_actual_exit_passed_official_audit_pending",
-    "G1": "not_scored_wait_complete_twenty_units_and_eighty_state_cold_audit",
+    "G0": "passed_80_saved_states_original_recipe_independent_math_cold_full_coverage_scalar_score_budget_and_actual_exit",
+    "G1": {
+      "records": {
+        "tap_iron": {
+          "42": {
+            "gain": -0.030203265959572588,
+            "control_gain": -0.029167722461961875,
+            "mechanism_gain": -0.001035543497610716,
+            "working_score": 96.20637688255053,
+            "standalone_wmape": 0.0485205416714911
+          },
+          "3407": {
+            "gain": -0.033905033539721595,
+            "control_gain": -0.027616076455047423,
+            "mechanism_gain": -0.006288957084674169,
+            "working_score": 96.19597639587752,
+            "standalone_wmape": 0.048327252819917156
+          }
+        },
+        "tap_time_len": {
+          "42": {
+            "gain": -0.08489696245606176,
+            "control_gain": -0.05395845373637083,
+            "mechanism_gain": -0.030938508719690942,
+            "working_score": 96.15168318605404,
+            "standalone_wmape": 0.05544546223965794
+          },
+          "3407": {
+            "gain": -0.08159694221398275,
+            "control_gain": -0.06626972813684279,
+            "mechanism_gain": -0.015327214077139965,
+            "working_score": 96.14828448720326,
+            "standalone_wmape": 0.05466550849270759
+          }
+        }
+      },
+      "decisions": {
+        "tap_iron": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_matched_control_advantage": false,
+            "mean_local_working_score_at_least_96_25": false
+          },
+          "mean_gain": -0.03205414974964709,
+          "mean_mechanism_gain": -0.0036622502911424423,
+          "mean_local_working_score": 96.20117663921403,
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "positive_matched_control_advantage",
+            "mean_local_working_score_at_least_96_25"
+          ]
+        },
+        "tap_time_len": {
+          "eligible": false,
+          "checks": {
+            "both_complete_seeds_positive": false,
+            "mean_gain_at_least_0_01": false,
+            "positive_matched_control_advantage": false,
+            "mean_local_working_score_at_least_96_25": false
+          },
+          "mean_gain": -0.08324695233502226,
+          "mean_mechanism_gain": -0.023132861398415454,
+          "mean_local_working_score": 96.14998383662865,
+          "failure_reasons": [
+            "both_complete_seeds_positive",
+            "mean_gain_at_least_0_01",
+            "positive_matched_control_advantage",
+            "mean_local_working_score_at_least_96_25"
+          ]
+        }
+      },
+      "tiers": {
+        "tap_iron": {
+          "DCN_CROSS_A20": "not_shortlisted"
+        },
+        "tap_time_len": {
+          "DCN_CROSS_A20": "not_shortlisted"
+        }
+      }
+    },
     "preregistration": "docs/dcn_q75_development/PREREGISTRATION.md",
     "spec": "configs/dcn_q75_development/SPEC.json",
     "development_seeds": [
@@ -21621,6 +21702,49 @@
     "engineering_actual_exit_code": 0,
     "engineering_cold_maximum_difference": 2.842170943040401e-14,
     "execution_document": "docs/dcn_q75_development/EXECUTION.md",
-    "new_confirmation_seeds": 0
+    "new_confirmation_seeds": 0,
+    "scientific_optimizer_runs": 80,
+    "scientific_saved_states": 80,
+    "total_new_optimizer_runs": 84,
+    "cold_models": 80,
+    "cold_maximum_difference": 3.410605131648481e-13,
+    "maximum_training_rss_mib": 490.3125,
+    "cold_rss_mib": 414.84375,
+    "actual_exit_code": 0,
+    "formal_promoted": false,
+    "platform_exploration_recommended": false,
+    "desktop_writes": 0,
+    "results_document": "docs/dcn_q75_development/RESULTS.md",
+    "terminal_readback_sha256": "dfe79389a35145310f4c6d76abd83ffdd75b1a20af4f87f20f377f82af090099",
+    "summary_sha256": "860dc23effd8c2a0fe44aa5b3f46ec6dbb1d2a2ad095c4b54dba710f0ba33c97",
+    "target_met": false,
+    "remaining_work": "none_for_this_two_route_batch_no_admitted_confirmation_or_release_no_posthoc_recipe_search"
+  },
+  "neighborhood_cross_user_priorities_20261002": {
+    "status": "requested_local_routes_completed_no_Q75_increment",
+    "SWA": "user_explicitly_excluded_teammate_other_machine",
+    "completed": [
+      "local_ridge_neighborhood_q75_20261002",
+      "dcn_q75_development_20261002"
+    ],
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "reference_independently_verified": false,
+    "target_milestones": [
+      96.4,
+      96.45,
+      96.5
+    ],
+    "target_met": false,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "repeat_small_EMA_tweaks_started": 0,
+    "iron_and_time_evaluated_separately": true,
+    "formal_and_platform_exploration_separate": true,
+    "documentation": "docs/dcn_q75_development/RESULTS.md",
+    "original_failures_and_older_frozen_gates_unchanged": true
   }
 }
