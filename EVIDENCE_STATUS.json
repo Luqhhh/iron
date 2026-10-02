@@ -21585,13 +21585,13 @@
     "next": "independent_DCN_cross_with_matched_additive_control"
   },
   "dcn_q75_development_20261002": {
-    "status": "preregistered_complete_size_engineering_pending",
+    "status": "running_complete_two_seed_development_after_full_size_engineering",
     "branch": "codex/dcn-q75-development",
     "reference": "EMA_TIME_Q75",
     "score_user_reported": 96.392,
     "source": "user_reported_not_independently_verified",
-    "G0": "pending_full_size_synthetic_cold_admission",
-    "G1": "unmeasured",
+    "G0": "full_size_synthetic_four_models_independent_cold_and_actual_exit_passed_official_audit_pending",
+    "G1": "not_scored_wait_complete_twenty_units_and_eighty_state_cold_audit",
     "preregistration": "docs/dcn_q75_development/PREREGISTRATION.md",
     "spec": "configs/dcn_q75_development/SPEC.json",
     "development_seeds": [
@@ -21607,6 +21607,20 @@
     "SWA_work": "excluded_by_user_teammate_other_machine",
     "previous_local_ridge_direction": "completed_both_target_negative_not_reopened",
     "original_DCN_source_byte_identity": "required",
-    "old_preparation_scientific_source_and_decision_unchanged": true
+    "old_preparation_scientific_source_and_decision_unchanged": true,
+    "private_run": "/home/lux1/iron/local/runs/dcn-q75-development-20261002/development-r1",
+    "manifest_sha256": "5936a79036d54913ce7542a10938661df62132e281acb36f934c5cad4f74be58",
+    "source_commit": "29cdd4a",
+    "tests": {
+      "passed": 32,
+      "skipped": 0,
+      "python_series": "3.12"
+    },
+    "engineering_optimizer_runs": 4,
+    "engineering_saved_states": 4,
+    "engineering_actual_exit_code": 0,
+    "engineering_cold_maximum_difference": 2.842170943040401e-14,
+    "execution_document": "docs/dcn_q75_development/EXECUTION.md",
+    "new_confirmation_seeds": 0
   }
 }
