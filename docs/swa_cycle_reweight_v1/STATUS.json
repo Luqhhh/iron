@@ -1,0 +1,70 @@
+{
+  "identity": "SWA_CYCLE_REWEIGHT_V1",
+  "status": "completed_post_selection_exploration_no_candidate_selected",
+  "G0": "passed_20_saved_windows_40_parameter_transforms_independent_cold",
+  "G1": "both_candidates_weaker_than_uniform5_control",
+  "decision": {
+    "candidates": {
+      "CYCLE_LAST3": {
+        "failure_reasons": [
+          "nonpositive_seed_gain",
+          "nonpositive_mechanism_mean"
+        ],
+        "mean_gain": 0.002721073984571869,
+        "mechanism_mean": -0.00019678272647520947,
+        "seed_gains": [
+          0.003820430440337157,
+          0.004879515120176593,
+          -0.00023245502676389788,
+          0.002416805404537624
+        ],
+        "seed_lcb95_descriptive": 0.00011785209983616656
+      },
+      "CYCLE_LINEAR5": {
+        "failure_reasons": [
+          "nonpositive_seed_gain",
+          "nonpositive_mechanism_mean"
+        ],
+        "mean_gain": 0.0028109197551969634,
+        "mechanism_mean": -0.00010693695585011521,
+        "seed_gains": [
+          0.003921685026110379,
+          0.0049283359314533,
+          -0.00018303194727038887,
+          0.002576690010494563
+        ],
+        "seed_lcb95_descriptive": 0.00020304855520900588
+      }
+    },
+    "classification": "post_selection_exploration_only_not_release_authorized",
+    "control_gains": [
+      0.00394888219493393,
+      0.005025859653867665,
+      -5.4217312626543305e-05,
+      0.0027509023080132624
+    ],
+    "exploration_selected": [],
+    "formal_promoted": false,
+    "release_authorized": false
+  },
+  "audit_summary": {
+    "independent_cold_units": 20,
+    "max_prediction_difference": 1.2985314327806918e-05,
+    "max_window_parameter_difference": 1.1920928955078125e-07,
+    "new_control_inferences": 0,
+    "new_fits": 0,
+    "new_optimizers": 0,
+    "peak_rss_mib": 401.28125,
+    "production_units": 20,
+    "status": "passed_complete_20_windows_40_parameter_transforms_independent_cold"
+  },
+  "new_fits": 0,
+  "new_optimizers": 0,
+  "new_reference_fits": 0,
+  "new_control_inferences": 0,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "release_authorized": false,
+  "preflight_sha256": "22d95d8a240a86b38377c4ba503fca4d94f69ba1a000664b0015516737fbd8cf"
+}
