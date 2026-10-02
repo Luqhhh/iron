@@ -2629,7 +2629,7 @@
     "optimization_paused": false,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "owned_dropout_training_and_independent_audit_actual_exit0_complete_specific_processes_absent_no_global_polling",
+    "runtime_observation": "owned_width512_training_and_independent_audit_actual_exit0_complete_specific_processes_absent_no_empty_monitoring",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3011,7 +3011,7 @@
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
     "latest_registered_scientific_route": "ema_width512_preparation_20261002",
-    "latest_completed_scientific_route": "ema_dropout_consistency_preparation_20261002",
+    "latest_completed_scientific_route": "ema_width512_preparation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_and_matched_pair_control_confirmation_gate_failed"
   },
@@ -19889,7 +19889,7 @@
     "next_scientific_fits_for_this_recipe": 0
   },
   "q75_9645_strategy_20261002": {
-    "status": "width512_followup_running_previous_dropout_closed_one_existing_platform_probe_untested",
+    "status": "width512_and_dropout_fixed_recipes_closed_one_existing_platform_probe_untested_next_distinct_route_review",
     "target": 96.45,
     "reference": "EMA_TIME_Q75",
     "reference_score": 96.392,
@@ -19909,7 +19909,7 @@
     "de3_q75_reserve_deferred": true,
     "uploads": 0,
     "results": "docs/q75_9645_execution/RESULTS.md",
-    "new_scientific_optimizer_runs": 160,
+    "new_scientific_optimizer_runs": 180,
     "new_packages": 1,
     "new_confirmation_seeds": 0,
     "full_data_fits": 0,
@@ -19938,13 +19938,16 @@
       "ema_retraining_step_matching_20261002",
       "ema_component_calibration_preparation_20261002"
     ],
-    "latest_followup_results": "docs/ema_dropout_consistency/RESULTS.md",
-    "active_preregistered_followup": "ema_width512_preparation_20261002",
-    "active_followup_optimizer_budget": 20,
+    "latest_followup_results": "docs/ema_width512/RESULTS.md",
+    "active_preregistered_followup": null,
+    "active_followup_optimizer_budget": 0,
     "dropout_followup_optimizer_runs": 40,
     "dropout_followup_engineering_optimizer_runs": 2,
     "dropout_followup_result_key": "ema_dropout_consistency_preparation_20261002",
-    "latest_completed_followup": "ema_dropout_consistency_preparation_20261002"
+    "latest_completed_followup": "ema_width512_preparation_20261002",
+    "width512_followup_optimizer_runs": 20,
+    "width512_followup_engineering_optimizer_runs": 1,
+    "width512_followup_result_key": "ema_width512_preparation_20261002"
   },
   "q75_combination_review_20261002": {
     "status": "completed_zero_fit_review_one_G0_passed_exploration_ready",
@@ -20950,7 +20953,7 @@
     "results_document": "docs/ema_dropout_consistency/RESULTS.md"
   },
   "ema_width512_preparation_20261002": {
-    "status": "scientific_development_running_full_two_split_single_width_scope",
+    "status": "closed_full_two_split_G0_passed_fixed_width512_recipe_failed_confirmation_gate",
     "reference": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -20967,12 +20970,12 @@
         "new": 512
       }
     },
-    "G0": "20_locked_scoped_tests_full_shape_width512_learnability_cold_and_actual_exit0_passed_scientific_audit_pending",
-    "G1": "unmeasured_until_complete_two_split_OOF_and_independent_audit",
+    "G0": "passed_native_states_training_partition_epoch_preprocessing_independent_cold_scalar_and_actual_exit0",
+    "G1": "both_complete_development_seeds_negative_vs_Q75_not_shortlisted_no_confirmation_or_formal_promotion",
     "engineering_optimizer_budget": 1,
     "engineering_optimizer_runs": 1,
-    "scientific_model_fits": null,
-    "scientific_optimizer_runs": null,
+    "scientific_model_fits": 10,
+    "scientific_optimizer_runs": 20,
     "planned_scientific_estimators": 10,
     "planned_scientific_optimizer_runs": 20,
     "planned_new_cold_states": 20,
@@ -21001,7 +21004,7 @@
     "actual_admission_supervisor_pid": 282413,
     "actual_admission_controller_pid": 282414,
     "started_ns": 1790899957296373366,
-    "next_scheduled_observation_ns": 1790900557296373366,
+    "next_scheduled_observation_ns": null,
     "controller_tests_receipt": {
       "path": "local/runs/ema-width512-20261002/controller-tests-r1/tests-receipt.json",
       "sha256": "5360137f18e369b8c6d741cd8db254b5a880cfc8157d688f41ba8b8cc79640ec"
@@ -21046,7 +21049,7 @@
         "sha256": "2863483179f8481cda86dfec5f63becf3ec3a8787739add3b344b93e68789c77"
       }
     },
-    "actual_counts_pending_terminal": true,
+    "actual_counts_pending_terminal": false,
     "scientific_run": "local/runs/ema-width512-20261002/development-r1",
     "scientific_manifest": {
       "path": "local/runs/ema-width512-20261002/development-r1/manifest.json",
@@ -21066,6 +21069,79 @@
       "path": "local/runs/ema-width512-20261002/controller-tests-failed-r1/failure-receipt.json",
       "sha256": "fc7bc9427f423d36bf711d17660b4db925e3559b9afde44bc787c39d272ac694"
     },
-    "preparation_document": "docs/ema_width512/PREPARATION.md"
+    "preparation_document": "docs/ema_width512/PREPARATION.md",
+    "actual_new_cold_states": 20,
+    "actual_reused_cold_states": 20,
+    "actual_scientific_child_exit_codes": [
+      0,
+      0
+    ],
+    "actual_scientific_supervisor_exit_code": 0,
+    "development_controller_running": false,
+    "scientific_observer_running": false,
+    "scientific_completed_ns": 1790903274435559854,
+    "scientific_peak_rss_mib": {
+      "development": 915.2265625,
+      "independent_audit": 613.3671875
+    },
+    "full_batch_cold_difference": 0,
+    "maximum_order_chunk_difference": 1.295262751455084e-05,
+    "maximum_scalar_difference": 1.4210854715202004e-14,
+    "complete_OOF_rows_per_seed": {
+      "42": 2754,
+      "3407": 2754
+    },
+    "package_score_records": {
+      "42": {
+        "scores": {
+          "Q75": 96.23658014851011,
+          "EMA_WIDTH512": 96.22678003087022
+        },
+        "gains": {
+          "EMA_WIDTH512": -0.009800117639898076
+        }
+      },
+      "3407": {
+        "scores": {
+          "Q75": 96.22988142941723,
+          "EMA_WIDTH512": 96.2180752879589
+        },
+        "gains": {
+          "EMA_WIDTH512": -0.011806141458336583
+        }
+      }
+    },
+    "mean_package_gain": {
+      "EMA_WIDTH512": -0.01080312954911733
+    },
+    "automatic_tier": "not_shortlisted",
+    "confirmation_eligible": false,
+    "formal_promotion": false,
+    "selected_for_confirmation": null,
+    "platform_exploration": "not_scheduled_for_this_fixed_recipe_both_complete_splits_negative_no_demonstrated_capacity_advantage_existing_transfer_probe_pending",
+    "local_gain_is_sole_platform_selection_criterion": false,
+    "results_document": "docs/ema_width512/RESULTS.md",
+    "scientific_terminal_evidence": {
+      "manifest.json": {
+        "path": "local/runs/ema-width512-20261002/development-r1/manifest.json",
+        "sha256": "9c1cc3b09076a8ca619c4e731075310ae4424bb34703d1e010f082f823301fad"
+      },
+      "report.json": {
+        "path": "local/runs/ema-width512-20261002/development-r1/report.json",
+        "sha256": "291042b83765cd439d91dc82824e18df571b69990a3f3f6f5263f25724ba9397"
+      },
+      "independent-score.json": {
+        "path": "local/runs/ema-width512-20261002/development-r1/independent-score.json",
+        "sha256": "f106a9791c291533a274857fc1db9bd7fcbea26b3e432b9fbb2064a4df2db4af"
+      },
+      "terminal-verification.json": {
+        "path": "local/runs/ema-width512-20261002/development-r1/terminal-verification.json",
+        "sha256": "f9cd1949c211d231b30191a6cb7162f116416709dad2d193a125dddf34e91875"
+      },
+      "actual-main-exit.json": {
+        "path": "local/runs/ema-width512-20261002/development-r1/actual-main-exit.json",
+        "sha256": "f01c5e0fb7e01d1a4e2bd0f2711fa9c548caa4e38287e44b6afb0993257dd9c7"
+      }
+    }
   }
 }
