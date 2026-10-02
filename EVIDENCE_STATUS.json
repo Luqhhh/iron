@@ -18874,5 +18874,73 @@
     "original_failure_preserved": true,
     "results": "docs/swa_delta_v1/RESULTS.md",
     "spec": "configs/swa_delta_v1/SPEC.json"
+  },
+  "swa_time_select_v1_20261002": {
+    "identity": "SWA_TIME_SELECT_V1",
+    "status": "completed_development_not_selected_for_confirmation",
+    "G0": "original_ID_serialization_stop_preserved_then_authorized_zero_fit_recovery_passed",
+    "G1": "two_seed_positive_vs_Q75_but_nonpositive_mean_mechanism_vs_original_SWA",
+    "decision": {
+      "classification": "exploration_only_not_release_authorized",
+      "control_gains": [
+        0.00433976311089045,
+        0.004547392986334328
+      ],
+      "failure_reasons": [
+        "nonpositive_mechanism_advantage"
+      ],
+      "formal_promoted": false,
+      "mean_gain": 0.004245220784043444,
+      "mechanism_mean": -0.00019835726456894588,
+      "packages": 0,
+      "release_authorized": false,
+      "seed_gains": [
+        0.004470936935578493,
+        0.004019504632508394
+      ],
+      "seed_lcb95": null,
+      "selected_for_confirmation": [],
+      "uploads": 0
+    },
+    "counts": {
+      "confirmation": {
+        "completed": {
+          "optimizer": 0,
+          "state": 0
+        },
+        "reserved": {
+          "optimizer": 0,
+          "state": 0
+        }
+      },
+      "development": {
+        "completed": {
+          "optimizer": 20,
+          "state": 20
+        },
+        "reserved": {
+          "optimizer": 20,
+          "state": 20
+        }
+      },
+      "engineering": {
+        "completed": {
+          "optimizer": 2,
+          "state": 2
+        },
+        "reserved": {
+          "optimizer": 2,
+          "state": 2
+        }
+      }
+    },
+    "new_reference_fits": 0,
+    "reused_control_states": 22,
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0,
+    "release_authorized": false,
+    "results": "docs/swa_time_select_v1/RESULTS.md",
+    "spec": "configs/swa_time_select_v1/SPEC.json"
   }
 }
