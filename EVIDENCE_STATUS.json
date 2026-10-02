@@ -18738,5 +18738,78 @@
     "independent_final_verification": "passed_zero_fit_full_coverage_hashes_counts_and_gain_recalculation",
     "confirmation_start_authorized_only_with_new_phase_admission_and_required_Q75_reference": true,
     "results": "docs/tabm_time_swa_v1/RESULTS.md"
+  },
+  "tabm_time_swa_confirmation_continuation_20261002": {
+    "strategy": "TABM_TIME_SWA_CONFIRM_CONTINUATION_20261001",
+    "updated_at": "2026-10-02T00:10:33.293965+00:00",
+    "status": "completed_four_seed_confirmation_not_promoted",
+    "G0": "passed_reference_import_original_development_revalidation_and_complete_confirmation_cold_audit",
+    "G1": "four_seed_mean_positive_but_one_seed_negative_and_LCB95_nonpositive",
+    "seed_order": [
+      42,
+      3407,
+      271828,
+      314159
+    ],
+    "seed_gains": [
+      0.00433976311089045,
+      0.004547392986334328,
+      -0.0007580087389666711,
+      0.0019530761211210264
+    ],
+    "control_gains": [
+      0.00022689938021361203,
+      0.003336898207237339,
+      0.0005479532106006474,
+      0.0009956525570536624
+    ],
+    "mean_gain": 0.0025205558698447833,
+    "mechanism_mean": 0.0012437050310684682,
+    "seed_lcb95": -0.0004005710365482238,
+    "formal_promoted": false,
+    "classification": "exploration_only_not_release_authorized",
+    "failure_reasons": [
+      "nonpositive_seed_gain",
+      "nonpositive_seed_lcb95"
+    ],
+    "confirmation_outer_estimator_fits": 20,
+    "confirmation_states": 40,
+    "confirmation_optimizer_runs": 40,
+    "confirmation_BASE_optimizer_runs": 20,
+    "confirmation_SWA_optimizer_runs": 20,
+    "original_7777_12011_confirmation_states": 0,
+    "original_7777_12011_confirmation_optimizer_runs": 0,
+    "confirmation_cold_models": 40,
+    "confirmation_training_peak_rss_mib": 686.81640625,
+    "confirmation_cold_peak_rss_mib": 686.81640625,
+    "confirmation_max_cold_prediction_difference": 1.2882023412430499e-05,
+    "confirmation_max_window_parameter_difference": 4.76837158203125e-07,
+    "confirmation_controller_minutes_descriptive": 43.27468812068303,
+    "new_reference_fits": 0,
+    "development_repeats": 0,
+    "new_G0_optimizers": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "release_authorized": false,
+    "original_development_and_protocol_unchanged": true,
+    "confirmation_seed_replacement_authorization": "User explicitly approved 271828/314159 in this conversation on 2026-10-02",
+    "independent_final_verification": "passed_zero_fit_four_seed_coverage_hashes_budget_scores_and_gate",
+    "controller_terminal": "completed",
+    "actual_process_exit_code_independently_captured": false,
+    "actual_process_exit_evidence": {
+      "status": "process_no_longer_present_exit_status_not_recorded"
+    },
+    "tests": {
+      "private_controller_neural_passed": 4,
+      "private_controller_locked_passed": 4
+    },
+    "reference": "EMA_TIME_Q75",
+    "reference_platform_score_user_reported": 96.392,
+    "complete_Q75_package_local_score_available": false,
+    "retention_reason": "Positive four-seed mean and mechanism advantage, distinct epoch-window averaging; retain exploration only, platform gain unmeasured and ranking priority not automatically assigned",
+    "scientific_source_unchanged": true,
+    "public_controller_archive": "scripts/swa_confirmation/controller.py",
+    "results": "docs/tabm_time_swa_continuation/RESULTS.md"
   }
 }
