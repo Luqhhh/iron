@@ -2748,7 +2748,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "All_resumed_fixed_loss_and_Laplace_mean3_workers_terminal_no_background_monitor",
+    "runtime_observation": "One_serial_joint_MAE_development_worker_running_600_second_observations",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3142,12 +3142,12 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "q75_joint_mae_development_20261002",
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Keep_platform_allocation_deferred_as_user_requested; leading_first_slot_nomination_remains_original_LAPLACE_FIXED_A20; second_choice_after_first_feedback",
+    "next_action": "Complete_shared_vs_separate_joint_MAE_two_full_development_seeds_keep_two_platform_slots_deferred",
     "optimization_paused": false,
     "pause_after_this_round_requested": false
   },
@@ -23400,5 +23400,95 @@
     "independent_score_sha256": "c86e28afeedb3de470f94c93da1a3db57a162235259f37e961da291385786278",
     "terminal_sha256": "e017c3df2aa7950d4b1f7806f7acf0e03b0a0b9dd4186894e7022a4ba96c08eb",
     "status_document": "docs/q75_laplace_mean3_confirmation/RESULTS.md"
+  },
+  "q75_joint_mae_development_20261002": {
+    "status": "development_running_engineering_passed",
+    "source_worktree": "local/worktrees/q75-joint-mae-development",
+    "source_commit": "374331ab696fdc4fc24525d5367246b3b990df3f",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "protocol": "docs/q75_joint_mae/PREREGISTRATION.md",
+    "specification": "configs/q75_joint_mae/SPEC.json",
+    "run_directory": "local/runs/q75-joint-mae-20261002/development-r1",
+    "planned_scientific_optimizers": 40,
+    "actual_engineering_optimizers": 4,
+    "reference_fits": 0,
+    "confirmation_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 14,
+      "optimizer_constructor_attempts": 0,
+      "receipt_sha256": "20e71101d07499f9330edd7224734b94f40a112f17e45c07445032444f8b1bb8"
+    },
+    "engineering": {
+      "manifest_sha256": "6893f4efcb9dfb64291ea1002e560d98ae560d7b584085b99a4299efc1566e1c",
+      "optimizer_runs": 4,
+      "cold_states": 4,
+      "cold_max_difference": 1.1368683772161603e-13,
+      "peak_os_rss_mib": 506.62890625,
+      "actual_exit_codes": [
+        0,
+        0
+      ],
+      "owned_pids_verified_absent": true
+    },
+    "manifest_sha256": "3a00a2f1057386419938589e541bc0780c94280d0784ffa0b001f9221614a94c",
+    "frozen_dependency_files": 1981,
+    "initial_process_verification": {
+      "observed_ns": 1790934679653965507,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "kind": "supervisor_pid",
+          "pid": 8250,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-joint-mae-development",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-joint-mae-development/.venv/bin/python3",
+            "scripts/q75_joint_mae.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-joint-mae-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "kind": "worker_pid",
+          "pid": 8251,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-joint-mae-development",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-joint-mae-development/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_joint_mae",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-joint-mae-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "manifest_sha256": "3a00a2f1057386419938589e541bc0780c94280d0784ffa0b001f9221614a94c",
+      "next_periodic_observation_ns": 1790935279653965507
+    },
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "G0": "engineering_passed_development_running",
+    "G1": "not_evaluated",
+    "formal_promoted": false,
+    "tool_session_id": 92024
   }
 }
