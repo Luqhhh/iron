@@ -32,6 +32,8 @@
 
 ## 当前维护入口
 
+- [Laplace三训练seed均值开发](q75_laplace_mean3/PREREGISTRATION.md)：新增1042/2042并复用原42，唯一等权候选；11项零optimizer检查通过，完整两split计划40次新optimizer，须对Q75及原单seed各切分均正才允许另冻确认。
+
 - [固定点损失完整结果](q75_fixed_point_losses/RESULTS.md)：30估计器/60科学optimizer/60冷状态和四真实exit0通过；时长固定Gaussian弱于就绪Laplace，铁量两臂各一负，没有新确认候选。
 - [两名额无标签预测比较](platform_slot_review/RESULTS.md)：三包预测均有差别，不能据同架构视为重复或据差异大小推断收益；名额继续保留，原表头检查失败及独立恢复均记录。
 
