@@ -1,0 +1,61 @@
+{
+  "identity": "SWA_DELTA_V1",
+  "status": "completed_post_selection_exploration",
+  "G0": "cached_identity_and_independent_arithmetic_passed",
+  "G1": "weak_exploration_not_promoted",
+  "records": {
+    "DELTA10": {
+      "all_seed_positive": false,
+      "evidence": "post_selection_exploration",
+      "formal_promoted": false,
+      "mean_gain": 0.00015397804351413973,
+      "minimum_gain": -0.0009171422537513891,
+      "seed_gains": [
+        0.001019386264030867,
+        0.00014577203435642755,
+        -0.0009171422537513891,
+        0.0003678961294206534
+      ],
+      "seed_lcb95_descriptive": -0.0007927593202067462
+    },
+    "DELTA20": {
+      "all_seed_positive": false,
+      "evidence": "post_selection_exploration",
+      "formal_promoted": false,
+      "mean_gain": -7.803961694487997e-05,
+      "minimum_gain": -0.0022305738191803477,
+      "seed_gains": [
+        0.0012612613243975096,
+        0.00010330177668931607,
+        -0.0022305738191803477,
+        0.0005538522503140022
+      ],
+      "seed_lcb95_descriptive": -0.0018572952827776463
+    },
+    "DELTA30": {
+      "all_seed_positive": false,
+      "evidence": "post_selection_exploration",
+      "formal_promoted": false,
+      "mean_gain": -0.0006557189362949593,
+      "minimum_gain": -0.004025107418868037,
+      "seed_gains": [
+        0.0010020407645496188,
+        -9.603848679649322e-05,
+        -0.004025107418868037,
+        0.0004962293959350738
+      ],
+      "seed_lcb95_descriptive": -0.00335107984988532
+    }
+  },
+  "exploration_selected": [
+    "DELTA10"
+  ],
+  "formal_promoted": false,
+  "release_authorized": false,
+  "new_fits": 0,
+  "new_optimizers": 0,
+  "new_inferences": 0,
+  "packages": 0,
+  "uploads": 0,
+  "original_failure_preserved": true
+}
