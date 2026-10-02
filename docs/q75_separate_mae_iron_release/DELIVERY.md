@@ -18,4 +18,12 @@ G1通过本地四seed正式门及额外配对门，详见[确认结果](../q75_s
 
 两个平台名额按用户意见继续保留；本包作为铁量方向参与[分配比较](../platform_slot_review/ALLOCATION.md)。当前平台最佳仍为用户回传96.3920，96.45尚未达到。
 
-2026-10-02更新：第一项LAPLACE_FIXED_A20平台回传96.3891、相对Q75为−0.0029后，本包成为第二项首选（更换目标列、信息量独立、无新拟合需求），但**尚未写桌面或上传**，待用户指令；不因该反馈改动本包配方、门槛或分类。
+2026-10-02更新：第一项LAPLACE_FIXED_A20平台回传96.3891、相对Q75为−0.0029后，本包成为第二项首选（更换目标列、信息量独立、无新拟合需求）；不因该反馈改动本包配方、门槛或分类。
+
+## 2026-10-02 桌面交付（用户“写桌面”指令）
+
+按用户指令把已审计通过的同一ZIP复制到 `C:\Users\lqh22\Desktop\submission-SEPARATE-MAE-IRON-A20-20261002\`，并附 `README.txt`。桌面ZIP与原包逐字节相同，SHA256仍为 `a6fc793ae48312a868477b20408534aeaa1ace0e23f62d8138915f847c585539`。
+
+独立新进程（锁定Python 3.12.12）回读通过：仅 `result.csv`、CRC正确、322唯一ID按官方模板顺序、预测有限非负；**固定列 `pred_tap_time_len` 与Q75原字段字符串差异0**，铁量列322行为融合后值。0新拟合、0新提交包、0助手上传、0标签读取。收据：`local/runs/q75-separate-mae-iron-release-20261002/desktop-delivery-r1/desktop-delivery.json`（SHA256 `e4418ad6bbfe10037470a808f000409b5eddd8d699f884169a82fb17b3873d92`）与 `desktop-independent-audit.json`（SHA256 `a997014e79c0e26ca1c381d19891fb051874c95b90a1bcfbe1157207bbe72e87`），审计脚本 `audit_desktop.py` 同目录，均在私有 `local/`。
+
+平台未测；上传与回传由用户执行。当前平台最佳仍为用户回传、未独立核验的96.3920（Q75），96.45未达。

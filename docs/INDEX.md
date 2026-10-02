@@ -35,10 +35,10 @@
 - [独立MAE铁量三训练seed均值结果](q75_separate_mae_iron_mean3/RESULTS.md)：40新optimizer/60新旧状态审计通过；两seed对Q75均正却均低于就绪单seed，不确认或新增包。
 - [原V10 MAE零训练复核](q75_retained_v10_mae/RESULTS.md)：相对Q75两seed为正，但均弱于就绪Laplace和同骨干MSE；0新optimizer，不追加候选。仅保留预测来源/算术审计，原checkpoint缺失不冒称模型冷复现。
 
-- [独立MAE铁量全量交付](q75_separate_mae_iron_release/DELIVERY.md)：2optimizer/2状态、117轮全量重训，独立冷/NumPy/无标签预测/322行包回读及五个真实exit0通过；只改铁量，时长原字符串保持。
+- [独立MAE铁量全量交付](q75_separate_mae_iron_release/DELIVERY.md)：2optimizer/2状态、117轮全量重训，独立冷/NumPy/无标签预测/322行包回读及五个真实exit0通过；只改铁量，时长原字符串保持；随后按用户指令写桌面`submission-SEPARATE-MAE-IRON-A20-20261002`，固定时长列差异0，平台未测。
 - [独立MAE铁量四seed确认](q75_separate_mae_iron/RESULTS.md)：对Q75均值+.006061/LCB+.003411，对单目标MAE均值+.004275/LCB+.001841，两项四seed均正；观察后控制线索的单独前瞻确认。
 - [共享MAE完整开发](q75_joint_mae/RESULTS.md)：共享铁量一个负seed、共享时长弱于原Laplace，原准入门失败；不追溯更换候选。
-- [两个名额暂定安排](platform_slot_review/ALLOCATION.md)：首项Laplace时长平台回传96.3891（相对Q75 −0.0029，本地正收益未转移）；第二项锁定铁量方向SEPARATE_MAE_IRON_A20，尚未写桌面或上传；Q75仍为最佳，不推断剩余额度。
+- [两个名额暂定安排](platform_slot_review/ALLOCATION.md)：首项Laplace时长平台回传96.3891（相对Q75 −0.0029，本地正收益未转移）；第二项锁定时长外目标SEPARATE_MAE_IRON_A20并已写桌面、待上传回传；Q75仍为最佳，不推断剩余额度。
 
 - [Laplace三seed四切分确认](q75_laplace_mean3_confirmation/RESULTS.md)：对Q75均值+.012413/LCB+.008464，正式门过；对原单seed均值+.000687但LCB−.000347、一个负seed，新包门失败，0全量/包。40optimizer及60新旧状态、四真实exit0闭合。
 
