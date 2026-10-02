@@ -2694,7 +2694,7 @@
     "optimization_paused": true,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "all_owned_current_round_processes_exited_no_live_job_no_empty_monitoring",
+    "runtime_observation": "specific_EMA_MEAN3_release_frozen_only_two_new_full_programs_authorized_pending_launch",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3079,7 +3079,7 @@
     "latest_completed_scientific_route": "sam_ema_time_preparation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_positive_vs_matched_SAM_confirmation_gate_failed",
-    "active_release_key": null,
+    "active_release_key": "ema_mean3_manual_exploration_release_20261002",
     "pause_after_this_round_requested": true,
     "pause_user_instruction": "本轮结束后暂停",
     "pause_reason": "explicit_user_instruction_本轮结束后暂停",
@@ -3091,7 +3091,8 @@
         "SAM_EMA_TIME_Q75_EXPLORATION"
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
-    }
+    },
+    "authorized_release_exception": "仅执行用户指定EMA_MEAN3全量拟合、封包和桌面交付，完成后继续暂停；不启动其他优化。"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -21692,5 +21693,63 @@
     "new_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0
+  },
+  "ema_mean3_manual_exploration_release_20261002": {
+    "status": "frozen_release_engineering_passed_scientific_fits_not_started",
+    "candidate": "EMA_MEAN3_FULL_Q75",
+    "authorization": "用户明确指令：EMA_MEAN3 写桌面",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "thread_target": 96.45,
+    "formal_promotion": false,
+    "scientific_decision_preserved": "EMA_MEAN3_two_development_splits_positive_vs_Q75_matched_BASE_mean_gate_failed_no_confirmation",
+    "manual_exploration_reason": "fixed_three_predeclared_training_seed_mean_tests_variance_reduction_of_platform_positive_EMA_direction",
+    "protocol": "docs/ema_mean3_release/PREREGISTRATION.md",
+    "spec": "configs/ema_mean3_release/SPEC.json",
+    "source_directory": "/home/lux1/iron/local/worktrees/ema-mean3-exploration-release",
+    "run_directory": "local/runs/ema-mean3-exploration-release-20261002/release-r1",
+    "explicit_grant": "/home/lux1/iron/local/authorizations/ema-mean3-desktop-20261002-r1.json",
+    "explicit_grant_sha256": "64412816fecec099af523308b801ba7c8e343424404cf24c382adfc5f30c92e6",
+    "planned": {
+      "full_training_procedures": 2,
+      "optimizer_runs": 4,
+      "new_native_states": 4,
+      "reused_native_states": 2,
+      "packages": 1,
+      "desktop_copies": 1,
+      "new_CV": 0,
+      "new_confirmation_seeds": 0,
+      "agent_uploads": 0
+    },
+    "G0": "source_locked_full_tests_1548_passed_manifest_runtime_partition_and_old_input_identities_frozen_full_fit_pending",
+    "G1": "user_selected_manual_exploration_platform_unmeasured_not_formal_promotion",
+    "platform_score": null,
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": 0,
+    "pause_after_delivery": true,
+    "broader_optimization_paused": true,
+    "source_commit": "a7c7a0e813bbbbf9a28117accfd7984290591a01",
+    "manifest_sha256": "662478cff95ce09e6f2e3c39765fddc2f71ccfe8bbb7e491697f179c0d325daa",
+    "tests": {
+      "passed": 1548,
+      "failed": 0,
+      "skipped": 0,
+      "full_suite": true,
+      "locked_python": "3.12",
+      "actual_exit_code": 0,
+      "receipt": "local/runs/ema-mean3-exploration-release-20261002/engineering-r1/full-tests-r2.json",
+      "receipt_sha256": "0ecb2efbc5f8f5c285c425ff032a02f6d0608f1b70f132e4661120dbcc56ba04",
+      "exact_source_mirror_checked_before_and_after": true
+    },
+    "frozen_files": {
+      "sources": 396,
+      "inputs": 573,
+      "model_sources": 401
+    }
   }
 }
