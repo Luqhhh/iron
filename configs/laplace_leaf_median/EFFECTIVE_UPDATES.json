@@ -1,0 +1,10 @@
+{
+  "identity": "XJN_LAD_EFFECTIVE_UPDATE_DIAGNOSTIC_V1",
+  "scope": "twenty_completed_selector_models_only_after_original_cold_audit",
+  "parameter_change": "exact_float64_current_mu_after_update_not_equal_to_before",
+  "descriptive_material_change_threshold_normalized": 1e-12,
+  "threshold_used_for_selection_or_termination": false,
+  "calibration_checkpoint_or_weights_changed": false,
+  "new_fits": 0,
+  "packages": 0
+}
