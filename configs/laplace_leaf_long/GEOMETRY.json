@@ -1,0 +1,11 @@
+{
+  "identity": "XJN_LAD_LONG_ZERO_FIT_GEOMETRY_V1",
+  "phase": "post_completion_descriptive_only",
+  "seeds": [42, 3407],
+  "checkpoints": [3000, 6000, 9000, 11000, 12000],
+  "near_end_descriptive_fraction": 0.9,
+  "change_selection_or_weights": false,
+  "alpha_search": false,
+  "new_fits": 0,
+  "packages": 0
+}
