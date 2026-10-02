@@ -24,7 +24,7 @@
 
 **本地收益不能作为唯一指标。** 本地和平台的符号、排序、幅度、最佳权重可能不同；切分稳定性不等于独立数据泛化保证。SAM 时长本地 −0.01643、平台 +0.0031；EMA 时长本地 +0.00217、平台 +0.0168。Q75/Q100 相对 Q50 的本地两切分均负，平台均 +0.0025。
 
-最新N→V36固定探针本地四seed均正、平均+0.006667、LCB95+0.005809，平台回传却相对Q75下降0.0024；SAM＋EMA固定人工探索平台下降0.0124。保留具体配方的反例与原门槛，不推广到整个模型家族，也不据此建立通用本地/平台转移规则。
+最新N→V36固定探针本地四seed均正、平均+0.006667、LCB95+0.005809，平台回传却相对Q75下降0.0024；SAM＋EMA固定人工探索平台下降0.0124；LAPLACE_FIXED_A20本地四seed均正、均值+0.011726、LCB95+0.007307，平台回传96.3891相对Q75下降0.0029。保留具体配方的反例与原门槛，不推广到整个模型家族，也不据此建立通用本地/平台转移规则。
 
 保留完整同协议评估、当前目标参照、增量融合收益和冻结门槛；正式晋级仍要求至少四个完整 split seed、各 seed 正收益及 seed 层配对 LCB95 > 0。平台探索另行登记理由与授权，不追溯改写失败决定。不用固定偏移、放大倍数或条件列加法冒充平台预测。
 
@@ -38,7 +38,7 @@
 - [独立MAE铁量全量交付](q75_separate_mae_iron_release/DELIVERY.md)：2optimizer/2状态、117轮全量重训，独立冷/NumPy/无标签预测/322行包回读及五个真实exit0通过；只改铁量，时长原字符串保持。
 - [独立MAE铁量四seed确认](q75_separate_mae_iron/RESULTS.md)：对Q75均值+.006061/LCB+.003411，对单目标MAE均值+.004275/LCB+.001841，两项四seed均正；观察后控制线索的单独前瞻确认。
 - [共享MAE完整开发](q75_joint_mae/RESULTS.md)：共享铁量一个负seed、共享时长弱于原Laplace，原准入门失败；不追溯更换候选。
-- [两个名额暂定安排](platform_slot_review/ALLOCATION.md)：首项Laplace时长，第二项优先考虑新铁量方向但未锁定；队友MAE预热/末5轮公开结果均已核对，无新增入选候选；建议先测Laplace，第二名额等反馈。
+- [两个名额暂定安排](platform_slot_review/ALLOCATION.md)：首项Laplace时长平台回传96.3891（相对Q75 −0.0029，本地正收益未转移）；第二项锁定铁量方向SEPARATE_MAE_IRON_A20，尚未写桌面或上传；Q75仍为最佳，不推断剩余额度。
 
 - [Laplace三seed四切分确认](q75_laplace_mean3_confirmation/RESULTS.md)：对Q75均值+.012413/LCB+.008464，正式门过；对原单seed均值+.000687但LCB−.000347、一个负seed，新包门失败，0全量/包。40optimizer及60新旧状态、四真实exit0闭合。
 
@@ -47,7 +47,7 @@
 - [固定点损失完整结果](q75_fixed_point_losses/RESULTS.md)：30估计器/60科学optimizer/60冷状态和四真实exit0通过；时长固定Gaussian弱于就绪Laplace，铁量两臂各一负，没有新确认候选。
 - [两名额无标签预测比较](platform_slot_review/RESULTS.md)：三包预测均有差别，不能据同架构视为重复或据差异大小推断收益；名额继续保留，原表头检查失败及独立恢复均记录。
 
-- [固定尺度Laplace全量交付](q75_laplace_release/DELIVERY.md)：单一20%时长融合包，2正式optimizer/2状态、无标签新进程冷推理、322行回读与5个真实exit0通过；9项零optimizer发布检查通过，发布当时0桌面/上传；随后按用户指令复制到桌面`submission-LAPLACE-FIXED-A20-20261002`并独立回读通过，仍未上传、无平台分数。
+- [固定尺度Laplace全量交付](q75_laplace_release/DELIVERY.md)：单一20%时长融合包，2正式optimizer/2状态、无标签新进程冷推理、322行回读与5个真实exit0通过；9项零optimizer发布检查通过，发布当时0桌面/上传；随后按用户指令复制到桌面`submission-LAPLACE-FIXED-A20-20261002`并独立回读通过；平台回传96.3891（用户回传、未独立核验），相对Q75 −0.0029，本地四seed正收益未转移。
 
 - [固定尺度Laplace四seed确认](q75_laplace_confirmation/RESULTS.md)：相对Q75四seed均正、均值+.011726/LCB95+.007307；相对Gaussian均值+.003321但LCB95为负，不称统计独胜。20次新optimizer/20状态及真实终态闭合，后续独立全量包已完成。
 

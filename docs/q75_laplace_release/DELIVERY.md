@@ -27,3 +27,11 @@ ZIP仅含`result.csv`，322唯一ID按官方模板顺序、有限非负、CRC、
 桌面ZIP与原包逐字节相同，SHA256仍为 `8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c`。独立新进程（锁定Python 3.12.12）回读通过：仅 `result.csv`、CRC正确、322唯一ID按官方模板顺序、预测有限非负、铁量原字段与Q75差异0、时长322行均为融合后值。0新拟合、0新提交包、0助手上传、0标签读取。收据：`local/runs/q75-laplace-release-20261002/desktop-delivery-r1/desktop-delivery.json`（SHA256 `a1a35db0e8767cb179f9147901ffcaf9fd3e20cf25794d9761471ce167f44b4c`）与 `desktop-independent-audit.json`（SHA256 `0e3cd5445008877040ece608a6c271ab2bbbe8f214745765d10fee2f15e847ef`），审计脚本 `audit_desktop.py` 同目录，均在私有 `local/`。
 
 平台分数仍未测得，96.45未达；上传与回传由用户执行，两个名额安排见[名额评审](../platform_slot_review/ALLOCATION.md)。
+
+## 2026-10-02 平台反馈：96.3891，低于Q75
+
+用户回传 **96.3891**（未独立核验），按交付顺序绑定本包（用户可更正）。相对Q75=96.3920为 **−0.0029**，相对96.45为−0.0609；平台保留最好成绩，Q75仍为当前最佳。
+
+本配方本地四seed相对Q75全正（均值+0.011726、seed层配对LCB95+0.007307），平台却小幅下降，属已记录的本地/平台分歧（同类反例：N→V36本地+0.006667→平台−0.0024；SAM＋EMA本地−0.01643→平台+0.0031）。该结论只适用于这一固定`0.8*Q75_time+0.2*LAPLACE_FIXED_time`配方，不推广到其他时长变体或损失机制，不据此建立偏移/放大，也不改四seed晋级门槛。G0交付身份不变：ZIP SHA256 `8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c`，桌面副本逐字节相同。
+
+反馈收据：`local/runs/q75-laplace-release-20261002/platform-feedback-r1/feedback.json`（SHA256 `f05750944bd34473e832f04e1d92fbdab1591e7aa66e74c5fe171ca01f25125e`）。第二项名额建议改测铁量方向[独立MAE铁量](../q75_separate_mae_iron_release/DELIVERY.md)，尚未写桌面或上传。

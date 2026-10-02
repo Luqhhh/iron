@@ -17,3 +17,5 @@ G1通过本地四seed正式门及额外配对门，详见[确认结果](../q75_s
 科学worktree commit `4c31ea9`；release manifest SHA256 `eebfe8762725273fe01a0af8858d68797e28a150b8a95013a8c399aa16e7a0f8`，package-audit `fc030ecd5920dc8b6bddf3643ba6a377924f4f5ebaa86728705ed0a5ce095368`。证据、模型和包只留local。
 
 两个平台名额按用户意见继续保留；本包作为铁量方向参与[分配比较](../platform_slot_review/ALLOCATION.md)。当前平台最佳仍为用户回传96.3920，96.45尚未达到。
+
+2026-10-02更新：第一项LAPLACE_FIXED_A20平台回传96.3891、相对Q75为−0.0029后，本包成为第二项首选（更换目标列、信息量独立、无新拟合需求），但**尚未写桌面或上传**，待用户指令；不因该反馈改动本包配方、门槛或分类。
