@@ -843,13 +843,13 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Independent MAE iron full release ready; retained V10 MAE current-reference review below ready Laplace and matched MSE, no new fits or queue entry; teammate warmup result pending",
+    "research_status": "Independent MAE iron mean3 paired development frozen; teammate warmup result reviewed, nonpositive mean mechanism, no confirmation",
     "platform_slots_user_reported": 2,
     "platform_slots_source": "user_current_turn_not_inferred",
     "submission_allocation": "deferred_by_user_preference_first_nomination_LAPLACE_FIXED_A20_second_after_first_feedback",
     "first_slot_provisional_nomination": "LAPLACE_FIXED_A20",
     "second_slot_provisional_nomination": null,
-    "second_slot_preferred_direction": "independent_MAE_iron_pending_first_feedback_and_teammate_evidence",
+    "second_slot_preferred_direction": "independent_MAE_iron_pending_first_feedback_and_registered_mean3_review",
     "allocation_document": "docs/platform_slot_review/ALLOCATION.md"
   },
   "round2_v2_3_candidate_release": {
@@ -3144,7 +3144,7 @@
     "latest_local_G0": "report_only_recovery_exit0_independent_audit_passed_original_exit1_preserved",
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
-    "latest_registered_scientific_route": "q75_laplace_mean3_confirmation_20261002",
+    "latest_registered_scientific_route": "q75_separate_mae_iron_mean3_development_20261002",
     "latest_completed_scientific_route": "q75_laplace_mean3_confirmation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_positive_vs_matched_SAM_confirmation_gate_failed",
@@ -3157,13 +3157,13 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "q75_separate_mae_iron_mean3_development_20261002",
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "SEPARATE_MAE_IRON_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Await_teammate_registered_warmup_MAE_result_keep_two_slots_deferred_and_current_ready_candidates",
+    "next_action": "Run_frozen_independent_MAE_iron_mean3_development_keep_two_platform_slots_deferred",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "q75_retained_v10_mae_review_20261002"
@@ -23838,8 +23838,9 @@
     "next_registered_branch": "origin/codex/swa-time-mae-warmup-v1",
     "next_registered_commit": "90cbc65",
     "next_registered_candidate": "SWA_TIME_MAE_WARMUP40",
-    "next_status": "strategy_registered_no_result_seen",
-    "repeat_teammate_fits": false
+    "next_status": "completed_two_positive_Q75_but_mean_mechanism_nonpositive_no_confirmation",
+    "repeat_teammate_fits": false,
+    "next_result_commit": "7503aae"
   },
   "q75_retained_v10_mae_review_20261002": {
     "status": "completed_zero_fit_not_prioritized_for_fresh_engineering",
@@ -23910,5 +23911,93 @@
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
     "automatic_retries": false
+  },
+  "q75_separate_mae_iron_mean3_development_20261002": {
+    "status": "frozen_checked_awaiting_serial_development_launch",
+    "source_worktree": "local/worktrees/q75-separate-mae-iron-mean3",
+    "source_commit": "79271824e4253bc0dc53cf72d234880bf308ce83",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "protocol": "docs/q75_separate_mae_iron_mean3/PREREGISTRATION.md",
+    "specification": "configs/q75_separate_mae_iron_mean3/SPEC.json",
+    "run_directory": "local/runs/q75-separate-mae-iron-mean3-20261002/development-r1",
+    "candidate": "SEPARATE_MAE_IRON_MEAN3_A20",
+    "control": "SEPARATE_MAE_IRON_A20",
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "new_training_seeds": [
+      1042,
+      2042
+    ],
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "planned_scientific_estimators": 20,
+    "planned_scientific_optimizers": 40,
+    "planned_new_states": 40,
+    "reused_states": 20,
+    "new_engineering_optimizers": 0,
+    "new_reference_fits": 0,
+    "confirmation_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 23,
+      "optimizer_constructor_attempts": 0,
+      "receipt_sha256": "643e2b142c550367d1325337228ba2140908de7520f883bf88659a47ab5ef9be"
+    },
+    "manifest_sha256": "9ea937ed1a1f711afbe7334467aea50fef4206dc8d73e53471def20c8e5e790f",
+    "frozen_dependency_files": 2533,
+    "maximum_runtime_seconds": null,
+    "monitor_seconds": 600,
+    "automatic_retries": false,
+    "formal_promoted": false,
+    "G0": "locked_23_zero_optimizer_checks_and_original_engineering_source_identity_passed_new_cold_pending",
+    "G1": "pending_two_complete_split_paired_development"
+  },
+  "teammate_swa_time_mae_warmup_review_20261002": {
+    "evidence_level": "public_report_only_not_independent_raw_artifact_reproduction",
+    "commit": "7503aae",
+    "branch": "origin/codex/swa-time-mae-warmup-v1",
+    "candidate": "SWA_TIME_MAE_WARMUP40",
+    "status": "completed_two_seed_development_stopped_by_mechanism_gate",
+    "reported_G0": "passed_production_two_states_and_independent_cold",
+    "reported_G1": "both_seed_gains_positive_but_mean_weaker_than_original_MSE_SWA",
+    "reported_decision": {
+      "classification": "exploration_only_not_release_authorized",
+      "control_gains": [
+        0.00433976311089045,
+        0.004547392986334328
+      ],
+      "failure_reasons": [
+        "nonpositive_mechanism_advantage"
+      ],
+      "formal_promoted": false,
+      "mean_gain": 0.00442304248367497,
+      "mechanism_mean": -2.053556493741924e-05,
+      "packages": 0,
+      "release_authorized": false,
+      "seed_gains": [
+        0.004404679007096515,
+        0.004441405960253425
+      ],
+      "seed_lcb95": null,
+      "selected_for_confirmation": [],
+      "uploads": 0
+    },
+    "reported_new_optimizer_runs": 22,
+    "reported_confirmation_optimizer_runs": 0,
+    "local_new_fits": 0,
+    "raw_result_package_imported": false,
+    "repeat_teammate_fits": false,
+    "next_reported_direction": "original_continuous_LAST5_zero_fit_window_review"
   }
 }
