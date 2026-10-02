@@ -21863,5 +21863,164 @@
     "post_terminal_reconciliation_sha256": "1cd220f83d91e6c8c2d0927af6ad602c9bc1e410a38cd0c267326bc33817c6ba",
     "post_terminal_zero_fit_failure_retained": "local/runs/ema-mean3-exploration-release-20261002/release-r1/post-terminal-failure-r1.json",
     "post_terminal_zero_fit_failure_sha256": "959f16a50b0445348b4f8576af8cd8fe44c50199ad1089c4d79a300d39d20bc0"
+  },
+  "q75_joint_ema_time_review_20261002": {
+    "status": "completed_two_seed_zero_fit_review_not_shortlisted",
+    "thread_target": 96.45,
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "G0": "passed_60_cold_states_and_independent_scalar_recalculation_actual_exit0",
+    "G1": "both_complete_development_seed_gains_negative_vs_Q75_paired_control_positive_no_confirmation",
+    "formula": "Q75_time + 0.2 * (joint_arm_time - single_EMA_time)",
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "rows_per_seed": 2754,
+    "folds_per_seed": 5,
+    "seed_gains": {
+      "42": -0.0003651558754660642,
+      "3407": -0.0010677501421825532
+    },
+    "control_seed_gains": {
+      "42": -0.0017295722857937387,
+      "3407": -0.0034760044840986366
+    },
+    "paired_control_gains": {
+      "42": 0.0013644164103276744,
+      "3407": 0.0024082543419160834
+    },
+    "classification": "not_shortlisted",
+    "formal_promoted": false,
+    "confirmation_eligible": false,
+    "cached_estimators": 30,
+    "cold_states": 60,
+    "max_prediction_difference": 5.62159220862668e-05,
+    "peak_rss_mib": 512.8984375,
+    "locked_targeted_tests_passed": 25,
+    "new_fits": 0,
+    "new_optimizers": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "private_run": "local/runs/q75-joint-ema-time-20261002/development-r1",
+    "scientific_source_commit": "204bb15f618a952f865fb771deae519df5bf280d",
+    "manifest_sha256": "e857300256ac49f0c827eb078060676b31144f71bd333e89da5bbac668be0041",
+    "report_sha256": "85a7ebfab7ee971303bdf61e684ec1c0c905d395849bd8acfe44e919a750e7de",
+    "independent_score_sha256": "105896f659bdb5406990b7444c49bb469851244d0eebb5f751f5844d77a41709",
+    "terminal_sha256": "da1b2c1090d7b13eef9f08eb8e2d21c980dcf0d94a400ba27485d87dfc76b3fc",
+    "spec": "configs/q75_joint_ema_time/SPEC.json",
+    "results": "docs/q75_joint_ema_time/RESULTS.md"
+  },
+  "swa_original_development_intake_20261002": {
+    "status": "completed_original_development_replay_waiting_teammate_confirmation_archive",
+    "G0": "passed_archive_CRC_SHA_primary_dependencies_44_cold_states_same_seed_Q75_labels_folds_and_scalar_recalculation",
+    "G1": "original_two_positive_development_seeds_reproduced_teammate_published_four_seed_confirmation_not_promoted",
+    "user_confirmation_ownership": "teammate_already_running_or_completed_wait_for_confirmation_result_package",
+    "outer_filename": "SWA_ORIGINAL_DEVELOPMENT_DELIVERY_20261002_r1.zip",
+    "outer_sha256": "b126898fb6ccfadab860604f6b8bbd2b6c92e7fc838f5a3db3daabebe99960cd",
+    "inner_sha256": "b30cbb1e27d6699914e305d69960fd8787054bb19f6968581c5f405f6f18c613",
+    "payload_files": 1626,
+    "primary_frozen_dependencies": 214,
+    "primary_frozen_claims_satisfied": true,
+    "historical_hash_claims_without_original_bytes": 3005,
+    "entire_upstream_history_reproduced": false,
+    "private_import": "local/incoming/swa-original-development-20261002-r1",
+    "private_audit": "local/runs/swa-original-intake-20261002/replay-r1",
+    "manifest_sha256": "198386b2e6c2ec7e0c6d1339c00b979f7d16c3620a5fd501f72cb51fbba026a4",
+    "terminal_sha256": "9ef1951147932295b6f6c7e723dea56aaf503087191ca2200d812e98c98a6abd",
+    "score_recalculation_sha256": "465251aaa67ab32bc6b3ba83381a44dbb3b9d1988bb9d47ed54eaef71568c12f",
+    "adapter_sha256": "54f25756540fb51b47995ad348b614637b2a3420af3c4ac5a774efc0d6c08a95",
+    "cold_states": 44,
+    "cold_max_difference": 1.9465500258775137e-05,
+    "window_parameter_max_difference": 4.76837158203125e-07,
+    "peak_rss_mib": 446.875,
+    "same_seed_Q75_labels_folds_after_ID_alignment_exactly_equal": true,
+    "development_seed_gains": {
+      "42": 0.004339763110890699,
+      "3407": 0.0045473929863345044
+    },
+    "max_scalar_gain_difference": 2.489328188026718e-16,
+    "locked_Python312_targeted_tests_passed": 11,
+    "independent_process_actual_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "original_training_OS_exit_independently_captured": false,
+    "original_payload_after_review_byte_unchanged": true,
+    "local_new_fits": 0,
+    "local_new_optimizers": 0,
+    "local_new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "uploads": 0,
+    "local_confirmation_original_models_audited": false,
+    "duplicate_confirmation_launch_allowed": false,
+    "teammate_published_confirmation": {
+      "source_commit": "cfc5575902651a0470c38d642a91b7c75497f2b5",
+      "source_results": "docs/tabm_time_swa_continuation/RESULTS.md",
+      "source_results_sha256": "79c57d9d179394ea30556fa1977b1f119782a41759d117b723f35bb5b76fba17",
+      "evidence_level": "published_report_not_local_raw_confirmation_audit",
+      "seed_order": [
+        42,
+        3407,
+        271828,
+        314159
+      ],
+      "seed_gains": [
+        0.00433976311089045,
+        0.004547392986334328,
+        -0.0007580087389666711,
+        0.0019530761211210264
+      ],
+      "mean_gain": 0.0025205558698447833,
+      "seed_lcb95": -0.0004005710365482238,
+      "formal_promoted": false,
+      "failure_reasons": [
+        "nonpositive_seed_gain",
+        "nonpositive_seed_lcb95"
+      ]
+    },
+    "already_published_followups": [
+      {
+        "key": "swa_cycle_tail_v1_20261002",
+        "commit": "50096cf50724c797708e6cecbbb9880c2ada2736",
+        "results": "docs/swa_cycle_tail_v1/RESULTS.md",
+        "results_sha256": "3e90d17bb93983415fbdeeae9f481b4e3b222efd8391811ec85d7f6dc4bddc56",
+        "local_original_models_audited": false,
+        "status": "completed_four_seed_confirmation_not_promoted"
+      },
+      {
+        "key": "swa_time_select_v1_20261002",
+        "commit": "d32ebf971d31ed09c8f15fbcc11d87b7e3bc819c",
+        "results": "docs/swa_time_select_v1/RESULTS.md",
+        "results_sha256": "68daba29dfafd8e8640b41aed9e802d15e2e632eb28c6537af18db5068b5d21a",
+        "local_original_models_audited": false,
+        "status": "completed_development_not_selected_for_confirmation"
+      },
+      {
+        "key": "swa_predict_avg_v1_20261002",
+        "commit": "92ed66f91136ebfcfcbba89913b690f40f872434",
+        "results": "docs/swa_predict_avg_v1/RESULTS.md",
+        "results_sha256": "b1b1c962b54127462de0b104bbcc0765569608b5ebfe4ee4550c5ae53c602f86",
+        "local_original_models_audited": false,
+        "status": "completed_post_selection_exploration"
+      },
+      {
+        "key": "swa_delta_v1_20261002",
+        "commit": "a04e8586714bb1fa9da955645d822ad904c36f42",
+        "results": "docs/swa_delta_v1/RESULTS.md",
+        "results_sha256": "556430ee1ac220ecfdb5b1f64e5449fad5a114c2a0f47be20ff74b83af8e4f07",
+        "local_original_models_audited": false,
+        "status": "completed_post_selection_exploration"
+      }
+    ],
+    "formal_promoted": false,
+    "platform_best_changed": false,
+    "queue_changed": false,
+    "next_action": "zero_fit_intake_of_teammate_confirmation_archive_when_supplied_no_duplicate_training",
+    "results": "docs/swa_original_intake/RESULTS.md"
   }
 }
