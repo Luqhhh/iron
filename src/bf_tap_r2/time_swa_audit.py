@@ -20,12 +20,65 @@ def verify_selection(trace,settings,actual):
         raise ValueError("Checkpoint metric differs from selected epoch")
     return selected
 
-def audit(directory):
+def load_predictions(path,legacy_sha256=None):
+    import io,pickle,zipfile
+    class StringsOnly(pickle.Unpickler):
+        def find_class(self,module,name):
+            allowed={("numpy._core.multiarray","_reconstruct"):np._core.multiarray._reconstruct,
+                     ("numpy","ndarray"):np.ndarray,("numpy","dtype"):np.dtype}
+            if (module,name) not in allowed:
+                raise ValueError("Unapproved pickle global")
+            return allowed[(module,name)]
+    path=Path(path)
+    if legacy_sha256 is not None and sha(path)!=legacy_sha256:
+        raise ValueError("Legacy prediction identity differs")
+    result={}
+    with zipfile.ZipFile(path) as z:
+        expected={name+".npy" for name in ("ids","cal_ids",CONTROL,CANDIDATE)}
+        if set(z.namelist())!=expected:
+            raise ValueError("Unexpected prediction fields")
+        for entry in z.namelist():
+            name=entry[:-4];raw=z.read(entry);stream=io.BytesIO(raw)
+            version=np.lib.format.read_magic(stream)
+            shape,order,dtype=np.lib.format._read_array_header(stream,version)
+            if dtype.hasobject:
+                if legacy_sha256 is None or name not in ("ids","cal_ids"):
+                    raise ValueError("Unapproved legacy object field")
+                if len(shape)!=1 or shape[0]>2754:
+                    raise ValueError("Legacy ID shape differs")
+                a=StringsOnly(stream).load()
+                if not isinstance(a,np.ndarray) or a.shape!=shape or not all(isinstance(v,str) for v in a):
+                    raise ValueError("Legacy IDs must contain strings only")
+                result[name]=np.asarray(a,dtype=str)
+            else:
+                result[name]=np.load(io.BytesIO(raw),allow_pickle=False)
+    return result
+
+def verify_repair(root,manifest,manifest_path,bridge_path):
+    b=json.loads(Path(bridge_path).read_text());allowed={
+        "src/bf_tap_r2/time_swa_run.py","src/bf_tap_r2/time_swa_audit.py",
+        "tests/test_time_swa.py","local/swa-time-select-20261002/monitor_once.py"}
+    if b.get("status")!="user_authorized_zero_fit_serialization_repair" or b.get("original_manifest_sha256")!=sha(manifest_path):
+        raise ValueError("Invalid recovery bridge")
+    changed={p for p,h in manifest["source_hashes"].items() if sha(child(root,p))!=h}
+    if changed!=set(b["changes"]) or not changed<=allowed:
+        raise ValueError("Unexpected recovered source")
+    for p,c in b["changes"].items():
+        if manifest["source_hashes"][p]!=c["original_sha256"] or sha(child(root,c["original_archive"]))!=c["original_sha256"] or sha(child(root,p))!=c["current_sha256"]:
+            raise ValueError("Recovery source/archive identity differs")
+    verify_tree(root,b["original_prediction_files"])
+    return b
+
+def audit(directory,source_recovery=None):
     import torch
     from .component_regularization import ComponentRegressor
     from .tabm_swa_audit import verify_window
     d=Path(directory).resolve();root=d.parents[3]
-    manifest=json.loads((d/"manifest.json").read_text());verify_tree(root,manifest["source_hashes"])
+    manifest=json.loads((d/"manifest.json").read_text())
+    if source_recovery is None:
+        verify_tree(root,manifest["source_hashes"]);bridge=None
+    else:
+        bridge=verify_repair(root,manifest,d/"manifest.json",source_recovery)
     phase=manifest["phase"];settings=manifest["settings"]
     if manifest["budgets"]!=BUDGETS[phase]:raise ValueError("Budget identity differs")
     with np.load(d/"inputs.npz",allow_pickle=False) as a:
@@ -46,8 +99,9 @@ def audit(directory):
         train,query,inner,cal=[part[name] for name in ("train","query","inner","cal")]
         if not np.array_equal(np.sort(np.r_[inner,cal]),np.sort(train)) or set(groups[train])&set(groups[query]) or set(groups[inner])&set(groups[cal]):
             raise ValueError("Partition leakage")
-        with np.load(q/"predictions.npz",allow_pickle=False) as a:
-            output={k:a[k].copy() for k in a.files}
+        pred_path=q/"predictions.npz"
+        legacy=bridge["original_prediction_files"].get(str(pred_path.relative_to(root))) if bridge is not None else None
+        output=load_predictions(pred_path,legacy_sha256=legacy)
         np.testing.assert_array_equal(output["ids"],x["ids"][query]);np.testing.assert_array_equal(output["cal_ids"],x["ids"][cal])
         reuse=json.loads((q/"control-reuse.json").read_text())
         control=child(root,reuse["source_directory"])
@@ -97,8 +151,9 @@ def audit(directory):
     write_new(d/"audit.json",dict(status="passed",cold_models=models,reused_control_states=models//2,new_fits=0,new_optimizers=0,
                          max_difference=max(differences),max_window_parameter_difference=max(window_differences),
                          peak_rss_mib=rss,counts=counts,input_sha256=sha(d/"inputs.npz"),manifest_sha256=sha(d/"manifest.json"),
+                         source_recovery_sha256=sha(source_recovery) if source_recovery else None,
                          units_sha256={u:sha(d/u/"complete.json") for u in manifest["units"]}))
 if __name__=="__main__":
     import argparse,torch
-    p=argparse.ArgumentParser();p.add_argument("directory");a=p.parse_args()
-    torch.set_num_threads(1);torch.set_num_interop_threads(1);audit(a.directory)
+    p=argparse.ArgumentParser();p.add_argument("directory");p.add_argument("--source-recovery");a=p.parse_args()
+    torch.set_num_threads(1);torch.set_num_interop_threads(1);audit(a.directory,a.source_recovery)

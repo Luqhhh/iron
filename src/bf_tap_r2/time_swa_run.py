@@ -20,7 +20,7 @@ def original(root,phase):
 def sources(root):
     paths=list((root/"src/bf_tap_r2").glob("*.py"))+list((root/"tests").glob("*.py"))
     paths += [root/SPEC_REL,root/"configs/round2_v12/SPEC.yaml",root/"configs/protection.yaml",root/"uv.lock",root/"pyproject.toml",root/"docs/swa_time_select_v1/STRATEGY.md"]
-    paths += [root/PRIVATE_REL/p for p in ["start_once.py","monitor_once.py"]]
+    paths += [root/PRIVATE_REL/p for p in ["start_once.py","monitor_once.py","recover_once_r1.py"] if (root/PRIVATE_REL/p).exists()]
     return {str(p.relative_to(root)):sha(p) for p in paths}
 def branch(root):
     if subprocess.check_output(["git","branch","--show-current"],cwd=root,text=True).strip()!=BRANCH:
@@ -65,9 +65,19 @@ def parents(root):
             if not np.all(count==1):raise ValueError("Incomplete fold coverage")
             p,fv=m.reindex_reference(v,s,ids,folds);np.testing.assert_array_equal(fv,folds);result[s]=p
     return result
+def write_predictions(path,ids,cal_ids,control,candidate):
+    ids=np.asarray(ids,dtype=str);cal_ids=np.asarray(cal_ids,dtype=str)
+    control=np.asarray(control,dtype=float);candidate=np.asarray(candidate,dtype=float)
+    if ids.ndim!=1 or cal_ids.ndim!=1 or control.shape!=ids.shape or candidate.shape!=ids.shape or not np.isfinite([control,candidate]).all():
+        raise ValueError("Prediction column identity differs")
+    if len(np.unique(ids))!=len(ids) or len(np.unique(cal_ids))!=len(cal_ids):
+        raise ValueError("Duplicate prediction IDs")
+    with Path(path).open("xb") as stream:
+        np.savez(stream,ids=ids,cal_ids=cal_ids,**{CONTROL:control,CANDIDATE:candidate})
+
 def train_unit(root,phase,unit):
     from .time_swa_model import TimeSWARegressor
-    run=root/RUN_REL;frozen=json.loads((run/"freeze.json").read_text());check(root,frozen)
+    run=root/RUN_REL;active_freeze=run/"freeze-serialization-recovery-r1.json" if (run/"freeze-serialization-recovery-r1.json").exists() else run/"freeze.json";frozen=json.loads(active_freeze.read_text());check(root,frozen)
     frame,y,units=phase_data(root,phase);ix=units[unit]
     directory=run/(phase+"-r1")/unit;directory.mkdir(exist_ok=False)
     # Cached original partitions must agree with the actual fitter's inner grouping.
@@ -95,7 +105,7 @@ def train_unit(root,phase,unit):
     model=TimeSWARegressor(settings,target,ledger(root),phase,unit).fit(frame.iloc[ix["train"]].reset_index(drop=True),y[ix["train"]])
     predicted=model.predict(frame.iloc[ix["query"]])[:,1];write_new(target/"metadata.json",model.metadata_);del model
     with (directory/"partitions.npz").open("xb") as stream:np.savez(stream,**ix)
-    with (directory/"predictions.npz").open("xb") as stream:np.savez(stream,ids=frame.iloc[ix["query"]].sample_id.astype(str).to_numpy(),cal_ids=frame.iloc[ix["cal"]].sample_id.astype(str).to_numpy(),**{CONTROL:control,CANDIDATE:predicted})
+    write_predictions(directory/"predictions.npz",frame.iloc[ix["query"]].sample_id.astype(str).to_numpy(),frame.iloc[ix["cal"]].sample_id.astype(str).to_numpy(),control,predicted)
     rss=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss/1024
     if rss>1024:raise ValueError("Worker RSS exceeded")
     write_new(directory/"complete.json",dict(phase=phase,unit=unit,peak_rss_mib=rss,

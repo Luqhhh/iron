@@ -51,3 +51,32 @@ def test_cold_audit_entry_verifies_source_before_reading_inputs(tmp_path,monkeyp
     with pytest.raises(RuntimeError,match="source check reached"):
         m.audit(directory)
     assert called==[tmp_path]
+def test_prediction_archive_writes_unicode_ids_without_pickle(tmp_path):
+    import pandas as pd
+    m=importlib.import_module("bf_tap_r2.time_swa_run")
+    path=tmp_path/"predictions.npz"
+    m.write_predictions(path,pd.Series(["a","b"]).to_numpy(),pd.Series(["c"]).to_numpy(),np.array([1.,2.]),np.array([1.1,2.1]))
+    with np.load(path,allow_pickle=False) as p:
+        assert p["ids"].dtype.kind=="U"
+        assert p["cal_ids"].dtype.kind=="U"
+        np.testing.assert_array_equal(p["ids"],["a","b"])
+
+def test_legacy_ids_require_frozen_identity_and_reject_executable_pickle(tmp_path):
+    import pickle,zipfile,io
+    m=importlib.import_module("bf_tap_r2.time_swa_audit")
+    from bf_tap_r2.time_swa_protocol import sha
+    path=tmp_path/"legacy.npz"
+    np.savez(path,ids=np.array(["a","b"],dtype=object),cal_ids=np.array(["c"],dtype=object),SWA_JOINT_SELECT_CONTROL=np.array([1.,2.]),SWA_TIME_SELECT=np.array([1.1,2.1]))
+    with pytest.raises(ValueError,match="legacy"):
+        m.load_predictions(path)
+    data=m.load_predictions(path,legacy_sha256=sha(path))
+    np.testing.assert_array_equal(data["ids"],["a","b"])
+    with pytest.raises(ValueError,match="identity"):
+        m.load_predictions(path,legacy_sha256="0"*64)
+    class Executable:
+        def __reduce__(self):
+            return (eval,("1+1",))
+    bad=tmp_path/"unsafe.npz"
+    np.savez(bad,ids=np.array([Executable()],dtype=object),cal_ids=np.array(["c"],dtype=object),SWA_JOINT_SELECT_CONTROL=np.array([1.]),SWA_TIME_SELECT=np.array([1.]))
+    with pytest.raises(ValueError,match="global"):
+        m.load_predictions(bad,legacy_sha256=sha(bad))
