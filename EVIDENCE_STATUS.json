@@ -2754,8 +2754,8 @@
       "96.5": 0.108
     },
     "latest_completed_release": "q75_separate_mae_iron_release_20261002",
-    "latest_G0": "retained_prediction_provenance_and_scalar_audit_passed_no_scientific_model_cold_replay",
-    "latest_G1": "both_positive_Q75_but_both_below_ready_Laplace_and_matched_MSE",
+    "latest_G0": "passed_40_new_optimizers_60_new_reused_two_target_cold_states_independent_scalars_actual_exit0",
+    "latest_G1": "both_complete_split_Q75_gains_positive_but_both_below_ready_SEPARATE_MAE_IRON_A20",
     "ready_exploration_candidates": [
       "EMA_MEAN3_FULL_Q75"
     ],
@@ -3136,7 +3136,7 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "modernnca_mae_q75_development_20261002",
+    "latest_completed_quality_experiment": "q75_separate_mae_iron_mean3_development_20261002",
     "latest_platform_feedback_key": "platform_feedback_q75_probe_sam_ema_20261002",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
@@ -24142,5 +24142,20 @@
     "raw_result_package_imported": false,
     "public_summary_scalar_review_sha256": "3d31ee9a556c4c6d1c261dbb52304b53c6e1737adae4aac6d8a12b4642185690",
     "repeat_teammate_fits": false
+  },
+  "q75_platform_feedback_readiness_20261002": {
+    "status": "awaiting_external_platform_feedback_goal_unmet",
+    "checkpoint": "local/runs/q75-platform-feedback-readiness-20261002/checkpoint-r1/receipt.json",
+    "checkpoint_sha256": "9ef0b7e2004db89275a162a18ba8f424a72475efe45051f1bf8a72704966d340",
+    "platform_target_met": false,
+    "first_candidate": "LAPLACE_FIXED_A20",
+    "second_candidate": null,
+    "active_owned_task": false,
+    "new_training": 0,
+    "new_packages": 0,
+    "assistant_uploads": 0,
+    "optimization_paused": false,
+    "outstanding": "First platform score; remaining target 96.45 cannot be verified from local gains",
+    "research_review": "Residual direction, honest pressure/global calibration and feature-support checks already have retained evidence; no new supported repeat registered"
   }
 }
