@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "PAUSED_BY_USER_AFTER_FIXED_LAPLACE_RELEASE",
+    "status": "RESEARCH_RESUMED_PLATFORM_ALLOCATION_DEFERRED_BY_USER",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -387,7 +387,7 @@
       }
     ],
     "recommended": "下一次优先测试LAPLACE_FIXED_A20：固定MAE臂在匹配开发中胜过学习尺度臂，对Q75四seed正式门通过，全量工程闭合。相对Gaussian的优势尚不稳定，不承诺平台排序；Gaussian和EMA_MEAN3保留，后续顺序结合下一次回传调整，不要求现在测完全部。DE3仍仅替补，不推断额度。",
-    "optimization_paused": true,
+    "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "historical_decisions_unchanged": true,
@@ -830,7 +830,10 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Current Laplace round completed; further optimization paused by explicit user request; no active worker or monitor"
+    "research_status": "Fixed point 30-model two-seed development running; two user-reported platform slots retained",
+    "platform_slots_user_reported": 2,
+    "platform_slots_source": "user_current_turn_not_inferred",
+    "submission_allocation": "deferred_until_critical_exploration_complete_then_sequential_feedback"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2741,10 +2744,9 @@
     ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
-    "optimization_paused": true,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Fixed_Laplace_round_completed_all_owned_workers_terminal_paused_by_user_no_monitor",
+    "runtime_observation": "Verified_fixed_point_worker_and_supervisor_live_threads1_600_second_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3125,15 +3127,11 @@
     "latest_local_G0": "report_only_recovery_exit0_independent_audit_passed_original_exit1_preserved",
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
-    "latest_registered_scientific_route": "sam_ema_time_preparation_20261002",
-    "latest_completed_scientific_route": "sam_ema_time_preparation_20261002",
+    "latest_registered_scientific_route": "q75_fixed_point_losses_development_20261002",
+    "latest_completed_scientific_route": "q75_laplace_fixed_confirmation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_positive_vs_matched_SAM_confirmation_gate_failed",
     "active_release_key": null,
-    "pause_after_this_round_requested": true,
-    "pause_user_instruction": "本轮结束后暂停",
-    "pause_reason": "explicit_user_instruction_本轮结束后暂停",
-    "pause_effective_after_release_key": "sam_ema_time_manual_exploration_release_20261002",
     "history_before_platform_feedback_20261002": {
       "latest_G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
       "ready_exploration_candidates": [
@@ -3142,13 +3140,14 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。",
-    "active_research": null,
+    "active_research": "q75_fixed_point_losses_development_20261002",
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Await user resume; delivered candidates retained and user may return platform feedback"
+    "next_action": "Finish_all30_outer_models_and_cold_audit_before_candidate_comparison",
+    "optimization_paused": false,
+    "pause_after_this_round_requested": false
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -22819,5 +22818,169 @@
     "new_experiments_enabled": false,
     "background_monitoring": false,
     "resume_requires_user_instruction": true
+  },
+  "optimization_resume_fixed_point_losses_20261002": {
+    "instruction": "继续",
+    "time_ns": 1790930552717348224,
+    "supersedes_pause": "optimization_pause_after_laplace_round_20261002",
+    "previous_pause_fields": {
+      "optimization_paused": true,
+      "pause_after_this_round_requested": true,
+      "pause_user_instruction": "本轮结束后暂停",
+      "pause_reason": "explicit_user_instruction_本轮结束后暂停",
+      "pause_effective_after_release_key": "sam_ema_time_manual_exploration_release_20261002",
+      "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。"
+    },
+    "new_experiments_enabled": true,
+    "platform_slots_user_reported": 2,
+    "platform_slot_policy": "Defer allocation until critical paired controls and teammate results reviewed; second slot after first feedback",
+    "authorization": "optimization_standing_authorization_20261002",
+    "source_worktree": "local/worktrees/q75-fixed-point-loss-development",
+    "status": "preparing_frozen_matched_fixed_loss_development"
+  },
+  "q75_fixed_point_losses_development_20261002": {
+    "status": "running_complete_two_seed_development",
+    "source_worktree": "local/worktrees/q75-fixed-point-loss-development",
+    "source_commit": "5c376f1c79644ee88d62dbb0032455a0a7074151",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "protocol": "docs/q75_fixed_point_losses/PREREGISTRATION.md",
+    "specification": "configs/q75_fixed_point_losses/SPEC.json",
+    "private_root": "local/runs/q75-fixed-point-losses-20261002",
+    "candidate_arms": [
+      "TIME_GAUSS_FIXED",
+      "IRON_LAPLACE_FIXED",
+      "IRON_GAUSS_FIXED"
+    ],
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "planned_scientific_estimators": 30,
+    "planned_scientific_optimizers": 60,
+    "planned_new_states": 60,
+    "engineering_optimizers": 6,
+    "engineering_cold_states": 6,
+    "engineering_max_cold_difference": 1.1368683772161603e-13,
+    "engineering_learnability": {
+      "TIME_GAUSS_FIXED": {
+        "model_mae": 0.5558361400198044,
+        "median_constant_mae": 17.423771141392162
+      },
+      "IRON_LAPLACE_FIXED": {
+        "model_mae": 1.1445826759693416,
+        "median_constant_mae": 39.39236826291572
+      },
+      "IRON_GAUSS_FIXED": {
+        "model_mae": 1.4099883473709265,
+        "median_constant_mae": 39.39236826291572
+      }
+    },
+    "engineering_actual_exit_codes": [
+      0,
+      0
+    ],
+    "engineering_manifest_sha256": "443b9f821acb1acb6f3c2ec8d4779fa8e7aa4749949ffde17a7c220e1c79f533",
+    "engineering_terminal_sha256": "6d59d170745671766d2c22c8a7a2c42968c7d68a3a8de3949956501a9d02b31f",
+    "locked_checks": {
+      "python": "3.12.12 (main, Feb 12 2026, 00:42:14) [Clang 21.1.4 ]",
+      "passed": 16,
+      "optimizer_constructor_attempts": 0,
+      "receipt": "local/runs/q75-fixed-point-losses-20261002/checks-r1/receipt.json",
+      "receipt_sha256": "9dba671f9474ffaa24a6ad55711e3c30e7cb9d57b71ceee2569d7a60b9b105fe"
+    },
+    "new_reference_fits": 0,
+    "confirmation_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "maximum_runtime_seconds": null,
+    "monitor_seconds": 600,
+    "automatic_retries": false,
+    "formal_promoted": false,
+    "development_manifest_sha256": "848d0c26694b4f290a20d70ebdf37d5fdc26d926c2600f169c2a420520812cbe",
+    "frozen_dependency_files": 1990,
+    "initial_process_verification": {
+      "observed_ns": 1790931233459056496,
+      "next_periodic_observation_ns": 1790931833459056496,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "kind": "supervisor_pid",
+          "pid": 3818,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-fixed-point-loss-development",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-fixed-point-loss-development/.venv/bin/python3",
+            "scripts/q75_fixed_point_losses.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-fixed-point-losses-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "kind": "worker_pid",
+          "pid": 3819,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-fixed-point-loss-development",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-fixed-point-loss-development/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_fixed_point_losses",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-fixed-point-losses-20261002/development-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "manifest_sha256": "848d0c26694b4f290a20d70ebdf37d5fdc26d926c2600f169c2a420520812cbe"
+    },
+    "tool_session_id": 47513,
+    "next_periodic_observation_ns": 1790931833459056496
+  },
+  "teammate_route_review_20261002_after_resume": {
+    "evidence_scope": "read_only_public_commit_reports_not_independent_raw_model_audit",
+    "Laplace_iron_trees": {
+      "commit": "e88947a",
+      "fixed_gains": [
+        -0.021035,
+        -0.019385
+      ],
+      "adaptive_gains": [
+        -0.01793,
+        -0.0184
+      ],
+      "status": "both_complete_development_seeds_negative_no_confirmation"
+    },
+    "SWA_cycle_recency": {
+      "commit": "29edfff",
+      "status": "LAST3_and_LINEAR5_worse_than_original_on_all_four_seeds_no_selection"
+    },
+    "SWA_time_weight": {
+      "commit": "a4becb8",
+      "gains_vs_Q75": [
+        0.002195785377,
+        0.002503398234
+      ],
+      "gains_vs_original_cycle": [
+        -0.001753096818,
+        -0.00252246142
+      ],
+      "status": "mechanism_gate_failed_no_confirmation"
+    },
+    "new_local_fits": 0,
+    "raw_confirmation_SWA_package": "not_received",
+    "do_not_repeat_teammate_experiments": true
   }
 }
