@@ -11,7 +11,7 @@
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
 | 最新平台反馈 | **EMA_Q75_N_TO_V36_P05=96.3896**、**SAM_EMA_TIME_Q75_EXPLORATION=96.3796**；用户回传，相对Q75分别−0.0024、−0.0124 |
 | 优先待测包 | 下一次建议 **LAPLACE_FIXED_A20**；Gaussian/EMA_MEAN3保留，结合回传调整后续。Laplace与Gaussian相对Q75均本地正式晋级，彼此优劣及平台表现尚未证实 |
-| 优化执行 | 用户已明确“继续”，恢复优化；固定损失三项完整对照均无新确认候选，Laplace三seed均值开发配对门已过，已另冻40optimizer接续确认并启动；两个平台名额暂保留 |
+| 优化执行 | 用户已明确“继续”，恢复优化；固定损失对照及Laplace三seed四切分确认均已结束；mean3相对Q75正式门过、相对单seed新包门失败，无新全量包或运行任务；两个平台名额暂保留 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
@@ -32,7 +32,7 @@
 
 ## 当前维护入口
 
-- [Laplace三seed接续确认](q75_laplace_mean3_confirmation/PREREGISTRATION.md)：新增271828/314159的1042/2042成员，40optimizer/40新状态并冷回读20旧状态；同时要求相对Q75正式门和对已就绪单seed的增量门，9项零optimizer检查已过。
+- [Laplace三seed四切分确认](q75_laplace_mean3_confirmation/RESULTS.md)：对Q75均值+.012413/LCB+.008464，正式门过；对原单seed均值+.000687但LCB−.000347、一个负seed，新包门失败，0全量/包。40optimizer及60新旧状态、四真实exit0闭合。
 
 - [Laplace三训练seed完整开发](q75_laplace_mean3/RESULTS.md)：40新optimizer/60新旧冷状态和四实际exit0通过；对Q75+.010263/+.013691，对原单seed+.001310/+.001520，取得单独确认准入，尚未正式晋级。
 

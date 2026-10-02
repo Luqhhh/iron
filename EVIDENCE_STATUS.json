@@ -328,7 +328,7 @@
       "GAUSS1_A20",
       "EMA_MEAN3_FULL_Q75"
     ],
-    "submission_priority_note": "Allocation deferred by user until critical exploration closes. Laplace remains leading current candidate, Gaussian is not redundant by label-free deltas; second platform choice will incorporate first feedback.",
+    "submission_priority_note": "Provisional leading first-slot candidate is the already released single-seed LAPLACE_FIXED_A20. No immediate test scheduled. Mean3 passed Q75 formal gate but failed the paired replacement/release gate; no new full fit or ZIP. Gaussian/EMA_MEAN3 remain alternatives, second slot unassigned.",
     "ready_for_user_platform_testing": [
       {
         "candidate": "LAPLACE_FIXED_A20",
@@ -830,10 +830,12 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Laplace mean3 separate confirmation running; two platform slots remain unallocated",
+    "research_status": "Critical fixed-loss controls and matched Laplace mean3 four-seed confirmation complete; no stronger release candidate",
     "platform_slots_user_reported": 2,
     "platform_slots_source": "user_current_turn_not_inferred",
-    "submission_allocation": "deferred_until_critical_exploration_complete_then_sequential_feedback"
+    "submission_allocation": "deferred_by_user_preference_first_nomination_LAPLACE_FIXED_A20_second_after_first_feedback",
+    "first_slot_provisional_nomination": "LAPLACE_FIXED_A20",
+    "second_slot_provisional_nomination": null
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -2738,7 +2740,7 @@
     },
     "latest_completed_release": "q75_laplace_fixed_release_20261002",
     "latest_G0": "passed_native40_optimizers_60_new_reused_cold_states_independent_scalars_actual_exit0",
-    "latest_G1": "both_development_seeds_positive_vs_Q75_and_single_Laplace_no_four_seed_promotion",
+    "latest_G1": "formal_four_seed_vs_Q75_but_single_seed_comparison_one_negative_and_LCB_negative_no_new_release",
     "ready_exploration_candidates": [
       "EMA_MEAN3_FULL_Q75"
     ],
@@ -2746,7 +2748,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Verified_Laplace_mean3_confirmation_worker_supervisor_live_threads1_600_second_monitor",
+    "runtime_observation": "All_resumed_fixed_loss_and_Laplace_mean3_workers_terminal_no_background_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3128,7 +3130,7 @@
     "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
     "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
     "latest_registered_scientific_route": "q75_laplace_mean3_confirmation_20261002",
-    "latest_completed_scientific_route": "q75_laplace_mean3_development_20261002",
+    "latest_completed_scientific_route": "q75_laplace_mean3_confirmation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_positive_vs_matched_SAM_confirmation_gate_failed",
     "active_release_key": null,
@@ -3140,12 +3142,12 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": "q75_laplace_mean3_confirmation_20261002",
+    "active_research": null,
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Audit_all_four_split_gates_before_any_new_full_release",
+    "next_action": "Keep_platform_allocation_deferred_as_user_requested; leading_first_slot_nomination_remains_original_LAPLACE_FIXED_A20; second_choice_after_first_feedback",
     "optimization_paused": false,
     "pause_after_this_round_requested": false
   },
@@ -22836,7 +22838,19 @@
     "platform_slot_policy": "Defer allocation until critical paired controls and teammate results reviewed; second slot after first feedback",
     "authorization": "optimization_standing_authorization_20261002",
     "source_worktree": "local/worktrees/q75-fixed-point-loss-development",
-    "status": "preparing_frozen_matched_fixed_loss_development"
+    "status": "three_stages_completed_no_new_release_candidate",
+    "completed_stage_keys": [
+      "q75_fixed_point_losses_development_20261002",
+      "q75_laplace_mean3_development_20261002",
+      "q75_laplace_mean3_confirmation_20261002"
+    ],
+    "actual_new_scientific_optimizers": 140,
+    "actual_new_engineering_optimizers": 6,
+    "actual_extra_test_optimizers": 0,
+    "actual_new_full_fits": 0,
+    "actual_new_packages": 0,
+    "platform_allocation": "still_deferred_two_slots_user_reported_no_quota_inference",
+    "goal_status": "active_target_not_achieved"
   },
   "q75_fixed_point_losses_development_20261002": {
     "status": "completed_no_confirmation_finalist",
@@ -23239,7 +23253,7 @@
     "status_document": "docs/q75_laplace_mean3/RESULTS.md"
   },
   "q75_laplace_mean3_confirmation_20261002": {
-    "status": "running_complete_confirmation",
+    "status": "completed_Q75_formal_gate_passed_incremental_release_gate_failed",
     "source_worktree": "local/worktrees/q75-laplace-mean3-confirmation",
     "source_commit": "c20d1a0dad6bad4b57030bf67fa4f772b0620945",
     "reference": "EMA_TIME_Q75",
@@ -23284,9 +23298,9 @@
     "maximum_runtime_seconds": null,
     "monitor_seconds": 600,
     "automatic_retries": false,
-    "G0": "running",
-    "G1": "unmeasured",
-    "formal_promoted": false,
+    "G0": "passed_native40_optimizers_60_new_reused_cold_states_independent_scalars_actual_exit0",
+    "G1": "formal_four_seed_vs_Q75_but_single_seed_comparison_one_negative_and_LCB_negative_no_new_release",
+    "formal_promoted": true,
     "release_eligible": false,
     "initial_process_verification": {
       "observed_ns": 1790933007442896635,
@@ -23332,7 +23346,59 @@
       ],
       "manifest_sha256": "2876f74b5713e25f08c1e0d40c017f81b47d1f187b0efa16c63a803dd84d8bac"
     },
-    "next_periodic_observation_ns": 1790933607442896635,
-    "tool_session_id": 60466
+    "next_periodic_observation_ns": null,
+    "tool_session_id": 60466,
+    "gains": {
+      "42": 0.010262820251003632,
+      "3407": 0.013690805082496281,
+      "271828": 0.009165038770889417,
+      "314159": 0.016534280815335495
+    },
+    "gains_over_single": {
+      "42": 0.0013102626790366019,
+      "3407": 0.0015195763977281216,
+      "271828": 0.00025647706932111543,
+      "314159": -0.00033781366569699033
+    },
+    "paired": {
+      "n": 4,
+      "mean": 0.012413236229931207,
+      "sd": 0.0033561022165247505,
+      "se": 0.0016780511082623753,
+      "lcb95": 0.008464172110017858,
+      "positive": 4
+    },
+    "paired_over_single": {
+      "n": 4,
+      "mean": 0.0006871256200972122,
+      "sd": 0.0008788691228413592,
+      "se": 0.0004394345614206796,
+      "lcb95": -0.0003470236087383911,
+      "positive": 3
+    },
+    "failed_conditions": [],
+    "replacement_failed_conditions": [
+      "nonpositive_seed_gain",
+      "nonpositive_seed_lcb95"
+    ],
+    "actual_scientific_optimizers": 40,
+    "actual_new_states": 40,
+    "actual_reused_states": 20,
+    "actual_exit_codes": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_tool_exit_code": 0,
+    "cold_max_difference": 4.263256414560601e-14,
+    "independent_scalar_checks": 22152,
+    "independent_max_difference": 5.684341886080802e-14,
+    "peak_os_rss_mib": 507.859375,
+    "owned_pids_verified_absent": true,
+    "report_sha256": "149d7630798c6b874dfcc379ad84eb96954d48a36ba1bb8abb942bd5cf026e75",
+    "independent_score_sha256": "c86e28afeedb3de470f94c93da1a3db57a162235259f37e961da291385786278",
+    "terminal_sha256": "e017c3df2aa7950d4b1f7806f7acf0e03b0a0b9dd4186894e7022a4ba96c08eb",
+    "status_document": "docs/q75_laplace_mean3_confirmation/RESULTS.md"
   }
 }
