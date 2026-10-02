@@ -1,0 +1,61 @@
+{
+  "identity": "SWA_CYCLE_REWEIGHT_V1",
+  "candidate_pool": [
+    "CYCLE_LAST3",
+    "CYCLE_LINEAR5"
+  ],
+  "weights": {
+    "CYCLE_LAST3": "equal weight on last min(3,n) raw cycle-end states",
+    "CYCLE_LINEAR5": "weights 1..n oldest to newest, normalized by n(n+1)/2"
+  },
+  "parent_trajectory": "SWA_CYCLE_TAIL_V1",
+  "control": "SWA_CYCLE_TAIL_uniform_up_to_5_original_cached_predictions",
+  "source_directory": "local/runs/swa-cycle-tail-v1",
+  "split_seeds": [
+    42,
+    3407,
+    271828,
+    314159
+  ],
+  "folds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "alpha": 0.2,
+  "target": "tap_time_len",
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "platform_score_user_reported": 96.392,
+    "independently_verified": false
+  },
+  "original_epoch_selection_unchanged": true,
+  "original_fresh_refit_unchanged": true,
+  "formal_promotion_allowed": false,
+  "classification": "post_selection_exploration",
+  "selection": "complete four seed mean_gain>0 and mean_gain_vs_cycle_control>0; highest mean_gain; exact tie candidate_pool order; retain at most one",
+  "seed_LCB95": "one sided Student t df3 descriptive only",
+  "new_fits": 0,
+  "new_optimizers": 0,
+  "new_reference_fits": 0,
+  "new_control_inferences": 0,
+  "production_units": 20,
+  "independent_cold_units": 20,
+  "workers": 1,
+  "memory_mib": 1024,
+  "numeric_threads": 1,
+  "torch_threads": 1,
+  "time_budget": null,
+  "prediction_atol": 0.0005,
+  "window_mean_rtol": 1e-06,
+  "window_mean_atol": 5e-07,
+  "statistics_atol": 1e-12,
+  "source_evidence_preserved": true,
+  "clipping": false,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "release_authorized": false
+}
