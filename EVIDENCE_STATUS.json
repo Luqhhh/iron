@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-02",
-    "status": "PAUSED_BY_USER_TWO_EXPLORATIONS_SCORED_BELOW_Q75_NO_PRIORITIZED_PENDING_PACKAGES",
+    "status": "PAUSED_BY_USER_ONE_EXPLICIT_EMA_MEAN3_EXPLORATION_DESKTOP_READY_PLATFORM_UNMEASURED",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -323,9 +323,25 @@
       "representative_tie_choice": "smaller_component_extrapolation, not a unique-score winner"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [],
-    "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
-    "ready_for_user_platform_testing": [],
+    "submission_priority": [
+      "EMA_MEAN3_FULL_Q75"
+    ],
+    "submission_priority_note": "Only the explicitly selected EMA_MEAN3 fixed three-training-seed mean is ready for user testing; previous scored probes remain closed; optimization stays paused and DE3 reserve deferred; no quota inferred.",
+    "ready_for_user_platform_testing": [
+      {
+        "candidate": "EMA_MEAN3_FULL_Q75",
+        "package": "local/runs/ema-mean3-exploration-release-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396",
+        "G0": "passed",
+        "G1": "user_selected_manual_platform_unmeasured_exploration_no_formal_promotion",
+        "reference": "EMA_TIME_Q75",
+        "evidence_key": "ema_mean3_manual_exploration_release_20261002",
+        "feedback_status": "not_measured",
+        "formal_promotion": false,
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-20261002/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop_handoff_receipt": "local/runs/ema-mean3-exploration-release-20261002/release-r1/desktop-delivery.json"
+      }
+    ],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -344,7 +360,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。",
+    "recommended": "用户指定EMA_MEAN3已完成单一固定全量发布并写入桌面，G0通过；G1为平台未测人工探索，原配对确认门失败和未正式晋级保持。仅此包进入当前待测队列；前两项低于Q75的回传结论、当前同分最佳及DE3替补安排保持，优化继续暂停。",
     "optimization_paused": true,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -782,6 +798,11 @@
         }
       ],
       "recommended": "本轮SAM＋EMA固定探索已交付，按用户要求暂停优化。N→V36原探针与新SAM＋EMA人工探索平台均未测，用户自行决定测试；Q75/Q100=96.3920仍为用户回传同分最佳。新包未正式晋级，原科学失败决定不变，DE3继续仅作替补。"
+    },
+    "history_before_ema_mean3_desktop_20261002": {
+      "status": "PAUSED_BY_USER_TWO_EXPLORATIONS_SCORED_BELOW_Q75_NO_PRIORITIZED_PENDING_PACKAGES",
+      "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
+      "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     }
   },
   "round2_v2_3_candidate_release": {
@@ -2685,16 +2706,18 @@
       "96.45": 0.058,
       "96.5": 0.108
     },
-    "latest_completed_release": "sam_ema_time_manual_exploration_release_20261002",
-    "latest_G0": "passed_native_partitions_epoch_independent_cold_scalar_package_crc_template_raw_iron_fields_and_actual_exit0",
-    "latest_G1": "two_fixed_explorations_user_reported_platform_below_Q75_formal_decisions_preserved",
-    "ready_exploration_candidates": [],
+    "latest_completed_release": "ema_mean3_manual_exploration_release_20261002",
+    "latest_G0": "passed_native_partitions_epochs_4_new_2_reused_states_independent_cold_scalar_package_CRC_template_raw_iron_fields_desktop_and_actual_exit0",
+    "latest_G1": "user_selected_manual_exploration_platform_unmeasured_original_paired_gate_failed_preserved_no_formal_promotion",
+    "ready_exploration_candidates": [
+      "EMA_MEAN3_FULL_Q75"
+    ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_paused": true,
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "specific_EMA_MEAN3_release_frozen_only_two_new_full_programs_authorized_pending_launch",
+    "runtime_observation": "EMA_MEAN3_requested_desktop_delivery_completed_owned_processes_exited_broader_optimization_paused_no_active_task",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3079,7 +3102,7 @@
     "latest_completed_scientific_route": "sam_ema_time_preparation_20261002",
     "latest_scientific_G0": "passed_frozen_identity_native_training_partition_epoch_60_cold_states_independent_scalars_and_actual_exit0",
     "latest_scientific_G1": "two_complete_seeds_negative_vs_Q75_positive_vs_matched_SAM_confirmation_gate_failed",
-    "active_release_key": "ema_mean3_manual_exploration_release_20261002",
+    "active_release_key": null,
     "pause_after_this_round_requested": true,
     "pause_user_instruction": "本轮结束后暂停",
     "pause_reason": "explicit_user_instruction_本轮结束后暂停",
@@ -3092,7 +3115,7 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "authorized_release_exception": "仅执行用户指定EMA_MEAN3全量拟合、封包和桌面交付，完成后继续暂停；不启动其他优化。"
+    "authorized_release_exception": "用户指定EMA_MEAN3全量拟合、单一封包及桌面交付已完成，现继续暂停优化。"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -21695,7 +21718,7 @@
     "agent_uploads": 0
   },
   "ema_mean3_manual_exploration_release_20261002": {
-    "status": "frozen_release_engineering_passed_scientific_fits_not_started",
+    "status": "completed_single_manual_exploration_desktop_delivered_G0_passed_G1_platform_unmeasured",
     "candidate": "EMA_MEAN3_FULL_Q75",
     "authorization": "用户明确指令：EMA_MEAN3 写桌面",
     "reference": {
@@ -21725,8 +21748,8 @@
       "new_confirmation_seeds": 0,
       "agent_uploads": 0
     },
-    "G0": "source_locked_full_tests_1548_passed_manifest_runtime_partition_and_old_input_identities_frozen_full_fit_pending",
-    "G1": "user_selected_manual_exploration_platform_unmeasured_not_formal_promotion",
+    "G0": "passed_native_partitions_epochs_4_new_2_reused_states_independent_cold_scalar_package_CRC_template_raw_iron_fields_desktop_and_actual_exit0",
+    "G1": "user_selected_manual_exploration_platform_unmeasured_original_paired_gate_failed_preserved_no_formal_promotion",
     "platform_score": null,
     "monitor_seconds": 600,
     "maximum_runtime_seconds": null,
@@ -21750,6 +21773,95 @@
       "sources": 396,
       "inputs": 573,
       "model_sources": 401
-    }
+    },
+    "launch": {
+      "supervisor_pid": 306093,
+      "controller_pid": 306094,
+      "started_ns": 1790913966586150846,
+      "monitor_seconds": 600,
+      "receipt": "local/runs/ema-mean3-exploration-release-20261002/release-r1/process-launch.json",
+      "sha256": "3b694fbc9cc5f85433dad5652c853d030555b15f41f368ae97f6501dfa315538"
+    },
+    "status_document": "docs/ema_mean3_release/DELIVERY.md",
+    "actual": {
+      "full_training_procedures": 2,
+      "optimizer_runs": 4,
+      "new_native_states": 4,
+      "reused_native_states": 2,
+      "reused_full_models": 1,
+      "packages": 1,
+      "desktop_copies": 1,
+      "new_CV": 0,
+      "new_confirmation_seeds": 0,
+      "agent_uploads": 0
+    },
+    "tool_session_id": 11441,
+    "actual_supervisor_tool_exit_code": 0,
+    "actual_controller_exit_code": 0,
+    "package": "local/runs/ema-mean3-exploration-release-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396",
+    "result_sha256": "5de7ed69d5843eed6ef8f3787b67587ff208c09652073a844ed9c650f74610f4",
+    "selected_epochs": {
+      "42": 91,
+      "1042": 87,
+      "2042": 86
+    },
+    "member_identities": {
+      "1042": {
+        "identity": {
+          "source_directory": "/home/lux1/iron/local/runs/ema-mean3-exploration-release-20261002/release-r1",
+          "split_seed": -1,
+          "fold": -1,
+          "trial_id": "EMA_FULL_INIT1042"
+        },
+        "complete_sha256": "9ab1ee7b4c176ff876c71d14ebb968b2fca20c15618c71fcb947d35ff618c21e",
+        "selected_epoch": 87,
+        "selection_stopped_epoch": 112
+      },
+      "2042": {
+        "identity": {
+          "source_directory": "/home/lux1/iron/local/runs/ema-mean3-exploration-release-20261002/release-r1",
+          "split_seed": -1,
+          "fold": -1,
+          "trial_id": "EMA_FULL_INIT2042"
+        },
+        "complete_sha256": "ea8706bb7f6fd88d1ef8d6f84db58963931d60746867a20ea33db7748201cc8b",
+        "selected_epoch": 86,
+        "selection_stopped_epoch": 111
+      }
+    },
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "replacement_weight": 0.75,
+    "training_rows": 2754,
+    "inner_training_rows": 2203,
+    "inner_validation_rows": 551,
+    "query_rows": 322,
+    "full_cold_difference": 0.0,
+    "max_row_difference": 1.2991926809036158e-05,
+    "peak_rss_mib": 736.09375,
+    "owned_pids_verified_absent": true,
+    "optimization_paused_after_delivery": true,
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-20261002/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop_bytes_equal": true,
+    "unchanged_iron_string_mismatches": 0,
+    "platform_test_status": "not_measured_ready_user_selected_exploration",
+    "platform_evidence_status": "not_measured",
+    "actual_main_exit_sha256": "6586efb39599f0ef525cb43e6897e3fed58c30b70e6d5636836c992071861077",
+    "terminal_sha256": "51eb0faafcdf91ee6246d99bf36aeacdf5a49723666a8a0f4f07da8c062336b1",
+    "native_audit_sha256": "13caafe90eb3a172ea9a3d7b2c3ccd8b42a84de3a08f88ee419b108abbaa21ed",
+    "cold_audit_sha256": "7ecee947f9a3a6349cb96e3b59938c2b74671b5778dba9283a74e59609d7a83d",
+    "package_audit_sha256": "1e8612db13d95176b421c70bff1d0d28e2d947c08ea237cc32f22ab16f236e86",
+    "desktop_handoff_receipt": "local/runs/ema-mean3-exploration-release-20261002/release-r1/desktop-delivery.json",
+    "desktop_handoff_sha256": "dd623f25519e91d78c28ed5bc2dbd1faf41fdb613ca6d214361b0f4db66e63e0",
+    "desktop_audit_receipt": "local/runs/ema-mean3-exploration-release-20261002/release-r1/desktop-independent-audit.json",
+    "desktop_audit_sha256": "ad85552988c5125f90ecb1dea186a222e72a9dc90de59fca3742db69aa1c08a8",
+    "post_terminal_reconciliation": "local/runs/ema-mean3-exploration-release-20261002/release-r1/terminal-reconciliation.json",
+    "post_terminal_reconciliation_sha256": "1cd220f83d91e6c8c2d0927af6ad602c9bc1e410a38cd0c267326bc33817c6ba",
+    "post_terminal_zero_fit_failure_retained": "local/runs/ema-mean3-exploration-release-20261002/release-r1/post-terminal-failure-r1.json",
+    "post_terminal_zero_fit_failure_sha256": "959f16a50b0445348b4f8576af8cd8fe44c50199ad1089c4d79a300d39d20bc0"
   }
 }
