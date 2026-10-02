@@ -27,3 +27,11 @@ G1通过本地四seed正式门及额外配对门，详见[确认结果](../q75_s
 独立新进程（锁定Python 3.12.12）回读通过：仅 `result.csv`、CRC正确、322唯一ID按官方模板顺序、预测有限非负；**固定列 `pred_tap_time_len` 与Q75原字段字符串差异0**，铁量列322行为融合后值。0新拟合、0新提交包、0助手上传、0标签读取。收据：`local/runs/q75-separate-mae-iron-release-20261002/desktop-delivery-r1/desktop-delivery.json`（SHA256 `e4418ad6bbfe10037470a808f000409b5eddd8d699f884169a82fb17b3873d92`）与 `desktop-independent-audit.json`（SHA256 `a997014e79c0e26ca1c381d19891fb051874c95b90a1bcfbe1157207bbe72e87`），审计脚本 `audit_desktop.py` 同目录，均在私有 `local/`。
 
 平台未测；上传与回传由用户执行。当前平台最佳仍为用户回传、未独立核验的96.3920（Q75），96.45未达。
+
+## 2026-10-02 平台反馈：96.3867，低于Q75
+
+用户回传 **96.3867**（未独立核验），按交付顺序绑定本包（用户可更正）。相对Q75=96.3920为 **−0.0053**，相对96.45为−0.0633；平台保留最好成绩，Q75仍为当前最佳。两个名额至此均已消耗。
+
+本配方本地对Q75四seed均正（均值+0.006061、seed层配对LCB95+0.003411），且对原单目标MAE两项为正（均值+0.004275、LCB95+0.001841），平台仍下降。同日另一名额LAPLACE_FIXED_A20（换时长列）为96.3891、−0.0029。两条不同目标列的固定配方当天都未转移本地正收益；此处只登记两个具体配方结果，不建立转移比例或偏移、不推断模型家族整体失败、不改门槛/分类/当前最佳。
+
+反馈收据：`local/runs/q75-separate-mae-iron-release-20261002/platform-feedback-r1/feedback.json`（SHA256 `03acb56b41a7f8ac2c44c67f5fa8a84a41a312ff6a687ba115fafe6ec6bc3fc4`）。后续方向与名额见[名额评审](../platform_slot_review/ALLOCATION.md)。
