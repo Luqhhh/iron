@@ -1,0 +1,20 @@
+{
+  "identity": "XJN_JOINT_SUPPORT_AUDIT_V1",
+  "stage": "label_free_joint_distribution_diagnostic",
+  "train_features": "复赛_train/train_features.csv",
+  "test_features": "复赛_test/test_features.csv",
+  "id_prefixes": ["R2S2_TRAIN_", "R2S2_TEST_"],
+  "expected_rows": [2754, 322],
+  "kernel": "Gaussian RBF; bandwidth = median pooled standardized pair distance",
+  "bandwidth_sample_size": 256,
+  "bandwidth_seed": 20261002,
+  "permutations": 199,
+  "permutation_seed": 61002,
+  "primary_alpha": 0.05,
+  "duplicate_policy": "collapse identical numeric feature vectors within each domain; exclude vectors shared by domains and report exclusions",
+  "preprocessing": "pooled unique exclusive feature vectors; domain-label-invariant mean/std; diagnostic only, never a prediction preprocessor",
+  "maximum_runtime_seconds": null,
+  "supervised_regression_fits": 0,
+  "platform_packages": 0,
+  "automatic_importance_weighting": false
+}
