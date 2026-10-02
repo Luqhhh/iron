@@ -1,0 +1,98 @@
+{
+  "identity": "DCN_CROSS_Q75_DEVELOPMENT_20261002",
+  "main_root": "/home/lux1/iron",
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+  },
+  "reference_binding": "local/worktrees/tabm-time-swa-continuation/local/research/q75-existing-reference-export-r1/binding.json",
+  "reference_binding_sha256": "823c3bb68d4bcaf01e35bca34314da1175c69f405e0afe06fc665d7b4a3bae09",
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    271828,
+    314159
+  ],
+  "targets": [
+    "tap_iron",
+    "tap_time_len"
+  ],
+  "folds": 5,
+  "candidate": "DCN_CROSS_A20",
+  "control": "DCN_ADDITIVE_A20",
+  "member_weight": 0.2,
+  "cold_atol": 1e-10,
+  "workers": 1,
+  "numeric_threads": 1,
+  "max_rss_mib": 1024,
+  "monitor_seconds": 600,
+  "time_budget_seconds": null,
+  "development_optimizer_runs": 80,
+  "automatic_retries": false,
+  "full_data_fits": 0,
+  "packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "target_milestones": [
+    96.4,
+    96.45,
+    96.5
+  ],
+  "confirmation_gate": "per_target_two_complete_positive_seed_gains_mean_at_least_.01_positive_matched_control_advantage_and_mean_local_working_score_at_least96.25",
+  "formal_gate": "per_target_four_complete_positive_seed_gains_one_sided_t_LCB95_positive_and_mean_advantage_over_matched_KNN_positive",
+  "tie_order": [
+    "tap_iron",
+    "tap_time_len"
+  ],
+  "training": {
+    "random_seed": 42,
+    "cross_layers": 3,
+    "cross_matrix": "full_rank",
+    "cross_initialization": "all_zero_identity",
+    "control_operator": "h_plus_W_h_plus_b",
+    "candidate_operator": "h_plus_x0_times_W_h_plus_b",
+    "deep_widths": [
+      64,
+      64
+    ],
+    "dropout": 0.1,
+    "numeric": "training_only_mean_std",
+    "categorical": "training_only_spout_onehot_unknown_zero",
+    "dtype": "float64",
+    "loss": "standardized_mse",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_norm_clip": 5.0,
+    "batch_size": 128,
+    "max_epochs": 240,
+    "patience": 25,
+    "min_delta_standardized_mae": 1e-05,
+    "selection": "calibration_mae_then_fresh_full_outer_training_refit",
+    "postprocessing": "none"
+  },
+  "original_source_worktree": "/home/lux1/iron/local/worktrees/dcn-cross-preparation",
+  "original_source_commit": "3ef52fffb36d4c1846b25203c700aeacdc82cc09",
+  "original_source_hashes": {
+    "src/bf_tap_r2/dcn_cross.py": "4215e02fdf042e074bfac0d73ff370cb06556f79ce04e69f7d557d2082e5344d",
+    "src/bf_tap_r2/dcn_cross_verify.py": "64ba9d05c2876cb2fad59f42da7587d8c750fdd4facf1d7ab1272bd51df6edb0",
+    "tests/test_dcn_cross.py": "a3d6e87a7bca483cf04b5faa0d937505d985d5f57637cc8787b37e1ed469ad57",
+    "configs/dcn_cross_preparation/SPEC.yaml": "266dcab47a2756ee75db63e1ddc1f7e5ecccdf4f67b3d2ece03b3f5ca56af66f",
+    "docs/dcn_cross_preparation/DESIGN.md": "7b11ec2cc5f0da374c68c2c828aa5734c9d2e8644576e64faa84593ac11c3ca5",
+    "docs/dcn_cross_preparation/RESULTS.md": "bdc4498d8504519227b79db8fa94fc8dd6ad5d72aad149e4245db30b706a9bc0"
+  },
+  "development_procedures": 40,
+  "development_saved_states": 80,
+  "synthetic_procedures": 2,
+  "synthetic_optimizer_runs": 4,
+  "synthetic_saved_states": 4,
+  "confirmation_procedures_max": 40,
+  "confirmation_optimizer_runs_max": 80,
+  "development_mean_gain_minimum": 0.01,
+  "minimum_local_working_score": 96.25,
+  "calibration_mae_atol": 1e-10
+}

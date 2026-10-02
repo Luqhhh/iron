@@ -1,0 +1,65 @@
+version: dcn-cross-preparation-v1
+stage: numerical_and_small_synthetic_preparation_only
+base_commit: 8567911
+platform_milestones: [96.4, 96.45, 96.5]
+platform_reference:
+  candidate: V32_TIME_A60V7_50
+  score: 96.3727
+  source: user_reported_not_independently_verified
+  zip_sha256: 54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7
+data: {official_label_reads: 0, external_data: forbidden, pretrained_weights: forbidden}
+arms: [ADDITIVE, CROSS]
+training:
+  random_seed: 42
+  cross_layers: 3
+  cross_matrix: full_rank
+  cross_initialization: all_zero_identity
+  control_operator: h_plus_W_h_plus_b
+  candidate_operator: h_plus_x0_times_W_h_plus_b
+  deep_widths: [64, 64]
+  dropout: 0.1
+  numeric: training_only_mean_std
+  categorical: training_only_spout_onehot_unknown_zero
+  dtype: float64
+  loss: standardized_mse
+  optimizer: AdamW
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  gradient_norm_clip: 5.0
+  batch_size: 128
+  max_epochs: 240
+  patience: 25
+  min_delta_standardized_mae: 0.00001
+  selection: calibration_mae_then_fresh_full_outer_training_refit
+  postprocessing: none
+synthetic:
+  seed: 53001
+  rows: 512
+  fitting_rows: 320
+  calibration_rows: 96
+  query_rows: 96
+  target: 20_plus_3_x0_plus_4_x1_x2_plus_2_x3_x4_x5_plus_gaussian_noise_0p1
+  arm_order: [ADDITIVE, CROSS]
+  official_fit_admission: false
+budget:
+  small_synthetic_procedures: 2
+  small_synthetic_optimizer_runs: 4
+  full_size_synthetic_fits: 0
+  official_data_fits: 0
+  full_data_fits: 0
+  packages: 0
+future_protocol_constraints:
+  queue_order: RFM_completed_then_PTaRL_then_DNNR_then_DANet_before_new_formal_queue
+  formal_spec_and_resource_admission_required: true
+  complete_development_split_seeds: [42, 3407]
+  development_mean_gain_ge: 0.01
+  both_development_seeds_positive: true
+  mechanism_mean_gain_over_matched_control_gt: 0.0
+  confirmation_split_seeds: [271828, 314159]
+  all_four_split_seeds_positive: true
+  seed_level_paired_lcb95_gt: 0.0
+  local_working_gate: 96.25
+  fold_level: descriptive_only
+  cross_seed_oof_averaging: forbidden
+monitoring: {interval_seconds: 600, between_check_polling: false}
+release: {automatic_packages: false, desktop_writes: 0, agent_uploads: 0}

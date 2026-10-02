@@ -21583,5 +21583,30 @@
     "platform_exploration_recommended": false,
     "old_DNNR_decision_unchanged": true,
     "next": "independent_DCN_cross_with_matched_additive_control"
+  },
+  "dcn_q75_development_20261002": {
+    "status": "preregistered_complete_size_engineering_pending",
+    "branch": "codex/dcn-q75-development",
+    "reference": "EMA_TIME_Q75",
+    "score_user_reported": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "G0": "pending_full_size_synthetic_cold_admission",
+    "G1": "unmeasured",
+    "preregistration": "docs/dcn_q75_development/PREREGISTRATION.md",
+    "spec": "configs/dcn_q75_development/SPEC.json",
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "development_optimizer_budget": 80,
+    "synthetic_optimizer_budget": 4,
+    "new_reference_fits": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0,
+    "SWA_work": "excluded_by_user_teammate_other_machine",
+    "previous_local_ridge_direction": "completed_both_target_negative_not_reopened",
+    "original_DCN_source_byte_identity": "required",
+    "old_preparation_scientific_source_and_decision_unchanged": true
   }
 }
