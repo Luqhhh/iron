@@ -2748,7 +2748,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "All_independent_MAE_confirmation_workers_terminal_no_background_monitor",
+    "runtime_observation": "One_serial_independent_MAE_iron_full_release_worker_running_600_second_observations",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3142,12 +3142,12 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "q75_separate_mae_iron_release_20261002",
     "ready_formal_candidates": [
       "LAPLACE_FIXED_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "Freeze_full_fit_and_single_iron_column_release_keep_two_slots_deferred",
+    "next_action": "Complete_iron_only_full_release_and_compare_ready_candidates_keep_two_slots_deferred",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "q75_separate_mae_iron_confirmation_20261002"
@@ -23694,5 +23694,84 @@
     "terminal_sha256": "a09739a951d70deb5f0fa3405df0d15b2f9a10f3802ed54e0179d1232810ca15",
     "status_document": "docs/q75_separate_mae_iron/RESULTS.md",
     "next_periodic_observation_ns": null
+  },
+  "q75_separate_mae_iron_release_20261002": {
+    "status": "full_release_running",
+    "source_worktree": "local/worktrees/q75-separate-mae-iron-release",
+    "source_commit": "4c31ea9751f2cb3d1f6e745c2125616115820b86",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "candidate": "SEPARATE_MAE_IRON_A20",
+    "protocol": "docs/q75_separate_mae_iron_release/PREREGISTRATION.md",
+    "specification": "configs/q75_separate_mae_iron_release/SPEC.json",
+    "run_directory": "local/runs/q75-separate-mae-iron-release-20261002/release-r1",
+    "planned_optimizer_runs": 2,
+    "planned_states": 2,
+    "new_cv_fits": 0,
+    "new_engineering_optimizers": 0,
+    "reference_fits": 0,
+    "planned_packages": 1,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "locked_checks": {
+      "python": "3.12",
+      "passed": 20,
+      "optimizer_constructor_attempts": 0,
+      "receipt_sha256": "0893a4ef5f9b332e29fe38e5d4700e43c2cc6d0e2218c42a24f964838b980014"
+    },
+    "manifest_sha256": "eebfe8762725273fe01a0af8858d68797e28a150b8a95013a8c399aa16e7a0f8",
+    "frozen_dependency_files": 3596,
+    "initial_process_verification": {
+      "observed_ns": 1790936204184668756,
+      "interval_seconds": 600,
+      "processes": [
+        {
+          "kind": "supervisor_pid",
+          "pid": 9867,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-release",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-release/.venv/bin/python3",
+            "scripts/q75_separate_mae_iron_release.py",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-separate-mae-iron-release-20261002/release-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        },
+        {
+          "kind": "worker_pid",
+          "pid": 9868,
+          "cwd": "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-release",
+          "cmdline": [
+            "/home/lux1/iron/local/worktrees/q75-separate-mae-iron-release/.venv/bin/python3",
+            "-m",
+            "bf_tap_r2.q75_separate_mae_iron_release",
+            "train",
+            "--output",
+            "/home/lux1/iron/local/runs/q75-separate-mae-iron-release-20261002/release-r1"
+          ],
+          "threads": {
+            "OPENBLAS_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1"
+          }
+        }
+      ],
+      "manifest_sha256": "eebfe8762725273fe01a0af8858d68797e28a150b8a95013a8c399aa16e7a0f8",
+      "next_periodic_observation_ns": 1790936804184668756
+    },
+    "monitor_seconds": 600,
+    "maximum_runtime_seconds": null,
+    "automatic_retries": false,
+    "G0": "full_fit_cold_and_package_audit_running",
+    "G1": "formal_four_seed_and_paired_control_passed_platform_unmeasured",
+    "formal_promoted": true,
+    "tool_session_id": 80908
   }
 }

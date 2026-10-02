@@ -1,0 +1,52 @@
+{
+  "version": "q75-separate-mae-iron-release-20261002",
+  "main_root": "/home/lux1/iron",
+  "confirmation": "local/runs/q75-separate-mae-iron-20261002/confirmation-r1",
+  "engineering": "local/runs/q75-joint-mae-20261002/engineering-r1",
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+  },
+  "parent_package": "local/runs/ema-time-followup-20261001/probes-r2/EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip",
+  "thread_target": 96.45,
+  "candidate": "SEPARATE_MAE_IRON_A20",
+  "formula": "iron=.8*Q75_iron+.2*SEPARATE_MAE_iron; Q75 time field strings unchanged",
+  "weight": 0.2,
+  "original_specification": "configs/round2_v33/SPEC.yaml",
+  "training_changes": [],
+  "full_data_procedures": 1,
+  "optimizer_runs": 2,
+  "new_states": 2,
+  "engineering_optimizer_runs": 0,
+  "new_cv_fits": 0,
+  "reference_fits": 0,
+  "workers": 1,
+  "numerical_threads": 1,
+  "torch_interop_threads": 1,
+  "max_worker_rss_mib": 1024,
+  "cold_predict_atol": 1e-08,
+  "monitor_seconds": 600,
+  "maximum_runtime_seconds": null,
+  "automatic_retries": false,
+  "runtime_versions": {
+    "torch": "2.14.0+cpu",
+    "tabm": "0.0.3",
+    "rtdl-num-embeddings": "0.0.12",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.18.1"
+  },
+  "requires_confirmation_formal_promotion": true,
+  "packages": 1,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "arm": "SEPARATE_MAE",
+  "requires_confirmation_paired_release_gate": true,
+  "target_order": [
+    "tap_iron",
+    "tap_time_len"
+  ],
+  "released_target": "tap_iron"
+}
