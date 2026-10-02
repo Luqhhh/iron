@@ -21508,5 +21508,24 @@
         "agent_uploads": 0
       }
     ]
+  },
+  "local_ridge_neighborhood_q75_20261002": {
+    "status": "preregistered_independent_worktree_engineering_pending",
+    "branch": "codex/local-ridge-neighborhood-q75",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "preregistration": "docs/local_ridge_neighborhood/PREREGISTRATION.md",
+    "spec": "configs/local_ridge_neighborhood/SPEC.json",
+    "SWA": "user_explicitly_excluded_local_work_teammate_other_machine",
+    "G0": "pending_complete_size_synthetic_cold_admission",
+    "G1": "unmeasured",
+    "development_seeds": [
+      42,
+      3407
+    ],
+    "new_optimizer_runs": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }
