@@ -19312,5 +19312,106 @@
     "complete_package_local_score_available": false,
     "results": "docs/swa_time_mae_v1/RESULTS.md",
     "spec": "configs/swa_time_mae_v1/SPEC.json"
+  },
+  "swa_time_mae_warmup_v1_20261002": {
+    "identity": "SWA_TIME_MAE_WARMUP_V1",
+    "status": "completed_two_seed_development_stopped_by_mechanism_gate",
+    "G0": "passed_production_two_states_and_independent_cold",
+    "G1": "both_seed_gains_positive_but_mean_weaker_than_original_MSE_SWA",
+    "actual_refit_MAE_epochs": {
+      "engineering:synthetic-pair": 200,
+      "development:s3407-f0": 56,
+      "development:s3407-f1": 60,
+      "development:s3407-f2": 72,
+      "development:s3407-f3": 97,
+      "development:s3407-f4": 88,
+      "development:s42-f0": 87,
+      "development:s42-f1": 62,
+      "development:s42-f2": 89,
+      "development:s42-f3": 85,
+      "development:s42-f4": 140
+    },
+    "decision": {
+      "classification": "exploration_only_not_release_authorized",
+      "control_gains": [
+        0.00433976311089045,
+        0.004547392986334328
+      ],
+      "failure_reasons": [
+        "nonpositive_mechanism_advantage"
+      ],
+      "formal_promoted": false,
+      "mean_gain": 0.00442304248367497,
+      "mechanism_mean": -2.053556493741924e-05,
+      "packages": 0,
+      "release_authorized": false,
+      "seed_gains": [
+        0.004404679007096515,
+        0.004441405960253425
+      ],
+      "seed_lcb95": null,
+      "selected_for_confirmation": [],
+      "uploads": 0
+    },
+    "budgets_consumed": {
+      "engineering": {
+        "reserved": {
+          "state": 2,
+          "optimizer": 2
+        },
+        "completed": {
+          "state": 2,
+          "optimizer": 2
+        }
+      },
+      "development": {
+        "reserved": {
+          "state": 20,
+          "optimizer": 20
+        },
+        "completed": {
+          "state": 20,
+          "optimizer": 20
+        }
+      },
+      "confirmation": {
+        "reserved": {
+          "state": 0,
+          "optimizer": 0
+        },
+        "completed": {
+          "state": 0,
+          "optimizer": 0
+        }
+      }
+    },
+    "new_saved_states": 22,
+    "new_optimizers": 22,
+    "new_outer_models": 10,
+    "reused_control_states": 22,
+    "new_control_fits": 0,
+    "reference_fits": 0,
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0,
+    "release_authorized": false,
+    "preflight_sha256": "4f1a01083333e5fbf1d6c3396dfb7fdbcf44929c871ac7bb5eb8c3f1755272d6",
+    "independent_final_verification": "passed_zero_fit_OOF_endpoint_hash_runtime_budget_decision",
+    "development_cold_audit": {
+      "status": "passed",
+      "cold_models": 40,
+      "max_difference": 1.2991926809036158e-05,
+      "max_window_parameter_difference": 4.76837158203125e-07,
+      "peak_rss_mib": 443.5859375,
+      "reused_control_states": 20
+    },
+    "platform_reference_user_reported": {
+      "identity": "EMA_TIME_Q75",
+      "score": 96.392,
+      "independently_verified": false
+    },
+    "complete_package_local_score_available": false,
+    "results": "docs/swa_time_mae_warmup_v1/RESULTS.md",
+    "spec": "configs/swa_time_mae_warmup_v1/SPEC.json"
   }
 }
