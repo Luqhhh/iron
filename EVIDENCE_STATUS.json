@@ -1,4 +1,44 @@
 {
+  "xjn_independent_research_20261002": {
+    "owner": "this_chat_git_author_xjn_not_team_SWA",
+    "branch": "codex/joint-support-research-20261002",
+    "index": "docs/xjn_independent_research/INDEX.md",
+    "joint_diagnostic": {
+      "freeze_commit": "e6db781",
+      "status": "complete_label_free_public_snapshot_diagnostic",
+      "permutation_p": 0.95,
+      "mmd2_unbiased": -0.0006010041475650318,
+      "snapshot": "synthetic_round2_v2_R2S2_not_yet_matched_to_private_Q75",
+      "G0": "18_targeted_tests_and_saved_array_new_process_recalculation_passed",
+      "G1": "not_a_model_quality_experiment",
+      "target_reads": 0,
+      "results": "docs/joint_support_audit/RESULTS.md"
+    },
+    "laplace_noise_prototype": {
+      "freeze_commit": "b7058db",
+      "status": "synthetic_G0_passed_official_development_not_started",
+      "G0": "two_full_500_epoch_models_and_new_process_exact_cold_order_chunk_readback_passed",
+      "G1": "unevaluated_requires_current_strong_reference_identity_and_OOF",
+      "synthetic_fixed_query_mae": 0.9136358564519648,
+      "synthetic_adaptive_query_mae": 1.024733371761067,
+      "adaptive_better_than_fixed_on_synthetic_example": false,
+      "engineering_model_fits": 2,
+      "engineering_tree_fits": 1500,
+      "official_data_reads": 0,
+      "official_development_seed_count": 0,
+      "results": "docs/laplace_noise_research/G0_RESULTS.md",
+      "protocol": "docs/laplace_noise_research/PREREGISTRATION.md"
+    },
+    "combined_targeted_python312_test_count": 40,
+    "is_full_project_suite": false,
+    "current_Q75_private_reference_present_here": false,
+    "official_scientific_model_fits": 0,
+    "new_packages": 0,
+    "platform_forecast": null,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "does_not_change_other_threads_paused_or_active_state": true
+  },
   "round2_final_top5": {
     "status": "FINAL_TOP5_DELIVERED_PER_EXPLICIT_USER_SCOPE",
     "date": "2026-09-23",
