@@ -1,0 +1,81 @@
+{
+  "identity": "SWA_CYCLE_TAIL_V1",
+  "status": "completed_four_seed_confirmation_not_promoted",
+  "G0": "passed_production_two_states_and_independent_cold",
+  "G1": "mean_and_seed_LCB_positive_one_seed_nonpositive",
+  "decision": {
+    "classification": "exploration_only_not_release_authorized",
+    "control_gains": [
+      0.00433976311089045,
+      0.004547392986334328,
+      -0.0007580087389666711,
+      0.0019530761211210264
+    ],
+    "failure_reasons": [
+      "nonpositive_seed_gain"
+    ],
+    "formal_promoted": false,
+    "mean_gain": 0.0029178567110472076,
+    "mechanism_mean": 0.00039730084120242386,
+    "packages": 0,
+    "release_authorized": false,
+    "seed_gains": [
+      0.00394888219493393,
+      0.005025859653867665,
+      -5.421731262628538e-05,
+      0.0027509023080135205
+    ],
+    "seed_lcb95": 0.0003427612705846454,
+    "selected_for_confirmation": [],
+    "uploads": 0
+  },
+  "budgets_consumed": {
+    "engineering": {
+      "reserved": {
+        "state": 2,
+        "optimizer": 2
+      },
+      "completed": {
+        "state": 2,
+        "optimizer": 2
+      }
+    },
+    "development": {
+      "reserved": {
+        "state": 20,
+        "optimizer": 20
+      },
+      "completed": {
+        "state": 20,
+        "optimizer": 20
+      }
+    },
+    "confirmation": {
+      "reserved": {
+        "state": 20,
+        "optimizer": 20
+      },
+      "completed": {
+        "state": 20,
+        "optimizer": 20
+      }
+    }
+  },
+  "new_saved_states": 42,
+  "new_optimizers": 42,
+  "new_outer_models": 20,
+  "reused_control_states": 42,
+  "reference_fits": 0,
+  "new_control_fits": 0,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "release_authorized": false,
+  "preflight_sha256": "410a2a47ed79a239f91e94b17f95e30c50c618a718f0d4c037cbc55a75606f6d",
+  "complete_package_local_score_available": false,
+  "platform_reference_user_reported": {
+    "identity": "EMA_TIME_Q75",
+    "score": 96.392,
+    "independently_verified": false
+  }
+}
