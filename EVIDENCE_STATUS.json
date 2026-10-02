@@ -21732,5 +21732,26 @@
     "new_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0
+  },
+  "xjn_laplace_epoch_20261002": {
+    "owner": "this_chat_xjn",
+    "status": "frozen_new_complete_epoch_stage_pending_engineering",
+    "protocol": "docs/laplace_epoch_research/PREREGISTRATION.md",
+    "specification": "configs/laplace_epoch_research/SPEC.json",
+    "G0": "new_complete_trajectory_checks_pending_old_G0_preserved",
+    "G1": "planned_public_V2_candidate_only_no_matched_Q75_gain",
+    "engineering_models_planned": 4,
+    "engineering_tree_fits_planned": 10500,
+    "public_V2_models_planned": 40,
+    "split_seeds": [42, 3407],
+    "target": "tap_iron",
+    "maximum_runtime_seconds": null,
+    "automatic_retry": false,
+    "confirmation_seeds_consumed": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "platform_score": null,
+    "agent_uploads": 0,
+    "missing": "matched_current_Q75_ZIP_training_snapshot_complete_OOF_and_partition_identity_requested_from_user"
   }
 }
