@@ -27,6 +27,7 @@
 
 ## 当前维护入口
 
+- [SAM＋EMA固定人工探索发布](sam_ema_release/STATUS.md)：62项定向检查与冻结准备exit0通过，单个全量探索拟合/审计待完成；用户要求本轮交付后暂停，不再启动下一轮。
 - [96.45本轮实施顺序](q75_9645_execution/PLAN.md)与[完整结果](q75_9645_execution/RESULTS.md)：首批工作及初始化、更新步数、组件校准均已闭合；后续配对门未过，仍只有原组合探索包待测。
 - [含EMA零拟合组合结果](q75_combination_review/RESULTS.md)：六项、四个完整已有seed；开发首选N_TO_V36005均值+.006667、LCB95+.005809，[单一探索探针](q75_combination_review/DELIVERY.md)已通过独立回读，平台未测。
 - [按最终融合效果选轮协议](ema_fusion_selection/PREREGISTRATION.md)与[完整配对结果](ema_fusion_selection/RESULTS.md)：30optimizer/40状态及独立终态G0通过；选轮独立收益一正一负，不进入确认。
