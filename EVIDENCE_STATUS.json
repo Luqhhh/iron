@@ -27577,10 +27577,10 @@
     "planned_new_estimators": 30,
     "planned_new_optimizers": 60,
     "planned_cold_states": 120,
-    "engineering_unique_tests_passed": 6,
+    "engineering_unique_tests_passed": 7,
     "engineering_optimizers": 2,
-    "engineering_checks": "/home/lux1/iron/local/runs/ema-independent-batches-20261004/engineering-r3/checks.json",
-    "engineering_checks_sha256": "939bf3d90a52e727c6025177944deed6e84ac69e411587b08c7a11abecc596d5",
+    "engineering_checks": "/home/lux1/iron/local/runs/ema-independent-batches-20261004/engineering-r4/checks.json",
+    "engineering_checks_sha256": "875fdeca05287cf0587570333f05c5367bce0c3217b60eb170667275b61114a9",
     "initial_test_assertion_failure_preserved": true,
     "G0": "synthetic_full_shape_saved_partitions_selection_refit_independent_cold_and_pure_checks_passed_scientific_G0_pending",
     "G1": "not_evaluated_no_formal_promotion",
@@ -27591,6 +27591,8 @@
     "agent_uploads": 0,
     "monitor_seconds": 600,
     "time_budget_seconds": null,
-    "automatic_retries": false
+    "automatic_retries": false,
+    "preparation_failure": "relative_legacy_manifest_path_resolved_in_wrong_worktree_before_manifest_or_any_fit; preserved preparation-r1",
+    "preparation_failed_actual_exit_code": 1
   }
 }

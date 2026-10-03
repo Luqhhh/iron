@@ -58,6 +58,15 @@ def choose(gains):
     return max(passing, key=lambda k:sum(gains[k].values())) if passing else None
 
 
+def merge_legacy_files(files, incoming, root):
+    """Old manifests resolve relative identities at their original repository."""
+    for path, value in incoming.items():
+        name = str((Path(root)/path).resolve())
+        if name in files and files[name] != value:
+            raise ValueError('Conflicting frozen inputs')
+        files[name] = value
+
+
 def eligible(gains):
     if set(gains) != {'42', '3407'} or not all(math.isfinite(v) for v in gains.values()):
         raise ValueError('Two complete finite split gains required')
@@ -101,10 +110,7 @@ def prepare(checks):
     n = read(NESTED/'manifest.json')
     files = {}
     for directory in (NESTED, MEAN, Q100):
-        for p,h in read(directory/'manifest.json')['files'].items():
-            if p in files and files[p] != h:
-                raise ValueError('Conflicting frozen inputs')
-            files[p] = h
+        merge_legacy_files(files, read(directory/'manifest.json')['files'], MAIN)
     qa = read(Q100/'independent-audit.json')
     da = read(DE3/'audit.json')
     if (qa['status'] != 'passed' or qa['manifest_sha256'] != sha(Q100/'manifest.json')

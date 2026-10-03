@@ -14,6 +14,17 @@ from bf_tap_r2.ema_independent_batches_model import (
 from bf_tap_r2.data import FEATURES, TARGETS
 
 
+def test_legacy_manifest_paths_resolve_against_original_root(tmp_path):
+    files = {}
+    run.merge_legacy_files(files, {'local/checks.json': 'a'}, tmp_path)
+    name = str(tmp_path/'local/checks.json')
+    assert files == {name: 'a'}
+    run.merge_legacy_files(files, {name: 'a'}, tmp_path/'other-worktree')
+    assert files == {name: 'a'}
+    with pytest.raises(ValueError, match='Conflicting'):
+        run.merge_legacy_files(files, {'local/checks.json': 'b'}, tmp_path)
+
+
 def test_member_permutations_have_complete_coverage_and_reproducible_rng():
     rng = np.random.default_rng(42)
     orders = [member_orders(rng, 551, 16) for _ in range(3)]
