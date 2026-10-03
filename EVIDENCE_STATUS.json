@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "one_hardtree_probe_recommended_joint_iron_design_preregistered",
+    "status": "one_hardtree_probe_recommended_both_independent_batch_developments_G0_closed_A20_confirmations_deferred",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -322,7 +322,7 @@
         "formal_promotion": false
       }
     ],
-    "submission_priority_note": "Recommend exactly one audited current-parent hardtree probe; three slots remain the user-stated count with no upload/consumption inferred. Other slots stay unallocated. IBATCH_A20 confirmation admission is retained after complete G0/G1 review, without automatic package or platform allocation.",
+    "submission_priority_note": "Recommend exactly one audited current-parent hardtree probe; three slots remain the user-stated count with no upload/consumption inferred. Other two slots stay unallocated. EMA IBATCH_A20 and DE3 JOINT_IBATCH_IRON_A20 confirmation admissions are retained after complete G0/G1 review and deferred; no automatic full fits, packages or platform allocation.",
     "ready_for_user_platform_testing": [
       {
         "candidate": "HARDTREE_DE3_Q100_A20",
@@ -368,7 +368,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "DE3＋EMA三成员Q100回传96.3979为新最佳，较Q75组合+0.0002，距96.4为0.0021。本包已测，不由这次小幅正收益自动追加权重探针；保留原两切分负与未正式晋级，旧硬树未分配，原Q100父包保持未测。",
+    "recommended": "当前最佳仍为用户回传DE3＋EMA三成员Q100=96.3979，距96.45为0.0521。建议先测已审计HARDTREE_DE3_Q100_A20，保留本地一负一正与人工探索身份；两项独立采样A20保留确认准入、暂不确认或封包，其余两次名额不预分配。三次剩余额度为用户最后明确记录，不由建议推算消耗。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -975,7 +975,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "EMA_IBATCH_G0_closed_A20_confirmation_eligible_deferred; joint_DE3_iron_independent_sampling_design_frozen_implementation_engineering_pending_zero_new_fits",
+    "research_status": "EMA_and_DE3_joint_independent_sampling_completed_G0_passed_each_A20_confirmation_eligible_deferred_no_formal_promotion_no_running_scientific_job",
     "platform_slots_user_reported": 3,
     "platform_slots_source": "explicit_current_goal_three_slots_not_inferred",
     "submission_allocation": "sequential_information_questions_no_four_package_filler",
@@ -1325,7 +1325,9 @@
         }
       ],
       "research_status": "IBATCH_complete_two_split_development_running; retained_current_Q100_BASE_positive_both_HARDTREE_mixed; no_new_platform_allocation"
-    }
+    },
+    "current_development_active": false,
+    "latest_completed_development_key": "de3_joint_independent_batches_development_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -3237,7 +3239,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "previous_owned_processes_ended; new_joint_iron_stage_is_preparation_only_no_running_scientific_job",
+    "runtime_observation": "both_EMA_and_DE3_independent_batch_stages_completed_all_owned_processes_absent_no_running_scientific_job",
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3610,7 +3612,7 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "ema_independent_batches_development_20261004",
+    "latest_completed_quality_experiment": "de3_joint_independent_batches_development_20261004",
     "latest_platform_feedback_key": "de3_ema_mean3_q100_platform_feedback_20261004",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
@@ -3619,9 +3621,9 @@
     "latest_local_G1": "BASE_two_positive_development_splits_not_four_seed_promoted_HARDTREE_one_negative_exploration",
     "last_local_diagnostic_results": "docs/q100_retained_questions/RESULTS.md",
     "latest_registered_scientific_route": "de3_joint_independent_batches_development_20261004",
-    "latest_completed_scientific_route": "ema_independent_batches_development_20261004",
-    "latest_scientific_G0": "passed_3537_frozen_files_30_estimators_60_optimizers_120_cold_states_72_child_exit0_two_supervisor_exit0_and_independent_terminal_reconciliation",
-    "latest_scientific_G1": "A20_two_positive_development_splits_exploration_five_of_ten_folds_confirmation_eligible_not_promoted_A100_two_negative",
+    "latest_completed_scientific_route": "de3_joint_independent_batches_development_20261004",
+    "latest_scientific_G0": "passed_4612_frozen_files_30_estimators_60_optimizers_56034_native_steps_120_cold_states_72_child_exit0_actual_supervisor_followup_and_independent_terminal_exit0",
+    "latest_scientific_G1": "A100_two_negative_development_splits_A20_two_positive_six_of_ten_folds_exploration_confirmation_eligible_deferred_not_formally_promoted",
     "active_release_key": null,
     "history_before_platform_feedback_20261002": {
       "latest_G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
@@ -3631,12 +3633,12 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": "de3_joint_independent_batches_development_20261004",
+    "active_research": null,
     "ready_formal_candidates": [],
-    "next_action": "implement_and_validate_frozen_DE3_joint_independent_batch_protocol_before_any_new_fit; user_hardtree_upload_feedback_pending",
+    "next_action": "user_upload_and_return_HARDTREE_DE3_Q100_A20_platform_score_to_inform_remaining_two_slot_direction; both_independent_batch_A20_confirmation_admissions_retained_deferred",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
-    "latest_completed_research": "ema_independent_batches_development_20261004",
+    "latest_completed_research": "de3_joint_independent_batches_development_20261004",
     "history_before_mean3_overview_20261003": {
       "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/overview-before-refresh.json",
       "sha256": "ed0cc74486dc743a6201dcfeef105596b4928a6807ca7ec30e55863c94ec585f"
@@ -3697,7 +3699,10 @@
       ],
       "next_action": "complete_both_full_development_splits_and_120_cold_state_checks_before_quality_and_platform_allocation"
     },
-    "latest_platform_allocation_key": "hardtree_current_platform_decision_20261004"
+    "latest_platform_allocation_key": "hardtree_current_platform_decision_20261004",
+    "latest_completed_development": "de3_joint_independent_batches_development_20261004",
+    "latest_development_G0": "passed_4612_frozen_files_30_estimators_60_optimizers_56034_native_steps_120_cold_states_72_child_exit0_actual_supervisor_followup_and_independent_terminal_exit0",
+    "latest_development_G1": "A100_two_negative_development_splits_A20_two_positive_six_of_ten_folds_exploration_confirmation_eligible_deferred_not_formally_promoted"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -28045,7 +28050,7 @@
     "terminal_sha256": "3b10808931786f6a293cdcd864d4b0e4e9ed3b6d4365dcbcd3da20feee8c7820"
   },
   "de3_joint_independent_batches_development_20261004": {
-    "status": "running_complete_two_split_scientific_batch_quality_unread",
+    "status": "completed_two_split_development_G0_closed_A20_confirmation_eligible_deferred",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
     "target": 96.45,
@@ -28081,9 +28086,9 @@
       "maximum_selector_refit_epochs_each": 2,
       "synthetic_seed": 964505
     },
-    "G0": "engineering_passed_input_identity_frozen_scientific_cold_inventory_and_actual_terminal_pending",
-    "G1": "not_read_until_all_ten_outer_units_complete_no_formal_promotion",
-    "new_scientific_fits": null,
+    "G0": "passed_4612_frozen_files_30_estimators_60_optimizers_56034_native_steps_120_cold_states_72_child_exit0_actual_supervisor_followup_and_independent_terminal_exit0",
+    "G1": "A100_two_negative_development_splits_A20_two_positive_six_of_ten_folds_exploration_confirmation_eligible_deferred_not_formally_promoted",
+    "new_scientific_fits": 30,
     "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -28113,19 +28118,19 @@
     "watcher_pid": 33502,
     "followup_tool_session": 31415,
     "terminal_followup_directory": "local/runs/de3-independent-batches-20261004/terminal-followup-r1",
-    "new_scientific_fits_note": "Final consumed inventory pending; 30-estimator/60-optimizer native construction ledger enforced",
+    "new_scientific_fits_note": "Final native inventory reconciled: 30 estimators, 60 optimizer constructors, 56034 steps; no scientific retries",
     "last_scheduled_observation": {
-      "number": 7,
-      "receipt": "local/runs/de3-independent-batches-20261004/development-r1/execution/observation-007-independent.json",
-      "sha256": "3e0397a2726e47f492c643a48c197cd35f867196165a40931e56ab21ae748b05",
-      "controller_and_watcher_verified_live": true,
-      "completed_new_estimators": 25,
-      "completed_new_cold": 25,
-      "completed_children": 59,
+      "number": 8,
+      "receipt": "local/runs/de3-independent-batches-20261004/development-r1/execution/observation-008-independent.json",
+      "sha256": "4ce36cbcbcf1a4b3891ea29f9d194ea423309c848839176f2bb72433a0f5df8d",
+      "controller_and_watcher_verified_live_at_observation": true,
+      "completed_new_estimators": 29,
+      "completed_new_cold": 29,
+      "completed_children": 68,
       "all_completed_children_exit0": true,
       "maximum_completed_child_rss_mib": 844.15234375,
       "partial_quality_read": false,
-      "next_observation_not_before_ns": 1791059237714095846
+      "superseded_by_final_reconciliation": true
     },
     "conditional_confirmation_cache_inventory": {
       "status": "passed_original_identity_hash_and_budget_receipt_review_only",
@@ -28158,6 +28163,75 @@
       "new_confirmation_seeds": 0,
       "packages": 0,
       "document": "docs/de3_independent_batches/CONFIRMATION_CACHE.md"
-    }
+    },
+    "results": "docs/de3_independent_batches/RESULTS.md",
+    "gains": {
+      "JOINT_IBATCH_IRON_A100": {
+        "42": -6.499084942289355e-05,
+        "3407": -0.00035717530749956855
+      },
+      "JOINT_IBATCH_IRON_A20": {
+        "42": 0.0003397326814808794,
+        "3407": 0.000278324500445569
+      }
+    },
+    "selected_for_confirmation": "JOINT_IBATCH_IRON_A20",
+    "confirmation_admission_preserved": true,
+    "confirmation_status": "eligible_deferred_pending_platform_information_priority_no_new_confirmation_seed",
+    "formal_promoted": false,
+    "actual_new_estimators": 30,
+    "actual_new_optimizers": 60,
+    "actual_cold_states": 120,
+    "native_optimizer_steps": 56034,
+    "cold_full_batch_difference": 0.0,
+    "maximum_cold_difference": 5.619678518087312e-05,
+    "independent_arithmetic_maximum_difference": 2.2737367544323206e-13,
+    "maximum_child_rss_mib": 844.15234375,
+    "independent_auditor_peak_rss_mib": 236.49609375,
+    "elapsed_seconds_descriptive": 4999.002885207,
+    "actual_supervisor_exec_exit_code": 0,
+    "actual_followup_exec_exit_code": 0,
+    "actual_independent_audit_exit_code": 0,
+    "owned_processes_absent": true,
+    "owned_pid_count": 75,
+    "completed_scientific_children": 72,
+    "monitoring_active": false,
+    "next_observation_not_before_ns": null,
+    "candidate_quality": {
+      "JOINT_IBATCH_IRON_A100": {
+        "tier": "not_shortlisted",
+        "improved_folds": 5,
+        "failed_conditions": [
+          "both_splits_improve",
+          "minimum_improved_folds"
+        ],
+        "mean_score_gain": -0.00021108307846123104
+      },
+      "JOINT_IBATCH_IRON_A20": {
+        "tier": "exploration",
+        "improved_folds": 6,
+        "failed_conditions": [
+          "minimum_improved_folds"
+        ],
+        "mean_score_gain": 0.0003090285909632242
+      }
+    },
+    "receipt_hashes": {
+      "original_terminal_sha256": "2015b2c88de446c99c62effae187d8dc23217cc6ea453e38ee5a20742cdcba6f",
+      "independent_terminal_audit_sha256": "3115aa07735cbfa7d326691d00f4a664f7db3e5990f24d04e8f0d2fdc2bb3fc2",
+      "report_sha256": "d3785043071c9b4d70378698f2b0afd5985ab20cf01aa5a8e7f1823435bc6667",
+      "arithmetic_audit_sha256": "eb6a5cb5649626bd70f814215a74500cda2d489f9d663fa252357e5e56e2d96d",
+      "manifest_sha256": "bcc74d2fb95d625014634dcbd6f3f15d3834772521e224cc97f7a7f9a0b1b2ba",
+      "followup_manifest_sha256": "f57af4b30057ce58491437588cc8e9d5de6e177f19e16670c29fa529666067b8",
+      "followup_complete_sha256": "884c678657f3ee041ec23db5c416c9b134846a33cb7eab08e3b164ee2eb95323",
+      "followup_actual_audit_terminal_sha256": "79b4ae33646d01c53232c5bf0ecf7f31a6a89b471cd8f3049faaab883bc3bdac",
+      "final_reconciliation_sha256": "e3563e2f766a299b08f230b033e5186f3be40bb68411c95ab0000b6d97af323a",
+      "oof_sha256": {
+        "42": "dba4b5376b82df668e120ef735ce92896ce464dfabec976d2427439ed0070e58",
+        "3407": "7b24892fb561b85be55f219116ff9eb8517e9db0af3792a314d9a0e42b9d0bda"
+      }
+    },
+    "final_reconciliation": "local/runs/de3-independent-batches-20261004/development-r1/execution/final-reconciliation.json",
+    "confirmation_priority_reason": "Retain fixed two-positive-split admission; full replacement negative both, partial replacement small complementary gain on six of ten folds. Original DE3 platform positive supports retention but does not establish sampling transfer; related EMA32/Gaussian/MAE platform negative examples and unmeasured discrete-routing question favor audited HARDTREE_DE3_Q100_A20 first. No new numeric or time threshold."
   }
 }
