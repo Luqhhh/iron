@@ -20030,5 +20030,43 @@
     "new_control_fits": 0,
     "new_reference_fits": 0,
     "platform_score": null
+  },
+  "tabm_head_bootstrap_v1_20261003": {
+    "identity": "TABM_HEAD_BOOTSTRAP_V1",
+    "status": "implementation_engineering_preparation",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "G0": {
+      "status": "targeted_passed_full_tests_pending",
+      "new_states": 0,
+      "new_optimizers": 0,
+      "targeted_neural_tests": 9,
+      "targeted_locked_tests": 3,
+      "targeted_locked_skipped": 6
+    },
+    "G1": {
+      "status": "not_started",
+      "formal_promoted": false
+    },
+    "spec": "configs/tabm_head_bootstrap_v1/SPEC.json",
+    "document": "docs/tabm_head_bootstrap_v1/STRATEGY.md",
+    "budgets": {
+      "engineering": {
+        "state": 2,
+        "optimizer": 2
+      },
+      "development": {
+        "state": 20,
+        "optimizer": 20
+      },
+      "confirmation": {
+        "state": 20,
+        "optimizer": 20
+      }
+    },
+    "release_authorized": false,
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }
