@@ -20137,5 +20137,13 @@
     "new_control_fits": 0,
     "new_reference_fits": 0,
     "result_document": "docs/tabm_head_bootstrap_v1/RESULTS.md"
+  },
+  "tabm_correction_fusion_v1_20261003": {
+    "status": "preregistered_zero_fit_exploration",
+    "spec": "configs/tabm_correction_fusion_v1/SPEC.json",
+    "validation": "post_selection_exploration",
+    "formal_promoted": false,
+    "release_authorized": false,
+    "new_fits": 0
   }
 }

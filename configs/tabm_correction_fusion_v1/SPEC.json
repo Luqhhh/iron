@@ -1,0 +1,88 @@
+{
+  "identity": "TABM_CORRECTION_FUSION_V1",
+  "target": "tap_time_len",
+  "reference": "EMA_TIME_Q75",
+  "platform_reference_user_reported": 96.392,
+  "split_seeds": [
+    42,
+    3407,
+    271828,
+    314159
+  ],
+  "rows_per_seed": 2754,
+  "folds": 5,
+  "candidate_order": [
+    "BOOT_DELTA10",
+    "BOOT_DELTA20",
+    "COV_DELTA10",
+    "COV_DELTA20",
+    "MIX50_A20"
+  ],
+  "formulas": {
+    "BOOT_DELTA10": [
+      1,
+      0.1,
+      0,
+      -0.1
+    ],
+    "BOOT_DELTA20": [
+      1,
+      0.2,
+      0,
+      -0.2
+    ],
+    "COV_DELTA10": [
+      1,
+      0,
+      0.1,
+      -0.1
+    ],
+    "COV_DELTA20": [
+      1,
+      0,
+      0.2,
+      -0.2
+    ],
+    "MIX50_A20": [
+      0.8,
+      0.1,
+      0.1,
+      0
+    ]
+  },
+  "coefficient_order": [
+    "Q75",
+    "HEAD_BOOTSTRAP",
+    "JOINT_COV_MSE",
+    "NATIVE_MSE_CONTROL"
+  ],
+  "controls": [
+    "BOOT_A20",
+    "COV_A20",
+    "BASE_A20"
+  ],
+  "selection": "at most one exploration: positive complete four-seed mean; rank mean, minimum seed gain, frozen order",
+  "formal_promotion_allowed": false,
+  "validation": "post_selection_exploration_all_four_seeds_previously_seen",
+  "new_fits": 0,
+  "new_optimizers": 0,
+  "new_model_inferences": 0,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "desktop": 0,
+  "worker": 1,
+  "numeric_threads": 1,
+  "rss_mib": 1024,
+  "time_budget": null,
+  "cross_split_prediction_averaging": false,
+  "clipping": false,
+  "diagnostics": [
+    "candidate vs Q75 gain",
+    "candidate vs paired raw BASE A20",
+    "candidate vs existing BOOT/COV A20",
+    "correlation of candidate-minus-BASE correction vectors",
+    "fold and spout descriptive only"
+  ],
+  "hash_rule": "original preflight source/reference; cold audit inputs and units; complete manifest files; old ledgers byte unchanged; freeze before cached labels"
+}
