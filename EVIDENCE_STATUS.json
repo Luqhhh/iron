@@ -28115,17 +28115,17 @@
     "terminal_followup_directory": "local/runs/de3-independent-batches-20261004/terminal-followup-r1",
     "new_scientific_fits_note": "Final consumed inventory pending; 30-estimator/60-optimizer native construction ledger enforced",
     "last_scheduled_observation": {
-      "number": 5,
-      "receipt": "local/runs/de3-independent-batches-20261004/development-r1/execution/observation-005-independent.json",
-      "sha256": "18d444795c47d3274e685d23d900af183d8250260ee2115035465d317ea7bc78",
+      "number": 6,
+      "receipt": "local/runs/de3-independent-batches-20261004/development-r1/execution/observation-006-independent.json",
+      "sha256": "d4739fc2c938720c7cb13316af82aa12a3d759c11b66193b86fbbf77857a6869",
       "controller_and_watcher_verified_live": true,
-      "completed_new_estimators": 17,
-      "completed_new_cold": 17,
-      "completed_children": 40,
+      "completed_new_estimators": 21,
+      "completed_new_cold": 21,
+      "completed_children": 50,
       "all_completed_children_exit0": true,
       "maximum_completed_child_rss_mib": 844.15234375,
       "partial_quality_read": false,
-      "next_observation_not_before_ns": 1791058037714095846
+      "next_observation_not_before_ns": 1791058637714095846
     },
     "conditional_confirmation_cache_inventory": {
       "status": "passed_original_identity_hash_and_budget_receipt_review_only",
