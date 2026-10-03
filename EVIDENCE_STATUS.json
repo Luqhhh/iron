@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "DE3_mean3_Q100_new_best_96_3979_no_new_priority_allocation",
+    "status": "new_independent_minibatch_development_no_platform_slot_allocated",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -1256,7 +1256,8 @@
         }
       ],
       "research_status": "EMA mean5 fixed extension is running against current mean3 with 20 new estimators/40 optimizer budget. Original nested residual and followup closed; small Ridge confirmation deferred. No new platform allocation."
-    }
+    },
+    "current_development_key": "ema_independent_batches_development_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -3169,7 +3170,7 @@
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
     "runtime_observation": "no_owned_running_tasks_mean5_closed_and_zero_fit_Q100_release_all_stages_exited_successfully",
-    "remaining_platform_submissions": null,
+    "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
     "local_gain_is_sole_platform_selection_criterion": false,
@@ -3564,7 +3565,7 @@
     },
     "active_research": null,
     "ready_formal_candidates": [],
-    "next_action": "review_next_information_question_against_measured_96_3979_before_any_new_platform_priority_no_automatic_weight_probe",
+    "next_action": "freeze_and_run_complete_two_split_independent_minibatch_EMA_development_against_measured_DE3_mean3_Q100",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_mean5_development_20261003",
@@ -3620,7 +3621,8 @@
       "latest_G0": "passed_python312_11_frozen_sources_parent_cold_audit_identity_independent_322_row_package_and_desktop_readback_all_four_stages_exit0",
       "latest_G1": "user_requested_fixed_iron_strength_probe_unmeasured_not_formally_promoted",
       "next_action": "user_may_test_desktop_DE3_IRON_EMA_MEAN3_Q100_and_report_score_original_Q100_probe_retained_no_duplicate_priority"
-    }
+    },
+    "remaining_platform_submissions_source": "explicit_goal_20261004_not_inferred"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -27536,5 +27538,59 @@
     "created_ns": 1791045719840939577,
     "feedback_record": "local/runs/de3-ema-mean3-q100-release-20261004/platform-feedback-r1/feedback.json",
     "feedback_sha256": "94152c2e6c71219231d7c60b46367a2852c3a38e050f3d2640cbc096029eb2ad"
+  },
+  "optimization_continuation_9645_three_slots_20261004": {
+    "status": "active_offline_development",
+    "objective": "当前还有三次提交额度，继续优化，目标平台得分96.45，不要把本地收益当作唯一标准",
+    "user_reported_remaining_slots": 3,
+    "quota_source": "explicit_current_goal",
+    "quota_not_inferred": true,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "target": 96.45,
+    "gap": 0.0521,
+    "new_platform_slots_allocated": 0,
+    "agent_uploads": 0
+  },
+  "ema_independent_batches_development_20261004": {
+    "status": "engineering_passed_pending_isolated_scientific_freeze",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "target": 96.45,
+    "protocol": "docs/ema_independent_batches/PREREGISTRATION.md",
+    "spec": "configs/ema_independent_batches/SPEC.json",
+    "source_worktree": "local/worktrees/ema-independent-batches",
+    "run_directory": "local/runs/ema-independent-batches-20261004/development-r1",
+    "candidate_order": [
+      "IBATCH_A100",
+      "IBATCH_A20"
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "planned_new_estimators": 30,
+    "planned_new_optimizers": 60,
+    "planned_cold_states": 120,
+    "engineering_unique_tests_passed": 6,
+    "engineering_optimizers": 2,
+    "engineering_checks": "/home/lux1/iron/local/runs/ema-independent-batches-20261004/engineering-r3/checks.json",
+    "engineering_checks_sha256": "939bf3d90a52e727c6025177944deed6e84ac69e411587b08c7a11abecc596d5",
+    "initial_test_assertion_failure_preserved": true,
+    "G0": "synthetic_full_shape_saved_partitions_selection_refit_independent_cold_and_pure_checks_passed_scientific_G0_pending",
+    "G1": "not_evaluated_no_formal_promotion",
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false
   }
 }
