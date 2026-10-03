@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-03",
-    "status": "information_value_review_ModernNCA_release_in_preparation",
+    "status": "ModernNCA_time_new_manual_exploration_ready_information_value_priority",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -324,9 +324,10 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [
+      "MODERNNCA_TIME_A20",
       "EMA_MEAN3_FULL_Q75"
     ],
-    "submission_priority_note": "Manual information-value priority: EMA_MEAN3 tests averaging of the platform-positive EMA direction; ModernNCA MSE time is the sole new manual exploration under release preparation. GAUSS1 remains ready but unallocated; K32 deprioritised after EMA32. No measured package remains in ready list.",
+    "submission_priority_note": "ModernNCA is the sole new platform-unmeasured retrieval question; EMA_MEAN3 is conditional on no prior user platform test. These are manual exploration priorities, not formal promotions. Gaussian retained unallocated; no quota consumption inferred.",
     "ready_for_user_platform_testing": [
       {
         "candidate": "GAUSS1_A20",
@@ -352,6 +353,18 @@
         "formal_promotion": false,
         "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-20261002/Luqhhh_bf_tap_predict_round2.zip",
         "desktop_handoff_receipt": "local/runs/ema-mean3-exploration-release-20261002/release-r1/desktop-delivery.json"
+      },
+      {
+        "candidate": "MODERNNCA_TIME_A20",
+        "package": "local/runs/modernnca-time-exploration-20261003/release-r1/MODERNNCA_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "dd1b1866eb514fefb026c37ef7239127572a65c75b42877b42f50c5aaa2937c5",
+        "G0": "passed_45_locked_checks_native_NumPy_cold_label_free_package_322_template_iron_strings_and_actual_exit0",
+        "G1": "manual_platform_exploration_not_formally_promoted_original_development_gate_failure_preserved",
+        "reference": "EMA_TIME_Q75",
+        "evidence_key": "modernnca_time_manual_exploration_20261003",
+        "feedback_status": "not_measured",
+        "formal_promotion": false,
+        "desktop": null
       }
     ],
     "reserve_candidates": [
@@ -372,7 +385,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "优先核实/测试已交付EMA_MEAN3；正在准备唯一新探索ModernNCA时长20%，原两seed小正但幅度门失败保留。Gaussian保留未分配，DE3仅替补；不为凑满四个名额重复测试相近配方。",
+    "recommended": "优先测试新完成的MODERNNCA_TIME_A20；EMA_MEAN3若尚未测过则作为第二个不同机制问题。Gaussian暂保留，另一个名额也不凑包，先等待平台信息。DE3继续仅替补。",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -855,7 +868,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "ModernNCA MSE time standalone manual exploration release frozen; no formal promotion or confirmation fits",
+    "research_status": "ModernNCA manual exploration full fit and all independent audits complete; no active owned process; target 96.45 not reached",
     "platform_slots_user_reported": 4,
     "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
     "submission_allocation": "sequential_information_questions_no_four_package_filler",
@@ -25376,7 +25389,7 @@
     "remaining_quota_inferred": false
   },
   "modernnca_time_manual_exploration_20261003": {
-    "status": "preregistered_release_engineering_checks_running",
+    "status": "completed_audited_manual_exploration_package_ready_platform_unmeasured",
     "candidate": "MODERNNCA_TIME_A20",
     "reference": "EMA_TIME_Q75",
     "reference_score_user_reported": 96.392,
@@ -25387,8 +25400,8 @@
     "source_directory": "local/worktrees/modernnca-source-preparation",
     "source_commit": "f4b0c9d209e6a2d8285cd49314ec01e8f7cde3f7",
     "formal_promoted": false,
-    "G0": "pending",
-    "G1": "manual_information_exploration_original_development_gates_failed_preserved",
+    "G0": "passed_45_locked_checks_native_NumPy_cold_label_free_package_322_template_iron_strings_and_actual_exit0",
+    "G1": "manual_platform_exploration_not_formally_promoted_original_development_gate_failure_preserved",
     "reason": "Learned-distance label retrieval is unmeasured on platform; complete two-seed fixed 20% time blend gains small positive; local magnitude alone is not a veto.",
     "local_seed_gains": {
       "42": 0.0006693807072483821,
@@ -25406,6 +25419,68 @@
     },
     "monitor_seconds": 600,
     "time_budget_seconds": null,
-    "automatic_retries": false
+    "automatic_retries": false,
+    "checks": "local/runs/modernnca-time-exploration-20261003/checks-r2/checks.json",
+    "launch_root": "local/runs/modernnca-time-exploration-20261003/launch-r1",
+    "exec_session_id": 8072,
+    "fit_pid": 2587,
+    "monitor_interval_seconds": 600,
+    "next_scheduled_observation_ns": null,
+    "documentation": "docs/modernnca_time_exploration/DELIVERY.md",
+    "package": "local/runs/modernnca-time-exploration-20261003/release-r1/MODERNNCA_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "dd1b1866eb514fefb026c37ef7239127572a65c75b42877b42f50c5aaa2937c5",
+    "result_sha256": "33ecfba6902b98928d1ee41297840ae0d53e7bce2dad25253e1a88189ddfc065",
+    "actual_counts": {
+      "full_training_procedures": 1,
+      "estimator": 2,
+      "optimizer": 2,
+      "packages": 1,
+      "new_cv": 0,
+      "confirmation_seeds": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "selected_epoch": 11,
+    "selector_stopped_epoch": 36,
+    "optimizer_steps": {
+      "selector": 324,
+      "refit": 121
+    },
+    "source_files_frozen": 1698,
+    "actual_stage_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "actual_supervisor_exit_code": 0,
+    "owned_pids_verified_absent": true,
+    "peak_rss_mib": 785.4140625,
+    "cold_maximum_difference": 2.0463630789890885e-12,
+    "package_arithmetic_maximum_difference": 4.263256414560601e-13,
+    "platform_measured": false,
+    "desktop": null,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "artifacts": {
+      "local/runs/modernnca-time-exploration-20261003/release-r1/manifest.json": "55d26152458a7776ee754c17ba4451cbcd8ee7fa2ef969f0551f934a1bb5b65d",
+      "local/runs/modernnca-time-exploration-20261003/release-r1/warm.json": "840cf08b207f250f2538018b95ca87d7a6894c5382f217aa78c04b06982c2567",
+      "local/runs/modernnca-time-exploration-20261003/release-r1/cold.json": "f3f514f4a3753d97209f077be5f30774abf44f660eeee81f5857603b3245d4c6",
+      "local/runs/modernnca-time-exploration-20261003/release-r1/package-audit.json": "48af8d328ae64334d36e9290df6c7ac54262b17bc5eb17ed94786e7e2eedb55a",
+      "local/runs/modernnca-time-exploration-20261003/launch-r1/terminal.json": "46cd4d1de506232830c3a3a832c42906884f32d74e1625adf20b2c0c1ce41033",
+      "local/runs/modernnca-time-exploration-20261003/launch-r1/final-reconciliation.json": "f5a581f4c60cd04ddeae89761d841ac5108d2723eabf12717c7589cff273a62b",
+      "local/runs/modernnca-time-exploration-20261003/information-review-r1/report.json": "40a656a163027f7667374cb7fa11ac150b808bb116dc0abd89810afe269d8104"
+    }
+  },
+  "platform_information_value_review_20261003": {
+    "status": "completed_queue_reconciled_new_retrieval_exploration_ready",
+    "documentation": "docs/platform_information_value/ALLOCATION.md",
+    "review": "local/runs/modernnca-time-exploration-20261003/information-review-r1/report.json",
+    "G0": "six_ZIPs_hash_CRC_template_order_iron_strings_and_independent_scalar_passed",
+    "G1": "label_free_prediction_differences_only_not_error_independence_or_platform_gain",
+    "new_scientific_exploration_key": "modernnca_time_manual_exploration_20261003",
+    "new_automatic_exploration_recommendations": 0,
+    "new_manual_exploration_candidates": 1,
+    "user_reported_slots": 4,
+    "quota_consumption_inferred": false
   }
 }
