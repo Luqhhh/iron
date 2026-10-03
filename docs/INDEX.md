@@ -6,17 +6,17 @@
 
 | 项目 | 最新登记 |
 | --- | --- |
-| 平台回传同分最佳 | **EMA_TIME_Q75 / EMA_TIME_Q100 = 96.3920**；用户回传，未独立平台核验 |
-| 当前代表 | Q75，组件外推较小；未证明统计上独胜 |
-| 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
-| 最新平台反馈 | **EMA32_TIME_A60=96.3857**（时长，−0.0063，2026-10-03）；连同 **LAPLACE_FIXED_A20=96.3891**（−0.0029）、**SEPARATE_MAE_IRON_A20=96.3867**（−0.0053）、**EMA_Q75_N_TO_V36_P05=96.3896**（−0.0024）、**SAM_EMA_TIME_Q75_EXPLORATION=96.3796**（−0.0124），均为用户回传、未独立核验 |
-| 优先信息问题 | **MODERNNCA_TIME_A20** 优先；**EMA_MEAN3_FULL_Q75** 仅在尚未测过时随后；新 **HARDTREE_GLOBAL_TIME_A20** 结合前面反馈决定测试。三者均为人工探索，**GAUSS1_A20** 保留未分配。见[信息价值安排](platform_information_value/ALLOCATION.md) |
-| 优化执行 | 96.45目标持续授权有效；ModernNCA和GLOBAL硬树各完成1全量程序/2次optimizer，0新CV或确认seed，保留原未晋级决定；两项发布进程已退出，另行冻结的EMA嵌套残差开发正在运行。四名额来自用户目标说明，不根据日期或文件数推算余额，不要求用满 |
+| 平台回传最佳 | **EMA_MEAN3_FULL_Q75 = 96.3954**；用户回传，未独立平台核验 |
+| 当前代表 | 固定训练seed42/1042/2042等权平均；原匹配BASE门失败与人工探索身份保持 |
+| 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0046 / 0.0546 / 0.1046 |
+| 最新平台反馈 | **EMA_MEAN3=96.3954**（对旧Q75 +0.0034）、**ModernNCA=96.3707**（对旧Q75 −0.0213）；两项已测并移出待测队列，均为用户回传、未独立核验 |
+| 优先信息问题 | 继续研究平台获益的EMA训练seed平均；固定中位数复核相对mean3两切分负，无确认或新包。**HARDTREE_GLOBAL_TIME_A20** 与 **GAUSS1_A20** 的旧Q75父包保留、暂不锁定下一名额。见[信息价值安排](platform_information_value/ALLOCATION.md) |
+| 优化执行 | 96.45目标持续授权有效；EMA嵌套残差开发继续按冻结Q75参照运行，新阶段采用EMA_MEAN3参照。四名额来自用户目标说明，不根据日期、文件数或零散回传推算余额，不要求用满 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
 
-最新两项的公式、包身份与反馈见 [N→V36探针交付](q75_combination_review/DELIVERY.md)和[SAM＋EMA人工探索交付](sam_ema_release/DELIVERY.md)。历史[PTaRL/EMA交付](ptarl_ema_exploration_release/DELIVERY.md)保留原两项独立探索范围及反馈，不生成第三个双目标组合。分数均为用户回传，未独立核验平台凭证；本文不推断剩余额度。
+最新两项的包身份与反馈见[ModernNCA与EMA_MEAN3桌面交付](platform_information_value/DESKTOP_DELIVERY_20261003.md)。历史[N→V36探针](q75_combination_review/DELIVERY.md)、[SAM＋EMA](sam_ema_release/DELIVERY.md)及[PTaRL/EMA交付](ptarl_ema_exploration_release/DELIVERY.md)保留原范围及反馈，不生成第三个PTaRL双目标组合。分数均为用户回传，未独立核验平台凭证；本文不推断剩余额度。
 
 新指定的[EMA_MEAN3桌面交付](ema_mean3_release/DELIVERY.md)复用原seed42，仅新增1042/2042两个全量程序；固定等权及.75替换，铁量保持Q75原字段。原配对确认门失败决定保持。
 
@@ -32,15 +32,17 @@
 
 ## 当前维护入口
 
+- [EMA三训练seed中位数复核](ema_median3/RESULTS.md)：最新mean3参照下，两个完整切分−0.000588/−0.001694；919项冻结身份、原状态及独立标量回读通过，0新拟合/确认/包，不安排本固定候选平台测试。
+
 - [EMA组件嵌套残差开发](ema_nested_residual/PREREGISTRATION.md)：完整外层训练池内五折EMA OOF生成残差，应用到原完整T模型；固定RIDGE/GBM与25%组件修正，计划40新基础模型/80次optimizer，13项锁定工程检查通过，577项身份已冻结并[实际启动](ema_nested_residual/EXECUTION.md)。保留原残差失败结论的适用范围，不占平台名额。
 
 - [本地筛选证据范围审计](q75_selection_scope_audit/RESULTS.md)：K32/EMA32历史增量多乘0.5、跨seed选权重复使用全部评价标签；混合OOF残差不满足整个outer隔离，不能证明整个家族无效。历史数字/决定保留，当前证据用途限制见新审计。
 
-- [ModernNCA时长人工探索交付](modernnca_time_exploration/DELIVERY.md)：20%检索预测替换、铁量原字符串不变；45项锁定检查、两个状态独立冷审计及无标签包回读通过，平台未测。
+- [ModernNCA时长人工探索交付](modernnca_time_exploration/DELIVERY.md)：20%检索预测替换、铁量原字符串不变；45项锁定检查、两个状态独立冷审计及无标签包回读通过；用户回传96.3707，对旧Q75 −0.0213。
 
 - [GLOBAL硬树人工探索交付](hard_tree_time_exploration/DELIVERY.md)：20%时长替换、原铁量字符串保持；选中15轮、32项锁定检查、独立冷推理与无标签封包通过。两完整开发seed小负，未正式晋级。
 
-- [信息价值与队列核对](platform_information_value/ALLOCATION.md)：已测Laplace、独立MAE铁量和EMA32移出ready；按ModernNCA、未测EMA平均、硬路由树三个具体信息问题安排。局部学习曲线/残差结果不构成家族无效或96.45不可达的证明。
+- [信息价值与队列核对](platform_information_value/ALLOCATION.md)：ModernNCA与EMA_MEAN3最新成绩已绑定原包并移出待测，mean3为新最佳；旧硬树与Gaussian保留但未分配。局部学习曲线/残差结果不构成家族无效或96.45不可达的证明。
 
 - [记录库组合复核](q75_stack_review/RESULTS.md)：保留原结果；新增审计发现库归组遗漏trial身份、全标签筛列、层二与基模型验证依赖及增量单位问题，不能作为完整模型库或平台上界。
 - [样本量学习曲线](q75_headroom_20261002/RESULTS.md)：控制臂与已记录 V12 预测逐位一致。铁量已饱和（训练行减半仅 +0.00067 WMAPE）；时长轻度数据受限（减半 +0.00233），但边际收益快速衰减。

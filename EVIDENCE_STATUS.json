@@ -2857,41 +2857,40 @@
     "results_document": "docs/optimization_v0_10/RESULTS.md"
   },
   "current_status": {
-    "as_of": "2026-10-02",
+    "as_of": "2026-10-03",
     "scope": "round2_current_overview",
     "documentation_index": "docs/INDEX.md",
     "rules_document": "AGENTS.md",
     "platform_evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
     "current_platform_best_key": "round2_current_platform_best",
     "current_candidate_queue_key": "round2_current_candidate_queue",
-    "active_candidate": "EMA_TIME_Q75",
-    "user_reported_round2_score": 96.392,
+    "active_candidate": "EMA_MEAN3_FULL_Q75",
+    "user_reported_round2_score": 96.3954,
     "co_best_candidates": [
-      "EMA_TIME_Q75",
-      "EMA_TIME_Q100"
+      "EMA_MEAN3_FULL_Q75"
     ],
-    "representative_tie_choice": "smaller_component_extrapolation, not a unique-score winner",
+    "representative_tie_choice": null,
     "milestones": [
       96.4,
       96.45,
       96.5
     ],
     "milestone_gaps": {
-      "96.4": 0.008,
-      "96.45": 0.058,
-      "96.5": 0.108
+      "96.4": 0.0046,
+      "96.45": 0.0546,
+      "96.5": 0.1046
     },
-    "latest_completed_release": "q75_separate_mae_iron_release_20261002",
-    "latest_G0": "passed_40_new_optimizers_60_new_reused_two_target_cold_states_independent_scalars_actual_exit0",
-    "latest_G1": "both_complete_split_Q75_gains_positive_but_both_below_ready_SEPARATE_MAE_IRON_A20",
+    "latest_completed_release": "hard_tree_time_manual_exploration_20261003",
+    "latest_G0": "passed_919_frozen_files_60_original_checkpoint_identities_independent_scalar_audit_actual_exit0",
+    "latest_G1": "both_complete_splits_negative_vs_EMA_MEAN3_not_shortlisted",
     "ready_exploration_candidates": [
-      "EMA_MEAN3_FULL_Q75"
+      "HARDTREE_GLOBAL_TIME_A20"
     ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "Retained_V10_zero_fit_review_terminal_no_owned_running_tasks",
+    "runtime_observation": "nested_residual_controller5373_child10680_verified_live_at_600_second_observation8_no_partial_quality_read",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3264,18 +3263,18 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "q75_separate_mae_iron_mean3_development_20261002",
-    "latest_platform_feedback_key": "platform_feedback_q75_probe_sam_ema_20261002",
+    "latest_completed_quality_experiment": "ema_median3_review_20261003",
+    "latest_platform_feedback_key": "modernnca_ema_mean3_platform_feedback_20261003",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
-    "latest_local_diagnostic": "ema_component_calibration_preparation_20261002",
-    "latest_local_G0": "report_only_recovery_exit0_independent_audit_passed_original_exit1_preserved",
-    "latest_local_G1": "two_negative_splits_vs_Q75_no_confirmation_candidate",
-    "last_local_diagnostic_results": "docs/ema_component_calibration/RESULTS.md",
-    "latest_registered_scientific_route": "q75_separate_mae_iron_mean3_development_20261002",
-    "latest_completed_scientific_route": "q75_separate_mae_iron_mean3_development_20261002",
-    "latest_scientific_G0": "passed_40_new_optimizers_60_new_reused_two_target_cold_states_independent_scalars_actual_exit0",
-    "latest_scientific_G1": "both_complete_split_Q75_gains_positive_but_both_below_ready_SEPARATE_MAE_IRON_A20",
+    "latest_local_diagnostic": "ema_median3_review_20261003",
+    "latest_local_G0": "passed_919_frozen_files_60_original_checkpoint_identities_independent_scalar_audit_actual_exit0",
+    "latest_local_G1": "both_complete_splits_negative_vs_EMA_MEAN3_not_shortlisted",
+    "last_local_diagnostic_results": "docs/ema_median3/RESULTS.md",
+    "latest_registered_scientific_route": "ema_median3_review_20261003",
+    "latest_completed_scientific_route": "ema_median3_review_20261003",
+    "latest_scientific_G0": "passed_919_frozen_files_60_original_checkpoint_identities_independent_scalar_audit_actual_exit0",
+    "latest_scientific_G1": "both_complete_splits_negative_vs_EMA_MEAN3_not_shortlisted",
     "active_release_key": null,
     "history_before_platform_feedback_20261002": {
       "latest_G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
@@ -3285,16 +3284,18 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "ema_nested_residual_development_20261003",
     "ready_formal_candidates": [
-      "LAPLACE_FIXED_A20",
-      "SEPARATE_MAE_IRON_A20",
       "GAUSS1_A20"
     ],
-    "next_action": "User_first_LAPLACE_FIXED_A20_platform_feedback_then_select_second_package_no_assistant_upload",
+    "next_action": "complete_frozen_nested_residual_batch_and_review_new_questions_against_latest_EMA_MEAN3_reference_no_current_platform_slot_allocation",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
-    "latest_completed_research": "q75_separate_mae_iron_mean3_development_20261002"
+    "latest_completed_research": "ema_median3_review_20261003",
+    "history_before_mean3_overview_20261003": {
+      "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/overview-before-refresh.json",
+      "sha256": "ed0cc74486dc743a6201dcfeef105596b4928a6807ca7ec30e55863c94ec585f"
+    }
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -25934,7 +25935,7 @@
     }
   },
   "ema_median3_review_20261003": {
-    "status": "checks_passed_pending_freeze_and_complete_two_seed_review",
+    "status": "completed_two_negative_splits_no_confirmation_no_platform_allocation",
     "reference": "EMA_MEAN3_FULL_Q75",
     "reference_score_user_reported": 96.3954,
     "thread_target": 96.45,
@@ -25967,9 +25968,32 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "formal_promoted": false,
-    "G0": "four_locked_synthetic_checks_passed_official_cache_review_pending",
-    "G1": "unmeasured",
+    "G0": "passed_919_frozen_files_60_original_checkpoint_identities_independent_scalar_audit_actual_exit0",
+    "G1": "both_complete_splits_negative_vs_EMA_MEAN3_not_shortlisted",
     "time_budget_seconds": null,
-    "automatic_scientific_retries": false
+    "automatic_scientific_retries": false,
+    "run_directory": "local/runs/ema-median3-20261003/development-r1",
+    "source_commit": "1688da6",
+    "gains_vs_EMA_MEAN3": {
+      "42": -0.0005883549854530656,
+      "3407": -0.001693873092918352
+    },
+    "gains_vs_Q75": {
+      "42": 0.0029630158632443226,
+      "3407": -0.0011214853442567119
+    },
+    "mean_gain": -0.0011411140391857089,
+    "candidate_tier": "not_shortlisted",
+    "failed_conditions": [
+      "both_splits_improve",
+      "minimum_improved_folds"
+    ],
+    "improved_folds": 3,
+    "independent_maximum_difference": 5.684341886080802e-14,
+    "confirmation_eligible": false,
+    "platform_allocation": false,
+    "terminal_receipt": "local/runs/ema-median3-20261003/development-r1/terminal-reconciliation.json",
+    "terminal_sha256": "ff26a8cb67fe2fdd6a7ed074953f22584e1d189918b217c6d4e3f29b633d7477",
+    "results_document": "docs/ema_median3/RESULTS.md"
   }
 }
