@@ -311,7 +311,7 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [],
-    "submission_priority_note": "User-reported DE3+EMA mean3 Q100=96.3979 scored and removed from pending priority. Fixed iron confirms reported +0.0002 comes from this time-strength change. No further probe or quota balance inferred; retained hard tree remains unallocated.",
+    "submission_priority_note": "Three remaining slots were explicitly user-stated. No new allocation while IBATCH runs. Existing fixed three-member q in [0,1.5] has conditional upper96.405383334 below96.45; retain possible small probes without treating them as a route to the full target. Retained BASE control and hardtree have separately audited current-reference evidence.",
     "ready_for_user_platform_testing": [
       {
         "candidate": "HARDTREE_GLOBAL_TIME_A20",
@@ -1264,7 +1264,8 @@
       "remaining_platform_submissions": null,
       "research_status": "EMA mean5 completed with both splits negative, no confirmation/full release. DE3 mean3 Q100 now user-reported scored; no new platform allocation from this feedback. Other frozen route records remain unchanged."
     },
-    "retained_current_Q100_review_key": "q100_retained_questions_review_20261004"
+    "retained_current_Q100_review_key": "q100_retained_questions_review_20261004",
+    "same_mean3_strength_line_bound_key": "mean3_strength_bound_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -27809,5 +27810,53 @@
     "report_sha256": "b18e99128754f8d41e45ad444b9205cf4871a1b75d9823708caf1d995c51a3e3",
     "independent_audit_sha256": "957c2ff23fe7ea77410dff9f70248e25365c3055e73e748749b04810e64ce02d",
     "terminal_sha256": "f956ec4c5ecf3a8fad9b20feccca76531669409e83e3fea378edc04db1038fc6"
+  },
+  "mean3_strength_bound_20261004": {
+    "status": "conditional_continuous_family_bound_independently_verified",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "target": 96.45,
+    "domain": [
+      0,
+      1.5
+    ],
+    "fixed_family": "DE3 iron fixed; p(q)=released V32_time+q*(released EMA3_Q100_time-released V32_time)",
+    "score_points_user_reported": {
+      "0": 96.3749,
+      "0.75": 96.3977,
+      "1": 96.3979
+    },
+    "rounding_halfwidth": 5e-05,
+    "global_upper_outward": "96.405383334",
+    "target_excluded_under_assumptions": true,
+    "milestone_96_4_excluded": false,
+    "q75_affine_error_l1": 2.4665e-12,
+    "q75_score_interval_expansion": 3.235478481640121e-15,
+    "true_time_absolute_target_sum_lower": 38116.46428799131,
+    "G0": "passed_13_frozen_inputs_three_original_ZIP_identities_equal_iron_strings_Fraction_and_Decimal100_continuous_segment_proof_three_actual_exit0",
+    "G1": "no_new_model_or_platform_measurement_conditional_bound_not_attainable_score",
+    "results": "docs/mean3_strength_bound/RESULTS.md",
+    "run_directory": "local/runs/mean3-strength-bound-20261004/review-r1",
+    "assumptions": [
+      "correct_user_reports_and_package_binding",
+      "same_test_rows_and_equal_weight_additive_WMAPE_with_zero_floor",
+      "four_decimal_nearest_rounding",
+      "fixed_iron_and_the_defined_affine_time_family_only"
+    ],
+    "scope_does_not_cover": [
+      "new_models",
+      "new_fits_or_training_seeds",
+      "changed_iron",
+      "q_outside_0_to_1_5",
+      "nonlinear_transformations"
+    ],
+    "new_fits": 0,
+    "label_reads": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "certificate_sha256": "62259d76ca55661c7db546befb86617fbb1df501ea0c090553b18f418c5433cb",
+    "independent_audit_sha256": "5cbf29278f54acb8231ad0c26a3833c03e43cad9661431aa7d48e6dda79b64bf",
+    "terminal_sha256": "ab1ab79849783e622d847c10c3bf50f7c2213ed255626e4664da8c483d3ea159"
   }
 }
