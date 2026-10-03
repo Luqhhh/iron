@@ -24970,7 +24970,13 @@
     "agent_uploads": 0,
     "formal_promoted": false,
     "G0": "passed_frozen_v37_settings_train_only_scaling_and_cold_prediction",
-    "G1": "upgrade_criterion_failed_on_incremental_blend"
+    "G1": "upgrade_criterion_failed_on_incremental_blend",
+    "historical_scope_correction_20261003": {
+      "prior_full_hard_tree_run": "round2_v39_hard_tree_quality",
+      "correction": "not the first officially trained hard-tree model family; V39 used quantile-normal preprocessing and inner seed27001, this pilot uses standardization and seed42",
+      "original_result_and_gate_preserved": true,
+      "new_review": "q75_hard_tree_reuse_20261003"
+    }
   },
   "q75_feature_augmentation_20261002": {
     "status": "completed_both_arms_closed_at_screen",
@@ -25482,5 +25488,75 @@
     "new_manual_exploration_candidates": 1,
     "user_reported_slots": 4,
     "quota_consumption_inferred": false
+  },
+  "q75_hard_tree_reuse_20261003": {
+    "status": "completed_zero_fit_full_two_seed_review_no_formal_candidate",
+    "protocol": "docs/q75_hard_tree_reuse/PREREGISTRATION.md",
+    "documentation": "docs/q75_hard_tree_reuse/RESULTS.md",
+    "private_root": "local/runs/q75-hard-tree-reuse-20261003/review-r1",
+    "source_directory": "/home/lux1/iron-v39-hard-tree-quality/local/runs/round2-v39/development-r1",
+    "reference": "EMA_TIME_Q75",
+    "thread_target": 96.45,
+    "G0": "passed_original_60_units_80_model_hashes_and_full_vector_identity_old_score_replay_and_independent_scalar",
+    "G1": "four_fixed_recipes_all_two_seed_negative_time_GLOBAL_retained_as_manual_information_question",
+    "seed_gains": {
+      "tap_iron-GLOBAL": {
+        "42": -0.008345542353035973,
+        "3407": -0.009890133178682217
+      },
+      "tap_iron-INSTANCE": {
+        "42": -0.010765035447470386,
+        "3407": -0.009545050963233673
+      },
+      "tap_time_len-GLOBAL": {
+        "42": -0.0014311790531310042,
+        "3407": -0.0004584720997419939
+      },
+      "tap_time_len-INSTANCE": {
+        "42": -0.0023013501436103256,
+        "3407": -0.004856678840422721
+      }
+    },
+    "old_gain_replay_maximum_difference": 0.0,
+    "new_fits": 0,
+    "new_packages": 0,
+    "formal_promoted": false,
+    "correction": "Prior V39 completed full hard-tree development; q75 pilot used different preprocessing and inner seed, not the first trained hard-tree family.",
+    "artifacts": {
+      "local/runs/q75-hard-tree-reuse-20261003/review-r1/manifest.json": "f18d4aebf081c2ff88ace1622ecf9393f55a1bf058966bd82b4b04c64bf7b0be",
+      "local/runs/q75-hard-tree-reuse-20261003/review-r1/report.json": "6472a98bb5e6feb7ac8ad15ac29dfc915d5c0c2f06e3bb5020efd6a9489e2853",
+      "local/runs/q75-hard-tree-reuse-20261003/review-r1/independent-audit.json": "ed6fa8c9e346229c1c2cea40bb55884c35d7d6ec3fdeadd6e9a3f7d0a0970298"
+    }
+  },
+  "hard_tree_time_manual_exploration_20261003": {
+    "status": "preregistered_engineering_checks_running",
+    "protocol": "docs/hard_tree_time_exploration/PREREGISTRATION.md",
+    "runner": "scripts/hard_tree_time_exploration.py",
+    "run_directory": "local/runs/hard-tree-time-exploration-20261003/release-r1",
+    "candidate": "HARDTREE_GLOBAL_TIME_A20",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "G0": "pending",
+    "G1": "manual_exploration_both_development_gains_negative_original_failure_preserved",
+    "local_seed_gains": {
+      "42": -0.0014311790531310042,
+      "3407": -0.0004584720997419939
+    },
+    "formal_promoted": false,
+    "planned_counts": {
+      "full_training_procedures": 1,
+      "estimator": 2,
+      "optimizer": 2,
+      "states": 2,
+      "packages": 1,
+      "cv": 0,
+      "confirmation_seeds": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false
   }
 }

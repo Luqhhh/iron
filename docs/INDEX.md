@@ -42,7 +42,7 @@
 - [余弦+L1 铁量四 seed 确认](q75_cosine_iron_confirmation/RESULTS.md)：单列替换四 seed 均负（均值 −0.00014），但作为增量融合成分四 seed 全正（均值 +0.0023、LCB95 +0.0008）→ 通过项目四 seed 门槛，幅度远小于目标差额。
 - [选轮噪声与轨迹平均筛选](q75_selection_screen/RESULTS.md)：`INNER5`（铁量两折同向 −0.000634，时长变差）阶段 2 不成立已关闭；`SNAP5`（五个检查点预测平均）两 seed 两目标同向改善，但[四 seed 增量融合](q75_snap5_confirmation/RESULTS.md)不满足全正/LCB 门槛，配方关闭。harness 缺陷与两次预算更正均已登记。
 - [残差可学习性判定](q75_residual_learnability/RESULTS.md)：四 seed × 两目标 × Ridge/LightGBM 修正器，诚实内层选收缩系数**16/16 全部选 0**，增量为 0 → 残差无可利用结构，关闭残差修正与条件校准家族。
-- [GRANDE 硬树试点](q75_hard_tree_pilot/RESULTS.md)：仓库内最后一个未训练过的模型类。残差相关仅 0.93–0.96（明显比 TabML 家族的 0.98–0.99 分散），但精度比 incumbent 差 3.3%–8.6%，诚实留一权重 3/4 组选 0、唯一非零组在留出折损失 0.0065 分 → 关闭 GLOBAL 臂。
+- [GRANDE 硬树试点](q75_hard_tree_pilot/RESULTS.md)：标准化/inner seed42的两折GLOBAL试点未过原门。更早V39已完成分位数正态/inner seed27001的两个完整切分；[Q75零拟合复核](q75_hard_tree_reuse/RESULTS.md)显示固定20% GLOBAL时长增量−0.001431/−0.000458，保留为另外冻结的人工信息探索，原未晋级决定不变。
 - [特征增强与 mixup 筛选](q75_feature_augmentation/PREREGISTRATION.md)：显式对数/对数比/乘积特征与 mixup 在两折两目标上**全部变差**（时长 +0.0010/+0.0121）→ 筛选即关闭，未消耗确认预算。
 - [TabM 超参筛选](q75_hpo_screen/RESULTS.md)：16 个单因素配置中**只有 `K32`（tabm_k 16→32）在两个目标、两个折上同向改善**；叠加余弦/L1/PLR 频率无复利，k=48/64/96 也不更好。
 - [K32 四 seed 确认](q75_k32_confirmation/PREREGISTRATION.md)：K32 与 Q75 时长列残差相关仅 0.973–0.979，融合权重 0.40–0.50，四 seed 增益 +0.0045/+0.0070/+0.0021/+0.0047（LCB95 +0.0022）→ **时长向过门**；铁量向未过。

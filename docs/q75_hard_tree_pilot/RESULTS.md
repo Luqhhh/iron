@@ -1,5 +1,7 @@
 # GRANDE 硬树试点：结果（2026-10-02）
 
+> 2026-10-03补充：V39已有先前完整硬树训练；下文“最后一个从未训练模型类”不能作为事实结论。两批采用不同预处理及inner seed；[完整Q75复核](../q75_hard_tree_reuse/RESULTS.md)复用原80状态证据，未重训或修改本试点的失败决定。
+
 预登记见 [PREREGISTRATION.md](PREREGISTRATION.md)。4 次正式拟合（`split_seed=42` 的 fold 0/1 × 两个目标，GLOBAL 臂，1024 棵/深度 5，设置完全取 `configs/round2_v37/SPEC.yaml`）全部完成，无失败。
 
 ## 单列精度与相关性
