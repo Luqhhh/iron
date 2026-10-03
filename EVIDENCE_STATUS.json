@@ -22028,7 +22028,8 @@
     "post_terminal_reconciliation": "local/runs/ema-mean3-exploration-release-20261002/release-r1/terminal-reconciliation.json",
     "post_terminal_reconciliation_sha256": "1cd220f83d91e6c8c2d0927af6ad602c9bc1e410a38cd0c267326bc33817c6ba",
     "post_terminal_zero_fit_failure_retained": "local/runs/ema-mean3-exploration-release-20261002/release-r1/post-terminal-failure-r1.json",
-    "post_terminal_zero_fit_failure_sha256": "959f16a50b0445348b4f8576af8cd8fe44c50199ad1089c4d79a300d39d20bc0"
+    "post_terminal_zero_fit_failure_sha256": "959f16a50b0445348b4f8576af8cd8fe44c50199ad1089c4d79a300d39d20bc0",
+    "latest_explicit_desktop_delivery_key": "modernnca_ema_mean3_desktop_delivery_20261003"
   },
   "q75_joint_ema_time_review_20261002": {
     "status": "completed_two_seed_zero_fit_review_not_shortlisted",
@@ -25529,7 +25530,8 @@
       "local/runs/modernnca-time-exploration-20261003/launch-r1/terminal.json": "46cd4d1de506232830c3a3a832c42906884f32d74e1625adf20b2c0c1ce41033",
       "local/runs/modernnca-time-exploration-20261003/launch-r1/final-reconciliation.json": "f5a581f4c60cd04ddeae89761d841ac5108d2723eabf12717c7589cff273a62b",
       "local/runs/modernnca-time-exploration-20261003/information-review-r1/report.json": "40a656a163027f7667374cb7fa11ac150b808bb116dc0abd89810afe269d8104"
-    }
+    },
+    "latest_explicit_desktop_delivery_key": "modernnca_ema_mean3_desktop_delivery_20261003"
   },
   "platform_information_value_review_20261003": {
     "status": "completed_queue_reconciled_new_retrieval_exploration_ready",
@@ -25541,7 +25543,8 @@
     "new_automatic_exploration_recommendations": 0,
     "new_manual_exploration_candidates": 1,
     "user_reported_slots": 4,
-    "quota_consumption_inferred": false
+    "quota_consumption_inferred": false,
+    "latest_explicit_desktop_delivery_key": "modernnca_ema_mean3_desktop_delivery_20261003"
   },
   "q75_hard_tree_reuse_20261003": {
     "status": "completed_zero_fit_full_two_seed_review_no_formal_candidate",
@@ -25823,5 +25826,32 @@
     "new_fits": 0,
     "new_packages": 0,
     "platform_queue_changed": false
+  },
+  "modernnca_ema_mean3_desktop_delivery_20261003": {
+    "status": "two_original_packages_copied_and_independently_audited",
+    "documentation": "docs/platform_information_value/DESKTOP_DELIVERY_20261003.md",
+    "user_authorization": "explicit_request_to_write_both_ModernNCA_and_EMA_MEAN3_to_desktop",
+    "private_receipt": "local/runs/platform-candidates-desktop-20261003/delivery-r2/terminal-reconciliation.json",
+    "receipt_sha256": "650c9bc9ad31abfb27eed786fb2149139a3af6037fd7abab0abf256374c96176",
+    "G0": "locked_Python3.12_copy_exit0_independent_readback_exit0",
+    "G1": "both_manual_exploration_not_formally_promoted_platform_feedback_pending",
+    "items": [
+      {
+        "candidate": "MODERNNCA_TIME_A20",
+        "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-MODERNNCA-TIME-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "dd1b1866eb514fefb026c37ef7239127572a65c75b42877b42f50c5aaa2937c5"
+      },
+      {
+        "candidate": "EMA_MEAN3_FULL_Q75",
+        "desktop_zip": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396"
+      }
+    ],
+    "desktop_copies": 2,
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "quota_consumption_inferred": false,
+    "prior_zero_write_failure_retained": "local/runs/platform-candidates-desktop-20261003/delivery-r1/failure.json"
   }
 }
