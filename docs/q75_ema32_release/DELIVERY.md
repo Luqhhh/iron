@@ -1,5 +1,7 @@
 # EMA32 时长探针交付（2026-10-03）
 
+> 2026-10-03新增[证据范围审计](../q75_selection_scope_audit/RESULTS.md)：原增量多乘0.5，且跨split seed选权复用了全部2754个评价标签。原数字与晋级判定作为历史保留，不作为后续独立科学准入证明；包身份与平台回传不变。
+
 预登记见 [PREREGISTRATION.md](PREREGISTRATION.md)。1 个全量程序（2 个 optimizer）+ 字段级组合 + 独立回读审计。
 
 ## 包身份

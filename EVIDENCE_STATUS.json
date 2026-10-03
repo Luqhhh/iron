@@ -24552,7 +24552,14 @@
     "agent_uploads": 0,
     "formal_promoted": false,
     "G0": "passed_zero_fit_identity_and_alignment_checks",
-    "G1": "no_new_candidate; measured saturation of the recorded library"
+    "G1": "no_new_candidate; measured saturation of the recorded library",
+    "current_evidence_use_limit_20261003": {
+      "audit_key": "q75_selection_scope_audit_20261003",
+      "original_results_retained_as_history": true,
+      "family_closure_or_irreducible_noise_conclusion_supported": false,
+      "whole_pipeline_outer_isolation_proven": false,
+      "scope": "source defects and post-selection/OOF dependence prevent family-wide or platform impossibility claims"
+    }
   },
   "q75_headroom_20261002": {
     "status": "completed_iron_saturated_time_mildly_data_limited",
@@ -24909,7 +24916,14 @@
     "agent_uploads": 0,
     "formal_promoted": false,
     "G0": "passed_nested_protocol_and_train_only_label_use",
-    "G1": "no_learnable_residual_structure"
+    "G1": "no_learnable_residual_structure",
+    "current_evidence_use_limit_20261003": {
+      "audit_key": "q75_selection_scope_audit_20261003",
+      "original_results_retained_as_history": true,
+      "family_closure_or_irreducible_noise_conclusion_supported": false,
+      "whole_pipeline_outer_isolation_proven": false,
+      "scope": "source defects and post-selection/OOF dependence prevent family-wide or platform impossibility claims"
+    }
   },
   "q75_hard_tree_pilot_20261002": {
     "status": "completed_decorrelated_but_too_inaccurate_zero_blend_weight_family_closed",
@@ -25134,7 +25148,17 @@
     "agent_uploads": 0,
     "formal_promoted": true,
     "G0": "passed_predictions_persisted_thread_pinning_no_retries",
-    "G1": "time_gate_passed_iron_gate_failed"
+    "G1": "time_gate_passed_iron_gate_failed",
+    "current_evidence_use_limit_20261003": {
+      "audit_key": "q75_selection_scope_audit_20261003",
+      "original_decision_retained_as_history": true,
+      "not_valid_for_new_independent_quality_admission": true,
+      "issues": [
+        "gain factor 25 should be 50 for a single changed target",
+        "same 2754 target labels reused when selecting weights across split seeds"
+      ],
+      "historical_platform_feedback_preserved": true
+    }
   },
   "q75_k32_release_20261002": {
     "status": "completed_local_package_built_audited_not_uploaded_not_on_desktop",
@@ -25298,7 +25322,17 @@
     "agent_uploads": 0,
     "formal_promoted": true,
     "G0": "passed_predictions_persisted_thread_pinning_no_retries",
-    "G1": "four_seed_time_gate_passed"
+    "G1": "four_seed_time_gate_passed",
+    "current_evidence_use_limit_20261003": {
+      "audit_key": "q75_selection_scope_audit_20261003",
+      "original_decision_retained_as_history": true,
+      "not_valid_for_new_independent_quality_admission": true,
+      "issues": [
+        "gain factor 25 should be 50 for a single changed target",
+        "same 2754 target labels reused when selecting weights across split seeds"
+      ],
+      "historical_platform_feedback_preserved": true
+    }
   },
   "q75_ema32_release_20261003": {
     "status": "completed_desktop_copy_verified_not_uploaded_by_agent",
@@ -25392,7 +25426,14 @@
     "new_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "remaining_quota_inferred": false
+    "remaining_quota_inferred": false,
+    "local_evidence_correction_20261003": {
+      "audit_key": "q75_selection_scope_audit_20261003",
+      "mean_gain_arithmetic_same_saved_weights": 0.012878874151647703,
+      "qualification": "descriptive_reused_label_weight_selection_not_independent_confirmation",
+      "platform_score_unchanged": true,
+      "original_local_numbers_preserved_as_reported_snapshot": true
+    }
   },
   "modernnca_time_manual_exploration_20261003": {
     "status": "completed_audited_manual_exploration_package_ready_platform_unmeasured",
@@ -25529,7 +25570,7 @@
     }
   },
   "hard_tree_time_manual_exploration_20261003": {
-    "status": "preregistered_engineering_checks_running",
+    "status": "full_release_running",
     "protocol": "docs/hard_tree_time_exploration/PREREGISTRATION.md",
     "runner": "scripts/hard_tree_time_exploration.py",
     "run_directory": "local/runs/hard-tree-time-exploration-20261003/release-r1",
@@ -25537,7 +25578,7 @@
     "reference": "EMA_TIME_Q75",
     "reference_score_user_reported": 96.392,
     "thread_target": 96.45,
-    "G0": "pending",
+    "G0": "32_locked_checks_passed_1941_dependencies_frozen_scientific_fit_running",
     "G1": "manual_exploration_both_development_gains_negative_original_failure_preserved",
     "local_seed_gains": {
       "42": -0.0014311790531310042,
@@ -25557,6 +25598,75 @@
     },
     "monitor_seconds": 600,
     "time_budget_seconds": null,
-    "automatic_retries": false
+    "automatic_retries": false,
+    "launch_root": "local/runs/hard-tree-time-exploration-20261003/launch-r1",
+    "exec_session_id": 9369,
+    "fit_pid": 3572,
+    "next_scheduled_observation_ns": 1791031041358710925,
+    "checks": "local/runs/hard-tree-time-exploration-20261003/checks-r1/checks.json"
+  },
+  "q75_selection_scope_audit_20261003": {
+    "status": "completed_zero_fit_source_and_arithmetic_audit",
+    "documentation": "docs/q75_selection_scope_audit/RESULTS.md",
+    "private_root": "local/runs/q75-selection-scope-audit-20261003/audit-r1",
+    "G0": "saved_weights_full_arrays_independent_fsum_full_score_difference_and_source_paths_checked",
+    "G1": "no_new_model_or_promotion_prior_confirmation_and_family_closure_claims_have_methodological_limits",
+    "arithmetic_summary": {
+      "K32": {
+        "mean": 0.009113649869226664,
+        "lcb95_descriptive": 0.004422048247939423,
+        "all_positive": true,
+        "qualification": "reused_labels_for_weight_selection_not_label_held_out_validation"
+      },
+      "EMA32": {
+        "mean": 0.012878874151647703,
+        "lcb95_descriptive": 0.00973447486671492,
+        "all_positive": true,
+        "qualification": "reused_labels_for_weight_selection_not_label_held_out_validation"
+      }
+    },
+    "weight_selection_label_reuse": {
+      "42": {
+        "held_label_ids": 2754,
+        "same_label_ids_in_weight_selection": 2754
+      },
+      "3407": {
+        "held_label_ids": 2754,
+        "same_label_ids_in_weight_selection": 2754
+      },
+      "271828": {
+        "held_label_ids": 2754,
+        "same_label_ids_in_weight_selection": 2754
+      },
+      "314159": {
+        "held_label_ids": 2754,
+        "same_label_ids_in_weight_selection": 2754
+      }
+    },
+    "residual_audit": {
+      "saved_all_gammas_zero": true,
+      "actual_inner_group_counts_by_outer_fold": {
+        "0": 4,
+        "1": 3,
+        "2": 3,
+        "3": 3,
+        "4": 4
+      },
+      "corrector_fits_reconstructed_from_completed_code_path": 272,
+      "historical_documented_fit_count": 320,
+      "counter_in_original_report": 0,
+      "count_basis": "static_completed_control_flow_reconstruction_not_native_fit_ledger",
+      "base_prediction_feature_included": false,
+      "outer_exclusion_complete": false,
+      "reason": "corrector training uses mixed OOF residuals from base models that included the current held-out fold; additional corrector crossfit does not remove those base-model dependencies"
+    },
+    "new_fits": 0,
+    "new_packages": 0,
+    "historical_snapshots_preserved": true,
+    "artifacts": {
+      "local/runs/q75-selection-scope-audit-20261003/audit-r1/audit.py": "d9592e63198d0ec63d2916c35fb62fe15ea1f842c3e8031d91eeb10ae2de7655",
+      "local/runs/q75-selection-scope-audit-20261003/audit-r1/manifest.json": "739c7a66335ba56c7c663937f507229b8640cc6402c421e22de7ecdd19371e40",
+      "local/runs/q75-selection-scope-audit-20261003/audit-r1/report.json": "8347968d14c2b0782cccb043540f2b0c5697b2f8b8a92014db48033b611b0651"
+    }
   }
 }

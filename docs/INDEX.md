@@ -32,16 +32,18 @@
 
 ## 当前维护入口
 
+- [本地筛选证据范围审计](q75_selection_scope_audit/RESULTS.md)：K32/EMA32历史增量多乘0.5、跨seed选权重复使用全部评价标签；混合OOF残差不满足整个outer隔离，不能证明整个家族无效。历史数字/决定保留，当前证据用途限制见新审计。
+
 - [ModernNCA时长人工探索交付](modernnca_time_exploration/DELIVERY.md)：20%检索预测替换、铁量原字符串不变；45项锁定检查、两个状态独立冷审计及无标签包回读通过，平台未测。
 
 - [信息价值与队列核对](platform_information_value/ALLOCATION.md)：已测Laplace、独立MAE铁量和EMA32移出ready；优先EMA训练seed平均与ModernNCA检索机制两个不同问题。局部学习曲线/残差结果不构成家族无效或96.45不可达的证明。
 
-- [记录库组合复核](q75_stack_review/RESULTS.md)：零拟合。199 铁量列 / 209 时长列；诚实嵌套叠加时长 +0.0088 分（4/4 seed 为正）、铁量 +0.0031 分；非线性叠加与残差校准均负；事后上限合计约 +0.05 分。结论：库内无可收割的大收益，需要新模型而不是更好的加权。
+- [记录库组合复核](q75_stack_review/RESULTS.md)：保留原结果；新增审计发现库归组遗漏trial身份、全标签筛列、层二与基模型验证依赖及增量单位问题，不能作为完整模型库或平台上界。
 - [样本量学习曲线](q75_headroom_20261002/RESULTS.md)：控制臂与已记录 V12 预测逐位一致。铁量已饱和（训练行减半仅 +0.00067 WMAPE）；时长轻度数据受限（减半 +0.00233），但边际收益快速衰减。
 - [训练日程与损失筛选](q75_schedule_screen/RESULTS.md)：22+20 次拟合、控制臂逐位一致。余弦日程一致改善铁量（`COS_MAE` 两 seed 均正、均值 +0.000289、7/10 折为正），时长在各日程/损失下均未改善。首次出现协议层（非加权层）正向信号。
 - [余弦+L1 铁量四 seed 确认](q75_cosine_iron_confirmation/RESULTS.md)：单列替换四 seed 均负（均值 −0.00014），但作为增量融合成分四 seed 全正（均值 +0.0023、LCB95 +0.0008）→ 通过项目四 seed 门槛，幅度远小于目标差额。
 - [选轮噪声与轨迹平均筛选](q75_selection_screen/RESULTS.md)：`INNER5`（铁量两折同向 −0.000634，时长变差）阶段 2 不成立已关闭；`SNAP5`（五个检查点预测平均）两 seed 两目标同向改善，但[四 seed 增量融合](q75_snap5_confirmation/RESULTS.md)不满足全正/LCB 门槛，配方关闭。harness 缺陷与两次预算更正均已登记。
-- [残差可学习性判定](q75_residual_learnability/RESULTS.md)：四 seed × 两目标 × Ridge/LightGBM 修正器，诚实内层选收缩系数**16/16 全部选 0**，增量为 0 → 残差无可利用结构，关闭残差修正与条件校准家族。
+- [残差可学习性判定](q75_residual_learnability/RESULTS.md)：原脚本所有gamma为0，但其基模型OOF依赖未完成outer隔离、基预测特征未加入、内层组数与计数有误；保留零修正观察，不能据此关闭残差或条件校准家族。
 - [GRANDE 硬树试点](q75_hard_tree_pilot/RESULTS.md)：标准化/inner seed42的两折GLOBAL试点未过原门。更早V39已完成分位数正态/inner seed27001的两个完整切分；[Q75零拟合复核](q75_hard_tree_reuse/RESULTS.md)显示固定20% GLOBAL时长增量−0.001431/−0.000458，保留为另外冻结的人工信息探索，原未晋级决定不变。
 - [特征增强与 mixup 筛选](q75_feature_augmentation/PREREGISTRATION.md)：显式对数/对数比/乘积特征与 mixup 在两折两目标上**全部变差**（时长 +0.0010/+0.0121）→ 筛选即关闭，未消耗确认预算。
 - [TabM 超参筛选](q75_hpo_screen/RESULTS.md)：16 个单因素配置中**只有 `K32`（tabm_k 16→32）在两个目标、两个折上同向改善**；叠加余弦/L1/PLR 频率无复利，k=48/64/96 也不更好。

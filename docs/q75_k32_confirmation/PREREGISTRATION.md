@@ -1,5 +1,7 @@
 # 预登记：K32 四 seed 确认与增量融合门（2026-10-02）
 
+> 2026-10-03新增[证据范围审计](../q75_selection_scope_audit/RESULTS.md)：原增量多乘0.5，且跨split seed选权复用了全部2754个评价标签。原数字与晋级判定作为历史保留，不作为后续独立科学准入证明；包身份与平台回传不变。
+
 ## 来源
 
 [TabM 超参筛选](../q75_hpo_screen/PREREGISTRATION.md)：

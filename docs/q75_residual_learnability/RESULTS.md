@@ -1,5 +1,7 @@
 # incumbent 残差可学习性：结果（2026-10-02）
 
+> 2026-10-03新增审计：[执行范围复核](../q75_selection_scope_audit/RESULTS.md)发现基模型OOF未完成整个outer隔离、设计矩阵缺少文档声称的基预测列、内层分组及拟合计数与文档不同。所有gamma为0的原观察保留；下文整个家族关闭/不可约噪声的推断不再作为有效证据。原报告与旧决定作为历史保存。
+
 预登记见 [PREREGISTRATION.md](PREREGISTRATION.md)。四个 split seed × 两个目标 × 两个修正器族（Ridge、LightGBM）全部完成。
 
 ## 结果：诚实内层选权一律选 0

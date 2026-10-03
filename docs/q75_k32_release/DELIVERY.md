@@ -1,5 +1,7 @@
 # K32 时长探针交付（2026-10-02）
 
+> 2026-10-03新增[证据范围审计](../q75_selection_scope_audit/RESULTS.md)：原增量多乘0.5，且跨split seed选权复用了全部2754个评价标签。原数字与晋级判定作为历史保留，不作为后续独立科学准入证明；包身份与平台回传不变。
+
 预登记见 [PREREGISTRATION.md](PREREGISTRATION.md)。本阶段只做**一个全量程序（2 个 optimizer）**加一次字段级组合与独立回读审计；无新 split seed、无新开发拟合。
 
 ## 包身份
