@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "one_hardtree_probe_recommended_IBATCH_complete_A20_confirmation_deferred",
+    "status": "one_hardtree_probe_recommended_joint_iron_design_preregistered",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -975,7 +975,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "IBATCH_G0_closed; A100_both_negative_A20_both_small_positive_five_of_ten_folds_confirmation_eligible_deferred; DE3_iron_independent_sampling_read_only_scope_review_no_new_fits",
+    "research_status": "EMA_IBATCH_G0_closed_A20_confirmation_eligible_deferred; joint_DE3_iron_independent_sampling_design_frozen_implementation_engineering_pending_zero_new_fits",
     "platform_slots_user_reported": 3,
     "platform_slots_source": "explicit_current_goal_three_slots_not_inferred",
     "submission_allocation": "sequential_information_questions_no_four_package_filler",
@@ -1275,7 +1275,7 @@
       ],
       "research_status": "EMA mean5 fixed extension is running against current mean3 with 20 new estimators/40 optimizer budget. Original nested residual and followup closed; small Ridge confirmation deferred. No new platform allocation."
     },
-    "current_development_key": "ema_independent_batches_development_20261004",
+    "current_development_key": "de3_joint_independent_batches_development_20261004",
     "history_before_explicit_three_slot_continuation_20261004": {
       "platform_slots_user_reported": 4,
       "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
@@ -3237,7 +3237,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "owned_scientific_controller_children_and_exit_watcher_ended_no_idle_monitoring",
+    "runtime_observation": "previous_owned_processes_ended; new_joint_iron_stage_is_preparation_only_no_running_scientific_job",
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3618,7 +3618,7 @@
     "latest_local_G0": "passed_5516_frozen_files_complete_same_seed_OOF_and_independent_scalar_three_actual_exit0",
     "latest_local_G1": "BASE_two_positive_development_splits_not_four_seed_promoted_HARDTREE_one_negative_exploration",
     "last_local_diagnostic_results": "docs/q100_retained_questions/RESULTS.md",
-    "latest_registered_scientific_route": "ema_independent_batches_development_20261004",
+    "latest_registered_scientific_route": "de3_joint_independent_batches_development_20261004",
     "latest_completed_scientific_route": "ema_independent_batches_development_20261004",
     "latest_scientific_G0": "passed_3537_frozen_files_30_estimators_60_optimizers_120_cold_states_72_child_exit0_two_supervisor_exit0_and_independent_terminal_reconciliation",
     "latest_scientific_G1": "A20_two_positive_development_splits_exploration_five_of_ten_folds_confirmation_eligible_not_promoted_A100_two_negative",
@@ -3631,9 +3631,9 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "de3_joint_independent_batches_development_20261004",
     "ready_formal_candidates": [],
-    "next_action": "user_hardtree_upload_feedback_and_separate_preregistration_if_pursuing_DE3_joint_iron_independent_sampling; IBATCH_A20_confirmation_deferred",
+    "next_action": "implement_and_validate_frozen_DE3_joint_independent_batch_protocol_before_any_new_fit; user_hardtree_upload_feedback_pending",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_independent_batches_development_20261004",
@@ -28043,5 +28043,57 @@
     "actual_decision_audit_exit_code": 0,
     "decision_audit_sha256": "cfedabfcaac0e3c511be9d7c0c9dd3b9b02d5717ddefbfea13c88c8d4f43d2ed",
     "terminal_sha256": "3b10808931786f6a293cdcd864d4b0e4e9ed3b6d4365dcbcd3da20feee8c7820"
+  },
+  "de3_joint_independent_batches_development_20261004": {
+    "status": "design_preregistered_implementation_and_engineering_pending_not_started",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "target": 96.45,
+    "protocol": "docs/de3_independent_batches/PREREGISTRATION.md",
+    "spec": "configs/de3_independent_batches/SPEC.json",
+    "planned_source_worktree": "local/worktrees/de3-independent-batches",
+    "planned_run_directory": "local/runs/de3-independent-batches-20261004/development-r1",
+    "candidate_order": [
+      "JOINT_IBATCH_IRON_A100",
+      "JOINT_IBATCH_IRON_A20"
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "training_seeds": [
+      42,
+      104729,
+      130363
+    ],
+    "joint_training_outputs": [
+      "tap_iron",
+      "tap_time_len"
+    ],
+    "evaluation_target": "tap_iron",
+    "planned_new_estimators": 30,
+    "planned_new_optimizers": 60,
+    "planned_cold_states": 120,
+    "engineering_budget": {
+      "synthetic_estimators": 1,
+      "optimizers": 2,
+      "full_training_shape_rows": 2204,
+      "maximum_selector_refit_epochs_each": 2,
+      "synthetic_seed": 964505
+    },
+    "G0": "implementation_engineering_and_actual_input_freeze_pending",
+    "G1": "not_evaluated_no_formal_promotion",
+    "new_scientific_fits": 0,
+    "new_engineering_fits": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "platform_slots_allocated": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false,
+    "preceding_completed_stage": "ema_independent_batches_development_20261004"
   }
 }
