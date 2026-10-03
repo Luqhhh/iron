@@ -10,8 +10,8 @@
 | 当前代表 | Q75，组件外推较小；未证明统计上独胜 |
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
 | 最新平台反馈 | **EMA32_TIME_A60=96.3857**（时长，−0.0063，2026-10-03）；连同 **LAPLACE_FIXED_A20=96.3891**（−0.0029）、**SEPARATE_MAE_IRON_A20=96.3867**（−0.0053）、**EMA_Q75_N_TO_V36_P05=96.3896**（−0.0024）、**SAM_EMA_TIME_Q75_EXPLORATION=96.3796**（−0.0124），均为用户回传、未独立核验 |
-| 优先信息问题 | **MODERNNCA_TIME_A20** 新人工探索包已完成G0审计，优先测试；**EMA_MEAN3_FULL_Q75** 原包待核实反馈。**GAUSS1_A20** 就绪保留未分配。见[本轮信息价值安排](platform_information_value/ALLOCATION.md) |
-| 优化执行 | 96.45目标持续授权有效；ModernNCA已完成1全量程序/2次optimizer，0新CV或确认seed，保留原未晋级决定；所有自有进程已退出。四名额来自用户目标说明，不根据日期或文件数推算余额，不要求用满 |
+| 优先信息问题 | **MODERNNCA_TIME_A20** 优先；**EMA_MEAN3_FULL_Q75** 仅在尚未测过时随后；新 **HARDTREE_GLOBAL_TIME_A20** 结合前面反馈决定测试。三者均为人工探索，**GAUSS1_A20** 保留未分配。见[信息价值安排](platform_information_value/ALLOCATION.md) |
+| 优化执行 | 96.45目标持续授权有效；ModernNCA和GLOBAL硬树各完成1全量程序/2次optimizer，0新CV或确认seed，保留原未晋级决定；所有自有进程已退出。四名额来自用户目标说明，不根据日期或文件数推算余额，不要求用满 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
@@ -36,7 +36,9 @@
 
 - [ModernNCA时长人工探索交付](modernnca_time_exploration/DELIVERY.md)：20%检索预测替换、铁量原字符串不变；45项锁定检查、两个状态独立冷审计及无标签包回读通过，平台未测。
 
-- [信息价值与队列核对](platform_information_value/ALLOCATION.md)：已测Laplace、独立MAE铁量和EMA32移出ready；优先EMA训练seed平均与ModernNCA检索机制两个不同问题。局部学习曲线/残差结果不构成家族无效或96.45不可达的证明。
+- [GLOBAL硬树人工探索交付](hard_tree_time_exploration/DELIVERY.md)：20%时长替换、原铁量字符串保持；选中15轮、32项锁定检查、独立冷推理与无标签封包通过。两完整开发seed小负，未正式晋级。
+
+- [信息价值与队列核对](platform_information_value/ALLOCATION.md)：已测Laplace、独立MAE铁量和EMA32移出ready；按ModernNCA、未测EMA平均、硬路由树三个具体信息问题安排。局部学习曲线/残差结果不构成家族无效或96.45不可达的证明。
 
 - [记录库组合复核](q75_stack_review/RESULTS.md)：保留原结果；新增审计发现库归组遗漏trial身份、全标签筛列、层二与基模型验证依赖及增量单位问题，不能作为完整模型库或平台上界。
 - [样本量学习曲线](q75_headroom_20261002/RESULTS.md)：控制臂与已记录 V12 预测逐位一致。铁量已饱和（训练行减半仅 +0.00067 WMAPE）；时长轻度数据受限（减半 +0.00233），但边际收益快速衰减。
@@ -47,11 +49,11 @@
 - [GRANDE 硬树试点](q75_hard_tree_pilot/RESULTS.md)：标准化/inner seed42的两折GLOBAL试点未过原门。更早V39已完成分位数正态/inner seed27001的两个完整切分；[Q75零拟合复核](q75_hard_tree_reuse/RESULTS.md)显示固定20% GLOBAL时长增量−0.001431/−0.000458，保留为另外冻结的人工信息探索，原未晋级决定不变。
 - [特征增强与 mixup 筛选](q75_feature_augmentation/PREREGISTRATION.md)：显式对数/对数比/乘积特征与 mixup 在两折两目标上**全部变差**（时长 +0.0010/+0.0121）→ 筛选即关闭，未消耗确认预算。
 - [TabM 超参筛选](q75_hpo_screen/RESULTS.md)：16 个单因素配置中**只有 `K32`（tabm_k 16→32）在两个目标、两个折上同向改善**；叠加余弦/L1/PLR 频率无复利，k=48/64/96 也不更好。
-- [K32 四 seed 确认](q75_k32_confirmation/PREREGISTRATION.md)：K32 与 Q75 时长列残差相关仅 0.973–0.979，融合权重 0.40–0.50，四 seed 增益 +0.0045/+0.0070/+0.0021/+0.0047（LCB95 +0.0022）→ **时长向过门**；铁量向未过。
+- [K32 四 seed 历史评估](q75_k32_confirmation/PREREGISTRATION.md)：原“时长向过门”决定保留；[新增审计](q75_selection_scope_audit/RESULTS.md)更正原权重描述性平均增量为+0.009114、LCB95+0.004422。跨seed选权复用全部评价标签，当前不作为独立确认资格。
 - [K32 时长探针交付](q75_k32_release/DELIVERY.md)：`K32_TIME_A45`（时长 = 0.55×父包 + 0.45×K32，铁量列原字符串），ZIP `834adec1…`；独立回读审计通过（322 行、模板序、铁量差异 0、算术差 0）。**未写桌面、未上传**。
 - [K32 邻域二次扫描](q75_hpo_neighborhood/RESULTS.md)：k=32 邻域 16 臂无一时长优于 K32；铁量 `K32_LR3`/`K32_DROP0` 两折同向但组合后效应消失 → 邻域关闭。
-- [EMA×k32 四 seed 评估](q75_ema_k32/RESULTS.md)：EMA 与 k=32 **可叠加**。`EMA32` 时长列与 Q75 残差相关 0.979–0.983，四 seed 一致选权重 **0.60**，增量 +0.0054/+0.0084/+0.0058/+0.0062（均值 **+0.0064**、LCB95 **+0.0049**、4/4 为正）→ 本会话最大时长增量，优于单独 K32（+0.0046）。
-- [EMA32 时长探针交付](q75_ema32_release/DELIVERY.md)：`EMA32_TIME_A60`（时长 = 0.40×父包 + 0.60×EMA32，铁量列原字符串），ZIP `97868fd3…`；独立回读审计与桌面回读均通过。**平台回传 96.3857，相对 Q75=96.3920 为 −0.0063**：本地四 seed +0.0064 未转移。`K32_TIME_A45` 同机制、未上传，降级保留。
+- [EMA×k32 四 seed 历史评估](q75_ema_k32/RESULTS.md)：原权重0.60下四seed描述性增量均正，算术更正后平均+0.012879、LCB95+0.009734；跨seed选权复用全部评价标签，不能解释为独立确认的叠加收益。原报告和决定保留。
+- [EMA32 时长探针交付](q75_ema32_release/DELIVERY.md)：`EMA32_TIME_A60`（时长 = 0.40×父包 + 0.60×EMA32，铁量列原字符串），ZIP `97868fd3…`；独立回读审计与桌面回读均通过。**平台回传 96.3857，相对 Q75=96.3920 为 −0.0063**：原权重本地描述性平均+0.012879（旧报告+0.0064的算术已更正），选权验证范围有限。`K32_TIME_A45` 同机制、未上传，降级保留。
 
 - [独立MAE铁量三训练seed均值结果](q75_separate_mae_iron_mean3/RESULTS.md)：40新optimizer/60新旧状态审计通过；两seed对Q75均正却均低于就绪单seed，不确认或新增包。
 - [原V10 MAE零训练复核](q75_retained_v10_mae/RESULTS.md)：相对Q75两seed为正，但均弱于就绪Laplace和同骨干MSE；0新optimizer，不追加候选。仅保留预测来源/算术审计，原checkpoint缺失不冒称模型冷复现。

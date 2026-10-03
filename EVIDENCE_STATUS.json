@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-03",
-    "status": "ModernNCA_time_new_manual_exploration_ready_information_value_priority",
+    "status": "ModernNCA_and_GLOBAL_hard_tree_manual_explorations_ready_information_value_priority",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -325,9 +325,10 @@
     "reference_key": "round2_current_platform_best",
     "submission_priority": [
       "MODERNNCA_TIME_A20",
-      "EMA_MEAN3_FULL_Q75"
+      "EMA_MEAN3_FULL_Q75",
+      "HARDTREE_GLOBAL_TIME_A20"
     ],
-    "submission_priority_note": "ModernNCA is the sole new platform-unmeasured retrieval question; EMA_MEAN3 is conditional on no prior user platform test. These are manual exploration priorities, not formal promotions. Gaussian retained unallocated; no quota consumption inferred.",
+    "submission_priority_note": "ModernNCA first; EMA_MEAN3 only if no prior platform test; GLOBAL hard tree next, contingent on earlier feedback. Manual exploration priorities, not formal promotions. Gaussian retained unallocated. No quota consumption inferred.",
     "ready_for_user_platform_testing": [
       {
         "candidate": "GAUSS1_A20",
@@ -365,6 +366,18 @@
         "feedback_status": "not_measured",
         "formal_promotion": false,
         "desktop": null
+      },
+      {
+        "candidate": "HARDTREE_GLOBAL_TIME_A20",
+        "package": "local/runs/hard-tree-time-exploration-20261003/release-r1/HARDTREE_GLOBAL_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "d36d2af53b6367801fb7668c7de53cef6e53a682415d81b30d9d1f44a844b40c",
+        "G0": "passed_32_locked_checks_1941_frozen_dependencies_native_optimizer_ledger_independent_cold_label_free_package_and_actual_exit0",
+        "G1": "manual_exploration_both_development_gains_negative_original_failure_preserved",
+        "reference": "EMA_TIME_Q75",
+        "evidence_key": "hard_tree_time_manual_exploration_20261003",
+        "feedback_status": "not_measured",
+        "formal_promotion": false,
+        "desktop": null
       }
     ],
     "reserve_candidates": [
@@ -385,7 +398,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "优先测试新完成的MODERNNCA_TIME_A20；EMA_MEAN3若尚未测过则作为第二个不同机制问题。Gaussian暂保留，另一个名额也不凑包，先等待平台信息。DE3继续仅替补。",
+    "recommended": "优先ModernNCA；EMA_MEAN3若尚未测过则随后；GLOBAL硬树是两seed小负的不同机制人工探索，结合前面反馈决定是否测试。Gaussian保留未分配，四份就绪不等于安排用满四次。DE3继续仅替补。",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -25570,7 +25583,7 @@
     }
   },
   "hard_tree_time_manual_exploration_20261003": {
-    "status": "full_release_running",
+    "status": "full_release_passed_ready_manual_platform_exploration",
     "protocol": "docs/hard_tree_time_exploration/PREREGISTRATION.md",
     "runner": "scripts/hard_tree_time_exploration.py",
     "run_directory": "local/runs/hard-tree-time-exploration-20261003/release-r1",
@@ -25578,7 +25591,7 @@
     "reference": "EMA_TIME_Q75",
     "reference_score_user_reported": 96.392,
     "thread_target": 96.45,
-    "G0": "32_locked_checks_passed_1941_dependencies_frozen_scientific_fit_running",
+    "G0": "passed_32_locked_checks_1941_frozen_dependencies_native_optimizer_ledger_independent_cold_label_free_package_and_actual_exit0",
     "G1": "manual_exploration_both_development_gains_negative_original_failure_preserved",
     "local_seed_gains": {
       "42": -0.0014311790531310042,
@@ -25602,8 +25615,42 @@
     "launch_root": "local/runs/hard-tree-time-exploration-20261003/launch-r1",
     "exec_session_id": 9369,
     "fit_pid": 3572,
-    "next_scheduled_observation_ns": 1791031041358710925,
-    "checks": "local/runs/hard-tree-time-exploration-20261003/checks-r1/checks.json"
+    "next_scheduled_observation_ns": null,
+    "checks": "local/runs/hard-tree-time-exploration-20261003/checks-r1/checks.json",
+    "delivery_document": "docs/hard_tree_time_exploration/DELIVERY.md",
+    "package": "local/runs/hard-tree-time-exploration-20261003/release-r1/HARDTREE_GLOBAL_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "d36d2af53b6367801fb7668c7de53cef6e53a682415d81b30d9d1f44a844b40c",
+    "csv_sha256": "8a75edd4d14fd171b460a127a8c195c151c80da58f33a8e798ed0fb76e7183c6",
+    "selected_epoch": 15,
+    "stopped_epoch": 65,
+    "actual_counts": {
+      "full_training_procedures": 1,
+      "estimator": 2,
+      "optimizer": 2,
+      "states": 2,
+      "packages": 1,
+      "cv": 0,
+      "confirmation_seeds": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "actual_optimizer_steps": {
+      "selector": 585,
+      "refit": 165
+    },
+    "actual_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "supervisor_exec_exit_code": 0,
+    "peak_rss_mib": 1178.77734375,
+    "cold_maximum_difference": 0.0,
+    "owned_processes_running": false,
+    "completed_before_first_scheduled_observation": true,
+    "final_reconciliation": "local/runs/hard-tree-time-exploration-20261003/launch-r1/final-reconciliation.json",
+    "information_review": "local/runs/hard-tree-time-exploration-20261003/information-review-r1/report.json",
+    "feedback_status": "not_measured"
   },
   "q75_selection_scope_audit_20261003": {
     "status": "completed_zero_fit_source_and_arithmetic_audit",
