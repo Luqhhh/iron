@@ -2918,7 +2918,7 @@
     "results_document": "docs/optimization_v0_10/RESULTS.md"
   },
   "current_status": {
-    "as_of": "2026-10-03",
+    "as_of": "2026-10-04",
     "scope": "round2_current_overview",
     "documentation_index": "docs/INDEX.md",
     "rules_document": "AGENTS.md",
@@ -2942,8 +2942,8 @@
       "96.5": 0.1046
     },
     "latest_completed_release": "hard_tree_time_manual_exploration_20261003",
-    "latest_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
-    "latest_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
+    "latest_G0": "passed_1482_unchanged_frozen_files_40_optimizer_100_cold_states_52_actual_exit0_and_independent_label_bound_score",
+    "latest_G1": "both_complete_splits_negative_vs_mean3_only_one_of_ten_folds_positive_not_shortlisted",
     "ready_exploration_candidates": [
       "HARDTREE_GLOBAL_TIME_A20"
     ],
@@ -2951,7 +2951,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "mean5_controller14963_child14966_verified_live_at_launch_threads1_first_reuse_child_exit0_no_partial_quality_read",
+    "runtime_observation": "mean5_finished_52_child_and_supervisor_exit0_all_53_owned_pids_absent",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3324,7 +3324,7 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "ema_nested_residual_mean3_followup_20261003",
+    "latest_completed_quality_experiment": "ema_mean5_development_20261003",
     "latest_platform_feedback_key": "modernnca_ema_mean3_platform_feedback_20261003",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
@@ -3333,9 +3333,9 @@
     "latest_local_G1": "Gaussian_both_development_splits_positive_but_original_platform_recipe_negative_hardtree_both_negative_no_new_release_or_confirmation",
     "last_local_diagnostic_results": "docs/mean3_retained_components/RESULTS.md",
     "latest_registered_scientific_route": "ema_mean5_development_20261003",
-    "latest_completed_scientific_route": "ema_nested_residual_mean3_followup_20261003",
-    "latest_scientific_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
-    "latest_scientific_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
+    "latest_completed_scientific_route": "ema_mean5_development_20261003",
+    "latest_scientific_G0": "passed_1482_unchanged_frozen_files_40_optimizer_100_cold_states_52_actual_exit0_and_independent_label_bound_score",
+    "latest_scientific_G1": "both_complete_splits_negative_vs_mean3_only_one_of_ten_folds_positive_not_shortlisted",
     "active_release_key": null,
     "history_before_platform_feedback_20261002": {
       "latest_G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
@@ -3345,14 +3345,14 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": "ema_mean5_development_20261003",
+    "active_research": null,
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "finish_fixed_two_split_mean5_development_then_audit_increment_and_information_value_before_any_confirmation_or_platform_allocation",
+    "next_action": "review_fixed_sparse_strength_probe_of_platform_positive_three_member_mean_without_extending_failed_mean5",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
-    "latest_completed_research": "ema_nested_residual_mean3_followup_20261003",
+    "latest_completed_research": "ema_mean5_development_20261003",
     "history_before_mean3_overview_20261003": {
       "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/overview-before-refresh.json",
       "sha256": "ed0cc74486dc743a6201dcfeef105596b4928a6807ca7ec30e55863c94ec585f"
@@ -26227,7 +26227,7 @@
     "platform_slots_allocated": 0
   },
   "ema_mean5_development_20261003": {
-    "status": "full_two_split_development_running",
+    "status": "completed_G0_passed_G1_two_negative_splits_not_confirmation_eligible",
     "reference": "EMA_MEAN3_FULL_Q75",
     "reference_score_user_reported": 96.3954,
     "thread_target": 96.45,
@@ -26261,8 +26261,8 @@
     "reused_states": 60,
     "cold_states_budget": 100,
     "engineering_neural_fits": 0,
-    "G0": "seven_locked_checks_1482_file_freeze_first_three_original_EMA_models_cold_passed_remainder_running",
-    "G1": "unmeasured_complete_two_split_outputs_pending",
+    "G0": "passed_1482_unchanged_frozen_files_40_optimizer_100_cold_states_52_actual_exit0_and_independent_label_bound_score",
+    "G1": "both_complete_splits_negative_vs_mean3_only_one_of_ten_folds_positive_not_shortlisted",
     "formal_promoted": false,
     "confirmation_gate": "both_complete_splits_positive_vs_current_mean3",
     "historical_matched_BASE_gate_preserved_but_not_reapplied_to_this_new_question": true,
@@ -26285,7 +26285,7 @@
     "first_reused_unit_cold_states": 6,
     "first_reused_unit_actual_exit_code": 0,
     "first_reused_unit_peak_rss_mib": 493.90234375,
-    "next_observation_not_before_ns": 1791040819343305152,
+    "next_observation_not_before_ns": null,
     "execution_document": "docs/ema_mean5/EXECUTION.md",
     "first_new_estimator_audit": {
       "receipt": "local/runs/ema-mean5-20261003/development-r1/execution/first-new-estimator-audit.json",
@@ -26358,7 +26358,117 @@
       "conditional_additional_optimizer_constructors": 4,
       "publication_started": false,
       "desktop_writes": 0
-    }
+    },
+    "gains": {
+      "42": -0.003917277360254646,
+      "3407": -0.000997845520603769
+    },
+    "mean_gain": -0.0024575614404292075,
+    "confirmation_eligible": false,
+    "candidate_tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_time_len": {
+          "EMA_MEAN5": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 1,
+            "worst_spout_delta": 9.806048385998384e-05,
+            "mean_wmape": 0.038165180583206365,
+            "target": "tap_time_len",
+            "candidate": "EMA_MEAN5",
+            "reference": "EMA_MEAN3",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -7.834554720509423e-05,
+              "3407": -1.9956910412073647e-05
+            },
+            "mean_gain": -4.915122880858394e-05,
+            "minimum_gain": -7.834554720509423e-05
+          }
+        }
+      },
+      "formal_selected": [],
+      "exploration_selected": [],
+      "submission_priority": [],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "new_estimators_actual": 20,
+    "new_optimizer_constructors_actual": 40,
+    "native_steps": 45964,
+    "cold_states_actual": 100,
+    "actual_supervisor_exit_code": 0,
+    "actual_child_exit_codes": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "owned_processes_absent": true,
+    "maximum_child_rss_mib": 812.0234375,
+    "independent_maximum_difference": 5.684341886080802e-14,
+    "report_sha256": "6e91be7f3392e324650d0814a3e83168da43851a6562ba93490542627a0c148e",
+    "independent_audit_sha256": "18d61b52943ef40af680ce0537b4e45ee913a9671f7762e56865889626c222c0",
+    "terminal_sha256": "579f141958b8898a2143dc3670c7da262f94f089b6fb4bc6d417e8db719b8f88",
+    "final_reconciliation_sha256": "28bb1a5cba925891c0f8e215a95dc1fb76cc49ba1c38bf48ef1b9595dcc3bcd2",
+    "results": "docs/ema_mean5/RESULTS.md",
+    "decision": "Do not activate confirmation/full release; fixed five-member extension failed. Keep source, states, reports and prior positive three-member platform evidence."
   },
   "mean3_base_control_retrospective_review_20261003": {
     "status": "complete_retrospective_control_review_one_negative_split_information_question_retained",
