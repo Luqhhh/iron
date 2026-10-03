@@ -1,0 +1,79 @@
+{
+  "identity": "JOINT_COV_MSE_V1",
+  "targets": [
+    "tap_iron",
+    "tap_time_len"
+  ],
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified"
+  },
+  "alpha": 0.2,
+  "loss": {
+    "shrinkage": 0.5,
+    "metric": "C=.5*R+.5*I; R=population standardized fit target covariance",
+    "objective": ".5*mean_batch_heads(r^T inverse(C) r)",
+    "target_order": [
+      "tap_iron",
+      "tap_time_len"
+    ],
+    "fit_only": true,
+    "per_head": true,
+    "output_coordinates": "original standardized two targets, no inverse rotation"
+  },
+  "selector_metric": "original joint standardized MAE, raw state",
+  "training": "original V12 random joint periodicTabM, constant AdamW; no SWA, EMA or Huber",
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    271828,
+    314159
+  ],
+  "folds": 5,
+  "budgets": {
+    "engineering": {
+      "state": 2,
+      "optimizer": 2
+    },
+    "development": {
+      "state": 20,
+      "optimizer": 20
+    },
+    "confirmation": {
+      "state": 20,
+      "optimizer": 20
+    }
+  },
+  "control": "original MetricRegressor BASE native joint MSE; true source identities retained; 0 new control fits",
+  "selection": {
+    "development": "each target independently: both full seed A20 gains positive AND mean increment versus raw BASE A20 positive; choose highest mean qualifying target only",
+    "tie_order": [
+      "tap_time_len",
+      "tap_iron"
+    ],
+    "confirmation": "retain chosen development target; four seed gains each positive, one-sided seed tLCB95(df3)>0 AND mean mechanism positive",
+    "exploration": "at most one positive-mean target, distinct from formal promotion; never automatic release",
+    "folds": "descriptive only"
+  },
+  "limits": {
+    "workers": 1,
+    "max_rss_mib": 1024,
+    "numeric_threads": 1,
+    "torch_threads": 1,
+    "seconds": null
+  },
+  "monitor_seconds": 1800,
+  "release_authorized": false,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "reference_fits": 0,
+  "control_fits": 0,
+  "clipping": false,
+  "cross_split_prediction_averaging": false,
+  "seed_history": "previously used splits over same official rows; not new independent datasets",
+  "queue": "first approved priority; internal member bootstrap remains fallback, no automatic new batch"
+}

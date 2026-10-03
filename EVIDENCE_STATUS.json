@@ -19919,5 +19919,49 @@
     "platform_delta_vs_Q75": -0.0038,
     "platform_feedback_date": "2026-10-03",
     "further_platform_priority": "lower_for_same_A20_Huber_recipe_no_automatic_weight_scan"
+  },
+  "joint_cov_mse_v1_20261003": {
+    "identity": "JOINT_COV_MSE_V1",
+    "status": "authorized_engineering_implementation_pre_freeze",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "G0": {
+      "status": "not_started",
+      "new_states": 0,
+      "new_optimizers": 0,
+      "targeted_neural_tests": 12,
+      "targeted_locked_tests": 8,
+      "targeted_locked_skipped": 4
+    },
+    "G1": {
+      "status": "not_started",
+      "development_outer_fits": 0,
+      "confirmation_outer_fits": 0
+    },
+    "release_authorized": false,
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0,
+    "spec": "configs/joint_cov_mse_v1/SPEC.json",
+    "document": "docs/joint_cov_mse_v1/STRATEGY.md",
+    "budgets": {
+      "engineering": {
+        "state": 2,
+        "optimizer": 2
+      },
+      "development": {
+        "state": 20,
+        "optimizer": 20
+      },
+      "confirmation": {
+        "state": 20,
+        "optimizer": 20
+      }
+    },
+    "targets": [
+      "tap_iron",
+      "tap_time_len"
+    ],
+    "exploration_recommendations_max": 1
   }
 }

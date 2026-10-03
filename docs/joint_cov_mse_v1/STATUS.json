@@ -1,0 +1,23 @@
+{
+  "identity": "JOINT_COV_MSE_V1",
+  "status": "authorized_engineering_implementation_pre_freeze",
+  "reference": "EMA_TIME_Q75",
+  "reference_score_user_reported": 96.392,
+  "G0": {
+    "status": "not_started",
+    "new_states": 0,
+    "new_optimizers": 0,
+    "targeted_neural_tests": 12,
+    "targeted_locked_tests": 8,
+    "targeted_locked_skipped": 4
+  },
+  "G1": {
+    "status": "not_started",
+    "development_outer_fits": 0,
+    "confirmation_outer_fits": 0
+  },
+  "release_authorized": false,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0
+}
