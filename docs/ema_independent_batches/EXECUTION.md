@@ -15,3 +15,5 @@
 另备scripts/watch_ema_independent_terminal.py绑定实际controller进程实例，以Linux pidfd退出事件触发上述一次独立审计；没有进度轮询或自动重试，原600秒观察器保持。审计进程只在controller退出且原终态成功后启动，不与科学训练并行。其输出明确保留原工具会话实际退出码待核验，不能用内核退出通知替代成功退出证据。只读附加程序与检查身份在独立terminal-followup-r1清单中冻结。
 
 退出等待器首轮3项工程检查因锁定Python/libc缺少pidfd_open封装而失败，源码和失败收据保留，未连接实际训练。核对本机x86_64内核头和实际内核接口后增加受平台约束的syscall调用；3项真实合成进程退出检查全部通过，覆盖成功审计、原controller失败不启动审计、审计失败不重试。无新科学拟合、预测或包；不修改训练环境、冻结源或运行任务。
+
+退出等待器源提交f94c569，12项输入身份冻结后已启动：工具会话32581、PID28966。/proc命令行及fdinfo独立核验其pidfd确实绑定原controller25094；原科学工具会话仍为9738。启动收据位于local/runs/ema-independent-batches-20261004/terminal-followup-r1/launch-verification.json。第7次600秒观察核验原controller与worker存活，22/30估计器及各自冷审计已退出成功，已结束子进程最高RSS932.74MiB；未读取局部质量。两个会话实际退出及最终审计通过前，科学G0仍待定。
