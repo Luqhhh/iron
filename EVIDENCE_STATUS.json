@@ -25717,7 +25717,7 @@
     }
   },
   "ema_nested_residual_development_20261003": {
-    "status": "engineering_passed_ready_for_freeze",
+    "status": "full_two_split_development_running",
     "reference": "EMA_TIME_Q75",
     "reference_score_user_reported": 96.392,
     "thread_target": 96.45,
@@ -25725,8 +25725,8 @@
     "source": "src/bf_tap_r2/ema_nested_residual.py",
     "run_directory": "local/runs/ema-nested-residual-20261003/development-r1",
     "checks": "local/runs/ema-nested-residual-20261003/checks-r1/checks.json",
-    "G0": "13_locked_Python312_checks_passed_scientific_execution_pending",
-    "G1": "unmeasured_two_development_splits_only",
+    "G0": "13_locked_checks_577_file_freeze_and_live_launch_verified_scientific_audits_pending",
+    "G1": "unmeasured_full_two_split_development_running",
     "split_seeds": [
       42,
       3407
@@ -25755,6 +25755,15 @@
     "monitor_seconds": 600,
     "time_budget_seconds": null,
     "automatic_retries": false,
-    "platform_queue_changed": false
+    "platform_queue_changed": false,
+    "source_commit": "fe7c5d7732b441ccf1b7f97d5389155a38bd11b5",
+    "manifest_sha256": "9bb704d31630756054dc4580a45dcfe6b1c23d253660d6062e867196370a84b2",
+    "frozen_files": 577,
+    "controller_pid": 5373,
+    "exec_session_id": 87119,
+    "initial_live_child_pid": 5385,
+    "launch_verification": "local/runs/ema-nested-residual-20261003/development-r1/execution/launch-verification.json",
+    "first_scheduled_observation_ns": 1791033129475220393,
+    "execution_document": "docs/ema_nested_residual/EXECUTION.md"
   }
 }

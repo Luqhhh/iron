@@ -11,7 +11,7 @@
 | 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0080 / 0.0580 / 0.1080 |
 | 最新平台反馈 | **EMA32_TIME_A60=96.3857**（时长，−0.0063，2026-10-03）；连同 **LAPLACE_FIXED_A20=96.3891**（−0.0029）、**SEPARATE_MAE_IRON_A20=96.3867**（−0.0053）、**EMA_Q75_N_TO_V36_P05=96.3896**（−0.0024）、**SAM_EMA_TIME_Q75_EXPLORATION=96.3796**（−0.0124），均为用户回传、未独立核验 |
 | 优先信息问题 | **MODERNNCA_TIME_A20** 优先；**EMA_MEAN3_FULL_Q75** 仅在尚未测过时随后；新 **HARDTREE_GLOBAL_TIME_A20** 结合前面反馈决定测试。三者均为人工探索，**GAUSS1_A20** 保留未分配。见[信息价值安排](platform_information_value/ALLOCATION.md) |
-| 优化执行 | 96.45目标持续授权有效；ModernNCA和GLOBAL硬树各完成1全量程序/2次optimizer，0新CV或确认seed，保留原未晋级决定；所有自有进程已退出。四名额来自用户目标说明，不根据日期或文件数推算余额，不要求用满 |
+| 优化执行 | 96.45目标持续授权有效；ModernNCA和GLOBAL硬树各完成1全量程序/2次optimizer，0新CV或确认seed，保留原未晋级决定；两项发布进程已退出，另行冻结的EMA嵌套残差开发正在运行。四名额来自用户目标说明，不根据日期或文件数推算余额，不要求用满 |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
@@ -32,7 +32,7 @@
 
 ## 当前维护入口
 
-- [EMA组件嵌套残差开发](ema_nested_residual/PREREGISTRATION.md)：完整外层训练池内五折EMA OOF生成残差，应用到原完整T模型；固定RIDGE/GBM与25%组件修正，计划40新基础模型/80次optimizer，13项锁定工程检查通过。保留原残差失败结论的适用范围，不占平台名额。
+- [EMA组件嵌套残差开发](ema_nested_residual/PREREGISTRATION.md)：完整外层训练池内五折EMA OOF生成残差，应用到原完整T模型；固定RIDGE/GBM与25%组件修正，计划40新基础模型/80次optimizer，13项锁定工程检查通过，577项身份已冻结并[实际启动](ema_nested_residual/EXECUTION.md)。保留原残差失败结论的适用范围，不占平台名额。
 
 - [本地筛选证据范围审计](q75_selection_scope_audit/RESULTS.md)：K32/EMA32历史增量多乘0.5、跨seed选权重复使用全部评价标签；混合OOF残差不满足整个outer隔离，不能证明整个家族无效。历史数字/决定保留，当前证据用途限制见新审计。
 
