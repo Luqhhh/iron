@@ -20033,20 +20033,82 @@
   },
   "tabm_head_bootstrap_v1_20261003": {
     "identity": "TABM_HEAD_BOOTSTRAP_V1",
-    "status": "implementation_engineering_preparation",
+    "status": "completed_time_formal_local_candidate_not_release_authorized",
     "reference": "EMA_TIME_Q75",
     "reference_score_user_reported": 96.392,
     "G0": {
-      "status": "targeted_passed_full_tests_pending",
-      "new_states": 0,
-      "new_optimizers": 0,
+      "status": "passed_full_tests_production_G0_and_independent_cold",
+      "new_states": 2,
+      "new_optimizers": 2,
       "targeted_neural_tests": 9,
       "targeted_locked_tests": 3,
-      "targeted_locked_skipped": 6
+      "targeted_locked_skipped": 6,
+      "full_neural_tests": 1483,
+      "full_locked_tests": 1054,
+      "full_locked_skipped": 106,
+      "cold_models": 4,
+      "max_cold_difference": 7.516235626781054e-06,
+      "peak_rss_mib": 435.75390625
     },
     "G1": {
-      "status": "not_started",
-      "formal_promoted": false
+      "status": "complete_same_seed_OOF_cold_and_independent_final_verification_passed",
+      "selected_target": "tap_time_len",
+      "development_outer_fits": 10,
+      "confirmation_outer_fits": 10,
+      "development_outer_fit_budget": 10,
+      "confirmation_outer_fit_budget": 10,
+      "development_states_completed": 20,
+      "confirmation_states_completed": 20,
+      "development_optimizers_completed": 20,
+      "confirmation_optimizers_completed": 20,
+      "formal_promoted": true,
+      "targets": {
+        "tap_iron": {
+          "control_gains": [
+            -0.002174779258992867,
+            -0.0009504441101801902,
+            -0.003758502680758687,
+            -0.0012514686395311441
+          ],
+          "formal_promoted": false,
+          "mean_gain": 0.0011970039634022977,
+          "mechanism_mean": 0.00323080263576802,
+          "seed_gains": [
+            0.00055587962511263,
+            0.0002187524799345127,
+            -0.0014237579028647457,
+            0.005437141651426794
+          ],
+          "seed_lcb95": -0.002281358001090265
+        },
+        "tap_time_len": {
+          "control_gains": [
+            0.00022689938021346292,
+            0.003336898207237339,
+            0.000547953210600321,
+            0.0009956525570535113
+          ],
+          "formal_promoted": true,
+          "mean_gain": 0.0042594791803376286,
+          "mechanism_mean": 0.0029826283415614703,
+          "seed_gains": [
+            0.0023506693493261645,
+            0.006934220048428014,
+            0.0033512990174526624,
+            0.004401728306143674
+          ],
+          "seed_lcb95": 0.0019414042805032724
+        }
+      },
+      "actual_exit_code": 0,
+      "cold_models_per_phase": 40,
+      "weight_order_certificates_independently_replayed": true,
+      "independent_final_new_fits": 0,
+      "independent_final_new_optimizers": 0,
+      "development_max_cold_difference": 5.684063364697067e-05,
+      "development_peak_rss_mib": 436.65234375,
+      "confirmation_max_cold_difference": 4.205987323757654e-05,
+      "confirmation_peak_rss_mib": 432.5625
     },
     "spec": "configs/tabm_head_bootstrap_v1/SPEC.json",
     "document": "docs/tabm_head_bootstrap_v1/STRATEGY.md",
@@ -20067,6 +20129,13 @@
     "release_authorized": false,
     "fullfit": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "snapshot_utc": "2026-10-03T10:02:05.180584+00:00",
+    "formal_pid": 126378,
+    "implementation_local_commit": "08b98999bdbc4581ff100f2e98e612320fd13c0f",
+    "platform_score": null,
+    "new_control_fits": 0,
+    "new_reference_fits": 0,
+    "result_document": "docs/tabm_head_bootstrap_v1/RESULTS.md"
   }
 }
