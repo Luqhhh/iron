@@ -28095,10 +28095,12 @@
     "time_budget_seconds": null,
     "automatic_retries": false,
     "preceding_completed_stage": "ema_independent_batches_development_20261004",
-    "engineering_checks": "local/runs/de3-independent-batches-20261004/engineering-final-r1/checks.json",
-    "engineering_checks_sha256": "c7961c248d4e9fd4d337bae0967b75d6069d946d9d514480a52f7fc72e40e66a",
+    "engineering_checks": "local/runs/de3-independent-batches-20261004/engineering-final-r2/checks.json",
+    "engineering_checks_sha256": "5e578cdbb599047fc4de0a7225e631e7f9aa1d20d6feeae92087ce8cd6a5b9fb",
     "engineering_optimizer_constructors": 2,
     "engineering_cold_maximum_difference": 1.0763972113636555e-07,
-    "execution": "docs/de3_independent_batches/EXECUTION.md"
+    "execution": "docs/de3_independent_batches/EXECUTION.md",
+    "original_DE3_source_archive": "local/runs/de3-independent-batches-20261004/original-source-r1",
+    "source_preparation_failure_preserved": "local/runs/de3-independent-batches-20261004/prepare-failure-r1"
   }
 }

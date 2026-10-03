@@ -26,6 +26,7 @@ PREVIOUS = MAIN/'local/runs/ema-independent-batches-20261004/development-r1'
 NESTED = MAIN/'local/runs/ema-nested-residual-20261003/development-r1'
 DE3 = MAIN/'local/runs/independent-ensemble-checkpoints-20260929/development-DE3'
 DE3_SOURCE = MAIN/'local/worktrees/independent-ensemble-checkpoints'
+ORIGINAL_SOURCES = MAIN/'local/runs/de3-independent-batches-20261004/original-source-r1'
 PROTOCOL = ROOT/'docs/de3_independent_batches/PREREGISTRATION.md'
 SPEC = ROOT/'configs/de3_independent_batches/SPEC.json'
 MODEL = ROOT/'src/bf_tap_r2/de3_independent_batches_model.py'
@@ -99,9 +100,15 @@ def prepare(checks):
         raise ValueError('Original DE3 source not independently closed')
     files = {}; merge_legacy_files(files, previous['files'], MAIN)
     merge_legacy_files(files, c['files'], MAIN)
-    merge_legacy_files(files, old['source_hashes'], DE3_SOURCE)
+    provenance = read(ORIGINAL_SOURCES/'provenance.json')
+    if (provenance['status'] != 'passed' or provenance['original_manifest_sha256'] != sha(DE3/'manifest.json')
+            or provenance['original_source_root'] != str(DE3_SOURCE)
+            or provenance['original_starting_commit'] != old['starting_commit']
+            or {k:v['sha256'] for k,v in provenance['source_files'].items()} != old['source_hashes']):
+        raise ValueError('Original DE3 source archive provenance differs')
+    merge_legacy_files(files, old['source_hashes'], ORIGINAL_SOURCES)
     merge_legacy_files(files, old['data_hashes'], MAIN)
-    paths = list((ROOT/'src').rglob('*.py')) + [PROTOCOL, SPEC, old_spec_path,
+    paths = list((ROOT/'src').rglob('*.py')) + [PROTOCOL, SPEC, old_spec_path, ORIGINAL_SOURCES/'provenance.json',
         ROOT/'tests/test_de3_independent_batches.py', ROOT/'tests/test_de3_independent_terminal_audit.py',
         ROOT/'scripts/audit_de3_independent_batches_terminal.py', ROOT/'scripts/watch_ema_independent_terminal.py',
         ROOT/'uv.lock', ROOT/'pyproject.toml',
@@ -134,6 +141,7 @@ def prepare(checks):
     verify(files); RUN.mkdir(parents=True, exist_ok=False)
     write(RUN/'manifest.json', dict(files=files, plans=previous['plans'], training=spec['training'],
         recipe=spec['recipe'], mechanisms={}, reference=best, old_identities=identities,
+        old_source_archive=str(ORIGINAL_SOURCES), old_starting_commit=old['starting_commit'],
         seeds=list(SEEDS), training_seeds=list(INITS), candidates=CANDIDATES,
         budget=spec['scientific_budget'], monitor_seconds=600, time_budget_seconds=None,
         automatic_retries=False, created_ns=time.time_ns(), source_directory=str(ROOT),
