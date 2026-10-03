@@ -323,8 +323,9 @@
         "evidence_key": "q75_gaussian_time_release_20261002",
         "feedback_status": "not_measured",
         "formal_promotion": true,
-        "desktop": null,
-        "allocation_status": "retained_Q75_parent_package_unallocated_after_mean3_new_best"
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "allocation_status": "retained_Q75_parent_package_unallocated_after_mean3_new_best",
+        "desktop_delivery_key": "gauss_de3_desktop_delivery_20261003"
       },
       {
         "candidate": "HARDTREE_GLOBAL_TIME_A20",
@@ -345,7 +346,9 @@
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
         "status": "ready_reserve_only_temporarily_no_platform_testing",
         "include_in_current_test_queue": false,
-        "evidence_key": "round2_ema_time_followup_20261001.reserve_combination_20261001"
+        "evidence_key": "round2_ema_time_followup_20261001.reserve_combination_20261001",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-TIME-Q75-RESERVE-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop_delivery_key": "gauss_de3_desktop_delivery_20261003"
       }
     ],
     "earlier_unreported_candidates": [
@@ -18060,7 +18063,19 @@
       "source_iron_package": "DE3_IRON_USER_REQUESTED",
       "source_time_package": "EMA_TIME_Q75",
       "source_columns_copied_as_original_strings": true,
-      "new_package_does_not_replace_old_fourth_Q50_combination": true
+      "new_package_does_not_replace_old_fourth_Q50_combination": true,
+      "desktop_handoffs": [
+        {
+          "date": "2026-10-03",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-TIME-Q75-RESERVE-20261003/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3",
+          "receipt_key": "gauss_de3_desktop_delivery_20261003",
+          "G0": "passed",
+          "desktop_copies": 1,
+          "new_packages": 0,
+          "agent_uploads": 0
+        }
+      ]
     },
     "history_before_reserve_generation": {
       "combo": {
@@ -22552,7 +22567,19 @@
       ],
       "next_periodic_observation_ns": 1790921482905650142,
       "manifest_sha256": "8e416777ba7b1a707ac673084dc8e9e8ba8cb8908d827e1da57091bf0d989499"
-    }
+    },
+    "desktop_handoffs": [
+      {
+        "date": "2026-10-03",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+        "receipt_key": "gauss_de3_desktop_delivery_20261003",
+        "G0": "passed",
+        "desktop_copies": 1,
+        "new_packages": 0,
+        "agent_uploads": 0
+      }
+    ]
   },
   "q75_laplace_time_development_20261002": {
     "status": "completed_FIXED_selected_for_separately_frozen_confirmation",
@@ -26344,5 +26371,65 @@
     "current_mean5_candidate_pool_unchanged": true,
     "review_was_not_blind": true,
     "original_decisions_preserved": true
+  },
+  "gauss_de3_desktop_delivery_20261003": {
+    "status": "two_original_packages_copied_and_independently_audited",
+    "date": "2026-10-03",
+    "user_request": "写桌面，以及de3+ema候选也写桌面",
+    "G0": "passed_locked_python312_independent_process_byte_identity_crc_322_official_order_finite_nonnegative_and_original_columns",
+    "G1": "Gaussian_formally_promoted_vs_historical_Q75_platform_unmeasured_DE3_Q75_unmeasured_reserve_not_formal_promotion",
+    "private_directory": "local/runs/gauss-de3-desktop-20261003/delivery-r1",
+    "request_sha256": "87d68fcb0f875735428020c3f76425e3f449ad997db3cd7670b0ce5991d69116",
+    "copy_receipt_sha256": "c7f8bec35127df1ac453ed381adf9d114475033768519c8ebb323497e7839bed",
+    "independent_audit_sha256": "c55aa8219b5c9f4d573514c950760fc50e30f5e06a4f97c79192914766c1307b",
+    "terminal_sha256": "70d37529ba5910aaaa9002c2b41ba122b3c71d3b519f77b3180e8836bed93984",
+    "desktop_copies": 2,
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0,
+    "reserve_testing_policy_unchanged": true,
+    "platform_scores_unchanged": true,
+    "remaining_quota_not_inferred": true,
+    "items": [
+      {
+        "candidate": "GAUSS1_A20",
+        "source": "/home/lux1/iron/local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+        "csv_sha256": "1ad5e5439c4a0f7fb12cf353b3e42a2c74d024f2968ec9c68c0a5ce500819310",
+        "rows": 322,
+        "unique_ids": 322,
+        "official_order": true,
+        "members": [
+          "result.csv"
+        ],
+        "crc": true,
+        "finite_nonnegative": true,
+        "source_byte_equal": true,
+        "preserved_column_string_mismatches": {
+          "pred_tap_iron": 0
+        }
+      },
+      {
+        "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
+        "source": "/home/lux1/iron/local/runs/ema-time-followup-20261001/reserve-DE3-Q75-r1/DE3_IRON_EMA_TIME_Q75_RESERVE/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-TIME-Q75-RESERVE-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3",
+        "csv_sha256": "6446d0c4dd7a5b724fb574dccbfb38a46b0694ea47d43a7d6e766f808d6b8dde",
+        "rows": 322,
+        "unique_ids": 322,
+        "official_order": true,
+        "members": [
+          "result.csv"
+        ],
+        "crc": true,
+        "finite_nonnegative": true,
+        "source_byte_equal": true,
+        "preserved_column_string_mismatches": {
+          "pred_tap_iron": 0,
+          "pred_tap_time_len": 0
+        }
+      }
+    ]
   }
 }

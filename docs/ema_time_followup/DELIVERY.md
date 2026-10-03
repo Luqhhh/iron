@@ -133,3 +133,11 @@ G0 通过：身份清单冻结 1,451 个文件；独立新进程禁止训练输�
 使用锁定 Python 3.12 路径完成生成及独立核验，相关组合/字段保持专项测试 10 passed；科学源码未改，沿用先前同源码完整测试 1325 passed。此次新拟合 0、新包 1、桌面写入 0、助手上传 0。G1 为未测组合替补，不是正式四 seed 晋级，历史门槛与失败决定不变。
 
 公开登记：`EVIDENCE_STATUS.json -> round2_ema_time_followup_20261001 -> reserve_combination_20261001`。私有目录保留 manifest.json、release.json、independent-cold-audit.json、reserve-status.json 与一次性生成脚本；所有模型、包及凭证不入 Git。
+
+## DE3＋Q75替补包：用户授权桌面交付（2026-10-03）
+
+用户明确要求“写桌面，以及de3+ema候选也写桌面”。现有 `DE3_IRON_EMA_TIME_Q75_RESERVE` 原始ZIP已复制到 `C:\Users\lqh22\Desktop\submission-DE3-IRON-EMA-TIME-Q75-RESERVE-20261003\Luqhhh_bf_tap_predict_round2.zip`，附替补说明，SHA256仍为 `86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3`。
+
+G0：锁定Python3.12.12独立新进程确认源包/桌面字节一致，ZIP仅含result.csv、CRC正确，322个唯一ID按官方模板顺序、预测有限非负；铁量相对DE3原包、时长相对Q75原包的字段字符串差异均为0。G1保持未测组合替补、未正式晋级；本次桌面交付不改变此前暂不平台测试的安排。上文96.3942仍仅为条件算术，当前最佳为用户回传、未独立核验的EMA_MEAN3=96.3954，不能把组合算术登记为成绩。
+
+本次与GAUSS1_A20合计2份桌面复制，0新拟合、0新生成包、0助手上传；原包、旧Q50组合和历史安排保留。私有收据在 `local/runs/gauss-de3-desktop-20261003/delivery-r1/`，机器状态见 `gauss_de3_desktop_delivery_20261003`。原生成阶段的桌面写入0保持为历史记录。
