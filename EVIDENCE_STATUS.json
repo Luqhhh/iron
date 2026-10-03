@@ -25786,5 +25786,28 @@
       "task_at_observation": "008-base-s42-f0-i4"
     },
     "next_observation_not_before_ns": 1791033729479886663
+  },
+  "sam_feedback_attribution_correction_20261003": {
+    "status": "completed_source_bound_documentation_correction",
+    "correct_positive_candidate": "LOC_DIAG_SAM_TIME",
+    "comparison_candidate": "V32_TIME_A60V7_50",
+    "local_mean_gain": -0.01642965888519112,
+    "platform_score_user_reported": 96.3758,
+    "platform_gain_user_reported": 0.0031,
+    "distinct_candidate": "SAM_EMA_TIME_Q75_EXPLORATION",
+    "distinct_comparison": "EMA_TIME_Q75",
+    "distinct_platform_score_user_reported": 96.3796,
+    "distinct_platform_gain_user_reported": -0.0124,
+    "report": "local/runs/sam-feedback-attribution-20261003/review-r1/report.json",
+    "report_sha256": "07bde500f6fb8099c1b227fbe0ef9e43520186bac5f22e7b13d5f486784ef804",
+    "corrected_documents": [
+      "docs/q75_laplace_release/DELIVERY.md",
+      "docs/platform_slot_review/ALLOCATION.md"
+    ],
+    "original_feedback_and_packages_unchanged": true,
+    "active_frozen_source_unchanged": true,
+    "new_fits": 0,
+    "new_packages": 0,
+    "platform_queue_changed": false
   }
 }
