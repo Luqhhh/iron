@@ -28045,7 +28045,7 @@
     "terminal_sha256": "3b10808931786f6a293cdcd864d4b0e4e9ed3b6d4365dcbcd3da20feee8c7820"
   },
   "de3_joint_independent_batches_development_20261004": {
-    "status": "design_preregistered_implementation_and_engineering_pending_not_started",
+    "status": "engineering_passed_isolated_input_freeze_pending_not_started",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
     "target": 96.45,
@@ -28081,10 +28081,10 @@
       "maximum_selector_refit_epochs_each": 2,
       "synthetic_seed": 964505
     },
-    "G0": "implementation_engineering_and_actual_input_freeze_pending",
+    "G0": "locked_18_checks_and_corrected_fresh_process_synthetic_cold_passed_scientific_G0_pending",
     "G1": "not_evaluated_no_formal_promotion",
     "new_scientific_fits": 0,
-    "new_engineering_fits": 0,
+    "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
     "packages": 0,
@@ -28094,6 +28094,11 @@
     "monitor_seconds": 600,
     "time_budget_seconds": null,
     "automatic_retries": false,
-    "preceding_completed_stage": "ema_independent_batches_development_20261004"
+    "preceding_completed_stage": "ema_independent_batches_development_20261004",
+    "engineering_checks": "local/runs/de3-independent-batches-20261004/engineering-final-r1/checks.json",
+    "engineering_checks_sha256": "c7961c248d4e9fd4d337bae0967b75d6069d946d9d514480a52f7fc72e40e66a",
+    "engineering_optimizer_constructors": 2,
+    "engineering_cold_maximum_difference": 1.0763972113636555e-07,
+    "execution": "docs/de3_independent_batches/EXECUTION.md"
   }
 }
