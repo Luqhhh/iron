@@ -28045,7 +28045,7 @@
     "terminal_sha256": "3b10808931786f6a293cdcd864d4b0e4e9ed3b6d4365dcbcd3da20feee8c7820"
   },
   "de3_joint_independent_batches_development_20261004": {
-    "status": "engineering_passed_isolated_input_freeze_pending_not_started",
+    "status": "running_complete_two_split_scientific_batch_quality_unread",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
     "target": 96.45,
@@ -28081,9 +28081,9 @@
       "maximum_selector_refit_epochs_each": 2,
       "synthetic_seed": 964505
     },
-    "G0": "locked_18_checks_and_corrected_fresh_process_synthetic_cold_passed_scientific_G0_pending",
-    "G1": "not_evaluated_no_formal_promotion",
-    "new_scientific_fits": 0,
+    "G0": "engineering_passed_input_identity_frozen_scientific_cold_inventory_and_actual_terminal_pending",
+    "G1": "not_read_until_all_ten_outer_units_complete_no_formal_promotion",
+    "new_scientific_fits": null,
     "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -28101,6 +28101,18 @@
     "engineering_cold_maximum_difference": 1.0763972113636555e-07,
     "execution": "docs/de3_independent_batches/EXECUTION.md",
     "original_DE3_source_archive": "local/runs/de3-independent-batches-20261004/original-source-r1",
-    "source_preparation_failure_preserved": "local/runs/de3-independent-batches-20261004/prepare-failure-r1"
+    "source_preparation_failure_preserved": "local/runs/de3-independent-batches-20261004/prepare-failure-r1",
+    "source_worktree": "/home/lux1/iron/local/worktrees/de3-independent-batches",
+    "source_commit": "e7551746923e339b576cc7f9d41d5a43363ae4aa",
+    "run_directory": "local/runs/de3-independent-batches-20261004/development-r1",
+    "manifest_sha256": "bcc74d2fb95d625014634dcbd6f3f15d3834772521e224cc97f7a7f9a0b1b2ba",
+    "frozen_files": 4612,
+    "actual_prepare_exit_code": 0,
+    "controller_pid": 33474,
+    "supervisor_tool_session": 71960,
+    "watcher_pid": 33502,
+    "followup_tool_session": 31415,
+    "terminal_followup_directory": "local/runs/de3-independent-batches-20261004/terminal-followup-r1",
+    "new_scientific_fits_note": "Final consumed inventory pending; 30-estimator/60-optimizer native construction ledger enforced"
   }
 }
