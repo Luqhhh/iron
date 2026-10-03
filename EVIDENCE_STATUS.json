@@ -3288,14 +3288,15 @@
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "complete_frozen_nested_residual_batch_and_review_new_questions_against_latest_EMA_MEAN3_reference_no_current_platform_slot_allocation",
+    "next_action": "finish_original_nested_residual_and_independent_terminal_audit_then_activate_preregistered_mean3_seed42_member_correction_review",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_median3_review_20261003",
     "history_before_mean3_overview_20261003": {
       "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/overview-before-refresh.json",
       "sha256": "ed0cc74486dc743a6201dcfeef105596b4928a6807ca7ec30e55863c94ec585f"
-    }
+    },
+    "pending_research": "ema_nested_residual_mean3_followup_20261003"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -25995,5 +25996,42 @@
     "terminal_receipt": "local/runs/ema-median3-20261003/development-r1/terminal-reconciliation.json",
     "terminal_sha256": "ff26a8cb67fe2fdd6a7ed074953f22584e1d189918b217c6d4e3f29b633d7477",
     "results_document": "docs/ema_median3/RESULTS.md"
+  },
+  "ema_nested_residual_mean3_followup_20261003": {
+    "status": "preregistered_four_checks_passed_waiting_for_original_full_terminal",
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "thread_target": 96.45,
+    "protocol": "docs/ema_nested_residual/MEAN3_FOLLOWUP_PREREGISTRATION.md",
+    "runner": "scripts/ema_nested_residual_mean3_review.py",
+    "checks": "local/runs/ema-nested-residual-mean3-20261003/checks-r1/checks.json",
+    "checks_sha256": "e5a126116c1ad2168c804d1406fb900e610f62267b49955fd314b293bfb078c7",
+    "script_sha256": "855bb1959fdc6a1c015c3ce9ecd43844b48acf329fe574626e99843cebfc4ac5",
+    "source_phase": "ema_nested_residual_development_20261003",
+    "original_phase_reference_preserved": "EMA_TIME_Q75",
+    "candidate_order": [
+      "RIDGE",
+      "GBM"
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "corrected_training_seed": 42,
+    "corrected_member_portfolio_weight": 0.25,
+    "component_correction_gamma": 0.25,
+    "new_fits": 0,
+    "new_optimizer_constructors": 0,
+    "new_model_predict_calls": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "four_locked_synthetic_checks_passed_scientific_inputs_not_activated",
+    "G1": "unmeasured_pending_all_original_outputs_and_actual_terminal",
+    "run_directory": "local/runs/ema-nested-residual-mean3-20261003/review-r1",
+    "time_budget_seconds": null
   }
 }
