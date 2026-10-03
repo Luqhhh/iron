@@ -25932,5 +25932,44 @@
       "actual_exit_code": 0,
       "platform_score_independently_verified": false
     }
+  },
+  "ema_median3_review_20261003": {
+    "status": "checks_passed_pending_freeze_and_complete_two_seed_review",
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "thread_target": 96.45,
+    "candidate": "EMA_MEDIAN3",
+    "protocol": "docs/ema_median3/PREREGISTRATION.md",
+    "runner": "scripts/ema_median3_review.py",
+    "checks": "local/runs/ema-median3-20261003/checks-r1/checks.json",
+    "tests_passed": 4,
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "folds": 5,
+    "component_weight": 0.75,
+    "candidate_order": [
+      "EMA_MEDIAN3"
+    ],
+    "planned_reused_estimators": 30,
+    "planned_reused_states": 60,
+    "new_fits": 0,
+    "new_optimizer_constructors": 0,
+    "new_model_predict_calls": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "G0": "four_locked_synthetic_checks_passed_official_cache_review_pending",
+    "G1": "unmeasured",
+    "time_budget_seconds": null,
+    "automatic_scientific_retries": false
   }
 }
