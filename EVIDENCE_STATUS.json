@@ -2881,8 +2881,8 @@
       "96.5": 0.1046
     },
     "latest_completed_release": "hard_tree_time_manual_exploration_20261003",
-    "latest_G0": "passed_919_frozen_files_60_original_checkpoint_identities_independent_scalar_audit_actual_exit0",
-    "latest_G1": "both_complete_splits_negative_vs_EMA_MEAN3_not_shortlisted",
+    "latest_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
+    "latest_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
     "ready_exploration_candidates": [
       "HARDTREE_GLOBAL_TIME_A20"
     ],
@@ -2890,7 +2890,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "nested_residual_controller5373_child10680_verified_live_at_600_second_observation8_no_partial_quality_read",
+    "runtime_observation": "original_nested_residual_and_followup_complete_actual_exit0_owned_processes_absent_no_idle_monitor",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3263,18 +3263,18 @@
       "desktop_submission_zip": "/mnt/c/Users/lqh22/Desktop/Luqhhh_bf_tap_predict_prelim.zip",
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
-    "latest_completed_quality_experiment": "ema_median3_review_20261003",
+    "latest_completed_quality_experiment": "ema_nested_residual_mean3_followup_20261003",
     "latest_platform_feedback_key": "modernnca_ema_mean3_platform_feedback_20261003",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
-    "latest_local_diagnostic": "ema_median3_review_20261003",
-    "latest_local_G0": "passed_919_frozen_files_60_original_checkpoint_identities_independent_scalar_audit_actual_exit0",
-    "latest_local_G1": "both_complete_splits_negative_vs_EMA_MEAN3_not_shortlisted",
-    "last_local_diagnostic_results": "docs/ema_median3/RESULTS.md",
-    "latest_registered_scientific_route": "ema_median3_review_20261003",
-    "latest_completed_scientific_route": "ema_median3_review_20261003",
-    "latest_scientific_G0": "passed_919_frozen_files_60_original_checkpoint_identities_independent_scalar_audit_actual_exit0",
-    "latest_scientific_G1": "both_complete_splits_negative_vs_EMA_MEAN3_not_shortlisted",
+    "latest_local_diagnostic": "ema_nested_residual_mean3_followup_20261003",
+    "latest_local_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
+    "latest_local_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
+    "last_local_diagnostic_results": "docs/ema_nested_residual/MEAN3_FOLLOWUP_RESULTS.md",
+    "latest_registered_scientific_route": "ema_nested_residual_mean3_followup_20261003",
+    "latest_completed_scientific_route": "ema_nested_residual_mean3_followup_20261003",
+    "latest_scientific_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
+    "latest_scientific_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
     "active_release_key": null,
     "history_before_platform_feedback_20261002": {
       "latest_G1": "manual_exploration_platform_unmeasured_formal_development_gate_failed_preserved",
@@ -3284,19 +3284,19 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": "ema_nested_residual_development_20261003",
+    "active_research": null,
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "finish_original_nested_residual_and_independent_terminal_audit_then_activate_preregistered_mean3_seed42_member_correction_review",
+    "next_action": "review_information_value_of_next_EMA_mean3_mechanism_experiment_before_freezing_no_automatic_small_residual_confirmation",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
-    "latest_completed_research": "ema_median3_review_20261003",
+    "latest_completed_research": "ema_nested_residual_mean3_followup_20261003",
     "history_before_mean3_overview_20261003": {
       "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/overview-before-refresh.json",
       "sha256": "ed0cc74486dc743a6201dcfeef105596b4928a6807ca7ec30e55863c94ec585f"
     },
-    "pending_research": "ema_nested_residual_mean3_followup_20261003"
+    "pending_research": null
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -25771,7 +25771,7 @@
     }
   },
   "ema_nested_residual_development_20261003": {
-    "status": "full_two_split_development_running",
+    "status": "complete_two_split_development_ridge_confirmation_eligible_not_promoted",
     "reference": "EMA_TIME_Q75",
     "reference_score_user_reported": 96.392,
     "thread_target": 96.45,
@@ -25779,8 +25779,8 @@
     "source": "src/bf_tap_r2/ema_nested_residual.py",
     "run_directory": "local/runs/ema-nested-residual-20261003/development-r1",
     "checks": "local/runs/ema-nested-residual-20261003/checks-r1/checks.json",
-    "G0": "13_locked_checks_577_file_freeze_first_outer_unit_cold_and_actual_exit0_closed_remainder_running",
-    "G1": "unmeasured_full_two_split_development_running",
+    "G0": "passed_121_actual_child_exits_80_optimizer_120_cold_base_states_20_heads_independent_terminal_audit",
+    "G1": "RIDGE_both_positive_vs_original_Q75_confirmation_eligible_exploration_GBM_both_negative",
     "split_seeds": [
       42,
       3407
@@ -25832,16 +25832,16 @@
       "quality_evaluated": false
     },
     "last_scheduled_observation": {
-      "number": 4,
-      "receipt": "local/runs/ema-nested-residual-20261003/development-r1/execution/observation-004.json",
-      "time_ns": 1791034929488236301,
-      "observed_live": true,
-      "pid_at_observation": 6976,
-      "task_at_observation": "044-base-s42-f3-i4"
+      "number": 10,
+      "time_ns": 1791038529506130360,
+      "pid": 12059,
+      "task": "112-base-s3407-f4-i2",
+      "live": true,
+      "rss_mib": 662.734375
     },
-    "next_observation_not_before_ns": 1791035529488236301,
+    "next_observation_not_before_ns": null,
     "terminal_audit_preparation": {
-      "status": "five_locked_nonfitting_checks_passed_final_audit_pending",
+      "status": "five_locked_checks_passed_and_final_audit_now_passed",
       "source": "scripts/audit_ema_nested_residual_terminal.py",
       "source_sha256": "9fe1763bcd48cbd3a9caed9e678ee8d9003563fe5129b4539358f49dc973fb3b",
       "checks": "local/runs/ema-nested-residual-20261003/terminal-audit-checks-r2/checks.json",
@@ -25853,7 +25853,35 @@
       "official_prediction_reads": 0,
       "expected_actual_child_exits": 121,
       "frozen_files_changed": 0
-    }
+    },
+    "results": "docs/ema_nested_residual/RESULTS.md",
+    "gains": {
+      "RIDGE": {
+        "42": 0.0002905779460132818,
+        "3407": 0.000422264643130596
+      },
+      "GBM": {
+        "42": -0.00374674722543461,
+        "3407": -0.005939522678063275
+      }
+    },
+    "selected_for_confirmation": "RIDGE",
+    "confirmation_action": "deferred_followup_mean3_review_complete_no_new_confirmation_fits",
+    "actual_new_base_estimators": 40,
+    "actual_new_optimizer_constructors": 80,
+    "actual_native_optimizer_steps": 79788,
+    "actual_cold_base_states": 120,
+    "actual_head_fits": 20,
+    "actual_supervisor_exec_exit_code": 0,
+    "actual_independent_audit_exit_code": 0,
+    "maximum_child_rss_mib": 854.046875,
+    "owned_processes_absent": true,
+    "independent_score_maximum_difference": 1.0366707492437399e-14,
+    "report_sha256": "09d7de147b44720c309e376caaf9fd078b82d8a2c289d23e6330165dadb025a0",
+    "independent_terminal_audit": "local/runs/ema-nested-residual-20261003/development-r1/execution/independent-terminal-audit.json",
+    "final_reconciliation": "local/runs/ema-nested-residual-20261003/development-r1/execution/final-reconciliation.json",
+    "final_reconciliation_sha256": "46c110255a01641fb8f69894e78229acb1a283a97b74844c7c9ca64aa5bee0e2",
+    "monitoring_complete": true
   },
   "sam_feedback_attribution_correction_20261003": {
     "status": "completed_source_bound_documentation_correction",
@@ -25998,7 +26026,7 @@
     "results_document": "docs/ema_median3/RESULTS.md"
   },
   "ema_nested_residual_mean3_followup_20261003": {
-    "status": "preregistered_four_checks_passed_waiting_for_original_full_terminal",
+    "status": "complete_zero_fit_review_ridge_eligible_confirmation_deferred",
     "reference": "EMA_MEAN3_FULL_Q75",
     "reference_score_user_reported": 96.3954,
     "thread_target": 96.45,
@@ -26029,9 +26057,84 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "formal_promoted": false,
-    "G0": "four_locked_synthetic_checks_passed_scientific_inputs_not_activated",
-    "G1": "unmeasured_pending_all_original_outputs_and_actual_terminal",
+    "G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
+    "G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
     "run_directory": "local/runs/ema-nested-residual-mean3-20261003/review-r1",
-    "time_budget_seconds": null
+    "time_budget_seconds": null,
+    "results": "docs/ema_nested_residual/MEAN3_FOLLOWUP_RESULTS.md",
+    "gains": {
+      "RIDGE": {
+        "42": 0.0001496455844431921,
+        "3407": 0.0001887314515727212
+      },
+      "GBM": {
+        "42": -0.0012010928498540352,
+        "3407": -0.0016475921786280878
+      }
+    },
+    "selected_for_confirmation": "RIDGE",
+    "confirmation_action": "eligible_but_deferred_by_information_value_and_small_increment_no_numeric_hard_gate_added",
+    "candidate_tiers": {
+      "tap_time_len": {
+        "RIDGE": {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 5,
+          "worst_spout_delta": 1.3367575485909167e-06,
+          "mean_wmape": 0.038112645584037666,
+          "target": "tap_time_len",
+          "candidate": "RIDGE",
+          "reference": "EMA_MEAN3",
+          "tier": "exploration",
+          "failed_conditions": [
+            "minimum_improved_folds"
+          ],
+          "gains_by_split": {
+            "42": 2.9929116886623364e-06,
+            "3407": 3.7746290315679443e-06
+          },
+          "mean_gain": 3.3837703601151403e-06,
+          "minimum_gain": 2.9929116886623364e-06
+        },
+        "GBM": {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": false,
+            "42": false
+          },
+          "improved_folds": 0,
+          "worst_spout_delta": 5.095986266914765e-05,
+          "mean_wmape": 0.038144516204682594,
+          "target": "tap_time_len",
+          "candidate": "GBM",
+          "reference": "EMA_MEAN3",
+          "tier": "not_shortlisted",
+          "failed_conditions": [
+            "both_splits_improve",
+            "minimum_improved_folds"
+          ],
+          "gains_by_split": {
+            "42": -2.402185699727777e-05,
+            "3407": -3.2951843572361084e-05
+          },
+          "mean_gain": -2.8486850284819426e-05,
+          "minimum_gain": -3.2951843572361084e-05
+        }
+      }
+    },
+    "frozen_files": 1534,
+    "manifest_sha256": "35c13c04acb562d6642d364efc19a5abd64309211d4886e2d06c223cd92122cd",
+    "report_sha256": "b2dc0591686746ae03c343daa517449fd187ba5c1e7b78e26b1fbb4cbd4d796d",
+    "independent_audit_sha256": "fb7cf22193fb9f2da9ab71c234534f0e230239f84c0605ed8a2495339aea58fb",
+    "terminal_reconciliation": "local/runs/ema-nested-residual-mean3-20261003/review-r1/terminal-reconciliation.json",
+    "terminal_reconciliation_sha256": "d585c5711778f6c81c90216e9d7c30941e5e388dffa816a26f9eee2247dcdb2d",
+    "actual_prepare_exit_code": 0,
+    "actual_evaluation_exit_code": 0,
+    "actual_independent_audit_exit_code": 0,
+    "independent_maximum_difference": 5.684341886080802e-14,
+    "platform_slots_allocated": 0
   }
 }
