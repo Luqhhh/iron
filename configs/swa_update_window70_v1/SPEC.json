@@ -1,0 +1,47 @@
+{
+  "identity": "SWA_UPDATE_WINDOW70_V1",
+  "arms": [
+    "SWA_MSE_CONTROL",
+    "SWA_UPDATE_WINDOW70"
+  ],
+  "window_updates": 70,
+  "sampling": "after_each_completed_optimizer_step_raw_parameters",
+  "evaluation": "epoch_end_average_state_joint_std_MAE",
+  "gradient": "raw_parameters",
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    271828,
+    314159
+  ],
+  "alpha": 0.2,
+  "budgets": {
+    "engineering": {
+      "state": 2,
+      "optimizer": 2
+    },
+    "development": {
+      "state": 20,
+      "optimizer": 20
+    },
+    "confirmation": {
+      "state": 20,
+      "optimizer": 20
+    }
+  },
+  "release_authorized": false,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "workers": 1,
+  "numeric_threads": 1,
+  "torch_threads": 1,
+  "max_rss_mib": 1024,
+  "time_budget": null,
+  "source_control": "original_TABM_TIME_SWA_V1",
+  "reference": "EMA_TIME_Q75",
+  "source_training": "original_joint_MSE_constant_LR_not_MAE_or_cycle",
+  "formal_gate": "all_four_seed_gains_positive_and_seed_t_LCB95_positive_and_mean_mechanism_positive"
+}
