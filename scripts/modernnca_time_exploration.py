@@ -149,7 +149,7 @@ def freeze(checks):
         raise ValueError('Passing locked checks for this runner required')
     if sha(tests['junit']) != tests['junit_sha256']:
         raise ValueError('Test receipt differs')
-    parent = Path(best['desktop'])
+    parent = ROOT / 'local/runs/ema-time-followup-20261001/probes-r2/EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip'
     if sha(parent) != PARENT_SHA:
         raise ValueError('Parent identity differs')
     paths = list((SOURCE / 'src').rglob('*.py'))
