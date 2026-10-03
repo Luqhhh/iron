@@ -301,8 +301,8 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "as_of": "2026-10-02",
-    "status": "EMA32_TIME_A60_user_reported_below_Q75_no_pending_platform_candidate",
+    "as_of": "2026-10-03",
+    "status": "information_value_review_ModernNCA_release_in_preparation",
     "current_preferred": {
       "candidate": "EMA_TIME_Q75",
       "score": 96.392,
@@ -324,37 +324,10 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [
-      "LAPLACE_FIXED_A20",
-      "SEPARATE_MAE_IRON_A20",
-      "GAUSS1_A20",
       "EMA_MEAN3_FULL_Q75"
     ],
-    "submission_priority_note": "EMA32_TIME_A60 (k=32 + EMA time) was delivered to the desktop on 2026-10-03 and the user reported 96.3857, i.e. -0.0063 versus Q75, despite a four-seed local gain of +0.0064. Best remains EMA_TIME_Q75=96.3920. K32_TIME_A45 shares the same k=32 mechanism and is deprioritised, not deleted. No new candidate is queued and no quota is inferred.",
+    "submission_priority_note": "Manual information-value priority: EMA_MEAN3 tests averaging of the platform-positive EMA direction; ModernNCA MSE time is the sole new manual exploration under release preparation. GAUSS1 remains ready but unallocated; K32 deprioritised after EMA32. No measured package remains in ready list.",
     "ready_for_user_platform_testing": [
-      {
-        "candidate": "LAPLACE_FIXED_A20",
-        "package": "local/runs/q75-laplace-release-20261002/release-r1/LAPLACE_FIXED_A20/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c",
-        "G0": "passed_native_budget_partitions_epochs_Laplace_identity_independent_label_free_cold_and_package_actual_exit0",
-        "G1": "formal_four_seed_Q75_promoted_platform_unmeasured_Gaussian_comparison_not_statistically_resolved",
-        "reference": "EMA_TIME_Q75",
-        "evidence_key": "q75_laplace_fixed_release_20261002",
-        "feedback_status": "not_measured",
-        "formal_promotion": true,
-        "desktop": null
-      },
-      {
-        "candidate": "SEPARATE_MAE_IRON_A20",
-        "package": "local/runs/q75-separate-mae-iron-release-20261002/release-r1/SEPARATE_MAE_IRON_A20/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "a6fc793ae48312a868477b20408534aeaa1ace0e23f62d8138915f847c585539",
-        "G0": "passed_native2_states_partitions_joint_selection_cold_numpy_label_free_and_package_actual_exit0",
-        "G1": "four_seed_Q75_and_single_MAE_paired_gates_passed_platform_unmeasured",
-        "reference": "EMA_TIME_Q75",
-        "evidence_key": "q75_separate_mae_iron_release_20261002",
-        "feedback_status": "not_measured",
-        "formal_promotion": true,
-        "desktop": null
-      },
       {
         "candidate": "GAUSS1_A20",
         "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
@@ -399,7 +372,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "关键对照及队友预热/末5轮公开结果已核对，建议首个名额LAPLACE_FIXED_A20；第二个名额先保留，待首测反馈后优先考虑SEPARATE_MAE_IRON方向及最新参照。本轮三seed平均铁量未超过现有单seed，不新增包。Gaussian及EMA_MEAN3保留，DE3仅替补。",
+    "recommended": "优先核实/测试已交付EMA_MEAN3；正在准备唯一新探索ModernNCA时长20%，原两seed小正但幅度门失败保留。Gaussian保留未分配，DE3仅替补；不为凑满四个名额重复测试相近配方。",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -794,6 +767,45 @@
         "fixed_string_mismatches": 0,
         "feedback_record": "local/runs/platform-candidates-desktop-20261002/platform-feedback-r1/feedback.json",
         "feedback_sha256": "8d98a95df23520a9d911410b7800320de6254ba694e200f7a9ccf8d8edd7013d"
+      },
+      {
+        "candidate": "LAPLACE_FIXED_A20",
+        "score": 96.3891,
+        "raw_reported_score": "96.3891",
+        "source": "user_reported_not_independently_verified",
+        "reported_date": "2026-10-02",
+        "zip_sha256": "8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0029,
+        "feedback_record": "local/runs/q75-laplace-release-20261002/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "f05750944bd34473e832f04e1d92fbdab1591e7aa66e74c5fe171ca01f25125e"
+      },
+      {
+        "candidate": "SEPARATE_MAE_IRON_A20",
+        "score": 96.3867,
+        "raw_reported_score": "96.3867",
+        "source": "user_reported_not_independently_verified",
+        "reported_date": "2026-10-02",
+        "zip_sha256": "a6fc793ae48312a868477b20408534aeaa1ace0e23f62d8138915f847c585539",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0053,
+        "feedback_record": "local/runs/q75-separate-mae-iron-release-20261002/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "03acb56b41a7f8ac2c44c67f5fa8a84a41a312ff6a687ba115fafe6ec6bc3fc4"
+      },
+      {
+        "candidate": "EMA32_TIME_A60",
+        "score": 96.3857,
+        "raw_reported_score": "96.3857",
+        "source": "user_reported_not_independently_verified",
+        "reported_date": "2026-10-03",
+        "zip_sha256": "97868fd370ff303e7eabed63a396c2419468eef4ed24d5ed1f7a46a848ce908d",
+        "comparison_candidate": "EMA_TIME_Q75",
+        "comparison_score": 96.392,
+        "delta_vs_current_best": -0.0063,
+        "feedback_record": "local/runs/q75-ema32-release-20261003/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "6fff1f9039be56c8f657b9b4b7990c4bea7b3aa4ea901eb0361da5f54db61c85"
       }
     ],
     "modernnca_result_key": "modernnca_median_head_20261002",
@@ -843,14 +855,11 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Key paired local research complete; iron mean3 below ready single seed; teammate warmup and last5 reports reviewed, neither selected; no new queue entry",
-    "platform_slots_user_reported": 2,
-    "platform_slots_source": "user_current_turn_not_inferred",
-    "submission_allocation": "user_reported_two_slots_recommend_first_LAPLACE_FIXED_A20_second_after_first_feedback",
-    "first_slot_provisional_nomination": "LAPLACE_FIXED_A20",
-    "second_slot_provisional_nomination": null,
-    "second_slot_preferred_direction": "independent_MAE_iron_pending_first_platform_feedback",
-    "allocation_document": "docs/platform_slot_review/ALLOCATION.md",
+    "research_status": "ModernNCA MSE time standalone manual exploration release frozen; no formal promotion or confirmation fits",
+    "platform_slots_user_reported": 4,
+    "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
+    "submission_allocation": "sequential_information_questions_no_four_package_filler",
+    "allocation_document": "docs/platform_information_value/ALLOCATION.md",
     "ema32_time_a60": {
       "candidate": "EMA32_TIME_A60",
       "package": "local/runs/q75-ema32-release-20261003/release-r1/EMA32_TIME_A60/Luqhhh_bf_tap_predict_round2.zip",
@@ -859,6 +868,77 @@
       "delta_vs_Q75": -0.0063,
       "local_four_seed_gain": 0.0064,
       "feedback_status": "user_reported_below_Q75"
+    },
+    "history_before_information_value_review_20261003": {
+      "as_of": "2026-10-02",
+      "status": "EMA32_TIME_A60_user_reported_below_Q75_no_pending_platform_candidate",
+      "submission_priority": [
+        "LAPLACE_FIXED_A20",
+        "SEPARATE_MAE_IRON_A20",
+        "GAUSS1_A20",
+        "EMA_MEAN3_FULL_Q75"
+      ],
+      "submission_priority_note": "EMA32_TIME_A60 (k=32 + EMA time) was delivered to the desktop on 2026-10-03 and the user reported 96.3857, i.e. -0.0063 versus Q75, despite a four-seed local gain of +0.0064. Best remains EMA_TIME_Q75=96.3920. K32_TIME_A45 shares the same k=32 mechanism and is deprioritised, not deleted. No new candidate is queued and no quota is inferred.",
+      "ready_for_user_platform_testing": [
+        {
+          "candidate": "LAPLACE_FIXED_A20",
+          "package": "local/runs/q75-laplace-release-20261002/release-r1/LAPLACE_FIXED_A20/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "8557981aff6c20b096434660dbe3930fe91246600dcbace82916685aea6e764c",
+          "G0": "passed_native_budget_partitions_epochs_Laplace_identity_independent_label_free_cold_and_package_actual_exit0",
+          "G1": "formal_four_seed_Q75_promoted_platform_unmeasured_Gaussian_comparison_not_statistically_resolved",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "q75_laplace_fixed_release_20261002",
+          "feedback_status": "not_measured",
+          "formal_promotion": true,
+          "desktop": null
+        },
+        {
+          "candidate": "SEPARATE_MAE_IRON_A20",
+          "package": "local/runs/q75-separate-mae-iron-release-20261002/release-r1/SEPARATE_MAE_IRON_A20/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "a6fc793ae48312a868477b20408534aeaa1ace0e23f62d8138915f847c585539",
+          "G0": "passed_native2_states_partitions_joint_selection_cold_numpy_label_free_and_package_actual_exit0",
+          "G1": "four_seed_Q75_and_single_MAE_paired_gates_passed_platform_unmeasured",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "q75_separate_mae_iron_release_20261002",
+          "feedback_status": "not_measured",
+          "formal_promotion": true,
+          "desktop": null
+        },
+        {
+          "candidate": "GAUSS1_A20",
+          "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+          "G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
+          "G1": "formal_four_seed_promoted_platform_unmeasured",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "q75_gaussian_time_release_20261002",
+          "feedback_status": "not_measured",
+          "formal_promotion": true,
+          "desktop": null
+        },
+        {
+          "candidate": "EMA_MEAN3_FULL_Q75",
+          "package": "local/runs/ema-mean3-exploration-release-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396",
+          "G0": "passed",
+          "G1": "user_selected_manual_platform_unmeasured_exploration_no_formal_promotion",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "ema_mean3_manual_exploration_release_20261002",
+          "feedback_status": "not_measured",
+          "formal_promotion": false,
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-20261002/Luqhhh_bf_tap_predict_round2.zip",
+          "desktop_handoff_receipt": "local/runs/ema-mean3-exploration-release-20261002/release-r1/desktop-delivery.json"
+        }
+      ],
+      "recommended": "关键对照及队友预热/末5轮公开结果已核对，建议首个名额LAPLACE_FIXED_A20；第二个名额先保留，待首测反馈后优先考虑SEPARATE_MAE_IRON方向及最新参照。本轮三seed平均铁量未超过现有单seed，不新增包。Gaussian及EMA_MEAN3保留，DE3仅替补。",
+      "research_status": "Key paired local research complete; iron mean3 below ready single seed; teammate warmup and last5 reports reviewed, neither selected; no new queue entry",
+      "platform_slots_user_reported": 2,
+      "platform_slots_source": "user_current_turn_not_inferred",
+      "submission_allocation": "user_reported_two_slots_recommend_first_LAPLACE_FIXED_A20_second_after_first_feedback",
+      "first_slot_provisional_nomination": "LAPLACE_FIXED_A20",
+      "second_slot_provisional_nomination": null,
+      "second_slot_preferred_direction": "independent_MAE_iron_pending_first_platform_feedback",
+      "allocation_document": "docs/platform_slot_review/ALLOCATION.md"
     }
   },
   "round2_v2_3_candidate_release": {
@@ -25294,5 +25374,38 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "remaining_quota_inferred": false
+  },
+  "modernnca_time_manual_exploration_20261003": {
+    "status": "preregistered_release_engineering_checks_running",
+    "candidate": "MODERNNCA_TIME_A20",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "protocol": "docs/modernnca_time_exploration/PREREGISTRATION.md",
+    "runner": "scripts/modernnca_time_exploration.py",
+    "run_directory": "local/runs/modernnca-time-exploration-20261003/release-r1",
+    "source_directory": "local/worktrees/modernnca-source-preparation",
+    "source_commit": "f4b0c9d209e6a2d8285cd49314ec01e8f7cde3f7",
+    "formal_promoted": false,
+    "G0": "pending",
+    "G1": "manual_information_exploration_original_development_gates_failed_preserved",
+    "reason": "Learned-distance label retrieval is unmeasured on platform; complete two-seed fixed 20% time blend gains small positive; local magnitude alone is not a veto.",
+    "local_seed_gains": {
+      "42": 0.0006693807072483821,
+      "3407": 0.0013165083632211277
+    },
+    "planned_counts": {
+      "full_training_procedures": 1,
+      "estimator": 2,
+      "optimizer": 2,
+      "packages": 1,
+      "new_cv": 0,
+      "confirmation_seeds": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false
   }
 }
