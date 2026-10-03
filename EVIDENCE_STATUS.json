@@ -25715,5 +25715,46 @@
       "local/runs/q75-selection-scope-audit-20261003/audit-r1/manifest.json": "739c7a66335ba56c7c663937f507229b8640cc6402c421e22de7ecdd19371e40",
       "local/runs/q75-selection-scope-audit-20261003/audit-r1/report.json": "8347968d14c2b0782cccb043540f2b0c5697b2f8b8a92014db48033b611b0651"
     }
+  },
+  "ema_nested_residual_development_20261003": {
+    "status": "engineering_passed_ready_for_freeze",
+    "reference": "EMA_TIME_Q75",
+    "reference_score_user_reported": 96.392,
+    "thread_target": 96.45,
+    "protocol": "docs/ema_nested_residual/PREREGISTRATION.md",
+    "source": "src/bf_tap_r2/ema_nested_residual.py",
+    "run_directory": "local/runs/ema-nested-residual-20261003/development-r1",
+    "checks": "local/runs/ema-nested-residual-20261003/checks-r1/checks.json",
+    "G0": "13_locked_Python312_checks_passed_scientific_execution_pending",
+    "G1": "unmeasured_two_development_splits_only",
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "candidate_order": [
+      "RIDGE",
+      "GBM"
+    ],
+    "gamma": 0.25,
+    "component_weight": 0.75,
+    "planned_new_base_estimators": 40,
+    "planned_new_optimizer_constructors": 80,
+    "planned_new_base_states": 80,
+    "planned_reused_base_states": 40,
+    "planned_head_fits": 20,
+    "planned_head_states": 20,
+    "engineering_synthetic_head_fits": 2,
+    "engineering_neural_optimizer_constructors": 0,
+    "formal_promoted": false,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false,
+    "platform_queue_changed": false
   }
 }

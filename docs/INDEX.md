@@ -32,6 +32,8 @@
 
 ## 当前维护入口
 
+- [EMA组件嵌套残差开发](ema_nested_residual/PREREGISTRATION.md)：完整外层训练池内五折EMA OOF生成残差，应用到原完整T模型；固定RIDGE/GBM与25%组件修正，计划40新基础模型/80次optimizer，13项锁定工程检查通过。保留原残差失败结论的适用范围，不占平台名额。
+
 - [本地筛选证据范围审计](q75_selection_scope_audit/RESULTS.md)：K32/EMA32历史增量多乘0.5、跨seed选权重复使用全部评价标签；混合OOF残差不满足整个outer隔离，不能证明整个家族无效。历史数字/决定保留，当前证据用途限制见新审计。
 
 - [ModernNCA时长人工探索交付](modernnca_time_exploration/DELIVERY.md)：20%检索预测替换、铁量原字符串不变；45项锁定检查、两个状态独立冷审计及无标签包回读通过，平台未测。
