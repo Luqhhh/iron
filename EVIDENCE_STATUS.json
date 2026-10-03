@@ -26197,6 +26197,47 @@
     "first_reused_unit_actual_exit_code": 0,
     "first_reused_unit_peak_rss_mib": 493.90234375,
     "next_observation_not_before_ns": 1791040819343305152,
-    "execution_document": "docs/ema_mean5/EXECUTION.md"
+    "execution_document": "docs/ema_mean5/EXECUTION.md",
+    "first_new_estimator_audit": {
+      "receipt": "local/runs/ema-mean5-20261003/development-r1/execution/first-new-estimator-audit.json",
+      "sha256": "ce496e4384dc211c3259f548ef6726ac3b48a0e40e29ce22e4158c8d9e645e81",
+      "unit": "s42-f0-init3042",
+      "actual_exit_codes": [
+        0,
+        0
+      ],
+      "native_optimizer_constructors": 2,
+      "cold_states": 2,
+      "native_steps": {
+        "selection": 1162,
+        "refit": 1269
+      },
+      "peak_rss_mib": 805.73046875,
+      "quality_read": false
+    },
+    "conditional_confirmation_cache_review": {
+      "status": "passed_hash_and_original_receipt_inventory_only",
+      "report": "local/runs/ema-mean5-20261003/confirmation-cache-review-r1/report.json",
+      "report_sha256": "b0e1b631a72af977bd6d3a71a49300a79fae58673097fb57f45ac001a260fbbe",
+      "independent_audit": "local/runs/ema-mean5-20261003/confirmation-cache-review-r1/independent-receipt-audit.json",
+      "independent_audit_sha256": "30b9b4afb489e4882b6a9996f3752686c4c1bd3318349510793813c52f34fe32",
+      "actual_exit_codes": [
+        0,
+        0
+      ],
+      "original_source_directory": "local/runs/ema-span-confirmation-20261001/confirmation-r1",
+      "retained_predictor_states": 420,
+      "artifact_files_rehashed": 1680,
+      "source_files_rehashed": 1234,
+      "fresh_cold_replay_performed": false,
+      "conditional_control_new_estimators": 20,
+      "conditional_additional_candidate_estimators": 20,
+      "conditional_optimizer_constructors": 80,
+      "condition": "requires_both_complete_development_splits_positive_and_separate_confirmation_freeze_and_exact_cache_search",
+      "new_fits": 0,
+      "new_predictions": 0,
+      "confirmation_started": false,
+      "original_failed_inventory": "local/runs/ema-nested-residual-20261003/confirmation-cache-review-r1"
+    }
   }
 }
