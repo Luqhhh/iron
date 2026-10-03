@@ -18,8 +18,8 @@
     "zero_batch": "no_resample_no_skip_AdamW_step",
     "evaluation": "unweighted_head_mean"
   },
-  "selector_metric": "original joint standardized MAE, raw state",
-  "training": "original V12 random K16 joint periodicTabM; only per-row/head Poisson1 weights change; constant AdamW, no SWA, EMA, Huber or covariance",
+  "selector_metric": "original joint standardized MAE evaluated on EMA state",
+  "training": "original V12 random K16 joint periodicTabM with online per-row/head Poisson1 weights and EMA beta .99 after each optimizer step; constant AdamW; no SWA, Huber or covariance",
   "development_seeds": [
     42,
     3407
@@ -45,13 +45,12 @@
   },
   "control": "HEAD_BOOTSTRAP_CONTROL",
   "selection": {
-    "development": "each target independently: both full seed A20 gains positive AND mean increment versus raw BASE A20 positive; choose highest mean qualifying target only",
+    "development": "time only: both full seed A20 gains positive AND mean increment versus paired original Bootstrap A20 positive",
     "tie_order": [
-      "tap_time_len",
-      "tap_iron"
+      "tap_time_len"
     ],
-    "confirmation": "retain chosen development target; four seed gains each positive, one-sided seed tLCB95(df3)>0 AND mean mechanism positive",
-    "exploration": "at most one positive-mean target, distinct from formal promotion; never automatic release",
+    "confirmation": "time only, all four seed gains positive, one-sided seed tLCB95(df3)>0 AND mean increment versus paired original Bootstrap positive",
+    "exploration": "time only positive mean may be retained, never automatic release",
     "folds": "descriptive only"
   },
   "limits": {
@@ -71,7 +70,7 @@
   "clipping": false,
   "cross_split_prediction_averaging": false,
   "seed_history": "previously used splits over same official rows; not new independent datasets",
-  "queue": "approved fallback after JOINT_COV_MSE_V1 complete publication 83f44d4",
+  "queue": "approved priority 3 after complete zero-fit correction/fusion publication 1c7cd698dee2c02b7526fa466f099629ac349cd8",
   "branch": "codex/tabm-bootstrap-ema-v1",
   "candidate": "BOOTSTRAP_EMA",
   "run": "local/runs/tabm-bootstrap-ema-v1",
