@@ -20247,5 +20247,12 @@
     "uploads": 0,
     "peak_rss_mib": 106.26953125,
     "results": "docs/tabm_correction_fusion_v1/RESULTS.md"
+  },
+  "tabm_bootstrap_ema_v1_20261003": {
+    "status": "preregistered",
+    "spec": "configs/tabm_bootstrap_ema_v1/SPEC.json",
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }
