@@ -25778,14 +25778,28 @@
       "quality_evaluated": false
     },
     "last_scheduled_observation": {
-      "number": 1,
-      "receipt": "local/runs/ema-nested-residual-20261003/development-r1/execution/observation-001.json",
-      "time_ns": 1791033129479886663,
+      "number": 4,
+      "receipt": "local/runs/ema-nested-residual-20261003/development-r1/execution/observation-004.json",
+      "time_ns": 1791034929488236301,
       "observed_live": true,
-      "pid_at_observation": 5696,
-      "task_at_observation": "008-base-s42-f0-i4"
+      "pid_at_observation": 6976,
+      "task_at_observation": "044-base-s42-f3-i4"
     },
-    "next_observation_not_before_ns": 1791033729479886663
+    "next_observation_not_before_ns": 1791035529488236301,
+    "terminal_audit_preparation": {
+      "status": "five_locked_nonfitting_checks_passed_final_audit_pending",
+      "source": "scripts/audit_ema_nested_residual_terminal.py",
+      "source_sha256": "9fe1763bcd48cbd3a9caed9e678ee8d9003563fe5129b4539358f49dc973fb3b",
+      "checks": "local/runs/ema-nested-residual-20261003/terminal-audit-checks-r2/checks.json",
+      "checks_sha256": "9a87ed5494e71d7c34b32ba95f92dc1c5e70a2fd4a7ff88010ca29d3378708c2",
+      "tests_passed": 5,
+      "pytest_exit_code": 0,
+      "new_fits": 0,
+      "new_optimizer_constructors": 0,
+      "official_prediction_reads": 0,
+      "expected_actual_child_exits": 121,
+      "frozen_files_changed": 0
+    }
   },
   "sam_feedback_attribution_correction_20261003": {
     "status": "completed_source_bound_documentation_correction",
