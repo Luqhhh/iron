@@ -352,7 +352,7 @@
     ],
     "recommended": "DE3＋EMA三成员Q100回传96.3979为新最佳，较Q75组合+0.0002，距96.4为0.0021。本包已测，不由这次小幅正收益自动追加权重探针；保留原两切分负与未正式晋级，旧硬树未分配，原Q100父包保持未测。",
     "optimization_paused": false,
-    "remaining_platform_submissions": null,
+    "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
     "historical_decisions_unchanged": true,
     "history_before_documentation_refresh_20261001": {
@@ -957,9 +957,9 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "EMA mean5 completed with both splits negative, no confirmation/full release. DE3 mean3 Q100 now user-reported scored; no new platform allocation from this feedback. Other frozen route records remain unchanged.",
-    "platform_slots_user_reported": 4,
-    "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
+    "research_status": "IBATCH_complete_two_split_development_running; retained_current_Q100_BASE_positive_both_HARDTREE_mixed; no_new_platform_allocation",
+    "platform_slots_user_reported": 3,
+    "platform_slots_source": "explicit_current_goal_three_slots_not_inferred",
     "submission_allocation": "sequential_information_questions_no_four_package_filler",
     "allocation_document": "docs/platform_information_value/ALLOCATION.md",
     "ema32_time_a60": {
@@ -1257,7 +1257,14 @@
       ],
       "research_status": "EMA mean5 fixed extension is running against current mean3 with 20 new estimators/40 optimizer budget. Original nested residual and followup closed; small Ridge confirmation deferred. No new platform allocation."
     },
-    "current_development_key": "ema_independent_batches_development_20261004"
+    "current_development_key": "ema_independent_batches_development_20261004",
+    "history_before_explicit_three_slot_continuation_20261004": {
+      "platform_slots_user_reported": 4,
+      "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
+      "remaining_platform_submissions": null,
+      "research_status": "EMA mean5 completed with both splits negative, no confirmation/full release. DE3 mean3 Q100 now user-reported scored; no new platform allocation from this feedback. Other frozen route records remain unchanged."
+    },
+    "retained_current_Q100_review_key": "q100_retained_questions_review_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -3546,11 +3553,11 @@
     "latest_platform_feedback_key": "de3_ema_mean3_q100_platform_feedback_20261004",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
-    "latest_local_diagnostic": "mean3_retained_components_review_20261004",
-    "latest_local_G0": "passed_3464_frozen_files_complete_same_seed_alignment_independent_scalar_three_actual_exit0",
-    "latest_local_G1": "Gaussian_both_development_splits_positive_but_original_platform_recipe_negative_hardtree_both_negative_no_new_release_or_confirmation",
-    "last_local_diagnostic_results": "docs/mean3_retained_components/RESULTS.md",
-    "latest_registered_scientific_route": "ema_mean3_q100_platform_probe_20261004",
+    "latest_local_diagnostic": "q100_retained_questions_review_20261004",
+    "latest_local_G0": "passed_5516_frozen_files_complete_same_seed_OOF_and_independent_scalar_three_actual_exit0",
+    "latest_local_G1": "BASE_two_positive_development_splits_not_four_seed_promoted_HARDTREE_one_negative_exploration",
+    "last_local_diagnostic_results": "docs/q100_retained_questions/RESULTS.md",
+    "latest_registered_scientific_route": "ema_independent_batches_development_20261004",
     "latest_completed_scientific_route": "ema_mean5_development_20261003",
     "latest_scientific_G0": "passed_1482_unchanged_frozen_files_40_optimizer_100_cold_states_52_actual_exit0_and_independent_label_bound_score",
     "latest_scientific_G1": "both_complete_splits_negative_vs_mean3_only_one_of_ten_folds_positive_not_shortlisted",
@@ -3563,7 +3570,7 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "ema_independent_batches_development_20261004",
     "ready_formal_candidates": [],
     "next_action": "complete_both_full_development_splits_and_120_cold_state_checks_before_quality_and_platform_allocation",
     "optimization_paused": false,
@@ -27601,6 +27608,206 @@
     "tool_session_id": 9738,
     "controller_pid": 25094,
     "process_launch": "/home/lux1/iron/local/runs/ema-independent-batches-20261004/development-r1/process-launch.json",
-    "process_launch_sha256": "4767cc4b400c511029af9cb78275363e073e073887c2ac702ce9ef55bc842b02"
+    "process_launch_sha256": "4767cc4b400c511029af9cb78275363e073e073887c2ac702ce9ef55bc842b02",
+    "last_observation": {
+      "number": 1,
+      "time_ns": 1791047777405406214,
+      "live_controller_pid": 25094,
+      "live_child_pid": 25561,
+      "task": "008-worker-s42-f1-i42",
+      "completed_new_estimators": 3,
+      "completed_new_cold_states": 6,
+      "observed_child_rss_mib": 636.76171875,
+      "maximum_closed_child_rss_mib": 903.38671875,
+      "partial_quality_read": false
+    }
+  },
+  "q100_retained_questions_review_20261004": {
+    "status": "complete_BASE_both_positive_HARDTREE_mixed_platform_allocation_pending_information_review",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "target": 96.45,
+    "protocol": "docs/q100_retained_questions/PREREGISTRATION.md",
+    "results": "docs/q100_retained_questions/RESULTS.md",
+    "run_directory": "local/runs/q100-retained-questions-20261004/review-r1",
+    "gains": {
+      "HARDTREE_CURRENT_A20": {
+        "42": -0.0010323146171124279,
+        "3407": 0.0021323387065673846
+      },
+      "BASE_MEAN3_CURRENT": {
+        "42": 0.001665375130762767,
+        "3407": 0.005547015910457958
+      }
+    },
+    "confirmation_eligible": {
+      "HARDTREE_CURRENT_A20": false,
+      "BASE_MEAN3_CURRENT": true
+    },
+    "candidate_tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_time_len": {
+          "HARDTREE_CURRENT_A20": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": true,
+              "42": false
+            },
+            "improved_folds": 5,
+            "worst_spout_delta": 6.561557337877999e-05,
+            "mean_wmape": 0.03822695690623421,
+            "target": "tap_time_len",
+            "candidate": "HARDTREE_CURRENT_A20",
+            "reference": "DE3_EMA_MEAN3_Q100",
+            "tier": "exploration",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -2.0646292342246797e-05,
+              "3407": 4.264677413134965e-05
+            },
+            "mean_gain": 1.1000240894551427e-05,
+            "minimum_gain": -2.0646292342246797e-05
+          },
+          "BASE_MEAN3_CURRENT": {
+            "eligible": true,
+            "pooled_improvements": {
+              "3407": true,
+              "42": true
+            },
+            "improved_folds": 7,
+            "worst_spout_delta": 8.483165843255897e-05,
+            "mean_wmape": 0.03816583323671656,
+            "target": "tap_time_len",
+            "candidate": "BASE_MEAN3_CURRENT",
+            "reference": "DE3_EMA_MEAN3_Q100",
+            "tier": "formal",
+            "failed_conditions": [],
+            "gains_by_split": {
+              "42": 3.330750261525128e-05,
+              "3407": 0.00011094031820916422
+            },
+            "mean_gain": 7.212391041220775e-05,
+            "minimum_gain": 3.330750261525128e-05
+          }
+        }
+      },
+      "formal_selected": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": 8.483165843255897e-05,
+          "mean_wmape": 0.03816583323671656,
+          "target": "tap_time_len",
+          "candidate": "BASE_MEAN3_CURRENT",
+          "reference": "DE3_EMA_MEAN3_Q100",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 3.330750261525128e-05,
+            "3407": 0.00011094031820916422
+          },
+          "mean_gain": 7.212391041220775e-05,
+          "minimum_gain": 3.330750261525128e-05
+        }
+      ],
+      "exploration_selected": [
+        {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": false
+          },
+          "improved_folds": 5,
+          "worst_spout_delta": 6.561557337877999e-05,
+          "mean_wmape": 0.03822695690623421,
+          "target": "tap_time_len",
+          "candidate": "HARDTREE_CURRENT_A20",
+          "reference": "DE3_EMA_MEAN3_Q100",
+          "tier": "exploration",
+          "failed_conditions": [
+            "both_splits_improve",
+            "minimum_improved_folds"
+          ],
+          "gains_by_split": {
+            "42": -2.0646292342246797e-05,
+            "3407": 4.264677413134965e-05
+          },
+          "mean_gain": 1.1000240894551427e-05,
+          "minimum_gain": -2.0646292342246797e-05
+        }
+      ],
+      "submission_priority": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": 8.483165843255897e-05,
+          "mean_wmape": 0.03816583323671656,
+          "target": "tap_time_len",
+          "candidate": "BASE_MEAN3_CURRENT",
+          "reference": "DE3_EMA_MEAN3_Q100",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 3.330750261525128e-05,
+            "3407": 0.00011094031820916422
+          },
+          "mean_gain": 7.212391041220775e-05,
+          "minimum_gain": 3.330750261525128e-05
+        },
+        {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": false
+          },
+          "improved_folds": 5,
+          "worst_spout_delta": 6.561557337877999e-05,
+          "mean_wmape": 0.03822695690623421,
+          "target": "tap_time_len",
+          "candidate": "HARDTREE_CURRENT_A20",
+          "reference": "DE3_EMA_MEAN3_Q100",
+          "tier": "exploration",
+          "failed_conditions": [
+            "both_splits_improve",
+            "minimum_improved_folds"
+          ],
+          "gains_by_split": {
+            "42": -2.0646292342246797e-05,
+            "3407": 4.264677413134965e-05
+          },
+          "mean_gain": 1.1000240894551427e-05,
+          "minimum_gain": -2.0646292342246797e-05
+        }
+      ],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "G0": "passed_5516_frozen_files_complete_same_seed_OOF_and_independent_scalar_three_actual_exit0",
+    "G1": "BASE_two_positive_development_splits_not_four_seed_promoted_HARDTREE_one_negative_exploration",
+    "formal_promoted": false,
+    "new_fits": 0,
+    "new_model_predict_calls": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "new_platform_slots_allocated": 0,
+    "manifest_sha256": "67356310bbbc36b7262d6b6e2e9c677dca00ef518616e15f6be36989d4aecf46",
+    "report_sha256": "b18e99128754f8d41e45ad444b9205cf4871a1b75d9823708caf1d995c51a3e3",
+    "independent_audit_sha256": "957c2ff23fe7ea77410dff9f70248e25365c3055e73e748749b04810e64ce02d",
+    "terminal_sha256": "f956ec4c5ecf3a8fad9b20feccca76531669409e83e3fea378edc04db1038fc6"
   }
 }
