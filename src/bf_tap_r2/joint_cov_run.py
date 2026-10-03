@@ -21,7 +21,7 @@ def original(root,phase):
 def sources(root):
     paths=list((root/"src/bf_tap_r2").glob("*.py"))+list((root/"tests").glob("*.py"))
     paths += [root/SPEC_REL,root/"configs/round2_v12/SPEC.yaml",root/"configs/protection.yaml",root/"uv.lock",root/"pyproject.toml",root/"docs/joint_cov_mse_v1/STRATEGY.md"]
-    paths += [root/PRIVATE_REL/p for p in ["start_once.py","monitor_once.py","launch_start_once.py"] if (root/PRIVATE_REL/p).exists()]
+    paths += [root/PRIVATE_REL/p for p in ["start_once.py","monitor_once.py","launch_start_once.py","recover_reference_once_r1.py","launch_reference_recovery_r1.py","supervise_controller_once_r1.py"] if (root/PRIVATE_REL/p).exists()]
     return {str(p.relative_to(root)):sha(p) for p in paths}
 def branch(root):
     if subprocess.check_output(["git","branch","--show-current"],cwd=root,text=True).strip()!=BRANCH:
@@ -31,6 +31,22 @@ def check(root,frozen):
     if runtime()!=frozen["runtime"]:raise ValueError("Frozen runtime changed")
 def ledger(root):
     return Ledger(Path(root)/RUN_REL/"ledger",BUDGETS)
+def active_freeze(root):
+    run=Path(root)/RUN_REL
+    recovered=run/"freeze-reference-recovery-r1.json"
+    return recovered if recovered.exists() else run/"freeze.json"
+
+def development_iron(root,seed,ids,folds):
+    root=Path(root);receipt=json.loads((root/"local/next-direction-20261001/native-iron-reference-r1.json").read_text())
+    col=receipt["columns"][str(seed)];path=root/f"local/next-direction-20261001/parent-iron-seed-{seed}.npy"
+    if receipt["status"]!="passed_zero_fit_native_parent_iron_binding" or receipt["current_platform_representative"]!="EMA_TIME_Q75" or sha(path)!=col["file_sha256"] or digest(np.asarray(folds).tolist())!=col["fold_digest"] or len(ids)!=col["rows"]:
+        raise ValueError("Native Q75 iron anchor or same-seed fold identity changed")
+    with np.load(root/RAW_BASE/"development-r1/inputs.npz",allow_pickle=False) as data:
+        np.testing.assert_array_equal(data["ids"],ids)
+    iron=np.load(path,allow_pickle=False)
+    if iron.shape!=np.asarray(ids).shape or not np.isfinite(iron).all() or (iron<0).any():raise ValueError("Invalid native Q75 iron")
+    return iron.copy()
+
 def append_access(root,freeze):
     p=Path(root)/RUN_REL/"ledger/label-access.jsonl";p.parent.mkdir(parents=True,exist_ok=True)
     with p.open("a") as f:
@@ -38,7 +54,7 @@ def append_access(root,freeze):
                                protection_sha256=sha(Path(root)/"configs/protection.yaml"),protected_labels_requested=False))+"\n")
         f.flush();os.fsync(f.fileno())
 def phase_data(root,phase):
-    if phase!="engineering":append_access(root,Path(root)/RUN_REL/"freeze.json")
+    if phase!="engineering":append_access(root,active_freeze(root))
     with np.load(original(root,phase)/"inputs.npz",allow_pickle=False) as a:
         frame=pd.DataFrame(a["x"],columns=FEATURES);frame["spout_no"]=a["spouts"];frame["sample_id"]=a["ids"]
         y=a["y"].copy();units={}
@@ -80,10 +96,15 @@ def parents(root):
                     iron[ix]=col;coverage[ix]+=1
             if not np.all(coverage==1) or not np.isfinite(iron).all() or (iron<0).any():raise ValueError("Incomplete native Q75 iron reference")
             if phase=="development":
-                receipt=json.loads((root/"local/next-direction-20261001/native-iron-reference-r1.json").read_text())
-                known=root/f"local/next-direction-20261001/parent-iron-seed-{s}.npy"
-                if sha(known)!=receipt["columns"][str(s)]["file_sha256"]:raise ValueError("Known parent iron hash changed")
-                np.testing.assert_array_equal(iron,np.load(known,allow_pickle=False))
+                # The shared iron_reference field is not the byte-anchored native
+                # iron column used by Q75. Keep that auxiliary field untouched.
+                iron=development_iron(root,s,ids,folds)
+            else:
+                # Cold-audited original reference recipe, unchanged Q75 iron.
+                for fold in range(5):
+                    payload=manifest["original_path_to_payload"][source+f"/s{s}-f{fold}/predictions.npz"]
+                    with np.load(root/BUNDLE/payload,allow_pickle=False) as z:
+                        np.testing.assert_array_equal(z["iron"],.5*z["v36_iron"]+.5*z["v12_iron"])
             result[s]=np.column_stack([iron,p])
     return result
 def write_predictions(path,ids,cal_ids,control,candidate):
@@ -98,7 +119,7 @@ def write_predictions(path,ids,cal_ids,control,candidate):
 
 def train_unit(root,phase,unit):
     from .joint_cov_model import CovarianceRegressor
-    run=root/RUN_REL;active_freeze=run/"freeze.json";frozen=json.loads(active_freeze.read_text());check(root,frozen)
+    run=root/RUN_REL;freeze_path=active_freeze(root);frozen=json.loads(freeze_path.read_text());check(root,frozen)
     frame,y,units=phase_data(root,phase);ix=units[unit]
     directory=run/(phase+"-r1")/unit;directory.mkdir(exist_ok=False)
     # Cached original partitions must agree with the actual fitter's inner grouping.
@@ -257,7 +278,13 @@ def execute(root):
         write_new(run/"controller-failed.json",dict(status="failed_preserved",time=time.time(),error=repr(e),traceback=traceback.format_exc(),
                               counts={phase:ledger(root).counts(phase) for phase in BUDGETS}));raise
 if __name__=="__main__":
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument("action",choices=["admit","execute","worker"]);parser.add_argument("--phase");parser.add_argument("--unit");args=parser.parse_args();assert_threads();root=Path.cwd().resolve()
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument("action",choices=["admit","execute","worker","recovery-g0"]);parser.add_argument("--phase");parser.add_argument("--unit");args=parser.parse_args();assert_threads();root=Path.cwd().resolve()
     if args.action=="admit":admit(root)
     elif args.action=="execute":execute(root)
+    elif args.action=="recovery-g0":
+        run=root/RUN_REL;frozen=json.loads(active_freeze(root).read_text());check(root,frozen)
+        if (run/"engineering-r1").exists() or any(ledger(root).events()):raise ValueError("Scientific G0 already consumed")
+        g0=run_phase(root,"engineering",frozen)
+        write_new(run/"preflight.json",dict(**frozen,G0="passed",engineering_audit_sha256=sha(g0/"audit.json"),budgets=BUDGETS))
+        print("First production G0 passed after reference import repair",flush=True)
     else:train_unit(root,args.phase,args.unit)

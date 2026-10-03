@@ -79,3 +79,17 @@ def test_candidate_prediction_rejects_query_labels_before_model_access():
     from bf_tap_r2.joint_cov_model import CovarianceRegressor
     obj=object.__new__(CovarianceRegressor)
     with pytest.raises(ValueError,match='targets'):obj.predict(pd.DataFrame({'tap_iron':[1.]}))
+
+
+def test_development_iron_uses_anchored_native_cache_and_rejects_wrong_fold(tmp_path):
+    from bf_tap_r2.joint_cov_run import development_iron
+    from bf_tap_r2.joint_cov_protocol import sha,digest
+    import json
+    d=tmp_path/'local/next-direction-20261001';d.mkdir(parents=True)
+    p=d/'parent-iron-seed-42.npy';np.save(p,np.array([100.,200.,300.]))
+    ids=np.array(['a','b','c']);folds=np.array([0,1,2])
+    (d/'native-iron-reference-r1.json').write_text(json.dumps({'status':'passed_zero_fit_native_parent_iron_binding','current_platform_representative':'EMA_TIME_Q75','columns':{'42':{'file_sha256':sha(p),'rows':3,'fold_digest':digest(folds.tolist())}}}))
+    inputs=tmp_path/'local/runs/tabm-target-metric-v1/development-r1';inputs.mkdir(parents=True);np.savez(inputs/'inputs.npz',ids=ids)
+    np.testing.assert_array_equal(development_iron(tmp_path,42,ids,folds),[100.,200.,300.])
+    with pytest.raises(ValueError):development_iron(tmp_path,42,ids,folds[::-1])
+    with pytest.raises(AssertionError):development_iron(tmp_path,42,ids[::-1],folds)

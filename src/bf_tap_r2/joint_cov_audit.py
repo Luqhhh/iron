@@ -44,9 +44,9 @@ def audit(directory):
     verify_tree(root,manifest["source_hashes"])
     phase=manifest["phase"];settings=manifest["settings"]
     if manifest["budgets"]!=BUDGETS[phase]:raise ValueError("Budget identity differs")
-    from .joint_cov_run import append_access
-    active_freeze=d.parent/"preflight.json" if (d.parent/"preflight.json").exists() else d.parent/"freeze.json"
-    append_access(root,active_freeze)
+    from .joint_cov_run import append_access,active_freeze
+    freeze_path=d.parent/"preflight.json" if (d.parent/"preflight.json").exists() else active_freeze(root)
+    append_access(root,freeze_path)
     with np.load(d/"inputs.npz",allow_pickle=False) as a:
         x={k:a[k].copy() for k in a.files}
     if sha(d/"inputs.npz")!=manifest["input_sha256"]:raise ValueError("Input hash differs")
