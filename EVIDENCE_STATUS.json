@@ -19770,6 +19770,14 @@
     "controller_terminal": "completed_inactive_bound_PID_no_waitpid_exit_code_claim",
     "results": "docs/swa_update_window70_v1/RESULTS.md",
     "strategy": "docs/swa_update_window70_v1/STRATEGY.md",
-    "local_platform_mapping": false
+    "local_platform_mapping": false,
+    "platform_exploration_candidate": {
+      "retained": true,
+      "authorization": "user_20261003_explicit_candidate_retention",
+      "reason": "both complete seed gains positive; small negative local mechanism does not establish negative platform effect; fixed-update averaging differs from original epoch averaging",
+      "platform_scheduled": false,
+      "fullfit_authorized": false,
+      "package_authorized": false
+    }
   }
 }

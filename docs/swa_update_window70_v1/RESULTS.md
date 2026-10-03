@@ -27,3 +27,7 @@
 新进程零fit/零optimizer/零模型推理复核每seed2754唯一ID及五折完整OOF、Q75绑定、端点算术、来源哈希、旧账本、追加账本及决定通过；独立标量收益与运行器一致，原fit账本逐字节不变。标签读取前登记保护配置与冻结摘要，仅使用冻结官方R2缓存，不访问初赛2024年11月标签。已有审计文件未覆盖，未重复冷推理。
 
 controller-finished为completed，绑定PID已不活动；没有观测科学controller的OS waitpid退出码，不声称退出码0。原始模型、窗口、预测、账本、失败与恢复原件保留私有local。运行目录local/runs/swa-update-window70-v1，辅助目录local/swa-update-window70-20261003；最终复核final-verification-r1.json。fullfit/packages/uploads/desktop均0。完整结果推送当前upstream后删除本轮定时检查，不自动启动下一配方。
+
+## 用户保留的候选
+
+2026-10-03用户明确将本策略列为平台探索候选。两完整开发seed增益均正、平均+0.004284，固定更新窗口提供不同机制；相对原SWA的微小本地负增量不足以推断平台负收益。原未晋级/确认0结论不变。仅登记候选，尚未安排平台测试，未授权全量拟合或封包。
