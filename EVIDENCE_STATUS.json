@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "Gaussian_feedback_registered_below_current_EMA_MEAN3_no_new_slot_allocated",
+    "status": "user_requested_DE3_EMA_MEAN3_desktop_replacement_ready_platform_unmeasured",
     "current_preferred": {
       "candidate": "EMA_MEAN3_FULL_Q75",
       "score": 96.3954,
@@ -310,9 +310,24 @@
       "zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [],
-    "submission_priority_note": "GAUSS1_A20 scored below Q75 and current EMA_MEAN3 and removed from ready list. Hard tree remains unallocated. DE3 plus EMA mean3 conditional column combination reviewed but no new package or slot; old DE3 Q75 remains reserve. No quota balance inferred.",
+    "submission_priority": [
+      "DE3_IRON_EMA_MEAN3_TIME"
+    ],
+    "submission_priority_note": "User requested DE3 iron plus measured EMA three-member mean time package and desktop replacement. Independent package and desktop audits passed; old Q75 desktop package archived byte-for-byte. No platform upload or quota balance inferred.",
     "ready_for_user_platform_testing": [
+      {
+        "candidate": "DE3_IRON_EMA_MEAN3_TIME",
+        "package": "local/runs/de3-ema-mean3-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_TIME/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "c51e050b69dc40cc808bfbcd6dc5442db131f83d3b05446ed0eba7c255675e78",
+        "G0": "passed_python312_frozen_sources_parent_audits_independent_package_and_desktop_readback_original_columns_and_archive_bytes",
+        "G1": "user_requested_unmeasured_column_combination_not_formal_promotion",
+        "reference": "EMA_MEAN3_FULL_Q75",
+        "evidence_key": "de3_ema_mean3_release_20261004",
+        "feedback_status": "not_measured",
+        "formal_promotion": false,
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-TIME-20261004/Luqhhh_bf_tap_predict_round2.zip",
+        "allocation_status": "user_requested_replacement_ready_for_user_testing"
+      },
       {
         "candidate": "HARDTREE_GLOBAL_TIME_A20",
         "package": "local/runs/hard-tree-time-exploration-20261003/release-r1/HARDTREE_GLOBAL_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
@@ -330,11 +345,14 @@
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
-        "status": "ready_reserve_only_temporarily_no_platform_testing",
+        "status": "private_original_retained_desktop_archived_superseded_by_user_requested_mean3_combination",
         "include_in_current_test_queue": false,
         "evidence_key": "round2_ema_time_followup_20261001.reserve_combination_20261001",
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-TIME-Q75-RESERVE-20261003/Luqhhh_bf_tap_predict_round2.zip",
-        "desktop_delivery_key": "gauss_de3_desktop_delivery_20261003"
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-TIME-20261004/旧包归档-DE3-Q75/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop_delivery_key": "gauss_de3_desktop_delivery_20261003",
+        "desktop_before_replacement": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-TIME-Q75-RESERVE-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop_replacement_key": "de3_ema_mean3_release_20261004",
+        "superseded_desktop_candidate": "DE3_IRON_EMA_MEAN3_TIME"
       }
     ],
     "earlier_unreported_candidates": [
@@ -347,7 +365,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "Gaussian已回传96.379、低于当前EMA_MEAN3=96.3954。DE3铁量＋EMA_MEAN3时长的条件算术96.3976，优于旧DE3＋Q75的条件96.3942，但尚未生成/实测且不足96.4；不得登记为新最佳。旧DE3＋Q75保留替补安排，其他研究和冻结协议保持。",
+    "recommended": "用户指定DE3铁量＋EMA三成员mean时长包已生成、审计并替换桌面旧包，可由用户测试；条件96.3976未实测，当前最佳仍为EMA_MEAN3=96.3954。旧DE3＋Q75已归档，其他未分配候选和研究状态保持。",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -1039,7 +1057,14 @@
         }
       ]
     },
-    "de3_mean3_conditional_review_key": "de3_ema_mean3_conditional_review_20261004"
+    "de3_mean3_conditional_review_key": "de3_ema_mean3_conditional_review_20261004",
+    "history_before_de3_mean3_release_20261004": {
+      "as_of": "2026-10-04",
+      "status": "Gaussian_feedback_registered_below_current_EMA_MEAN3_no_new_slot_allocated",
+      "submission_priority": [],
+      "submission_priority_note": "GAUSS1_A20 scored below Q75 and current EMA_MEAN3 and removed from ready list. Hard tree remains unallocated. DE3 plus EMA mean3 conditional column combination reviewed but no new package or slot; old DE3 Q75 remains reserve. No quota balance inferred.",
+      "recommended": "Gaussian已回传96.379、低于当前EMA_MEAN3=96.3954。DE3铁量＋EMA_MEAN3时长的条件算术96.3976，优于旧DE3＋Q75的条件96.3942，但尚未生成/实测且不足96.4；不得登记为新最佳。旧DE3＋Q75保留替补安排，其他研究和冻结协议保持。"
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -18124,6 +18149,17 @@
           "new_packages": 0,
           "agent_uploads": 0
         }
+      ],
+      "desktop_replacements": [
+        {
+          "date": "2026-10-04",
+          "user_request": "生成提交包，替换旧提交包",
+          "replacement_candidate": "DE3_IRON_EMA_MEAN3_TIME",
+          "replacement_key": "de3_ema_mean3_release_20261004",
+          "archive": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-TIME-20261004/旧包归档-DE3-Q75",
+          "archive_zip_sha256": "86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3",
+          "original_private_package_preserved": true
+        }
       ]
     },
     "history_before_reserve_generation": {
@@ -26874,5 +26910,50 @@
     "G1": "local_descriptive_and_platform_unmeasured",
     "automatic_retries": false,
     "time_budget_seconds": null
+  },
+  "de3_ema_mean3_release_20261004": {
+    "status": "generated_audited_desktop_replacement_completed_platform_unmeasured",
+    "date": "2026-10-04",
+    "candidate": "DE3_IRON_EMA_MEAN3_TIME",
+    "user_request": "生成提交包，替换旧提交包",
+    "specification": "configs/de3_ema_mean3_release/SPEC.json",
+    "delivery": "docs/de3_ema_mean3_release/DELIVERY.md",
+    "run_directory": "local/runs/de3-ema-mean3-release-20261004/release-r1",
+    "package": "local/runs/de3-ema-mean3-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_TIME/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "c51e050b69dc40cc808bfbcd6dc5442db131f83d3b05446ed0eba7c255675e78",
+    "csv_sha256": "649759fdb96fa991ad1a41fd1f64df2b85c121330d6933f1d9944ce6f836462b",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-TIME-20261004/Luqhhh_bf_tap_predict_round2.zip",
+    "old_desktop_archive": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-TIME-20261004/旧包归档-DE3-Q75",
+    "replaced_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
+    "replaced_zip_sha256": "86bf20d8cbe938f06b7550a3cf50e28fd100ba94a672c666d0aee576f25bcee3",
+    "G0": "passed_python312_frozen_sources_parent_audits_independent_package_and_desktop_readback_original_columns_and_archive_bytes",
+    "G1": "user_requested_unmeasured_column_combination_not_formal_promotion",
+    "formal_promoted": false,
+    "platform_score": null,
+    "conditional_score": 96.3976,
+    "conditional_score_is_not_measured": true,
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "new_fits": 0,
+    "new_optimizer_runs": 0,
+    "new_confirmation_seeds": 0,
+    "new_packages": 1,
+    "desktop_copies": 1,
+    "old_desktop_directories_archived": 1,
+    "agent_uploads": 0,
+    "frozen_files": 11,
+    "iron_original_string_mismatches": 0,
+    "time_original_string_mismatches": 0,
+    "terminal_sha256": "d64d327854ad0b2bb5576d55de859edc731c06e1d2c7d5c69481ae5220f18ccb",
+    "receipt_sha256": {
+      "manifest.json": "7225539bf6fa01d7ff838c8adc77a8ffe0cb075245241a90fb3938d2fce61271",
+      "release.json": "64da26d5de5f9b2c24f0913846e7010bedd7c79baebc34b0ea0dcd47317cafec",
+      "package-audit.json": "d92c950e7688b76ba9b6d01c23a37d0f512c710a1cf9628eaec1cb11db345b5e",
+      "desktop-copy.json": "4bf14e96c8eae7b6c33d018b66245b707e9c97eeeb5e6915f8230a3c4229981c",
+      "desktop-audit.json": "59fa8a75bea69e7d240b21aa07618a9879cf9939da5e11c1e62cf175b70d799f",
+      "desktop-operations.jsonl": "d6542493208ceeb73cbc106dbb14a2037c714af2d011caa72a0aa020a4818deb"
+    },
+    "current_best_unchanged": true,
+    "quota_balance_not_inferred": true
   }
 }
