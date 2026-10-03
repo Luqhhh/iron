@@ -301,8 +301,8 @@
     "results": "docs/round2_v2_4/DELIVERY.md"
   },
   "round2_current_candidate_queue": {
-    "as_of": "2026-10-03",
-    "status": "EMA_MEAN3_new_best_two_feedbacks_registered_next_question_under_review",
+    "as_of": "2026-10-04",
+    "status": "Gaussian_feedback_registered_below_current_EMA_MEAN3_no_new_slot_allocated",
     "current_preferred": {
       "candidate": "EMA_MEAN3_FULL_Q75",
       "score": 96.3954,
@@ -311,22 +311,8 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [],
-    "submission_priority_note": "ModernNCA and EMA_MEAN3 scored. Hard tree and Gaussian remain immutable Q75-parent packages, currently unallocated after the incumbent changed. Review platform-positive EMA averaging before spending another slot; no quota consumption inferred.",
+    "submission_priority_note": "GAUSS1_A20 scored below Q75 and current EMA_MEAN3 and removed from ready list. Hard tree remains unallocated. DE3 plus EMA mean3 conditional column combination reviewed but no new package or slot; old DE3 Q75 remains reserve. No quota balance inferred.",
     "ready_for_user_platform_testing": [
-      {
-        "candidate": "GAUSS1_A20",
-        "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
-        "G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
-        "G1": "formal_four_seed_promoted_platform_unmeasured",
-        "reference": "EMA_TIME_Q75",
-        "evidence_key": "q75_gaussian_time_release_20261002",
-        "feedback_status": "not_measured",
-        "formal_promotion": true,
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
-        "allocation_status": "retained_Q75_parent_package_unallocated_after_mean3_new_best",
-        "desktop_delivery_key": "gauss_de3_desktop_delivery_20261003"
-      },
       {
         "candidate": "HARDTREE_GLOBAL_TIME_A20",
         "package": "local/runs/hard-tree-time-exploration-20261003/release-r1/HARDTREE_GLOBAL_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
@@ -361,7 +347,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "EMA_MEAN3=96.3954为用户回传新最佳。优先研究已验证为正的EMA训练seed平均方向；硬树与Gaussian旧Q75父包暂不锁定下一名额，不因机制不同自动安排测试。DE3保持仅替补。",
+    "recommended": "Gaussian已回传96.379、低于当前EMA_MEAN3=96.3954。DE3铁量＋EMA_MEAN3时长的条件算术96.3976，优于旧DE3＋Q75的条件96.3942，但尚未生成/实测且不足96.4；不得登记为新最佳。旧DE3＋Q75保留替补安排，其他研究和冻结协议保持。",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -844,6 +830,33 @@
         "formal_promoted": false,
         "feedback_record": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/feedback.json",
         "feedback_sha256": "6733777f887e1b3a3e49e012ae2387fdfc0ac83f2e68a989c9c78a589dc35a47"
+      },
+      {
+        "candidate": "GAUSS1_A20",
+        "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+        "G0": "passed_source_desktop_byte_identity_crc_322_official_order_finite_nonnegative_and_original_iron",
+        "G1": "fixed_Gaussian_recipe_user_reported_below_Q75_and_current_mean3_historical_local_promotion_preserved",
+        "reference": "EMA_TIME_Q75",
+        "evidence_key": "q75_gaussian_time_release_20261002",
+        "feedback_status": "user_reported_not_independently_verified",
+        "formal_promotion": true,
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "allocation_status": "completed_platform_test",
+        "desktop_delivery_key": "gauss_de3_desktop_delivery_20261003",
+        "score": 96.379,
+        "raw_reported_score": "96.379",
+        "reported_decimal_places": 3,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-03",
+        "registered_date": "2026-10-04",
+        "comparison_candidate": "EMA_MEAN3_FULL_Q75",
+        "comparison_score": 96.3954,
+        "delta_vs_current_best": -0.0164,
+        "delta_vs_frozen_Q75": -0.013,
+        "feedback_record": "local/runs/q75-gaussian-release-20261002/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "4e1c45769415e600f524b8c0365b59c64c49d25cd93d71e6c67a9ac8b4fa1ebd"
       }
     ],
     "modernnca_result_key": "modernnca_median_head_20261002",
@@ -990,7 +1003,43 @@
         "question": "ordinary_three_training_seed_mean_vs_EMA_three_seed_mean",
         "confirmation_eligible": false
       }
-    ]
+    ],
+    "history_before_gaussian_feedback_20261004": {
+      "as_of": "2026-10-03",
+      "status": "EMA_MEAN3_new_best_two_feedbacks_registered_next_question_under_review",
+      "submission_priority_note": "ModernNCA and EMA_MEAN3 scored. Hard tree and Gaussian remain immutable Q75-parent packages, currently unallocated after the incumbent changed. Review platform-positive EMA averaging before spending another slot; no quota consumption inferred.",
+      "recommended": "EMA_MEAN3=96.3954为用户回传新最佳。优先研究已验证为正的EMA训练seed平均方向；硬树与Gaussian旧Q75父包暂不锁定下一名额，不因机制不同自动安排测试。DE3保持仅替补。",
+      "ready_for_user_platform_testing": [
+        {
+          "candidate": "GAUSS1_A20",
+          "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+          "G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
+          "G1": "formal_four_seed_promoted_platform_unmeasured",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "q75_gaussian_time_release_20261002",
+          "feedback_status": "not_measured",
+          "formal_promotion": true,
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+          "allocation_status": "retained_Q75_parent_package_unallocated_after_mean3_new_best",
+          "desktop_delivery_key": "gauss_de3_desktop_delivery_20261003"
+        },
+        {
+          "candidate": "HARDTREE_GLOBAL_TIME_A20",
+          "package": "local/runs/hard-tree-time-exploration-20261003/release-r1/HARDTREE_GLOBAL_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "d36d2af53b6367801fb7668c7de53cef6e53a682415d81b30d9d1f44a844b40c",
+          "G0": "passed_32_locked_checks_1941_frozen_dependencies_native_optimizer_ledger_independent_cold_label_free_package_and_actual_exit0",
+          "G1": "manual_exploration_both_development_gains_negative_original_failure_preserved",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "hard_tree_time_manual_exploration_20261003",
+          "feedback_status": "not_measured",
+          "formal_promotion": false,
+          "desktop": null,
+          "allocation_status": "retained_Q75_parent_package_unallocated_after_mean3_new_best"
+        }
+      ]
+    },
+    "de3_mean3_conditional_review_key": "de3_ema_mean3_conditional_review_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -22428,7 +22477,7 @@
     "process_status_scope": "initial_launch_snapshot_only_all_owned_training_processes_terminal"
   },
   "q75_gaussian_time_release_20261002": {
-    "status": "completed_one_formally_promoted_release_platform_unmeasured",
+    "status": "platform_score_user_reported_below_Q75_and_current_EMA_MEAN3",
     "candidate": "GAUSS1_A20",
     "source_directory": "/home/lux1/iron/local/worktrees/q75-gaussian-time-release-r2",
     "source_commit": "0eff4e1eac0ab662e5f7574a81de4305e7051511",
@@ -22444,9 +22493,9 @@
     },
     "thread_target": 96.45,
     "G0": "passed_after_preserved_pre_optimizer_ledger_failure_and_preparation_test_budget_failure",
-    "G1": "formal_four_seed_promoted_platform_unmeasured",
+    "G1": "fixed_Gaussian_recipe_user_reported_below_Q75_and_current_mean3_historical_local_promotion_preserved",
     "formal_promoted": true,
-    "platform_score": null,
+    "platform_score": 96.379,
     "actual": {
       "full_data_procedures": 1,
       "optimizer_runs": 2,
@@ -22521,7 +22570,7 @@
     "result_sha256": "1ad5e5439c4a0f7fb12cf353b3e42a2c74d024f2968ec9c68c0a5ce500819310",
     "unchanged_iron_string_mismatches": 0,
     "tool_session_id": 14950,
-    "platform_test_status": "not_measured_ready_formally_promoted_candidate",
+    "platform_test_status": "user_reported_scored_below_incumbent",
     "recovery_launch": {
       "observed_ns": 1790920882905650142,
       "interval_seconds": 600,
@@ -22579,7 +22628,11 @@
         "new_packages": 0,
         "agent_uploads": 0
       }
-    ]
+    ],
+    "status_at_release": "completed_one_formally_promoted_release_platform_unmeasured",
+    "G1_at_release": "formal_four_seed_promoted_platform_unmeasured",
+    "platform_score_source": "user_reported_not_independently_verified",
+    "platform_feedback_key": "gauss1_platform_feedback_20261004"
   },
   "q75_laplace_time_development_20261002": {
     "status": "completed_FIXED_selected_for_separately_frozen_confirmation",
@@ -26431,5 +26484,104 @@
         }
       }
     ]
+  },
+  "gauss1_platform_feedback_20261004": {
+    "created_ns": 1791043201386081093,
+    "python": "3.12.12",
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "training_label_reads": 0,
+    "candidate": "GAUSS1_A20",
+    "raw_user_message": "guass:96.379 以及de3+ema三成员mean是不是提分可能更高",
+    "raw_reported_score": "96.379",
+    "reported_decimal_places": 3,
+    "score": 96.379,
+    "source": "user_reported_not_independently_verified",
+    "reported_date": "2026-10-03",
+    "platform_verified": false,
+    "package": "local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+    "csv_sha256": "1ad5e5439c4a0f7fb12cf353b3e42a2c74d024f2968ec9c68c0a5ce500819310",
+    "comparison_candidate": "EMA_MEAN3_FULL_Q75",
+    "comparison_score": 96.3954,
+    "delta_vs_current_best": -0.0164,
+    "delta_vs_frozen_Q75": -0.013,
+    "G0": "passed_source_desktop_byte_identity_crc_322_official_order_finite_nonnegative_and_original_iron",
+    "G1": "fixed_Gaussian_recipe_user_reported_below_Q75_and_current_mean3_historical_local_promotion_preserved",
+    "historical_formal_promotion_preserved": true,
+    "current_best_unchanged": true,
+    "remaining_quota_not_inferred": true,
+    "identity_audit": {
+      "path": "/home/lux1/iron/local/runs/q75-gaussian-release-20261002/release-r2/GAUSS1_A20/Luqhhh_bf_tap_predict_round2.zip",
+      "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+      "csv_sha256": "1ad5e5439c4a0f7fb12cf353b3e42a2c74d024f2968ec9c68c0a5ce500819310",
+      "rows": 322,
+      "unique_ids": 322,
+      "official_order": true,
+      "crc": true,
+      "finite_nonnegative": true
+    },
+    "desktop_audit": {
+      "path": "/mnt/c/Users/lqh22/Desktop/submission-GAUSS1-A20-20261003/Luqhhh_bf_tap_predict_round2.zip",
+      "zip_sha256": "a5e1ed3677bd8d6dd3c3ac8a7e0fc092b58cb6c957dce4b8ef89fdea06ef7c38",
+      "csv_sha256": "1ad5e5439c4a0f7fb12cf353b3e42a2c74d024f2968ec9c68c0a5ce500819310",
+      "rows": 322,
+      "unique_ids": 322,
+      "official_order": true,
+      "crc": true,
+      "finite_nonnegative": true
+    },
+    "unchanged_iron_string_mismatches": 0,
+    "feedback_record": "local/runs/q75-gaussian-release-20261002/platform-feedback-r1/feedback.json",
+    "feedback_sha256": "4e1c45769415e600f524b8c0365b59c64c49d25cd93d71e6c67a9ac8b4fa1ebd",
+    "registered_date": "2026-10-04"
+  },
+  "de3_ema_mean3_conditional_review_20261004": {
+    "created_ns": 1791043201386081093,
+    "python": "3.12.12",
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "training_label_reads": 0,
+    "status": "source_column_identity_and_conditional_arithmetic_passed",
+    "proposed_candidate": "DE3_IRON_EMA_MEAN3_TIME",
+    "recipe": "copy DE3_IRON_USER_REQUESTED iron strings and EMA_MEAN3_FULL_Q75 time strings",
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "conditional_score": 96.3976,
+    "conditional_delta_vs_mean3": 0.0022,
+    "old_DE3_Q75_conditional_score": 96.3942,
+    "conditional_delta_vs_old_DE3_Q75": 0.0034,
+    "conditional_gap_to_96_4": 0.0024,
+    "score_is_platform_measurement": false,
+    "conditions": [
+      "same platform test rows and additive equal-weight per-target WMAPE score",
+      "correct original package identities and user-reported source scores",
+      "copy original target strings without mixing columns, clipping, or new postprocessing"
+    ],
+    "rounding_only_bound_assuming_nearest_four_decimal_source_scores": [
+      96.39745,
+      96.39775
+    ],
+    "rounding_bound_is_not_confidence_interval": true,
+    "metric_contract_sha256": "d780106e90faebcb2a8e578c25856109e89d5dec47c5f45d6f0ef795fb489b3c",
+    "source_column_string_mismatches": {
+      "gauss_iron_vs_q75": 0,
+      "mean3_iron_vs_v32": 0,
+      "q75_iron_vs_v32": 0,
+      "de3_time_vs_v32": 0,
+      "reserve_iron_vs_de3": 0,
+      "reserve_time_vs_q75": 0
+    },
+    "G0": "source_columns_and_all_original_packages_verified_no_new_combination_package",
+    "G1": "unmeasured_conditional_column_combination_not_formal_promotion",
+    "old_Q75_reserve_policy_unchanged": true,
+    "review": "local/runs/q75-gaussian-release-20261002/platform-feedback-r1/de3-mean3-conditional-review.json",
+    "review_sha256": "b26dbeecd1c64f1d129305b083ac13e78b80a0ae611b14400608ddc0a48859d5",
+    "registered_date": "2026-10-04"
   }
 }
