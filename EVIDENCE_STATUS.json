@@ -330,8 +330,9 @@
         "evidence_key": "ema_mean3_q100_platform_probe_20261004",
         "feedback_status": "not_measured",
         "formal_promotion": false,
-        "desktop": null,
-        "allocation_status": "one_pre_registered_strength_probe"
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+        "allocation_status": "one_pre_registered_strength_probe",
+        "desktop_delivery_key": "ema_mean3_q100_desktop_delivery_20261004"
       },
       {
         "candidate": "HARDTREE_GLOBAL_TIME_A20",
@@ -3432,7 +3433,7 @@
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
     "latest_completed_quality_experiment": "ema_mean5_development_20261003",
-    "latest_platform_feedback_key": "gauss1_platform_feedback_20261004",
+    "latest_platform_feedback_key": "de3_ema_mean3_platform_feedback_20261004",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
     "latest_local_diagnostic": "mean3_retained_components_review_20261004",
@@ -27094,9 +27095,11 @@
     "maximum_cold_chunk_order_difference": 6.4522849640979985e-06,
     "iron_field_string_mismatches": 0,
     "results": "docs/ema_mean3_q100/DELIVERY.md",
-    "desktop": null,
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
     "platform_feedback_status": "not_measured",
-    "platform_gain": null
+    "platform_gain": null,
+    "desktop_delivery_key": "ema_mean3_q100_desktop_delivery_20261004",
+    "desktop_copies": 1
   },
   "de3_ema_mean3_release_20261004": {
     "status": "user_reported_platform_new_current_best",
@@ -27242,5 +27245,30 @@
     "documentation": "docs/headroom_interpretation_audit/RESULTS.md",
     "G0": "summary_binding_and_independent_decimal_arithmetic_only_no_new_model_replay",
     "G1": "original_small_learning_curve_does_not_establish_noise_floor_or_platform_ceiling"
+  },
+  "ema_mean3_q100_desktop_delivery_20261004": {
+    "status": "original_package_copied_and_frozen_parent_audit_passed",
+    "candidate": "EMA_MEAN3_Q100",
+    "user_request": "提交包写桌面",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "4bb4b8baea401672571fb7274ca4a2b00b591fb299534634f37ccfdfdc7341ff",
+    "frozen_parent": "EMA_MEAN3_FULL_Q75",
+    "frozen_parent_zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396",
+    "current_best_at_delivery": "DE3_IRON_EMA_MEAN3_TIME",
+    "current_best_score_user_reported": 96.3977,
+    "receipt_directory": "local/runs/ema-mean3-q100-20261004/desktop-delivery-r1",
+    "G0": "passed_locked_python312_source_copy_byte_identity_crc_322_template_order_finite_nonnegative_and_original_iron_strings",
+    "G1": "pre_registered_platform_strength_exploration_unmeasured_both_local_splits_negative",
+    "actual_exit_codes": [
+      0,
+      1,
+      0
+    ],
+    "failed_dynamic_parent_audit_preserved": true,
+    "terminal_sha256": "7592900dc25704b30853e1084fdd7ee7f2ab18ba9b60e31b68050a22eff8c92a",
+    "desktop_copies": 1,
+    "new_fits": 0,
+    "new_packages": 0,
+    "agent_uploads": 0
   }
 }
