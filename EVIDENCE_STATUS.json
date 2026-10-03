@@ -3328,10 +3328,10 @@
     "latest_platform_feedback_key": "modernnca_ema_mean3_platform_feedback_20261003",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
-    "latest_local_diagnostic": "mean3_base_control_retrospective_review_20261003",
-    "latest_local_G0": "passed_1436_frozen_files_120_original_state_identities_and_cold_receipts_independent_scalar_three_actual_exit0",
-    "latest_local_G1": "one_negative_split_vs_mean3_exploration_not_confirmation_eligible_not_promoted",
-    "last_local_diagnostic_results": "docs/ema_mean5/BASE_CONTROL_REVIEW.md",
+    "latest_local_diagnostic": "mean3_retained_components_review_20261004",
+    "latest_local_G0": "passed_3464_frozen_files_complete_same_seed_alignment_independent_scalar_three_actual_exit0",
+    "latest_local_G1": "Gaussian_both_development_splits_positive_but_original_platform_recipe_negative_hardtree_both_negative_no_new_release_or_confirmation",
+    "last_local_diagnostic_results": "docs/mean3_retained_components/RESULTS.md",
     "latest_registered_scientific_route": "ema_mean5_development_20261003",
     "latest_completed_scientific_route": "ema_nested_residual_mean3_followup_20261003",
     "latest_scientific_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
@@ -26583,5 +26583,150 @@
     "review": "local/runs/q75-gaussian-release-20261002/platform-feedback-r1/de3-mean3-conditional-review.json",
     "review_sha256": "b26dbeecd1c64f1d129305b083ac13e78b80a0ae611b14400608ddc0a48859d5",
     "registered_date": "2026-10-04"
+  },
+  "mean3_retained_components_review_20261004": {
+    "status": "complete_zero_fit_review_confirmation_deferred_platform_counterevidence",
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "protocol": "docs/mean3_retained_components/PREREGISTRATION.md",
+    "results": "docs/mean3_retained_components/RESULTS.md",
+    "run_directory": "local/runs/mean3-retained-components-20261003/review-r2",
+    "gains": {
+      "GAUSS1_A20_MEAN3": {
+        "42": 0.00852349837278107,
+        "3407": 0.009469694330201053
+      },
+      "HARDTREE_GLOBAL_A20_MEAN3": {
+        "42": -0.0027236652437335543,
+        "3407": -0.0008472475700702407
+      }
+    },
+    "candidate_tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_time_len": {
+          "GAUSS1_A20_MEAN3": {
+            "eligible": true,
+            "pooled_improvements": {
+              "3407": true,
+              "42": true
+            },
+            "improved_folds": 9,
+            "worst_spout_delta": -0.00015436033457879444,
+            "mean_wmape": 0.037936097427367955,
+            "target": "tap_time_len",
+            "candidate": "GAUSS1_A20_MEAN3",
+            "reference": "EMA_MEAN3",
+            "tier": "formal",
+            "failed_conditions": [],
+            "gains_by_split": {
+              "42": 0.00017046996745562204,
+              "3407": 0.00018939388660402234
+            },
+            "mean_gain": 0.0001799319270298222,
+            "minimum_gain": 0.00017046996745562204
+          },
+          "HARDTREE_GLOBAL_A20_MEAN3": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 5,
+            "worst_spout_delta": 7.258846688352333e-05,
+            "mean_wmape": 0.03815173848253581,
+            "target": "tap_time_len",
+            "candidate": "HARDTREE_GLOBAL_A20_MEAN3",
+            "reference": "EMA_MEAN3",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -5.4473304874666506e-05,
+              "3407": -1.694495140140001e-05
+            },
+            "mean_gain": -3.570912813803326e-05,
+            "minimum_gain": -5.4473304874666506e-05
+          }
+        }
+      },
+      "formal_selected": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 9,
+          "worst_spout_delta": -0.00015436033457879444,
+          "mean_wmape": 0.037936097427367955,
+          "target": "tap_time_len",
+          "candidate": "GAUSS1_A20_MEAN3",
+          "reference": "EMA_MEAN3",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 0.00017046996745562204,
+            "3407": 0.00018939388660402234
+          },
+          "mean_gain": 0.0001799319270298222,
+          "minimum_gain": 0.00017046996745562204
+        }
+      ],
+      "exploration_selected": [],
+      "submission_priority": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 9,
+          "worst_spout_delta": -0.00015436033457879444,
+          "mean_wmape": 0.037936097427367955,
+          "target": "tap_time_len",
+          "candidate": "GAUSS1_A20_MEAN3",
+          "reference": "EMA_MEAN3",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 0.00017046996745562204,
+            "3407": 0.00018939388660402234
+          },
+          "mean_gain": 0.0001799319270298222,
+          "minimum_gain": 0.00017046996745562204
+        }
+      ],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "G0": "passed_3464_frozen_files_complete_same_seed_alignment_independent_scalar_three_actual_exit0",
+    "G1": "Gaussian_both_development_splits_positive_but_original_platform_recipe_negative_hardtree_both_negative_no_new_release_or_confirmation",
+    "confirmation_eligible_candidate": "GAUSS1_A20_MEAN3",
+    "confirmation_activated": false,
+    "formal_promoted": false,
+    "platform_information_decision": "Do not prioritize a close Gaussian reparenting after original GAUSS1_A20 user report 96.379; retain fixed hardtree evidence without new slot. Await already-running mean5 complete results.",
+    "gaussian_feedback_key": "gauss1_platform_feedback_20261004",
+    "manifest_sha256": "d8dd04fe0131e74c853e101b6c8f2f874c3ef3cc30f63abe0c43df5bfc14d914",
+    "report_sha256": "2e62471119c67654a6e8fa0720ccfef4f1f11675b8514d77be056463d69bd27d",
+    "independent_audit_sha256": "183f03b589448535d3139bb707e35a27a08fd9bedd35dbd446f104acc1c3e1ae",
+    "terminal_sha256": "40c40f191593f953fcc5da98b3d93f067977bfa8ee87c4e5fa19cc3a43b314e4",
+    "frozen_files": 3464,
+    "maximum_scalar_difference": 8.429021369771306e-15,
+    "actual_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "failed_metadata_adapter_run": "local/runs/mean3-retained-components-20261003/review-r1",
+    "failed_metadata_adapter_actual_exit_code": 1,
+    "new_fits": 0,
+    "new_model_predict_calls": 0,
+    "new_confirmation_seeds": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0
   }
 }
