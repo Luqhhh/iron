@@ -978,7 +978,16 @@
     "history_before_mean3_feedback_20261003": {
       "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/state-before-feedback.json",
       "sha256": "25188db804044731802dd0492d870454dd30627cdb80fa1ec6f9f3a1fbee8f00"
-    }
+    },
+    "retained_unallocated_information_questions": [
+      {
+        "candidate": "BASE_MEAN3",
+        "evidence_key": "mean3_base_control_retrospective_review_20261003",
+        "status": "complete_retrospective_control_no_full_package_no_slot",
+        "question": "ordinary_three_training_seed_mean_vs_EMA_three_seed_mean",
+        "confirmation_eligible": false
+      }
+    ]
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -3267,10 +3276,10 @@
     "latest_platform_feedback_key": "modernnca_ema_mean3_platform_feedback_20261003",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
-    "latest_local_diagnostic": "ema_nested_residual_mean3_followup_20261003",
-    "latest_local_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
-    "latest_local_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
-    "last_local_diagnostic_results": "docs/ema_nested_residual/MEAN3_FOLLOWUP_RESULTS.md",
+    "latest_local_diagnostic": "mean3_base_control_retrospective_review_20261003",
+    "latest_local_G0": "passed_1436_frozen_files_120_original_state_identities_and_cold_receipts_independent_scalar_three_actual_exit0",
+    "latest_local_G1": "one_negative_split_vs_mean3_exploration_not_confirmation_eligible_not_promoted",
+    "last_local_diagnostic_results": "docs/ema_mean5/BASE_CONTROL_REVIEW.md",
     "latest_registered_scientific_route": "ema_mean5_development_20261003",
     "latest_completed_scientific_route": "ema_nested_residual_mean3_followup_20261003",
     "latest_scientific_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
@@ -26270,5 +26279,70 @@
       "publication_started": false,
       "desktop_writes": 0
     }
+  },
+  "mean3_base_control_retrospective_review_20261003": {
+    "status": "complete_retrospective_control_review_one_negative_split_information_question_retained",
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "candidate": "BASE_MEAN3",
+    "run_directory": "local/runs/mean3-base-control-review-20261003/review-r1",
+    "results": "docs/ema_mean5/BASE_CONTROL_REVIEW.md",
+    "G0": "passed_1436_frozen_files_120_original_state_identities_and_cold_receipts_independent_scalar_three_actual_exit0",
+    "G1": "one_negative_split_vs_mean3_exploration_not_confirmation_eligible_not_promoted",
+    "gains": {
+      "42": -4.635364238092463e-05,
+      "3407": 0.0010770532254414016
+    },
+    "mean_gain": 0.0005153497915302385,
+    "candidate_tiers": {
+      "tap_time_len": {
+        "BASE_MEAN3": {
+          "eligible": false,
+          "pooled_improvements": {
+            "3407": true,
+            "42": false
+          },
+          "improved_folds": 5,
+          "worst_spout_delta": 8.887258839244266e-05,
+          "mean_wmape": 0.03810572235856717,
+          "target": "tap_time_len",
+          "candidate": "BASE_MEAN3",
+          "reference": "EMA_MEAN3",
+          "tier": "exploration",
+          "failed_conditions": [
+            "both_splits_improve",
+            "minimum_improved_folds"
+          ],
+          "gains_by_split": {
+            "42": -9.270728476146184e-07,
+            "3407": 2.1541064508828756e-05
+          },
+          "mean_gain": 1.0306995830607069e-05,
+          "minimum_gain": -9.270728476146184e-07
+        }
+      }
+    },
+    "confirmation_eligible": false,
+    "formal_promoted": false,
+    "manifest_sha256": "4ca12adf2d47b4fadc40d267649342df88f96eca91eeeaafca042b09433379ad",
+    "report_sha256": "d6871e3abbe053c6d5134722d58bfa8d778e85f85f8dad37c78c2f7f98a9223c",
+    "independent_audit_sha256": "a414539e5c4dceec3db8b0f0f23238931de5530ac0f36ec4e5db3450aea1468a",
+    "actual_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "independent_maximum_difference": 5.684341886080802e-14,
+    "new_fits": 0,
+    "new_model_predict_calls": 0,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "platform_slots_allocated": 0,
+    "current_mean5_candidate_pool_unchanged": true,
+    "review_was_not_blind": true,
+    "original_decisions_preserved": true
   }
 }
