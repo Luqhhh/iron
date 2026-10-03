@@ -19619,5 +19619,86 @@
     "results": "docs/swa_cycle_mean2_v1/RESULTS.md",
     "local_platform_mapping": false,
     "controller_terminal": "completed_inactive_bound_PID_no_waitpid_exit_code_receipt"
+  },
+  "swa_window10_a20_user_exploration_release_20261003": {
+    "candidate": "SWA_WINDOW10_A20",
+    "status": "audited_submission_ready_for_user_upload",
+    "G0": "passed_independent_training_audit_label_isolated_cold_and_final_package_readback",
+    "G1": "user_selected_platform_mechanism_exploration_original_four_seed_gate_not_passed",
+    "platform_score": null,
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified"
+    },
+    "recipe": "time=.8Q75+.2original_continuous_window10_fullfit; parent iron field strings preserved",
+    "selected_epoch": 80,
+    "refit_window_epochs": [
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80
+    ],
+    "actual_averaged_states": 10,
+    "full_wrapper_fits": 1,
+    "states": 2,
+    "optimizer_runs": 2,
+    "CV_fits": 0,
+    "reference_fits": 0,
+    "packages": 1,
+    "uploads": 0,
+    "desktop_writes": 0,
+    "formal_promotion": false,
+    "historical_decisions_unchanged": true,
+    "package": "local/runs/swa-window10-a20-release-20261003/SWA_WINDOW10_A20/submission.zip",
+    "zip_sha256": "1f3d85cc74cc57bf348d34680449777894c27d776ccdc8ec8a9984854bf048f0",
+    "result_sha256": "b8739308d6d0ab2446cfbbec0ba0b80dabbfc818b9861cf1488de0a6944efffc",
+    "parent_zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+    "actual_controller_exit_code": 0,
+    "audit_summary": {
+      "status": "passed_independent_final_package_readback_and_budget_sources",
+      "candidate": "SWA_WINDOW10_A20",
+      "rows": 322,
+      "unique_ids": 322,
+      "template_order": true,
+      "zip_only_result_csv": true,
+      "CRC_passed": true,
+      "iron_string_mismatches": 0,
+      "endpoint_arithmetic_max_difference": 0.0,
+      "cold_endpoint_max_difference": 0.0,
+      "finite_nonnegative": true,
+      "counts": {
+        "reserved": {
+          "state": 2,
+          "optimizer": 2
+        },
+        "completed": {
+          "state": 2,
+          "optimizer": 2
+        }
+      },
+      "selected_epoch": 80,
+      "training_peak_rss_mib": 674.3125,
+      "cold_peak_rss_mib": 674.3125,
+      "cold_prediction_max_difference": 6.4522849640979985e-06,
+      "window_max_difference": 4.76837158203125e-07,
+      "parent_zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+      "zip_sha256": "1f3d85cc74cc57bf348d34680449777894c27d776ccdc8ec8a9984854bf048f0",
+      "result_sha256": "b8739308d6d0ab2446cfbbec0ba0b80dabbfc818b9861cf1488de0a6944efffc",
+      "new_model_inferences": 0,
+      "new_fits": 0,
+      "new_CV_fits": 0,
+      "new_reference_fits": 0,
+      "assistant_uploads": 0,
+      "formal_promotion": false,
+      "actual_member_exit_code": 0
+    },
+    "delivery": "docs/swa_window10_a20_release/DELIVERY.md"
   }
 }
