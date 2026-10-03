@@ -19700,5 +19700,76 @@
       "actual_member_exit_code": 0
     },
     "delivery": "docs/swa_window10_a20_release/DELIVERY.md"
+  },
+  "swa_update_window70_v1_20261003": {
+    "identity": "SWA_UPDATE_WINDOW70_V1",
+    "status": "completed_development_no_confirmation_nonpositive_mechanism",
+    "G0": "passed_synthetic_fit_and_independent_cold_audit",
+    "G1": "complete_two_seed_parent_gains_positive_mechanism_vs_original_SWA_negative_not_promoted",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified"
+    },
+    "development_outer_fits": 10,
+    "development_saved_states": 20,
+    "development_optimizer_runs": 20,
+    "engineering_saved_states": 2,
+    "engineering_optimizer_runs": 2,
+    "confirmation_outer_fits": 0,
+    "confirmation_saved_states": 0,
+    "confirmation_optimizer_runs": 0,
+    "new_control_fits": 0,
+    "new_reference_fits": 0,
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0,
+    "desktop_writes": 0,
+    "formal_promoted": false,
+    "release_authorized": false,
+    "seed_order": [
+      42,
+      3407
+    ],
+    "seed_gains": [
+      0.003769442171984222,
+      0.004798594742099771
+    ],
+    "control_gains": [
+      0.00433976311089045,
+      0.004547392986334328
+    ],
+    "mean_gain": 0.004284018457041997,
+    "mechanism_mean": -0.0001595595915703928,
+    "failure_reasons": [
+      "nonpositive_mechanism_advantage"
+    ],
+    "selected_for_confirmation": [],
+    "seed_lcb95": null,
+    "platform_score": null,
+    "complete_package_local_score_available": false,
+    "development_cold_models": 40,
+    "cold_max_prediction_difference": 1.2755128182107e-05,
+    "window_max_difference": 4.76837158203125e-07,
+    "cold_peak_rss_mib": 516.57421875,
+    "full_tests": {
+      "neural": {
+        "passed": 1454,
+        "warnings": 23
+      },
+      "locked_python3_12": {
+        "passed": 1040,
+        "skipped": 91,
+        "warnings": 3
+      }
+    },
+    "history": "initial_full_tests_passed_format_check_stopped_before_G0_then_AST_equal_format_repair_fresh_r2_tests_passed_preserved_original_receipts",
+    "preflight_sha256": "fcb2eb3ffbdd7f0a2cea0916be758853900113616228f2c9e6b79ec2fb8b8705",
+    "private_final_verification": "local/swa-update-window70-20261003/final-verification-r1.json",
+    "private_final_verification_sha256": "27bc9ad14d109125e58b01e893faaf563bfafdeea62bdcbeb9e99981a0878b09",
+    "controller_terminal": "completed_inactive_bound_PID_no_waitpid_exit_code_claim",
+    "results": "docs/swa_update_window70_v1/RESULTS.md",
+    "strategy": "docs/swa_update_window70_v1/STRATEGY.md",
+    "local_platform_mapping": false
   }
 }
