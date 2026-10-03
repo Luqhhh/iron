@@ -3169,7 +3169,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "no_owned_running_tasks_mean5_closed_and_zero_fit_Q100_release_all_stages_exited_successfully",
+    "runtime_observation": "independent_minibatch_EMA_owned_controller_live_at_launch_verified_proc_cmdline_600s_observer",
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3565,7 +3565,7 @@
     },
     "active_research": null,
     "ready_formal_candidates": [],
-    "next_action": "freeze_and_run_complete_two_split_independent_minibatch_EMA_development_against_measured_DE3_mean3_Q100",
+    "next_action": "complete_both_full_development_splits_and_120_cold_state_checks_before_quality_and_platform_allocation",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_mean5_development_20261003",
@@ -27553,7 +27553,7 @@
     "agent_uploads": 0
   },
   "ema_independent_batches_development_20261004": {
-    "status": "engineering_passed_pending_isolated_scientific_freeze",
+    "status": "complete_two_split_development_running_quality_unread",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
     "target": 96.45,
@@ -27582,7 +27582,7 @@
     "engineering_checks": "/home/lux1/iron/local/runs/ema-independent-batches-20261004/engineering-r4/checks.json",
     "engineering_checks_sha256": "875fdeca05287cf0587570333f05c5367bce0c3217b60eb170667275b61114a9",
     "initial_test_assertion_failure_preserved": true,
-    "G0": "synthetic_full_shape_saved_partitions_selection_refit_independent_cold_and_pure_checks_passed_scientific_G0_pending",
+    "G0": "engineering_passed_3537_input_hashes_frozen_live_isolated_controller_scientific_audit_pending",
     "G1": "not_evaluated_no_formal_promotion",
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -27593,6 +27593,14 @@
     "time_budget_seconds": null,
     "automatic_retries": false,
     "preparation_failure": "relative_legacy_manifest_path_resolved_in_wrong_worktree_before_manifest_or_any_fit; preserved preparation-r1",
-    "preparation_failed_actual_exit_code": 1
+    "preparation_failed_actual_exit_code": 1,
+    "source_commit": "920bdf5853a8835a16eba7bd811d56f66efcc7a7",
+    "manifest_sha256": "be7507f17da610e329b69369ef91e9720a11182d5530cdc63bf4083ab65a588c",
+    "frozen_files": 3537,
+    "actual_prepare_exit_code": 0,
+    "tool_session_id": 9738,
+    "controller_pid": 25094,
+    "process_launch": "/home/lux1/iron/local/runs/ema-independent-batches-20261004/development-r1/process-launch.json",
+    "process_launch_sha256": "4767cc4b400c511029af9cb78275363e073e073887c2ac702ce9ef55bc842b02"
   }
 }

@@ -4,7 +4,7 @@
 
 ## 当前复赛状态
 
-新开发阶段：[EMA内部成员独立小批量](ema_independent_batches/PREREGISTRATION.md)。相对96.3979，固定三个训练seed、两个完整开发split及A100/A20两候选，工程检查已过，科学拟合待独立冻结；用户明确三次额度，尚未分配新平台名额。
+新开发阶段：[EMA内部成员独立小批量](ema_independent_batches/PREREGISTRATION.md)。相对96.3979，固定三个训练seed、两个完整开发split及A100/A20两候选；[7项工程检查及3,537项身份冻结后已启动](ema_independent_batches/EXECUTION.md)，等待完整结果。用户明确三次额度，尚未分配新平台名额。
 
 [DE3＋EMA三成员Q100回传96.3979](de3_ema_mean3_q100_release/DELIVERY.md)：成为用户回传新最佳，较Q75组合+0.0002；原包/桌面与相同DE3铁量身份复核通过。原探针本地两切分负和未正式晋级保持，已移出待测队列。
 
