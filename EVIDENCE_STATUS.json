@@ -19875,11 +19875,11 @@
   },
   "swa_time_huber_a20_user_release_20261003": {
     "identity": "SWA_TIME_HUBER_A20",
-    "status": "ready_for_user_upload",
+    "status": "platform_tested_user_reported_below_Q75",
     "user_authorization": "2026-10-03 explicit generate Huber SWA submission package",
     "source_strategy": "SWA_TIME_HUBER_V1",
     "G0": "fullfit_training_and_label_isolated_cold_audit_package_readback_passed",
-    "G1": "prior_four_seed_frozen_local_gate_passed_no_new_CV_platform_not_tested",
+    "G1": "prior_four_seed_frozen_local_gate_passed_platform_user_reported_negative_increment_vs_Q75",
     "formal_local_gate_passed": true,
     "full_wrapper_fits": 1,
     "states": 2,
@@ -19911,10 +19911,13 @@
     "cold_prediction_max_difference": 6.4522849640979985e-06,
     "window_max_difference": 4.76837158203125e-07,
     "training_peak_rss_mib": 657.80078125,
-    "platform_score": null,
-    "platform_status": "awaiting_user_upload_and_feedback",
+    "platform_score": 96.3882,
+    "platform_status": "user_reported_not_independently_verified",
     "platform_parent_score_user_reported": 96.392,
     "local_to_platform_mapping": false,
-    "delivery": "docs/swa_time_huber_a20_release/DELIVERY.md"
+    "delivery": "docs/swa_time_huber_a20_release/DELIVERY.md",
+    "platform_delta_vs_Q75": -0.0038,
+    "platform_feedback_date": "2026-10-03",
+    "further_platform_priority": "lower_for_same_A20_Huber_recipe_no_automatic_weight_scan"
   }
 }
