@@ -27619,17 +27619,20 @@
     "process_launch": "/home/lux1/iron/local/runs/ema-independent-batches-20261004/development-r1/process-launch.json",
     "process_launch_sha256": "4767cc4b400c511029af9cb78275363e073e073887c2ac702ce9ef55bc842b02",
     "last_observation": {
-      "number": 1,
-      "time_ns": 1791047777405406214,
+      "number": 4,
+      "time_ns": 1791049577413626944,
       "live_controller_pid": 25094,
-      "live_child_pid": 25561,
-      "task": "008-worker-s42-f1-i42",
-      "completed_new_estimators": 3,
-      "completed_new_cold_states": 6,
-      "observed_child_rss_mib": 636.76171875,
+      "observed_child_pid": 26865,
+      "task": "029-worker-s42-f4-i42",
+      "completed_new_estimators": 13,
+      "completed_new_cold_states": 26,
+      "observed_child_rss_mib": 678.84375,
       "maximum_closed_child_rss_mib": 903.38671875,
       "partial_quality_read": false
-    }
+    },
+    "terminal_auditor": "scripts/audit_ema_independent_batches_terminal.py",
+    "terminal_audit_checks": "local/runs/ema-independent-batches-20261004/terminal-audit-checks-r2/checks.json",
+    "terminal_audit_checks_count": 12
   },
   "q100_retained_questions_review_20261004": {
     "status": "complete_BASE_both_positive_HARDTREE_mixed_platform_allocation_pending_information_review",
