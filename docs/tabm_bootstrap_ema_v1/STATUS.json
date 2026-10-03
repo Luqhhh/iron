@@ -1,9 +1,66 @@
 {
   "identity": "TABM_BOOTSTRAP_EMA_V1",
-  "status": "preregistered",
-  "G0": "not_started",
-  "G1": "not_started",
+  "status": "completed_development_exploration_only",
+  "G0": {
+    "status": "passed",
+    "states": 2,
+    "optimizers": 2,
+    "cold_models": 4,
+    "max_prediction_difference": 7.516235626781054e-06
+  },
+  "G1": {
+    "status": "positive_two_seed_exploration_no_confirmation",
+    "target": "tap_time_len",
+    "control_gains": [
+      0.0023506693493261645,
+      0.006934220048428014
+    ],
+    "formal_promoted": false,
+    "mean_gain": 0.0045618246320044045,
+    "mechanism_mean": -8.062006687268469e-05,
+    "seed_gains": [
+      0.002750073361762418,
+      0.006373575902246391
+    ],
+    "seed_lcb95": null
+  },
+  "development": {
+    "outer_fits": 10,
+    "states": 20,
+    "optimizers": 20,
+    "cold_models": 40,
+    "independent_ema_and_poisson_audit": "passed",
+    "max_prediction_difference": 5.631260250993364e-05
+  },
+  "confirmation": {
+    "outer_fits": 0,
+    "states": 0,
+    "optimizers": 0,
+    "reason": "nonpositive_mean_mechanism_advantage_vs_original_bootstrap"
+  },
+  "iron_descriptive_only": {
+    "control_gains": [
+      0.00055587962511263,
+      0.0002187524799345127
+    ],
+    "formal_promoted": false,
+    "mean_gain": 0.0006533335181774355,
+    "mechanism_mean": 0.0002660174656538641,
+    "seed_gains": [
+      0.0008928027699075478,
+      0.0004138642664473231
+    ],
+    "seed_lcb95": null
+  },
+  "original_startup_guard_and_final_verifier_failure_preserved": true,
+  "final_scope_recovery": "passed_zero_fit",
+  "exploration_candidate": "BOOTSTRAP_EMA_TIME_A20",
+  "formal_promoted": false,
+  "release_authorized": false,
+  "actual_exit_code": 0,
   "fullfit": 0,
   "packages": 0,
-  "uploads": 0
+  "uploads": 0,
+  "reference_fits": 0,
+  "control_fits": 0
 }
