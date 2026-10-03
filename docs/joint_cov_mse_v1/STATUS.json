@@ -1,23 +1,111 @@
 {
   "identity": "JOINT_COV_MSE_V1",
-  "status": "authorized_engineering_implementation_pre_freeze",
+  "status": "completed_time_formal_local_candidate_not_release_authorized",
   "reference": "EMA_TIME_Q75",
   "reference_score_user_reported": 96.392,
   "G0": {
-    "status": "not_started",
-    "new_states": 0,
-    "new_optimizers": 0,
+    "status": "passed_after_reference_import_zero_fit_repair",
+    "new_states": 2,
+    "new_optimizers": 2,
     "targeted_neural_tests": 12,
     "targeted_locked_tests": 8,
-    "targeted_locked_skipped": 4
+    "targeted_locked_skipped": 4,
+    "cold_models": 4,
+    "max_cold_difference": 5.051108757925249e-06,
+    "cold_peak_rss_mib": 436.1796875,
+    "full_neural_tests": 1474,
+    "full_locked_tests": 1051,
+    "full_locked_skipped": 100
   },
   "G1": {
-    "status": "not_started",
-    "development_outer_fits": 0,
-    "confirmation_outer_fits": 0
+    "status": "complete_OOF_cold_and_independent_final_verification_passed",
+    "selected_target": "tap_time_len",
+    "development_outer_fits": 10,
+    "confirmation_outer_fits": 10,
+    "development_states_completed": 20,
+    "confirmation_states_completed": 20,
+    "development_optimizers_completed": 20,
+    "confirmation_optimizers_completed": 20,
+    "formal_promoted": true,
+    "targets": {
+      "tap_iron": {
+        "control_gains": [
+          -0.002174779258992867,
+          -0.0009504441101801902,
+          -0.003758502680758687,
+          -0.0012514686395311441
+        ],
+        "formal_promoted": false,
+        "mean_gain": -7.749956821685424e-06,
+        "mechanism_mean": 0.0020260487155440367,
+        "seed_gains": [
+          0.000844663130143676,
+          -0.001364061251750918,
+          -0.0020992706791339937,
+          0.002587668973454494
+        ],
+        "seed_lcb95": -0.002520164905365177
+      },
+      "tap_time_len": {
+        "control_gains": [
+          0.00022689938021346292,
+          0.003336898207237339,
+          0.000547953210600321,
+          0.0009956525570535113
+        ],
+        "formal_promoted": true,
+        "mean_gain": 0.002991348251207621,
+        "mechanism_mean": 0.0017144974124314628,
+        "seed_gains": [
+          0.0025004564493382874,
+          0.002808451455307968,
+          0.0034870718027564186,
+          0.003169413297427811
+        ],
+        "seed_lcb95": 0.0024866651785223344
+      }
+    },
+    "cold_models_per_phase": 40,
+    "development_max_cold_difference": 5.684063364697067e-05,
+    "confirmation_max_cold_difference": 2.8496838012870285e-05,
+    "actual_exit_code": 0,
+    "independent_final_new_fits": 0,
+    "independent_final_new_optimizers": 0
   },
   "release_authorized": false,
   "fullfit": 0,
   "packages": 0,
-  "uploads": 0
+  "uploads": 0,
+  "spec": "configs/joint_cov_mse_v1/SPEC.json",
+  "document": "docs/joint_cov_mse_v1/STRATEGY.md",
+  "budgets": {
+    "engineering": {
+      "state": 2,
+      "optimizer": 2
+    },
+    "development": {
+      "state": 20,
+      "optimizer": 20
+    },
+    "confirmation": {
+      "state": 20,
+      "optimizer": 20
+    }
+  },
+  "targets": [
+    "tap_iron",
+    "tap_time_len"
+  ],
+  "exploration_recommendations_max": 1,
+  "snapshot_utc": "2026-10-03T08:11:13.994856+00:00",
+  "formal_pid": 70425,
+  "reference_import_recovery": "original_zero_fit_stop_preserved_then_native_iron_import_repair",
+  "implementation_local_commits": [
+    "f6b6fb1",
+    "6d02a63"
+  ],
+  "result_document": "docs/joint_cov_mse_v1/RESULTS.md",
+  "new_control_fits": 0,
+  "new_reference_fits": 0,
+  "platform_score": null
 }
