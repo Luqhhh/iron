@@ -12,3 +12,5 @@
 首次复制前校验误用了不带 `pred_` 的预测列名，在任何桌面写入前 exit1；修正校验字段后使用新交付目录，失败收据保留在 `local/runs/platform-candidates-desktop-20261003/delivery-r1/failure.json`，未修改原包。成功的授权、复制和独立审计收据在同批 `delivery-r2/`。
 
 G0 桌面交付通过；G1 两项均保持人工平台探索、未正式晋级，尚无本次平台分数。用户自行上传并回传，不由桌面复制推断已上传或名额消耗。建议先测 ModernNCA，再根据反馈及 EMA_MEAN3 是否已有成绩决定后续；目标96.45尚未达到，当前最佳仍是用户回传、未经独立核验的96.3920。
+
+同日随后用户明确回传“ModernNCA 96.3707 EMAmean 96.3954”。两项按上述候选名称和ZIP绑定，再次核对原包与桌面SHA及CRC通过。ModernNCA对原Q75为−0.0213；EMA_MEAN3为+0.0034，成为新最佳96.3954，距96.45为0.0546。分数来源是用户回传，未经独立平台核验；原本地质量门和人工探索身份保持。私有追加反馈在 `local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/feedback.json`，未推算剩余额度。

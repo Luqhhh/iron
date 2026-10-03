@@ -19,3 +19,5 @@
 当前平台最佳仍为用户回传、未独立核验的Q75/Q100=96.3920；本包平台分数尚未测得。前两项已回传探索继续保留具体失败结论，DE3＋Q75仍仅作替补。用户自行上传，不推断剩余额度，不启动其他优化。
 
 公开状态键 `ema_mean3_manual_exploration_release_20261002`，源提交 `a7c7a0e813bbbbf9a28117accfd7984290591a01`；manifest SHA256 `662478cff95ce09e6f2e3c39765fddc2f71ccfe8bbb7e491697f179c0d325daa`。本地原包、模型、账本及审计保存在 `local/runs/ema-mean3-exploration-release-20261002/release-r1/`，工程检查及失败收据在同批 `engineering-r1/`，均不入Git。桌面交付与独立审计收据为 `desktop-delivery.json`、`desktop-independent-audit.json`。
+
+2026-10-03后续：用户再次要求本包与ModernNCA写桌面，[两包交付](../platform_information_value/DESKTOP_DELIVERY_20261003.md)完成后明确回传 **EMAmean 96.3954**（未经独立平台核验）。绑定同一ZIP，相对Q75=96.3920提升 **0.0034**，成为新最佳，距当前目标96.45为0.0546。原匹配BASE平均门失败及人工探索身份保持，不追溯正式晋级。原暂停字段属于当时交付历史；当前按用户持续优化目标执行。此反馈支持继续研究EMA训练seed平均，不能作为所有平均或其他模型方向的平台收益保证。

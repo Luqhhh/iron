@@ -21,3 +21,5 @@ G0证据：锁定Python3.12的45项定向检查通过；两个保存状态由独
 该候选本地完整两seed增量仅+0.000669/+0.001317，仍保留原探索分类。此次选择依据是未测的检索机制与完整开发证据，不要求它先达到原0.01幅度门，也不假定历史EMA的平台放大比例会重现。固定六包的无标签比较显示，ModernNCA相对Q75改变量与EMA32/Laplace/EMA_MEAN3的余弦分别0.1541/−0.1169/0.0963；这说明预测变化并非同一方向，**不证明误差独立、正收益或达到96.45**。
 
 私有证据：`release-r1/manifest.json`、`warm.json`、`cold.json`、`package-audit.json`；同级`launch-r1/terminal.json`与`final-reconciliation.json`；无标签有限池预登记与独立标量复核位于`information-review-r1/`。机器状态键为`modernnca_time_manual_exploration_20261003`，当前名额安排见[信息问题](../platform_information_value/ALLOCATION.md)。
+
+2026-10-03后续平台反馈：用户要求写桌面后回传 **96.3707**（未经独立平台核验），绑定上述ZIP及[此次桌面交付](../platform_information_value/DESKTOP_DELIVERY_20261003.md)。相对冻结Q75=96.3920为 **−0.0213**；同时回传的EMA_MEAN3=96.3954成为新最佳。本固定ModernNCA配方从待测队列移除；G0及原开发失败决定不变。预测方向差异没有转化成平台增益，不由此关闭整个检索模型家族。
