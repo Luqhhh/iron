@@ -1,0 +1,90 @@
+{
+  "identity": "SWA_TIME_HUBER_V1",
+  "target": "tap_time_len",
+  "arms": [
+    "SWA_MSE_CONTROL",
+    "SWA_TIME_HUBER"
+  ],
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified"
+  },
+  "selector_metric": "original equal mean standardized two-target MAE on averaged state",
+  "training": "original V12 jointTabM; .5*iron_std_squared_error+.5*huber2(time_std_residual), where huber2(r)=r^2 if abs(r)<=1 else 2*abs(r)-1",
+  "alpha": 0.2,
+  "endpoint": "0.8*Q75 + 0.2*member",
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    271828,
+    314159
+  ],
+  "folds": 5,
+  "budgets": {
+    "engineering": {
+      "state": 2,
+      "optimizer": 2
+    },
+    "development": {
+      "state": 20,
+      "optimizer": 20
+    },
+    "confirmation": {
+      "state": 20,
+      "optimizer": 20
+    }
+  },
+  "controls": {
+    "engineering_states": 2,
+    "development_states": 20,
+    "confirmation_states": 20,
+    "new_control_fits": 0,
+    "source": "original SWA_WINDOW10 in local/runs/tabm-time-swa-v1 and local/runs/tabm-time-swa-confirm-271828-314159-20261001; original physical identities retained"
+  },
+  "gates": {
+    "development": "two complete candidate A20 gains vs latest frozen Q75 positive AND mean mechanism vs original MSE SWA positive",
+    "confirmation": "four complete gains positive, one-sided seed tLCB95(df3)>0, mean mechanism vs original MSE SWA positive",
+    "folds": "descriptive only",
+    "absolute_score": null
+  },
+  "seed_history": "four previously used split seeds over same official sample pool; split stability evidence, not new independent datasets",
+  "limits": {
+    "workers": 1,
+    "numeric_threads": 1,
+    "torch_threads": 1,
+    "max_rss_mib": 1024,
+    "maximum_seconds": null
+  },
+  "monitor_seconds": 1800,
+  "clipping": false,
+  "cross_split_prediction_averaging": false,
+  "new_reference_fits": 0,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "release_authorized": false,
+  "failure_policy": "preserve failure and consumed reservations, never repeat fit; zero-fit engineering repair authorized by user",
+  "loss": {
+    "target_order": [
+      "tap_iron",
+      "tap_time_len"
+    ],
+    "target_scales": "training partition mean/population std only",
+    "per_head": true,
+    "iron": "squared error",
+    "time": "huber2: squared error for |standardized residual|<=1, else 2*abs(residual)-1",
+    "coefficients": [
+      0.5,
+      0.5
+    ],
+    "head_reduction": "arithmetic mean",
+    "calibration_selection": "original joint stdMAE unchanged",
+    "gradient_scale_note": "central value and gradients identical to original joint MSE; time gradients capped for residual magnitude >1",
+    "delta": 1.0
+  },
+  "queue": "single user-authorized next optimization; not a platform release",
+  "selection_retention": "original formal development/confirmation gates preserved; failure of relative mechanism gate does not discard positive-gain platform exploration"
+}
