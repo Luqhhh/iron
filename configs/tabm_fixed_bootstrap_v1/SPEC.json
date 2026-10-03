@@ -1,0 +1,92 @@
+{
+  "identity": "TABM_FIXED_BOOTSTRAP_V1",
+  "targets": [
+    "tap_time_len"
+  ],
+  "reference": {
+    "candidate": "EMA_TIME_Q75",
+    "score": 96.392,
+    "source": "user_reported_not_independently_verified"
+  },
+  "alpha": 0.2,
+  "loss": {
+    "rate": 1.0,
+    "seed_offset": 1000003,
+    "per_row_head": true,
+    "shared_two_target_weight": true,
+    "denominator": "batch_rows*16*2",
+    "zero_batch": "no_resample_no_skip_AdamW_step",
+    "evaluation": "unweighted_head_mean",
+    "draw_policy": "once_per_actual_fit_row_head"
+  },
+  "selector_metric": "original joint standardized MAE evaluated on raw state",
+  "training": "original V12 random K16 joint periodicTabM; Poisson1 row/head weights drawn once per actual fit and held across epochs; constant AdamW, no EMA/SWA/Huber/covariance",
+  "development_seeds": [
+    42,
+    3407
+  ],
+  "confirmation_seeds": [
+    271828,
+    314159
+  ],
+  "folds": 5,
+  "budgets": {
+    "engineering": {
+      "state": 2,
+      "optimizer": 2
+    },
+    "development": {
+      "state": 20,
+      "optimizer": 20
+    },
+    "confirmation": {
+      "state": 20,
+      "optimizer": 20
+    }
+  },
+  "control": "HEAD_BOOTSTRAP_CONTROL",
+  "selection": {
+    "development": "time only: both complete seed A20 gains positive and mean increment versus original online Bootstrap positive",
+    "tie_order": [
+      "tap_time_len"
+    ],
+    "confirmation": "time only, four seed gains positive, seed one-sided tLCB95(df3)>0 and mean increment versus original online Bootstrap positive",
+    "exploration": "time only positive mean may be kept, no automatic release",
+    "folds": "descriptive only"
+  },
+  "limits": {
+    "workers": 1,
+    "max_rss_mib": 1024,
+    "numeric_threads": 1,
+    "torch_threads": 1,
+    "seconds": null
+  },
+  "monitor_seconds": 1800,
+  "release_authorized": false,
+  "fullfit": 0,
+  "packages": 0,
+  "uploads": 0,
+  "reference_fits": 0,
+  "control_fits": 0,
+  "clipping": false,
+  "cross_split_prediction_averaging": false,
+  "seed_history": "previously used splits over same official rows; not new independent datasets",
+  "queue": "approved priority4 after Bootstrap EMA complete publication a9b0a83d049925cea529a2b14aef2bc746f42613",
+  "candidate": "FIXED_HEAD_BOOTSTRAP",
+  "weight_plan": {
+    "rng": "PCG64",
+    "seed_offset": 1000003,
+    "poisson_rate": 1.0,
+    "draw_shape": "actual_fit_rows * 16",
+    "row_order": "actual fit frame sample_id order",
+    "hold": "same row/head weights across all batches/epochs; never resample",
+    "stage": "selection and fresh refit each reset RNG and draw independent actual-fit-sized plan; rows/subsets differ; no query/cal labels used",
+    "share_targets": true,
+    "certificates": [
+      "whole plan and fit ID digest",
+      "cumulative exposure/order/weight SHA and counts per epoch"
+    ],
+    "zero_batch": "never resample or skip optimizer step"
+  },
+  "control_identity": "all phases local/runs/tabm-head-bootstrap-v1, same source/phase/unit/split, 0 new control/ref fits"
+}
