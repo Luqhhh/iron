@@ -890,7 +890,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "Nested residual and current-mean3 followup audited and complete; Ridge small-positive confirmation deferred. Fixed EMA mean5 extension preregistered; no platform allocation.",
+    "research_status": "EMA mean5 fixed extension is running against current mean3 with 20 new estimators/40 optimizer budget. Original nested residual and followup closed; small Ridge confirmation deferred. No new platform allocation.",
     "platform_slots_user_reported": 4,
     "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
     "submission_allocation": "sequential_information_questions_no_four_package_filler",
@@ -2890,7 +2890,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "no_owned_scientific_job_running_original_residual_and_followup_closed",
+    "runtime_observation": "mean5_controller14963_child14966_verified_live_at_launch_threads1_first_reuse_child_exit0_no_partial_quality_read",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3284,11 +3284,11 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "ema_mean5_development_20261003",
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "freeze_and_start_fixed_EMA_mean5_extension_after_matching_engineering_checks",
+    "next_action": "finish_fixed_two_split_mean5_development_then_audit_increment_and_information_value_before_any_confirmation_or_platform_allocation",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_nested_residual_mean3_followup_20261003",
@@ -3296,7 +3296,7 @@
       "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/overview-before-refresh.json",
       "sha256": "ed0cc74486dc743a6201dcfeef105596b4928a6807ca7ec30e55863c94ec585f"
     },
-    "pending_research": "ema_mean5_development_20261003"
+    "pending_research": null
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -26138,7 +26138,7 @@
     "platform_slots_allocated": 0
   },
   "ema_mean5_development_20261003": {
-    "status": "preregistered_seven_locked_checks_passed_freeze_pending",
+    "status": "full_two_split_development_running",
     "reference": "EMA_MEAN3_FULL_Q75",
     "reference_score_user_reported": 96.3954,
     "thread_target": 96.45,
@@ -26172,8 +26172,8 @@
     "reused_states": 60,
     "cold_states_budget": 100,
     "engineering_neural_fits": 0,
-    "G0": "seven_locked_nonfitting_checks_passed_original_full_shape_trainer_sources_unchanged_scientific_freeze_pending",
-    "G1": "unmeasured_full_two_split_development_required",
+    "G0": "seven_locked_checks_1482_file_freeze_first_three_original_EMA_models_cold_passed_remainder_running",
+    "G1": "unmeasured_complete_two_split_outputs_pending",
     "formal_promoted": false,
     "confirmation_gate": "both_complete_splits_positive_vs_current_mean3",
     "historical_matched_BASE_gate_preserved_but_not_reapplied_to_this_new_question": true,
@@ -26184,6 +26184,19 @@
     "agent_uploads": 0,
     "monitor_seconds": 600,
     "time_budget_seconds": null,
-    "automatic_retries": false
+    "automatic_retries": false,
+    "source_commit": "0655dbc5441f3b42a683dbdfd3b38ac1e8245d7f",
+    "manifest_sha256": "75b605e9d36883b7a118df7b04f03eec3b538bceb6c5968ca7f4df4ed11e5f11",
+    "frozen_files": 1482,
+    "controller_pid": 14963,
+    "exec_session_id": 49397,
+    "launch_verification": "local/runs/ema-mean5-20261003/development-r1/execution/launch-verification.json",
+    "launch_verified_ns": 1791040240443644580,
+    "started_ns": 1791040219343305152,
+    "first_reused_unit_cold_states": 6,
+    "first_reused_unit_actual_exit_code": 0,
+    "first_reused_unit_peak_rss_mib": 493.90234375,
+    "next_observation_not_before_ns": 1791040819343305152,
+    "execution_document": "docs/ema_mean5/EXECUTION.md"
   }
 }
