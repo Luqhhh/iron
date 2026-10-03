@@ -9,3 +9,5 @@ G1仍为未测平台探索：完整两个开发split增量−0.001032315/+0.0021
 私有包：local/runs/hardtree-current-release-20261004/release-r1/HARDTREE_DE3_Q100_A20/Luqhhh_bf_tap_predict_round2.zip。SHA256：`1908e2d97d8cd1f7912e662061febb229a155a86254cf54474fd7cb5a8a94d18`。
 
 同目录上级保留manifest.json、release.json、independent-audit.json与terminal-reconciliation.json。原Q75硬树包及训练证据不变；无桌面写入或助手上传。
+
+后续独立排程：上述储备发布阶段保持0名额；全部G0闭合后，已另行登记为[首个建议平台探索](PLATFORM_DECISION.md)，等待用户上传回传。原包与权重不变，其他名额不预分配，不据此推算额度消耗。
