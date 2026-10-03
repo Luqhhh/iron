@@ -19779,5 +19779,98 @@
       "fullfit_authorized": false,
       "package_authorized": false
     }
+  },
+  "swa_time_huber_v1_20261003": {
+    "identity": "SWA_TIME_HUBER_V1",
+    "status": "completed_four_seed_local_formal_gate_passed_not_release_authorized",
+    "G0": "passed_synthetic_and_independent_cold_audit",
+    "G1": "four_complete_seed_gains_positive_seed_LCB95_positive_mean_mechanism_positive",
+    "reference": {
+      "candidate": "EMA_TIME_Q75",
+      "score": 96.392,
+      "source": "user_reported_not_independently_verified"
+    },
+    "engineering_saved_states": 2,
+    "engineering_optimizer_runs": 2,
+    "development_outer_fits": 10,
+    "development_saved_states": 20,
+    "development_optimizer_runs": 20,
+    "confirmation_outer_fits": 10,
+    "confirmation_saved_states": 20,
+    "confirmation_optimizer_runs": 20,
+    "new_control_fits": 0,
+    "new_reference_fits": 0,
+    "formal_promoted": true,
+    "release_authorized": false,
+    "platform_exploration_candidate": true,
+    "platform_score": null,
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0,
+    "desktop_writes": 0,
+    "seed_order": [
+      42,
+      3407,
+      271828,
+      314159
+    ],
+    "seed_gains": [
+      0.0021867351123432063,
+      0.0067812644117853284,
+      0.0025896265862576707,
+      0.0031766274923962904
+    ],
+    "control_gains": [
+      0.00433976311089045,
+      0.004547392986334328,
+      -0.0007580087389666711,
+      0.0019530761211210264
+    ],
+    "mean_gain": 0.003683563400695624,
+    "mechanism_mean": 0.0011630075308508405,
+    "seed_lcb95": 0.0012069415720016618,
+    "failure_reasons": [],
+    "complete_package_local_score_available": false,
+    "full_tests": {
+      "neural": {
+        "passed": 1461,
+        "warnings": 23
+      },
+      "locked_python3_12": {
+        "passed": 1042,
+        "skipped": 96,
+        "warnings": 3
+      }
+    },
+    "cold_audit": {
+      "engineering": {
+        "cold_models": 4,
+        "reused_control_states": 2,
+        "max_difference": 2.529613865931424e-06,
+        "max_window_parameter_difference": 4.76837158203125e-07,
+        "peak_rss_mib": 444.05859375
+      },
+      "development": {
+        "cold_models": 40,
+        "reused_control_states": 20,
+        "max_difference": 1.295262754297255e-05,
+        "max_window_parameter_difference": 4.76837158203125e-07,
+        "peak_rss_mib": 443.59765625
+      },
+      "confirmation": {
+        "cold_models": 40,
+        "reused_control_states": 20,
+        "max_difference": 1.9323035104434894e-05,
+        "max_window_parameter_difference": 4.76837158203125e-07,
+        "peak_rss_mib": 445.4375
+      }
+    },
+    "preflight_sha256": "c208366ae4e42de1945b5d02de2388ebf725915c52efc6a28018c3f9ee7bd7b6",
+    "private_final_verification": "local/swa-time-huber-20261003/final-verification-r1.json",
+    "private_final_verification_sha256": "e7c5d6a8bd2845635c2b258f2830a56ac9ef37a09be828c30f45945fdccdf1d8",
+    "results": "docs/swa_time_huber_v1/RESULTS.md",
+    "strategy": "docs/swa_time_huber_v1/STRATEGY.md",
+    "local_platform_mapping": false,
+    "controller_terminal": "completed_inactive_bound_PID_no_scientific_waitpid_exit_code_claim"
   }
 }
