@@ -3432,7 +3432,7 @@
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
     "latest_completed_quality_experiment": "ema_mean5_development_20261003",
-    "latest_platform_feedback_key": "de3_ema_mean3_platform_feedback_20261004",
+    "latest_platform_feedback_key": "gauss1_platform_feedback_20261004",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
     "latest_local_diagnostic": "mean3_retained_components_review_20261004",
@@ -24914,7 +24914,9 @@
     "agent_uploads": 0,
     "formal_promoted": false,
     "G0": "passed_control_bit_exact_and_thread_pinning",
-    "G1": "descriptive_learning_curve_only"
+    "G1": "descriptive_learning_curve_only",
+    "current_evidence_use_review_key": "headroom_interpretation_audit_20261004",
+    "current_evidence_use_limit": "Historical conclusion preserved; current audit contradicts H1 threshold application and rejects platform impossibility/capacity ceiling inference."
   },
   "q75_schedule_screen_20261002": {
     "status": "completed_cosine_plus_l1_improves_iron_only_time_degrades",
@@ -27197,5 +27199,48 @@
     "created_ns": 1791044717473579947,
     "feedback_record": "local/runs/de3-ema-mean3-release-20261004/platform-feedback-r1/feedback.json",
     "feedback_sha256": "973ce3068a7d7c7f287420dd4df4bf0b3d22b442b20bbd55f62a7eacce95d0e1"
+  },
+  "headroom_interpretation_audit_20261004": {
+    "status": "passed_arithmetic_and_scope_review_only",
+    "created_ns": 1791044952745546004,
+    "source": "local/runs/q75-headroom-20261002/development-r1/summary.json",
+    "source_sha256": "ec8700d717177e90450bacb1ae8340cfcaaf795d374841f7a2df1910140d2b40",
+    "unit_costs": {
+      "s42-f0": {
+        "joint_score_cost_halving": 0.1777821482545221,
+        "iron_score_cost_halving": 0.0025763029080010796,
+        "time_score_cost_halving": 0.17520584534651862
+      },
+      "s42-f1": {
+        "joint_score_cost_halving": 0.17775562894608754,
+        "iron_score_cost_halving": 0.08847809532333724,
+        "time_score_cost_halving": 0.08927753362275061
+      },
+      "s3407-f0": {
+        "joint_score_cost_halving": 0.09435276109014978,
+        "iron_score_cost_halving": 0.009202903014287125,
+        "time_score_cost_halving": 0.08514985807586486
+      }
+    },
+    "two_same_split_units_mean_joint_cost": 0.17776888860030482,
+    "all_three_units_mean_joint_cost": 0.14996351276358647,
+    "original_rule_H1_max": 0.02,
+    "original_rule_H2_min": 0.05,
+    "original_rule_outcome": "H2_under_either_reported_aggregation_not_H1",
+    "maximum_saved_score_arithmetic_difference": 0,
+    "new_fits": 0,
+    "raw_labels_read": 0,
+    "model_or_prediction_replay": false,
+    "original_actual_training_exit_codes_independently_verified": false,
+    "invalid_inferences": [
+      "iron_is_saturated",
+      "irreducible_noise_quantified",
+      "capacity_or_more_data_cannot_reach_platform_96_45"
+    ],
+    "limits": "Only three outer units, same training data, one frozen joint recipe; no independent platform noise floor or capacity bound",
+    "report": "local/runs/headroom-interpretation-audit-20261004/review-r1/audit.json",
+    "documentation": "docs/headroom_interpretation_audit/RESULTS.md",
+    "G0": "summary_binding_and_independent_decimal_arithmetic_only_no_new_model_replay",
+    "G1": "original_small_learning_curve_does_not_establish_noise_floor_or_platform_ceiling"
   }
 }
