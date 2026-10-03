@@ -3332,7 +3332,7 @@
     "latest_local_G0": "passed_3464_frozen_files_complete_same_seed_alignment_independent_scalar_three_actual_exit0",
     "latest_local_G1": "Gaussian_both_development_splits_positive_but_original_platform_recipe_negative_hardtree_both_negative_no_new_release_or_confirmation",
     "last_local_diagnostic_results": "docs/mean3_retained_components/RESULTS.md",
-    "latest_registered_scientific_route": "ema_mean5_development_20261003",
+    "latest_registered_scientific_route": "ema_mean3_q100_platform_probe_20261004",
     "latest_completed_scientific_route": "ema_mean5_development_20261003",
     "latest_scientific_G0": "passed_1482_unchanged_frozen_files_40_optimizer_100_cold_states_52_actual_exit0_and_independent_label_bound_score",
     "latest_scientific_G1": "both_complete_splits_negative_vs_mean3_only_one_of_ten_folds_positive_not_shortlisted",
@@ -3345,11 +3345,11 @@
       ],
       "latest_platform_feedback_key": "platform_feedback_short_ema_iron_20261001"
     },
-    "active_research": null,
+    "active_research": "ema_mean3_q100_platform_probe_20261004",
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "review_fixed_sparse_strength_probe_of_platform_positive_three_member_mean_without_extending_failed_mean5",
+    "next_action": "freeze_single_zero_fit_mean3_Q100_probe_report_complete_local_evidence_and_independently_audit_one_package",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_mean5_development_20261003",
@@ -26838,5 +26838,41 @@
     "new_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0
+  },
+  "ema_mean3_q100_platform_probe_20261004": {
+    "status": "preregistered_engineering_checks_passed_not_yet_frozen",
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "candidate": "EMA_MEAN3_Q100",
+    "q": 1.0,
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "protocol": "docs/ema_mean3_q100/PREREGISTRATION.md",
+    "source": "scripts/ema_mean3_q100.py",
+    "source_sha256": "19103d713b649da1bddaaebd741ad658832d644993911e81bb81b5e2a9e47060",
+    "role": "single_pre_registered_platform_strength_exploration",
+    "local_gain_veto": false,
+    "formal_promoted": false,
+    "new_fits": 0,
+    "new_confirmation_seeds": 0,
+    "maximum_new_packages": 1,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "run_directory": "local/runs/ema-mean3-q100-20261004/release-r1",
+    "checks": "local/runs/ema-mean3-q100-20261004/checks-r1/checks.json",
+    "checks_sha256": "0cbd6b76b117402e271216f37fe46fc4e2a6f8f3fb196e1fdd550330126c23cf",
+    "locked_nonfitting_checks_passed": 6,
+    "information_question": "Does q=1 improve the measured three-member q=.75 endpoint after old single-member Q75/Q100 tied?",
+    "G0": "checks_passed_pending_freeze_and_cold_package_audit",
+    "G1": "local_descriptive_and_platform_unmeasured",
+    "automatic_retries": false,
+    "time_budget_seconds": null
   }
 }
