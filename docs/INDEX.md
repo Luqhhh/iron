@@ -4,23 +4,23 @@
 
 ## 当前复赛状态
 
-[DE3＋EMA三成员Q100已写桌面](de3_ema_mean3_q100_release/DELIVERY.md)：用户明确选择，0新拟合、原字段组合及独立包/桌面审计通过；固定当前最佳的DE3铁量，单独检验q=.75到1.00的时长强度。原探针本地两切分负和未正式晋级保持，平台待用户反馈。
+[DE3＋EMA三成员Q100回传96.3979](de3_ema_mean3_q100_release/DELIVERY.md)：成为用户回传新最佳，较Q75组合+0.0002；原包/桌面与相同DE3铁量身份复核通过。原探针本地两切分负和未正式晋级保持，已移出待测队列。
 
 最新零拟合复核：[旧Gaussian与硬树对当前mean3](mean3_retained_components/RESULTS.md)。Gaussian两开发切分正，但原配方平台96.379提供反证，暂不启动相近包或确认；硬树两切分负。
 
 | 项目 | 最新登记 |
 | --- | --- |
-| 平台回传最佳 | **DE3_IRON_EMA_MEAN3_TIME = 96.3977**；用户回传，未独立平台核验 |
-| 当前代表 | 已测DE3铁量原字段＋已测EMA三成员mean时长原字段；用户指定列组合，未正式晋级，原科学决定保持 |
-| 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0023 / 0.0523 / 0.1023 |
-| 最新平台反馈 | **DE3＋EMA三成员mean=96.3977**（对前最佳 +0.0023）；已移出待测队列。此前Gaussian=96.379，低于旧Q75。均为用户回传、未独立核验 |
-| 优先信息问题 | 用户指定DE3_IRON_EMA_MEAN3_Q100已写桌面，参照96.3977，原不含DE3的Q100包保留但不重复优先。硬树未分配，Gaussian已测，均保留证据。见[信息价值安排](platform_information_value/ALLOCATION.md) |
+| 平台回传最佳 | **DE3_IRON_EMA_MEAN3_Q100 = 96.3979**；用户回传，未独立平台核验 |
+| 当前代表 | 已测DE3铁量原字段＋三成员EMA q=1.00时长原字段；用户指定强度探索，未正式晋级，原科学决定保持 |
+| 目标 | **96.4 → 96.45 → 96.5**，尚差 0.0021 / 0.0521 / 0.1021 |
+| 最新平台反馈 | **DE3＋EMA三成员Q100=96.3979**（对前最佳 +0.0002）；两包铁量相同，差值对应时长强度变化，已移出待测。均为用户回传、未独立核验 |
+| 优先信息问题 | 当前没有新分配的优先提交项，不由微小增益自动追加权重探针。原不含DE3的Q100包保留，硬树未分配。见[信息价值安排](platform_information_value/ALLOCATION.md) |
 | 优化执行 | EMA五成员完整开发已结束：两个切分−0.003917/−0.000998，仅1/10折正，不确认或全量发布；G0及52个子程序实际exit0通过。见[结果](ema_mean5/RESULTS.md) |
 | 替补 | **DE3_IRON_EMA_TIME_Q75_RESERVE 暂不平台测试**，等待信息量或收益更值得名额的候选 |
 | 其他旧包 | 未回传不等于继续待测；Q25、旧 Q50 组合和更早包不因存在文件而自动恢复优先级 |
 | 初赛历史最高 | V30A_OOB_BOTH_TARGETS = 83.3175；与复赛成绩分开，不是当前复赛参照 |
 
-最新包身份与96.3977反馈见[DE3＋EMA三成员mean交付](de3_ema_mean3_release/DELIVERY.md)。此前[ModernNCA与EMA_MEAN3](platform_information_value/DESKTOP_DELIVERY_20261003.md)、[N→V36探针](q75_combination_review/DELIVERY.md)、[SAM＋EMA](sam_ema_release/DELIVERY.md)及[PTaRL/EMA交付](ptarl_ema_exploration_release/DELIVERY.md)保留原范围及反馈，不生成第三个PTaRL双目标组合。分数均为用户回传，未独立核验平台凭证；本文不推断剩余额度。
+最新包身份与96.3979反馈见[DE3＋EMA三成员Q100交付](de3_ema_mean3_q100_release/DELIVERY.md)。此前[DE3＋EMA三成员Q75](de3_ema_mean3_release/DELIVERY.md)、[ModernNCA与EMA_MEAN3](platform_information_value/DESKTOP_DELIVERY_20261003.md)、[N→V36探针](q75_combination_review/DELIVERY.md)、[SAM＋EMA](sam_ema_release/DELIVERY.md)及[PTaRL/EMA交付](ptarl_ema_exploration_release/DELIVERY.md)保留原范围及反馈，不生成第三个PTaRL双目标组合。分数均为用户回传，未独立核验平台凭证；本文不推断剩余额度。
 
 新指定的[EMA_MEAN3桌面交付](ema_mean3_release/DELIVERY.md)复用原seed42，仅新增1042/2042两个全量程序；固定等权及.75替换，铁量保持Q75原字段。原配对确认门失败决定保持。
 
@@ -52,7 +52,7 @@
 
 - [GLOBAL硬树人工探索交付](hard_tree_time_exploration/DELIVERY.md)：20%时长替换、原铁量字符串保持；选中15轮、32项锁定检查、独立冷推理与无标签封包通过。两完整开发seed小负，未正式晋级。
 
-- [信息价值与队列核对](platform_information_value/ALLOCATION.md)：DE3＋EMA三成员mean回传96.3977为新最佳；Gaussian已测，旧硬树未分配，Q100强度探针保留原冻结。局部学习曲线/残差结果不构成家族无效或96.45不可达的证明。
+- [信息价值与队列核对](platform_information_value/ALLOCATION.md)：DE3＋EMA三成员Q100回传96.3979为新最佳，已从待测移除；Gaussian已测，旧硬树未分配，无自动追加探针。局部学习曲线/残差结果不构成家族无效或96.45不可达的证明。
 
 - [记录库组合复核](q75_stack_review/RESULTS.md)：保留原结果；新增审计发现库归组遗漏trial身份、全标签筛列、层二与基模型验证依赖及增量单位问题，不能作为完整模型库或平台上界。
 - [样本量学习曲线](q75_headroom_20261002/RESULTS.md)：保留三单位描述与原控制观察；[解释范围核验](headroom_interpretation_audit/RESULTS.md)发现原H1阈值适用错误，不作为铁量饱和、不可约噪声或96.45平台上界的证据。

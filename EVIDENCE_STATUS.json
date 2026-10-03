@@ -302,37 +302,17 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "user_requested_DE3_mean3_Q100_desktop_ready_current_best_96_3977_unchanged",
+    "status": "DE3_mean3_Q100_new_best_96_3979_no_new_priority_allocation",
     "current_preferred": {
-      "candidate": "DE3_IRON_EMA_MEAN3_TIME",
-      "score": 96.3977,
+      "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+      "score": 96.3979,
       "source": "user_reported_not_independently_verified",
-      "zip_sha256": "c51e050b69dc40cc808bfbcd6dc5442db131f83d3b05446ed0eba7c255675e78"
+      "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [
-      {
-        "candidate": "DE3_IRON_EMA_MEAN3_Q100",
-        "rank": 1,
-        "role": "user_requested_fixed_incumbent_iron_strength_probe",
-        "evidence_key": "de3_ema_mean3_q100_release_20261004"
-      }
-    ],
-    "submission_priority_note": "User clarified three-member Q100 rather than five-member averaging. DE3 iron fixed to measured current best; audited original Q100 time copied verbatim. The original Q100 package is retained without a duplicate priority slot. No upload or quota inference.",
+    "submission_priority": [],
+    "submission_priority_note": "User-reported DE3+EMA mean3 Q100=96.3979 scored and removed from pending priority. Fixed iron confirms reported +0.0002 comes from this time-strength change. No further probe or quota balance inferred; retained hard tree remains unallocated.",
     "ready_for_user_platform_testing": [
-      {
-        "candidate": "DE3_IRON_EMA_MEAN3_Q100",
-        "package": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c",
-        "G0": "passed_python312_11_frozen_sources_parent_cold_audit_identity_independent_322_row_package_and_desktop_readback_all_four_stages_exit0",
-        "G1": "user_requested_fixed_iron_strength_probe_unmeasured_not_formally_promoted",
-        "reference": "DE3_IRON_EMA_MEAN3_TIME",
-        "evidence_key": "de3_ema_mean3_q100_release_20261004",
-        "feedback_status": "not_measured",
-        "formal_promotion": false,
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
-        "allocation_status": "user_requested_single_strength_probe_with_fixed_incumbent_DE3_iron"
-      },
       {
         "candidate": "HARDTREE_GLOBAL_TIME_A20",
         "package": "local/runs/hard-tree-time-exploration-20261003/release-r1/HARDTREE_GLOBAL_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
@@ -370,7 +350,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "DE3＋EMA三成员Q100已按用户明确选择生成并写桌面；铁量与96.3977最佳包一致，仅比较q=.75到1.00时长强度，不能再重复加DE3收益。原Q100两开发切分负及未正式晋级保持，五成员配方关闭；用户自行回传。",
+    "recommended": "DE3＋EMA三成员Q100回传96.3979为新最佳，较Q75组合+0.0002，距96.4为0.0021。本包已测，不由这次小幅正收益自动追加权重探针；保留原两切分负与未正式晋级，旧硬树未分配，原Q100父包保持未测。",
     "optimization_paused": false,
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
@@ -904,6 +884,30 @@
         "delta_vs_previous_best": 0.0023,
         "feedback_record": "local/runs/de3-ema-mean3-release-20261004/platform-feedback-r1/feedback.json",
         "feedback_sha256": "973ce3068a7d7c7f287420dd4df4bf0b3d22b442b20bbd55f62a7eacce95d0e1"
+      },
+      {
+        "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+        "package": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c",
+        "G0": "passed_python312_frozen_sources_release_receipts_source_desktop_crc_322_official_order_finite_nonnegative_original_columns_and_incumbent_iron",
+        "G1": "user_requested_strength_probe_small_positive_user_reported_platform_gain_not_formally_promoted",
+        "reference": "DE3_IRON_EMA_MEAN3_TIME",
+        "evidence_key": "de3_ema_mean3_q100_release_20261004",
+        "feedback_status": "user_reported_not_independently_verified",
+        "formal_promotion": false,
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+        "allocation_status": "completed_platform_test_new_current_best",
+        "score": 96.3979,
+        "raw_reported_score": "96.3979",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-04",
+        "comparison_candidate": "DE3_IRON_EMA_MEAN3_TIME",
+        "comparison_score": 96.3977,
+        "delta_vs_previous_best": 0.0002,
+        "feedback_record": "local/runs/de3-ema-mean3-q100-release-20261004/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "94152c2e6c71219231d7c60b46367a2852c3a38e050f3d2640cbc096029eb2ad"
       }
     ],
     "modernnca_result_key": "modernnca_median_head_20261002",
@@ -953,7 +957,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "EMA mean5 fixed extension is running against current mean3 with 20 new estimators/40 optimizer budget. Original nested residual and followup closed; small Ridge confirmation deferred. No new platform allocation.",
+    "research_status": "EMA mean5 completed with both splits negative, no confirmation/full release. DE3 mean3 Q100 now user-reported scored; no new platform allocation from this feedback. Other frozen route records remain unchanged.",
     "platform_slots_user_reported": 4,
     "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
     "submission_allocation": "sequential_information_questions_no_four_package_filler",
@@ -1204,7 +1208,55 @@
         "desktop_delivery_key": "ema_mean3_q100_desktop_delivery_20261004",
         "superseded_by": "DE3_IRON_EMA_MEAN3_Q100"
       }
-    ]
+    ],
+    "history_before_de3_mean3_q100_feedback_20261004": {
+      "status": "user_requested_DE3_mean3_Q100_desktop_ready_current_best_96_3977_unchanged",
+      "current_preferred": {
+        "candidate": "DE3_IRON_EMA_MEAN3_TIME",
+        "score": 96.3977,
+        "source": "user_reported_not_independently_verified",
+        "zip_sha256": "c51e050b69dc40cc808bfbcd6dc5442db131f83d3b05446ed0eba7c255675e78"
+      },
+      "submission_priority": [
+        {
+          "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+          "rank": 1,
+          "role": "user_requested_fixed_incumbent_iron_strength_probe",
+          "evidence_key": "de3_ema_mean3_q100_release_20261004"
+        }
+      ],
+      "submission_priority_note": "User clarified three-member Q100 rather than five-member averaging. DE3 iron fixed to measured current best; audited original Q100 time copied verbatim. The original Q100 package is retained without a duplicate priority slot. No upload or quota inference.",
+      "recommended": "DE3＋EMA三成员Q100已按用户明确选择生成并写桌面；铁量与96.3977最佳包一致，仅比较q=.75到1.00时长强度，不能再重复加DE3收益。原Q100两开发切分负及未正式晋级保持，五成员配方关闭；用户自行回传。",
+      "ready_for_user_platform_testing": [
+        {
+          "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+          "package": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c",
+          "G0": "passed_python312_11_frozen_sources_parent_cold_audit_identity_independent_322_row_package_and_desktop_readback_all_four_stages_exit0",
+          "G1": "user_requested_fixed_iron_strength_probe_unmeasured_not_formally_promoted",
+          "reference": "DE3_IRON_EMA_MEAN3_TIME",
+          "evidence_key": "de3_ema_mean3_q100_release_20261004",
+          "feedback_status": "not_measured",
+          "formal_promotion": false,
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+          "allocation_status": "user_requested_single_strength_probe_with_fixed_incumbent_DE3_iron"
+        },
+        {
+          "candidate": "HARDTREE_GLOBAL_TIME_A20",
+          "package": "local/runs/hard-tree-time-exploration-20261003/release-r1/HARDTREE_GLOBAL_TIME_A20/Luqhhh_bf_tap_predict_round2.zip",
+          "zip_sha256": "d36d2af53b6367801fb7668c7de53cef6e53a682415d81b30d9d1f44a844b40c",
+          "G0": "passed_32_locked_checks_1941_frozen_dependencies_native_optimizer_ledger_independent_cold_label_free_package_and_actual_exit0",
+          "G1": "manual_exploration_both_development_gains_negative_original_failure_preserved",
+          "reference": "EMA_TIME_Q75",
+          "evidence_key": "hard_tree_time_manual_exploration_20261003",
+          "feedback_status": "not_measured",
+          "formal_promotion": false,
+          "desktop": null,
+          "allocation_status": "retained_Q75_parent_package_unallocated_after_mean3_new_best"
+        }
+      ],
+      "research_status": "EMA mean5 fixed extension is running against current mean3 with 20 new estimators/40 optimizer budget. Original nested residual and followup closed; small Ridge confirmation deferred. No new platform allocation."
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -3090,10 +3142,10 @@
     "platform_evidence_status": "USER_REPORTED_NOT_INDEPENDENTLY_VERIFIED",
     "current_platform_best_key": "round2_current_platform_best",
     "current_candidate_queue_key": "round2_current_candidate_queue",
-    "active_candidate": "DE3_IRON_EMA_MEAN3_TIME",
-    "user_reported_round2_score": 96.3977,
+    "active_candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "user_reported_round2_score": 96.3979,
     "co_best_candidates": [
-      "DE3_IRON_EMA_MEAN3_TIME"
+      "DE3_IRON_EMA_MEAN3_Q100"
     ],
     "representative_tie_choice": null,
     "milestones": [
@@ -3102,15 +3154,14 @@
       96.5
     ],
     "milestone_gaps": {
-      "96.4": 0.0023,
-      "96.45": 0.0523,
-      "96.5": 0.1023
+      "96.4": 0.0021,
+      "96.45": 0.0521,
+      "96.5": 0.1021
     },
     "latest_completed_release": "de3_ema_mean3_q100_release_20261004",
-    "latest_G0": "passed_python312_11_frozen_sources_parent_cold_audit_identity_independent_322_row_package_and_desktop_readback_all_four_stages_exit0",
-    "latest_G1": "user_requested_fixed_iron_strength_probe_unmeasured_not_formally_promoted",
+    "latest_G0": "passed_python312_frozen_sources_release_receipts_source_desktop_crc_322_official_order_finite_nonnegative_original_columns_and_incumbent_iron",
+    "latest_G1": "user_requested_strength_probe_small_positive_user_reported_platform_gain_not_formally_promoted",
     "ready_exploration_candidates": [
-      "DE3_IRON_EMA_MEAN3_Q100",
       "HARDTREE_GLOBAL_TIME_A20"
     ],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -3491,7 +3542,7 @@
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
     "latest_completed_quality_experiment": "ema_mean5_development_20261003",
-    "latest_platform_feedback_key": "de3_ema_mean3_platform_feedback_20261004",
+    "latest_platform_feedback_key": "de3_ema_mean3_q100_platform_feedback_20261004",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
     "latest_local_diagnostic": "mean3_retained_components_review_20261004",
@@ -3513,7 +3564,7 @@
     },
     "active_research": null,
     "ready_formal_candidates": [],
-    "next_action": "user_may_test_desktop_DE3_IRON_EMA_MEAN3_Q100_and_report_score_original_Q100_probe_retained_no_duplicate_priority",
+    "next_action": "review_next_information_question_against_measured_96_3979_before_any_new_platform_priority_no_automatic_weight_probe",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_mean5_development_20261003",
@@ -3538,8 +3589,8 @@
         "GAUSS1_A20"
       ]
     },
-    "latest_platform_G0": "passed_python312_original_and_desktop_zip_csv_identity_crc_322_template_order_finite_nonnegative_source_columns_and_release_receipts",
-    "latest_platform_G1": "user_requested_column_combination_positive_user_reported_platform_gain_not_formally_promoted",
+    "latest_platform_G0": "passed_python312_frozen_sources_release_receipts_source_desktop_crc_322_official_order_finite_nonnegative_original_columns_and_incumbent_iron",
+    "latest_platform_G1": "user_requested_strength_probe_small_positive_user_reported_platform_gain_not_formally_promoted",
     "history_before_de3_mean3_q100_release_20261004": {
       "latest_completed_release": "ema_mean3_q100_platform_probe_20261004",
       "latest_G0": "passed_six_locked_checks_2769_frozen_files_two_label_free_four_predictor_cold_processes_322_row_package_and_four_actual_exit0",
@@ -3549,6 +3600,26 @@
         "HARDTREE_GLOBAL_TIME_A20"
       ],
       "next_action": "user_may_test_single_ready_EMA_MEAN3_Q100_strength_probe_and_report_score_before_any_further_weight_selection"
+    },
+    "history_before_de3_mean3_q100_feedback_20261004": {
+      "active_candidate": "DE3_IRON_EMA_MEAN3_TIME",
+      "user_reported_round2_score": 96.3977,
+      "co_best_candidates": [
+        "DE3_IRON_EMA_MEAN3_TIME"
+      ],
+      "milestone_gaps": {
+        "96.4": 0.0023,
+        "96.45": 0.0523,
+        "96.5": 0.1023
+      },
+      "latest_platform_feedback_key": "de3_ema_mean3_platform_feedback_20261004",
+      "ready_exploration_candidates": [
+        "DE3_IRON_EMA_MEAN3_Q100",
+        "HARDTREE_GLOBAL_TIME_A20"
+      ],
+      "latest_G0": "passed_python312_11_frozen_sources_parent_cold_audit_identity_independent_322_row_package_and_desktop_readback_all_four_stages_exit0",
+      "latest_G1": "user_requested_fixed_iron_strength_probe_unmeasured_not_formally_promoted",
+      "next_action": "user_may_test_desktop_DE3_IRON_EMA_MEAN3_Q100_and_report_score_original_Q100_probe_retained_no_duplicate_priority"
     }
   },
   "optimization_v0_11": {
@@ -6699,141 +6770,164 @@
     "agent_platform_uploads": 0
   },
   "round2_current_platform_best": {
-    "candidate": "DE3_IRON_EMA_MEAN3_TIME",
-    "score": 96.3977,
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
     "source": "user_reported_not_independently_verified",
     "reported_date": "2026-10-04",
     "previous_best": {
-      "candidate": "EMA_MEAN3_FULL_Q75",
-      "score": 96.3954,
+      "candidate": "DE3_IRON_EMA_MEAN3_TIME",
+      "score": 96.3977,
       "source": "user_reported_not_independently_verified",
-      "reported_date": "2026-10-03",
+      "reported_date": "2026-10-04",
       "previous_best": {
-        "candidate": "EMA_TIME_Q75",
-        "score": 96.392,
+        "candidate": "EMA_MEAN3_FULL_Q75",
+        "score": 96.3954,
         "source": "user_reported_not_independently_verified",
-        "reported_date": "2026-10-01",
+        "reported_date": "2026-10-03",
         "previous_best": {
-          "candidate": "LOC_DIAG_EMA_TIME",
-          "score": 96.3895,
+          "candidate": "EMA_TIME_Q75",
+          "score": 96.392,
           "source": "user_reported_not_independently_verified",
+          "reported_date": "2026-10-01",
           "previous_best": {
-            "candidate": "DE3_IRON_USER_REQUESTED",
-            "score": 96.3749,
+            "candidate": "LOC_DIAG_EMA_TIME",
+            "score": 96.3895,
             "source": "user_reported_not_independently_verified",
             "previous_best": {
-              "candidate": "V32_TIME_A60V7_50",
-              "score": 96.3727,
+              "candidate": "DE3_IRON_USER_REQUESTED",
+              "score": 96.3749,
               "source": "user_reported_not_independently_verified",
               "previous_best": {
-                "candidate": "V18_B0_V12IRON_V7TIME",
-                "score": 96.3679
+                "candidate": "V32_TIME_A60V7_50",
+                "score": 96.3727,
+                "source": "user_reported_not_independently_verified",
+                "previous_best": {
+                  "candidate": "V18_B0_V12IRON_V7TIME",
+                  "score": 96.3679
+                },
+                "delta_vs_previous_best": 0.0048,
+                "target": 96.5,
+                "target_met": false,
+                "margin_to_target": -0.1273,
+                "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
+                "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
+                "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
+                "reported_date": "2026-09-28",
+                "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
               },
-              "delta_vs_previous_best": 0.0048,
+              "delta_vs_previous_best": 0.0022,
               "target": 96.5,
               "target_met": false,
-              "margin_to_target": -0.1273,
-              "recipe": "iron = V12 original strings; time = 0.5*A60 + 0.5*V7m = 0.20 V36 + 0.30 N + 0.50 V7m",
-              "zip_sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7",
-              "desktop": "/mnt/c/Users/lqh22/Desktop/submission-96.4-pending/1_INTERIOR_A60V7_50.zip",
-              "reported_date": "2026-09-28",
-              "note": "User-reported improvement at one measured interior point; finite probe comparisons do not establish a global mixture optimum. This thread targets 96.5."
+              "margin_to_target": -0.1251,
+              "recipe": "V32_TIME_A60V7_50 parent; iron = parent_iron + 0.5*(mean(J42,J104729,J130363)-J42); parent time field strings unchanged",
+              "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
+              "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930/Luqhhh_bf_tap_predict_round2.zip",
+              "reported_date": "2026-09-30",
+              "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
+              "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8",
+              "note": "Explicitly user-requested exploration scored +0.0022 over the former best. Historical no-finalist decision and all promotion gates remain unchanged."
             },
-            "delta_vs_previous_best": 0.0022,
+            "delta_vs_previous_best": 0.0146,
+            "delta_vs_V32_parent": 0.0168,
             "target": 96.5,
             "target_met": false,
-            "margin_to_target": -0.1251,
-            "recipe": "V32_TIME_A60V7_50 parent; iron = parent_iron + 0.5*(mean(J42,J104729,J130363)-J42); parent time field strings unchanged",
-            "zip_sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0",
-            "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-20260930/Luqhhh_bf_tap_predict_round2.zip",
+            "margin_to_target": -0.1105,
+            "platform_milestone_gaps": {
+              "96.4": 0.0105,
+              "96.45": 0.0605,
+              "96.5": 0.1105
+            },
+            "recipe": "V32 parent; iron field strings unchanged; time = parent_time + 0.5*(EMA_time - original_V7_time) = 0.20 V36_time + 0.30 N0048_time + 0.50 EMA_time",
+            "zip_sha256": "da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836",
+            "desktop": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/01_LOC_DIAG_EMA_TIME/Luqhhh_bf_tap_predict_round2.zip",
             "reported_date": "2026-09-30",
-            "platform_feedback_record": "local/runs/de3-user-requested-release-20260930/platform-feedback-r1/feedback.json",
-            "platform_feedback_sha256": "b39736231cf4451b043880a8cb444bc36b32360a2c092dfdec411174ac1774f8",
-            "note": "Explicitly user-requested exploration scored +0.0022 over the former best. Historical no-finalist decision and all promotion gates remain unchanged."
+            "platform_feedback_record": "local/runs/local-platform-diagnostic-20260930/release-r1/platform-feedback-r1/feedback.json",
+            "platform_feedback_sha256": "5885ade2b9045c8fafbfd7feffaef4bc20061eb448112399124b09b5d90789ba",
+            "note": "Explicit diagnostic exploration, not four-seed promoted. Historical no-finalist decisions and all thresholds preserved. No new model/package or combined release authorized by feedback alone."
           },
-          "delta_vs_previous_best": 0.0146,
-          "delta_vs_V32_parent": 0.0168,
+          "delta_vs_previous_best": 0.0025,
+          "delta_vs_V32_parent": 0.0193,
+          "co_best_candidates": [
+            {
+              "candidate": "EMA_TIME_Q75",
+              "score": 96.392,
+              "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+            },
+            {
+              "candidate": "EMA_TIME_Q100",
+              "score": 96.392,
+              "zip_sha256": "a102cbf123981ca3103b5ba24f78b8b36203bee29810c6f0b68c6aad8ca139cb"
+            }
+          ],
+          "representative_tie_choice": "smaller_component_extrapolation, not a unique-score winner",
           "target": 96.5,
           "target_met": false,
-          "margin_to_target": -0.1105,
+          "margin_to_target": -0.108,
           "platform_milestone_gaps": {
-            "96.4": 0.0105,
-            "96.45": 0.0605,
-            "96.5": 0.1105
+            "96.4": 0.008,
+            "96.45": 0.058,
+            "96.5": 0.108
           },
-          "recipe": "V32 parent; iron field strings unchanged; time = parent_time + 0.5*(EMA_time - original_V7_time) = 0.20 V36_time + 0.30 N0048_time + 0.50 EMA_time",
-          "zip_sha256": "da3b0c79aac7275d2084f21d291e632eb376a8680491c458b6d927e56f4d3836",
-          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-local-platform-diagnostic-20260930/01_LOC_DIAG_EMA_TIME/Luqhhh_bf_tap_predict_round2.zip",
-          "reported_date": "2026-09-30",
-          "platform_feedback_record": "local/runs/local-platform-diagnostic-20260930/release-r1/platform-feedback-r1/feedback.json",
-          "platform_feedback_sha256": "5885ade2b9045c8fafbfd7feffaef4bc20061eb448112399124b09b5d90789ba",
-          "note": "Explicit diagnostic exploration, not four-seed promoted. Historical no-finalist decisions and all thresholds preserved. No new model/package or combined release authorized by feedback alone."
+          "recipe": "V32 iron field strings unchanged; time=V32_time+0.75*(EMA_time-V7_time)=0.20*V36+0.30*N0048-0.25*V7+0.75*EMA; affine component extrapolation",
+          "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
+          "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-time-followup-20261001/02_EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip",
+          "platform_feedback_record": "local/runs/ema-time-followup-20261001/probes-r2/platform-feedback-r1/feedback.json",
+          "platform_feedback_sha256": "d109f52fd5a67302b0070b4c943b295598f3b8ecd12adec430e84d870184ea1a",
+          "note": "Q75/Q100 tied at four reported decimals; Q75 is preferred representative. This is platform exploration, not four-seed promotion; original gates/no-finalist preserved. This registration generated no models, packages or desktop writes. DE3+Q75 conditional score96.3942 is not a measured platform score."
         },
-        "delta_vs_previous_best": 0.0025,
-        "delta_vs_V32_parent": 0.0193,
-        "co_best_candidates": [
-          {
-            "candidate": "EMA_TIME_Q75",
-            "score": 96.392,
-            "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
-          },
-          {
-            "candidate": "EMA_TIME_Q100",
-            "score": 96.392,
-            "zip_sha256": "a102cbf123981ca3103b5ba24f78b8b36203bee29810c6f0b68c6aad8ca139cb"
-          }
-        ],
-        "representative_tie_choice": "smaller_component_extrapolation, not a unique-score winner",
-        "target": 96.5,
+        "delta_vs_previous_best": 0.0034,
+        "target": 96.45,
         "target_met": false,
-        "margin_to_target": -0.108,
+        "margin_to_target": -0.0546,
         "platform_milestone_gaps": {
-          "96.4": 0.008,
-          "96.45": 0.058,
-          "96.5": 0.108
+          "96.4": 0.0046,
+          "96.45": 0.0546,
+          "96.5": 0.1046
         },
-        "recipe": "V32 iron field strings unchanged; time=V32_time+0.75*(EMA_time-V7_time)=0.20*V36+0.30*N0048-0.25*V7+0.75*EMA; affine component extrapolation",
-        "zip_sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825",
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-time-followup-20261001/02_EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip",
-        "platform_feedback_record": "local/runs/ema-time-followup-20261001/probes-r2/platform-feedback-r1/feedback.json",
-        "platform_feedback_sha256": "d109f52fd5a67302b0070b4c943b295598f3b8ecd12adec430e84d870184ea1a",
-        "note": "Q75/Q100 tied at four reported decimals; Q75 is preferred representative. This is platform exploration, not four-seed promotion; original gates/no-finalist preserved. This registration generated no models, packages or desktop writes. DE3+Q75 conditional score96.3942 is not a measured platform score."
+        "recipe": "iron = Q75 original CSV strings; time = Q75_time + 0.75*(mean(EMA_seed42,EMA_seed1042,EMA_seed2042)-EMA_seed42)",
+        "zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396",
+        "package": "local/runs/ema-mean3-exploration-release-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-20261003/Luqhhh_bf_tap_predict_round2.zip",
+        "platform_feedback_record": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/feedback.json",
+        "platform_feedback_sha256": "6733777f887e1b3a3e49e012ae2387fdfc0ac83f2e68a989c9c78a589dc35a47",
+        "formal_promoted": false,
+        "note": "User-reported gain of 0.0034. Original matched-BASE development gate failed; manual platform exploration is preserved, not retrospectively promoted. New stages use this incumbent; active frozen Q75 stages retain their original reference."
       },
-      "delta_vs_previous_best": 0.0034,
+      "delta_vs_previous_best": 0.0023,
       "target": 96.45,
       "target_met": false,
-      "margin_to_target": -0.0546,
+      "margin_to_target": -0.0523,
       "platform_milestone_gaps": {
-        "96.4": 0.0046,
-        "96.45": 0.0546,
-        "96.5": 0.1046
+        "96.4": 0.0023,
+        "96.45": 0.0523,
+        "96.5": 0.1023
       },
-      "recipe": "iron = Q75 original CSV strings; time = Q75_time + 0.75*(mean(EMA_seed42,EMA_seed1042,EMA_seed2042)-EMA_seed42)",
-      "zip_sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396",
-      "package": "local/runs/ema-mean3-exploration-release-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
-      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-EMA-MEAN3-20261003/Luqhhh_bf_tap_predict_round2.zip",
-      "platform_feedback_record": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/feedback.json",
-      "platform_feedback_sha256": "6733777f887e1b3a3e49e012ae2387fdfc0ac83f2e68a989c9c78a589dc35a47",
+      "recipe": "iron = DE3_IRON_USER_REQUESTED original CSV strings; time = EMA_MEAN3_FULL_Q75 original CSV strings",
+      "zip_sha256": "c51e050b69dc40cc808bfbcd6dc5442db131f83d3b05446ed0eba7c255675e78",
+      "package": "local/runs/de3-ema-mean3-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_TIME/Luqhhh_bf_tap_predict_round2.zip",
+      "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-TIME-20261004/Luqhhh_bf_tap_predict_round2.zip",
+      "platform_feedback_record": "local/runs/de3-ema-mean3-release-20261004/platform-feedback-r1/feedback.json",
+      "platform_feedback_sha256": "973ce3068a7d7c7f287420dd4df4bf0b3d22b442b20bbd55f62a7eacce95d0e1",
       "formal_promoted": false,
-      "note": "User-reported gain of 0.0034. Original matched-BASE development gate failed; manual platform exploration is preserved, not retrospectively promoted. New stages use this incumbent; active frozen Q75 stages retain their original reference."
+      "note": "User-reported gain +0.0023. Column combination remains not formally promoted. Difference +0.0001 from prior conditional arithmetic is compatible with rounding of source scores, not evidence of extra synergy. Future stages use this incumbent; frozen stages retain original reference and protocol."
     },
-    "delta_vs_previous_best": 0.0023,
+    "delta_vs_previous_best": 0.0002,
     "target": 96.45,
     "target_met": false,
-    "margin_to_target": -0.0523,
+    "margin_to_target": -0.0521,
     "platform_milestone_gaps": {
-      "96.4": 0.0023,
-      "96.45": 0.0523,
-      "96.5": 0.1023
+      "96.4": 0.0021,
+      "96.45": 0.0521,
+      "96.5": 0.1021
     },
-    "recipe": "iron = DE3_IRON_USER_REQUESTED original CSV strings; time = EMA_MEAN3_FULL_Q75 original CSV strings",
-    "zip_sha256": "c51e050b69dc40cc808bfbcd6dc5442db131f83d3b05446ed0eba7c255675e78",
-    "package": "local/runs/de3-ema-mean3-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_TIME/Luqhhh_bf_tap_predict_round2.zip",
-    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-TIME-20261004/Luqhhh_bf_tap_predict_round2.zip",
-    "platform_feedback_record": "local/runs/de3-ema-mean3-release-20261004/platform-feedback-r1/feedback.json",
-    "platform_feedback_sha256": "973ce3068a7d7c7f287420dd4df4bf0b3d22b442b20bbd55f62a7eacce95d0e1",
+    "recipe": "iron = DE3_IRON_USER_REQUESTED original CSV strings; time = EMA_MEAN3_Q100 original CSV strings, q=1.00 with training seeds42/1042/2042",
+    "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c",
+    "package": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+    "platform_feedback_record": "local/runs/de3-ema-mean3-q100-release-20261004/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "94152c2e6c71219231d7c60b46367a2852c3a38e050f3d2640cbc096029eb2ad",
     "formal_promoted": false,
-    "note": "User-reported gain +0.0023. Column combination remains not formally promoted. Difference +0.0001 from prior conditional arithmetic is compatible with rounding of source scores, not evidence of extra synergy. Future stages use this incumbent; frozen stages retain original reference and protocol."
+    "note": "Same DE3 iron strings in both measured packages; reported +0.0002 is attributable to fixed three-member time q=.75 to1.00 change. No additional DE3 gain, no independent generalization guarantee, no monotonicity or optimum claim and no further weight probe activated. Future new stages use this incumbent; frozen stages retain original reference and protocol."
   },
   "round2_v3_local_search": {
     "status": "FIRST_BATCH_COMPLETE_SEED2026_CONFIRMED_NO_PACKAGE",
@@ -27340,7 +27434,7 @@
     "agent_uploads": 0
   },
   "de3_ema_mean3_q100_release_20261004": {
-    "status": "one_user_requested_package_generated_audited_desktop_ready_platform_unmeasured",
+    "status": "user_reported_platform_new_current_best",
     "date": "2026-10-04",
     "candidate": "DE3_IRON_EMA_MEAN3_Q100",
     "user_selection": "DE3＋三成员 Q100（现成探针，推荐）",
@@ -27355,14 +27449,14 @@
     "csv_sha256": "28ca0771ff8456867ffbfe53506d4ebd26708947ca30e068998f83044529acd5",
     "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
     "G0": "passed_python312_11_frozen_sources_parent_cold_audit_identity_independent_322_row_package_and_desktop_readback_all_four_stages_exit0",
-    "G1": "user_requested_fixed_iron_strength_probe_unmeasured_not_formally_promoted",
+    "G1": "user_requested_strength_probe_small_positive_user_reported_platform_gain_not_formally_promoted",
     "original_probe_G1": "both_complete_development_splits_negative_not_shortlisted",
     "original_time_probe_gains": {
       "42": -0.003688912361565557,
       "3407": -0.008503866911533407
     },
     "formal_promoted": false,
-    "platform_score": null,
+    "platform_score": 96.3979,
     "de3_evidence_scope": "fixed original iron column, same platform test rows and additive per-target scoring; two reported increments +0.0022 and +0.0023 are compatible with source-score rounding, not independent generalization evidence",
     "increment_interpretation": "current best already contains DE3; no second DE3 gain may be added when comparing this package with 96.3977",
     "new_fits": 0,
@@ -27384,7 +27478,63 @@
       "desktop-audit.json": "d96c7f6fb2048c0da2d4456228927bbc4d3a9d0dda254def48bdb8d306489a2d"
     },
     "terminal_sha256": "bfd72f46217fbbea02000287a07f36ac4d63d5b4cd0653c8a402282940852dfa",
-    "current_best_unchanged": true,
-    "remaining_quota_not_inferred": true
+    "remaining_quota_not_inferred": true,
+    "status_at_release": "one_user_requested_package_generated_audited_desktop_ready_platform_unmeasured",
+    "G1_at_release": "user_requested_fixed_iron_strength_probe_unmeasured_not_formally_promoted",
+    "current_best_unchanged_at_release": true,
+    "platform_score_source": "user_reported_not_independently_verified",
+    "platform_feedback_key": "de3_ema_mean3_q100_platform_feedback_20261004",
+    "delta_vs_previous_best": 0.0002
+  },
+  "de3_ema_mean3_q100_platform_feedback_20261004": {
+    "status": "user_reported_new_current_best",
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "raw_user_message": "96.3979",
+    "raw_reported_score": "96.3979",
+    "reported_decimal_places": 4,
+    "score": 96.3979,
+    "source": "user_reported_not_independently_verified",
+    "platform_verified": false,
+    "reported_date": "2026-10-04",
+    "binding": "immediately_preceding_DE3_IRON_EMA_MEAN3_Q100_desktop_delivery",
+    "package": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-DE3-IRON-EMA-MEAN3-Q100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c",
+    "csv_sha256": "28ca0771ff8456867ffbfe53506d4ebd26708947ca30e068998f83044529acd5",
+    "comparison_candidate": "DE3_IRON_EMA_MEAN3_TIME",
+    "comparison_score": 96.3977,
+    "delta_vs_previous_best": 0.0002,
+    "platform_milestone_gaps": {
+      "96.4": 0.0021,
+      "96.45": 0.0521,
+      "96.5": 0.1021
+    },
+    "target": 96.45,
+    "target_met": false,
+    "G0": "passed_python312_frozen_sources_release_receipts_source_desktop_crc_322_official_order_finite_nonnegative_original_columns_and_incumbent_iron",
+    "G1": "user_requested_strength_probe_small_positive_user_reported_platform_gain_not_formally_promoted",
+    "formal_promoted": false,
+    "interpretation": "Same DE3 iron strings in both measured packages; reported +0.0002 is attributable to fixed three-member time q=.75 to1.00 change. No additional DE3 gain, no independent generalization guarantee, no monotonicity or optimum claim and no further weight probe activated.",
+    "audit": {
+      "python": "3.12.12",
+      "frozen_files": 11,
+      "source_desktop_byte_equal": true,
+      "rows": 322,
+      "unique_ids": 322,
+      "official_order": true,
+      "CRC": true,
+      "finite_nonnegative": true,
+      "iron_original_string_mismatches": 0,
+      "time_original_string_mismatches": 0,
+      "incumbent_iron_string_mismatches": 0
+    },
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "remaining_quota_not_inferred": true,
+    "created_ns": 1791045719840939577,
+    "feedback_record": "local/runs/de3-ema-mean3-q100-release-20261004/platform-feedback-r1/feedback.json",
+    "feedback_sha256": "94152c2e6c71219231d7c60b46367a2852c3a38e050f3d2640cbc096029eb2ad"
   }
 }
