@@ -890,7 +890,7 @@
       "submission_priority_note": "Both delivered probes have user-reported scores below Q75; no current prioritized package; optimization remains paused and DE3 stays deferred reserve; no quota inferred.",
       "recommended": "用户回传N→V36探针96.3896、SAM＋EMA人工探索96.3796，分别低于Q75为0.0024、0.0124；两包已移出待测队列，当前无优先待测包。Q75/Q100=96.3920仍为用户回传同分最佳。优化继续暂停，原本地结果与科学失败决定保持，DE3继续仅作替补。"
     },
-    "research_status": "EMA nested residual development remains active against its frozen Q75 reference; subsequent stages require latest EMA_MEAN3 reference and separate preregistration.",
+    "research_status": "Nested residual and current-mean3 followup audited and complete; Ridge small-positive confirmation deferred. Fixed EMA mean5 extension preregistered; no platform allocation.",
     "platform_slots_user_reported": 4,
     "platform_slots_source": "active_goal_user_statement_four_slots_not_independently_verified_no_consumption_inferred",
     "submission_allocation": "sequential_information_questions_no_four_package_filler",
@@ -2890,7 +2890,7 @@
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
     "monitor_interval_seconds": 600,
-    "runtime_observation": "original_nested_residual_and_followup_complete_actual_exit0_owned_processes_absent_no_idle_monitor",
+    "runtime_observation": "no_owned_scientific_job_running_original_residual_and_followup_closed",
     "remaining_platform_submissions": null,
     "agent_platform_uploads": 0,
     "formal_promotion_rule": "at_least_four_complete_split_seeds_all_positive_seed_level_paired_LCB95_positive_folds_descriptive",
@@ -3271,7 +3271,7 @@
     "latest_local_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
     "latest_local_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
     "last_local_diagnostic_results": "docs/ema_nested_residual/MEAN3_FOLLOWUP_RESULTS.md",
-    "latest_registered_scientific_route": "ema_nested_residual_mean3_followup_20261003",
+    "latest_registered_scientific_route": "ema_mean5_development_20261003",
     "latest_completed_scientific_route": "ema_nested_residual_mean3_followup_20261003",
     "latest_scientific_G0": "passed_1534_frozen_inputs_independent_scalar_review_three_actual_exit0",
     "latest_scientific_G1": "RIDGE_both_positive_vs_mean3_exploration_small_gain_confirmation_deferred_GBM_both_negative",
@@ -3288,7 +3288,7 @@
     "ready_formal_candidates": [
       "GAUSS1_A20"
     ],
-    "next_action": "review_information_value_of_next_EMA_mean3_mechanism_experiment_before_freezing_no_automatic_small_residual_confirmation",
+    "next_action": "freeze_and_start_fixed_EMA_mean5_extension_after_matching_engineering_checks",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "ema_nested_residual_mean3_followup_20261003",
@@ -3296,7 +3296,7 @@
       "snapshot": "local/runs/platform-candidates-desktop-20261003/platform-feedback-r1/overview-before-refresh.json",
       "sha256": "ed0cc74486dc743a6201dcfeef105596b4928a6807ca7ec30e55863c94ec585f"
     },
-    "pending_research": null
+    "pending_research": "ema_mean5_development_20261003"
   },
   "optimization_v0_11": {
     "G0": "PASS_DEVELOPMENT_AND_REPAIRED_INDEPENDENT_COLD",
@@ -26136,5 +26136,54 @@
     "actual_independent_audit_exit_code": 0,
     "independent_maximum_difference": 5.684341886080802e-14,
     "platform_slots_allocated": 0
+  },
+  "ema_mean5_development_20261003": {
+    "status": "preregistered_seven_locked_checks_passed_freeze_pending",
+    "reference": "EMA_MEAN3_FULL_Q75",
+    "reference_score_user_reported": 96.3954,
+    "thread_target": 96.45,
+    "protocol": "docs/ema_mean5/PREREGISTRATION.md",
+    "source": "src/bf_tap_r2/ema_mean5.py",
+    "source_sha256": "7a1939350515ebdb6536a241c5b07d2ed0b4ca961f73ef37d68504e2c0e44ea1",
+    "checks": "local/runs/ema-mean5-20261003/checks-r2/checks.json",
+    "checks_sha256": "e891cbc3a503d42aa471419cd8d7dd8203c744018f24a44ca951ad55e7f9ddf6",
+    "run_directory": "local/runs/ema-mean5-20261003/development-r1",
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "training_seeds": [
+      42,
+      1042,
+      2042,
+      3042,
+      4042
+    ],
+    "new_training_seeds": [
+      3042,
+      4042
+    ],
+    "candidate": "EMA_MEAN5",
+    "component_weight": 0.75,
+    "new_estimators_budget": 20,
+    "new_optimizer_budget": 40,
+    "new_states_budget": 40,
+    "reused_states": 60,
+    "cold_states_budget": 100,
+    "engineering_neural_fits": 0,
+    "G0": "seven_locked_nonfitting_checks_passed_original_full_shape_trainer_sources_unchanged_scientific_freeze_pending",
+    "G1": "unmeasured_full_two_split_development_required",
+    "formal_promoted": false,
+    "confirmation_gate": "both_complete_splits_positive_vs_current_mean3",
+    "historical_matched_BASE_gate_preserved_but_not_reapplied_to_this_new_question": true,
+    "new_confirmation_seeds": 0,
+    "full_data_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false
   }
 }
