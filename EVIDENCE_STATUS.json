@@ -26238,6 +26238,37 @@
       "new_predictions": 0,
       "confirmation_started": false,
       "original_failed_inventory": "local/runs/ema-nested-residual-20261003/confirmation-cache-review-r1"
+    },
+    "conditional_full_release_cache_intake": {
+      "status": "passed_label_free_replay_of_existing_measured_mean3_package",
+      "directory": "local/runs/ema-mean5-20261003/full-cache-intake-r1",
+      "manifest_sha256": "5818aef12a7c84347defd5ec4618726c3b73a55d1b8b69b1fc150b6edf642859",
+      "cold_audit_sha256": "2087ef162efb1decef42a330e35160b6713902d323897536bf469310a6d1c487",
+      "actual_exit_codes": [
+        0,
+        0
+      ],
+      "frozen_files": 434,
+      "checkpoint_identities": 6,
+      "fresh_refit_cold_predictors": 3,
+      "rows": 322,
+      "full_batch_cold_difference": 0.0,
+      "exact_original_package_arithmetic_difference": 0.0,
+      "iron_field_string_mismatches": 0,
+      "maximum_chunk_order_difference": 6.4522849640979985e-06,
+      "independent_fsum_difference": 2.842170943040401e-14,
+      "original_selected_epochs": {
+        "42": 91,
+        "1042": 87,
+        "2042": 86
+      },
+      "training_label_arrays_read": 0,
+      "new_fits": 0,
+      "new_packages": 0,
+      "conditional_additional_full_models": 2,
+      "conditional_additional_optimizer_constructors": 4,
+      "publication_started": false,
+      "desktop_writes": 0
     }
   }
 }
