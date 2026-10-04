@@ -30863,5 +30863,56 @@
     "quota_inferred": false,
     "historical_decisions_unchanged": true,
     "background_tasks_running": false
+  },
+  "slot_inventory_20261005": {
+    "status": "completed_zero_fit_inventory_screen_no_slot_candidate",
+    "date": "2026-10-05",
+    "objective": 96.45,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "protocol": "docs/slot_inventory/PREREGISTRATION.md",
+    "results": "docs/slot_inventory/RESULTS.md",
+    "spec": "configs/slot_inventory/SPEC.json",
+    "implementation": "scripts/slot_inventory.py",
+    "tests": "tests/test_slot_inventory.py",
+    "private_directory": "local/runs/slot-inventory-20261005/review-r1",
+    "rule_source": "configs/slot_screen/SPEC.json.slot_admission_rule",
+    "inventory_size": 8,
+    "geometry_rule_passed": [
+      "DE3_IRON_EMA_TIME_Q50",
+      "HARDTREE_GLOBAL_TIME_A20",
+      "DE3_TIME_L0625",
+      "V18_IRON_W75"
+    ],
+    "geometry_rule_failed": [
+      "K32_TIME_A45",
+      "EMA_TIME_Q25",
+      "V18_TIME_V75"
+    ],
+    "identity_gate_rejected": [
+      "DE3_IRON_EMA_TIME_Q75_RESERVE"
+    ],
+    "passed_and_carrying_local_gate": [],
+    "recommendation": "no_slot_candidate_in_inventory",
+    "reason": "Every rule-passing inventory package lacks a current four-complete-seed local gate: K32 carries one but fails the geometry rule, and the rule-passing entries carry either no registered local gain, an effectively zero gain, or a negative one.",
+    "compression_check": {
+      "kind": "exploratory_zero_fit_multiplicative_shrink_scan_on_recorded_oof",
+      "splits": [
+        42,
+        3407
+      ],
+      "optimum": "flat_at_s=1.000; best total-score gain <= 0.0008 and the two splits disagree in direction (time slightly expansive, iron slightly compressive)",
+      "conclusion": "No exploitable compression gain exists locally, so the platform's descriptive preference for non-expansive changes cannot be turned into a legitimate candidate."
+    },
+    "G0": "passed_zero_fit_zero_label_reads_eight_package_identity_checks_duplicate_comparison_against_25_scored_packages_locked_python312_tests",
+    "G1": "no_slot_candidate_available_current_inventory_exhausted",
+    "new_fits": 0,
+    "training_label_reads": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "historical_decisions_unchanged": true,
+    "background_tasks_running": false
   }
 }
