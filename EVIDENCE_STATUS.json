@@ -29726,7 +29726,7 @@
     "receipt_sha256": "a831b50e1d4c97e64cd663e7add65039c21f56db53297f033e1616bcdf44a31a"
   },
   "ema_silu_user_release_20261004": {
-    "status": "explicit_user_delivery_frozen_no_fit_checks_passed",
+    "status": "three_full_models_release_running",
     "candidate": "SILU_A100",
     "authorization": "用户明确要求：生成**SiLU A100**提交包，写桌面",
     "protocol": "docs/ema_silu_release/PREREGISTRATION.md",
@@ -29762,8 +29762,24 @@
     "run_directory": "/home/lux1/iron/local/runs/ema-silu-release-20261004/release-r1",
     "source_worktree": "/home/lux1/iron/local/worktrees/ema-silu-release",
     "desktop_directory": "/mnt/c/Users/lqh22/Desktop/submission-SILU-A100-20261004",
-    "monitoring_active": false,
+    "monitoring_active": true,
     "broader_optimization_paused": true,
-    "pause_after_delivery": true
+    "pause_after_delivery": true,
+    "actual_prepare_exit_code": 0,
+    "source_commit": "f3fdeeb",
+    "manifest_sha256": "d4907315802705149e94c937eb527192faa9f650385265fe6aa507bff89e7cdd",
+    "frozen_files": 4022,
+    "launch": {
+      "supervisor_pid": 80953,
+      "controller_pid": 80955,
+      "started_ns": 1791112527132290467,
+      "manifest_sha256": "d4907315802705149e94c937eb527192faa9f650385265fe6aa507bff89e7cdd",
+      "source_worktree": "/home/lux1/iron/local/worktrees/ema-silu-release",
+      "interpreter": "/home/lux1/iron/.venv/bin/python3",
+      "monitor_seconds": 600
+    },
+    "supervisor_tool_session": 7494,
+    "next_observation_not_before_ns": 1791113127132290467,
+    "execution": "docs/ema_silu_release/EXECUTION.md"
   }
 }
