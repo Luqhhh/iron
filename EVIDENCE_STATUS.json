@@ -29004,6 +29004,18 @@
       "observer_sha256": "596c9acf172e5c9713a04ef8d718a27bf4ab7e30765d1437a97af90da1989364",
       "receipt": "local/runs/ema-packed-20261004/development-r1/execution/observation-002-independent.json",
       "receipt_sha256": "ff490bdab048f4f4800b05661c9746a378eda133271976b16151454a8b99ecf6"
+    },
+    "terminal_reconciler": {
+      "status": "prepared_and_rehearsed_on_closed_mini_only_packed_actual_exits_pending",
+      "source": "local/runs/ema-packed-20261004/terminal-reconciliation-tool-r1/reconcile.py",
+      "source_sha256": "320a5479c64664060620ed81a0e0c5bb873838967f2ca400395148d0265b5973",
+      "rehearsal_comparison": "local/runs/ema-packed-20261004/terminal-reconciliation-tool-r1/rehearsal-comparison.json",
+      "rehearsal_comparison_sha256": "ac09798060da79443a14fb87ce2cd839b81948e1be03f06bbb30297fb8e6e45a",
+      "matching_previous_final_receipt_fields": 34,
+      "actual_rehearsal_exit_code": 0,
+      "new_fits": 0,
+      "active_packed_reads": 0,
+      "criterion_changes": 0
     }
   },
   "ensemble_resampling_review_20261004": {
