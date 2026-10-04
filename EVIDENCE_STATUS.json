@@ -29265,5 +29265,33 @@
       "receipt": "local/runs/ema-silu-20261004/development-r1/execution/observation-001-independent.json",
       "receipt_sha256": "7f47232c1c6cd3c552e0b357901ed9a7ba0783fc450f99d056ad98c624969a5d"
     }
+  },
+  "ensemble_objective_review_20261004": {
+    "status": "research_review_completed_not_scientifically_admitted",
+    "goal": 96.45,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score": 96.3979,
+    "score_source": "user_reported_not_independently_verified",
+    "review": "docs/ensemble_objective/REVIEW.md",
+    "evidence_directory": "local/runs/ensemble-objective-review-20261004/review-r1",
+    "manifest_sha256": "36c00bb54efa0543c5e6d8e920bb5379893677f52ba1ffcd025428d39762534e",
+    "review_receipt": "local/runs/ensemble-objective-review-20261004/review-r1/review.json",
+    "review_receipt_sha256": "73993a685f36426e5f0af1b3bd4f30d80a4c730b0c7e6da3a384e0f7f89cdeb6",
+    "G0": "exact_synthetic_output_space_algebra_and_source_hashes_passed_only",
+    "G1": "unmeasured",
+    "synthetic_cases": 12,
+    "exact_gradient_checks": 84,
+    "new_model_constructions": 0,
+    "new_fits": 0,
+    "new_optimizers": 0,
+    "official_data_reads": 0,
+    "live_silu_reads": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "assistant_uploads": 0,
+    "decision": "Do not admit pure ensemble-mean loss solely from inference alignment; preserve intermediate-loss interpolation as unmeasured research, not a scientific candidate or a family-wide failure.",
+    "next_action": "Keep the frozen SiLU stage unchanged; choose any next scientific phase only after complete evidence and a new exact freeze."
   }
 }
