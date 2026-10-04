@@ -28666,8 +28666,8 @@
     "process_launch": "local/runs/ema-mini-20261004/development-r1/process-launch.json",
     "process_launch_sha256": "d528d9e586c42f78ce62fde38a50e3cb8ce5073853089a9dfdd1ca1df63e46e7",
     "controller_start_ns": 1791094500272896703,
-    "next_observation_not_before_ns": 1791096404372060914,
-    "new_scientific_fits_note": "Second scheduled observation: 7 new estimators completed and cold-audited; next worker live; final native started/optimizer inventory pending; frozen upper bound30",
+    "next_observation_not_before_ns": 1791097036052866055,
+    "new_scientific_fits_note": "Third scheduled observation: 12 new estimators completed and cold-audited; next worker live; final native started/optimizer inventory pending; frozen upper bound30",
     "scientific_execution_started": true,
     "monitoring_active": true,
     "conditional_confirmation_cache": {
@@ -28709,28 +28709,50 @@
         "independent-audit.json": "f6d790e4207b22638ff6304a8ba0cbcad715722b8b852bb3a9cdfa792dfbd7d9",
         "matched-recipe-audit.json": "76d09a64c6bf2ed460bbd07228439471847d03e1c2b9bf8ae1efdc92bfe1b998",
         "terminal-reconciliation.json": "e1ec40fc78f7c10ec4ab95ab9817f0cd7ef7e62722b043d0da43723fbf5bfbd5"
+      },
+      "registered_worktree_search": {
+        "status": "metadata_inventory_and_independent_identity_check_passed",
+        "directory": "local/runs/ema-mini-20261004/registered-cache-search-r1",
+        "registered_worktrees": 58,
+        "physical_run_roots": 5,
+        "metadata_files_rehashed": 4540,
+        "matching_metadata_files": 80,
+        "possible_EMA_matches": 0,
+        "scope": "four declared JSON metadata filenames under registered physical local/runs roots; no nested symlink traversal; not global absence",
+        "current_mini_tree_excluded": true,
+        "conditional_budget_unchanged": true,
+        "new_fits": 0,
+        "new_predictions": 0,
+        "new_confirmation_labels": 0,
+        "active_development_output_reads": 0,
+        "receipt_sha256": "88b65311e6268555fdcc4c833846002ab875538230b0e6288f884d106ada83b2",
+        "report_sha256": "246ff0572821408fd435c9074c6c1eda6bc06ec0d97393eb37ee2192cd39f8ae"
       }
     },
     "last_scheduled_observation": {
-      "number": 2,
-      "time_ns": 1791095804372060914,
-      "completed_new_estimators": 7,
-      "completed_new_cold_units": 7,
-      "completed_old_reuse_units": 3,
-      "closed_child_count": 17,
+      "number": 3,
+      "time_ns": 1791096436052866055,
+      "completed_new_estimators": 12,
+      "completed_new_cold_units": 12,
+      "completed_old_reuse_units": 5,
+      "closed_child_count": 29,
       "all_closed_children_exit0": true,
       "maximum_closed_child_rss_mib": 734.49609375,
       "partial_quality_read": false,
-      "monitoring_deviation": {
+      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-003-independent.json",
+      "sha256": "5024fc6e2df15102468f4f364673500b3a157994450bc6f6e1da9c7fb740f496",
+      "controller_and_watcher_verified_live": true
+    },
+    "monitoring_deviations": [
+      {
+        "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-002-independent.json",
+        "sha256": "68990d06aaa44cf4daa37e439e43b4c259c48babc1cbc23fdaeb0876d4ecdf1f",
         "at_utc": "2026-10-04T06:35:45Z",
         "action": "one premature rg --files listing of execution directory while locating receipt files",
         "scope": "filenames only; no metrics/predictions read; no training or selection change",
         "early_by_seconds_approximately": 18,
         "retained_for_audit": true
-      },
-      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-002-independent.json",
-      "sha256": "68990d06aaa44cf4daa37e439e43b4c259c48babc1cbc23fdaeb0876d4ecdf1f",
-      "controller_and_watcher_verified_live": true
-    }
+      }
+    ]
   }
 }

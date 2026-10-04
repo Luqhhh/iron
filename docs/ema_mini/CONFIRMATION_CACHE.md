@@ -21,3 +21,9 @@
 本批仅改时长，当前DE3铁量在同样本的配对分数增量中相消。因此确认时可只报告`50*(WMAPE旧时长−WMAPE新时长)`；不需要为了该增量额外重训DE3铁量，也不据此报告未重建的完整包绝对分数。
 
 私有证据位于local/runs/ema-mini-20261004/conditional-confirmation-cache-r1，SPEC先于哈希清点冻结。collect、独立元数据/预算核对及匹配配方补充核对均实际exit0；report、independent-audit、matched-recipe-audit与terminal-reconciliation闭合。独立核对重验2,990项文件身份。新增拟合、预测调用、数组加载、确认seed、包、桌面写入、助手上传均0。
+
+## 已登记 worktree 的补充检索
+
+另行冻结 `local/runs/ema-mini-20261004/registered-cache-search-r1/SPEC.json` 后，检索扩展到58个已登记worktree对应的5个实际local/runs目录；只读取start.json、metadata.json、warm-meta.json、warm-metadata.json，提前排除整个当前mini目录。共清点4,540份历史元数据，第二个锁定Python3.12进程逐一重验文件哈希。按路径及嵌套身份字段同时匹配确认split271828/314159、训练seed1042/2042，命中80份元数据；可见配方标签只有LAPLACE_INIT1042/2042以及嵌套的GAUSS1，没有EMA匹配。这些文件不能计为新的EMA控制缓存。
+
+本次范围仍受四类元数据文件名、已登记目录、未遍历嵌套目录符号链接等限制，不是全机不存在的证明，也不据此激活确认或修改50估计器/100optimizer的条件预算。没有读取当前mini产物、预测数组、模型或新确认标签。两个核验程序实际exit0；report SHA256为`246ff0572821408fd435c9074c6c1eda6bc06ec0d97393eb37ee2192cd39f8ae`。
