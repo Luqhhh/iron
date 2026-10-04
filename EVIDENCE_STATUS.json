@@ -29153,7 +29153,7 @@
     "planned_engineering_optimizers": 2,
     "G0": "engineering_passed_frozen_scientific_and_terminal_audits_pending",
     "G1": "pending_complete_two_split_OOF",
-    "new_scientific_fits": 11,
+    "new_scientific_fits": 14,
     "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -29214,7 +29214,7 @@
     "process_launch": "local/runs/ema-silu-20261004/development-r1/execution/process-launch.json",
     "process_launch_sha256": "1c4640a8b25643fd19b058a7b364000f9dc32ec07e53040d5346faa413c3cffe",
     "controller_start_ns": 1791104913570252535,
-    "next_observation_not_before_ns": 1791108003342333700,
+    "next_observation_not_before_ns": 1791108620023044738,
     "new_scientific_fits_note": "Completed estimator workers at last scheduled observation; in-flight work is not counted as completed.",
     "terminal_reconciler": {
       "status": "validated_generic_reconciler_bound_current_actual_exits_pending",
@@ -29227,15 +29227,15 @@
       "criterion_changes": 0
     },
     "last_scheduled_observation": {
-      "number": 4,
-      "time_ns": 1791107403342333700,
+      "number": 5,
+      "time_ns": 1791108020023044738,
       "controller_pid": 72941,
       "controller_live": true,
       "watcher_pid": 72963,
       "watcher_live": true,
       "active_children": [
         {
-          "pid": 76383,
+          "pid": 77205,
           "cmdline": [
             "/home/lux1/iron/.venv/bin/python3",
             "-m",
@@ -29244,26 +29244,26 @@
             "--seed",
             "42",
             "--fold",
-            "3",
+            "4",
             "--init",
             "2042"
           ],
-          "rss_mib": 633.75
+          "rss_mib": 626.89453125
         }
       ],
-      "closed_child_count": 26,
-      "completed_new_estimators": 11,
-      "completed_new_cold_units": 11,
-      "completed_old_reuse_units": 4,
+      "closed_child_count": 33,
+      "completed_new_estimators": 14,
+      "completed_new_cold_units": 14,
+      "completed_old_reuse_units": 5,
       "all_closed_children_exit0": true,
-      "maximum_closed_child_rss_mib": 810.00390625,
+      "maximum_closed_child_rss_mib": 838.2109375,
       "terminal_status": null,
       "partial_quality_read": false,
       "manifest_sha256": "f057a6d55a058430378831c9f7401c4cef894a056c2a287ff26f928441594f49",
-      "next_observation_not_before_ns": 1791108003342333700,
+      "next_observation_not_before_ns": 1791108620023044738,
       "observer_sha256": "b23705ab09ddaa05038095d37a74df1b9ddb6379f7d268b82d1a9febea82b8b9",
-      "receipt": "local/runs/ema-silu-20261004/development-r1/execution/observation-004-independent.json",
-      "receipt_sha256": "b3a1aac301078dea117db671a6ad0275cf40e97b121abb386d17f0ac873c4754"
+      "receipt": "local/runs/ema-silu-20261004/development-r1/execution/observation-005-independent.json",
+      "receipt_sha256": "53307df256b1a113163f020a56201290883e95b05a27f0c186fbca9de6e6d6b1"
     }
   },
   "ensemble_objective_review_20261004": {
@@ -29331,7 +29331,7 @@
     "next_action": "Retain as historical cache material; any current-reference scoring needs a separate exact freeze and identity alignment; authoritative cold replay needs located original states or separately budgeted fresh fits. No automatic new stage."
   },
   "realmlp_current_review_20261004": {
-    "status": "fixed_cache_review_preregistered_before_quality",
+    "status": "completed_two_split_time_positive_iron_negative_further_review_only",
     "goal": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score": 96.3979,
@@ -29345,8 +29345,8 @@
       "REALMLP_TDS_IRON_A10",
       "REALMLP_TD_TIME_A20"
     ],
-    "G0": "pending_frozen_current_reference_alignment_and_scalar_audit_no_new_model_cold_replay",
-    "G1": "unmeasured_vs_current_reference",
+    "G0": "cache_identity_partitions_complete_OOF_scalar_audit_and_three_actual_exit0_passed_no_new_scientific_cold_replay",
+    "G1": "time_A20_both_positive_and_development_tier_formal_iron_A10_both_negative_not_formal_promotion",
     "new_fits": 0,
     "new_optimizer_constructors": 0,
     "new_model_predict_calls": 0,
@@ -29354,6 +29354,142 @@
     "full_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
-    "assistant_uploads": 0
+    "assistant_uploads": 0,
+    "gains": {
+      "REALMLP_TDS_IRON_A10": {
+        "42": -0.002235019655248575,
+        "3407": -0.004025072208470335
+      },
+      "REALMLP_TD_TIME_A20": {
+        "42": 0.003969419260589402,
+        "3407": 0.0079030645002487
+      }
+    },
+    "mean_gains": {
+      "REALMLP_TDS_IRON_A10": -0.0031300459318594548,
+      "REALMLP_TD_TIME_A20": 0.00593624188041905
+    },
+    "candidate_tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_iron": {
+          "REALMLP_TDS_IRON_A10": {
+            "eligible": false,
+            "pooled_improvements": {
+              "3407": false,
+              "42": false
+            },
+            "improved_folds": 2,
+            "worst_spout_delta": 0.00014706447878003875,
+            "mean_wmape": 0.037171114100729014,
+            "target": "tap_iron",
+            "candidate": "REALMLP_TDS_IRON_A10",
+            "reference": "DE3_IRON_EMA_MEAN3_Q100",
+            "tier": "not_shortlisted",
+            "failed_conditions": [
+              "both_splits_improve",
+              "minimum_improved_folds"
+            ],
+            "gains_by_split": {
+              "42": -4.470039310496693e-05,
+              "3407": -8.050144416939936e-05
+            },
+            "mean_gain": -6.260091863718314e-05,
+            "minimum_gain": -8.050144416939936e-05
+          }
+        },
+        "tap_time_len": {
+          "REALMLP_TD_TIME_A20": {
+            "eligible": true,
+            "pooled_improvements": {
+              "3407": true,
+              "42": true
+            },
+            "improved_folds": 7,
+            "worst_spout_delta": -6.230320714610549e-06,
+            "mean_wmape": 0.038119232309520384,
+            "target": "tap_time_len",
+            "candidate": "REALMLP_TD_TIME_A20",
+            "reference": "DE3_IRON_EMA_MEAN3_Q100",
+            "tier": "formal",
+            "failed_conditions": [],
+            "gains_by_split": {
+              "42": 7.938838521178576e-05,
+              "3407": 0.00015806129000497243
+            },
+            "mean_gain": 0.0001187248376083791,
+            "minimum_gain": 7.938838521178576e-05
+          }
+        }
+      },
+      "formal_selected": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": -6.230320714610549e-06,
+          "mean_wmape": 0.038119232309520384,
+          "target": "tap_time_len",
+          "candidate": "REALMLP_TD_TIME_A20",
+          "reference": "DE3_IRON_EMA_MEAN3_Q100",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 7.938838521178576e-05,
+            "3407": 0.00015806129000497243
+          },
+          "mean_gain": 0.0001187248376083791,
+          "minimum_gain": 7.938838521178576e-05
+        }
+      ],
+      "exploration_selected": [],
+      "submission_priority": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": -6.230320714610549e-06,
+          "mean_wmape": 0.038119232309520384,
+          "target": "tap_time_len",
+          "candidate": "REALMLP_TD_TIME_A20",
+          "reference": "DE3_IRON_EMA_MEAN3_Q100",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 7.938838521178576e-05,
+            "3407": 0.00015806129000497243
+          },
+          "mean_gain": 0.0001187248376083791,
+          "minimum_gain": 7.938838521178576e-05
+        }
+      ],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "selected_for_further_review": "REALMLP_TD_TIME_A20",
+    "formal_promoted": false,
+    "confirmation_activated": false,
+    "release_activated": false,
+    "manifest_sha256": "8a4283433c7eff85f59f5c1c57c73e4a918ee1c6bf54f7570105e1b51b8a85ba",
+    "report_sha256": "12aaa62117e9c64f6451fd91cdaf1f2432f02c6dd9a45b5fe356d9b987d5520b",
+    "independent_audit_sha256": "8f777e6e1ba90378eaa95e691dfd0fdb1c0c97b5df8820db7a7b055759ae5920",
+    "terminal_receipt": "local/runs/realmlp-current-review-20261004/review-r1/terminal-reconciliation.json",
+    "terminal_receipt_sha256": "d739bb62310f30112da6a4dd1defff2a3e9c69864f03127d62260a4a602022ba",
+    "frozen_files": 3643,
+    "actual_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "maximum_scalar_difference": 8.224323999606042e-15,
+    "maximum_analysis_rss_mib": 195.921875,
+    "results": "docs/realmlp_current_review/RESULTS.md",
+    "next_action": "Retain only the fixed time A20 candidate for subsequent saved-state engineering and scientific scope review; assess alongside complete SiLU evidence before another fitting stage. No platform slot or automatic confirmation activated."
   }
 }
