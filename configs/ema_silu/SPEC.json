@@ -1,0 +1,101 @@
+{
+  "version": "ema-silu-20261004",
+  "reference": {
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
+    "source": "user_reported_not_independently_verified",
+    "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+  },
+  "target": 96.45,
+  "training": {
+    "random_seed": 42,
+    "inner_seed": 42,
+    "width": 256,
+    "blocks": 2,
+    "tabm_k": 16,
+    "dropout": 0.1,
+    "embedding_dim": 16,
+    "n_frequencies": 16,
+    "lite": true,
+    "loss": "mse",
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "max_epochs": 240,
+    "patience": 25,
+    "min_delta": 1e-05,
+    "early_stop_metric": "standardized_mae_of_ensemble_prediction",
+    "preprocessing": "inner_training_only_then_refit_outer_training",
+    "refit": "fresh_initialization_full_outer_training_at_selected_epoch"
+  },
+  "mechanisms": {
+    "ema_beta": 0.99,
+    "sam_rho": 0.05,
+    "sam_epsilon": 1e-12,
+    "sam_same_dropout": true,
+    "gradient_clip": null
+  },
+  "change": "native_tabm_shared_backbone_hidden_activation_relu_to_silu_only",
+  "training_seeds": [
+    42,
+    1042,
+    2042
+  ],
+  "split_seeds": [
+    42,
+    3407
+  ],
+  "folds": 5,
+  "candidate_order": [
+    "SILU_A100",
+    "SILU_A20"
+  ],
+  "weights": {
+    "SILU_A100": 1.0,
+    "SILU_A20": 0.2
+  },
+  "scientific_budget": {
+    "estimators": 30,
+    "optimizers": 60,
+    "new_states": 60,
+    "reused_states": 60,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0
+  },
+  "engineering_budget": {
+    "synthetic_estimators": 1,
+    "optimizers": 2,
+    "selector_refit_epochs_maximum_each": 2,
+    "full_training_shape_rows": 2204,
+    "synthetic_seed": 964508
+  },
+  "workers": 1,
+  "numerical_threads": 1,
+  "torch_interop_threads": 1,
+  "max_rss_mib": 1536,
+  "monitor_seconds": 600,
+  "time_budget_seconds": null,
+  "automatic_retries": false,
+  "cold_full_batch_atol": 0,
+  "cold_order_chunk_atol": 0.0005,
+  "formal_promotion": "at_least_four_complete_split_seeds_all_positive_seed_LCB95_positive",
+  "development_confirmation_admission": "at_least_two_complete_positive_splits; choose greatest mean gain with listed tie order",
+  "platform_selection": "full_local_evidence_plus_platform_feedback_mechanism_information_value_and_G0; local_sign_not_sole_criterion",
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "author_source": "https://arxiv.org/abs/1702.03118",
+  "architecture": "tabm",
+  "runtime_versions": {
+    "torch": "2.14.0+cpu",
+    "tabm": "0.0.3",
+    "rtdl-num-embeddings": "0.0.12",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.18.1",
+    "lightgbm": "4.6.0"
+  },
+  "hidden_activation": "SiLU",
+  "supporting_source": "https://arxiv.org/abs/1710.05941"
+}

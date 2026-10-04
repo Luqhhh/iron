@@ -13936,7 +13936,16 @@
         "a genuinely different model class with new inputs or a new paradigm"
       ]
     },
-    "goal_above_96_4_achieved": false
+    "goal_above_96_4_achieved": false,
+    "interpretation_note_20261004": {
+      "document": "docs/round2_v26/METRIC_INTERPRETATION_NOTE.md",
+      "status": "WMAPE_versus_MAPE_motivation_corrected_original_protocol_scores_and_decision_preserved",
+      "receipt": "local/runs/metric-interpretation-review-20261004/review-r1/receipt.json",
+      "receipt_sha256": "cdf107f0dc51485e1d8d2c183804f12788464d10160a0d7a0803550ac9d0ae21",
+      "actual_exit_code": 0,
+      "scoring_changes": 0,
+      "new_fits": 0
+    }
   },
   "round2_round_numbering_2026_09_28": {
     "date": "2026-09-28",
@@ -29112,5 +29121,51 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "actual_review_exit_code": 0
+  },
+  "ema_silu_development_20261004": {
+    "status": "preregistered_engineering_pending_no_new_fits",
+    "objective": 96.45,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "platform_verified": false,
+    "protocol": "docs/ema_silu/PREREGISTRATION.md",
+    "spec": "configs/ema_silu/SPEC.json",
+    "planned_source_worktree": "local/worktrees/ema-silu-development",
+    "planned_run_directory": "local/runs/ema-silu-20261004/development-r1",
+    "change": "native_tabm_shared_backbone_hidden_activation_relu_to_silu_only",
+    "candidate_order": [
+      "SILU_A100",
+      "SILU_A20"
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "planned_new_estimators": 30,
+    "planned_new_optimizers": 60,
+    "planned_cold_states": 120,
+    "planned_engineering_estimators": 1,
+    "planned_engineering_optimizers": 2,
+    "G0": "not_yet_qualified",
+    "G1": "unmeasured",
+    "new_scientific_fits": 0,
+    "new_engineering_fits": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false,
+    "scientific_execution_started": false,
+    "monitoring_active": false,
+    "previous_packed_terminal_sha256": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1"
   }
 }
