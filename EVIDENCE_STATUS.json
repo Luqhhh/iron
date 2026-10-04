@@ -28511,5 +28511,34 @@
     "created_ns": 1791087893449575311,
     "feedback_record": "local/runs/de3-ema-mean3-q875-reserve-20261004/platform-feedback-r1/feedback.json",
     "feedback_sha256": "0ff3e763e1b28b5fdd21ba68e12646468600e7acf5940b7d1a9d3a916a151764"
+  },
+  "current_best_artifact_recheck_20261004": {
+    "status": "private_original_verified_registered_desktop_path_missing",
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score_user_reported": 96.3979,
+    "platform_verified": false,
+    "receipt": "local/runs/thread-target-audit-20261004/audit-txn4jq9d/audit.json",
+    "receipt_sha256": "2aaf161f0d4bccc0cf36e25c0b6ab7045f4272ceaa4a4b3f7f51f51ee3bec1f9",
+    "python": "3.12.12",
+    "actual_audit_exit_code": 0,
+    "G0": "private_original_sha_csv_crc_322_unique_official_order_finite_nonnegative_original_column_strings_11_frozen_inputs_and_five_release_receipts_passed",
+    "G1": "existing_user_reported_platform_score_only_no_new_platform_evidence_or_formal_promotion",
+    "registered_desktop_path_exists_now": false,
+    "historical_desktop_delivery_evidence_preserved": true,
+    "private_original_available": true,
+    "target_clarification": {
+      "thread_literal": 94.5,
+      "repository_current_stage": 96.45,
+      "status": "asked_pending_no_silent_target_change",
+      "margin_above_literal_from_user_report": 1.8979,
+      "gap_to_repository_target_from_user_report": 0.0521
+    },
+    "prior_readback_failures_preserved_in_receipt": 2,
+    "new_fits": 0,
+    "new_predictions": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "queue_and_quota_unchanged": true
   }
 }
