@@ -29153,7 +29153,7 @@
     "planned_engineering_optimizers": 2,
     "G0": "engineering_passed_frozen_scientific_and_terminal_audits_pending",
     "G1": "pending_complete_two_split_OOF",
-    "new_scientific_fits": 3,
+    "new_scientific_fits": 5,
     "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -29214,7 +29214,7 @@
     "process_launch": "local/runs/ema-silu-20261004/development-r1/execution/process-launch.json",
     "process_launch_sha256": "1c4640a8b25643fd19b058a7b364000f9dc32ec07e53040d5346faa413c3cffe",
     "controller_start_ns": 1791104913570252535,
-    "next_observation_not_before_ns": 1791106153345560332,
+    "next_observation_not_before_ns": 1791106781097070068,
     "new_scientific_fits_note": "Completed estimator workers at last scheduled observation; in-flight work is not counted as completed.",
     "terminal_reconciler": {
       "status": "validated_generic_reconciler_bound_current_actual_exits_pending",
@@ -29227,15 +29227,15 @@
       "criterion_changes": 0
     },
     "last_scheduled_observation": {
-      "number": 1,
-      "time_ns": 1791105553345560332,
+      "number": 2,
+      "time_ns": 1791106181097070068,
       "controller_pid": 72941,
       "controller_live": true,
       "watcher_pid": 72963,
       "watcher_live": true,
       "active_children": [
         {
-          "pid": 73430,
+          "pid": 74482,
           "cmdline": [
             "/home/lux1/iron/.venv/bin/python3",
             "-m",
@@ -29246,24 +29246,24 @@
             "--fold",
             "1",
             "--init",
-            "42"
+            "2042"
           ],
-          "rss_mib": 605.265625
+          "rss_mib": 628.17578125
         }
       ],
-      "closed_child_count": 8,
-      "completed_new_estimators": 3,
-      "completed_new_cold_units": 3,
+      "closed_child_count": 12,
+      "completed_new_estimators": 5,
+      "completed_new_cold_units": 5,
       "completed_old_reuse_units": 2,
       "all_closed_children_exit0": true,
       "maximum_closed_child_rss_mib": 810.00390625,
       "terminal_status": null,
       "partial_quality_read": false,
       "manifest_sha256": "f057a6d55a058430378831c9f7401c4cef894a056c2a287ff26f928441594f49",
-      "next_observation_not_before_ns": 1791106153345560332,
+      "next_observation_not_before_ns": 1791106781097070068,
       "observer_sha256": "b23705ab09ddaa05038095d37a74df1b9ddb6379f7d268b82d1a9febea82b8b9",
-      "receipt": "local/runs/ema-silu-20261004/development-r1/execution/observation-001-independent.json",
-      "receipt_sha256": "7f47232c1c6cd3c552e0b357901ed9a7ba0783fc450f99d056ad98c624969a5d"
+      "receipt": "local/runs/ema-silu-20261004/development-r1/execution/observation-002-independent.json",
+      "receipt_sha256": "6dbf6e9eb08a5be9f512d51d28721c05de6e0922fa7a7d03af40644bb03f3eb9"
     }
   },
   "ensemble_objective_review_20261004": {
