@@ -28631,6 +28631,47 @@
     "next_observation_not_before_ns": 1791095100272896703,
     "new_scientific_fits_note": "Execution activated; actual native count awaits scheduled observation and terminal reconciliation; frozen upper bound30",
     "scientific_execution_started": true,
-    "monitoring_active": true
+    "monitoring_active": true,
+    "conditional_confirmation_cache": {
+      "status": "passed_historical_metadata_hash_and_conditional_budget_inventory_only",
+      "directory": "local/runs/ema-mini-20261004/conditional-confirmation-cache-r1",
+      "document": "docs/ema_mini/CONFIRMATION_CACHE.md",
+      "original_EMA42_native_states_rehashed": 20,
+      "inherited_artifact_files_rehashed": 1680,
+      "inherited_model_sources_rehashed": 1234,
+      "independent_files_rehashed": 2990,
+      "control_core_files_byte_equal": 5,
+      "named_cache_matches": 180,
+      "other_recipe_units": 20,
+      "other_recipe": "LAPLACE_INIT1042_or2042_not_EMA",
+      "search_scope": "main_local_runs_seed_bearing_paths_only_not_global_absence",
+      "conditional_mini_estimators": 30,
+      "conditional_EMA_control_estimators": 20,
+      "conditional_total_estimators": 50,
+      "conditional_optimizer_constructors": 100,
+      "qualification": "two_complete_positive_development_splits_then_selection_and_separate_freeze_and_fresh_original_EMA42_cold_bridge",
+      "fresh_cold_replay_performed": false,
+      "unchanged_iron_cancels_in_time_increment": true,
+      "absolute_full_package_score_not_computed": true,
+      "confirmation_started": false,
+      "new_fits": 0,
+      "new_predictions": 0,
+      "array_loads": 0,
+      "new_confirmation_seeds": 0,
+      "packages": 0,
+      "active_development_output_reads": 0,
+      "actual_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "receipt_hashes": {
+        "SPEC.json": "7be2534cf1a183af7f4f71d6f47ce4ce4db60e7613c216b1f18683746b1d4d13",
+        "report.json": "d6732c4be1a98ecfcbb62791837b089a48eada6a383209f4331d274302162988",
+        "independent-audit.json": "f6d790e4207b22638ff6304a8ba0cbcad715722b8b852bb3a9cdfa792dfbd7d9",
+        "matched-recipe-audit.json": "76d09a64c6bf2ed460bbd07228439471847d03e1c2b9bf8ae1efdc92bfe1b998",
+        "terminal-reconciliation.json": "e1ec40fc78f7c10ec4ab95ab9817f0cd7ef7e62722b043d0da43723fbf5bfbd5"
+      }
+    }
   }
 }
