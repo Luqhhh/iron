@@ -29123,7 +29123,7 @@
     "actual_review_exit_code": 0
   },
   "ema_silu_development_20261004": {
-    "status": "engineering_passed_scientific_freeze_pending",
+    "status": "two_split_development_running",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
@@ -29151,9 +29151,9 @@
     "planned_cold_states": 120,
     "planned_engineering_estimators": 1,
     "planned_engineering_optimizers": 2,
-    "G0": "structural_and_synthetic_engineering_passed_scientific_reproduction_pending",
-    "G1": "unmeasured",
-    "new_scientific_fits": 0,
+    "G0": "engineering_passed_frozen_scientific_and_terminal_audits_pending",
+    "G1": "pending_complete_two_split_OOF",
+    "new_scientific_fits": null,
     "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -29164,8 +29164,8 @@
     "monitor_seconds": 600,
     "time_budget_seconds": null,
     "automatic_retries": false,
-    "scientific_execution_started": false,
-    "monitoring_active": false,
+    "scientific_execution_started": true,
+    "monitoring_active": true,
     "previous_packed_terminal_sha256": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1",
     "execution": "docs/ema_silu/EXECUTION.md",
     "engineering_checks": "local/runs/ema-silu-20261004/engineering-r4/checks.json",
@@ -29199,6 +29199,22 @@
         "parameter_count": 183200
       }
     ],
-    "previous_packed_terminal_verified": true
+    "previous_packed_terminal_verified": true,
+    "source_worktree": "local/worktrees/ema-silu-development",
+    "source_commit": "f63757df0aabb74a9dde477d2bc626385e149c03",
+    "run_directory": "local/runs/ema-silu-20261004/development-r1",
+    "manifest_sha256": "f057a6d55a058430378831c9f7401c4cef894a056c2a287ff26f928441594f49",
+    "frozen_files": 3581,
+    "actual_prepare_exit_code": 0,
+    "controller_pid": 72941,
+    "supervisor_tool_session": 52853,
+    "watcher_pid": 72963,
+    "followup_tool_session": 15365,
+    "terminal_followup_directory": "local/runs/ema-silu-20261004/terminal-followup-r1",
+    "process_launch": "local/runs/ema-silu-20261004/development-r1/execution/process-launch.json",
+    "process_launch_sha256": "1c4640a8b25643fd19b058a7b364000f9dc32ec07e53040d5346faa413c3cffe",
+    "controller_start_ns": 1791104913570252535,
+    "next_observation_not_before_ns": 1791105513570252535,
+    "new_scientific_fits_note": "Running; actual inventory is read only on the 600-second schedule or an actual completion event."
   }
 }
