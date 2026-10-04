@@ -29329,5 +29329,31 @@
     "desktop_writes": 0,
     "assistant_uploads": 0,
     "next_action": "Retain as historical cache material; any current-reference scoring needs a separate exact freeze and identity alignment; authoritative cold replay needs located original states or separately budgeted fresh fits. No automatic new stage."
+  },
+  "realmlp_current_review_20261004": {
+    "status": "fixed_cache_review_preregistered_before_quality",
+    "goal": 96.45,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score": 96.3979,
+    "score_source": "user_reported_not_independently_verified",
+    "protocol": "docs/realmlp_current_review/PREREGISTRATION.md",
+    "spec": "configs/realmlp_current_review/SPEC.json",
+    "source": "local/runs/realmlp-current-review-20261004/tools-r1/review.py",
+    "source_sha256": "503b5efa6b6ecadb16a7efaa5454902c1822fe5cb3e2977e26329f15cf3027b4",
+    "run_directory": "local/runs/realmlp-current-review-20261004/review-r1",
+    "candidates": [
+      "REALMLP_TDS_IRON_A10",
+      "REALMLP_TD_TIME_A20"
+    ],
+    "G0": "pending_frozen_current_reference_alignment_and_scalar_audit_no_new_model_cold_replay",
+    "G1": "unmeasured_vs_current_reference",
+    "new_fits": 0,
+    "new_optimizer_constructors": 0,
+    "new_model_predict_calls": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "assistant_uploads": 0
   }
 }
