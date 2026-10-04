@@ -30240,5 +30240,40 @@
     "G1": "confirmation_pending_no_platform_score",
     "prior_broader_checks_passed": 32,
     "inference_training_file_open_guard": "installed_before_context_validation; allowlisted source/query/parent identities only in inference process"
+  },
+  "realmlp_mae_preparation_20261004": {
+    "status": "native_configuration_and_synthetic_gradient_verified_no_model_fits",
+    "objective": 96.45,
+    "protocol": "docs/realmlp_mae/PREPARATION.md",
+    "recipe_delta": "train_metric_name='mae'; every other constructor/resolved field unchanged",
+    "new_fits": 0,
+    "new_optimizers": 0,
+    "neural_network_constructions": 0,
+    "official_data_reads": 0,
+    "first_test_failure_preserved": "local/runs/realmlp-mae-preparation-20261004/checks-r1/failure.json",
+    "G0": "configuration_and_gradient_only_not_native_fit_or_cold_admitted",
+    "G1": "unmeasured_loss_variant",
+    "packages": 0
+  },
+  "realmlp_mae_admission_20261004": {
+    "status": "protocol_and_no_fit_checks_frozen_waiting_for_prior_MSE_batches_to_close",
+    "objective": 96.45,
+    "protocol": "docs/realmlp_mae/ADMISSION.md",
+    "spec": "configs/realmlp_mae_admission/SPEC.json",
+    "run_directory": "local/runs/realmlp-mae-admission-20261004/engineering-r1",
+    "synthetic_procedure_budget": 2,
+    "native_adam_budget": 4,
+    "scientific_fits": 0,
+    "official_data_reads": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "checks": "local/runs/realmlp-mae-admission-20261004/checks-r1/checks.json",
+    "checks_sha256": "de9283466034077f8b02f829dfb0974d10437fe4fff77923b028aa6fe3c104f5",
+    "tests_passed": 28,
+    "G0": "native_MAE_fit_capture_and_cold_pending",
+    "G1": "no_quality_evaluation",
+    "next_action": "After current MSE confirmation and any qualified one-package release close, run two serial synthetic native MAE procedures and independent cold/parity audit"
   }
 }
