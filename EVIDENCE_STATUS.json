@@ -28628,8 +28628,8 @@
     "process_launch": "local/runs/ema-mini-20261004/development-r1/process-launch.json",
     "process_launch_sha256": "d528d9e586c42f78ce62fde38a50e3cb8ce5073853089a9dfdd1ca1df63e46e7",
     "controller_start_ns": 1791094500272896703,
-    "next_observation_not_before_ns": 1791095100272896703,
-    "new_scientific_fits_note": "Execution activated; actual native count awaits scheduled observation and terminal reconciliation; frozen upper bound30",
+    "next_observation_not_before_ns": 1791095762832895199,
+    "new_scientific_fits_note": "First scheduled observation: 3 new estimators completed and cold-audited; next worker live; final native started/optimizer inventory pending; frozen upper bound30",
     "scientific_execution_started": true,
     "monitoring_active": true,
     "conditional_confirmation_cache": {
@@ -28672,6 +28672,20 @@
         "matched-recipe-audit.json": "76d09a64c6bf2ed460bbd07228439471847d03e1c2b9bf8ae1efdc92bfe1b998",
         "terminal-reconciliation.json": "e1ec40fc78f7c10ec4ab95ab9817f0cd7ef7e62722b043d0da43723fbf5bfbd5"
       }
+    },
+    "last_scheduled_observation": {
+      "number": 1,
+      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-001-independent.json",
+      "sha256": "ab4b242d65359138ee3d12fc6a3400a47a9740232b1bd0cee83870737e863dbb",
+      "time_ns": 1791095162832884930,
+      "controller_and_watcher_verified_live": true,
+      "completed_new_estimators": 3,
+      "completed_new_cold_units": 3,
+      "completed_old_reuse_units": 2,
+      "closed_child_count": 8,
+      "all_closed_children_exit0": true,
+      "maximum_closed_child_rss_mib": 716.125,
+      "partial_quality_read": false
     }
   }
 }
