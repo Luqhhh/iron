@@ -3,7 +3,6 @@
   "stage": "iron_strength_release_20261005",
   "objective": 96.45,
   "next_milestone": 96.4,
-  "status": "frozen_not_started",
   "candidate": "DE3_IRON_STRENGTH_100",
   "recipe": "iron = V12_iron + 1.0 * (mean(3 DE3 seeds) - V12_iron); time column copied verbatim from the incumbent package",
   "parent": {
@@ -16,19 +15,24 @@
   "evidence": {
     "curve_review": "docs/iron_strength_curve/RESULTS.md",
     "curve_report": "local/runs/iron-strength-curve-20261005/review-r1/report.json",
-    "local_gain_q0.5_to_q1.0": {"42": 0.0038, "3407": 0.0022, "pooled": 0.0030},
+    "local_gain_q0.5_to_q1.0": {
+      "42": 0.0038,
+      "3407": 0.0022,
+      "pooled": 0.003
+    },
     "folds_improved": "8/10",
-    "conditional_platform_upper_bound": {"value": 96.40025, "source": "EVIDENCE_STATUS.iron_strength_bound_20261004", "domain": "q in [0.5, 1.0]"}
-  },
-  "member_sources": {
-    "seed_42_V12_iron": "recovered from the parent package algebra and the recorded native state; must reproduce the parent iron strings at q=0.5",
-    "seed_104729": "local/runs/de3-user-requested-release-20260930/release-r2/training-seed-104729/refit.pt",
-    "seed_130363": "local/runs/de3-user-requested-release-20260930/release-r2/training-seed-130363/refit.pt"
+    "conditional_platform_upper_bound": {
+      "value": 96.40025,
+      "source": "EVIDENCE_STATUS.iron_strength_bound_20261004",
+      "domain": "q in [0.5, 1.0]"
+    }
   },
   "identity_gate": {
     "reconstruct_q0.5_equals_parent_iron_strings": true,
     "time_column_strings_unchanged": true,
-    "zip_members": ["result.csv"],
+    "zip_members": [
+      "result.csv"
+    ],
     "rows": 322,
     "unique_ids": 322,
     "official_template_order": true,
@@ -37,14 +41,14 @@
   },
   "pre_upload_screen": {
     "slot_rule": "non_expansive_change and combined_rho <= 0.01",
-    "expected_geometry": {"rho": 0.0042, "slope": -0.003, "changed_target": "pred_tap_iron"},
     "fitted_functional": "local/runs/validation-match-20261005/review-r1/fitted-weights.npz",
     "requirement": "record the fitted functional's predicted sign and value, and the slot-rule verdict, before any upload"
   },
   "budget": {
     "new_scientific_fits": 0,
     "new_optimizers": 0,
-    "cold_inferences": 3,
+    "model_loads": 0,
+    "cold_inferences": 0,
     "packages": 1,
     "desktop_writes": 0,
     "agent_uploads": 0,
@@ -56,5 +60,38 @@
     "The conditional platform bound caps this family at 96.40025, so it cannot approach 96.45.",
     "The reconstruction must reproduce the parent's q=0.5 iron strings exactly before any q=1.0 column is written.",
     "No platform score may be forecast; the user uploads and reports."
-  ]
+  ],
+  "inputs": {
+    "parent_package": {
+      "path": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+    },
+    "v32_package": {
+      "path": "local/runs/round2-v32/interior-probes-r1/V32_TIME_A60V7_50/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7"
+    },
+    "de3_release_package": {
+      "path": "local/runs/de3-user-requested-release-20260930/release-r2/DE3_IRON_USER_REQUESTED/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "81d9d1b12c3b4fa9f40770b2ac2fef0caef7b500c5ff0ab0d7cc2948aa679ee0"
+    },
+    "v12_full_iron": {
+      "path": "local/runs/round2-v12-joint-tabm/release-r1/full/cold.npy",
+      "sha256": "141b3dc41d32db3810584f29cdaeba2a8453f6de9b15ab7cfb3c34a2a9fc0946"
+    },
+    "release_ensemble": {
+      "path": "local/runs/de3-user-requested-release-20260930/release-r2/ensemble/cold.npy",
+      "sha256": "2d0fa1671725d11929d935a81fe5bb6d55ed7cf1830e2d2886e685553e24237f"
+    }
+  },
+  "verification": {
+    "max_absolute_difference": 1e-09,
+    "recorded_ensemble_source": "local/runs/de3-user-requested-release-20260930/release-r2/ensemble/cold.npy (the original release's independent cold replay of the three full-data members)"
+  },
+  "amendment": {
+    "date": "2026-10-05",
+    "before_any_package_written": true,
+    "change": "Cold inference from the two saved member states is replaced by the algebraic inversion mean3 = J42 + 2*(incumbent_iron - V32_iron), verified against the original release's recorded cold-replayed ensemble artifact to 1.1e-13 and against an exact q=0.5 reconstruction of the incumbent column.",
+    "reason": "The release recipe is an exact affine replacement, so the three-member mean is recoverable from frozen packages without loading any model; the recorded ensemble artifact supplies the independent check the cold inference was meant to provide."
+  },
+  "status": "frozen_amended_before_execution"
 }

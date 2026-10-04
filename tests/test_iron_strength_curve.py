@@ -22,7 +22,7 @@ def test_spec_freezes_a_zero_fit_review():
 
 def test_release_spec_freezes_budget_and_identity_gate():
     spec = read_json(Path("configs/iron_strength_release/SPEC.json"))
-    assert spec["status"] == "frozen_not_started"
+    assert spec["status"].startswith("frozen_")
     assert spec["budget"]["new_scientific_fits"] == 0
     assert spec["budget"]["new_optimizers"] == 0
     assert spec["budget"]["packages"] == 1
@@ -45,3 +45,31 @@ def test_curve_report_reproduces_the_frozen_findings():
     assert gains["1.0"] == pytest.approx(0.003000793063932458)
     assert gains["0.0"] < 0 and gains["0.25"] < 0
     assert saved["seed_averaging_curve"]["pooled_score_gain"]["2_to_3"] > 0
+
+
+def test_release_spec_records_the_pre_execution_amendment():
+    spec = read_json(Path("configs/iron_strength_release/SPEC.json"))
+    assert spec["status"] == "frozen_amended_before_execution"
+    assert spec["amendment"]["before_any_package_written"] is True
+    assert spec["budget"]["cold_inferences"] == 0 and spec["budget"]["model_loads"] == 0
+    assert len(spec["inputs"]) == 5
+    for entry in spec["inputs"].values():
+        assert len(entry["sha256"]) == 64 and entry["path"]
+
+
+def test_release_report_and_audit_are_consistent():
+    base = Path("local/runs/iron-strength-release-20261005/release-r1")
+    report, audit = base / "report.json", base / "independent-audit.json"
+    if not report.exists():
+        pytest.skip("private release evidence not present")
+    saved, checked = read_json(report), read_json(audit)
+    assert saved["candidate"] == "DE3_IRON_STRENGTH_100"
+    assert saved["rows"] == 322 and saved["unique_ids"] == 322
+    assert saved["verification"]["reconstructed_q05_matches_incumbent"] == 0.0
+    assert saved["verification"]["derived_mean3_matches_recorded_release_ensemble"] < 1e-9
+    assert saved["pre_upload_screen"]["slot_rule_passed"] is True
+    assert saved["pre_upload_screen"]["fitted_functional"]["predicted_sign"] == "positive"
+    assert saved["budget_actual"] == {"new_fits": 0, "new_optimizers": 0, "model_loads": 0,
+                                      "cold_inferences": 0, "packages": 1, "desktop_writes": 0,
+                                      "agent_uploads": 0}
+    assert checked["passed"] is True and checked["checks"]["zip_sha256"] == saved["zip_sha256"]

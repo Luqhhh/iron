@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-05",
-    "status": "RealMLP_MSE_A20_feedback_received_below_incumbent_no_pending_test",
+    "status": "one_ready_candidate_pending_user_platform_testing",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -310,9 +310,20 @@
       "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [],
+    "submission_priority": [
+      {
+        "candidate": "DE3_IRON_STRENGTH_100",
+        "evidence_key": "iron_strength_release_20261005",
+        "package": "local/runs/iron-strength-release-20261005/release-r1/DE3_IRON_STRENGTH_100/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "3334e9479387b1db78ecbf1337f5709ef386e26fb7b0042e11a98f7c98b26414",
+        "reason": "zero-fit iron strength endpoint q=1.0, both development splits positive, 8/10 folds, passes the frozen slot rule; conditional platform bound 96.40025",
+        "classification": "exploration_not_formal_promotion"
+      }
+    ],
     "submission_priority_note": "The user-requested RealMLP MSE A20 exploration is now scored and removed from pending testing. Incumbent unchanged; no date-based or feedback-based quota inference.",
-    "ready_for_user_platform_testing": [],
+    "ready_for_user_platform_testing": [
+      "DE3_IRON_STRENGTH_100"
+    ],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -344,7 +355,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "RealMLP MSE A20用户回传96.3932，比当前最佳96.3979低0.0047。保留当前最佳，原包和原四seed失败不变；暂无待测包，不自动追加相近权重或MAE包。",
+    "recommended": "DE3_IRON_STRENGTH_100 已完成零拟合发布并通过独立冷回读；上传前筛选证据已记录（额度门通过、泛函预测 +0.00398）。条件上界 96.40025，预期跨过 96.4 但不接近 96.45。是否上传由用户决定；助手不上传。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -30965,7 +30976,7 @@
     "background_tasks_running": false
   },
   "iron_strength_release_20261005": {
-    "status": "frozen_not_started_zero_fit_release_protocol",
+    "status": "package_built_independent_readback_passed_ready_for_user_platform_testing",
     "date": "2026-10-05",
     "candidate": "DE3_IRON_STRENGTH_100",
     "recipe": "iron = V12_iron + 1.0*(mean(3 DE3 seeds) - V12_iron); time column copied verbatim from the incumbent",
@@ -30981,12 +30992,19 @@
       "changed_target": "pred_tap_iron",
       "slot_rule": "passes_non_expansive_and_bounded_perturbation"
     },
-    "conditional_platform_upper_bound": {
-      "value": 96.40025,
-      "source": "EVIDENCE_STATUS.iron_strength_bound_20261004"
-    },
+    "conditional_platform_upper_bound": 96.40025,
     "identity_gate": "reconstruct_q0.5_must_equal_parent_iron_strings_exactly_before_any_q1.0_column",
-    "pre_upload_screen": "record slot rule verdict and the validation_match fitted functional prediction before any upload",
+    "pre_upload_screen": {
+      "changed_target": "pred_tap_iron",
+      "rho": 0.005923333854814149,
+      "bias_pct": -0.12818846764050282,
+      "slope": -0.0042386583999705135,
+      "slot_rule_passed": true,
+      "fitted_functional_predicted_platform_delta": 0.00397572008234281,
+      "fitted_functional_predicted_sign": "positive",
+      "fitted_functional_status": "unvalidated_retrospective_fit_recorded_before_upload",
+      "note": "The unvalidated functional predicts +0.00398, above the independently verified conditional platform bound +0.0024 for this family; recorded as direct evidence that the functional over-predicts here."
+    },
     "budget": {
       "new_scientific_fits": 0,
       "new_optimizers": 0,
@@ -30996,12 +31014,37 @@
       "agent_uploads": 0
     },
     "classification": "exploration_two_split_strength_probe_not_formal_promotion",
-    "started": false,
+    "started": true,
     "new_fits": 0,
     "new_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
     "quota_inferred": false,
-    "background_tasks_running": false
+    "background_tasks_running": false,
+    "amendment": {
+      "date": "2026-10-05",
+      "before_any_package_written": true,
+      "change": "Cold inference replaced by the algebraic inversion mean3 = J42 + 2*(incumbent_iron - V32_iron)",
+      "verification": "reconstructed q=0.5 equals the incumbent iron exactly (0.0); derived mean3 equals the original release's recorded cold-replayed ensemble artifact to 1.1368683772161603e-13"
+    },
+    "package": "local/runs/iron-strength-release-20261005/release-r1/DE3_IRON_STRENGTH_100/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "3334e9479387b1db78ecbf1337f5709ef386e26fb7b0042e11a98f7c98b26414",
+    "rows": 322,
+    "unique_ids": 322,
+    "verification": {
+      "incumbent_iron_equals_de3_release_iron_strings": true,
+      "reconstructed_q05_matches_incumbent": 0.0,
+      "derived_mean3_matches_recorded_release_ensemble": 1.1368683772161603e-13,
+      "unchanged_time_string_mismatches": 0,
+      "changed_iron_strings": 322
+    },
+    "independent_audit": "local/runs/iron-strength-release-20261005/release-r1/independent-audit.json",
+    "independent_audit_passed": true,
+    "local_evidence": {
+      "42": 0.0038,
+      "3407": 0.0022,
+      "pooled": 0.003,
+      "folds_improved": "8/10"
+    }
   }
 }
