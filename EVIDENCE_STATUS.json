@@ -29123,7 +29123,7 @@
     "actual_review_exit_code": 0
   },
   "ema_silu_development_20261004": {
-    "status": "preregistered_engineering_pending_no_new_fits",
+    "status": "engineering_passed_scientific_freeze_pending",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
@@ -29151,10 +29151,10 @@
     "planned_cold_states": 120,
     "planned_engineering_estimators": 1,
     "planned_engineering_optimizers": 2,
-    "G0": "not_yet_qualified",
+    "G0": "structural_and_synthetic_engineering_passed_scientific_reproduction_pending",
     "G1": "unmeasured",
     "new_scientific_fits": 0,
-    "new_engineering_fits": 0,
+    "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
     "packages": 0,
@@ -29166,6 +29166,39 @@
     "automatic_retries": false,
     "scientific_execution_started": false,
     "monitoring_active": false,
-    "previous_packed_terminal_sha256": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1"
+    "previous_packed_terminal_sha256": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1",
+    "execution": "docs/ema_silu/EXECUTION.md",
+    "engineering_checks": "local/runs/ema-silu-20261004/engineering-r4/checks.json",
+    "engineering_checks_sha256": "68950aeffeef2e7b94d9672ae96a50a0aaead189ffc786095803efe64d9de95d",
+    "engineering_unique_tests_passed": 26,
+    "engineering_estimators": 1,
+    "engineering_optimizers": 2,
+    "engineering_native_steps": {
+      "selection": 14,
+      "refit": 18
+    },
+    "engineering_synthetic_peak_rss_mib": 780.2578125,
+    "engineering_cold_maximum_difference": 1.1888261042258819e-08,
+    "paired_initialization_actual_training_seeds": [
+      {
+        "training_seed": 42,
+        "initial_parameter_difference": 0,
+        "rng_state_equal": true,
+        "parameter_count": 183200
+      },
+      {
+        "training_seed": 1042,
+        "initial_parameter_difference": 0,
+        "rng_state_equal": true,
+        "parameter_count": 183200
+      },
+      {
+        "training_seed": 2042,
+        "initial_parameter_difference": 0,
+        "rng_state_equal": true,
+        "parameter_count": 183200
+      }
+    ],
+    "previous_packed_terminal_verified": true
   }
 }
