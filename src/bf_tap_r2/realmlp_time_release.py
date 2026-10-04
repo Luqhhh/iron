@@ -100,8 +100,21 @@ def prepare(checks):
     print(json.dumps(dict(status='frozen',full_procedures=1,native_adam=2,packages=1,desktop_writes=0)),flush=True)
 
 
-def context():
-    setup();spec=read(WORK/SPEC);run=Path(spec['run_directory']);m=read(run/'manifest.json');verify(m['files'])
+def block_training(event,args):
+    deny_training_reads(event,args)
+    if event=='open' and isinstance(args[0],(str,bytes)) and 'training.pkl' in str(args[0]):raise RuntimeError('Release inference cannot read training frames')
+
+
+def context(inference=False):
+    if inference:sys.addaudithook(block_training)
+    setup();spec=read(WORK/SPEC);run=Path(spec['run_directory']);m=read(run/'manifest.json')
+    if inference:
+        # Training identities are checked by warm/cold and terminal auditors.
+        # This separate inference process may open only its source, query,
+        # trained states, label-free predictions and fixed parent package.
+        required=[*[str(WORK/p) for p in sources()],str(run/'query.pkl'),m['parent_zip']]
+        verify({p:m['files'][p] for p in required})
+    else:verify(m['files'])
     if m['source_directory']!=str(WORK) or m['spec']!=spec:raise ValueError('Frozen release context changed')
     return run,m
 
@@ -130,10 +143,6 @@ def full(cold=False):
 
 
 def label_free(run,m):
-    def block_training(event,args):
-        deny_training_reads(event,args)
-        if event=='open' and isinstance(args[0],(str,bytes)) and 'training.pkl' in str(args[0]):raise RuntimeError('Release inference cannot read training frames')
-    sys.addaudithook(block_training)
     query=pd.read_pickle(run/'query.pkl');c=read(run/'native/complete.json');cold=read(run/'native/cold.json')
     if cold['status']!='passed' or cold['complete_sha256']!=sha(run/'native/complete.json') or c['native_optimizer_runs']!=2:raise ValueError('Full native cold proof required')
     with forbid_native_fit():
@@ -145,7 +154,7 @@ def label_free(run,m):
 
 
 def build():
-    run,m=context();query,parent,base,prediction=label_free(run,m);values=blend(base,prediction);movement={}
+    run,m=context(inference=True);query,parent,base,prediction=label_free(run,m);values=blend(base,prediction);movement={}
     for seed in [42,3407]:
         members=[]
         for fold in range(5):
@@ -161,7 +170,7 @@ def build():
 
 
 def audit():
-    run,m=context();r=read(run/'release.json');query,parent,base,prediction=label_free(run,m);rows,data=package_rows(r['zip'],query.sample_id.tolist())
+    run,m=context(inference=True);r=read(run/'release.json');query,parent,base,prediction=label_free(run,m);rows,data=package_rows(r['zip'],query.sample_id.tolist())
     if (r['pid']==os.getpid() or sha(r['zip'])!=r['zip_sha256'] or sha(Path(r['zip']).with_name('result.csv'))!=r['csv_sha256']
             or data!=Path(r['zip']).with_name('result.csv').read_bytes() or r['prediction_sha256']!=sha(run/'release-predictions.npz')):raise ValueError('Independent release byte identity differs')
     expected=np.array([.8*float(b)+.2*float(p) for b,p in zip(base,prediction)])

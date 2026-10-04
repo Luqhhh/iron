@@ -30233,10 +30233,12 @@
     "actual_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "tests_passed": 32,
-    "checks": "local/runs/realmlp-time-release-20261004/checks-r1/checks.json",
-    "checks_sha256": "66178622a2e3481045dad142bc0b778c70af07397aac887e0a7d8284c42f5ea0",
+    "tests_passed": 2,
+    "checks": "local/runs/realmlp-time-release-20261004/checks-r2/checks.json",
+    "checks_sha256": "208f40e8c3cb9773f924be120a23c07234ee12aedd91999cfc63f752aa95cfa0",
     "G0": "conditional_publisher_checks_passed_no_runtime_admission",
-    "G1": "confirmation_pending_no_platform_score"
+    "G1": "confirmation_pending_no_platform_score",
+    "prior_broader_checks_passed": 32,
+    "inference_training_file_open_guard": "installed_before_context_validation; allowlisted source/query/parent identities only in inference process"
   }
 }
