@@ -29491,5 +29491,35 @@
     "maximum_analysis_rss_mib": 195.921875,
     "results": "docs/realmlp_current_review/RESULTS.md",
     "next_action": "Retain only the fixed time A20 candidate for subsequent saved-state engineering and scientific scope review; assess alongside complete SiLU evidence before another fitting stage. No platform slot or automatic confirmation activated."
+  },
+  "realmlp_native_state_contract_20261004": {
+    "status": "native_callback_semantics_verified_saved_state_adapter_not_yet_implemented",
+    "review": "docs/realmlp_current_review/NATIVE_STATE_CONTRACT.md",
+    "run_directory": "local/runs/realmlp-native-contract-20261004/contract-r1",
+    "receipt": "local/runs/realmlp-native-contract-20261004/contract-r1/complete.json",
+    "receipt_sha256": "ff40296ea69143fc2360dbad677ffab8c12a188ef6031e91a57a229d88dd183e",
+    "actual_probe_exec_exit_code": 0,
+    "synthetic_mae_sequence": [
+      2.0,
+      1.0,
+      1.0
+    ],
+    "native_default_selected_epoch": 3,
+    "explicit_first_best_control_selected_epoch": 2,
+    "native_validation_callback_calls": 6,
+    "new_model_constructions": 0,
+    "new_fits": 0,
+    "new_optimizers": 0,
+    "official_data_reads": 0,
+    "historical_prediction_reads": 0,
+    "live_silu_reads": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "assistant_uploads": 0,
+    "G0": "native_callback_and_source_lifecycle_only_no_saved_state_fitting_or_cold_admission",
+    "G1": "no_new_quality_evaluation",
+    "next_action": "Implement a separate capture/save/load adapter around immutable V9 fit, then freeze its synthetic parity/cold audit budget; preserve native last-best tie rule and full schedule horizon."
   }
 }
