@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "stage": "iron_strength_curve_20261005",
+  "objective": 96.45,
+  "reference": {"candidate": "DE3_IRON_EMA_MEAN3_Q100", "score": 96.3979, "source": "user_reported_not_independently_verified"},
+  "question": "Is the incumbent's DE3 iron amplification q=0.5 and its three-seed average at a local optimum, measured on the recorded out-of-fold predictions?",
+  "source": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3",
+  "label_template": "local/runs/de3-independent-batches-20261004/development-r1/oof-s{split}.npz",
+  "run_directory": "/home/lux1/iron/local/runs/iron-strength-curve-20261005/review-r1",
+  "kind": "zero_fit_curve_review",
+  "splits": [42, 3407],
+  "folds": 5,
+  "seed_keys": ["seed_42", "seed_104729", "seed_130363"],
+  "amplification_grid": [0.0, 0.25, 0.5, 0.75, 1.0, 1.25],
+  "incumbent_form": "iron = V12_iron + q * (mean(3 seeds) - V12_iron), incumbent uses q = 0.5",
+  "new_fits": 0,
+  "training_label_reads": 0,
+  "new_packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "limits": [
+    "Two split seeds only; the four-complete-seed promotion gate is not met by this review.",
+    "The labels are the round-two training targets, already used by the recorded run; this is a re-measurement of recorded predictions, not a new holdout.",
+    "The amplification grid is one-dimensional and was chosen before running; no platform score may be forecast from it.",
+    "The q=1.0 endpoint is inside the earlier independently verified conditional platform bound over q in [0.5, 1.0] (EVIDENCE_STATUS.iron_strength_bound_20261004)."
+  ]
+}

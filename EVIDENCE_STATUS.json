@@ -30914,5 +30914,94 @@
     "quota_inferred": false,
     "historical_decisions_unchanged": true,
     "background_tasks_running": false
+  },
+  "iron_strength_curve_20261005": {
+    "status": "completed_zero_fit_amplification_and_seed_curve_found_q1_optimal",
+    "date": "2026-10-05",
+    "objective": 96.45,
+    "next_milestone": 96.4,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "protocol": "docs/iron_strength_curve/PREREGISTRATION.md",
+    "results": "docs/iron_strength_curve/RESULTS.md",
+    "spec": "configs/iron_strength_curve/SPEC.json",
+    "implementation": "scripts/iron_strength_curve.py",
+    "tests": "tests/test_iron_strength_curve.py",
+    "private_directory": "local/runs/iron-strength-curve-20261005/review-r1",
+    "source": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3",
+    "amplification_curve_score_gain_vs_q0.5": {
+      "0.0": -0.008735,
+      "0.25": -0.003666,
+      "0.5": 0.0,
+      "0.75": 0.002271,
+      "1.0": 0.003001,
+      "1.25": 0.002478
+    },
+    "pooled_best_q": 1.0,
+    "per_split_gain_q0.5_to_q1.0": {
+      "42": 0.0038,
+      "3407": 0.0022
+    },
+    "folds_improved_q0.5_to_q1.0": "8/10",
+    "worst_fold_gain": -0.007061,
+    "seed_averaging_curve": {
+      "1_to_2": 0.010197,
+      "2_to_3": 0.002952,
+      "per_split_2_to_3": {
+        "42": 0.002698,
+        "3407": 0.003207
+      }
+    },
+    "interpretation": "The incumbent iron amplification q=0.5 is not the local optimum; both complete splits peak at q=1.0, which is the plain three-seed mean and therefore belongs to the platform-rewarded further-averaging class. Seed averaging still has a small positive marginal gain but raising q is free by comparison. The earlier independently verified conditional platform bound caps this family at 96.40025, so this can cross 96.4 but cannot approach 96.45.",
+    "G0": "passed_zero_fit_zero_new_labels_two_split_ten_fold_recomputation_six_q_values_three_seed_combination_sizes_locked_python312_tests",
+    "G1": "two_split_zero_fit_strength_probe_evidence_not_four_seed_promotion",
+    "formal_promoted": false,
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "historical_decisions_unchanged": true,
+    "background_tasks_running": false
+  },
+  "iron_strength_release_20261005": {
+    "status": "frozen_not_started_zero_fit_release_protocol",
+    "date": "2026-10-05",
+    "candidate": "DE3_IRON_STRENGTH_100",
+    "recipe": "iron = V12_iron + 1.0*(mean(3 DE3 seeds) - V12_iron); time column copied verbatim from the incumbent",
+    "parent": "DE3_IRON_EMA_MEAN3_Q100",
+    "parent_score_user_reported": 96.3979,
+    "parent_zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c",
+    "protocol": "docs/iron_strength_release/PREREGISTRATION.md",
+    "spec": "configs/iron_strength_release/SPEC.json",
+    "evidence": "docs/iron_strength_curve/RESULTS.md",
+    "expected_geometry": {
+      "rho": 0.0042,
+      "slope": -0.003,
+      "changed_target": "pred_tap_iron",
+      "slot_rule": "passes_non_expansive_and_bounded_perturbation"
+    },
+    "conditional_platform_upper_bound": {
+      "value": 96.40025,
+      "source": "EVIDENCE_STATUS.iron_strength_bound_20261004"
+    },
+    "identity_gate": "reconstruct_q0.5_must_equal_parent_iron_strings_exactly_before_any_q1.0_column",
+    "pre_upload_screen": "record slot rule verdict and the validation_match fitted functional prediction before any upload",
+    "budget": {
+      "new_scientific_fits": 0,
+      "new_optimizers": 0,
+      "cold_inferences": 3,
+      "packages": 1,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "classification": "exploration_two_split_strength_probe_not_formal_promotion",
+    "started": false,
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "background_tasks_running": false
   }
 }

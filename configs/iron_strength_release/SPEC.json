@@ -1,0 +1,60 @@
+{
+  "version": 1,
+  "stage": "iron_strength_release_20261005",
+  "objective": 96.45,
+  "next_milestone": 96.4,
+  "status": "frozen_not_started",
+  "candidate": "DE3_IRON_STRENGTH_100",
+  "recipe": "iron = V12_iron + 1.0 * (mean(3 DE3 seeds) - V12_iron); time column copied verbatim from the incumbent package",
+  "parent": {
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
+    "source": "user_reported_not_independently_verified",
+    "package": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+  },
+  "evidence": {
+    "curve_review": "docs/iron_strength_curve/RESULTS.md",
+    "curve_report": "local/runs/iron-strength-curve-20261005/review-r1/report.json",
+    "local_gain_q0.5_to_q1.0": {"42": 0.0038, "3407": 0.0022, "pooled": 0.0030},
+    "folds_improved": "8/10",
+    "conditional_platform_upper_bound": {"value": 96.40025, "source": "EVIDENCE_STATUS.iron_strength_bound_20261004", "domain": "q in [0.5, 1.0]"}
+  },
+  "member_sources": {
+    "seed_42_V12_iron": "recovered from the parent package algebra and the recorded native state; must reproduce the parent iron strings at q=0.5",
+    "seed_104729": "local/runs/de3-user-requested-release-20260930/release-r2/training-seed-104729/refit.pt",
+    "seed_130363": "local/runs/de3-user-requested-release-20260930/release-r2/training-seed-130363/refit.pt"
+  },
+  "identity_gate": {
+    "reconstruct_q0.5_equals_parent_iron_strings": true,
+    "time_column_strings_unchanged": true,
+    "zip_members": ["result.csv"],
+    "rows": 322,
+    "unique_ids": 322,
+    "official_template_order": true,
+    "finite_nonnegative": true,
+    "no_clipping_or_postprocessing": true
+  },
+  "pre_upload_screen": {
+    "slot_rule": "non_expansive_change and combined_rho <= 0.01",
+    "expected_geometry": {"rho": 0.0042, "slope": -0.003, "changed_target": "pred_tap_iron"},
+    "fitted_functional": "local/runs/validation-match-20261005/review-r1/fitted-weights.npz",
+    "requirement": "record the fitted functional's predicted sign and value, and the slot-rule verdict, before any upload"
+  },
+  "budget": {
+    "new_scientific_fits": 0,
+    "new_optimizers": 0,
+    "cold_inferences": 3,
+    "packages": 1,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "new_confirmation_seeds": 0
+  },
+  "classification": "exploration_two_split_strength_probe_not_formal_promotion",
+  "limits": [
+    "Two split seeds only; the four-complete-seed promotion gate is not met.",
+    "The conditional platform bound caps this family at 96.40025, so it cannot approach 96.45.",
+    "The reconstruction must reproduce the parent's q=0.5 iron strings exactly before any q=1.0 column is written.",
+    "No platform score may be forecast; the user uploads and reports."
+  ]
+}
