@@ -30755,5 +30755,113 @@
     "quota_inferred": false,
     "historical_decisions_unchanged": true,
     "background_tasks_running": false
+  },
+  "validation_match_20261005": {
+    "status": "completed_zero_fit_matched_validation_review_level_matchable_response_not",
+    "date": "2026-10-05",
+    "objective": 96.45,
+    "question": "Can a local validation set be found whose scores track the platform's 322-row scores?",
+    "protocol": "docs/validation_match/PREREGISTRATION.md",
+    "results": "docs/validation_match/RESULTS.md",
+    "spec": "configs/validation_match/SPEC.json",
+    "implementation": "scripts/validation_match.py",
+    "tests": "tests/test_validation_match.py",
+    "private_directory": "local/runs/validation-match-20261005/review-r1",
+    "receipt_source": "configs/slot_screen/SPEC.json",
+    "task_c_level_matching": {
+      "splits": [
+        42,
+        3407
+      ],
+      "full_oof_incumbent_score": {
+        "42": 96.2408,
+        "3407": 96.2245
+      },
+      "platform_level": 96.3979,
+      "subset_level_range": {
+        "42": [
+          95.7485,
+          96.6656
+        ],
+        "3407": [
+          95.7106,
+          96.6682
+        ]
+      },
+      "matched_fraction_in_platform_band": {
+        "42": 0.053,
+        "3407": 0.042
+      },
+      "SILU_A100_level_matched_delta_quantiles": {
+        "42": {
+          "0.025": -0.0329,
+          "0.25": -0.0073,
+          "0.5": 0.0057,
+          "0.75": 0.0187,
+          "0.975": 0.0449
+        },
+        "3407": {
+          "0.025": -0.0237,
+          "0.25": 0.0039,
+          "0.5": 0.0178,
+          "0.75": 0.0311,
+          "0.975": 0.0545
+        }
+      },
+      "delta_vs_level_spearman": {
+        "42": -0.097,
+        "3407": -0.088
+      },
+      "platform_SILU_A100": -0.0247,
+      "conclusion": "Level matching is trivial and carries no candidate information; the same candidate's delta on level-matched subsets spans about -0.033 to +0.045."
+    },
+    "task_a_unstructured_test_side_weights": {
+      "pred_tap_time_len": {
+        "n": 17,
+        "train_rmse": 0.00284,
+        "leave_one_out_rmse": 0.00869,
+        "shuffled_label_loo_rmse": 0.01688,
+        "null_zero_rmse": 0.01128,
+        "null_mean_rmse": 0.01023
+      },
+      "pred_tap_iron": {
+        "n": 6,
+        "train_rmse": 3e-05,
+        "leave_one_out_rmse": 0.00302,
+        "shuffled_label_loo_rmse": 0.0056,
+        "null_zero_rmse": 0.00585
+      },
+      "conclusion": "A weak shared scoring direction exists in the 23 receipts for the time column; single-parameter statistics reach a similar LOO error (max_abs_pct 0.00992), so the 322-weight fit refines rather than replaces the crude magnitude/bias signal."
+    },
+    "task_b_rule_defined_row_weights": {
+      "pred_tap_time_len": {
+        "constant_loo": 0.01068,
+        "full_loo": 0.01873,
+        "shuffled_full_loo": 0.0188,
+        "null_zero": 0.01128
+      },
+      "pred_tap_iron": {
+        "constant_loo": 0.00311,
+        "full_loo": 0.00175,
+        "shuffled_full_loo": 0.00796,
+        "null_zero": 0.00585
+      },
+      "conclusion": "No rule-defined row-matching exists for the dominant time column: adding the small basis makes leave-one-out worse than predicting zero and identical to the shuffled-label control. The iron column has 6 receipts against 7 weights and mirrors the already-recorded column-mean-shift effect."
+    },
+    "prospective_hypothesis": {
+      "artifact": "local/runs/validation-match-20261005/review-r1/fitted-weights.npz",
+      "rule": "Record the fitted functional's predicted sign and value for the next candidate before the user uploads, then compare with the reported score.",
+      "status": "unvalidated_must_be_recorded_before_upload"
+    },
+    "G0": "passed_zero_fit_zero_label_reads_zero_packages_locked_python312_tests_low_dimension_basis_and_shuffle_controls",
+    "G1": "matched_validation_set_not_identifiable_level_matching_uninformative_only_a_weak_retrospective_test_side_direction",
+    "new_fits": 0,
+    "training_label_reads": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "historical_decisions_unchanged": true,
+    "background_tasks_running": false
   }
 }

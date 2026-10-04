@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "stage": "validation_match_20261005",
+  "objective": 96.45,
+  "question": "Can a local validation set be chosen whose scores track the platform's 322-row scores?",
+  "receipt_source": "configs/slot_screen/SPEC.json",
+  "run_directory": "/home/lux1/iron/local/runs/validation-match-20261005/review-r1",
+  "kind": "zero_fit_identifiability_and_level_matching_review",
+  "new_fits": 0,
+  "training_label_reads": 0,
+  "new_packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "task_a": {"description": "unstructured per-row weights on the 322 query rows fitted to the 23 registered platform deltas"},
+  "task_b": {"description": "row weights restricted to a small a-priori basis (level, spout, prediction quintile)"},
+  "task_c": {
+    "description": "322-row subsets of the recorded OOF rows, level-matched to the platform score, versus the candidate's platform verdict",
+    "draws": 20000,
+    "rows": 322,
+    "seed": 20261005,
+    "splits": [42, 3407],
+    "oof_template": "local/runs/ema-silu-20261004/development-r1/oof-s{split}.npz",
+    "candidates": ["SILU_A100", "SILU_A20"],
+    "platform_level": 96.3979,
+    "platform_level_band": [96.38, 96.42],
+    "platform_delta": {"SILU_A100": -0.0247, "SILU_A20": null}
+  },
+  "limits": [
+    "Task A and B fit unknown residual-sign weights from 23 registered outcomes; a low training error is guaranteed and is not evidence of identifiability.",
+    "Task C subsets reuse rows that the base models saw in other folds, so they are not independent holdouts; the experiment measures level sensitivity only.",
+    "No platform score is forecast, no history is rewritten and no family is closed by this review."
+  ]
+}
