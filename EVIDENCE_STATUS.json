@@ -28938,7 +28938,7 @@
     "previous_mini_terminal_closed": true,
     "G0": "engineering_passed_frozen_scientific_and_terminal_audits_pending",
     "G1": "pending_complete_two_split_OOF",
-    "new_scientific_fits": 16,
+    "new_scientific_fits": 23,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
     "packages": 0,
@@ -28963,19 +28963,19 @@
     "process_launch": "local/runs/ema-packed-20261004/development-r1/execution/process-launch.json",
     "process_launch_sha256": "8a546c75541f49df6fddf6b4a70a48a94110ca17408e882e164e9c7415817dbf",
     "controller_start_ns": 1791100474860903463,
-    "next_observation_not_before_ns": 1791102909244769875,
+    "next_observation_not_before_ns": 1791103534190386285,
     "new_scientific_fits_note": "Completed estimator workers at last scheduled observation; in-flight work is not counted as completed.",
     "scientific_execution_started": true,
     "last_scheduled_observation": {
-      "number": 3,
-      "time_ns": 1791102309244769875,
+      "number": 4,
+      "time_ns": 1791102934190386285,
       "controller_pid": 69348,
       "controller_live": true,
       "watcher_pid": 69383,
       "watcher_live": true,
       "active_children": [
         {
-          "pid": 70734,
+          "pid": 71238,
           "cmdline": [
             "/home/lux1/iron/.venv/bin/python3",
             "-m",
@@ -28984,26 +28984,26 @@
             "--seed",
             "3407",
             "--fold",
-            "0",
+            "2",
             "--init",
-            "1042"
+            "2042"
           ],
-          "rss_mib": 654.1796875
+          "rss_mib": 706.4375
         }
       ],
-      "closed_child_count": 38,
-      "completed_new_estimators": 16,
-      "completed_new_cold_units": 16,
-      "completed_old_reuse_units": 6,
+      "closed_child_count": 54,
+      "completed_new_estimators": 23,
+      "completed_new_cold_units": 23,
+      "completed_old_reuse_units": 8,
       "all_closed_children_exit0": true,
       "maximum_closed_child_rss_mib": 817.73046875,
       "terminal_status": null,
       "partial_quality_read": false,
       "manifest_sha256": "9412bdf4e3257c2352fe512d427a675ef2cd4875f6da09c914277810f0e5f318",
-      "next_observation_not_before_ns": 1791102909244769875,
+      "next_observation_not_before_ns": 1791103534190386285,
       "observer_sha256": "596c9acf172e5c9713a04ef8d718a27bf4ab7e30765d1437a97af90da1989364",
-      "receipt": "local/runs/ema-packed-20261004/development-r1/execution/observation-003-independent.json",
-      "receipt_sha256": "1e93e609f288017eb8679105070cad86972c8ec862655e457995fcdab9f6703d"
+      "receipt": "local/runs/ema-packed-20261004/development-r1/execution/observation-004-independent.json",
+      "receipt_sha256": "c33abafd833cc1e849e6ce4550035a86117b3eda47c4db9075777168820fa815"
     },
     "terminal_reconciler": {
       "status": "prepared_and_rehearsed_on_closed_mini_only_packed_actual_exits_pending",
