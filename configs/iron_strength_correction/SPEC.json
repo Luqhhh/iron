@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "stage": "iron_strength_correction_20261005",
+  "objective": 96.45,
+  "superseded_claim": "docs/iron_strength_curve/RESULTS.md concluded that the incumbent DE3 iron amplification q=0.5 was sub-optimal and that q=1.0 was the two-split optimum.",
+  "correction": "That curve used the raw V12 joint member as its base (v12_iron + q*(mean3 - v12_iron)). The incumbent column is V32_iron + 0.5*(mean3 - J42); its base V32_iron is the released V12 blend, not the raw joint member, and the two columns differ by an RMS of about 4.0. The families therefore only share the mean3 endpoint and the earlier comparison never contained the incumbent.",
+  "withdrawn_candidate": "DE3_IRON_STRENGTH_100 (local/runs/iron-strength-release-20261005/release-r1)",
+  "oof_template": "local/runs/de3-independent-batches-20261004/development-r1/oof-s{split}.npz",
+  "fold_template": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3/reference-s{split}-f{fold}/predictions.npz",
+  "run_directory": "/home/lux1/iron/local/runs/iron-strength-correction-20261005/review-r1",
+  "splits": [42, 3407],
+  "folds": 5,
+  "amplification_grid": [0.0, 0.25, 0.5, 0.75, 1.0, 1.25],
+  "new_fits": 0,
+  "training_label_reads": 0,
+  "new_packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "limits": [
+    "The corrected family is one affine line through the incumbent; it does not cover other iron directions.",
+    "Two split seeds only.",
+    "The withdrawn package is retained as immutable evidence and must not be uploaded."
+  ]
+}

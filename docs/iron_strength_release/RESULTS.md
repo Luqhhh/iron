@@ -57,3 +57,11 @@ package_iron(q=0.5) = V32_iron + 0.5 * (mean3 − J42)
 ## 边界
 
 不预报平台分数；桌面写入与上传均未执行（桌面写入需用户明确要求）；原包、原失败证据与全部历史决定保留。
+
+---
+
+## 撤回（2026-10-05，同日）
+
+**本包撤回，不得上传。** 复核发现 `docs/iron_strength_curve/RESULTS.md` 的放大曲线基准取错（用了原生 V12 联合成员而非 incumbent 的 V12 混合基准），"q=1.0 最优"的结论不成立。在包含 incumbent 的正确族里重测：incumbent 的 q=0.5 已在最优点，而本包的铁量列（三成员普通均值）相对 incumbent 为 **−0.0173 / −0.0163**（均值 −0.0168），两个完整 split 都显著更差。
+
+更正证据：`docs/iron_strength_correction/RESULTS.md`。包、审计、收据全部保留（不删除失败证据），撤回标记：`local/runs/iron-strength-release-20261005/release-r1/WITHDRAWN.json`。上传前记录的筛选证据（额度门通过、泛函预测 +0.00398）同时说明：**额度门只筛"改动方向是否扩张"，不筛"改动方向是否指向更差的列"**，本次两层防线同时失效。
