@@ -30652,5 +30652,108 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "quota_inferred": false
+  },
+  "slot_screen_20261005": {
+    "status": "completed_zero_fit_platform_response_review_no_usable_predictor",
+    "date": "2026-10-05",
+    "objective": 96.45,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "gap_to_target": 0.0521,
+    "kind": "zero_fit_package_geometry_review",
+    "protocol": "docs/slot_screen/PREREGISTRATION.md",
+    "results": "docs/slot_screen/RESULTS.md",
+    "spec": "configs/slot_screen/SPEC.json",
+    "implementation": "scripts/slot_screen.py",
+    "tests": "tests/test_slot_screen.py",
+    "private_directory": "local/runs/slot-screen-20261005/review-r1",
+    "receipts_used": 23,
+    "receipts_rejected_by_identity_gate": 0,
+    "identity_gate": "zip_members_result_only_322_unique_official_order_finite_nonnegative_exactly_one_target_changed_other_column_byte_identical_to_parent",
+    "platform_positive": 8,
+    "platform_non_positive": 15,
+    "platform_positive_mean": 0.004124999999999999,
+    "platform_non_positive_mean": -0.009053333333333333,
+    "platform_all_mean": -0.004469565217391305,
+    "largest_recorded_single_platform_gain": 0.0168,
+    "natural_experiment_identical_time_change": {
+      "change": "0.5*(EMA_time - V7_time) on tap_time_len",
+      "first": "LOC_DIAG_EMA_TIME",
+      "first_parent": "V32_TIME_A60V7_50",
+      "first_platform_delta": 0.0168,
+      "second": "EMA_TIME_Q100",
+      "second_parent": "LOC_DIAG_EMA_TIME",
+      "second_platform_delta": 0.0025,
+      "max_abs_delta_difference": 2.842170943040401e-14,
+      "platform_delta_difference": 0.0143
+    },
+    "natural_experiment_identical_iron_change": {
+      "first": "DE3_IRON_USER_REQUESTED",
+      "first_parent": "V32_TIME_A60V7_50",
+      "first_platform_delta": 0.0022,
+      "second": "DE3_IRON_EMA_MEAN3_TIME",
+      "second_parent": "EMA_MEAN3_FULL_Q75",
+      "second_platform_delta": 0.0023,
+      "max_abs_delta_difference": 0.0,
+      "platform_delta_difference": -0.0001
+    },
+    "expansion_contingency": {
+      "expansion_positive": 0,
+      "expansion_total": 10,
+      "non_expansion_positive": 8,
+      "non_expansion_total": 13,
+      "fisher_exact_one_sided_p": 0.00262484856642886
+    },
+    "association_spearman": {
+      "slope": {
+        "spearman": -0.6080079090459714,
+        "permutation_p_two_sided": 0.0022998850057497125,
+        "n": 23
+      },
+      "rho": {
+        "spearman": -0.4967869500741473,
+        "permutation_p_two_sided": 0.0175991200439978,
+        "n": 23
+      },
+      "bias_pct": {
+        "spearman": -0.48739495798319327,
+        "permutation_p_two_sided": 0.02134893255337233,
+        "n": 23
+      },
+      "max_abs_pct": {
+        "spearman": -0.4463667820069204,
+        "permutation_p_two_sided": 0.033398330083495825,
+        "n": 23
+      },
+      "local_gain": {
+        "spearman": -0.4545853882112882,
+        "permutation_p_two_sided": 0.05269736513174341,
+        "n": 19
+      }
+    },
+    "interpretation": "All ten expansion-type receipts declined and all eight platform-positive receipts were non-expansive; this is consistent with the platform rewarding only further variance reduction on the incumbent, but it is confounded with candidate family and clustered in time, and no usable platform predictor was found. Recorded as specific descriptive evidence, not a transfer rule.",
+    "slot_admission_rule_status": "prospective_unvalidated_derived_from_these_23_receipts",
+    "slot_admission_rule_conditions": [
+      "existing_four_complete_split_seed_local_gate_passed",
+      "changed_target_expansion_slope_less_or_equal_zero",
+      "combined_rho_less_or_equal_0.01"
+    ],
+    "rule_note": "Passing is necessary-looking but not sufficient: five of the thirteen passing receipts declined, worst -0.0213. The rule also cannot distinguish a genuinely better large change from noise.",
+    "four_slot_arithmetic": {
+      "projection_all_four_at_positive_group_mean": 96.414,
+      "target": 96.45,
+      "shortfall": 0.036,
+      "note": "Four slots at the mean of the platform-positive group still end 0.036 below target; reaching 96.45 would require every slot to match the single largest recorded gain"
+    },
+    "G0": "passed_23_receipt_identity_gate_zero_rejections_locked_python312_targeted_tests_zero_training_label_reads_zero_fits_zero_packages",
+    "G1": "no_usable_platform_predictor_found_expansion_class_zero_of_ten_positive_descriptive_only",
+    "new_fits": 0,
+    "training_label_reads": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "historical_decisions_unchanged": true,
+    "background_tasks_running": false
   }
 }
