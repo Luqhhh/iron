@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "user_requested_RealMLP_MSE_A20_full_release_and_desktop_in_preparation",
+    "status": "user_requested_RealMLP_MSE_A20_desktop_ready",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -310,9 +310,39 @@
       "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [],
-    "submission_priority_note": "User-requested exploration preparation; package not yet ready; no platform upload or quota inference.",
-    "ready_for_user_platform_testing": [],
+    "submission_priority": [
+      {
+        "candidate": "REALMLP_SINGLE_A20",
+        "display_name": "RealMLP MSE A20",
+        "package": "local/runs/realmlp-mse-user-release-20261004/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-REALMLP-MSE-A20-20261004/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "030f601d075f49b6c6392f1ca2a6d25f9eb79129b89663af864e691dde5ff952",
+        "evidence_key": "realmlp_mse_user_release_20261004",
+        "reference": "DE3_IRON_EMA_MEAN3_Q100",
+        "G0": "passed_32_locked_checks_native_full_cold_four_actual_exit0_independent_terminal_and_desktop_readback_322_CRC_raw_iron",
+        "G1": "explicit_user_exploration_original_four_seed_failure_preserved_full_CV_correction_cosine_about_0_41_platform_unmeasured",
+        "formal_promotion": false,
+        "feedback_status": "not_measured",
+        "allocation_status": "explicit_user_requested_exploration_ready_for_user_upload"
+      }
+    ],
+    "submission_priority_note": "Explicit current user selection of one exploration package; original scientific nonpromotion preserved. Assistant has not uploaded; quota unchanged without inference.",
+    "ready_for_user_platform_testing": [
+      {
+        "candidate": "REALMLP_SINGLE_A20",
+        "display_name": "RealMLP MSE A20",
+        "package": "local/runs/realmlp-mse-user-release-20261004/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-REALMLP-MSE-A20-20261004/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "030f601d075f49b6c6392f1ca2a6d25f9eb79129b89663af864e691dde5ff952",
+        "evidence_key": "realmlp_mse_user_release_20261004",
+        "reference": "DE3_IRON_EMA_MEAN3_Q100",
+        "G0": "passed_32_locked_checks_native_full_cold_four_actual_exit0_independent_terminal_and_desktop_readback_322_CRC_raw_iron",
+        "G1": "explicit_user_exploration_original_four_seed_failure_preserved_full_CV_correction_cosine_about_0_41_platform_unmeasured",
+        "formal_promotion": false,
+        "feedback_status": "not_measured",
+        "allocation_status": "explicit_user_requested_exploration_ready_for_user_upload"
+      }
+    ],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -344,7 +374,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "用户已指定RealMLP MSE A20探索封包并写桌面；保留原确认失败，先完成全量原生训练、冷推理与包审计后交付。",
+    "recommended": "用户指定的RealMLP MSE A20探索包已完成全量训练、原生冷读、包审计和桌面回读；上传桌面ZIP后回传分数。原四seed未晋级和全量到CV修正差异证据保留，不宣称平台提升。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -30516,7 +30546,7 @@
     "background_monitoring": false
   },
   "realmlp_mse_user_release_20261004": {
-    "status": "explicit_user_exploration_scope_frozen_checks_passed",
+    "status": "completed_G0_passed_user_requested_exploration_desktop_ready",
     "candidate": "REALMLP_SINGLE_A20",
     "display_name": "RealMLP MSE A20",
     "user_instruction": "- **RealMLP MSE A20** 写桌面",
@@ -30539,9 +30569,9 @@
     "desktop_copy_budget": 1,
     "new_cv": 0,
     "new_confirmation_seeds": 0,
-    "actual_full_fits": 0,
-    "actual_packages": 0,
-    "actual_desktop_copies": 0,
+    "actual_full_fits": 1,
+    "actual_packages": 1,
+    "actual_desktop_copies": 1,
     "agent_uploads": 0,
     "formal_promoted": false,
     "original_confirmation_failure_preserved": true,
@@ -30549,7 +30579,50 @@
     "checks": "local/runs/realmlp-mse-user-release-20261004/checks-r1/checks.json",
     "checks_sha256": "a988e5821ebe56d13ff8057e01c1df13de63caad7c0531493430bc3887374138",
     "tests_passed": 32,
-    "G0": "exact_source_no_fit_checks_passed_full_native_release_pending",
-    "G1": "user_requested_platform_exploration_no_new_quality_claim_or_platform_score"
+    "G0": "passed_32_locked_checks_native_full_cold_four_actual_exit0_independent_terminal_and_desktop_readback_322_CRC_raw_iron",
+    "G1": "explicit_user_exploration_original_four_seed_failure_preserved_full_CV_correction_cosine_about_0_41_platform_unmeasured",
+    "source_commit": "0e6268a279edcd8a6a5f4060ea5d93b09b290930",
+    "manifest_sha256": "f050f906a2bb9ec252d4115e56fbd317ed70cea0915b07cfd26b61b908f86eb5",
+    "frozen_files": 16399,
+    "actual_native_adam": 2,
+    "actual_native_states": 2,
+    "native_updates": 2238,
+    "selected_epoch": 19,
+    "desktop_package": "/mnt/c/Users/lqh22/Desktop/submission-REALMLP-MSE-A20-20261004/Luqhhh_bf_tap_predict_round2.zip",
+    "package": "local/runs/realmlp-mse-user-release-20261004/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "030f601d075f49b6c6392f1ca2a6d25f9eb79129b89663af864e691dde5ff952",
+    "csv_sha256": "462b918060f6bf3003022f9c074e4704da9964c8943e02f86ddf5991183c4d5e",
+    "movement": {
+      "42": {
+        "rows": 322,
+        "cv_mean": 0.05402115316355557,
+        "full_mean": 0.09280501819776563,
+        "cv_rms": 0.3040581777006125,
+        "full_rms": 0.5142442654693379,
+        "difference_rms": 0.4757666291640941,
+        "cosine": 0.4174485453005889,
+        "sign_agreement": 0.6428571428571429
+      },
+      "3407": {
+        "rows": 322,
+        "cv_mean": 0.022585067018308622,
+        "full_mean": 0.09280501819776563,
+        "cv_rms": 0.32202168413959387,
+        "full_rms": 0.5142442654693379,
+        "difference_rms": 0.48368633068309097,
+        "cosine": 0.4051764562942795,
+        "sign_agreement": 0.6583850931677019
+      }
+    },
+    "terminal_reconciliation": "local/runs/realmlp-mse-user-release-20261004/release-r1/terminal-reconciliation.json",
+    "terminal_sha256": "e65bc57e53d27f344622b19de1116b7e12443f7067221ed530793b7676598398",
+    "desktop_delivery_receipt": "local/runs/realmlp-mse-user-release-20261004/release-r1/desktop-delivery.json",
+    "desktop_delivery_sha256": "0ea6e8dbb3fbb878f1701342ec857d35d2c27240938830f5e3b3640cae4beada",
+    "desktop_readback_receipt": "local/runs/realmlp-mse-user-release-20261004/release-r1/desktop-readback.json",
+    "desktop_readback_sha256": "3befcad2ab42c1e4ff8d50dbe4cf929d68c76fbafc3bfd894fbda8bbe4b59c4d",
+    "platform_score": null,
+    "platform_feedback_status": "awaiting_user_report_no_agent_upload",
+    "results": "docs/realmlp_mse_user_release/DELIVERY.md",
+    "active_running_tasks": []
   }
 }
