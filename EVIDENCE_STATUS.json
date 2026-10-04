@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "Q875_midpoint_desktop_reserve_only_best_Q100_96_3979_unchanged",
+    "status": "Q875_midpoint_desktop_reserve_added_existing_priority_preserved_best_96_3979",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -381,7 +381,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "Q100组合96.3979保持最佳。Q87.5中点已按用户要求生成并写桌面，仅候补、暂不平台测试，不进入当前优先队列；旧硬树未分配，旧候补及全部历史决定保持。",
+    "recommended": "当前最佳仍为用户回传DE3＋EMA三成员Q100=96.3979，距96.45为0.0521。建议先测已审计HARDTREE_DE3_Q100_A20，保留本地一负一正与人工探索身份；两项独立采样A20保留确认准入、暂不确认或封包，其余两次名额不预分配。三次剩余额度为用户最后明确记录，不由建议推算消耗。 Q87.5中点已按用户要求生成并写桌面，仅候补、暂不平台测试，不进入当前优先队列。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -3672,7 +3672,7 @@
     },
     "active_research": null,
     "ready_formal_candidates": [],
-    "next_action": "retain_Q875_desktop_package_as_user_deferred_reserve_no_current_priority_submission",
+    "next_action": "user_upload_and_return_HARDTREE_DE3_Q100_A20_platform_score_to_inform_remaining_two_slot_direction; both_independent_batch_A20_confirmation_admissions_retained_deferred",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "de3_joint_independent_batches_development_20261004",
