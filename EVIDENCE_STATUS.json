@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "Q875_user_feedback_registered_Q100_best_unchanged_other_priorities_preserved",
+    "status": "SiLU_development_complete_A100_confirmation_eligible_optimization_paused_by_user",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -344,8 +344,8 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "HARDTREE_DE3_Q100_A20用户回传96.3823，比当前最佳96.3979低0.0156，已移出待测队列；当前无建议立即测试的包。DE3＋EMA三成员Q100保持最佳，距96.45为0.0521。旧Q75组合继续候补，两个独立采样A20保留确认资格但暂不激活，不自动补充平台探针。 Q87.5已回传96.3978，低于Q100的96.3979，移出未测候补；暂缓75—100区间细扫，不从本次回传推算余额。",
-    "optimization_paused": false,
+    "recommended": "SiLU两完整开发split均正，A100按冻结规则成为后续确认候选；尚未四seed正式晋级或平台验证。用户要求完成SiLU后暂停，当前已完成审计和登记，不启动确认、全量拟合、封包或其他路线。平台最佳仍为用户回传96.3979；当前无新增待测包。",
+    "optimization_paused": true,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
     "historical_decisions_unchanged": true,
@@ -1423,8 +1423,13 @@
         }
       ]
     },
-    "offline_development_key": "ema_mini_development_20261004",
-    "offline_development_status": "EMA_mini_two_complete_splits_running_no_new_package_or_slot_allocation"
+    "offline_development_key": "ema_silu_development_20261004",
+    "offline_development_status": "completed_both_candidates_two_split_positive_A100_selected_confirmation_not_activated_user_pause",
+    "pause_key": "optimization_pause_after_silu_20261004",
+    "history_before_silu_pause_20261004": {
+      "queue_snapshot": "local/runs/ema-silu-20261004/pause-registration-r1/queue-before.json",
+      "queue_snapshot_sha256": "80fecd27e5c89421b592d2f2b85c1bb72b75d833a415f66a5af4ae1154396789"
+    }
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -29123,7 +29128,7 @@
     "actual_review_exit_code": 0
   },
   "ema_silu_development_20261004": {
-    "status": "two_split_development_running",
+    "status": "completed_two_split_positive_A100_selected_followup_paused_by_user",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
@@ -29151,9 +29156,9 @@
     "planned_cold_states": 120,
     "planned_engineering_estimators": 1,
     "planned_engineering_optimizers": 2,
-    "G0": "engineering_passed_frozen_scientific_and_terminal_audits_pending",
-    "G1": "pending_complete_two_split_OOF",
-    "new_scientific_fits": 27,
+    "G0": "passed_full_native_state_cold_inference_arithmetic_and_actual_terminal_reconciliation",
+    "G1": "both_candidates_positive_on_both_complete_development_splits_A100_selected_not_four_seed_promoted",
+    "new_scientific_fits": 30,
     "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -29165,7 +29170,7 @@
     "time_budget_seconds": null,
     "automatic_retries": false,
     "scientific_execution_started": true,
-    "monitoring_active": true,
+    "monitoring_active": false,
     "previous_packed_terminal_sha256": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1",
     "execution": "docs/ema_silu/EXECUTION.md",
     "engineering_checks": "local/runs/ema-silu-20261004/engineering-r4/checks.json",
@@ -29214,17 +29219,19 @@
     "process_launch": "local/runs/ema-silu-20261004/development-r1/execution/process-launch.json",
     "process_launch_sha256": "1c4640a8b25643fd19b058a7b364000f9dc32ec07e53040d5346faa413c3cffe",
     "controller_start_ns": 1791104913570252535,
-    "next_observation_not_before_ns": 1791111710497233318,
-    "new_scientific_fits_note": "Completed estimator workers at last scheduled observation; in-flight work is not counted as completed.",
+    "next_observation_not_before_ns": null,
+    "new_scientific_fits_note": "All 30 estimator workers complete at reconciled actual terminal.",
     "terminal_reconciler": {
-      "status": "validated_generic_reconciler_bound_current_actual_exits_pending",
+      "status": "passed_current_actual_exits_and_complete_inventory_verified",
       "source": "local/runs/ema-packed-20261004/terminal-reconciliation-tool-r1/reconcile.py",
       "source_sha256": "320a5479c64664060620ed81a0e0c5bb873838967f2ca400395148d0265b5973",
       "previous_successful_use": "local/runs/ema-packed-20261004/development-r1/execution/final-reconciliation.json",
       "previous_receipt_sha256": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1",
       "new_fits": 0,
       "current_silu_execution_reads": 0,
-      "criterion_changes": 0
+      "criterion_changes": 0,
+      "receipt": "local/runs/ema-silu-20261004/development-r1/execution/final-reconciliation.json",
+      "receipt_sha256": "fb74eff6cacdaaaaf978cfef9dbde06f3e4653b8b323cb0e7d13f272a093d611"
     },
     "last_scheduled_observation": {
       "number": 10,
@@ -29269,7 +29276,147 @@
       "recorded_ns": 1791109493140161622,
       "instruction": "完成silu相关工作后暂停",
       "scope": "Finish current SiLU development batch, terminal audit and result registration, then pause goal; no subsequent optimization batch."
-    }
+    },
+    "new_optimizer_constructors": 60,
+    "native_steps": 86122,
+    "cold_states": 120,
+    "gains": {
+      "SILU_A100": {
+        "42": 0.009278393259954679,
+        "3407": 0.020590094230748878
+      },
+      "SILU_A20": {
+        "42": 0.006438548436145527,
+        "3407": 0.00868313461121573
+      }
+    },
+    "mean_gains": {
+      "SILU_A100": 0.014934243745351778,
+      "SILU_A20": 0.007560841523680629
+    },
+    "candidate_tiers": {
+      "policy": "candidate-tiers-v1",
+      "decisions": {
+        "tap_time_len": {
+          "SILU_A100": {
+            "eligible": true,
+            "pooled_improvements": {
+              "3407": true,
+              "42": true
+            },
+            "improved_folds": 7,
+            "worst_spout_delta": -6.201510736997956e-05,
+            "mean_wmape": 0.03793927227222173,
+            "target": "tap_time_len",
+            "candidate": "SILU_A100",
+            "reference": "DE3_EMA_MEAN3_Q100",
+            "tier": "formal",
+            "failed_conditions": [],
+            "gains_by_split": {
+              "42": 0.00018556786519909052,
+              "3407": 0.00041180188461497486
+            },
+            "mean_gain": 0.0002986848749070327,
+            "minimum_gain": 0.00018556786519909052
+          },
+          "SILU_A20": {
+            "eligible": true,
+            "pooled_improvements": {
+              "3407": true,
+              "42": true
+            },
+            "improved_folds": 10,
+            "worst_spout_delta": -9.609616384707864e-05,
+            "mean_wmape": 0.038086740316655154,
+            "target": "tap_time_len",
+            "candidate": "SILU_A20",
+            "reference": "DE3_EMA_MEAN3_Q100",
+            "tier": "formal",
+            "failed_conditions": [],
+            "gains_by_split": {
+              "42": 0.00012877096872290772,
+              "3407": 0.00017366269222431063
+            },
+            "mean_gain": 0.00015121683047360918,
+            "minimum_gain": 0.00012877096872290772
+          }
+        }
+      },
+      "formal_selected": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": -6.201510736997956e-05,
+          "mean_wmape": 0.03793927227222173,
+          "target": "tap_time_len",
+          "candidate": "SILU_A100",
+          "reference": "DE3_EMA_MEAN3_Q100",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 0.00018556786519909052,
+            "3407": 0.00041180188461497486
+          },
+          "mean_gain": 0.0002986848749070327,
+          "minimum_gain": 0.00018556786519909052
+        }
+      ],
+      "exploration_selected": [],
+      "submission_priority": [
+        {
+          "eligible": true,
+          "pooled_improvements": {
+            "3407": true,
+            "42": true
+          },
+          "improved_folds": 7,
+          "worst_spout_delta": -6.201510736997956e-05,
+          "mean_wmape": 0.03793927227222173,
+          "target": "tap_time_len",
+          "candidate": "SILU_A100",
+          "reference": "DE3_EMA_MEAN3_Q100",
+          "tier": "formal",
+          "failed_conditions": [],
+          "gains_by_split": {
+            "42": 0.00018556786519909052,
+            "3407": 0.00041180188461497486
+          },
+          "mean_gain": 0.0002986848749070327,
+          "minimum_gain": 0.00018556786519909052
+        }
+      ],
+      "release_authorized": false,
+      "interpretation": "Development shortlist; not proof of platform improvement. No automatic release."
+    },
+    "selected_for_confirmation": "SILU_A100",
+    "confirmation_activated": false,
+    "release_activated": false,
+    "platform_testing_activated": false,
+    "results": "docs/ema_silu/RESULTS.md",
+    "terminal_receipt": "local/runs/ema-silu-20261004/development-r1/execution/final-reconciliation.json",
+    "terminal_receipt_sha256": "fb74eff6cacdaaaaf978cfef9dbde06f3e4653b8b323cb0e7d13f272a093d611",
+    "report_sha256": "de2f7b622b824ee7c98d007c6bbad5788f721888018a420bb35ce6404decb0fb",
+    "independent_arithmetic_audit_sha256": "8065856a6e4b32d3a84b97354a970938f7848199de03629873a950da27045693",
+    "independent_terminal_audit_sha256": "e547014a191ea56eeb4e241d8a45abfd41b37754306607208625aaeeb31991db",
+    "oof_sha256": {
+      "42": "62bdd087254628a44b2668be81af0ef8fc712e4894586f03235f02f0c3c53fb0",
+      "3407": "c3b303473611184ca7a45f634b0b019bd604e6754186d564dd9e3934bc9e54c5"
+    },
+    "actual_supervisor_exec_exit_code": 0,
+    "actual_followup_exec_exit_code": 0,
+    "actual_independent_audit_exit_code": 0,
+    "actual_final_reconciler_exec_exit_code": 0,
+    "owned_processes_absent": true,
+    "maximum_child_rss_mib": 838.2109375,
+    "maximum_cold_order_chunk_difference": 1.2977000181990661e-05,
+    "independent_arithmetic_maximum_difference": 8.526512829121202e-14,
+    "pause_registration": "local/runs/ema-silu-20261004/pause-registration-r1/complete.json",
+    "pause_registration_sha256": "a831b50e1d4c97e64cd663e7add65039c21f56db53297f033e1616bcdf44a31a",
+    "next_action": "Paused by explicit user request after current SiLU completion. Retain A100 confirmation eligibility; no confirmation, full fit, package, platform test, RealMLP work or other optimization until user resumes."
   },
   "ensemble_objective_review_20261004": {
     "status": "research_review_completed_not_scientifically_admitted",
@@ -29563,5 +29710,19 @@
     "synthetic_fitting_admitted": false,
     "scientific_fitting_admitted": false,
     "next_action": "Deferred by user request: complete current SiLU work then pause; do not start RealMLP follow-up."
+  },
+  "optimization_pause_after_silu_20261004": {
+    "date": "2026-10-04",
+    "instruction": "完成silu相关工作后暂停",
+    "scope": "Current SiLU development, terminal audit and result publication completed; all subsequent thread optimization paused.",
+    "current_round_completed": true,
+    "new_experiments_enabled": false,
+    "background_monitoring": false,
+    "resume_requires_user_instruction": true,
+    "objective": 96.45,
+    "objective_achieved": false,
+    "evidence_key": "ema_silu_development_20261004",
+    "receipt": "local/runs/ema-silu-20261004/pause-registration-r1/complete.json",
+    "receipt_sha256": "a831b50e1d4c97e64cd663e7add65039c21f56db53297f033e1616bcdf44a31a"
   }
 }
