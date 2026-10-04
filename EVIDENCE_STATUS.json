@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "Q875_midpoint_desktop_reserve_added_existing_priority_preserved_best_96_3979",
+    "status": "hardtree_user_reported_below_best_no_priority_package_Q875_reserve_only",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -310,37 +310,9 @@
       "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [
-      {
-        "priority": 1,
-        "candidate": "HARDTREE_DE3_Q100_A20",
-        "package": "local/runs/hardtree-current-release-20261004/release-r1/HARDTREE_DE3_Q100_A20/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "1908e2d97d8cd1f7912e662061febb229a155a86254cf54474fd7cb5a8a94d18",
-        "evidence_key": "hardtree_current_platform_decision_20261004",
-        "reason": "unmeasured_discrete_routing_question_complete_current_reference_evidence_independent_cold_and_package_audited",
-        "G1": "one_negative_development_split_platform_unmeasured_not_formally_promoted",
-        "formal_promotion": false,
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-HARDTREE-DE3-Q100-A20-20261004/Luqhhh_bf_tap_predict_round2.zip",
-        "desktop_delivery_key": "hardtree_current_desktop_delivery_20261004"
-      }
-    ],
-    "submission_priority_note": "Recommend exactly one audited current-parent hardtree probe; three slots remain the user-stated count with no upload/consumption inferred. Other two slots stay unallocated. EMA IBATCH_A20 and DE3 JOINT_IBATCH_IRON_A20 confirmation admissions are retained after complete G0/G1 review and deferred; no automatic full fits, packages or platform allocation.",
-    "ready_for_user_platform_testing": [
-      {
-        "candidate": "HARDTREE_DE3_Q100_A20",
-        "package": "local/runs/hardtree-current-release-20261004/release-r1/HARDTREE_DE3_Q100_A20/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "1908e2d97d8cd1f7912e662061febb229a155a86254cf54474fd7cb5a8a94d18",
-        "G0": "passed_5887_frozen_files_two_independent_cold_processes_exact_predictions_and_package_readback_actual_exit0",
-        "G1": "one_negative_development_split_platform_unmeasured_not_formally_promoted",
-        "reference": "DE3_IRON_EMA_MEAN3_Q100",
-        "evidence_key": "hardtree_current_platform_decision_20261004",
-        "feedback_status": "not_measured",
-        "formal_promotion": false,
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-HARDTREE-DE3-Q100-A20-20261004/Luqhhh_bf_tap_predict_round2.zip",
-        "allocation_status": "first_suggested_platform_probe_user_upload_pending",
-        "desktop_delivery_key": "hardtree_current_desktop_delivery_20261004"
-      }
-    ],
+    "submission_priority": [],
+    "submission_priority_note": "HARDTREE_DE3_Q100_A20 scored 96.3823 per user report, below incumbent by 0.0156, and was removed from pending testing. No automatic replacement candidate or weight retry. Q875 stays user-deferred reserve. Last explicitly stated quota retained without inferred subtraction.",
+    "ready_for_user_platform_testing": [],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -358,7 +330,8 @@
         "status": "original_Q75_parent_package_retained_not_scheduled",
         "include_in_current_test_queue": false,
         "evidence_key": "hard_tree_time_manual_exploration_20261003",
-        "feedback_status": "not_measured"
+        "feedback_status": "not_measured",
+        "related_current_parent_feedback_key": "hardtree_current_platform_feedback_20261004"
       },
       {
         "candidate": "DE3_IRON_EMA_MEAN3_Q875_RESERVE",
@@ -381,7 +354,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "当前最佳仍为用户回传DE3＋EMA三成员Q100=96.3979，距96.45为0.0521。建议先测已审计HARDTREE_DE3_Q100_A20，保留本地一负一正与人工探索身份；两项独立采样A20保留确认准入、暂不确认或封包，其余两次名额不预分配。三次剩余额度为用户最后明确记录，不由建议推算消耗。 Q87.5中点已按用户要求生成并写桌面，仅候补、暂不平台测试，不进入当前优先队列。",
+    "recommended": "HARDTREE_DE3_Q100_A20用户回传96.3823，比当前最佳96.3979低0.0156，已移出待测队列；当前无建议立即测试的包。DE3＋EMA三成员Q100保持最佳，距96.45为0.0521。Q87.5及旧Q75组合继续候补，两个独立采样A20保留确认资格但暂不激活，不自动补充平台探针。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -939,6 +912,32 @@
         "delta_vs_previous_best": 0.0002,
         "feedback_record": "local/runs/de3-ema-mean3-q100-release-20261004/platform-feedback-r1/feedback.json",
         "feedback_sha256": "94152c2e6c71219231d7c60b46367a2852c3a38e050f3d2640cbc096029eb2ad"
+      },
+      {
+        "candidate": "HARDTREE_DE3_Q100_A20",
+        "package": "local/runs/hardtree-current-release-20261004/release-r1/HARDTREE_DE3_Q100_A20/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "1908e2d97d8cd1f7912e662061febb229a155a86254cf54474fd7cb5a8a94d18",
+        "G0": "passed_bound_source_desktop_zip_identity_crc_322_official_order_finite_nonnegative_and_unchanged_iron_strings",
+        "G1": "this_fixed_hardtree_recipe_user_reported_below_current_best_original_local_nonpromotion_preserved",
+        "reference": "DE3_IRON_EMA_MEAN3_Q100",
+        "evidence_key": "hardtree_current_platform_decision_20261004",
+        "feedback_status": "user_reported_not_independently_verified",
+        "formal_promotion": false,
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-HARDTREE-DE3-Q100-A20-20261004/Luqhhh_bf_tap_predict_round2.zip",
+        "allocation_status": "completed_platform_test_below_current_best",
+        "desktop_delivery_key": "hardtree_current_desktop_delivery_20261004",
+        "score": 96.3823,
+        "raw_reported_score": "96.3823",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-04",
+        "comparison_candidate": "DE3_IRON_EMA_MEAN3_Q100",
+        "comparison_score": 96.3979,
+        "delta_vs_current_best": -0.0156,
+        "feedback_record": "local/runs/hardtree-current-release-20261004/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "b7c656e22f4f245d081f6a49d66ef187a01361317c8d1361c555faa634df4de1",
+        "feedback_evidence_key": "hardtree_current_platform_feedback_20261004"
       }
     ],
     "modernnca_result_key": "modernnca_median_head_20261002",
@@ -1364,7 +1363,14 @@
           "feedback_status": "not_measured"
         }
       ]
-    }
+    },
+    "history_before_hardtree_feedback_20261004": {
+      "queue_snapshot": "local/runs/hardtree-current-release-20261004/platform-feedback-r1/queue-before.json",
+      "queue_snapshot_sha256": "64654d222b3bb737ac8b690e710c11bcc93252fce0bd67137f1226cc2487ee75",
+      "overview_snapshot": "local/runs/hardtree-current-release-20261004/platform-feedback-r1/overview-before.json",
+      "overview_snapshot_sha256": "ecbfadb8745f6f43c28ec3e37636d5e23e186be81b9bbcd8f67fdf15f9677104"
+    },
+    "latest_platform_feedback_key": "hardtree_current_platform_feedback_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -3269,9 +3275,7 @@
     "latest_completed_release": "de3_ema_mean3_q875_reserve_20261004",
     "latest_G0": "passed_python312_12_frozen_files_exact_rational_midpoint_original_iron_322_official_order_crc_finite_nonnegative_and_independent_desktop_readback_four_stages_exit0",
     "latest_G1": "user_requested_unmeasured_midpoint_reserve_not_formally_promoted",
-    "ready_exploration_candidates": [
-      "HARDTREE_DE3_Q100_A20"
-    ],
+    "ready_exploration_candidates": [],
     "reserve_candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
     "reserve_platform_testing": "deferred_by_explicit_user_instruction",
     "optimization_time_budget_seconds": null,
@@ -3650,7 +3654,7 @@
       "desktop_submission_zip_sha256": "7752863b3d88b0df071496c547c03d2a7f9a088685557dbc31531040a00fecee"
     },
     "latest_completed_quality_experiment": "de3_joint_independent_batches_development_20261004",
-    "latest_platform_feedback_key": "de3_ema_mean3_q100_platform_feedback_20261004",
+    "latest_platform_feedback_key": "hardtree_current_platform_feedback_20261004",
     "optimization_authorization_key": "optimization_standing_authorization_20261002",
     "latest_completed_modernnca_quality_experiment": "modernnca_median_head_20261002",
     "latest_local_diagnostic": "q100_retained_questions_review_20261004",
@@ -3672,7 +3676,7 @@
     },
     "active_research": null,
     "ready_formal_candidates": [],
-    "next_action": "user_upload_and_return_HARDTREE_DE3_Q100_A20_platform_score_to_inform_remaining_two_slot_direction; both_independent_batch_A20_confirmation_admissions_retained_deferred",
+    "next_action": "retain_Q100_best_and_Q875_deferred_reserve; no_current_priority_package_or_automatic_hardtree_retry; future_stages_require_new_frozen_scope_and_evidence_review",
     "optimization_paused": false,
     "pause_after_this_round_requested": false,
     "latest_completed_research": "de3_joint_independent_batches_development_20261004",
@@ -3697,8 +3701,8 @@
         "GAUSS1_A20"
       ]
     },
-    "latest_platform_G0": "passed_python312_frozen_sources_release_receipts_source_desktop_crc_322_official_order_finite_nonnegative_original_columns_and_incumbent_iron",
-    "latest_platform_G1": "user_requested_strength_probe_small_positive_user_reported_platform_gain_not_formally_promoted",
+    "latest_platform_G0": "passed_bound_source_desktop_zip_identity_crc_322_official_order_finite_nonnegative_and_unchanged_iron_strings",
+    "latest_platform_G1": "this_fixed_hardtree_recipe_user_reported_below_current_best_original_local_nonpromotion_preserved",
     "history_before_de3_mean3_q100_release_20261004": {
       "latest_completed_release": "ema_mean3_q100_platform_probe_20261004",
       "latest_G0": "passed_six_locked_checks_2769_frozen_files_two_label_free_four_predictor_cold_processes_322_row_package_and_four_actual_exit0",
@@ -28097,7 +28101,8 @@
     "desktop_writes": 0,
     "actual_decision_audit_exit_code": 0,
     "decision_audit_sha256": "cfedabfcaac0e3c511be9d7c0c9dd3b9b02d5717ddefbfea13c88c8d4f43d2ed",
-    "terminal_sha256": "3b10808931786f6a293cdcd864d4b0e4e9ed3b6d4365dcbcd3da20feee8c7820"
+    "terminal_sha256": "3b10808931786f6a293cdcd864d4b0e4e9ed3b6d4365dcbcd3da20feee8c7820",
+    "subsequent_platform_feedback_key": "hardtree_current_platform_feedback_20261004"
   },
   "de3_joint_independent_batches_development_20261004": {
     "status": "completed_two_split_development_G0_closed_A20_confirmation_eligible_deferred",
@@ -28352,6 +28357,40 @@
       "copy.json": "0ccf32f28ec1803d903aa7d5ee4438aa2f46e2abb18a9c792bfba8ec6fc0546a",
       "independent-audit.json": "8251c03421c0642776a23a6fd4dfb1845977c833d35224d04d047237b6a13915",
       "terminal-reconciliation.json": "f1293ceddc630079066cae6f8b0e522c73e21ba87306a10d53d7df3c1f7a2440"
-    }
+    },
+    "subsequent_platform_feedback_key": "hardtree_current_platform_feedback_20261004"
+  },
+  "hardtree_current_platform_feedback_20261004": {
+    "candidate": "HARDTREE_DE3_Q100_A20",
+    "score": 96.3823,
+    "raw_reported_score": "96.3823",
+    "reported_decimal_places": 4,
+    "source": "user_reported_not_independently_verified",
+    "platform_verified": false,
+    "reported_date": "2026-10-04",
+    "package": "local/runs/hardtree-current-release-20261004/release-r1/HARDTREE_DE3_Q100_A20/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-HARDTREE-DE3-Q100-A20-20261004/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "1908e2d97d8cd1f7912e662061febb229a155a86254cf54474fd7cb5a8a94d18",
+    "comparison_candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "comparison_score": 96.3979,
+    "delta_vs_current_best": -0.0156,
+    "current_best_unchanged": true,
+    "G0": "passed_bound_source_desktop_zip_identity_crc_322_official_order_finite_nonnegative_and_unchanged_iron_strings",
+    "G1": "this_fixed_hardtree_recipe_user_reported_below_current_best_original_local_nonpromotion_preserved",
+    "formal_promoted": false,
+    "decision": "remove_this_measured_package_from_current_test_queue; no automatic weight retry or promotion of reserves; do not generalize failure to whole hardtree family",
+    "quota_consumption_inferred": false,
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "status": "completed_user_reported_below_current_best_removed_from_pending_queue",
+    "feedback_record": "local/runs/hardtree-current-release-20261004/platform-feedback-r1/feedback.json",
+    "feedback_sha256": "b7c656e22f4f245d081f6a49d66ef187a01361317c8d1361c555faa634df4de1",
+    "independent_audit": "local/runs/hardtree-current-release-20261004/platform-feedback-r1/independent-audit.json",
+    "independent_audit_sha256": "f63ea02f15f6bd8fa7916b0cb62143be9ae44433c8c1b81e0598b0ddb556ea2a",
+    "terminal_reconciliation": "local/runs/hardtree-current-release-20261004/platform-feedback-r1/terminal-reconciliation.json",
+    "terminal_sha256": "056966844427244c650eb2f9a315a55b4ff847d3dcebfa204dcd5d62213810b9",
+    "document": "docs/hardtree_current_release/PLATFORM_FEEDBACK.md"
   }
 }
