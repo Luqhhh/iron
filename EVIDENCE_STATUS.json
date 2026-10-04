@@ -30188,7 +30188,7 @@
     }
   },
   "realmlp_time_confirmation_20261004": {
-    "status": "runtime_frozen_reference_replay_then_serial_confirmation_active",
+    "status": "completed_G0_passed_G1_failed_one_negative_split",
     "objective": 96.45,
     "candidate": "REALMLP_SINGLE_A20",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
@@ -30213,14 +30213,35 @@
     "checks": "local/runs/realmlp-time-confirmation-20261004/checks-r1/checks.json",
     "checks_sha256": "d7ca663c896fda5fc71b779d7d267ad8b3bed55ddfc99e17ede9248f52e08e63",
     "tests_passed": 33,
-    "G0": "source_tests_passed_historical_reference_cold_bridges_required_before_new_fits",
-    "G1": "four_complete_split_evidence_pending",
-    "next_action": "Freeze runtime and input identities; cold-replay ten historical reference units before serial new confirmation fits",
+    "G0": "72_actual_child_exits_zero_480_reused_and_new_states_cold_independent_scalar_and_terminal_passed",
+    "G1": "not_formally_promoted_split_271828_negative_despite_positive_LCB95",
+    "next_action": "Preserve failed fixed MSE recipe; proceed with separately frozen native MAE admission and development",
     "source_commit": "5b487e59205a9a5e4a648077baadaaaf68d6eb8f",
-    "manifest_sha256": "6f15cfdfef92e0b424a175b9233b6d31179ee9e12d4357cae8e0a01aa4a2422d"
+    "manifest_sha256": "6f15cfdfef92e0b424a175b9233b6d31179ee9e12d4357cae8e0a01aa4a2422d",
+    "gains": {
+      "42": 0.003969419260589402,
+      "3407": 0.0079030645002487,
+      "271828": -0.00031636710027909825,
+      "314159": 0.008971182045033365
+    },
+    "paired": {
+      "n": 4,
+      "mean": 0.005131824676398092,
+      "sd": 0.004221153679250253,
+      "se": 0.0021105768396251267,
+      "lcb95": 0.00016487031568472674,
+      "passed": false
+    },
+    "results": "docs/realmlp_time_confirmation/RESULTS.md",
+    "terminal_reconciliation": "local/runs/realmlp-time-confirmation-20261004/confirmation-r1/terminal-reconciliation.json",
+    "terminal_sha256": "472e6b9756ddf01bbbe3076d26fdc53a6ff62266ebd095c826f1cb5d997eae0f",
+    "actual_native_adam": 20,
+    "actual_native_adamw": 40,
+    "new_native_states": 60,
+    "native_updates": 61084
   },
   "realmlp_time_release_preparation_20261004": {
-    "status": "conditional_source_and_protocol_prepared_no_full_fit_or_package",
+    "status": "not_started_confirmation_quality_condition_failed",
     "objective": 96.45,
     "candidate": "REALMLP_SINGLE_A20",
     "require_completed_four_seed_gate": true,
@@ -30237,7 +30258,7 @@
     "checks": "local/runs/realmlp-time-release-20261004/checks-r2/checks.json",
     "checks_sha256": "208f40e8c3cb9773f924be120a23c07234ee12aedd91999cfc63f752aa95cfa0",
     "G0": "conditional_publisher_checks_passed_no_runtime_admission",
-    "G1": "confirmation_pending_no_platform_score",
+    "G1": "one_negative_confirmation_split_no_qualified_full_release",
     "prior_broader_checks_passed": 32,
     "inference_training_file_open_guard": "installed_before_context_validation; allowlisted source/query/parent identities only in inference process"
   },
@@ -30256,7 +30277,7 @@
     "packages": 0
   },
   "realmlp_mae_admission_20261004": {
-    "status": "protocol_and_no_fit_checks_frozen_waiting_for_prior_MSE_batches_to_close",
+    "status": "runtime_frozen_serial_synthetic_native_admission_active",
     "objective": 96.45,
     "protocol": "docs/realmlp_mae/ADMISSION.md",
     "spec": "configs/realmlp_mae_admission/SPEC.json",
@@ -30276,7 +30297,9 @@
     "G1": "no_quality_evaluation",
     "next_action": "After current MSE confirmation and any qualified one-package release close, run two serial synthetic native MAE procedures and independent cold/parity audit",
     "observer": "New MAE observer preserves original criterion callable during factory construction; native validation trace observer retained",
-    "prior_unstarted_source": "439c542"
+    "prior_unstarted_source": "439c542",
+    "source_commit": "232706f",
+    "manifest_sha256": "6de7aac6b7a613fc27ce974d182724a61a97b0b65b0337aedd06229971ba6a7d"
   },
   "realmlp_mae_development_20261004": {
     "status": "source_checks_passed_pending_completed_native_MAE_admission",
