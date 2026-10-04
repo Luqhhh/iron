@@ -1,5 +1,7 @@
 # RealMLP MSE A20 已完成桌面交付
 
+后续更新：2026-10-05用户回传96.3932，比当前最佳96.3979低0.0047，已移出待测队列。详见[平台反馈](PLATFORM_FEEDBACK.md)；下文保留交付时的工程与质量记录。
+
 按用户“RealMLP MSE A20 写桌面”的明确指令，单一探索包已生成并完成桌面回读。内部候选名`REALMLP_SINGLE_A20`，显示名`RealMLP MSE A20`。
 
 桌面：`/mnt/c/Users/lqh22/Desktop/submission-REALMLP-MSE-A20-20261004/Luqhhh_bf_tap_predict_round2.zip`。同目录有result.csv与README.txt；上传ZIP即可。ZIP SHA256：`030f601d075f49b6c6392f1ca2a6d25f9eb79129b89663af864e691dde5ff952`。
