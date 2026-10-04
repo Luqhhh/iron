@@ -28898,7 +28898,7 @@
     }
   },
   "ema_packed_development_20261004": {
-    "status": "two_split_development_running",
+    "status": "completed_G0_closed_both_candidates_negative_no_confirmation_finalist",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
@@ -28936,9 +28936,9 @@
     "engineering_peak_rss_mib": 763.609375,
     "engineering_cold_maximum_difference": 2.765850126706937e-08,
     "previous_mini_terminal_closed": true,
-    "G0": "engineering_passed_frozen_scientific_and_terminal_audits_pending",
-    "G1": "pending_complete_two_split_OOF",
-    "new_scientific_fits": 28,
+    "G0": "passed_3576_frozen_files_30_estimators_60_optimizers_120_cold_states_72_child_exit0_two_tool_exit0_independent_terminal_and_final_reconciliation",
+    "G1": "A100_and_A20_negative_on_both_complete_development_splits_not_shortlisted_no_confirmation_no_platform_exploration_scheduled",
+    "new_scientific_fits": 30,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
     "packages": 0,
@@ -28948,7 +28948,7 @@
     "time_budget_seconds": null,
     "automatic_retries": false,
     "formal_promoted": false,
-    "monitoring_active": true,
+    "monitoring_active": false,
     "source_worktree": "local/worktrees/ema-packed-development",
     "source_commit": "8d996fd0e41fcd7110ff9a0c1c2a2a797d42cae8",
     "run_directory": "local/runs/ema-packed-20261004/development-r1",
@@ -28963,8 +28963,8 @@
     "process_launch": "local/runs/ema-packed-20261004/development-r1/execution/process-launch.json",
     "process_launch_sha256": "8a546c75541f49df6fddf6b4a70a48a94110ca17408e882e164e9c7415817dbf",
     "controller_start_ns": 1791100474860903463,
-    "next_observation_not_before_ns": 1791104165688924944,
-    "new_scientific_fits_note": "Completed estimator workers at last scheduled observation; in-flight work is not counted as completed.",
+    "next_observation_not_before_ns": null,
+    "new_scientific_fits_note": "Final native ledger reconciled after both actual tool exits; no in-flight units remain.",
     "scientific_execution_started": true,
     "last_scheduled_observation": {
       "number": 5,
@@ -29003,10 +29003,11 @@
       "next_observation_not_before_ns": 1791104165688924944,
       "observer_sha256": "596c9acf172e5c9713a04ef8d718a27bf4ab7e30765d1437a97af90da1989364",
       "receipt": "local/runs/ema-packed-20261004/development-r1/execution/observation-005-independent.json",
-      "receipt_sha256": "e8b1811e4a9e4a01937ba12ca661d69556e0987e56315d407cc1ea53853ec748"
+      "receipt_sha256": "e8b1811e4a9e4a01937ba12ca661d69556e0987e56315d407cc1ea53853ec748",
+      "superseded_by_terminal": true
     },
     "terminal_reconciler": {
-      "status": "prepared_and_rehearsed_on_closed_mini_only_packed_actual_exits_pending",
+      "status": "actual_packed_terminal_reconciliation_passed",
       "source": "local/runs/ema-packed-20261004/terminal-reconciliation-tool-r1/reconcile.py",
       "source_sha256": "320a5479c64664060620ed81a0e0c5bb873838967f2ca400395148d0265b5973",
       "rehearsal_comparison": "local/runs/ema-packed-20261004/terminal-reconciliation-tool-r1/rehearsal-comparison.json",
@@ -29015,8 +29016,71 @@
       "actual_rehearsal_exit_code": 0,
       "new_fits": 0,
       "active_packed_reads": 0,
-      "criterion_changes": 0
-    }
+      "criterion_changes": 0,
+      "actual_reconciliation_exit_code": 0,
+      "final_receipt_sha256": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1"
+    },
+    "results": "docs/ema_packed/RESULTS.md",
+    "gains": {
+      "PACKED_A100": {
+        "42": -0.05008655911181235,
+        "3407": -0.05442629036415912
+      },
+      "PACKED_A20": {
+        "42": -0.003978072036209116,
+        "3407": -0.005440994996710086
+      }
+    },
+    "selected_for_confirmation": null,
+    "confirmation_status": "not_activated_development_gate_failed",
+    "actual_new_estimators": 30,
+    "actual_new_optimizers": 60,
+    "actual_cold_states": 120,
+    "native_optimizer_steps": 42594,
+    "cold_full_batch_difference": 0.0,
+    "maximum_new_cold_order_chunk_difference": 1.2977000181990661e-05,
+    "maximum_child_rss_mib": 817.73046875,
+    "independent_auditor_peak_rss_mib": 249.5859375,
+    "elapsed_seconds_descriptive": 3204.160662375,
+    "actual_supervisor_exec_exit_code": 0,
+    "actual_followup_exec_exit_code": 0,
+    "actual_independent_audit_exit_code": 0,
+    "owned_processes_absent": true,
+    "owned_pid_count": 75,
+    "completed_scientific_children": 72,
+    "final_reconciliation": "local/runs/ema-packed-20261004/development-r1/execution/final-reconciliation.json",
+    "independent_arithmetic_maximum_difference": 8.526512829121202e-14,
+    "receipt_hashes": {
+      "manifest.json": "9412bdf4e3257c2352fe512d427a675ef2cd4875f6da09c914277810f0e5f318",
+      "report.json": "18d37b272b3b8b6f830e4b25b4cf382aacc95d280c33df15ef32af162e7c57a2",
+      "independent-audit.json": "3408e80fce9a6355c2e603332ffa141e06302930653b55c642e0190572e6c8fc",
+      "execution/terminal.json": "a51408bd2ee6b02616ea74fe18272e06e90d5cbc1a102ac57c1fd224a5d45d4f",
+      "execution/independent-terminal-audit.json": "b37416dc64a728500285a922bbe2da159f8250d7050423f2f08f88a7c3694849",
+      "execution/final-reconciliation.json": "d93bfd88f680287f15adcb51cd0cb5accdc9547736d89363c0a53b00bd8cb6b1"
+    },
+    "platform_quality": "unmeasured",
+    "candidate_quality": {
+      "PACKED_A100": {
+        "mean_score_gain": -0.05225642473798574,
+        "tier": "not_shortlisted",
+        "improved_folds": 0,
+        "failed_conditions": [
+          "both_splits_improve",
+          "minimum_improved_folds",
+          "spout_risk"
+        ]
+      },
+      "PACKED_A20": {
+        "mean_score_gain": -0.004709533516459601,
+        "tier": "not_shortlisted",
+        "improved_folds": 1,
+        "failed_conditions": [
+          "both_splits_improve",
+          "minimum_improved_folds"
+        ]
+      }
+    },
+    "platform_priority_reason": "Both fixed weights lose on both complete splits, A100 improves zero of ten folds and A20 one of ten; removal of backbone sharing lacks platform support and has adverse author evidence. No sufficient distinct platform exploration case; local sign alone is not a proof of platform loss or family-wide failure."
   },
   "ensemble_resampling_review_20261004": {
     "status": "research_review_completed_not_scientifically_admitted",
