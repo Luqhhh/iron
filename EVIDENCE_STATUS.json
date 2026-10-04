@@ -30310,7 +30310,7 @@
     "terminal_sha256": "d8d2f2fcf5b3eddfee98e61127c9285e4b519328dbc493bc2642d8ae66679a0d"
   },
   "realmlp_mae_development_20261004": {
-    "status": "runtime_frozen_serial_two_split_development_active",
+    "status": "completed_two_positive_development_splits_exploration_tier_confirmation_qualified",
     "objective": 96.45,
     "candidate": "REALMLP_MAE_A20",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
@@ -30334,14 +30334,33 @@
     "checks": "local/runs/realmlp-mae-development-20261004/checks-r2/checks.json",
     "checks_sha256": "b9744125fefb6b7ce043a857b26ca6c25e4d76b87aa2abd3d2ea552c1ae068a5",
     "tests_passed": 9,
-    "G0": "native_admission_closed_exact_runtime_and_input_identity_frozen",
-    "G1": "complete_development_results_pending",
-    "next_action": "Complete original MSE confirmation and any qualified release, then native MAE engineering; only after admission run two complete development splits",
+    "G0": "20_native_states_cold_official_query_checks_scalar_draws_and_actual_terminal_passed",
+    "G1": "both_splits_positive_but_weaker_than_MSE_and_5_of_10_folds_improved_exploration",
+    "next_action": "Complete the prospectively frozen two confirmation splits; retain development exploration tier and failure",
     "source_commit": "5e17ced",
-    "manifest_sha256": "333d2514e17172d94fce418075bd9ec41d4131260a6a4970a283ad8c26f84fe3"
+    "manifest_sha256": "333d2514e17172d94fce418075bd9ec41d4131260a6a4970a283ad8c26f84fe3",
+    "gains": {
+      "42": 0.0019215298114473862,
+      "3407": 0.0025174400581488877
+    },
+    "mae_minus_mse": {
+      "42": -0.0020478894491420155,
+      "3407": -0.005385624442099812
+    },
+    "development_tier": "exploration",
+    "failed_conditions": [
+      "minimum_improved_folds"
+    ],
+    "confirmation_qualified": true,
+    "native_optimizer_runs": 20,
+    "native_states": 20,
+    "native_updates": 19552,
+    "results": "docs/realmlp_mae/DEVELOPMENT_RESULTS.md",
+    "terminal_reconciliation": "local/runs/realmlp-mae-development-20261004/development-r1/terminal-reconciliation.json",
+    "terminal_sha256": "a86c1616d461bf84591f77e797e83717f786ba1ecc1e91e2fa75708492aaf798"
   },
   "realmlp_mae_confirmation_preparation_20261004": {
-    "status": "conditional_source_prepared_before_development_results_no_new_fits",
+    "status": "runtime_frozen_serial_confirmation_active_after_two_complete_positive_splits",
     "candidate": "REALMLP_MAE_A20",
     "objective": 96.45,
     "protocol": "docs/realmlp_mae/CONFIRMATION.md",
@@ -30362,8 +30381,10 @@
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "G0": "source_no_fit_checks_passed_runtime_admission_pending",
-    "G1": "not_measured"
+    "G0": "native_development_closed_exact_runtime_and_reference_identity_frozen",
+    "G1": "four_seed_results_pending_development_exploration_tier_preserved",
+    "source_commit": "a373652",
+    "manifest_sha256": "05f11d5f83b5745c3837b4621615923141fbde8feb6fc5b17883dee139b732c4"
   },
   "realmlp_mae_release_preparation_20261004": {
     "status": "conditional_source_prepared_before_quality_results_no_full_fit_or_package",
