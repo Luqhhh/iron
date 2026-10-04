@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "SILU_A100_user_reported_below_best_no_new_priority_optimization_paused",
+    "status": "user_resumed_platform_transfer_investigation_no_submission_queued",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -344,8 +344,8 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "SiLU A100用户回传96.3732，比当前最佳96.3979低0.0247，已移出待测队列。本地双split正收益与本次平台负收益同时保留；不自动安排A20或其他方案。当前最佳仍为DE3＋EMA三成员Q100，优化保持暂停。",
-    "optimization_paused": true,
+    "recommended": "用户要求尝试解决本地到平台的筛选失真，已冻结SiLU迁移诊断：复用66模型、10次无目标域分类，0新目标拟合。先查联合输入分布、同查询全量改变量和322行敏感性；不自动安排A20或其他平台包。",
+    "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
     "historical_decisions_unchanged": true,
@@ -1464,7 +1464,8 @@
     "history_before_silu_feedback_20261004": {
       "queue_snapshot": "local/runs/ema-silu-release-20261004/platform-feedback-r1/queue-before.json",
       "queue_snapshot_sha256": "b86cb822351aee7c4562e1adf1a3ceaa0789e4bdebcd77637948d649ca8699ae"
-    }
+    },
+    "active_diagnostic_key": "platform_transfer_diagnostics_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -29762,7 +29763,12 @@
     "receipt": "local/runs/ema-silu-20261004/pause-registration-r1/complete.json",
     "receipt_sha256": "a831b50e1d4c97e64cd663e7add65039c21f56db53297f033e1616bcdf44a31a",
     "limited_followup_completed_key": "ema_silu_user_release_20261004",
-    "broader_pause_continues": true
+    "broader_pause_continues": true,
+    "subsequent_user_resume": {
+      "instruction": "尝试解决这个问题",
+      "evidence_key": "platform_transfer_diagnostics_20261004",
+      "scope": "local-platform transfer investigation"
+    }
   },
   "ema_silu_user_release_20261004": {
     "status": "user_reported_platform_below_Q100",
@@ -29940,5 +29946,30 @@
     "queue_before_sha256": "b86cb822351aee7c4562e1adf1a3ceaa0789e4bdebcd77637948d649ca8699ae",
     "release_status_before_sha256": "f7b8b0a5c0e7a3d457f04aa682b8e00cda687b804b6ece9da18bc23db5c41eb1",
     "interpretation": "This fixed full-weight SiLU replacement is below the incumbent on user-reported platform feedback. Preserve original local development results and formal gates; do not generalize to all SiLU recipes or infer A20 benefit. No new route or weight probe activated."
+  },
+  "platform_transfer_diagnostics_20261004": {
+    "status": "preregistered_35_locked_tests_passed_awaiting_input_freeze",
+    "user_instruction": "尝试解决这个问题",
+    "scope": "Resume investigation of local-to-platform transfer; frozen retrospective SiLU paired diagnostics before any new scientific fitting",
+    "objective": 96.45,
+    "next_milestone": 96.4,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "protocol": "docs/platform_transfer_diagnostics/PREREGISTRATION.md",
+    "spec": "configs/platform_transfer_diagnostics/SPEC.json",
+    "run_directory": "local/runs/platform-transfer-diagnostics-20261004/diagnostic-r1",
+    "new_target_estimators": 0,
+    "new_target_optimizers": 0,
+    "domain_classifier_fits_budget": 10,
+    "saved_refit_models": 66,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "G0": "pending_real_execution",
+    "G1": "retrospective_mechanism_diagnostic_not_platform_predictor_or_promotion",
+    "historical_decisions_unchanged": true,
+    "engineering_checks": "local/runs/platform-transfer-diagnostics-20261004/engineering-r2/checks.json",
+    "engineering_checks_sha256": "ff133e13239cab8b7aba2072f45dc3e2a78daf348104e23ccff2a51d8c230a78"
   }
 }
