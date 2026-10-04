@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "user_resumed_platform_transfer_investigation_no_submission_queued",
+    "status": "transfer_diagnostic_completed_no_new_submission_queued",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -344,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "用户要求尝试解决本地到平台的筛选失真，已冻结SiLU迁移诊断：复用66模型、10次无目标域分类，0新目标拟合。先查联合输入分布、同查询全量改变量和322行敏感性；不自动安排A20或其他平台包。",
+    "recommended": "迁移诊断已完成：66原模型回读与独立审计通过；未见可用输入来源区分，重加权未解释SiLU反转，A100对322行组成敏感。后续评审已补迁移证据卡，不把最高本地均值直接称为平台最优。当前最佳96.3979不变，无新包或自动A20补测，本轮无后台任务。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -29768,7 +29768,8 @@
       "instruction": "尝试解决这个问题",
       "evidence_key": "platform_transfer_diagnostics_20261004",
       "scope": "local-platform transfer investigation"
-    }
+    },
+    "current_pause_superseded_by": "platform_transfer_diagnostics_20261004"
   },
   "ema_silu_user_release_20261004": {
     "status": "user_reported_platform_below_Q100",
@@ -29948,7 +29949,7 @@
     "interpretation": "This fixed full-weight SiLU replacement is below the incumbent on user-reported platform feedback. Preserve original local development results and formal gates; do not generalize to all SiLU recipes or infer A20 benefit. No new route or weight probe activated."
   },
   "platform_transfer_diagnostics_20261004": {
-    "status": "preregistered_35_locked_tests_passed_awaiting_input_freeze",
+    "status": "completed_audited_diagnostic_and_prospective_review_contract_no_new_platform_score",
     "user_instruction": "尝试解决这个问题",
     "scope": "Resume investigation of local-to-platform transfer; frozen retrospective SiLU paired diagnostics before any new scientific fitting",
     "objective": 96.45,
@@ -29966,10 +29967,117 @@
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "G0": "pending_real_execution",
-    "G1": "retrospective_mechanism_diagnostic_not_platform_predictor_or_promotion",
+    "G0": "passed_35_locked_tests_4533_immutable_files_66_native_cold_refits_10_domain_cold_models_original_zip_and_scalar_actual_exits",
+    "G1": "A100_composition_sensitive_input_reweighting_did_not_explain_reversal_full_change_broadly_aligned_no_causal_attribution_or_platform_predictor",
     "historical_decisions_unchanged": true,
     "engineering_checks": "local/runs/platform-transfer-diagnostics-20261004/engineering-r2/checks.json",
-    "engineering_checks_sha256": "ff133e13239cab8b7aba2072f45dc3e2a78daf348104e23ccff2a51d8c230a78"
+    "engineering_checks_sha256": "ff133e13239cab8b7aba2072f45dc3e2a78daf348104e23ccff2a51d8c230a78",
+    "source_commit": "432509d0c2faa7c8c1b270c9574dd55fc95cb144",
+    "source_directory": "local/worktrees/platform-transfer-diagnostics",
+    "report": "local/runs/platform-transfer-diagnostics-20261004/diagnostic-r1/report.json",
+    "report_sha256": "71c175411c93bffc9ad05a2fb5eacaa272a4e62d46c487fb44522b926b05093e",
+    "independent_audit": "local/runs/platform-transfer-diagnostics-20261004/diagnostic-r1/independent-audit.json",
+    "independent_audit_sha256": "2e37350dd1ee92a6fa89f679fc2111c8edcca8afbb7a1d104880007a133a2b39",
+    "terminal_reconciliation": "local/runs/platform-transfer-diagnostics-20261004/diagnostic-r1/terminal-reconciliation.json",
+    "terminal_reconciliation_sha256": "a17726c6045ffdd4c758d1f0f3aa44cb8e209e1410615568dad06392a1a1b136",
+    "results": "docs/platform_transfer_diagnostics/RESULTS.md",
+    "prospective_review_template": "docs/platform_transfer_diagnostics/REVIEW_TEMPLATE.md",
+    "domain_classifier_fits_actual": 10,
+    "engineering_synthetic_domain_fits_total": 8,
+    "engineering_test_invocations": 2,
+    "complete_native_refits": 66,
+    "formal_promoted": false,
+    "background_tasks_running": false,
+    "new_platform_score": false,
+    "previous_pause_superseded_for_this_requested_work": true,
+    "actual_exit_codes": {
+      "run": 0,
+      "audit": 0
+    },
+    "frozen_files_reverified": 4533,
+    "mmd": {
+      "mmd2": -0.0005643195210285334,
+      "p_value": 0.987,
+      "permutations": 999,
+      "squared_distance_median": 38.48961245847512,
+      "null_quantiles": {
+        "0.025": -0.0005192852111090107,
+        "0.5": -4.2027854166626355e-05,
+        "0.975": 0.0008470838551351432
+      },
+      "interpretation": "fixed_kernel_joint_input_test_not_conditional_target_test"
+    },
+    "domain": {
+      "logistic": {
+        "auc": 0.4781526137024858,
+        "log_loss": 0.33998868060829107,
+        "raw_weight_min": 0.433701256284385,
+        "raw_weight_max": 3.4185594532354706,
+        "clipped_fraction": 0.0,
+        "effective_sample_size": 2562.3291943814534,
+        "raw_effective_sample_size": 2562.3291943814534,
+        "classifier_fits": 5
+      },
+      "histogram": {
+        "auc": 0.48483290256521294,
+        "log_loss": 0.34261659268960487,
+        "raw_weight_min": 0.26811575881697686,
+        "raw_weight_max": 4.087141982292593,
+        "clipped_fraction": 0.0,
+        "effective_sample_size": 2418.393937864315,
+        "raw_effective_sample_size": 2418.393937864315,
+        "classifier_fits": 5
+      }
+    },
+    "unweighted_gain_by_split": {
+      "42": {
+        "SILU_A100": 0.00927839325995468,
+        "SILU_A20": 0.006438548436145529
+      },
+      "3407": {
+        "SILU_A100": 0.02059009423074888,
+        "SILU_A20": 0.008683134611215731
+      }
+    },
+    "uniform_322_oof_negative_fraction_by_split": {
+      "42": {
+        "SILU_A100": 0.3199,
+        "SILU_A20": 0.0629
+      },
+      "3407": {
+        "SILU_A100": 0.1488,
+        "SILU_A20": 0.0142
+      }
+    },
+    "same_query_fold_mean_vs_full_by_split": {
+      "42": {
+        "rows": 322,
+        "cv_mean": 0.08127834127644382,
+        "full_mean": 0.10542255068189488,
+        "cv_rms": 0.8840197549262317,
+        "full_rms": 0.8819917045074742,
+        "difference_rms": 0.4084393473279551,
+        "cosine": 0.8930236013804046,
+        "sign_agreement": 0.8788819875776398
+      },
+      "3407": {
+        "rows": 322,
+        "cv_mean": 0.10300808284194121,
+        "full_mean": 0.10542255068189488,
+        "cv_rms": 0.8501882808687544,
+        "full_rms": 0.8819917045074742,
+        "difference_rms": 0.39678577920321645,
+        "cosine": 0.8956953943815084,
+        "sign_agreement": 0.8726708074534162
+      }
+    },
+    "interpretation_limits": [
+      "Known platform feedback makes this retrospective, not prospective validation",
+      "OOF resampling frequencies are not platform failure probabilities",
+      "No detected input shift does not establish identical distributions or conditional targets",
+      "High prediction-change cosine does not establish equal hidden error",
+      "No automatic A20 or domain-weighted training; no new numerical rejection gate"
+    ],
+    "next_action": "Use prospectively frozen transfer evidence cards for subsequent concrete candidates; no automatic new fit or package from this retrospective diagnostic"
   }
 }
