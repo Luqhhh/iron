@@ -28540,5 +28540,32 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "queue_and_quota_unchanged": true
+  },
+  "thread_literal_target_94_5_completion_20261004": {
+    "status": "literal_thread_target_met_on_registered_user_platform_report",
+    "objective": "目标平台测试94.5",
+    "target": 94.5,
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
+    "source": "user_reported_not_independently_verified",
+    "platform_verified": false,
+    "margin_above_target": 1.8979,
+    "decision": "Use the explicit current thread objective 94.5; no response changed it to the historical repository target 96.45. The registered user platform result exceeds 94.5.",
+    "completion_audit": "local/runs/thread-target-audit-20261004/completion-vm9tddoh/audit.json",
+    "completion_audit_sha256": "7218a1b8cf8bd2d77f09f00bb90c98d5905bb2a528c89f910be7e6a3a60db764",
+    "actual_audit_exit_code": 0,
+    "G0": "private_original_and_report_binding_verified_original_python312_package_checks_passed",
+    "G1": "registered_user_platform_result_only_not_independent_score_verification_or_formal_model_promotion",
+    "repository_target": 96.45,
+    "repository_target_met": false,
+    "repository_target_gap": 0.0521,
+    "prior_clarification_record": "current_best_artifact_recheck_20261004",
+    "registered_desktop_path_missing_private_original_preserved": true,
+    "new_fits": 0,
+    "new_predictions": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "historical_protocols_model_decisions_queue_and_quota_unchanged": true
   }
 }
