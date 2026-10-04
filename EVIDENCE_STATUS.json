@@ -28666,8 +28666,8 @@
     "process_launch": "local/runs/ema-mini-20261004/development-r1/process-launch.json",
     "process_launch_sha256": "d528d9e586c42f78ce62fde38a50e3cb8ce5073853089a9dfdd1ca1df63e46e7",
     "controller_start_ns": 1791094500272896703,
-    "next_observation_not_before_ns": 1791098960152006520,
-    "new_scientific_fits_note": "Sixth scheduled observation: 23 new estimators completed and cold-audited; split3407 fold2 init2042 worker live; final native started/optimizer inventory pending; frozen upper bound30",
+    "next_observation_not_before_ns": 1791099596756375254,
+    "new_scientific_fits_note": "Seventh scheduled observation: 27 new estimators completed and cold-audited; split3407 fold4 init42 worker live; final native started/optimizer inventory pending; frozen upper bound30",
     "scientific_execution_started": true,
     "monitoring_active": true,
     "conditional_confirmation_cache": {
@@ -28730,17 +28730,17 @@
       }
     },
     "last_scheduled_observation": {
-      "number": 6,
-      "time_ns": 1791098360152006520,
-      "completed_new_estimators": 23,
-      "completed_new_cold_units": 23,
-      "completed_old_reuse_units": 8,
-      "closed_child_count": 54,
+      "number": 7,
+      "time_ns": 1791098996756375254,
+      "completed_new_estimators": 27,
+      "completed_new_cold_units": 27,
+      "completed_old_reuse_units": 10,
+      "closed_child_count": 64,
       "all_closed_children_exit0": true,
       "maximum_closed_child_rss_mib": 741.1328125,
       "partial_quality_read": false,
-      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-006-independent.json",
-      "sha256": "bcc47dea46d2527a83cb17aca1e8634f51b46b389067b633bfcb430054b51441",
+      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-007-independent.json",
+      "sha256": "7fb6b14a6243b613bf117e84c01fec1ef7137de1a0abc06aa5a5478231ac5b0d",
       "controller_and_watcher_verified_live": true
     },
     "monitoring_deviations": [
@@ -28789,5 +28789,42 @@
     ],
     "report_sha256": "f5bdccfc29fac88682fef6fb4cd464a634b93d2f67645b37906dd056cb05bd0f",
     "terminal_sha256": "4d1846baaafae820424326e3989b01287877a98c66e3452e4e5367a0bfb687ba"
+  },
+  "iron_strength_bound_20261004": {
+    "status": "conditional_continuous_bounds_verified_two_declared_iron_lines_only",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "objective": 96.45,
+    "protocol": "docs/iron_strength_bound/PREREGISTRATION.md",
+    "results": "docs/iron_strength_bound/RESULTS.md",
+    "private_directory": "local/runs/iron-strength-bound-20261004/review-r1",
+    "G0": "16_frozen_identities_five_original_packages_four_column_string_equalities_Fraction_and_independent_Decimal100_actual_exit0",
+    "G1": "no_new_quality_measurement_conditional_bounds_not_attainable_scores_or_global_ceiling",
+    "domain": [
+      0.5,
+      1
+    ],
+    "fixed_time": "Q100_original_CSV_fields",
+    "bounds": {
+      "DE3_difference_amplification": 96.40025,
+      "A35_to_DE3_canonical_line": 96.41635
+    },
+    "score_source": "user_reported_not_independently_verified",
+    "rounding_half_width": 5e-05,
+    "explicit_limits": "canonical exact CSV-endpoint lines only; no claim for lower/higher weights, two-dimensional joint tuning, new models/members/fits, nonlinear processing or historical W100 package equivalence",
+    "new_fits": 0,
+    "label_reads": 0,
+    "new_predictions": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "active_mini_reads": 0,
+    "receipt_hashes": {
+      "SPEC.json": "e04ed5539aa57bc403c1fa2c58ddd27f437b89bd5e54ac654c24d0fad29357a5",
+      "manifest.json": "44862bb1f416c8684037e518c3d7212801a6379a148bda71de94d070ea81ef4d",
+      "certificate.json": "72342c4566895d7f558c9a601941e2bbb7382a385cbeb57d12e5f2f9d440ce2a",
+      "independent-audit.json": "c950d5fd6eb0d559c7f3c298b2bb2c8937ac3efa3aed75247c6106765e637706",
+      "terminal-reconciliation.json": "43b424d3eb2621a38567f257eaff4f4f9e02cc4c6dd771ee82c8a388be755bd1"
+    }
   }
 }
