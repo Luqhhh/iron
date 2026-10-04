@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "SILU_A100_single_user_requested_package_ready_broader_optimization_paused",
+    "status": "SILU_A100_user_reported_below_best_no_new_priority_optimization_paused",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -310,37 +310,9 @@
       "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [
-      {
-        "candidate": "SILU_A100",
-        "package": "local/runs/ema-silu-release-20261004/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-SILU-A100-20261004/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "8c036e076da84387e6c4f1611fb4e9e2b578770694f6207a2a8d82d0d948e9de",
-        "evidence_key": "ema_silu_user_release_20261004",
-        "formal_promotion": false,
-        "G0": "passed_native_partitions_epochs_6_new_6_reused_states_independent_cold_scalar_package_322_template_CRC_raw_iron_desktop_and_actual_exits",
-        "G1": "explicit_user_platform_exploration_two_positive_development_splits_platform_unmeasured_not_four_seed_promoted",
-        "reference": "DE3_IRON_EMA_MEAN3_Q100",
-        "feedback_status": "not_measured",
-        "priority": 1,
-        "reason": "explicit_user_requested_single_SiLU_A100_platform_exploration"
-      }
-    ],
-    "submission_priority_note": "Only user-requested SILU_A100 newly delivered; no assistant upload, no quota deduction inferred.",
-    "ready_for_user_platform_testing": [
-      {
-        "candidate": "SILU_A100",
-        "package": "local/runs/ema-silu-release-20261004/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
-        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-SILU-A100-20261004/Luqhhh_bf_tap_predict_round2.zip",
-        "zip_sha256": "8c036e076da84387e6c4f1611fb4e9e2b578770694f6207a2a8d82d0d948e9de",
-        "evidence_key": "ema_silu_user_release_20261004",
-        "formal_promotion": false,
-        "G0": "passed_native_partitions_epochs_6_new_6_reused_states_independent_cold_scalar_package_322_template_CRC_raw_iron_desktop_and_actual_exits",
-        "G1": "explicit_user_platform_exploration_two_positive_development_splits_platform_unmeasured_not_four_seed_promoted",
-        "reference": "DE3_IRON_EMA_MEAN3_Q100",
-        "feedback_status": "not_measured"
-      }
-    ],
+    "submission_priority": [],
+    "submission_priority_note": "SILU_A100 scored 96.3732 per user report, 0.0247 below incumbent, and was removed from pending testing. No automatic A20 probe or substitute candidate; quota unchanged without inference.",
+    "ready_for_user_platform_testing": [],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -372,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "SiLU A100已完成3个全量模型、独立冷推理、封包及桌面回读，等待用户自行上传和回传分数。它是用户指定探索，未四seed正式晋级；当前平台最佳仍为用户回传96.3979。其他优化保持暂停。",
+    "recommended": "SiLU A100用户回传96.3732，比当前最佳96.3979低0.0247，已移出待测队列。本地双split正收益与本次平台负收益同时保留；不自动安排A20或其他方案。当前最佳仍为DE3＋EMA三成员Q100，优化保持暂停。",
     "optimization_paused": true,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -983,6 +955,32 @@
         "feedback_status": "user_reported_not_independently_verified",
         "allocation_status": "completed_former_reserve_no_repeat_priority",
         "formal_promotion": false
+      },
+      {
+        "candidate": "SILU_A100",
+        "package": "local/runs/ema-silu-release-20261004/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-SILU-A100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "8c036e076da84387e6c4f1611fb4e9e2b578770694f6207a2a8d82d0d948e9de",
+        "evidence_key": "ema_silu_user_release_20261004",
+        "formal_promotion": false,
+        "G0": "passed_native_partitions_epochs_6_new_6_reused_states_independent_cold_scalar_package_322_template_CRC_raw_iron_desktop_and_actual_exits",
+        "G1": "fixed_SiLU_A100_user_reported_platform_negative_despite_two_positive_local_splits",
+        "reference": "DE3_IRON_EMA_MEAN3_Q100",
+        "feedback_status": "user_reported_not_independently_verified",
+        "score": 96.3732,
+        "raw_reported_score": "96.3732",
+        "raw_reported_message": "96.373296.3732",
+        "reported_decimal_places": 4,
+        "source": "user_reported_not_independently_verified",
+        "platform_verified": false,
+        "reported_date": "2026-10-04",
+        "comparison_candidate": "DE3_IRON_EMA_MEAN3_Q100",
+        "comparison_score": 96.3979,
+        "delta_vs_current_best": -0.0247,
+        "allocation_status": "completed_platform_test_below_current_best",
+        "feedback_record": "local/runs/ema-silu-release-20261004/platform-feedback-r1/feedback.json",
+        "feedback_sha256": "5cebb9c5eab7856770d0890d7d5a9c70d728ca4b745f965649a9f70fab8e019a",
+        "feedback_evidence_key": "ema_silu_platform_feedback_20261004"
       }
     ],
     "modernnca_result_key": "modernnca_median_head_20261002",
@@ -1415,7 +1413,7 @@
       "overview_snapshot": "local/runs/hardtree-current-release-20261004/platform-feedback-r1/overview-before.json",
       "overview_snapshot_sha256": "ecbfadb8745f6f43c28ec3e37636d5e23e186be81b9bbcd8f67fdf15f9677104"
     },
-    "latest_platform_feedback_key": "hardtree_current_platform_feedback_20261004",
+    "latest_platform_feedback_key": "ema_silu_platform_feedback_20261004",
     "history_before_q875_feedback_20261004": {
       "status": "hardtree_user_reported_below_best_no_priority_package_Q875_reserve_only",
       "recommended": "HARDTREE_DE3_Q100_A20用户回传96.3823，比当前最佳96.3979低0.0156，已移出待测队列；当前无建议立即测试的包。DE3＋EMA三成员Q100保持最佳，距96.45为0.0521。Q87.5及旧Q75组合继续候补，两个独立采样A20保留确认资格但暂不激活，不自动补充平台探针。",
@@ -1462,6 +1460,10 @@
     "history_before_silu_desktop_20261004": {
       "queue_snapshot": "local/runs/ema-silu-release-20261004/release-r1/queue-before-delivery.json",
       "queue_snapshot_sha256": "96c39379625690497d17c04b27ac3109439023f1849626c9672373ca6ce3828e"
+    },
+    "history_before_silu_feedback_20261004": {
+      "queue_snapshot": "local/runs/ema-silu-release-20261004/platform-feedback-r1/queue-before.json",
+      "queue_snapshot_sha256": "b86cb822351aee7c4562e1adf1a3ceaa0789e4bdebcd77637948d649ca8699ae"
     }
   },
   "round2_v2_3_candidate_release": {
@@ -29449,8 +29451,9 @@
     "independent_arithmetic_maximum_difference": 8.526512829121202e-14,
     "pause_registration": "local/runs/ema-silu-20261004/pause-registration-r1/complete.json",
     "pause_registration_sha256": "a831b50e1d4c97e64cd663e7add65039c21f56db53297f033e1616bcdf44a31a",
-    "next_action": "Paused by explicit user request after current SiLU completion. Retain A100 confirmation eligibility; no confirmation, full fit, package, platform test, RealMLP work or other optimization until user resumes.",
-    "subsequent_user_requested_release_key": "ema_silu_user_release_20261004"
+    "next_action": "Paused; fixed A100 user-reported platform score is below incumbent. Preserve original two-positive-split development qualification and gates, without automatic confirmation, A20 probe or other fitting.",
+    "subsequent_user_requested_release_key": "ema_silu_user_release_20261004",
+    "platform_followup_key": "ema_silu_platform_feedback_20261004"
   },
   "ensemble_objective_review_20261004": {
     "status": "research_review_completed_not_scientifically_admitted",
@@ -29762,7 +29765,7 @@
     "broader_pause_continues": true
   },
   "ema_silu_user_release_20261004": {
-    "status": "completed_single_package_desktop_ready_awaiting_user_platform_feedback",
+    "status": "user_reported_platform_below_Q100",
     "candidate": "SILU_A100",
     "authorization": "用户明确要求：生成**SiLU A100**提交包，写桌面",
     "protocol": "docs/ema_silu_release/PREREGISTRATION.md",
@@ -29776,7 +29779,7 @@
     "objective": 96.45,
     "formal_promoted": false,
     "G0": "passed_native_partitions_epochs_6_new_6_reused_states_independent_cold_scalar_package_322_template_CRC_raw_iron_desktop_and_actual_exits",
-    "G1": "explicit_user_platform_exploration_two_positive_development_splits_platform_unmeasured_not_four_seed_promoted",
+    "G1": "fixed_SiLU_A100_user_reported_platform_negative_despite_two_positive_local_splits",
     "planned": {
       "full_training_procedures": 3,
       "optimizer_runs": 6,
@@ -29875,8 +29878,67 @@
     "delivery": "docs/ema_silu_release/DELIVERY.md",
     "delivery_terminal_receipt": "local/runs/ema-silu-release-20261004/release-r1/delivery-terminal-reconciliation.json",
     "delivery_terminal_receipt_sha256": "c92881e66c66a891977a41ffb06c094fab2d19925239124207bfefebe5bb8afd",
-    "platform_score": null,
-    "platform_test_status": "awaiting_user_upload_and_feedback",
-    "next_action": "User uploads only SILU_A100 and reports score; no automatic optimizer, weight probe, confirmation or other route."
+    "platform_score": 96.3732,
+    "platform_test_status": "score_received",
+    "next_action": "Remain paused. Retain fixed A100 failure evidence; no repeat priority, automatic A20 probe, confirmation, refit or other optimization.",
+    "platform_score_source": "user_reported_not_independently_verified",
+    "platform_verified": false,
+    "platform_feedback_key": "ema_silu_platform_feedback_20261004",
+    "platform_feedback_record": "local/runs/ema-silu-release-20261004/platform-feedback-r1/feedback.json",
+    "platform_feedback_sha256": "5cebb9c5eab7856770d0890d7d5a9c70d728ca4b745f965649a9f70fab8e019a",
+    "delta_vs_current_best": -0.0247,
+    "G1_at_release": "explicit_user_platform_exploration_two_positive_development_splits_platform_unmeasured_not_four_seed_promoted"
+  },
+  "ema_silu_platform_feedback_20261004": {
+    "status": "registered_user_reported_below_incumbent",
+    "candidate": "SILU_A100",
+    "score": 96.3732,
+    "raw_reported_message": "96.373296.3732",
+    "raw_reported_score": "96.3732",
+    "normalization": "two identical concatenated score strings interpreted as one candidate feedback; no upload count inferred",
+    "reported_decimal_places": 4,
+    "reported_date": "2026-10-04",
+    "registered_ns": 1791114232755523550,
+    "source": "user_reported_not_independently_verified",
+    "platform_verified": false,
+    "package": "local/runs/ema-silu-release-20261004/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-SILU-A100-20261004/Luqhhh_bf_tap_predict_round2.zip",
+    "zip_sha256": "8c036e076da84387e6c4f1611fb4e9e2b578770694f6207a2a8d82d0d948e9de",
+    "comparison_candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "comparison_score": 96.3979,
+    "comparison_source": "user_reported_not_independently_verified",
+    "delta_vs_current_best": -0.0247,
+    "local_development_gains": {
+      "42": 0.009278393259954679,
+      "3407": 0.020590094230748878
+    },
+    "local_development_mean_gain": 0.014934243745351778,
+    "fixed_column": "pred_tap_iron",
+    "fixed_string_mismatches": 0,
+    "G0": "release_receipt_original_and_available_desktop_identity_CRC_322_template_and_parent_iron_rechecked",
+    "G1": "fixed_SiLU_A100_user_reported_platform_negative_despite_two_positive_local_splits",
+    "formal_promoted": false,
+    "current_best_changed": false,
+    "optimization_paused": true,
+    "automatic_A20_probe": false,
+    "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "remaining_quota_not_inferred": true,
+    "identity_check": {
+      "python": "3.12.12",
+      "delivery_receipt_sha256": "c92881e66c66a891977a41ffb06c094fab2d19925239124207bfefebe5bb8afd",
+      "desktop_exists": true,
+      "desktop_bytes_equal": true,
+      "rows": 322,
+      "crc_passed": true,
+      "iron_string_mismatches": 0
+    },
+    "feedback_record": "local/runs/ema-silu-release-20261004/platform-feedback-r1/feedback.json",
+    "feedback_sha256": "5cebb9c5eab7856770d0890d7d5a9c70d728ca4b745f965649a9f70fab8e019a",
+    "queue_before_sha256": "b86cb822351aee7c4562e1adf1a3ceaa0789e4bdebcd77637948d649ca8699ae",
+    "release_status_before_sha256": "f7b8b0a5c0e7a3d457f04aa682b8e00cda687b804b6ece9da18bc23db5c41eb1",
+    "interpretation": "This fixed full-weight SiLU replacement is below the incumbent on user-reported platform feedback. Preserve original local development results and formal gates; do not generalize to all SiLU recipes or infer A20 benefit. No new route or weight probe activated."
   }
 }
