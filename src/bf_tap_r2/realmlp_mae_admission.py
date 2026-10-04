@@ -11,6 +11,7 @@ from . import realmlp_native_admission as harness
 from .ema_nested_residual import read,write,sha,verify,save_arrays
 from .realmlp_development_audit import arrays
 from .realmlp_mae_recipe import mae_recipe
+from .realmlp_mae_observer import observe_mae_native
 from .realmlp_time_development import setup
 
 WORK=Path(__file__).resolve().parents[2]
@@ -20,7 +21,7 @@ SPEC='configs/realmlp_mae_admission/SPEC.json'
 
 def sources():
     return {str(p.relative_to(WORK)):sha(p) for p in [*list((WORK/'src').rglob('*.py')),WORK/SPEC,
-        WORK/'tests/test_realmlp_mae_recipe.py',WORK/'tests/test_realmlp_native_audit.py',WORK/'tests/test_realmlp_state_adapter.py',
+        WORK/'tests/test_realmlp_mae_recipe.py',WORK/'tests/test_realmlp_mae_observer.py',WORK/'tests/test_realmlp_native_audit.py',WORK/'tests/test_realmlp_state_adapter.py',
         WORK/'docs/realmlp_mae/ADMISSION.md',WORK/'configs/round2_v9/SPEC.yaml',WORK/'uv.lock',WORK/'pyproject.toml']}
 
 
@@ -63,7 +64,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('action',choices=['prepare','control','capture','cold','parity']);p.add_argument('--checks');a=p.parse_args()
     if a.action=='prepare':prepare(a.checks)
     else:
-        with patch.object(harness,'context',context):
+        with patch.object(harness,'context',context),patch.object(harness,'observe_native',observe_mae_native):
             if a.action in ['control','capture']:harness.worker(a.action)
             elif a.action=='cold':harness.cold()
             else:harness.parity()

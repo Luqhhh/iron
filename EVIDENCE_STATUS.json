@@ -30269,11 +30269,13 @@
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "checks": "local/runs/realmlp-mae-admission-20261004/checks-r1/checks.json",
-    "checks_sha256": "de9283466034077f8b02f829dfb0974d10437fe4fff77923b028aa6fe3c104f5",
-    "tests_passed": 28,
-    "G0": "native_MAE_fit_capture_and_cold_pending",
+    "checks": "local/runs/realmlp-mae-admission-20261004/checks-r2/checks.json",
+    "checks_sha256": "c8f8321521b4ef5bf3691d5a72a61fe0ed7e5374bf0dbb3edaf27c5493f5b949",
+    "tests_passed": 29,
+    "G0": "MAE_observer_pickle_and_gradient_guard_passed_real_native_training_and_cold_pending",
     "G1": "no_quality_evaluation",
-    "next_action": "After current MSE confirmation and any qualified one-package release close, run two serial synthetic native MAE procedures and independent cold/parity audit"
+    "next_action": "After current MSE confirmation and any qualified one-package release close, run two serial synthetic native MAE procedures and independent cold/parity audit",
+    "observer": "New MAE observer preserves original criterion callable during factory construction; native validation trace observer retained",
+    "prior_unstarted_source": "439c542"
   }
 }
