@@ -30277,7 +30277,7 @@
     "packages": 0
   },
   "realmlp_mae_admission_20261004": {
-    "status": "runtime_frozen_serial_synthetic_native_admission_active",
+    "status": "completed_native_MAE_parity_cold_actual_terminal_passed",
     "objective": 96.45,
     "protocol": "docs/realmlp_mae/ADMISSION.md",
     "spec": "configs/realmlp_mae_admission/SPEC.json",
@@ -30293,16 +30293,24 @@
     "checks": "local/runs/realmlp-mae-admission-20261004/checks-r2/checks.json",
     "checks_sha256": "c8f8321521b4ef5bf3691d5a72a61fe0ed7e5374bf0dbb3edaf27c5493f5b949",
     "tests_passed": 29,
-    "G0": "MAE_observer_pickle_and_gradient_guard_passed_real_native_training_and_cold_pending",
-    "G1": "no_quality_evaluation",
-    "next_action": "After current MSE confirmation and any qualified one-package release close, run two serial synthetic native MAE procedures and independent cold/parity audit",
+    "G0": "passed_original_capture_exact_prediction_parameter_trace_parity_and_independent_native_cold",
+    "G1": "synthetic_only_no_scientific_measurement",
+    "next_action": "Run frozen two-split native MAE development",
     "observer": "New MAE observer preserves original criterion callable during factory construction; native validation trace observer retained",
     "prior_unstarted_source": "439c542",
     "source_commit": "232706f",
-    "manifest_sha256": "6de7aac6b7a613fc27ce974d182724a61a97b0b65b0337aedd06229971ba6a7d"
+    "manifest_sha256": "6de7aac6b7a613fc27ce974d182724a61a97b0b65b0337aedd06229971ba6a7d",
+    "actual_synthetic_procedures": 2,
+    "actual_native_adam": 4,
+    "native_updates": 6556,
+    "selected_epoch": 123,
+    "maximum_order_chunk_difference": 7.62939453125e-06,
+    "results": "docs/realmlp_mae/ADMISSION_RESULTS.md",
+    "terminal_reconciliation": "local/runs/realmlp-mae-admission-20261004/engineering-r1/terminal-reconciliation.json",
+    "terminal_sha256": "d8d2f2fcf5b3eddfee98e61127c9285e4b519328dbc493bc2642d8ae66679a0d"
   },
   "realmlp_mae_development_20261004": {
-    "status": "source_checks_passed_pending_completed_native_MAE_admission",
+    "status": "runtime_frozen_serial_two_split_development_active",
     "objective": 96.45,
     "candidate": "REALMLP_MAE_A20",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
@@ -30326,9 +30334,11 @@
     "checks": "local/runs/realmlp-mae-development-20261004/checks-r2/checks.json",
     "checks_sha256": "b9744125fefb6b7ce043a857b26ca6c25e4d76b87aa2abd3d2ea552c1ae068a5",
     "tests_passed": 9,
-    "G0": "exact_source_no_fit_checks_passed_native_admission_pending",
-    "G1": "not_measured",
-    "next_action": "Complete original MSE confirmation and any qualified release, then native MAE engineering; only after admission run two complete development splits"
+    "G0": "native_admission_closed_exact_runtime_and_input_identity_frozen",
+    "G1": "complete_development_results_pending",
+    "next_action": "Complete original MSE confirmation and any qualified release, then native MAE engineering; only after admission run two complete development splits",
+    "source_commit": "5e17ced",
+    "manifest_sha256": "333d2514e17172d94fce418075bd9ec41d4131260a6a4970a283ad8c26f84fe3"
   },
   "realmlp_mae_confirmation_preparation_20261004": {
     "status": "conditional_source_prepared_before_development_results_no_new_fits",
