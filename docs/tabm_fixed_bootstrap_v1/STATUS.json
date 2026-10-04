@@ -1,9 +1,57 @@
 {
   "identity": "TABM_FIXED_BOOTSTRAP_V1",
-  "status": "preregistered",
-  "G0": "not_started",
-  "G1": "not_started",
+  "status": "completed_development_not_selected_for_confirmation",
+  "G0": {
+    "status": "passed",
+    "states": 2,
+    "optimizers": 2,
+    "cold_models": 4,
+    "max_prediction_difference": 1.0102217515850498e-05
+  },
+  "G1": {
+    "status": "complete_audited_development",
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "outer_fits": 10,
+    "saved_states": 20,
+    "optimizers": 20,
+    "cold_models": 40,
+    "rows_per_seed": 2754,
+    "folds_per_seed": 5,
+    "seed_gains": [
+      -0.0009632288594554896,
+      0.0024661747685037136
+    ],
+    "mean_gain": 0.000751472954524112,
+    "mechanism_mean_vs_online_bootstrap": -0.0038909717443529773,
+    "selected_target": null,
+    "formal_promoted": false
+  },
+  "confirmation": {
+    "outer_fits": 0,
+    "states": 0,
+    "optimizers": 0,
+    "reserved_states": 0,
+    "reserved_optimizers": 0
+  },
+  "classification": "exploration_only_not_release_authorized",
+  "exploration_target": "tap_time_len",
+  "exploration_priority": "low_relative_to_online_bootstrap",
+  "actual_exit_code": 0,
+  "final_independent_zero_fit_verification": "passed",
+  "pause": {
+    "user_requested_after_development": true,
+    "original_controller_exited_normally": true,
+    "barrier_retained": true,
+    "resumed_for_completed_result_publication_only": true
+  },
   "fullfit": 0,
   "packages": 0,
-  "uploads": 0
+  "uploads": 0,
+  "desktop_writes": 0,
+  "source_implementation_commit": "214fbee125c44e141fcbe617570b1ddb2736ac1b",
+  "results": "docs/tabm_fixed_bootstrap_v1/RESULTS.md",
+  "spec": "configs/tabm_fixed_bootstrap_v1/SPEC.json"
 }
