@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "transfer_diagnostic_completed_no_new_submission_queued",
+    "status": "optimization_resumed_96_45_realmlp_native_admission",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -344,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "迁移诊断已完成：66原模型回读与独立审计通过；未见可用输入来源区分，重加权未解释SiLU反转，A100对322行组成敏感。后续评审已补迁移证据卡，不把最高本地均值直接称为平台最优。当前最佳96.3979不变，无新包或自动A20补测，本轮无后台任务。",
+    "recommended": "继续优化96.45：先完成RealMLP TD时长的原生保存/冷推理准入，随后按新阶段冻结完整开发与迁移评审；旧A20缓存仅作立项依据，不自动占平台名额。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -29747,7 +29747,8 @@
     "G1": "no_new_quality_evaluation",
     "synthetic_fitting_admitted": false,
     "scientific_fitting_admitted": false,
-    "next_action": "Deferred by user request: complete current SiLU work then pause; do not start RealMLP follow-up."
+    "next_action": "Deferred by user request: complete current SiLU work then pause; do not start RealMLP follow-up.",
+    "subsequent_resumed_engineering_key": "realmlp_native_admission_20261004"
   },
   "optimization_pause_after_silu_20261004": {
     "date": "2026-10-04",
@@ -30079,5 +30080,28 @@
       "No automatic A20 or domain-weighted training; no new numerical rejection gate"
     ],
     "next_action": "Use prospectively frozen transfer evidence cards for subsequent concrete candidates; no automatic new fit or package from this retrospective diagnostic"
+  },
+  "realmlp_native_admission_20261004": {
+    "status": "frozen_protocol_and_25_no_fit_checks_passed_pending_actual_admission",
+    "user_instruction": "继续深入解决，尝试优化到96.45",
+    "objective": 96.45,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "spec": "configs/realmlp_native_admission/SPEC.json",
+    "protocol": "docs/realmlp_native_admission/PREREGISTRATION.md",
+    "run_directory": "local/runs/realmlp-native-admission-20261004/engineering-r1",
+    "engineering_checks": "local/runs/realmlp-native-admission-20261004/checks-r1/checks.json",
+    "engineering_checks_sha256": "1faf7454ff092794519723f7292e7784f2922e2afdb243a84bdb772038172d73",
+    "synthetic_outer_procedures_budget": 2,
+    "optimizer_budget": 4,
+    "scientific_fits": 0,
+    "official_data_reads": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "G0": "pending_native_parity_cold",
+    "G1": "no_quality_measurement",
+    "next_action": "Complete native synthetic parity and cold admission, then separately freeze full scientific development without routine reapproval"
   }
 }
