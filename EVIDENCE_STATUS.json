@@ -29779,7 +29779,29 @@
       "monitor_seconds": 600
     },
     "supervisor_tool_session": 7494,
-    "next_observation_not_before_ns": 1791113127132290467,
-    "execution": "docs/ema_silu_release/EXECUTION.md"
+    "next_observation_not_before_ns": 1791113740017396533,
+    "execution": "docs/ema_silu_release/EXECUTION.md",
+    "last_observation": {
+      "number": 1,
+      "time_ns": 1791113140017396533,
+      "controller_live": true,
+      "supervisor_live": true,
+      "completed_children": 5,
+      "completed_estimators": 2,
+      "completed_new_cold_units": 2,
+      "all_closed_exit0": true,
+      "maximum_closed_rss_mib": 748.86328125,
+      "active_children": [
+        {
+          "task": "005-worker-2042",
+          "pid": 81268,
+          "rss_mib": 701.90234375
+        }
+      ],
+      "next_observation_not_before_ns": 1791113740017396533,
+      "observer_sha256": "faa7a35e5ed3a01551f3d711532ddcb67db850fd3d77637b2913720352083979",
+      "receipt": "local/runs/ema-silu-release-20261004/release-r1/execution/observation-001-independent.json",
+      "receipt_sha256": "08b2f4d1d5eaa62ee9ccab95617f9003f20fde8ddafb675c2deb998d38472fbc"
+    }
   }
 }
