@@ -29724,5 +29724,46 @@
     "evidence_key": "ema_silu_development_20261004",
     "receipt": "local/runs/ema-silu-20261004/pause-registration-r1/complete.json",
     "receipt_sha256": "a831b50e1d4c97e64cd663e7add65039c21f56db53297f033e1616bcdf44a31a"
+  },
+  "ema_silu_user_release_20261004": {
+    "status": "explicit_user_delivery_frozen_no_fit_checks_passed",
+    "candidate": "SILU_A100",
+    "authorization": "用户明确要求：生成**SiLU A100**提交包，写桌面",
+    "protocol": "docs/ema_silu_release/PREREGISTRATION.md",
+    "specification": "configs/ema_silu_release/SPEC.json",
+    "reference": {
+      "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+      "score": 96.3979,
+      "source": "user_reported_not_independently_verified",
+      "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+    },
+    "objective": 96.45,
+    "formal_promoted": false,
+    "G0": "release_guards_passed_full_fitting_cold_package_desktop_pending",
+    "G1": "explicit_user_platform_exploration_two_positive_development_splits_not_four_seed_promoted",
+    "planned": {
+      "full_training_procedures": 3,
+      "optimizer_runs": 6,
+      "new_native_states": 6,
+      "reused_native_states": 6,
+      "new_CV": 0,
+      "new_confirmation_seeds": 0,
+      "packages": 1,
+      "desktop_copies": 1,
+      "agent_uploads": 0
+    },
+    "engineering": {
+      "tests_passed": 17,
+      "actual_exit_code": 0,
+      "new_fits": 0,
+      "receipt": "local/runs/ema-silu-release-20261004/engineering-r1/checks.json",
+      "receipt_sha256": "cc79f94834a5d820dfa235d673c6c6216631e51c61b8d94bb44d43e01f6c5c50"
+    },
+    "run_directory": "/home/lux1/iron/local/runs/ema-silu-release-20261004/release-r1",
+    "source_worktree": "/home/lux1/iron/local/worktrees/ema-silu-release",
+    "desktop_directory": "/mnt/c/Users/lqh22/Desktop/submission-SILU-A100-20261004",
+    "monitoring_active": false,
+    "broader_optimization_paused": true,
+    "pause_after_delivery": true
   }
 }
