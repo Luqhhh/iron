@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "realmlp_MSE_and_MAE_round_closed_no_new_qualified_platform_candidate",
+    "status": "user_requested_RealMLP_MSE_A20_full_release_and_desktop_in_preparation",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -311,7 +311,7 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [],
-    "submission_priority_note": "No new package from these fixed RealMLP recipes: complete current-reference evidence failed frozen promotion; small local gains and sample sensitivity provide insufficient priority for a new platform exploration here. Prior SiLU feedback and reserve exclusions remain unchanged.",
+    "submission_priority_note": "User-requested exploration preparation; package not yet ready; no platform upload or quota inference.",
     "ready_for_user_platform_testing": [],
     "reserve_candidates": [
       {
@@ -344,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "RealMLP默认MSE A20与原生MAE A20均已完成四切分，分别因负切分、负切分及负LCB95未晋级。无新包推荐；保留平台最佳96.3979和现有名额登记。下一科学阶段须提出独立有依据的机制并重新冻结，不能将本地正均值写成平台收益。",
+    "recommended": "用户已指定RealMLP MSE A20探索封包并写桌面；保留原确认失败，先完成全量原生训练、冷推理与包审计后交付。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -1456,7 +1456,7 @@
       "queue_snapshot": "local/runs/ema-silu-20261004/pause-registration-r1/queue-before.json",
       "queue_snapshot_sha256": "80fecd27e5c89421b592d2f2b85c1bb72b75d833a415f66a5af4ae1154396789"
     },
-    "current_release_key": "ema_silu_user_release_20261004",
+    "current_release_key": "realmlp_mse_user_release_20261004",
     "history_before_silu_desktop_20261004": {
       "queue_snapshot": "local/runs/ema-silu-release-20261004/release-r1/queue-before-delivery.json",
       "queue_snapshot_sha256": "96c39379625690497d17c04b27ac3109439023f1849626c9672373ca6ce3828e"
@@ -30514,5 +30514,42 @@
     "no_time_budget_used": true,
     "new_platform_quota_inference": false,
     "background_monitoring": false
+  },
+  "realmlp_mse_user_release_20261004": {
+    "status": "explicit_user_exploration_scope_frozen_checks_passed",
+    "candidate": "REALMLP_SINGLE_A20",
+    "display_name": "RealMLP MSE A20",
+    "user_instruction": "- **RealMLP MSE A20** 写桌面",
+    "release_kind": "explicit_user_platform_exploration",
+    "objective": 96.45,
+    "reference": {
+      "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+      "score": 96.3979,
+      "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+    },
+    "protocol": "docs/realmlp_mse_user_release/PREREGISTRATION.md",
+    "spec": "configs/realmlp_mse_user_release/SPEC.json",
+    "explicit_grant": "/home/lux1/iron/local/authorizations/realmlp-mse-a20-desktop-20261004-r1.json",
+    "explicit_grant_sha256": "47e97f27218a6a8cb54a51624ae7b14c46f650240f7794f0ae4e449e268b9eb8",
+    "run_directory": "local/runs/realmlp-mse-user-release-20261004/release-r1",
+    "desktop": "/mnt/c/Users/lqh22/Desktop/submission-REALMLP-MSE-A20-20261004",
+    "full_procedure_budget": 1,
+    "native_adam_budget": 2,
+    "package_budget": 1,
+    "desktop_copy_budget": 1,
+    "new_cv": 0,
+    "new_confirmation_seeds": 0,
+    "actual_full_fits": 0,
+    "actual_packages": 0,
+    "actual_desktop_copies": 0,
+    "agent_uploads": 0,
+    "formal_promoted": false,
+    "original_confirmation_failure_preserved": true,
+    "original_conditional_release_not_started": true,
+    "checks": "local/runs/realmlp-mse-user-release-20261004/checks-r1/checks.json",
+    "checks_sha256": "a988e5821ebe56d13ff8057e01c1df13de63caad7c0531493430bc3887374138",
+    "tests_passed": 32,
+    "G0": "exact_source_no_fit_checks_passed_full_native_release_pending",
+    "G1": "user_requested_platform_exploration_no_new_quality_claim_or_platform_score"
   }
 }
