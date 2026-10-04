@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-04",
-    "status": "optimization_resumed_96_45_realmlp_native_admission",
+    "status": "realmlp_MSE_and_MAE_round_closed_no_new_qualified_platform_candidate",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -311,7 +311,7 @@
     },
     "reference_key": "round2_current_platform_best",
     "submission_priority": [],
-    "submission_priority_note": "SILU_A100 scored 96.3732 per user report, 0.0247 below incumbent, and was removed from pending testing. No automatic A20 probe or substitute candidate; quota unchanged without inference.",
+    "submission_priority_note": "No new package from these fixed RealMLP recipes: complete current-reference evidence failed frozen promotion; small local gains and sample sensitivity provide insufficient priority for a new platform exploration here. Prior SiLU feedback and reserve exclusions remain unchanged.",
     "ready_for_user_platform_testing": [],
     "reserve_candidates": [
       {
@@ -344,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "继续优化96.45：先完成RealMLP TD时长的原生保存/冷推理准入，随后按新阶段冻结完整开发与迁移评审；旧A20缓存仅作立项依据，不自动占平台名额。",
+    "recommended": "RealMLP默认MSE A20与原生MAE A20均已完成四切分，分别因负切分、负切分及负LCB95未晋级。无新包推荐；保留平台最佳96.3979和现有名额登记。下一科学阶段须提出独立有依据的机制并重新冻结，不能将本地正均值写成平台收益。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -1465,7 +1465,12 @@
       "queue_snapshot": "local/runs/ema-silu-release-20261004/platform-feedback-r1/queue-before.json",
       "queue_snapshot_sha256": "b86cb822351aee7c4562e1adf1a3ceaa0789e4bdebcd77637948d649ca8699ae"
     },
-    "active_diagnostic_key": "platform_transfer_diagnostics_20261004"
+    "active_diagnostic_key": "platform_transfer_diagnostics_20261004",
+    "active_thread_running_tasks": [],
+    "latest_closed_evidence_keys": [
+      "realmlp_time_confirmation_20261004",
+      "realmlp_mae_confirmation_preparation_20261004"
+    ]
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -30163,7 +30168,7 @@
     "tests_passed": 29,
     "G0": "passed_native_parity_complete_partitions_cold_scalar_and_actual_terminal_original_audit_failure_preserved",
     "G1": "both_complete_development_gains_positive_single_selected_not_four_seed_promoted",
-    "next_action": "Freeze two complete confirmation splits with actual current EMA3 Q100 time reference",
+    "next_action": "Confirmation completed and failed one split; see realmlp_time_confirmation_20261004; original development selection preserved",
     "actual_native_outer_procedures": 30,
     "actual_native_optimizer_runs": 60,
     "cold_states": 60,
@@ -30295,7 +30300,7 @@
     "tests_passed": 29,
     "G0": "passed_original_capture_exact_prediction_parameter_trace_parity_and_independent_native_cold",
     "G1": "synthetic_only_no_scientific_measurement",
-    "next_action": "Run frozen two-split native MAE development",
+    "next_action": "MAE scientific development and confirmation now completed; G0 admission does not override their quality failures",
     "observer": "New MAE observer preserves original criterion callable during factory construction; native validation trace observer retained",
     "prior_unstarted_source": "439c542",
     "source_commit": "232706f",
@@ -30336,7 +30341,7 @@
     "tests_passed": 9,
     "G0": "20_native_states_cold_official_query_checks_scalar_draws_and_actual_terminal_passed",
     "G1": "both_splits_positive_but_weaker_than_MSE_and_5_of_10_folds_improved_exploration",
-    "next_action": "Complete the prospectively frozen two confirmation splits; retain development exploration tier and failure",
+    "next_action": "Confirmation completed and failed; see realmlp_mae_confirmation_preparation_20261004; no full release",
     "source_commit": "5e17ced",
     "manifest_sha256": "333d2514e17172d94fce418075bd9ec41d4131260a6a4970a283ad8c26f84fe3",
     "gains": {
@@ -30410,7 +30415,7 @@
     }
   },
   "realmlp_mae_confirmation_preparation_20261004": {
-    "status": "runtime_frozen_serial_confirmation_active_after_two_complete_positive_splits",
+    "status": "completed_G0_passed_G1_failed_negative_split_and_negative_LCB95",
     "candidate": "REALMLP_MAE_A20",
     "objective": 96.45,
     "protocol": "docs/realmlp_mae/CONFIRMATION.md",
@@ -30426,18 +30431,51 @@
       271828,
       314159
     ],
-    "actual_new_fits": 0,
+    "actual_new_fits": 10,
     "full_fits": 0,
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "G0": "native_development_closed_exact_runtime_and_reference_identity_frozen",
-    "G1": "four_seed_results_pending_development_exploration_tier_preserved",
+    "G0": "22_actual_child_exits_zero_20_native_states_cold_query_checks_scalar_audit_and_terminal_passed",
+    "G1": "failed_split_271828_negative_and_seed_paired_LCB95_negative",
     "source_commit": "a373652",
-    "manifest_sha256": "05f11d5f83b5745c3837b4621615923141fbde8feb6fc5b17883dee139b732c4"
+    "manifest_sha256": "05f11d5f83b5745c3837b4621615923141fbde8feb6fc5b17883dee139b732c4",
+    "actual_native_adam": 20,
+    "native_states": 20,
+    "native_updates": 19064,
+    "gains": {
+      "42": 0.0019215298114473862,
+      "3407": 0.0025174400581488877,
+      "271828": -0.0024087341569351602,
+      "314159": 0.011584102107610902
+    },
+    "mae_minus_mse": {
+      "42": -0.0020478894491420155,
+      "3407": -0.005385624442099812,
+      "271828": -0.0020923670566560617,
+      "314159": 0.002612920062577534
+    },
+    "paired": {
+      "n": 4,
+      "mean": 0.003403584455068004,
+      "sd": 0.005878935690805293,
+      "se": 0.0029394678454026466,
+      "lcb95": -0.003514051690078284,
+      "passed": false
+    },
+    "formal_promoted": false,
+    "development_tier_preserved": "exploration",
+    "development_failed_conditions": [
+      "minimum_improved_folds"
+    ],
+    "results": "docs/realmlp_mae/CONFIRMATION_RESULTS.md",
+    "terminal_reconciliation": "local/runs/realmlp-mae-confirmation-20261004/confirmation-r1/terminal-reconciliation.json",
+    "terminal_sha256": "76b8f4ebb926f8de789078ce8ebcdca2d7ec710d194ebd328746d2c399559517",
+    "maximum_rss_mib": 521.11328125,
+    "next_action": "Preserve fixed MAE failure; conditional full release not admitted"
   },
   "realmlp_mae_release_preparation_20261004": {
-    "status": "conditional_source_prepared_before_quality_results_no_full_fit_or_package",
+    "status": "not_started_confirmation_quality_condition_failed",
     "candidate": "REALMLP_MAE_A20",
     "objective": 96.45,
     "protocol": "docs/realmlp_mae/RELEASE.md",
@@ -30454,6 +30492,27 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "G0": "exact_source_no_fit_checks_passed_runtime_admission_pending",
-    "G1": "no_complete_development_or_confirmation_measurement"
+    "G1": "negative_confirmation_split_and_negative_LCB95_no_qualified_full_release"
+  },
+  "realmlp_optimization_round_20261004": {
+    "status": "completed_MSE_and_MAE_scientific_round_no_new_full_fit_or_package",
+    "objective": 96.45,
+    "objective_achieved": false,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "gap_to_objective": 0.0521,
+    "G0": "native_state_parity_cold_runtime_identity_scalar_audits_and_actual_terminals_passed",
+    "G1": "both_fixed_recipes_failed_at_least_one_complete_split; MAE_also_failed_LCB95",
+    "results": [
+      "docs/realmlp_time_confirmation/RESULTS.md",
+      "docs/realmlp_mae/CONFIRMATION_RESULTS.md"
+    ],
+    "new_full_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "no_time_budget_used": true,
+    "new_platform_quota_inference": false,
+    "background_monitoring": false
   }
 }
