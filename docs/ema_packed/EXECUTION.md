@@ -31,3 +31,5 @@
 第三次独立观察时间1791102309244769875ns，与上次间隔609.84996秒；已闭合38子任务且全部exit0，完成16/30新估计器、16个新冷审计单元、6个原复用单元。split42完整五折完成，split3407/fold0/init1042在运行；两split全部完成前仍不读取质量。已结束子任务峰值817.73046875MiB，两控制进程存活。下一观察不早于1791102909244769875ns，原收据 `local/runs/ema-packed-20261004/development-r1/execution/observation-003-independent.json`。
 
 第四次独立观察时间1791102934190386285ns，与上次间隔624.94562秒；已闭合54子任务且全部exit0，完成23/30新估计器、23个新冷审计单元、8个原复用单元。当前split3407/fold2/init2042运行，已结束子任务峰值817.73046875MiB。控制器和跟进器存活，未读取中途质量。下一观察不早于1791103534190386285ns，原收据 `local/runs/ema-packed-20261004/development-r1/execution/observation-004-independent.json`。
+
+第五次独立观察时间1791103565688924944ns，与上次间隔631.49854秒；当时已闭合66子任务且全部exit0，完成28/30新估计器、28个新冷审计单元、10个原复用单元。当前split3407/fold4/init1042运行，已结束子任务峰值817.73046875MiB。随后同次工具输出收到第29个worker实际exit0，该worker的冷审计不在本次独立观察的已完成数中。两控制进程存活，未读取中途质量；下一观察不早于1791104165688924944ns，完整批次结束事件可提前触发终态审计。原收据 `local/runs/ema-packed-20261004/development-r1/execution/observation-005-independent.json`。
