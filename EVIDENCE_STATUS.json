@@ -30277,5 +30277,34 @@
     "next_action": "After current MSE confirmation and any qualified one-package release close, run two serial synthetic native MAE procedures and independent cold/parity audit",
     "observer": "New MAE observer preserves original criterion callable during factory construction; native validation trace observer retained",
     "prior_unstarted_source": "439c542"
+  },
+  "realmlp_mae_development_20261004": {
+    "status": "source_checks_passed_pending_completed_native_MAE_admission",
+    "objective": 96.45,
+    "candidate": "REALMLP_MAE_A20",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "protocol": "docs/realmlp_mae/DEVELOPMENT.md",
+    "spec": "configs/realmlp_mae_development/SPEC.json",
+    "run_directory": "local/runs/realmlp-mae-development-20261004/development-r1",
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "folds": 5,
+    "training_seed": 42,
+    "new_native_procedures_budget": 10,
+    "new_native_adam_budget": 20,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "checks": "local/runs/realmlp-mae-development-20261004/checks-r2/checks.json",
+    "checks_sha256": "b9744125fefb6b7ce043a857b26ca6c25e4d76b87aa2abd3d2ea552c1ae068a5",
+    "tests_passed": 9,
+    "G0": "exact_source_no_fit_checks_passed_native_admission_pending",
+    "G1": "not_measured",
+    "next_action": "Complete original MSE confirmation and any qualified release, then native MAE engineering; only after admission run two complete development splits"
   }
 }
