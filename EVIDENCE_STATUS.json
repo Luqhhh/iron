@@ -1422,7 +1422,8 @@
           "platform_score": null
         }
       ]
-    }
+    },
+    "offline_development_key": "ema_mini_development_20261004"
   },
   "round2_v2_3_candidate_release": {
     "status": "THREE_ISOLATED_PACKAGES_READY_AWAITING_USER_UPLOAD_AND_FEEDBACK",
@@ -28567,5 +28568,50 @@
     "desktop_writes": 0,
     "agent_uploads": 0,
     "historical_protocols_model_decisions_queue_and_quota_unchanged": true
+  },
+  "ema_mini_development_20261004": {
+    "status": "engineering_passed_pending_scientific_source_freeze",
+    "objective": 96.45,
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "platform_verified": false,
+    "protocol": "docs/ema_mini/PREREGISTRATION.md",
+    "execution": "docs/ema_mini/EXECUTION.md",
+    "spec": "configs/ema_mini/SPEC.json",
+    "planned_source_worktree": "local/worktrees/ema-mini-development",
+    "planned_run_directory": "local/runs/ema-mini-20261004/development-r1",
+    "candidate_order": [
+      "MINI_A100",
+      "MINI_A20"
+    ],
+    "split_seeds": [
+      42,
+      3407
+    ],
+    "training_seeds": [
+      42,
+      1042,
+      2042
+    ],
+    "planned_new_estimators": 30,
+    "planned_new_optimizers": 60,
+    "planned_cold_states": 120,
+    "engineering_checks": "local/runs/ema-mini-20261004/engineering-r6/checks.json",
+    "engineering_checks_sha256": "aeefebada31920f1216284e44a149dc62bdd9bb90c30e8fc7a47b013c44dbbfc",
+    "engineering_unique_tests_passed": 24,
+    "engineering_estimators": 1,
+    "engineering_optimizers": 2,
+    "G0": "locked_python312_native_architecture_synthetic_full_shape_partition_trajectory_independent_cold_scope_and_failure_controls_passed",
+    "G1": "unmeasured",
+    "new_scientific_fits": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "monitor_seconds": 600,
+    "time_budget_seconds": null,
+    "automatic_retries": false,
+    "formal_promoted": false
   }
 }
