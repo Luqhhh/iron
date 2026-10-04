@@ -16758,17 +16758,17 @@
     "live_training": false
   },
   "round2_v49_latent_gradient_regularization": {
-    "status": "DEVELOPMENT_RUNNING",
+    "status": "COMPLETE_AUDITED_NO_FINALIST_HISTORICAL_TERMINAL_RECONCILED",
     "branch": "round2-v49-latent-gradient-regularization",
     "protocol_commit": "5e2fb78",
     "spec": "configs/round2_v49/SPEC.yaml",
     "plan": "docs/round2_v49/PREREGISTRATION.md",
-    "g0": "1289 locked tests and synthetic/cold/resource admission passed",
-    "g1": "unmeasured",
+    "g0": "Original 60-unit / 80-state independent cold audit passed; 2026-10-04 read-only identity/terminal reconciliation passed, no fresh inference",
+    "g1": "Both targets fail original two-positive-development-seed / mean>=0.01 / better-than-BASE gate; no confirmation finalist",
     "monitor_interval_seconds": 600,
     "between_check_polling": false,
     "pause_after_v49": true,
-    "real_data_fits": null,
+    "real_data_fits": 80,
     "synthetic_fits": 2,
     "packages": 0,
     "agent_uploads": 0,
@@ -16789,7 +16789,45 @@
     "planned_development_outer_units": 40,
     "planned_development_solver_fits": 80,
     "live_training_at_launch": true,
-    "conditional_confirmation": "only if independently audited frozen development gates pass"
+    "conditional_confirmation": "only if independently audited frozen development gates pass",
+    "completed_candidate_outer_units": 40,
+    "reused_reference_units": 20,
+    "confirmation_fits": 0,
+    "full_data_fits": 0,
+    "selected_for_confirmation": {
+      "tap_iron": null,
+      "tap_time_len": null
+    },
+    "candidate_mean_gain": {
+      "tap_iron": -0.002789242466060514,
+      "tap_time_len": 0.000550881594284236
+    },
+    "live_training": false,
+    "results": "docs/round2_v49/TERMINAL_RECONCILIATION.md",
+    "original_completed_at_utc": "2026-09-29T06:06:48.452662+00:00",
+    "summary_sha256": "991f2b16712b9182983c72b90a964c64e2a8fa6ab2d746f840b2e9326e70a235",
+    "manifest_sha256": "f6e87bef1177cfcfca82667320c7954300e748478d07e6e8b0297b4ee86f01ad",
+    "terminal_reconciliation_20261004": {
+      "previous_snapshot": {
+        "status": "DEVELOPMENT_RUNNING",
+        "g0": "1289 locked tests and synthetic/cold/resource admission passed",
+        "g1": "unmeasured",
+        "real_data_fits": null
+      },
+      "directory": "local/runs/v49-terminal-reconciliation-20261004/review-r1",
+      "report_sha256": "5b070a7a2f4f5c4d8b2d1757686c077907a570d29ac467d627af6c5b0caed6df",
+      "receipt_sha256": "c55549b9b9af812feeff08a2458eaf018bca22766ffb497be5e7fd10ec25076f",
+      "source_files_rehashed": 1539,
+      "round2_data_files_rehashed": 2,
+      "completed_units_rehashed": 60,
+      "native_states_rehashed": 80,
+      "independent_files_rehashed": 1807,
+      "new_fits": 0,
+      "new_predictions": 0,
+      "fresh_cold_inference": false,
+      "original_protocol_reference_gates_and_decision_preserved": true,
+      "other_worktree_mutations": 0
+    }
   },
   "strong_component_regularization_2026_09_29": {
     "status": "serial_recovery_completed_no_development_finalist",
@@ -28628,8 +28666,8 @@
     "process_launch": "local/runs/ema-mini-20261004/development-r1/process-launch.json",
     "process_launch_sha256": "d528d9e586c42f78ce62fde38a50e3cb8ce5073853089a9dfdd1ca1df63e46e7",
     "controller_start_ns": 1791094500272896703,
-    "next_observation_not_before_ns": 1791095762832895199,
-    "new_scientific_fits_note": "First scheduled observation: 3 new estimators completed and cold-audited; next worker live; final native started/optimizer inventory pending; frozen upper bound30",
+    "next_observation_not_before_ns": 1791096404372060914,
+    "new_scientific_fits_note": "Second scheduled observation: 7 new estimators completed and cold-audited; next worker live; final native started/optimizer inventory pending; frozen upper bound30",
     "scientific_execution_started": true,
     "monitoring_active": true,
     "conditional_confirmation_cache": {
@@ -28674,18 +28712,25 @@
       }
     },
     "last_scheduled_observation": {
-      "number": 1,
-      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-001-independent.json",
-      "sha256": "ab4b242d65359138ee3d12fc6a3400a47a9740232b1bd0cee83870737e863dbb",
-      "time_ns": 1791095162832884930,
-      "controller_and_watcher_verified_live": true,
-      "completed_new_estimators": 3,
-      "completed_new_cold_units": 3,
-      "completed_old_reuse_units": 2,
-      "closed_child_count": 8,
+      "number": 2,
+      "time_ns": 1791095804372060914,
+      "completed_new_estimators": 7,
+      "completed_new_cold_units": 7,
+      "completed_old_reuse_units": 3,
+      "closed_child_count": 17,
       "all_closed_children_exit0": true,
-      "maximum_closed_child_rss_mib": 716.125,
-      "partial_quality_read": false
+      "maximum_closed_child_rss_mib": 734.49609375,
+      "partial_quality_read": false,
+      "monitoring_deviation": {
+        "at_utc": "2026-10-04T06:35:45Z",
+        "action": "one premature rg --files listing of execution directory while locating receipt files",
+        "scope": "filenames only; no metrics/predictions read; no training or selection change",
+        "early_by_seconds_approximately": 18,
+        "retained_for_audit": true
+      },
+      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-002-independent.json",
+      "sha256": "68990d06aaa44cf4daa37e439e43b4c259c48babc1cbc23fdaeb0876d4ecdf1f",
+      "controller_and_watcher_verified_live": true
     }
   }
 }
