@@ -28609,7 +28609,7 @@
     "historical_protocols_model_decisions_queue_and_quota_unchanged": true
   },
   "ema_mini_development_20261004": {
-    "status": "running_frozen_two_complete_development_splits",
+    "status": "completed_G0_closed_both_candidates_negative_no_confirmation_finalist",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
@@ -28640,9 +28640,9 @@
     "engineering_unique_tests_passed": 24,
     "engineering_estimators": 1,
     "engineering_optimizers": 2,
-    "G0": "engineering_passed_3561_identity_manifest_frozen_live_controller_verified_final_scientific_audit_pending",
-    "G1": "unmeasured_no_partial_quality_reads",
-    "new_scientific_fits": null,
+    "G0": "passed_3561_frozen_identities_30_estimators_60_optimizers_69234_native_steps_120_cold_states_72_child_exit0_actual_supervisor_followup_and_terminal_exit0_documented_filename_listing_deviation",
+    "G1": "A100_and_A20_both_negative_on_two_complete_development_splits_not_shortlisted_no_confirmation_no_platform_exploration_scheduled",
+    "new_scientific_fits": 30,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
     "packages": 0,
@@ -28666,10 +28666,10 @@
     "process_launch": "local/runs/ema-mini-20261004/development-r1/process-launch.json",
     "process_launch_sha256": "d528d9e586c42f78ce62fde38a50e3cb8ce5073853089a9dfdd1ca1df63e46e7",
     "controller_start_ns": 1791094500272896703,
-    "next_observation_not_before_ns": 1791099596756375254,
-    "new_scientific_fits_note": "Seventh scheduled observation: 27 new estimators completed and cold-audited; split3407 fold4 init42 worker live; final native started/optimizer inventory pending; frozen upper bound30",
+    "next_observation_not_before_ns": null,
+    "new_scientific_fits_note": "Final native inventory closed:30 estimators,60 optimizer constructors,69234 steps; no scientific retries",
     "scientific_execution_started": true,
-    "monitoring_active": true,
+    "monitoring_active": false,
     "conditional_confirmation_cache": {
       "status": "passed_historical_metadata_hash_and_conditional_budget_inventory_only",
       "directory": "local/runs/ema-mini-20261004/conditional-confirmation-cache-r1",
@@ -28727,7 +28727,8 @@
         "active_development_output_reads": 0,
         "receipt_sha256": "88b65311e6268555fdcc4c833846002ab875538230b0e6288f884d106ada83b2",
         "report_sha256": "246ff0572821408fd435c9074c6c1eda6bc06ec0d97393eb37ee2192cd39f8ae"
-      }
+      },
+      "activation_status": "not_activated_development_gate_failed"
     },
     "last_scheduled_observation": {
       "number": 7,
@@ -28741,7 +28742,8 @@
       "partial_quality_read": false,
       "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-007-independent.json",
       "sha256": "7fb6b14a6243b613bf117e84c01fec1ef7137de1a0abc06aa5a5478231ac5b0d",
-      "controller_and_watcher_verified_live": true
+      "controller_and_watcher_verified_live": true,
+      "superseded_by_final_reconciliation": true
     },
     "monitoring_deviations": [
       {
@@ -28753,7 +28755,74 @@
         "early_by_seconds_approximately": 18,
         "retained_for_audit": true
       }
-    ]
+    ],
+    "results": "docs/ema_mini/RESULTS.md",
+    "gains": {
+      "MINI_A100": {
+        "42": -0.006983876782261554,
+        "3407": -0.009715454454693791
+      },
+      "MINI_A20": {
+        "42": -0.0005446018799630091,
+        "3407": -0.000587255486078678
+      }
+    },
+    "selected_for_confirmation": null,
+    "confirmation_status": "not_admitted_two_positive_development_splits_gate_failed",
+    "actual_new_estimators": 30,
+    "actual_new_optimizers": 60,
+    "actual_cold_states": 120,
+    "native_optimizer_steps": 69234,
+    "cold_full_batch_difference": 0.0,
+    "maximum_new_cold_order_chunk_difference": 1.2977000181990661e-05,
+    "maximum_child_rss_mib": 741.1328125,
+    "independent_auditor_peak_rss_mib": 234.34765625,
+    "elapsed_seconds_descriptive": 4874.835980731,
+    "actual_supervisor_exec_exit_code": 0,
+    "actual_followup_exec_exit_code": 0,
+    "actual_independent_audit_exit_code": 0,
+    "owned_processes_absent": true,
+    "owned_pid_count": 75,
+    "completed_scientific_children": 72,
+    "final_reconciliation": "local/runs/ema-mini-20261004/development-r1/execution/final-reconciliation.json",
+    "independent_arithmetic_maximum_difference": 8.526512829121202e-14,
+    "platform_quality": "unmeasured_no_claim_of_inevitable_platform_loss",
+    "candidate_quality": {
+      "MINI_A100": {
+        "tier": "not_shortlisted",
+        "improved_folds": 2,
+        "failed_conditions": [
+          "both_splits_improve",
+          "minimum_improved_folds"
+        ],
+        "mean_score_gain": -0.008349665618477673
+      },
+      "MINI_A20": {
+        "tier": "not_shortlisted",
+        "improved_folds": 4,
+        "failed_conditions": [
+          "both_splits_improve",
+          "minimum_improved_folds"
+        ],
+        "mean_score_gain": -0.0005659286830208435
+      }
+    },
+    "receipt_hashes": {
+      "original_terminal_sha256": "3df21a441a76338e3ee8f9285e1c6b83306f02e42dc53d1a427df4b52a555681",
+      "independent_terminal_audit_sha256": "18d7b088e099da5295bb04a553b3ecdced6b9679990e2adbf803c25db58fb362",
+      "report_sha256": "8761cd284cf4c3b23848d02ce91cca00a52e097c55feb017c509bfbffada93a8",
+      "arithmetic_audit_sha256": "c061c1edb1c6a8a379d74226a425286e1cc7542357530ac6e43ef975bd76e95a",
+      "manifest_sha256": "0ae1a36a26f8acd2d2d30a7a710c3753f75a1b1643107b44d1b0f6dd66936345",
+      "followup_manifest_sha256": "506443184a9a7124fabf1b9c6d4777881a676b36b3312fa66b66b9b1d11d3656",
+      "followup_complete_sha256": "257215a4a3942e5a41f70ea17d793527900f23ffc02cafabe572eba1468ac553",
+      "followup_actual_audit_terminal_sha256": "b1da2a19606af9be0ffd3ad8785d331acc2d9f6dda2bf07a0a28f8123106ad4a",
+      "final_reconciliation_sha256": "128bf70b79de16264a53eb8db080cbf0e14d61c8a4435d6773bba1dcdb3764e4",
+      "oof_sha256": {
+        "42": "a22b56ef1dd2fea828319a354e86340c4efabd4a5f026940cbf34e37fa948416",
+        "3407": "4d641128ea5ec4c7c1bf17cf709b090d27450dc8aca4998cf35072dd63214143"
+      }
+    },
+    "platform_priority_reason": "Both full development splits negative at both frozen weights; complete replacement worse, A20 improves only4/10 descriptive folds. Related original EMA platform positives do not establish benefit for this hidden-sharing change. No sufficient new platform exploration case; no new numerical or time threshold and no family-wide rejection."
   },
   "tabm_packed_structure_review_20261004": {
     "status": "zero_fit_native_structure_inventory_completed_research_reserve_only",
@@ -28788,7 +28857,8 @@
       0
     ],
     "report_sha256": "f5bdccfc29fac88682fef6fb4cd464a634b93d2f67645b37906dd056cb05bd0f",
-    "terminal_sha256": "4d1846baaafae820424326e3989b01287877a98c66e3452e4e5367a0bfb687ba"
+    "terminal_sha256": "4d1846baaafae820424326e3989b01287877a98c66e3452e4e5367a0bfb687ba",
+    "next_step": "Separately freeze engineering implementation and one synthetic selector/refit estimator before any scientific admission; mini negative result does not qualify packed"
   },
   "iron_strength_bound_20261004": {
     "status": "conditional_continuous_bounds_verified_two_declared_iron_lines_only",
