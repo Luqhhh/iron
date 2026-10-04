@@ -20374,12 +20374,53 @@
   },
   "tabm_bootstrap_cov_v1_20261004": {
     "identity": "TABM_BOOTSTRAP_COV_V1",
-    "status": "preregistered",
-    "G0": "not_started",
-    "G1": "not_started",
-    "spec": "configs/tabm_bootstrap_cov_v1/SPEC.json",
+    "status": "completed_development_not_selected_for_confirmation",
+    "G0": {
+      "status": "passed",
+      "states": 2,
+      "optimizers": 2,
+      "cold_models": 4,
+      "max_prediction_difference": 7.516235626781054e-06
+    },
+    "G1": {
+      "status": "complete_audited_development",
+      "split_seeds": [
+        42,
+        3407
+      ],
+      "outer_fits": 10,
+      "saved_states": 20,
+      "optimizers": 20,
+      "cold_models": 40,
+      "rows_per_seed": 2754,
+      "folds_per_seed": 5,
+      "seed_gains": [
+        0.0002543577210446091,
+        0.0026924781520767708
+      ],
+      "mean_gain": 0.00147341793656069,
+      "mechanism_mean_vs_online_bootstrap": -0.0031690267623163994,
+      "selected_target": null,
+      "formal_promoted": false
+    },
+    "confirmation": {
+      "outer_fits": 0,
+      "states": 0,
+      "optimizers": 0,
+      "reserved_states": 0,
+      "reserved_optimizers": 0
+    },
+    "classification": "exploration_only_not_release_authorized",
+    "exploration_target": "tap_time_len",
+    "exploration_priority": "lower_than_original_online_bootstrap_and_prediction_fusion",
+    "actual_exit_code": 0,
+    "final_independent_zero_fit_verification": "passed",
     "fullfit": 0,
     "packages": 0,
-    "uploads": 0
+    "uploads": 0,
+    "desktop_writes": 0,
+    "source_implementation_commit": "3c9e18267edcc3a9a228e15a1fce52f5a393e686",
+    "results": "docs/tabm_bootstrap_cov_v1/RESULTS.md",
+    "spec": "configs/tabm_bootstrap_cov_v1/SPEC.json"
   }
 }
