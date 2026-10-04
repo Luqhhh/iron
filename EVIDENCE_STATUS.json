@@ -30129,7 +30129,7 @@
     "results": "docs/realmlp_native_admission/RESULTS.md"
   },
   "realmlp_time_development_20261004": {
-    "status": "all_scientific_and_cold_units_passed_original_scalar_audit_interrupted_zero_fit_recovery_frozen",
+    "status": "completed_single_selected_for_confirmation_after_zero_fit_audit_recovery",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
@@ -30161,16 +30161,22 @@
     "engineering_checks": "local/runs/realmlp-native-admission-20261004/development-checks-r1/checks.json",
     "engineering_checks_sha256": "fea636ccb5fc163d0330d521f2c06ef4e7023e1f64f3011abd50fbaf639bc295",
     "tests_passed": 29,
-    "G0": "scientific_native_identity_and_cold_passed_scalar_recovery_pending",
-    "G1": "two_split_positive_single_candidate_selected_pending_independent_audit",
-    "next_action": "Run 30 serial native procedures and independent cold audits; only after both development splits positive separately freeze confirmation with current EMA3 Q100 reference",
+    "G0": "passed_native_parity_complete_partitions_cold_scalar_and_actual_terminal_original_audit_failure_preserved",
+    "G1": "both_complete_development_gains_positive_single_selected_not_four_seed_promoted",
+    "next_action": "Freeze two complete confirmation splits with actual current EMA3 Q100 time reference",
     "actual_native_outer_procedures": 30,
     "actual_native_optimizer_runs": 60,
     "cold_states": 60,
     "original_audit_exit_code": -15,
     "original_supervisor_exit_code": 241,
     "audit_recovery": "docs/realmlp_time_development/AUDIT_RECOVERY.md",
-    "provisional_gains": {
+    "results": "docs/realmlp_time_development/RESULTS.md",
+    "audit_recovery_exit_code": 0,
+    "maximum_scalar_difference": 6.938893903907228e-18,
+    "terminal_reconciliation": "local/runs/realmlp-time-development-20261004/development-audit-recovery-r1/terminal-reconciliation.json",
+    "terminal_sha256": "8104a4695fefbff501f6bb96e966ce07a7f7e567b6a37a18c65850ae02a312f7",
+    "selected_for_confirmation": "REALMLP_SINGLE_A20",
+    "gains": {
       "REALMLP_SINGLE_A20": {
         "42": 0.003969419260589402,
         "3407": 0.0079030645002487
@@ -30180,5 +30186,35 @@
         "3407": 0.0035376786326905404
       }
     }
+  },
+  "realmlp_time_confirmation_20261004": {
+    "status": "source_checks_and_exact_protocol_frozen_before_runtime_admission",
+    "objective": 96.45,
+    "candidate": "REALMLP_SINGLE_A20",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "protocol": "docs/realmlp_time_confirmation/PREREGISTRATION.md",
+    "spec": "configs/realmlp_time_confirmation/SPEC.json",
+    "run_directory": "local/runs/realmlp-time-confirmation-20261004/confirmation-r1",
+    "confirmation_seeds": [
+      271828,
+      314159
+    ],
+    "new_realmlp_procedures_budget": 10,
+    "new_ema_reference_procedures_budget": 20,
+    "new_optimizer_budget": 60,
+    "reused_reference_states": 400,
+    "reused_ema_states": 20,
+    "formal_promoted": false,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "checks": "local/runs/realmlp-time-confirmation-20261004/checks-r1/checks.json",
+    "checks_sha256": "d7ca663c896fda5fc71b779d7d267ad8b3bed55ddfc99e17ede9248f52e08e63",
+    "tests_passed": 33,
+    "G0": "source_tests_passed_historical_reference_cold_bridges_required_before_new_fits",
+    "G1": "four_complete_split_evidence_pending",
+    "next_action": "Freeze runtime and input identities; cold-replay ten historical reference units before serial new confirmation fits"
   }
 }
