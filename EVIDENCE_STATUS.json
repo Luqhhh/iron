@@ -29153,7 +29153,7 @@
     "planned_engineering_optimizers": 2,
     "G0": "engineering_passed_frozen_scientific_and_terminal_audits_pending",
     "G1": "pending_complete_two_split_OOF",
-    "new_scientific_fits": 16,
+    "new_scientific_fits": 18,
     "new_engineering_fits": 1,
     "new_confirmation_seeds": 0,
     "full_fits": 0,
@@ -29214,7 +29214,7 @@
     "process_launch": "local/runs/ema-silu-20261004/development-r1/execution/process-launch.json",
     "process_launch_sha256": "1c4640a8b25643fd19b058a7b364000f9dc32ec07e53040d5346faa413c3cffe",
     "controller_start_ns": 1791104913570252535,
-    "next_observation_not_before_ns": 1791109236876859773,
+    "next_observation_not_before_ns": 1791109878699462391,
     "new_scientific_fits_note": "Completed estimator workers at last scheduled observation; in-flight work is not counted as completed.",
     "terminal_reconciler": {
       "status": "validated_generic_reconciler_bound_current_actual_exits_pending",
@@ -29227,15 +29227,15 @@
       "criterion_changes": 0
     },
     "last_scheduled_observation": {
-      "number": 6,
-      "time_ns": 1791108636876859773,
+      "number": 7,
+      "time_ns": 1791109278699462391,
       "controller_pid": 72941,
       "controller_live": true,
       "watcher_pid": 72963,
       "watcher_live": true,
       "active_children": [
         {
-          "pid": 77633,
+          "pid": 78032,
           "cmdline": [
             "/home/lux1/iron/.venv/bin/python3",
             "-m",
@@ -29244,26 +29244,26 @@
             "--seed",
             "3407",
             "--fold",
-            "0",
+            "1",
             "--init",
-            "1042"
+            "42"
           ],
-          "rss_mib": 620.9375
+          "rss_mib": 631.0703125
         }
       ],
-      "closed_child_count": 38,
-      "completed_new_estimators": 16,
-      "completed_new_cold_units": 16,
-      "completed_old_reuse_units": 6,
+      "closed_child_count": 43,
+      "completed_new_estimators": 18,
+      "completed_new_cold_units": 18,
+      "completed_old_reuse_units": 7,
       "all_closed_children_exit0": true,
       "maximum_closed_child_rss_mib": 838.2109375,
       "terminal_status": null,
       "partial_quality_read": false,
       "manifest_sha256": "f057a6d55a058430378831c9f7401c4cef894a056c2a287ff26f928441594f49",
-      "next_observation_not_before_ns": 1791109236876859773,
+      "next_observation_not_before_ns": 1791109878699462391,
       "observer_sha256": "b23705ab09ddaa05038095d37a74df1b9ddb6379f7d268b82d1a9febea82b8b9",
-      "receipt": "local/runs/ema-silu-20261004/development-r1/execution/observation-006-independent.json",
-      "receipt_sha256": "1d35119396ba892f176b2340e9f8675bf09fce59e9ce45b87c5d292581a13e52"
+      "receipt": "local/runs/ema-silu-20261004/development-r1/execution/observation-007-independent.json",
+      "receipt_sha256": "b1f2dbfd3e83b700f3b3b9e9a6ff23aff1301281ec0623d6893d5930ae2521fa"
     }
   },
   "ensemble_objective_review_20261004": {
@@ -29521,5 +29521,42 @@
     "G0": "native_callback_and_source_lifecycle_only_no_saved_state_fitting_or_cold_admission",
     "G1": "no_new_quality_evaluation",
     "next_action": "Implement a separate capture/save/load adapter around immutable V9 fit, then freeze its synthetic parity/cold audit budget; preserve native last-best tie rule and full schedule horizon."
+  },
+  "realmlp_state_adapter_preparation_20261004": {
+    "status": "adapter_primitives_and_no_fit_checks_passed_native_parity_cold_pending",
+    "protocol": "configs/realmlp_state_adapter/PREPARATION.json",
+    "review": "docs/realmlp_state_adapter/PREPARATION.md",
+    "source": "src/bf_tap_r2/realmlp_state_adapter.py",
+    "tests": "tests/test_realmlp_state_adapter.py",
+    "source_sha256": "45a2d71d793ebaef4be8d026630e86dbe715e833a6675a75b9dc075782a21ab6",
+    "original_v9_source_sha256": "705073d45b8fc9cc0ea6439aef4d153862363806d375aa484bebbefb23ddbbdc",
+    "receipt": "local/runs/realmlp-state-adapter-20261004/nofit-r2/checks.json",
+    "receipt_sha256": "426531149b81838fca1837427d644f129413a87caf103f5ecd60caa74d9a4da2",
+    "actual_tool_session": 35259,
+    "actual_exit_code": 0,
+    "no_fit_tests_passed": 20,
+    "earlier_setup_failure_preserved": {
+      "directory": "local/runs/realmlp-state-adapter-20261004/nofit-r1",
+      "actual_tool_session": 63167,
+      "actual_exit_code": 1,
+      "tests_passed": 9,
+      "setup_errors": 11,
+      "reason": "basetemp parent absent; affected tests never executed",
+      "receipt_sha256": "d744fb4519866d29195d0d782b969bda327ce4bf9827ce76f621bb80604e4da2"
+    },
+    "new_neural_models": 0,
+    "new_fits": 0,
+    "new_optimizers": 0,
+    "official_data_reads": 0,
+    "new_confirmation_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "assistant_uploads": 0,
+    "G0": "no_fit_contract_and_identity_guards_only_full_native_save_load_cold_admission_pending",
+    "G1": "no_new_quality_evaluation",
+    "synthetic_fitting_admitted": false,
+    "scientific_fitting_admitted": false,
+    "next_action": "Add native optimizer/step/selection observers, then separately preregister full-shape original/capture parity and independent cold replay before fitting; assess complete SiLU evidence before another scientific fitting stage."
   }
 }

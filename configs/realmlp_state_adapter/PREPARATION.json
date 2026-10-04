@@ -1,0 +1,17 @@
+{
+  "version": "realmlp-state-adapter-preparation-20261004",
+  "scope": "Implement isolated capture/save/load helpers around immutable V9 fit; execute no-fit interface and identity guards only.",
+  "recipe": "original realmlp_td, unchanged",
+  "native_tie_rule": "last exact best epoch",
+  "native_schedule_horizon": 256,
+  "new_neural_models": 0,
+  "new_fits": 0,
+  "new_optimizers": 0,
+  "official_data_reads": 0,
+  "new_confirmation_seeds": 0,
+  "full_fits": 0,
+  "packages": 0,
+  "synthetic_fitting_admitted": false,
+  "scientific_fitting_admitted": false,
+  "next_gate": "Separately freeze full-shape original-versus-captured parity, actual native optimizer/step/selection trace evidence, and independent cold replay before fitting."
+}
