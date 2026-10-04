@@ -30129,7 +30129,7 @@
     "results": "docs/realmlp_native_admission/RESULTS.md"
   },
   "realmlp_time_development_20261004": {
-    "status": "protocol_and_engineering_checks_frozen_before_scientific_fitting",
+    "status": "all_scientific_and_cold_units_passed_original_scalar_audit_interrupted_zero_fit_recovery_frozen",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
     "reference_score_user_reported": 96.3979,
@@ -30161,8 +30161,24 @@
     "engineering_checks": "local/runs/realmlp-native-admission-20261004/development-checks-r1/checks.json",
     "engineering_checks_sha256": "fea636ccb5fc163d0330d521f2c06ef4e7023e1f64f3011abd50fbaf639bc295",
     "tests_passed": 29,
-    "G0": "native_adapter_admitted_scientific_source_checks_passed_runtime_evidence_pending",
-    "G1": "complete_native_development_pending",
-    "next_action": "Run 30 serial native procedures and independent cold audits; only after both development splits positive separately freeze confirmation with current EMA3 Q100 reference"
+    "G0": "scientific_native_identity_and_cold_passed_scalar_recovery_pending",
+    "G1": "two_split_positive_single_candidate_selected_pending_independent_audit",
+    "next_action": "Run 30 serial native procedures and independent cold audits; only after both development splits positive separately freeze confirmation with current EMA3 Q100 reference",
+    "actual_native_outer_procedures": 30,
+    "actual_native_optimizer_runs": 60,
+    "cold_states": 60,
+    "original_audit_exit_code": -15,
+    "original_supervisor_exit_code": 241,
+    "audit_recovery": "docs/realmlp_time_development/AUDIT_RECOVERY.md",
+    "provisional_gains": {
+      "REALMLP_SINGLE_A20": {
+        "42": 0.003969419260589402,
+        "3407": 0.0079030645002487
+      },
+      "REALMLP_MEAN3_A20": {
+        "42": 0.001971944244300896,
+        "3407": 0.0035376786326905404
+      }
+    }
   }
 }
