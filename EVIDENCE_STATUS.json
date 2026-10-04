@@ -30357,7 +30357,57 @@
     "native_updates": 19552,
     "results": "docs/realmlp_mae/DEVELOPMENT_RESULTS.md",
     "terminal_reconciliation": "local/runs/realmlp-mae-development-20261004/development-r1/terminal-reconciliation.json",
-    "terminal_sha256": "a86c1616d461bf84591f77e797e83717f786ba1ecc1e91e2fa75708492aaf798"
+    "terminal_sha256": "a86c1616d461bf84591f77e797e83717f786ba1ecc1e91e2fa75708492aaf798",
+    "posthoc_mechanism_review": {
+      "scope": "Descriptive matched raw errors and correction geometry only, no weight search or changed decisions",
+      "run": "local/runs/realmlp-mae-mechanism-review-20261004/review-r1",
+      "actual_exit_code": 0,
+      "report_sha256": "d21827b85965f19e5abd30cf3116b815bab040b8f1877ffc2e1d6bf7c26a7e63",
+      "new_fits": 0,
+      "new_optimizers": 0,
+      "results": {
+        "42": {
+          "MSE": {
+            "raw_model_wmape": 0.03936886628892187,
+            "blend_gain": 0.003969419260589402,
+            "raw_error_correlation_with_parent": 0.9480042618211836,
+            "raw_delta_rms": 2.0630368365677567,
+            "raw_delta_mean": 0.3027366667101965,
+            "fraction_raw_correction_toward_target": 0.5090777051561365
+          },
+          "MAE": {
+            "raw_model_wmape": 0.03972984131719637,
+            "blend_gain": 0.0019215298114473862,
+            "raw_error_correlation_with_parent": 0.9426510057214323,
+            "raw_delta_rms": 2.190992643817491,
+            "raw_delta_mean": 0.3262000107993694,
+            "fraction_raw_correction_toward_target": 0.5177923021060276
+          },
+          "correction_cosine_MSE_MAE": 0.6172986636164897,
+          "raw_prediction_difference_rms": 1.8644216762359238
+        },
+        "3407": {
+          "MSE": {
+            "raw_model_wmape": 0.03949096623159032,
+            "blend_gain": 0.0079030645002487,
+            "raw_error_correlation_with_parent": 0.9341465688606376,
+            "raw_delta_rms": 2.3130437233734513,
+            "raw_delta_mean": 0.21402480464711535,
+            "fraction_raw_correction_toward_target": 0.5148874364560639
+          },
+          "MAE": {
+            "raw_model_wmape": 0.04007317821756246,
+            "blend_gain": 0.0025174400581488877,
+            "raw_error_correlation_with_parent": 0.9336777065848816,
+            "raw_delta_rms": 2.3473998736428054,
+            "raw_delta_mean": 0.2414367288555466,
+            "fraction_raw_correction_toward_target": 0.5181554103122731
+          },
+          "correction_cosine_MSE_MAE": 0.5643366544741617,
+          "raw_prediction_difference_rms": 2.175354989695144
+        }
+      }
+    }
   },
   "realmlp_mae_confirmation_preparation_20261004": {
     "status": "runtime_frozen_serial_confirmation_active_after_two_complete_positive_splits",
