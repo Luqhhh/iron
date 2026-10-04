@@ -182,14 +182,14 @@ def forbid_native_fit():
         yield
 
 
-def cold_audit(directory,frame,query,y,recipe,identity,record,expected,atol=.0005):
+def cold_audit(directory,frame,query,y,recipe,identity,record,expected,atol=.0005,loader=None):
     directory=Path(directory);maximum=0.
     mask=group_safe_inner_folds(frame,seed=42)['fold']!=0
     epoch=record['selected_epoch']
     best=verify_trace(record['native_trace'],frame,epoch,recipe['constructor']['n_epochs'])
     with forbid_native_fit():
         for i,role in enumerate(('selection','refit')):
-            payload=adapter.load_snapshot(directory/(role+'.pkl'),expected_identity=identity,
+            payload=(loader or adapter.load_snapshot)(directory/(role+'.pkl'),expected_identity=identity,
                 expected_role=role,expected_recipe=recipe)
             h=payload['header'];fitting=frame.loc[mask] if i==0 else frame
             targets=np.asarray(y)[mask] if i==0 else np.asarray(y)

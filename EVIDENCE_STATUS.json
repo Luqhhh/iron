@@ -30082,7 +30082,7 @@
     "next_action": "Use prospectively frozen transfer evidence cards for subsequent concrete candidates; no automatic new fit or package from this retrospective diagnostic"
   },
   "realmlp_native_admission_20261004": {
-    "status": "frozen_protocol_and_25_no_fit_checks_passed_pending_actual_admission",
+    "status": "original_capture_fits_completed_cold_failed_empty_lightning_trainer_slot_recovery_frozen",
     "user_instruction": "继续深入解决，尝试优化到96.45",
     "objective": 96.45,
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
@@ -30100,8 +30100,24 @@
     "packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
-    "G0": "pending_native_parity_cold",
+    "G0": "actual_training_parity_observed_cold_guard_repair_not_yet_admitted",
     "G1": "no_quality_measurement",
-    "next_action": "Complete native synthetic parity and cold admission, then separately freeze full scientific development without routine reapproval"
+    "next_action": "Run zero-fit bound recovery, preserve original failure and states, then freeze scientific development if admission closes",
+    "actual_exit_codes": {
+      "control": 0,
+      "capture": 0,
+      "cold": 1
+    },
+    "actual_synthetic_outer_procedures": 2,
+    "actual_native_optimizer_runs": 4,
+    "selected_epoch": 118,
+    "original_failure": "local/runs/realmlp-native-admission-20261004/engineering-r1/failure.json",
+    "original_failure_sha256": "37313e66e6a0b0840a35e4c7e3254f659e4a33dd0ff1a2a07ceb4a0864fb9c8a",
+    "recovery_protocol": "docs/realmlp_native_admission/RECOVERY.md",
+    "recovery_directory": "local/runs/realmlp-native-admission-20261004/recovery-r1",
+    "recovery_new_fit_budget": 0,
+    "recovery_new_optimizer_budget": 0,
+    "recovery_tests_passed": 26,
+    "recovery_checks_sha256": "b0b76ebf3e686d9f929f6641f22480e040527cc912c07e355200b045c607682d"
   }
 }

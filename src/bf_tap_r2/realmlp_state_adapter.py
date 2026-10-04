@@ -106,6 +106,14 @@ def expected_native_config(recipe, role, epoch):
     return result
 
 
+def validate_cleanup(module):
+    # LightningModule.__getstate__ restores the empty trainer slot when pickling.
+    # A None slot is not a live Trainer; retained data loaders remain forbidden.
+    if getattr(module, '_trainer', None) is not None or any(
+            hasattr(module, k) for k in ('train_dl', 'val_dl', 'callbacks')):
+        raise ValueError('Native post-fit cleanup incomplete')
+
+
 def validate_native(estimator, recipe, role, epoch):
     import torch
     from pytabkit import RealMLP_TD_Regressor
@@ -116,8 +124,7 @@ def validate_native(estimator, recipe, role, epoch):
     if not hasattr(estimator, 'alg_interface_'):
         raise ValueError('Native fitted state is absent')
     module = estimator.alg_interface_.model
-    if hasattr(module, '_trainer') or any(hasattr(module, k) for k in ('train_dl', 'val_dl', 'callbacks')):
-        raise ValueError('Native post-fit cleanup incomplete')
+    validate_cleanup(module)
     state = module.model.state_dict()
     if not state or any(v.device.type != 'cpu' or (v.is_floating_point() and not torch.isfinite(v).all())
                         for v in state.values()):

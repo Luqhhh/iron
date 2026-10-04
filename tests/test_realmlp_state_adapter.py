@@ -41,6 +41,16 @@ class RecordingEstimator:
     def predict(self,x):return x[:,0].astype(float)
 
 
+def test_lightning_empty_trainer_slot_is_safe_but_live_state_is_rejected():
+    from types import SimpleNamespace
+    adapter.validate_cleanup(SimpleNamespace())
+    adapter.validate_cleanup(SimpleNamespace(_trainer=None))
+    for module in [SimpleNamespace(_trainer=object()),SimpleNamespace(train_dl=None),
+                   SimpleNamespace(val_dl=None),SimpleNamespace(callbacks=[])]:
+        with pytest.raises(ValueError,match='cleanup'):
+            adapter.validate_cleanup(module)
+
+
 def test_calls_original_fit_once_and_captures_actual_two_objects(monkeypatch):
     factory_calls=[]
     def factory(recipe,**kwargs):
