@@ -1,0 +1,46 @@
+{
+  "version": "realmlp-native-mae-confirmation-20261004",
+  "objective": 96.45,
+  "reference": {
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
+    "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+  },
+  "run_directory": "/home/lux1/iron/local/runs/realmlp-mae-confirmation-20261004/confirmation-r1",
+  "candidate": "REALMLP_MAE_A20",
+  "split_seeds": [
+    271828,
+    314159
+  ],
+  "folds": 5,
+  "training_seed": 42,
+  "inner_seed": 42,
+  "blend_weight": 0.2,
+  "new_native_procedures": 10,
+  "new_native_adam": 20,
+  "new_native_states": 20,
+  "new_confirmation_seeds": 2,
+  "full_official_fits": 0,
+  "packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "workers": 1,
+  "numerical_threads": 1,
+  "max_rss_mib": 1536,
+  "minimum_available_mib": 3072,
+  "monitor_seconds": 600,
+  "time_budget_seconds": null,
+  "automatic_retries": false,
+  "cold_full_batch_atol": 0.0,
+  "cold_order_chunk_atol": 0.0005,
+  "scalar_atol": 1e-10,
+  "require_completed_native_MAE_admission": true,
+  "all_split_seeds": [
+    42,
+    3407,
+    271828,
+    314159
+  ],
+  "new_reference_fits": 0,
+  "four_seed_gate": "all_four_positive_and_one_sided_student_t_seed_paired_LCB95_positive"
+}

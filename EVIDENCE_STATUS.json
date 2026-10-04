@@ -30306,5 +30306,30 @@
     "G0": "exact_source_no_fit_checks_passed_native_admission_pending",
     "G1": "not_measured",
     "next_action": "Complete original MSE confirmation and any qualified release, then native MAE engineering; only after admission run two complete development splits"
+  },
+  "realmlp_mae_confirmation_preparation_20261004": {
+    "status": "conditional_source_prepared_before_development_results_no_new_fits",
+    "candidate": "REALMLP_MAE_A20",
+    "objective": 96.45,
+    "protocol": "docs/realmlp_mae/CONFIRMATION.md",
+    "spec": "configs/realmlp_mae_confirmation/SPEC.json",
+    "checks": "local/runs/realmlp-mae-confirmation-20261004/checks-r1/checks.json",
+    "checks_sha256": "55ac331ab87dc5011d2384687d9f109f4431cabe4057de8cf0e07be2a7170207",
+    "tests_passed": 10,
+    "require_completed_two_positive_development_splits": true,
+    "new_native_procedures_budget_if_qualified": 10,
+    "new_native_adam_budget_if_qualified": 20,
+    "new_reference_fits": 0,
+    "new_confirmation_seeds_if_qualified": [
+      271828,
+      314159
+    ],
+    "actual_new_fits": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "G0": "source_no_fit_checks_passed_runtime_admission_pending",
+    "G1": "not_measured"
   }
 }
