@@ -28666,8 +28666,8 @@
     "process_launch": "local/runs/ema-mini-20261004/development-r1/process-launch.json",
     "process_launch_sha256": "d528d9e586c42f78ce62fde38a50e3cb8ce5073853089a9dfdd1ca1df63e46e7",
     "controller_start_ns": 1791094500272896703,
-    "next_observation_not_before_ns": 1791097036052866055,
-    "new_scientific_fits_note": "Third scheduled observation: 12 new estimators completed and cold-audited; next worker live; final native started/optimizer inventory pending; frozen upper bound30",
+    "next_observation_not_before_ns": 1791097682035756155,
+    "new_scientific_fits_note": "Fourth scheduled observation: 15 new estimators completed and cold-audited; split3407 worker live; final native started/optimizer inventory pending; frozen upper bound30",
     "scientific_execution_started": true,
     "monitoring_active": true,
     "conditional_confirmation_cache": {
@@ -28730,17 +28730,17 @@
       }
     },
     "last_scheduled_observation": {
-      "number": 3,
-      "time_ns": 1791096436052866055,
-      "completed_new_estimators": 12,
-      "completed_new_cold_units": 12,
-      "completed_old_reuse_units": 5,
-      "closed_child_count": 29,
+      "number": 4,
+      "time_ns": 1791097082035756155,
+      "completed_new_estimators": 15,
+      "completed_new_cold_units": 15,
+      "completed_old_reuse_units": 6,
+      "closed_child_count": 36,
       "all_closed_children_exit0": true,
-      "maximum_closed_child_rss_mib": 734.49609375,
+      "maximum_closed_child_rss_mib": 741.1328125,
       "partial_quality_read": false,
-      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-003-independent.json",
-      "sha256": "5024fc6e2df15102468f4f364673500b3a157994450bc6f6e1da9c7fb740f496",
+      "receipt": "local/runs/ema-mini-20261004/development-r1/execution/observation-004-independent.json",
+      "sha256": "463f311b796e25ac18da290dbfdbc2b72da52644eb0ec867d10d5c31cf0cdf20",
       "controller_and_watcher_verified_live": true
     },
     "monitoring_deviations": [
@@ -28754,5 +28754,40 @@
         "retained_for_audit": true
       }
     ]
+  },
+  "tabm_packed_structure_review_20261004": {
+    "status": "zero_fit_native_structure_inventory_completed_research_reserve_only",
+    "reference": "DE3_IRON_EMA_MEAN3_Q100",
+    "reference_score_user_reported": 96.3979,
+    "objective": 96.45,
+    "document": "docs/tabm_packed_research/REVIEW.md",
+    "directory": "local/runs/tabm-packed-research-20261004/architecture-r2",
+    "G0": "native_factory_shape_and_independent_parameter_count_only_no_training_admission",
+    "G1": "unmeasured",
+    "scientific_phase_admitted": false,
+    "network_constructions": 3,
+    "synthetic_forward_calls": 3,
+    "optimizers": 0,
+    "new_fits": 0,
+    "official_data_reads": 0,
+    "active_mini_reads": 0,
+    "confirmation_seeds": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "peak_untrained_process_rss_mib": 353.375,
+    "parameter_counts": {
+      "tabm": 183200,
+      "tabm-mini": 163232,
+      "tabm-packed": 2450288
+    },
+    "shared_numeric_embedding": true,
+    "original_import_failure_preserved": true,
+    "actual_success_exit_codes": [
+      0,
+      0
+    ],
+    "report_sha256": "f5bdccfc29fac88682fef6fb4cd464a634b93d2f67645b37906dd056cb05bd0f",
+    "terminal_sha256": "4d1846baaafae820424326e3989b01287877a98c66e3452e4e5367a0bfb687ba"
   }
 }
