@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "stage": "iron_direction_audit_20261005",
+  "objective": 96.45,
+  "kind": "zero_fit_closure_check",
+  "train_features": "复赛_train/train_features.csv",
+  "test_features": "复赛_test/test_features.csv",
+  "oof_template": "local/runs/de3-independent-batches-20261004/development-r1/oof-s{split}.npz",
+  "run_directory": "/home/lux1/iron/local/runs/iron-direction-audit-20261005/review-r1",
+  "splits": [42, 3407],
+  "grid_points": 41,
+  "material_gain_threshold": 0.002,
+  "rounding_levels": [4, 3, 2, 1, 0],
+  "directions": "incumbent iron plus/minus every recorded direction: DE3 member means, individual DE3 members, IBATCH members, and member differences",
+  "remaining_claimed_headroom": {
+    "source": "EVIDENCE_STATUS.iron_strength_bound_20261004",
+    "de3_difference_amplification": 96.40025,
+    "a35_to_de3_canonical_line": 96.41635,
+    "containment": "The DE3 difference amplification line contains the incumbent at q=0.5 and is the same family as docs/iron_strength_correction/RESULTS.md, where q=1.0 measures worse on both complete splits.",
+    "unresolved": "The A35-to-DE3 line at w=1 is the synthetic column 2*D_iron - A_iron: it extrapolates past the DE3 iron by the whole A35-to-V12 iron change, so no recorded model produces it and no recorded direction supports it."
+  },
+  "new_fits": 0,
+  "model_loads": 0,
+  "training_label_reads": 0,
+  "new_packages": 0,
+  "desktop_writes": 0,
+  "agent_uploads": 0,
+  "limits": [
+    "Two split seeds only.",
+    "The directional test only covers recorded directions; it cannot rule out an unrecorded direction.",
+    "The A35 iron column is not re-measured here; the audit states containment and support, not a new bound.",
+    "No platform score is forecast and no history is rewritten."
+  ]
+}

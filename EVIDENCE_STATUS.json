@@ -344,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "DE3_IRON_STRENGTH_100 已撤回（基准取错，本地比 incumbent 差 0.0168），不得上传。incumbent 的铁量强度 q=0.5 已在最优点，铁量方向无可用增益。当前队列为空，剩余额度保留；96.45 仍无可执行路径。",
+    "recommended": "现有存货与所有已记录方向均无够格候选；铁量与时长两列都已在其可测族的局部最优；扩张型新机制平台10/10下降；条件上界要么所在族已被实测否定增益，要么是无成员支撑的合成外推。剩余额度没有正期望用法，建议保留额度与96.3979；96.45在4次额度内没有可执行路径。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -31099,6 +31099,54 @@
     "G0": "passed_zero_fit_ten_folds_six_q_values_two_direct_comparisons_locked_python312",
     "G1": "incumbent_iron_strength_is_at_its_local_optimum_no_iron_strength_gain_available",
     "new_fits": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "historical_decisions_unchanged": true,
+    "background_tasks_running": false
+  },
+  "iron_direction_audit_20261005": {
+    "status": "completed_zero_fit_closure_no_duplicate_rows_no_supported_direction",
+    "date": "2026-10-05",
+    "objective": 96.45,
+    "protocol": "configs/iron_direction_audit/SPEC.json",
+    "results": "docs/iron_direction_audit/RESULTS.md",
+    "implementation": "scripts/iron_direction_audit.py",
+    "tests": "tests/test_iron_direction_audit.py",
+    "private_directory": "local/runs/iron-direction-audit-20261005/review-r1",
+    "duplicate_check": {
+      "within_train_duplicate_feature_rows": 0,
+      "test_rows_matching_a_train_row": {
+        "4": 0,
+        "3": 0,
+        "2": 0,
+        "1": 0,
+        "0": 0
+      },
+      "test_rows_total": 322,
+      "test_cells_outside_train_range": 0,
+      "test_cells_total": 6762
+    },
+    "directional_optimality": {
+      "directions": 7,
+      "grid_points": 41,
+      "splits": [
+        42,
+        3407
+      ],
+      "best_gain_min_over_splits": 0.0007736340278615556,
+      "no_direction_improves_both_splits_materially": true,
+      "material_gain_threshold": 0.002
+    },
+    "remaining_headroom_audit": {
+      "de3_difference_amplification_96.40025": "family contains the incumbent at q=0.5; same family as docs/iron_strength_correction where q=1.0 measures worse on both splits; conservative upper bound only",
+      "a35_to_de3_canonical_line_96.41635": "w=1 is the synthetic column 2*D_iron - A_iron, extrapolating past DE3 iron by the whole A35-to-V12 iron change; no recorded model produces it and no recorded direction supports it"
+    },
+    "G0": "passed_zero_fit_zero_model_loads_zero_label_reads_locked_python312_seven_directions_two_splits_41_points_five_rounding_levels",
+    "G1": "no_data_shortcut_and_no_supported_iron_direction_remaining",
+    "new_fits": 0,
+    "model_loads": 0,
     "new_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
