@@ -20371,5 +20371,15 @@
     "source_implementation_commit": "214fbee125c44e141fcbe617570b1ddb2736ac1b",
     "results": "docs/tabm_fixed_bootstrap_v1/RESULTS.md",
     "spec": "configs/tabm_fixed_bootstrap_v1/SPEC.json"
+  },
+  "tabm_bootstrap_cov_v1_20261004": {
+    "identity": "TABM_BOOTSTRAP_COV_V1",
+    "status": "preregistered",
+    "G0": "not_started",
+    "G1": "not_started",
+    "spec": "configs/tabm_bootstrap_cov_v1/SPEC.json",
+    "fullfit": 0,
+    "packages": 0,
+    "uploads": 0
   }
 }
