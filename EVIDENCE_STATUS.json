@@ -30364,5 +30364,25 @@
     "agent_uploads": 0,
     "G0": "source_no_fit_checks_passed_runtime_admission_pending",
     "G1": "not_measured"
+  },
+  "realmlp_mae_release_preparation_20261004": {
+    "status": "conditional_source_prepared_before_quality_results_no_full_fit_or_package",
+    "candidate": "REALMLP_MAE_A20",
+    "objective": 96.45,
+    "protocol": "docs/realmlp_mae/RELEASE.md",
+    "spec": "configs/realmlp_mae_release/SPEC.json",
+    "checks": "local/runs/realmlp-mae-release-20261004/checks-r1/checks.json",
+    "checks_sha256": "3847a333dc6461f76f6f6a39a6db1aa1ca5838c78295d0b7b1d898a8473112c3",
+    "tests_passed": 35,
+    "require_completed_four_seed_gate": true,
+    "full_procedure_budget_if_qualified": 1,
+    "native_adam_budget_if_qualified": 2,
+    "package_budget_if_qualified": 1,
+    "actual_full_fits": 0,
+    "actual_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "G0": "exact_source_no_fit_checks_passed_runtime_admission_pending",
+    "G1": "no_complete_development_or_confirmation_measurement"
   }
 }
