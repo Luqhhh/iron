@@ -30188,7 +30188,7 @@
     }
   },
   "realmlp_time_confirmation_20261004": {
-    "status": "source_checks_and_exact_protocol_frozen_before_runtime_admission",
+    "status": "runtime_frozen_reference_replay_then_serial_confirmation_active",
     "objective": 96.45,
     "candidate": "REALMLP_SINGLE_A20",
     "reference": "DE3_IRON_EMA_MEAN3_Q100",
@@ -30215,6 +30215,28 @@
     "tests_passed": 33,
     "G0": "source_tests_passed_historical_reference_cold_bridges_required_before_new_fits",
     "G1": "four_complete_split_evidence_pending",
-    "next_action": "Freeze runtime and input identities; cold-replay ten historical reference units before serial new confirmation fits"
+    "next_action": "Freeze runtime and input identities; cold-replay ten historical reference units before serial new confirmation fits",
+    "source_commit": "5b487e59205a9a5e4a648077baadaaaf68d6eb8f",
+    "manifest_sha256": "6f15cfdfef92e0b424a175b9233b6d31179ee9e12d4357cae8e0a01aa4a2422d"
+  },
+  "realmlp_time_release_preparation_20261004": {
+    "status": "conditional_source_and_protocol_prepared_no_full_fit_or_package",
+    "objective": 96.45,
+    "candidate": "REALMLP_SINGLE_A20",
+    "require_completed_four_seed_gate": true,
+    "protocol": "docs/realmlp_time_release/PREREGISTRATION.md",
+    "spec": "configs/realmlp_time_release/SPEC.json",
+    "full_procedure_budget_if_qualified": 1,
+    "native_adam_budget_if_qualified": 2,
+    "package_budget_if_qualified": 1,
+    "actual_full_fits": 0,
+    "actual_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "tests_passed": 32,
+    "checks": "local/runs/realmlp-time-release-20261004/checks-r1/checks.json",
+    "checks_sha256": "66178622a2e3481045dad142bc0b778c70af07397aac887e0a7d8284c42f5ea0",
+    "G0": "conditional_publisher_checks_passed_no_runtime_admission",
+    "G1": "confirmation_pending_no_platform_score"
   }
 }
