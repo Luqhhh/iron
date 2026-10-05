@@ -142,7 +142,13 @@ def main() -> None:
         output.mkdir(parents=True, exist_ok=True)
         counts = train_new_seeds(spec, frame, layout, output, settings)
     else:
-        counts = {"estimators": 0, "optimizers": 0, "selected_epochs": {}, "evaluated_from_recorded_units": True}
+        recorded = sorted(output.glob("members-s*-f*/training-seed-*/metadata.json"))
+        epochs = {}
+        for path in recorded:
+            meta = read_json(path)
+            epochs[path.parent.name + "-" + path.parent.parent.name] = meta["selected_epoch"]
+        counts = {"estimators": len(recorded), "optimizers": 2 * len(recorded),
+                  "selected_epochs": epochs, "evaluated_from_recorded_units": True}
     evaluation = evaluate(spec, layout, output, frame)
     report = {
         "stage": spec["stage"],

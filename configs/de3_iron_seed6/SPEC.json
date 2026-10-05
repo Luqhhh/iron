@@ -50,7 +50,7 @@
   ],
   "folds": 5,
   "fold_source": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3/tap_iron-DE3-s{split}-f{fold}/predictions.npz",
-  "incumbent_column_source": "local/runs/de3-independent-batches-20261004/development-r1/oof-s{split}.npz reference_iron",
+  "incumbent_column_source": "local/runs/de3-independent-batches-20261004/development-r1/oof-s{split}.npz",
   "evaluation": "per split: candidate = reference_iron + 0.5*(mean6 - mean3); iron-only score gain = 50*(WMAPE_incumbent - WMAPE_candidate)",
   "gate": "both complete splits positive; then a separately frozen full-data release",
   "budget": {
@@ -72,5 +72,6 @@
     "The expected effect is an extrapolation of a 1/r fit on three seed counts; it is not a measured gain.",
     "No platform score may be forecast and the assistant does not upload."
   ],
-  "fold_source_note": "query_ids of each recorded unit; verified identical to the de3-independent-batches OOF member columns at 0.0"
+  "fold_source_note": "query_ids of each recorded unit; verified identical to the de3-independent-batches OOF member columns at 0.0",
+  "incumbent_column_source_note": "reference_iron (the incumbent iron column) plus old_members (the three recorded DE3 seeds) on the same folds"
 }

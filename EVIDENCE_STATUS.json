@@ -344,7 +344,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "现有存货与所有已记录方向均无够格候选；铁量与时长两列都已在其可测族的局部最优；扩张型新机制平台10/10下降；条件上界要么所在族已被实测否定增益，要么是无成员支撑的合成外推。剩余额度没有正期望用法，建议保留额度与96.3979；96.45在4次额度内没有可执行路径。",
+    "recommended": "6-seed 铁量扩展实测为 −0.00029（两 split 均负），门槛未过、未发布、未动额度。最后一个有正期望的同族平均方向已关闭；没有候选具有正期望，当前最佳 96.3979 即可达上限，剩余额度保留。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -31147,6 +31147,79 @@
     "G1": "no_data_shortcut_and_no_supported_iron_direction_remaining",
     "new_fits": 0,
     "model_loads": 0,
+    "new_packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "historical_decisions_unchanged": true,
+    "background_tasks_running": false
+  },
+  "de3_iron_seed6_20261005": {
+    "status": "completed_gate_failed_no_release_no_slot_spent",
+    "date": "2026-10-05",
+    "objective": "maximize the platform score with the remaining slots",
+    "candidate": "DE3_IRON_SEED6",
+    "protocol": "docs/de3_iron_seed6/PREREGISTRATION.md",
+    "results": "docs/de3_iron_seed6/RESULTS.md",
+    "spec": "configs/de3_iron_seed6/SPEC.json",
+    "implementation": "scripts/de3_iron_seed6.py",
+    "tests": "tests/test_de3_iron_seed6.py",
+    "private_directory": "local/runs/de3-iron-seed6-20261005/development-r1",
+    "new_seeds": [
+      999983,
+      1000003,
+      1000033
+    ],
+    "expected_effect_basis": {
+      "model": "W(r)=A+c/r on recorded per-seed predictions",
+      "A": 0.03730916,
+      "c": 0.00039756,
+      "predicted_r6_gain_amplified": 0.0016565
+    },
+    "measured": {
+      "42": {
+        "candidate": 0.0370651,
+        "score_gain": -4.08e-05,
+        "incumbent_iron_wmape": 0.0370643
+      },
+      "3407": {
+        "incumbent_iron_wmape": 0.0371527,
+        "candidate": 0.0371633,
+        "score_gain": -0.0005294
+      },
+      "mean_gain": -0.0002851,
+      "both_splits_positive": false
+    },
+    "gate_passed": false,
+    "release_executed": false,
+    "subset_scan": {
+      "subsets": 63,
+      "positive_on_both_splits": 5,
+      "best_min_over_splits": 0.0008,
+      "best_subset": [
+        42,
+        104729,
+        130363,
+        1000003
+      ],
+      "status": "selection_contaminated_not_a_candidate"
+    },
+    "interpretation": "The 1/r extrapolation did not materialise: seed averaging on the current base is already at its plateau and adding three seeds injects noise. This was the last same-family averaging direction with positive expectation.",
+    "actual_counts": {
+      "estimators": 30,
+      "optimizers": 60,
+      "runtime_minutes": 108,
+      "new_packages": 0,
+      "desktop_writes": 0,
+      "agent_uploads": 0
+    },
+    "preserved_failures": [
+      "failed-r1-prediction-contract (query frame carried targets, aborted before any unit completed)",
+      "spec string errors in fold_source and incumbent_column_source, corrected before use"
+    ],
+    "G0": "passed_30_estimators_60_optimizers_two_complete_splits_thread_pinning_no_label_leak_locked_python312",
+    "G1": "null_result_no_candidate_no_expected_gain_remaining",
+    "new_fits": 30,
     "new_packages": 0,
     "desktop_writes": 0,
     "agent_uploads": 0,
