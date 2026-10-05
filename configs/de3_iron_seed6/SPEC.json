@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "stage": "de3_iron_seed6_20261005",
+  "objective": "maximize the platform score with the remaining slots",
+  "candidate": "DE3_IRON_SEED6",
+  "kind": "same_family_seed_averaging_extension",
+  "reference": {
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
+    "source": "user_reported_not_independently_verified"
+  },
+  "recipe": {
+    "definition": "iron = V32_iron + 0.5 * (mean(r seeds) - J42); the incumbent uses r = 3, the candidate uses r = 6, so the change is 0.5 * (mean6 - mean3)",
+    "regressor": "bf_tap_r2.component_regularization.ComponentRegressor",
+    "recipe_key": "bf_tap_r2.component_regularization_run.RECIPE",
+    "settings": "configs/strong_component_regularization/SPEC.yaml training.tap_iron",
+    "targets": [
+      "tap_iron",
+      "tap_time_len"
+    ]
+  },
+  "expected_effect_basis": {
+    "model": "W(r) = A + c/r fitted on the recorded per-seed predictions",
+    "fit": {
+      "A": 0.03730916,
+      "c": 0.00039756,
+      "residuals_max_abs": 4.121e-06
+    },
+    "observed": {
+      "r1": 0.037708,
+      "r2": 0.037504,
+      "r3": 0.037445
+    },
+    "predicted_r6_gain_raw_column": 0.0035,
+    "predicted_r6_gain_amplified": 0.0017
+  },
+  "existing_seeds": [
+    42,
+    104729,
+    130363
+  ],
+  "new_seeds": [
+    999983,
+    1000003,
+    1000033
+  ],
+  "splits": [
+    42,
+    3407
+  ],
+  "folds": 5,
+  "fold_source": "local/runs/independent-ensemble-checkpoints-20260929/development-DE3/tap_iron-DE3-s{split}-f{fold}/predictions.npz",
+  "incumbent_column_source": "local/runs/de3-independent-batches-20261004/development-r1/oof-s{split}.npz reference_iron",
+  "evaluation": "per split: candidate = reference_iron + 0.5*(mean6 - mean3); iron-only score gain = 50*(WMAPE_incumbent - WMAPE_candidate)",
+  "gate": "both complete splits positive; then a separately frozen full-data release",
+  "budget": {
+    "new_estimators": 30,
+    "new_optimizers": 60,
+    "confidence_seeds": 0,
+    "full_fits": 0,
+    "packages": 0,
+    "desktop_writes": 0,
+    "agent_uploads": 0
+  },
+  "run_directory": "/home/lux1/iron/local/runs/de3-iron-seed6-20261005/development-r1",
+  "workers": 1,
+  "numerical_threads": 1,
+  "time_budget_seconds": null,
+  "automatic_retries": false,
+  "limits": [
+    "Two split seeds only; the four-complete-seed promotion gate needs a separately frozen confirmation.",
+    "The expected effect is an extrapolation of a 1/r fit on three seed counts; it is not a measured gain.",
+    "No platform score may be forecast and the assistant does not upload."
+  ],
+  "fold_source_note": "query_ids of each recorded unit; verified identical to the de3-independent-batches OOF member columns at 0.0"
+}
