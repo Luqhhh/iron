@@ -55,6 +55,7 @@ def train_new_seeds(spec: dict, frame, layout: dict, output: Path, settings: dic
             training = frame.loc[~frame.sample_id.isin(query_ids)].reset_index(drop=True)
             query = (frame.set_index("sample_id").loc[query_ids].reset_index())
             actual = query["tap_iron"].to_numpy(dtype=float)
+            query_frame = query.drop(columns=[name for name in TARGETS if name in query.columns])
             unit = output / f"members-s{split}-f{fold}"
             unit.mkdir(parents=True, exist_ok=False)
             columns = {}
@@ -64,10 +65,10 @@ def train_new_seeds(spec: dict, frame, layout: dict, output: Path, settings: dic
                 started = time.monotonic()
                 model = ComponentRegressor(RECIPE, dict(settings, random_seed=seed), "BASE", {}, directory)
                 model.fit(training, training[list(TARGETS)].to_numpy())
-                prediction = model.predict(query)
+                prediction = model.predict(query_frame)
                 with (directory / "predictions.npz").open("xb") as stream:
                     np.savez_compressed(stream, prediction=prediction,
-                                        query_ids=query.sample_id.to_numpy(dtype=str))
+                                        query_ids=query_frame.sample_id.to_numpy(dtype=str))
                 write_json(directory / "metadata.json", {
                     "training_seed": seed, "selected_epoch": model.metadata_["selected_epoch"],
                     "seconds": time.monotonic() - started,

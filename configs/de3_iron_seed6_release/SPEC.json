@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "stage": "de3_iron_seed6_release_20261005",
+  "status": "frozen_conditional_on_development_gate",
+  "candidate": "DE3_IRON_SEED6",
+  "recipe": "iron = V32_iron + 0.5*(mean6 - J42) = incumbent_iron + 0.5*(mean6 - mean3); time column copied verbatim from the incumbent package",
+  "conditional_on": "configs/de3_iron_seed6/SPEC.json gate: both complete splits positive",
+  "reference": {
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
+    "source": "user_reported_not_independently_verified"
+  },
+  "new_seeds": [
+    999983,
+    1000003,
+    1000033
+  ],
+  "inputs": {
+    "parent_package": {
+      "path": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+    },
+    "v32_package": {
+      "path": "local/runs/round2-v32/interior-probes-r1/V32_TIME_A60V7_50/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7"
+    },
+    "v12_full_iron": {
+      "path": "local/runs/round2-v12-joint-tabm/release-r1/full/cold.npy",
+      "sha256": "141b3dc41d32db3810584f29cdaeba2a8453f6de9b15ab7cfb3c34a2a9fc0946"
+    },
+    "release_ensemble": {
+      "path": "local/runs/de3-user-requested-release-20260930/release-r2/ensemble/cold.npy",
+      "sha256": "2d0fa1671725d11929d935a81fe5bb6d55ed7cf1830e2d2886e685553e24237f"
+    }
+  },
+  "verification": {
+    "max_absolute_difference": 1e-09,
+    "base_consistency": "the recovered three-member mean must match the original release cold-replayed ensemble; V32_iron + 0.5*(mean3 - J42) must reproduce the incumbent iron exactly; with zero new members the candidate formula must reproduce the incumbent exactly"
+  },
+  "pre_upload_screen": {
+    "slot_rule": "non_expansive_change and bounded_perturbation_rho_le_0.01",
+    "fitted_functional": "local/runs/validation-match-20261005/review-r1/fitted-weights.npz"
+  },
+  "budget": {
+    "new_full_fits": 3,
+    "new_optimizers": 6,
+    "new_cv_fits": 0,
+    "packages": 1,
+    "desktop_writes": 0,
+    "agent_uploads": 0
+  },
+  "classification": "same_family_seed_averaging_extension_not_four_seed_promoted",
+  "limits": [
+    "Two development splits only until a separately frozen confirmation runs.",
+    "The expected effect is a 1/r extrapolation of the recorded seed curve, not a measurement.",
+    "No platform score may be forecast; the assistant does not upload."
+  ]
+}
