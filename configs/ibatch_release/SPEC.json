@@ -1,0 +1,154 @@
+{
+  "version": 1,
+  "stage": "ibatch_release_20261005",
+  "status": "frozen_before_execution",
+  "objective": "maximize the platform score with the remaining slots",
+  "candidates": [
+    "IBATCH_TIME_A20",
+    "JOINT_IBATCH_IRON_A20"
+  ],
+  "time_candidate": "IBATCH_TIME_A20",
+  "iron_candidate": "JOINT_IBATCH_IRON_A20",
+  "reference": {
+    "candidate": "DE3_IRON_EMA_MEAN3_Q100",
+    "score": 96.3979,
+    "source": "user_reported_not_independently_verified"
+  },
+  "formulas": {
+    "time": "incumbent_time + 0.2*(mean(3 EMA-independent-batch time members) - mean(3 EMA time members))",
+    "iron": "incumbent_iron + 0.1*(mean(3 joint-independent-batch iron members) - mean(3 DE3 iron members))"
+  },
+  "time_weight": 0.2,
+  "iron_weight": 0.1,
+  "time_seeds": [
+    42,
+    1042,
+    2042
+  ],
+  "iron_seeds": [
+    42,
+    104729,
+    130363
+  ],
+  "time_training": {
+    "random_seed": 42,
+    "inner_seed": 42,
+    "width": 256,
+    "blocks": 2,
+    "tabm_k": 16,
+    "dropout": 0.1,
+    "embedding_dim": 16,
+    "n_frequencies": 16,
+    "lite": true,
+    "loss": "mse",
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "max_epochs": 240,
+    "patience": 25,
+    "min_delta": 1e-05,
+    "early_stop_metric": "standardized_mae_of_ensemble_prediction",
+    "preprocessing": "inner_training_only_then_refit_outer_training",
+    "refit": "fresh_initialization_full_outer_training_at_selected_epoch"
+  },
+  "time_mechanisms": {
+    "ema_beta": 0.99,
+    "sam_rho": 0.05,
+    "sam_epsilon": 1e-12,
+    "sam_same_dropout": true,
+    "gradient_clip": null
+  },
+  "iron_training": {
+    "random_seed": 42,
+    "inner_seed": 42,
+    "width": 256,
+    "blocks": 2,
+    "tabm_k": 16,
+    "dropout": 0.1,
+    "embedding_dim": 16,
+    "n_frequencies": 16,
+    "lite": true,
+    "loss": "mse",
+    "optimizer": "adamw",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 256,
+    "max_epochs": 240,
+    "patience": 25,
+    "min_delta": 1e-05,
+    "early_stop_metric": "mean_standardized_mae_both_outputs",
+    "preprocessing": "training_only_standardization_per_partition",
+    "refit": "fresh_initialization_full_outer_training_at_selected_epoch"
+  },
+  "local_evidence": {
+    "IBATCH_TIME_A20": {
+      "42": 0.00042927912075804036,
+      "3407": 0.00046912346050465546,
+      "folds": "5/10"
+    },
+    "JOINT_IBATCH_IRON_A20": {
+      "42": 0.00034,
+      "3407": 0.000278,
+      "folds": "6/10"
+    },
+    "source": "EVIDENCE_STATUS.ema_independent_batches_development_20261004 and de3_joint_independent_batches_development_20261004"
+  },
+  "verification": {
+    "max_absolute_difference": 1e-09,
+    "base_consistency": "the recovered EMA members must reproduce the released mean3 package through its documented formula; the recovered DE3 iron members must match the original release cold-replayed ensemble; with zero new members both candidate formulas must reproduce the incumbent exactly"
+  },
+  "pre_upload_screen": {
+    "slot_rule": "non_expansive_change and bounded_perturbation_rho_le_0.01",
+    "fitted_functional": "local/runs/validation-match-20261005/review-r1/fitted-weights.npz"
+  },
+  "inputs": {
+    "parent_package": {
+      "path": "local/runs/de3-ema-mean3-q100-release-20261004/release-r1/DE3_IRON_EMA_MEAN3_Q100/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
+    },
+    "q75_package": {
+      "path": "local/runs/ema-time-followup-20261001/probes-r2/EMA_TIME_Q75/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "41a046d5ce74e8a9c7c9acb124fa680cabf9e87e4a79edb50d81efb625bde825"
+    },
+    "mean3_package": {
+      "path": "local/runs/ema-mean3-exploration-release-20261002/release-r1/package/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "016e7e9cb3f750c74509dbb51961c61fea205d0296bb233056da66005f69a396"
+    },
+    "v32_package": {
+      "path": "local/runs/round2-v32/interior-probes-r1/V32_TIME_A60V7_50/Luqhhh_bf_tap_predict_round2.zip",
+      "sha256": "54864561c057ae71f7779b15099750f7caf0141c149d609ae281dbaf9ef3aaa7"
+    },
+    "ema_member_1042": {
+      "path": "local/runs/ema-mean3-exploration-release-20261002/release-r1/EMA_FULL_INIT1042/predictions.npz",
+      "sha256": "3a91049741378c138a99aff7b6f01e8e9efc03bf0241019fb41805e185876aaa"
+    },
+    "ema_member_2042": {
+      "path": "local/runs/ema-mean3-exploration-release-20261002/release-r1/EMA_FULL_INIT2042/predictions.npz",
+      "sha256": "a2c8086bf96206d7555b47ede73fa72bd07907766575610237aa1002816f36a4"
+    },
+    "v12_full_iron": {
+      "path": "local/runs/round2-v12-joint-tabm/release-r1/full/cold.npy",
+      "sha256": "141b3dc41d32db3810584f29cdaeba2a8453f6de9b15ab7cfb3c34a2a9fc0946"
+    },
+    "de3_release_ensemble": {
+      "path": "local/runs/de3-user-requested-release-20260930/release-r2/ensemble/cold.npy",
+      "sha256": "2d0fa1671725d11929d935a81fe5bb6d55ed7cf1830e2d2886e685553e24237f"
+    }
+  },
+  "budget": {
+    "new_full_fits": 6,
+    "new_optimizers": 12,
+    "new_cv_fits": 0,
+    "new_confirmation_seeds": 0,
+    "packages": 2,
+    "desktop_writes": 0,
+    "agent_uploads": 0
+  },
+  "classification": "same_family_averaging_extension_two_split_evidence_not_four_seed_promoted",
+  "limits": [
+    "Two development splits only; no four-seed confirmation was run.",
+    "Local gains are ~+0.0004 and the platform noise is about +/-0.01, so a single upload is close to a coin flip.",
+    "No platform score may be forecast; the assistant does not upload."
+  ]
+}
