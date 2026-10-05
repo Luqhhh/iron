@@ -31,8 +31,8 @@
       "r2": 0.037504,
       "r3": 0.037445
     },
-    "predicted_r6_gain_raw_column": 0.0035,
-    "predicted_r6_gain_amplified": 0.0017
+    "predicted_r6_gain_raw_column": 0.003313,
+    "predicted_r6_gain_amplified": 0.0016565
   },
   "existing_seeds": [
     42,
