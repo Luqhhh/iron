@@ -302,7 +302,7 @@
   },
   "round2_current_candidate_queue": {
     "as_of": "2026-10-05",
-    "status": "no_slot_candidate_after_iron_strength_withdrawal",
+    "status": "two_packages_on_desktop_both_fail_the_frozen_slot_rule",
     "current_preferred": {
       "candidate": "DE3_IRON_EMA_MEAN3_Q100",
       "score": 96.3979,
@@ -310,9 +310,29 @@
       "zip_sha256": "528b8bf91102bea7ce120a71c560f6b021382132fb425a8f95cbfe79f9e3712c"
     },
     "reference_key": "round2_current_platform_best",
-    "submission_priority": [],
+    "submission_priority": [
+      {
+        "candidate": "IBATCH_TIME_A20",
+        "evidence_key": "ibatch_release_20261005",
+        "classification": "exploration_not_gate_passing",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-IBATCH-TIME-A20-20261005/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "2d726e41c3681b5421cbf27e39434b3eea907f545e7c2aabad7c05459f5dc22d",
+        "reason": "local +0.00043/+0.00047 on two complete splits; fails the frozen slot rule on slope sign; unvalidated functional predicts -0.00076"
+      },
+      {
+        "candidate": "JOINT_IBATCH_IRON_A20",
+        "evidence_key": "ibatch_release_20261005",
+        "classification": "exploration_not_gate_passing",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-JOINT-IBATCH-IRON-A20-20261005/Luqhhh_bf_tap_predict_round2.zip",
+        "zip_sha256": "5baf588c8ef0700d5e28b427b4e4acc181ff44bdfeb3409c2d46d4b56f62e85c",
+        "reason": "local +0.00034/+0.00028 on two complete splits; fails the frozen slot rule on slope sign; unvalidated functional predicts -0.00228"
+      }
+    ],
     "submission_priority_note": "The user-requested RealMLP MSE A20 exploration is now scored and removed from pending testing. Incumbent unchanged; no date-based or feedback-based quota inference.",
-    "ready_for_user_platform_testing": [],
+    "ready_for_user_platform_testing": [
+      "IBATCH_TIME_A20",
+      "JOINT_IBATCH_IRON_A20"
+    ],
     "reserve_candidates": [
       {
         "candidate": "DE3_IRON_EMA_TIME_Q75_RESERVE",
@@ -344,7 +364,7 @@
         "status": "deferred_backup_not_first_wave"
       }
     ],
-    "recommended": "6-seed 铁量扩展实测为 −0.00029（两 split 均负），门槛未过、未发布、未动额度。最后一个有正期望的同族平均方向已关闭；没有候选具有正期望，当前最佳 96.3979 即可达上限，剩余额度保留。",
+    "recommended": "由用户决定是否上传这两个包：它们本地小正、属平台上唯一反复为正的平均类，但都未通过冻结额度门（slope 略正），未验证泛函也都给负值。助手不上传。",
     "optimization_paused": false,
     "remaining_platform_submissions": 3,
     "agent_platform_uploads": 0,
@@ -31222,6 +31242,76 @@
     "new_fits": 30,
     "new_packages": 0,
     "desktop_writes": 0,
+    "agent_uploads": 0,
+    "quota_inferred": false,
+    "historical_decisions_unchanged": true,
+    "background_tasks_running": false
+  },
+  "ibatch_release_20261005": {
+    "status": "two_packages_built_audited_and_written_to_desktop_both_fail_the_frozen_slot_rule",
+    "date": "2026-10-05",
+    "objective": "maximize the platform score with the remaining slots",
+    "spec": "configs/ibatch_release/SPEC.json",
+    "results": "docs/ibatch_release/RESULTS.md",
+    "implementation": "scripts/ibatch_release.py",
+    "private_directory": "local/runs/ibatch-release-20261005/release-r1",
+    "candidates": {
+      "IBATCH_TIME_A20": {
+        "changed_target": "pred_tap_time_len",
+        "formula": "incumbent_time + 0.2*(mean(3 independent-batch EMA members) - mean(3 EMA members))",
+        "local_gains": {
+          "42": 0.00042927912075804036,
+          "3407": 0.00046912346050465546
+        },
+        "folds": "5/10",
+        "zip_sha256": "2d726e41c3681b5421cbf27e39434b3eea907f545e7c2aabad7c05459f5dc22d",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-IBATCH-TIME-A20-20261005/Luqhhh_bf_tap_predict_round2.zip",
+        "rho": 0.0006762398281465255,
+        "slope": 0.0002696223352125277,
+        "bias_pct": -0.00412385250288353,
+        "slot_rule_passed": false,
+        "fitted_functional_predicted_platform_delta": -0.0007619904335093031
+      },
+      "JOINT_IBATCH_IRON_A20": {
+        "changed_target": "pred_tap_iron",
+        "formula": "incumbent_iron + 0.1*(mean(3 joint independent-batch members) - mean(3 DE3 members))",
+        "local_gains": {
+          "42": 0.00034,
+          "3407": 0.000278
+        },
+        "folds": "6/10",
+        "zip_sha256": "5baf588c8ef0700d5e28b427b4e4acc181ff44bdfeb3409c2d46d4b56f62e85c",
+        "desktop": "/mnt/c/Users/lqh22/Desktop/submission-JOINT-IBATCH-IRON-A20-20261005/Luqhhh_bf_tap_predict_round2.zip",
+        "rho": 0.0006350404196997496,
+        "slope": 0.0008148972533250687,
+        "bias_pct": 0.05419618649015138,
+        "slot_rule_passed": false,
+        "fitted_functional_predicted_platform_delta": -0.002283397077476951
+      }
+    },
+    "base_consistency": {
+      "documented_mean3_formula_reproduces_package": 2.842170943040401e-14,
+      "recovered_iron_members_match_recorded_ensemble": 1.1368683772161603e-13,
+      "zero_new_members_reproduce_time": 0.0,
+      "zero_new_members_reproduce_iron": 0.0
+    },
+    "desktop_delivery": "local/runs/ibatch-release-20261005/release-r1/desktop-delivery.json",
+    "desktop_copies_byte_equal": true,
+    "independent_audit_passed": true,
+    "warning": "Both packages fail the frozen slot admission rule (slope slightly positive, rho about 0.0007) and the unvalidated functional predicts a negative delta for both. They are locally small-positive in the platform-replicated averaging class but are not gate-passing candidates; uploading is the user's decision.",
+    "budget_actual": {
+      "new_full_fits": 6,
+      "new_optimizers": 12,
+      "new_cv_fits": 0,
+      "new_confirmation_seeds": 0,
+      "packages": 2,
+      "desktop_writes": 2,
+      "agent_uploads": 0
+    },
+    "G0": "passed_six_full_fits_base_consistency_gates_independent_package_and_desktop_byte_readback",
+    "G1": "two_local_small_positive_averaging_candidates_not_gate_passing_not_platform_promoted",
+    "new_fits": 6,
+    "new_packages": 2,
     "agent_uploads": 0,
     "quota_inferred": false,
     "historical_decisions_unchanged": true,

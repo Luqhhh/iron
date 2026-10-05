@@ -220,12 +220,40 @@ def audit(spec: dict, output: Path, which: str) -> dict:
     return report
 
 
+def screen_only(spec: dict, output: Path, which: str) -> dict:
+    """Recompute a candidate's report from its packaged column; no fitting."""
+    import csv
+    import io
+    import zipfile
+    ids = template_ids()
+    inputs = frozen(spec, ids)
+    base = bases(spec, inputs)
+    archive = output / which / ZIP_NAME
+    with zipfile.ZipFile(archive) as handle:
+        payload = handle.read("result.csv")
+    rows = list(csv.DictReader(io.StringIO(payload.decode("utf-8"))))
+    target = IRON if which == spec["iron_candidate"] else TIME
+    incumbent = base["incumbent_iron"] if target == IRON else base["incumbent_time"]
+    candidate = np.array([float(row[target]) for row in rows])
+    report = {"candidate": which, "recomputed_from_package": True,
+              "base_consistency": base["checks"],
+              "zip_sha256": file_sha256(archive),
+              "rows": len(rows),
+              "rms_change": float(np.sqrt(((candidate - incumbent) ** 2).mean())),
+              "changed_strings": int(sum(1 for a, b in zip([format(v, ".17g") for v in incumbent],
+                                                           [row[target] for row in rows]) if a != b)),
+              "pre_upload_screen": screen(which, spec, incumbent, candidate, target)}
+    write_json(output / f"report-{which}.json", report)
+    return report
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--spec", default="configs/ibatch_release/SPEC.json")
     parser.add_argument("--output", required=True)
     parser.add_argument("--candidate", choices=["time", "iron", "both"], default="both")
     parser.add_argument("--audit", action="store_true")
+    parser.add_argument("--screen", action="store_true")
     args = parser.parse_args()
     spec = read_json(ROOT / args.spec)
     output = Path(args.output).resolve()
@@ -234,7 +262,12 @@ def main() -> None:
                else [spec["time_candidate"] if args.candidate == "time" else spec["iron_candidate"]])
     results = []
     for which in targets:
-        results.append(audit(spec, output, which) if args.audit else build(spec, output, which))
+        if args.screen:
+            results.append(screen_only(spec, output, which))
+        elif args.audit:
+            results.append(audit(spec, output, which))
+        else:
+            results.append(build(spec, output, which))
     print(json.dumps(results, ensure_ascii=False, indent=1))
 
 
